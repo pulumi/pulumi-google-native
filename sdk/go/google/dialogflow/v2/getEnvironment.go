@@ -24,7 +24,7 @@ type LookupEnvironmentArgs struct {
 }
 
 type LookupEnvironmentResult struct {
-	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+	// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion string `pulumi:"agentVersion"`
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description string `pulumi:"description"`

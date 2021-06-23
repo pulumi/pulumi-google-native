@@ -6460,6 +6460,8 @@ type GoogleCloudMlV1__HyperparameterOutput struct {
 	State *string `pulumi:"state"`
 	// The trial id for these results.
 	TrialId *string `pulumi:"trialId"`
+	// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+	WebAccessUris map[string]string `pulumi:"webAccessUris"`
 }
 
 // GoogleCloudMlV1__HyperparameterOutputInput is an input type that accepts GoogleCloudMlV1__HyperparameterOutputArgs and GoogleCloudMlV1__HyperparameterOutputOutput values.
@@ -6493,6 +6495,8 @@ type GoogleCloudMlV1__HyperparameterOutputArgs struct {
 	State *GoogleCloudMlV1__HyperparameterOutputState `pulumi:"state"`
 	// The trial id for these results.
 	TrialId pulumi.StringPtrInput `pulumi:"trialId"`
+	// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+	WebAccessUris pulumi.StringMapInput `pulumi:"webAccessUris"`
 }
 
 func (GoogleCloudMlV1__HyperparameterOutputArgs) ElementType() reflect.Type {
@@ -6598,6 +6602,11 @@ func (o GoogleCloudMlV1__HyperparameterOutputOutput) TrialId() pulumi.StringPtrO
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutput) *string { return v.TrialId }).(pulumi.StringPtrOutput)
 }
 
+// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+func (o GoogleCloudMlV1__HyperparameterOutputOutput) WebAccessUris() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutput) map[string]string { return v.WebAccessUris }).(pulumi.StringMapOutput)
+}
+
 type GoogleCloudMlV1__HyperparameterOutputArrayOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__HyperparameterOutputArrayOutput) ElementType() reflect.Type {
@@ -6638,6 +6647,8 @@ type GoogleCloudMlV1__HyperparameterOutputResponse struct {
 	State string `pulumi:"state"`
 	// The trial id for these results.
 	TrialId string `pulumi:"trialId"`
+	// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+	WebAccessUris map[string]string `pulumi:"webAccessUris"`
 }
 
 // GoogleCloudMlV1__HyperparameterOutputResponseInput is an input type that accepts GoogleCloudMlV1__HyperparameterOutputResponseArgs and GoogleCloudMlV1__HyperparameterOutputResponseOutput values.
@@ -6671,6 +6682,8 @@ type GoogleCloudMlV1__HyperparameterOutputResponseArgs struct {
 	State pulumi.StringInput `pulumi:"state"`
 	// The trial id for these results.
 	TrialId pulumi.StringInput `pulumi:"trialId"`
+	// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+	WebAccessUris pulumi.StringMapInput `pulumi:"webAccessUris"`
 }
 
 func (GoogleCloudMlV1__HyperparameterOutputResponseArgs) ElementType() reflect.Type {
@@ -6774,6 +6787,11 @@ func (o GoogleCloudMlV1__HyperparameterOutputResponseOutput) State() pulumi.Stri
 // The trial id for these results.
 func (o GoogleCloudMlV1__HyperparameterOutputResponseOutput) TrialId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutputResponse) string { return v.TrialId }).(pulumi.StringOutput)
+}
+
+// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+func (o GoogleCloudMlV1__HyperparameterOutputResponseOutput) WebAccessUris() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutputResponse) map[string]string { return v.WebAccessUris }).(pulumi.StringMapOutput)
 }
 
 type GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput struct{ *pulumi.OutputState }
@@ -11992,6 +12010,8 @@ func (o GoogleCloudMlV1__StudyConfigResponsePtrOutput) Parameters() GoogleCloudM
 type GoogleCloudMlV1__TrainingInput struct {
 	// Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 	Args []string `pulumi:"args"`
+	// Optional. Whether to enable web access for the training job.
+	EnableWebAccess *bool `pulumi:"enableWebAccess"`
 	// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
 	EncryptionConfig *GoogleCloudMlV1__EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. The configuration for evaluators. You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
@@ -12057,6 +12077,8 @@ type GoogleCloudMlV1__TrainingInputInput interface {
 type GoogleCloudMlV1__TrainingInputArgs struct {
 	// Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Whether to enable web access for the training job.
+	EnableWebAccess pulumi.BoolPtrInput `pulumi:"enableWebAccess"`
 	// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
 	EncryptionConfig GoogleCloudMlV1__EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Optional. The configuration for evaluators. You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
@@ -12188,6 +12210,11 @@ func (o GoogleCloudMlV1__TrainingInputOutput) ToGoogleCloudMlV1__TrainingInputPt
 // Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 func (o GoogleCloudMlV1__TrainingInputOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to enable web access for the training job.
+func (o GoogleCloudMlV1__TrainingInputOutput) EnableWebAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *bool { return v.EnableWebAccess }).(pulumi.BoolPtrOutput)
 }
 
 // Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
@@ -12336,6 +12363,16 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) Args() pulumi.StringArrayOutput
 		}
 		return v.Args
 	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to enable web access for the training job.
+func (o GoogleCloudMlV1__TrainingInputPtrOutput) EnableWebAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableWebAccess
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
@@ -12582,6 +12619,8 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) WorkerType() pulumi.StringPtrOu
 type GoogleCloudMlV1__TrainingInputResponse struct {
 	// Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 	Args []string `pulumi:"args"`
+	// Optional. Whether to enable web access for the training job.
+	EnableWebAccess bool `pulumi:"enableWebAccess"`
 	// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
 	EncryptionConfig GoogleCloudMlV1__EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// Optional. The configuration for evaluators. You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
@@ -12647,6 +12686,8 @@ type GoogleCloudMlV1__TrainingInputResponseInput interface {
 type GoogleCloudMlV1__TrainingInputResponseArgs struct {
 	// Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Whether to enable web access for the training job.
+	EnableWebAccess pulumi.BoolInput `pulumi:"enableWebAccess"`
 	// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
 	EncryptionConfig GoogleCloudMlV1__EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
 	// Optional. The configuration for evaluators. You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
@@ -12778,6 +12819,11 @@ func (o GoogleCloudMlV1__TrainingInputResponseOutput) ToGoogleCloudMlV1__Trainin
 // Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 func (o GoogleCloudMlV1__TrainingInputResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to enable web access for the training job.
+func (o GoogleCloudMlV1__TrainingInputResponseOutput) EnableWebAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) bool { return v.EnableWebAccess }).(pulumi.BoolOutput)
 }
 
 // Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
@@ -12940,6 +12986,16 @@ func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) Args() pulumi.StringArr
 		}
 		return v.Args
 	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to enable web access for the training job.
+func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) EnableWebAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableWebAccess
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
@@ -13448,6 +13504,8 @@ type GoogleCloudMlV1__TrainingOutputResponse struct {
 	IsHyperparameterTuningJob bool `pulumi:"isHyperparameterTuningJob"`
 	// Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
 	Trials []GoogleCloudMlV1__HyperparameterOutputResponse `pulumi:"trials"`
+	// The web URIs for the training job. Currently for debug terminal access to the job.
+	WebAccessUris map[string]string `pulumi:"webAccessUris"`
 }
 
 // GoogleCloudMlV1__TrainingOutputResponseInput is an input type that accepts GoogleCloudMlV1__TrainingOutputResponseArgs and GoogleCloudMlV1__TrainingOutputResponseOutput values.
@@ -13477,6 +13535,8 @@ type GoogleCloudMlV1__TrainingOutputResponseArgs struct {
 	IsHyperparameterTuningJob pulumi.BoolInput `pulumi:"isHyperparameterTuningJob"`
 	// Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
 	Trials GoogleCloudMlV1__HyperparameterOutputResponseArrayInput `pulumi:"trials"`
+	// The web URIs for the training job. Currently for debug terminal access to the job.
+	WebAccessUris pulumi.StringMapInput `pulumi:"webAccessUris"`
 }
 
 func (GoogleCloudMlV1__TrainingOutputResponseArgs) ElementType() reflect.Type {
@@ -13596,6 +13656,11 @@ func (o GoogleCloudMlV1__TrainingOutputResponseOutput) Trials() GoogleCloudMlV1_
 	}).(GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput)
 }
 
+// The web URIs for the training job. Currently for debug terminal access to the job.
+func (o GoogleCloudMlV1__TrainingOutputResponseOutput) WebAccessUris() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__TrainingOutputResponse) map[string]string { return v.WebAccessUris }).(pulumi.StringMapOutput)
+}
+
 type GoogleCloudMlV1__TrainingOutputResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudMlV1__TrainingOutputResponsePtrOutput) ElementType() reflect.Type {
@@ -13682,6 +13747,16 @@ func (o GoogleCloudMlV1__TrainingOutputResponsePtrOutput) Trials() GoogleCloudMl
 		}
 		return v.Trials
 	}).(GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput)
+}
+
+// The web URIs for the training job. Currently for debug terminal access to the job.
+func (o GoogleCloudMlV1__TrainingOutputResponsePtrOutput) WebAccessUris() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingOutputResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.WebAccessUris
+	}).(pulumi.StringMapOutput)
 }
 
 // Represents a version of the model. Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have multiple versions. You can get information about all of the versions of a given model by calling projects.models.versions.list.

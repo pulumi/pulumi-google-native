@@ -2092,7 +2092,7 @@ type EnvVar struct {
 	Name *string `pulumi:"name"`
 	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
 	Value *string `pulumi:"value"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+	// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
 	ValueFrom *EnvVarSource `pulumi:"valueFrom"`
 }
 
@@ -2113,7 +2113,7 @@ type EnvVarArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
 	Value pulumi.StringPtrInput `pulumi:"value"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+	// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
 	ValueFrom EnvVarSourcePtrInput `pulumi:"valueFrom"`
 }
 
@@ -2179,7 +2179,7 @@ func (o EnvVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
 func (o EnvVarOutput) ValueFrom() EnvVarSourcePtrOutput {
 	return o.ApplyT(func(v EnvVar) *EnvVarSource { return v.ValueFrom }).(EnvVarSourcePtrOutput)
 }
@@ -2210,7 +2210,7 @@ type EnvVarResponse struct {
 	Name string `pulumi:"name"`
 	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
 	Value string `pulumi:"value"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+	// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
 	ValueFrom EnvVarSourceResponse `pulumi:"valueFrom"`
 }
 
@@ -2231,7 +2231,7 @@ type EnvVarResponseArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
 	Value pulumi.StringInput `pulumi:"value"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+	// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
 	ValueFrom EnvVarSourceResponseInput `pulumi:"valueFrom"`
 }
 
@@ -2297,7 +2297,7 @@ func (o EnvVarResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvVarResponse) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
 func (o EnvVarResponseOutput) ValueFrom() EnvVarSourceResponseOutput {
 	return o.ApplyT(func(v EnvVarResponse) EnvVarSourceResponse { return v.ValueFrom }).(EnvVarSourceResponseOutput)
 }
@@ -2326,7 +2326,7 @@ func (o EnvVarResponseArrayOutput) Index(i pulumi.IntInput) EnvVarResponseOutput
 type EnvVarSource struct {
 	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
 	ConfigMapKeyRef *ConfigMapKeySelector `pulumi:"configMapKeyRef"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+	// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
 	SecretKeyRef *SecretKeySelector `pulumi:"secretKeyRef"`
 }
 
@@ -2345,7 +2345,7 @@ type EnvVarSourceInput interface {
 type EnvVarSourceArgs struct {
 	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
 	ConfigMapKeyRef ConfigMapKeySelectorPtrInput `pulumi:"configMapKeyRef"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+	// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
 	SecretKeyRef SecretKeySelectorPtrInput `pulumi:"secretKeyRef"`
 }
 
@@ -2432,7 +2432,7 @@ func (o EnvVarSourceOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	return o.ApplyT(func(v EnvVarSource) *ConfigMapKeySelector { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
 func (o EnvVarSourceOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 	return o.ApplyT(func(v EnvVarSource) *SecretKeySelector { return v.SecretKeyRef }).(SecretKeySelectorPtrOutput)
 }
@@ -2465,7 +2465,7 @@ func (o EnvVarSourcePtrOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	}).(ConfigMapKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
 func (o EnvVarSourcePtrOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 	return o.ApplyT(func(v *EnvVarSource) *SecretKeySelector {
 		if v == nil {
@@ -2479,7 +2479,7 @@ func (o EnvVarSourcePtrOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 type EnvVarSourceResponse struct {
 	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
 	ConfigMapKeyRef ConfigMapKeySelectorResponse `pulumi:"configMapKeyRef"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+	// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
 	SecretKeyRef SecretKeySelectorResponse `pulumi:"secretKeyRef"`
 }
 
@@ -2498,7 +2498,7 @@ type EnvVarSourceResponseInput interface {
 type EnvVarSourceResponseArgs struct {
 	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
 	ConfigMapKeyRef ConfigMapKeySelectorResponseInput `pulumi:"configMapKeyRef"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+	// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
 	SecretKeyRef SecretKeySelectorResponseInput `pulumi:"secretKeyRef"`
 }
 
@@ -2534,7 +2534,7 @@ func (o EnvVarSourceResponseOutput) ConfigMapKeyRef() ConfigMapKeySelectorRespon
 	return o.ApplyT(func(v EnvVarSourceResponse) ConfigMapKeySelectorResponse { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
 func (o EnvVarSourceResponseOutput) SecretKeyRef() SecretKeySelectorResponseOutput {
 	return o.ApplyT(func(v EnvVarSourceResponse) SecretKeySelectorResponse { return v.SecretKeyRef }).(SecretKeySelectorResponseOutput)
 }
@@ -5063,7 +5063,7 @@ func (o JobConditionResponseArrayOutput) Index(i pulumi.IntInput) JobConditionRe
 
 // JobSpec describes how the job execution will look like.
 type JobSpec struct {
-	// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+	// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
 	ActiveDeadlineSeconds *string `pulumi:"activeDeadlineSeconds"`
 	// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
 	BackoffLimit *int `pulumi:"backoffLimit"`
@@ -5073,7 +5073,7 @@ type JobSpec struct {
 	Parallelism *int `pulumi:"parallelism"`
 	// Optional. Describes the instance that will be created when executing a job.
 	Template *InstanceTemplateSpec `pulumi:"template"`
-	// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+	// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 	TtlSecondsAfterFinished *int `pulumi:"ttlSecondsAfterFinished"`
 }
 
@@ -5090,7 +5090,7 @@ type JobSpecInput interface {
 
 // JobSpec describes how the job execution will look like.
 type JobSpecArgs struct {
-	// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+	// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
 	ActiveDeadlineSeconds pulumi.StringPtrInput `pulumi:"activeDeadlineSeconds"`
 	// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
 	BackoffLimit pulumi.IntPtrInput `pulumi:"backoffLimit"`
@@ -5100,7 +5100,7 @@ type JobSpecArgs struct {
 	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
 	// Optional. Describes the instance that will be created when executing a job.
 	Template InstanceTemplateSpecPtrInput `pulumi:"template"`
-	// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+	// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 	TtlSecondsAfterFinished pulumi.IntPtrInput `pulumi:"ttlSecondsAfterFinished"`
 }
 
@@ -5182,7 +5182,7 @@ func (o JobSpecOutput) ToJobSpecPtrOutputWithContext(ctx context.Context) JobSpe
 	}).(JobSpecPtrOutput)
 }
 
-// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
 func (o JobSpecOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSpec) *string { return v.ActiveDeadlineSeconds }).(pulumi.StringPtrOutput)
 }
@@ -5207,7 +5207,7 @@ func (o JobSpecOutput) Template() InstanceTemplateSpecPtrOutput {
 	return o.ApplyT(func(v JobSpec) *InstanceTemplateSpec { return v.Template }).(InstanceTemplateSpecPtrOutput)
 }
 
-// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 func (o JobSpecOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobSpec) *int { return v.TtlSecondsAfterFinished }).(pulumi.IntPtrOutput)
 }
@@ -5230,7 +5230,7 @@ func (o JobSpecPtrOutput) Elem() JobSpecOutput {
 	return o.ApplyT(func(v *JobSpec) JobSpec { return *v }).(JobSpecOutput)
 }
 
-// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
 func (o JobSpecPtrOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSpec) *string {
 		if v == nil {
@@ -5280,7 +5280,7 @@ func (o JobSpecPtrOutput) Template() InstanceTemplateSpecPtrOutput {
 	}).(InstanceTemplateSpecPtrOutput)
 }
 
-// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 func (o JobSpecPtrOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobSpec) *int {
 		if v == nil {
@@ -5292,7 +5292,7 @@ func (o JobSpecPtrOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
 
 // JobSpec describes how the job execution will look like.
 type JobSpecResponse struct {
-	// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+	// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
 	ActiveDeadlineSeconds string `pulumi:"activeDeadlineSeconds"`
 	// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
 	BackoffLimit int `pulumi:"backoffLimit"`
@@ -5302,7 +5302,7 @@ type JobSpecResponse struct {
 	Parallelism int `pulumi:"parallelism"`
 	// Optional. Describes the instance that will be created when executing a job.
 	Template InstanceTemplateSpecResponse `pulumi:"template"`
-	// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+	// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 	TtlSecondsAfterFinished int `pulumi:"ttlSecondsAfterFinished"`
 }
 
@@ -5319,7 +5319,7 @@ type JobSpecResponseInput interface {
 
 // JobSpec describes how the job execution will look like.
 type JobSpecResponseArgs struct {
-	// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+	// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
 	ActiveDeadlineSeconds pulumi.StringInput `pulumi:"activeDeadlineSeconds"`
 	// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
 	BackoffLimit pulumi.IntInput `pulumi:"backoffLimit"`
@@ -5329,7 +5329,7 @@ type JobSpecResponseArgs struct {
 	Parallelism pulumi.IntInput `pulumi:"parallelism"`
 	// Optional. Describes the instance that will be created when executing a job.
 	Template InstanceTemplateSpecResponseInput `pulumi:"template"`
-	// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+	// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 	TtlSecondsAfterFinished pulumi.IntInput `pulumi:"ttlSecondsAfterFinished"`
 }
 
@@ -5411,7 +5411,7 @@ func (o JobSpecResponseOutput) ToJobSpecResponsePtrOutputWithContext(ctx context
 	}).(JobSpecResponsePtrOutput)
 }
 
-// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
 func (o JobSpecResponseOutput) ActiveDeadlineSeconds() pulumi.StringOutput {
 	return o.ApplyT(func(v JobSpecResponse) string { return v.ActiveDeadlineSeconds }).(pulumi.StringOutput)
 }
@@ -5436,7 +5436,7 @@ func (o JobSpecResponseOutput) Template() InstanceTemplateSpecResponseOutput {
 	return o.ApplyT(func(v JobSpecResponse) InstanceTemplateSpecResponse { return v.Template }).(InstanceTemplateSpecResponseOutput)
 }
 
-// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 func (o JobSpecResponseOutput) TtlSecondsAfterFinished() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSpecResponse) int { return v.TtlSecondsAfterFinished }).(pulumi.IntOutput)
 }
@@ -5459,7 +5459,7 @@ func (o JobSpecResponsePtrOutput) Elem() JobSpecResponseOutput {
 	return o.ApplyT(func(v *JobSpecResponse) JobSpecResponse { return *v }).(JobSpecResponseOutput)
 }
 
-// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
 func (o JobSpecResponsePtrOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSpecResponse) *string {
 		if v == nil {
@@ -5509,7 +5509,7 @@ func (o JobSpecResponsePtrOutput) Template() InstanceTemplateSpecResponsePtrOutp
 	}).(InstanceTemplateSpecResponsePtrOutput)
 }
 
-// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 func (o JobSpecResponsePtrOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobSpecResponse) *int {
 		if v == nil {
@@ -6093,11 +6093,11 @@ func (o JobStatusResponsePtrOutput) Succeeded() pulumi.IntPtrOutput {
 
 // Maps a string key to a path within a volume.
 type KeyToPath struct {
-	// The key to project.
+	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
 	Key *string `pulumi:"key"`
 	// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
 	Mode *int `pulumi:"mode"`
-	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path *string `pulumi:"path"`
 }
 
@@ -6114,11 +6114,11 @@ type KeyToPathInput interface {
 
 // Maps a string key to a path within a volume.
 type KeyToPathArgs struct {
-	// The key to project.
+	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
 	Mode pulumi.IntPtrInput `pulumi:"mode"`
-	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -6174,7 +6174,7 @@ func (o KeyToPathOutput) ToKeyToPathOutputWithContext(ctx context.Context) KeyTo
 	return o
 }
 
-// The key to project.
+// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
 func (o KeyToPathOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -6184,7 +6184,7 @@ func (o KeyToPathOutput) Mode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *int { return v.Mode }).(pulumi.IntPtrOutput)
 }
 
-// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 func (o KeyToPathOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -6211,11 +6211,11 @@ func (o KeyToPathArrayOutput) Index(i pulumi.IntInput) KeyToPathOutput {
 
 // Maps a string key to a path within a volume.
 type KeyToPathResponse struct {
-	// The key to project.
+	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
 	Key string `pulumi:"key"`
 	// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
 	Mode int `pulumi:"mode"`
-	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path string `pulumi:"path"`
 }
 
@@ -6232,11 +6232,11 @@ type KeyToPathResponseInput interface {
 
 // Maps a string key to a path within a volume.
 type KeyToPathResponseArgs struct {
-	// The key to project.
+	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
 	Mode pulumi.IntInput `pulumi:"mode"`
-	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -6292,7 +6292,7 @@ func (o KeyToPathResponseOutput) ToKeyToPathResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The key to project.
+// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
 func (o KeyToPathResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyToPathResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -6302,7 +6302,7 @@ func (o KeyToPathResponseOutput) Mode() pulumi.IntOutput {
 	return o.ApplyT(func(v KeyToPathResponse) int { return v.Mode }).(pulumi.IntOutput)
 }
 
-// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 func (o KeyToPathResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyToPathResponse) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -8887,13 +8887,13 @@ func (o SecretEnvSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecretEnvSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
 type SecretKeySelector struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of the secret to select from. Must be a valid secret key.
+	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
 	Key *string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of the secret in the pod's namespace to select from.
+	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
 	Name *string `pulumi:"name"`
 	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
 	Optional *bool `pulumi:"optional"`
@@ -8910,13 +8910,13 @@ type SecretKeySelectorInput interface {
 	ToSecretKeySelectorOutputWithContext(context.Context) SecretKeySelectorOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of the secret to select from. Must be a valid secret key.
+	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of the secret in the pod's namespace to select from.
+	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
@@ -8975,7 +8975,7 @@ func (i *secretKeySelectorPtrType) ToSecretKeySelectorPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorOutput struct{ *pulumi.OutputState }
 
 func (SecretKeySelectorOutput) ElementType() reflect.Type {
@@ -9000,7 +9000,7 @@ func (o SecretKeySelectorOutput) ToSecretKeySelectorPtrOutputWithContext(ctx con
 	}).(SecretKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of the secret to select from. Must be a valid secret key.
+// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretKeySelector) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -9010,7 +9010,7 @@ func (o SecretKeySelectorOutput) LocalObjectReference() LocalObjectReferencePtrO
 	return o.ApplyT(func(v SecretKeySelector) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of the secret in the pod's namespace to select from.
+// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
 func (o SecretKeySelectorOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretKeySelector) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -9038,7 +9038,7 @@ func (o SecretKeySelectorPtrOutput) Elem() SecretKeySelectorOutput {
 	return o.ApplyT(func(v *SecretKeySelector) SecretKeySelector { return *v }).(SecretKeySelectorOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of the secret to select from. Must be a valid secret key.
+// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretKeySelector) *string {
 		if v == nil {
@@ -9058,7 +9058,7 @@ func (o SecretKeySelectorPtrOutput) LocalObjectReference() LocalObjectReferenceP
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of the secret in the pod's namespace to select from.
+// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
 func (o SecretKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretKeySelector) *string {
 		if v == nil {
@@ -9078,13 +9078,13 @@ func (o SecretKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponse struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of the secret to select from. Must be a valid secret key.
+	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
 	Key string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of the secret in the pod's namespace to select from.
+	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
 	Name string `pulumi:"name"`
 	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
 	Optional bool `pulumi:"optional"`
@@ -9101,13 +9101,13 @@ type SecretKeySelectorResponseInput interface {
 	ToSecretKeySelectorResponseOutputWithContext(context.Context) SecretKeySelectorResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponseArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of the secret to select from. Must be a valid secret key.
+	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of the secret in the pod's namespace to select from.
+	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
 	Optional pulumi.BoolInput `pulumi:"optional"`
@@ -9125,7 +9125,7 @@ func (i SecretKeySelectorResponseArgs) ToSecretKeySelectorResponseOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponseOutput struct{ *pulumi.OutputState }
 
 func (SecretKeySelectorResponseOutput) ElementType() reflect.Type {
@@ -9140,7 +9140,7 @@ func (o SecretKeySelectorResponseOutput) ToSecretKeySelectorResponseOutputWithCo
 	return o
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of the secret to select from. Must be a valid secret key.
+// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -9150,7 +9150,7 @@ func (o SecretKeySelectorResponseOutput) LocalObjectReference() LocalObjectRefer
 	return o.ApplyT(func(v SecretKeySelectorResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of the secret in the pod's namespace to select from.
+// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
 func (o SecretKeySelectorResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9164,11 +9164,11 @@ func (o SecretKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
 type SecretVolumeSource struct {
 	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode *int `pulumi:"defaultMode"`
-	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPath `pulumi:"items"`
 	// Specify whether the Secret or its keys must be defined.
 	Optional *bool `pulumi:"optional"`
-	// Name of the secret in the container's namespace to use.
+	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
 	SecretName *string `pulumi:"secretName"`
 }
 
@@ -9187,11 +9187,11 @@ type SecretVolumeSourceInput interface {
 type SecretVolumeSourceArgs struct {
 	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
-	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathArrayInput `pulumi:"items"`
 	// Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
-	// Name of the secret in the container's namespace to use.
+	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
 	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
 }
 
@@ -9278,7 +9278,7 @@ func (o SecretVolumeSourceOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
 }
 
-// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o SecretVolumeSourceOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v SecretVolumeSource) []KeyToPath { return v.Items }).(KeyToPathArrayOutput)
 }
@@ -9288,7 +9288,7 @@ func (o SecretVolumeSourceOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the secret in the container's namespace to use.
+// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
 func (o SecretVolumeSourceOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *string { return v.SecretName }).(pulumi.StringPtrOutput)
 }
@@ -9321,7 +9321,7 @@ func (o SecretVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o SecretVolumeSourcePtrOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) []KeyToPath {
 		if v == nil {
@@ -9341,7 +9341,7 @@ func (o SecretVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Name of the secret in the container's namespace to use.
+// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
 func (o SecretVolumeSourcePtrOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) *string {
 		if v == nil {
@@ -9355,11 +9355,11 @@ func (o SecretVolumeSourcePtrOutput) SecretName() pulumi.StringPtrOutput {
 type SecretVolumeSourceResponse struct {
 	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode int `pulumi:"defaultMode"`
-	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPathResponse `pulumi:"items"`
 	// Specify whether the Secret or its keys must be defined.
 	Optional bool `pulumi:"optional"`
-	// Name of the secret in the container's namespace to use.
+	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
 	SecretName string `pulumi:"secretName"`
 }
 
@@ -9378,11 +9378,11 @@ type SecretVolumeSourceResponseInput interface {
 type SecretVolumeSourceResponseArgs struct {
 	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
-	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathResponseArrayInput `pulumi:"items"`
 	// Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolInput `pulumi:"optional"`
-	// Name of the secret in the container's namespace to use.
+	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
 	SecretName pulumi.StringInput `pulumi:"secretName"`
 }
 
@@ -9418,7 +9418,7 @@ func (o SecretVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
 }
 
-// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o SecretVolumeSourceResponseOutput) Items() KeyToPathResponseArrayOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) []KeyToPathResponse { return v.Items }).(KeyToPathResponseArrayOutput)
 }
@@ -9428,7 +9428,7 @@ func (o SecretVolumeSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Name of the secret in the container's namespace to use.
+// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
 func (o SecretVolumeSourceResponseOutput) SecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) string { return v.SecretName }).(pulumi.StringOutput)
 }

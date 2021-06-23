@@ -105,3 +105,45 @@ func (e InstanceTransitEncryptionMode) ToStringPtrOutput() pulumi.StringPtrOutpu
 func (e InstanceTransitEncryptionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+// Required. The day of week that maintenance updates occur.
+type WeeklyMaintenanceWindowDay pulumi.String
+
+const (
+	// The day of the week is unspecified.
+	WeeklyMaintenanceWindowDayDayOfWeekUnspecified = WeeklyMaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED")
+	// Monday
+	WeeklyMaintenanceWindowDayMonday = WeeklyMaintenanceWindowDay("MONDAY")
+	// Tuesday
+	WeeklyMaintenanceWindowDayTuesday = WeeklyMaintenanceWindowDay("TUESDAY")
+	// Wednesday
+	WeeklyMaintenanceWindowDayWednesday = WeeklyMaintenanceWindowDay("WEDNESDAY")
+	// Thursday
+	WeeklyMaintenanceWindowDayThursday = WeeklyMaintenanceWindowDay("THURSDAY")
+	// Friday
+	WeeklyMaintenanceWindowDayFriday = WeeklyMaintenanceWindowDay("FRIDAY")
+	// Saturday
+	WeeklyMaintenanceWindowDaySaturday = WeeklyMaintenanceWindowDay("SATURDAY")
+	// Sunday
+	WeeklyMaintenanceWindowDaySunday = WeeklyMaintenanceWindowDay("SUNDAY")
+)
+
+func (WeeklyMaintenanceWindowDay) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e WeeklyMaintenanceWindowDay) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WeeklyMaintenanceWindowDay) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WeeklyMaintenanceWindowDay) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WeeklyMaintenanceWindowDay) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}

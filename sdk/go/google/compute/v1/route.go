@@ -27,15 +27,11 @@ type Route struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Fully-qualified URL of the network that this route applies to.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
 	NextHopGateway pulumi.StringOutput `pulumi:"nextHopGateway"`
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:
-	// - 10.128.0.56
-	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// - regions/region/forwardingRules/forwardingRule
+	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 	NextHopIlb pulumi.StringOutput `pulumi:"nextHopIlb"`
-	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-	// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
 	NextHopInstance pulumi.StringOutput `pulumi:"nextHopInstance"`
 	// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
 	NextHopIp pulumi.StringOutput `pulumi:"nextHopIp"`
@@ -99,15 +95,11 @@ type routeState struct {
 	Name *string `pulumi:"name"`
 	// Fully-qualified URL of the network that this route applies to.
 	Network *string `pulumi:"network"`
-	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
 	NextHopGateway *string `pulumi:"nextHopGateway"`
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:
-	// - 10.128.0.56
-	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// - regions/region/forwardingRules/forwardingRule
+	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 	NextHopIlb *string `pulumi:"nextHopIlb"`
-	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-	// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
 	NextHopInstance *string `pulumi:"nextHopInstance"`
 	// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
 	NextHopIp *string `pulumi:"nextHopIp"`
@@ -140,15 +132,11 @@ type RouteState struct {
 	Name pulumi.StringPtrInput
 	// Fully-qualified URL of the network that this route applies to.
 	Network pulumi.StringPtrInput
-	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
 	NextHopGateway pulumi.StringPtrInput
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:
-	// - 10.128.0.56
-	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// - regions/region/forwardingRules/forwardingRule
+	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 	NextHopIlb pulumi.StringPtrInput
-	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-	// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
 	NextHopInstance pulumi.StringPtrInput
 	// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
 	NextHopIp pulumi.StringPtrInput
@@ -187,15 +175,11 @@ type routeArgs struct {
 	Name *string `pulumi:"name"`
 	// Fully-qualified URL of the network that this route applies to.
 	Network *string `pulumi:"network"`
-	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
 	NextHopGateway *string `pulumi:"nextHopGateway"`
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:
-	// - 10.128.0.56
-	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// - regions/region/forwardingRules/forwardingRule
+	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 	NextHopIlb *string `pulumi:"nextHopIlb"`
-	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-	// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
 	NextHopInstance *string `pulumi:"nextHopInstance"`
 	// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
 	NextHopIp *string `pulumi:"nextHopIp"`
@@ -233,15 +217,11 @@ type RouteArgs struct {
 	Name pulumi.StringPtrInput
 	// Fully-qualified URL of the network that this route applies to.
 	Network pulumi.StringPtrInput
-	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
 	NextHopGateway pulumi.StringPtrInput
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:
-	// - 10.128.0.56
-	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// - regions/region/forwardingRules/forwardingRule
+	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 	NextHopIlb pulumi.StringPtrInput
-	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-	// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
 	NextHopInstance pulumi.StringPtrInput
 	// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
 	NextHopIp pulumi.StringPtrInput

@@ -10215,7 +10215,7 @@ func (o GooglePrivacyDlpV2FieldIdResponseArrayOutput) Index(i pulumi.IntInput) G
 type GooglePrivacyDlpV2FieldTransformation struct {
 	// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
 	Condition *GooglePrivacyDlpV2RecordCondition `pulumi:"condition"`
-	// Required. Input field(s) to apply the transformation to.
+	// Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
 	Fields []GooglePrivacyDlpV2FieldId `pulumi:"fields"`
 	// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
 	InfoTypeTransformations *GooglePrivacyDlpV2InfoTypeTransformations `pulumi:"infoTypeTransformations"`
@@ -10238,7 +10238,7 @@ type GooglePrivacyDlpV2FieldTransformationInput interface {
 type GooglePrivacyDlpV2FieldTransformationArgs struct {
 	// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
 	Condition GooglePrivacyDlpV2RecordConditionPtrInput `pulumi:"condition"`
-	// Required. Input field(s) to apply the transformation to.
+	// Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
 	Fields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"fields"`
 	// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
 	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsPtrInput `pulumi:"infoTypeTransformations"`
@@ -10303,7 +10303,7 @@ func (o GooglePrivacyDlpV2FieldTransformationOutput) Condition() GooglePrivacyDl
 	return o.ApplyT(func(v GooglePrivacyDlpV2FieldTransformation) *GooglePrivacyDlpV2RecordCondition { return v.Condition }).(GooglePrivacyDlpV2RecordConditionPtrOutput)
 }
 
-// Required. Input field(s) to apply the transformation to.
+// Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
 func (o GooglePrivacyDlpV2FieldTransformationOutput) Fields() GooglePrivacyDlpV2FieldIdArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FieldTransformation) []GooglePrivacyDlpV2FieldId { return v.Fields }).(GooglePrivacyDlpV2FieldIdArrayOutput)
 }
@@ -10346,7 +10346,7 @@ func (o GooglePrivacyDlpV2FieldTransformationArrayOutput) Index(i pulumi.IntInpu
 type GooglePrivacyDlpV2FieldTransformationResponse struct {
 	// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
 	Condition GooglePrivacyDlpV2RecordConditionResponse `pulumi:"condition"`
-	// Required. Input field(s) to apply the transformation to.
+	// Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
 	Fields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"fields"`
 	// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
 	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsResponse `pulumi:"infoTypeTransformations"`
@@ -10369,7 +10369,7 @@ type GooglePrivacyDlpV2FieldTransformationResponseInput interface {
 type GooglePrivacyDlpV2FieldTransformationResponseArgs struct {
 	// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
 	Condition GooglePrivacyDlpV2RecordConditionResponseInput `pulumi:"condition"`
-	// Required. Input field(s) to apply the transformation to.
+	// Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
 	Fields GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"fields"`
 	// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
 	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsResponseInput `pulumi:"infoTypeTransformations"`
@@ -10436,7 +10436,7 @@ func (o GooglePrivacyDlpV2FieldTransformationResponseOutput) Condition() GoogleP
 	}).(GooglePrivacyDlpV2RecordConditionResponseOutput)
 }
 
-// Required. Input field(s) to apply the transformation to.
+// Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
 func (o GooglePrivacyDlpV2FieldTransformationResponseOutput) Fields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FieldTransformationResponse) []GooglePrivacyDlpV2FieldIdResponse {
 		return v.Fields
@@ -11133,7 +11133,7 @@ func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) MaxFindingsPerRequest(
 	}).(pulumi.IntPtrOutput)
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfig struct {
 	// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 	BucketSize *float64 `pulumi:"bucketSize"`
@@ -11154,7 +11154,7 @@ type GooglePrivacyDlpV2FixedSizeBucketingConfigInput interface {
 	ToGooglePrivacyDlpV2FixedSizeBucketingConfigOutputWithContext(context.Context) GooglePrivacyDlpV2FixedSizeBucketingConfigOutput
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigArgs struct {
 	// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 	BucketSize pulumi.Float64PtrInput `pulumi:"bucketSize"`
@@ -11217,7 +11217,7 @@ func (i *googlePrivacyDlpV2FixedSizeBucketingConfigPtrType) ToGooglePrivacyDlpV2
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput)
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) ElementType() reflect.Type {
@@ -11307,7 +11307,7 @@ func (o GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput) UpperBound() Google
 	}).(GooglePrivacyDlpV2ValuePtrOutput)
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigResponse struct {
 	// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 	BucketSize float64 `pulumi:"bucketSize"`
@@ -11328,7 +11328,7 @@ type GooglePrivacyDlpV2FixedSizeBucketingConfigResponseInput interface {
 	ToGooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs struct {
 	// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 	BucketSize pulumi.Float64Input `pulumi:"bucketSize"`
@@ -11350,7 +11350,7 @@ func (i GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs) ToGooglePrivacyD
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput)
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput) ElementType() reflect.Type {
@@ -16936,7 +16936,7 @@ func (o GooglePrivacyDlpV2KindExpressionResponsePtrOutput) Name() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
 type GooglePrivacyDlpV2KmsWrappedCryptoKey struct {
 	// Required. The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
@@ -16955,7 +16955,7 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKeyInput interface {
 	ToGooglePrivacyDlpV2KmsWrappedCryptoKeyOutputWithContext(context.Context) GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs struct {
 	// Required. The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName pulumi.StringPtrInput `pulumi:"cryptoKeyName"`
@@ -17016,7 +17016,7 @@ func (i *googlePrivacyDlpV2KmsWrappedCryptoKeyPtrType) ToGooglePrivacyDlpV2KmsWr
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) ElementType() reflect.Type {
@@ -17089,7 +17089,7 @@ func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput) WrappedKey() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse struct {
 	// Required. The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName string `pulumi:"cryptoKeyName"`
@@ -17108,7 +17108,7 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseInput interface {
 	ToGooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs struct {
 	// Required. The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName pulumi.StringInput `pulumi:"cryptoKeyName"`
@@ -17128,7 +17128,7 @@ func (i GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs) ToGooglePrivacyDlpV2K
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput) ElementType() reflect.Type {

@@ -19,10 +19,7 @@ type TargetInstance struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
-	// - zones/zone/instances/instance
+	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// [Output Only] The type of the resource. Always compute#targetInstance for target instances.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -79,10 +76,7 @@ type targetInstanceState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
-	// - zones/zone/instances/instance
+	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
 	Instance *string `pulumi:"instance"`
 	// [Output Only] The type of the resource. Always compute#targetInstance for target instances.
 	Kind *string `pulumi:"kind"`
@@ -105,10 +99,7 @@ type TargetInstanceState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
-	// - zones/zone/instances/instance
+	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
 	Instance pulumi.StringPtrInput
 	// [Output Only] The type of the resource. Always compute#targetInstance for target instances.
 	Kind pulumi.StringPtrInput
@@ -137,10 +128,7 @@ type targetInstanceArgs struct {
 	Description *string `pulumi:"description"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
-	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
-	// - zones/zone/instances/instance
+	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
 	Instance *string `pulumi:"instance"`
 	// [Output Only] The type of the resource. Always compute#targetInstance for target instances.
 	Kind *string `pulumi:"kind"`
@@ -168,10 +156,7 @@ type TargetInstanceArgs struct {
 	Description pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
-	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
-	// - zones/zone/instances/instance
+	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
 	Instance pulumi.StringPtrInput
 	// [Output Only] The type of the resource. Always compute#targetInstance for target instances.
 	Kind pulumi.StringPtrInput

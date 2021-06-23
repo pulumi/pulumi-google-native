@@ -39,7 +39,7 @@ type LookupTargetSslProxyResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// URL to the BackendService resource.
 	Service string `pulumi:"service"`
-	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
 	SslPolicy string `pulumi:"sslPolicy"`

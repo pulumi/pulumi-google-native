@@ -29,9 +29,7 @@ type InstanceTemplate struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
 	// The source instance params to use to create this instance template.
 	SourceInstanceParams SourceInstanceParamsResponseOutput `pulumi:"sourceInstanceParams"`
@@ -83,9 +81,7 @@ type instanceTemplateState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance *string `pulumi:"sourceInstance"`
 	// The source instance params to use to create this instance template.
 	SourceInstanceParams *SourceInstanceParamsResponse `pulumi:"sourceInstanceParams"`
@@ -106,9 +102,7 @@ type InstanceTemplateState struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringPtrInput
 	// The source instance params to use to create this instance template.
 	SourceInstanceParams SourceInstanceParamsResponsePtrInput
@@ -137,9 +131,7 @@ type instanceTemplateArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance *string `pulumi:"sourceInstance"`
 	// The source instance params to use to create this instance template.
 	SourceInstanceParams *SourceInstanceParams `pulumi:"sourceInstanceParams"`
@@ -165,9 +157,7 @@ type InstanceTemplateArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringPtrInput
 	// The source instance params to use to create this instance template.
 	SourceInstanceParams SourceInstanceParamsPtrInput

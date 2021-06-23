@@ -7,9 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request.
-//
-// For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
+// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
 func LookupInstanceGroup(ctx *pulumi.Context, args *LookupInstanceGroupArgs, opts ...pulumi.InvokeOption) (*LookupInstanceGroupResult, error) {
 	var rv LookupInstanceGroupResult
 	err := ctx.Invoke("google-native:compute/beta:getInstanceGroup", args, &rv, opts...)
@@ -36,11 +34,7 @@ type LookupInstanceGroupResult struct {
 	Kind string `pulumi:"kind"`
 	// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name string `pulumi:"name"`
-	// Assigns a name to a port number. For example: {name: "http", port: 80}
-	//
-	// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}]
-	//
-	// Named ports apply to all instances in this instance group.
+	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
 	NamedPorts []NamedPortResponse `pulumi:"namedPorts"`
 	// [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Network string `pulumi:"network"`

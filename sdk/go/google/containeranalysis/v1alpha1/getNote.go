@@ -29,6 +29,8 @@ type LookupNoteResult struct {
 	BaseImage BasisResponse `pulumi:"baseImage"`
 	// Build provenance type for a verifiable build.
 	BuildType BuildTypeResponse `pulumi:"buildType"`
+	// A note describing a compliance check.
+	Compliance ComplianceNoteResponse `pulumi:"compliance"`
 	// The time this note was created. This field can be used as a filter in list requests.
 	CreateTime string `pulumi:"createTime"`
 	// A note describing something that can be deployed.

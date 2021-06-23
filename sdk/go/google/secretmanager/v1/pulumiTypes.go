@@ -2017,7 +2017,7 @@ func (o ReplicationResponsePtrOutput) UserManaged() UserManagedResponsePtrOutput
 
 // The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
 type Rotation struct {
-	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
 	NextRotationTime *string `pulumi:"nextRotationTime"`
 	// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
 	RotationPeriod *string `pulumi:"rotationPeriod"`
@@ -2036,7 +2036,7 @@ type RotationInput interface {
 
 // The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
 type RotationArgs struct {
-	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
 	NextRotationTime pulumi.StringPtrInput `pulumi:"nextRotationTime"`
 	// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
 	RotationPeriod pulumi.StringPtrInput `pulumi:"rotationPeriod"`
@@ -2120,7 +2120,7 @@ func (o RotationOutput) ToRotationPtrOutputWithContext(ctx context.Context) Rota
 	}).(RotationPtrOutput)
 }
 
-// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
 func (o RotationOutput) NextRotationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Rotation) *string { return v.NextRotationTime }).(pulumi.StringPtrOutput)
 }
@@ -2148,7 +2148,7 @@ func (o RotationPtrOutput) Elem() RotationOutput {
 	return o.ApplyT(func(v *Rotation) Rotation { return *v }).(RotationOutput)
 }
 
-// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
 func (o RotationPtrOutput) NextRotationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rotation) *string {
 		if v == nil {
@@ -2170,7 +2170,7 @@ func (o RotationPtrOutput) RotationPeriod() pulumi.StringPtrOutput {
 
 // The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
 type RotationResponse struct {
-	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
 	NextRotationTime string `pulumi:"nextRotationTime"`
 	// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
 	RotationPeriod string `pulumi:"rotationPeriod"`
@@ -2189,7 +2189,7 @@ type RotationResponseInput interface {
 
 // The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
 type RotationResponseArgs struct {
-	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
 	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
 	// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
 	RotationPeriod pulumi.StringInput `pulumi:"rotationPeriod"`
@@ -2273,7 +2273,7 @@ func (o RotationResponseOutput) ToRotationResponsePtrOutputWithContext(ctx conte
 	}).(RotationResponsePtrOutput)
 }
 
-// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
 func (o RotationResponseOutput) NextRotationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v RotationResponse) string { return v.NextRotationTime }).(pulumi.StringOutput)
 }
@@ -2301,7 +2301,7 @@ func (o RotationResponsePtrOutput) Elem() RotationResponseOutput {
 	return o.ApplyT(func(v *RotationResponse) RotationResponse { return *v }).(RotationResponseOutput)
 }
 
-// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
 func (o RotationResponsePtrOutput) NextRotationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RotationResponse) *string {
 		if v == nil {

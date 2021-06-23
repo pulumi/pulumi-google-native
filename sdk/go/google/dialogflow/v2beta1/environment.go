@@ -15,7 +15,7 @@ import (
 type Environment struct {
 	pulumi.CustomResourceState
 
-	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+	// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion pulumi.StringOutput `pulumi:"agentVersion"`
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -69,7 +69,7 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
-	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+	// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion *string `pulumi:"agentVersion"`
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
@@ -86,7 +86,7 @@ type environmentState struct {
 }
 
 type EnvironmentState struct {
-	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+	// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion pulumi.StringPtrInput
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
@@ -107,7 +107,7 @@ func (EnvironmentState) ElementType() reflect.Type {
 }
 
 type environmentArgs struct {
-	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+	// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion *string `pulumi:"agentVersion"`
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description   *string `pulumi:"description"`
@@ -122,7 +122,7 @@ type environmentArgs struct {
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
-	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+	// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion pulumi.StringPtrInput
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description   pulumi.StringPtrInput

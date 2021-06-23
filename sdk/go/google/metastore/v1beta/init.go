@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MetadataImport{}
 	case "google-native:metastore/v1beta:Service":
 		r = &Service{}
+	case "google-native:metastore/v1beta:ServiceBackupIamPolicy":
+		r = &ServiceBackupIamPolicy{}
 	case "google-native:metastore/v1beta:ServiceIamPolicy":
 		r = &ServiceIamPolicy{}
 	default:

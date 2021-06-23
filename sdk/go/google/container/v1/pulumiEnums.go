@@ -82,6 +82,38 @@ func (e ClusterStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+// The desired datapath provider for the cluster.
+type ClusterUpdateDesiredDatapathProvider pulumi.String
+
+const (
+	// Default value.
+	ClusterUpdateDesiredDatapathProviderDatapathProviderUnspecified = ClusterUpdateDesiredDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED")
+	// Use the IPTables implementation based on kube-proxy.
+	ClusterUpdateDesiredDatapathProviderLegacyDatapath = ClusterUpdateDesiredDatapathProvider("LEGACY_DATAPATH")
+	// Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
+	ClusterUpdateDesiredDatapathProviderAdvancedDatapath = ClusterUpdateDesiredDatapathProvider("ADVANCED_DATAPATH")
+)
+
+func (ClusterUpdateDesiredDatapathProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e ClusterUpdateDesiredDatapathProvider) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterUpdateDesiredDatapathProvider) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterUpdateDesiredDatapathProvider) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterUpdateDesiredDatapathProvider) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
 // The desired state of IPv6 connectivity to Google Services.
 type ClusterUpdateDesiredPrivateIpv6GoogleAccess pulumi.String
 
@@ -145,6 +177,38 @@ func (e DatabaseEncryptionState) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e DatabaseEncryptionState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+type NetworkConfigDatapathProvider pulumi.String
+
+const (
+	// Default value.
+	NetworkConfigDatapathProviderDatapathProviderUnspecified = NetworkConfigDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED")
+	// Use the IPTables implementation based on kube-proxy.
+	NetworkConfigDatapathProviderLegacyDatapath = NetworkConfigDatapathProvider("LEGACY_DATAPATH")
+	// Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
+	NetworkConfigDatapathProviderAdvancedDatapath = NetworkConfigDatapathProvider("ADVANCED_DATAPATH")
+)
+
+func (NetworkConfigDatapathProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e NetworkConfigDatapathProvider) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkConfigDatapathProvider) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkConfigDatapathProvider) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkConfigDatapathProvider) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -408,7 +472,7 @@ const (
 	StatusConditionCanonicalCodeUnauthenticated = StatusConditionCanonicalCode("UNAUTHENTICATED")
 	// Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space. HTTP Mapping: 429 Too Many Requests
 	StatusConditionCanonicalCodeResourceExhausted = StatusConditionCanonicalCode("RESOURCE_EXHAUSTED")
-	// The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
+	// The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level. For example, when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. For example, if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
 	StatusConditionCanonicalCodeFailedPrecondition = StatusConditionCanonicalCode("FAILED_PRECONDITION")
 	// The operation was aborted, typically due to a concurrency issue such as a sequencer check failure or transaction abort. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 409 Conflict
 	StatusConditionCanonicalCodeAborted = StatusConditionCanonicalCode("ABORTED")

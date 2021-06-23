@@ -1741,6 +1741,8 @@ type BuildResponse struct {
 	Timeout string `pulumi:"timeout"`
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
 	Timing map[string]string `pulumi:"timing"`
+	// Non-fatal problems encountered during the execution of the build.
+	Warnings []WarningResponse `pulumi:"warnings"`
 }
 
 // BuildResponseInput is an input type that accepts BuildResponseArgs and BuildResponseOutput values.
@@ -1806,6 +1808,8 @@ type BuildResponseArgs struct {
 	Timeout pulumi.StringInput `pulumi:"timeout"`
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
 	Timing pulumi.StringMapInput `pulumi:"timing"`
+	// Non-fatal problems encountered during the execution of the build.
+	Warnings WarningResponseArrayInput `pulumi:"warnings"`
 }
 
 func (BuildResponseArgs) ElementType() reflect.Type {
@@ -2009,6 +2013,11 @@ func (o BuildResponseOutput) Timeout() pulumi.StringOutput {
 // Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
 func (o BuildResponseOutput) Timing() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BuildResponse) map[string]string { return v.Timing }).(pulumi.StringMapOutput)
+}
+
+// Non-fatal problems encountered during the execution of the build.
+func (o BuildResponseOutput) Warnings() WarningResponseArrayOutput {
+	return o.ApplyT(func(v BuildResponse) []WarningResponse { return v.Warnings }).(WarningResponseArrayOutput)
 }
 
 type BuildResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2277,6 +2286,16 @@ func (o BuildResponsePtrOutput) Timing() pulumi.StringMapOutput {
 		}
 		return v.Timing
 	}).(pulumi.StringMapOutput)
+}
+
+// Non-fatal problems encountered during the execution of the build.
+func (o BuildResponsePtrOutput) Warnings() WarningResponseArrayOutput {
+	return o.ApplyT(func(v *BuildResponse) []WarningResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Warnings
+	}).(WarningResponseArrayOutput)
 }
 
 // A step in the build pipeline.
@@ -7565,6 +7584,421 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 	}).(VolumeResponseOutput)
 }
 
+// A non-fatal problem encountered during the execution of the build.
+type WarningResponse struct {
+	// The priority for this warning.
+	Priority string `pulumi:"priority"`
+	// Explanation of the warning generated.
+	Text string `pulumi:"text"`
+}
+
+// WarningResponseInput is an input type that accepts WarningResponseArgs and WarningResponseOutput values.
+// You can construct a concrete instance of `WarningResponseInput` via:
+//
+//          WarningResponseArgs{...}
+type WarningResponseInput interface {
+	pulumi.Input
+
+	ToWarningResponseOutput() WarningResponseOutput
+	ToWarningResponseOutputWithContext(context.Context) WarningResponseOutput
+}
+
+// A non-fatal problem encountered during the execution of the build.
+type WarningResponseArgs struct {
+	// The priority for this warning.
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// Explanation of the warning generated.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (WarningResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarningResponse)(nil)).Elem()
+}
+
+func (i WarningResponseArgs) ToWarningResponseOutput() WarningResponseOutput {
+	return i.ToWarningResponseOutputWithContext(context.Background())
+}
+
+func (i WarningResponseArgs) ToWarningResponseOutputWithContext(ctx context.Context) WarningResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WarningResponseOutput)
+}
+
+// WarningResponseArrayInput is an input type that accepts WarningResponseArray and WarningResponseArrayOutput values.
+// You can construct a concrete instance of `WarningResponseArrayInput` via:
+//
+//          WarningResponseArray{ WarningResponseArgs{...} }
+type WarningResponseArrayInput interface {
+	pulumi.Input
+
+	ToWarningResponseArrayOutput() WarningResponseArrayOutput
+	ToWarningResponseArrayOutputWithContext(context.Context) WarningResponseArrayOutput
+}
+
+type WarningResponseArray []WarningResponseInput
+
+func (WarningResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WarningResponse)(nil)).Elem()
+}
+
+func (i WarningResponseArray) ToWarningResponseArrayOutput() WarningResponseArrayOutput {
+	return i.ToWarningResponseArrayOutputWithContext(context.Background())
+}
+
+func (i WarningResponseArray) ToWarningResponseArrayOutputWithContext(ctx context.Context) WarningResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WarningResponseArrayOutput)
+}
+
+// A non-fatal problem encountered during the execution of the build.
+type WarningResponseOutput struct{ *pulumi.OutputState }
+
+func (WarningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarningResponse)(nil)).Elem()
+}
+
+func (o WarningResponseOutput) ToWarningResponseOutput() WarningResponseOutput {
+	return o
+}
+
+func (o WarningResponseOutput) ToWarningResponseOutputWithContext(ctx context.Context) WarningResponseOutput {
+	return o
+}
+
+// The priority for this warning.
+func (o WarningResponseOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v WarningResponse) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+// Explanation of the warning generated.
+func (o WarningResponseOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v WarningResponse) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type WarningResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (WarningResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WarningResponse)(nil)).Elem()
+}
+
+func (o WarningResponseArrayOutput) ToWarningResponseArrayOutput() WarningResponseArrayOutput {
+	return o
+}
+
+func (o WarningResponseArrayOutput) ToWarningResponseArrayOutputWithContext(ctx context.Context) WarningResponseArrayOutput {
+	return o
+}
+
+func (o WarningResponseArrayOutput) Index(i pulumi.IntInput) WarningResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WarningResponse {
+		return vs[0].([]WarningResponse)[vs[1].(int)]
+	}).(WarningResponseOutput)
+}
+
+// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+type WebhookConfig struct {
+	// Required. Resource name for the secret required as a URL parameter.
+	Secret *string `pulumi:"secret"`
+	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+	State *string `pulumi:"state"`
+}
+
+// WebhookConfigInput is an input type that accepts WebhookConfigArgs and WebhookConfigOutput values.
+// You can construct a concrete instance of `WebhookConfigInput` via:
+//
+//          WebhookConfigArgs{...}
+type WebhookConfigInput interface {
+	pulumi.Input
+
+	ToWebhookConfigOutput() WebhookConfigOutput
+	ToWebhookConfigOutputWithContext(context.Context) WebhookConfigOutput
+}
+
+// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+type WebhookConfigArgs struct {
+	// Required. Resource name for the secret required as a URL parameter.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+	State *WebhookConfigState `pulumi:"state"`
+}
+
+func (WebhookConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookConfig)(nil)).Elem()
+}
+
+func (i WebhookConfigArgs) ToWebhookConfigOutput() WebhookConfigOutput {
+	return i.ToWebhookConfigOutputWithContext(context.Background())
+}
+
+func (i WebhookConfigArgs) ToWebhookConfigOutputWithContext(ctx context.Context) WebhookConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigOutput)
+}
+
+func (i WebhookConfigArgs) ToWebhookConfigPtrOutput() WebhookConfigPtrOutput {
+	return i.ToWebhookConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WebhookConfigArgs) ToWebhookConfigPtrOutputWithContext(ctx context.Context) WebhookConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigOutput).ToWebhookConfigPtrOutputWithContext(ctx)
+}
+
+// WebhookConfigPtrInput is an input type that accepts WebhookConfigArgs, WebhookConfigPtr and WebhookConfigPtrOutput values.
+// You can construct a concrete instance of `WebhookConfigPtrInput` via:
+//
+//          WebhookConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WebhookConfigPtrInput interface {
+	pulumi.Input
+
+	ToWebhookConfigPtrOutput() WebhookConfigPtrOutput
+	ToWebhookConfigPtrOutputWithContext(context.Context) WebhookConfigPtrOutput
+}
+
+type webhookConfigPtrType WebhookConfigArgs
+
+func WebhookConfigPtr(v *WebhookConfigArgs) WebhookConfigPtrInput {
+	return (*webhookConfigPtrType)(v)
+}
+
+func (*webhookConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookConfig)(nil)).Elem()
+}
+
+func (i *webhookConfigPtrType) ToWebhookConfigPtrOutput() WebhookConfigPtrOutput {
+	return i.ToWebhookConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *webhookConfigPtrType) ToWebhookConfigPtrOutputWithContext(ctx context.Context) WebhookConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigPtrOutput)
+}
+
+// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+type WebhookConfigOutput struct{ *pulumi.OutputState }
+
+func (WebhookConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookConfig)(nil)).Elem()
+}
+
+func (o WebhookConfigOutput) ToWebhookConfigOutput() WebhookConfigOutput {
+	return o
+}
+
+func (o WebhookConfigOutput) ToWebhookConfigOutputWithContext(ctx context.Context) WebhookConfigOutput {
+	return o
+}
+
+func (o WebhookConfigOutput) ToWebhookConfigPtrOutput() WebhookConfigPtrOutput {
+	return o.ToWebhookConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookConfigOutput) ToWebhookConfigPtrOutputWithContext(ctx context.Context) WebhookConfigPtrOutput {
+	return o.ApplyT(func(v WebhookConfig) *WebhookConfig {
+		return &v
+	}).(WebhookConfigPtrOutput)
+}
+
+// Required. Resource name for the secret required as a URL parameter.
+func (o WebhookConfigOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookConfig) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+func (o WebhookConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type WebhookConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookConfig)(nil)).Elem()
+}
+
+func (o WebhookConfigPtrOutput) ToWebhookConfigPtrOutput() WebhookConfigPtrOutput {
+	return o
+}
+
+func (o WebhookConfigPtrOutput) ToWebhookConfigPtrOutputWithContext(ctx context.Context) WebhookConfigPtrOutput {
+	return o
+}
+
+func (o WebhookConfigPtrOutput) Elem() WebhookConfigOutput {
+	return o.ApplyT(func(v *WebhookConfig) WebhookConfig { return *v }).(WebhookConfigOutput)
+}
+
+// Required. Resource name for the secret required as a URL parameter.
+func (o WebhookConfigPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+func (o WebhookConfigPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+type WebhookConfigResponse struct {
+	// Required. Resource name for the secret required as a URL parameter.
+	Secret string `pulumi:"secret"`
+	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+	State string `pulumi:"state"`
+}
+
+// WebhookConfigResponseInput is an input type that accepts WebhookConfigResponseArgs and WebhookConfigResponseOutput values.
+// You can construct a concrete instance of `WebhookConfigResponseInput` via:
+//
+//          WebhookConfigResponseArgs{...}
+type WebhookConfigResponseInput interface {
+	pulumi.Input
+
+	ToWebhookConfigResponseOutput() WebhookConfigResponseOutput
+	ToWebhookConfigResponseOutputWithContext(context.Context) WebhookConfigResponseOutput
+}
+
+// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+type WebhookConfigResponseArgs struct {
+	// Required. Resource name for the secret required as a URL parameter.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (WebhookConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookConfigResponse)(nil)).Elem()
+}
+
+func (i WebhookConfigResponseArgs) ToWebhookConfigResponseOutput() WebhookConfigResponseOutput {
+	return i.ToWebhookConfigResponseOutputWithContext(context.Background())
+}
+
+func (i WebhookConfigResponseArgs) ToWebhookConfigResponseOutputWithContext(ctx context.Context) WebhookConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigResponseOutput)
+}
+
+func (i WebhookConfigResponseArgs) ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput {
+	return i.ToWebhookConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WebhookConfigResponseArgs) ToWebhookConfigResponsePtrOutputWithContext(ctx context.Context) WebhookConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigResponseOutput).ToWebhookConfigResponsePtrOutputWithContext(ctx)
+}
+
+// WebhookConfigResponsePtrInput is an input type that accepts WebhookConfigResponseArgs, WebhookConfigResponsePtr and WebhookConfigResponsePtrOutput values.
+// You can construct a concrete instance of `WebhookConfigResponsePtrInput` via:
+//
+//          WebhookConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type WebhookConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput
+	ToWebhookConfigResponsePtrOutputWithContext(context.Context) WebhookConfigResponsePtrOutput
+}
+
+type webhookConfigResponsePtrType WebhookConfigResponseArgs
+
+func WebhookConfigResponsePtr(v *WebhookConfigResponseArgs) WebhookConfigResponsePtrInput {
+	return (*webhookConfigResponsePtrType)(v)
+}
+
+func (*webhookConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookConfigResponse)(nil)).Elem()
+}
+
+func (i *webhookConfigResponsePtrType) ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput {
+	return i.ToWebhookConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *webhookConfigResponsePtrType) ToWebhookConfigResponsePtrOutputWithContext(ctx context.Context) WebhookConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigResponsePtrOutput)
+}
+
+// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+type WebhookConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (WebhookConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookConfigResponse)(nil)).Elem()
+}
+
+func (o WebhookConfigResponseOutput) ToWebhookConfigResponseOutput() WebhookConfigResponseOutput {
+	return o
+}
+
+func (o WebhookConfigResponseOutput) ToWebhookConfigResponseOutputWithContext(ctx context.Context) WebhookConfigResponseOutput {
+	return o
+}
+
+func (o WebhookConfigResponseOutput) ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput {
+	return o.ToWebhookConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WebhookConfigResponseOutput) ToWebhookConfigResponsePtrOutputWithContext(ctx context.Context) WebhookConfigResponsePtrOutput {
+	return o.ApplyT(func(v WebhookConfigResponse) *WebhookConfigResponse {
+		return &v
+	}).(WebhookConfigResponsePtrOutput)
+}
+
+// Required. Resource name for the secret required as a URL parameter.
+func (o WebhookConfigResponseOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookConfigResponse) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+func (o WebhookConfigResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookConfigResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type WebhookConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookConfigResponse)(nil)).Elem()
+}
+
+func (o WebhookConfigResponsePtrOutput) ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput {
+	return o
+}
+
+func (o WebhookConfigResponsePtrOutput) ToWebhookConfigResponsePtrOutputWithContext(ctx context.Context) WebhookConfigResponsePtrOutput {
+	return o
+}
+
+func (o WebhookConfigResponsePtrOutput) Elem() WebhookConfigResponseOutput {
+	return o.ApplyT(func(v *WebhookConfigResponse) WebhookConfigResponse { return *v }).(WebhookConfigResponseOutput)
+}
+
+// Required. Resource name for the secret required as a URL parameter.
+func (o WebhookConfigResponsePtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+func (o WebhookConfigResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ArtifactObjectsOutput{})
 	pulumi.RegisterOutputType(ArtifactObjectsPtrOutput{})
@@ -7646,4 +8080,10 @@ func init() {
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeResponseOutput{})
 	pulumi.RegisterOutputType(VolumeResponseArrayOutput{})
+	pulumi.RegisterOutputType(WarningResponseOutput{})
+	pulumi.RegisterOutputType(WarningResponseArrayOutput{})
+	pulumi.RegisterOutputType(WebhookConfigOutput{})
+	pulumi.RegisterOutputType(WebhookConfigPtrOutput{})
+	pulumi.RegisterOutputType(WebhookConfigResponseOutput{})
+	pulumi.RegisterOutputType(WebhookConfigResponsePtrOutput{})
 }

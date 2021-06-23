@@ -1652,6 +1652,8 @@ type AutoprovisioningNodePoolDefaults struct {
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
+	// The image type to use for NAP created node.
+	ImageType *string `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management *NodeManagement `pulumi:"management"`
 	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
@@ -1685,6 +1687,8 @@ type AutoprovisioningNodePoolDefaultsArgs struct {
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// The image type to use for NAP created node.
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management NodeManagementPtrInput `pulumi:"management"`
 	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
@@ -1792,6 +1796,11 @@ func (o AutoprovisioningNodePoolDefaultsOutput) DiskType() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// The image type to use for NAP created node.
+func (o AutoprovisioningNodePoolDefaultsOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+}
+
 // Specifies the node management options for NAP created node-pools.
 func (o AutoprovisioningNodePoolDefaultsOutput) Management() NodeManagementPtrOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *NodeManagement { return v.Management }).(NodeManagementPtrOutput)
@@ -1870,6 +1879,16 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) DiskType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The image type to use for NAP created node.
+func (o AutoprovisioningNodePoolDefaultsPtrOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies the node management options for NAP created node-pools.
 func (o AutoprovisioningNodePoolDefaultsPtrOutput) Management() NodeManagementPtrOutput {
 	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *NodeManagement {
@@ -1938,6 +1957,8 @@ type AutoprovisioningNodePoolDefaultsResponse struct {
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType string `pulumi:"diskType"`
+	// The image type to use for NAP created node.
+	ImageType string `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management NodeManagementResponse `pulumi:"management"`
 	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
@@ -1971,6 +1992,8 @@ type AutoprovisioningNodePoolDefaultsResponseArgs struct {
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// The image type to use for NAP created node.
+	ImageType pulumi.StringInput `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management NodeManagementResponseInput `pulumi:"management"`
 	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
@@ -2078,6 +2101,11 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) DiskType() pulumi.String
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
+// The image type to use for NAP created node.
+func (o AutoprovisioningNodePoolDefaultsResponseOutput) ImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.ImageType }).(pulumi.StringOutput)
+}
+
 // Specifies the node management options for NAP created node-pools.
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) Management() NodeManagementResponseOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) NodeManagementResponse { return v.Management }).(NodeManagementResponseOutput)
@@ -2155,6 +2183,16 @@ func (o AutoprovisioningNodePoolDefaultsResponsePtrOutput) DiskType() pulumi.Str
 			return nil
 		}
 		return &v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The image type to use for NAP created node.
+func (o AutoprovisioningNodePoolDefaultsResponsePtrOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaultsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3936,18 +3974,24 @@ func (o ClusterAutoscalingResponsePtrOutput) ResourceLimits() ResourceLimitRespo
 type ClusterUpdate struct {
 	// Configurations for the various addons available to run in the cluster.
 	DesiredAddonsConfig *AddonsConfig `pulumi:"desiredAddonsConfig"`
+	// The desired Autopilot configuration for the cluster.
+	DesiredAutopilot *Autopilot `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
 	DesiredBinaryAuthorization *BinaryAuthorization `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
 	DesiredClusterAutoscaling *ClusterAutoscaling `pulumi:"desiredClusterAutoscaling"`
 	// Configuration of etcd encryption.
 	DesiredDatabaseEncryption *DatabaseEncryption `pulumi:"desiredDatabaseEncryption"`
+	// The desired datapath provider for the cluster.
+	DesiredDatapathProvider *string `pulumi:"desiredDatapathProvider"`
 	// The desired status of whether to disable default sNAT for this cluster.
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType *string `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
 	DesiredIntraNodeVisibilityConfig *IntraNodeVisibilityConfig `pulumi:"desiredIntraNodeVisibilityConfig"`
+	// The desired L4 Internal Load Balancer Subsetting configuration.
+	DesiredL4ilbSubsettingConfig *ILBSubsettingConfig `pulumi:"desiredL4ilbSubsettingConfig"`
 	// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
 	DesiredLocations []string `pulumi:"desiredLocations"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
@@ -3997,18 +4041,24 @@ type ClusterUpdateInput interface {
 type ClusterUpdateArgs struct {
 	// Configurations for the various addons available to run in the cluster.
 	DesiredAddonsConfig AddonsConfigPtrInput `pulumi:"desiredAddonsConfig"`
+	// The desired Autopilot configuration for the cluster.
+	DesiredAutopilot AutopilotPtrInput `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
 	DesiredBinaryAuthorization BinaryAuthorizationPtrInput `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
 	DesiredClusterAutoscaling ClusterAutoscalingPtrInput `pulumi:"desiredClusterAutoscaling"`
 	// Configuration of etcd encryption.
 	DesiredDatabaseEncryption DatabaseEncryptionPtrInput `pulumi:"desiredDatabaseEncryption"`
+	// The desired datapath provider for the cluster.
+	DesiredDatapathProvider *ClusterUpdateDesiredDatapathProvider `pulumi:"desiredDatapathProvider"`
 	// The desired status of whether to disable default sNAT for this cluster.
 	DesiredDefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"desiredDefaultSnatStatus"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType pulumi.StringPtrInput `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
 	DesiredIntraNodeVisibilityConfig IntraNodeVisibilityConfigPtrInput `pulumi:"desiredIntraNodeVisibilityConfig"`
+	// The desired L4 Internal Load Balancer Subsetting configuration.
+	DesiredL4ilbSubsettingConfig ILBSubsettingConfigPtrInput `pulumi:"desiredL4ilbSubsettingConfig"`
 	// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
 	DesiredLocations pulumi.StringArrayInput `pulumi:"desiredLocations"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
@@ -4075,6 +4125,11 @@ func (o ClusterUpdateOutput) DesiredAddonsConfig() AddonsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *AddonsConfig { return v.DesiredAddonsConfig }).(AddonsConfigPtrOutput)
 }
 
+// The desired Autopilot configuration for the cluster.
+func (o ClusterUpdateOutput) DesiredAutopilot() AutopilotPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *Autopilot { return v.DesiredAutopilot }).(AutopilotPtrOutput)
+}
+
 // The desired configuration options for the Binary Authorization feature.
 func (o ClusterUpdateOutput) DesiredBinaryAuthorization() BinaryAuthorizationPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *BinaryAuthorization { return v.DesiredBinaryAuthorization }).(BinaryAuthorizationPtrOutput)
@@ -4090,6 +4145,11 @@ func (o ClusterUpdateOutput) DesiredDatabaseEncryption() DatabaseEncryptionPtrOu
 	return o.ApplyT(func(v ClusterUpdate) *DatabaseEncryption { return v.DesiredDatabaseEncryption }).(DatabaseEncryptionPtrOutput)
 }
 
+// The desired datapath provider for the cluster.
+func (o ClusterUpdateOutput) DesiredDatapathProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredDatapathProvider }).(pulumi.StringPtrOutput)
+}
+
 // The desired status of whether to disable default sNAT for this cluster.
 func (o ClusterUpdateOutput) DesiredDefaultSnatStatus() DefaultSnatStatusPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *DefaultSnatStatus { return v.DesiredDefaultSnatStatus }).(DefaultSnatStatusPtrOutput)
@@ -4103,6 +4163,11 @@ func (o ClusterUpdateOutput) DesiredImageType() pulumi.StringPtrOutput {
 // The desired config of Intra-node visibility.
 func (o ClusterUpdateOutput) DesiredIntraNodeVisibilityConfig() IntraNodeVisibilityConfigPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *IntraNodeVisibilityConfig { return v.DesiredIntraNodeVisibilityConfig }).(IntraNodeVisibilityConfigPtrOutput)
+}
+
+// The desired L4 Internal Load Balancer Subsetting configuration.
+func (o ClusterUpdateOutput) DesiredL4ilbSubsettingConfig() ILBSubsettingConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ILBSubsettingConfig { return v.DesiredL4ilbSubsettingConfig }).(ILBSubsettingConfigPtrOutput)
 }
 
 // The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
@@ -6938,6 +7003,140 @@ func (o HttpLoadBalancingResponsePtrOutput) Disabled() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
+type ILBSubsettingConfig struct {
+	// Enables l4 ILB subsetting for this cluster.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ILBSubsettingConfigInput is an input type that accepts ILBSubsettingConfigArgs and ILBSubsettingConfigOutput values.
+// You can construct a concrete instance of `ILBSubsettingConfigInput` via:
+//
+//          ILBSubsettingConfigArgs{...}
+type ILBSubsettingConfigInput interface {
+	pulumi.Input
+
+	ToILBSubsettingConfigOutput() ILBSubsettingConfigOutput
+	ToILBSubsettingConfigOutputWithContext(context.Context) ILBSubsettingConfigOutput
+}
+
+// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
+type ILBSubsettingConfigArgs struct {
+	// Enables l4 ILB subsetting for this cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ILBSubsettingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ILBSubsettingConfig)(nil)).Elem()
+}
+
+func (i ILBSubsettingConfigArgs) ToILBSubsettingConfigOutput() ILBSubsettingConfigOutput {
+	return i.ToILBSubsettingConfigOutputWithContext(context.Background())
+}
+
+func (i ILBSubsettingConfigArgs) ToILBSubsettingConfigOutputWithContext(ctx context.Context) ILBSubsettingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ILBSubsettingConfigOutput)
+}
+
+func (i ILBSubsettingConfigArgs) ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput {
+	return i.ToILBSubsettingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ILBSubsettingConfigArgs) ToILBSubsettingConfigPtrOutputWithContext(ctx context.Context) ILBSubsettingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ILBSubsettingConfigOutput).ToILBSubsettingConfigPtrOutputWithContext(ctx)
+}
+
+// ILBSubsettingConfigPtrInput is an input type that accepts ILBSubsettingConfigArgs, ILBSubsettingConfigPtr and ILBSubsettingConfigPtrOutput values.
+// You can construct a concrete instance of `ILBSubsettingConfigPtrInput` via:
+//
+//          ILBSubsettingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ILBSubsettingConfigPtrInput interface {
+	pulumi.Input
+
+	ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput
+	ToILBSubsettingConfigPtrOutputWithContext(context.Context) ILBSubsettingConfigPtrOutput
+}
+
+type ilbsubsettingConfigPtrType ILBSubsettingConfigArgs
+
+func ILBSubsettingConfigPtr(v *ILBSubsettingConfigArgs) ILBSubsettingConfigPtrInput {
+	return (*ilbsubsettingConfigPtrType)(v)
+}
+
+func (*ilbsubsettingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ILBSubsettingConfig)(nil)).Elem()
+}
+
+func (i *ilbsubsettingConfigPtrType) ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput {
+	return i.ToILBSubsettingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ilbsubsettingConfigPtrType) ToILBSubsettingConfigPtrOutputWithContext(ctx context.Context) ILBSubsettingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ILBSubsettingConfigPtrOutput)
+}
+
+// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
+type ILBSubsettingConfigOutput struct{ *pulumi.OutputState }
+
+func (ILBSubsettingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ILBSubsettingConfig)(nil)).Elem()
+}
+
+func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigOutput() ILBSubsettingConfigOutput {
+	return o
+}
+
+func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigOutputWithContext(ctx context.Context) ILBSubsettingConfigOutput {
+	return o
+}
+
+func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput {
+	return o.ToILBSubsettingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigPtrOutputWithContext(ctx context.Context) ILBSubsettingConfigPtrOutput {
+	return o.ApplyT(func(v ILBSubsettingConfig) *ILBSubsettingConfig {
+		return &v
+	}).(ILBSubsettingConfigPtrOutput)
+}
+
+// Enables l4 ILB subsetting for this cluster.
+func (o ILBSubsettingConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ILBSubsettingConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ILBSubsettingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ILBSubsettingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ILBSubsettingConfig)(nil)).Elem()
+}
+
+func (o ILBSubsettingConfigPtrOutput) ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput {
+	return o
+}
+
+func (o ILBSubsettingConfigPtrOutput) ToILBSubsettingConfigPtrOutputWithContext(ctx context.Context) ILBSubsettingConfigPtrOutput {
+	return o
+}
+
+func (o ILBSubsettingConfigPtrOutput) Elem() ILBSubsettingConfigOutput {
+	return o.ApplyT(func(v *ILBSubsettingConfig) ILBSubsettingConfig { return *v }).(ILBSubsettingConfigOutput)
+}
+
+// Enables l4 ILB subsetting for this cluster.
+func (o ILBSubsettingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ILBSubsettingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -10173,10 +10372,14 @@ func (o MaxPodsConstraintResponsePtrOutput) MaxPodsPerNode() pulumi.StringPtrOut
 
 // NetworkConfig reports the relative names of network & subnetwork.
 type NetworkConfig struct {
+	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	DatapathProvider *string `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus *DefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility *bool `pulumi:"enableIntraNodeVisibility"`
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4ilbSubsetting *bool `pulumi:"enableL4ilbSubsetting"`
 	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network *string `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -10198,10 +10401,14 @@ type NetworkConfigInput interface {
 
 // NetworkConfig reports the relative names of network & subnetwork.
 type NetworkConfigArgs struct {
+	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	DatapathProvider *NetworkConfigDatapathProvider `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"defaultSnatStatus"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility pulumi.BoolPtrInput `pulumi:"enableIntraNodeVisibility"`
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4ilbSubsetting pulumi.BoolPtrInput `pulumi:"enableL4ilbSubsetting"`
 	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -10288,6 +10495,11 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Con
 	}).(NetworkConfigPtrOutput)
 }
 
+// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+func (o NetworkConfigOutput) DatapathProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *string { return v.DatapathProvider }).(pulumi.StringPtrOutput)
+}
+
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 func (o NetworkConfigOutput) DefaultSnatStatus() DefaultSnatStatusPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *DefaultSnatStatus { return v.DefaultSnatStatus }).(DefaultSnatStatusPtrOutput)
@@ -10296,6 +10508,11 @@ func (o NetworkConfigOutput) DefaultSnatStatus() DefaultSnatStatusPtrOutput {
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolPtrOutput)
+}
+
+// Whether L4ILB Subsetting is enabled for this cluster.
+func (o NetworkConfigOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableL4ilbSubsetting }).(pulumi.BoolPtrOutput)
 }
 
 // The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
@@ -10331,6 +10548,16 @@ func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
 	return o.ApplyT(func(v *NetworkConfig) NetworkConfig { return *v }).(NetworkConfigOutput)
 }
 
+// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+func (o NetworkConfigPtrOutput) DatapathProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatapathProvider
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 func (o NetworkConfigPtrOutput) DefaultSnatStatus() DefaultSnatStatusPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *DefaultSnatStatus {
@@ -10348,6 +10575,16 @@ func (o NetworkConfigPtrOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput
 			return nil
 		}
 		return v.EnableIntraNodeVisibility
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether L4ILB Subsetting is enabled for this cluster.
+func (o NetworkConfigPtrOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableL4ilbSubsetting
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -10383,10 +10620,14 @@ func (o NetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 
 // NetworkConfig reports the relative names of network & subnetwork.
 type NetworkConfigResponse struct {
+	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	DatapathProvider string `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusResponse `pulumi:"defaultSnatStatus"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility bool `pulumi:"enableIntraNodeVisibility"`
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4ilbSubsetting bool `pulumi:"enableL4ilbSubsetting"`
 	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network string `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -10408,10 +10649,14 @@ type NetworkConfigResponseInput interface {
 
 // NetworkConfig reports the relative names of network & subnetwork.
 type NetworkConfigResponseArgs struct {
+	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	DatapathProvider pulumi.StringInput `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusResponseInput `pulumi:"defaultSnatStatus"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility pulumi.BoolInput `pulumi:"enableIntraNodeVisibility"`
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4ilbSubsetting pulumi.BoolInput `pulumi:"enableL4ilbSubsetting"`
 	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network pulumi.StringInput `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -10498,6 +10743,11 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext
 	}).(NetworkConfigResponsePtrOutput)
 }
 
+// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+func (o NetworkConfigResponseOutput) DatapathProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) string { return v.DatapathProvider }).(pulumi.StringOutput)
+}
+
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 func (o NetworkConfigResponseOutput) DefaultSnatStatus() DefaultSnatStatusResponseOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) DefaultSnatStatusResponse { return v.DefaultSnatStatus }).(DefaultSnatStatusResponseOutput)
@@ -10506,6 +10756,11 @@ func (o NetworkConfigResponseOutput) DefaultSnatStatus() DefaultSnatStatusRespon
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigResponseOutput) EnableIntraNodeVisibility() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolOutput)
+}
+
+// Whether L4ILB Subsetting is enabled for this cluster.
+func (o NetworkConfigResponseOutput) EnableL4ilbSubsetting() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableL4ilbSubsetting }).(pulumi.BoolOutput)
 }
 
 // The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
@@ -10541,6 +10796,16 @@ func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
 	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse { return *v }).(NetworkConfigResponseOutput)
 }
 
+// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+func (o NetworkConfigResponsePtrOutput) DatapathProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatapathProvider
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 func (o NetworkConfigResponsePtrOutput) DefaultSnatStatus() DefaultSnatStatusResponsePtrOutput {
 	return o.ApplyT(func(v *NetworkConfigResponse) *DefaultSnatStatusResponse {
@@ -10558,6 +10823,16 @@ func (o NetworkConfigResponsePtrOutput) EnableIntraNodeVisibility() pulumi.BoolP
 			return nil
 		}
 		return &v.EnableIntraNodeVisibility
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether L4ILB Subsetting is enabled for this cluster.
+func (o NetworkConfigResponsePtrOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableL4ilbSubsetting
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -19381,6 +19656,8 @@ func init() {
 	pulumi.RegisterOutputType(HttpLoadBalancingPtrOutput{})
 	pulumi.RegisterOutputType(HttpLoadBalancingResponseOutput{})
 	pulumi.RegisterOutputType(HttpLoadBalancingResponsePtrOutput{})
+	pulumi.RegisterOutputType(ILBSubsettingConfigOutput{})
+	pulumi.RegisterOutputType(ILBSubsettingConfigPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyResponseOutput{})

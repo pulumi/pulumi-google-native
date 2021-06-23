@@ -28,10 +28,7 @@ type LookupTargetInstanceResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
-	// - zones/zone/instances/instance
+	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
 	Instance string `pulumi:"instance"`
 	// [Output Only] The type of the resource. Always compute#targetInstance for target instances.
 	Kind string `pulumi:"kind"`

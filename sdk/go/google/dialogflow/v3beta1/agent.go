@@ -11,13 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an agent in the specified location.
+// Creates an agent in the specified location. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
 type Agent struct {
 	pulumi.CustomResourceState
 
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringOutput `pulumi:"avatarUri"`
-	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+	// Required. Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
 	DefaultLanguageCode pulumi.StringOutput `pulumi:"defaultLanguageCode"`
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -35,6 +35,8 @@ type Agent struct {
 	SpeechToTextSettings GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponseOutput `pulumi:"speechToTextSettings"`
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow pulumi.StringOutput `pulumi:"startFlow"`
+	// The list of all languages supported by the agent (except for the `default_language_code`).
+	SupportedLanguageCodes pulumi.StringArrayOutput `pulumi:"supportedLanguageCodes"`
 	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
@@ -76,7 +78,7 @@ func GetAgent(ctx *pulumi.Context,
 type agentState struct {
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri *string `pulumi:"avatarUri"`
-	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+	// Required. Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
 	DefaultLanguageCode *string `pulumi:"defaultLanguageCode"`
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
@@ -94,6 +96,8 @@ type agentState struct {
 	SpeechToTextSettings *GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse `pulumi:"speechToTextSettings"`
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow *string `pulumi:"startFlow"`
+	// The list of all languages supported by the agent (except for the `default_language_code`).
+	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
 	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone *string `pulumi:"timeZone"`
 }
@@ -101,7 +105,7 @@ type agentState struct {
 type AgentState struct {
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringPtrInput
-	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+	// Required. Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
 	DefaultLanguageCode pulumi.StringPtrInput
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
@@ -119,6 +123,8 @@ type AgentState struct {
 	SpeechToTextSettings GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponsePtrInput
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow pulumi.StringPtrInput
+	// The list of all languages supported by the agent (except for the `default_language_code`).
+	SupportedLanguageCodes pulumi.StringArrayInput
 	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone pulumi.StringPtrInput
 }
@@ -130,7 +136,7 @@ func (AgentState) ElementType() reflect.Type {
 type agentArgs struct {
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri *string `pulumi:"avatarUri"`
-	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+	// Required. Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
 	DefaultLanguageCode *string `pulumi:"defaultLanguageCode"`
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
@@ -150,6 +156,8 @@ type agentArgs struct {
 	SpeechToTextSettings *GoogleCloudDialogflowCxV3beta1SpeechToTextSettings `pulumi:"speechToTextSettings"`
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow *string `pulumi:"startFlow"`
+	// The list of all languages supported by the agent (except for the `default_language_code`).
+	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
 	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone *string `pulumi:"timeZone"`
 }
@@ -158,7 +166,7 @@ type agentArgs struct {
 type AgentArgs struct {
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringPtrInput
-	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+	// Required. Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
 	DefaultLanguageCode pulumi.StringPtrInput
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
@@ -178,6 +186,8 @@ type AgentArgs struct {
 	SpeechToTextSettings GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsPtrInput
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow pulumi.StringPtrInput
+	// The list of all languages supported by the agent (except for the `default_language_code`).
+	SupportedLanguageCodes pulumi.StringArrayInput
 	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone pulumi.StringPtrInput
 }

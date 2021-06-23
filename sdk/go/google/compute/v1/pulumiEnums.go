@@ -10,15 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD.
-//
-// If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier.
-//
-// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
+// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 type AccessConfigNetworkTier pulumi.String
 
 const (
-	AccessConfigNetworkTierPremium  = AccessConfigNetworkTier("PREMIUM")
+	// High quality, Google-grade network tier, support for all networking products.
+	AccessConfigNetworkTierPremium = AccessConfigNetworkTier("PREMIUM")
+	// Public internet quality, only limited support for other networking products.
 	AccessConfigNetworkTierStandard = AccessConfigNetworkTier("STANDARD")
 )
 
@@ -46,6 +44,7 @@ func (e AccessConfigNetworkTier) ToStringPtrOutputWithContext(ctx context.Contex
 type AccessConfigType pulumi.String
 
 const (
+	AccessConfigTypeDirectIpv6  = AccessConfigType("DIRECT_IPV6")
 	AccessConfigTypeOneToOneNat = AccessConfigType("ONE_TO_ONE_NAT")
 )
 
@@ -73,7 +72,9 @@ func (e AccessConfigType) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type AddressAddressType pulumi.String
 
 const (
-	AddressAddressTypeExternal        = AddressAddressType("EXTERNAL")
+	// A publicly visible external IP address.
+	AddressAddressTypeExternal = AddressAddressType("EXTERNAL")
+	// A private network IP address, for use with an Instance or Internal Load Balancer forwarding rule.
 	AddressAddressTypeInternal        = AddressAddressType("INTERNAL")
 	AddressAddressTypeUnspecifiedType = AddressAddressType("UNSPECIFIED_TYPE")
 )
@@ -127,13 +128,13 @@ func (e AddressIpVersion) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
-//
-// If this field is not specified, it is assumed to be PREMIUM.
+// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
 type AddressNetworkTier pulumi.String
 
 const (
-	AddressNetworkTierPremium  = AddressNetworkTier("PREMIUM")
+	// High quality, Google-grade network tier, support for all networking products.
+	AddressNetworkTierPremium = AddressNetworkTier("PREMIUM")
+	// Public internet quality, only limited support for other networking products.
 	AddressNetworkTierStandard = AddressNetworkTier("STANDARD")
 )
 
@@ -157,22 +158,24 @@ func (e AddressNetworkTier) ToStringPtrOutputWithContext(ctx context.Context) pu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The purpose of this resource, which can be one of the following values:
-// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
-// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
-// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT.
-// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
+// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
 type AddressPurpose pulumi.String
 
 const (
-	AddressPurposeDnsResolver           = AddressPurpose("DNS_RESOLVER")
-	AddressPurposeGceEndpoint           = AddressPurpose("GCE_ENDPOINT")
-	AddressPurposeIpsecInterconnect     = AddressPurpose("IPSEC_INTERCONNECT")
-	AddressPurposeNatAuto               = AddressPurpose("NAT_AUTO")
+	// DNS resolver address in the subnetwork.
+	AddressPurposeDnsResolver = AddressPurpose("DNS_RESOLVER")
+	// VM internal/alias IP, Internal LB service IP, etc.
+	AddressPurposeGceEndpoint = AddressPurpose("GCE_ENDPOINT")
+	// A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+	AddressPurposeIpsecInterconnect = AddressPurpose("IPSEC_INTERCONNECT")
+	// External IP automatically reserved for Cloud NAT.
+	AddressPurposeNatAuto = AddressPurpose("NAT_AUTO")
+	// A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
 	AddressPurposePrivateServiceConnect = AddressPurpose("PRIVATE_SERVICE_CONNECT")
+	// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
 	AddressPurposeSharedLoadbalancerVip = AddressPurpose("SHARED_LOADBALANCER_VIP")
-	AddressPurposeVpcPeering            = AddressPurpose("VPC_PEERING")
+	// IP range for peer networks.
+	AddressPurposeVpcPeering = AddressPurpose("VPC_PEERING")
 )
 
 func (AddressPurpose) ElementType() reflect.Type {
@@ -199,8 +202,11 @@ func (e AddressPurpose) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 type AddressStatus pulumi.String
 
 const (
-	AddressStatusInUse     = AddressStatus("IN_USE")
-	AddressStatusReserved  = AddressStatus("RESERVED")
+	// Address is being used by another resource and is not available.
+	AddressStatusInUse = AddressStatus("IN_USE")
+	// Address is reserved and available to use.
+	AddressStatusReserved = AddressStatus("RESERVED")
+	// Address is being reserved.
 	AddressStatusReserving = AddressStatus("RESERVING")
 )
 
@@ -256,9 +262,12 @@ func (e AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskIn
 type AttachedDiskInitializeParamsOnUpdateAction pulumi.String
 
 const (
-	AttachedDiskInitializeParamsOnUpdateActionRecreateDisk                = AttachedDiskInitializeParamsOnUpdateAction("RECREATE_DISK")
+	// Always recreate the disk.
+	AttachedDiskInitializeParamsOnUpdateActionRecreateDisk = AttachedDiskInitializeParamsOnUpdateAction("RECREATE_DISK")
+	// Recreate the disk if source (image, snapshot) of this disk is different from source of existing disk.
 	AttachedDiskInitializeParamsOnUpdateActionRecreateDiskIfSourceChanged = AttachedDiskInitializeParamsOnUpdateAction("RECREATE_DISK_IF_SOURCE_CHANGED")
-	AttachedDiskInitializeParamsOnUpdateActionUseExistingDisk             = AttachedDiskInitializeParamsOnUpdateAction("USE_EXISTING_DISK")
+	// Use the existing disk, this is the default behaviour.
+	AttachedDiskInitializeParamsOnUpdateActionUseExistingDisk = AttachedDiskInitializeParamsOnUpdateAction("USE_EXISTING_DISK")
 )
 
 func (AttachedDiskInitializeParamsOnUpdateAction) ElementType() reflect.Type {
@@ -313,7 +322,9 @@ func (e AttachedDiskInterface) ToStringPtrOutputWithContext(ctx context.Context)
 type AttachedDiskMode pulumi.String
 
 const (
-	AttachedDiskModeReadOnly  = AttachedDiskMode("READ_ONLY")
+	// Attaches this disk in read-only mode. Multiple virtual machines can use a disk in read-only mode at a time.
+	AttachedDiskModeReadOnly = AttachedDiskMode("READ_ONLY")
+	// *[Default]* Attaches this disk in read-write mode. Only one virtual machine at a time can be attached to a disk in read-write mode.
 	AttachedDiskModeReadWrite = AttachedDiskMode("READ_WRITE")
 )
 
@@ -369,9 +380,13 @@ func (e AttachedDiskType) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type AuditLogConfigLogType pulumi.String
 
 const (
-	AuditLogConfigLogTypeAdminRead          = AuditLogConfigLogType("ADMIN_READ")
-	AuditLogConfigLogTypeDataRead           = AuditLogConfigLogType("DATA_READ")
-	AuditLogConfigLogTypeDataWrite          = AuditLogConfigLogType("DATA_WRITE")
+	// Admin reads. Example: CloudIAM getIamPolicy
+	AuditLogConfigLogTypeAdminRead = AuditLogConfigLogType("ADMIN_READ")
+	// Data reads. Example: CloudSQL Users list
+	AuditLogConfigLogTypeDataRead = AuditLogConfigLogType("DATA_READ")
+	// Data writes. Example: CloudSQL Users create
+	AuditLogConfigLogTypeDataWrite = AuditLogConfigLogType("DATA_WRITE")
+	// Default case. Should never be this.
 	AuditLogConfigLogTypeLogTypeUnspecified = AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED")
 )
 
@@ -395,14 +410,19 @@ func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The type of the permission that was checked.
+// This is deprecated and has no effect. Do not use.
 type AuthorizationLoggingOptionsPermissionType pulumi.String
 
 const (
-	AuthorizationLoggingOptionsPermissionTypeAdminRead                 = AuthorizationLoggingOptionsPermissionType("ADMIN_READ")
-	AuthorizationLoggingOptionsPermissionTypeAdminWrite                = AuthorizationLoggingOptionsPermissionType("ADMIN_WRITE")
-	AuthorizationLoggingOptionsPermissionTypeDataRead                  = AuthorizationLoggingOptionsPermissionType("DATA_READ")
-	AuthorizationLoggingOptionsPermissionTypeDataWrite                 = AuthorizationLoggingOptionsPermissionType("DATA_WRITE")
+	// This is deprecated and has no effect. Do not use.
+	AuthorizationLoggingOptionsPermissionTypeAdminRead = AuthorizationLoggingOptionsPermissionType("ADMIN_READ")
+	// This is deprecated and has no effect. Do not use.
+	AuthorizationLoggingOptionsPermissionTypeAdminWrite = AuthorizationLoggingOptionsPermissionType("ADMIN_WRITE")
+	// This is deprecated and has no effect. Do not use.
+	AuthorizationLoggingOptionsPermissionTypeDataRead = AuthorizationLoggingOptionsPermissionType("DATA_READ")
+	// This is deprecated and has no effect. Do not use.
+	AuthorizationLoggingOptionsPermissionTypeDataWrite = AuthorizationLoggingOptionsPermissionType("DATA_WRITE")
+	// This is deprecated and has no effect. Do not use.
 	AuthorizationLoggingOptionsPermissionTypePermissionTypeUnspecified = AuthorizationLoggingOptionsPermissionType("PERMISSION_TYPE_UNSPECIFIED")
 )
 
@@ -426,18 +446,18 @@ func (e AuthorizationLoggingOptionsPermissionType) ToStringPtrOutputWithContext(
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the autoscaler configuration. Current set of possible values:
-// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-// - DELETING: Configuration is being deleted.
-// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+// [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
 type AutoscalerStatus pulumi.String
 
 const (
-	AutoscalerStatusActive   = AutoscalerStatus("ACTIVE")
+	// Configuration is acknowledged to be effective
+	AutoscalerStatusActive = AutoscalerStatus("ACTIVE")
+	// Configuration is being deleted
 	AutoscalerStatusDeleting = AutoscalerStatus("DELETING")
-	AutoscalerStatusError    = AutoscalerStatus("ERROR")
-	AutoscalerStatusPending  = AutoscalerStatus("PENDING")
+	// Configuration has errors. Actionable for users.
+	AutoscalerStatusError = AutoscalerStatus("ERROR")
+	// Autoscaler backend hasn't read new/updated configuration
+	AutoscalerStatusPending = AutoscalerStatus("PENDING")
 )
 
 func (AutoscalerStatus) ElementType() reflect.Type {
@@ -460,46 +480,49 @@ func (e AutoscalerStatus) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The type of error, warning, or notice returned. Current set of possible values:
-// - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state).
-// - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group.
-// - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas.
-// - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling.
-// - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels.
-// - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group.
-// - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling.
-// - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer.
-// - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved.
-// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any.
-// - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it.
-// - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances.
-// - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region.
-// - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist.
-// - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate.
-// - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
+// The type of error, warning, or notice returned. Current set of possible values: - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state). - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group. - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas. - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling. - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels. - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group. - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling. - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer. - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved. - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any. - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it. - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances. - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region. - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist. - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate. - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout. New values might be added in the future. Some of the values might not be available in all API versions.
 type AutoscalerStatusDetailsType pulumi.String
 
 const (
-	AutoscalerStatusDetailsTypeAllInstancesUnhealthy                        = AutoscalerStatusDetailsType("ALL_INSTANCES_UNHEALTHY")
-	AutoscalerStatusDetailsTypeBackendServiceDoesNotExist                   = AutoscalerStatusDetailsType("BACKEND_SERVICE_DOES_NOT_EXIST")
-	AutoscalerStatusDetailsTypeCappedAtMaxNumReplicas                       = AutoscalerStatusDetailsType("CAPPED_AT_MAX_NUM_REPLICAS")
-	AutoscalerStatusDetailsTypeCustomMetricDataPointsTooSparse              = AutoscalerStatusDetailsType("CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE")
-	AutoscalerStatusDetailsTypeCustomMetricInvalid                          = AutoscalerStatusDetailsType("CUSTOM_METRIC_INVALID")
-	AutoscalerStatusDetailsTypeMinEqualsMax                                 = AutoscalerStatusDetailsType("MIN_EQUALS_MAX")
-	AutoscalerStatusDetailsTypeMissingCustomMetricDataPoints                = AutoscalerStatusDetailsType("MISSING_CUSTOM_METRIC_DATA_POINTS")
-	AutoscalerStatusDetailsTypeMissingLoadBalancingDataPoints               = AutoscalerStatusDetailsType("MISSING_LOAD_BALANCING_DATA_POINTS")
-	AutoscalerStatusDetailsTypeModeOff                                      = AutoscalerStatusDetailsType("MODE_OFF")
-	AutoscalerStatusDetailsTypeModeOnlyScaleOut                             = AutoscalerStatusDetailsType("MODE_ONLY_SCALE_OUT")
-	AutoscalerStatusDetailsTypeModeOnlyUp                                   = AutoscalerStatusDetailsType("MODE_ONLY_UP")
-	AutoscalerStatusDetailsTypeMoreThanOneBackendService                    = AutoscalerStatusDetailsType("MORE_THAN_ONE_BACKEND_SERVICE")
-	AutoscalerStatusDetailsTypeNotEnoughQuotaAvailable                      = AutoscalerStatusDetailsType("NOT_ENOUGH_QUOTA_AVAILABLE")
-	AutoscalerStatusDetailsTypeRegionResourceStockout                       = AutoscalerStatusDetailsType("REGION_RESOURCE_STOCKOUT")
-	AutoscalerStatusDetailsTypeScalingTargetDoesNotExist                    = AutoscalerStatusDetailsType("SCALING_TARGET_DOES_NOT_EXIST")
-	AutoscalerStatusDetailsTypeScheduledInstancesGreaterThanAutoscalerMax   = AutoscalerStatusDetailsType("SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX")
-	AutoscalerStatusDetailsTypeScheduledInstancesLessThanAutoscalerMin      = AutoscalerStatusDetailsType("SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN")
-	AutoscalerStatusDetailsTypeUnknown                                      = AutoscalerStatusDetailsType("UNKNOWN")
+	// All instances in the instance group are unhealthy (not in RUNNING state).
+	AutoscalerStatusDetailsTypeAllInstancesUnhealthy = AutoscalerStatusDetailsType("ALL_INSTANCES_UNHEALTHY")
+	// There is no backend service attached to the instance group.
+	AutoscalerStatusDetailsTypeBackendServiceDoesNotExist = AutoscalerStatusDetailsType("BACKEND_SERVICE_DOES_NOT_EXIST")
+	// Autoscaler recommends a size greater than maxNumReplicas.
+	AutoscalerStatusDetailsTypeCappedAtMaxNumReplicas = AutoscalerStatusDetailsType("CAPPED_AT_MAX_NUM_REPLICAS")
+	// The custom metric samples are not exported often enough to be a credible base for autoscaling.
+	AutoscalerStatusDetailsTypeCustomMetricDataPointsTooSparse = AutoscalerStatusDetailsType("CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE")
+	// The custom metric that was specified does not exist or does not have the necessary labels.
+	AutoscalerStatusDetailsTypeCustomMetricInvalid = AutoscalerStatusDetailsType("CUSTOM_METRIC_INVALID")
+	// The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group.
+	AutoscalerStatusDetailsTypeMinEqualsMax = AutoscalerStatusDetailsType("MIN_EQUALS_MAX")
+	// The autoscaler did not receive any data from the custom metric configured for autoscaling.
+	AutoscalerStatusDetailsTypeMissingCustomMetricDataPoints = AutoscalerStatusDetailsType("MISSING_CUSTOM_METRIC_DATA_POINTS")
+	// The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer.
+	AutoscalerStatusDetailsTypeMissingLoadBalancingDataPoints = AutoscalerStatusDetailsType("MISSING_LOAD_BALANCING_DATA_POINTS")
+	// Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved.
+	AutoscalerStatusDetailsTypeModeOff = AutoscalerStatusDetailsType("MODE_OFF")
+	// Autoscaling is in the "Autoscale only scale out" mode. Instances in the group will be only added.
+	AutoscalerStatusDetailsTypeModeOnlyScaleOut = AutoscalerStatusDetailsType("MODE_ONLY_SCALE_OUT")
+	// Autoscaling is in the "Autoscale only out" mode. Instances in the group will be only added.
+	AutoscalerStatusDetailsTypeModeOnlyUp = AutoscalerStatusDetailsType("MODE_ONLY_UP")
+	// The instance group cannot be autoscaled because it has more than one backend service attached to it.
+	AutoscalerStatusDetailsTypeMoreThanOneBackendService = AutoscalerStatusDetailsType("MORE_THAN_ONE_BACKEND_SERVICE")
+	// There is insufficient quota for the necessary resources, such as CPU or number of instances.
+	AutoscalerStatusDetailsTypeNotEnoughQuotaAvailable = AutoscalerStatusDetailsType("NOT_ENOUGH_QUOTA_AVAILABLE")
+	// Showed only for regional autoscalers: there is a resource stockout in the chosen region.
+	AutoscalerStatusDetailsTypeRegionResourceStockout = AutoscalerStatusDetailsType("REGION_RESOURCE_STOCKOUT")
+	// The target to be scaled does not exist.
+	AutoscalerStatusDetailsTypeScalingTargetDoesNotExist = AutoscalerStatusDetailsType("SCALING_TARGET_DOES_NOT_EXIST")
+	// For some scaling schedules minRequiredReplicas is greater than maxNumReplicas. Autoscaler always recommends at most maxNumReplicas instances.
+	AutoscalerStatusDetailsTypeScheduledInstancesGreaterThanAutoscalerMax = AutoscalerStatusDetailsType("SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX")
+	// For some scaling schedules minRequiredReplicas is less than minNumReplicas. Autoscaler always recommends at least minNumReplicas instances.
+	AutoscalerStatusDetailsTypeScheduledInstancesLessThanAutoscalerMin = AutoscalerStatusDetailsType("SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN")
+	AutoscalerStatusDetailsTypeUnknown                                 = AutoscalerStatusDetailsType("UNKNOWN")
+	// Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate.
 	AutoscalerStatusDetailsTypeUnsupportedMaxRateLoadBalancingConfiguration = AutoscalerStatusDetailsType("UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION")
-	AutoscalerStatusDetailsTypeZoneResourceStockout                         = AutoscalerStatusDetailsType("ZONE_RESOURCE_STOCKOUT")
+	// For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.
+	AutoscalerStatusDetailsTypeZoneResourceStockout = AutoscalerStatusDetailsType("ZONE_RESOURCE_STOCKOUT")
 )
 
 func (AutoscalerStatusDetailsType) ElementType() reflect.Type {
@@ -522,13 +545,13 @@ func (e AutoscalerStatusDetailsType) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
-//
-// * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are: * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
 type AutoscalingPolicyCpuUtilizationPredictiveMethod pulumi.String
 
 const (
-	AutoscalingPolicyCpuUtilizationPredictiveMethodNone                 = AutoscalingPolicyCpuUtilizationPredictiveMethod("NONE")
+	// No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics
+	AutoscalingPolicyCpuUtilizationPredictiveMethodNone = AutoscalingPolicyCpuUtilizationPredictiveMethod("NONE")
+	// Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
 	AutoscalingPolicyCpuUtilizationPredictiveMethodOptimizeAvailability = AutoscalingPolicyCpuUtilizationPredictiveMethod("OPTIMIZE_AVAILABILITY")
 )
 
@@ -556,9 +579,12 @@ func (e AutoscalingPolicyCpuUtilizationPredictiveMethod) ToStringPtrOutputWithCo
 type AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType pulumi.String
 
 const (
+	// Sets the utilization target value for a cumulative or delta metric, expressed as the rate of growth per minute.
 	AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeDeltaPerMinute = AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType("DELTA_PER_MINUTE")
+	// Sets the utilization target value for a cumulative or delta metric, expressed as the rate of growth per second.
 	AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeDeltaPerSecond = AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType("DELTA_PER_SECOND")
-	AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeGauge          = AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType("GAUGE")
+	// Sets the utilization target value for a gauge metric. The autoscaler will collect the average utilization of the virtual machines from the last couple of minutes, and compare the value to the utilization target value to perform autoscaling.
+	AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeGauge = AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType("GAUGE")
 )
 
 func (AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType) ElementType() reflect.Type {
@@ -585,10 +611,14 @@ func (e AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType) ToStringP
 type AutoscalingPolicyMode pulumi.String
 
 const (
-	AutoscalingPolicyModeOff          = AutoscalingPolicyMode("OFF")
-	AutoscalingPolicyModeOn           = AutoscalingPolicyMode("ON")
+	// Do not automatically scale the MIG in or out. The recommended_size field contains the size of MIG that would be set if the actuation mode was enabled.
+	AutoscalingPolicyModeOff = AutoscalingPolicyMode("OFF")
+	// Automatically scale the MIG in and out according to the policy.
+	AutoscalingPolicyModeOn = AutoscalingPolicyMode("ON")
+	// Automatically create VMs according to the policy, but do not scale the MIG in.
 	AutoscalingPolicyModeOnlyScaleOut = AutoscalingPolicyMode("ONLY_SCALE_OUT")
-	AutoscalingPolicyModeOnlyUp       = AutoscalingPolicyMode("ONLY_UP")
+	// Automatically create VMs according to the policy, but do not scale the MIG in.
+	AutoscalingPolicyModeOnlyUp = AutoscalingPolicyMode("ONLY_UP")
 )
 
 func (AutoscalingPolicyMode) ElementType() reflect.Type {
@@ -611,12 +641,15 @@ func (e AutoscalingPolicyMode) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see  Connection balancing mode.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
 type BackendBalancingMode pulumi.String
 
 const (
-	BackendBalancingModeConnection  = BackendBalancingMode("CONNECTION")
-	BackendBalancingModeRate        = BackendBalancingMode("RATE")
+	// Balance based on the number of simultaneous connections.
+	BackendBalancingModeConnection = BackendBalancingMode("CONNECTION")
+	// Balance based on requests per second (RPS).
+	BackendBalancingModeRate = BackendBalancingMode("RATE")
+	// Balance based on the backend utilization.
 	BackendBalancingModeUtilization = BackendBalancingMode("UTILIZATION")
 )
 
@@ -640,19 +673,16 @@ func (e BackendBalancingMode) ToStringPtrOutputWithContext(ctx context.Context) 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the cache setting for all responses from this backend. The possible values are:
-//
-// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
-//
-// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
-//
-// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 type BackendBucketCdnPolicyCacheMode pulumi.String
 
 const (
-	BackendBucketCdnPolicyCacheModeCacheAllStatic   = BackendBucketCdnPolicyCacheMode("CACHE_ALL_STATIC")
+	// Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+	BackendBucketCdnPolicyCacheModeCacheAllStatic = BackendBucketCdnPolicyCacheMode("CACHE_ALL_STATIC")
+	// Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
 	BackendBucketCdnPolicyCacheModeForceCacheAll    = BackendBucketCdnPolicyCacheMode("FORCE_CACHE_ALL")
 	BackendBucketCdnPolicyCacheModeInvalidCacheMode = BackendBucketCdnPolicyCacheMode("INVALID_CACHE_MODE")
+	// Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
 	BackendBucketCdnPolicyCacheModeUseOriginHeaders = BackendBucketCdnPolicyCacheMode("USE_ORIGIN_HEADERS")
 )
 
@@ -676,19 +706,16 @@ func (e BackendBucketCdnPolicyCacheMode) ToStringPtrOutputWithContext(ctx contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the cache setting for all responses from this backend. The possible values are:
-//
-// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
-//
-// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
-//
-// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 type BackendServiceCdnPolicyCacheMode pulumi.String
 
 const (
-	BackendServiceCdnPolicyCacheModeCacheAllStatic   = BackendServiceCdnPolicyCacheMode("CACHE_ALL_STATIC")
+	// Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+	BackendServiceCdnPolicyCacheModeCacheAllStatic = BackendServiceCdnPolicyCacheMode("CACHE_ALL_STATIC")
+	// Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
 	BackendServiceCdnPolicyCacheModeForceCacheAll    = BackendServiceCdnPolicyCacheMode("FORCE_CACHE_ALL")
 	BackendServiceCdnPolicyCacheModeInvalidCacheMode = BackendServiceCdnPolicyCacheMode("INVALID_CACHE_MODE")
+	// Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
 	BackendServiceCdnPolicyCacheModeUseOriginHeaders = BackendServiceCdnPolicyCacheMode("USE_ORIGIN_HEADERS")
 )
 
@@ -712,13 +739,17 @@ func (e BackendServiceCdnPolicyCacheMode) ToStringPtrOutputWithContext(ctx conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose INTERNAL for Internal TCP/UDP Load Balancing. Choose INTERNAL_MANAGED for Internal HTTP(S) Load Balancing. INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 type BackendServiceLoadBalancingScheme pulumi.String
 
 const (
-	BackendServiceLoadBalancingSchemeExternal                   = BackendServiceLoadBalancingScheme("EXTERNAL")
-	BackendServiceLoadBalancingSchemeInternal                   = BackendServiceLoadBalancingScheme("INTERNAL")
-	BackendServiceLoadBalancingSchemeInternalManaged            = BackendServiceLoadBalancingScheme("INTERNAL_MANAGED")
+	// Signifies that this will be used for HTTP(S), SSL Proxy, TCP Proxy or Network Load Balancing
+	BackendServiceLoadBalancingSchemeExternal = BackendServiceLoadBalancingScheme("EXTERNAL")
+	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+	BackendServiceLoadBalancingSchemeInternal = BackendServiceLoadBalancingScheme("INTERNAL")
+	// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+	BackendServiceLoadBalancingSchemeInternalManaged = BackendServiceLoadBalancingScheme("INTERNAL_MANAGED")
+	// Signifies that this will be used by Traffic Director.
 	BackendServiceLoadBalancingSchemeInternalSelfManaged        = BackendServiceLoadBalancingScheme("INTERNAL_SELF_MANAGED")
 	BackendServiceLoadBalancingSchemeInvalidLoadBalancingScheme = BackendServiceLoadBalancingScheme("INVALID_LOAD_BALANCING_SCHEME")
 )
@@ -743,31 +774,23 @@ func (e BackendServiceLoadBalancingScheme) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The load balancing algorithm used within the scope of the locality. The possible values are:
-// - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
-// - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
-// - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
-// - RANDOM: The load balancer selects a random healthy host.
-// - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
-// - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
-//
-// This field is applicable to either:
-// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
-// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
-//
-// If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-//
-// Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 type BackendServiceLocalityLbPolicy pulumi.String
 
 const (
-	BackendServiceLocalityLbPolicyInvalidLbPolicy     = BackendServiceLocalityLbPolicy("INVALID_LB_POLICY")
-	BackendServiceLocalityLbPolicyLeastRequest        = BackendServiceLocalityLbPolicy("LEAST_REQUEST")
-	BackendServiceLocalityLbPolicyMaglev              = BackendServiceLocalityLbPolicy("MAGLEV")
+	BackendServiceLocalityLbPolicyInvalidLbPolicy = BackendServiceLocalityLbPolicy("INVALID_LB_POLICY")
+	// An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+	BackendServiceLocalityLbPolicyLeastRequest = BackendServiceLocalityLbPolicy("LEAST_REQUEST")
+	// This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+	BackendServiceLocalityLbPolicyMaglev = BackendServiceLocalityLbPolicy("MAGLEV")
+	// Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
 	BackendServiceLocalityLbPolicyOriginalDestination = BackendServiceLocalityLbPolicy("ORIGINAL_DESTINATION")
-	BackendServiceLocalityLbPolicyRandom              = BackendServiceLocalityLbPolicy("RANDOM")
-	BackendServiceLocalityLbPolicyRingHash            = BackendServiceLocalityLbPolicy("RING_HASH")
-	BackendServiceLocalityLbPolicyRoundRobin          = BackendServiceLocalityLbPolicy("ROUND_ROBIN")
+	// The load balancer selects a random healthy host.
+	BackendServiceLocalityLbPolicyRandom = BackendServiceLocalityLbPolicy("RANDOM")
+	// The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+	BackendServiceLocalityLbPolicyRingHash = BackendServiceLocalityLbPolicy("RING_HASH")
+	// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+	BackendServiceLocalityLbPolicyRoundRobin = BackendServiceLocalityLbPolicy("ROUND_ROBIN")
 )
 
 func (BackendServiceLocalityLbPolicy) ElementType() reflect.Type {
@@ -790,21 +813,22 @@ func (e BackendServiceLocalityLbPolicy) ToStringPtrOutputWithContext(ctx context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The protocol this BackendService uses to communicate with backends.
-//
-// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-//
-// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 type BackendServiceProtocol pulumi.String
 
 const (
-	BackendServiceProtocolGrpc  = BackendServiceProtocol("GRPC")
-	BackendServiceProtocolHttp  = BackendServiceProtocol("HTTP")
+	// gRPC (available for Traffic Director).
+	BackendServiceProtocolGrpc = BackendServiceProtocol("GRPC")
+	BackendServiceProtocolHttp = BackendServiceProtocol("HTTP")
+	// HTTP/2 with SSL.
 	BackendServiceProtocolHttp2 = BackendServiceProtocol("HTTP2")
 	BackendServiceProtocolHttps = BackendServiceProtocol("HTTPS")
-	BackendServiceProtocolSsl   = BackendServiceProtocol("SSL")
-	BackendServiceProtocolTcp   = BackendServiceProtocol("TCP")
-	BackendServiceProtocolUdp   = BackendServiceProtocol("UDP")
+	// TCP proxying with SSL.
+	BackendServiceProtocolSsl = BackendServiceProtocol("SSL")
+	// TCP proxying or TCP pass-through (Internal TCP/UDP Load Balancing and Network Load Balancing).
+	BackendServiceProtocolTcp = BackendServiceProtocol("TCP")
+	// UDP (available for Internal TCP/UDP Load Balancing and Network Load Balancing).
+	BackendServiceProtocolUdp = BackendServiceProtocol("UDP")
 )
 
 func (BackendServiceProtocol) ElementType() reflect.Type {
@@ -827,26 +851,26 @@ func (e BackendServiceProtocol) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Type of session affinity to use. The default is NONE.
-//
-// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-//
-// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-//
-// When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-//
-// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Type of session affinity to use. The default is NONE. When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS. When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 type BackendServiceSessionAffinity pulumi.String
 
 const (
-	BackendServiceSessionAffinityClientIp              = BackendServiceSessionAffinity("CLIENT_IP")
+	// 2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy.
+	BackendServiceSessionAffinityClientIp = BackendServiceSessionAffinity("CLIENT_IP")
+	// 1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing.
 	BackendServiceSessionAffinityClientIpNoDestination = BackendServiceSessionAffinity("CLIENT_IP_NO_DESTINATION")
-	BackendServiceSessionAffinityClientIpPortProto     = BackendServiceSessionAffinity("CLIENT_IP_PORT_PROTO")
-	BackendServiceSessionAffinityClientIpProto         = BackendServiceSessionAffinity("CLIENT_IP_PROTO")
-	BackendServiceSessionAffinityGeneratedCookie       = BackendServiceSessionAffinity("GENERATED_COOKIE")
-	BackendServiceSessionAffinityHeaderField           = BackendServiceSessionAffinity("HEADER_FIELD")
-	BackendServiceSessionAffinityHttpCookie            = BackendServiceSessionAffinity("HTTP_COOKIE")
-	BackendServiceSessionAffinityNone                  = BackendServiceSessionAffinity("NONE")
+	// 5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+	BackendServiceSessionAffinityClientIpPortProto = BackendServiceSessionAffinity("CLIENT_IP_PORT_PROTO")
+	// 3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+	BackendServiceSessionAffinityClientIpProto = BackendServiceSessionAffinity("CLIENT_IP_PROTO")
+	// Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing.
+	BackendServiceSessionAffinityGeneratedCookie = BackendServiceSessionAffinity("GENERATED_COOKIE")
+	// The hash is based on a user specified header field.
+	BackendServiceSessionAffinityHeaderField = BackendServiceSessionAffinity("HEADER_FIELD")
+	// The hash is based on a user provided cookie.
+	BackendServiceSessionAffinityHttpCookie = BackendServiceSessionAffinity("HTTP_COOKIE")
+	// No session affinity. Connections from the same client IP may go to any instance in the pool.
+	BackendServiceSessionAffinityNone = BackendServiceSessionAffinity("NONE")
 )
 
 func (BackendServiceSessionAffinity) ElementType() reflect.Type {
@@ -869,18 +893,26 @@ func (e BackendServiceSessionAffinity) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Trusted attributes supplied by the IAM system.
+// This is deprecated and has no effect. Do not use.
 type ConditionIam pulumi.String
 
 const (
-	ConditionIamApprover          = ConditionIam("APPROVER")
-	ConditionIamAttribution       = ConditionIam("ATTRIBUTION")
-	ConditionIamAuthority         = ConditionIam("AUTHORITY")
-	ConditionIamCredentialsType   = ConditionIam("CREDENTIALS_TYPE")
-	ConditionIamCredsAssertion    = ConditionIam("CREDS_ASSERTION")
+	// This is deprecated and has no effect. Do not use.
+	ConditionIamApprover = ConditionIam("APPROVER")
+	// This is deprecated and has no effect. Do not use.
+	ConditionIamAttribution = ConditionIam("ATTRIBUTION")
+	// This is deprecated and has no effect. Do not use.
+	ConditionIamAuthority = ConditionIam("AUTHORITY")
+	// This is deprecated and has no effect. Do not use.
+	ConditionIamCredentialsType = ConditionIam("CREDENTIALS_TYPE")
+	// This is deprecated and has no effect. Do not use.
+	ConditionIamCredsAssertion = ConditionIam("CREDS_ASSERTION")
+	// This is deprecated and has no effect. Do not use.
 	ConditionIamJustificationType = ConditionIam("JUSTIFICATION_TYPE")
-	ConditionIamNoAttr            = ConditionIam("NO_ATTR")
-	ConditionIamSecurityRealm     = ConditionIam("SECURITY_REALM")
+	// This is deprecated and has no effect. Do not use.
+	ConditionIamNoAttr = ConditionIam("NO_ATTR")
+	// This is deprecated and has no effect. Do not use.
+	ConditionIamSecurityRealm = ConditionIam("SECURITY_REALM")
 )
 
 func (ConditionIam) ElementType() reflect.Type {
@@ -903,16 +935,22 @@ func (e ConditionIam) ToStringPtrOutputWithContext(ctx context.Context) pulumi.S
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// An operator to apply the subject with.
+// This is deprecated and has no effect. Do not use.
 type ConditionOp pulumi.String
 
 const (
+	// This is deprecated and has no effect. Do not use.
 	ConditionOpDischarged = ConditionOp("DISCHARGED")
-	ConditionOpEquals     = ConditionOp("EQUALS")
-	ConditionOpIn         = ConditionOp("IN")
-	ConditionOpNotEquals  = ConditionOp("NOT_EQUALS")
-	ConditionOpNotIn      = ConditionOp("NOT_IN")
-	ConditionOpNoOp       = ConditionOp("NO_OP")
+	// This is deprecated and has no effect. Do not use.
+	ConditionOpEquals = ConditionOp("EQUALS")
+	// This is deprecated and has no effect. Do not use.
+	ConditionOpIn = ConditionOp("IN")
+	// This is deprecated and has no effect. Do not use.
+	ConditionOpNotEquals = ConditionOp("NOT_EQUALS")
+	// This is deprecated and has no effect. Do not use.
+	ConditionOpNotIn = ConditionOp("NOT_IN")
+	// This is deprecated and has no effect. Do not use.
+	ConditionOpNoOp = ConditionOp("NO_OP")
 )
 
 func (ConditionOp) ElementType() reflect.Type {
@@ -935,14 +973,19 @@ func (e ConditionOp) ToStringPtrOutputWithContext(ctx context.Context) pulumi.St
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
+// This is deprecated and has no effect. Do not use.
 type ConditionSys pulumi.String
 
 const (
-	ConditionSysIp      = ConditionSys("IP")
-	ConditionSysName    = ConditionSys("NAME")
-	ConditionSysNoAttr  = ConditionSys("NO_ATTR")
-	ConditionSysRegion  = ConditionSys("REGION")
+	// This is deprecated and has no effect. Do not use.
+	ConditionSysIp = ConditionSys("IP")
+	// This is deprecated and has no effect. Do not use.
+	ConditionSysName = ConditionSys("NAME")
+	// This is deprecated and has no effect. Do not use.
+	ConditionSysNoAttr = ConditionSys("NO_ATTR")
+	// This is deprecated and has no effect. Do not use.
+	ConditionSysRegion = ConditionSys("REGION")
+	// This is deprecated and has no effect. Do not use.
 	ConditionSysService = ConditionSys("SERVICE")
 )
 
@@ -996,21 +1039,23 @@ func (e DeprecationStatusState) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies whether to include the disk and what image to use. Possible values are:
-// - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks.
-// - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks.
-// - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks.
-// - attach-read-only: to attach a read-only disk. Applicable to read-only disks.
-// - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks.
+// Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks.
 type DiskInstantiationConfigInstantiateFrom pulumi.String
 
 const (
-	DiskInstantiationConfigInstantiateFromAttachReadOnly    = DiskInstantiationConfigInstantiateFrom("ATTACH_READ_ONLY")
-	DiskInstantiationConfigInstantiateFromBlank             = DiskInstantiationConfigInstantiateFrom("BLANK")
-	DiskInstantiationConfigInstantiateFromCustomImage       = DiskInstantiationConfigInstantiateFrom("CUSTOM_IMAGE")
-	DiskInstantiationConfigInstantiateFromDefault           = DiskInstantiationConfigInstantiateFrom("DEFAULT")
-	DiskInstantiationConfigInstantiateFromDoNotInclude      = DiskInstantiationConfigInstantiateFrom("DO_NOT_INCLUDE")
-	DiskInstantiationConfigInstantiateFromSourceImage       = DiskInstantiationConfigInstantiateFrom("SOURCE_IMAGE")
+	// Attach the existing disk in read-only mode. The request will fail if the disk was attached in read-write mode on the source instance. Applicable to: read-only disks.
+	DiskInstantiationConfigInstantiateFromAttachReadOnly = DiskInstantiationConfigInstantiateFrom("ATTACH_READ_ONLY")
+	// Create a blank disk. The disk will be created unformatted. Applicable to: additional read-write disks, local SSDs.
+	DiskInstantiationConfigInstantiateFromBlank = DiskInstantiationConfigInstantiateFrom("BLANK")
+	// Use the custom image specified in the custom_image field. Applicable to: boot disk, additional read-write disks.
+	DiskInstantiationConfigInstantiateFromCustomImage = DiskInstantiationConfigInstantiateFrom("CUSTOM_IMAGE")
+	// Use the default instantiation option for the corresponding type of disk. For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+	DiskInstantiationConfigInstantiateFromDefault = DiskInstantiationConfigInstantiateFrom("DEFAULT")
+	// Do not include the disk in the instance template. Applicable to: additional read-write disks, local SSDs, read-only disks.
+	DiskInstantiationConfigInstantiateFromDoNotInclude = DiskInstantiationConfigInstantiateFrom("DO_NOT_INCLUDE")
+	// Use the same source image used for creation of the source instance's corresponding disk. The request will fail if the source VM's disk was created from a snapshot. Applicable to: boot disk, additional read-write disks.
+	DiskInstantiationConfigInstantiateFromSourceImage = DiskInstantiationConfigInstantiateFrom("SOURCE_IMAGE")
+	// Use the same source image family used for creation of the source instance's corresponding disk. The request will fail if the source image of the source disk does not belong to any image family. Applicable to: boot disk, additional read-write disks.
 	DiskInstantiationConfigInstantiateFromSourceImageFamily = DiskInstantiationConfigInstantiateFrom("SOURCE_IMAGE_FAMILY")
 )
 
@@ -1034,19 +1079,19 @@ func (e DiskInstantiationConfigInstantiateFrom) ToStringPtrOutputWithContext(ctx
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of disk creation.
-// - CREATING: Disk is provisioning.
-// - RESTORING: Source data is being copied into the disk.
-// - FAILED: Disk creation failed.
-// - READY: Disk is ready for use.
-// - DELETING: Disk is deleting.
+// [Output Only] The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 type DiskStatus pulumi.String
 
 const (
-	DiskStatusCreating  = DiskStatus("CREATING")
-	DiskStatusDeleting  = DiskStatus("DELETING")
-	DiskStatusFailed    = DiskStatus("FAILED")
-	DiskStatusReady     = DiskStatus("READY")
+	// Disk is provisioning
+	DiskStatusCreating = DiskStatus("CREATING")
+	// Disk is deleting.
+	DiskStatusDeleting = DiskStatus("DELETING")
+	// Disk creation failed.
+	DiskStatusFailed = DiskStatus("FAILED")
+	// Disk is ready for use.
+	DiskStatusReady = DiskStatus("READY")
+	// Source data is being copied into the disk.
 	DiskStatusRestoring = DiskStatus("RESTORING")
 )
 
@@ -1074,9 +1119,12 @@ func (e DiskStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.Str
 type DistributionPolicyTargetShape pulumi.String
 
 const (
-	DistributionPolicyTargetShapeAny      = DistributionPolicyTargetShape("ANY")
+	// The group picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
+	DistributionPolicyTargetShapeAny = DistributionPolicyTargetShape("ANY")
+	// The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
 	DistributionPolicyTargetShapeBalanced = DistributionPolicyTargetShape("BALANCED")
-	DistributionPolicyTargetShapeEven     = DistributionPolicyTargetShape("EVEN")
+	// The group schedules VM instance creation and deletion to achieve and maintain an even number of managed instances across the selected zones. The distribution is even when the number of managed instances does not differ by more than 1 between any two zones. Recommended for highly available serving workloads.
+	DistributionPolicyTargetShapeEven = DistributionPolicyTargetShape("EVEN")
 )
 
 func (DistributionPolicyTargetShape) ElementType() reflect.Type {
@@ -1103,9 +1151,12 @@ func (e DistributionPolicyTargetShape) ToStringPtrOutputWithContext(ctx context.
 type ExternalVpnGatewayRedundancyType pulumi.String
 
 const (
-	ExternalVpnGatewayRedundancyTypeFourIpsRedundancy           = ExternalVpnGatewayRedundancyType("FOUR_IPS_REDUNDANCY")
+	// The external VPN gateway has four public IP addresses; at the time of writing this API, the AWS virtual private gateway is an example which has four public IP addresses for high availability connections; there should be two VPN connections in the AWS virtual private gateway , each AWS VPN connection has two public IP addresses; please make sure to put two public IP addresses from one AWS VPN connection into interfaces 0 and 1 of this external VPN gateway, and put the other two public IP addresses from another AWS VPN connection into interfaces 2 and 3 of this external VPN gateway. When displaying highly available configuration status for the VPN tunnels connected to FOUR_IPS_REDUNDANCY external VPN gateway, Google will always detect whether interfaces 0 and 1 are connected on one interface of HA Cloud VPN gateway, and detect whether interfaces 2 and 3 are connected to another interface of the HA Cloud VPN gateway.
+	ExternalVpnGatewayRedundancyTypeFourIpsRedundancy = ExternalVpnGatewayRedundancyType("FOUR_IPS_REDUNDANCY")
+	// The external VPN gateway has only one public IP address which internally provide redundancy or failover.
 	ExternalVpnGatewayRedundancyTypeSingleIpInternallyRedundant = ExternalVpnGatewayRedundancyType("SINGLE_IP_INTERNALLY_REDUNDANT")
-	ExternalVpnGatewayRedundancyTypeTwoIpsRedundancy            = ExternalVpnGatewayRedundancyType("TWO_IPS_REDUNDANCY")
+	// The external VPN gateway has two public IP addresses which are redundant with each other, the following two types of setup on your on-premises side would have this type of redundancy: (1) Two separate on-premises gateways, each with one public IP address, the two on-premises gateways are redundant with each other. (2) A single on-premise gateway with two public IP addresses that are redundant with eatch other.
+	ExternalVpnGatewayRedundancyTypeTwoIpsRedundancy = ExternalVpnGatewayRedundancyType("TWO_IPS_REDUNDANCY")
 )
 
 func (ExternalVpnGatewayRedundancyType) ElementType() reflect.Type {
@@ -1161,7 +1212,9 @@ func (e FileContentBufferFileType) ToStringPtrOutputWithContext(ctx context.Cont
 type FirewallDirection pulumi.String
 
 const (
-	FirewallDirectionEgress  = FirewallDirection("EGRESS")
+	// Indicates that firewall should apply to outgoing traffic.
+	FirewallDirectionEgress = FirewallDirection("EGRESS")
+	// Indicates that firewall should apply to incoming traffic.
 	FirewallDirectionIngress = FirewallDirection("INGRESS")
 )
 
@@ -1241,16 +1294,7 @@ func (e FirewallPolicyRuleDirection) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The IP protocol to which this rule applies.
-//
-// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
-//
-// The valid IP protocols are different for different load balancing products:
-// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid.
-// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.
-// - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid.
-// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid.
-// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
+// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid.
 type ForwardingRuleIPProtocol pulumi.String
 
 const (
@@ -1311,21 +1355,7 @@ func (e ForwardingRuleIpVersion) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the forwarding rule type.
-//
-// - EXTERNAL is used for:
-// - Classic Cloud VPN gateways
-// - Protocol forwarding to VMs from an external IP address
-// - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing
-// - INTERNAL is used for:
-// - Protocol forwarding to VMs from an internal IP address
-// - Internal TCP/UDP Load Balancing
-// - INTERNAL_MANAGED is used for:
-// - Internal HTTP(S) Load Balancing
-// - INTERNAL_SELF_MANAGED is used for:
-// - Traffic Director
-//
-// For more information about forwarding rules, refer to Forwarding rule concepts.
+// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
 type ForwardingRuleLoadBalancingScheme pulumi.String
 
 const (
@@ -1356,15 +1386,13 @@ func (e ForwardingRuleLoadBalancingScheme) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD.
-//
-// For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM.
-//
-// If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
+// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
 type ForwardingRuleNetworkTier pulumi.String
 
 const (
-	ForwardingRuleNetworkTierPremium  = ForwardingRuleNetworkTier("PREMIUM")
+	// High quality, Google-grade network tier, support for all networking products.
+	ForwardingRuleNetworkTierPremium = ForwardingRuleNetworkTier("PREMIUM")
+	// Public internet quality, only limited support for other networking products.
 	ForwardingRuleNetworkTierStandard = ForwardingRuleNetworkTier("STANDARD")
 )
 
@@ -1388,17 +1416,15 @@ func (e ForwardingRuleNetworkTier) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies how port is selected for health checking, can be one of following values:
-// USE_FIXED_PORT: The port number in port is used for health checking.
-// USE_NAMED_PORT: The portName is used for health checking.
-// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-//
-// If not specified, gRPC health check follows behavior specified in port and portName fields.
+// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
 type GRPCHealthCheckPortSpecification pulumi.String
 
 const (
-	GRPCHealthCheckPortSpecificationUseFixedPort   = GRPCHealthCheckPortSpecification("USE_FIXED_PORT")
-	GRPCHealthCheckPortSpecificationUseNamedPort   = GRPCHealthCheckPortSpecification("USE_NAMED_PORT")
+	// The port number in port is used for health checking.
+	GRPCHealthCheckPortSpecificationUseFixedPort = GRPCHealthCheckPortSpecification("USE_FIXED_PORT")
+	// The portName is used for health checking.
+	GRPCHealthCheckPortSpecificationUseNamedPort = GRPCHealthCheckPortSpecification("USE_NAMED_PORT")
+	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	GRPCHealthCheckPortSpecificationUseServingPort = GRPCHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -1426,7 +1452,9 @@ func (e GRPCHealthCheckPortSpecification) ToStringPtrOutputWithContext(ctx conte
 type GlobalAddressAddressType pulumi.String
 
 const (
-	GlobalAddressAddressTypeExternal        = GlobalAddressAddressType("EXTERNAL")
+	// A publicly visible external IP address.
+	GlobalAddressAddressTypeExternal = GlobalAddressAddressType("EXTERNAL")
+	// A private network IP address, for use with an Instance or Internal Load Balancer forwarding rule.
 	GlobalAddressAddressTypeInternal        = GlobalAddressAddressType("INTERNAL")
 	GlobalAddressAddressTypeUnspecifiedType = GlobalAddressAddressType("UNSPECIFIED_TYPE")
 )
@@ -1480,13 +1508,13 @@ func (e GlobalAddressIpVersion) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
-//
-// If this field is not specified, it is assumed to be PREMIUM.
+// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
 type GlobalAddressNetworkTier pulumi.String
 
 const (
-	GlobalAddressNetworkTierPremium  = GlobalAddressNetworkTier("PREMIUM")
+	// High quality, Google-grade network tier, support for all networking products.
+	GlobalAddressNetworkTierPremium = GlobalAddressNetworkTier("PREMIUM")
+	// Public internet quality, only limited support for other networking products.
 	GlobalAddressNetworkTierStandard = GlobalAddressNetworkTier("STANDARD")
 )
 
@@ -1510,22 +1538,24 @@ func (e GlobalAddressNetworkTier) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The purpose of this resource, which can be one of the following values:
-// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
-// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
-// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT.
-// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
+// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
 type GlobalAddressPurpose pulumi.String
 
 const (
-	GlobalAddressPurposeDnsResolver           = GlobalAddressPurpose("DNS_RESOLVER")
-	GlobalAddressPurposeGceEndpoint           = GlobalAddressPurpose("GCE_ENDPOINT")
-	GlobalAddressPurposeIpsecInterconnect     = GlobalAddressPurpose("IPSEC_INTERCONNECT")
-	GlobalAddressPurposeNatAuto               = GlobalAddressPurpose("NAT_AUTO")
+	// DNS resolver address in the subnetwork.
+	GlobalAddressPurposeDnsResolver = GlobalAddressPurpose("DNS_RESOLVER")
+	// VM internal/alias IP, Internal LB service IP, etc.
+	GlobalAddressPurposeGceEndpoint = GlobalAddressPurpose("GCE_ENDPOINT")
+	// A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+	GlobalAddressPurposeIpsecInterconnect = GlobalAddressPurpose("IPSEC_INTERCONNECT")
+	// External IP automatically reserved for Cloud NAT.
+	GlobalAddressPurposeNatAuto = GlobalAddressPurpose("NAT_AUTO")
+	// A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
 	GlobalAddressPurposePrivateServiceConnect = GlobalAddressPurpose("PRIVATE_SERVICE_CONNECT")
+	// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
 	GlobalAddressPurposeSharedLoadbalancerVip = GlobalAddressPurpose("SHARED_LOADBALANCER_VIP")
-	GlobalAddressPurposeVpcPeering            = GlobalAddressPurpose("VPC_PEERING")
+	// IP range for peer networks.
+	GlobalAddressPurposeVpcPeering = GlobalAddressPurpose("VPC_PEERING")
 )
 
 func (GlobalAddressPurpose) ElementType() reflect.Type {
@@ -1552,8 +1582,11 @@ func (e GlobalAddressPurpose) ToStringPtrOutputWithContext(ctx context.Context) 
 type GlobalAddressStatus pulumi.String
 
 const (
-	GlobalAddressStatusInUse     = GlobalAddressStatus("IN_USE")
-	GlobalAddressStatusReserved  = GlobalAddressStatus("RESERVED")
+	// Address is being used by another resource and is not available.
+	GlobalAddressStatusInUse = GlobalAddressStatus("IN_USE")
+	// Address is reserved and available to use.
+	GlobalAddressStatusReserved = GlobalAddressStatus("RESERVED")
+	// Address is being reserved.
 	GlobalAddressStatusReserving = GlobalAddressStatus("RESERVING")
 )
 
@@ -1577,16 +1610,7 @@ func (e GlobalAddressStatus) ToStringPtrOutputWithContext(ctx context.Context) p
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The IP protocol to which this rule applies.
-//
-// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
-//
-// The valid IP protocols are different for different load balancing products:
-// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid.
-// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.
-// - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid.
-// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid.
-// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
+// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid.
 type GlobalForwardingRuleIPProtocol pulumi.String
 
 const (
@@ -1647,21 +1671,7 @@ func (e GlobalForwardingRuleIpVersion) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the forwarding rule type.
-//
-// - EXTERNAL is used for:
-// - Classic Cloud VPN gateways
-// - Protocol forwarding to VMs from an external IP address
-// - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing
-// - INTERNAL is used for:
-// - Protocol forwarding to VMs from an internal IP address
-// - Internal TCP/UDP Load Balancing
-// - INTERNAL_MANAGED is used for:
-// - Internal HTTP(S) Load Balancing
-// - INTERNAL_SELF_MANAGED is used for:
-// - Traffic Director
-//
-// For more information about forwarding rules, refer to Forwarding rule concepts.
+// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
 type GlobalForwardingRuleLoadBalancingScheme pulumi.String
 
 const (
@@ -1692,15 +1702,13 @@ func (e GlobalForwardingRuleLoadBalancingScheme) ToStringPtrOutputWithContext(ct
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD.
-//
-// For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM.
-//
-// If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
+// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
 type GlobalForwardingRuleNetworkTier pulumi.String
 
 const (
-	GlobalForwardingRuleNetworkTierPremium  = GlobalForwardingRuleNetworkTier("PREMIUM")
+	// High quality, Google-grade network tier, support for all networking products.
+	GlobalForwardingRuleNetworkTierPremium = GlobalForwardingRuleNetworkTier("PREMIUM")
+	// Public internet quality, only limited support for other networking products.
 	GlobalForwardingRuleNetworkTierStandard = GlobalForwardingRuleNetworkTier("STANDARD")
 )
 
@@ -1728,12 +1736,18 @@ func (e GlobalForwardingRuleNetworkTier) ToStringPtrOutputWithContext(ctx contex
 type GlobalNetworkEndpointGroupNetworkEndpointType pulumi.String
 
 const (
-	GlobalNetworkEndpointGroupNetworkEndpointTypeGceVmIp             = GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP")
-	GlobalNetworkEndpointGroupNetworkEndpointTypeGceVmIpPort         = GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT")
-	GlobalNetworkEndpointGroupNetworkEndpointTypeInternetFqdnPort    = GlobalNetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT")
-	GlobalNetworkEndpointGroupNetworkEndpointTypeInternetIpPort      = GlobalNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
+	// The network endpoint is represented by an IP address.
+	GlobalNetworkEndpointGroupNetworkEndpointTypeGceVmIp = GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP")
+	// The network endpoint is represented by IP address and port pair.
+	GlobalNetworkEndpointGroupNetworkEndpointTypeGceVmIpPort = GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT")
+	// The network endpoint is represented by fully qualified domain name and port.
+	GlobalNetworkEndpointGroupNetworkEndpointTypeInternetFqdnPort = GlobalNetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT")
+	// The network endpoint is represented by an internet IP address and port.
+	GlobalNetworkEndpointGroupNetworkEndpointTypeInternetIpPort = GlobalNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
+	// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
 	GlobalNetworkEndpointGroupNetworkEndpointTypeNonGcpPrivateIpPort = GlobalNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT")
-	GlobalNetworkEndpointGroupNetworkEndpointTypeServerless          = GlobalNetworkEndpointGroupNetworkEndpointType("SERVERLESS")
+	// The network endpoint is handled by specified serverless infrastructure.
+	GlobalNetworkEndpointGroupNetworkEndpointTypeServerless = GlobalNetworkEndpointGroupNetworkEndpointType("SERVERLESS")
 )
 
 func (GlobalNetworkEndpointGroupNetworkEndpointType) ElementType() reflect.Type {
@@ -1785,7 +1799,7 @@ func (e GlobalPublicDelegatedPrefixStatus) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The ID of a supported feature. Read  Enabling guest operating system features to see a list of available options.
+// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
 type GuestOsFeatureType pulumi.String
 
 const (
@@ -1819,17 +1833,15 @@ func (e GuestOsFeatureType) ToStringPtrOutputWithContext(ctx context.Context) pu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies how port is selected for health checking, can be one of following values:
-// USE_FIXED_PORT: The port number in port is used for health checking.
-// USE_NAMED_PORT: The portName is used for health checking.
-// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-//
-// If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
 type HTTP2HealthCheckPortSpecification pulumi.String
 
 const (
-	HTTP2HealthCheckPortSpecificationUseFixedPort   = HTTP2HealthCheckPortSpecification("USE_FIXED_PORT")
-	HTTP2HealthCheckPortSpecificationUseNamedPort   = HTTP2HealthCheckPortSpecification("USE_NAMED_PORT")
+	// The port number in port is used for health checking.
+	HTTP2HealthCheckPortSpecificationUseFixedPort = HTTP2HealthCheckPortSpecification("USE_FIXED_PORT")
+	// The portName is used for health checking.
+	HTTP2HealthCheckPortSpecificationUseNamedPort = HTTP2HealthCheckPortSpecification("USE_NAMED_PORT")
+	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	HTTP2HealthCheckPortSpecificationUseServingPort = HTTP2HealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -1881,17 +1893,15 @@ func (e HTTP2HealthCheckProxyHeader) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies how port is selected for health checking, can be one of following values:
-// USE_FIXED_PORT: The port number in port is used for health checking.
-// USE_NAMED_PORT: The portName is used for health checking.
-// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-//
-// If not specified, HTTP health check follows behavior specified in port and portName fields.
+// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
 type HTTPHealthCheckPortSpecification pulumi.String
 
 const (
-	HTTPHealthCheckPortSpecificationUseFixedPort   = HTTPHealthCheckPortSpecification("USE_FIXED_PORT")
-	HTTPHealthCheckPortSpecificationUseNamedPort   = HTTPHealthCheckPortSpecification("USE_NAMED_PORT")
+	// The port number in port is used for health checking.
+	HTTPHealthCheckPortSpecificationUseFixedPort = HTTPHealthCheckPortSpecification("USE_FIXED_PORT")
+	// The portName is used for health checking.
+	HTTPHealthCheckPortSpecificationUseNamedPort = HTTPHealthCheckPortSpecification("USE_NAMED_PORT")
+	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	HTTPHealthCheckPortSpecificationUseServingPort = HTTPHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -1943,17 +1953,15 @@ func (e HTTPHealthCheckProxyHeader) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies how port is selected for health checking, can be one of following values:
-// USE_FIXED_PORT: The port number in port is used for health checking.
-// USE_NAMED_PORT: The portName is used for health checking.
-// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-//
-// If not specified, HTTPS health check follows behavior specified in port and portName fields.
+// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
 type HTTPSHealthCheckPortSpecification pulumi.String
 
 const (
-	HTTPSHealthCheckPortSpecificationUseFixedPort   = HTTPSHealthCheckPortSpecification("USE_FIXED_PORT")
-	HTTPSHealthCheckPortSpecificationUseNamedPort   = HTTPSHealthCheckPortSpecification("USE_NAMED_PORT")
+	// The port number in port is used for health checking.
+	HTTPSHealthCheckPortSpecificationUseFixedPort = HTTPSHealthCheckPortSpecification("USE_FIXED_PORT")
+	// The portName is used for health checking.
+	HTTPSHealthCheckPortSpecificationUseNamedPort = HTTPSHealthCheckPortSpecification("USE_NAMED_PORT")
+	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	HTTPSHealthCheckPortSpecificationUseServingPort = HTTPSHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -2038,21 +2046,20 @@ func (e HealthCheckType) ToStringPtrOutputWithContext(ctx context.Context) pulum
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The HTTP Status code to use for this RedirectAction.
-// Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
 type HttpRedirectActionRedirectResponseCode pulumi.String
 
 const (
-	HttpRedirectActionRedirectResponseCodeFound                   = HttpRedirectActionRedirectResponseCode("FOUND")
+	// Http Status Code 302 - Found.
+	HttpRedirectActionRedirectResponseCodeFound = HttpRedirectActionRedirectResponseCode("FOUND")
+	// Http Status Code 301 - Moved Permanently.
 	HttpRedirectActionRedirectResponseCodeMovedPermanentlyDefault = HttpRedirectActionRedirectResponseCode("MOVED_PERMANENTLY_DEFAULT")
-	HttpRedirectActionRedirectResponseCodePermanentRedirect       = HttpRedirectActionRedirectResponseCode("PERMANENT_REDIRECT")
-	HttpRedirectActionRedirectResponseCodeSeeOther                = HttpRedirectActionRedirectResponseCode("SEE_OTHER")
-	HttpRedirectActionRedirectResponseCodeTemporaryRedirect       = HttpRedirectActionRedirectResponseCode("TEMPORARY_REDIRECT")
+	// Http Status Code 308 - Permanent Redirect maintaining HTTP method.
+	HttpRedirectActionRedirectResponseCodePermanentRedirect = HttpRedirectActionRedirectResponseCode("PERMANENT_REDIRECT")
+	// Http Status Code 303 - See Other.
+	HttpRedirectActionRedirectResponseCodeSeeOther = HttpRedirectActionRedirectResponseCode("SEE_OTHER")
+	// Http Status Code 307 - Temporary Redirect maintaining HTTP method.
+	HttpRedirectActionRedirectResponseCodeTemporaryRedirect = HttpRedirectActionRedirectResponseCode("TEMPORARY_REDIRECT")
 )
 
 func (HttpRedirectActionRedirectResponseCode) ElementType() reflect.Type {
@@ -2133,10 +2140,14 @@ func (e ImageSourceType) ToStringPtrOutputWithContext(ctx context.Context) pulum
 type ImageStatus pulumi.String
 
 const (
+	// Image is deleting.
 	ImageStatusDeleting = ImageStatus("DELETING")
-	ImageStatusFailed   = ImageStatus("FAILED")
-	ImageStatusPending  = ImageStatus("PENDING")
-	ImageStatusReady    = ImageStatus("READY")
+	// Image creation failed due to an error.
+	ImageStatusFailed = ImageStatus("FAILED")
+	// Image hasn't been created as yet.
+	ImageStatusPending = ImageStatus("PENDING")
+	// Image has been successfully created.
+	ImageStatusReady = ImageStatus("READY")
 )
 
 func (ImageStatus) ElementType() reflect.Type {
@@ -2159,13 +2170,13 @@ func (e ImageStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.St
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The  instance redistribution policy for regional managed instance groups. Valid values are:
-// - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region.
-// - NONE: For non-autoscaled groups, proactive redistribution is disabled.
+// The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled.
 type InstanceGroupManagerUpdatePolicyInstanceRedistributionType pulumi.String
 
 const (
-	InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeNone      = InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE")
+	// No action is being proactively performed in order to bring this IGM to its target instance distribution.
+	InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeNone = InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE")
+	// This IGM will actively converge to its target instance distribution.
 	InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeProactive = InstanceGroupManagerUpdatePolicyInstanceRedistributionType("PROACTIVE")
 )
 
@@ -2193,9 +2204,13 @@ func (e InstanceGroupManagerUpdatePolicyInstanceRedistributionType) ToStringPtrO
 type InstanceGroupManagerUpdatePolicyMinimalAction pulumi.String
 
 const (
-	InstanceGroupManagerUpdatePolicyMinimalActionNone    = InstanceGroupManagerUpdatePolicyMinimalAction("NONE")
+	// Do not perform any action.
+	InstanceGroupManagerUpdatePolicyMinimalActionNone = InstanceGroupManagerUpdatePolicyMinimalAction("NONE")
+	// Updates applied in runtime, instances will not be disrupted.
 	InstanceGroupManagerUpdatePolicyMinimalActionRefresh = InstanceGroupManagerUpdatePolicyMinimalAction("REFRESH")
+	// Old instances will be deleted. New instances will be created from the target template.
 	InstanceGroupManagerUpdatePolicyMinimalActionReplace = InstanceGroupManagerUpdatePolicyMinimalAction("REPLACE")
+	// Every instance will be restarted.
 	InstanceGroupManagerUpdatePolicyMinimalActionRestart = InstanceGroupManagerUpdatePolicyMinimalAction("RESTART")
 )
 
@@ -2223,7 +2238,9 @@ func (e InstanceGroupManagerUpdatePolicyMinimalAction) ToStringPtrOutputWithCont
 type InstanceGroupManagerUpdatePolicyReplacementMethod pulumi.String
 
 const (
-	InstanceGroupManagerUpdatePolicyReplacementMethodRecreate   = InstanceGroupManagerUpdatePolicyReplacementMethod("RECREATE")
+	// Instances will be recreated (with the same name)
+	InstanceGroupManagerUpdatePolicyReplacementMethodRecreate = InstanceGroupManagerUpdatePolicyReplacementMethod("RECREATE")
+	// Default option: instances will be deleted and created (with a new name)
 	InstanceGroupManagerUpdatePolicyReplacementMethodSubstitute = InstanceGroupManagerUpdatePolicyReplacementMethod("SUBSTITUTE")
 )
 
@@ -2251,8 +2268,10 @@ func (e InstanceGroupManagerUpdatePolicyReplacementMethod) ToStringPtrOutputWith
 type InstanceGroupManagerUpdatePolicyType pulumi.String
 
 const (
+	// No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
 	InstanceGroupManagerUpdatePolicyTypeOpportunistic = InstanceGroupManagerUpdatePolicyType("OPPORTUNISTIC")
-	InstanceGroupManagerUpdatePolicyTypeProactive     = InstanceGroupManagerUpdatePolicyType("PROACTIVE")
+	// This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+	InstanceGroupManagerUpdatePolicyTypeProactive = InstanceGroupManagerUpdatePolicyType("PROACTIVE")
 )
 
 func (InstanceGroupManagerUpdatePolicyType) ElementType() reflect.Type {
@@ -2275,42 +2294,16 @@ func (e InstanceGroupManagerUpdatePolicyType) ToStringPtrOutputWithContext(ctx c
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// PostKeyRevocationActionType of the instance.
-type InstancePostKeyRevocationActionType pulumi.String
-
-const (
-	InstancePostKeyRevocationActionTypeNoop                                   = InstancePostKeyRevocationActionType("NOOP")
-	InstancePostKeyRevocationActionTypePostKeyRevocationActionTypeUnspecified = InstancePostKeyRevocationActionType("POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED")
-	InstancePostKeyRevocationActionTypeShutdown                               = InstancePostKeyRevocationActionType("SHUTDOWN")
-)
-
-func (InstancePostKeyRevocationActionType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InstancePostKeyRevocationActionType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InstancePostKeyRevocationActionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InstancePostKeyRevocationActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InstancePostKeyRevocationActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 type InstancePrivateIpv6GoogleAccess pulumi.String
 
 const (
+	// Bidirectional private IPv6 access to/from Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
 	InstancePrivateIpv6GoogleAccessEnableBidirectionalAccessToGoogle = InstancePrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE")
-	InstancePrivateIpv6GoogleAccessEnableOutboundVmAccessToGoogle    = InstancePrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE")
-	InstancePrivateIpv6GoogleAccessInheritFromSubnetwork             = InstancePrivateIpv6GoogleAccess("INHERIT_FROM_SUBNETWORK")
+	// Outbound private IPv6 access from VMs in this subnet to Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+	InstancePrivateIpv6GoogleAccessEnableOutboundVmAccessToGoogle = InstancePrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE")
+	// Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork.
+	InstancePrivateIpv6GoogleAccessInheritFromSubnetwork = InstancePrivateIpv6GoogleAccess("INHERIT_FROM_SUBNETWORK")
 )
 
 func (InstancePrivateIpv6GoogleAccess) ElementType() reflect.Type {
@@ -2333,42 +2326,16 @@ func (e InstancePrivateIpv6GoogleAccess) ToStringPtrOutputWithContext(ctx contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// PostKeyRevocationActionType of the instance.
-type InstancePropertiesPostKeyRevocationActionType pulumi.String
-
-const (
-	InstancePropertiesPostKeyRevocationActionTypeNoop                                   = InstancePropertiesPostKeyRevocationActionType("NOOP")
-	InstancePropertiesPostKeyRevocationActionTypePostKeyRevocationActionTypeUnspecified = InstancePropertiesPostKeyRevocationActionType("POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED")
-	InstancePropertiesPostKeyRevocationActionTypeShutdown                               = InstancePropertiesPostKeyRevocationActionType("SHUTDOWN")
-)
-
-func (InstancePropertiesPostKeyRevocationActionType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InstancePropertiesPostKeyRevocationActionType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InstancePropertiesPostKeyRevocationActionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InstancePropertiesPostKeyRevocationActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InstancePropertiesPostKeyRevocationActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 type InstancePropertiesPrivateIpv6GoogleAccess pulumi.String
 
 const (
+	// Bidirectional private IPv6 access to/from Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
 	InstancePropertiesPrivateIpv6GoogleAccessEnableBidirectionalAccessToGoogle = InstancePropertiesPrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE")
-	InstancePropertiesPrivateIpv6GoogleAccessEnableOutboundVmAccessToGoogle    = InstancePropertiesPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE")
-	InstancePropertiesPrivateIpv6GoogleAccessInheritFromSubnetwork             = InstancePropertiesPrivateIpv6GoogleAccess("INHERIT_FROM_SUBNETWORK")
+	// Outbound private IPv6 access from VMs in this subnet to Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+	InstancePropertiesPrivateIpv6GoogleAccessEnableOutboundVmAccessToGoogle = InstancePropertiesPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE")
+	// Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork.
+	InstancePropertiesPrivateIpv6GoogleAccessInheritFromSubnetwork = InstancePropertiesPrivateIpv6GoogleAccess("INHERIT_FROM_SUBNETWORK")
 )
 
 func (InstancePropertiesPrivateIpv6GoogleAccess) ElementType() reflect.Type {
@@ -2391,20 +2358,30 @@ func (e InstancePropertiesPrivateIpv6GoogleAccess) ToStringPtrOutputWithContext(
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
 type InstanceStatus pulumi.String
 
 const (
+	// The Nanny is halted and we are performing tear down tasks like network deprogramming, releasing quota, IP, tearing down disks etc.
 	InstanceStatusDeprovisioning = InstanceStatus("DEPROVISIONING")
-	InstanceStatusProvisioning   = InstanceStatus("PROVISIONING")
-	InstanceStatusRepairing      = InstanceStatus("REPAIRING")
-	InstanceStatusRunning        = InstanceStatus("RUNNING")
-	InstanceStatusStaging        = InstanceStatus("STAGING")
-	InstanceStatusStopped        = InstanceStatus("STOPPED")
-	InstanceStatusStopping       = InstanceStatus("STOPPING")
-	InstanceStatusSuspended      = InstanceStatus("SUSPENDED")
-	InstanceStatusSuspending     = InstanceStatus("SUSPENDING")
-	InstanceStatusTerminated     = InstanceStatus("TERMINATED")
+	// Resources are being allocated for the instance.
+	InstanceStatusProvisioning = InstanceStatus("PROVISIONING")
+	// The instance is in repair.
+	InstanceStatusRepairing = InstanceStatus("REPAIRING")
+	// The instance is running.
+	InstanceStatusRunning = InstanceStatus("RUNNING")
+	// All required resources have been allocated and the instance is being started.
+	InstanceStatusStaging = InstanceStatus("STAGING")
+	// The instance has stopped successfully.
+	InstanceStatusStopped = InstanceStatus("STOPPED")
+	// The instance is currently stopping (either being deleted or killed).
+	InstanceStatusStopping = InstanceStatus("STOPPING")
+	// The instance has suspended.
+	InstanceStatusSuspended = InstanceStatus("SUSPENDED")
+	// The instance is suspending.
+	InstanceStatusSuspending = InstanceStatus("SUSPENDING")
+	// The instance has stopped (either by explicit action or underlying failure).
+	InstanceStatusTerminated = InstanceStatus("TERMINATED")
 )
 
 func (InstanceStatus) ElementType() reflect.Type {
@@ -2427,34 +2404,34 @@ func (e InstanceStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values:
-// - BPS_50M: 50 Mbit/s
-// - BPS_100M: 100 Mbit/s
-// - BPS_200M: 200 Mbit/s
-// - BPS_300M: 300 Mbit/s
-// - BPS_400M: 400 Mbit/s
-// - BPS_500M: 500 Mbit/s
-// - BPS_1G: 1 Gbit/s
-// - BPS_2G: 2 Gbit/s
-// - BPS_5G: 5 Gbit/s
-// - BPS_10G: 10 Gbit/s
-// - BPS_20G: 20 Gbit/s
-// - BPS_50G: 50 Gbit/s
+// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s
 type InterconnectAttachmentBandwidth pulumi.String
 
 const (
+	// 100 Mbit/s
 	InterconnectAttachmentBandwidthBps100m = InterconnectAttachmentBandwidth("BPS_100M")
-	InterconnectAttachmentBandwidthBps10g  = InterconnectAttachmentBandwidth("BPS_10G")
-	InterconnectAttachmentBandwidthBps1g   = InterconnectAttachmentBandwidth("BPS_1G")
+	// 10 Gbit/s
+	InterconnectAttachmentBandwidthBps10g = InterconnectAttachmentBandwidth("BPS_10G")
+	// 1 Gbit/s
+	InterconnectAttachmentBandwidthBps1g = InterconnectAttachmentBandwidth("BPS_1G")
+	// 200 Mbit/s
 	InterconnectAttachmentBandwidthBps200m = InterconnectAttachmentBandwidth("BPS_200M")
-	InterconnectAttachmentBandwidthBps20g  = InterconnectAttachmentBandwidth("BPS_20G")
-	InterconnectAttachmentBandwidthBps2g   = InterconnectAttachmentBandwidth("BPS_2G")
+	// 20 Gbit/s
+	InterconnectAttachmentBandwidthBps20g = InterconnectAttachmentBandwidth("BPS_20G")
+	// 2 Gbit/s
+	InterconnectAttachmentBandwidthBps2g = InterconnectAttachmentBandwidth("BPS_2G")
+	// 300 Mbit/s
 	InterconnectAttachmentBandwidthBps300m = InterconnectAttachmentBandwidth("BPS_300M")
+	// 400 Mbit/s
 	InterconnectAttachmentBandwidthBps400m = InterconnectAttachmentBandwidth("BPS_400M")
+	// 500 Mbit/s
 	InterconnectAttachmentBandwidthBps500m = InterconnectAttachmentBandwidth("BPS_500M")
-	InterconnectAttachmentBandwidthBps50g  = InterconnectAttachmentBandwidth("BPS_50G")
-	InterconnectAttachmentBandwidthBps50m  = InterconnectAttachmentBandwidth("BPS_50M")
-	InterconnectAttachmentBandwidthBps5g   = InterconnectAttachmentBandwidth("BPS_5G")
+	// 50 Gbit/s
+	InterconnectAttachmentBandwidthBps50g = InterconnectAttachmentBandwidth("BPS_50G")
+	// 50 Mbit/s
+	InterconnectAttachmentBandwidthBps50m = InterconnectAttachmentBandwidth("BPS_50M")
+	// 5 Gbit/s
+	InterconnectAttachmentBandwidthBps5g = InterconnectAttachmentBandwidth("BPS_5G")
 )
 
 func (InterconnectAttachmentBandwidth) ElementType() reflect.Type {
@@ -2477,10 +2454,7 @@ func (e InterconnectAttachmentBandwidth) ToStringPtrOutputWithContext(ctx contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values:
-// - AVAILABILITY_DOMAIN_ANY
-// - AVAILABILITY_DOMAIN_1
-// - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
 type InterconnectAttachmentEdgeAvailabilityDomain pulumi.String
 
 const (
@@ -2509,15 +2483,14 @@ func (e InterconnectAttachmentEdgeAvailabilityDomain) ToStringPtrOutputWithConte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Indicates the user-supplied encryption option of this interconnect attachment:
-// - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment.
-// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option.
-//   Not currently available in all Interconnect locations.
+// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly.
 type InterconnectAttachmentEncryption pulumi.String
 
 const (
+	// The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use IPsec-encrypted Cloud Interconnect, the interconnect attachment must be created with this option.
 	InterconnectAttachmentEncryptionIpsec = InterconnectAttachmentEncryption("IPSEC")
-	InterconnectAttachmentEncryptionNone  = InterconnectAttachmentEncryption("NONE")
+	// This is the default value, which means the Interconnect Attachment will carry unencrypted traffic. VMs will be able to send traffic to or receive traffic from such interconnect attachment.
+	InterconnectAttachmentEncryptionNone = InterconnectAttachmentEncryption("NONE")
 )
 
 func (InterconnectAttachmentEncryption) ElementType() reflect.Type {
@@ -2540,13 +2513,13 @@ func (e InterconnectAttachmentEncryption) ToStringPtrOutputWithContext(ctx conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
-// - OS_ACTIVE: The attachment has been turned up and is ready to use.
-// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
+// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 type InterconnectAttachmentOperationalStatus pulumi.String
 
 const (
-	InterconnectAttachmentOperationalStatusOsActive        = InterconnectAttachmentOperationalStatus("OS_ACTIVE")
+	// Indicates that attachment has been turned up and is ready to use.
+	InterconnectAttachmentOperationalStatusOsActive = InterconnectAttachmentOperationalStatus("OS_ACTIVE")
+	// Indicates that attachment is not ready to use yet, because turnup is not complete.
 	InterconnectAttachmentOperationalStatusOsUnprovisioned = InterconnectAttachmentOperationalStatus("OS_UNPROVISIONED")
 )
 
@@ -2570,23 +2543,23 @@ func (e InterconnectAttachmentOperationalStatus) ToStringPtrOutputWithContext(ct
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
-// - ACTIVE: The attachment has been turned up and is ready to use.
-// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side.
-// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it.
-// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it.
-// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
+// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
 type InterconnectAttachmentStateEnum pulumi.String
 
 const (
-	InterconnectAttachmentStateEnumActive                 = InterconnectAttachmentStateEnum("ACTIVE")
-	InterconnectAttachmentStateEnumDefunct                = InterconnectAttachmentStateEnum("DEFUNCT")
+	// Indicates that attachment has been turned up and is ready to use.
+	InterconnectAttachmentStateEnumActive = InterconnectAttachmentStateEnum("ACTIVE")
+	// The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was wiped out, or because the other side of a Partner attachment was deleted.
+	InterconnectAttachmentStateEnumDefunct = InterconnectAttachmentStateEnum("DEFUNCT")
+	// A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it.
 	InterconnectAttachmentStateEnumPartnerRequestReceived = InterconnectAttachmentStateEnum("PARTNER_REQUEST_RECEIVED")
-	InterconnectAttachmentStateEnumPendingCustomer        = InterconnectAttachmentStateEnum("PENDING_CUSTOMER")
-	InterconnectAttachmentStateEnumPendingPartner         = InterconnectAttachmentStateEnum("PENDING_PARTNER")
-	InterconnectAttachmentStateEnumStateUnspecified       = InterconnectAttachmentStateEnum("STATE_UNSPECIFIED")
-	InterconnectAttachmentStateEnumUnprovisioned          = InterconnectAttachmentStateEnum("UNPROVISIONED")
+	// PARTNER or PARTNER_PROVIDER attachment that is waiting for the customer to activate.
+	InterconnectAttachmentStateEnumPendingCustomer = InterconnectAttachmentStateEnum("PENDING_CUSTOMER")
+	// A newly created PARTNER attachment that has not yet been configured on the Partner side.
+	InterconnectAttachmentStateEnumPendingPartner   = InterconnectAttachmentStateEnum("PENDING_PARTNER")
+	InterconnectAttachmentStateEnumStateUnspecified = InterconnectAttachmentStateEnum("STATE_UNSPECIFIED")
+	// Indicates that attachment is not ready to use yet, because turnup is not complete.
+	InterconnectAttachmentStateEnumUnprovisioned = InterconnectAttachmentStateEnum("UNPROVISIONED")
 )
 
 func (InterconnectAttachmentStateEnum) ElementType() reflect.Type {
@@ -2609,15 +2582,15 @@ func (e InterconnectAttachmentStateEnum) ToStringPtrOutputWithContext(ctx contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The type of interconnect attachment this is, which can take one of the following values:
-// - DEDICATED: an attachment to a Dedicated Interconnect.
-// - PARTNER: an attachment to a Partner Interconnect, created by the customer.
-// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
+// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 type InterconnectAttachmentType pulumi.String
 
 const (
-	InterconnectAttachmentTypeDedicated       = InterconnectAttachmentType("DEDICATED")
-	InterconnectAttachmentTypePartner         = InterconnectAttachmentType("PARTNER")
+	// Attachment to a dedicated interconnect.
+	InterconnectAttachmentTypeDedicated = InterconnectAttachmentType("DEDICATED")
+	// Attachment to a partner interconnect, created by the customer.
+	InterconnectAttachmentTypePartner = InterconnectAttachmentType("PARTNER")
+	// Attachment to a partner interconnect, created by the partner.
 	InterconnectAttachmentTypePartnerProvider = InterconnectAttachmentType("PARTNER_PROVIDER")
 )
 
@@ -2641,15 +2614,16 @@ func (e InterconnectAttachmentType) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Type of interconnect, which can take one of the following values:
-// - PARTNER: A partner-managed interconnection shared between customers though a partner.
-// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
 type InterconnectInterconnectType pulumi.String
 
 const (
+	// A dedicated physical interconnection with the customer.
 	InterconnectInterconnectTypeDedicated = InterconnectInterconnectType("DEDICATED")
+	// [Deprecated] A private, physical interconnection with the customer.
 	InterconnectInterconnectTypeItPrivate = InterconnectInterconnectType("IT_PRIVATE")
-	InterconnectInterconnectTypePartner   = InterconnectInterconnectType("PARTNER")
+	// A partner-managed interconnection shared between customers via partner.
+	InterconnectInterconnectTypePartner = InterconnectInterconnectType("PARTNER")
 )
 
 func (InterconnectInterconnectType) ElementType() reflect.Type {
@@ -2672,14 +2646,14 @@ func (e InterconnectInterconnectType) ToStringPtrOutputWithContext(ctx context.C
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Type of link requested, which can take one of the following values:
-// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics
-// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
 type InterconnectLinkType pulumi.String
 
 const (
+	// 100G Ethernet, LR Optics.
 	InterconnectLinkTypeLinkTypeEthernet100gLr = InterconnectLinkType("LINK_TYPE_ETHERNET_100G_LR")
-	InterconnectLinkTypeLinkTypeEthernet10gLr  = InterconnectLinkType("LINK_TYPE_ETHERNET_10G_LR")
+	// 10G Ethernet, LR Optics. [(rate_bps) = 10000000000];
+	InterconnectLinkTypeLinkTypeEthernet10gLr = InterconnectLinkType("LINK_TYPE_ETHERNET_10G_LR")
 )
 
 func (InterconnectLinkType) ElementType() reflect.Type {
@@ -2702,14 +2676,13 @@ func (e InterconnectLinkType) ToStringPtrOutputWithContext(ctx context.Context) 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The current status of this Interconnect's functionality, which can take one of the following values:
-// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect.
-// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect.
-// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+// [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
 type InterconnectOperationalStatus pulumi.String
 
 const (
-	InterconnectOperationalStatusOsActive        = InterconnectOperationalStatus("OS_ACTIVE")
+	// The interconnect is valid, turned up, and ready to use. Attachments may be provisioned on this interconnect.
+	InterconnectOperationalStatusOsActive = InterconnectOperationalStatus("OS_ACTIVE")
+	// The interconnect has not completed turnup. No attachments may be provisioned on this interconnect.
 	InterconnectOperationalStatusOsUnprovisioned = InterconnectOperationalStatus("OS_UNPROVISIONED")
 )
 
@@ -2733,16 +2706,18 @@ func (e InterconnectOperationalStatus) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Form this outage is expected to take, which can take one of the following values:
-// - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window.
-// - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
+// Form this outage is expected to take, which can take one of the following values: - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window. - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
 type InterconnectOutageNotificationIssueType pulumi.String
 
 const (
-	InterconnectOutageNotificationIssueTypeItOutage        = InterconnectOutageNotificationIssueType("IT_OUTAGE")
+	// [Deprecated] The Interconnect may be completely out of service for some or all of the specified window.
+	InterconnectOutageNotificationIssueTypeItOutage = InterconnectOutageNotificationIssueType("IT_OUTAGE")
+	// [Deprecated] Some circuits comprising the Interconnect will be out of service during the expected window. The interconnect as a whole should remain up, albeit with reduced bandwidth.
 	InterconnectOutageNotificationIssueTypeItPartialOutage = InterconnectOutageNotificationIssueType("IT_PARTIAL_OUTAGE")
-	InterconnectOutageNotificationIssueTypeOutage          = InterconnectOutageNotificationIssueType("OUTAGE")
-	InterconnectOutageNotificationIssueTypePartialOutage   = InterconnectOutageNotificationIssueType("PARTIAL_OUTAGE")
+	// The Interconnect may be completely out of service for some or all of the specified window.
+	InterconnectOutageNotificationIssueTypeOutage = InterconnectOutageNotificationIssueType("OUTAGE")
+	// Some circuits comprising the Interconnect will be out of service during the expected window. The interconnect as a whole should remain up, albeit with reduced bandwidth.
+	InterconnectOutageNotificationIssueTypePartialOutage = InterconnectOutageNotificationIssueType("PARTIAL_OUTAGE")
 )
 
 func (InterconnectOutageNotificationIssueType) ElementType() reflect.Type {
@@ -2765,12 +2740,13 @@ func (e InterconnectOutageNotificationIssueType) ToStringPtrOutputWithContext(ct
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The party that generated this notification, which can take the following value:
-// - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
+// The party that generated this notification, which can take the following value: - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
 type InterconnectOutageNotificationSource pulumi.String
 
 const (
-	InterconnectOutageNotificationSourceGoogle     = InterconnectOutageNotificationSource("GOOGLE")
+	// This notification was generated by Google.
+	InterconnectOutageNotificationSourceGoogle = InterconnectOutageNotificationSource("GOOGLE")
+	// [Deprecated] This notification was generated by Google.
 	InterconnectOutageNotificationSourceNsrcGoogle = InterconnectOutageNotificationSource("NSRC_GOOGLE")
 )
 
@@ -2794,16 +2770,19 @@ func (e InterconnectOutageNotificationSource) ToStringPtrOutputWithContext(ctx c
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// State of this notification, which can take one of the following values:
-// - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling.
-// - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
+// State of this notification, which can take one of the following values: - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling. - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. - COMPLETED: The outage associated with this notification is complete. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
 type InterconnectOutageNotificationState pulumi.String
 
 const (
-	InterconnectOutageNotificationStateActive     = InterconnectOutageNotificationState("ACTIVE")
-	InterconnectOutageNotificationStateCancelled  = InterconnectOutageNotificationState("CANCELLED")
-	InterconnectOutageNotificationStateCompleted  = InterconnectOutageNotificationState("COMPLETED")
-	InterconnectOutageNotificationStateNsActive   = InterconnectOutageNotificationState("NS_ACTIVE")
+	// This outage notification is active. The event could be in the future, present, or past. See start_time and end_time for scheduling.
+	InterconnectOutageNotificationStateActive = InterconnectOutageNotificationState("ACTIVE")
+	// The outage associated with this notification was cancelled before the outage was due to start.
+	InterconnectOutageNotificationStateCancelled = InterconnectOutageNotificationState("CANCELLED")
+	// The outage associated with this notification is complete.
+	InterconnectOutageNotificationStateCompleted = InterconnectOutageNotificationState("COMPLETED")
+	// [Deprecated] This outage notification is active. The event could be in the future, present, or past. See start_time and end_time for scheduling.
+	InterconnectOutageNotificationStateNsActive = InterconnectOutageNotificationState("NS_ACTIVE")
+	// [Deprecated] The outage associated with this notification was canceled before the outage was due to start.
 	InterconnectOutageNotificationStateNsCanceled = InterconnectOutageNotificationState("NS_CANCELED")
 )
 
@@ -2827,14 +2806,13 @@ func (e InterconnectOutageNotificationState) ToStringPtrOutputWithContext(ctx co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The current state of Interconnect functionality, which can take one of the following values:
-// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect.
-// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect.
-// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+// [Output Only] The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
 type InterconnectStateEnum pulumi.String
 
 const (
-	InterconnectStateEnumActive        = InterconnectStateEnum("ACTIVE")
+	// The interconnect is valid, turned up, and ready to use. Attachments may be provisioned on this interconnect.
+	InterconnectStateEnumActive = InterconnectStateEnum("ACTIVE")
+	// The interconnect has not completed turnup. No attachments may be provisioned on this interconnect.
 	InterconnectStateEnumUnprovisioned = InterconnectStateEnum("UNPROVISIONED")
 )
 
@@ -2858,12 +2836,15 @@ func (e InterconnectStateEnum) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The log_name to populate in the Cloud Audit Record.
+// This is deprecated and has no effect. Do not use.
 type LogConfigCloudAuditOptionsLogName pulumi.String
 
 const (
-	LogConfigCloudAuditOptionsLogNameAdminActivity      = LogConfigCloudAuditOptionsLogName("ADMIN_ACTIVITY")
-	LogConfigCloudAuditOptionsLogNameDataAccess         = LogConfigCloudAuditOptionsLogName("DATA_ACCESS")
+	// This is deprecated and has no effect. Do not use.
+	LogConfigCloudAuditOptionsLogNameAdminActivity = LogConfigCloudAuditOptionsLogName("ADMIN_ACTIVITY")
+	// This is deprecated and has no effect. Do not use.
+	LogConfigCloudAuditOptionsLogNameDataAccess = LogConfigCloudAuditOptionsLogName("DATA_ACCESS")
+	// This is deprecated and has no effect. Do not use.
 	LogConfigCloudAuditOptionsLogNameUnspecifiedLogName = LogConfigCloudAuditOptionsLogName("UNSPECIFIED_LOG_NAME")
 )
 
@@ -2887,10 +2868,13 @@ func (e LogConfigCloudAuditOptionsLogName) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+// This is deprecated and has no effect. Do not use.
 type LogConfigDataAccessOptionsLogMode pulumi.String
 
 const (
-	LogConfigDataAccessOptionsLogModeLogFailClosed      = LogConfigDataAccessOptionsLogMode("LOG_FAIL_CLOSED")
+	// This is deprecated and has no effect. Do not use.
+	LogConfigDataAccessOptionsLogModeLogFailClosed = LogConfigDataAccessOptionsLogMode("LOG_FAIL_CLOSED")
+	// This is deprecated and has no effect. Do not use.
 	LogConfigDataAccessOptionsLogModeLogModeUnspecified = LogConfigDataAccessOptionsLogMode("LOG_MODE_UNSPECIFIED")
 )
 
@@ -2914,16 +2898,16 @@ func (e LogConfigDataAccessOptionsLogMode) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match.
-// Supported values are:
-// - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata.
-// - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
 type MetadataFilterFilterMatchCriteria pulumi.String
 
 const (
+	// Specifies that all filterLabels must match for the metadataFilter to be considered a match.
 	MetadataFilterFilterMatchCriteriaMatchAll = MetadataFilterFilterMatchCriteria("MATCH_ALL")
+	// Specifies that any filterLabel must match for the metadataFilter to be considered a match.
 	MetadataFilterFilterMatchCriteriaMatchAny = MetadataFilterFilterMatchCriteria("MATCH_ANY")
-	MetadataFilterFilterMatchCriteriaNotSet   = MetadataFilterFilterMatchCriteria("NOT_SET")
+	// Indicates that the match criteria was not set. A metadataFilter must never be created with this value.
+	MetadataFilterFilterMatchCriteriaNotSet = MetadataFilterFilterMatchCriteria("NOT_SET")
 )
 
 func (MetadataFilterFilterMatchCriteria) ElementType() reflect.Type {
@@ -2950,12 +2934,18 @@ func (e MetadataFilterFilterMatchCriteria) ToStringPtrOutputWithContext(ctx cont
 type NetworkEndpointGroupNetworkEndpointType pulumi.String
 
 const (
-	NetworkEndpointGroupNetworkEndpointTypeGceVmIp             = NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP")
-	NetworkEndpointGroupNetworkEndpointTypeGceVmIpPort         = NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT")
-	NetworkEndpointGroupNetworkEndpointTypeInternetFqdnPort    = NetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT")
-	NetworkEndpointGroupNetworkEndpointTypeInternetIpPort      = NetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
+	// The network endpoint is represented by an IP address.
+	NetworkEndpointGroupNetworkEndpointTypeGceVmIp = NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP")
+	// The network endpoint is represented by IP address and port pair.
+	NetworkEndpointGroupNetworkEndpointTypeGceVmIpPort = NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT")
+	// The network endpoint is represented by fully qualified domain name and port.
+	NetworkEndpointGroupNetworkEndpointTypeInternetFqdnPort = NetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT")
+	// The network endpoint is represented by an internet IP address and port.
+	NetworkEndpointGroupNetworkEndpointTypeInternetIpPort = NetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
+	// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
 	NetworkEndpointGroupNetworkEndpointTypeNonGcpPrivateIpPort = NetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT")
-	NetworkEndpointGroupNetworkEndpointTypeServerless          = NetworkEndpointGroupNetworkEndpointType("SERVERLESS")
+	// The network endpoint is handled by specified serverless infrastructure.
+	NetworkEndpointGroupNetworkEndpointTypeServerless = NetworkEndpointGroupNetworkEndpointType("SERVERLESS")
 )
 
 func (NetworkEndpointGroupNetworkEndpointType) ElementType() reflect.Type {
@@ -2978,13 +2968,46 @@ func (e NetworkEndpointGroupNetworkEndpointType) ToStringPtrOutputWithContext(ct
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+// [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. Valid only if stackType is IPV4_IPV6.
+type NetworkInterfaceIpv6AccessType pulumi.String
+
+const (
+	// This network interface can have external IPv6.
+	NetworkInterfaceIpv6AccessTypeExternal = NetworkInterfaceIpv6AccessType("EXTERNAL")
+	// IPv6 access type not set. Means this network interface hasn't been turned on IPv6 yet.
+	NetworkInterfaceIpv6AccessTypeUnspecifiedIpv6AccessType = NetworkInterfaceIpv6AccessType("UNSPECIFIED_IPV6_ACCESS_TYPE")
+)
+
+func (NetworkInterfaceIpv6AccessType) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e NetworkInterfaceIpv6AccessType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkInterfaceIpv6AccessType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkInterfaceIpv6AccessType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkInterfaceIpv6AccessType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
 // The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 type NetworkInterfaceNicType pulumi.String
 
 const (
-	NetworkInterfaceNicTypeGvnic              = NetworkInterfaceNicType("GVNIC")
+	// GVNIC
+	NetworkInterfaceNicTypeGvnic = NetworkInterfaceNicType("GVNIC")
+	// No type specified.
 	NetworkInterfaceNicTypeUnspecifiedNicType = NetworkInterfaceNicType("UNSPECIFIED_NIC_TYPE")
-	NetworkInterfaceNicTypeVirtioNet          = NetworkInterfaceNicType("VIRTIO_NET")
+	// VIRTIO
+	NetworkInterfaceNicTypeVirtioNet = NetworkInterfaceNicType("VIRTIO_NET")
 )
 
 func (NetworkInterfaceNicType) ElementType() reflect.Type {
@@ -3007,11 +3030,44 @@ func (e NetworkInterfaceNicType) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+type NetworkInterfaceStackType pulumi.String
+
+const (
+	// The network interface can have both IPv4 and IPv6 addresses.
+	NetworkInterfaceStackTypeIpv4Ipv6 = NetworkInterfaceStackType("IPV4_IPV6")
+	// The network interface will be assigned IPv4 address.
+	NetworkInterfaceStackTypeIpv4Only             = NetworkInterfaceStackType("IPV4_ONLY")
+	NetworkInterfaceStackTypeUnspecifiedStackType = NetworkInterfaceStackType("UNSPECIFIED_STACK_TYPE")
+)
+
+func (NetworkInterfaceStackType) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e NetworkInterfaceStackType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkInterfaceStackType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkInterfaceStackType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkInterfaceStackType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
 // [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
 type NetworkPeeringState pulumi.String
 
 const (
-	NetworkPeeringStateActive   = NetworkPeeringState("ACTIVE")
+	// Matching configuration exists on the peer.
+	NetworkPeeringStateActive = NetworkPeeringState("ACTIVE")
+	// There is no matching configuration on the peer, including the case when peer does not exist.
 	NetworkPeeringStateInactive = NetworkPeeringState("INACTIVE")
 )
 
@@ -3063,14 +3119,17 @@ func (e NetworkRoutingConfigRoutingMode) ToStringPtrOutputWithContext(ctx contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see  Autoscaler modes.
+// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes.
 type NodeGroupAutoscalingPolicyMode pulumi.String
 
 const (
 	NodeGroupAutoscalingPolicyModeModeUnspecified = NodeGroupAutoscalingPolicyMode("MODE_UNSPECIFIED")
-	NodeGroupAutoscalingPolicyModeOff             = NodeGroupAutoscalingPolicyMode("OFF")
-	NodeGroupAutoscalingPolicyModeOn              = NodeGroupAutoscalingPolicyMode("ON")
-	NodeGroupAutoscalingPolicyModeOnlyScaleOut    = NodeGroupAutoscalingPolicyMode("ONLY_SCALE_OUT")
+	// Autoscaling is disabled.
+	NodeGroupAutoscalingPolicyModeOff = NodeGroupAutoscalingPolicyMode("OFF")
+	// Autocaling is fully enabled.
+	NodeGroupAutoscalingPolicyModeOn = NodeGroupAutoscalingPolicyMode("ON")
+	// Autoscaling will only scale out and will not remove nodes.
+	NodeGroupAutoscalingPolicyModeOnlyScaleOut = NodeGroupAutoscalingPolicyMode("ONLY_SCALE_OUT")
 )
 
 func (NodeGroupAutoscalingPolicyMode) ElementType() reflect.Type {
@@ -3093,14 +3152,17 @@ func (e NodeGroupAutoscalingPolicyMode) ToStringPtrOutputWithContext(ctx context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
 type NodeGroupMaintenancePolicy pulumi.String
 
 const (
+	// Allow the node and corresponding instances to retain default maintenance behavior.
 	NodeGroupMaintenancePolicyDefault                      = NodeGroupMaintenancePolicy("DEFAULT")
 	NodeGroupMaintenancePolicyMaintenancePolicyUnspecified = NodeGroupMaintenancePolicy("MAINTENANCE_POLICY_UNSPECIFIED")
-	NodeGroupMaintenancePolicyMigrateWithinNodeGroup       = NodeGroupMaintenancePolicy("MIGRATE_WITHIN_NODE_GROUP")
-	NodeGroupMaintenancePolicyRestartInPlace               = NodeGroupMaintenancePolicy("RESTART_IN_PLACE")
+	// When maintenance must be done on a node, the instances on that node will be moved to other nodes in the group. Instances with onHostMaintenance = MIGRATE will live migrate to their destinations while instances with onHostMaintenance = TERMINATE will terminate and then restart on their destination nodes if automaticRestart = true.
+	NodeGroupMaintenancePolicyMigrateWithinNodeGroup = NodeGroupMaintenancePolicy("MIGRATE_WITHIN_NODE_GROUP")
+	// Instances in this group will restart on the same node when maintenance has completed. Instances must have onHostMaintenance = TERMINATE, and they will only restart if automaticRestart = true.
+	NodeGroupMaintenancePolicyRestartInPlace = NodeGroupMaintenancePolicy("RESTART_IN_PLACE")
 )
 
 func (NodeGroupMaintenancePolicy) ElementType() reflect.Type {
@@ -3185,10 +3247,14 @@ func (e NodeTemplateCpuOvercommitType) ToStringPtrOutputWithContext(ctx context.
 type NodeTemplateStatus pulumi.String
 
 const (
+	// Resources are being allocated.
 	NodeTemplateStatusCreating = NodeTemplateStatus("CREATING")
+	// The node template is currently being deleted.
 	NodeTemplateStatusDeleting = NodeTemplateStatus("DELETING")
-	NodeTemplateStatusInvalid  = NodeTemplateStatus("INVALID")
-	NodeTemplateStatusReady    = NodeTemplateStatus("READY")
+	// Invalid status.
+	NodeTemplateStatusInvalid = NodeTemplateStatus("INVALID")
+	// The node template is ready.
+	NodeTemplateStatusReady = NodeTemplateStatus("READY")
 )
 
 func (NodeTemplateStatus) ElementType() reflect.Type {
@@ -3211,9 +3277,7 @@ func (e NodeTemplateStatus) ToStringPtrOutputWithContext(ctx context.Context) pu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-//
-// The default is TRUE.
+// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
 type PacketMirroringEnable pulumi.String
 
 const (
@@ -3245,8 +3309,11 @@ func (e PacketMirroringEnable) ToStringPtrOutputWithContext(ctx context.Context)
 type PacketMirroringFilterDirection pulumi.String
 
 const (
-	PacketMirroringFilterDirectionBoth    = PacketMirroringFilterDirection("BOTH")
-	PacketMirroringFilterDirectionEgress  = PacketMirroringFilterDirection("EGRESS")
+	// Default, both directions are mirrored.
+	PacketMirroringFilterDirectionBoth = PacketMirroringFilterDirection("BOTH")
+	// Only egress traffic is mirrored.
+	PacketMirroringFilterDirectionEgress = PacketMirroringFilterDirection("EGRESS")
+	// Only ingress traffic is mirrored.
 	PacketMirroringFilterDirectionIngress = PacketMirroringFilterDirection("INGRESS")
 )
 
@@ -3360,18 +3427,18 @@ func (e PublicDelegatedPrefixStatus) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the autoscaler configuration. Current set of possible values:
-// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-// - DELETING: Configuration is being deleted.
-// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+// [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
 type RegionAutoscalerStatus pulumi.String
 
 const (
-	RegionAutoscalerStatusActive   = RegionAutoscalerStatus("ACTIVE")
+	// Configuration is acknowledged to be effective
+	RegionAutoscalerStatusActive = RegionAutoscalerStatus("ACTIVE")
+	// Configuration is being deleted
 	RegionAutoscalerStatusDeleting = RegionAutoscalerStatus("DELETING")
-	RegionAutoscalerStatusError    = RegionAutoscalerStatus("ERROR")
-	RegionAutoscalerStatusPending  = RegionAutoscalerStatus("PENDING")
+	// Configuration has errors. Actionable for users.
+	RegionAutoscalerStatusError = RegionAutoscalerStatus("ERROR")
+	// Autoscaler backend hasn't read new/updated configuration
+	RegionAutoscalerStatusPending = RegionAutoscalerStatus("PENDING")
 )
 
 func (RegionAutoscalerStatus) ElementType() reflect.Type {
@@ -3394,13 +3461,17 @@ func (e RegionAutoscalerStatus) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose INTERNAL for Internal TCP/UDP Load Balancing. Choose INTERNAL_MANAGED for Internal HTTP(S) Load Balancing. INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 type RegionBackendServiceLoadBalancingScheme pulumi.String
 
 const (
-	RegionBackendServiceLoadBalancingSchemeExternal                   = RegionBackendServiceLoadBalancingScheme("EXTERNAL")
-	RegionBackendServiceLoadBalancingSchemeInternal                   = RegionBackendServiceLoadBalancingScheme("INTERNAL")
-	RegionBackendServiceLoadBalancingSchemeInternalManaged            = RegionBackendServiceLoadBalancingScheme("INTERNAL_MANAGED")
+	// Signifies that this will be used for HTTP(S), SSL Proxy, TCP Proxy or Network Load Balancing
+	RegionBackendServiceLoadBalancingSchemeExternal = RegionBackendServiceLoadBalancingScheme("EXTERNAL")
+	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+	RegionBackendServiceLoadBalancingSchemeInternal = RegionBackendServiceLoadBalancingScheme("INTERNAL")
+	// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+	RegionBackendServiceLoadBalancingSchemeInternalManaged = RegionBackendServiceLoadBalancingScheme("INTERNAL_MANAGED")
+	// Signifies that this will be used by Traffic Director.
 	RegionBackendServiceLoadBalancingSchemeInternalSelfManaged        = RegionBackendServiceLoadBalancingScheme("INTERNAL_SELF_MANAGED")
 	RegionBackendServiceLoadBalancingSchemeInvalidLoadBalancingScheme = RegionBackendServiceLoadBalancingScheme("INVALID_LOAD_BALANCING_SCHEME")
 )
@@ -3425,31 +3496,23 @@ func (e RegionBackendServiceLoadBalancingScheme) ToStringPtrOutputWithContext(ct
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The load balancing algorithm used within the scope of the locality. The possible values are:
-// - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
-// - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
-// - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
-// - RANDOM: The load balancer selects a random healthy host.
-// - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
-// - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
-//
-// This field is applicable to either:
-// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
-// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
-//
-// If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-//
-// Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 type RegionBackendServiceLocalityLbPolicy pulumi.String
 
 const (
-	RegionBackendServiceLocalityLbPolicyInvalidLbPolicy     = RegionBackendServiceLocalityLbPolicy("INVALID_LB_POLICY")
-	RegionBackendServiceLocalityLbPolicyLeastRequest        = RegionBackendServiceLocalityLbPolicy("LEAST_REQUEST")
-	RegionBackendServiceLocalityLbPolicyMaglev              = RegionBackendServiceLocalityLbPolicy("MAGLEV")
+	RegionBackendServiceLocalityLbPolicyInvalidLbPolicy = RegionBackendServiceLocalityLbPolicy("INVALID_LB_POLICY")
+	// An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+	RegionBackendServiceLocalityLbPolicyLeastRequest = RegionBackendServiceLocalityLbPolicy("LEAST_REQUEST")
+	// This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+	RegionBackendServiceLocalityLbPolicyMaglev = RegionBackendServiceLocalityLbPolicy("MAGLEV")
+	// Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
 	RegionBackendServiceLocalityLbPolicyOriginalDestination = RegionBackendServiceLocalityLbPolicy("ORIGINAL_DESTINATION")
-	RegionBackendServiceLocalityLbPolicyRandom              = RegionBackendServiceLocalityLbPolicy("RANDOM")
-	RegionBackendServiceLocalityLbPolicyRingHash            = RegionBackendServiceLocalityLbPolicy("RING_HASH")
-	RegionBackendServiceLocalityLbPolicyRoundRobin          = RegionBackendServiceLocalityLbPolicy("ROUND_ROBIN")
+	// The load balancer selects a random healthy host.
+	RegionBackendServiceLocalityLbPolicyRandom = RegionBackendServiceLocalityLbPolicy("RANDOM")
+	// The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+	RegionBackendServiceLocalityLbPolicyRingHash = RegionBackendServiceLocalityLbPolicy("RING_HASH")
+	// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+	RegionBackendServiceLocalityLbPolicyRoundRobin = RegionBackendServiceLocalityLbPolicy("ROUND_ROBIN")
 )
 
 func (RegionBackendServiceLocalityLbPolicy) ElementType() reflect.Type {
@@ -3472,21 +3535,22 @@ func (e RegionBackendServiceLocalityLbPolicy) ToStringPtrOutputWithContext(ctx c
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The protocol this BackendService uses to communicate with backends.
-//
-// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-//
-// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 type RegionBackendServiceProtocol pulumi.String
 
 const (
-	RegionBackendServiceProtocolGrpc  = RegionBackendServiceProtocol("GRPC")
-	RegionBackendServiceProtocolHttp  = RegionBackendServiceProtocol("HTTP")
+	// gRPC (available for Traffic Director).
+	RegionBackendServiceProtocolGrpc = RegionBackendServiceProtocol("GRPC")
+	RegionBackendServiceProtocolHttp = RegionBackendServiceProtocol("HTTP")
+	// HTTP/2 with SSL.
 	RegionBackendServiceProtocolHttp2 = RegionBackendServiceProtocol("HTTP2")
 	RegionBackendServiceProtocolHttps = RegionBackendServiceProtocol("HTTPS")
-	RegionBackendServiceProtocolSsl   = RegionBackendServiceProtocol("SSL")
-	RegionBackendServiceProtocolTcp   = RegionBackendServiceProtocol("TCP")
-	RegionBackendServiceProtocolUdp   = RegionBackendServiceProtocol("UDP")
+	// TCP proxying with SSL.
+	RegionBackendServiceProtocolSsl = RegionBackendServiceProtocol("SSL")
+	// TCP proxying or TCP pass-through (Internal TCP/UDP Load Balancing and Network Load Balancing).
+	RegionBackendServiceProtocolTcp = RegionBackendServiceProtocol("TCP")
+	// UDP (available for Internal TCP/UDP Load Balancing and Network Load Balancing).
+	RegionBackendServiceProtocolUdp = RegionBackendServiceProtocol("UDP")
 )
 
 func (RegionBackendServiceProtocol) ElementType() reflect.Type {
@@ -3509,26 +3573,26 @@ func (e RegionBackendServiceProtocol) ToStringPtrOutputWithContext(ctx context.C
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Type of session affinity to use. The default is NONE.
-//
-// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-//
-// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-//
-// When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-//
-// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Type of session affinity to use. The default is NONE. When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS. When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 type RegionBackendServiceSessionAffinity pulumi.String
 
 const (
-	RegionBackendServiceSessionAffinityClientIp              = RegionBackendServiceSessionAffinity("CLIENT_IP")
+	// 2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy.
+	RegionBackendServiceSessionAffinityClientIp = RegionBackendServiceSessionAffinity("CLIENT_IP")
+	// 1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing.
 	RegionBackendServiceSessionAffinityClientIpNoDestination = RegionBackendServiceSessionAffinity("CLIENT_IP_NO_DESTINATION")
-	RegionBackendServiceSessionAffinityClientIpPortProto     = RegionBackendServiceSessionAffinity("CLIENT_IP_PORT_PROTO")
-	RegionBackendServiceSessionAffinityClientIpProto         = RegionBackendServiceSessionAffinity("CLIENT_IP_PROTO")
-	RegionBackendServiceSessionAffinityGeneratedCookie       = RegionBackendServiceSessionAffinity("GENERATED_COOKIE")
-	RegionBackendServiceSessionAffinityHeaderField           = RegionBackendServiceSessionAffinity("HEADER_FIELD")
-	RegionBackendServiceSessionAffinityHttpCookie            = RegionBackendServiceSessionAffinity("HTTP_COOKIE")
-	RegionBackendServiceSessionAffinityNone                  = RegionBackendServiceSessionAffinity("NONE")
+	// 5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+	RegionBackendServiceSessionAffinityClientIpPortProto = RegionBackendServiceSessionAffinity("CLIENT_IP_PORT_PROTO")
+	// 3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+	RegionBackendServiceSessionAffinityClientIpProto = RegionBackendServiceSessionAffinity("CLIENT_IP_PROTO")
+	// Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing.
+	RegionBackendServiceSessionAffinityGeneratedCookie = RegionBackendServiceSessionAffinity("GENERATED_COOKIE")
+	// The hash is based on a user specified header field.
+	RegionBackendServiceSessionAffinityHeaderField = RegionBackendServiceSessionAffinity("HEADER_FIELD")
+	// The hash is based on a user provided cookie.
+	RegionBackendServiceSessionAffinityHttpCookie = RegionBackendServiceSessionAffinity("HTTP_COOKIE")
+	// No session affinity. Connections from the same client IP may go to any instance in the pool.
+	RegionBackendServiceSessionAffinityNone = RegionBackendServiceSessionAffinity("NONE")
 )
 
 func (RegionBackendServiceSessionAffinity) ElementType() reflect.Type {
@@ -3639,19 +3703,19 @@ func (e RegionCommitmentStatus) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of disk creation.
-// - CREATING: Disk is provisioning.
-// - RESTORING: Source data is being copied into the disk.
-// - FAILED: Disk creation failed.
-// - READY: Disk is ready for use.
-// - DELETING: Disk is deleting.
+// [Output Only] The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 type RegionDiskStatus pulumi.String
 
 const (
-	RegionDiskStatusCreating  = RegionDiskStatus("CREATING")
-	RegionDiskStatusDeleting  = RegionDiskStatus("DELETING")
-	RegionDiskStatusFailed    = RegionDiskStatus("FAILED")
-	RegionDiskStatusReady     = RegionDiskStatus("READY")
+	// Disk is provisioning
+	RegionDiskStatusCreating = RegionDiskStatus("CREATING")
+	// Disk is deleting.
+	RegionDiskStatusDeleting = RegionDiskStatus("DELETING")
+	// Disk creation failed.
+	RegionDiskStatusFailed = RegionDiskStatus("FAILED")
+	// Disk is ready for use.
+	RegionDiskStatusReady = RegionDiskStatus("READY")
+	// Source data is being copied into the disk.
 	RegionDiskStatusRestoring = RegionDiskStatus("RESTORING")
 )
 
@@ -3675,13 +3739,13 @@ func (e RegionDiskStatus) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.
-// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
-// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
 type RegionHealthCheckServiceHealthStatusAggregationPolicy pulumi.String
 
 const (
-	RegionHealthCheckServiceHealthStatusAggregationPolicyAnd           = RegionHealthCheckServiceHealthStatusAggregationPolicy("AND")
+	// If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+	RegionHealthCheckServiceHealthStatusAggregationPolicyAnd = RegionHealthCheckServiceHealthStatusAggregationPolicy("AND")
+	// An EndpointHealth message is returned for each backend in the health check service.
 	RegionHealthCheckServiceHealthStatusAggregationPolicyNoAggregation = RegionHealthCheckServiceHealthStatusAggregationPolicy("NO_AGGREGATION")
 )
 
@@ -3742,12 +3806,18 @@ func (e RegionHealthCheckType) ToStringPtrOutputWithContext(ctx context.Context)
 type RegionNetworkEndpointGroupNetworkEndpointType pulumi.String
 
 const (
-	RegionNetworkEndpointGroupNetworkEndpointTypeGceVmIp             = RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP")
-	RegionNetworkEndpointGroupNetworkEndpointTypeGceVmIpPort         = RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT")
-	RegionNetworkEndpointGroupNetworkEndpointTypeInternetFqdnPort    = RegionNetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT")
-	RegionNetworkEndpointGroupNetworkEndpointTypeInternetIpPort      = RegionNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
+	// The network endpoint is represented by an IP address.
+	RegionNetworkEndpointGroupNetworkEndpointTypeGceVmIp = RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP")
+	// The network endpoint is represented by IP address and port pair.
+	RegionNetworkEndpointGroupNetworkEndpointTypeGceVmIpPort = RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT")
+	// The network endpoint is represented by fully qualified domain name and port.
+	RegionNetworkEndpointGroupNetworkEndpointTypeInternetFqdnPort = RegionNetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT")
+	// The network endpoint is represented by an internet IP address and port.
+	RegionNetworkEndpointGroupNetworkEndpointTypeInternetIpPort = RegionNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
+	// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
 	RegionNetworkEndpointGroupNetworkEndpointTypeNonGcpPrivateIpPort = RegionNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT")
-	RegionNetworkEndpointGroupNetworkEndpointTypeServerless          = RegionNetworkEndpointGroupNetworkEndpointType("SERVERLESS")
+	// The network endpoint is handled by specified serverless infrastructure.
+	RegionNetworkEndpointGroupNetworkEndpointTypeServerless = RegionNetworkEndpointGroupNetworkEndpointType("SERVERLESS")
 )
 
 func (RegionNetworkEndpointGroupNetworkEndpointType) ElementType() reflect.Type {
@@ -3774,7 +3844,9 @@ func (e RegionNetworkEndpointGroupNetworkEndpointType) ToStringPtrOutputWithCont
 type RegionSslCertificateType pulumi.String
 
 const (
-	RegionSslCertificateTypeManaged         = RegionSslCertificateType("MANAGED")
+	// Google-managed SSLCertificate.
+	RegionSslCertificateTypeManaged = RegionSslCertificateType("MANAGED")
+	// Certificate uploaded by user.
 	RegionSslCertificateTypeSelfManaged     = RegionSslCertificateType("SELF_MANAGED")
 	RegionSslCertificateTypeTypeUnspecified = RegionSslCertificateType("TYPE_UNSPECIFIED")
 )
@@ -3799,17 +3871,16 @@ func (e RegionSslCertificateType) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.
-// - When quic-override is set to NONE, Google manages whether QUIC is used.
-// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible.
-// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC.
-// - If the quic-override flag is not specified, NONE is implied.
+// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied.
 type RegionTargetHttpsProxyQuicOverride pulumi.String
 
 const (
+	// The load balancer will not attempt to negotiate QUIC with clients.
 	RegionTargetHttpsProxyQuicOverrideDisable = RegionTargetHttpsProxyQuicOverride("DISABLE")
-	RegionTargetHttpsProxyQuicOverrideEnable  = RegionTargetHttpsProxyQuicOverride("ENABLE")
-	RegionTargetHttpsProxyQuicOverrideNone    = RegionTargetHttpsProxyQuicOverride("NONE")
+	// The load balancer will attempt to negotiate QUIC with clients.
+	RegionTargetHttpsProxyQuicOverrideEnable = RegionTargetHttpsProxyQuicOverride("ENABLE")
+	// No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request.
+	RegionTargetHttpsProxyQuicOverrideNone = RegionTargetHttpsProxyQuicOverride("NONE")
 )
 
 func (RegionTargetHttpsProxyQuicOverride) ElementType() reflect.Type {
@@ -3832,12 +3903,15 @@ func (e RegionTargetHttpsProxyQuicOverride) ToStringPtrOutputWithContext(ctx con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See  Consuming reserved instances for examples.
+// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
 type ReservationAffinityConsumeReservationType pulumi.String
 
 const (
-	ReservationAffinityConsumeReservationTypeAnyReservation      = ReservationAffinityConsumeReservationType("ANY_RESERVATION")
-	ReservationAffinityConsumeReservationTypeNoReservation       = ReservationAffinityConsumeReservationType("NO_RESERVATION")
+	// Consume any allocation available.
+	ReservationAffinityConsumeReservationTypeAnyReservation = ReservationAffinityConsumeReservationType("ANY_RESERVATION")
+	// Do not consume from any allocated capacity.
+	ReservationAffinityConsumeReservationTypeNoReservation = ReservationAffinityConsumeReservationType("NO_RESERVATION")
+	// Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 	ReservationAffinityConsumeReservationTypeSpecificReservation = ReservationAffinityConsumeReservationType("SPECIFIC_RESERVATION")
 	ReservationAffinityConsumeReservationTypeUnspecified         = ReservationAffinityConsumeReservationType("UNSPECIFIED")
 )
@@ -3866,10 +3940,14 @@ func (e ReservationAffinityConsumeReservationType) ToStringPtrOutputWithContext(
 type ReservationStatus pulumi.String
 
 const (
+	// Resources are being allocated for the reservation.
 	ReservationStatusCreating = ReservationStatus("CREATING")
+	// Reservation is currently being deleted.
 	ReservationStatusDeleting = ReservationStatus("DELETING")
 	ReservationStatusInvalid  = ReservationStatus("INVALID")
-	ReservationStatusReady    = ReservationStatus("READY")
+	// Reservation has allocated all its resources.
+	ReservationStatusReady = ReservationStatus("READY")
+	// Reservation is currently being resized.
 	ReservationStatusUpdating = ReservationStatus("UPDATING")
 )
 
@@ -3985,11 +4063,15 @@ func (e ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete) T
 type ResourcePolicyStatus pulumi.String
 
 const (
+	// Resource policy is being created.
 	ResourcePolicyStatusCreating = ResourcePolicyStatus("CREATING")
+	// Resource policy is being deleted.
 	ResourcePolicyStatusDeleting = ResourcePolicyStatus("DELETING")
-	ResourcePolicyStatusExpired  = ResourcePolicyStatus("EXPIRED")
-	ResourcePolicyStatusInvalid  = ResourcePolicyStatus("INVALID")
-	ResourcePolicyStatusReady    = ResourcePolicyStatus("READY")
+	// Resource policy is expired and will not run again.
+	ResourcePolicyStatusExpired = ResourcePolicyStatus("EXPIRED")
+	ResourcePolicyStatusInvalid = ResourcePolicyStatus("INVALID")
+	// Resource policy is ready to be used.
+	ResourcePolicyStatusReady = ResourcePolicyStatus("READY")
 )
 
 func (ResourcePolicyStatus) ElementType() reflect.Type {
@@ -4050,31 +4132,56 @@ func (e ResourcePolicyWeeklyCycleDayOfWeekDay) ToStringPtrOutputWithContext(ctx 
 type RouteWarningsItemCode pulumi.String
 
 const (
-	RouteWarningsItemCodeCleanupFailed                       = RouteWarningsItemCode("CLEANUP_FAILED")
-	RouteWarningsItemCodeDeprecatedResourceUsed              = RouteWarningsItemCode("DEPRECATED_RESOURCE_USED")
-	RouteWarningsItemCodeDeprecatedTypeUsed                  = RouteWarningsItemCode("DEPRECATED_TYPE_USED")
-	RouteWarningsItemCodeDiskSizeLargerThanImageSize         = RouteWarningsItemCode("DISK_SIZE_LARGER_THAN_IMAGE_SIZE")
-	RouteWarningsItemCodeExperimentalTypeUsed                = RouteWarningsItemCode("EXPERIMENTAL_TYPE_USED")
-	RouteWarningsItemCodeExternalApiWarning                  = RouteWarningsItemCode("EXTERNAL_API_WARNING")
-	RouteWarningsItemCodeFieldValueOverriden                 = RouteWarningsItemCode("FIELD_VALUE_OVERRIDEN")
-	RouteWarningsItemCodeInjectedKernelsDeprecated           = RouteWarningsItemCode("INJECTED_KERNELS_DEPRECATED")
-	RouteWarningsItemCodeLargeDeploymentWarning              = RouteWarningsItemCode("LARGE_DEPLOYMENT_WARNING")
-	RouteWarningsItemCodeMissingTypeDependency               = RouteWarningsItemCode("MISSING_TYPE_DEPENDENCY")
-	RouteWarningsItemCodeNextHopAddressNotAssigned           = RouteWarningsItemCode("NEXT_HOP_ADDRESS_NOT_ASSIGNED")
-	RouteWarningsItemCodeNextHopCannotIpForward              = RouteWarningsItemCode("NEXT_HOP_CANNOT_IP_FORWARD")
-	RouteWarningsItemCodeNextHopInstanceNotFound             = RouteWarningsItemCode("NEXT_HOP_INSTANCE_NOT_FOUND")
-	RouteWarningsItemCodeNextHopInstanceNotOnNetwork         = RouteWarningsItemCode("NEXT_HOP_INSTANCE_NOT_ON_NETWORK")
-	RouteWarningsItemCodeNextHopNotRunning                   = RouteWarningsItemCode("NEXT_HOP_NOT_RUNNING")
-	RouteWarningsItemCodeNotCriticalError                    = RouteWarningsItemCode("NOT_CRITICAL_ERROR")
-	RouteWarningsItemCodeNoResultsOnPage                     = RouteWarningsItemCode("NO_RESULTS_ON_PAGE")
-	RouteWarningsItemCodePartialSuccess                      = RouteWarningsItemCode("PARTIAL_SUCCESS")
-	RouteWarningsItemCodeRequiredTosAgreement                = RouteWarningsItemCode("REQUIRED_TOS_AGREEMENT")
+	// Warning about failed cleanup of transient changes made by a failed operation.
+	RouteWarningsItemCodeCleanupFailed = RouteWarningsItemCode("CLEANUP_FAILED")
+	// A link to a deprecated resource was created.
+	RouteWarningsItemCodeDeprecatedResourceUsed = RouteWarningsItemCode("DEPRECATED_RESOURCE_USED")
+	// When deploying and at least one of the resources has a type marked as deprecated
+	RouteWarningsItemCodeDeprecatedTypeUsed = RouteWarningsItemCode("DEPRECATED_TYPE_USED")
+	// The user created a boot disk that is larger than image size.
+	RouteWarningsItemCodeDiskSizeLargerThanImageSize = RouteWarningsItemCode("DISK_SIZE_LARGER_THAN_IMAGE_SIZE")
+	// When deploying and at least one of the resources has a type marked as experimental
+	RouteWarningsItemCodeExperimentalTypeUsed = RouteWarningsItemCode("EXPERIMENTAL_TYPE_USED")
+	// Warning that is present in an external api call
+	RouteWarningsItemCodeExternalApiWarning = RouteWarningsItemCode("EXTERNAL_API_WARNING")
+	// Warning that value of a field has been overridden. Deprecated unused field.
+	RouteWarningsItemCodeFieldValueOverriden = RouteWarningsItemCode("FIELD_VALUE_OVERRIDEN")
+	// The operation involved use of an injected kernel, which is deprecated.
+	RouteWarningsItemCodeInjectedKernelsDeprecated = RouteWarningsItemCode("INJECTED_KERNELS_DEPRECATED")
+	// When deploying a deployment with a exceedingly large number of resources
+	RouteWarningsItemCodeLargeDeploymentWarning = RouteWarningsItemCode("LARGE_DEPLOYMENT_WARNING")
+	// A resource depends on a missing type
+	RouteWarningsItemCodeMissingTypeDependency = RouteWarningsItemCode("MISSING_TYPE_DEPENDENCY")
+	// The route's nextHopIp address is not assigned to an instance on the network.
+	RouteWarningsItemCodeNextHopAddressNotAssigned = RouteWarningsItemCode("NEXT_HOP_ADDRESS_NOT_ASSIGNED")
+	// The route's next hop instance cannot ip forward.
+	RouteWarningsItemCodeNextHopCannotIpForward = RouteWarningsItemCode("NEXT_HOP_CANNOT_IP_FORWARD")
+	// The route's nextHopInstance URL refers to an instance that does not exist.
+	RouteWarningsItemCodeNextHopInstanceNotFound = RouteWarningsItemCode("NEXT_HOP_INSTANCE_NOT_FOUND")
+	// The route's nextHopInstance URL refers to an instance that is not on the same network as the route.
+	RouteWarningsItemCodeNextHopInstanceNotOnNetwork = RouteWarningsItemCode("NEXT_HOP_INSTANCE_NOT_ON_NETWORK")
+	// The route's next hop instance does not have a status of RUNNING.
+	RouteWarningsItemCodeNextHopNotRunning = RouteWarningsItemCode("NEXT_HOP_NOT_RUNNING")
+	// Error which is not critical. We decided to continue the process despite the mentioned error.
+	RouteWarningsItemCodeNotCriticalError = RouteWarningsItemCode("NOT_CRITICAL_ERROR")
+	// No results are present on a particular list page.
+	RouteWarningsItemCodeNoResultsOnPage = RouteWarningsItemCode("NO_RESULTS_ON_PAGE")
+	// Success is reported, but some results may be missing due to errors
+	RouteWarningsItemCodePartialSuccess = RouteWarningsItemCode("PARTIAL_SUCCESS")
+	// The user attempted to use a resource that requires a TOS they have not accepted.
+	RouteWarningsItemCodeRequiredTosAgreement = RouteWarningsItemCode("REQUIRED_TOS_AGREEMENT")
+	// Warning that a resource is in use.
 	RouteWarningsItemCodeResourceInUseByOtherResourceWarning = RouteWarningsItemCode("RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING")
-	RouteWarningsItemCodeResourceNotDeleted                  = RouteWarningsItemCode("RESOURCE_NOT_DELETED")
-	RouteWarningsItemCodeSchemaValidationIgnored             = RouteWarningsItemCode("SCHEMA_VALIDATION_IGNORED")
-	RouteWarningsItemCodeSingleInstancePropertyTemplate      = RouteWarningsItemCode("SINGLE_INSTANCE_PROPERTY_TEMPLATE")
-	RouteWarningsItemCodeUndeclaredProperties                = RouteWarningsItemCode("UNDECLARED_PROPERTIES")
-	RouteWarningsItemCodeUnreachable                         = RouteWarningsItemCode("UNREACHABLE")
+	// One or more of the resources set to auto-delete could not be deleted because they were in use.
+	RouteWarningsItemCodeResourceNotDeleted = RouteWarningsItemCode("RESOURCE_NOT_DELETED")
+	// When a resource schema validation is ignored.
+	RouteWarningsItemCodeSchemaValidationIgnored = RouteWarningsItemCode("SCHEMA_VALIDATION_IGNORED")
+	// Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.
+	RouteWarningsItemCodeSingleInstancePropertyTemplate = RouteWarningsItemCode("SINGLE_INSTANCE_PROPERTY_TEMPLATE")
+	// When undeclared properties in the schema are present
+	RouteWarningsItemCodeUndeclaredProperties = RouteWarningsItemCode("UNDECLARED_PROPERTIES")
+	// A given scope cannot be reached.
+	RouteWarningsItemCodeUnreachable = RouteWarningsItemCode("UNREACHABLE")
 )
 
 func (RouteWarningsItemCode) ElementType() reflect.Type {
@@ -4128,6 +4235,7 @@ func (e RouterBgpAdvertiseMode) ToStringPtrOutputWithContext(ctx context.Context
 type RouterBgpAdvertisedGroupsItem pulumi.String
 
 const (
+	// Advertise all available subnets (including peer VPC subnets).
 	RouterBgpAdvertisedGroupsItemAllSubnets = RouterBgpAdvertisedGroupsItem("ALL_SUBNETS")
 )
 
@@ -4227,6 +4335,7 @@ func (e RouterBgpPeerAdvertiseMode) ToStringPtrOutputWithContext(ctx context.Con
 type RouterBgpPeerAdvertisedGroupsItem pulumi.String
 
 const (
+	// Advertise all available subnets (including peer VPC subnets).
 	RouterBgpPeerAdvertisedGroupsItemAllSubnets = RouterBgpPeerAdvertisedGroupsItem("ALL_SUBNETS")
 )
 
@@ -4295,14 +4404,42 @@ func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) Index(i pulumi.IntInput) p
 	}).(pulumi.StringOutput)
 }
 
-// [Output Only] The resource that configures and manages this BGP peer.
-// - MANAGED_BY_USER is the default value and can be managed by you or other users
-// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
+// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
+type RouterBgpPeerEnable pulumi.String
+
+const (
+	RouterBgpPeerEnableFalse = RouterBgpPeerEnable("FALSE")
+	RouterBgpPeerEnableTrue  = RouterBgpPeerEnable("TRUE")
+)
+
+func (RouterBgpPeerEnable) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e RouterBgpPeerEnable) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterBgpPeerEnable) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterBgpPeerEnable) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RouterBgpPeerEnable) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+// [Output Only] The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 type RouterBgpPeerManagementType pulumi.String
 
 const (
+	// The BGP peer is automatically created for PARTNER type InterconnectAttachment; Google will automatically create/delete this BGP peer when the PARTNER InterconnectAttachment is created/deleted, and Google will update the ipAddress and peerIpAddress when the PARTNER InterconnectAttachment is provisioned. This type of BGP peer cannot be created or deleted, but can be modified for all fields except for name, ipAddress and peerIpAddress.
 	RouterBgpPeerManagementTypeManagedByAttachment = RouterBgpPeerManagementType("MANAGED_BY_ATTACHMENT")
-	RouterBgpPeerManagementTypeManagedByUser       = RouterBgpPeerManagementType("MANAGED_BY_USER")
+	// Default value, the BGP peer is manually created and managed by user.
+	RouterBgpPeerManagementTypeManagedByUser = RouterBgpPeerManagementType("MANAGED_BY_USER")
 )
 
 func (RouterBgpPeerManagementType) ElementType() reflect.Type {
@@ -4325,14 +4462,14 @@ func (e RouterBgpPeerManagementType) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The resource that configures and manages this interface.
-// - MANAGED_BY_USER is the default value and can be managed directly by users.
-// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
+// [Output Only] The resource that configures and manages this interface. - MANAGED_BY_USER is the default value and can be managed directly by users. - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
 type RouterInterfaceManagementType pulumi.String
 
 const (
+	// The interface is automatically created for PARTNER type InterconnectAttachment, Google will automatically create/update/delete this interface when the PARTNER InterconnectAttachment is created/provisioned/deleted. This type of interface cannot be manually managed by user.
 	RouterInterfaceManagementTypeManagedByAttachment = RouterInterfaceManagementType("MANAGED_BY_ATTACHMENT")
-	RouterInterfaceManagementTypeManagedByUser       = RouterInterfaceManagementType("MANAGED_BY_USER")
+	// Default value, the interface is manually created and managed by user.
+	RouterInterfaceManagementTypeManagedByUser = RouterInterfaceManagementType("MANAGED_BY_USER")
 )
 
 func (RouterInterfaceManagementType) ElementType() reflect.Type {
@@ -4355,15 +4492,15 @@ func (e RouterInterfaceManagementType) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values:
-// - ERRORS_ONLY: Export logs only for connection failures.
-// - TRANSLATIONS_ONLY: Export logs only for successful connections.
-// - ALL: Export logs for all connections, successful and unsuccessful.
+// Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values: - ERRORS_ONLY: Export logs only for connection failures. - TRANSLATIONS_ONLY: Export logs only for successful connections. - ALL: Export logs for all connections, successful and unsuccessful.
 type RouterNatLogConfigFilter pulumi.String
 
 const (
-	RouterNatLogConfigFilterAll              = RouterNatLogConfigFilter("ALL")
-	RouterNatLogConfigFilterErrorsOnly       = RouterNatLogConfigFilter("ERRORS_ONLY")
+	// Export logs for all (successful and unsuccessful) connections.
+	RouterNatLogConfigFilterAll = RouterNatLogConfigFilter("ALL")
+	// Export logs for connection failures only.
+	RouterNatLogConfigFilterErrorsOnly = RouterNatLogConfigFilter("ERRORS_ONLY")
+	// Export logs for successful connections only.
 	RouterNatLogConfigFilterTranslationsOnly = RouterNatLogConfigFilter("TRANSLATIONS_ONLY")
 )
 
@@ -4387,13 +4524,13 @@ func (e RouterNatLogConfigFilter) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specify the NatIpAllocateOption, which can take one of the following values:
-// - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs.
-// - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
+// Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
 type RouterNatNatIpAllocateOption pulumi.String
 
 const (
-	RouterNatNatIpAllocateOptionAutoOnly   = RouterNatNatIpAllocateOption("AUTO_ONLY")
+	// Nat IPs are allocated by GCP; customers can not specify any Nat IPs.
+	RouterNatNatIpAllocateOptionAutoOnly = RouterNatNatIpAllocateOption("AUTO_ONLY")
+	// Only use Nat IPs provided by customers. When specified Nat IPs are not enough then the Nat service fails for new VMs.
 	RouterNatNatIpAllocateOptionManualOnly = RouterNatNatIpAllocateOption("MANUAL_ONLY")
 )
 
@@ -4417,16 +4554,16 @@ func (e RouterNatNatIpAllocateOption) ToStringPtrOutputWithContext(ctx context.C
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specify the Nat option, which can take one of the following values:
-// - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat.
-// - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat.
-// - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
 type RouterNatSourceSubnetworkIpRangesToNat pulumi.String
 
 const (
-	RouterNatSourceSubnetworkIpRangesToNatAllSubnetworksAllIpRanges        = RouterNatSourceSubnetworkIpRangesToNat("ALL_SUBNETWORKS_ALL_IP_RANGES")
+	// All the IP ranges in every Subnetwork are allowed to Nat.
+	RouterNatSourceSubnetworkIpRangesToNatAllSubnetworksAllIpRanges = RouterNatSourceSubnetworkIpRangesToNat("ALL_SUBNETWORKS_ALL_IP_RANGES")
+	// All the primary IP ranges in every Subnetwork are allowed to Nat.
 	RouterNatSourceSubnetworkIpRangesToNatAllSubnetworksAllPrimaryIpRanges = RouterNatSourceSubnetworkIpRangesToNat("ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES")
-	RouterNatSourceSubnetworkIpRangesToNatListOfSubnetworks                = RouterNatSourceSubnetworkIpRangesToNat("LIST_OF_SUBNETWORKS")
+	// A list of Subnetworks are allowed to Nat (specified in the field subnetwork below)
+	RouterNatSourceSubnetworkIpRangesToNatListOfSubnetworks = RouterNatSourceSubnetworkIpRangesToNat("LIST_OF_SUBNETWORKS")
 )
 
 func (RouterNatSourceSubnetworkIpRangesToNat) ElementType() reflect.Type {
@@ -4452,9 +4589,12 @@ func (e RouterNatSourceSubnetworkIpRangesToNat) ToStringPtrOutputWithContext(ctx
 type RouterNatSubnetworkToNatSourceIpRangesToNatItem pulumi.String
 
 const (
-	RouterNatSubnetworkToNatSourceIpRangesToNatItemAllIpRanges             = RouterNatSubnetworkToNatSourceIpRangesToNatItem("ALL_IP_RANGES")
+	// The primary and all the secondary ranges are allowed to Nat.
+	RouterNatSubnetworkToNatSourceIpRangesToNatItemAllIpRanges = RouterNatSubnetworkToNatSourceIpRangesToNatItem("ALL_IP_RANGES")
+	// A list of secondary ranges are allowed to Nat.
 	RouterNatSubnetworkToNatSourceIpRangesToNatItemListOfSecondaryIpRanges = RouterNatSubnetworkToNatSourceIpRangesToNatItem("LIST_OF_SECONDARY_IP_RANGES")
-	RouterNatSubnetworkToNatSourceIpRangesToNatItemPrimaryIpRange          = RouterNatSubnetworkToNatSourceIpRangesToNatItem("PRIMARY_IP_RANGE")
+	// The primary range is allowed to Nat.
+	RouterNatSubnetworkToNatSourceIpRangesToNatItemPrimaryIpRange = RouterNatSubnetworkToNatSourceIpRangesToNatItem("PRIMARY_IP_RANGE")
 )
 
 func (RouterNatSubnetworkToNatSourceIpRangesToNatItem) ElementType() reflect.Type {
@@ -4522,16 +4662,22 @@ func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput) Index(i pulu
 	}).(pulumi.StringOutput)
 }
 
-// Required
+// This is deprecated and has no effect. Do not use.
 type RuleAction pulumi.String
 
 const (
-	RuleActionAllow        = RuleAction("ALLOW")
+	// This is deprecated and has no effect. Do not use.
+	RuleActionAllow = RuleAction("ALLOW")
+	// This is deprecated and has no effect. Do not use.
 	RuleActionAllowWithLog = RuleAction("ALLOW_WITH_LOG")
-	RuleActionDeny         = RuleAction("DENY")
-	RuleActionDenyWithLog  = RuleAction("DENY_WITH_LOG")
-	RuleActionLog          = RuleAction("LOG")
-	RuleActionNoAction     = RuleAction("NO_ACTION")
+	// This is deprecated and has no effect. Do not use.
+	RuleActionDeny = RuleAction("DENY")
+	// This is deprecated and has no effect. Do not use.
+	RuleActionDenyWithLog = RuleAction("DENY_WITH_LOG")
+	// This is deprecated and has no effect. Do not use.
+	RuleActionLog = RuleAction("LOG")
+	// This is deprecated and has no effect. Do not use.
+	RuleActionNoAction = RuleAction("NO_ACTION")
 )
 
 func (RuleAction) ElementType() reflect.Type {
@@ -4554,17 +4700,15 @@ func (e RuleAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.Str
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies how port is selected for health checking, can be one of following values:
-// USE_FIXED_PORT: The port number in port is used for health checking.
-// USE_NAMED_PORT: The portName is used for health checking.
-// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-//
-// If not specified, SSL health check follows behavior specified in port and portName fields.
+// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
 type SSLHealthCheckPortSpecification pulumi.String
 
 const (
-	SSLHealthCheckPortSpecificationUseFixedPort   = SSLHealthCheckPortSpecification("USE_FIXED_PORT")
-	SSLHealthCheckPortSpecificationUseNamedPort   = SSLHealthCheckPortSpecification("USE_NAMED_PORT")
+	// The port number in port is used for health checking.
+	SSLHealthCheckPortSpecificationUseFixedPort = SSLHealthCheckPortSpecification("USE_FIXED_PORT")
+	// The portName is used for health checking.
+	SSLHealthCheckPortSpecificationUseNamedPort = SSLHealthCheckPortSpecification("USE_NAMED_PORT")
+	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	SSLHealthCheckPortSpecificationUseServingPort = SSLHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -4620,7 +4764,9 @@ func (e SSLHealthCheckProxyHeader) ToStringPtrOutputWithContext(ctx context.Cont
 type SchedulingNodeAffinityOperator pulumi.String
 
 const (
-	SchedulingNodeAffinityOperatorIn                  = SchedulingNodeAffinityOperator("IN")
+	// Requires Compute Engine to seek for matched nodes.
+	SchedulingNodeAffinityOperatorIn = SchedulingNodeAffinityOperator("IN")
+	// Requires Compute Engine to avoid certain nodes.
 	SchedulingNodeAffinityOperatorNotIn               = SchedulingNodeAffinityOperator("NOT_IN")
 	SchedulingNodeAffinityOperatorOperatorUnspecified = SchedulingNodeAffinityOperator("OPERATOR_UNSPECIFIED")
 )
@@ -4649,7 +4795,9 @@ func (e SchedulingNodeAffinityOperator) ToStringPtrOutputWithContext(ctx context
 type SchedulingOnHostMaintenance pulumi.String
 
 const (
-	SchedulingOnHostMaintenanceMigrate   = SchedulingOnHostMaintenance("MIGRATE")
+	// *[Default]* Allows Compute Engine to automatically migrate instances out of the way of maintenance events.
+	SchedulingOnHostMaintenanceMigrate = SchedulingOnHostMaintenance("MIGRATE")
+	// Tells Compute Engine to terminate and (optionally) restart the instance away from the maintenance activity. If you would like your instance to be restarted, set the automaticRestart flag to true. Your instance may be restarted more than once, and it may be restarted outside the window of maintenance events.
 	SchedulingOnHostMaintenanceTerminate = SchedulingOnHostMaintenance("TERMINATE")
 )
 
@@ -4673,10 +4821,65 @@ func (e SchedulingOnHostMaintenance) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SecurityPolicyAdvancedOptionsConfigJsonParsing pulumi.String
+
+const (
+	SecurityPolicyAdvancedOptionsConfigJsonParsingDisabled = SecurityPolicyAdvancedOptionsConfigJsonParsing("DISABLED")
+	SecurityPolicyAdvancedOptionsConfigJsonParsingStandard = SecurityPolicyAdvancedOptionsConfigJsonParsing("STANDARD")
+)
+
+func (SecurityPolicyAdvancedOptionsConfigJsonParsing) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e SecurityPolicyAdvancedOptionsConfigJsonParsing) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyAdvancedOptionsConfigJsonParsing) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyAdvancedOptionsConfigJsonParsing) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyAdvancedOptionsConfigJsonParsing) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPolicyAdvancedOptionsConfigLogLevel pulumi.String
+
+const (
+	SecurityPolicyAdvancedOptionsConfigLogLevelNormal  = SecurityPolicyAdvancedOptionsConfigLogLevel("NORMAL")
+	SecurityPolicyAdvancedOptionsConfigLogLevelVerbose = SecurityPolicyAdvancedOptionsConfigLogLevel("VERBOSE")
+)
+
+func (SecurityPolicyAdvancedOptionsConfigLogLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e SecurityPolicyAdvancedOptionsConfigLogLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyAdvancedOptionsConfigLogLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyAdvancedOptionsConfigLogLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyAdvancedOptionsConfigLogLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
 // Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 type SecurityPolicyRuleMatcherVersionedExpr pulumi.String
 
 const (
+	// Matches the source IP address of a request to the IP ranges supplied in config.
 	SecurityPolicyRuleMatcherVersionedExprSrcIpsV1 = SecurityPolicyRuleMatcherVersionedExpr("SRC_IPS_V1")
 )
 
@@ -4703,7 +4906,9 @@ func (e SecurityPolicyRuleMatcherVersionedExpr) ToStringPtrOutputWithContext(ctx
 type ServerBindingType pulumi.String
 
 const (
-	ServerBindingTypeRestartNodeOnAnyServer       = ServerBindingType("RESTART_NODE_ON_ANY_SERVER")
+	// Node may associate with any physical server over its lifetime.
+	ServerBindingTypeRestartNodeOnAnyServer = ServerBindingType("RESTART_NODE_ON_ANY_SERVER")
+	// Node may associate with minimal physical servers over its lifetime.
 	ServerBindingTypeRestartNodeOnMinimalServers  = ServerBindingType("RESTART_NODE_ON_MINIMAL_SERVERS")
 	ServerBindingTypeServerBindingTypeUnspecified = ServerBindingType("SERVER_BINDING_TYPE_UNSPECIFIED")
 )
@@ -4732,12 +4937,17 @@ func (e ServerBindingType) ToStringPtrOutputWithContext(ctx context.Context) pul
 type SslCertificateManagedSslCertificateStatus pulumi.String
 
 const (
+	// The certificate management is working, and a certificate has been provisioned.
 	SslCertificateManagedSslCertificateStatusActive                              = SslCertificateManagedSslCertificateStatus("ACTIVE")
 	SslCertificateManagedSslCertificateStatusManagedCertificateStatusUnspecified = SslCertificateManagedSslCertificateStatus("MANAGED_CERTIFICATE_STATUS_UNSPECIFIED")
-	SslCertificateManagedSslCertificateStatusProvisioning                        = SslCertificateManagedSslCertificateStatus("PROVISIONING")
-	SslCertificateManagedSslCertificateStatusProvisioningFailed                  = SslCertificateManagedSslCertificateStatus("PROVISIONING_FAILED")
-	SslCertificateManagedSslCertificateStatusProvisioningFailedPermanently       = SslCertificateManagedSslCertificateStatus("PROVISIONING_FAILED_PERMANENTLY")
-	SslCertificateManagedSslCertificateStatusRenewalFailed                       = SslCertificateManagedSslCertificateStatus("RENEWAL_FAILED")
+	// The certificate management is working. GCP will attempt to provision the first certificate.
+	SslCertificateManagedSslCertificateStatusProvisioning = SslCertificateManagedSslCertificateStatus("PROVISIONING")
+	// Certificate provisioning failed due to an issue with the DNS or load balancing configuration. For details of which domain failed, consult domain_status field.
+	SslCertificateManagedSslCertificateStatusProvisioningFailed = SslCertificateManagedSslCertificateStatus("PROVISIONING_FAILED")
+	// Certificate provisioning failed due to an issue with the DNS or load balancing configuration. It won't be retried. To try again delete and create a new managed SslCertificate resource. For details of which domain failed, consult domain_status field.
+	SslCertificateManagedSslCertificateStatusProvisioningFailedPermanently = SslCertificateManagedSslCertificateStatus("PROVISIONING_FAILED_PERMANENTLY")
+	// Renewal of the certificate has failed due to an issue with the DNS or load balancing configuration. The existing cert is still serving; however, it will expire shortly. To provision a renewed certificate, delete and create a new managed SslCertificate resource. For details on which domain failed, consult domain_status field.
+	SslCertificateManagedSslCertificateStatusRenewalFailed = SslCertificateManagedSslCertificateStatus("RENEWAL_FAILED")
 )
 
 func (SslCertificateManagedSslCertificateStatus) ElementType() reflect.Type {
@@ -4764,7 +4974,9 @@ func (e SslCertificateManagedSslCertificateStatus) ToStringPtrOutputWithContext(
 type SslCertificateType pulumi.String
 
 const (
-	SslCertificateTypeManaged         = SslCertificateType("MANAGED")
+	// Google-managed SSLCertificate.
+	SslCertificateTypeManaged = SslCertificateType("MANAGED")
+	// Certificate uploaded by user.
 	SslCertificateTypeSelfManaged     = SslCertificateType("SELF_MANAGED")
 	SslCertificateTypeTypeUnspecified = SslCertificateType("TYPE_UNSPECIFIED")
 )
@@ -4793,8 +5005,11 @@ func (e SslCertificateType) ToStringPtrOutputWithContext(ctx context.Context) pu
 type SslPolicyMinTlsVersion pulumi.String
 
 const (
+	// TLS 1.0
 	SslPolicyMinTlsVersionTls10 = SslPolicyMinTlsVersion("TLS_1_0")
+	// TLS 1.1
 	SslPolicyMinTlsVersionTls11 = SslPolicyMinTlsVersion("TLS_1_1")
+	// TLS 1.2
 	SslPolicyMinTlsVersionTls12 = SslPolicyMinTlsVersion("TLS_1_2")
 )
 
@@ -4822,9 +5037,13 @@ func (e SslPolicyMinTlsVersion) ToStringPtrOutputWithContext(ctx context.Context
 type SslPolicyProfile pulumi.String
 
 const (
+	// Compatible profile. Allows the broadset set of clients, even those which support only out-of-date SSL features to negotiate with the load balancer.
 	SslPolicyProfileCompatible = SslPolicyProfile("COMPATIBLE")
-	SslPolicyProfileCustom     = SslPolicyProfile("CUSTOM")
-	SslPolicyProfileModern     = SslPolicyProfile("MODERN")
+	// Custom profile. Allow only the set of allowed SSL features specified in the customFeatures field.
+	SslPolicyProfileCustom = SslPolicyProfile("CUSTOM")
+	// Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the load balancer.
+	SslPolicyProfileModern = SslPolicyProfile("MODERN")
+	// Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
 	SslPolicyProfileRestricted = SslPolicyProfile("RESTRICTED")
 )
 
@@ -4852,31 +5071,56 @@ func (e SslPolicyProfile) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type SslPolicyWarningsItemCode pulumi.String
 
 const (
-	SslPolicyWarningsItemCodeCleanupFailed                       = SslPolicyWarningsItemCode("CLEANUP_FAILED")
-	SslPolicyWarningsItemCodeDeprecatedResourceUsed              = SslPolicyWarningsItemCode("DEPRECATED_RESOURCE_USED")
-	SslPolicyWarningsItemCodeDeprecatedTypeUsed                  = SslPolicyWarningsItemCode("DEPRECATED_TYPE_USED")
-	SslPolicyWarningsItemCodeDiskSizeLargerThanImageSize         = SslPolicyWarningsItemCode("DISK_SIZE_LARGER_THAN_IMAGE_SIZE")
-	SslPolicyWarningsItemCodeExperimentalTypeUsed                = SslPolicyWarningsItemCode("EXPERIMENTAL_TYPE_USED")
-	SslPolicyWarningsItemCodeExternalApiWarning                  = SslPolicyWarningsItemCode("EXTERNAL_API_WARNING")
-	SslPolicyWarningsItemCodeFieldValueOverriden                 = SslPolicyWarningsItemCode("FIELD_VALUE_OVERRIDEN")
-	SslPolicyWarningsItemCodeInjectedKernelsDeprecated           = SslPolicyWarningsItemCode("INJECTED_KERNELS_DEPRECATED")
-	SslPolicyWarningsItemCodeLargeDeploymentWarning              = SslPolicyWarningsItemCode("LARGE_DEPLOYMENT_WARNING")
-	SslPolicyWarningsItemCodeMissingTypeDependency               = SslPolicyWarningsItemCode("MISSING_TYPE_DEPENDENCY")
-	SslPolicyWarningsItemCodeNextHopAddressNotAssigned           = SslPolicyWarningsItemCode("NEXT_HOP_ADDRESS_NOT_ASSIGNED")
-	SslPolicyWarningsItemCodeNextHopCannotIpForward              = SslPolicyWarningsItemCode("NEXT_HOP_CANNOT_IP_FORWARD")
-	SslPolicyWarningsItemCodeNextHopInstanceNotFound             = SslPolicyWarningsItemCode("NEXT_HOP_INSTANCE_NOT_FOUND")
-	SslPolicyWarningsItemCodeNextHopInstanceNotOnNetwork         = SslPolicyWarningsItemCode("NEXT_HOP_INSTANCE_NOT_ON_NETWORK")
-	SslPolicyWarningsItemCodeNextHopNotRunning                   = SslPolicyWarningsItemCode("NEXT_HOP_NOT_RUNNING")
-	SslPolicyWarningsItemCodeNotCriticalError                    = SslPolicyWarningsItemCode("NOT_CRITICAL_ERROR")
-	SslPolicyWarningsItemCodeNoResultsOnPage                     = SslPolicyWarningsItemCode("NO_RESULTS_ON_PAGE")
-	SslPolicyWarningsItemCodePartialSuccess                      = SslPolicyWarningsItemCode("PARTIAL_SUCCESS")
-	SslPolicyWarningsItemCodeRequiredTosAgreement                = SslPolicyWarningsItemCode("REQUIRED_TOS_AGREEMENT")
+	// Warning about failed cleanup of transient changes made by a failed operation.
+	SslPolicyWarningsItemCodeCleanupFailed = SslPolicyWarningsItemCode("CLEANUP_FAILED")
+	// A link to a deprecated resource was created.
+	SslPolicyWarningsItemCodeDeprecatedResourceUsed = SslPolicyWarningsItemCode("DEPRECATED_RESOURCE_USED")
+	// When deploying and at least one of the resources has a type marked as deprecated
+	SslPolicyWarningsItemCodeDeprecatedTypeUsed = SslPolicyWarningsItemCode("DEPRECATED_TYPE_USED")
+	// The user created a boot disk that is larger than image size.
+	SslPolicyWarningsItemCodeDiskSizeLargerThanImageSize = SslPolicyWarningsItemCode("DISK_SIZE_LARGER_THAN_IMAGE_SIZE")
+	// When deploying and at least one of the resources has a type marked as experimental
+	SslPolicyWarningsItemCodeExperimentalTypeUsed = SslPolicyWarningsItemCode("EXPERIMENTAL_TYPE_USED")
+	// Warning that is present in an external api call
+	SslPolicyWarningsItemCodeExternalApiWarning = SslPolicyWarningsItemCode("EXTERNAL_API_WARNING")
+	// Warning that value of a field has been overridden. Deprecated unused field.
+	SslPolicyWarningsItemCodeFieldValueOverriden = SslPolicyWarningsItemCode("FIELD_VALUE_OVERRIDEN")
+	// The operation involved use of an injected kernel, which is deprecated.
+	SslPolicyWarningsItemCodeInjectedKernelsDeprecated = SslPolicyWarningsItemCode("INJECTED_KERNELS_DEPRECATED")
+	// When deploying a deployment with a exceedingly large number of resources
+	SslPolicyWarningsItemCodeLargeDeploymentWarning = SslPolicyWarningsItemCode("LARGE_DEPLOYMENT_WARNING")
+	// A resource depends on a missing type
+	SslPolicyWarningsItemCodeMissingTypeDependency = SslPolicyWarningsItemCode("MISSING_TYPE_DEPENDENCY")
+	// The route's nextHopIp address is not assigned to an instance on the network.
+	SslPolicyWarningsItemCodeNextHopAddressNotAssigned = SslPolicyWarningsItemCode("NEXT_HOP_ADDRESS_NOT_ASSIGNED")
+	// The route's next hop instance cannot ip forward.
+	SslPolicyWarningsItemCodeNextHopCannotIpForward = SslPolicyWarningsItemCode("NEXT_HOP_CANNOT_IP_FORWARD")
+	// The route's nextHopInstance URL refers to an instance that does not exist.
+	SslPolicyWarningsItemCodeNextHopInstanceNotFound = SslPolicyWarningsItemCode("NEXT_HOP_INSTANCE_NOT_FOUND")
+	// The route's nextHopInstance URL refers to an instance that is not on the same network as the route.
+	SslPolicyWarningsItemCodeNextHopInstanceNotOnNetwork = SslPolicyWarningsItemCode("NEXT_HOP_INSTANCE_NOT_ON_NETWORK")
+	// The route's next hop instance does not have a status of RUNNING.
+	SslPolicyWarningsItemCodeNextHopNotRunning = SslPolicyWarningsItemCode("NEXT_HOP_NOT_RUNNING")
+	// Error which is not critical. We decided to continue the process despite the mentioned error.
+	SslPolicyWarningsItemCodeNotCriticalError = SslPolicyWarningsItemCode("NOT_CRITICAL_ERROR")
+	// No results are present on a particular list page.
+	SslPolicyWarningsItemCodeNoResultsOnPage = SslPolicyWarningsItemCode("NO_RESULTS_ON_PAGE")
+	// Success is reported, but some results may be missing due to errors
+	SslPolicyWarningsItemCodePartialSuccess = SslPolicyWarningsItemCode("PARTIAL_SUCCESS")
+	// The user attempted to use a resource that requires a TOS they have not accepted.
+	SslPolicyWarningsItemCodeRequiredTosAgreement = SslPolicyWarningsItemCode("REQUIRED_TOS_AGREEMENT")
+	// Warning that a resource is in use.
 	SslPolicyWarningsItemCodeResourceInUseByOtherResourceWarning = SslPolicyWarningsItemCode("RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING")
-	SslPolicyWarningsItemCodeResourceNotDeleted                  = SslPolicyWarningsItemCode("RESOURCE_NOT_DELETED")
-	SslPolicyWarningsItemCodeSchemaValidationIgnored             = SslPolicyWarningsItemCode("SCHEMA_VALIDATION_IGNORED")
-	SslPolicyWarningsItemCodeSingleInstancePropertyTemplate      = SslPolicyWarningsItemCode("SINGLE_INSTANCE_PROPERTY_TEMPLATE")
-	SslPolicyWarningsItemCodeUndeclaredProperties                = SslPolicyWarningsItemCode("UNDECLARED_PROPERTIES")
-	SslPolicyWarningsItemCodeUnreachable                         = SslPolicyWarningsItemCode("UNREACHABLE")
+	// One or more of the resources set to auto-delete could not be deleted because they were in use.
+	SslPolicyWarningsItemCodeResourceNotDeleted = SslPolicyWarningsItemCode("RESOURCE_NOT_DELETED")
+	// When a resource schema validation is ignored.
+	SslPolicyWarningsItemCodeSchemaValidationIgnored = SslPolicyWarningsItemCode("SCHEMA_VALIDATION_IGNORED")
+	// Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.
+	SslPolicyWarningsItemCodeSingleInstancePropertyTemplate = SslPolicyWarningsItemCode("SINGLE_INSTANCE_PROPERTY_TEMPLATE")
+	// When undeclared properties in the schema are present
+	SslPolicyWarningsItemCodeUndeclaredProperties = SslPolicyWarningsItemCode("UNDECLARED_PROPERTIES")
+	// A given scope cannot be reached.
+	SslPolicyWarningsItemCodeUnreachable = SslPolicyWarningsItemCode("UNREACHABLE")
 )
 
 func (SslPolicyWarningsItemCode) ElementType() reflect.Type {
@@ -4896,6 +5140,36 @@ func (e SslPolicyWarningsItemCode) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e SslPolicyWarningsItemCode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+type SubnetworkIpv6AccessType pulumi.String
+
+const (
+	// VMs in this subnet can have external IPv6.
+	SubnetworkIpv6AccessTypeExternal = SubnetworkIpv6AccessType("EXTERNAL")
+	// IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
+	SubnetworkIpv6AccessTypeUnspecifiedIpv6AccessType = SubnetworkIpv6AccessType("UNSPECIFIED_IPV6_ACCESS_TYPE")
+)
+
+func (SubnetworkIpv6AccessType) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e SubnetworkIpv6AccessType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubnetworkIpv6AccessType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubnetworkIpv6AccessType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SubnetworkIpv6AccessType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -4960,15 +5234,16 @@ func (e SubnetworkLogConfigMetadata) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-//
-// This field can be both set at resource creation time and updated using patch.
+// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
 type SubnetworkPrivateIpv6GoogleAccess pulumi.String
 
 const (
-	SubnetworkPrivateIpv6GoogleAccessDisableGoogleAccess               = SubnetworkPrivateIpv6GoogleAccess("DISABLE_GOOGLE_ACCESS")
+	// Disable private IPv6 access to/from Google services.
+	SubnetworkPrivateIpv6GoogleAccessDisableGoogleAccess = SubnetworkPrivateIpv6GoogleAccess("DISABLE_GOOGLE_ACCESS")
+	// Bidirectional private IPv6 access to/from Google services.
 	SubnetworkPrivateIpv6GoogleAccessEnableBidirectionalAccessToGoogle = SubnetworkPrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE")
-	SubnetworkPrivateIpv6GoogleAccessEnableOutboundVmAccessToGoogle    = SubnetworkPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE")
+	// Outbound private IPv6 access from VMs in this subnet to Google services.
+	SubnetworkPrivateIpv6GoogleAccessEnableOutboundVmAccessToGoogle = SubnetworkPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE")
 )
 
 func (SubnetworkPrivateIpv6GoogleAccess) ElementType() reflect.Type {
@@ -4995,9 +5270,12 @@ func (e SubnetworkPrivateIpv6GoogleAccess) ToStringPtrOutputWithContext(ctx cont
 type SubnetworkPurpose pulumi.String
 
 const (
+	// Subnet reserved for Internal HTTP(S) Load Balancing.
 	SubnetworkPurposeInternalHttpsLoadBalancer = SubnetworkPurpose("INTERNAL_HTTPS_LOAD_BALANCER")
-	SubnetworkPurposePrivate                   = SubnetworkPurpose("PRIVATE")
-	SubnetworkPurposePrivateRfc1918            = SubnetworkPurpose("PRIVATE_RFC_1918")
+	// Regular user created or automatically created subnet.
+	SubnetworkPurposePrivate = SubnetworkPurpose("PRIVATE")
+	// Regular user created or automatically created subnet.
+	SubnetworkPurposePrivateRfc1918 = SubnetworkPurpose("PRIVATE_RFC_1918")
 )
 
 func (SubnetworkPurpose) ElementType() reflect.Type {
@@ -5024,7 +5302,9 @@ func (e SubnetworkPurpose) ToStringPtrOutputWithContext(ctx context.Context) pul
 type SubnetworkRole pulumi.String
 
 const (
+	// The ACTIVE subnet that is currently used.
 	SubnetworkRoleActive = SubnetworkRole("ACTIVE")
+	// The BACKUP subnet that could be promoted to ACTIVE.
 	SubnetworkRoleBackup = SubnetworkRole("BACKUP")
 )
 
@@ -5048,12 +5328,45 @@ func (e SubnetworkRole) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+type SubnetworkStackType pulumi.String
+
+const (
+	// New VMs in this subnet can have both IPv4 and IPv6 addresses.
+	SubnetworkStackTypeIpv4Ipv6 = SubnetworkStackType("IPV4_IPV6")
+	// New VMs in this subnet will only be assigned IPv4 addresses.
+	SubnetworkStackTypeIpv4Only             = SubnetworkStackType("IPV4_ONLY")
+	SubnetworkStackTypeUnspecifiedStackType = SubnetworkStackType("UNSPECIFIED_STACK_TYPE")
+)
+
+func (SubnetworkStackType) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e SubnetworkStackType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubnetworkStackType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubnetworkStackType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SubnetworkStackType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
 type SubnetworkStateEnum pulumi.String
 
 const (
+	// Subnetwork is being drained.
 	SubnetworkStateEnumDraining = SubnetworkStateEnum("DRAINING")
-	SubnetworkStateEnumReady    = SubnetworkStateEnum("READY")
+	// Subnetwork is ready for use.
+	SubnetworkStateEnumReady = SubnetworkStateEnum("READY")
 )
 
 func (SubnetworkStateEnum) ElementType() reflect.Type {
@@ -5076,17 +5389,15 @@ func (e SubnetworkStateEnum) ToStringPtrOutputWithContext(ctx context.Context) p
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies how port is selected for health checking, can be one of following values:
-// USE_FIXED_PORT: The port number in port is used for health checking.
-// USE_NAMED_PORT: The portName is used for health checking.
-// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-//
-// If not specified, TCP health check follows behavior specified in port and portName fields.
+// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
 type TCPHealthCheckPortSpecification pulumi.String
 
 const (
-	TCPHealthCheckPortSpecificationUseFixedPort   = TCPHealthCheckPortSpecification("USE_FIXED_PORT")
-	TCPHealthCheckPortSpecificationUseNamedPort   = TCPHealthCheckPortSpecification("USE_NAMED_PORT")
+	// The port number in port is used for health checking.
+	TCPHealthCheckPortSpecificationUseFixedPort = TCPHealthCheckPortSpecification("USE_FIXED_PORT")
+	// The portName is used for health checking.
+	TCPHealthCheckPortSpecificationUseNamedPort = TCPHealthCheckPortSpecification("USE_NAMED_PORT")
+	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	TCPHealthCheckPortSpecificationUseServingPort = TCPHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -5138,17 +5449,16 @@ func (e TCPHealthCheckProxyHeader) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.
-// - When quic-override is set to NONE, Google manages whether QUIC is used.
-// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible.
-// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC.
-// - If the quic-override flag is not specified, NONE is implied.
+// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied.
 type TargetHttpsProxyQuicOverride pulumi.String
 
 const (
+	// The load balancer will not attempt to negotiate QUIC with clients.
 	TargetHttpsProxyQuicOverrideDisable = TargetHttpsProxyQuicOverride("DISABLE")
-	TargetHttpsProxyQuicOverrideEnable  = TargetHttpsProxyQuicOverride("ENABLE")
-	TargetHttpsProxyQuicOverrideNone    = TargetHttpsProxyQuicOverride("NONE")
+	// The load balancer will attempt to negotiate QUIC with clients.
+	TargetHttpsProxyQuicOverrideEnable = TargetHttpsProxyQuicOverride("ENABLE")
+	// No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request.
+	TargetHttpsProxyQuicOverrideNone = TargetHttpsProxyQuicOverride("NONE")
 )
 
 func (TargetHttpsProxyQuicOverride) ElementType() reflect.Type {
@@ -5175,6 +5485,7 @@ func (e TargetHttpsProxyQuicOverride) ToStringPtrOutputWithContext(ctx context.C
 type TargetInstanceNatPolicy pulumi.String
 
 const (
+	// No NAT performed.
 	TargetInstanceNatPolicyNoNat = TargetInstanceNatPolicy("NO_NAT")
 )
 
@@ -5198,21 +5509,26 @@ func (e TargetInstanceNatPolicy) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Session affinity option, must be one of the following values:
-// NONE: Connections from the same client IP may go to any instance in the pool.
-// CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.
-// CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
+// Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
 type TargetPoolSessionAffinity pulumi.String
 
 const (
-	TargetPoolSessionAffinityClientIp              = TargetPoolSessionAffinity("CLIENT_IP")
+	// 2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy.
+	TargetPoolSessionAffinityClientIp = TargetPoolSessionAffinity("CLIENT_IP")
+	// 1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing.
 	TargetPoolSessionAffinityClientIpNoDestination = TargetPoolSessionAffinity("CLIENT_IP_NO_DESTINATION")
-	TargetPoolSessionAffinityClientIpPortProto     = TargetPoolSessionAffinity("CLIENT_IP_PORT_PROTO")
-	TargetPoolSessionAffinityClientIpProto         = TargetPoolSessionAffinity("CLIENT_IP_PROTO")
-	TargetPoolSessionAffinityGeneratedCookie       = TargetPoolSessionAffinity("GENERATED_COOKIE")
-	TargetPoolSessionAffinityHeaderField           = TargetPoolSessionAffinity("HEADER_FIELD")
-	TargetPoolSessionAffinityHttpCookie            = TargetPoolSessionAffinity("HTTP_COOKIE")
-	TargetPoolSessionAffinityNone                  = TargetPoolSessionAffinity("NONE")
+	// 5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+	TargetPoolSessionAffinityClientIpPortProto = TargetPoolSessionAffinity("CLIENT_IP_PORT_PROTO")
+	// 3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+	TargetPoolSessionAffinityClientIpProto = TargetPoolSessionAffinity("CLIENT_IP_PROTO")
+	// Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing.
+	TargetPoolSessionAffinityGeneratedCookie = TargetPoolSessionAffinity("GENERATED_COOKIE")
+	// The hash is based on a user specified header field.
+	TargetPoolSessionAffinityHeaderField = TargetPoolSessionAffinity("HEADER_FIELD")
+	// The hash is based on a user provided cookie.
+	TargetPoolSessionAffinityHttpCookie = TargetPoolSessionAffinity("HTTP_COOKIE")
+	// No session affinity. Connections from the same client IP may go to any instance in the pool.
+	TargetPoolSessionAffinityNone = TargetPoolSessionAffinity("NONE")
 )
 
 func (TargetPoolSessionAffinity) ElementType() reflect.Type {
@@ -5321,37 +5637,35 @@ func (e TargetVpnGatewayStatus) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the VPN tunnel, which can be one of the following:
-// - PROVISIONING: Resource is being allocated for the VPN tunnel.
-// - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel.
-// - FIRST_HANDSHAKE: Successful first handshake with the peer VPN.
-// - ESTABLISHED: Secure session is successfully established with the peer VPN.
-// - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS
-// - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret).
-// - NEGOTIATION_FAILURE: Handshake failed.
-// - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
-// - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.
-// - NO_INCOMING_PACKETS: No incoming packets from peer.
-// - REJECTED: Tunnel configuration was rejected, can be result of being denied access.
-// - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources.
-// - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state.
-// - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT.
-// - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
+// [Output Only] The status of the VPN tunnel, which can be one of the following: - PROVISIONING: Resource is being allocated for the VPN tunnel. - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. - ESTABLISHED: Secure session is successfully established with the peer VPN. - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). - NEGOTIATION_FAILURE: Handshake failed. - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. - NO_INCOMING_PACKETS: No incoming packets from peer. - REJECTED: Tunnel configuration was rejected, can be result of being denied access. - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
 type VpnTunnelStatus pulumi.String
 
 const (
-	VpnTunnelStatusAllocatingResources  = VpnTunnelStatus("ALLOCATING_RESOURCES")
-	VpnTunnelStatusAuthorizationError   = VpnTunnelStatus("AUTHORIZATION_ERROR")
-	VpnTunnelStatusDeprovisioning       = VpnTunnelStatus("DEPROVISIONING")
-	VpnTunnelStatusEstablished          = VpnTunnelStatus("ESTABLISHED")
-	VpnTunnelStatusFailed               = VpnTunnelStatus("FAILED")
-	VpnTunnelStatusFirstHandshake       = VpnTunnelStatus("FIRST_HANDSHAKE")
-	VpnTunnelStatusNegotiationFailure   = VpnTunnelStatus("NEGOTIATION_FAILURE")
-	VpnTunnelStatusNetworkError         = VpnTunnelStatus("NETWORK_ERROR")
-	VpnTunnelStatusNoIncomingPackets    = VpnTunnelStatus("NO_INCOMING_PACKETS")
-	VpnTunnelStatusProvisioning         = VpnTunnelStatus("PROVISIONING")
-	VpnTunnelStatusRejected             = VpnTunnelStatus("REJECTED")
-	VpnTunnelStatusStopped              = VpnTunnelStatus("STOPPED")
+	// Cloud VPN is in the process of allocating all required resources (specifically, a borg task).
+	VpnTunnelStatusAllocatingResources = VpnTunnelStatus("ALLOCATING_RESOURCES")
+	// Auth error (e.g. bad shared secret).
+	VpnTunnelStatusAuthorizationError = VpnTunnelStatus("AUTHORIZATION_ERROR")
+	// Resources is being deallocated for the VPN tunnel.
+	VpnTunnelStatusDeprovisioning = VpnTunnelStatus("DEPROVISIONING")
+	// Secure session is successfully established with peer VPN.
+	VpnTunnelStatusEstablished = VpnTunnelStatus("ESTABLISHED")
+	// Tunnel creation has failed and the tunnel is not ready to be used.
+	VpnTunnelStatusFailed = VpnTunnelStatus("FAILED")
+	// Successful first handshake with peer VPN.
+	VpnTunnelStatusFirstHandshake = VpnTunnelStatus("FIRST_HANDSHAKE")
+	// Handshake failed.
+	VpnTunnelStatusNegotiationFailure = VpnTunnelStatus("NEGOTIATION_FAILURE")
+	// Deprecated, replaced by NO_INCOMING_PACKETS
+	VpnTunnelStatusNetworkError = VpnTunnelStatus("NETWORK_ERROR")
+	// No incoming packets from peer
+	VpnTunnelStatusNoIncomingPackets = VpnTunnelStatus("NO_INCOMING_PACKETS")
+	// Resource is being allocated for the VPN tunnel.
+	VpnTunnelStatusProvisioning = VpnTunnelStatus("PROVISIONING")
+	// Tunnel configuration was rejected, can be result of being denylisted.
+	VpnTunnelStatusRejected = VpnTunnelStatus("REJECTED")
+	// Tunnel is stopped due to its Forwarding Rules being deleted.
+	VpnTunnelStatusStopped = VpnTunnelStatus("STOPPED")
+	// Waiting to receive all VPN-related configs from user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule and Route resources are needed to setup VPN tunnel.
 	VpnTunnelStatusWaitingForFullConfig = VpnTunnelStatus("WAITING_FOR_FULL_CONFIG")
 )
 

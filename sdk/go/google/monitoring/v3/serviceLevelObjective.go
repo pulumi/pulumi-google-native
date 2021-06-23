@@ -27,6 +27,8 @@ type ServiceLevelObjective struct {
 	RollingPeriod pulumi.StringOutput `pulumi:"rollingPeriod"`
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator ServiceLevelIndicatorResponseOutput `pulumi:"serviceLevelIndicator"`
+	// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
 }
 
 // NewServiceLevelObjective registers a new resource with the given unique name, arguments, and options.
@@ -79,6 +81,8 @@ type serviceLevelObjectiveState struct {
 	RollingPeriod *string `pulumi:"rollingPeriod"`
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator *ServiceLevelIndicatorResponse `pulumi:"serviceLevelIndicator"`
+	// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 type ServiceLevelObjectiveState struct {
@@ -94,6 +98,8 @@ type ServiceLevelObjectiveState struct {
 	RollingPeriod pulumi.StringPtrInput
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator ServiceLevelIndicatorResponsePtrInput
+	// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels pulumi.StringMapInput
 }
 
 func (ServiceLevelObjectiveState) ElementType() reflect.Type {
@@ -115,8 +121,10 @@ type serviceLevelObjectiveArgs struct {
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator   *ServiceLevelIndicator `pulumi:"serviceLevelIndicator"`
 	ServiceLevelObjectiveId *string                `pulumi:"serviceLevelObjectiveId"`
-	V3Id                    string                 `pulumi:"v3Id"`
-	V3Id1                   string                 `pulumi:"v3Id1"`
+	// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels map[string]string `pulumi:"userLabels"`
+	V3Id       string            `pulumi:"v3Id"`
+	V3Id1      string            `pulumi:"v3Id1"`
 }
 
 // The set of arguments for constructing a ServiceLevelObjective resource.
@@ -135,8 +143,10 @@ type ServiceLevelObjectiveArgs struct {
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator   ServiceLevelIndicatorPtrInput
 	ServiceLevelObjectiveId pulumi.StringPtrInput
-	V3Id                    pulumi.StringInput
-	V3Id1                   pulumi.StringInput
+	// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels pulumi.StringMapInput
+	V3Id       pulumi.StringInput
+	V3Id1      pulumi.StringInput
 }
 
 func (ServiceLevelObjectiveArgs) ElementType() reflect.Type {

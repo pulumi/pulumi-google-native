@@ -23,6 +23,8 @@ type Webhook struct {
 	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput `pulumi:"genericWebService"`
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+	ServiceDirectory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponseOutput `pulumi:"serviceDirectory"`
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
 }
@@ -73,6 +75,8 @@ type webhookState struct {
 	GenericWebService *GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse `pulumi:"genericWebService"`
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 	Name *string `pulumi:"name"`
+	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+	ServiceDirectory *GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse `pulumi:"serviceDirectory"`
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
 	Timeout *string `pulumi:"timeout"`
 }
@@ -86,6 +90,8 @@ type WebhookState struct {
 	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponsePtrInput
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 	Name pulumi.StringPtrInput
+	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+	ServiceDirectory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponsePtrInput
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
 	Timeout pulumi.StringPtrInput
 }
@@ -106,6 +112,8 @@ type webhookArgs struct {
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
+	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+	ServiceDirectory *GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig `pulumi:"serviceDirectory"`
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
 	Timeout *string `pulumi:"timeout"`
 }
@@ -123,6 +131,8 @@ type WebhookArgs struct {
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
+	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+	ServiceDirectory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrInput
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
 	Timeout pulumi.StringPtrInput
 }

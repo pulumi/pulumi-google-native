@@ -31,19 +31,13 @@ type NodeTemplate struct {
 	NodeAffinityLabels pulumi.StringMapOutput `pulumi:"nodeAffinityLabels"`
 	// The node type to use for nodes group that are created from this template.
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
-	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-	//
-	// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityResponseOutput `pulumi:"nodeTypeFlexibility"`
 	// [Output Only] The name of the region where the node template resides, such as us-central1.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Sets the binding properties for the physical server. Valid values include:
-	// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server
-	// - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible
-	//
-	// See Sole-tenant node options for more information.
+	// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
 	ServerBinding ServerBindingResponseOutput `pulumi:"serverBinding"`
 	// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -102,19 +96,13 @@ type nodeTemplateState struct {
 	NodeAffinityLabels map[string]string `pulumi:"nodeAffinityLabels"`
 	// The node type to use for nodes group that are created from this template.
 	NodeType *string `pulumi:"nodeType"`
-	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-	//
-	// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility *NodeTemplateNodeTypeFlexibilityResponse `pulumi:"nodeTypeFlexibility"`
 	// [Output Only] The name of the region where the node template resides, such as us-central1.
 	Region *string `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Sets the binding properties for the physical server. Valid values include:
-	// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server
-	// - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible
-	//
-	// See Sole-tenant node options for more information.
+	// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
 	ServerBinding *ServerBindingResponse `pulumi:"serverBinding"`
 	// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
 	Status *string `pulumi:"status"`
@@ -139,19 +127,13 @@ type NodeTemplateState struct {
 	NodeAffinityLabels pulumi.StringMapInput
 	// The node type to use for nodes group that are created from this template.
 	NodeType pulumi.StringPtrInput
-	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-	//
-	// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityResponsePtrInput
 	// [Output Only] The name of the region where the node template resides, such as us-central1.
 	Region pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// Sets the binding properties for the physical server. Valid values include:
-	// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server
-	// - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible
-	//
-	// See Sole-tenant node options for more information.
+	// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
 	ServerBinding ServerBindingResponsePtrInput
 	// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
 	Status pulumi.StringPtrInput
@@ -182,9 +164,7 @@ type nodeTemplateArgs struct {
 	NodeAffinityLabels map[string]string `pulumi:"nodeAffinityLabels"`
 	// The node type to use for nodes group that are created from this template.
 	NodeType *string `pulumi:"nodeType"`
-	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-	//
-	// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility *NodeTemplateNodeTypeFlexibility `pulumi:"nodeTypeFlexibility"`
 	Project             string                           `pulumi:"project"`
 	// [Output Only] The name of the region where the node template resides, such as us-central1.
@@ -192,11 +172,7 @@ type nodeTemplateArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Sets the binding properties for the physical server. Valid values include:
-	// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server
-	// - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible
-	//
-	// See Sole-tenant node options for more information.
+	// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
 	ServerBinding *ServerBinding `pulumi:"serverBinding"`
 	// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
 	Status *string `pulumi:"status"`
@@ -224,9 +200,7 @@ type NodeTemplateArgs struct {
 	NodeAffinityLabels pulumi.StringMapInput
 	// The node type to use for nodes group that are created from this template.
 	NodeType pulumi.StringPtrInput
-	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-	//
-	// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityPtrInput
 	Project             pulumi.StringInput
 	// [Output Only] The name of the region where the node template resides, such as us-central1.
@@ -234,11 +208,7 @@ type NodeTemplateArgs struct {
 	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// Sets the binding properties for the physical server. Valid values include:
-	// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server
-	// - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible
-	//
-	// See Sole-tenant node options for more information.
+	// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
 	ServerBinding ServerBindingPtrInput
 	// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
 	Status *NodeTemplateStatus

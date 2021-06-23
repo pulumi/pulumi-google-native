@@ -65,6 +65,8 @@ type Build struct {
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
 	Timing pulumi.StringMapOutput `pulumi:"timing"`
+	// Non-fatal problems encountered during the execution of the build.
+	Warnings WarningResponseArrayOutput `pulumi:"warnings"`
 }
 
 // NewBuild registers a new resource with the given unique name, arguments, and options.
@@ -155,6 +157,8 @@ type buildState struct {
 	Timeout *string `pulumi:"timeout"`
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
 	Timing map[string]string `pulumi:"timing"`
+	// Non-fatal problems encountered during the execution of the build.
+	Warnings []WarningResponse `pulumi:"warnings"`
 }
 
 type BuildState struct {
@@ -208,6 +212,8 @@ type BuildState struct {
 	Timeout pulumi.StringPtrInput
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
 	Timing pulumi.StringMapInput
+	// Non-fatal problems encountered during the execution of the build.
+	Warnings WarningResponseArrayInput
 }
 
 func (BuildState) ElementType() reflect.Type {

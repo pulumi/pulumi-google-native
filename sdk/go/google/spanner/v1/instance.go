@@ -25,6 +25,8 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+	ProcessingUnits pulumi.IntOutput `pulumi:"processingUnits"`
 	// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -71,6 +73,8 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.
 	NodeCount *int `pulumi:"nodeCount"`
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+	ProcessingUnits *int `pulumi:"processingUnits"`
 	// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
 	State *string `pulumi:"state"`
 }
@@ -86,6 +90,8 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.
 	NodeCount pulumi.IntPtrInput
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+	ProcessingUnits pulumi.IntPtrInput
 	// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
 	State pulumi.StringPtrInput
 }
@@ -106,8 +112,10 @@ type instanceArgs struct {
 	// Required. A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
 	Name *string `pulumi:"name"`
 	// The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.
-	NodeCount *int   `pulumi:"nodeCount"`
-	Project   string `pulumi:"project"`
+	NodeCount *int `pulumi:"nodeCount"`
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+	ProcessingUnits *int   `pulumi:"processingUnits"`
+	Project         string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -124,7 +132,9 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.
 	NodeCount pulumi.IntPtrInput
-	Project   pulumi.StringInput
+	// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+	ProcessingUnits pulumi.IntPtrInput
+	Project         pulumi.StringInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

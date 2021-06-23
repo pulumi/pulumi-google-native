@@ -319,3 +319,35 @@ func (e PullRequestFilterCommentControl) ToStringPtrOutput() pulumi.StringPtrOut
 func (e PullRequestFilterCommentControl) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+type WebhookConfigState pulumi.String
+
+const (
+	// The webhook auth configuration not been checked.
+	WebhookConfigStateStateUnspecified = WebhookConfigState("STATE_UNSPECIFIED")
+	// The auth configuration is properly setup.
+	WebhookConfigStateOk = WebhookConfigState("OK")
+	// The secret provided in auth_method has been deleted.
+	WebhookConfigStateSecretDeleted = WebhookConfigState("SECRET_DELETED")
+)
+
+func (WebhookConfigState) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e WebhookConfigState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WebhookConfigState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WebhookConfigState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WebhookConfigState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}

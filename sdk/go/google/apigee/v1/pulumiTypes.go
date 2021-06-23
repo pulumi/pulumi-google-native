@@ -2987,11 +2987,11 @@ func (o GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) SubType() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+// Represents the pairing of GraphQL operation types and the GraphQL operation name.
 type GoogleCloudApigeeV1GraphQLOperation struct {
-	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+	// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
 	Operation *string `pulumi:"operation"`
-	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+	// Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
 	OperationTypes []string `pulumi:"operationTypes"`
 }
 
@@ -3006,11 +3006,11 @@ type GoogleCloudApigeeV1GraphQLOperationInput interface {
 	ToGoogleCloudApigeeV1GraphQLOperationOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationOutput
 }
 
-// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+// Represents the pairing of GraphQL operation types and the GraphQL operation name.
 type GoogleCloudApigeeV1GraphQLOperationArgs struct {
-	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+	// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
 	Operation pulumi.StringPtrInput `pulumi:"operation"`
-	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+	// Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
 	OperationTypes pulumi.StringArrayInput `pulumi:"operationTypes"`
 }
 
@@ -3051,7 +3051,7 @@ func (i GoogleCloudApigeeV1GraphQLOperationArray) ToGoogleCloudApigeeV1GraphQLOp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationArrayOutput)
 }
 
-// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+// Represents the pairing of GraphQL operation types and the GraphQL operation name.
 type GoogleCloudApigeeV1GraphQLOperationOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1GraphQLOperationOutput) ElementType() reflect.Type {
@@ -3066,12 +3066,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationOutput) ToGoogleCloudApigeeV1GraphQLO
 	return o
 }
 
-// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
 func (o GoogleCloudApigeeV1GraphQLOperationOutput) Operation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperation) *string { return v.Operation }).(pulumi.StringPtrOutput)
 }
 
-// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+// Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
 func (o GoogleCloudApigeeV1GraphQLOperationOutput) OperationTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperation) []string { return v.OperationTypes }).(pulumi.StringArrayOutput)
 }
@@ -3096,15 +3096,15 @@ func (o GoogleCloudApigeeV1GraphQLOperationArrayOutput) Index(i pulumi.IntInput)
 	}).(GoogleCloudApigeeV1GraphQLOperationOutput)
 }
 
-// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+// Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
 type GoogleCloudApigeeV1GraphQLOperationConfig struct {
-	// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+	// Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
 	ApiSource *string `pulumi:"apiSource"`
 	// Custom attributes associated with the operation.
 	Attributes []GoogleCloudApigeeV1Attribute `pulumi:"attributes"`
-	// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+	// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
 	Operations []GoogleCloudApigeeV1GraphQLOperation `pulumi:"operations"`
-	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 	Quota *GoogleCloudApigeeV1Quota `pulumi:"quota"`
 }
 
@@ -3119,15 +3119,15 @@ type GoogleCloudApigeeV1GraphQLOperationConfigInput interface {
 	ToGoogleCloudApigeeV1GraphQLOperationConfigOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationConfigOutput
 }
 
-// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+// Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
 type GoogleCloudApigeeV1GraphQLOperationConfigArgs struct {
-	// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+	// Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
 	ApiSource pulumi.StringPtrInput `pulumi:"apiSource"`
 	// Custom attributes associated with the operation.
 	Attributes GoogleCloudApigeeV1AttributeArrayInput `pulumi:"attributes"`
-	// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+	// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
 	Operations GoogleCloudApigeeV1GraphQLOperationArrayInput `pulumi:"operations"`
-	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 	Quota GoogleCloudApigeeV1QuotaPtrInput `pulumi:"quota"`
 }
 
@@ -3168,7 +3168,7 @@ func (i GoogleCloudApigeeV1GraphQLOperationConfigArray) ToGoogleCloudApigeeV1Gra
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput)
 }
 
-// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+// Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
 type GoogleCloudApigeeV1GraphQLOperationConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1GraphQLOperationConfigOutput) ElementType() reflect.Type {
@@ -3183,7 +3183,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) ToGoogleCloudApigeeV1Gr
 	return o
 }
 
-// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+// Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
 func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) ApiSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfig) *string { return v.ApiSource }).(pulumi.StringPtrOutput)
 }
@@ -3193,14 +3193,14 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) Attributes() GoogleClou
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfig) []GoogleCloudApigeeV1Attribute { return v.Attributes }).(GoogleCloudApigeeV1AttributeArrayOutput)
 }
 
-// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
 func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) Operations() GoogleCloudApigeeV1GraphQLOperationArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfig) []GoogleCloudApigeeV1GraphQLOperation {
 		return v.Operations
 	}).(GoogleCloudApigeeV1GraphQLOperationArrayOutput)
 }
 
-// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) Quota() GoogleCloudApigeeV1QuotaPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfig) *GoogleCloudApigeeV1Quota { return v.Quota }).(GoogleCloudApigeeV1QuotaPtrOutput)
 }
@@ -3225,15 +3225,15 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput) Index(i pulumi.Int
 	}).(GoogleCloudApigeeV1GraphQLOperationConfigOutput)
 }
 
-// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+// Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
 type GoogleCloudApigeeV1GraphQLOperationConfigResponse struct {
-	// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+	// Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
 	ApiSource string `pulumi:"apiSource"`
 	// Custom attributes associated with the operation.
 	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
-	// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+	// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
 	Operations []GoogleCloudApigeeV1GraphQLOperationResponse `pulumi:"operations"`
-	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 	Quota GoogleCloudApigeeV1QuotaResponse `pulumi:"quota"`
 }
 
@@ -3248,15 +3248,15 @@ type GoogleCloudApigeeV1GraphQLOperationConfigResponseInput interface {
 	ToGoogleCloudApigeeV1GraphQLOperationConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput
 }
 
-// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+// Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
 type GoogleCloudApigeeV1GraphQLOperationConfigResponseArgs struct {
-	// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+	// Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
 	ApiSource pulumi.StringInput `pulumi:"apiSource"`
 	// Custom attributes associated with the operation.
 	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput `pulumi:"attributes"`
-	// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+	// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
 	Operations GoogleCloudApigeeV1GraphQLOperationResponseArrayInput `pulumi:"operations"`
-	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 	Quota GoogleCloudApigeeV1QuotaResponseInput `pulumi:"quota"`
 }
 
@@ -3297,7 +3297,7 @@ func (i GoogleCloudApigeeV1GraphQLOperationConfigResponseArray) ToGoogleCloudApi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput)
 }
 
-// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+// Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
 type GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ElementType() reflect.Type {
@@ -3312,7 +3312,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ToGoogleCloudAp
 	return o
 }
 
-// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+// Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
 func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ApiSource() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfigResponse) string { return v.ApiSource }).(pulumi.StringOutput)
 }
@@ -3324,14 +3324,14 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) Attributes() Go
 	}).(GoogleCloudApigeeV1AttributeResponseArrayOutput)
 }
 
-// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
 func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) Operations() GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfigResponse) []GoogleCloudApigeeV1GraphQLOperationResponse {
 		return v.Operations
 	}).(GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput)
 }
 
-// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) Quota() GoogleCloudApigeeV1QuotaResponseOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfigResponse) GoogleCloudApigeeV1QuotaResponse {
 		return v.Quota
@@ -3360,7 +3360,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput) Index(i pu
 
 // List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1GraphQLOperationGroup struct {
-	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 	OperationConfigType *string `pulumi:"operationConfigType"`
 	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
 	OperationConfigs []GoogleCloudApigeeV1GraphQLOperationConfig `pulumi:"operationConfigs"`
@@ -3379,7 +3379,7 @@ type GoogleCloudApigeeV1GraphQLOperationGroupInput interface {
 
 // List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1GraphQLOperationGroupArgs struct {
-	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 	OperationConfigType pulumi.StringPtrInput `pulumi:"operationConfigType"`
 	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
 	OperationConfigs GoogleCloudApigeeV1GraphQLOperationConfigArrayInput `pulumi:"operationConfigs"`
@@ -3463,7 +3463,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) ToGoogleCloudApigeeV1Gra
 	}).(GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput)
 }
 
-// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) OperationConfigType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroup) *string { return v.OperationConfigType }).(pulumi.StringPtrOutput)
 }
@@ -3493,7 +3493,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) Elem() GoogleCloudApi
 	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroup) GoogleCloudApigeeV1GraphQLOperationGroup { return *v }).(GoogleCloudApigeeV1GraphQLOperationGroupOutput)
 }
 
-// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) OperationConfigType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroup) *string {
 		if v == nil {
@@ -3515,7 +3515,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) OperationConfigs() Go
 
 // List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1GraphQLOperationGroupResponse struct {
-	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 	OperationConfigType string `pulumi:"operationConfigType"`
 	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
 	OperationConfigs []GoogleCloudApigeeV1GraphQLOperationConfigResponse `pulumi:"operationConfigs"`
@@ -3534,7 +3534,7 @@ type GoogleCloudApigeeV1GraphQLOperationGroupResponseInput interface {
 
 // List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs struct {
-	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 	OperationConfigType pulumi.StringInput `pulumi:"operationConfigType"`
 	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
 	OperationConfigs GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayInput `pulumi:"operationConfigs"`
@@ -3618,7 +3618,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ToGoogleCloudApi
 	}).(GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput)
 }
 
-// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) OperationConfigType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroupResponse) string { return v.OperationConfigType }).(pulumi.StringOutput)
 }
@@ -3650,7 +3650,7 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) Elem() Google
 	}).(GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput)
 }
 
-// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) OperationConfigType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroupResponse) *string {
 		if v == nil {
@@ -3670,11 +3670,11 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) OperationConf
 	}).(GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput)
 }
 
-// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+// Represents the pairing of GraphQL operation types and the GraphQL operation name.
 type GoogleCloudApigeeV1GraphQLOperationResponse struct {
-	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+	// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
 	Operation string `pulumi:"operation"`
-	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+	// Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
 	OperationTypes []string `pulumi:"operationTypes"`
 }
 
@@ -3689,11 +3689,11 @@ type GoogleCloudApigeeV1GraphQLOperationResponseInput interface {
 	ToGoogleCloudApigeeV1GraphQLOperationResponseOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationResponseOutput
 }
 
-// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+// Represents the pairing of GraphQL operation types and the GraphQL operation name.
 type GoogleCloudApigeeV1GraphQLOperationResponseArgs struct {
-	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+	// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
 	Operation pulumi.StringInput `pulumi:"operation"`
-	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+	// Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
 	OperationTypes pulumi.StringArrayInput `pulumi:"operationTypes"`
 }
 
@@ -3734,7 +3734,7 @@ func (i GoogleCloudApigeeV1GraphQLOperationResponseArray) ToGoogleCloudApigeeV1G
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput)
 }
 
-// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+// Represents the pairing of GraphQL operation types and the GraphQL operation name.
 type GoogleCloudApigeeV1GraphQLOperationResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1GraphQLOperationResponseOutput) ElementType() reflect.Type {
@@ -3749,12 +3749,12 @@ func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) ToGoogleCloudApigeeV1
 	return o
 }
 
-// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
 func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationResponse) string { return v.Operation }).(pulumi.StringOutput)
 }
 
-// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+// Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
 func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) OperationTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationResponse) []string { return v.OperationTypes }).(pulumi.StringArrayOutput)
 }
@@ -4319,11 +4319,11 @@ func (o GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput) Enabled() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1Operation struct {
 	// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
 	Methods []string `pulumi:"methods"`
-	// Required. resource represents REST resource path associated with the proxy/remote service.
+	// Required. REST resource path associated with the API proxy or remote service.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -4338,11 +4338,11 @@ type GoogleCloudApigeeV1OperationInput interface {
 	ToGoogleCloudApigeeV1OperationOutputWithContext(context.Context) GoogleCloudApigeeV1OperationOutput
 }
 
-// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1OperationArgs struct {
 	// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
 	Methods pulumi.StringArrayInput `pulumi:"methods"`
-	// Required. resource represents REST resource path associated with the proxy/remote service.
+	// Required. REST resource path associated with the API proxy or remote service.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -4383,7 +4383,7 @@ func (i GoogleCloudApigeeV1OperationArray) ToGoogleCloudApigeeV1OperationArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationArrayOutput)
 }
 
-// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1OperationOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1OperationOutput) ElementType() reflect.Type {
@@ -4403,7 +4403,7 @@ func (o GoogleCloudApigeeV1OperationOutput) Methods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1Operation) []string { return v.Methods }).(pulumi.StringArrayOutput)
 }
 
-// Required. resource represents REST resource path associated with the proxy/remote service.
+// Required. REST resource path associated with the API proxy or remote service.
 func (o GoogleCloudApigeeV1OperationOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1Operation) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
@@ -4428,15 +4428,15 @@ func (o GoogleCloudApigeeV1OperationArrayOutput) Index(i pulumi.IntInput) Google
 	}).(GoogleCloudApigeeV1OperationOutput)
 }
 
-// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+// Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
 type GoogleCloudApigeeV1OperationConfig struct {
-	// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+	// Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.
 	ApiSource *string `pulumi:"apiSource"`
 	// Custom attributes associated with the operation.
 	Attributes []GoogleCloudApigeeV1Attribute `pulumi:"attributes"`
-	// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+	// List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
 	Operations []GoogleCloudApigeeV1Operation `pulumi:"operations"`
-	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 	Quota *GoogleCloudApigeeV1Quota `pulumi:"quota"`
 }
 
@@ -4451,15 +4451,15 @@ type GoogleCloudApigeeV1OperationConfigInput interface {
 	ToGoogleCloudApigeeV1OperationConfigOutputWithContext(context.Context) GoogleCloudApigeeV1OperationConfigOutput
 }
 
-// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+// Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
 type GoogleCloudApigeeV1OperationConfigArgs struct {
-	// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+	// Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.
 	ApiSource pulumi.StringPtrInput `pulumi:"apiSource"`
 	// Custom attributes associated with the operation.
 	Attributes GoogleCloudApigeeV1AttributeArrayInput `pulumi:"attributes"`
-	// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+	// List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
 	Operations GoogleCloudApigeeV1OperationArrayInput `pulumi:"operations"`
-	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 	Quota GoogleCloudApigeeV1QuotaPtrInput `pulumi:"quota"`
 }
 
@@ -4500,7 +4500,7 @@ func (i GoogleCloudApigeeV1OperationConfigArray) ToGoogleCloudApigeeV1OperationC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationConfigArrayOutput)
 }
 
-// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+// Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
 type GoogleCloudApigeeV1OperationConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1OperationConfigOutput) ElementType() reflect.Type {
@@ -4515,7 +4515,7 @@ func (o GoogleCloudApigeeV1OperationConfigOutput) ToGoogleCloudApigeeV1Operation
 	return o
 }
 
-// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+// Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.
 func (o GoogleCloudApigeeV1OperationConfigOutput) ApiSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfig) *string { return v.ApiSource }).(pulumi.StringPtrOutput)
 }
@@ -4525,12 +4525,12 @@ func (o GoogleCloudApigeeV1OperationConfigOutput) Attributes() GoogleCloudApigee
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfig) []GoogleCloudApigeeV1Attribute { return v.Attributes }).(GoogleCloudApigeeV1AttributeArrayOutput)
 }
 
-// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+// List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
 func (o GoogleCloudApigeeV1OperationConfigOutput) Operations() GoogleCloudApigeeV1OperationArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfig) []GoogleCloudApigeeV1Operation { return v.Operations }).(GoogleCloudApigeeV1OperationArrayOutput)
 }
 
-// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 func (o GoogleCloudApigeeV1OperationConfigOutput) Quota() GoogleCloudApigeeV1QuotaPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfig) *GoogleCloudApigeeV1Quota { return v.Quota }).(GoogleCloudApigeeV1QuotaPtrOutput)
 }
@@ -4555,15 +4555,15 @@ func (o GoogleCloudApigeeV1OperationConfigArrayOutput) Index(i pulumi.IntInput) 
 	}).(GoogleCloudApigeeV1OperationConfigOutput)
 }
 
-// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+// Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
 type GoogleCloudApigeeV1OperationConfigResponse struct {
-	// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+	// Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.
 	ApiSource string `pulumi:"apiSource"`
 	// Custom attributes associated with the operation.
 	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
-	// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+	// List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
 	Operations []GoogleCloudApigeeV1OperationResponse `pulumi:"operations"`
-	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 	Quota GoogleCloudApigeeV1QuotaResponse `pulumi:"quota"`
 }
 
@@ -4578,15 +4578,15 @@ type GoogleCloudApigeeV1OperationConfigResponseInput interface {
 	ToGoogleCloudApigeeV1OperationConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1OperationConfigResponseOutput
 }
 
-// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+// Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
 type GoogleCloudApigeeV1OperationConfigResponseArgs struct {
-	// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+	// Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.
 	ApiSource pulumi.StringInput `pulumi:"apiSource"`
 	// Custom attributes associated with the operation.
 	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput `pulumi:"attributes"`
-	// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+	// List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
 	Operations GoogleCloudApigeeV1OperationResponseArrayInput `pulumi:"operations"`
-	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 	Quota GoogleCloudApigeeV1QuotaResponseInput `pulumi:"quota"`
 }
 
@@ -4627,7 +4627,7 @@ func (i GoogleCloudApigeeV1OperationConfigResponseArray) ToGoogleCloudApigeeV1Op
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationConfigResponseArrayOutput)
 }
 
-// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+// Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
 type GoogleCloudApigeeV1OperationConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1OperationConfigResponseOutput) ElementType() reflect.Type {
@@ -4642,7 +4642,7 @@ func (o GoogleCloudApigeeV1OperationConfigResponseOutput) ToGoogleCloudApigeeV1O
 	return o
 }
 
-// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+// Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.
 func (o GoogleCloudApigeeV1OperationConfigResponseOutput) ApiSource() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfigResponse) string { return v.ApiSource }).(pulumi.StringOutput)
 }
@@ -4654,14 +4654,14 @@ func (o GoogleCloudApigeeV1OperationConfigResponseOutput) Attributes() GoogleClo
 	}).(GoogleCloudApigeeV1AttributeResponseArrayOutput)
 }
 
-// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+// List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
 func (o GoogleCloudApigeeV1OperationConfigResponseOutput) Operations() GoogleCloudApigeeV1OperationResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfigResponse) []GoogleCloudApigeeV1OperationResponse {
 		return v.Operations
 	}).(GoogleCloudApigeeV1OperationResponseArrayOutput)
 }
 
-// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
 func (o GoogleCloudApigeeV1OperationConfigResponseOutput) Quota() GoogleCloudApigeeV1QuotaResponseOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfigResponse) GoogleCloudApigeeV1QuotaResponse { return v.Quota }).(GoogleCloudApigeeV1QuotaResponseOutput)
 }
@@ -4688,7 +4688,7 @@ func (o GoogleCloudApigeeV1OperationConfigResponseArrayOutput) Index(i pulumi.In
 
 // List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1OperationGroup struct {
-	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 	OperationConfigType *string `pulumi:"operationConfigType"`
 	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
 	OperationConfigs []GoogleCloudApigeeV1OperationConfig `pulumi:"operationConfigs"`
@@ -4707,7 +4707,7 @@ type GoogleCloudApigeeV1OperationGroupInput interface {
 
 // List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1OperationGroupArgs struct {
-	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 	OperationConfigType pulumi.StringPtrInput `pulumi:"operationConfigType"`
 	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
 	OperationConfigs GoogleCloudApigeeV1OperationConfigArrayInput `pulumi:"operationConfigs"`
@@ -4791,7 +4791,7 @@ func (o GoogleCloudApigeeV1OperationGroupOutput) ToGoogleCloudApigeeV1OperationG
 	}).(GoogleCloudApigeeV1OperationGroupPtrOutput)
 }
 
-// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1OperationGroupOutput) OperationConfigType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationGroup) *string { return v.OperationConfigType }).(pulumi.StringPtrOutput)
 }
@@ -4821,7 +4821,7 @@ func (o GoogleCloudApigeeV1OperationGroupPtrOutput) Elem() GoogleCloudApigeeV1Op
 	return o.ApplyT(func(v *GoogleCloudApigeeV1OperationGroup) GoogleCloudApigeeV1OperationGroup { return *v }).(GoogleCloudApigeeV1OperationGroupOutput)
 }
 
-// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1OperationGroupPtrOutput) OperationConfigType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1OperationGroup) *string {
 		if v == nil {
@@ -4843,7 +4843,7 @@ func (o GoogleCloudApigeeV1OperationGroupPtrOutput) OperationConfigs() GoogleClo
 
 // List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1OperationGroupResponse struct {
-	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 	OperationConfigType string `pulumi:"operationConfigType"`
 	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
 	OperationConfigs []GoogleCloudApigeeV1OperationConfigResponse `pulumi:"operationConfigs"`
@@ -4862,7 +4862,7 @@ type GoogleCloudApigeeV1OperationGroupResponseInput interface {
 
 // List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1OperationGroupResponseArgs struct {
-	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 	OperationConfigType pulumi.StringInput `pulumi:"operationConfigType"`
 	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
 	OperationConfigs GoogleCloudApigeeV1OperationConfigResponseArrayInput `pulumi:"operationConfigs"`
@@ -4946,7 +4946,7 @@ func (o GoogleCloudApigeeV1OperationGroupResponseOutput) ToGoogleCloudApigeeV1Op
 	}).(GoogleCloudApigeeV1OperationGroupResponsePtrOutput)
 }
 
-// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1OperationGroupResponseOutput) OperationConfigType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationGroupResponse) string { return v.OperationConfigType }).(pulumi.StringOutput)
 }
@@ -4978,7 +4978,7 @@ func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) Elem() GoogleCloudAp
 	}).(GoogleCloudApigeeV1OperationGroupResponseOutput)
 }
 
-// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
 func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) OperationConfigType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1OperationGroupResponse) *string {
 		if v == nil {
@@ -4998,11 +4998,11 @@ func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) OperationConfigs() G
 	}).(GoogleCloudApigeeV1OperationConfigResponseArrayOutput)
 }
 
-// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1OperationResponse struct {
 	// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
 	Methods []string `pulumi:"methods"`
-	// Required. resource represents REST resource path associated with the proxy/remote service.
+	// Required. REST resource path associated with the API proxy or remote service.
 	Resource string `pulumi:"resource"`
 }
 
@@ -5017,11 +5017,11 @@ type GoogleCloudApigeeV1OperationResponseInput interface {
 	ToGoogleCloudApigeeV1OperationResponseOutputWithContext(context.Context) GoogleCloudApigeeV1OperationResponseOutput
 }
 
-// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1OperationResponseArgs struct {
 	// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
 	Methods pulumi.StringArrayInput `pulumi:"methods"`
-	// Required. resource represents REST resource path associated with the proxy/remote service.
+	// Required. REST resource path associated with the API proxy or remote service.
 	Resource pulumi.StringInput `pulumi:"resource"`
 }
 
@@ -5062,7 +5062,7 @@ func (i GoogleCloudApigeeV1OperationResponseArray) ToGoogleCloudApigeeV1Operatio
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationResponseArrayOutput)
 }
 
-// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1OperationResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1OperationResponseOutput) ElementType() reflect.Type {
@@ -5082,7 +5082,7 @@ func (o GoogleCloudApigeeV1OperationResponseOutput) Methods() pulumi.StringArray
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationResponse) []string { return v.Methods }).(pulumi.StringArrayOutput)
 }
 
-// Required. resource represents REST resource path associated with the proxy/remote service.
+// Required. REST resource path associated with the API proxy or remote service.
 func (o GoogleCloudApigeeV1OperationResponseOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1OperationResponse) string { return v.Resource }).(pulumi.StringOutput)
 }
@@ -5955,7 +5955,7 @@ func (o GoogleCloudApigeeV1QueryMetricArrayOutput) Index(i pulumi.IntInput) Goog
 	}).(GoogleCloudApigeeV1QueryMetricOutput)
 }
 
-// Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+// Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
 type GoogleCloudApigeeV1Quota struct {
 	// Required. Time interval over which the number of request messages is calculated.
 	Interval *string `pulumi:"interval"`
@@ -5976,7 +5976,7 @@ type GoogleCloudApigeeV1QuotaInput interface {
 	ToGoogleCloudApigeeV1QuotaOutputWithContext(context.Context) GoogleCloudApigeeV1QuotaOutput
 }
 
-// Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+// Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
 type GoogleCloudApigeeV1QuotaArgs struct {
 	// Required. Time interval over which the number of request messages is calculated.
 	Interval pulumi.StringPtrInput `pulumi:"interval"`
@@ -6039,7 +6039,7 @@ func (i *googleCloudApigeeV1QuotaPtrType) ToGoogleCloudApigeeV1QuotaPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QuotaPtrOutput)
 }
 
-// Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+// Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
 type GoogleCloudApigeeV1QuotaOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1QuotaOutput) ElementType() reflect.Type {
@@ -6127,7 +6127,7 @@ func (o GoogleCloudApigeeV1QuotaPtrOutput) TimeUnit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+// Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
 type GoogleCloudApigeeV1QuotaResponse struct {
 	// Required. Time interval over which the number of request messages is calculated.
 	Interval string `pulumi:"interval"`
@@ -6148,7 +6148,7 @@ type GoogleCloudApigeeV1QuotaResponseInput interface {
 	ToGoogleCloudApigeeV1QuotaResponseOutputWithContext(context.Context) GoogleCloudApigeeV1QuotaResponseOutput
 }
 
-// Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+// Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
 type GoogleCloudApigeeV1QuotaResponseArgs struct {
 	// Required. Time interval over which the number of request messages is calculated.
 	Interval pulumi.StringInput `pulumi:"interval"`
@@ -6170,7 +6170,7 @@ func (i GoogleCloudApigeeV1QuotaResponseArgs) ToGoogleCloudApigeeV1QuotaResponse
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QuotaResponseOutput)
 }
 
-// Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+// Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
 type GoogleCloudApigeeV1QuotaResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1QuotaResponseOutput) ElementType() reflect.Type {

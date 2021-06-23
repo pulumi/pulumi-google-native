@@ -19,6 +19,8 @@ type Occurrence struct {
 	Attestation AttestationResponseOutput `pulumi:"attestation"`
 	// Build details for a verifiable build.
 	BuildDetails BuildDetailsResponseOutput `pulumi:"buildDetails"`
+	// Describes whether or not a resource passes compliance checks.
+	Compliance ComplianceOccurrenceResponseOutput `pulumi:"compliance"`
 	// The time this `Occurrence` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Describes the deployment of an artifact on a runtime.
@@ -85,6 +87,8 @@ type occurrenceState struct {
 	Attestation *AttestationResponse `pulumi:"attestation"`
 	// Build details for a verifiable build.
 	BuildDetails *BuildDetailsResponse `pulumi:"buildDetails"`
+	// Describes whether or not a resource passes compliance checks.
+	Compliance *ComplianceOccurrenceResponse `pulumi:"compliance"`
 	// The time this `Occurrence` was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Describes the deployment of an artifact on a runtime.
@@ -120,6 +124,8 @@ type OccurrenceState struct {
 	Attestation AttestationResponsePtrInput
 	// Build details for a verifiable build.
 	BuildDetails BuildDetailsResponsePtrInput
+	// Describes whether or not a resource passes compliance checks.
+	Compliance ComplianceOccurrenceResponsePtrInput
 	// The time this `Occurrence` was created.
 	CreateTime pulumi.StringPtrInput
 	// Describes the deployment of an artifact on a runtime.
@@ -159,6 +165,8 @@ type occurrenceArgs struct {
 	Attestation *Attestation `pulumi:"attestation"`
 	// Build details for a verifiable build.
 	BuildDetails *BuildDetails `pulumi:"buildDetails"`
+	// Describes whether or not a resource passes compliance checks.
+	Compliance *ComplianceOccurrence `pulumi:"compliance"`
 	// The time this `Occurrence` was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Describes the deployment of an artifact on a runtime.
@@ -196,6 +204,8 @@ type OccurrenceArgs struct {
 	Attestation AttestationPtrInput
 	// Build details for a verifiable build.
 	BuildDetails BuildDetailsPtrInput
+	// Describes whether or not a resource passes compliance checks.
+	Compliance ComplianceOccurrencePtrInput
 	// The time this `Occurrence` was created.
 	CreateTime pulumi.StringPtrInput
 	// Describes the deployment of an artifact on a runtime.

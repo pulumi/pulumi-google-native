@@ -130,8 +130,7 @@ type instanceArgs struct {
 	// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
 	DiskEncryptionKeyName *string `pulumi:"diskEncryptionKeyName"`
 	// Optional. Display name for the instance.
-	DisplayName  *string `pulumi:"displayName"`
-	Environments *string `pulumi:"environments"`
+	DisplayName *string `pulumi:"displayName"`
 	// Required. Compute Engine location where the instance resides.
 	Location *string `pulumi:"location"`
 	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
@@ -148,8 +147,7 @@ type InstanceArgs struct {
 	// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
 	DiskEncryptionKeyName pulumi.StringPtrInput
 	// Optional. Display name for the instance.
-	DisplayName  pulumi.StringPtrInput
-	Environments pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
 	// Required. Compute Engine location where the instance resides.
 	Location pulumi.StringPtrInput
 	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.

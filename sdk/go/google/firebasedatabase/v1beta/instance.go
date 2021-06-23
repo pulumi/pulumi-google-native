@@ -17,7 +17,7 @@ type Instance struct {
 
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl pulumi.StringOutput `pulumi:"databaseUrl"`
-	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -64,7 +64,7 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl *string `pulumi:"databaseUrl"`
-	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name *string `pulumi:"name"`
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 	Project *string `pulumi:"project"`
@@ -77,7 +77,7 @@ type instanceState struct {
 type InstanceState struct {
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl pulumi.StringPtrInput
-	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name pulumi.StringPtrInput
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 	Project pulumi.StringPtrInput
@@ -96,7 +96,7 @@ type instanceArgs struct {
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl *string `pulumi:"databaseUrl"`
 	Location    string  `pulumi:"location"`
-	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name *string `pulumi:"name"`
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 	Project string `pulumi:"project"`
@@ -113,7 +113,7 @@ type InstanceArgs struct {
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl pulumi.StringPtrInput
 	Location    pulumi.StringInput
-	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name pulumi.StringPtrInput
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 	Project pulumi.StringInput

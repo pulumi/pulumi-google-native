@@ -19,6 +19,8 @@ type BackendBucket struct {
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyResponseOutput `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+	CompressionMode pulumi.StringOutput `pulumi:"compressionMode"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
@@ -75,6 +77,8 @@ type backendBucketState struct {
 	BucketName *string `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy *BackendBucketCdnPolicyResponse `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+	CompressionMode *string `pulumi:"compressionMode"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
@@ -100,6 +104,8 @@ type BackendBucketState struct {
 	BucketName pulumi.StringPtrInput
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyResponsePtrInput
+	// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+	CompressionMode pulumi.StringPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// Headers that the HTTP/S load balancer should add to proxied responses.
@@ -129,6 +135,8 @@ type backendBucketArgs struct {
 	BucketName *string `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+	CompressionMode *string `pulumi:"compressionMode"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
@@ -159,6 +167,8 @@ type BackendBucketArgs struct {
 	BucketName pulumi.StringPtrInput
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyPtrInput
+	// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+	CompressionMode *BackendBucketCompressionMode
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// Headers that the HTTP/S load balancer should add to proxied responses.

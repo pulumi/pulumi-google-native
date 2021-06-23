@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:gkehub/v1:Feature":
+		r = &Feature{}
+	case "google-native:gkehub/v1:FeatureIamPolicy":
+		r = &FeatureIamPolicy{}
 	case "google-native:gkehub/v1:Membership":
 		r = &Membership{}
 	case "google-native:gkehub/v1:MembershipIamPolicy":

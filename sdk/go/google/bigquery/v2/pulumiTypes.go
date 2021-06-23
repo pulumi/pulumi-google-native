@@ -7212,6 +7212,8 @@ type ExternalDataConfiguration struct {
 	ConnectionId *string `pulumi:"connectionId"`
 	// Additional properties to set if sourceFormat is set to CSV.
 	CsvOptions *CsvOptions `pulumi:"csvOptions"`
+	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+	DecimalTargetTypes []string `pulumi:"decimalTargetTypes"`
 	// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 	GoogleSheetsOptions *GoogleSheetsOptions `pulumi:"googleSheetsOptions"`
 	// [Optional] Options to configure hive partitioning support.
@@ -7252,6 +7254,8 @@ type ExternalDataConfigurationArgs struct {
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// Additional properties to set if sourceFormat is set to CSV.
 	CsvOptions CsvOptionsPtrInput `pulumi:"csvOptions"`
+	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+	DecimalTargetTypes pulumi.StringArrayInput `pulumi:"decimalTargetTypes"`
 	// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 	GoogleSheetsOptions GoogleSheetsOptionsPtrInput `pulumi:"googleSheetsOptions"`
 	// [Optional] Options to configure hive partitioning support.
@@ -7372,6 +7376,11 @@ func (o ExternalDataConfigurationOutput) CsvOptions() CsvOptionsPtrOutput {
 	return o.ApplyT(func(v ExternalDataConfiguration) *CsvOptions { return v.CsvOptions }).(CsvOptionsPtrOutput)
 }
 
+// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+func (o ExternalDataConfigurationOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExternalDataConfiguration) []string { return v.DecimalTargetTypes }).(pulumi.StringArrayOutput)
+}
+
 // [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 func (o ExternalDataConfigurationOutput) GoogleSheetsOptions() GoogleSheetsOptionsPtrOutput {
 	return o.ApplyT(func(v ExternalDataConfiguration) *GoogleSheetsOptions { return v.GoogleSheetsOptions }).(GoogleSheetsOptionsPtrOutput)
@@ -7480,6 +7489,16 @@ func (o ExternalDataConfigurationPtrOutput) CsvOptions() CsvOptionsPtrOutput {
 	}).(CsvOptionsPtrOutput)
 }
 
+// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+func (o ExternalDataConfigurationPtrOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExternalDataConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DecimalTargetTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 // [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 func (o ExternalDataConfigurationPtrOutput) GoogleSheetsOptions() GoogleSheetsOptionsPtrOutput {
 	return o.ApplyT(func(v *ExternalDataConfiguration) *GoogleSheetsOptions {
@@ -7571,6 +7590,8 @@ type ExternalDataConfigurationResponse struct {
 	ConnectionId string `pulumi:"connectionId"`
 	// Additional properties to set if sourceFormat is set to CSV.
 	CsvOptions CsvOptionsResponse `pulumi:"csvOptions"`
+	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+	DecimalTargetTypes []string `pulumi:"decimalTargetTypes"`
 	// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 	GoogleSheetsOptions GoogleSheetsOptionsResponse `pulumi:"googleSheetsOptions"`
 	// [Optional] Options to configure hive partitioning support.
@@ -7611,6 +7632,8 @@ type ExternalDataConfigurationResponseArgs struct {
 	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
 	// Additional properties to set if sourceFormat is set to CSV.
 	CsvOptions CsvOptionsResponseInput `pulumi:"csvOptions"`
+	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+	DecimalTargetTypes pulumi.StringArrayInput `pulumi:"decimalTargetTypes"`
 	// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 	GoogleSheetsOptions GoogleSheetsOptionsResponseInput `pulumi:"googleSheetsOptions"`
 	// [Optional] Options to configure hive partitioning support.
@@ -7731,6 +7754,11 @@ func (o ExternalDataConfigurationResponseOutput) CsvOptions() CsvOptionsResponse
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) CsvOptionsResponse { return v.CsvOptions }).(CsvOptionsResponseOutput)
 }
 
+// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+func (o ExternalDataConfigurationResponseOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExternalDataConfigurationResponse) []string { return v.DecimalTargetTypes }).(pulumi.StringArrayOutput)
+}
+
 // [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
 func (o ExternalDataConfigurationResponseOutput) GoogleSheetsOptions() GoogleSheetsOptionsResponseOutput {
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) GoogleSheetsOptionsResponse { return v.GoogleSheetsOptions }).(GoogleSheetsOptionsResponseOutput)
@@ -7839,6 +7867,16 @@ func (o ExternalDataConfigurationResponsePtrOutput) CsvOptions() CsvOptionsRespo
 		}
 		return &v.CsvOptions
 	}).(CsvOptionsResponsePtrOutput)
+}
+
+// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+func (o ExternalDataConfigurationResponsePtrOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExternalDataConfigurationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DecimalTargetTypes
+	}).(pulumi.StringArrayOutput)
 }
 
 // [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
@@ -9400,7 +9438,7 @@ type JobConfigurationLoad struct {
 	Clustering *Clustering `pulumi:"clustering"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition *string `pulumi:"createDisposition"`
-	// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes []string `pulumi:"decimalTargetTypes"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
 	DestinationEncryptionConfiguration *EncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
@@ -9470,7 +9508,7 @@ type JobConfigurationLoadArgs struct {
 	Clustering ClusteringPtrInput `pulumi:"clustering"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
-	// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes pulumi.StringArrayInput `pulumi:"decimalTargetTypes"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
 	DestinationEncryptionConfiguration EncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
@@ -9620,7 +9658,7 @@ func (o JobConfigurationLoadOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobConfigurationLoad) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
 
-// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 func (o JobConfigurationLoadOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobConfigurationLoad) []string { return v.DecimalTargetTypes }).(pulumi.StringArrayOutput)
 }
@@ -9803,7 +9841,7 @@ func (o JobConfigurationLoadPtrOutput) CreateDisposition() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 func (o JobConfigurationLoadPtrOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobConfigurationLoad) []string {
 		if v == nil {
@@ -10044,7 +10082,7 @@ type JobConfigurationLoadResponse struct {
 	Clustering ClusteringResponse `pulumi:"clustering"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition string `pulumi:"createDisposition"`
-	// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes []string `pulumi:"decimalTargetTypes"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
 	DestinationEncryptionConfiguration EncryptionConfigurationResponse `pulumi:"destinationEncryptionConfiguration"`
@@ -10114,7 +10152,7 @@ type JobConfigurationLoadResponseArgs struct {
 	Clustering ClusteringResponseInput `pulumi:"clustering"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition pulumi.StringInput `pulumi:"createDisposition"`
-	// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes pulumi.StringArrayInput `pulumi:"decimalTargetTypes"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
 	DestinationEncryptionConfiguration EncryptionConfigurationResponseInput `pulumi:"destinationEncryptionConfiguration"`
@@ -10264,7 +10302,7 @@ func (o JobConfigurationLoadResponseOutput) CreateDisposition() pulumi.StringOut
 	return o.ApplyT(func(v JobConfigurationLoadResponse) string { return v.CreateDisposition }).(pulumi.StringOutput)
 }
 
-// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 func (o JobConfigurationLoadResponseOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobConfigurationLoadResponse) []string { return v.DecimalTargetTypes }).(pulumi.StringArrayOutput)
 }
@@ -10451,7 +10489,7 @@ func (o JobConfigurationLoadResponsePtrOutput) CreateDisposition() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 func (o JobConfigurationLoadResponsePtrOutput) DecimalTargetTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobConfigurationLoadResponse) []string {
 		if v == nil {
@@ -12951,7 +12989,7 @@ type JobStatistics struct {
 	// [Output-only] Slot-milliseconds for the job.
 	TotalSlotMs *string `pulumi:"totalSlotMs"`
 	// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-	TransactionInfoTemplate *TransactionInfo `pulumi:"transactionInfoTemplate"`
+	TransactionInfo *TransactionInfo `pulumi:"transactionInfo"`
 }
 
 // JobStatisticsInput is an input type that accepts JobStatisticsArgs and JobStatisticsOutput values.
@@ -12999,7 +13037,7 @@ type JobStatisticsArgs struct {
 	// [Output-only] Slot-milliseconds for the job.
 	TotalSlotMs pulumi.StringPtrInput `pulumi:"totalSlotMs"`
 	// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-	TransactionInfoTemplate TransactionInfoPtrInput `pulumi:"transactionInfoTemplate"`
+	TransactionInfo TransactionInfoPtrInput `pulumi:"transactionInfo"`
 }
 
 func (JobStatisticsArgs) ElementType() reflect.Type {
@@ -13160,8 +13198,8 @@ func (o JobStatisticsOutput) TotalSlotMs() pulumi.StringPtrOutput {
 }
 
 // [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-func (o JobStatisticsOutput) TransactionInfoTemplate() TransactionInfoPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *TransactionInfo { return v.TransactionInfoTemplate }).(TransactionInfoPtrOutput)
+func (o JobStatisticsOutput) TransactionInfo() TransactionInfoPtrOutput {
+	return o.ApplyT(func(v JobStatistics) *TransactionInfo { return v.TransactionInfo }).(TransactionInfoPtrOutput)
 }
 
 type JobStatisticsPtrOutput struct{ *pulumi.OutputState }
@@ -13343,12 +13381,12 @@ func (o JobStatisticsPtrOutput) TotalSlotMs() pulumi.StringPtrOutput {
 }
 
 // [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-func (o JobStatisticsPtrOutput) TransactionInfoTemplate() TransactionInfoPtrOutput {
+func (o JobStatisticsPtrOutput) TransactionInfo() TransactionInfoPtrOutput {
 	return o.ApplyT(func(v *JobStatistics) *TransactionInfo {
 		if v == nil {
 			return nil
 		}
-		return v.TransactionInfoTemplate
+		return v.TransactionInfo
 	}).(TransactionInfoPtrOutput)
 }
 
@@ -13359,6 +13397,8 @@ type JobStatistics2 struct {
 	CacheHit *bool `pulumi:"cacheHit"`
 	// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 	DdlAffectedRowAccessPolicyCount *string `pulumi:"ddlAffectedRowAccessPolicyCount"`
+	// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+	DdlDestinationTable *TableReference `pulumi:"ddlDestinationTable"`
 	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 	DdlOperationPerformed *string `pulumi:"ddlOperationPerformed"`
 	// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
@@ -13369,6 +13409,8 @@ type JobStatistics2 struct {
 	DdlTargetRowAccessPolicy *RowAccessPolicyReference `pulumi:"ddlTargetRowAccessPolicy"`
 	// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 	DdlTargetTable *TableReference `pulumi:"ddlTargetTable"`
+	// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+	DmlStats interface{} `pulumi:"dmlStats"`
 	// [Output-only] The original estimate of bytes processed for the job.
 	EstimatedBytesProcessed *string `pulumi:"estimatedBytesProcessed"`
 	// [Output-only, Beta] Information about create model query job progress.
@@ -13421,6 +13463,8 @@ type JobStatistics2Args struct {
 	CacheHit pulumi.BoolPtrInput `pulumi:"cacheHit"`
 	// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 	DdlAffectedRowAccessPolicyCount pulumi.StringPtrInput `pulumi:"ddlAffectedRowAccessPolicyCount"`
+	// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+	DdlDestinationTable TableReferencePtrInput `pulumi:"ddlDestinationTable"`
 	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 	DdlOperationPerformed pulumi.StringPtrInput `pulumi:"ddlOperationPerformed"`
 	// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
@@ -13431,6 +13475,8 @@ type JobStatistics2Args struct {
 	DdlTargetRowAccessPolicy RowAccessPolicyReferencePtrInput `pulumi:"ddlTargetRowAccessPolicy"`
 	// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 	DdlTargetTable TableReferencePtrInput `pulumi:"ddlTargetTable"`
+	// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+	DmlStats pulumi.Input `pulumi:"dmlStats"`
 	// [Output-only] The original estimate of bytes processed for the job.
 	EstimatedBytesProcessed pulumi.StringPtrInput `pulumi:"estimatedBytesProcessed"`
 	// [Output-only, Beta] Information about create model query job progress.
@@ -13557,6 +13603,11 @@ func (o JobStatistics2Output) DdlAffectedRowAccessPolicyCount() pulumi.StringPtr
 	return o.ApplyT(func(v JobStatistics2) *string { return v.DdlAffectedRowAccessPolicyCount }).(pulumi.StringPtrOutput)
 }
 
+// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+func (o JobStatistics2Output) DdlDestinationTable() TableReferencePtrOutput {
+	return o.ApplyT(func(v JobStatistics2) *TableReference { return v.DdlDestinationTable }).(TableReferencePtrOutput)
+}
+
 // The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 func (o JobStatistics2Output) DdlOperationPerformed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatistics2) *string { return v.DdlOperationPerformed }).(pulumi.StringPtrOutput)
@@ -13580,6 +13631,11 @@ func (o JobStatistics2Output) DdlTargetRowAccessPolicy() RowAccessPolicyReferenc
 // [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 func (o JobStatistics2Output) DdlTargetTable() TableReferencePtrOutput {
 	return o.ApplyT(func(v JobStatistics2) *TableReference { return v.DdlTargetTable }).(TableReferencePtrOutput)
+}
+
+// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+func (o JobStatistics2Output) DmlStats() pulumi.AnyOutput {
+	return o.ApplyT(func(v JobStatistics2) interface{} { return v.DmlStats }).(pulumi.AnyOutput)
 }
 
 // [Output-only] The original estimate of bytes processed for the job.
@@ -13710,6 +13766,16 @@ func (o JobStatistics2PtrOutput) DdlAffectedRowAccessPolicyCount() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+func (o JobStatistics2PtrOutput) DdlDestinationTable() TableReferencePtrOutput {
+	return o.ApplyT(func(v *JobStatistics2) *TableReference {
+		if v == nil {
+			return nil
+		}
+		return v.DdlDestinationTable
+	}).(TableReferencePtrOutput)
+}
+
 // The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 func (o JobStatistics2PtrOutput) DdlOperationPerformed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2) *string {
@@ -13758,6 +13824,16 @@ func (o JobStatistics2PtrOutput) DdlTargetTable() TableReferencePtrOutput {
 		}
 		return v.DdlTargetTable
 	}).(TableReferencePtrOutput)
+}
+
+// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+func (o JobStatistics2PtrOutput) DmlStats() pulumi.AnyOutput {
+	return o.ApplyT(func(v *JobStatistics2) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DmlStats
+	}).(pulumi.AnyOutput)
 }
 
 // [Output-only] The original estimate of bytes processed for the job.
@@ -14139,6 +14215,8 @@ type JobStatistics2Response struct {
 	CacheHit bool `pulumi:"cacheHit"`
 	// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 	DdlAffectedRowAccessPolicyCount string `pulumi:"ddlAffectedRowAccessPolicyCount"`
+	// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+	DdlDestinationTable TableReferenceResponse `pulumi:"ddlDestinationTable"`
 	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 	DdlOperationPerformed string `pulumi:"ddlOperationPerformed"`
 	// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
@@ -14149,6 +14227,8 @@ type JobStatistics2Response struct {
 	DdlTargetRowAccessPolicy RowAccessPolicyReferenceResponse `pulumi:"ddlTargetRowAccessPolicy"`
 	// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 	DdlTargetTable TableReferenceResponse `pulumi:"ddlTargetTable"`
+	// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+	DmlStats interface{} `pulumi:"dmlStats"`
 	// [Output-only] The original estimate of bytes processed for the job.
 	EstimatedBytesProcessed string `pulumi:"estimatedBytesProcessed"`
 	// [Output-only, Beta] Information about create model query job progress.
@@ -14201,6 +14281,8 @@ type JobStatistics2ResponseArgs struct {
 	CacheHit pulumi.BoolInput `pulumi:"cacheHit"`
 	// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 	DdlAffectedRowAccessPolicyCount pulumi.StringInput `pulumi:"ddlAffectedRowAccessPolicyCount"`
+	// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+	DdlDestinationTable TableReferenceResponseInput `pulumi:"ddlDestinationTable"`
 	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 	DdlOperationPerformed pulumi.StringInput `pulumi:"ddlOperationPerformed"`
 	// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
@@ -14211,6 +14293,8 @@ type JobStatistics2ResponseArgs struct {
 	DdlTargetRowAccessPolicy RowAccessPolicyReferenceResponseInput `pulumi:"ddlTargetRowAccessPolicy"`
 	// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 	DdlTargetTable TableReferenceResponseInput `pulumi:"ddlTargetTable"`
+	// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+	DmlStats pulumi.Input `pulumi:"dmlStats"`
 	// [Output-only] The original estimate of bytes processed for the job.
 	EstimatedBytesProcessed pulumi.StringInput `pulumi:"estimatedBytesProcessed"`
 	// [Output-only, Beta] Information about create model query job progress.
@@ -14337,6 +14421,11 @@ func (o JobStatistics2ResponseOutput) DdlAffectedRowAccessPolicyCount() pulumi.S
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.DdlAffectedRowAccessPolicyCount }).(pulumi.StringOutput)
 }
 
+// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+func (o JobStatistics2ResponseOutput) DdlDestinationTable() TableReferenceResponseOutput {
+	return o.ApplyT(func(v JobStatistics2Response) TableReferenceResponse { return v.DdlDestinationTable }).(TableReferenceResponseOutput)
+}
+
 // The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 func (o JobStatistics2ResponseOutput) DdlOperationPerformed() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.DdlOperationPerformed }).(pulumi.StringOutput)
@@ -14360,6 +14449,11 @@ func (o JobStatistics2ResponseOutput) DdlTargetRowAccessPolicy() RowAccessPolicy
 // [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 func (o JobStatistics2ResponseOutput) DdlTargetTable() TableReferenceResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) TableReferenceResponse { return v.DdlTargetTable }).(TableReferenceResponseOutput)
+}
+
+// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+func (o JobStatistics2ResponseOutput) DmlStats() pulumi.AnyOutput {
+	return o.ApplyT(func(v JobStatistics2Response) interface{} { return v.DmlStats }).(pulumi.AnyOutput)
 }
 
 // [Output-only] The original estimate of bytes processed for the job.
@@ -14490,6 +14584,16 @@ func (o JobStatistics2ResponsePtrOutput) DdlAffectedRowAccessPolicyCount() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+func (o JobStatistics2ResponsePtrOutput) DdlDestinationTable() TableReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *JobStatistics2Response) *TableReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DdlDestinationTable
+	}).(TableReferenceResponsePtrOutput)
+}
+
 // The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 func (o JobStatistics2ResponsePtrOutput) DdlOperationPerformed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *string {
@@ -14538,6 +14642,16 @@ func (o JobStatistics2ResponsePtrOutput) DdlTargetTable() TableReferenceResponse
 		}
 		return &v.DdlTargetTable
 	}).(TableReferenceResponsePtrOutput)
+}
+
+// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+func (o JobStatistics2ResponsePtrOutput) DmlStats() pulumi.AnyOutput {
+	return o.ApplyT(func(v *JobStatistics2Response) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DmlStats
+	}).(pulumi.AnyOutput)
 }
 
 // [Output-only] The original estimate of bytes processed for the job.
@@ -15660,7 +15774,7 @@ type JobStatisticsResponse struct {
 	// [Output-only] Slot-milliseconds for the job.
 	TotalSlotMs string `pulumi:"totalSlotMs"`
 	// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-	TransactionInfoTemplate TransactionInfoResponse `pulumi:"transactionInfoTemplate"`
+	TransactionInfo TransactionInfoResponse `pulumi:"transactionInfo"`
 }
 
 // JobStatisticsResponseInput is an input type that accepts JobStatisticsResponseArgs and JobStatisticsResponseOutput values.
@@ -15708,7 +15822,7 @@ type JobStatisticsResponseArgs struct {
 	// [Output-only] Slot-milliseconds for the job.
 	TotalSlotMs pulumi.StringInput `pulumi:"totalSlotMs"`
 	// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-	TransactionInfoTemplate TransactionInfoResponseInput `pulumi:"transactionInfoTemplate"`
+	TransactionInfo TransactionInfoResponseInput `pulumi:"transactionInfo"`
 }
 
 func (JobStatisticsResponseArgs) ElementType() reflect.Type {
@@ -15869,8 +15983,8 @@ func (o JobStatisticsResponseOutput) TotalSlotMs() pulumi.StringOutput {
 }
 
 // [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-func (o JobStatisticsResponseOutput) TransactionInfoTemplate() TransactionInfoResponseOutput {
-	return o.ApplyT(func(v JobStatisticsResponse) TransactionInfoResponse { return v.TransactionInfoTemplate }).(TransactionInfoResponseOutput)
+func (o JobStatisticsResponseOutput) TransactionInfo() TransactionInfoResponseOutput {
+	return o.ApplyT(func(v JobStatisticsResponse) TransactionInfoResponse { return v.TransactionInfo }).(TransactionInfoResponseOutput)
 }
 
 type JobStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -16052,12 +16166,12 @@ func (o JobStatisticsResponsePtrOutput) TotalSlotMs() pulumi.StringPtrOutput {
 }
 
 // [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-func (o JobStatisticsResponsePtrOutput) TransactionInfoTemplate() TransactionInfoResponsePtrOutput {
+func (o JobStatisticsResponsePtrOutput) TransactionInfo() TransactionInfoResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *TransactionInfoResponse {
 		if v == nil {
 			return nil
 		}
-		return &v.TransactionInfoTemplate
+		return &v.TransactionInfo
 	}).(TransactionInfoResponsePtrOutput)
 }
 
@@ -21882,9 +21996,9 @@ func (o SessionInfoResponsePtrOutput) SessionId() pulumi.StringPtrOutput {
 }
 
 type SnapshotDefinition struct {
-	// [Required] Reference describing the ID of the table that is snapshotted.
+	// [Required] Reference describing the ID of the table that was snapshot.
 	BaseTableReference *TableReference `pulumi:"baseTableReference"`
-	// [Required] The time at which the base table was snapshot.
+	// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 	SnapshotTime *string `pulumi:"snapshotTime"`
 }
 
@@ -21900,9 +22014,9 @@ type SnapshotDefinitionInput interface {
 }
 
 type SnapshotDefinitionArgs struct {
-	// [Required] Reference describing the ID of the table that is snapshotted.
+	// [Required] Reference describing the ID of the table that was snapshot.
 	BaseTableReference TableReferencePtrInput `pulumi:"baseTableReference"`
-	// [Required] The time at which the base table was snapshot.
+	// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 	SnapshotTime pulumi.StringPtrInput `pulumi:"snapshotTime"`
 }
 
@@ -21983,12 +22097,12 @@ func (o SnapshotDefinitionOutput) ToSnapshotDefinitionPtrOutputWithContext(ctx c
 	}).(SnapshotDefinitionPtrOutput)
 }
 
-// [Required] Reference describing the ID of the table that is snapshotted.
+// [Required] Reference describing the ID of the table that was snapshot.
 func (o SnapshotDefinitionOutput) BaseTableReference() TableReferencePtrOutput {
 	return o.ApplyT(func(v SnapshotDefinition) *TableReference { return v.BaseTableReference }).(TableReferencePtrOutput)
 }
 
-// [Required] The time at which the base table was snapshot.
+// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 func (o SnapshotDefinitionOutput) SnapshotTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotDefinition) *string { return v.SnapshotTime }).(pulumi.StringPtrOutput)
 }
@@ -22011,7 +22125,7 @@ func (o SnapshotDefinitionPtrOutput) Elem() SnapshotDefinitionOutput {
 	return o.ApplyT(func(v *SnapshotDefinition) SnapshotDefinition { return *v }).(SnapshotDefinitionOutput)
 }
 
-// [Required] Reference describing the ID of the table that is snapshotted.
+// [Required] Reference describing the ID of the table that was snapshot.
 func (o SnapshotDefinitionPtrOutput) BaseTableReference() TableReferencePtrOutput {
 	return o.ApplyT(func(v *SnapshotDefinition) *TableReference {
 		if v == nil {
@@ -22021,7 +22135,7 @@ func (o SnapshotDefinitionPtrOutput) BaseTableReference() TableReferencePtrOutpu
 	}).(TableReferencePtrOutput)
 }
 
-// [Required] The time at which the base table was snapshot.
+// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 func (o SnapshotDefinitionPtrOutput) SnapshotTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnapshotDefinition) *string {
 		if v == nil {
@@ -22032,9 +22146,9 @@ func (o SnapshotDefinitionPtrOutput) SnapshotTime() pulumi.StringPtrOutput {
 }
 
 type SnapshotDefinitionResponse struct {
-	// [Required] Reference describing the ID of the table that is snapshotted.
+	// [Required] Reference describing the ID of the table that was snapshot.
 	BaseTableReference TableReferenceResponse `pulumi:"baseTableReference"`
-	// [Required] The time at which the base table was snapshot.
+	// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 	SnapshotTime string `pulumi:"snapshotTime"`
 }
 
@@ -22050,9 +22164,9 @@ type SnapshotDefinitionResponseInput interface {
 }
 
 type SnapshotDefinitionResponseArgs struct {
-	// [Required] Reference describing the ID of the table that is snapshotted.
+	// [Required] Reference describing the ID of the table that was snapshot.
 	BaseTableReference TableReferenceResponseInput `pulumi:"baseTableReference"`
-	// [Required] The time at which the base table was snapshot.
+	// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 	SnapshotTime pulumi.StringInput `pulumi:"snapshotTime"`
 }
 
@@ -22133,12 +22247,12 @@ func (o SnapshotDefinitionResponseOutput) ToSnapshotDefinitionResponsePtrOutputW
 	}).(SnapshotDefinitionResponsePtrOutput)
 }
 
-// [Required] Reference describing the ID of the table that is snapshotted.
+// [Required] Reference describing the ID of the table that was snapshot.
 func (o SnapshotDefinitionResponseOutput) BaseTableReference() TableReferenceResponseOutput {
 	return o.ApplyT(func(v SnapshotDefinitionResponse) TableReferenceResponse { return v.BaseTableReference }).(TableReferenceResponseOutput)
 }
 
-// [Required] The time at which the base table was snapshot.
+// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 func (o SnapshotDefinitionResponseOutput) SnapshotTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SnapshotDefinitionResponse) string { return v.SnapshotTime }).(pulumi.StringOutput)
 }
@@ -22161,7 +22275,7 @@ func (o SnapshotDefinitionResponsePtrOutput) Elem() SnapshotDefinitionResponseOu
 	return o.ApplyT(func(v *SnapshotDefinitionResponse) SnapshotDefinitionResponse { return *v }).(SnapshotDefinitionResponseOutput)
 }
 
-// [Required] Reference describing the ID of the table that is snapshotted.
+// [Required] Reference describing the ID of the table that was snapshot.
 func (o SnapshotDefinitionResponsePtrOutput) BaseTableReference() TableReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *SnapshotDefinitionResponse) *TableReferenceResponse {
 		if v == nil {
@@ -22171,7 +22285,7 @@ func (o SnapshotDefinitionResponsePtrOutput) BaseTableReference() TableReference
 	}).(TableReferenceResponsePtrOutput)
 }
 
-// [Required] The time at which the base table was snapshot.
+// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
 func (o SnapshotDefinitionResponsePtrOutput) SnapshotTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnapshotDefinitionResponse) *string {
 		if v == nil {
@@ -25864,6 +25978,8 @@ func (o UserDefinedFunctionResourceResponseArrayOutput) Index(i pulumi.IntInput)
 type ViewDefinition struct {
 	// [Required] A query that BigQuery executes when the view is referenced.
 	Query *string `pulumi:"query"`
+	// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+	UseExplicitColumnNames *bool `pulumi:"useExplicitColumnNames"`
 	// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
 	UseLegacySql *bool `pulumi:"useLegacySql"`
 	// Describes user-defined function resources used in the query.
@@ -25884,6 +26000,8 @@ type ViewDefinitionInput interface {
 type ViewDefinitionArgs struct {
 	// [Required] A query that BigQuery executes when the view is referenced.
 	Query pulumi.StringPtrInput `pulumi:"query"`
+	// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+	UseExplicitColumnNames pulumi.BoolPtrInput `pulumi:"useExplicitColumnNames"`
 	// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
 	UseLegacySql pulumi.BoolPtrInput `pulumi:"useLegacySql"`
 	// Describes user-defined function resources used in the query.
@@ -25972,6 +26090,11 @@ func (o ViewDefinitionOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ViewDefinition) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
 
+// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+func (o ViewDefinitionOutput) UseExplicitColumnNames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ViewDefinition) *bool { return v.UseExplicitColumnNames }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
 func (o ViewDefinitionOutput) UseLegacySql() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ViewDefinition) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
@@ -26010,6 +26133,16 @@ func (o ViewDefinitionPtrOutput) Query() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+func (o ViewDefinitionPtrOutput) UseExplicitColumnNames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ViewDefinition) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseExplicitColumnNames
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
 func (o ViewDefinitionPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ViewDefinition) *bool {
@@ -26033,6 +26166,8 @@ func (o ViewDefinitionPtrOutput) UserDefinedFunctionResources() UserDefinedFunct
 type ViewDefinitionResponse struct {
 	// [Required] A query that BigQuery executes when the view is referenced.
 	Query string `pulumi:"query"`
+	// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+	UseExplicitColumnNames bool `pulumi:"useExplicitColumnNames"`
 	// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
 	UseLegacySql bool `pulumi:"useLegacySql"`
 	// Describes user-defined function resources used in the query.
@@ -26053,6 +26188,8 @@ type ViewDefinitionResponseInput interface {
 type ViewDefinitionResponseArgs struct {
 	// [Required] A query that BigQuery executes when the view is referenced.
 	Query pulumi.StringInput `pulumi:"query"`
+	// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+	UseExplicitColumnNames pulumi.BoolInput `pulumi:"useExplicitColumnNames"`
 	// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
 	UseLegacySql pulumi.BoolInput `pulumi:"useLegacySql"`
 	// Describes user-defined function resources used in the query.
@@ -26141,6 +26278,11 @@ func (o ViewDefinitionResponseOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v ViewDefinitionResponse) string { return v.Query }).(pulumi.StringOutput)
 }
 
+// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+func (o ViewDefinitionResponseOutput) UseExplicitColumnNames() pulumi.BoolOutput {
+	return o.ApplyT(func(v ViewDefinitionResponse) bool { return v.UseExplicitColumnNames }).(pulumi.BoolOutput)
+}
+
 // Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
 func (o ViewDefinitionResponseOutput) UseLegacySql() pulumi.BoolOutput {
 	return o.ApplyT(func(v ViewDefinitionResponse) bool { return v.UseLegacySql }).(pulumi.BoolOutput)
@@ -26179,6 +26321,16 @@ func (o ViewDefinitionResponsePtrOutput) Query() pulumi.StringPtrOutput {
 		}
 		return &v.Query
 	}).(pulumi.StringPtrOutput)
+}
+
+// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+func (o ViewDefinitionResponsePtrOutput) UseExplicitColumnNames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ViewDefinitionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseExplicitColumnNames
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.

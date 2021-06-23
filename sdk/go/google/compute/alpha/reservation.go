@@ -32,7 +32,7 @@ type Reservation struct {
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// Share-settings for shared-reservation
-	ShareSettings AllocationShareSettingsResponseOutput `pulumi:"shareSettings"`
+	ShareSettings ShareSettingsResponseOutput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponseOutput `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -95,7 +95,7 @@ type reservationState struct {
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// Share-settings for shared-reservation
-	ShareSettings *AllocationShareSettingsResponse `pulumi:"shareSettings"`
+	ShareSettings *ShareSettingsResponse `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation *AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -124,7 +124,7 @@ type ReservationState struct {
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// Share-settings for shared-reservation
-	ShareSettings AllocationShareSettingsResponsePtrInput
+	ShareSettings ShareSettingsResponsePtrInput
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponsePtrInput
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -161,7 +161,7 @@ type reservationArgs struct {
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// Share-settings for shared-reservation
-	ShareSettings *AllocationShareSettings `pulumi:"shareSettings"`
+	ShareSettings *ShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation *AllocationSpecificSKUReservation `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -195,7 +195,7 @@ type ReservationArgs struct {
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// Share-settings for shared-reservation
-	ShareSettings AllocationShareSettingsPtrInput
+	ShareSettings ShareSettingsPtrInput
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationPtrInput
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.

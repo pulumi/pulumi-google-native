@@ -21,9 +21,7 @@ type PublicAdvertisedPrefix struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringOutput `pulumi:"dnsVerificationIp"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
@@ -81,9 +79,7 @@ type publicAdvertisedPrefixState struct {
 	Description *string `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp *string `pulumi:"dnsVerificationIp"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
@@ -110,9 +106,7 @@ type PublicAdvertisedPrefixState struct {
 	Description pulumi.StringPtrInput
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
 	Fingerprint pulumi.StringPtrInput
 	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange pulumi.StringPtrInput
@@ -143,9 +137,7 @@ type publicAdvertisedPrefixArgs struct {
 	Description *string `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp *string `pulumi:"dnsVerificationIp"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
 	Id *string `pulumi:"id"`
@@ -177,9 +169,7 @@ type PublicAdvertisedPrefixArgs struct {
 	Description pulumi.StringPtrInput
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
 	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
 	Id pulumi.StringPtrInput

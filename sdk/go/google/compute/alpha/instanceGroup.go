@@ -25,11 +25,7 @@ type InstanceGroup struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Assigns a name to a port number. For example: {name: "http", port: 80}
-	//
-	// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}]
-	//
-	// Named ports apply to all instances in this instance group.
+	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
 	NamedPorts NamedPortResponseArrayOutput `pulumi:"namedPorts"`
 	// [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -92,11 +88,7 @@ type instanceGroupState struct {
 	Kind *string `pulumi:"kind"`
 	// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name *string `pulumi:"name"`
-	// Assigns a name to a port number. For example: {name: "http", port: 80}
-	//
-	// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}]
-	//
-	// Named ports apply to all instances in this instance group.
+	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
 	NamedPorts []NamedPortResponse `pulumi:"namedPorts"`
 	// [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Network *string `pulumi:"network"`
@@ -125,11 +117,7 @@ type InstanceGroupState struct {
 	Kind pulumi.StringPtrInput
 	// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringPtrInput
-	// Assigns a name to a port number. For example: {name: "http", port: 80}
-	//
-	// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}]
-	//
-	// Named ports apply to all instances in this instance group.
+	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
 	NamedPorts NamedPortResponseArrayInput
 	// [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Network pulumi.StringPtrInput
@@ -164,11 +152,7 @@ type instanceGroupArgs struct {
 	Kind *string `pulumi:"kind"`
 	// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name *string `pulumi:"name"`
-	// Assigns a name to a port number. For example: {name: "http", port: 80}
-	//
-	// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}]
-	//
-	// Named ports apply to all instances in this instance group.
+	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
 	// [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Network *string `pulumi:"network"`
@@ -202,11 +186,7 @@ type InstanceGroupArgs struct {
 	Kind pulumi.StringPtrInput
 	// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringPtrInput
-	// Assigns a name to a port number. For example: {name: "http", port: 80}
-	//
-	// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}]
-	//
-	// Named ports apply to all instances in this instance group.
+	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
 	NamedPorts NamedPortArrayInput
 	// [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Network pulumi.StringPtrInput

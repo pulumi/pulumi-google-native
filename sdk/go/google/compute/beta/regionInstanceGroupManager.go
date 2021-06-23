@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
-//
-// A regional managed instance group can contain up to 2000 instances.
+// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
 type RegionInstanceGroupManager struct {
 	pulumi.CustomResourceState
 
@@ -31,9 +29,7 @@ type RegionInstanceGroupManager struct {
 	DistributionPolicy DistributionPolicyResponseOutput `pulumi:"distributionPolicy"`
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction pulumi.StringOutput `pulumi:"failoverAction"`
-	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// [Output Only] The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
@@ -61,9 +57,7 @@ type RegionInstanceGroupManager struct {
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyResponseOutput `pulumi:"updatePolicy"`
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionResponseArrayOutput `pulumi:"versions"`
 	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -118,9 +112,7 @@ type regionInstanceGroupManagerState struct {
 	DistributionPolicy *DistributionPolicyResponse `pulumi:"distributionPolicy"`
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction *string `pulumi:"failoverAction"`
-	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The URL of the Instance Group resource.
 	InstanceGroup *string `pulumi:"instanceGroup"`
@@ -148,9 +140,7 @@ type regionInstanceGroupManagerState struct {
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy *InstanceGroupManagerUpdatePolicyResponse `pulumi:"updatePolicy"`
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersionResponse `pulumi:"versions"`
 	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone *string `pulumi:"zone"`
@@ -171,9 +161,7 @@ type RegionInstanceGroupManagerState struct {
 	DistributionPolicy DistributionPolicyResponsePtrInput
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction pulumi.StringPtrInput
-	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringPtrInput
@@ -201,9 +189,7 @@ type RegionInstanceGroupManagerState struct {
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyResponsePtrInput
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionResponseArrayInput
 	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone pulumi.StringPtrInput
@@ -228,9 +214,7 @@ type regionInstanceGroupManagerArgs struct {
 	DistributionPolicy *DistributionPolicy `pulumi:"distributionPolicy"`
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction *string `pulumi:"failoverAction"`
-	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
 	Id *string `pulumi:"id"`
@@ -262,9 +246,7 @@ type regionInstanceGroupManagerArgs struct {
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
 	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone *string `pulumi:"zone"`
@@ -286,9 +268,7 @@ type RegionInstanceGroupManagerArgs struct {
 	DistributionPolicy DistributionPolicyPtrInput
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction *RegionInstanceGroupManagerFailoverAction
-	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint pulumi.StringPtrInput
 	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
 	Id pulumi.StringPtrInput
@@ -320,9 +300,7 @@ type RegionInstanceGroupManagerArgs struct {
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionArrayInput
 	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone pulumi.StringPtrInput

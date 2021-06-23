@@ -940,13 +940,13 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSource struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name *string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+	// (Optional) Specify whether the ConfigMap must be defined
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -961,13 +961,13 @@ type ConfigMapEnvSourceInput interface {
 	ToConfigMapEnvSourceOutputWithContext(context.Context) ConfigMapEnvSourceOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceArgs struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+	// (Optional) Specify whether the ConfigMap must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -1024,7 +1024,7 @@ func (i *configMapEnvSourcePtrType) ToConfigMapEnvSourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapEnvSourcePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapEnvSourceOutput) ElementType() reflect.Type {
@@ -1054,12 +1054,12 @@ func (o ConfigMapEnvSourceOutput) LocalObjectReference() LocalObjectReferencePtr
 	return o.ApplyT(func(v ConfigMapEnvSource) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapEnvSourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigMapEnvSource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+// (Optional) Specify whether the ConfigMap must be defined
 func (o ConfigMapEnvSourceOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigMapEnvSource) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -1092,7 +1092,7 @@ func (o ConfigMapEnvSourcePtrOutput) LocalObjectReference() LocalObjectReference
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapEnvSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigMapEnvSource) *string {
 		if v == nil {
@@ -1102,7 +1102,7 @@ func (o ConfigMapEnvSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+// (Optional) Specify whether the ConfigMap must be defined
 func (o ConfigMapEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigMapEnvSource) *bool {
 		if v == nil {
@@ -1112,13 +1112,13 @@ func (o ConfigMapEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceResponse struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+	// (Optional) Specify whether the ConfigMap must be defined
 	Optional bool `pulumi:"optional"`
 }
 
@@ -1133,13 +1133,13 @@ type ConfigMapEnvSourceResponseInput interface {
 	ToConfigMapEnvSourceResponseOutputWithContext(context.Context) ConfigMapEnvSourceResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceResponseArgs struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+	// (Optional) Specify whether the ConfigMap must be defined
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -1155,7 +1155,7 @@ func (i ConfigMapEnvSourceResponseArgs) ToConfigMapEnvSourceResponseOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapEnvSourceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapEnvSourceResponseOutput) ElementType() reflect.Type {
@@ -1175,25 +1175,25 @@ func (o ConfigMapEnvSourceResponseOutput) LocalObjectReference() LocalObjectRefe
 	return o.ApplyT(func(v ConfigMapEnvSourceResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapEnvSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapEnvSourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+// (Optional) Specify whether the ConfigMap must be defined
 func (o ConfigMapEnvSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigMapEnvSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelector struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+	// The key to select.
 	Key *string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name *string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+	// (Optional) Specify whether the ConfigMap or its key must be defined
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -1208,15 +1208,15 @@ type ConfigMapKeySelectorInput interface {
 	ToConfigMapKeySelectorOutputWithContext(context.Context) ConfigMapKeySelectorOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+	// The key to select.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+	// (Optional) Specify whether the ConfigMap or its key must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -1273,7 +1273,7 @@ func (i *configMapKeySelectorPtrType) ToConfigMapKeySelectorPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapKeySelectorOutput) ElementType() reflect.Type {
@@ -1298,7 +1298,7 @@ func (o ConfigMapKeySelectorOutput) ToConfigMapKeySelectorPtrOutputWithContext(c
 	}).(ConfigMapKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+// The key to select.
 func (o ConfigMapKeySelectorOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -1308,12 +1308,12 @@ func (o ConfigMapKeySelectorOutput) LocalObjectReference() LocalObjectReferenceP
 	return o.ApplyT(func(v ConfigMapKeySelector) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapKeySelectorOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+// (Optional) Specify whether the ConfigMap or its key must be defined
 func (o ConfigMapKeySelectorOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -1336,7 +1336,7 @@ func (o ConfigMapKeySelectorPtrOutput) Elem() ConfigMapKeySelectorOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) ConfigMapKeySelector { return *v }).(ConfigMapKeySelectorOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+// The key to select.
 func (o ConfigMapKeySelectorPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *string {
 		if v == nil {
@@ -1356,7 +1356,7 @@ func (o ConfigMapKeySelectorPtrOutput) LocalObjectReference() LocalObjectReferen
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *string {
 		if v == nil {
@@ -1366,7 +1366,7 @@ func (o ConfigMapKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+// (Optional) Specify whether the ConfigMap or its key must be defined
 func (o ConfigMapKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *bool {
 		if v == nil {
@@ -1376,15 +1376,15 @@ func (o ConfigMapKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorResponse struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+	// The key to select.
 	Key string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+	// (Optional) Specify whether the ConfigMap or its key must be defined
 	Optional bool `pulumi:"optional"`
 }
 
@@ -1399,15 +1399,15 @@ type ConfigMapKeySelectorResponseInput interface {
 	ToConfigMapKeySelectorResponseOutputWithContext(context.Context) ConfigMapKeySelectorResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorResponseArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+	// The key to select.
 	Key pulumi.StringInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+	// (Optional) Specify whether the ConfigMap or its key must be defined
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -1423,7 +1423,7 @@ func (i ConfigMapKeySelectorResponseArgs) ToConfigMapKeySelectorResponseOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapKeySelectorResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorResponseOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapKeySelectorResponseOutput) ElementType() reflect.Type {
@@ -1438,7 +1438,7 @@ func (o ConfigMapKeySelectorResponseOutput) ToConfigMapKeySelectorResponseOutput
 	return o
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+// The key to select.
 func (o ConfigMapKeySelectorResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -1448,25 +1448,25 @@ func (o ConfigMapKeySelectorResponseOutput) LocalObjectReference() LocalObjectRe
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapKeySelectorResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+// (Optional) Specify whether the ConfigMap or its key must be defined
 func (o ConfigMapKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSource struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode *int `pulumi:"defaultMode"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPath `pulumi:"items"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+	// Name of the config.
 	Name *string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -1481,15 +1481,15 @@ type ConfigMapVolumeSourceInput interface {
 	ToConfigMapVolumeSourceOutputWithContext(context.Context) ConfigMapVolumeSourceOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathArrayInput `pulumi:"items"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+	// Name of the config.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -1546,7 +1546,7 @@ func (i *configMapVolumeSourcePtrType) ToConfigMapVolumeSourcePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapVolumeSourcePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapVolumeSourceOutput) ElementType() reflect.Type {
@@ -1571,22 +1571,22 @@ func (o ConfigMapVolumeSourceOutput) ToConfigMapVolumeSourcePtrOutputWithContext
 	}).(ConfigMapVolumeSourcePtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o ConfigMapVolumeSourceOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSource) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o ConfigMapVolumeSourceOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSource) []KeyToPath { return v.Items }).(KeyToPathArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+// Name of the config.
 func (o ConfigMapVolumeSourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o ConfigMapVolumeSourceOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSource) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -1609,7 +1609,7 @@ func (o ConfigMapVolumeSourcePtrOutput) Elem() ConfigMapVolumeSourceOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) ConfigMapVolumeSource { return *v }).(ConfigMapVolumeSourceOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o ConfigMapVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) *int {
 		if v == nil {
@@ -1619,7 +1619,7 @@ func (o ConfigMapVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o ConfigMapVolumeSourcePtrOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) []KeyToPath {
 		if v == nil {
@@ -1629,7 +1629,7 @@ func (o ConfigMapVolumeSourcePtrOutput) Items() KeyToPathArrayOutput {
 	}).(KeyToPathArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+// Name of the config.
 func (o ConfigMapVolumeSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) *string {
 		if v == nil {
@@ -1639,7 +1639,7 @@ func (o ConfigMapVolumeSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o ConfigMapVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) *bool {
 		if v == nil {
@@ -1649,15 +1649,15 @@ func (o ConfigMapVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode int `pulumi:"defaultMode"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPathResponse `pulumi:"items"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+	// Name of the config.
 	Name string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional bool `pulumi:"optional"`
 }
 
@@ -1672,15 +1672,15 @@ type ConfigMapVolumeSourceResponseInput interface {
 	ToConfigMapVolumeSourceResponseOutputWithContext(context.Context) ConfigMapVolumeSourceResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathResponseArrayInput `pulumi:"items"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+	// Name of the config.
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -1696,7 +1696,7 @@ func (i ConfigMapVolumeSourceResponseArgs) ToConfigMapVolumeSourceResponseOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapVolumeSourceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapVolumeSourceResponseOutput) ElementType() reflect.Type {
@@ -1711,60 +1711,60 @@ func (o ConfigMapVolumeSourceResponseOutput) ToConfigMapVolumeSourceResponseOutp
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o ConfigMapVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o ConfigMapVolumeSourceResponseOutput) Items() KeyToPathResponseArrayOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) []KeyToPathResponse { return v.Items }).(KeyToPathResponseArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+// Name of the config.
 func (o ConfigMapVolumeSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o ConfigMapVolumeSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type Container struct {
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args    []string `pulumi:"args"`
 	Command []string `pulumi:"command"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment variables to set in the container.
+	// (Optional) List of environment variables to set in the container.
 	Env []EnvVar `pulumi:"env"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+	// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom []EnvFromSource `pulumi:"envFrom"`
-	// Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image *string `pulumi:"image"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+	// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe *Probe `pulumi:"livenessProbe"`
 	// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name *string `pulumi:"name"`
 	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []ContainerPort `pulumi:"ports"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	ReadinessProbe *Probe `pulumi:"readinessProbe"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources *ResourceRequirements `pulumi:"resources"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SecurityContext *SecurityContext `pulumi:"securityContext"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: not supported Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	StartupProbe *Probe `pulumi:"startupProbe"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+	// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath *string `pulumi:"terminationMessagePath"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy *string `pulumi:"terminationMessagePolicy"`
-	// (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+	// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 	VolumeMounts []VolumeMount `pulumi:"volumeMounts"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 	WorkingDir *string `pulumi:"workingDir"`
 }
 
@@ -1781,38 +1781,38 @@ type ContainerInput interface {
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type ContainerArgs struct {
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args    pulumi.StringArrayInput `pulumi:"args"`
 	Command pulumi.StringArrayInput `pulumi:"command"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment variables to set in the container.
+	// (Optional) List of environment variables to set in the container.
 	Env EnvVarArrayInput `pulumi:"env"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+	// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom EnvFromSourceArrayInput `pulumi:"envFrom"`
-	// Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringPtrInput `pulumi:"image"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+	// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe ProbePtrInput `pulumi:"livenessProbe"`
 	// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports ContainerPortArrayInput `pulumi:"ports"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	ReadinessProbe ProbePtrInput `pulumi:"readinessProbe"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources ResourceRequirementsPtrInput `pulumi:"resources"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SecurityContext SecurityContextPtrInput `pulumi:"securityContext"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: not supported Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	StartupProbe ProbePtrInput `pulumi:"startupProbe"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+	// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath pulumi.StringPtrInput `pulumi:"terminationMessagePath"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy pulumi.StringPtrInput `pulumi:"terminationMessagePolicy"`
-	// (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+	// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 	VolumeMounts VolumeMountArrayInput `pulumi:"volumeMounts"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
 }
 
@@ -1868,7 +1868,7 @@ func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) Conta
 	return o
 }
 
-// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o ContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
@@ -1877,27 +1877,27 @@ func (o ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment variables to set in the container.
+// (Optional) List of environment variables to set in the container.
 func (o ContainerOutput) Env() EnvVarArrayOutput {
 	return o.ApplyT(func(v Container) []EnvVar { return v.Env }).(EnvVarArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 func (o ContainerOutput) EnvFrom() EnvFromSourceArrayOutput {
 	return o.ApplyT(func(v Container) []EnvFromSource { return v.EnvFrom }).(EnvFromSourceArrayOutput)
 }
 
-// Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o ContainerOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 func (o ContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerOutput) LivenessProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.LivenessProbe }).(ProbePtrOutput)
 }
@@ -1912,42 +1912,42 @@ func (o ContainerOutput) Ports() ContainerPortArrayOutput {
 	return o.ApplyT(func(v Container) []ContainerPort { return v.Ports }).(ContainerPortArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerOutput) ReadinessProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.ReadinessProbe }).(ProbePtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o ContainerOutput) Resources() ResourceRequirementsPtrOutput {
 	return o.ApplyT(func(v Container) *ResourceRequirements { return v.Resources }).(ResourceRequirementsPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 func (o ContainerOutput) SecurityContext() SecurityContextPtrOutput {
 	return o.ApplyT(func(v Container) *SecurityContext { return v.SecurityContext }).(SecurityContextPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: not supported Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerOutput) StartupProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.StartupProbe }).(ProbePtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 func (o ContainerOutput) TerminationMessagePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.TerminationMessagePath }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 func (o ContainerOutput) TerminationMessagePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.TerminationMessagePolicy }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 func (o ContainerOutput) VolumeMounts() VolumeMountArrayOutput {
 	return o.ApplyT(func(v Container) []VolumeMount { return v.VolumeMounts }).(VolumeMountArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 func (o ContainerOutput) WorkingDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
 }
@@ -1978,7 +1978,7 @@ type ContainerPort struct {
 	ContainerPort *int `pulumi:"containerPort"`
 	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name *string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+	// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -1999,7 +1999,7 @@ type ContainerPortArgs struct {
 	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
 	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+	// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -2065,7 +2065,7 @@ func (o ContainerPortOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 func (o ContainerPortOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -2096,7 +2096,7 @@ type ContainerPortResponse struct {
 	ContainerPort int `pulumi:"containerPort"`
 	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+	// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -2117,7 +2117,7 @@ type ContainerPortResponseArgs struct {
 	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
 	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+	// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -2183,7 +2183,7 @@ func (o ContainerPortResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerPortResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 func (o ContainerPortResponseOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerPortResponse) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -2210,38 +2210,38 @@ func (o ContainerPortResponseArrayOutput) Index(i pulumi.IntInput) ContainerPort
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type ContainerResponse struct {
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args    []string `pulumi:"args"`
 	Command []string `pulumi:"command"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment variables to set in the container.
+	// (Optional) List of environment variables to set in the container.
 	Env []EnvVarResponse `pulumi:"env"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+	// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom []EnvFromSourceResponse `pulumi:"envFrom"`
-	// Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+	// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy string `pulumi:"imagePullPolicy"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe ProbeResponse `pulumi:"livenessProbe"`
 	// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name string `pulumi:"name"`
 	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []ContainerPortResponse `pulumi:"ports"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	ReadinessProbe ProbeResponse `pulumi:"readinessProbe"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources ResourceRequirementsResponse `pulumi:"resources"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SecurityContext SecurityContextResponse `pulumi:"securityContext"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: not supported Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	StartupProbe ProbeResponse `pulumi:"startupProbe"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+	// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath string `pulumi:"terminationMessagePath"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy string `pulumi:"terminationMessagePolicy"`
-	// (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+	// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 	VolumeMounts []VolumeMountResponse `pulumi:"volumeMounts"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 	WorkingDir string `pulumi:"workingDir"`
 }
 
@@ -2258,38 +2258,38 @@ type ContainerResponseInput interface {
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type ContainerResponseArgs struct {
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args    pulumi.StringArrayInput `pulumi:"args"`
 	Command pulumi.StringArrayInput `pulumi:"command"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment variables to set in the container.
+	// (Optional) List of environment variables to set in the container.
 	Env EnvVarResponseArrayInput `pulumi:"env"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+	// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom EnvFromSourceResponseArrayInput `pulumi:"envFrom"`
-	// Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+	// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe ProbeResponseInput `pulumi:"livenessProbe"`
 	// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name pulumi.StringInput `pulumi:"name"`
 	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports ContainerPortResponseArrayInput `pulumi:"ports"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	ReadinessProbe ProbeResponseInput `pulumi:"readinessProbe"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources ResourceRequirementsResponseInput `pulumi:"resources"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SecurityContext SecurityContextResponseInput `pulumi:"securityContext"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: not supported Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	StartupProbe ProbeResponseInput `pulumi:"startupProbe"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+	// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath pulumi.StringInput `pulumi:"terminationMessagePath"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy pulumi.StringInput `pulumi:"terminationMessagePolicy"`
-	// (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+	// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 	VolumeMounts VolumeMountResponseArrayInput `pulumi:"volumeMounts"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
 }
 
@@ -2345,7 +2345,7 @@ func (o ContainerResponseOutput) ToContainerResponseOutputWithContext(ctx contex
 	return o
 }
 
-// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o ContainerResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
@@ -2354,27 +2354,27 @@ func (o ContainerResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment variables to set in the container.
+// (Optional) List of environment variables to set in the container.
 func (o ContainerResponseOutput) Env() EnvVarResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []EnvVarResponse { return v.Env }).(EnvVarResponseArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 func (o ContainerResponseOutput) EnvFrom() EnvFromSourceResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []EnvFromSourceResponse { return v.EnvFrom }).(EnvFromSourceResponseArrayOutput)
 }
 
-// Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 func (o ContainerResponseOutput) ImagePullPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerResponseOutput) LivenessProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.LivenessProbe }).(ProbeResponseOutput)
 }
@@ -2389,42 +2389,42 @@ func (o ContainerResponseOutput) Ports() ContainerPortResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []ContainerPortResponse { return v.Ports }).(ContainerPortResponseArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerResponseOutput) ReadinessProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.ReadinessProbe }).(ProbeResponseOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o ContainerResponseOutput) Resources() ResourceRequirementsResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ResourceRequirementsResponse { return v.Resources }).(ResourceRequirementsResponseOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 func (o ContainerResponseOutput) SecurityContext() SecurityContextResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) SecurityContextResponse { return v.SecurityContext }).(SecurityContextResponseOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: not supported Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerResponseOutput) StartupProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.StartupProbe }).(ProbeResponseOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 func (o ContainerResponseOutput) TerminationMessagePath() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.TerminationMessagePath }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 func (o ContainerResponseOutput) TerminationMessagePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.TerminationMessagePolicy }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 func (o ContainerResponseOutput) VolumeMounts() VolumeMountResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []VolumeMountResponse { return v.VolumeMounts }).(VolumeMountResponseArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 func (o ContainerResponseOutput) WorkingDir() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.WorkingDir }).(pulumi.StringOutput)
 }
@@ -3213,13 +3213,13 @@ func (o DomainMappingStatusResponsePtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSource struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+	// (Optional) The ConfigMap to select from
 	ConfigMapRef *ConfigMapEnvSource `pulumi:"configMapRef"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+	// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 	Prefix *string `pulumi:"prefix"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+	// (Optional) The Secret to select from
 	SecretRef *SecretEnvSource `pulumi:"secretRef"`
 }
 
@@ -3234,13 +3234,13 @@ type EnvFromSourceInput interface {
 	ToEnvFromSourceOutputWithContext(context.Context) EnvFromSourceOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+	// (Optional) The ConfigMap to select from
 	ConfigMapRef ConfigMapEnvSourcePtrInput `pulumi:"configMapRef"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+	// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+	// (Optional) The Secret to select from
 	SecretRef SecretEnvSourcePtrInput `pulumi:"secretRef"`
 }
 
@@ -3281,7 +3281,7 @@ func (i EnvFromSourceArray) ToEnvFromSourceArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceOutput struct{ *pulumi.OutputState }
 
 func (EnvFromSourceOutput) ElementType() reflect.Type {
@@ -3296,17 +3296,17 @@ func (o EnvFromSourceOutput) ToEnvFromSourceOutputWithContext(ctx context.Contex
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+// (Optional) The ConfigMap to select from
 func (o EnvFromSourceOutput) ConfigMapRef() ConfigMapEnvSourcePtrOutput {
 	return o.ApplyT(func(v EnvFromSource) *ConfigMapEnvSource { return v.ConfigMapRef }).(ConfigMapEnvSourcePtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 func (o EnvFromSourceOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvFromSource) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+// (Optional) The Secret to select from
 func (o EnvFromSourceOutput) SecretRef() SecretEnvSourcePtrOutput {
 	return o.ApplyT(func(v EnvFromSource) *SecretEnvSource { return v.SecretRef }).(SecretEnvSourcePtrOutput)
 }
@@ -3331,13 +3331,13 @@ func (o EnvFromSourceArrayOutput) Index(i pulumi.IntInput) EnvFromSourceOutput {
 	}).(EnvFromSourceOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+	// (Optional) The ConfigMap to select from
 	ConfigMapRef ConfigMapEnvSourceResponse `pulumi:"configMapRef"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+	// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 	Prefix string `pulumi:"prefix"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+	// (Optional) The Secret to select from
 	SecretRef SecretEnvSourceResponse `pulumi:"secretRef"`
 }
 
@@ -3352,13 +3352,13 @@ type EnvFromSourceResponseInput interface {
 	ToEnvFromSourceResponseOutputWithContext(context.Context) EnvFromSourceResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+	// (Optional) The ConfigMap to select from
 	ConfigMapRef ConfigMapEnvSourceResponseInput `pulumi:"configMapRef"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+	// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 	Prefix pulumi.StringInput `pulumi:"prefix"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+	// (Optional) The Secret to select from
 	SecretRef SecretEnvSourceResponseInput `pulumi:"secretRef"`
 }
 
@@ -3399,7 +3399,7 @@ func (i EnvFromSourceResponseArray) ToEnvFromSourceResponseArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceResponseArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (EnvFromSourceResponseOutput) ElementType() reflect.Type {
@@ -3414,17 +3414,17 @@ func (o EnvFromSourceResponseOutput) ToEnvFromSourceResponseOutputWithContext(ct
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+// (Optional) The ConfigMap to select from
 func (o EnvFromSourceResponseOutput) ConfigMapRef() ConfigMapEnvSourceResponseOutput {
 	return o.ApplyT(func(v EnvFromSourceResponse) ConfigMapEnvSourceResponse { return v.ConfigMapRef }).(ConfigMapEnvSourceResponseOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 func (o EnvFromSourceResponseOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvFromSourceResponse) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+// (Optional) The Secret to select from
 func (o EnvFromSourceResponseOutput) SecretRef() SecretEnvSourceResponseOutput {
 	return o.ApplyT(func(v EnvFromSourceResponse) SecretEnvSourceResponse { return v.SecretRef }).(SecretEnvSourceResponseOutput)
 }
@@ -3455,7 +3455,7 @@ type EnvVar struct {
 	Name *string `pulumi:"name"`
 	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 	Value *string `pulumi:"value"`
-	// (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 	ValueFrom *EnvVarSource `pulumi:"valueFrom"`
 }
 
@@ -3476,7 +3476,7 @@ type EnvVarArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 	Value pulumi.StringPtrInput `pulumi:"value"`
-	// (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 	ValueFrom EnvVarSourcePtrInput `pulumi:"valueFrom"`
 }
 
@@ -3542,7 +3542,7 @@ func (o EnvVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 func (o EnvVarOutput) ValueFrom() EnvVarSourcePtrOutput {
 	return o.ApplyT(func(v EnvVar) *EnvVarSource { return v.ValueFrom }).(EnvVarSourcePtrOutput)
 }
@@ -3573,7 +3573,7 @@ type EnvVarResponse struct {
 	Name string `pulumi:"name"`
 	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 	Value string `pulumi:"value"`
-	// (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 	ValueFrom EnvVarSourceResponse `pulumi:"valueFrom"`
 }
 
@@ -3594,7 +3594,7 @@ type EnvVarResponseArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 	Value pulumi.StringInput `pulumi:"value"`
-	// (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 	ValueFrom EnvVarSourceResponseInput `pulumi:"valueFrom"`
 }
 
@@ -3660,7 +3660,7 @@ func (o EnvVarResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvVarResponse) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 func (o EnvVarResponseOutput) ValueFrom() EnvVarSourceResponseOutput {
 	return o.ApplyT(func(v EnvVarResponse) EnvVarSourceResponse { return v.ValueFrom }).(EnvVarSourceResponseOutput)
 }
@@ -3685,11 +3685,11 @@ func (o EnvVarResponseArrayOutput) Index(i pulumi.IntInput) EnvVarResponseOutput
 	}).(EnvVarResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSource struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+	// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 	ConfigMapKeyRef *ConfigMapKeySelector `pulumi:"configMapKeyRef"`
-	// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+	// (Optional) Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef *SecretKeySelector `pulumi:"secretKeyRef"`
 }
 
@@ -3704,11 +3704,11 @@ type EnvVarSourceInput interface {
 	ToEnvVarSourceOutputWithContext(context.Context) EnvVarSourceOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+	// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 	ConfigMapKeyRef ConfigMapKeySelectorPtrInput `pulumi:"configMapKeyRef"`
-	// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+	// (Optional) Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef SecretKeySelectorPtrInput `pulumi:"secretKeyRef"`
 }
 
@@ -3765,7 +3765,7 @@ func (i *envVarSourcePtrType) ToEnvVarSourcePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EnvVarSourcePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceOutput struct{ *pulumi.OutputState }
 
 func (EnvVarSourceOutput) ElementType() reflect.Type {
@@ -3790,12 +3790,12 @@ func (o EnvVarSourceOutput) ToEnvVarSourcePtrOutputWithContext(ctx context.Conte
 	}).(EnvVarSourcePtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 func (o EnvVarSourceOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	return o.ApplyT(func(v EnvVarSource) *ConfigMapKeySelector { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+// (Optional) Selects a key (version) of a secret in Secret Manager.
 func (o EnvVarSourceOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 	return o.ApplyT(func(v EnvVarSource) *SecretKeySelector { return v.SecretKeyRef }).(SecretKeySelectorPtrOutput)
 }
@@ -3818,7 +3818,7 @@ func (o EnvVarSourcePtrOutput) Elem() EnvVarSourceOutput {
 	return o.ApplyT(func(v *EnvVarSource) EnvVarSource { return *v }).(EnvVarSourceOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 func (o EnvVarSourcePtrOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	return o.ApplyT(func(v *EnvVarSource) *ConfigMapKeySelector {
 		if v == nil {
@@ -3828,7 +3828,7 @@ func (o EnvVarSourcePtrOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	}).(ConfigMapKeySelectorPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+// (Optional) Selects a key (version) of a secret in Secret Manager.
 func (o EnvVarSourcePtrOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 	return o.ApplyT(func(v *EnvVarSource) *SecretKeySelector {
 		if v == nil {
@@ -3838,11 +3838,11 @@ func (o EnvVarSourcePtrOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 	}).(SecretKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+	// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 	ConfigMapKeyRef ConfigMapKeySelectorResponse `pulumi:"configMapKeyRef"`
-	// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+	// (Optional) Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef SecretKeySelectorResponse `pulumi:"secretKeyRef"`
 }
 
@@ -3857,11 +3857,11 @@ type EnvVarSourceResponseInput interface {
 	ToEnvVarSourceResponseOutputWithContext(context.Context) EnvVarSourceResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+	// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 	ConfigMapKeyRef ConfigMapKeySelectorResponseInput `pulumi:"configMapKeyRef"`
-	// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+	// (Optional) Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef SecretKeySelectorResponseInput `pulumi:"secretKeyRef"`
 }
 
@@ -3877,7 +3877,7 @@ func (i EnvVarSourceResponseArgs) ToEnvVarSourceResponseOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EnvVarSourceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (EnvVarSourceResponseOutput) ElementType() reflect.Type {
@@ -3892,19 +3892,19 @@ func (o EnvVarSourceResponseOutput) ToEnvVarSourceResponseOutputWithContext(ctx 
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 func (o EnvVarSourceResponseOutput) ConfigMapKeyRef() ConfigMapKeySelectorResponseOutput {
 	return o.ApplyT(func(v EnvVarSourceResponse) ConfigMapKeySelectorResponse { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorResponseOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+// (Optional) Selects a key (version) of a secret in Secret Manager.
 func (o EnvVarSourceResponseOutput) SecretKeyRef() SecretKeySelectorResponseOutput {
 	return o.ApplyT(func(v EnvVarSourceResponse) SecretKeySelectorResponse { return v.SecretKeyRef }).(SecretKeySelectorResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecAction struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 	Command []string `pulumi:"command"`
 }
 
@@ -3919,9 +3919,9 @@ type ExecActionInput interface {
 	ToExecActionOutputWithContext(context.Context) ExecActionOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 	Command pulumi.StringArrayInput `pulumi:"command"`
 }
 
@@ -3978,7 +3978,7 @@ func (i *execActionPtrType) ToExecActionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ExecActionPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionOutput struct{ *pulumi.OutputState }
 
 func (ExecActionOutput) ElementType() reflect.Type {
@@ -4003,7 +4003,7 @@ func (o ExecActionOutput) ToExecActionPtrOutputWithContext(ctx context.Context) 
 	}).(ExecActionPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o ExecActionOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecAction) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
@@ -4026,7 +4026,7 @@ func (o ExecActionPtrOutput) Elem() ExecActionOutput {
 	return o.ApplyT(func(v *ExecAction) ExecAction { return *v }).(ExecActionOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o ExecActionPtrOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ExecAction) []string {
 		if v == nil {
@@ -4036,9 +4036,9 @@ func (o ExecActionPtrOutput) Command() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 	Command []string `pulumi:"command"`
 }
 
@@ -4053,9 +4053,9 @@ type ExecActionResponseInput interface {
 	ToExecActionResponseOutputWithContext(context.Context) ExecActionResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 	Command pulumi.StringArrayInput `pulumi:"command"`
 }
 
@@ -4071,7 +4071,7 @@ func (i ExecActionResponseArgs) ToExecActionResponseOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExecActionResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionResponseOutput struct{ *pulumi.OutputState }
 
 func (ExecActionResponseOutput) ElementType() reflect.Type {
@@ -4086,7 +4086,7 @@ func (o ExecActionResponseOutput) ToExecActionResponseOutputWithContext(ctx cont
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o ExecActionResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecActionResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
@@ -4654,15 +4654,15 @@ func (o GoogleCloudRunV1ConditionResponseArrayOutput) Index(i pulumi.IntInput) G
 	}).(GoogleCloudRunV1ConditionResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetAction struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 	Host *string `pulumi:"host"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+	// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders []HTTPHeader `pulumi:"httpHeaders"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+	// (Optional) Path to access on the HTTP server.
 	Path *string `pulumi:"path"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+	// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 	Scheme *string `pulumi:"scheme"`
 }
 
@@ -4677,15 +4677,15 @@ type HTTPGetActionInput interface {
 	ToHTTPGetActionOutputWithContext(context.Context) HTTPGetActionOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+	// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders HTTPHeaderArrayInput `pulumi:"httpHeaders"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+	// (Optional) Path to access on the HTTP server.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+	// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
 }
 
@@ -4742,7 +4742,7 @@ func (i *httpgetActionPtrType) ToHTTPGetActionPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionOutput struct{ *pulumi.OutputState }
 
 func (HTTPGetActionOutput) ElementType() reflect.Type {
@@ -4767,22 +4767,22 @@ func (o HTTPGetActionOutput) ToHTTPGetActionPtrOutputWithContext(ctx context.Con
 	}).(HTTPGetActionPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 func (o HTTPGetActionOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPGetAction) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 func (o HTTPGetActionOutput) HttpHeaders() HTTPHeaderArrayOutput {
 	return o.ApplyT(func(v HTTPGetAction) []HTTPHeader { return v.HttpHeaders }).(HTTPHeaderArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+// (Optional) Path to access on the HTTP server.
 func (o HTTPGetActionOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPGetAction) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 func (o HTTPGetActionOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPGetAction) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
@@ -4805,7 +4805,7 @@ func (o HTTPGetActionPtrOutput) Elem() HTTPGetActionOutput {
 	return o.ApplyT(func(v *HTTPGetAction) HTTPGetAction { return *v }).(HTTPGetActionOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 func (o HTTPGetActionPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPGetAction) *string {
 		if v == nil {
@@ -4815,7 +4815,7 @@ func (o HTTPGetActionPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 func (o HTTPGetActionPtrOutput) HttpHeaders() HTTPHeaderArrayOutput {
 	return o.ApplyT(func(v *HTTPGetAction) []HTTPHeader {
 		if v == nil {
@@ -4825,7 +4825,7 @@ func (o HTTPGetActionPtrOutput) HttpHeaders() HTTPHeaderArrayOutput {
 	}).(HTTPHeaderArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+// (Optional) Path to access on the HTTP server.
 func (o HTTPGetActionPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPGetAction) *string {
 		if v == nil {
@@ -4835,7 +4835,7 @@ func (o HTTPGetActionPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 func (o HTTPGetActionPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPGetAction) *string {
 		if v == nil {
@@ -4845,15 +4845,15 @@ func (o HTTPGetActionPtrOutput) Scheme() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 	Host string `pulumi:"host"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+	// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders []HTTPHeaderResponse `pulumi:"httpHeaders"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+	// (Optional) Path to access on the HTTP server.
 	Path string `pulumi:"path"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+	// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 	Scheme string `pulumi:"scheme"`
 }
 
@@ -4868,15 +4868,15 @@ type HTTPGetActionResponseInput interface {
 	ToHTTPGetActionResponseOutputWithContext(context.Context) HTTPGetActionResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 	Host pulumi.StringInput `pulumi:"host"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+	// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders HTTPHeaderResponseArrayInput `pulumi:"httpHeaders"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+	// (Optional) Path to access on the HTTP server.
 	Path pulumi.StringInput `pulumi:"path"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+	// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 	Scheme pulumi.StringInput `pulumi:"scheme"`
 }
 
@@ -4892,7 +4892,7 @@ func (i HTTPGetActionResponseArgs) ToHTTPGetActionResponseOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionResponseOutput struct{ *pulumi.OutputState }
 
 func (HTTPGetActionResponseOutput) ElementType() reflect.Type {
@@ -4907,31 +4907,31 @@ func (o HTTPGetActionResponseOutput) ToHTTPGetActionResponseOutputWithContext(ct
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 func (o HTTPGetActionResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 func (o HTTPGetActionResponseOutput) HttpHeaders() HTTPHeaderResponseArrayOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) []HTTPHeaderResponse { return v.HttpHeaders }).(HTTPHeaderResponseArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+// (Optional) Path to access on the HTTP server.
 func (o HTTPGetActionResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 func (o HTTPGetActionResponseOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Scheme }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeader struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+	// The header field name
 	Name *string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+	// The header field value
 	Value *string `pulumi:"value"`
 }
 
@@ -4946,11 +4946,11 @@ type HTTPHeaderInput interface {
 	ToHTTPHeaderOutputWithContext(context.Context) HTTPHeaderOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+	// The header field name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+	// The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -4991,7 +4991,7 @@ func (i HTTPHeaderArray) ToHTTPHeaderArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderOutput struct{ *pulumi.OutputState }
 
 func (HTTPHeaderOutput) ElementType() reflect.Type {
@@ -5006,12 +5006,12 @@ func (o HTTPHeaderOutput) ToHTTPHeaderOutputWithContext(ctx context.Context) HTT
 	return o
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+// The header field name
 func (o HTTPHeaderOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+// The header field value
 func (o HTTPHeaderOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5036,11 +5036,11 @@ func (o HTTPHeaderArrayOutput) Index(i pulumi.IntInput) HTTPHeaderOutput {
 	}).(HTTPHeaderOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderResponse struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+	// The header field name
 	Name string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+	// The header field value
 	Value string `pulumi:"value"`
 }
 
@@ -5055,11 +5055,11 @@ type HTTPHeaderResponseInput interface {
 	ToHTTPHeaderResponseOutputWithContext(context.Context) HTTPHeaderResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderResponseArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+	// The header field name
 	Name pulumi.StringInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+	// The header field value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -5100,7 +5100,7 @@ func (i HTTPHeaderResponseArray) ToHTTPHeaderResponseArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderResponseArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderResponseOutput struct{ *pulumi.OutputState }
 
 func (HTTPHeaderResponseOutput) ElementType() reflect.Type {
@@ -5115,12 +5115,12 @@ func (o HTTPHeaderResponseOutput) ToHTTPHeaderResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+// The header field name
 func (o HTTPHeaderResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHeaderResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+// The header field value
 func (o HTTPHeaderResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHeaderResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5145,13 +5145,13 @@ func (o HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) HTTPHeaderRespon
 	}).(HTTPHeaderResponseOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+// Maps a string key to a path within a volume.
 type KeyToPath struct {
-	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key *string `pulumi:"key"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode *int `pulumi:"mode"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path *string `pulumi:"path"`
 }
 
@@ -5166,13 +5166,13 @@ type KeyToPathInput interface {
 	ToKeyToPathOutputWithContext(context.Context) KeyToPathOutput
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+// Maps a string key to a path within a volume.
 type KeyToPathArgs struct {
-	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode pulumi.IntPtrInput `pulumi:"mode"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -5213,7 +5213,7 @@ func (i KeyToPathArray) ToKeyToPathArrayOutputWithContext(ctx context.Context) K
 	return pulumi.ToOutputWithContext(ctx, i).(KeyToPathArrayOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+// Maps a string key to a path within a volume.
 type KeyToPathOutput struct{ *pulumi.OutputState }
 
 func (KeyToPathOutput) ElementType() reflect.Type {
@@ -5228,17 +5228,17 @@ func (o KeyToPathOutput) ToKeyToPathOutputWithContext(ctx context.Context) KeyTo
 	return o
 }
 
-// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 func (o KeyToPathOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o KeyToPathOutput) Mode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *int { return v.Mode }).(pulumi.IntPtrOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 func (o KeyToPathOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -5263,13 +5263,13 @@ func (o KeyToPathArrayOutput) Index(i pulumi.IntInput) KeyToPathOutput {
 	}).(KeyToPathOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+// Maps a string key to a path within a volume.
 type KeyToPathResponse struct {
-	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key string `pulumi:"key"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode int `pulumi:"mode"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path string `pulumi:"path"`
 }
 
@@ -5284,13 +5284,13 @@ type KeyToPathResponseInput interface {
 	ToKeyToPathResponseOutputWithContext(context.Context) KeyToPathResponseOutput
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+// Maps a string key to a path within a volume.
 type KeyToPathResponseArgs struct {
-	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key pulumi.StringInput `pulumi:"key"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode pulumi.IntInput `pulumi:"mode"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -5331,7 +5331,7 @@ func (i KeyToPathResponseArray) ToKeyToPathResponseArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(KeyToPathResponseArrayOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+// Maps a string key to a path within a volume.
 type KeyToPathResponseOutput struct{ *pulumi.OutputState }
 
 func (KeyToPathResponseOutput) ElementType() reflect.Type {
@@ -5346,17 +5346,17 @@ func (o KeyToPathResponseOutput) ToKeyToPathResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 func (o KeyToPathResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyToPathResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o KeyToPathResponseOutput) Mode() pulumi.IntOutput {
 	return o.ApplyT(func(v KeyToPathResponse) int { return v.Mode }).(pulumi.IntOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 func (o KeyToPathResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyToPathResponse) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -5381,9 +5381,9 @@ func (o KeyToPathResponseArrayOutput) Index(i pulumi.IntInput) KeyToPathResponse
 	}).(KeyToPathResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReference struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name *string `pulumi:"name"`
 }
 
@@ -5398,9 +5398,9 @@ type LocalObjectReferenceInput interface {
 	ToLocalObjectReferenceOutputWithContext(context.Context) LocalObjectReferenceOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -5457,7 +5457,7 @@ func (i *localObjectReferencePtrType) ToLocalObjectReferencePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceOutput struct{ *pulumi.OutputState }
 
 func (LocalObjectReferenceOutput) ElementType() reflect.Type {
@@ -5482,7 +5482,7 @@ func (o LocalObjectReferenceOutput) ToLocalObjectReferencePtrOutputWithContext(c
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o LocalObjectReferenceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalObjectReference) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -5505,7 +5505,7 @@ func (o LocalObjectReferencePtrOutput) Elem() LocalObjectReferenceOutput {
 	return o.ApplyT(func(v *LocalObjectReference) LocalObjectReference { return *v }).(LocalObjectReferenceOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o LocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalObjectReference) *string {
 		if v == nil {
@@ -5515,9 +5515,9 @@ func (o LocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 }
 
@@ -5532,9 +5532,9 @@ type LocalObjectReferenceResponseInput interface {
 	ToLocalObjectReferenceResponseOutputWithContext(context.Context) LocalObjectReferenceResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -5550,7 +5550,7 @@ func (i LocalObjectReferenceResponseArgs) ToLocalObjectReferenceResponseOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (LocalObjectReferenceResponseOutput) ElementType() reflect.Type {
@@ -5565,7 +5565,7 @@ func (o LocalObjectReferenceResponseOutput) ToLocalObjectReferenceResponseOutput
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o LocalObjectReferenceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalObjectReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5574,17 +5574,17 @@ func (o LocalObjectReferenceResponseOutput) Name() pulumi.StringOutput {
 type ObjectMeta struct {
 	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations map[string]string `pulumi:"annotations"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+	// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 	ClusterName *string `pulumi:"clusterName"`
 	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+	// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 	DeletionGracePeriodSeconds *int `pulumi:"deletionGracePeriodSeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	DeletionTimestamp *string `pulumi:"deletionTimestamp"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+	// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 	Finalizers []string `pulumi:"finalizers"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+	// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 	GenerateName *string `pulumi:"generateName"`
 	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 	Generation *int `pulumi:"generation"`
@@ -5594,7 +5594,7 @@ type ObjectMeta struct {
 	Name *string `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace *string `pulumi:"namespace"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+	// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 	OwnerReferences []OwnerReference `pulumi:"ownerReferences"`
 	// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion *string `pulumi:"resourceVersion"`
@@ -5619,17 +5619,17 @@ type ObjectMetaInput interface {
 type ObjectMetaArgs struct {
 	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+	// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	CreationTimestamp pulumi.StringPtrInput `pulumi:"creationTimestamp"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+	// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 	DeletionGracePeriodSeconds pulumi.IntPtrInput `pulumi:"deletionGracePeriodSeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	DeletionTimestamp pulumi.StringPtrInput `pulumi:"deletionTimestamp"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+	// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+	// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 	GenerateName pulumi.StringPtrInput `pulumi:"generateName"`
 	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
@@ -5639,7 +5639,7 @@ type ObjectMetaArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+	// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 	OwnerReferences OwnerReferenceArrayInput `pulumi:"ownerReferences"`
 	// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
@@ -5732,7 +5732,7 @@ func (o ObjectMetaOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMeta) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 func (o ObjectMetaOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
@@ -5742,22 +5742,22 @@ func (o ObjectMetaOutput) CreationTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.CreationTimestamp }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 func (o ObjectMetaOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *int { return v.DeletionGracePeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaOutput) DeletionTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.DeletionTimestamp }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 func (o ObjectMetaOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ObjectMeta) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 func (o ObjectMetaOutput) GenerateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.GenerateName }).(pulumi.StringPtrOutput)
 }
@@ -5782,7 +5782,7 @@ func (o ObjectMetaOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 func (o ObjectMetaOutput) OwnerReferences() OwnerReferenceArrayOutput {
 	return o.ApplyT(func(v ObjectMeta) []OwnerReference { return v.OwnerReferences }).(OwnerReferenceArrayOutput)
 }
@@ -5830,7 +5830,7 @@ func (o ObjectMetaPtrOutput) Annotations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 func (o ObjectMetaPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -5850,7 +5850,7 @@ func (o ObjectMetaPtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 func (o ObjectMetaPtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *int {
 		if v == nil {
@@ -5860,7 +5860,7 @@ func (o ObjectMetaPtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaPtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -5870,7 +5870,7 @@ func (o ObjectMetaPtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 func (o ObjectMetaPtrOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ObjectMeta) []string {
 		if v == nil {
@@ -5880,7 +5880,7 @@ func (o ObjectMetaPtrOutput) Finalizers() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 func (o ObjectMetaPtrOutput) GenerateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -5930,7 +5930,7 @@ func (o ObjectMetaPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 func (o ObjectMetaPtrOutput) OwnerReferences() OwnerReferenceArrayOutput {
 	return o.ApplyT(func(v *ObjectMeta) []OwnerReference {
 		if v == nil {
@@ -5974,17 +5974,17 @@ func (o ObjectMetaPtrOutput) Uid() pulumi.StringPtrOutput {
 type ObjectMetaResponse struct {
 	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations map[string]string `pulumi:"annotations"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+	// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 	ClusterName string `pulumi:"clusterName"`
 	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	CreationTimestamp string `pulumi:"creationTimestamp"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+	// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 	DeletionGracePeriodSeconds int `pulumi:"deletionGracePeriodSeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	DeletionTimestamp string `pulumi:"deletionTimestamp"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+	// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 	Finalizers []string `pulumi:"finalizers"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+	// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 	GenerateName string `pulumi:"generateName"`
 	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 	Generation int `pulumi:"generation"`
@@ -5994,7 +5994,7 @@ type ObjectMetaResponse struct {
 	Name string `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace string `pulumi:"namespace"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+	// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 	OwnerReferences []OwnerReferenceResponse `pulumi:"ownerReferences"`
 	// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion string `pulumi:"resourceVersion"`
@@ -6019,17 +6019,17 @@ type ObjectMetaResponseInput interface {
 type ObjectMetaResponseArgs struct {
 	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+	// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+	// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 	DeletionGracePeriodSeconds pulumi.IntInput `pulumi:"deletionGracePeriodSeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	DeletionTimestamp pulumi.StringInput `pulumi:"deletionTimestamp"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+	// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+	// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 	GenerateName pulumi.StringInput `pulumi:"generateName"`
 	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 	Generation pulumi.IntInput `pulumi:"generation"`
@@ -6039,7 +6039,7 @@ type ObjectMetaResponseArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+	// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 	OwnerReferences OwnerReferenceResponseArrayInput `pulumi:"ownerReferences"`
 	// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion pulumi.StringInput `pulumi:"resourceVersion"`
@@ -6132,7 +6132,7 @@ func (o ObjectMetaResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 func (o ObjectMetaResponseOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.ClusterName }).(pulumi.StringOutput)
 }
@@ -6142,22 +6142,22 @@ func (o ObjectMetaResponseOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 func (o ObjectMetaResponseOutput) DeletionGracePeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) int { return v.DeletionGracePeriodSeconds }).(pulumi.IntOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaResponseOutput) DeletionTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.DeletionTimestamp }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 func (o ObjectMetaResponseOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 func (o ObjectMetaResponseOutput) GenerateName() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.GenerateName }).(pulumi.StringOutput)
 }
@@ -6182,7 +6182,7 @@ func (o ObjectMetaResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 func (o ObjectMetaResponseOutput) OwnerReferences() OwnerReferenceResponseArrayOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) []OwnerReferenceResponse { return v.OwnerReferences }).(OwnerReferenceResponseArrayOutput)
 }
@@ -6230,7 +6230,7 @@ func (o ObjectMetaResponsePtrOutput) Annotations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 func (o ObjectMetaResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -6250,7 +6250,7 @@ func (o ObjectMetaResponsePtrOutput) CreationTimestamp() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 func (o ObjectMetaResponsePtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *int {
 		if v == nil {
@@ -6260,7 +6260,7 @@ func (o ObjectMetaResponsePtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaResponsePtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -6270,7 +6270,7 @@ func (o ObjectMetaResponsePtrOutput) DeletionTimestamp() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 func (o ObjectMetaResponsePtrOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) []string {
 		if v == nil {
@@ -6280,7 +6280,7 @@ func (o ObjectMetaResponsePtrOutput) Finalizers() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 func (o ObjectMetaResponsePtrOutput) GenerateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -6330,7 +6330,7 @@ func (o ObjectMetaResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 func (o ObjectMetaResponsePtrOutput) OwnerReferences() OwnerReferenceResponseArrayOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) []OwnerReferenceResponse {
 		if v == nil {
@@ -6660,23 +6660,23 @@ func (o OwnerReferenceResponseArrayOutput) Index(i pulumi.IntInput) OwnerReferen
 	}).(OwnerReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type Probe struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
 	Exec *ExecAction `pulumi:"exec"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold *int `pulumi:"failureThreshold"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet *HTTPGetAction `pulumi:"httpGet"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 	SuccessThreshold *int `pulumi:"successThreshold"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 	TcpSocket *TCPSocketAction `pulumi:"tcpSocket"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
@@ -6691,23 +6691,23 @@ type ProbeInput interface {
 	ToProbeOutputWithContext(context.Context) ProbeOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
 	Exec ExecActionPtrInput `pulumi:"exec"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet HTTPGetActionPtrInput `pulumi:"httpGet"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 	TcpSocket TCPSocketActionPtrInput `pulumi:"tcpSocket"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
@@ -6764,7 +6764,7 @@ func (i *probePtrType) ToProbePtrOutputWithContext(ctx context.Context) ProbePtr
 	return pulumi.ToOutputWithContext(ctx, i).(ProbePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeOutput struct{ *pulumi.OutputState }
 
 func (ProbeOutput) ElementType() reflect.Type {
@@ -6789,42 +6789,42 @@ func (o ProbeOutput) ToProbePtrOutputWithContext(ctx context.Context) ProbePtrOu
 	}).(ProbePtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
 func (o ProbeOutput) Exec() ExecActionPtrOutput {
 	return o.ApplyT(func(v Probe) *ExecAction { return v.Exec }).(ExecActionPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o ProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 func (o ProbeOutput) HttpGet() HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v Probe) *HTTPGetAction { return v.HttpGet }).(HTTPGetActionPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 func (o ProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 func (o ProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 func (o ProbeOutput) TcpSocket() TCPSocketActionPtrOutput {
 	return o.ApplyT(func(v Probe) *TCPSocketAction { return v.TcpSocket }).(TCPSocketActionPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -6847,7 +6847,7 @@ func (o ProbePtrOutput) Elem() ProbeOutput {
 	return o.ApplyT(func(v *Probe) Probe { return *v }).(ProbeOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
 func (o ProbePtrOutput) Exec() ExecActionPtrOutput {
 	return o.ApplyT(func(v *Probe) *ExecAction {
 		if v == nil {
@@ -6857,7 +6857,7 @@ func (o ProbePtrOutput) Exec() ExecActionPtrOutput {
 	}).(ExecActionPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o ProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -6867,7 +6867,7 @@ func (o ProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 func (o ProbePtrOutput) HttpGet() HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v *Probe) *HTTPGetAction {
 		if v == nil {
@@ -6877,7 +6877,7 @@ func (o ProbePtrOutput) HttpGet() HTTPGetActionPtrOutput {
 	}).(HTTPGetActionPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -6887,7 +6887,7 @@ func (o ProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 func (o ProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -6897,7 +6897,7 @@ func (o ProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 func (o ProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -6907,7 +6907,7 @@ func (o ProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 func (o ProbePtrOutput) TcpSocket() TCPSocketActionPtrOutput {
 	return o.ApplyT(func(v *Probe) *TCPSocketAction {
 		if v == nil {
@@ -6917,7 +6917,7 @@ func (o ProbePtrOutput) TcpSocket() TCPSocketActionPtrOutput {
 	}).(TCPSocketActionPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -6927,23 +6927,23 @@ func (o ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
 	Exec ExecActionResponse `pulumi:"exec"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold int `pulumi:"failureThreshold"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet HTTPGetActionResponse `pulumi:"httpGet"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 	PeriodSeconds int `pulumi:"periodSeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 	SuccessThreshold int `pulumi:"successThreshold"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 	TcpSocket TCPSocketActionResponse `pulumi:"tcpSocket"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds int `pulumi:"timeoutSeconds"`
 }
 
@@ -6958,23 +6958,23 @@ type ProbeResponseInput interface {
 	ToProbeResponseOutputWithContext(context.Context) ProbeResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
 	Exec ExecActionResponseInput `pulumi:"exec"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet HTTPGetActionResponseInput `pulumi:"httpGet"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds pulumi.IntInput `pulumi:"initialDelaySeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 	SuccessThreshold pulumi.IntInput `pulumi:"successThreshold"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 	TcpSocket TCPSocketActionResponseInput `pulumi:"tcpSocket"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
 }
 
@@ -6990,7 +6990,7 @@ func (i ProbeResponseArgs) ToProbeResponseOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ProbeResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeResponseOutput struct{ *pulumi.OutputState }
 
 func (ProbeResponseOutput) ElementType() reflect.Type {
@@ -7005,42 +7005,42 @@ func (o ProbeResponseOutput) ToProbeResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
 func (o ProbeResponseOutput) Exec() ExecActionResponseOutput {
 	return o.ApplyT(func(v ProbeResponse) ExecActionResponse { return v.Exec }).(ExecActionResponseOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o ProbeResponseOutput) FailureThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.FailureThreshold }).(pulumi.IntOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 func (o ProbeResponseOutput) HttpGet() HTTPGetActionResponseOutput {
 	return o.ApplyT(func(v ProbeResponse) HTTPGetActionResponse { return v.HttpGet }).(HTTPGetActionResponseOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeResponseOutput) InitialDelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 func (o ProbeResponseOutput) PeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.PeriodSeconds }).(pulumi.IntOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 func (o ProbeResponseOutput) SuccessThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.SuccessThreshold }).(pulumi.IntOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 func (o ProbeResponseOutput) TcpSocket() TCPSocketActionResponseOutput {
 	return o.ApplyT(func(v ProbeResponse) TCPSocketActionResponse { return v.TcpSocket }).(TCPSocketActionResponseOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
 }
@@ -7283,9 +7283,9 @@ func (o ResourceRecordResponseArrayOutput) Index(i pulumi.IntInput) ResourceReco
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirements struct {
-	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
-	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests map[string]string `pulumi:"requests"`
 }
 
@@ -7302,9 +7302,9 @@ type ResourceRequirementsInput interface {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsArgs struct {
-	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests pulumi.StringMapInput `pulumi:"requests"`
 }
 
@@ -7386,12 +7386,12 @@ func (o ResourceRequirementsOutput) ToResourceRequirementsPtrOutputWithContext(c
 	}).(ResourceRequirementsPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
@@ -7414,7 +7414,7 @@ func (o ResourceRequirementsPtrOutput) Elem() ResourceRequirementsOutput {
 	return o.ApplyT(func(v *ResourceRequirements) ResourceRequirements { return *v }).(ResourceRequirementsOutput)
 }
 
-// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
 		if v == nil {
@@ -7424,7 +7424,7 @@ func (o ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
 		if v == nil {
@@ -7436,9 +7436,9 @@ func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsResponse struct {
-	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
-	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests map[string]string `pulumi:"requests"`
 }
 
@@ -7455,9 +7455,9 @@ type ResourceRequirementsResponseInput interface {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsResponseArgs struct {
-	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests pulumi.StringMapInput `pulumi:"requests"`
 }
 
@@ -7488,12 +7488,12 @@ func (o ResourceRequirementsResponseOutput) ToResourceRequirementsResponseOutput
 	return o
 }
 
-// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
@@ -7912,7 +7912,7 @@ func (o RevisionSpecResponsePtrOutput) Volumes() VolumeResponseArrayOutput {
 
 // RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
 type RevisionTemplate struct {
-	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 	Metadata *ObjectMeta `pulumi:"metadata"`
 	// RevisionSpec holds the desired state of the Revision (from the client).
 	Spec *RevisionSpec `pulumi:"spec"`
@@ -7931,7 +7931,7 @@ type RevisionTemplateInput interface {
 
 // RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
 type RevisionTemplateArgs struct {
-	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 	Metadata ObjectMetaPtrInput `pulumi:"metadata"`
 	// RevisionSpec holds the desired state of the Revision (from the client).
 	Spec RevisionSpecPtrInput `pulumi:"spec"`
@@ -8015,7 +8015,7 @@ func (o RevisionTemplateOutput) ToRevisionTemplatePtrOutputWithContext(ctx conte
 	}).(RevisionTemplatePtrOutput)
 }
 
-// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 func (o RevisionTemplateOutput) Metadata() ObjectMetaPtrOutput {
 	return o.ApplyT(func(v RevisionTemplate) *ObjectMeta { return v.Metadata }).(ObjectMetaPtrOutput)
 }
@@ -8043,7 +8043,7 @@ func (o RevisionTemplatePtrOutput) Elem() RevisionTemplateOutput {
 	return o.ApplyT(func(v *RevisionTemplate) RevisionTemplate { return *v }).(RevisionTemplateOutput)
 }
 
-// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 func (o RevisionTemplatePtrOutput) Metadata() ObjectMetaPtrOutput {
 	return o.ApplyT(func(v *RevisionTemplate) *ObjectMeta {
 		if v == nil {
@@ -8065,7 +8065,7 @@ func (o RevisionTemplatePtrOutput) Spec() RevisionSpecPtrOutput {
 
 // RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
 type RevisionTemplateResponse struct {
-	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 	Metadata ObjectMetaResponse `pulumi:"metadata"`
 	// RevisionSpec holds the desired state of the Revision (from the client).
 	Spec RevisionSpecResponse `pulumi:"spec"`
@@ -8084,7 +8084,7 @@ type RevisionTemplateResponseInput interface {
 
 // RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
 type RevisionTemplateResponseArgs struct {
-	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 	Metadata ObjectMetaResponseInput `pulumi:"metadata"`
 	// RevisionSpec holds the desired state of the Revision (from the client).
 	Spec RevisionSpecResponseInput `pulumi:"spec"`
@@ -8168,7 +8168,7 @@ func (o RevisionTemplateResponseOutput) ToRevisionTemplateResponsePtrOutputWithC
 	}).(RevisionTemplateResponsePtrOutput)
 }
 
-// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 func (o RevisionTemplateResponseOutput) Metadata() ObjectMetaResponseOutput {
 	return o.ApplyT(func(v RevisionTemplateResponse) ObjectMetaResponse { return v.Metadata }).(ObjectMetaResponseOutput)
 }
@@ -8196,7 +8196,7 @@ func (o RevisionTemplateResponsePtrOutput) Elem() RevisionTemplateResponseOutput
 	return o.ApplyT(func(v *RevisionTemplateResponse) RevisionTemplateResponse { return *v }).(RevisionTemplateResponseOutput)
 }
 
-// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 func (o RevisionTemplateResponsePtrOutput) Metadata() ObjectMetaResponsePtrOutput {
 	return o.ApplyT(func(v *RevisionTemplateResponse) *ObjectMetaResponse {
 		if v == nil {
@@ -8216,13 +8216,13 @@ func (o RevisionTemplateResponsePtrOutput) Spec() RevisionSpecResponsePtrOutput 
 	}).(RevisionSpecResponsePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSource struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	// The Secret to select from.
 	Name *string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+	// (Optional) Specify whether the Secret must be defined
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -8237,13 +8237,13 @@ type SecretEnvSourceInput interface {
 	ToSecretEnvSourceOutputWithContext(context.Context) SecretEnvSourceOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceArgs struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	// The Secret to select from.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+	// (Optional) Specify whether the Secret must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -8300,7 +8300,7 @@ func (i *secretEnvSourcePtrType) ToSecretEnvSourcePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvSourcePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceOutput struct{ *pulumi.OutputState }
 
 func (SecretEnvSourceOutput) ElementType() reflect.Type {
@@ -8330,12 +8330,12 @@ func (o SecretEnvSourceOutput) LocalObjectReference() LocalObjectReferencePtrOut
 	return o.ApplyT(func(v SecretEnvSource) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+// The Secret to select from.
 func (o SecretEnvSourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretEnvSource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+// (Optional) Specify whether the Secret must be defined
 func (o SecretEnvSourceOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretEnvSource) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -8368,7 +8368,7 @@ func (o SecretEnvSourcePtrOutput) LocalObjectReference() LocalObjectReferencePtr
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+// The Secret to select from.
 func (o SecretEnvSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretEnvSource) *string {
 		if v == nil {
@@ -8378,7 +8378,7 @@ func (o SecretEnvSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+// (Optional) Specify whether the Secret must be defined
 func (o SecretEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretEnvSource) *bool {
 		if v == nil {
@@ -8388,13 +8388,13 @@ func (o SecretEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceResponse struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	// The Secret to select from.
 	Name string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+	// (Optional) Specify whether the Secret must be defined
 	Optional bool `pulumi:"optional"`
 }
 
@@ -8409,13 +8409,13 @@ type SecretEnvSourceResponseInput interface {
 	ToSecretEnvSourceResponseOutputWithContext(context.Context) SecretEnvSourceResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceResponseArgs struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	// The Secret to select from.
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+	// (Optional) Specify whether the Secret must be defined
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -8431,7 +8431,7 @@ func (i SecretEnvSourceResponseArgs) ToSecretEnvSourceResponseOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvSourceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (SecretEnvSourceResponseOutput) ElementType() reflect.Type {
@@ -8451,25 +8451,25 @@ func (o SecretEnvSourceResponseOutput) LocalObjectReference() LocalObjectReferen
 	return o.ApplyT(func(v SecretEnvSourceResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+// The Secret to select from.
 func (o SecretEnvSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretEnvSourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+// (Optional) Specify whether the Secret must be defined
 func (o SecretEnvSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecretEnvSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelector struct {
-	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 	Key *string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 	Name *string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+	// (Optional) Specify whether the Secret or its key must be defined
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -8484,15 +8484,15 @@ type SecretKeySelectorInput interface {
 	ToSecretKeySelectorOutputWithContext(context.Context) SecretKeySelectorOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorArgs struct {
-	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+	// (Optional) Specify whether the Secret or its key must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -8549,7 +8549,7 @@ func (i *secretKeySelectorPtrType) ToSecretKeySelectorPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorOutput struct{ *pulumi.OutputState }
 
 func (SecretKeySelectorOutput) ElementType() reflect.Type {
@@ -8574,7 +8574,7 @@ func (o SecretKeySelectorOutput) ToSecretKeySelectorPtrOutputWithContext(ctx con
 	}).(SecretKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretKeySelector) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -8584,12 +8584,12 @@ func (o SecretKeySelectorOutput) LocalObjectReference() LocalObjectReferencePtrO
 	return o.ApplyT(func(v SecretKeySelector) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 func (o SecretKeySelectorOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretKeySelector) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+// (Optional) Specify whether the Secret or its key must be defined
 func (o SecretKeySelectorOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretKeySelector) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -8612,7 +8612,7 @@ func (o SecretKeySelectorPtrOutput) Elem() SecretKeySelectorOutput {
 	return o.ApplyT(func(v *SecretKeySelector) SecretKeySelector { return *v }).(SecretKeySelectorOutput)
 }
 
-// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretKeySelector) *string {
 		if v == nil {
@@ -8632,7 +8632,7 @@ func (o SecretKeySelectorPtrOutput) LocalObjectReference() LocalObjectReferenceP
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 func (o SecretKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretKeySelector) *string {
 		if v == nil {
@@ -8642,7 +8642,7 @@ func (o SecretKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+// (Optional) Specify whether the Secret or its key must be defined
 func (o SecretKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretKeySelector) *bool {
 		if v == nil {
@@ -8652,15 +8652,15 @@ func (o SecretKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponse struct {
-	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 	Key string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 	Name string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+	// (Optional) Specify whether the Secret or its key must be defined
 	Optional bool `pulumi:"optional"`
 }
 
@@ -8675,15 +8675,15 @@ type SecretKeySelectorResponseInput interface {
 	ToSecretKeySelectorResponseOutputWithContext(context.Context) SecretKeySelectorResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponseArgs struct {
-	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+	// (Optional) Specify whether the Secret or its key must be defined
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -8699,7 +8699,7 @@ func (i SecretKeySelectorResponseArgs) ToSecretKeySelectorResponseOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponseOutput struct{ *pulumi.OutputState }
 
 func (SecretKeySelectorResponseOutput) ElementType() reflect.Type {
@@ -8714,7 +8714,7 @@ func (o SecretKeySelectorResponseOutput) ToSecretKeySelectorResponseOutputWithCo
 	return o
 }
 
-// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -8724,25 +8724,25 @@ func (o SecretKeySelectorResponseOutput) LocalObjectReference() LocalObjectRefer
 	return o.ApplyT(func(v SecretKeySelectorResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 func (o SecretKeySelectorResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+// (Optional) Specify whether the Secret or its key must be defined
 func (o SecretKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSource struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 	DefaultMode *int `pulumi:"defaultMode"`
-	// (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPath `pulumi:"items"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional *bool `pulumi:"optional"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 	SecretName *string `pulumi:"secretName"`
 }
 
@@ -8757,15 +8757,15 @@ type SecretVolumeSourceInput interface {
 	ToSecretVolumeSourceOutputWithContext(context.Context) SecretVolumeSourceOutput
 }
 
-// Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
-	// (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathArrayInput `pulumi:"items"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
 }
 
@@ -8822,7 +8822,7 @@ func (i *secretVolumeSourcePtrType) ToSecretVolumeSourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeSourcePtrOutput)
 }
 
-// Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceOutput struct{ *pulumi.OutputState }
 
 func (SecretVolumeSourceOutput) ElementType() reflect.Type {
@@ -8847,22 +8847,22 @@ func (o SecretVolumeSourceOutput) ToSecretVolumeSourcePtrOutputWithContext(ctx c
 	}).(SecretVolumeSourcePtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 func (o SecretVolumeSourceOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o SecretVolumeSourceOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v SecretVolumeSource) []KeyToPath { return v.Items }).(KeyToPathArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o SecretVolumeSourceOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 func (o SecretVolumeSourceOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *string { return v.SecretName }).(pulumi.StringPtrOutput)
 }
@@ -8885,7 +8885,7 @@ func (o SecretVolumeSourcePtrOutput) Elem() SecretVolumeSourceOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) SecretVolumeSource { return *v }).(SecretVolumeSourceOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 func (o SecretVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) *int {
 		if v == nil {
@@ -8895,7 +8895,7 @@ func (o SecretVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o SecretVolumeSourcePtrOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) []KeyToPath {
 		if v == nil {
@@ -8905,7 +8905,7 @@ func (o SecretVolumeSourcePtrOutput) Items() KeyToPathArrayOutput {
 	}).(KeyToPathArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o SecretVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) *bool {
 		if v == nil {
@@ -8915,7 +8915,7 @@ func (o SecretVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 func (o SecretVolumeSourcePtrOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) *string {
 		if v == nil {
@@ -8925,15 +8925,15 @@ func (o SecretVolumeSourcePtrOutput) SecretName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 	DefaultMode int `pulumi:"defaultMode"`
-	// (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPathResponse `pulumi:"items"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional bool `pulumi:"optional"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 	SecretName string `pulumi:"secretName"`
 }
 
@@ -8948,15 +8948,15 @@ type SecretVolumeSourceResponseInput interface {
 	ToSecretVolumeSourceResponseOutputWithContext(context.Context) SecretVolumeSourceResponseOutput
 }
 
-// Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
-	// (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathResponseArrayInput `pulumi:"items"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolInput `pulumi:"optional"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 	SecretName pulumi.StringInput `pulumi:"secretName"`
 }
 
@@ -8972,7 +8972,7 @@ func (i SecretVolumeSourceResponseArgs) ToSecretVolumeSourceResponseOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeSourceResponseOutput)
 }
 
-// Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (SecretVolumeSourceResponseOutput) ElementType() reflect.Type {
@@ -8987,29 +8987,29 @@ func (o SecretVolumeSourceResponseOutput) ToSecretVolumeSourceResponseOutputWith
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 func (o SecretVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o SecretVolumeSourceResponseOutput) Items() KeyToPathResponseArrayOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) []KeyToPathResponse { return v.Items }).(KeyToPathResponseArrayOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o SecretVolumeSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 func (o SecretVolumeSourceResponseOutput) SecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) string { return v.SecretName }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContext struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser *int `pulumi:"runAsUser"`
 }
 
@@ -9024,9 +9024,9 @@ type SecurityContextInput interface {
 	ToSecurityContextOutputWithContext(context.Context) SecurityContextOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
 }
 
@@ -9083,7 +9083,7 @@ func (i *securityContextPtrType) ToSecurityContextPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextOutput struct{ *pulumi.OutputState }
 
 func (SecurityContextOutput) ElementType() reflect.Type {
@@ -9108,7 +9108,7 @@ func (o SecurityContextOutput) ToSecurityContextPtrOutputWithContext(ctx context
 	}).(SecurityContextPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 func (o SecurityContextOutput) RunAsUser() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityContext) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
 }
@@ -9131,7 +9131,7 @@ func (o SecurityContextPtrOutput) Elem() SecurityContextOutput {
 	return o.ApplyT(func(v *SecurityContext) SecurityContext { return *v }).(SecurityContextOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 func (o SecurityContextPtrOutput) RunAsUser() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecurityContext) *int {
 		if v == nil {
@@ -9141,9 +9141,9 @@ func (o SecurityContextPtrOutput) RunAsUser() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser int `pulumi:"runAsUser"`
 }
 
@@ -9158,9 +9158,9 @@ type SecurityContextResponseInput interface {
 	ToSecurityContextResponseOutputWithContext(context.Context) SecurityContextResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser pulumi.IntInput `pulumi:"runAsUser"`
 }
 
@@ -9176,7 +9176,7 @@ func (i SecurityContextResponseArgs) ToSecurityContextResponseOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextResponseOutput struct{ *pulumi.OutputState }
 
 func (SecurityContextResponseOutput) ElementType() reflect.Type {
@@ -9191,7 +9191,7 @@ func (o SecurityContextResponseOutput) ToSecurityContextResponseOutputWithContex
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 func (o SecurityContextResponseOutput) RunAsUser() pulumi.IntOutput {
 	return o.ApplyT(func(v SecurityContextResponse) int { return v.RunAsUser }).(pulumi.IntOutput)
 }
@@ -9998,11 +9998,11 @@ func (o ServiceStatusResponsePtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketAction struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+	// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 	Host *string `pulumi:"host"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
 	Port *int `pulumi:"port"`
 }
 
@@ -10017,11 +10017,11 @@ type TCPSocketActionInput interface {
 	ToTCPSocketActionOutputWithContext(context.Context) TCPSocketActionOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+	// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -10078,7 +10078,7 @@ func (i *tcpsocketActionPtrType) ToTCPSocketActionPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionOutput struct{ *pulumi.OutputState }
 
 func (TCPSocketActionOutput) ElementType() reflect.Type {
@@ -10103,12 +10103,12 @@ func (o TCPSocketActionOutput) ToTCPSocketActionPtrOutputWithContext(ctx context
 	}).(TCPSocketActionPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 func (o TCPSocketActionOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPSocketAction) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
 func (o TCPSocketActionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TCPSocketAction) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -10131,7 +10131,7 @@ func (o TCPSocketActionPtrOutput) Elem() TCPSocketActionOutput {
 	return o.ApplyT(func(v *TCPSocketAction) TCPSocketAction { return *v }).(TCPSocketActionOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 func (o TCPSocketActionPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TCPSocketAction) *string {
 		if v == nil {
@@ -10141,7 +10141,7 @@ func (o TCPSocketActionPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
 func (o TCPSocketActionPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TCPSocketAction) *int {
 		if v == nil {
@@ -10151,11 +10151,11 @@ func (o TCPSocketActionPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionResponse struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+	// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 	Host string `pulumi:"host"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
 	Port int `pulumi:"port"`
 }
 
@@ -10170,11 +10170,11 @@ type TCPSocketActionResponseInput interface {
 	ToTCPSocketActionResponseOutputWithContext(context.Context) TCPSocketActionResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionResponseArgs struct {
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+	// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 	Host pulumi.StringInput `pulumi:"host"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
 	Port pulumi.IntInput `pulumi:"port"`
 }
 
@@ -10190,7 +10190,7 @@ func (i TCPSocketActionResponseArgs) ToTCPSocketActionResponseOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionResponseOutput struct{ *pulumi.OutputState }
 
 func (TCPSocketActionResponseOutput) ElementType() reflect.Type {
@@ -10205,12 +10205,12 @@ func (o TCPSocketActionResponseOutput) ToTCPSocketActionResponseOutputWithContex
 	return o
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 func (o TCPSocketActionResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPSocketActionResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
 func (o TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v TCPSocketActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -10505,13 +10505,11 @@ func (o TrafficTargetResponseArrayOutput) Index(i pulumi.IntInput) TrafficTarget
 	}).(TrafficTargetResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type Volume struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 	ConfigMap *ConfigMapVolumeSource `pulumi:"configMap"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
-	Name *string `pulumi:"name"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported
+	// Volume's name.
+	Name   *string             `pulumi:"name"`
 	Secret *SecretVolumeSource `pulumi:"secret"`
 }
 
@@ -10526,13 +10524,11 @@ type VolumeInput interface {
 	ToVolumeOutputWithContext(context.Context) VolumeOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 	ConfigMap ConfigMapVolumeSourcePtrInput `pulumi:"configMap"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported
+	// Volume's name.
+	Name   pulumi.StringPtrInput      `pulumi:"name"`
 	Secret SecretVolumeSourcePtrInput `pulumi:"secret"`
 }
 
@@ -10573,7 +10569,7 @@ func (i VolumeArray) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeA
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeOutput struct{ *pulumi.OutputState }
 
 func (VolumeOutput) ElementType() reflect.Type {
@@ -10588,17 +10584,15 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 func (o VolumeOutput) ConfigMap() ConfigMapVolumeSourcePtrOutput {
 	return o.ApplyT(func(v Volume) *ConfigMapVolumeSource { return v.ConfigMap }).(ConfigMapVolumeSourcePtrOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
+// Volume's name.
 func (o VolumeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Volume) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported
 func (o VolumeOutput) Secret() SecretVolumeSourcePtrOutput {
 	return o.ApplyT(func(v Volume) *SecretVolumeSource { return v.Secret }).(SecretVolumeSourcePtrOutput)
 }
@@ -10623,15 +10617,15 @@ func (o VolumeArrayOutput) Index(i pulumi.IntInput) VolumeOutput {
 	}).(VolumeOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMount struct {
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath *string `pulumi:"mountPath"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+	// This must match the Name of a Volume.
 	Name *string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly *bool `pulumi:"readOnly"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+	// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 	SubPath *string `pulumi:"subPath"`
 }
 
@@ -10646,15 +10640,15 @@ type VolumeMountInput interface {
 	ToVolumeMountOutputWithContext(context.Context) VolumeMountOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountArgs struct {
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+	// This must match the Name of a Volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+	// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
 }
 
@@ -10695,7 +10689,7 @@ func (i VolumeMountArray) ToVolumeMountArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountOutput struct{ *pulumi.OutputState }
 
 func (VolumeMountOutput) ElementType() reflect.Type {
@@ -10710,22 +10704,22 @@ func (o VolumeMountOutput) ToVolumeMountOutputWithContext(ctx context.Context) V
 	return o
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+// Path within the container at which the volume should be mounted. Must not contain ':'.
 func (o VolumeMountOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+// This must match the Name of a Volume.
 func (o VolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+// (Optional) Only true is accepted. Defaults to true.
 func (o VolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 func (o VolumeMountOutput) SubPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
 }
@@ -10750,15 +10744,15 @@ func (o VolumeMountArrayOutput) Index(i pulumi.IntInput) VolumeMountOutput {
 	}).(VolumeMountOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponse struct {
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath string `pulumi:"mountPath"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly bool `pulumi:"readOnly"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+	// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 	SubPath string `pulumi:"subPath"`
 }
 
@@ -10773,15 +10767,15 @@ type VolumeMountResponseInput interface {
 	ToVolumeMountResponseOutputWithContext(context.Context) VolumeMountResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponseArgs struct {
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
-	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
-	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+	// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 	SubPath pulumi.StringInput `pulumi:"subPath"`
 }
 
@@ -10822,7 +10816,7 @@ func (i VolumeMountResponseArray) ToVolumeMountResponseArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountResponseArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeMountResponseOutput) ElementType() reflect.Type {
@@ -10837,22 +10831,22 @@ func (o VolumeMountResponseOutput) ToVolumeMountResponseOutputWithContext(ctx co
 	return o
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+// Path within the container at which the volume should be mounted. Must not contain ':'.
 func (o VolumeMountResponseOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeMountResponse) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+// This must match the Name of a Volume.
 func (o VolumeMountResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeMountResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+// (Optional) Only true is accepted. Defaults to true.
 func (o VolumeMountResponseOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v VolumeMountResponse) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
-// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 func (o VolumeMountResponseOutput) SubPath() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeMountResponse) string { return v.SubPath }).(pulumi.StringOutput)
 }
@@ -10877,13 +10871,11 @@ func (o VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) VolumeMountResp
 	}).(VolumeMountResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeResponse struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 	ConfigMap ConfigMapVolumeSourceResponse `pulumi:"configMap"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
-	Name string `pulumi:"name"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported
+	// Volume's name.
+	Name   string                     `pulumi:"name"`
 	Secret SecretVolumeSourceResponse `pulumi:"secret"`
 }
 
@@ -10898,13 +10890,11 @@ type VolumeResponseInput interface {
 	ToVolumeResponseOutputWithContext(context.Context) VolumeResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeResponseArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 	ConfigMap ConfigMapVolumeSourceResponseInput `pulumi:"configMap"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported
+	// Volume's name.
+	Name   pulumi.StringInput              `pulumi:"name"`
 	Secret SecretVolumeSourceResponseInput `pulumi:"secret"`
 }
 
@@ -10945,7 +10935,7 @@ func (i VolumeResponseArray) ToVolumeResponseArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeResponseOutput) ElementType() reflect.Type {
@@ -10960,17 +10950,15 @@ func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 func (o VolumeResponseOutput) ConfigMap() ConfigMapVolumeSourceResponseOutput {
 	return o.ApplyT(func(v VolumeResponse) ConfigMapVolumeSourceResponse { return v.ConfigMap }).(ConfigMapVolumeSourceResponseOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
+// Volume's name.
 func (o VolumeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported
 func (o VolumeResponseOutput) Secret() SecretVolumeSourceResponseOutput {
 	return o.ApplyT(func(v VolumeResponse) SecretVolumeSourceResponse { return v.Secret }).(SecretVolumeSourceResponseOutput)
 }

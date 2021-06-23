@@ -23,8 +23,6 @@ type Hub struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Immutable. The name of a Hub resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of the URIs of all attached spokes
-	Spokes pulumi.StringArrayOutput `pulumi:"spokes"`
 	// The current lifecycle state of this Hub.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
@@ -73,8 +71,6 @@ type hubState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of a Hub resource.
 	Name *string `pulumi:"name"`
-	// A list of the URIs of all attached spokes
-	Spokes []string `pulumi:"spokes"`
 	// The current lifecycle state of this Hub.
 	State *string `pulumi:"state"`
 	// Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
@@ -92,8 +88,6 @@ type HubState struct {
 	Labels pulumi.StringMapInput
 	// Immutable. The name of a Hub resource.
 	Name pulumi.StringPtrInput
-	// A list of the URIs of all attached spokes
-	Spokes pulumi.StringArrayInput
 	// The current lifecycle state of this Hub.
 	State pulumi.StringPtrInput
 	// Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.

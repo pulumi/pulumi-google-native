@@ -17,16 +17,13 @@ type SslPolicy struct {
 
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// A list of features enabled when the selected profile is CUSTOM. The
-	// - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+	// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
 	CustomFeatures pulumi.StringArrayOutput `pulumi:"customFeatures"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// [Output Only] The list of features enabled in the SSL policy.
 	EnabledFeatures pulumi.StringArrayOutput `pulumi:"enabledFeatures"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -80,16 +77,13 @@ func GetSslPolicy(ctx *pulumi.Context,
 type sslPolicyState struct {
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// A list of features enabled when the selected profile is CUSTOM. The
-	// - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+	// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
 	CustomFeatures []string `pulumi:"customFeatures"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// [Output Only] The list of features enabled in the SSL policy.
 	EnabledFeatures []string `pulumi:"enabledFeatures"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
 	Kind *string `pulumi:"kind"`
@@ -112,16 +106,13 @@ type sslPolicyState struct {
 type SslPolicyState struct {
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// A list of features enabled when the selected profile is CUSTOM. The
-	// - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+	// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
 	CustomFeatures pulumi.StringArrayInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// [Output Only] The list of features enabled in the SSL policy.
 	EnabledFeatures pulumi.StringArrayInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
 	Fingerprint pulumi.StringPtrInput
 	// [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
 	Kind pulumi.StringPtrInput
@@ -148,16 +139,13 @@ func (SslPolicyState) ElementType() reflect.Type {
 type sslPolicyArgs struct {
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// A list of features enabled when the selected profile is CUSTOM. The
-	// - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+	// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
 	CustomFeatures []string `pulumi:"customFeatures"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// [Output Only] The list of features enabled in the SSL policy.
 	EnabledFeatures []string `pulumi:"enabledFeatures"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
@@ -185,16 +173,13 @@ type sslPolicyArgs struct {
 type SslPolicyArgs struct {
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// A list of features enabled when the selected profile is CUSTOM. The
-	// - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+	// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
 	CustomFeatures pulumi.StringArrayInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// [Output Only] The list of features enabled in the SSL policy.
 	EnabledFeatures pulumi.StringArrayInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
 	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput

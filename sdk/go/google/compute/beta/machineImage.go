@@ -23,13 +23,7 @@ type MachineImage struct {
 	GuestFlush pulumi.BoolOutput `pulumi:"guestFlush"`
 	// [Output Only] The resource type, which is always compute#machineImage for machine image.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Encrypts the machine image using a customer-supplied encryption key.
-	//
-	// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.
-	//
-	// Customer-supplied encryption keys do not protect access to metadata of the machine image.
-	//
-	// If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
+	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -39,9 +33,7 @@ type MachineImage struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys SourceDiskEncryptionKeyResponseArrayOutput `pulumi:"sourceDiskEncryptionKeys"`
-	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
 	// [Output Only] Properties of source instance.
 	SourceInstanceProperties SourceInstancePropertiesResponseOutput `pulumi:"sourceInstanceProperties"`
@@ -96,13 +88,7 @@ type machineImageState struct {
 	GuestFlush *bool `pulumi:"guestFlush"`
 	// [Output Only] The resource type, which is always compute#machineImage for machine image.
 	Kind *string `pulumi:"kind"`
-	// Encrypts the machine image using a customer-supplied encryption key.
-	//
-	// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.
-	//
-	// Customer-supplied encryption keys do not protect access to metadata of the machine image.
-	//
-	// If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
+	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey *CustomerEncryptionKeyResponse `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
@@ -112,9 +98,7 @@ type machineImageState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys []SourceDiskEncryptionKeyResponse `pulumi:"sourceDiskEncryptionKeys"`
-	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance *string `pulumi:"sourceInstance"`
 	// [Output Only] Properties of source instance.
 	SourceInstanceProperties *SourceInstancePropertiesResponse `pulumi:"sourceInstanceProperties"`
@@ -135,13 +119,7 @@ type MachineImageState struct {
 	GuestFlush pulumi.BoolPtrInput
 	// [Output Only] The resource type, which is always compute#machineImage for machine image.
 	Kind pulumi.StringPtrInput
-	// Encrypts the machine image using a customer-supplied encryption key.
-	//
-	// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.
-	//
-	// Customer-supplied encryption keys do not protect access to metadata of the machine image.
-	//
-	// If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
+	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey CustomerEncryptionKeyResponsePtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
@@ -151,9 +129,7 @@ type MachineImageState struct {
 	SelfLink pulumi.StringPtrInput
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys SourceDiskEncryptionKeyResponseArrayInput
-	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringPtrInput
 	// [Output Only] Properties of source instance.
 	SourceInstanceProperties SourceInstancePropertiesResponsePtrInput
@@ -180,13 +156,7 @@ type machineImageArgs struct {
 	Id *string `pulumi:"id"`
 	// [Output Only] The resource type, which is always compute#machineImage for machine image.
 	Kind *string `pulumi:"kind"`
-	// Encrypts the machine image using a customer-supplied encryption key.
-	//
-	// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.
-	//
-	// Customer-supplied encryption keys do not protect access to metadata of the machine image.
-	//
-	// If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
+	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey *CustomerEncryptionKey `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name      *string `pulumi:"name"`
@@ -198,9 +168,7 @@ type machineImageArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys []SourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKeys"`
-	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance string `pulumi:"sourceInstance"`
 	// [Output Only] Properties of source instance.
 	SourceInstanceProperties *SourceInstanceProperties `pulumi:"sourceInstanceProperties"`
@@ -224,13 +192,7 @@ type MachineImageArgs struct {
 	Id pulumi.StringPtrInput
 	// [Output Only] The resource type, which is always compute#machineImage for machine image.
 	Kind pulumi.StringPtrInput
-	// Encrypts the machine image using a customer-supplied encryption key.
-	//
-	// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.
-	//
-	// Customer-supplied encryption keys do not protect access to metadata of the machine image.
-	//
-	// If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
+	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey CustomerEncryptionKeyPtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name      pulumi.StringPtrInput
@@ -242,9 +204,7 @@ type MachineImageArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys SourceDiskEncryptionKeyArrayInput
-	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringInput
 	// [Output Only] Properties of source instance.
 	SourceInstanceProperties SourceInstancePropertiesPtrInput

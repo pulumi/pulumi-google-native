@@ -2317,7 +2317,7 @@ type Environment struct {
 	Dataset *string `pulumi:"dataset"`
 	// Any debugging options to be supplied to the job.
 	DebugOptions *DebugOptions `pulumi:"debugOptions"`
-	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 	Experiments []string `pulumi:"experiments"`
 	// Which Flexible Resource Scheduling mode to run in.
 	FlexResourceSchedulingGoal *string `pulumi:"flexResourceSchedulingGoal"`
@@ -2329,7 +2329,7 @@ type Environment struct {
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
 	ServiceKmsKeyName *string `pulumi:"serviceKmsKeyName"`
-	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 	ServiceOptions []string `pulumi:"serviceOptions"`
 	// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempStoragePrefix *string `pulumi:"tempStoragePrefix"`
@@ -2364,7 +2364,7 @@ type EnvironmentArgs struct {
 	Dataset pulumi.StringPtrInput `pulumi:"dataset"`
 	// Any debugging options to be supplied to the job.
 	DebugOptions DebugOptionsPtrInput `pulumi:"debugOptions"`
-	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 	Experiments pulumi.StringArrayInput `pulumi:"experiments"`
 	// Which Flexible Resource Scheduling mode to run in.
 	FlexResourceSchedulingGoal *EnvironmentFlexResourceSchedulingGoal `pulumi:"flexResourceSchedulingGoal"`
@@ -2376,7 +2376,7 @@ type EnvironmentArgs struct {
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
 	ServiceKmsKeyName pulumi.StringPtrInput `pulumi:"serviceKmsKeyName"`
-	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 	ServiceOptions pulumi.StringArrayInput `pulumi:"serviceOptions"`
 	// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempStoragePrefix pulumi.StringPtrInput `pulumi:"tempStoragePrefix"`
@@ -2485,7 +2485,7 @@ func (o EnvironmentOutput) DebugOptions() DebugOptionsPtrOutput {
 	return o.ApplyT(func(v Environment) *DebugOptions { return v.DebugOptions }).(DebugOptionsPtrOutput)
 }
 
-// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 func (o EnvironmentOutput) Experiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Environment) []string { return v.Experiments }).(pulumi.StringArrayOutput)
 }
@@ -2515,7 +2515,7 @@ func (o EnvironmentOutput) ServiceKmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Environment) *string { return v.ServiceKmsKeyName }).(pulumi.StringPtrOutput)
 }
 
-// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 func (o EnvironmentOutput) ServiceOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Environment) []string { return v.ServiceOptions }).(pulumi.StringArrayOutput)
 }
@@ -2598,7 +2598,7 @@ func (o EnvironmentPtrOutput) DebugOptions() DebugOptionsPtrOutput {
 	}).(DebugOptionsPtrOutput)
 }
 
-// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 func (o EnvironmentPtrOutput) Experiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Environment) []string {
 		if v == nil {
@@ -2658,7 +2658,7 @@ func (o EnvironmentPtrOutput) ServiceKmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 func (o EnvironmentPtrOutput) ServiceOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Environment) []string {
 		if v == nil {
@@ -2736,7 +2736,7 @@ type EnvironmentResponse struct {
 	Dataset string `pulumi:"dataset"`
 	// Any debugging options to be supplied to the job.
 	DebugOptions DebugOptionsResponse `pulumi:"debugOptions"`
-	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 	Experiments []string `pulumi:"experiments"`
 	// Which Flexible Resource Scheduling mode to run in.
 	FlexResourceSchedulingGoal string `pulumi:"flexResourceSchedulingGoal"`
@@ -2748,7 +2748,7 @@ type EnvironmentResponse struct {
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
 	ServiceKmsKeyName string `pulumi:"serviceKmsKeyName"`
-	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 	ServiceOptions []string `pulumi:"serviceOptions"`
 	// The shuffle mode used for the job.
 	ShuffleMode string `pulumi:"shuffleMode"`
@@ -2785,7 +2785,7 @@ type EnvironmentResponseArgs struct {
 	Dataset pulumi.StringInput `pulumi:"dataset"`
 	// Any debugging options to be supplied to the job.
 	DebugOptions DebugOptionsResponseInput `pulumi:"debugOptions"`
-	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 	Experiments pulumi.StringArrayInput `pulumi:"experiments"`
 	// Which Flexible Resource Scheduling mode to run in.
 	FlexResourceSchedulingGoal pulumi.StringInput `pulumi:"flexResourceSchedulingGoal"`
@@ -2797,7 +2797,7 @@ type EnvironmentResponseArgs struct {
 	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
 	// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
 	ServiceKmsKeyName pulumi.StringInput `pulumi:"serviceKmsKeyName"`
-	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 	ServiceOptions pulumi.StringArrayInput `pulumi:"serviceOptions"`
 	// The shuffle mode used for the job.
 	ShuffleMode pulumi.StringInput `pulumi:"shuffleMode"`
@@ -2908,7 +2908,7 @@ func (o EnvironmentResponseOutput) DebugOptions() DebugOptionsResponseOutput {
 	return o.ApplyT(func(v EnvironmentResponse) DebugOptionsResponse { return v.DebugOptions }).(DebugOptionsResponseOutput)
 }
 
-// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 func (o EnvironmentResponseOutput) Experiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnvironmentResponse) []string { return v.Experiments }).(pulumi.StringArrayOutput)
 }
@@ -2938,7 +2938,7 @@ func (o EnvironmentResponseOutput) ServiceKmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentResponse) string { return v.ServiceKmsKeyName }).(pulumi.StringOutput)
 }
 
-// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 func (o EnvironmentResponseOutput) ServiceOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnvironmentResponse) []string { return v.ServiceOptions }).(pulumi.StringArrayOutput)
 }
@@ -3026,7 +3026,7 @@ func (o EnvironmentResponsePtrOutput) DebugOptions() DebugOptionsResponsePtrOutp
 	}).(DebugOptionsResponsePtrOutput)
 }
 
-// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 func (o EnvironmentResponsePtrOutput) Experiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EnvironmentResponse) []string {
 		if v == nil {
@@ -3086,7 +3086,7 @@ func (o EnvironmentResponsePtrOutput) ServiceKmsKeyName() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 func (o EnvironmentResponsePtrOutput) ServiceOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EnvironmentResponse) []string {
 		if v == nil {
@@ -4635,6 +4635,8 @@ func (o PackageResponseArrayOutput) Index(i pulumi.IntInput) PackageResponseOutp
 
 // Metadata for a specific parameter.
 type ParameterMetadataResponse struct {
+	// Optional. Additional metadata for describing this parameter.
+	CustomMetadata map[string]string `pulumi:"customMetadata"`
 	// Required. The help text to display for the parameter.
 	HelpText string `pulumi:"helpText"`
 	// Optional. Whether the parameter is optional. Defaults to false.
@@ -4662,6 +4664,8 @@ type ParameterMetadataResponseInput interface {
 
 // Metadata for a specific parameter.
 type ParameterMetadataResponseArgs struct {
+	// Optional. Additional metadata for describing this parameter.
+	CustomMetadata pulumi.StringMapInput `pulumi:"customMetadata"`
 	// Required. The help text to display for the parameter.
 	HelpText pulumi.StringInput `pulumi:"helpText"`
 	// Optional. Whether the parameter is optional. Defaults to false.
@@ -4726,6 +4730,11 @@ func (o ParameterMetadataResponseOutput) ToParameterMetadataResponseOutput() Par
 
 func (o ParameterMetadataResponseOutput) ToParameterMetadataResponseOutputWithContext(ctx context.Context) ParameterMetadataResponseOutput {
 	return o
+}
+
+// Optional. Additional metadata for describing this parameter.
+func (o ParameterMetadataResponseOutput) CustomMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ParameterMetadataResponse) map[string]string { return v.CustomMetadata }).(pulumi.StringMapOutput)
 }
 
 // Required. The help text to display for the parameter.

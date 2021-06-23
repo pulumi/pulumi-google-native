@@ -357,7 +357,7 @@ type SecuritySettingPurgeDataTypesItem pulumi.String
 const (
 	// Unspecified. Do not use.
 	SecuritySettingPurgeDataTypesItemPurgeDataTypeUnspecified = SecuritySettingPurgeDataTypesItem("PURGE_DATA_TYPE_UNSPECIFIED")
-	// Dialogflow history. This does not include Stackdriver log, which is owned by the user not Dialogflow.
+	// Dialogflow history. This does not include Cloud logging, which is owned by the user - not Dialogflow.
 	SecuritySettingPurgeDataTypesItemDialogflowHistory = SecuritySettingPurgeDataTypesItem("DIALOGFLOW_HISTORY")
 )
 
@@ -426,7 +426,7 @@ func (o SecuritySettingPurgeDataTypesItemArrayOutput) Index(i pulumi.IntInput) p
 	}).(pulumi.StringOutput)
 }
 
-// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
 type SecuritySettingRedactionScope pulumi.String
 
 const (

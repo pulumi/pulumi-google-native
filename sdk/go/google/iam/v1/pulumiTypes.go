@@ -1227,7 +1227,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 type Oidc struct {
 	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
-	// Required. The OIDC issuer URL.
+	// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
 	IssuerUri *string `pulumi:"issuerUri"`
 }
 
@@ -1246,7 +1246,7 @@ type OidcInput interface {
 type OidcArgs struct {
 	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
-	// Required. The OIDC issuer URL.
+	// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
 	IssuerUri pulumi.StringPtrInput `pulumi:"issuerUri"`
 }
 
@@ -1333,7 +1333,7 @@ func (o OidcOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Oidc) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
 }
 
-// Required. The OIDC issuer URL.
+// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
 func (o OidcOutput) IssuerUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Oidc) *string { return v.IssuerUri }).(pulumi.StringPtrOutput)
 }
@@ -1366,7 +1366,7 @@ func (o OidcPtrOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The OIDC issuer URL.
+// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
 func (o OidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Oidc) *string {
 		if v == nil {
@@ -1380,7 +1380,7 @@ func (o OidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
 type OidcResponse struct {
 	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
-	// Required. The OIDC issuer URL.
+	// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
 	IssuerUri string `pulumi:"issuerUri"`
 }
 
@@ -1399,7 +1399,7 @@ type OidcResponseInput interface {
 type OidcResponseArgs struct {
 	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
-	// Required. The OIDC issuer URL.
+	// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
 	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
 }
 
@@ -1486,7 +1486,7 @@ func (o OidcResponseOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OidcResponse) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
 }
 
-// Required. The OIDC issuer URL.
+// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
 func (o OidcResponseOutput) IssuerUri() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcResponse) string { return v.IssuerUri }).(pulumi.StringOutput)
 }
@@ -1519,7 +1519,7 @@ func (o OidcResponsePtrOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The OIDC issuer URL.
+// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
 func (o OidcResponsePtrOutput) IssuerUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OidcResponse) *string {
 		if v == nil {

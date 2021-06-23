@@ -41,7 +41,7 @@ type LookupReservationResult struct {
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
 	// Share-settings for shared-reservation
-	ShareSettings AllocationShareSettingsResponse `pulumi:"shareSettings"`
+	ShareSettings ShareSettingsResponse `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.

@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns a requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer entitlement was not found. Return value: The requested Entitlement resource.
+// Returns the requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer entitlement was not found. Return value: The requested Entitlement resource.
 func LookupEntitlement(ctx *pulumi.Context, args *LookupEntitlementArgs, opts ...pulumi.InvokeOption) (*LookupEntitlementResult, error) {
 	var rv LookupEntitlementResult
 	err := ctx.Invoke("google-native:cloudchannel/v1:getEntitlement", args, &rv, opts...)

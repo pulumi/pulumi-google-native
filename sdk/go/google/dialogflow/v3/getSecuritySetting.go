@@ -26,16 +26,16 @@ type LookupSecuritySettingArgs struct {
 type LookupSecuritySettingResult struct {
 	// Required. The human-readable name of the security settings, unique within the location.
 	DisplayName string `pulumi:"displayName"`
-	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
 	InspectTemplate string `pulumi:"inspectTemplate"`
 	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
 	Name string `pulumi:"name"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes []string `pulumi:"purgeDataTypes"`
-	// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+	// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
 	RedactionScope string `pulumi:"redactionScope"`
 	// Strategy that defines how we do redaction.
 	RedactionStrategy string `pulumi:"redactionStrategy"`
-	// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
 	RetentionWindowDays int `pulumi:"retentionWindowDays"`
 }

@@ -15,17 +15,17 @@ import (
 type Customer struct {
 	pulumi.CustomResourceState
 
-	// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+	// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses.
 	AlternateEmail pulumi.StringOutput `pulumi:"alternateEmail"`
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId pulumi.StringOutput `pulumi:"channelPartnerId"`
-	// Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+	// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
 	CloudIdentityId pulumi.StringOutput `pulumi:"cloudIdentityId"`
 	// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
 	CloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponseOutput `pulumi:"cloudIdentityInfo"`
-	// The time at which the customer is created.
+	// Time when the customer was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	// Required. The customer's primary domain. Must match the primary contact email's domain.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
@@ -33,11 +33,11 @@ type Customer struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required. Name of the organization that the customer entity represents.
 	OrgDisplayName pulumi.StringOutput `pulumi:"orgDisplayName"`
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	// Required. The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 	OrgPostalAddress GoogleTypePostalAddressResponseOutput `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoResponseOutput `pulumi:"primaryContactInfo"`
-	// The time at which the customer is updated.
+	// Time when the customer was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -76,17 +76,17 @@ func GetCustomer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Customer resources.
 type customerState struct {
-	// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+	// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses.
 	AlternateEmail *string `pulumi:"alternateEmail"`
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId *string `pulumi:"channelPartnerId"`
-	// Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+	// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
 	CloudIdentityId *string `pulumi:"cloudIdentityId"`
 	// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
 	CloudIdentityInfo *GoogleCloudChannelV1CloudIdentityInfoResponse `pulumi:"cloudIdentityInfo"`
-	// The time at which the customer is created.
+	// Time when the customer was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	// Required. The customer's primary domain. Must match the primary contact email's domain.
 	Domain *string `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode *string `pulumi:"languageCode"`
@@ -94,26 +94,26 @@ type customerState struct {
 	Name *string `pulumi:"name"`
 	// Required. Name of the organization that the customer entity represents.
 	OrgDisplayName *string `pulumi:"orgDisplayName"`
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	// Required. The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 	OrgPostalAddress *GoogleTypePostalAddressResponse `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo *GoogleCloudChannelV1ContactInfoResponse `pulumi:"primaryContactInfo"`
-	// The time at which the customer is updated.
+	// Time when the customer was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type CustomerState struct {
-	// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+	// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses.
 	AlternateEmail pulumi.StringPtrInput
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId pulumi.StringPtrInput
-	// Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+	// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
 	CloudIdentityId pulumi.StringPtrInput
 	// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
 	CloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponsePtrInput
-	// The time at which the customer is created.
+	// Time when the customer was created.
 	CreateTime pulumi.StringPtrInput
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	// Required. The customer's primary domain. Must match the primary contact email's domain.
 	Domain pulumi.StringPtrInput
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode pulumi.StringPtrInput
@@ -121,11 +121,11 @@ type CustomerState struct {
 	Name pulumi.StringPtrInput
 	// Required. Name of the organization that the customer entity represents.
 	OrgDisplayName pulumi.StringPtrInput
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	// Required. The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 	OrgPostalAddress GoogleTypePostalAddressResponsePtrInput
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoResponsePtrInput
-	// The time at which the customer is updated.
+	// Time when the customer was updated.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -135,18 +135,18 @@ func (CustomerState) ElementType() reflect.Type {
 
 type customerArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+	// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses.
 	AlternateEmail *string `pulumi:"alternateEmail"`
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId     *string `pulumi:"channelPartnerId"`
 	ChannelPartnerLinkId string  `pulumi:"channelPartnerLinkId"`
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	// Required. The customer's primary domain. Must match the primary contact email's domain.
 	Domain *string `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode *string `pulumi:"languageCode"`
 	// Required. Name of the organization that the customer entity represents.
 	OrgDisplayName *string `pulumi:"orgDisplayName"`
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	// Required. The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 	OrgPostalAddress *GoogleTypePostalAddress `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo *GoogleCloudChannelV1ContactInfo `pulumi:"primaryContactInfo"`
@@ -155,18 +155,18 @@ type customerArgs struct {
 // The set of arguments for constructing a Customer resource.
 type CustomerArgs struct {
 	AccountId pulumi.StringInput
-	// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+	// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses.
 	AlternateEmail pulumi.StringPtrInput
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId     pulumi.StringPtrInput
 	ChannelPartnerLinkId pulumi.StringInput
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	// Required. The customer's primary domain. Must match the primary contact email's domain.
 	Domain pulumi.StringPtrInput
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode pulumi.StringPtrInput
 	// Required. Name of the organization that the customer entity represents.
 	OrgDisplayName pulumi.StringPtrInput
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	// Required. The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
 	OrgPostalAddress GoogleTypePostalAddressPtrInput
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoPtrInput

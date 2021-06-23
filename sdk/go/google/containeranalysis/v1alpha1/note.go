@@ -21,6 +21,8 @@ type Note struct {
 	BaseImage BasisResponseOutput `pulumi:"baseImage"`
 	// Build provenance type for a verifiable build.
 	BuildType BuildTypeResponseOutput `pulumi:"buildType"`
+	// A note describing a compliance check.
+	Compliance ComplianceNoteResponseOutput `pulumi:"compliance"`
 	// The time this note was created. This field can be used as a filter in list requests.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A note describing something that can be deployed.
@@ -87,6 +89,8 @@ type noteState struct {
 	BaseImage *BasisResponse `pulumi:"baseImage"`
 	// Build provenance type for a verifiable build.
 	BuildType *BuildTypeResponse `pulumi:"buildType"`
+	// A note describing a compliance check.
+	Compliance *ComplianceNoteResponse `pulumi:"compliance"`
 	// The time this note was created. This field can be used as a filter in list requests.
 	CreateTime *string `pulumi:"createTime"`
 	// A note describing something that can be deployed.
@@ -122,6 +126,8 @@ type NoteState struct {
 	BaseImage BasisResponsePtrInput
 	// Build provenance type for a verifiable build.
 	BuildType BuildTypeResponsePtrInput
+	// A note describing a compliance check.
+	Compliance ComplianceNoteResponsePtrInput
 	// The time this note was created. This field can be used as a filter in list requests.
 	CreateTime pulumi.StringPtrInput
 	// A note describing something that can be deployed.
@@ -161,6 +167,8 @@ type noteArgs struct {
 	BaseImage *Basis `pulumi:"baseImage"`
 	// Build provenance type for a verifiable build.
 	BuildType *BuildType `pulumi:"buildType"`
+	// A note describing a compliance check.
+	Compliance *ComplianceNote `pulumi:"compliance"`
 	// The time this note was created. This field can be used as a filter in list requests.
 	CreateTime *string `pulumi:"createTime"`
 	// A note describing something that can be deployed.
@@ -199,6 +207,8 @@ type NoteArgs struct {
 	BaseImage BasisPtrInput
 	// Build provenance type for a verifiable build.
 	BuildType BuildTypePtrInput
+	// A note describing a compliance check.
+	Compliance ComplianceNotePtrInput
 	// The time this note was created. This field can be used as a filter in list requests.
 	CreateTime pulumi.StringPtrInput
 	// A note describing something that can be deployed.

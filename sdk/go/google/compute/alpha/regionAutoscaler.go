@@ -15,9 +15,7 @@ import (
 type RegionAutoscaler struct {
 	pulumi.CustomResourceState
 
-	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-	//
-	// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+	// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
 	AutoscalingPolicy AutoscalingPolicyResponseOutput `pulumi:"autoscalingPolicy"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -37,11 +35,7 @@ type RegionAutoscaler struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// [Output Only] The status of the autoscaler configuration. Current set of possible values:
-	// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-	// - DELETING: Configuration is being deleted.
-	// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-	// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+	// [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
 	StatusDetails AutoscalerStatusDetailsResponseArrayOutput `pulumi:"statusDetails"`
@@ -86,9 +80,7 @@ func GetRegionAutoscaler(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionAutoscaler resources.
 type regionAutoscalerState struct {
-	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-	//
-	// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+	// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
 	AutoscalingPolicy *AutoscalingPolicyResponse `pulumi:"autoscalingPolicy"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -108,11 +100,7 @@ type regionAutoscalerState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] The status of the autoscaler configuration. Current set of possible values:
-	// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-	// - DELETING: Configuration is being deleted.
-	// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-	// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+	// [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
 	Status *string `pulumi:"status"`
 	// [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
 	StatusDetails []AutoscalerStatusDetailsResponse `pulumi:"statusDetails"`
@@ -123,9 +111,7 @@ type regionAutoscalerState struct {
 }
 
 type RegionAutoscalerState struct {
-	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-	//
-	// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+	// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
 	AutoscalingPolicy AutoscalingPolicyResponsePtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -145,11 +131,7 @@ type RegionAutoscalerState struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] The status of the autoscaler configuration. Current set of possible values:
-	// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-	// - DELETING: Configuration is being deleted.
-	// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-	// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+	// [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
 	Status pulumi.StringPtrInput
 	// [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
 	StatusDetails AutoscalerStatusDetailsResponseArrayInput
@@ -164,9 +146,7 @@ func (RegionAutoscalerState) ElementType() reflect.Type {
 }
 
 type regionAutoscalerArgs struct {
-	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-	//
-	// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+	// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
 	AutoscalingPolicy *AutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -190,11 +170,7 @@ type regionAutoscalerArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] The status of the autoscaler configuration. Current set of possible values:
-	// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-	// - DELETING: Configuration is being deleted.
-	// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-	// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+	// [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
 	Status *string `pulumi:"status"`
 	// [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
 	StatusDetails []AutoscalerStatusDetails `pulumi:"statusDetails"`
@@ -206,9 +182,7 @@ type regionAutoscalerArgs struct {
 
 // The set of arguments for constructing a RegionAutoscaler resource.
 type RegionAutoscalerArgs struct {
-	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-	//
-	// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+	// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
 	AutoscalingPolicy AutoscalingPolicyPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -232,11 +206,7 @@ type RegionAutoscalerArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] The status of the autoscaler configuration. Current set of possible values:
-	// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-	// - DELETING: Configuration is being deleted.
-	// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-	// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+	// [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
 	Status *RegionAutoscalerStatus
 	// [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
 	StatusDetails AutoscalerStatusDetailsArrayInput

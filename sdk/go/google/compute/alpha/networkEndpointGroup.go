@@ -45,7 +45,7 @@ type NetworkEndpointGroup struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	ServerlessDeployment NetworkEndpointGroupServerlessDeploymentResponseOutput `pulumi:"serverlessDeployment"`
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -122,7 +122,7 @@ type networkEndpointGroupState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	ServerlessDeployment *NetworkEndpointGroupServerlessDeploymentResponse `pulumi:"serverlessDeployment"`
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size *int `pulumi:"size"`
@@ -165,7 +165,7 @@ type NetworkEndpointGroupState struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	ServerlessDeployment NetworkEndpointGroupServerlessDeploymentResponsePtrInput
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size pulumi.IntPtrInput
@@ -216,7 +216,7 @@ type networkEndpointGroupArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	ServerlessDeployment *NetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size *int `pulumi:"size"`
@@ -264,7 +264,7 @@ type NetworkEndpointGroupArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	ServerlessDeployment NetworkEndpointGroupServerlessDeploymentPtrInput
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size pulumi.IntPtrInput

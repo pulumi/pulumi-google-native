@@ -2953,7 +2953,7 @@ func (o ClusterStatusResponseArrayOutput) Index(i pulumi.IntInput) ClusterStatus
 	}).(ClusterStatusResponseOutput)
 }
 
-// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
 type ConfidentialInstanceConfig struct {
 	// Optional. Defines whether the instance should have confidential compute enabled.
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
@@ -2970,7 +2970,7 @@ type ConfidentialInstanceConfigInput interface {
 	ToConfidentialInstanceConfigOutputWithContext(context.Context) ConfidentialInstanceConfigOutput
 }
 
-// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
 type ConfidentialInstanceConfigArgs struct {
 	// Optional. Defines whether the instance should have confidential compute enabled.
 	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
@@ -3029,7 +3029,7 @@ func (i *confidentialInstanceConfigPtrType) ToConfidentialInstanceConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialInstanceConfigPtrOutput)
 }
 
-// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
 type ConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (ConfidentialInstanceConfigOutput) ElementType() reflect.Type {
@@ -3087,7 +3087,7 @@ func (o ConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
 type ConfidentialInstanceConfigResponse struct {
 	// Optional. Defines whether the instance should have confidential compute enabled.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
@@ -3104,7 +3104,7 @@ type ConfidentialInstanceConfigResponseInput interface {
 	ToConfidentialInstanceConfigResponseOutputWithContext(context.Context) ConfidentialInstanceConfigResponseOutput
 }
 
-// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
 type ConfidentialInstanceConfigResponseArgs struct {
 	// Optional. Defines whether the instance should have confidential compute enabled.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
@@ -3163,7 +3163,7 @@ func (i *confidentialInstanceConfigResponsePtrType) ToConfidentialInstanceConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialInstanceConfigResponsePtrOutput)
 }
 
-// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
 type ConfidentialInstanceConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (ConfidentialInstanceConfigResponseOutput) ElementType() reflect.Type {
@@ -4395,7 +4395,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
 type GceClusterConfig struct {
-	// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+	// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
 	ConfidentialInstanceConfig *ConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly *bool `pulumi:"internalIpOnly"`
@@ -4436,7 +4436,7 @@ type GceClusterConfigInput interface {
 
 // Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
 type GceClusterConfigArgs struct {
-	// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+	// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
 	ConfidentialInstanceConfig ConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
 	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
@@ -4542,7 +4542,7 @@ func (o GceClusterConfigOutput) ToGceClusterConfigPtrOutputWithContext(ctx conte
 	}).(GceClusterConfigPtrOutput)
 }
 
-// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
 func (o GceClusterConfigOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigPtrOutput {
 	return o.ApplyT(func(v GceClusterConfig) *ConfidentialInstanceConfig { return v.ConfidentialInstanceConfig }).(ConfidentialInstanceConfigPtrOutput)
 }
@@ -4625,7 +4625,7 @@ func (o GceClusterConfigPtrOutput) Elem() GceClusterConfigOutput {
 	return o.ApplyT(func(v *GceClusterConfig) GceClusterConfig { return *v }).(GceClusterConfigOutput)
 }
 
-// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
 func (o GceClusterConfigPtrOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *GceClusterConfig) *ConfidentialInstanceConfig {
 		if v == nil {
@@ -4757,7 +4757,7 @@ func (o GceClusterConfigPtrOutput) ZoneUri() pulumi.StringPtrOutput {
 
 // Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
 type GceClusterConfigResponse struct {
-	// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+	// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
 	ConfidentialInstanceConfig ConfidentialInstanceConfigResponse `pulumi:"confidentialInstanceConfig"`
 	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly bool `pulumi:"internalIpOnly"`
@@ -4798,7 +4798,7 @@ type GceClusterConfigResponseInput interface {
 
 // Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
 type GceClusterConfigResponseArgs struct {
-	// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+	// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
 	ConfidentialInstanceConfig ConfidentialInstanceConfigResponseInput `pulumi:"confidentialInstanceConfig"`
 	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly pulumi.BoolInput `pulumi:"internalIpOnly"`
@@ -4904,7 +4904,7 @@ func (o GceClusterConfigResponseOutput) ToGceClusterConfigResponsePtrOutputWithC
 	}).(GceClusterConfigResponsePtrOutput)
 }
 
-// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
 func (o GceClusterConfigResponseOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigResponseOutput {
 	return o.ApplyT(func(v GceClusterConfigResponse) ConfidentialInstanceConfigResponse {
 		return v.ConfidentialInstanceConfig
@@ -4989,7 +4989,7 @@ func (o GceClusterConfigResponsePtrOutput) Elem() GceClusterConfigResponseOutput
 	return o.ApplyT(func(v *GceClusterConfigResponse) GceClusterConfigResponse { return *v }).(GceClusterConfigResponseOutput)
 }
 
-// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
 func (o GceClusterConfigResponsePtrOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigResponsePtrOutput {
 	return o.ApplyT(func(v *GceClusterConfigResponse) *ConfidentialInstanceConfigResponse {
 		if v == nil {
@@ -7573,7 +7573,9 @@ type InstanceReferenceResponse struct {
 	InstanceId string `pulumi:"instanceId"`
 	// The user-friendly name of the Compute Engine instance.
 	InstanceName string `pulumi:"instanceName"`
-	// The public key used for sharing data with this instance.
+	// The public ECIES key used for sharing data with this instance.
+	PublicEciesKey string `pulumi:"publicEciesKey"`
+	// The public RSA key used for sharing data with this instance.
 	PublicKey string `pulumi:"publicKey"`
 }
 
@@ -7594,7 +7596,9 @@ type InstanceReferenceResponseArgs struct {
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The user-friendly name of the Compute Engine instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	// The public key used for sharing data with this instance.
+	// The public ECIES key used for sharing data with this instance.
+	PublicEciesKey pulumi.StringInput `pulumi:"publicEciesKey"`
+	// The public RSA key used for sharing data with this instance.
 	PublicKey pulumi.StringInput `pulumi:"publicKey"`
 }
 
@@ -7660,7 +7664,12 @@ func (o InstanceReferenceResponseOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceReferenceResponse) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The public key used for sharing data with this instance.
+// The public ECIES key used for sharing data with this instance.
+func (o InstanceReferenceResponseOutput) PublicEciesKey() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReferenceResponse) string { return v.PublicEciesKey }).(pulumi.StringOutput)
+}
+
+// The public RSA key used for sharing data with this instance.
 func (o InstanceReferenceResponseOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceReferenceResponse) string { return v.PublicKey }).(pulumi.StringOutput)
 }

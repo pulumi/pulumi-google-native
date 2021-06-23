@@ -15,13 +15,7 @@ import (
 type Subnetwork struct {
 	pulumi.CustomResourceState
 
-	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-	//
-	// Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-	//
-	// The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-	//
-	// This field cannot be set to true at resource creation time.
+	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolOutput `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -29,14 +23,16 @@ type Subnetwork struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs pulumi.BoolOutput `pulumi:"enableFlowLogs"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+	// [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix pulumi.StringOutput `pulumi:"externalIpv6Prefix"`
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress pulumi.StringOutput `pulumi:"gatewayAddress"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+	Ipv6AccessType pulumi.StringOutput `pulumi:"ipv6AccessType"`
 	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange pulumi.StringOutput `pulumi:"ipv6CidrRange"`
 	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
@@ -49,9 +45,7 @@ type Subnetwork struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
 	PrivateIpGoogleAccess pulumi.BoolOutput `pulumi:"privateIpGoogleAccess"`
-	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-	//
-	// This field can be both set at resource creation time and updated using patch.
+	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
 	PrivateIpv6GoogleAccess pulumi.StringOutput `pulumi:"privateIpv6GoogleAccess"`
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
@@ -63,7 +57,9 @@ type Subnetwork struct {
 	SecondaryIpRanges SubnetworkSecondaryRangeResponseArrayOutput `pulumi:"secondaryIpRanges"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+	StackType pulumi.StringOutput `pulumi:"stackType"`
+	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -102,13 +98,7 @@ func GetSubnetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subnetwork resources.
 type subnetworkState struct {
-	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-	//
-	// Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-	//
-	// The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-	//
-	// This field cannot be set to true at resource creation time.
+	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -116,14 +106,16 @@ type subnetworkState struct {
 	Description *string `pulumi:"description"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs *bool `pulumi:"enableFlowLogs"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+	// [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress *string `pulumi:"gatewayAddress"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange *string `pulumi:"ipv6CidrRange"`
 	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
@@ -136,9 +128,7 @@ type subnetworkState struct {
 	Network *string `pulumi:"network"`
 	// Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
 	PrivateIpGoogleAccess *bool `pulumi:"privateIpGoogleAccess"`
-	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-	//
-	// This field can be both set at resource creation time and updated using patch.
+	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	Purpose *string `pulumi:"purpose"`
@@ -150,18 +140,14 @@ type subnetworkState struct {
 	SecondaryIpRanges []SubnetworkSecondaryRangeResponse `pulumi:"secondaryIpRanges"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+	StackType *string `pulumi:"stackType"`
+	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
 	State *string `pulumi:"state"`
 }
 
 type SubnetworkState struct {
-	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-	//
-	// Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-	//
-	// The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-	//
-	// This field cannot be set to true at resource creation time.
+	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -169,14 +155,16 @@ type SubnetworkState struct {
 	Description pulumi.StringPtrInput
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs pulumi.BoolPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+	// [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix pulumi.StringPtrInput
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress pulumi.StringPtrInput
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange pulumi.StringPtrInput
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+	Ipv6AccessType pulumi.StringPtrInput
 	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange pulumi.StringPtrInput
 	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
@@ -189,9 +177,7 @@ type SubnetworkState struct {
 	Network pulumi.StringPtrInput
 	// Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
 	PrivateIpGoogleAccess pulumi.BoolPtrInput
-	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-	//
-	// This field can be both set at resource creation time and updated using patch.
+	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
 	PrivateIpv6GoogleAccess pulumi.StringPtrInput
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	Purpose pulumi.StringPtrInput
@@ -203,7 +189,9 @@ type SubnetworkState struct {
 	SecondaryIpRanges SubnetworkSecondaryRangeResponseArrayInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+	StackType pulumi.StringPtrInput
+	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
 	State pulumi.StringPtrInput
 }
 
@@ -212,13 +200,7 @@ func (SubnetworkState) ElementType() reflect.Type {
 }
 
 type subnetworkArgs struct {
-	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-	//
-	// Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-	//
-	// The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-	//
-	// This field cannot be set to true at resource creation time.
+	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -226,9 +208,9 @@ type subnetworkArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs *bool `pulumi:"enableFlowLogs"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+	// [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress *string `pulumi:"gatewayAddress"`
@@ -236,6 +218,8 @@ type subnetworkArgs struct {
 	Id *string `pulumi:"id"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange *string `pulumi:"ipv6CidrRange"`
 	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
@@ -248,9 +232,7 @@ type subnetworkArgs struct {
 	Network *string `pulumi:"network"`
 	// Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
 	PrivateIpGoogleAccess *bool `pulumi:"privateIpGoogleAccess"`
-	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-	//
-	// This field can be both set at resource creation time and updated using patch.
+	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	Project                 string  `pulumi:"project"`
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
@@ -264,19 +246,15 @@ type subnetworkArgs struct {
 	SecondaryIpRanges []SubnetworkSecondaryRange `pulumi:"secondaryIpRanges"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+	StackType *string `pulumi:"stackType"`
+	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
 	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Subnetwork resource.
 type SubnetworkArgs struct {
-	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-	//
-	// Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-	//
-	// The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-	//
-	// This field cannot be set to true at resource creation time.
+	// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -284,9 +262,9 @@ type SubnetworkArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs pulumi.BoolPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+	// [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix pulumi.StringPtrInput
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress pulumi.StringPtrInput
@@ -294,6 +272,8 @@ type SubnetworkArgs struct {
 	Id pulumi.StringPtrInput
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange pulumi.StringPtrInput
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+	Ipv6AccessType *SubnetworkIpv6AccessType
 	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange pulumi.StringPtrInput
 	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
@@ -306,9 +286,7 @@ type SubnetworkArgs struct {
 	Network pulumi.StringPtrInput
 	// Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
 	PrivateIpGoogleAccess pulumi.BoolPtrInput
-	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-	//
-	// This field can be both set at resource creation time and updated using patch.
+	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
 	PrivateIpv6GoogleAccess *SubnetworkPrivateIpv6GoogleAccess
 	Project                 pulumi.StringInput
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
@@ -322,7 +300,9 @@ type SubnetworkArgs struct {
 	SecondaryIpRanges SubnetworkSecondaryRangeArrayInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+	StackType *SubnetworkStackType
+	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
 	State *SubnetworkStateEnum
 }
 

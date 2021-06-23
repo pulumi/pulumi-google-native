@@ -1868,7 +1868,7 @@ func (o JobDerivedInfoResponsePtrOutput) Locations() LocationResponseArrayOutput
 	}).(LocationResponseArrayOutput)
 }
 
-// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.
 type LatLng struct {
 	// The latitude in degrees. It must be in the range [-90.0, +90.0].
 	Latitude *float64 `pulumi:"latitude"`
@@ -1887,7 +1887,7 @@ type LatLngInput interface {
 	ToLatLngOutputWithContext(context.Context) LatLngOutput
 }
 
-// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.
 type LatLngArgs struct {
 	// The latitude in degrees. It must be in the range [-90.0, +90.0].
 	Latitude pulumi.Float64PtrInput `pulumi:"latitude"`
@@ -1948,7 +1948,7 @@ func (i *latLngPtrType) ToLatLngPtrOutputWithContext(ctx context.Context) LatLng
 	return pulumi.ToOutputWithContext(ctx, i).(LatLngPtrOutput)
 }
 
-// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.
 type LatLngOutput struct{ *pulumi.OutputState }
 
 func (LatLngOutput) ElementType() reflect.Type {
@@ -2021,7 +2021,7 @@ func (o LatLngPtrOutput) Longitude() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.
 type LatLngResponse struct {
 	// The latitude in degrees. It must be in the range [-90.0, +90.0].
 	Latitude float64 `pulumi:"latitude"`
@@ -2040,7 +2040,7 @@ type LatLngResponseInput interface {
 	ToLatLngResponseOutputWithContext(context.Context) LatLngResponseOutput
 }
 
-// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.
 type LatLngResponseArgs struct {
 	// The latitude in degrees. It must be in the range [-90.0, +90.0].
 	Latitude pulumi.Float64Input `pulumi:"latitude"`
@@ -2101,7 +2101,7 @@ func (i *latLngResponsePtrType) ToLatLngResponsePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(LatLngResponsePtrOutput)
 }
 
-// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.
 type LatLngResponseOutput struct{ *pulumi.OutputState }
 
 func (LatLngResponseOutput) ElementType() reflect.Type {
