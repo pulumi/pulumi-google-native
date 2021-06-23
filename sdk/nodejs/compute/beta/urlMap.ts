@@ -40,22 +40,15 @@ export class UrlMap extends pulumi.CustomResource {
      */
     public readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
-     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
-     * UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction.
-     * defaultRouteAction has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction. defaultRouteAction has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     public readonly defaultRouteAction!: pulumi.Output<outputs.compute.beta.HttpRouteActionResponse>;
     /**
-     * The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified.
-     * Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.weightedBackendService must be set.
-     * defaultService has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. defaultService has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     public readonly defaultService!: pulumi.Output<string>;
     /**
-     * When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect.
-     * If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set.
-     * Not supported when the URL map is bound to target gRPC proxy.
+     * When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
      */
     public readonly defaultUrlRedirect!: pulumi.Output<outputs.compute.beta.HttpRedirectActionResponse>;
     /**
@@ -63,16 +56,11 @@ export class UrlMap extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve a UrlMap.
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a UrlMap.
      */
     public readonly fingerprint!: pulumi.Output<string>;
     /**
-     * Specifies changes to request and response headers that need to take effect for the selected backendService.
-     * The headerAction specified here take effect after headerAction specified under pathMatcher.
-     * Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
-     * Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here take effect after headerAction specified under pathMatcher. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     public readonly headerAction!: pulumi.Output<outputs.compute.beta.HttpHeaderActionResponse>;
     /**
@@ -100,8 +88,7 @@ export class UrlMap extends pulumi.CustomResource {
      */
     public readonly selfLink!: pulumi.Output<string>;
     /**
-     * The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
-     * Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     public readonly tests!: pulumi.Output<outputs.compute.beta.UrlMapTestResponse[]>;
 
@@ -168,22 +155,15 @@ export interface UrlMapArgs {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
-     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
-     * UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction.
-     * defaultRouteAction has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction. defaultRouteAction has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     defaultRouteAction?: pulumi.Input<inputs.compute.beta.HttpRouteActionArgs>;
     /**
-     * The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified.
-     * Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.weightedBackendService must be set.
-     * defaultService has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. defaultService has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     defaultService?: pulumi.Input<string>;
     /**
-     * When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect.
-     * If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set.
-     * Not supported when the URL map is bound to target gRPC proxy.
+     * When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
      */
     defaultUrlRedirect?: pulumi.Input<inputs.compute.beta.HttpRedirectActionArgs>;
     /**
@@ -191,16 +171,11 @@ export interface UrlMapArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve a UrlMap.
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a UrlMap.
      */
     fingerprint?: pulumi.Input<string>;
     /**
-     * Specifies changes to request and response headers that need to take effect for the selected backendService.
-     * The headerAction specified here take effect after headerAction specified under pathMatcher.
-     * Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
-     * Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here take effect after headerAction specified under pathMatcher. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     headerAction?: pulumi.Input<inputs.compute.beta.HttpHeaderActionArgs>;
     /**
@@ -234,8 +209,7 @@ export interface UrlMapArgs {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
-     * Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     tests?: pulumi.Input<pulumi.Input<inputs.compute.beta.UrlMapTestArgs>[]>;
 }

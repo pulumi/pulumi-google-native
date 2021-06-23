@@ -52,7 +52,7 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModificationTime!: pulumi.Output<string>;
     /**
-     * The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+     * The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
      */
     public readonly latestOperationName!: pulumi.Output<string>;
     /**
@@ -131,7 +131,7 @@ export interface TransferJobArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+     * The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
      */
     latestOperationName?: pulumi.Input<string>;
     /**

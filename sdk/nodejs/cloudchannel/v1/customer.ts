@@ -36,7 +36,7 @@ export class Customer extends pulumi.CustomResource {
     }
 
     /**
-     * Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+     * Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses.
      */
     public readonly alternateEmail!: pulumi.Output<string>;
     /**
@@ -44,7 +44,7 @@ export class Customer extends pulumi.CustomResource {
      */
     public readonly channelPartnerId!: pulumi.Output<string>;
     /**
-     * Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+     * The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
      */
     public /*out*/ readonly cloudIdentityId!: pulumi.Output<string>;
     /**
@@ -52,11 +52,11 @@ export class Customer extends pulumi.CustomResource {
      */
     public /*out*/ readonly cloudIdentityInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1CloudIdentityInfoResponse>;
     /**
-     * The time at which the customer is created.
+     * Time when the customer was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+     * Required. The customer's primary domain. Must match the primary contact email's domain.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
@@ -72,7 +72,7 @@ export class Customer extends pulumi.CustomResource {
      */
     public readonly orgDisplayName!: pulumi.Output<string>;
     /**
-     * Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+     * Required. The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
      */
     public readonly orgPostalAddress!: pulumi.Output<outputs.cloudchannel.v1.GoogleTypePostalAddressResponse>;
     /**
@@ -80,7 +80,7 @@ export class Customer extends pulumi.CustomResource {
      */
     public readonly primaryContactInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1ContactInfoResponse>;
     /**
-     * The time at which the customer is updated.
+     * Time when the customer was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -142,7 +142,7 @@ export class Customer extends pulumi.CustomResource {
 export interface CustomerArgs {
     accountId: pulumi.Input<string>;
     /**
-     * Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+     * Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses.
      */
     alternateEmail?: pulumi.Input<string>;
     /**
@@ -151,7 +151,7 @@ export interface CustomerArgs {
     channelPartnerId?: pulumi.Input<string>;
     channelPartnerLinkId: pulumi.Input<string>;
     /**
-     * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+     * Required. The customer's primary domain. Must match the primary contact email's domain.
      */
     domain?: pulumi.Input<string>;
     /**
@@ -163,7 +163,7 @@ export interface CustomerArgs {
      */
     orgDisplayName?: pulumi.Input<string>;
     /**
-     * Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+     * Required. The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
      */
     orgPostalAddress?: pulumi.Input<inputs.cloudchannel.v1.GoogleTypePostalAddressArgs>;
     /**

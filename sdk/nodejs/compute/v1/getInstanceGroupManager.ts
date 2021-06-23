@@ -55,9 +55,7 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly distributionPolicy: outputs.compute.v1.DistributionPolicyResponse;
     /**
-     * Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+     * Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
      */
     readonly fingerprint: string;
     /**
@@ -109,9 +107,7 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly updatePolicy: outputs.compute.v1.InstanceGroupManagerUpdatePolicyResponse;
     /**
-     * Specifies the instance templates used by this managed instance group to create instances.
-     *
-     * Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+     * Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
      */
     readonly versions: outputs.compute.v1.InstanceGroupManagerVersionResponse[];
     /**

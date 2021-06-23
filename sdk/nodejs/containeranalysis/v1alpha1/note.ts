@@ -48,6 +48,10 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly buildType!: pulumi.Output<outputs.containeranalysis.v1alpha1.BuildTypeResponse>;
     /**
+     * A note describing a compliance check.
+     */
+    public readonly compliance!: pulumi.Output<outputs.containeranalysis.v1alpha1.ComplianceNoteResponse>;
+    /**
      * The time this note was created. This field can be used as a filter in list requests.
      */
     public readonly createTime!: pulumi.Output<string>;
@@ -117,6 +121,7 @@ export class Note extends pulumi.CustomResource {
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
             inputs["baseImage"] = args ? args.baseImage : undefined;
             inputs["buildType"] = args ? args.buildType : undefined;
+            inputs["compliance"] = args ? args.compliance : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deployable"] = args ? args.deployable : undefined;
             inputs["discovery"] = args ? args.discovery : undefined;
@@ -136,6 +141,7 @@ export class Note extends pulumi.CustomResource {
             inputs["attestationAuthority"] = undefined /*out*/;
             inputs["baseImage"] = undefined /*out*/;
             inputs["buildType"] = undefined /*out*/;
+            inputs["compliance"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["deployable"] = undefined /*out*/;
             inputs["discovery"] = undefined /*out*/;
@@ -173,6 +179,10 @@ export interface NoteArgs {
      * Build provenance type for a verifiable build.
      */
     buildType?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildTypeArgs>;
+    /**
+     * A note describing a compliance check.
+     */
+    compliance?: pulumi.Input<inputs.containeranalysis.v1alpha1.ComplianceNoteArgs>;
     /**
      * The time this note was created. This field can be used as a filter in list requests.
      */

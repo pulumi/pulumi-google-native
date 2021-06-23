@@ -9,12 +9,15 @@ export * from "./domain";
 export * from "./domainIamPolicy";
 export * from "./getDomain";
 export * from "./getDomainIamPolicy";
+export * from "./getPeering";
 export * from "./getPeeringIamPolicy";
+export * from "./peering";
 export * from "./peeringIamPolicy";
 
 // Import resources to register:
 import { Domain } from "./domain";
 import { DomainIamPolicy } from "./domainIamPolicy";
+import { Peering } from "./peering";
 import { PeeringIamPolicy } from "./peeringIamPolicy";
 
 const _module = {
@@ -25,6 +28,8 @@ const _module = {
                 return new Domain(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1beta1:DomainIamPolicy":
                 return new DomainIamPolicy(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1beta1:Peering":
+                return new Peering(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1beta1:PeeringIamPolicy":
                 return new PeeringIamPolicy(name, <any>undefined, { urn })
             default:

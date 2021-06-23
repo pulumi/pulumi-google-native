@@ -45,7 +45,7 @@ export interface GetTransferJobResult {
      */
     readonly lastModificationTime: string;
     /**
-     * The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+     * The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
      */
     readonly latestOperationName: string;
     /**

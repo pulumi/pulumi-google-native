@@ -424,3 +424,20 @@ export const VersionServingStatus = {
  * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
  */
 export type VersionServingStatus = (typeof VersionServingStatus)[keyof typeof VersionServingStatus];
+
+export const VpcAccessConnectorEgressSetting = {
+    EgressSettingUnspecified: "EGRESS_SETTING_UNSPECIFIED",
+    /**
+     * Force the use of VPC Access for all egress traffic from the function.
+     */
+    AllTraffic: "ALL_TRAFFIC",
+    /**
+     * Use the VPC Access Connector for private IP space from RFC1918.
+     */
+    PrivateIpRanges: "PRIVATE_IP_RANGES",
+} as const;
+
+/**
+ * The egress setting for the connector, controlling what traffic is diverted through it.
+ */
+export type VpcAccessConnectorEgressSetting = (typeof VpcAccessConnectorEgressSetting)[keyof typeof VpcAccessConnectorEgressSetting];

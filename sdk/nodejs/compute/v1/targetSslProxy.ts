@@ -64,7 +64,7 @@ export class TargetSslProxy extends pulumi.CustomResource {
      */
     public readonly service!: pulumi.Output<string>;
     /**
-     * URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+     * URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      */
     public readonly sslCertificates!: pulumi.Output<string[]>;
     /**
@@ -155,7 +155,7 @@ export interface TargetSslProxyArgs {
      */
     service?: pulumi.Input<string>;
     /**
-     * URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+     * URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      */
     sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**

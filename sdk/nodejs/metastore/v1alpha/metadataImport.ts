@@ -36,7 +36,7 @@ export class MetadataImport extends pulumi.CustomResource {
     }
 
     /**
-     * The time when the metadata import was created.
+     * The time when the metadata import was started.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -47,6 +47,10 @@ export class MetadataImport extends pulumi.CustomResource {
      * The description of the metadata import.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * The time when the metadata import finished.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
      * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
      */
@@ -92,12 +96,14 @@ export class MetadataImport extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["createTime"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["databaseDump"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;

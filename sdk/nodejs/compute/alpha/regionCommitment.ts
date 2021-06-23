@@ -36,6 +36,10 @@ export class RegionCommitment extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+     */
+    public readonly autoRenew!: pulumi.Output<boolean>;
+    /**
      * The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
      */
     public readonly category!: pulumi.Output<string>;
@@ -121,6 +125,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            inputs["autoRenew"] = args ? args.autoRenew : undefined;
             inputs["category"] = args ? args.category : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -142,6 +147,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             inputs["statusMessage"] = args ? args.statusMessage : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
+            inputs["autoRenew"] = undefined /*out*/;
             inputs["category"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -171,6 +177,10 @@ export class RegionCommitment extends pulumi.CustomResource {
  * The set of arguments for constructing a RegionCommitment resource.
  */
 export interface RegionCommitmentArgs {
+    /**
+     * Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+     */
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
      */

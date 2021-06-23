@@ -40,8 +40,7 @@ export class SslPolicy extends pulumi.CustomResource {
      */
     public readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * A list of features enabled when the selected profile is CUSTOM. The
-     * - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+     * A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
      */
     public readonly customFeatures!: pulumi.Output<string[]>;
     /**
@@ -53,9 +52,7 @@ export class SslPolicy extends pulumi.CustomResource {
      */
     public readonly enabledFeatures!: pulumi.Output<string[]>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
      */
     public readonly fingerprint!: pulumi.Output<string>;
     /**
@@ -152,8 +149,7 @@ export interface SslPolicyArgs {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * A list of features enabled when the selected profile is CUSTOM. The
-     * - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+     * A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
      */
     customFeatures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -165,9 +161,7 @@ export interface SslPolicyArgs {
      */
     enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
      */
     fingerprint?: pulumi.Input<string>;
     /**

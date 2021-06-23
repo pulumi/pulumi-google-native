@@ -76,6 +76,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+     */
+    public readonly maintenancePolicy!: pulumi.Output<outputs.redis.v1beta1.MaintenancePolicyResponse>;
+    /**
+     * Date and time of upcoming maintenance events which have been scheduled.
+     */
+    public /*out*/ readonly maintenanceSchedule!: pulumi.Output<outputs.redis.v1beta1.MaintenanceScheduleResponse>;
+    /**
      * Required. Redis memory size in GiB.
      */
     public readonly memorySizeGb!: pulumi.Output<number>;
@@ -96,7 +104,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly redisConfigs!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
+     * Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
      */
     public readonly redisVersion!: pulumi.Output<string>;
     /**
@@ -152,6 +160,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
+            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -163,6 +172,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["currentLocationId"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
+            inputs["maintenanceSchedule"] = undefined /*out*/;
             inputs["persistenceIamIdentity"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
             inputs["serverCaCerts"] = undefined /*out*/;
@@ -179,6 +189,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["host"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["location"] = undefined /*out*/;
+            inputs["maintenancePolicy"] = undefined /*out*/;
+            inputs["maintenanceSchedule"] = undefined /*out*/;
             inputs["memorySizeGb"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["persistenceIamIdentity"] = undefined /*out*/;
@@ -233,6 +245,10 @@ export interface InstanceArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.redis.v1beta1.MaintenancePolicyArgs>;
+    /**
      * Required. Redis memory size in GiB.
      */
     memorySizeGb?: pulumi.Input<number>;
@@ -246,7 +262,7 @@ export interface InstanceArgs {
      */
     redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
+     * Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
      */
     redisVersion?: pulumi.Input<string>;
     /**

@@ -52,6 +52,10 @@ export class Webhook extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+     */
+    public readonly serviceDirectory!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse>;
+    /**
      * Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
      */
     public readonly timeout!: pulumi.Output<string>;
@@ -83,12 +87,14 @@ export class Webhook extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["serviceDirectory"] = args ? args.serviceDirectory : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
         } else {
             inputs["disabled"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["genericWebService"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["serviceDirectory"] = undefined /*out*/;
             inputs["timeout"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -121,6 +127,10 @@ export interface WebhookArgs {
      */
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
+    /**
+     * Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+     */
+    serviceDirectory?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs>;
     /**
      * Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
      */

@@ -6,9 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
- *
- * A regional managed instance group can contain up to 2000 instances.
+ * Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
  */
 export class RegionInstanceGroupManager extends pulumi.CustomResource {
     /**
@@ -66,9 +64,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly failoverAction!: pulumi.Output<string>;
     /**
-     * Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+     * Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
      */
     public readonly fingerprint!: pulumi.Output<string>;
     /**
@@ -124,9 +120,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly updatePolicy!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerUpdatePolicyResponse>;
     /**
-     * Specifies the instance templates used by this managed instance group to create instances.
-     *
-     * Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+     * Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
      */
     public readonly versions!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerVersionResponse[]>;
     /**
@@ -242,9 +236,7 @@ export interface RegionInstanceGroupManagerArgs {
      */
     failoverAction?: pulumi.Input<enums.compute.beta.RegionInstanceGroupManagerFailoverAction>;
     /**
-     * Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+     * Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
      */
     fingerprint?: pulumi.Input<string>;
     /**
@@ -306,9 +298,7 @@ export interface RegionInstanceGroupManagerArgs {
      */
     updatePolicy?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerUpdatePolicyArgs>;
     /**
-     * Specifies the instance templates used by this managed instance group to create instances.
-     *
-     * Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+     * Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
      */
     versions?: pulumi.Input<pulumi.Input<inputs.compute.beta.InstanceGroupManagerVersionArgs>[]>;
     /**

@@ -70,7 +70,7 @@ export class Reservation extends pulumi.CustomResource {
     /**
      * Share-settings for shared-reservation
      */
-    public readonly shareSettings!: pulumi.Output<outputs.compute.alpha.AllocationShareSettingsResponse>;
+    public readonly shareSettings!: pulumi.Output<outputs.compute.alpha.ShareSettingsResponse>;
     /**
      * Reservation for instances with specific machine shapes.
      */
@@ -188,7 +188,7 @@ export interface ReservationArgs {
     /**
      * Share-settings for shared-reservation
      */
-    shareSettings?: pulumi.Input<inputs.compute.alpha.AllocationShareSettingsArgs>;
+    shareSettings?: pulumi.Input<inputs.compute.alpha.ShareSettingsArgs>;
     /**
      * Reservation for instances with specific machine shapes.
      */

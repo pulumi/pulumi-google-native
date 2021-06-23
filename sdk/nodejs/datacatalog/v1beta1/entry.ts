@@ -80,6 +80,10 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
+     * Statistics on the usage level of the resource.
+     */
+    public /*out*/ readonly usageSignal!: pulumi.Output<outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1UsageSignalResponse>;
+    /**
      * This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      */
     public readonly userSpecifiedSystem!: pulumi.Output<string>;
@@ -128,6 +132,7 @@ export class Entry extends pulumi.CustomResource {
             inputs["integratedSystem"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["sourceSystemTimestamps"] = undefined /*out*/;
+            inputs["usageSignal"] = undefined /*out*/;
         } else {
             inputs["bigqueryDateShardedSpec"] = undefined /*out*/;
             inputs["bigqueryTableSpec"] = undefined /*out*/;
@@ -140,6 +145,7 @@ export class Entry extends pulumi.CustomResource {
             inputs["schema"] = undefined /*out*/;
             inputs["sourceSystemTimestamps"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
+            inputs["usageSignal"] = undefined /*out*/;
             inputs["userSpecifiedSystem"] = undefined /*out*/;
             inputs["userSpecifiedType"] = undefined /*out*/;
         }

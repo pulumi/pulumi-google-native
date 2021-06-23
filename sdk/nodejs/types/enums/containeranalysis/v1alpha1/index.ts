@@ -22,6 +22,38 @@ export const BuildSignatureKeyType = {
  */
 export type BuildSignatureKeyType = (typeof BuildSignatureKeyType)[keyof typeof BuildSignatureKeyType];
 
+export const CisBenchmarkSeverity = {
+    /**
+     * Unknown Impact
+     */
+    SeverityUnspecified: "SEVERITY_UNSPECIFIED",
+    /**
+     * Minimal Impact
+     */
+    Minimal: "MINIMAL",
+    /**
+     * Low Impact
+     */
+    Low: "LOW",
+    /**
+     * Medium Impact
+     */
+    Medium: "MEDIUM",
+    /**
+     * High Impact
+     */
+    High: "HIGH",
+    /**
+     * Critical Impact
+     */
+    Critical: "CRITICAL",
+} as const;
+
+/**
+ * The severity level of this CIS benchmark check.
+ */
+export type CisBenchmarkSeverity = (typeof CisBenchmarkSeverity)[keyof typeof CisBenchmarkSeverity];
+
 export const DeploymentPlatform = {
     /**
      * Unknown
@@ -135,6 +167,10 @@ export const DiscoveryAnalysisKind = {
      * This represents an available software upgrade.
      */
     Upgrade: "UPGRADE",
+    /**
+     * This represents a compliance check that can be applied to a resource.
+     */
+    Compliance: "COMPLIANCE",
 } as const;
 
 /**
@@ -319,6 +355,10 @@ export const NoteKind = {
      * This represents an available software upgrade.
      */
     Upgrade: "UPGRADE",
+    /**
+     * This represents a compliance check that can be applied to a resource.
+     */
+    Compliance: "COMPLIANCE",
 } as const;
 
 /**
@@ -363,6 +403,10 @@ export const OccurrenceKind = {
      * This represents an available software upgrade.
      */
     Upgrade: "UPGRADE",
+    /**
+     * This represents a compliance check that can be applied to a resource.
+     */
+    Compliance: "COMPLIANCE",
 } as const;
 
 /**

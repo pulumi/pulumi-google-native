@@ -33,6 +33,10 @@ export interface GetSecretResult {
      */
     readonly createTime: string;
     /**
+     * Optional. Etag of the currently stored Secret.
+     */
+    readonly etag: string;
+    /**
      * Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      */
     readonly expireTime: string;

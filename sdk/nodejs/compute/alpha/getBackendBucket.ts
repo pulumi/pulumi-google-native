@@ -37,6 +37,10 @@ export interface GetBackendBucketResult {
      */
     readonly cdnPolicy: outputs.compute.alpha.BackendBucketCdnPolicyResponse;
     /**
+     * Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+     */
+    readonly compressionMode: string;
+    /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;

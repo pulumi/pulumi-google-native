@@ -61,3 +61,43 @@ export const InstanceTransitEncryptionMode = {
  * Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
  */
 export type InstanceTransitEncryptionMode = (typeof InstanceTransitEncryptionMode)[keyof typeof InstanceTransitEncryptionMode];
+
+export const WeeklyMaintenanceWindowDay = {
+    /**
+     * The day of the week is unspecified.
+     */
+    DayOfWeekUnspecified: "DAY_OF_WEEK_UNSPECIFIED",
+    /**
+     * Monday
+     */
+    Monday: "MONDAY",
+    /**
+     * Tuesday
+     */
+    Tuesday: "TUESDAY",
+    /**
+     * Wednesday
+     */
+    Wednesday: "WEDNESDAY",
+    /**
+     * Thursday
+     */
+    Thursday: "THURSDAY",
+    /**
+     * Friday
+     */
+    Friday: "FRIDAY",
+    /**
+     * Saturday
+     */
+    Saturday: "SATURDAY",
+    /**
+     * Sunday
+     */
+    Sunday: "SUNDAY",
+} as const;
+
+/**
+ * Required. The day of week that maintenance updates occur.
+ */
+export type WeeklyMaintenanceWindowDay = (typeof WeeklyMaintenanceWindowDay)[keyof typeof WeeklyMaintenanceWindowDay];

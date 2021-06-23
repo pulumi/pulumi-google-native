@@ -40,7 +40,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly databaseUrl!: pulumi.Output<string>;
     /**
-     * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+     * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -106,7 +106,7 @@ export interface InstanceArgs {
     databaseUrl?: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**
-     * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+     * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
      */
     name?: pulumi.Input<string>;
     /**

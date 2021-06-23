@@ -57,7 +57,7 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly locationHint!: pulumi.Output<string>;
     /**
-     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
      */
     public readonly maintenancePolicy!: pulumi.Output<string>;
     public readonly maintenanceWindow!: pulumi.Output<outputs.compute.alpha.NodeGroupMaintenanceWindowResponse>;
@@ -77,6 +77,10 @@ export class NodeGroup extends pulumi.CustomResource {
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
     public readonly selfLinkWithId!: pulumi.Output<string>;
+    /**
+     * Share-settings for the node group
+     */
+    public readonly shareSettings!: pulumi.Output<outputs.compute.alpha.ShareSettingsResponse>;
     /**
      * [Output Only] The total number of nodes in the node group.
      */
@@ -123,6 +127,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
+            inputs["shareSettings"] = args ? args.shareSettings : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -139,6 +144,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["nodeTemplate"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["shareSettings"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["zone"] = undefined /*out*/;
@@ -181,7 +187,7 @@ export interface NodeGroupArgs {
      */
     locationHint?: pulumi.Input<string>;
     /**
-     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
      */
     maintenancePolicy?: pulumi.Input<enums.compute.alpha.NodeGroupMaintenancePolicy>;
     maintenanceWindow?: pulumi.Input<inputs.compute.alpha.NodeGroupMaintenanceWindowArgs>;
@@ -203,6 +209,10 @@ export interface NodeGroupArgs {
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
     selfLinkWithId?: pulumi.Input<string>;
+    /**
+     * Share-settings for the node group
+     */
+    shareSettings?: pulumi.Input<inputs.compute.alpha.ShareSettingsArgs>;
     /**
      * [Output Only] The total number of nodes in the node group.
      */

@@ -37,6 +37,10 @@ export interface GetBackendBucketResult {
      */
     readonly cdnPolicy: outputs.compute.beta.BackendBucketCdnPolicyResponse;
     /**
+     * Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+     */
+    readonly compressionMode: string;
+    /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
@@ -48,6 +52,10 @@ export interface GetBackendBucketResult {
      * An optional textual description of the resource; provided by the client when the resource is created.
      */
     readonly description: string;
+    /**
+     * [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+     */
+    readonly edgeSecurityPolicy: string;
     /**
      * If true, enable Cloud CDN for this BackendBucket.
      */

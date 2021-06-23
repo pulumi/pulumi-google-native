@@ -52,6 +52,10 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly destRange!: pulumi.Output<string>;
     /**
+     * ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
+     */
+    public readonly ilbRouteBehaviorOnUnhealthy!: pulumi.Output<string>;
+    /**
      * [Output Only] Type of this resource. Always compute#routes for Route resources.
      */
     public readonly kind!: pulumi.Output<string>;
@@ -64,19 +68,15 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+     * The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
      */
     public readonly nextHopGateway!: pulumi.Output<string>;
     /**
-     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-     * - 10.128.0.56 
-     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-     * - regions/region/forwardingRules/forwardingRule
+     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
      */
     public readonly nextHopIlb!: pulumi.Output<string>;
     /**
-     * The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-     * https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+     * The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
      */
     public readonly nextHopInstance!: pulumi.Output<string>;
     /**
@@ -139,6 +139,7 @@ export class Route extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["destRange"] = args ? args.destRange : undefined;
             inputs["id"] = args ? args.id : undefined;
+            inputs["ilbRouteBehaviorOnUnhealthy"] = args ? args.ilbRouteBehaviorOnUnhealthy : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -162,6 +163,7 @@ export class Route extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["destRange"] = undefined /*out*/;
+            inputs["ilbRouteBehaviorOnUnhealthy"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["network"] = undefined /*out*/;
@@ -211,6 +213,10 @@ export interface RouteArgs {
      */
     id?: pulumi.Input<string>;
     /**
+     * ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
+     */
+    ilbRouteBehaviorOnUnhealthy?: pulumi.Input<enums.compute.alpha.RouteIlbRouteBehaviorOnUnhealthy>;
+    /**
      * [Output Only] Type of this resource. Always compute#routes for Route resources.
      */
     kind?: pulumi.Input<string>;
@@ -223,19 +229,15 @@ export interface RouteArgs {
      */
     network?: pulumi.Input<string>;
     /**
-     * The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+     * The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
      */
     nextHopGateway?: pulumi.Input<string>;
     /**
-     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-     * - 10.128.0.56 
-     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-     * - regions/region/forwardingRules/forwardingRule
+     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
      */
     nextHopIlb?: pulumi.Input<string>;
     /**
-     * The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-     * https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+     * The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
      */
     nextHopInstance?: pulumi.Input<string>;
     /**

@@ -57,9 +57,7 @@ export interface GetInstanceTemplateResult {
      */
     readonly selfLinkWithId: string;
     /**
-     * The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-     * - projects/project/zones/zone/instances/instance
+     * The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
      */
     readonly sourceInstance: string;
     /**

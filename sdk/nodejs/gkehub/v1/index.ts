@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./feature";
+export * from "./featureIamPolicy";
+export * from "./getFeature";
+export * from "./getFeatureIamPolicy";
 export * from "./getMembership";
 export * from "./getMembershipIamPolicy";
 export * from "./membership";
@@ -14,6 +18,8 @@ export * from "./membershipIamPolicy";
 export * from "../../types/enums/gkehub/v1";
 
 // Import resources to register:
+import { Feature } from "./feature";
+import { FeatureIamPolicy } from "./featureIamPolicy";
 import { Membership } from "./membership";
 import { MembershipIamPolicy } from "./membershipIamPolicy";
 
@@ -21,6 +27,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:gkehub/v1:Feature":
+                return new Feature(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:FeatureIamPolicy":
+                return new FeatureIamPolicy(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:Membership":
                 return new Membership(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:MembershipIamPolicy":

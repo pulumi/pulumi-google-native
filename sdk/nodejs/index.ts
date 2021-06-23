@@ -56,6 +56,7 @@ import * as essentialcontacts from "./essentialcontacts";
 import * as eventarc from "./eventarc";
 import * as file from "./file";
 import * as firebase from "./firebase";
+import * as firebaseappcheck from "./firebaseappcheck";
 import * as firebasedatabase from "./firebasedatabase";
 import * as firebasehosting from "./firebasehosting";
 import * as firebaseml from "./firebaseml";
@@ -83,6 +84,7 @@ import * as policysimulator from "./policysimulator";
 import * as privateca from "./privateca";
 import * as pubsub from "./pubsub";
 import * as pubsublite from "./pubsublite";
+import * as recaptchaenterprise from "./recaptchaenterprise";
 import * as recommendationengine from "./recommendationengine";
 import * as redis from "./redis";
 import * as remotebuildexecution from "./remotebuildexecution";
@@ -159,6 +161,7 @@ export {
     eventarc,
     file,
     firebase,
+    firebaseappcheck,
     firebasedatabase,
     firebasehosting,
     firebaseml,
@@ -186,6 +189,7 @@ export {
     privateca,
     pubsub,
     pubsublite,
+    recaptchaenterprise,
     recommendationengine,
     redis,
     remotebuildexecution,

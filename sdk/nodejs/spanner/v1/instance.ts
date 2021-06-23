@@ -55,6 +55,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
+     * The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+     */
+    public readonly processingUnits!: pulumi.Output<number>;
+    /**
      * The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -79,6 +83,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
+            inputs["processingUnits"] = args ? args.processingUnits : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = undefined /*out*/;
         } else {
@@ -87,6 +92,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["nodeCount"] = undefined /*out*/;
+            inputs["processingUnits"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -124,5 +130,9 @@ export interface InstanceArgs {
      * The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.
      */
     nodeCount?: pulumi.Input<number>;
+    /**
+     * The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+     */
+    processingUnits?: pulumi.Input<number>;
     project: pulumi.Input<string>;
 }

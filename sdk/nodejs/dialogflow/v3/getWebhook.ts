@@ -49,6 +49,10 @@ export interface GetWebhookResult {
      */
     readonly name: string;
     /**
+     * Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+     */
+    readonly serviceDirectory: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse;
+    /**
      * Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
      */
     readonly timeout: string;

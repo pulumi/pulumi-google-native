@@ -44,6 +44,10 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.alpha.BackendBucketCdnPolicyResponse>;
     /**
+     * Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+     */
+    public readonly compressionMode!: pulumi.Output<string>;
+    /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
     public readonly creationTimestamp!: pulumi.Output<string>;
@@ -96,6 +100,7 @@ export class BackendBucket extends pulumi.CustomResource {
             }
             inputs["bucketName"] = args ? args.bucketName : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
+            inputs["compressionMode"] = args ? args.compressionMode : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -111,6 +116,7 @@ export class BackendBucket extends pulumi.CustomResource {
         } else {
             inputs["bucketName"] = undefined /*out*/;
             inputs["cdnPolicy"] = undefined /*out*/;
+            inputs["compressionMode"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["customResponseHeaders"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -140,6 +146,10 @@ export interface BackendBucketArgs {
      * Cloud CDN configuration for this BackendBucket.
      */
     cdnPolicy?: pulumi.Input<inputs.compute.alpha.BackendBucketCdnPolicyArgs>;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+     */
+    compressionMode?: pulumi.Input<enums.compute.alpha.BackendBucketCompressionMode>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */

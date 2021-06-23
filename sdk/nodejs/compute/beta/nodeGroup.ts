@@ -57,7 +57,7 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly locationHint!: pulumi.Output<string>;
     /**
-     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
      */
     public readonly maintenancePolicy!: pulumi.Output<string>;
     public readonly maintenanceWindow!: pulumi.Output<outputs.compute.beta.NodeGroupMaintenanceWindowResponse>;
@@ -175,7 +175,7 @@ export interface NodeGroupArgs {
      */
     locationHint?: pulumi.Input<string>;
     /**
-     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
      */
     maintenancePolicy?: pulumi.Input<enums.compute.beta.NodeGroupMaintenancePolicy>;
     maintenanceWindow?: pulumi.Input<inputs.compute.beta.NodeGroupMaintenanceWindowArgs>;

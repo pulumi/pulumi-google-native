@@ -31,7 +31,7 @@ export interface GetEnvironmentArgs {
 
 export interface GetEnvironmentResult {
     /**
-     * Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+     * Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
      */
     readonly agentVersion: string;
     /**

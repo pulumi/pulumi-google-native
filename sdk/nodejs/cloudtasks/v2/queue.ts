@@ -60,7 +60,7 @@ export class Queue extends pulumi.CustomResource {
      */
     public readonly stackdriverLoggingConfig!: pulumi.Output<outputs.cloudtasks.v2.StackdriverLoggingConfigResponse>;
     /**
-     * The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
+     * The state of the queue. `state` can only be changed by calling PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
      */
     public readonly state!: pulumi.Output<string>;
 
@@ -137,7 +137,7 @@ export interface QueueArgs {
      */
     stackdriverLoggingConfig?: pulumi.Input<inputs.cloudtasks.v2.StackdriverLoggingConfigArgs>;
     /**
-     * The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
+     * The state of the queue. `state` can only be changed by calling PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
      */
     state?: pulumi.Input<enums.cloudtasks.v2.QueueState>;
 }

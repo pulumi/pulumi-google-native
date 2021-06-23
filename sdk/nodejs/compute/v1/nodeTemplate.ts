@@ -66,9 +66,7 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly nodeType!: pulumi.Output<string>;
     /**
-     * The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-     *
-     * This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+     * The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
      */
     public readonly nodeTypeFlexibility!: pulumi.Output<outputs.compute.v1.NodeTemplateNodeTypeFlexibilityResponse>;
     /**
@@ -80,11 +78,7 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly selfLink!: pulumi.Output<string>;
     /**
-     * Sets the binding properties for the physical server. Valid values include:  
-     * - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
-     * - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
-     *
-     * See Sole-tenant node options for more information.
+     * Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
      */
     public readonly serverBinding!: pulumi.Output<outputs.compute.v1.ServerBindingResponse>;
     /**
@@ -194,9 +188,7 @@ export interface NodeTemplateArgs {
      */
     nodeType?: pulumi.Input<string>;
     /**
-     * The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-     *
-     * This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+     * The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
      */
     nodeTypeFlexibility?: pulumi.Input<inputs.compute.v1.NodeTemplateNodeTypeFlexibilityArgs>;
     project: pulumi.Input<string>;
@@ -210,11 +202,7 @@ export interface NodeTemplateArgs {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * Sets the binding properties for the physical server. Valid values include:  
-     * - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
-     * - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
-     *
-     * See Sole-tenant node options for more information.
+     * Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
      */
     serverBinding?: pulumi.Input<inputs.compute.v1.ServerBindingArgs>;
     /**

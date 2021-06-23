@@ -176,6 +176,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodeIpv4CidrSize!: pulumi.Output<number>;
     /**
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+     */
+    public readonly nodePoolDefaults!: pulumi.Output<outputs.container.v1beta1.NodePoolDefaultsResponse>;
+    /**
      * The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
      */
     public readonly nodePools!: pulumi.Output<outputs.container.v1beta1.NodePoolResponse[]>;
@@ -296,6 +300,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["networkPolicy"] = args ? args.networkPolicy : undefined;
             inputs["nodeIpv4CidrSize"] = args ? args.nodeIpv4CidrSize : undefined;
+            inputs["nodePoolDefaults"] = args ? args.nodePoolDefaults : undefined;
             inputs["nodePools"] = args ? args.nodePools : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -351,6 +356,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["networkConfig"] = undefined /*out*/;
             inputs["networkPolicy"] = undefined /*out*/;
             inputs["nodeIpv4CidrSize"] = undefined /*out*/;
+            inputs["nodePoolDefaults"] = undefined /*out*/;
             inputs["nodePools"] = undefined /*out*/;
             inputs["notificationConfig"] = undefined /*out*/;
             inputs["podSecurityPolicyConfig"] = undefined /*out*/;
@@ -520,6 +526,10 @@ export interface ClusterArgs {
      * [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
      */
     nodeIpv4CidrSize?: pulumi.Input<number>;
+    /**
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+     */
+    nodePoolDefaults?: pulumi.Input<inputs.container.v1beta1.NodePoolDefaultsArgs>;
     /**
      * The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
      */

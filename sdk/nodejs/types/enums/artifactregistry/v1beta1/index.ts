@@ -11,6 +11,22 @@ export const RepositoryFormat = {
      * Docker package format.
      */
     Docker: "DOCKER",
+    /**
+     * Maven package format.
+     */
+    Maven: "MAVEN",
+    /**
+     * NPM package format.
+     */
+    Npm: "NPM",
+    /**
+     * PyPI package format.
+     */
+    Pypi: "PYPI",
+    /**
+     * Python package format.
+     */
+    Python: "PYTHON",
 } as const;
 
 /**

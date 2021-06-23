@@ -47,8 +47,7 @@ export interface GetRouterResult {
      */
     readonly description: string;
     /**
-     * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-     * Not currently available in all Interconnect locations.
+     * Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
      */
     readonly encryptedInterconnectRouter: boolean;
     /**

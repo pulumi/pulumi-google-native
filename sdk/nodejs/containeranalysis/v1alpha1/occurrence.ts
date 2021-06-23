@@ -44,6 +44,10 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public readonly buildDetails!: pulumi.Output<outputs.containeranalysis.v1alpha1.BuildDetailsResponse>;
     /**
+     * Describes whether or not a resource passes compliance checks.
+     */
+    public readonly compliance!: pulumi.Output<outputs.containeranalysis.v1alpha1.ComplianceOccurrenceResponse>;
+    /**
      * The time this `Occurrence` was created.
      */
     public readonly createTime!: pulumi.Output<string>;
@@ -116,6 +120,7 @@ export class Occurrence extends pulumi.CustomResource {
             }
             inputs["attestation"] = args ? args.attestation : undefined;
             inputs["buildDetails"] = args ? args.buildDetails : undefined;
+            inputs["compliance"] = args ? args.compliance : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deployment"] = args ? args.deployment : undefined;
             inputs["derivedImage"] = args ? args.derivedImage : undefined;
@@ -134,6 +139,7 @@ export class Occurrence extends pulumi.CustomResource {
         } else {
             inputs["attestation"] = undefined /*out*/;
             inputs["buildDetails"] = undefined /*out*/;
+            inputs["compliance"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["deployment"] = undefined /*out*/;
             inputs["derivedImage"] = undefined /*out*/;
@@ -168,6 +174,10 @@ export interface OccurrenceArgs {
      * Build details for a verifiable build.
      */
     buildDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildDetailsArgs>;
+    /**
+     * Describes whether or not a resource passes compliance checks.
+     */
+    compliance?: pulumi.Input<inputs.containeranalysis.v1alpha1.ComplianceOccurrenceArgs>;
     /**
      * The time this `Occurrence` was created.
      */

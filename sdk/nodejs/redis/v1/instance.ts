@@ -76,6 +76,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+     */
+    public readonly maintenancePolicy!: pulumi.Output<outputs.redis.v1.MaintenancePolicyResponse>;
+    /**
+     * Date and time of upcoming maintenance events which have been scheduled.
+     */
+    public /*out*/ readonly maintenanceSchedule!: pulumi.Output<outputs.redis.v1.MaintenanceScheduleResponse>;
+    /**
      * Required. Redis memory size in GiB.
      */
     public readonly memorySizeGb!: pulumi.Output<number>;
@@ -152,6 +160,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
+            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -163,6 +172,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["currentLocationId"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
+            inputs["maintenanceSchedule"] = undefined /*out*/;
             inputs["persistenceIamIdentity"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
             inputs["serverCaCerts"] = undefined /*out*/;
@@ -179,6 +189,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["host"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["location"] = undefined /*out*/;
+            inputs["maintenancePolicy"] = undefined /*out*/;
+            inputs["maintenanceSchedule"] = undefined /*out*/;
             inputs["memorySizeGb"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["persistenceIamIdentity"] = undefined /*out*/;
@@ -232,6 +244,10 @@ export interface InstanceArgs {
      * Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
      */
     location: pulumi.Input<string>;
+    /**
+     * Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.redis.v1.MaintenancePolicyArgs>;
     /**
      * Required. Redis memory size in GiB.
      */

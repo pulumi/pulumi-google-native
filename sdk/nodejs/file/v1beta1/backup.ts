@@ -59,6 +59,10 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */
     public readonly sourceFileShare!: pulumi.Output<string>;
@@ -110,6 +114,7 @@ export class Backup extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["downloadBytes"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["sourceInstanceTier"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["storageBytes"] = undefined /*out*/;
@@ -120,6 +125,7 @@ export class Backup extends pulumi.CustomResource {
             inputs["downloadBytes"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["sourceFileShare"] = undefined /*out*/;
             inputs["sourceInstance"] = undefined /*out*/;
             inputs["sourceInstanceTier"] = undefined /*out*/;

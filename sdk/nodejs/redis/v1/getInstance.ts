@@ -71,6 +71,14 @@ export interface GetInstanceResult {
      */
     readonly location: string;
     /**
+     * Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+     */
+    readonly maintenancePolicy: outputs.redis.v1.MaintenancePolicyResponse;
+    /**
+     * Date and time of upcoming maintenance events which have been scheduled.
+     */
+    readonly maintenanceSchedule: outputs.redis.v1.MaintenanceScheduleResponse;
+    /**
      * Required. Redis memory size in GiB.
      */
     readonly memorySizeGb: number;

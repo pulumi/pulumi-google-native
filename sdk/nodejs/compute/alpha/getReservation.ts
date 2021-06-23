@@ -65,7 +65,7 @@ export interface GetReservationResult {
     /**
      * Share-settings for shared-reservation
      */
-    readonly shareSettings: outputs.compute.alpha.AllocationShareSettingsResponse;
+    readonly shareSettings: outputs.compute.alpha.ShareSettingsResponse;
     /**
      * Reservation for instances with specific machine shapes.
      */

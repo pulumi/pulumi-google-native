@@ -60,9 +60,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly selfLink!: pulumi.Output<string>;
     /**
-     * The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-     * - projects/project/zones/zone/instances/instance
+     * The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
      */
     public readonly sourceInstance!: pulumi.Output<string>;
     /**
@@ -147,9 +145,7 @@ export interface InstanceTemplateArgs {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-     * - projects/project/zones/zone/instances/instance
+     * The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
      */
     sourceInstance?: pulumi.Input<string>;
     /**

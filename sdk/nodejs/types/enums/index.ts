@@ -67,6 +67,7 @@ import * as policysimulator from "./policysimulator";
 import * as privateca from "./privateca";
 import * as pubsub from "./pubsub";
 import * as pubsublite from "./pubsublite";
+import * as recaptchaenterprise from "./recaptchaenterprise";
 import * as recommendationengine from "./recommendationengine";
 import * as redis from "./redis";
 import * as remotebuildexecution from "./remotebuildexecution";
@@ -151,6 +152,7 @@ export {
     privateca,
     pubsub,
     pubsublite,
+    recaptchaenterprise,
     recommendationengine,
     redis,
     remotebuildexecution,

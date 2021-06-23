@@ -10,6 +10,7 @@ export * from "./autoscaler";
 export * from "./backendBucket";
 export * from "./backendBucketIamPolicy";
 export * from "./backendService";
+export * from "./backendServiceIamPolicy";
 export * from "./disk";
 export * from "./diskIamPolicy";
 export * from "./externalVpnGateway";
@@ -22,6 +23,7 @@ export * from "./getAutoscaler";
 export * from "./getBackendBucket";
 export * from "./getBackendBucketIamPolicy";
 export * from "./getBackendService";
+export * from "./getBackendServiceIamPolicy";
 export * from "./getDisk";
 export * from "./getDiskIamPolicy";
 export * from "./getExternalVpnGateway";
@@ -62,6 +64,7 @@ export * from "./getPublicAdvertisedPrefix";
 export * from "./getPublicDelegatedPrefix";
 export * from "./getRegionAutoscaler";
 export * from "./getRegionBackendService";
+export * from "./getRegionBackendServiceIamPolicy";
 export * from "./getRegionCommitment";
 export * from "./getRegionDisk";
 export * from "./getRegionDiskIamPolicy";
@@ -133,6 +136,7 @@ export * from "./publicAdvertisedPrefix";
 export * from "./publicDelegatedPrefix";
 export * from "./regionAutoscaler";
 export * from "./regionBackendService";
+export * from "./regionBackendServiceIamPolicy";
 export * from "./regionCommitment";
 export * from "./regionDisk";
 export * from "./regionDiskIamPolicy";
@@ -181,6 +185,7 @@ import { Autoscaler } from "./autoscaler";
 import { BackendBucket } from "./backendBucket";
 import { BackendBucketIamPolicy } from "./backendBucketIamPolicy";
 import { BackendService } from "./backendService";
+import { BackendServiceIamPolicy } from "./backendServiceIamPolicy";
 import { Disk } from "./disk";
 import { DiskIamPolicy } from "./diskIamPolicy";
 import { ExternalVpnGateway } from "./externalVpnGateway";
@@ -221,6 +226,7 @@ import { PublicAdvertisedPrefix } from "./publicAdvertisedPrefix";
 import { PublicDelegatedPrefix } from "./publicDelegatedPrefix";
 import { RegionAutoscaler } from "./regionAutoscaler";
 import { RegionBackendService } from "./regionBackendService";
+import { RegionBackendServiceIamPolicy } from "./regionBackendServiceIamPolicy";
 import { RegionCommitment } from "./regionCommitment";
 import { RegionDisk } from "./regionDisk";
 import { RegionDiskIamPolicy } from "./regionDiskIamPolicy";
@@ -274,6 +280,8 @@ const _module = {
                 return new BackendBucketIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:BackendService":
                 return new BackendService(name, <any>undefined, { urn })
+            case "google-native:compute/beta:BackendServiceIamPolicy":
+                return new BackendServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:Disk":
                 return new Disk(name, <any>undefined, { urn })
             case "google-native:compute/beta:DiskIamPolicy":
@@ -354,6 +362,8 @@ const _module = {
                 return new RegionAutoscaler(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionBackendService":
                 return new RegionBackendService(name, <any>undefined, { urn })
+            case "google-native:compute/beta:RegionBackendServiceIamPolicy":
+                return new RegionBackendServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionCommitment":
                 return new RegionCommitment(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionDisk":

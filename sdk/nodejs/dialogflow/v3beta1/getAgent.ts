@@ -35,7 +35,7 @@ export interface GetAgentResult {
      */
     readonly avatarUri: string;
     /**
-     * Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+     * Required. Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
      */
     readonly defaultLanguageCode: string;
     /**
@@ -70,6 +70,10 @@ export interface GetAgentResult {
      * Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
      */
     readonly startFlow: string;
+    /**
+     * The list of all languages supported by the agent (except for the `default_language_code`).
+     */
+    readonly supportedLanguageCodes: string[];
     /**
      * Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
      */

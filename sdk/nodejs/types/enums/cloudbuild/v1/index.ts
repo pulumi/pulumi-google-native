@@ -178,3 +178,23 @@ export const PullRequestFilterCommentControl = {
  * Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
  */
 export type PullRequestFilterCommentControl = (typeof PullRequestFilterCommentControl)[keyof typeof PullRequestFilterCommentControl];
+
+export const WebhookConfigState = {
+    /**
+     * The webhook auth configuration not been checked.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * The auth configuration is properly setup.
+     */
+    Ok: "OK",
+    /**
+     * The secret provided in auth_method has been deleted.
+     */
+    SecretDeleted: "SECRET_DELETED",
+} as const;
+
+/**
+ * Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+ */
+export type WebhookConfigState = (typeof WebhookConfigState)[keyof typeof WebhookConfigState];

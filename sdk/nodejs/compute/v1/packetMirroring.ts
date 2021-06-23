@@ -48,9 +48,7 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-     *
-     * The default is TRUE.
+     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
      */
     public readonly enable!: pulumi.Output<string>;
     /**
@@ -74,9 +72,7 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<outputs.compute.v1.PacketMirroringNetworkInfoResponse>;
     /**
-     * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-     *
-     * Default value is 1000. Valid range is 0 through 65535.
+     * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
      */
     public readonly priority!: pulumi.Output<number>;
     /**
@@ -158,9 +154,7 @@ export interface PacketMirroringArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-     *
-     * The default is TRUE.
+     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
      */
     enable?: pulumi.Input<enums.compute.v1.PacketMirroringEnable>;
     /**
@@ -188,9 +182,7 @@ export interface PacketMirroringArgs {
      */
     network?: pulumi.Input<inputs.compute.v1.PacketMirroringNetworkInfoArgs>;
     /**
-     * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-     *
-     * Default value is 1000. Valid range is 0 through 65535.
+     * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
      */
     priority?: pulumi.Input<number>;
     project: pulumi.Input<string>;

@@ -36,9 +36,7 @@ export class Autoscaler extends pulumi.CustomResource {
     }
 
     /**
-     * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-     *
-     * If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+     * The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
      */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.alpha.AutoscalingPolicyResponse>;
     /**
@@ -78,11 +76,7 @@ export class Autoscaler extends pulumi.CustomResource {
      */
     public readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-     * - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-     * - DELETING: Configuration is being deleted. 
-     * - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-     * - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+     * [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -160,9 +154,7 @@ export class Autoscaler extends pulumi.CustomResource {
  */
 export interface AutoscalerArgs {
     /**
-     * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-     *
-     * If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+     * The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
      */
     autoscalingPolicy?: pulumi.Input<inputs.compute.alpha.AutoscalingPolicyArgs>;
     /**
@@ -208,11 +200,7 @@ export interface AutoscalerArgs {
      */
     selfLinkWithId?: pulumi.Input<string>;
     /**
-     * [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-     * - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-     * - DELETING: Configuration is being deleted. 
-     * - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-     * - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+     * [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
      */
     status?: pulumi.Input<enums.compute.alpha.AutoscalerStatus>;
     /**

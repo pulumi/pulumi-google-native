@@ -96,7 +96,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      */
     public readonly serverlessDeployment!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupServerlessDeploymentResponse>;
     /**
@@ -253,7 +253,7 @@ export interface GlobalNetworkEndpointGroupArgs {
      */
     selfLinkWithId?: pulumi.Input<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      */
     serverlessDeployment?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupServerlessDeploymentArgs>;
     /**

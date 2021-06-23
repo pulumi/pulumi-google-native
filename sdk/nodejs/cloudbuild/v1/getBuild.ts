@@ -134,4 +134,8 @@ export interface GetBuildResult {
      * Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
      */
     readonly timing: {[key: string]: string};
+    /**
+     * Non-fatal problems encountered during the execution of the build.
+     */
+    readonly warnings: outputs.cloudbuild.v1.WarningResponse[];
 }

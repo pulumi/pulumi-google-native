@@ -45,10 +45,6 @@ export interface GetHubResult {
      */
     readonly name: string;
     /**
-     * A list of the URIs of all attached spokes
-     */
-    readonly spokes: string[];
-    /**
      * The current lifecycle state of this Hub.
      */
     readonly state: string;

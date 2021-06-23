@@ -35,7 +35,7 @@ export interface GetReservationResult {
      */
     readonly creationTime: string;
     /**
-     * If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+     * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified above at most.
      */
     readonly ignoreIdleSlots: boolean;
     /**
