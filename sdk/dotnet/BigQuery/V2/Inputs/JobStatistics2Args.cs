@@ -31,6 +31,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<string>? DdlAffectedRowAccessPolicyCount { get; set; }
 
         /// <summary>
+        /// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+        /// </summary>
+        [Input("ddlDestinationTable")]
+        public Input<Inputs.TableReferenceArgs>? DdlDestinationTable { get; set; }
+
+        /// <summary>
         /// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
         /// </summary>
         [Input("ddlOperationPerformed")]
@@ -59,6 +65,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// </summary>
         [Input("ddlTargetTable")]
         public Input<Inputs.TableReferenceArgs>? DdlTargetTable { get; set; }
+
+        /// <summary>
+        /// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+        /// </summary>
+        [Input("dmlStats")]
+        public Input<object>? DmlStats { get; set; }
 
         /// <summary>
         /// [Output-only] The original estimate of bytes processed for the job.

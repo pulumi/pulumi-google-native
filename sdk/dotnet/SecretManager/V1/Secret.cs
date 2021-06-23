@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Etag of the currently stored Secret.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         /// </summary>
         [Output("expireTime")]
@@ -108,6 +114,12 @@ namespace Pulumi.GoogleNative.SecretManager.V1
 
     public sealed class SecretArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Etag of the currently stored Secret.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
         /// <summary>
         /// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         /// </summary>

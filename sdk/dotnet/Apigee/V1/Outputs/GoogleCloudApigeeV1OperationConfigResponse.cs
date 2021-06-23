@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
     public sealed class GoogleCloudApigeeV1OperationConfigResponse
     {
         /// <summary>
-        /// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+        /// Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.
         /// </summary>
         public readonly string ApiSource;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudApigeeV1AttributeResponse> Attributes;
         /// <summary>
-        /// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+        /// List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudApigeeV1OperationResponse> Operations;
         /// <summary>
-        /// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        /// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1QuotaResponse Quota;
 

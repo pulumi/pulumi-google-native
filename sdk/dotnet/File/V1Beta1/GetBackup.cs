@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
+        /// <summary>
         /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
         /// </summary>
         public readonly string SourceFileShare;
@@ -98,6 +102,8 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
             string name,
 
+            bool satisfiesPzs,
+
             string sourceFileShare,
 
             string sourceInstance,
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
             DownloadBytes = downloadBytes;
             Labels = labels;
             Name = name;
+            SatisfiesPzs = satisfiesPzs;
             SourceFileShare = sourceFileShare;
             SourceInstance = sourceInstance;
             SourceInstanceTier = sourceInstanceTier;

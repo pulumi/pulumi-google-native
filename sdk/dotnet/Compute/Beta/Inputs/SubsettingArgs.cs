@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// Subsetting options to make L4 ILB support any number of backend instances
+    /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
     /// </summary>
     public sealed class SubsettingArgs : Pulumi.ResourceArgs
     {

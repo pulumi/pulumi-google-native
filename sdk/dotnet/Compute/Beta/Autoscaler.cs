@@ -16,9 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class Autoscaler : Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-        /// 
-        /// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        /// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         /// </summary>
         [Output("autoscalingPolicy")]
         public Output<Outputs.AutoscalingPolicyResponse> AutoscalingPolicy { get; private set; } = null!;
@@ -72,11 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-        /// - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-        /// - DELETING: Configuration is being deleted. 
-        /// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-        /// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+        /// [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -145,9 +139,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class AutoscalerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-        /// 
-        /// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        /// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         /// </summary>
         [Input("autoscalingPolicy")]
         public Input<Inputs.AutoscalingPolicyArgs>? AutoscalingPolicy { get; set; }
@@ -219,11 +211,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-        /// - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-        /// - DELETING: Configuration is being deleted. 
-        /// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-        /// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+        /// [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
         /// </summary>
         [Input("status")]
         public Input<Pulumi.GoogleNative.Compute.Beta.AutoscalerStatus>? Status { get; set; }

@@ -22,8 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<Inputs.RouteWarningsItemDataItemArgs>? _data;
 
         /// <summary>
-        /// [Output Only] Metadata about this warning in key: value format. For example:
-        /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+        /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
         /// </summary>
         public InputList<Inputs.RouteWarningsItemDataItemArgs> Data
         {

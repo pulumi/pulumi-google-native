@@ -12,7 +12,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     public static class GetCustomer
     {
         /// <summary>
-        /// Returns a requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
+        /// Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
         /// </summary>
         public static Task<GetCustomerResult> InvokeAsync(GetCustomerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerResult>("google-native:cloudchannel/v1:getCustomer", args ?? new GetCustomerArgs(), options.WithVersion());
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     public sealed class GetCustomerResult
     {
         /// <summary>
-        /// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+        /// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses.
         /// </summary>
         public readonly string AlternateEmail;
         /// <summary>
@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly string ChannelPartnerId;
         /// <summary>
-        /// Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+        /// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
         /// </summary>
         public readonly string CloudIdentityId;
         /// <summary>
@@ -56,11 +56,11 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly Outputs.GoogleCloudChannelV1CloudIdentityInfoResponse CloudIdentityInfo;
         /// <summary>
-        /// The time at which the customer is created.
+        /// Time when the customer was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        /// Required. The customer's primary domain. Must match the primary contact email's domain.
         /// </summary>
         public readonly string Domain;
         /// <summary>
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly string OrgDisplayName;
         /// <summary>
-        /// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        /// Required. The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
         /// </summary>
         public readonly Outputs.GoogleTypePostalAddressResponse OrgPostalAddress;
         /// <summary>
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly Outputs.GoogleCloudChannelV1ContactInfoResponse PrimaryContactInfo;
         /// <summary>
-        /// The time at which the customer is updated.
+        /// Time when the customer was updated.
         /// </summary>
         public readonly string UpdateTime;
 

@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> LocationHint { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         /// </summary>
         [Output("maintenancePolicy")]
         public Output<string> MaintenancePolicy { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? LocationHint { get; set; }
 
         /// <summary>
-        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Pulumi.GoogleNative.Compute.V1.NodeGroupMaintenancePolicy>? MaintenancePolicy { get; set; }

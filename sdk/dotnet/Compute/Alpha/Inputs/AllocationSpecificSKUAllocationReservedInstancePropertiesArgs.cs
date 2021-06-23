@@ -58,9 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<int>? MaintenanceFreezeDurationHours { get; set; }
 
         /// <summary>
-        /// Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic" designates this VM as a Stable Fleet VM.
-        /// 
-        /// See go/stable-fleet-ug for more details.
+        /// For more information about maintenance intervals, see Setting maintenance intervals.
         /// </summary>
         [Input("maintenanceInterval")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval>? MaintenanceInterval { get; set; }

@@ -21,9 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("maxRetentionDays")]
         public Input<int>? MaxRetentionDays { get; set; }
 
-        /// <summary>
-        /// TODO(b/165626794): Remove this field Specifies the behavior to apply to existing, scheduled snapshots snapshots if the policy is changed.
-        /// </summary>
         [Input("onPolicySwitch")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch>? OnPolicySwitch { get; set; }
 

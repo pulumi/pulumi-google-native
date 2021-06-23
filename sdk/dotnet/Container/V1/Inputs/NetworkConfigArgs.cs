@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        /// </summary>
+        [Input("datapathProvider")]
+        public Input<Pulumi.GoogleNative.Container.V1.NetworkConfigDatapathProvider>? DatapathProvider { get; set; }
+
+        /// <summary>
         /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         /// </summary>
         [Input("defaultSnatStatus")]
@@ -26,6 +32,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         /// </summary>
         [Input("enableIntraNodeVisibility")]
         public Input<bool>? EnableIntraNodeVisibility { get; set; }
+
+        /// <summary>
+        /// Whether L4ILB Subsetting is enabled for this cluster.
+        /// </summary>
+        [Input("enableL4ilbSubsetting")]
+        public Input<bool>? EnableL4ilbSubsetting { get; set; }
 
         /// <summary>
         /// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network

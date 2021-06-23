@@ -21,15 +21,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
         /// </summary>
         public readonly string RangeName;
+        /// <summary>
+        /// The URL of the reserved internal range.
+        /// </summary>
+        public readonly string ReservedInternalRange;
 
         [OutputConstructor]
         private SubnetworkSecondaryRangeResponse(
             string ipCidrRange,
 
-            string rangeName)
+            string rangeName,
+
+            string reservedInternalRange)
         {
             IpCidrRange = ipCidrRange;
             RangeName = rangeName;
+            ReservedInternalRange = reservedInternalRange;
         }
     }
 }

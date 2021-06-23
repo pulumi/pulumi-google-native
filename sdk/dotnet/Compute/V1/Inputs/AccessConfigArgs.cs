@@ -16,6 +16,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class AccessConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// [Output Only] The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        /// </summary>
+        [Input("externalIpv6")]
+        public Input<string>? ExternalIpv6 { get; set; }
+
+        /// <summary>
+        /// [Output Only] The prefix length of the external IPv6 range.
+        /// </summary>
+        [Input("externalIpv6PrefixLength")]
+        public Input<int>? ExternalIpv6PrefixLength { get; set; }
+
+        /// <summary>
         /// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
         /// </summary>
         [Input("kind")]
@@ -34,11 +46,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<string>? NatIP { get; set; }
 
         /// <summary>
-        /// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD.
-        /// 
-        /// If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier.
-        /// 
-        /// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
+        /// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
         /// </summary>
         [Input("networkTier")]
         public Input<Pulumi.GoogleNative.Compute.V1.AccessConfigNetworkTier>? NetworkTier { get; set; }

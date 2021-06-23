@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     public sealed class GoogleCloudApigeeV1GraphQLOperationGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        /// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
         /// </summary>
         [Input("operationConfigType")]
         public Input<string>? OperationConfigType { get; set; }

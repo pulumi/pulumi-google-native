@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
+        /// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+        /// </summary>
+        [Output("processingUnits")]
+        public Output<int> ProcessingUnits { get; private set; } = null!;
+
+        /// <summary>
         /// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
         /// </summary>
         [Output("state")]
@@ -137,6 +143,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
+
+        /// <summary>
+        /// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+        /// </summary>
+        [Input("processingUnits")]
+        public Input<int>? ProcessingUnits { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public readonly string LastModificationTime;
         /// <summary>
-        /// The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+        /// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         /// </summary>
         public readonly string LatestOperationName;
         /// <summary>

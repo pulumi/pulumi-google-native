@@ -13,19 +13,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class RouterBgpPeerBfdArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router.
-        /// Not currently available publicly.
-        /// If set, this value must be between 100 and 30000.
-        /// The default is 300.
+        /// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. Not currently available publicly. If set, this value must be between 100 and 30000. The default is 300.
         /// </summary>
         [Input("minReceiveInterval")]
         public Input<int>? MinReceiveInterval { get; set; }
 
         /// <summary>
-        /// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router.
-        /// Not currently available publicly.
-        /// If set, this value must be between 100 and 30000.
-        /// The default is 300.
+        /// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. Not currently available publicly. If set, this value must be between 100 and 30000. The default is 300.
         /// </summary>
         [Input("minTransmitInterval")]
         public Input<int>? MinTransmitInterval { get; set; }
@@ -37,10 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.RouterBgpPeerBfdMode>? Mode { get; set; }
 
         /// <summary>
-        /// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable.
-        /// Not currently available publicly.
-        /// If set, the value must be a value between 2 and 16.
-        /// The default is 3.
+        /// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. Not currently available publicly. If set, the value must be a value between 2 and 16. The default is 3.
         /// </summary>
         [Input("multiplier")]
         public Input<int>? Multiplier { get; set; }
@@ -52,9 +43,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.RouterBgpPeerBfdPacketMode>? PacketMode { get; set; }
 
         /// <summary>
-        /// The BFD session initialization mode for this BGP peer.
-        /// Not currently available publicly.
-        /// If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+        /// The BFD session initialization mode for this BGP peer. Not currently available publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
         /// </summary>
         [Input("sessionInitializationMode")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.RouterBgpPeerBfdSessionInitializationMode>? SessionInitializationMode { get; set; }

@@ -18,8 +18,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Code;
         /// <summary>
-        /// [Output Only] Metadata about this warning in key: value format. For example:
-        /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+        /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
         /// </summary>
         public readonly ImmutableArray<Outputs.SslPolicyWarningsItemDataItemResponse> Data;
         /// <summary>

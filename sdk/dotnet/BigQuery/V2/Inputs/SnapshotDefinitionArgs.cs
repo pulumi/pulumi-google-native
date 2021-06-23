@@ -13,13 +13,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     public sealed class SnapshotDefinitionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Required] Reference describing the ID of the table that is snapshotted.
+        /// [Required] Reference describing the ID of the table that was snapshot.
         /// </summary>
         [Input("baseTableReference")]
         public Input<Inputs.TableReferenceArgs>? BaseTableReference { get; set; }
 
         /// <summary>
-        /// [Required] The time at which the base table was snapshot.
+        /// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
         /// </summary>
         [Input("snapshotTime")]
         public Input<string>? SnapshotTime { get; set; }

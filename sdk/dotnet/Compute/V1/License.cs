@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
-    /// Create a License resource in the specified project.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+    /// Create a License resource in the specified project. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:License")]
     public partial class License : Pulumi.CustomResource

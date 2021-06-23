@@ -144,9 +144,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("environments")]
-        public Input<string>? Environments { get; set; }
-
         /// <summary>
         /// Required. Compute Engine location where the instance resides.
         /// </summary>

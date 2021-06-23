@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
         }
 
         /// <summary>
-        /// Required. The OIDC issuer URL.
+        /// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
         /// </summary>
         [Input("issuerUri")]
         public Input<string>? IssuerUri { get; set; }

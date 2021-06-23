@@ -12,7 +12,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetLicense
     {
         /// <summary>
-        /// Returns the specified License resource.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+        /// Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images. 
         /// </summary>
         public static Task<GetLicenseResult> InvokeAsync(GetLicenseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLicenseResult>("google-native:compute/alpha:getLicense", args ?? new GetLicenseArgs(), options.WithVersion());

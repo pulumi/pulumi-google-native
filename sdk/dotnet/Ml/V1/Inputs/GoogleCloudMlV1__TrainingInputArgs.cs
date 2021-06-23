@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         }
 
         /// <summary>
+        /// Optional. Whether to enable web access for the training job.
+        /// </summary>
+        [Input("enableWebAccess")]
+        public Input<bool>? EnableWebAccess { get; set; }
+
+        /// <summary>
         /// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
         /// </summary>
         [Input("encryptionConfig")]

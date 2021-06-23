@@ -12,7 +12,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     public static class GetChannelPartnerLink
     {
         /// <summary>
-        /// Returns a requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return value: The ChannelPartnerLink resource.
+        /// Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return value: The ChannelPartnerLink resource.
         /// </summary>
         public static Task<GetChannelPartnerLinkResult> InvokeAsync(GetChannelPartnerLinkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetChannelPartnerLinkResult>("google-native:cloudchannel/v1:getChannelPartnerLink", args ?? new GetChannelPartnerLinkArgs(), options.WithVersion());

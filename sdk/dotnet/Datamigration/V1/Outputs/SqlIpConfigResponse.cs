@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly bool EnableIpv4;
         /// <summary>
-        /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+        /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
         /// </summary>
         public readonly string PrivateNetwork;
         /// <summary>

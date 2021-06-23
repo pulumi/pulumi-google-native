@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
     public sealed class ParameterMetadataResponse
     {
         /// <summary>
+        /// Optional. Additional metadata for describing this parameter.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> CustomMetadata;
+        /// <summary>
         /// Required. The help text to display for the parameter.
         /// </summary>
         public readonly string HelpText;
@@ -40,6 +44,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
         [OutputConstructor]
         private ParameterMetadataResponse(
+            ImmutableDictionary<string, string> customMetadata,
+
             string helpText,
 
             bool isOptional,
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             ImmutableArray<string> regexes)
         {
+            CustomMetadata = customMetadata;
             HelpText = helpText;
             IsOptional = isOptional;
             Label = label;

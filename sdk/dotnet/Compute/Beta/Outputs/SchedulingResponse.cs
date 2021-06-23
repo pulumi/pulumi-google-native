@@ -14,15 +14,25 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class SchedulingResponse
     {
         /// <summary>
-        /// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted.
-        /// 
-        /// By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
+        /// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
         /// </summary>
         public readonly bool AutomaticRestart;
+        /// <summary>
+        /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        /// </summary>
+        public readonly int HostErrorTimeoutSeconds;
         /// <summary>
         /// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         /// </summary>
         public readonly string LocationHint;
+        /// <summary>
+        /// Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
+        /// </summary>
+        public readonly int MaintenanceFreezeDurationHours;
+        /// <summary>
+        /// For more information about maintenance intervals, see Setting maintenance intervals.
+        /// </summary>
+        public readonly string MaintenanceInterval;
         /// <summary>
         /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         /// </summary>
@@ -44,7 +54,13 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         private SchedulingResponse(
             bool automaticRestart,
 
+            int hostErrorTimeoutSeconds,
+
             string locationHint,
+
+            int maintenanceFreezeDurationHours,
+
+            string maintenanceInterval,
 
             int minNodeCpus,
 
@@ -55,7 +71,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             bool preemptible)
         {
             AutomaticRestart = automaticRestart;
+            HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             LocationHint = locationHint;
+            MaintenanceFreezeDurationHours = maintenanceFreezeDurationHours;
+            MaintenanceInterval = maintenanceInterval;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;

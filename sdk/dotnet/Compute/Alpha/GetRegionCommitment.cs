@@ -40,6 +40,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetRegionCommitmentResult
     {
         /// <summary>
+        /// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+        /// </summary>
+        public readonly bool AutoRenew;
+        /// <summary>
         /// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
         /// </summary>
         public readonly string Category;
@@ -110,6 +114,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetRegionCommitmentResult(
+            bool autoRenew,
+
             string category,
 
             string creationTimestamp,
@@ -144,6 +150,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string type)
         {
+            AutoRenew = autoRenew;
             Category = category;
             CreationTimestamp = creationTimestamp;
             Description = description;

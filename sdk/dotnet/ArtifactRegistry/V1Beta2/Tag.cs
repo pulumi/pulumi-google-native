@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
     public partial class Tag : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         public Input<string>? TagId { get; set; }
 
         /// <summary>
-        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class AwsS3DataArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        /// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         /// </summary>
         [Input("awsAccessKey")]
         public Input<Inputs.AwsAccessKeyArgs>? AwsAccessKey { get; set; }

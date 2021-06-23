@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
-    /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
-    /// 
-    /// A regional managed instance group can contain up to 2000 instances.
+    /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionInstanceGroupManager")]
     public partial class RegionInstanceGroupManager : Pulumi.CustomResource
@@ -60,9 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> FailoverAction { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+        /// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
@@ -152,17 +148,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<int> TargetSize { get; private set; } = null!;
 
         /// <summary>
-        /// The target number of stopped instances for this managed instance group. This number changes when you:  
-        /// - Stop instance using the stopInstances method or start instances using the startInstances method. 
-        /// - Manually change the targetStoppedSize using the update method.
+        /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
         /// </summary>
         [Output("targetStoppedSize")]
         public Output<int> TargetStoppedSize { get; private set; } = null!;
 
         /// <summary>
-        /// The target number of suspended instances for this managed instance group. This number changes when you:  
-        /// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
-        /// - Manually change the targetSuspendedSize using the update method.
+        /// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
         /// </summary>
         [Output("targetSuspendedSize")]
         public Output<int> TargetSuspendedSize { get; private set; } = null!;
@@ -174,9 +166,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.InstanceGroupManagerUpdatePolicyResponse> UpdatePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the instance templates used by this managed instance group to create instances.
-        /// 
-        /// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+        /// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         /// </summary>
         [Output("versions")]
         public Output<ImmutableArray<Outputs.InstanceGroupManagerVersionResponse>> Versions { get; private set; } = null!;
@@ -281,9 +271,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Pulumi.GoogleNative.Compute.Alpha.RegionInstanceGroupManagerFailoverAction>? FailoverAction { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+        /// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
@@ -397,17 +385,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<int>? TargetSize { get; set; }
 
         /// <summary>
-        /// The target number of stopped instances for this managed instance group. This number changes when you:  
-        /// - Stop instance using the stopInstances method or start instances using the startInstances method. 
-        /// - Manually change the targetStoppedSize using the update method.
+        /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
         /// </summary>
         [Input("targetStoppedSize")]
         public Input<int>? TargetStoppedSize { get; set; }
 
         /// <summary>
-        /// The target number of suspended instances for this managed instance group. This number changes when you:  
-        /// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
-        /// - Manually change the targetSuspendedSize using the update method.
+        /// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
         /// </summary>
         [Input("targetSuspendedSize")]
         public Input<int>? TargetSuspendedSize { get; set; }
@@ -422,9 +406,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private InputList<Inputs.InstanceGroupManagerVersionArgs>? _versions;
 
         /// <summary>
-        /// Specifies the instance templates used by this managed instance group to create instances.
-        /// 
-        /// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+        /// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerVersionArgs> Versions
         {

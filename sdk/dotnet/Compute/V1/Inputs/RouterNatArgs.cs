@@ -55,9 +55,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specify the NatIpAllocateOption, which can take one of the following values: 
-        /// - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. 
-        /// - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
+        /// Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. 
         /// </summary>
         [Input("natIpAllocateOption")]
         public Input<Pulumi.GoogleNative.Compute.V1.RouterNatNatIpAllocateOption>? NatIpAllocateOption { get; set; }
@@ -75,10 +73,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         }
 
         /// <summary>
-        /// Specify the Nat option, which can take one of the following values: 
-        /// - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. 
-        /// - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. 
-        /// - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+        /// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
         /// </summary>
         [Input("sourceSubnetworkIpRangesToNat")]
         public Input<Pulumi.GoogleNative.Compute.V1.RouterNatSourceSubnetworkIpRangesToNat>? SourceSubnetworkIpRangesToNat { get; set; }

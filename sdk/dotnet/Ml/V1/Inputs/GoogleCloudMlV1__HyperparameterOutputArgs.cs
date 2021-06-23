@@ -81,6 +81,18 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         [Input("trialId")]
         public Input<string>? TrialId { get; set; }
 
+        [Input("webAccessUris")]
+        private InputMap<string>? _webAccessUris;
+
+        /// <summary>
+        /// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+        /// </summary>
+        public InputMap<string> WebAccessUris
+        {
+            get => _webAccessUris ?? (_webAccessUris = new InputMap<string>());
+            set => _webAccessUris = value;
+        }
+
         public GoogleCloudMlV1__HyperparameterOutputArgs()
         {
         }

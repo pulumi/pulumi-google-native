@@ -14,9 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class BackendServiceFailoverPolicyResponse
     {
         /// <summary>
-        /// This can be set to true only if the protocol is TCP.
-        /// 
-        /// The default is false.
+        /// This can be set to true only if the protocol is TCP. The default is false.
         /// </summary>
         public readonly bool DisableConnectionDrainOnFailover;
         /// <summary>

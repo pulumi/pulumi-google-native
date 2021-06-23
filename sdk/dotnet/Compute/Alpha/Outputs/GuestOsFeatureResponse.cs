@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class GuestOsFeatureResponse
     {
         /// <summary>
-        /// The ID of a supported feature. Read  Enabling guest operating system features to see a list of available options.
+        /// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         public readonly string Type;
 

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<Inputs.SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs>? _requestHeadersToAdds;
 
         /// <summary>
-        /// The list of request headers to add or overwrite if they?re already present.
+        /// The list of request headers to add or overwrite if they're already present.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs> RequestHeadersToAdds
         {

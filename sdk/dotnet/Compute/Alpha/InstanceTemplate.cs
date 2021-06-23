@@ -58,9 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        /// - projects/project/zones/zone/instances/instance
+        /// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         /// </summary>
         [Output("sourceInstance")]
         public Output<string> SourceInstance { get; private set; } = null!;
@@ -171,9 +169,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
-        /// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        /// - projects/project/zones/zone/instances/instance
+        /// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         /// </summary>
         [Input("sourceInstance")]
         public Input<string>? SourceInstance { get; set; }

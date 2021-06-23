@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         private InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs>? _fields;
 
         /// <summary>
-        /// Required. Input field(s) to apply the transformation to.
+        /// Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs> Fields
         {

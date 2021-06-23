@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// </summary>
         public readonly string DatabaseUrl;
         /// <summary>
-        /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+        /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         /// </summary>
         public readonly string Name;
         /// <summary>

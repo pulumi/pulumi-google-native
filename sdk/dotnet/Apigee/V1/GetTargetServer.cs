@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly int Port;
         /// <summary>
+        /// Immutable. The protocol used by this TargetServer.
+        /// </summary>
+        public readonly string Protocol;
+        /// <summary>
         /// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1TlsInfoResponse SSLInfo;
@@ -76,6 +80,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             int port,
 
+            string protocol,
+
             Outputs.GoogleCloudApigeeV1TlsInfoResponse sSLInfo)
         {
             Description = description;
@@ -83,6 +89,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             IsEnabled = isEnabled;
             Name = name;
             Port = port;
+            Protocol = protocol;
             SSLInfo = sSLInfo;
         }
     }

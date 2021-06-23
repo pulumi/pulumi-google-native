@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string PostKeyRevocationActionType;
         /// <summary>
-        /// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         public readonly string PrivateIpv6GoogleAccess;
         /// <summary>

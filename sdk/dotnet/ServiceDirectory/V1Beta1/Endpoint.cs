@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
+        /// The timestamp when the endpoint was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system metadata managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
         /// </summary>
         [Output("metadata")]
@@ -34,10 +40,22 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Service Directory rejects values outside of `[0, 65535]`.
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the endpoint was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -116,6 +134,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
 
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
+
+        /// <summary>
+        /// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// Optional. Service Directory rejects values outside of `[0, 65535]`.

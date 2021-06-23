@@ -52,9 +52,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly bool EnableFlowLogs;
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        /// [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
+        /// </summary>
+        public readonly string ExternalIpv6Prefix;
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
@@ -65,6 +67,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         /// </summary>
         public readonly string IpCidrRange;
+        /// <summary>
+        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+        /// </summary>
+        public readonly string Ipv6AccessType;
         /// <summary>
         /// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
         /// </summary>
@@ -90,9 +96,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly bool PrivateIpGoogleAccess;
         /// <summary>
-        /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-        /// 
-        /// This field can be both set at resource creation time and updated using patch.
+        /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
         /// </summary>
         public readonly string PrivateIpv6GoogleAccess;
         /// <summary>
@@ -116,7 +120,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+        /// </summary>
+        public readonly string StackType;
+        /// <summary>
+        /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         /// </summary>
         public readonly string State;
 
@@ -128,11 +136,15 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             bool enableFlowLogs,
 
+            string externalIpv6Prefix,
+
             string fingerprint,
 
             string gatewayAddress,
 
             string ipCidrRange,
+
+            string ipv6AccessType,
 
             string ipv6CidrRange,
 
@@ -158,14 +170,18 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string selfLink,
 
+            string stackType,
+
             string state)
         {
             CreationTimestamp = creationTimestamp;
             Description = description;
             EnableFlowLogs = enableFlowLogs;
+            ExternalIpv6Prefix = externalIpv6Prefix;
             Fingerprint = fingerprint;
             GatewayAddress = gatewayAddress;
             IpCidrRange = ipCidrRange;
+            Ipv6AccessType = ipv6AccessType;
             Ipv6CidrRange = ipv6CidrRange;
             Kind = kind;
             LogConfig = logConfig;
@@ -178,6 +194,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Role = role;
             SecondaryIpRanges = secondaryIpRanges;
             SelfLink = selfLink;
+            StackType = stackType;
             State = state;
         }
     }

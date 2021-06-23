@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+        /// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         /// </summary>
         [Output("agentVersion")]
         public Output<string> AgentVersion { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     public sealed class EnvironmentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+        /// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         /// </summary>
         [Input("agentVersion")]
         public Input<string>? AgentVersion { get; set; }

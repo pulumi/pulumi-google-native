@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Share-settings for shared-reservation
         /// </summary>
         [Output("shareSettings")]
-        public Output<Outputs.AllocationShareSettingsResponse> ShareSettings { get; private set; } = null!;
+        public Output<Outputs.ShareSettingsResponse> ShareSettings { get; private set; } = null!;
 
         /// <summary>
         /// Reservation for instances with specific machine shapes.
@@ -202,7 +202,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Share-settings for shared-reservation
         /// </summary>
         [Input("shareSettings")]
-        public Input<Inputs.AllocationShareSettingsArgs>? ShareSettings { get; set; }
+        public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }
 
         /// <summary>
         /// Reservation for instances with specific machine shapes.

@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly string NetworkUri;
         /// <summary>
-        /// Name of a GCP region where this VPN gateway is configured.
+        /// Name of a Google Cloud region where this VPN gateway is configured.
         /// </summary>
         public readonly string Region;
         /// <summary>

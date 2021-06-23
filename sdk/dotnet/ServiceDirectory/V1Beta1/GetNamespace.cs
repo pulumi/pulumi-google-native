@@ -40,6 +40,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     public sealed class GetNamespaceResult
     {
         /// <summary>
+        /// The timestamp when the namespace was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -47,15 +51,25 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The timestamp when the namespace was last updated.
+        /// </summary>
+        public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetNamespaceResult(
+            string createTime,
+
             ImmutableDictionary<string, string> labels,
 
-            string name)
+            string name,
+
+            string updateTime)
         {
+            CreateTime = createTime;
             Labels = labels;
             Name = name;
+            UpdateTime = updateTime;
         }
     }
 }

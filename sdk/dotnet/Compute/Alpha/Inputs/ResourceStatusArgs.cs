@@ -18,6 +18,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("scheduling")]
         public Input<Inputs.ResourceStatusSchedulingArgs>? Scheduling { get; set; }
 
+        [Input("upcomingMaintenance")]
+        public Input<Inputs.ResourceStatusUpcomingMaintenanceArgs>? UpcomingMaintenance { get; set; }
+
         public ResourceStatusArgs()
         {
         }

@@ -22,13 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> AggregationInterval { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-        /// 
-        /// Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-        /// 
-        /// The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-        /// 
-        /// This field cannot be set to true at resource creation time.
+        /// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         /// </summary>
         [Output("allowSubnetCidrRoutesOverlap")]
         public Output<bool> AllowSubnetCidrRoutesOverlap { get; private set; } = null!;
@@ -64,9 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> ExternalIpv6Prefix { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
@@ -138,9 +130,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> PrivateIpGoogleAccess { get; private set; } = null!;
 
         /// <summary>
-        /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-        /// 
-        /// This field can be both set at resource creation time and updated using patch.
+        /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Output("privateIpv6GoogleAccess")]
         public Output<string> PrivateIpv6GoogleAccess { get; private set; } = null!;
@@ -156,6 +146,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL of the reserved internal range.
+        /// </summary>
+        [Output("reservedInternalRange")]
+        public Output<string> ReservedInternalRange { get; private set; } = null!;
 
         /// <summary>
         /// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
@@ -182,15 +178,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used.
-        /// 
-        /// This field can be both set at resource creation time and updated using patch.
+        /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Output("stackType")]
         public Output<string> StackType { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -253,13 +247,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkAggregationInterval>? AggregationInterval { get; set; }
 
         /// <summary>
-        /// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-        /// 
-        /// Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-        /// 
-        /// The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-        /// 
-        /// This field cannot be set to true at resource creation time.
+        /// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         /// </summary>
         [Input("allowSubnetCidrRoutesOverlap")]
         public Input<bool>? AllowSubnetCidrRoutesOverlap { get; set; }
@@ -295,9 +283,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? ExternalIpv6Prefix { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
@@ -375,9 +361,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<bool>? PrivateIpGoogleAccess { get; set; }
 
         /// <summary>
-        /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-        /// 
-        /// This field can be both set at resource creation time and updated using patch.
+        /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
@@ -399,6 +383,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// The URL of the reserved internal range.
+        /// </summary>
+        [Input("reservedInternalRange")]
+        public Input<string>? ReservedInternalRange { get; set; }
 
         /// <summary>
         /// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
@@ -431,15 +421,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
-        /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used.
-        /// 
-        /// This field can be both set at resource creation time and updated using patch.
+        /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Input("stackType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkStackType>? StackType { get; set; }
 
         /// <summary>
-        /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         /// </summary>
         [Input("state")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkState>? State { get; set; }

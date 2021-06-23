@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     public partial class Namespace : Pulumi.CustomResource
     {
         /// <summary>
+        /// The timestamp when the namespace was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
         /// </summary>
         [Output("labels")]
@@ -26,6 +32,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the namespace was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>

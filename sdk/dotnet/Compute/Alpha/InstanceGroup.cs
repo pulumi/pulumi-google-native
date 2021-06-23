@@ -46,11 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Assigns a name to a port number. For example: {name: "http", port: 80}
-        /// 
-        /// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] 
-        /// 
-        /// Named ports apply to all instances in this instance group.
+        ///  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group. 
         /// </summary>
         [Output("namedPorts")]
         public Output<ImmutableArray<Outputs.NamedPortResponse>> NamedPorts { get; private set; } = null!;
@@ -182,11 +178,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private InputList<Inputs.NamedPortArgs>? _namedPorts;
 
         /// <summary>
-        /// Assigns a name to a port number. For example: {name: "http", port: 80}
-        /// 
-        /// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] 
-        /// 
-        /// Named ports apply to all instances in this instance group.
+        ///  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group. 
         /// </summary>
         public InputList<Inputs.NamedPortArgs> NamedPorts
         {

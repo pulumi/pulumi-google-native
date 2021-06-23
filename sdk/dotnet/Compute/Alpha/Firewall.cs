@@ -76,12 +76,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used:
-        /// global/networks/default
-        /// If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs:  
-        /// - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network 
-        /// - projects/myproject/global/networks/my-network 
-        /// - global/networks/default
+        /// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default 
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -264,12 +259,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used:
-        /// global/networks/default
-        /// If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs:  
-        /// - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network 
-        /// - projects/myproject/global/networks/my-network 
-        /// - global/networks/default
+        /// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default 
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

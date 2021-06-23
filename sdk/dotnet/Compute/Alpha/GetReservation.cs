@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <summary>
         /// Share-settings for shared-reservation
         /// </summary>
-        public readonly Outputs.AllocationShareSettingsResponse ShareSettings;
+        public readonly Outputs.ShareSettingsResponse ShareSettings;
         /// <summary>
         /// Reservation for instances with specific machine shapes.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string selfLinkWithId,
 
-            Outputs.AllocationShareSettingsResponse shareSettings,
+            Outputs.ShareSettingsResponse shareSettings,
 
             Outputs.AllocationSpecificSKUReservationResponse specificReservation,
 

@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     public sealed class GetEnvironmentResult
     {
         /// <summary>
-        /// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+        /// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         /// </summary>
         public readonly string AgentVersion;
         /// <summary>

@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Output<Outputs.BuildTypeResponse> BuildType { get; private set; } = null!;
 
         /// <summary>
+        /// A note describing a compliance check.
+        /// </summary>
+        [Output("compliance")]
+        public Output<Outputs.ComplianceNoteResponse> Compliance { get; private set; } = null!;
+
+        /// <summary>
         /// The time this note was created. This field can be used as a filter in list requests.
         /// </summary>
         [Output("createTime")]
@@ -173,6 +179,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Input("buildType")]
         public Input<Inputs.BuildTypeArgs>? BuildType { get; set; }
+
+        /// <summary>
+        /// A note describing a compliance check.
+        /// </summary>
+        [Input("compliance")]
+        public Input<Inputs.ComplianceNoteArgs>? Compliance { get; set; }
 
         /// <summary>
         /// The time this note was created. This field can be used as a filter in list requests.

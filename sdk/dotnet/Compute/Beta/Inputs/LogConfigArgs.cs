@@ -11,24 +11,24 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// Specifies what kind of log the caller must write
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     public sealed class LogConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud audit options.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("cloudAudit")]
         public Input<Inputs.LogConfigCloudAuditOptionsArgs>? CloudAudit { get; set; }
 
         /// <summary>
-        /// Counter options.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("counter")]
         public Input<Inputs.LogConfigCounterOptionsArgs>? Counter { get; set; }
 
         /// <summary>
-        /// Data access options.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("dataAccess")]
         public Input<Inputs.LogConfigDataAccessOptionsArgs>? DataAccess { get; set; }

@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.BackendBucketCdnPolicyResponse CdnPolicy;
         /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+        /// </summary>
+        public readonly string CompressionMode;
+        /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -56,6 +60,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// An optional textual description of the resource; provided by the client when the resource is created.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+        /// </summary>
+        public readonly string EdgeSecurityPolicy;
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
         /// </summary>
@@ -79,11 +87,15 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             Outputs.BackendBucketCdnPolicyResponse cdnPolicy,
 
+            string compressionMode,
+
             string creationTimestamp,
 
             ImmutableArray<string> customResponseHeaders,
 
             string description,
+
+            string edgeSecurityPolicy,
 
             bool enableCdn,
 
@@ -95,9 +107,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         {
             BucketName = bucketName;
             CdnPolicy = cdnPolicy;
+            CompressionMode = compressionMode;
             CreationTimestamp = creationTimestamp;
             CustomResponseHeaders = customResponseHeaders;
             Description = description;
+            EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCdn = enableCdn;
             Kind = kind;
             Name = name;

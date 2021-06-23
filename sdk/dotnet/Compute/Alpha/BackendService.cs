@@ -10,17 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
-    /// Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+    /// Creates a BackendService resource in the specified project using the data included in the request. For more information, see Backend services overview .
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:BackendService")]
     public partial class BackendService : Pulumi.CustomResource
     {
         /// <summary>
-        /// Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
-        /// 
-        /// If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400).
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day ( 86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Output("affinityCookieTtlSec")]
         public Output<int> AffinityCookieTtlSec { get; private set; } = null!;
@@ -32,22 +28,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableArray<Outputs.BackendResponse>> Backends { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
+        /// Cloud CDN configuration for this BackendService. Only available for external HTTP(S) Load Balancing.
         /// </summary>
         [Output("cdnPolicy")]
         public Output<Outputs.BackendServiceCdnPolicyResponse> CdnPolicy { get; private set; } = null!;
 
-        /// <summary>
-        /// Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
-        /// 
-        /// This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        /// </summary>
         [Output("circuitBreakers")]
         public Output<Outputs.CircuitBreakersResponse> CircuitBreakers { get; private set; } = null!;
+
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+        /// </summary>
+        [Output("compressionMode")]
+        public Output<string> CompressionMode { get; private set; } = null!;
 
         [Output("connectionDraining")]
         public Output<Outputs.ConnectionDrainingResponse> ConnectionDraining { get; private set; } = null!;
@@ -56,13 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.BackendServiceConnectionTrackingPolicyResponse> ConnectionTrackingPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH.
-        /// 
-        /// This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Output("consistentHash")]
         public Output<Outputs.ConsistentHashLoadBalancerSettingsResponse> ConsistentHash { get; private set; } = null!;
@@ -110,15 +97,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.BackendServiceFailoverPolicyResponse> FailoverPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve a BackendService.
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a BackendService.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
+        /// The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         /// </summary>
         [Output("healthChecks")]
         public Output<ImmutableArray<string>> HealthChecks { get; private set; } = null!;
@@ -136,27 +121,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        /// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose INTERNAL for Internal TCP/UDP Load Balancing. Choose INTERNAL_MANAGED for Internal HTTP(S) Load Balancing. INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string> LoadBalancingScheme { get; private set; } = null!;
 
         /// <summary>
-        /// The load balancing algorithm used within the scope of the locality. The possible values are:  
-        /// - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
-        /// - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
-        /// - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
-        /// - RANDOM: The load balancer selects a random healthy host. 
-        /// - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. 
-        /// - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 
-        /// 
-        /// This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-        /// 
-        /// If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-        /// 
-        /// Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Output("localityLbPolicy")]
         public Output<string> LocalityLbPolicy { get; private set; } = null!;
@@ -168,9 +139,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.BackendServiceLogConfigResponse> LogConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
-        /// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
-        /// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
         /// </summary>
         [Output("maxStreamDuration")]
         public Output<Outputs.DurationResponse> MaxStreamDuration { get; private set; } = null!;
@@ -188,33 +157,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled.
-        /// 
-        /// This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Output("outlierDetection")]
         public Output<Outputs.OutlierDetectionResponse> OutlierDetection { get; private set; } = null!;
 
         /// <summary>
-        /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
-        /// 
-        /// 
-        /// 
-        /// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
+        /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs. Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
         /// </summary>
         [Output("portName")]
         public Output<string> PortName { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol this BackendService uses to communicate with backends.
-        /// 
-        /// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-        /// 
-        /// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+        /// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -232,9 +187,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SecurityPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// This field specifies the security policy that applies to this backend service. This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
         /// </summary>
         [Output("securitySettings")]
         public Output<Outputs.SecuritySettingsResponse> SecuritySettings { get; private set; } = null!;
@@ -252,15 +205,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// Type of session affinity to use. The default is NONE.
-        /// 
-        /// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-        /// 
-        /// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-        /// 
-        /// When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Type of session affinity to use. The default is NONE. When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS. When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string> SessionAffinity { get; private set; } = null!;
@@ -269,7 +214,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.SubsettingResponse> Subsetting { get; private set; } = null!;
 
         /// <summary>
-        /// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
+        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         /// </summary>
         [Output("timeoutSec")]
         public Output<int> TimeoutSec { get; private set; } = null!;
@@ -320,11 +265,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class BackendServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
-        /// 
-        /// If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400).
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day ( 86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("affinityCookieTtlSec")]
         public Input<int>? AffinityCookieTtlSec { get; set; }
@@ -342,22 +283,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
+        /// Cloud CDN configuration for this BackendService. Only available for external HTTP(S) Load Balancing.
         /// </summary>
         [Input("cdnPolicy")]
         public Input<Inputs.BackendServiceCdnPolicyArgs>? CdnPolicy { get; set; }
 
-        /// <summary>
-        /// Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
-        /// 
-        /// This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        /// </summary>
         [Input("circuitBreakers")]
         public Input<Inputs.CircuitBreakersArgs>? CircuitBreakers { get; set; }
+
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+        /// </summary>
+        [Input("compressionMode")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.BackendServiceCompressionMode>? CompressionMode { get; set; }
 
         [Input("connectionDraining")]
         public Input<Inputs.ConnectionDrainingArgs>? ConnectionDraining { get; set; }
@@ -366,13 +304,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.BackendServiceConnectionTrackingPolicyArgs>? ConnectionTrackingPolicy { get; set; }
 
         /// <summary>
-        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH.
-        /// 
-        /// This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("consistentHash")]
         public Input<Inputs.ConsistentHashLoadBalancerSettingsArgs>? ConsistentHash { get; set; }
@@ -432,9 +364,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.BackendServiceFailoverPolicyArgs>? FailoverPolicy { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve a BackendService.
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a BackendService.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
@@ -443,7 +373,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private InputList<string>? _healthChecks;
 
         /// <summary>
-        /// The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
+        /// The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         /// </summary>
         public InputList<string> HealthChecks
         {
@@ -470,27 +400,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        /// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose INTERNAL for Internal TCP/UDP Load Balancing. Choose INTERNAL_MANAGED for Internal HTTP(S) Load Balancing. INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.BackendServiceLoadBalancingScheme>? LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// The load balancing algorithm used within the scope of the locality. The possible values are:  
-        /// - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
-        /// - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
-        /// - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
-        /// - RANDOM: The load balancer selects a random healthy host. 
-        /// - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. 
-        /// - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 
-        /// 
-        /// This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-        /// 
-        /// If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-        /// 
-        /// Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("localityLbPolicy")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.BackendServiceLocalityLbPolicy>? LocalityLbPolicy { get; set; }
@@ -502,9 +418,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.BackendServiceLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
-        /// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
-        /// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
         /// </summary>
         [Input("maxStreamDuration")]
         public Input<Inputs.DurationArgs>? MaxStreamDuration { get; set; }
@@ -522,23 +436,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled.
-        /// 
-        /// This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.OutlierDetectionArgs>? OutlierDetection { get; set; }
 
         /// <summary>
-        /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
-        /// 
-        /// 
-        /// 
-        /// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
+        /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs. Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
         /// </summary>
         [Input("portName")]
         public Input<string>? PortName { get; set; }
@@ -547,11 +451,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The protocol this BackendService uses to communicate with backends.
-        /// 
-        /// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-        /// 
-        /// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+        /// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         /// </summary>
         [Input("protocol")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.BackendServiceProtocol>? Protocol { get; set; }
@@ -572,9 +472,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
-        /// This field specifies the security policy that applies to this backend service. This field is applicable to either:  
-        /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        /// This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
         /// </summary>
         [Input("securitySettings")]
         public Input<Inputs.SecuritySettingsArgs>? SecuritySettings { get; set; }
@@ -592,15 +490,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
-        /// Type of session affinity to use. The default is NONE.
-        /// 
-        /// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-        /// 
-        /// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-        /// 
-        /// When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-        /// 
-        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Type of session affinity to use. The default is NONE. When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS. When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.BackendServiceSessionAffinity>? SessionAffinity { get; set; }
@@ -609,7 +499,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.SubsettingArgs>? Subsetting { get; set; }
 
         /// <summary>
-        /// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
+        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }

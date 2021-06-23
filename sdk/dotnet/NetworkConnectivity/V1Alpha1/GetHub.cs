@@ -53,10 +53,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// A list of the URIs of all attached spokes
-        /// </summary>
-        public readonly ImmutableArray<string> Spokes;
-        /// <summary>
         /// The current lifecycle state of this Hub.
         /// </summary>
         public readonly string State;
@@ -79,8 +75,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
 
             string name,
 
-            ImmutableArray<string> spokes,
-
             string state,
 
             string uniqueId,
@@ -91,7 +85,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
             Description = description;
             Labels = labels;
             Name = name;
-            Spokes = spokes;
             State = state;
             UniqueId = uniqueId;
             UpdateTime = updateTime;

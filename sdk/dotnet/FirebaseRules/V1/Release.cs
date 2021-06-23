@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
     public partial class Release : Pulumi.CustomResource
     {
         /// <summary>
-        /// Time the release was created. Output only.
+        /// Time the release was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name for the `Release`. `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2` which affords developers a great deal of flexibility in mapping the name to the style that best fits their existing development practices. For example, a name could refer to an environment, an app, a version, or some combination of three. In the table below, for the project name `projects/foo`, the following relative release paths show how flat and structured names might be chosen to match a desired development / deployment strategy. Use Case | Flat Name | Structured Name -------------|---------------------|---------------- Environments | releases/qa | releases/qa Apps | releases/app1_qa | releases/app1/qa Versions | releases/app1_v2_qa | releases/app1/v2/qa The delimiter between the release name path elements can be almost anything and it should work equally well with the release name list filter, but in many ways the structured paths provide a clearer picture of the relationship between `Release` instances. Format: `projects/{project_id}/releases/{release_id}`
+        /// Format: `projects/{project_id}/releases/{release_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public Output<string> RulesetName { get; private set; } = null!;
 
         /// <summary>
-        /// Time the release was updated. Output only.
+        /// Time the release was updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -85,13 +85,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
     public sealed class ReleaseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time the release was created. Output only.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Resource name for the `Release`. `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2` which affords developers a great deal of flexibility in mapping the name to the style that best fits their existing development practices. For example, a name could refer to an environment, an app, a version, or some combination of three. In the table below, for the project name `projects/foo`, the following relative release paths show how flat and structured names might be chosen to match a desired development / deployment strategy. Use Case | Flat Name | Structured Name -------------|---------------------|---------------- Environments | releases/qa | releases/qa Apps | releases/app1_qa | releases/app1/qa Versions | releases/app1_v2_qa | releases/app1/v2/qa The delimiter between the release name path elements can be almost anything and it should work equally well with the release name list filter, but in many ways the structured paths provide a clearer picture of the relationship between `Release` instances. Format: `projects/{project_id}/releases/{release_id}`
+        /// Format: `projects/{project_id}/releases/{release_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -104,12 +98,6 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         /// </summary>
         [Input("rulesetName")]
         public Input<string>? RulesetName { get; set; }
-
-        /// <summary>
-        /// Time the release was updated. Output only.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public ReleaseArgs()
         {

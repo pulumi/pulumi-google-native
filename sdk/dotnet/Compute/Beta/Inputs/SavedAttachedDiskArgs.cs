@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? DiskSizeGb { get; set; }
 
         /// <summary>
-        /// [Output Only] URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+        /// [Output Only] URL of the disk type resource. For example: projects/project /zones/zone/diskTypes/pd-standard or pd-ssd
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<Inputs.GuestOsFeatureArgs>? _guestOsFeatures;
 
         /// <summary>
-        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         public InputList<Inputs.GuestOsFeatureArgs> GuestOsFeatures
         {

@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2
         public Output<Outputs.StackdriverLoggingConfigResponse> StackdriverLoggingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
+        /// The state of the queue. `state` can only be changed by calling PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2
         public Input<Inputs.StackdriverLoggingConfigArgs>? StackdriverLoggingConfig { get; set; }
 
         /// <summary>
-        /// The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
+        /// The state of the queue. `state` can only be changed by calling PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
         /// </summary>
         [Input("state")]
         public Input<Pulumi.GoogleNative.CloudTasks.V2.QueueState>? State { get; set; }

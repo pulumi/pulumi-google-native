@@ -24,6 +24,9 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         [Input("featureId", required: true)]
         public string FeatureId { get; set; } = null!;
 
+        [Input("location", required: true)]
+        public string Location { get; set; } = null!;
+
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -57,7 +60,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         public readonly ImmutableDictionary<string, string> MembershipStates;
         /// <summary>
-        /// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+        /// The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
         /// </summary>
         public readonly string Name;
         /// <summary>

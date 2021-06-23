@@ -476,7 +476,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public static SecuritySettingPurgeDataTypesItem PurgeDataTypeUnspecified { get; } = new SecuritySettingPurgeDataTypesItem("PURGE_DATA_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Dialogflow history. This does not include Stackdriver log, which is owned by the user not Dialogflow.
+        /// Dialogflow history. This does not include Cloud logging, which is owned by the user - not Dialogflow.
         /// </summary>
         public static SecuritySettingPurgeDataTypesItem DialogflowHistory { get; } = new SecuritySettingPurgeDataTypesItem("DIALOGFLOW_HISTORY");
 
@@ -496,7 +496,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     }
 
     /// <summary>
-    /// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+    /// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
     /// </summary>
     [EnumType]
     public readonly struct SecuritySettingRedactionScope : IEquatable<SecuritySettingRedactionScope>

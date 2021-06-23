@@ -19,9 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<int>? Abandoning { get; set; }
 
         /// <summary>
-        /// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
-        /// 
-        /// If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
+        /// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
         /// </summary>
         [Input("creating")]
         public Input<int>? Creating { get; set; }

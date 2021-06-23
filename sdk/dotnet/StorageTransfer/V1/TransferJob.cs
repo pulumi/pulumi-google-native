@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public Output<string> LastModificationTime { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+        /// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         /// </summary>
         [Output("latestOperationName")]
         public Output<string> LatestOperationName { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+        /// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         /// </summary>
         [Input("latestOperationName")]
         public Input<string>? LatestOperationName { get; set; }

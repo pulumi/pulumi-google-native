@@ -22,19 +22,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<bool> AdminEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: 
-        /// - BPS_50M: 50 Mbit/s 
-        /// - BPS_100M: 100 Mbit/s 
-        /// - BPS_200M: 200 Mbit/s 
-        /// - BPS_300M: 300 Mbit/s 
-        /// - BPS_400M: 400 Mbit/s 
-        /// - BPS_500M: 500 Mbit/s 
-        /// - BPS_1G: 1 Gbit/s 
-        /// - BPS_2G: 2 Gbit/s 
-        /// - BPS_5G: 5 Gbit/s 
-        /// - BPS_10G: 10 Gbit/s 
-        /// - BPS_20G: 20 Gbit/s 
-        /// - BPS_50G: 50 Gbit/s
+        /// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s 
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
@@ -76,19 +64,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: 
-        /// - AVAILABILITY_DOMAIN_ANY 
-        /// - AVAILABILITY_DOMAIN_1 
-        /// - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        /// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
         /// </summary>
         [Output("edgeAvailabilityDomain")]
         public Output<string> EdgeAvailabilityDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the user-supplied encryption option of this interconnect attachment: 
-        /// - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
-        /// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option. 
-        /// Not currently available in all Interconnect locations.
+        /// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
         /// </summary>
         [Output("encryption")]
         public Output<string> Encryption { get; private set; } = null!;
@@ -100,8 +82,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Interconnect { get; private set; } = null!;
 
         /// <summary>
-        /// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
-        /// Not currently available in all Interconnect locations.
+        /// List of URL of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly. 
         /// </summary>
         [Output("ipsecInternalAddresses")]
         public Output<ImmutableArray<string>> IpsecInternalAddresses { get; private set; } = null!;
@@ -125,9 +106,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
-        /// - OS_ACTIVE: The attachment has been turned up and is ready to use. 
-        /// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
+        /// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
         /// </summary>
         [Output("operationalStatus")]
         public Output<string> OperationalStatus { get; private set; } = null!;
@@ -175,22 +154,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
-        /// - ACTIVE: The attachment has been turned up and is ready to use. 
-        /// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
-        /// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 
-        /// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. 
-        /// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. 
-        /// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
+        /// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted. 
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The type of interconnect attachment this is, which can take one of the following values: 
-        /// - DEDICATED: an attachment to a Dedicated Interconnect. 
-        /// - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
-        /// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
+        /// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -253,19 +223,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<bool>? AdminEnabled { get; set; }
 
         /// <summary>
-        /// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: 
-        /// - BPS_50M: 50 Mbit/s 
-        /// - BPS_100M: 100 Mbit/s 
-        /// - BPS_200M: 200 Mbit/s 
-        /// - BPS_300M: 300 Mbit/s 
-        /// - BPS_400M: 400 Mbit/s 
-        /// - BPS_500M: 500 Mbit/s 
-        /// - BPS_1G: 1 Gbit/s 
-        /// - BPS_2G: 2 Gbit/s 
-        /// - BPS_5G: 5 Gbit/s 
-        /// - BPS_10G: 10 Gbit/s 
-        /// - BPS_20G: 20 Gbit/s 
-        /// - BPS_50G: 50 Gbit/s
+        /// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s 
         /// </summary>
         [Input("bandwidth")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectAttachmentBandwidth>? Bandwidth { get; set; }
@@ -313,19 +271,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: 
-        /// - AVAILABILITY_DOMAIN_ANY 
-        /// - AVAILABILITY_DOMAIN_1 
-        /// - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        /// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
         /// </summary>
         [Input("edgeAvailabilityDomain")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectAttachmentEdgeAvailabilityDomain>? EdgeAvailabilityDomain { get; set; }
 
         /// <summary>
-        /// Indicates the user-supplied encryption option of this interconnect attachment: 
-        /// - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
-        /// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option. 
-        /// Not currently available in all Interconnect locations.
+        /// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
         /// </summary>
         [Input("encryption")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectAttachmentEncryption>? Encryption { get; set; }
@@ -346,8 +298,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         private InputList<string>? _ipsecInternalAddresses;
 
         /// <summary>
-        /// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
-        /// Not currently available in all Interconnect locations.
+        /// List of URL of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly. 
         /// </summary>
         public InputList<string> IpsecInternalAddresses
         {
@@ -374,9 +325,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
-        /// - OS_ACTIVE: The attachment has been turned up and is ready to use. 
-        /// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
+        /// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
         /// </summary>
         [Input("operationalStatus")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectAttachmentOperationalStatus>? OperationalStatus { get; set; }
@@ -430,22 +379,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
-        /// - ACTIVE: The attachment has been turned up and is ready to use. 
-        /// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
-        /// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 
-        /// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. 
-        /// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. 
-        /// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
+        /// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted. 
         /// </summary>
         [Input("state")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectAttachmentState>? State { get; set; }
 
         /// <summary>
-        /// The type of interconnect attachment this is, which can take one of the following values: 
-        /// - DEDICATED: an attachment to a Dedicated Interconnect. 
-        /// - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
-        /// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
+        /// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectAttachmentType>? Type { get; set; }

@@ -11,56 +11,30 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
     /// <summary>
-    /// Configuration for a Serverless Deployment network endpoint group (NEG). The platform must be provided.
-    /// 
-    /// Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
+    /// Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
     /// </summary>
     public sealed class NetworkEndpointGroupServerlessDeploymentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The platform of the backend target(s) of this NEG. Possible values include:
-        /// 
-        ///  
-        /// - apigateway.googleapis.com 
-        /// - appengine.googleapies.com 
-        /// - cloudfunctions.googleapis.com 
-        /// - run.googleapis.com
+        /// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
 
         /// <summary>
-        /// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows:
-        /// 
-        ///  
-        /// - API Gateway: The gateway id 
-        /// - AppEngine: The service name 
-        /// - Cloud Functions: The function name 
-        /// - Cloud Run: The service name
+        /// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name 
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }
 
         /// <summary>
-        /// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple services on the same serverless platform without having to create multiple Network Endpoint Groups and backend services. The fields parsed by this template is platform-specific and are as follows:
-        /// 
-        ///  
-        /// - API Gateway: The gateway id 
-        /// - AppEngine: The service and version 
-        /// - Cloud Functions: The function 
-        /// - Cloud Run: The service and tag
+        /// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
         /// </summary>
         [Input("urlMask")]
         public Input<string>? UrlMask { get; set; }
 
         /// <summary>
-        /// The optional resource version. The version identified by this value is as platform-specific and is follows:
-        /// 
-        ///  
-        /// - API Gateway: Unused 
-        /// - AppEngine: The service version 
-        /// - Cloud Functions: Unused 
-        /// - Cloud Run: The service tag
+        /// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag 
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

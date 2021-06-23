@@ -16,15 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class MetadataFilterLabelMatchArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of metadata label.
-        /// The name can have a maximum length of 1024 characters and must be at least 1 character long.
+        /// Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The value of the label must match the specified value.
-        /// value can have a maximum length of 1024 characters.
+        /// The value of the label must match the specified value. value can have a maximum length of 1024 characters.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

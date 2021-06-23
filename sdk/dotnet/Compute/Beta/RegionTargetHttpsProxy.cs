@@ -16,10 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class RegionTargetHttpsProxy : Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
-        /// Refer to the AuthorizationPolicy resource for additional details.
-        /// authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        /// Note: This field currently has no impact.
+        /// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
         /// </summary>
         [Output("authorizationPolicy")]
         public Output<string> AuthorizationPolicy { get; private set; } = null!;
@@ -43,8 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list.
-        /// httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
+        /// URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
         /// </summary>
         [Output("httpFilters")]
         public Output<ImmutableArray<string>> HttpFilters { get; private set; } = null!;
@@ -62,21 +58,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        /// 
-        /// When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
-        /// 
-        /// The default is false.
+        /// This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false.
         /// </summary>
         [Output("proxyBind")]
         public Output<bool> ProxyBind { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
-        /// - When quic-override is set to NONE, Google manages whether QUIC is used. 
-        /// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
-        /// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
-        /// - If the quic-override flag is not specified, NONE is implied.
+        /// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
         /// </summary>
         [Output("quicOverride")]
         public Output<string> QuicOverride { get; private set; } = null!;
@@ -94,16 +82,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.
-        /// serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        /// If left blank, communications are not encrypted.
-        /// Note: This field currently has no impact.
+        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
         /// </summary>
         [Output("serverTlsPolicy")]
         public Output<string> ServerTlsPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+        /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
         /// </summary>
         [Output("sslCertificates")]
         public Output<ImmutableArray<string>> SslCertificates { get; private set; } = null!;
@@ -115,10 +100,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SslPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  
-        /// - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map 
-        /// - projects/project/global/urlMaps/url-map 
-        /// - global/urlMaps/url-map
+        /// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map 
         /// </summary>
         [Output("urlMap")]
         public Output<string> UrlMap { get; private set; } = null!;
@@ -169,10 +151,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class RegionTargetHttpsProxyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
-        /// Refer to the AuthorizationPolicy resource for additional details.
-        /// authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        /// Note: This field currently has no impact.
+        /// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
         /// </summary>
         [Input("authorizationPolicy")]
         public Input<string>? AuthorizationPolicy { get; set; }
@@ -199,8 +178,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         private InputList<string>? _httpFilters;
 
         /// <summary>
-        /// URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list.
-        /// httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
+        /// URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
         /// </summary>
         public InputList<string> HttpFilters
         {
@@ -230,21 +208,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        /// 
-        /// When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
-        /// 
-        /// The default is false.
+        /// This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false.
         /// </summary>
         [Input("proxyBind")]
         public Input<bool>? ProxyBind { get; set; }
 
         /// <summary>
-        /// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
-        /// - When quic-override is set to NONE, Google manages whether QUIC is used. 
-        /// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
-        /// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
-        /// - If the quic-override flag is not specified, NONE is implied.
+        /// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
         /// </summary>
         [Input("quicOverride")]
         public Input<Pulumi.GoogleNative.Compute.Beta.RegionTargetHttpsProxyQuicOverride>? QuicOverride { get; set; }
@@ -265,10 +235,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.
-        /// serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        /// If left blank, communications are not encrypted.
-        /// Note: This field currently has no impact.
+        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }
@@ -277,7 +244,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         private InputList<string>? _sslCertificates;
 
         /// <summary>
-        /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+        /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
         /// </summary>
         public InputList<string> SslCertificates
         {
@@ -292,10 +259,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? SslPolicy { get; set; }
 
         /// <summary>
-        /// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  
-        /// - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map 
-        /// - projects/project/global/urlMaps/url-map 
-        /// - global/urlMaps/url-map
+        /// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map 
         /// </summary>
         [Input("urlMap")]
         public Input<string>? UrlMap { get; set; }

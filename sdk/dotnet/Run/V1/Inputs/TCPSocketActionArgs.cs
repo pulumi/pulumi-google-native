@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+    /// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
     /// </summary>
     public sealed class TCPSocketActionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+        /// (Optional) Optional: Host name to connect to, defaults to the pod IP.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

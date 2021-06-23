@@ -54,10 +54,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TargetResources;
         /// <summary>
-        /// A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
-        /// </summary>
-        public readonly ImmutableArray<string> TargetSecureLabels;
-        /// <summary>
         /// A list of service accounts indicating the sets of instances that are applied with this rule.
         /// </summary>
         public readonly ImmutableArray<string> TargetServiceAccounts;
@@ -84,8 +80,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             ImmutableArray<string> targetResources,
 
-            ImmutableArray<string> targetSecureLabels,
-
             ImmutableArray<string> targetServiceAccounts)
         {
             Action = action;
@@ -98,7 +92,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Priority = priority;
             RuleTupleCount = ruleTupleCount;
             TargetResources = targetResources;
-            TargetSecureLabels = targetSecureLabels;
             TargetServiceAccounts = targetServiceAccounts;
         }
     }

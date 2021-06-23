@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Outputs
     public sealed class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse
     {
         /// <summary>
+        /// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
         /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
         /// </summary>
         public readonly string ResourceId;
@@ -24,10 +28,13 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse(
+            string displayName,
+
             string resourceId,
 
             string resourceType)
         {
+            DisplayName = displayName;
             ResourceId = resourceId;
             ResourceType = resourceType;
         }

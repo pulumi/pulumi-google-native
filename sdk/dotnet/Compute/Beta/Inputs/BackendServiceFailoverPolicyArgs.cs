@@ -16,9 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class BackendServiceFailoverPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This can be set to true only if the protocol is TCP.
-        /// 
-        /// The default is false.
+        /// This can be set to true only if the protocol is TCP. The default is false.
         /// </summary>
         [Input("disableConnectionDrainOnFailover")]
         public Input<bool>? DisableConnectionDrainOnFailover { get; set; }

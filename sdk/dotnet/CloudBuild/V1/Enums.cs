@@ -351,4 +351,45 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+    /// </summary>
+    [EnumType]
+    public readonly struct WebhookConfigState : IEquatable<WebhookConfigState>
+    {
+        private readonly string _value;
+
+        private WebhookConfigState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The webhook auth configuration not been checked.
+        /// </summary>
+        public static WebhookConfigState StateUnspecified { get; } = new WebhookConfigState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// The auth configuration is properly setup.
+        /// </summary>
+        public static WebhookConfigState Ok { get; } = new WebhookConfigState("OK");
+        /// <summary>
+        /// The secret provided in auth_method has been deleted.
+        /// </summary>
+        public static WebhookConfigState SecretDeleted { get; } = new WebhookConfigState("SECRET_DELETED");
+
+        public static bool operator ==(WebhookConfigState left, WebhookConfigState right) => left.Equals(right);
+        public static bool operator !=(WebhookConfigState left, WebhookConfigState right) => !left.Equals(right);
+
+        public static explicit operator string(WebhookConfigState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is WebhookConfigState other && Equals(other);
+        public bool Equals(WebhookConfigState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
-        /// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+        /// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
         /// </summary>
         [Output("sslCertificates")]
         public Output<ImmutableArray<string>> SslCertificates { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         private InputList<string>? _sslCertificates;
 
         /// <summary>
-        /// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+        /// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
         /// </summary>
         public InputList<string> SslCertificates
         {

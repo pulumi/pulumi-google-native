@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.BackendBucketCdnPolicyResponse> CdnPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+        /// </summary>
+        [Output("compressionMode")]
+        public Output<string> CompressionMode { get; private set; } = null!;
+
+        /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -44,6 +50,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+        /// </summary>
+        [Output("edgeSecurityPolicy")]
+        public Output<string> EdgeSecurityPolicy { get; private set; } = null!;
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
@@ -127,6 +139,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<Inputs.BackendBucketCdnPolicyArgs>? CdnPolicy { get; set; }
 
         /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+        /// </summary>
+        [Input("compressionMode")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.BackendBucketCompressionMode>? CompressionMode { get; set; }
+
+        /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
         /// </summary>
         [Input("creationTimestamp")]
@@ -149,6 +167,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+        /// </summary>
+        [Input("edgeSecurityPolicy")]
+        public Input<string>? EdgeSecurityPolicy { get; set; }
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.

@@ -40,12 +40,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? JwtAudience { get; set; }
 
         /// <summary>
-        /// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
-        /// </summary>
-        [Input("minDeadline")]
-        public Input<double>? MinDeadline { get; set; }
-
-        /// <summary>
         /// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         /// </summary>
         [Input("operationDeadline")]

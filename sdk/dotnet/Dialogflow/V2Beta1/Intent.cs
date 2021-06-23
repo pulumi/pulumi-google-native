@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 {
     /// <summary>
-    /// Creates an intent in the specified agent.
+    /// Creates an intent in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:Intent")]
     public partial class Intent : Pulumi.CustomResource

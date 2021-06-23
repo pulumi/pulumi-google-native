@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2
     }
 
     /// <summary>
-    /// Output only. The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
+    /// Output only. The state of the queue. `state` can only be changed by calling PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
     /// </summary>
     [EnumType]
     public readonly struct QueueState : IEquatable<QueueState>

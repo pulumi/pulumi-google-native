@@ -542,4 +542,45 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Immutable. The protocol used by this TargetServer.
+    /// </summary>
+    [EnumType]
+    public readonly struct TargetServerProtocol : IEquatable<TargetServerProtocol>
+    {
+        private readonly string _value;
+
+        private TargetServerProtocol(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// UNSPECIFIED defaults to HTTP for backwards compatibility.
+        /// </summary>
+        public static TargetServerProtocol ProtocolUnspecified { get; } = new TargetServerProtocol("PROTOCOL_UNSPECIFIED");
+        /// <summary>
+        /// The TargetServer uses HTTP.
+        /// </summary>
+        public static TargetServerProtocol Http { get; } = new TargetServerProtocol("HTTP");
+        /// <summary>
+        /// The TargetServer uses GRPC.
+        /// </summary>
+        public static TargetServerProtocol Grpc { get; } = new TargetServerProtocol("GRPC");
+
+        public static bool operator ==(TargetServerProtocol left, TargetServerProtocol right) => left.Equals(right);
+        public static bool operator !=(TargetServerProtocol left, TargetServerProtocol right) => !left.Equals(right);
+
+        public static explicit operator string(TargetServerProtocol value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TargetServerProtocol other && Equals(other);
+        public bool Equals(TargetServerProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
         /// </summary>
-        public readonly Outputs.TransactionInfoResponse TransactionInfoTemplate;
+        public readonly Outputs.TransactionInfoResponse TransactionInfo;
 
         [OutputConstructor]
         private JobStatisticsResponse(
@@ -116,7 +116,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string totalSlotMs,
 
-            Outputs.TransactionInfoResponse transactionInfoTemplate)
+            Outputs.TransactionInfoResponse transactionInfo)
         {
             CompletionRatio = completionRatio;
             CreationTime = creationTime;
@@ -134,7 +134,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             SessionInfoTemplate = sessionInfoTemplate;
             StartTime = startTime;
             TotalSlotMs = totalSlotMs;
-            TransactionInfoTemplate = transactionInfoTemplate;
+            TransactionInfo = transactionInfo;
         }
     }
 }

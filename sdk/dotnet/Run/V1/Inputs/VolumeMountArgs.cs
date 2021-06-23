@@ -11,30 +11,30 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+    /// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
     /// </summary>
     public sealed class VolumeMountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+        /// Path within the container at which the volume should be mounted. Must not contain ':'.
         /// </summary>
         [Input("mountPath")]
         public Input<string>? MountPath { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+        /// This must match the Name of a Volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+        /// (Optional) Only true is accepted. Defaults to true.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        /// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         /// </summary>
         [Input("subPath")]
         public Input<string>? SubPath { get; set; }

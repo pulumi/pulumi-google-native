@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// <summary>
         /// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
         /// </summary>
-        [Input("transactionInfoTemplate")]
-        public Input<Inputs.TransactionInfoArgs>? TransactionInfoTemplate { get; set; }
+        [Input("transactionInfo")]
+        public Input<Inputs.TransactionInfoArgs>? TransactionInfo { get; set; }
 
         public JobStatisticsArgs()
         {

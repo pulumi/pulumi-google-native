@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.IAM.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedAudiences;
         /// <summary>
-        /// Required. The OIDC issuer URL.
+        /// Required. The OIDC issuer URL. Must be an HTTPS endpoint.
         /// </summary>
         public readonly string IssuerUri;
 

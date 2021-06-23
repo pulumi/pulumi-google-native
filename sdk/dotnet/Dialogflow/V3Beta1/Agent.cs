@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
     /// <summary>
-    /// Creates an agent in the specified location.
+    /// Creates an agent in the specified location. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Agent")]
     public partial class Agent : Pulumi.CustomResource
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> AvatarUri { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+        /// Required. Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         /// </summary>
         [Output("defaultLanguageCode")]
         public Output<string> DefaultLanguageCode { get; private set; } = null!;
@@ -74,6 +74,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         [Output("startFlow")]
         public Output<string> StartFlow { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of all languages supported by the agent (except for the `default_language_code`).
+        /// </summary>
+        [Output("supportedLanguageCodes")]
+        public Output<ImmutableArray<string>> SupportedLanguageCodes { get; private set; } = null!;
 
         /// <summary>
         /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
@@ -133,7 +139,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string>? AvatarUri { get; set; }
 
         /// <summary>
-        /// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+        /// Required. Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         /// </summary>
         [Input("defaultLanguageCode")]
         public Input<string>? DefaultLanguageCode { get; set; }
@@ -191,6 +197,18 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         [Input("startFlow")]
         public Input<string>? StartFlow { get; set; }
+
+        [Input("supportedLanguageCodes")]
+        private InputList<string>? _supportedLanguageCodes;
+
+        /// <summary>
+        /// The list of all languages supported by the agent (except for the `default_language_code`).
+        /// </summary>
+        public InputList<string> SupportedLanguageCodes
+        {
+            get => _supportedLanguageCodes ?? (_supportedLanguageCodes = new InputList<string>());
+            set => _supportedLanguageCodes = value;
+        }
 
         /// <summary>
         /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.

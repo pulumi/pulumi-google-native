@@ -14,21 +14,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class SecurityPolicyRuleMatcherConfigResponse
     {
         /// <summary>
-        /// CIDR IP address range.
-        /// 
-        /// This field may only be specified when versioned_expr is set to FIREWALL.
+        /// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
-        /// Pairs of IP protocols and ports that the rule should match.
-        /// 
-        /// This field may only be specified when versioned_expr is set to FIREWALL.
+        /// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRuleMatcherConfigDestinationPortResponse> DestPorts;
         /// <summary>
-        /// Pairs of IP protocols and ports that the rule should match.
-        /// 
-        /// This field may only be specified when versioned_expr is set to FIREWALL.
+        /// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRuleMatcherConfigLayer4ConfigResponse> Layer4Configs;
         /// <summary>

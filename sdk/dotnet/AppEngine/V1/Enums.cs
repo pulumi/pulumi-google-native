@@ -786,4 +786,42 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// The egress setting for the connector, controlling what traffic is diverted through it.
+    /// </summary>
+    [EnumType]
+    public readonly struct VpcAccessConnectorEgressSetting : IEquatable<VpcAccessConnectorEgressSetting>
+    {
+        private readonly string _value;
+
+        private VpcAccessConnectorEgressSetting(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static VpcAccessConnectorEgressSetting EgressSettingUnspecified { get; } = new VpcAccessConnectorEgressSetting("EGRESS_SETTING_UNSPECIFIED");
+        /// <summary>
+        /// Force the use of VPC Access for all egress traffic from the function.
+        /// </summary>
+        public static VpcAccessConnectorEgressSetting AllTraffic { get; } = new VpcAccessConnectorEgressSetting("ALL_TRAFFIC");
+        /// <summary>
+        /// Use the VPC Access Connector for private IP space from RFC1918.
+        /// </summary>
+        public static VpcAccessConnectorEgressSetting PrivateIpRanges { get; } = new VpcAccessConnectorEgressSetting("PRIVATE_IP_RANGES");
+
+        public static bool operator ==(VpcAccessConnectorEgressSetting left, VpcAccessConnectorEgressSetting right) => left.Equals(right);
+        public static bool operator !=(VpcAccessConnectorEgressSetting left, VpcAccessConnectorEgressSetting right) => !left.Equals(right);
+
+        public static explicit operator string(VpcAccessConnectorEgressSetting value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VpcAccessConnectorEgressSetting other && Equals(other);
+        public bool Equals(VpcAccessConnectorEgressSetting other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

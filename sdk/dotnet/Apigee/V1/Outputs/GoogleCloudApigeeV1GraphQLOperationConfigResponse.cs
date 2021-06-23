@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
     public sealed class GoogleCloudApigeeV1GraphQLOperationConfigResponse
     {
         /// <summary>
-        /// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+        /// Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
         /// </summary>
         public readonly string ApiSource;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudApigeeV1AttributeResponse> Attributes;
         /// <summary>
-        /// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+        /// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudApigeeV1GraphQLOperationResponse> Operations;
         /// <summary>
-        /// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        /// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1QuotaResponse Quota;
 

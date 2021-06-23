@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
 {
 
     /// <summary>
-    /// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+    /// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
     /// </summary>
     public sealed class GoogleCloudApigeeV1OperationArgs : Pulumi.ResourceArgs
     {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         }
 
         /// <summary>
-        /// Required. resource represents REST resource path associated with the proxy/remote service.
+        /// Required. REST resource path associated with the API proxy or remote service.
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

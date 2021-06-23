@@ -16,9 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _destIpRanges;
 
         /// <summary>
-        /// CIDR IP address range.
-        /// 
-        /// This field may only be specified when versioned_expr is set to FIREWALL.
+        /// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
         /// </summary>
         public InputList<string> DestIpRanges
         {
@@ -30,9 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<Inputs.SecurityPolicyRuleMatcherConfigDestinationPortArgs>? _destPorts;
 
         /// <summary>
-        /// Pairs of IP protocols and ports that the rule should match.
-        /// 
-        /// This field may only be specified when versioned_expr is set to FIREWALL.
+        /// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRuleMatcherConfigDestinationPortArgs> DestPorts
         {
@@ -44,9 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<Inputs.SecurityPolicyRuleMatcherConfigLayer4ConfigArgs>? _layer4Configs;
 
         /// <summary>
-        /// Pairs of IP protocols and ports that the rule should match.
-        /// 
-        /// This field may only be specified when versioned_expr is set to FIREWALL.
+        /// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRuleMatcherConfigLayer4ConfigArgs> Layer4Configs
         {

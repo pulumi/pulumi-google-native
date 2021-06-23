@@ -64,9 +64,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> NodeType { get; private set; } = null!;
 
         /// <summary>
-        /// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-        /// 
-        /// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        /// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
         /// </summary>
         [Output("nodeTypeFlexibility")]
         public Output<Outputs.NodeTemplateNodeTypeFlexibilityResponse> NodeTypeFlexibility { get; private set; } = null!;
@@ -84,11 +82,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the binding properties for the physical server. Valid values include:  
-        /// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
-        /// - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
-        /// 
-        /// See Sole-tenant node options for more information.
+        /// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
         /// </summary>
         [Output("serverBinding")]
         public Output<Outputs.ServerBindingResponse> ServerBinding { get; private set; } = null!;
@@ -221,9 +215,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-        /// 
-        /// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        /// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
         /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityArgs>? NodeTypeFlexibility { get; set; }
@@ -247,11 +239,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Sets the binding properties for the physical server. Valid values include:  
-        /// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
-        /// - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
-        /// 
-        /// See Sole-tenant node options for more information.
+        /// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
         /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.ServerBindingArgs>? ServerBinding { get; set; }

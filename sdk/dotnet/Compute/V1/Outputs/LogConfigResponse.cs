@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class LogConfigResponse
     {
         /// <summary>
-        /// Cloud audit options.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly Outputs.LogConfigCloudAuditOptionsResponse CloudAudit;
         /// <summary>
-        /// Counter options.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly Outputs.LogConfigCounterOptionsResponse Counter;
         /// <summary>
-        /// Data access options.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly Outputs.LogConfigDataAccessOptionsResponse DataAccess;
 

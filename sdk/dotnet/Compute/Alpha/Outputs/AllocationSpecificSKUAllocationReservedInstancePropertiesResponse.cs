@@ -34,9 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int MaintenanceFreezeDurationHours;
         /// <summary>
-        /// Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic" designates this VM as a Stable Fleet VM.
-        /// 
-        /// See go/stable-fleet-ug for more details.
+        /// For more information about maintenance intervals, see Setting maintenance intervals.
         /// </summary>
         public readonly string MaintenanceInterval;
         /// <summary>
