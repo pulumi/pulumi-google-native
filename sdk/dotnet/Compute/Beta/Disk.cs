@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class Disk : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Interface { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#disk for disks.
+        /// Type of the resource. Always compute#disk for disks.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -78,13 +78,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Last attach timestamp in RFC3339 text format.
+        /// Last attach timestamp in RFC3339 text format.
         /// </summary>
         [Output("lastAttachTimestamp")]
         public Output<string> LastAttachTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Last detach timestamp in RFC3339 text format.
+        /// Last detach timestamp in RFC3339 text format.
         /// </summary>
         [Output("lastDetachTimestamp")]
         public Output<string> LastDetachTimestamp { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ProvisionedIops { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -156,13 +156,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<string>> ResourcePolicies { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
+        /// Server-defined fully-qualified URL for this resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SourceDisk { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
+        /// The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
         /// </summary>
         [Output("sourceDiskId")]
         public Output<string> SourceDiskId { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
+        /// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
         /// </summary>
         [Output("sourceImageId")]
         public Output<string> SourceImageId { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceSnapshotEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        /// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
         /// </summary>
         [Output("sourceSnapshotId")]
         public Output<string> SourceSnapshotId { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SourceStorageObject { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of disk creation.  
+        /// The status of disk creation.  
         /// - CREATING: Disk is provisioning. 
         /// - RESTORING: Source data is being copied into the disk. 
         /// - FAILED: Disk creation failed. 
@@ -271,13 +271,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
+        /// Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
         /// </summary>
         [Output("users")]
         public Output<ImmutableArray<string>> Users { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -328,12 +328,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class DiskArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -370,22 +364,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// </summary>
         [Input("interface")]
         public Input<Pulumi.GoogleNative.Compute.Beta.DiskInterface>? Interface { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#disk for disks.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -398,18 +380,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
-
-        /// <summary>
-        /// [Output Only] Last attach timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("lastAttachTimestamp")]
-        public Input<string>? LastAttachTimestamp { get; set; }
-
-        /// <summary>
-        /// [Output Only] Last detach timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("lastDetachTimestamp")]
-        public Input<string>? LastDetachTimestamp { get; set; }
 
         [Input("licenseCodes")]
         private InputList<string>? _licenseCodes;
@@ -474,12 +444,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("provisionedIops")]
         public Input<string>? ProvisionedIops { get; set; }
 
-        /// <summary>
-        /// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
         [Input("replicaZones")]
         private InputList<string>? _replicaZones;
 
@@ -508,18 +472,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         /// <summary>
-        /// [Output Only] Reserved for future use.
-        /// </summary>
-        [Input("satisfiesPzs")]
-        public Input<bool>? SatisfiesPzs { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
         /// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk.
         /// 
         /// If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
@@ -538,12 +490,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("sourceDisk")]
         public Input<string>? SourceDisk { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
-        /// </summary>
-        [Input("sourceDiskId")]
-        public Input<string>? SourceDiskId { get; set; }
 
         /// <summary>
         /// The source image used to create this disk. If the source image is deleted, this field will not be set.
@@ -573,12 +519,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceImageEncryptionKey { get; set; }
 
         /// <summary>
-        /// [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
-        /// </summary>
-        [Input("sourceImageId")]
-        public Input<string>? SourceImageId { get; set; }
-
-        /// <summary>
         /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
         /// - https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot 
         /// - projects/project/global/snapshots/snapshot 
@@ -594,27 +534,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         /// <summary>
-        /// [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
-        /// </summary>
-        [Input("sourceSnapshotId")]
-        public Input<string>? SourceSnapshotId { get; set; }
-
-        /// <summary>
         /// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
         /// </summary>
         [Input("sourceStorageObject")]
         public Input<string>? SourceStorageObject { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of disk creation.  
-        /// - CREATING: Disk is provisioning. 
-        /// - RESTORING: Source data is being copied into the disk. 
-        /// - FAILED: Disk creation failed. 
-        /// - READY: Disk is ready for use. 
-        /// - DELETING: Disk is deleting.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.Beta.DiskStatus>? Status { get; set; }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
@@ -622,21 +545,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        [Input("users")]
-        private InputList<string>? _users;
-
-        /// <summary>
-        /// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
-        /// </summary>
-        public InputList<string> Users
-        {
-            get => _users ?? (_users = new InputList<string>());
-            set => _users = value;
-        }
-
-        /// <summary>
-        /// [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
 

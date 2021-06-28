@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.ConsistentHashLoadBalancerSettingsResponse ConsistentHash;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] The resource URL for the edge security policy associated with this backend service.
+        /// The resource URL for the edge security policy associated with this backend service.
         /// </summary>
         public readonly string EdgeSecurityPolicy;
         /// <summary>
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.BackendServiceIAPResponse Iap;
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#backendService for backend services.
+        /// Type of resource. Always compute#backendService for backend services.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -190,11 +190,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Protocol;
         /// <summary>
-        /// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] The resource URL for the security policy associated with this backend service.
+        /// The resource URL for the security policy associated with this backend service.
         /// </summary>
         public readonly string SecurityPolicy;
         /// <summary>
@@ -204,11 +204,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.SecuritySettingsResponse SecuritySettings;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>

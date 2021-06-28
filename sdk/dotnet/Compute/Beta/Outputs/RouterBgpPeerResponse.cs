@@ -51,7 +51,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// [Output Only] The resource that configures and manages this BGP peer. 
+        /// The resource that configures and manages this BGP peer. 
         /// - MANAGED_BY_USER is the default value and can be managed by you or other users 
         /// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
         /// </summary>

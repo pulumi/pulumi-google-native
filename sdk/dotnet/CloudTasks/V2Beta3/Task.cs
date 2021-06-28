@@ -139,40 +139,16 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         public Input<Inputs.AppEngineHttpRequestArgs>? AppEngineHttpRequest { get; set; }
 
         /// <summary>
-        /// The time that the task was created. `create_time` will be truncated to the nearest second.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
-        /// </summary>
-        [Input("dispatchCount")]
-        public Input<int>? DispatchCount { get; set; }
-
-        /// <summary>
         /// The deadline for requests sent to the worker. If the worker does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the task according to the RetryConfig. Note that when the request is cancelled, Cloud Tasks will stop listening for the response, but whether the worker stops processing depends on the worker. For example, if the worker is stuck, it may not react to cancelled requests. The default and maximum values depend on the type of request: * For HTTP tasks, the default is 10 minutes. The deadline must be in the interval [15 seconds, 30 minutes]. * For App Engine tasks, 0 indicates that the request has the default deadline. The default deadline depends on the [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling) of the service: 10 minutes for standard apps with automatic scaling, 24 hours for standard apps with manual and basic scaling, and 60 minutes for flex apps. If the request deadline is set, it must be in the interval [15 seconds, 24 hours 15 seconds]. Regardless of the task's `dispatch_deadline`, the app handler will not run for longer than than the service's timeout. We recommend setting the `dispatch_deadline` to at most a few seconds more than the app handler's timeout. For more information see [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts). `dispatch_deadline` will be truncated to the nearest millisecond. The deadline is an approximate deadline.
         /// </summary>
         [Input("dispatchDeadline")]
         public Input<string>? DispatchDeadline { get; set; }
 
         /// <summary>
-        /// The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
-        /// </summary>
-        [Input("firstAttempt")]
-        public Input<Inputs.AttemptArgs>? FirstAttempt { get; set; }
-
-        /// <summary>
         /// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
         /// </summary>
         [Input("httpRequest")]
         public Input<Inputs.HttpRequestArgs>? HttpRequest { get; set; }
-
-        /// <summary>
-        /// The status of the task's last attempt.
-        /// </summary>
-        [Input("lastAttempt")]
-        public Input<Inputs.AttemptArgs>? LastAttempt { get; set; }
 
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -196,12 +172,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         public Input<string> QueueId { get; set; } = null!;
 
         /// <summary>
-        /// The number of attempts which have received a response.
-        /// </summary>
-        [Input("responseCount")]
-        public Input<int>? ResponseCount { get; set; }
-
-        /// <summary>
         /// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
         /// </summary>
         [Input("responseView")]
@@ -212,12 +182,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         /// </summary>
         [Input("scheduleTime")]
         public Input<string>? ScheduleTime { get; set; }
-
-        /// <summary>
-        /// The view specifies which subset of the Task has been returned.
-        /// </summary>
-        [Input("view")]
-        public Input<Pulumi.GoogleNative.CloudTasks.V2Beta3.TaskView>? View { get; set; }
 
         public TaskArgs()
         {

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> CpuOvercommitType { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableArray<Outputs.LocalDiskResponse>> Disks { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
+        /// The type of the resource. Always compute#nodeTemplate for node templates.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -72,19 +72,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.NodeTemplateNodeTypeFlexibilityResponse> NodeTypeFlexibility { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The name of the region where the node template resides, such as us-central1.
+        /// The name of the region where the node template resides, such as us-central1.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -100,13 +100,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.ServerBindingResponse> ServerBinding { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+        /// The status of the node template. One of the following values: CREATING, READY, and DELETING.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] An optional, human-readable explanation of the status.
+        /// An optional, human-readable explanation of the status.
         /// </summary>
         [Output("statusMessage")]
         public Output<string> StatusMessage { get; private set; } = null!;
@@ -171,12 +171,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Pulumi.GoogleNative.Compute.Alpha.NodeTemplateCpuOvercommitType>? CpuOvercommitType { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -189,18 +183,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             get => _disks ?? (_disks = new InputList<Inputs.LocalDiskArgs>());
             set => _disks = value;
         }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -237,26 +219,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// [Output Only] The name of the region where the node template resides, such as us-central1.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
         /// Sets the binding properties for the physical server. Valid values include:  
@@ -267,18 +234,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.ServerBindingArgs>? ServerBinding { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.Alpha.NodeTemplateStatus>? Status { get; set; }
-
-        /// <summary>
-        /// [Output Only] An optional, human-readable explanation of the status.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
 
         public NodeTemplateArgs()
         {

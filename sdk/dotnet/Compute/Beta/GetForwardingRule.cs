@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string BackendService;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool IsMirroringCollector;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
+        /// Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -193,15 +193,15 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<string> Ports;
         /// <summary>
-        /// [Output Only] The PSC connection id of the PSC Forwarding Rule.
+        /// The PSC connection id of the PSC Forwarding Rule.
         /// </summary>
         public readonly string PscConnectionId;
         /// <summary>
-        /// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
@@ -219,7 +219,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string ServiceLabel;
         /// <summary>
-        /// [Output Only] The internal fully qualified service name for this Forwarding Rule.
+        /// The internal fully qualified service name for this Forwarding Rule.
         /// 
         /// This field is only used for internal load balancing.
         /// </summary>

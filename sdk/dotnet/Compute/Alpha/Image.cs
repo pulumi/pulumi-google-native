@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> ArchiveSizeBytes { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> ImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#image for images.
+        /// Type of the resource. Always compute#image for images.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -120,19 +120,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.RolloutPolicyResponse> RolloutOverride { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource's resource id.
+        /// Server-defined URL for this resource's resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceDiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
+        /// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
         /// </summary>
         [Output("sourceDiskId")]
         public Output<string> SourceDiskId { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
+        /// The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
         /// </summary>
         [Output("sourceImageId")]
         public Output<string> SourceImageId { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceSnapshotEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
+        /// The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
         /// </summary>
         [Output("sourceSnapshotId")]
         public Output<string> SourceSnapshotId { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SourceType { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
+        /// The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -283,12 +283,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? ArchiveSizeBytes { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// The deprecation status associated with this image.
         /// </summary>
         [Input("deprecated")]
@@ -328,12 +322,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// Encrypts the image using a customer-supplied encryption key.
         /// 
         /// After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).
@@ -344,12 +332,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("imageEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? ImageEncryptionKey { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#image for images.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -412,24 +394,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.RolloutPolicyArgs>? RolloutOverride { get; set; }
 
         /// <summary>
-        /// [Output Only] Reserved for future use.
-        /// </summary>
-        [Input("satisfiesPzs")]
-        public Input<bool>? SatisfiesPzs { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource's resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
-
-        /// <summary>
         /// Set the secure boot keys of shielded instance.
         /// </summary>
         [Input("shieldedInstanceInitialState")]
@@ -451,12 +415,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// [Output Only] The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
-        /// </summary>
-        [Input("sourceDiskId")]
-        public Input<string>? SourceDiskId { get; set; }
-
-        /// <summary>
         /// URL of the source image used to create this image.
         /// 
         /// In order to create an image, you must provide the full or partial URL of one of the following:  
@@ -473,12 +431,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("sourceImageEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceImageEncryptionKey { get; set; }
-
-        /// <summary>
-        /// [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
-        /// </summary>
-        [Input("sourceImageId")]
-        public Input<string>? SourceImageId { get; set; }
 
         /// <summary>
         /// URL of the source snapshot used to create this image.
@@ -500,22 +452,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         /// <summary>
-        /// [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
-        /// </summary>
-        [Input("sourceSnapshotId")]
-        public Input<string>? SourceSnapshotId { get; set; }
-
-        /// <summary>
         /// The type of the image used to create this disk. The default and only value is RAW
         /// </summary>
         [Input("sourceType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.ImageSourceType>? SourceType { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.Alpha.ImageStatus>? Status { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

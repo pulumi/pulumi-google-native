@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly int CheckIntervalSec;
         /// <summary>
-        /// [Output Only] Creation timestamp in 3339 text format.
+        /// Creation timestamp in 3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -72,11 +72,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] Region where the health check resides. Not applicable to global health checks.
+        /// Region where the health check resides. Not applicable to global health checks.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         public readonly Outputs.SSLHealthCheckResponse SslHealthCheck;

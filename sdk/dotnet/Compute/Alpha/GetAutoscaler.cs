@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.AutoscalingPolicyResponse AutoscalingPolicy;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
+        /// Type of the resource. Always compute#autoscaler for autoscalers.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -62,27 +62,27 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
+        /// Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
         /// </summary>
         public readonly int RecommendedSize;
         /// <summary>
-        /// [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
+        /// URL of the region where the instance group resides (for autoscalers living in regional scope).
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Status information of existing scaling schedules.
+        /// Status information of existing scaling schedules.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ScalingScheduleStatus;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
-        /// [Output Only] The status of the autoscaler configuration. Current set of possible values:  
+        /// The status of the autoscaler configuration. Current set of possible values:  
         /// - PENDING: Autoscaler backend hasn't read new/updated configuration. 
         /// - DELETING: Configuration is being deleted. 
         /// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
+        /// Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
         /// </summary>
         public readonly ImmutableArray<Outputs.AutoscalerStatusDetailsResponse> StatusDetails;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Target;
         /// <summary>
-        /// [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
+        /// URL of the zone where the instance group resides (for autoscalers living in zonal scope).
         /// </summary>
         public readonly string Zone;
 

@@ -112,12 +112,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
-        /// </summary>
-        [Input("provisioning")]
-        public Input<Inputs.DomainProvisioningArgs>? Provisioning { get; set; }
-
-        /// <summary>
         /// Required. The site name of the association.
         /// </summary>
         [Input("site")]
@@ -125,18 +119,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
-
-        /// <summary>
-        /// Additional status of the domain association.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.FirebaseHosting.V1Beta1.DomainStatus>? Status { get; set; }
-
-        /// <summary>
-        /// The time at which the domain was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public DomainArgs()
         {

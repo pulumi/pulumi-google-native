@@ -34,12 +34,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<Inputs.GoogleCloudMlV1__BuiltInAlgorithmOutputArgs>? BuiltInAlgorithmOutput { get; set; }
 
         /// <summary>
-        /// End time for the trial.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        /// <summary>
         /// The final objective metric seen for this trial.
         /// </summary>
         [Input("finalMetric")]
@@ -62,18 +56,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// </summary>
         [Input("isTrialStoppedEarly")]
         public Input<bool>? IsTrialStoppedEarly { get; set; }
-
-        /// <summary>
-        /// Start time for the trial.
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
-
-        /// <summary>
-        /// The detailed state of the trial.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__HyperparameterOutputState>? State { get; set; }
 
         /// <summary>
         /// The trial id for these results.

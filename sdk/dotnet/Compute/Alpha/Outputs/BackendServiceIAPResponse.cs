@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Oauth2ClientSecret;
         /// <summary>
-        /// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+        /// SHA256 hash value for the field oauth2_client_secret above.
         /// </summary>
         public readonly string Oauth2ClientSecretSha256;
 

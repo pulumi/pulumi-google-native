@@ -220,38 +220,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
-    /// </summary>
-    [EnumType]
-    public readonly struct AddressStatus : IEquatable<AddressStatus>
-    {
-        private readonly string _value;
-
-        private AddressStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static AddressStatus InUse { get; } = new AddressStatus("IN_USE");
-        public static AddressStatus Reserved { get; } = new AddressStatus("RESERVED");
-        public static AddressStatus Reserving { get; } = new AddressStatus("RESERVING");
-
-        public static bool operator ==(AddressStatus left, AddressStatus right) => left.Equals(right);
-        public static bool operator !=(AddressStatus left, AddressStatus right) => !left.Equals(right);
-
-        public static explicit operator string(AddressStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is AddressStatus other && Equals(other);
-        public bool Equals(AddressStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Type of sharing for this shared-reservation
     /// </summary>
     [EnumType]
@@ -564,108 +532,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is AuthorizationLoggingOptionsPermissionType other && Equals(other);
         public bool Equals(AuthorizationLoggingOptionsPermissionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-    /// - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-    /// - DELETING: Configuration is being deleted. 
-    /// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-    /// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
-    /// </summary>
-    [EnumType]
-    public readonly struct AutoscalerStatus : IEquatable<AutoscalerStatus>
-    {
-        private readonly string _value;
-
-        private AutoscalerStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static AutoscalerStatus Active { get; } = new AutoscalerStatus("ACTIVE");
-        public static AutoscalerStatus Deleting { get; } = new AutoscalerStatus("DELETING");
-        public static AutoscalerStatus Error { get; } = new AutoscalerStatus("ERROR");
-        public static AutoscalerStatus Pending { get; } = new AutoscalerStatus("PENDING");
-
-        public static bool operator ==(AutoscalerStatus left, AutoscalerStatus right) => left.Equals(right);
-        public static bool operator !=(AutoscalerStatus left, AutoscalerStatus right) => !left.Equals(right);
-
-        public static explicit operator string(AutoscalerStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is AutoscalerStatus other && Equals(other);
-        public bool Equals(AutoscalerStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// The type of error, warning, or notice returned. Current set of possible values:  
-    /// - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state). 
-    /// - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group. 
-    /// - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas. 
-    /// - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling. 
-    /// - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels. 
-    /// - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group. 
-    /// - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling. 
-    /// - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer. 
-    /// - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved. 
-    /// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any. 
-    /// - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it. 
-    /// - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances. 
-    /// - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region. 
-    /// - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist. 
-    /// - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate. 
-    /// - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
-    /// </summary>
-    [EnumType]
-    public readonly struct AutoscalerStatusDetailsType : IEquatable<AutoscalerStatusDetailsType>
-    {
-        private readonly string _value;
-
-        private AutoscalerStatusDetailsType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static AutoscalerStatusDetailsType AllInstancesUnhealthy { get; } = new AutoscalerStatusDetailsType("ALL_INSTANCES_UNHEALTHY");
-        public static AutoscalerStatusDetailsType BackendServiceDoesNotExist { get; } = new AutoscalerStatusDetailsType("BACKEND_SERVICE_DOES_NOT_EXIST");
-        public static AutoscalerStatusDetailsType CappedAtMaxNumReplicas { get; } = new AutoscalerStatusDetailsType("CAPPED_AT_MAX_NUM_REPLICAS");
-        public static AutoscalerStatusDetailsType CustomMetricDataPointsTooSparse { get; } = new AutoscalerStatusDetailsType("CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE");
-        public static AutoscalerStatusDetailsType CustomMetricInvalid { get; } = new AutoscalerStatusDetailsType("CUSTOM_METRIC_INVALID");
-        public static AutoscalerStatusDetailsType MinEqualsMax { get; } = new AutoscalerStatusDetailsType("MIN_EQUALS_MAX");
-        public static AutoscalerStatusDetailsType MissingCustomMetricDataPoints { get; } = new AutoscalerStatusDetailsType("MISSING_CUSTOM_METRIC_DATA_POINTS");
-        public static AutoscalerStatusDetailsType MissingLoadBalancingDataPoints { get; } = new AutoscalerStatusDetailsType("MISSING_LOAD_BALANCING_DATA_POINTS");
-        public static AutoscalerStatusDetailsType ModeOff { get; } = new AutoscalerStatusDetailsType("MODE_OFF");
-        public static AutoscalerStatusDetailsType ModeOnlyScaleOut { get; } = new AutoscalerStatusDetailsType("MODE_ONLY_SCALE_OUT");
-        public static AutoscalerStatusDetailsType ModeOnlyUp { get; } = new AutoscalerStatusDetailsType("MODE_ONLY_UP");
-        public static AutoscalerStatusDetailsType MoreThanOneBackendService { get; } = new AutoscalerStatusDetailsType("MORE_THAN_ONE_BACKEND_SERVICE");
-        public static AutoscalerStatusDetailsType NotEnoughQuotaAvailable { get; } = new AutoscalerStatusDetailsType("NOT_ENOUGH_QUOTA_AVAILABLE");
-        public static AutoscalerStatusDetailsType RegionResourceStockout { get; } = new AutoscalerStatusDetailsType("REGION_RESOURCE_STOCKOUT");
-        public static AutoscalerStatusDetailsType ScalingTargetDoesNotExist { get; } = new AutoscalerStatusDetailsType("SCALING_TARGET_DOES_NOT_EXIST");
-        public static AutoscalerStatusDetailsType ScheduledInstancesGreaterThanAutoscalerMax { get; } = new AutoscalerStatusDetailsType("SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX");
-        public static AutoscalerStatusDetailsType ScheduledInstancesLessThanAutoscalerMin { get; } = new AutoscalerStatusDetailsType("SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN");
-        public static AutoscalerStatusDetailsType Unknown { get; } = new AutoscalerStatusDetailsType("UNKNOWN");
-        public static AutoscalerStatusDetailsType UnsupportedMaxRateLoadBalancingConfiguration { get; } = new AutoscalerStatusDetailsType("UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION");
-        public static AutoscalerStatusDetailsType ZoneResourceStockout { get; } = new AutoscalerStatusDetailsType("ZONE_RESOURCE_STOCKOUT");
-
-        public static bool operator ==(AutoscalerStatusDetailsType left, AutoscalerStatusDetailsType right) => left.Equals(right);
-        public static bool operator !=(AutoscalerStatusDetailsType left, AutoscalerStatusDetailsType right) => !left.Equals(right);
-
-        public static explicit operator string(AutoscalerStatusDetailsType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is AutoscalerStatusDetailsType other && Equals(other);
-        public bool Equals(AutoscalerStatusDetailsType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -1407,45 +1273,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The status of disk creation.  
-    /// - CREATING: Disk is provisioning. 
-    /// - RESTORING: Source data is being copied into the disk. 
-    /// - FAILED: Disk creation failed. 
-    /// - READY: Disk is ready for use. 
-    /// - DELETING: Disk is deleting.
-    /// </summary>
-    [EnumType]
-    public readonly struct DiskStatus : IEquatable<DiskStatus>
-    {
-        private readonly string _value;
-
-        private DiskStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static DiskStatus Creating { get; } = new DiskStatus("CREATING");
-        public static DiskStatus Deleting { get; } = new DiskStatus("DELETING");
-        public static DiskStatus Failed { get; } = new DiskStatus("FAILED");
-        public static DiskStatus Ready { get; } = new DiskStatus("READY");
-        public static DiskStatus Restoring { get; } = new DiskStatus("RESTORING");
-
-        public static bool operator ==(DiskStatus left, DiskStatus right) => left.Equals(right);
-        public static bool operator !=(DiskStatus left, DiskStatus right) => !left.Equals(right);
-
-        public static explicit operator string(DiskStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is DiskStatus other && Equals(other);
-        public bool Equals(DiskStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
     /// </summary>
     [EnumType]
@@ -1627,37 +1454,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is FirewallPolicyRuleDirection other && Equals(other);
         public bool Equals(FirewallPolicyRuleDirection other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
-    /// </summary>
-    [EnumType]
-    public readonly struct FirewallPolicyRuleSecureTagState : IEquatable<FirewallPolicyRuleSecureTagState>
-    {
-        private readonly string _value;
-
-        private FirewallPolicyRuleSecureTagState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static FirewallPolicyRuleSecureTagState Effective { get; } = new FirewallPolicyRuleSecureTagState("EFFECTIVE");
-        public static FirewallPolicyRuleSecureTagState Ineffective { get; } = new FirewallPolicyRuleSecureTagState("INEFFECTIVE");
-
-        public static bool operator ==(FirewallPolicyRuleSecureTagState left, FirewallPolicyRuleSecureTagState right) => left.Equals(right);
-        public static bool operator !=(FirewallPolicyRuleSecureTagState left, FirewallPolicyRuleSecureTagState right) => !left.Equals(right);
-
-        public static explicit operator string(FirewallPolicyRuleSecureTagState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is FirewallPolicyRuleSecureTagState other && Equals(other);
-        public bool Equals(FirewallPolicyRuleSecureTagState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -2043,38 +1839,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
-    /// </summary>
-    [EnumType]
-    public readonly struct GlobalAddressStatus : IEquatable<GlobalAddressStatus>
-    {
-        private readonly string _value;
-
-        private GlobalAddressStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static GlobalAddressStatus InUse { get; } = new GlobalAddressStatus("IN_USE");
-        public static GlobalAddressStatus Reserved { get; } = new GlobalAddressStatus("RESERVED");
-        public static GlobalAddressStatus Reserving { get; } = new GlobalAddressStatus("RESERVING");
-
-        public static bool operator ==(GlobalAddressStatus left, GlobalAddressStatus right) => left.Equals(right);
-        public static bool operator !=(GlobalAddressStatus left, GlobalAddressStatus right) => !left.Equals(right);
-
-        public static explicit operator string(GlobalAddressStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is GlobalAddressStatus other && Equals(other);
-        public bool Equals(GlobalAddressStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The IP protocol to which this rule applies.
     /// 
     /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
@@ -2330,38 +2094,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GlobalNetworkEndpointGroupType other && Equals(other);
         public bool Equals(GlobalNetworkEndpointGroupType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the public delegated prefix.
-    /// </summary>
-    [EnumType]
-    public readonly struct GlobalPublicDelegatedPrefixStatus : IEquatable<GlobalPublicDelegatedPrefixStatus>
-    {
-        private readonly string _value;
-
-        private GlobalPublicDelegatedPrefixStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static GlobalPublicDelegatedPrefixStatus Announced { get; } = new GlobalPublicDelegatedPrefixStatus("ANNOUNCED");
-        public static GlobalPublicDelegatedPrefixStatus Deleting { get; } = new GlobalPublicDelegatedPrefixStatus("DELETING");
-        public static GlobalPublicDelegatedPrefixStatus Initializing { get; } = new GlobalPublicDelegatedPrefixStatus("INITIALIZING");
-
-        public static bool operator ==(GlobalPublicDelegatedPrefixStatus left, GlobalPublicDelegatedPrefixStatus right) => left.Equals(right);
-        public static bool operator !=(GlobalPublicDelegatedPrefixStatus left, GlobalPublicDelegatedPrefixStatus right) => !left.Equals(right);
-
-        public static explicit operator string(GlobalPublicDelegatedPrefixStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is GlobalPublicDelegatedPrefixStatus other && Equals(other);
-        public bool Equals(GlobalPublicDelegatedPrefixStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -2848,39 +2580,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
-    /// </summary>
-    [EnumType]
-    public readonly struct ImageStatus : IEquatable<ImageStatus>
-    {
-        private readonly string _value;
-
-        private ImageStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static ImageStatus Deleting { get; } = new ImageStatus("DELETING");
-        public static ImageStatus Failed { get; } = new ImageStatus("FAILED");
-        public static ImageStatus Pending { get; } = new ImageStatus("PENDING");
-        public static ImageStatus Ready { get; } = new ImageStatus("READY");
-
-        public static bool operator ==(ImageStatus left, ImageStatus right) => left.Equals(right);
-        public static bool operator !=(ImageStatus left, ImageStatus right) => !left.Equals(right);
-
-        public static explicit operator string(ImageStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ImageStatus other && Equals(other);
-        public bool Equals(ImageStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
     /// </summary>
     [EnumType]
@@ -3201,45 +2900,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
-    /// </summary>
-    [EnumType]
-    public readonly struct InstanceStatus : IEquatable<InstanceStatus>
-    {
-        private readonly string _value;
-
-        private InstanceStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static InstanceStatus Deprovisioning { get; } = new InstanceStatus("DEPROVISIONING");
-        public static InstanceStatus Provisioning { get; } = new InstanceStatus("PROVISIONING");
-        public static InstanceStatus Repairing { get; } = new InstanceStatus("REPAIRING");
-        public static InstanceStatus Running { get; } = new InstanceStatus("RUNNING");
-        public static InstanceStatus Staging { get; } = new InstanceStatus("STAGING");
-        public static InstanceStatus Stopped { get; } = new InstanceStatus("STOPPED");
-        public static InstanceStatus Stopping { get; } = new InstanceStatus("STOPPING");
-        public static InstanceStatus Suspended { get; } = new InstanceStatus("SUSPENDED");
-        public static InstanceStatus Suspending { get; } = new InstanceStatus("SUSPENDING");
-        public static InstanceStatus Terminated { get; } = new InstanceStatus("TERMINATED");
-
-        public static bool operator ==(InstanceStatus left, InstanceStatus right) => left.Equals(right);
-        public static bool operator !=(InstanceStatus left, InstanceStatus right) => !left.Equals(right);
-
-        public static explicit operator string(InstanceStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InstanceStatus other && Equals(other);
-        public bool Equals(InstanceStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: 
     /// - BPS_50M: 50 Mbit/s 
     /// - BPS_100M: 100 Mbit/s 
@@ -3362,81 +3022,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
-    /// - OS_ACTIVE: The attachment has been turned up and is ready to use. 
-    /// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-    /// </summary>
-    [EnumType]
-    public readonly struct InterconnectAttachmentOperationalStatus : IEquatable<InterconnectAttachmentOperationalStatus>
-    {
-        private readonly string _value;
-
-        private InterconnectAttachmentOperationalStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static InterconnectAttachmentOperationalStatus OsActive { get; } = new InterconnectAttachmentOperationalStatus("OS_ACTIVE");
-        public static InterconnectAttachmentOperationalStatus OsUnprovisioned { get; } = new InterconnectAttachmentOperationalStatus("OS_UNPROVISIONED");
-
-        public static bool operator ==(InterconnectAttachmentOperationalStatus left, InterconnectAttachmentOperationalStatus right) => left.Equals(right);
-        public static bool operator !=(InterconnectAttachmentOperationalStatus left, InterconnectAttachmentOperationalStatus right) => !left.Equals(right);
-
-        public static explicit operator string(InterconnectAttachmentOperationalStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InterconnectAttachmentOperationalStatus other && Equals(other);
-        public bool Equals(InterconnectAttachmentOperationalStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
-    /// - ACTIVE: The attachment has been turned up and is ready to use. 
-    /// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
-    /// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 
-    /// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. 
-    /// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. 
-    /// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
-    /// </summary>
-    [EnumType]
-    public readonly struct InterconnectAttachmentState : IEquatable<InterconnectAttachmentState>
-    {
-        private readonly string _value;
-
-        private InterconnectAttachmentState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static InterconnectAttachmentState Active { get; } = new InterconnectAttachmentState("ACTIVE");
-        public static InterconnectAttachmentState Defunct { get; } = new InterconnectAttachmentState("DEFUNCT");
-        public static InterconnectAttachmentState PartnerRequestReceived { get; } = new InterconnectAttachmentState("PARTNER_REQUEST_RECEIVED");
-        public static InterconnectAttachmentState PendingCustomer { get; } = new InterconnectAttachmentState("PENDING_CUSTOMER");
-        public static InterconnectAttachmentState PendingPartner { get; } = new InterconnectAttachmentState("PENDING_PARTNER");
-        public static InterconnectAttachmentState StateUnspecified { get; } = new InterconnectAttachmentState("STATE_UNSPECIFIED");
-        public static InterconnectAttachmentState Unprovisioned { get; } = new InterconnectAttachmentState("UNPROVISIONED");
-
-        public static bool operator ==(InterconnectAttachmentState left, InterconnectAttachmentState right) => left.Equals(right);
-        public static bool operator !=(InterconnectAttachmentState left, InterconnectAttachmentState right) => !left.Equals(right);
-
-        public static explicit operator string(InterconnectAttachmentState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InterconnectAttachmentState other && Equals(other);
-        public bool Equals(InterconnectAttachmentState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The type of interconnect attachment this is, which can take one of the following values: 
     /// - DEDICATED: an attachment to a Dedicated Interconnect. 
     /// - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
@@ -3539,177 +3124,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
-    /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
-    /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
-    /// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-    /// </summary>
-    [EnumType]
-    public readonly struct InterconnectOperationalStatus : IEquatable<InterconnectOperationalStatus>
-    {
-        private readonly string _value;
-
-        private InterconnectOperationalStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static InterconnectOperationalStatus OsActive { get; } = new InterconnectOperationalStatus("OS_ACTIVE");
-        public static InterconnectOperationalStatus OsUnprovisioned { get; } = new InterconnectOperationalStatus("OS_UNPROVISIONED");
-
-        public static bool operator ==(InterconnectOperationalStatus left, InterconnectOperationalStatus right) => left.Equals(right);
-        public static bool operator !=(InterconnectOperationalStatus left, InterconnectOperationalStatus right) => !left.Equals(right);
-
-        public static explicit operator string(InterconnectOperationalStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InterconnectOperationalStatus other && Equals(other);
-        public bool Equals(InterconnectOperationalStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Form this outage is expected to take, which can take one of the following values: 
-    /// - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window. 
-    /// - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
-    /// </summary>
-    [EnumType]
-    public readonly struct InterconnectOutageNotificationIssueType : IEquatable<InterconnectOutageNotificationIssueType>
-    {
-        private readonly string _value;
-
-        private InterconnectOutageNotificationIssueType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static InterconnectOutageNotificationIssueType ItOutage { get; } = new InterconnectOutageNotificationIssueType("IT_OUTAGE");
-        public static InterconnectOutageNotificationIssueType ItPartialOutage { get; } = new InterconnectOutageNotificationIssueType("IT_PARTIAL_OUTAGE");
-        public static InterconnectOutageNotificationIssueType Outage { get; } = new InterconnectOutageNotificationIssueType("OUTAGE");
-        public static InterconnectOutageNotificationIssueType PartialOutage { get; } = new InterconnectOutageNotificationIssueType("PARTIAL_OUTAGE");
-
-        public static bool operator ==(InterconnectOutageNotificationIssueType left, InterconnectOutageNotificationIssueType right) => left.Equals(right);
-        public static bool operator !=(InterconnectOutageNotificationIssueType left, InterconnectOutageNotificationIssueType right) => !left.Equals(right);
-
-        public static explicit operator string(InterconnectOutageNotificationIssueType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InterconnectOutageNotificationIssueType other && Equals(other);
-        public bool Equals(InterconnectOutageNotificationIssueType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// The party that generated this notification, which can take the following value: 
-    /// - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
-    /// </summary>
-    [EnumType]
-    public readonly struct InterconnectOutageNotificationSource : IEquatable<InterconnectOutageNotificationSource>
-    {
-        private readonly string _value;
-
-        private InterconnectOutageNotificationSource(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static InterconnectOutageNotificationSource Google { get; } = new InterconnectOutageNotificationSource("GOOGLE");
-        public static InterconnectOutageNotificationSource NsrcGoogle { get; } = new InterconnectOutageNotificationSource("NSRC_GOOGLE");
-
-        public static bool operator ==(InterconnectOutageNotificationSource left, InterconnectOutageNotificationSource right) => left.Equals(right);
-        public static bool operator !=(InterconnectOutageNotificationSource left, InterconnectOutageNotificationSource right) => !left.Equals(right);
-
-        public static explicit operator string(InterconnectOutageNotificationSource value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InterconnectOutageNotificationSource other && Equals(other);
-        public bool Equals(InterconnectOutageNotificationSource other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// State of this notification, which can take one of the following values: 
-    /// - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling. 
-    /// - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
-    /// </summary>
-    [EnumType]
-    public readonly struct InterconnectOutageNotificationState : IEquatable<InterconnectOutageNotificationState>
-    {
-        private readonly string _value;
-
-        private InterconnectOutageNotificationState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static InterconnectOutageNotificationState Active { get; } = new InterconnectOutageNotificationState("ACTIVE");
-        public static InterconnectOutageNotificationState Cancelled { get; } = new InterconnectOutageNotificationState("CANCELLED");
-        public static InterconnectOutageNotificationState Completed { get; } = new InterconnectOutageNotificationState("COMPLETED");
-        public static InterconnectOutageNotificationState NsActive { get; } = new InterconnectOutageNotificationState("NS_ACTIVE");
-        public static InterconnectOutageNotificationState NsCanceled { get; } = new InterconnectOutageNotificationState("NS_CANCELED");
-
-        public static bool operator ==(InterconnectOutageNotificationState left, InterconnectOutageNotificationState right) => left.Equals(right);
-        public static bool operator !=(InterconnectOutageNotificationState left, InterconnectOutageNotificationState right) => !left.Equals(right);
-
-        public static explicit operator string(InterconnectOutageNotificationState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InterconnectOutageNotificationState other && Equals(other);
-        public bool Equals(InterconnectOutageNotificationState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
-    /// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
-    /// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
-    /// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-    /// </summary>
-    [EnumType]
-    public readonly struct InterconnectState : IEquatable<InterconnectState>
-    {
-        private readonly string _value;
-
-        private InterconnectState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static InterconnectState Active { get; } = new InterconnectState("ACTIVE");
-        public static InterconnectState Unprovisioned { get; } = new InterconnectState("UNPROVISIONED");
-
-        public static bool operator ==(InterconnectState left, InterconnectState right) => left.Equals(right);
-        public static bool operator !=(InterconnectState left, InterconnectState right) => !left.Equals(right);
-
-        public static explicit operator string(InterconnectState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InterconnectState other && Equals(other);
-        public bool Equals(InterconnectState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The log_name to populate in the Cloud Audit Record.
     /// </summary>
     [EnumType]
@@ -3762,40 +3176,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is LogConfigDataAccessOptionsLogMode other && Equals(other);
         public bool Equals(LogConfigDataAccessOptionsLogMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
-    /// </summary>
-    [EnumType]
-    public readonly struct MachineImageStatus : IEquatable<MachineImageStatus>
-    {
-        private readonly string _value;
-
-        private MachineImageStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static MachineImageStatus Creating { get; } = new MachineImageStatus("CREATING");
-        public static MachineImageStatus Deleting { get; } = new MachineImageStatus("DELETING");
-        public static MachineImageStatus Invalid { get; } = new MachineImageStatus("INVALID");
-        public static MachineImageStatus Ready { get; } = new MachineImageStatus("READY");
-        public static MachineImageStatus Uploading { get; } = new MachineImageStatus("UPLOADING");
-
-        public static bool operator ==(MachineImageStatus left, MachineImageStatus right) => left.Equals(right);
-        public static bool operator !=(MachineImageStatus left, MachineImageStatus right) => !left.Equals(right);
-
-        public static explicit operator string(MachineImageStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is MachineImageStatus other && Equals(other);
-        public bool Equals(MachineImageStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -3906,40 +3286,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
-    /// 
-    /// Valid only if stackType is IPV4_IPV6.
-    /// </summary>
-    [EnumType]
-    public readonly struct NetworkInterfaceIpv6AccessType : IEquatable<NetworkInterfaceIpv6AccessType>
-    {
-        private readonly string _value;
-
-        private NetworkInterfaceIpv6AccessType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static NetworkInterfaceIpv6AccessType External { get; } = new NetworkInterfaceIpv6AccessType("EXTERNAL");
-        public static NetworkInterfaceIpv6AccessType Internal { get; } = new NetworkInterfaceIpv6AccessType("INTERNAL");
-        public static NetworkInterfaceIpv6AccessType UnspecifiedIpv6AccessType { get; } = new NetworkInterfaceIpv6AccessType("UNSPECIFIED_IPV6_ACCESS_TYPE");
-
-        public static bool operator ==(NetworkInterfaceIpv6AccessType left, NetworkInterfaceIpv6AccessType right) => left.Equals(right);
-        public static bool operator !=(NetworkInterfaceIpv6AccessType left, NetworkInterfaceIpv6AccessType right) => !left.Equals(right);
-
-        public static explicit operator string(NetworkInterfaceIpv6AccessType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is NetworkInterfaceIpv6AccessType other && Equals(other);
-        public bool Equals(NetworkInterfaceIpv6AccessType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
     /// </summary>
     [EnumType]
@@ -3998,37 +3344,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is NetworkInterfaceStackType other && Equals(other);
         public bool Equals(NetworkInterfaceStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-    /// </summary>
-    [EnumType]
-    public readonly struct NetworkPeeringState : IEquatable<NetworkPeeringState>
-    {
-        private readonly string _value;
-
-        private NetworkPeeringState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static NetworkPeeringState Active { get; } = new NetworkPeeringState("ACTIVE");
-        public static NetworkPeeringState Inactive { get; } = new NetworkPeeringState("INACTIVE");
-
-        public static bool operator ==(NetworkPeeringState left, NetworkPeeringState right) => left.Equals(right);
-        public static bool operator !=(NetworkPeeringState left, NetworkPeeringState right) => !left.Equals(right);
-
-        public static explicit operator string(NetworkPeeringState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is NetworkPeeringState other && Equals(other);
-        public bool Equals(NetworkPeeringState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4252,39 +3567,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
-    /// </summary>
-    [EnumType]
-    public readonly struct NodeTemplateStatus : IEquatable<NodeTemplateStatus>
-    {
-        private readonly string _value;
-
-        private NodeTemplateStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static NodeTemplateStatus Creating { get; } = new NodeTemplateStatus("CREATING");
-        public static NodeTemplateStatus Deleting { get; } = new NodeTemplateStatus("DELETING");
-        public static NodeTemplateStatus Invalid { get; } = new NodeTemplateStatus("INVALID");
-        public static NodeTemplateStatus Ready { get; } = new NodeTemplateStatus("READY");
-
-        public static bool operator ==(NodeTemplateStatus left, NodeTemplateStatus right) => left.Equals(right);
-        public static bool operator !=(NodeTemplateStatus left, NodeTemplateStatus right) => !left.Equals(right);
-
-        public static explicit operator string(NodeTemplateStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is NodeTemplateStatus other && Equals(other);
-        public bool Equals(NodeTemplateStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
     /// </summary>
     [EnumType]
@@ -4410,106 +3692,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is PublicAdvertisedPrefixStatus other && Equals(other);
         public bool Equals(PublicAdvertisedPrefixStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the sub public delegated prefix.
-    /// </summary>
-    [EnumType]
-    public readonly struct PublicDelegatedPrefixPublicDelegatedSubPrefixStatus : IEquatable<PublicDelegatedPrefixPublicDelegatedSubPrefixStatus>
-    {
-        private readonly string _value;
-
-        private PublicDelegatedPrefixPublicDelegatedSubPrefixStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static PublicDelegatedPrefixPublicDelegatedSubPrefixStatus Active { get; } = new PublicDelegatedPrefixPublicDelegatedSubPrefixStatus("ACTIVE");
-        public static PublicDelegatedPrefixPublicDelegatedSubPrefixStatus Inactive { get; } = new PublicDelegatedPrefixPublicDelegatedSubPrefixStatus("INACTIVE");
-
-        public static bool operator ==(PublicDelegatedPrefixPublicDelegatedSubPrefixStatus left, PublicDelegatedPrefixPublicDelegatedSubPrefixStatus right) => left.Equals(right);
-        public static bool operator !=(PublicDelegatedPrefixPublicDelegatedSubPrefixStatus left, PublicDelegatedPrefixPublicDelegatedSubPrefixStatus right) => !left.Equals(right);
-
-        public static explicit operator string(PublicDelegatedPrefixPublicDelegatedSubPrefixStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is PublicDelegatedPrefixPublicDelegatedSubPrefixStatus other && Equals(other);
-        public bool Equals(PublicDelegatedPrefixPublicDelegatedSubPrefixStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the public delegated prefix.
-    /// </summary>
-    [EnumType]
-    public readonly struct PublicDelegatedPrefixStatus : IEquatable<PublicDelegatedPrefixStatus>
-    {
-        private readonly string _value;
-
-        private PublicDelegatedPrefixStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static PublicDelegatedPrefixStatus Announced { get; } = new PublicDelegatedPrefixStatus("ANNOUNCED");
-        public static PublicDelegatedPrefixStatus Deleting { get; } = new PublicDelegatedPrefixStatus("DELETING");
-        public static PublicDelegatedPrefixStatus Initializing { get; } = new PublicDelegatedPrefixStatus("INITIALIZING");
-
-        public static bool operator ==(PublicDelegatedPrefixStatus left, PublicDelegatedPrefixStatus right) => left.Equals(right);
-        public static bool operator !=(PublicDelegatedPrefixStatus left, PublicDelegatedPrefixStatus right) => !left.Equals(right);
-
-        public static explicit operator string(PublicDelegatedPrefixStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is PublicDelegatedPrefixStatus other && Equals(other);
-        public bool Equals(PublicDelegatedPrefixStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-    /// - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-    /// - DELETING: Configuration is being deleted. 
-    /// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-    /// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
-    /// </summary>
-    [EnumType]
-    public readonly struct RegionAutoscalerStatus : IEquatable<RegionAutoscalerStatus>
-    {
-        private readonly string _value;
-
-        private RegionAutoscalerStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RegionAutoscalerStatus Active { get; } = new RegionAutoscalerStatus("ACTIVE");
-        public static RegionAutoscalerStatus Deleting { get; } = new RegionAutoscalerStatus("DELETING");
-        public static RegionAutoscalerStatus Error { get; } = new RegionAutoscalerStatus("ERROR");
-        public static RegionAutoscalerStatus Pending { get; } = new RegionAutoscalerStatus("PENDING");
-
-        public static bool operator ==(RegionAutoscalerStatus left, RegionAutoscalerStatus right) => left.Equals(right);
-        public static bool operator !=(RegionAutoscalerStatus left, RegionAutoscalerStatus right) => !left.Equals(right);
-
-        public static explicit operator string(RegionAutoscalerStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RegionAutoscalerStatus other && Equals(other);
-        public bool Equals(RegionAutoscalerStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4753,39 +3935,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-    /// </summary>
-    [EnumType]
-    public readonly struct RegionCommitmentStatus : IEquatable<RegionCommitmentStatus>
-    {
-        private readonly string _value;
-
-        private RegionCommitmentStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RegionCommitmentStatus Active { get; } = new RegionCommitmentStatus("ACTIVE");
-        public static RegionCommitmentStatus Creating { get; } = new RegionCommitmentStatus("CREATING");
-        public static RegionCommitmentStatus Expired { get; } = new RegionCommitmentStatus("EXPIRED");
-        public static RegionCommitmentStatus NotYetActive { get; } = new RegionCommitmentStatus("NOT_YET_ACTIVE");
-
-        public static bool operator ==(RegionCommitmentStatus left, RegionCommitmentStatus right) => left.Equals(right);
-        public static bool operator !=(RegionCommitmentStatus left, RegionCommitmentStatus right) => !left.Equals(right);
-
-        public static explicit operator string(RegionCommitmentStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RegionCommitmentStatus other && Equals(other);
-        public bool Equals(RegionCommitmentStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
     /// </summary>
     [EnumType]
@@ -4849,45 +3998,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionDiskInterface other && Equals(other);
         public bool Equals(RegionDiskInterface other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of disk creation.  
-    /// - CREATING: Disk is provisioning. 
-    /// - RESTORING: Source data is being copied into the disk. 
-    /// - FAILED: Disk creation failed. 
-    /// - READY: Disk is ready for use. 
-    /// - DELETING: Disk is deleting.
-    /// </summary>
-    [EnumType]
-    public readonly struct RegionDiskStatus : IEquatable<RegionDiskStatus>
-    {
-        private readonly string _value;
-
-        private RegionDiskStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RegionDiskStatus Creating { get; } = new RegionDiskStatus("CREATING");
-        public static RegionDiskStatus Deleting { get; } = new RegionDiskStatus("DELETING");
-        public static RegionDiskStatus Failed { get; } = new RegionDiskStatus("FAILED");
-        public static RegionDiskStatus Ready { get; } = new RegionDiskStatus("READY");
-        public static RegionDiskStatus Restoring { get; } = new RegionDiskStatus("RESTORING");
-
-        public static bool operator ==(RegionDiskStatus left, RegionDiskStatus right) => left.Equals(right);
-        public static bool operator !=(RegionDiskStatus left, RegionDiskStatus right) => !left.Equals(right);
-
-        public static explicit operator string(RegionDiskStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RegionDiskStatus other && Equals(other);
-        public bool Equals(RegionDiskStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4966,39 +4076,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-    /// </summary>
-    [EnumType]
-    public readonly struct RegionInPlaceSnapshotStatus : IEquatable<RegionInPlaceSnapshotStatus>
-    {
-        private readonly string _value;
-
-        private RegionInPlaceSnapshotStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RegionInPlaceSnapshotStatus Creating { get; } = new RegionInPlaceSnapshotStatus("CREATING");
-        public static RegionInPlaceSnapshotStatus Deleting { get; } = new RegionInPlaceSnapshotStatus("DELETING");
-        public static RegionInPlaceSnapshotStatus Failed { get; } = new RegionInPlaceSnapshotStatus("FAILED");
-        public static RegionInPlaceSnapshotStatus Ready { get; } = new RegionInPlaceSnapshotStatus("READY");
-
-        public static bool operator ==(RegionInPlaceSnapshotStatus left, RegionInPlaceSnapshotStatus right) => left.Equals(right);
-        public static bool operator !=(RegionInPlaceSnapshotStatus left, RegionInPlaceSnapshotStatus right) => !left.Equals(right);
-
-        public static explicit operator string(RegionInPlaceSnapshotStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RegionInPlaceSnapshotStatus other && Equals(other);
-        public bool Equals(RegionInPlaceSnapshotStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
     /// </summary>
     [EnumType]
@@ -5022,39 +4099,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionInstanceGroupManagerFailoverAction other && Equals(other);
         public bool Equals(RegionInstanceGroupManagerFailoverAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-    /// </summary>
-    [EnumType]
-    public readonly struct RegionInstantSnapshotStatus : IEquatable<RegionInstantSnapshotStatus>
-    {
-        private readonly string _value;
-
-        private RegionInstantSnapshotStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RegionInstantSnapshotStatus Creating { get; } = new RegionInstantSnapshotStatus("CREATING");
-        public static RegionInstantSnapshotStatus Deleting { get; } = new RegionInstantSnapshotStatus("DELETING");
-        public static RegionInstantSnapshotStatus Failed { get; } = new RegionInstantSnapshotStatus("FAILED");
-        public static RegionInstantSnapshotStatus Ready { get; } = new RegionInstantSnapshotStatus("READY");
-
-        public static bool operator ==(RegionInstantSnapshotStatus left, RegionInstantSnapshotStatus right) => left.Equals(right);
-        public static bool operator !=(RegionInstantSnapshotStatus left, RegionInstantSnapshotStatus right) => !left.Equals(right);
-
-        public static explicit operator string(RegionInstantSnapshotStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RegionInstantSnapshotStatus other && Equals(other);
-        public bool Equals(RegionInstantSnapshotStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -5224,40 +4268,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ReservationAffinityConsumeReservationType other && Equals(other);
         public bool Equals(ReservationAffinityConsumeReservationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the reservation.
-    /// </summary>
-    [EnumType]
-    public readonly struct ReservationStatus : IEquatable<ReservationStatus>
-    {
-        private readonly string _value;
-
-        private ReservationStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static ReservationStatus Creating { get; } = new ReservationStatus("CREATING");
-        public static ReservationStatus Deleting { get; } = new ReservationStatus("DELETING");
-        public static ReservationStatus Invalid { get; } = new ReservationStatus("INVALID");
-        public static ReservationStatus Ready { get; } = new ReservationStatus("READY");
-        public static ReservationStatus Updating { get; } = new ReservationStatus("UPDATING");
-
-        public static bool operator ==(ReservationStatus left, ReservationStatus right) => left.Equals(right);
-        public static bool operator !=(ReservationStatus left, ReservationStatus right) => !left.Equals(right);
-
-        public static explicit operator string(ReservationStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ReservationStatus other && Equals(other);
-        public bool Equals(ReservationStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -5491,40 +4501,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The status of resource policy creation.
-    /// </summary>
-    [EnumType]
-    public readonly struct ResourcePolicyStatus : IEquatable<ResourcePolicyStatus>
-    {
-        private readonly string _value;
-
-        private ResourcePolicyStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static ResourcePolicyStatus Creating { get; } = new ResourcePolicyStatus("CREATING");
-        public static ResourcePolicyStatus Deleting { get; } = new ResourcePolicyStatus("DELETING");
-        public static ResourcePolicyStatus Expired { get; } = new ResourcePolicyStatus("EXPIRED");
-        public static ResourcePolicyStatus Invalid { get; } = new ResourcePolicyStatus("INVALID");
-        public static ResourcePolicyStatus Ready { get; } = new ResourcePolicyStatus("READY");
-
-        public static bool operator ==(ResourcePolicyStatus left, ResourcePolicyStatus right) => left.Equals(right);
-        public static bool operator !=(ResourcePolicyStatus left, ResourcePolicyStatus right) => !left.Equals(right);
-
-        public static explicit operator string(ResourcePolicyStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ResourcePolicyStatus other && Equals(other);
-        public bool Equals(ResourcePolicyStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
     /// </summary>
     [EnumType]
@@ -5554,60 +4530,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ResourcePolicyWeeklyCycleDayOfWeekDay other && Equals(other);
         public bool Equals(ResourcePolicyWeeklyCycleDayOfWeekDay other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-    /// </summary>
-    [EnumType]
-    public readonly struct RouteWarningsItemCode : IEquatable<RouteWarningsItemCode>
-    {
-        private readonly string _value;
-
-        private RouteWarningsItemCode(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RouteWarningsItemCode CleanupFailed { get; } = new RouteWarningsItemCode("CLEANUP_FAILED");
-        public static RouteWarningsItemCode DeprecatedResourceUsed { get; } = new RouteWarningsItemCode("DEPRECATED_RESOURCE_USED");
-        public static RouteWarningsItemCode DeprecatedTypeUsed { get; } = new RouteWarningsItemCode("DEPRECATED_TYPE_USED");
-        public static RouteWarningsItemCode DiskSizeLargerThanImageSize { get; } = new RouteWarningsItemCode("DISK_SIZE_LARGER_THAN_IMAGE_SIZE");
-        public static RouteWarningsItemCode ExperimentalTypeUsed { get; } = new RouteWarningsItemCode("EXPERIMENTAL_TYPE_USED");
-        public static RouteWarningsItemCode ExternalApiWarning { get; } = new RouteWarningsItemCode("EXTERNAL_API_WARNING");
-        public static RouteWarningsItemCode FieldValueOverriden { get; } = new RouteWarningsItemCode("FIELD_VALUE_OVERRIDEN");
-        public static RouteWarningsItemCode InjectedKernelsDeprecated { get; } = new RouteWarningsItemCode("INJECTED_KERNELS_DEPRECATED");
-        public static RouteWarningsItemCode LargeDeploymentWarning { get; } = new RouteWarningsItemCode("LARGE_DEPLOYMENT_WARNING");
-        public static RouteWarningsItemCode MissingTypeDependency { get; } = new RouteWarningsItemCode("MISSING_TYPE_DEPENDENCY");
-        public static RouteWarningsItemCode NextHopAddressNotAssigned { get; } = new RouteWarningsItemCode("NEXT_HOP_ADDRESS_NOT_ASSIGNED");
-        public static RouteWarningsItemCode NextHopCannotIpForward { get; } = new RouteWarningsItemCode("NEXT_HOP_CANNOT_IP_FORWARD");
-        public static RouteWarningsItemCode NextHopInstanceNotFound { get; } = new RouteWarningsItemCode("NEXT_HOP_INSTANCE_NOT_FOUND");
-        public static RouteWarningsItemCode NextHopInstanceNotOnNetwork { get; } = new RouteWarningsItemCode("NEXT_HOP_INSTANCE_NOT_ON_NETWORK");
-        public static RouteWarningsItemCode NextHopNotRunning { get; } = new RouteWarningsItemCode("NEXT_HOP_NOT_RUNNING");
-        public static RouteWarningsItemCode NotCriticalError { get; } = new RouteWarningsItemCode("NOT_CRITICAL_ERROR");
-        public static RouteWarningsItemCode NoResultsOnPage { get; } = new RouteWarningsItemCode("NO_RESULTS_ON_PAGE");
-        public static RouteWarningsItemCode PartialSuccess { get; } = new RouteWarningsItemCode("PARTIAL_SUCCESS");
-        public static RouteWarningsItemCode RequiredTosAgreement { get; } = new RouteWarningsItemCode("REQUIRED_TOS_AGREEMENT");
-        public static RouteWarningsItemCode ResourceInUseByOtherResourceWarning { get; } = new RouteWarningsItemCode("RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING");
-        public static RouteWarningsItemCode ResourceNotDeleted { get; } = new RouteWarningsItemCode("RESOURCE_NOT_DELETED");
-        public static RouteWarningsItemCode SchemaValidationIgnored { get; } = new RouteWarningsItemCode("SCHEMA_VALIDATION_IGNORED");
-        public static RouteWarningsItemCode SingleInstancePropertyTemplate { get; } = new RouteWarningsItemCode("SINGLE_INSTANCE_PROPERTY_TEMPLATE");
-        public static RouteWarningsItemCode UndeclaredProperties { get; } = new RouteWarningsItemCode("UNDECLARED_PROPERTIES");
-        public static RouteWarningsItemCode Unreachable { get; } = new RouteWarningsItemCode("UNREACHABLE");
-
-        public static bool operator ==(RouteWarningsItemCode left, RouteWarningsItemCode right) => left.Equals(right);
-        public static bool operator !=(RouteWarningsItemCode left, RouteWarningsItemCode right) => !left.Equals(right);
-
-        public static explicit operator string(RouteWarningsItemCode value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RouteWarningsItemCode other && Equals(other);
-        public bool Equals(RouteWarningsItemCode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -5866,72 +4788,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The resource that configures and manages this BGP peer. 
-    /// - MANAGED_BY_USER is the default value and can be managed by you or other users 
-    /// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
-    /// </summary>
-    [EnumType]
-    public readonly struct RouterBgpPeerManagementType : IEquatable<RouterBgpPeerManagementType>
-    {
-        private readonly string _value;
-
-        private RouterBgpPeerManagementType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RouterBgpPeerManagementType ManagedByAttachment { get; } = new RouterBgpPeerManagementType("MANAGED_BY_ATTACHMENT");
-        public static RouterBgpPeerManagementType ManagedByUser { get; } = new RouterBgpPeerManagementType("MANAGED_BY_USER");
-
-        public static bool operator ==(RouterBgpPeerManagementType left, RouterBgpPeerManagementType right) => left.Equals(right);
-        public static bool operator !=(RouterBgpPeerManagementType left, RouterBgpPeerManagementType right) => !left.Equals(right);
-
-        public static explicit operator string(RouterBgpPeerManagementType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RouterBgpPeerManagementType other && Equals(other);
-        public bool Equals(RouterBgpPeerManagementType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The resource that configures and manages this interface. 
-    /// - MANAGED_BY_USER is the default value and can be managed directly by users. 
-    /// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
-    /// </summary>
-    [EnumType]
-    public readonly struct RouterInterfaceManagementType : IEquatable<RouterInterfaceManagementType>
-    {
-        private readonly string _value;
-
-        private RouterInterfaceManagementType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RouterInterfaceManagementType ManagedByAttachment { get; } = new RouterInterfaceManagementType("MANAGED_BY_ATTACHMENT");
-        public static RouterInterfaceManagementType ManagedByUser { get; } = new RouterInterfaceManagementType("MANAGED_BY_USER");
-
-        public static bool operator ==(RouterInterfaceManagementType left, RouterInterfaceManagementType right) => left.Equals(right);
-        public static bool operator !=(RouterInterfaceManagementType left, RouterInterfaceManagementType right) => !left.Equals(right);
-
-        public static explicit operator string(RouterInterfaceManagementType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RouterInterfaceManagementType other && Equals(other);
-        public bool Equals(RouterInterfaceManagementType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values: 
     /// - ERRORS_ONLY: Export logs only for connection failures. 
     /// - TRANSLATIONS_ONLY: Export logs only for successful connections. 
@@ -6160,131 +5016,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SSLHealthCheckProxyHeader other && Equals(other);
         public bool Equals(SSLHealthCheckProxyHeader other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
-    /// </summary>
-    [EnumType]
-    public readonly struct SavedAttachedDiskInterface : IEquatable<SavedAttachedDiskInterface>
-    {
-        private readonly string _value;
-
-        private SavedAttachedDiskInterface(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SavedAttachedDiskInterface Nvdimm { get; } = new SavedAttachedDiskInterface("NVDIMM");
-        public static SavedAttachedDiskInterface Nvme { get; } = new SavedAttachedDiskInterface("NVME");
-        public static SavedAttachedDiskInterface Scsi { get; } = new SavedAttachedDiskInterface("SCSI");
-
-        public static bool operator ==(SavedAttachedDiskInterface left, SavedAttachedDiskInterface right) => left.Equals(right);
-        public static bool operator !=(SavedAttachedDiskInterface left, SavedAttachedDiskInterface right) => !left.Equals(right);
-
-        public static explicit operator string(SavedAttachedDiskInterface value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SavedAttachedDiskInterface other && Equals(other);
-        public bool Equals(SavedAttachedDiskInterface other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// The mode in which this disk is attached to the source instance, either READ_WRITE or READ_ONLY.
-    /// </summary>
-    [EnumType]
-    public readonly struct SavedAttachedDiskMode : IEquatable<SavedAttachedDiskMode>
-    {
-        private readonly string _value;
-
-        private SavedAttachedDiskMode(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SavedAttachedDiskMode ReadOnly { get; } = new SavedAttachedDiskMode("READ_ONLY");
-        public static SavedAttachedDiskMode ReadWrite { get; } = new SavedAttachedDiskMode("READ_WRITE");
-
-        public static bool operator ==(SavedAttachedDiskMode left, SavedAttachedDiskMode right) => left.Equals(right);
-        public static bool operator !=(SavedAttachedDiskMode left, SavedAttachedDiskMode right) => !left.Equals(right);
-
-        public static explicit operator string(SavedAttachedDiskMode value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SavedAttachedDiskMode other && Equals(other);
-        public bool Equals(SavedAttachedDiskMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
-    /// </summary>
-    [EnumType]
-    public readonly struct SavedAttachedDiskStorageBytesStatus : IEquatable<SavedAttachedDiskStorageBytesStatus>
-    {
-        private readonly string _value;
-
-        private SavedAttachedDiskStorageBytesStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SavedAttachedDiskStorageBytesStatus Updating { get; } = new SavedAttachedDiskStorageBytesStatus("UPDATING");
-        public static SavedAttachedDiskStorageBytesStatus UpToDate { get; } = new SavedAttachedDiskStorageBytesStatus("UP_TO_DATE");
-
-        public static bool operator ==(SavedAttachedDiskStorageBytesStatus left, SavedAttachedDiskStorageBytesStatus right) => left.Equals(right);
-        public static bool operator !=(SavedAttachedDiskStorageBytesStatus left, SavedAttachedDiskStorageBytesStatus right) => !left.Equals(right);
-
-        public static explicit operator string(SavedAttachedDiskStorageBytesStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SavedAttachedDiskStorageBytesStatus other && Equals(other);
-        public bool Equals(SavedAttachedDiskStorageBytesStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
-    /// </summary>
-    [EnumType]
-    public readonly struct SavedAttachedDiskType : IEquatable<SavedAttachedDiskType>
-    {
-        private readonly string _value;
-
-        private SavedAttachedDiskType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SavedAttachedDiskType Persistent { get; } = new SavedAttachedDiskType("PERSISTENT");
-        public static SavedAttachedDiskType Scratch { get; } = new SavedAttachedDiskType("SCRATCH");
-
-        public static bool operator ==(SavedAttachedDiskType left, SavedAttachedDiskType right) => left.Equals(right);
-        public static bool operator !=(SavedAttachedDiskType left, SavedAttachedDiskType right) => !left.Equals(right);
-
-        public static explicit operator string(SavedAttachedDiskType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SavedAttachedDiskType other && Equals(other);
-        public bool Equals(SavedAttachedDiskType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -6607,40 +5338,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The status of a connected endpoint to this service attachment.
-    /// </summary>
-    [EnumType]
-    public readonly struct ServiceAttachmentConnectedEndpointStatus : IEquatable<ServiceAttachmentConnectedEndpointStatus>
-    {
-        private readonly string _value;
-
-        private ServiceAttachmentConnectedEndpointStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static ServiceAttachmentConnectedEndpointStatus Accepted { get; } = new ServiceAttachmentConnectedEndpointStatus("ACCEPTED");
-        public static ServiceAttachmentConnectedEndpointStatus Closed { get; } = new ServiceAttachmentConnectedEndpointStatus("CLOSED");
-        public static ServiceAttachmentConnectedEndpointStatus Pending { get; } = new ServiceAttachmentConnectedEndpointStatus("PENDING");
-        public static ServiceAttachmentConnectedEndpointStatus Rejected { get; } = new ServiceAttachmentConnectedEndpointStatus("REJECTED");
-        public static ServiceAttachmentConnectedEndpointStatus StatusUnspecified { get; } = new ServiceAttachmentConnectedEndpointStatus("STATUS_UNSPECIFIED");
-
-        public static bool operator ==(ServiceAttachmentConnectedEndpointStatus left, ServiceAttachmentConnectedEndpointStatus right) => left.Equals(right);
-        public static bool operator !=(ServiceAttachmentConnectedEndpointStatus left, ServiceAttachmentConnectedEndpointStatus right) => !left.Equals(right);
-
-        public static explicit operator string(ServiceAttachmentConnectedEndpointStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ServiceAttachmentConnectedEndpointStatus other && Equals(other);
-        public bool Equals(ServiceAttachmentConnectedEndpointStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
     /// </summary>
     [EnumType]
@@ -6665,172 +5362,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ServiceAttachmentConnectionPreference other && Equals(other);
         public bool Equals(ServiceAttachmentConnectionPreference other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// The status of the forwarding rule.
-    /// </summary>
-    [EnumType]
-    public readonly struct ServiceAttachmentConsumerForwardingRuleStatus : IEquatable<ServiceAttachmentConsumerForwardingRuleStatus>
-    {
-        private readonly string _value;
-
-        private ServiceAttachmentConsumerForwardingRuleStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static ServiceAttachmentConsumerForwardingRuleStatus Accepted { get; } = new ServiceAttachmentConsumerForwardingRuleStatus("ACCEPTED");
-        public static ServiceAttachmentConsumerForwardingRuleStatus Closed { get; } = new ServiceAttachmentConsumerForwardingRuleStatus("CLOSED");
-        public static ServiceAttachmentConsumerForwardingRuleStatus Pending { get; } = new ServiceAttachmentConsumerForwardingRuleStatus("PENDING");
-        public static ServiceAttachmentConsumerForwardingRuleStatus Rejected { get; } = new ServiceAttachmentConsumerForwardingRuleStatus("REJECTED");
-        public static ServiceAttachmentConsumerForwardingRuleStatus StatusUnspecified { get; } = new ServiceAttachmentConsumerForwardingRuleStatus("STATUS_UNSPECIFIED");
-
-        public static bool operator ==(ServiceAttachmentConsumerForwardingRuleStatus left, ServiceAttachmentConsumerForwardingRuleStatus right) => left.Equals(right);
-        public static bool operator !=(ServiceAttachmentConsumerForwardingRuleStatus left, ServiceAttachmentConsumerForwardingRuleStatus right) => !left.Equals(right);
-
-        public static explicit operator string(ServiceAttachmentConsumerForwardingRuleStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ServiceAttachmentConsumerForwardingRuleStatus other && Equals(other);
-        public bool Equals(ServiceAttachmentConsumerForwardingRuleStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
-    /// </summary>
-    [EnumType]
-    public readonly struct SnapshotStatus : IEquatable<SnapshotStatus>
-    {
-        private readonly string _value;
-
-        private SnapshotStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SnapshotStatus Creating { get; } = new SnapshotStatus("CREATING");
-        public static SnapshotStatus Deleting { get; } = new SnapshotStatus("DELETING");
-        public static SnapshotStatus Failed { get; } = new SnapshotStatus("FAILED");
-        public static SnapshotStatus Ready { get; } = new SnapshotStatus("READY");
-        public static SnapshotStatus Uploading { get; } = new SnapshotStatus("UPLOADING");
-
-        public static bool operator ==(SnapshotStatus left, SnapshotStatus right) => left.Equals(right);
-        public static bool operator !=(SnapshotStatus left, SnapshotStatus right) => !left.Equals(right);
-
-        public static explicit operator string(SnapshotStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SnapshotStatus other && Equals(other);
-        public bool Equals(SnapshotStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
-    /// </summary>
-    [EnumType]
-    public readonly struct SnapshotStorageBytesStatus : IEquatable<SnapshotStorageBytesStatus>
-    {
-        private readonly string _value;
-
-        private SnapshotStorageBytesStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SnapshotStorageBytesStatus Updating { get; } = new SnapshotStorageBytesStatus("UPDATING");
-        public static SnapshotStorageBytesStatus UpToDate { get; } = new SnapshotStorageBytesStatus("UP_TO_DATE");
-
-        public static bool operator ==(SnapshotStorageBytesStatus left, SnapshotStorageBytesStatus right) => left.Equals(right);
-        public static bool operator !=(SnapshotStorageBytesStatus left, SnapshotStorageBytesStatus right) => !left.Equals(right);
-
-        public static explicit operator string(SnapshotStorageBytesStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SnapshotStorageBytesStatus other && Equals(other);
-        public bool Equals(SnapshotStorageBytesStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// PostKeyRevocationActionType of the instance.
-    /// </summary>
-    [EnumType]
-    public readonly struct SourceInstancePropertiesPostKeyRevocationActionType : IEquatable<SourceInstancePropertiesPostKeyRevocationActionType>
-    {
-        private readonly string _value;
-
-        private SourceInstancePropertiesPostKeyRevocationActionType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SourceInstancePropertiesPostKeyRevocationActionType Noop { get; } = new SourceInstancePropertiesPostKeyRevocationActionType("NOOP");
-        public static SourceInstancePropertiesPostKeyRevocationActionType PostKeyRevocationActionTypeUnspecified { get; } = new SourceInstancePropertiesPostKeyRevocationActionType("POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED");
-        public static SourceInstancePropertiesPostKeyRevocationActionType Shutdown { get; } = new SourceInstancePropertiesPostKeyRevocationActionType("SHUTDOWN");
-
-        public static bool operator ==(SourceInstancePropertiesPostKeyRevocationActionType left, SourceInstancePropertiesPostKeyRevocationActionType right) => left.Equals(right);
-        public static bool operator !=(SourceInstancePropertiesPostKeyRevocationActionType left, SourceInstancePropertiesPostKeyRevocationActionType right) => !left.Equals(right);
-
-        public static explicit operator string(SourceInstancePropertiesPostKeyRevocationActionType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SourceInstancePropertiesPostKeyRevocationActionType other && Equals(other);
-        public bool Equals(SourceInstancePropertiesPostKeyRevocationActionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output only] Status of the managed certificate resource.
-    /// </summary>
-    [EnumType]
-    public readonly struct SslCertificateManagedSslCertificateStatus : IEquatable<SslCertificateManagedSslCertificateStatus>
-    {
-        private readonly string _value;
-
-        private SslCertificateManagedSslCertificateStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SslCertificateManagedSslCertificateStatus Active { get; } = new SslCertificateManagedSslCertificateStatus("ACTIVE");
-        public static SslCertificateManagedSslCertificateStatus ManagedCertificateStatusUnspecified { get; } = new SslCertificateManagedSslCertificateStatus("MANAGED_CERTIFICATE_STATUS_UNSPECIFIED");
-        public static SslCertificateManagedSslCertificateStatus Provisioning { get; } = new SslCertificateManagedSslCertificateStatus("PROVISIONING");
-        public static SslCertificateManagedSslCertificateStatus ProvisioningFailed { get; } = new SslCertificateManagedSslCertificateStatus("PROVISIONING_FAILED");
-        public static SslCertificateManagedSslCertificateStatus ProvisioningFailedPermanently { get; } = new SslCertificateManagedSslCertificateStatus("PROVISIONING_FAILED_PERMANENTLY");
-        public static SslCertificateManagedSslCertificateStatus RenewalFailed { get; } = new SslCertificateManagedSslCertificateStatus("RENEWAL_FAILED");
-
-        public static bool operator ==(SslCertificateManagedSslCertificateStatus left, SslCertificateManagedSslCertificateStatus right) => left.Equals(right);
-        public static bool operator !=(SslCertificateManagedSslCertificateStatus left, SslCertificateManagedSslCertificateStatus right) => !left.Equals(right);
-
-        public static explicit operator string(SslCertificateManagedSslCertificateStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SslCertificateManagedSslCertificateStatus other && Equals(other);
-        public bool Equals(SslCertificateManagedSslCertificateStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -6928,60 +5459,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SslPolicyProfile other && Equals(other);
         public bool Equals(SslPolicyProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-    /// </summary>
-    [EnumType]
-    public readonly struct SslPolicyWarningsItemCode : IEquatable<SslPolicyWarningsItemCode>
-    {
-        private readonly string _value;
-
-        private SslPolicyWarningsItemCode(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SslPolicyWarningsItemCode CleanupFailed { get; } = new SslPolicyWarningsItemCode("CLEANUP_FAILED");
-        public static SslPolicyWarningsItemCode DeprecatedResourceUsed { get; } = new SslPolicyWarningsItemCode("DEPRECATED_RESOURCE_USED");
-        public static SslPolicyWarningsItemCode DeprecatedTypeUsed { get; } = new SslPolicyWarningsItemCode("DEPRECATED_TYPE_USED");
-        public static SslPolicyWarningsItemCode DiskSizeLargerThanImageSize { get; } = new SslPolicyWarningsItemCode("DISK_SIZE_LARGER_THAN_IMAGE_SIZE");
-        public static SslPolicyWarningsItemCode ExperimentalTypeUsed { get; } = new SslPolicyWarningsItemCode("EXPERIMENTAL_TYPE_USED");
-        public static SslPolicyWarningsItemCode ExternalApiWarning { get; } = new SslPolicyWarningsItemCode("EXTERNAL_API_WARNING");
-        public static SslPolicyWarningsItemCode FieldValueOverriden { get; } = new SslPolicyWarningsItemCode("FIELD_VALUE_OVERRIDEN");
-        public static SslPolicyWarningsItemCode InjectedKernelsDeprecated { get; } = new SslPolicyWarningsItemCode("INJECTED_KERNELS_DEPRECATED");
-        public static SslPolicyWarningsItemCode LargeDeploymentWarning { get; } = new SslPolicyWarningsItemCode("LARGE_DEPLOYMENT_WARNING");
-        public static SslPolicyWarningsItemCode MissingTypeDependency { get; } = new SslPolicyWarningsItemCode("MISSING_TYPE_DEPENDENCY");
-        public static SslPolicyWarningsItemCode NextHopAddressNotAssigned { get; } = new SslPolicyWarningsItemCode("NEXT_HOP_ADDRESS_NOT_ASSIGNED");
-        public static SslPolicyWarningsItemCode NextHopCannotIpForward { get; } = new SslPolicyWarningsItemCode("NEXT_HOP_CANNOT_IP_FORWARD");
-        public static SslPolicyWarningsItemCode NextHopInstanceNotFound { get; } = new SslPolicyWarningsItemCode("NEXT_HOP_INSTANCE_NOT_FOUND");
-        public static SslPolicyWarningsItemCode NextHopInstanceNotOnNetwork { get; } = new SslPolicyWarningsItemCode("NEXT_HOP_INSTANCE_NOT_ON_NETWORK");
-        public static SslPolicyWarningsItemCode NextHopNotRunning { get; } = new SslPolicyWarningsItemCode("NEXT_HOP_NOT_RUNNING");
-        public static SslPolicyWarningsItemCode NotCriticalError { get; } = new SslPolicyWarningsItemCode("NOT_CRITICAL_ERROR");
-        public static SslPolicyWarningsItemCode NoResultsOnPage { get; } = new SslPolicyWarningsItemCode("NO_RESULTS_ON_PAGE");
-        public static SslPolicyWarningsItemCode PartialSuccess { get; } = new SslPolicyWarningsItemCode("PARTIAL_SUCCESS");
-        public static SslPolicyWarningsItemCode RequiredTosAgreement { get; } = new SslPolicyWarningsItemCode("REQUIRED_TOS_AGREEMENT");
-        public static SslPolicyWarningsItemCode ResourceInUseByOtherResourceWarning { get; } = new SslPolicyWarningsItemCode("RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING");
-        public static SslPolicyWarningsItemCode ResourceNotDeleted { get; } = new SslPolicyWarningsItemCode("RESOURCE_NOT_DELETED");
-        public static SslPolicyWarningsItemCode SchemaValidationIgnored { get; } = new SslPolicyWarningsItemCode("SCHEMA_VALIDATION_IGNORED");
-        public static SslPolicyWarningsItemCode SingleInstancePropertyTemplate { get; } = new SslPolicyWarningsItemCode("SINGLE_INSTANCE_PROPERTY_TEMPLATE");
-        public static SslPolicyWarningsItemCode UndeclaredProperties { get; } = new SslPolicyWarningsItemCode("UNDECLARED_PROPERTIES");
-        public static SslPolicyWarningsItemCode Unreachable { get; } = new SslPolicyWarningsItemCode("UNREACHABLE");
-
-        public static bool operator ==(SslPolicyWarningsItemCode left, SslPolicyWarningsItemCode right) => left.Equals(right);
-        public static bool operator !=(SslPolicyWarningsItemCode left, SslPolicyWarningsItemCode right) => !left.Equals(right);
-
-        public static explicit operator string(SslPolicyWarningsItemCode value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SslPolicyWarningsItemCode other && Equals(other);
-        public bool Equals(SslPolicyWarningsItemCode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -7289,37 +5766,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public override string ToString() => _value;
     }
 
-    /// <summary>
-    /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-    /// </summary>
-    [EnumType]
-    public readonly struct SubnetworkState : IEquatable<SubnetworkState>
-    {
-        private readonly string _value;
-
-        private SubnetworkState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SubnetworkState Draining { get; } = new SubnetworkState("DRAINING");
-        public static SubnetworkState Ready { get; } = new SubnetworkState("READY");
-
-        public static bool operator ==(SubnetworkState left, SubnetworkState right) => left.Equals(right);
-        public static bool operator !=(SubnetworkState left, SubnetworkState right) => !left.Equals(right);
-
-        public static explicit operator string(SubnetworkState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SubnetworkState other && Equals(other);
-        public bool Equals(SubnetworkState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
     [EnumType]
     public readonly struct SubsettingPolicy : IEquatable<SubsettingPolicy>
     {
@@ -7586,39 +6032,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
-    /// </summary>
-    [EnumType]
-    public readonly struct TargetVpnGatewayStatus : IEquatable<TargetVpnGatewayStatus>
-    {
-        private readonly string _value;
-
-        private TargetVpnGatewayStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static TargetVpnGatewayStatus Creating { get; } = new TargetVpnGatewayStatus("CREATING");
-        public static TargetVpnGatewayStatus Deleting { get; } = new TargetVpnGatewayStatus("DELETING");
-        public static TargetVpnGatewayStatus Failed { get; } = new TargetVpnGatewayStatus("FAILED");
-        public static TargetVpnGatewayStatus Ready { get; } = new TargetVpnGatewayStatus("READY");
-
-        public static bool operator ==(TargetVpnGatewayStatus left, TargetVpnGatewayStatus right) => left.Equals(right);
-        public static bool operator !=(TargetVpnGatewayStatus left, TargetVpnGatewayStatus right) => !left.Equals(right);
-
-        public static explicit operator string(TargetVpnGatewayStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is TargetVpnGatewayStatus other && Equals(other);
-        public bool Equals(TargetVpnGatewayStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Defines how TLS certificates are obtained.
     /// </summary>
     [EnumType]
@@ -7675,161 +6088,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is TlsValidationContextValidationSource other && Equals(other);
         public bool Equals(TlsValidationContextValidationSource other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Defines the type of maintenance.
-    /// </summary>
-    [EnumType]
-    public readonly struct UpcomingMaintenanceType : IEquatable<UpcomingMaintenanceType>
-    {
-        private readonly string _value;
-
-        private UpcomingMaintenanceType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static UpcomingMaintenanceType Scheduled { get; } = new UpcomingMaintenanceType("SCHEDULED");
-        public static UpcomingMaintenanceType UnknownType { get; } = new UpcomingMaintenanceType("UNKNOWN_TYPE");
-        public static UpcomingMaintenanceType Unscheduled { get; } = new UpcomingMaintenanceType("UNSCHEDULED");
-
-        public static bool operator ==(UpcomingMaintenanceType left, UpcomingMaintenanceType right) => left.Equals(right);
-        public static bool operator !=(UpcomingMaintenanceType left, UpcomingMaintenanceType right) => !left.Equals(right);
-
-        public static explicit operator string(UpcomingMaintenanceType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is UpcomingMaintenanceType other && Equals(other);
-        public bool Equals(UpcomingMaintenanceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the VPN tunnel, which can be one of the following: 
-    /// - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-    /// - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-    /// - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-    /// - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-    /// - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-    /// - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-    /// - NEGOTIATION_FAILURE: Handshake failed. 
-    /// - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-    /// - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-    /// - NO_INCOMING_PACKETS: No incoming packets from peer. 
-    /// - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-    /// - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-    /// - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-    /// - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-    /// - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
-    /// </summary>
-    [EnumType]
-    public readonly struct VpnTunnelStatus : IEquatable<VpnTunnelStatus>
-    {
-        private readonly string _value;
-
-        private VpnTunnelStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static VpnTunnelStatus AllocatingResources { get; } = new VpnTunnelStatus("ALLOCATING_RESOURCES");
-        public static VpnTunnelStatus AuthorizationError { get; } = new VpnTunnelStatus("AUTHORIZATION_ERROR");
-        public static VpnTunnelStatus Deprovisioning { get; } = new VpnTunnelStatus("DEPROVISIONING");
-        public static VpnTunnelStatus Established { get; } = new VpnTunnelStatus("ESTABLISHED");
-        public static VpnTunnelStatus Failed { get; } = new VpnTunnelStatus("FAILED");
-        public static VpnTunnelStatus FirstHandshake { get; } = new VpnTunnelStatus("FIRST_HANDSHAKE");
-        public static VpnTunnelStatus NegotiationFailure { get; } = new VpnTunnelStatus("NEGOTIATION_FAILURE");
-        public static VpnTunnelStatus NetworkError { get; } = new VpnTunnelStatus("NETWORK_ERROR");
-        public static VpnTunnelStatus NoIncomingPackets { get; } = new VpnTunnelStatus("NO_INCOMING_PACKETS");
-        public static VpnTunnelStatus Provisioning { get; } = new VpnTunnelStatus("PROVISIONING");
-        public static VpnTunnelStatus Rejected { get; } = new VpnTunnelStatus("REJECTED");
-        public static VpnTunnelStatus Stopped { get; } = new VpnTunnelStatus("STOPPED");
-        public static VpnTunnelStatus WaitingForFullConfig { get; } = new VpnTunnelStatus("WAITING_FOR_FULL_CONFIG");
-
-        public static bool operator ==(VpnTunnelStatus left, VpnTunnelStatus right) => left.Equals(right);
-        public static bool operator !=(VpnTunnelStatus left, VpnTunnelStatus right) => !left.Equals(right);
-
-        public static explicit operator string(VpnTunnelStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is VpnTunnelStatus other && Equals(other);
-        public bool Equals(VpnTunnelStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-    /// </summary>
-    [EnumType]
-    public readonly struct ZoneInPlaceSnapshotStatus : IEquatable<ZoneInPlaceSnapshotStatus>
-    {
-        private readonly string _value;
-
-        private ZoneInPlaceSnapshotStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static ZoneInPlaceSnapshotStatus Creating { get; } = new ZoneInPlaceSnapshotStatus("CREATING");
-        public static ZoneInPlaceSnapshotStatus Deleting { get; } = new ZoneInPlaceSnapshotStatus("DELETING");
-        public static ZoneInPlaceSnapshotStatus Failed { get; } = new ZoneInPlaceSnapshotStatus("FAILED");
-        public static ZoneInPlaceSnapshotStatus Ready { get; } = new ZoneInPlaceSnapshotStatus("READY");
-
-        public static bool operator ==(ZoneInPlaceSnapshotStatus left, ZoneInPlaceSnapshotStatus right) => left.Equals(right);
-        public static bool operator !=(ZoneInPlaceSnapshotStatus left, ZoneInPlaceSnapshotStatus right) => !left.Equals(right);
-
-        public static explicit operator string(ZoneInPlaceSnapshotStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ZoneInPlaceSnapshotStatus other && Equals(other);
-        public bool Equals(ZoneInPlaceSnapshotStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-    /// </summary>
-    [EnumType]
-    public readonly struct ZoneInstantSnapshotStatus : IEquatable<ZoneInstantSnapshotStatus>
-    {
-        private readonly string _value;
-
-        private ZoneInstantSnapshotStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static ZoneInstantSnapshotStatus Creating { get; } = new ZoneInstantSnapshotStatus("CREATING");
-        public static ZoneInstantSnapshotStatus Deleting { get; } = new ZoneInstantSnapshotStatus("DELETING");
-        public static ZoneInstantSnapshotStatus Failed { get; } = new ZoneInstantSnapshotStatus("FAILED");
-        public static ZoneInstantSnapshotStatus Ready { get; } = new ZoneInstantSnapshotStatus("READY");
-
-        public static bool operator ==(ZoneInstantSnapshotStatus left, ZoneInstantSnapshotStatus right) => left.Equals(right);
-        public static bool operator !=(ZoneInstantSnapshotStatus left, ZoneInstantSnapshotStatus right) => !left.Equals(right);
-
-        public static explicit operator string(ZoneInstantSnapshotStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ZoneInstantSnapshotStatus other && Equals(other);
-        public bool Equals(ZoneInstantSnapshotStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

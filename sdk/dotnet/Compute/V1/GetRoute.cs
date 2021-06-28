@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     public sealed class GetRouteResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string DestRange;
         /// <summary>
-        /// [Output Only] Type of this resource. Always compute#routes for Route resources.
+        /// Type of this resource. Always compute#routes for Route resources.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string NextHopNetwork;
         /// <summary>
-        /// [Output Only] The network peering name that should handle matching packets, which should conform to RFC1035.
+        /// The network peering name that should handle matching packets, which should conform to RFC1035.
         /// </summary>
         public readonly string NextHopPeering;
         /// <summary>
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
+        /// Server-defined fully-qualified URL for this resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         /// </summary>
         public readonly ImmutableArray<Outputs.RouteWarningsItemResponse> Warnings;
 

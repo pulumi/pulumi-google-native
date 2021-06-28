@@ -60,7 +60,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string SignedUrlCacheMaxAgeSec;
         /// <summary>
-        /// [Output Only] Names of the keys for signing request URLs.
+        /// Names of the keys for signing request URLs.
         /// </summary>
         public readonly ImmutableArray<string> SignedUrlKeyNames;
 

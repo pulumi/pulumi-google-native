@@ -27,18 +27,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         [Input("gatewayType")]
         public Input<Pulumi.GoogleNative.CloudIoT.V1.GatewayConfigGatewayType>? GatewayType { get; set; }
 
-        /// <summary>
-        /// [Output only] The ID of the gateway the device accessed most recently.
-        /// </summary>
-        [Input("lastAccessedGatewayId")]
-        public Input<string>? LastAccessedGatewayId { get; set; }
-
-        /// <summary>
-        /// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
-        /// </summary>
-        [Input("lastAccessedGatewayTime")]
-        public Input<string>? LastAccessedGatewayTime { get; set; }
-
         public GatewayConfigArgs()
         {
         }

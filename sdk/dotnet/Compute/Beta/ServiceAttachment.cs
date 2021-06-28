@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class ServiceAttachment : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] An array of connections for all the consumers connected to this service attachment.
+        /// An array of connections for all the consumers connected to this service attachment.
         /// </summary>
         [Output("connectedEndpoints")]
         public Output<ImmutableArray<Outputs.ServiceAttachmentConnectedEndpointResponse>> ConnectedEndpoints { get; private set; } = null!;
@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ConnectionPreference { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
+        /// An array of forwarding rules for all the consumers connected to this service attachment.
         /// </summary>
         [Output("consumerForwardingRules")]
         public Output<ImmutableArray<Outputs.ServiceAttachmentConsumerForwardingRuleResponse>> ConsumerForwardingRules { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> EnableProxyProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
+        /// Type of the resource. Always compute#serviceAttachment for service attachments.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -76,19 +76,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ProducerForwardingRule { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+        /// An 128-bit global unique ID of the PSC service attachment.
         /// </summary>
         [Output("pscServiceAttachmentId")]
         public Output<Outputs.Uint128Response> PscServiceAttachmentId { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -144,41 +144,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class ServiceAttachmentArgs : Pulumi.ResourceArgs
     {
-        [Input("connectedEndpoints")]
-        private InputList<Inputs.ServiceAttachmentConnectedEndpointArgs>? _connectedEndpoints;
-
-        /// <summary>
-        /// [Output Only] An array of connections for all the consumers connected to this service attachment.
-        /// </summary>
-        public InputList<Inputs.ServiceAttachmentConnectedEndpointArgs> ConnectedEndpoints
-        {
-            get => _connectedEndpoints ?? (_connectedEndpoints = new InputList<Inputs.ServiceAttachmentConnectedEndpointArgs>());
-            set => _connectedEndpoints = value;
-        }
-
         /// <summary>
         /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
         /// </summary>
         [Input("connectionPreference")]
         public Input<Pulumi.GoogleNative.Compute.Beta.ServiceAttachmentConnectionPreference>? ConnectionPreference { get; set; }
-
-        [Input("consumerForwardingRules")]
-        private InputList<Inputs.ServiceAttachmentConsumerForwardingRuleArgs>? _consumerForwardingRules;
-
-        /// <summary>
-        /// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
-        /// </summary>
-        public InputList<Inputs.ServiceAttachmentConsumerForwardingRuleArgs> ConsumerForwardingRules
-        {
-            get => _consumerForwardingRules ?? (_consumerForwardingRules = new InputList<Inputs.ServiceAttachmentConsumerForwardingRuleArgs>());
-            set => _consumerForwardingRules = value;
-        }
-
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -191,18 +161,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource type. The server generates this identifier.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -231,26 +189,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// [Output Only] An 128-bit global unique ID of the PSC service attachment.
-        /// </summary>
-        [Input("pscServiceAttachmentId")]
-        public Input<Inputs.Uint128Args>? PscServiceAttachmentId { get; set; }
-
-        /// <summary>
-        /// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         /// <summary>
         /// The URL of a service serving the endpoint identified by this service attachment.

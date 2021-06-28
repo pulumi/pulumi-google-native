@@ -192,48 +192,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
-        /// </summary>
-        [Input("lastConfigAckTime")]
-        public Input<string>? LastConfigAckTime { get; set; }
-
-        /// <summary>
-        /// [Output only] The last time a cloud-to-device config version was sent to the device.
-        /// </summary>
-        [Input("lastConfigSendTime")]
-        public Input<string>? LastConfigSendTime { get; set; }
-
-        /// <summary>
-        /// [Output only] The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other than OK.
-        /// </summary>
-        [Input("lastErrorStatus")]
-        public Input<Inputs.StatusArgs>? LastErrorStatus { get; set; }
-
-        /// <summary>
-        /// [Output only] The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub. This field is the timestamp of 'last_error_status'.
-        /// </summary>
-        [Input("lastErrorTime")]
-        public Input<string>? LastErrorTime { get; set; }
-
-        /// <summary>
-        /// [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        /// </summary>
-        [Input("lastEventTime")]
-        public Input<string>? LastEventTime { get; set; }
-
-        /// <summary>
-        /// [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        /// </summary>
-        [Input("lastHeartbeatTime")]
-        public Input<string>? LastHeartbeatTime { get; set; }
-
-        /// <summary>
-        /// [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        /// </summary>
-        [Input("lastStateTime")]
-        public Input<string>? LastStateTime { get; set; }
-
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
@@ -261,23 +219,11 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-        /// </summary>
-        [Input("numId")]
-        public Input<string>? NumId { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         [Input("registryId", required: true)]
         public Input<string> RegistryId { get; set; } = null!;
-
-        /// <summary>
-        /// [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
-        /// </summary>
-        [Input("state")]
-        public Input<Inputs.DeviceStateArgs>? State { get; set; }
 
         public DeviceArgs()
         {

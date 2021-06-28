@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<Outputs.FirewallPolicyAssociationResponse>> Associations { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -54,19 +54,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+        /// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The parent of the firewall policy.
+        /// The parent of the firewall policy.
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+        /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         /// </summary>
         [Output("ruleTupleCount")]
         public Output<int> RuleTupleCount { get; private set; } = null!;
@@ -78,13 +78,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<Outputs.FirewallPolicyRuleResponse>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -153,12 +153,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -170,41 +164,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        /// <summary>
-        /// [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// [Output Only] The parent of the firewall policy.
-        /// </summary>
-        [Input("parent")]
-        public Input<string>? Parent { get; set; }
-
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
-        /// </summary>
-        [Input("ruleTupleCount")]
-        public Input<int>? RuleTupleCount { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.FirewallPolicyRuleArgs>? _rules;
@@ -217,18 +181,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
             get => _rules ?? (_rules = new InputList<Inputs.FirewallPolicyRuleArgs>());
             set => _rules = value;
         }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
         /// User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

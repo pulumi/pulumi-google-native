@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.ResourcePolicyInstanceSchedulePolicyResponse> InstanceSchedulePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
+        /// Type of the resource. Always compute#resource_policies for resource policies.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -52,13 +52,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The system status of the resource policy.
+        /// The system status of the resource policy.
         /// </summary>
         [Output("resourceStatus")]
         public Output<Outputs.ResourcePolicyResourceStatusResponse> ResourceStatus { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
+        /// Server-defined fully-qualified URL for this resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.ResourcePolicySnapshotSchedulePolicyResponse> SnapshotSchedulePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of resource policy creation.
+        /// The status of resource policy creation.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -120,12 +120,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class ResourcePolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -136,22 +130,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<Inputs.ResourcePolicyGroupPlacementPolicyArgs>? GroupPlacementPolicy { get; set; }
 
         /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// Resource policy for scheduling instance operations.
         /// </summary>
         [Input("instanceSchedulePolicy")]
         public Input<Inputs.ResourcePolicyInstanceSchedulePolicyArgs>? InstanceSchedulePolicy { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -169,28 +151,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// [Output Only] The system status of the resource policy.
-        /// </summary>
-        [Input("resourceStatus")]
-        public Input<Inputs.ResourcePolicyResourceStatusArgs>? ResourceStatus { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
         /// Resource policy for persistent disks for creating snapshots.
         /// </summary>
         [Input("snapshotSchedulePolicy")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyArgs>? SnapshotSchedulePolicy { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of resource policy creation.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.Beta.ResourcePolicyStatus>? Status { get; set; }
 
         public ResourcePolicyArgs()
         {

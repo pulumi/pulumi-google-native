@@ -13,12 +13,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class PacketMirroringForwardingRuleInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Unique identifier for the forwarding rule; defined by the server.
-        /// </summary>
-        [Input("canonicalUrl")]
-        public Input<string>? CanonicalUrl { get; set; }
-
-        /// <summary>
         /// Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
         /// </summary>
         [Input("url")]

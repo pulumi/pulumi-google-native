@@ -145,12 +145,6 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Input<string>? CareerSiteUri { get; set; }
 
         /// <summary>
-        /// Derived details about the company.
-        /// </summary>
-        [Input("derivedInfo")]
-        public Input<Inputs.CompanyDerivedInfoArgs>? DerivedInfo { get; set; }
-
-        /// <summary>
         /// Required. The display name of the company, for example, "Google LLC".
         /// </summary>
         [Input("displayName")]
@@ -212,12 +206,6 @@ namespace Pulumi.GoogleNative.Jobs.V3
         /// </summary>
         [Input("size")]
         public Input<Pulumi.GoogleNative.Jobs.V3.CompanySize>? Size { get; set; }
-
-        /// <summary>
-        /// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
-        /// </summary>
-        [Input("suspended")]
-        public Input<bool>? Suspended { get; set; }
 
         /// <summary>
         /// Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.

@@ -16,12 +16,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class IosXcTestArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bundle id for the application under test.
-        /// </summary>
-        [Input("appBundleId")]
-        public Input<string>? AppBundleId { get; set; }
-
-        /// <summary>
         /// The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
         /// </summary>
         [Input("testSpecialEntitlements")]

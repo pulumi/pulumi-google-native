@@ -27,12 +27,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
             set => _location = value;
         }
 
-        /// <summary>
-        /// The name of the installed package.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         public InstallationArgs()
         {
         }

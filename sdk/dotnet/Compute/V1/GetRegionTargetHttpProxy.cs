@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     public sealed class GetRegionTargetHttpProxyResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#targetHttpProxy for target HTTP proxies.
+        /// Type of resource. Always compute#targetHttpProxy for target HTTP proxies.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -68,11 +68,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly bool ProxyBind;
         /// <summary>
-        /// [Output Only] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
+        /// URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>

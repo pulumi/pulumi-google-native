@@ -109,18 +109,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Whether stack driver logging is enabled for the instance.
-        /// </summary>
-        [Input("loggingEnabled")]
-        public Input<bool>? LoggingEnabled { get; set; }
-
-        /// <summary>
-        /// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
         /// </summary>
         [Input("parent")]
@@ -128,12 +116,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// State of the instance.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.InstanceState>? State { get; set; }
 
         public InstanceArgs()
         {

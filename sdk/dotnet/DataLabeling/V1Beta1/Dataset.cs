@@ -108,30 +108,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 
     public sealed class DatasetArgs : Pulumi.ResourceArgs
     {
-        [Input("blockingResources")]
-        private InputList<string>? _blockingResources;
-
-        /// <summary>
-        /// The names of any related resources that are blocking changes to the dataset.
-        /// </summary>
-        public InputList<string> BlockingResources
-        {
-            get => _blockingResources ?? (_blockingResources = new InputList<string>());
-            set => _blockingResources = value;
-        }
-
-        /// <summary>
-        /// Time the dataset is created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// The number of data items in the dataset.
-        /// </summary>
-        [Input("dataItemCount")]
-        public Input<string>? DataItemCount { get; set; }
-
         /// <summary>
         /// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
         /// </summary>
@@ -144,29 +120,11 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("inputConfigs")]
-        private InputList<Inputs.GoogleCloudDatalabelingV1beta1InputConfigArgs>? _inputConfigs;
-
-        /// <summary>
-        /// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudDatalabelingV1beta1InputConfigArgs> InputConfigs
-        {
-            get => _inputConfigs ?? (_inputConfigs = new InputList<Inputs.GoogleCloudDatalabelingV1beta1InputConfigArgs>());
-            set => _inputConfigs = value;
-        }
-
         /// <summary>
         /// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
         /// </summary>
         [Input("lastMigrateTime")]
         public Input<string>? LastMigrateTime { get; set; }
-
-        /// <summary>
-        /// Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

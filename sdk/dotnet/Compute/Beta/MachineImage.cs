@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class MachineImage : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] The creation timestamp for this machine image in RFC3339 text format.
+        /// The creation timestamp for this machine image in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> GuestFlush { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The resource type, which is always compute#machineImage for machine image.
+        /// The resource type, which is always compute#machineImage for machine image.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -58,13 +58,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The URL for this machine image. The server defines this URL.
+        /// The URL for this machine image. The server defines this URL.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -84,13 +84,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SourceInstance { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Properties of source instance.
+        /// Properties of source instance.
         /// </summary>
         [Output("sourceInstanceProperties")]
         public Output<Outputs.SourceInstancePropertiesResponse> SourceInstanceProperties { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+        /// The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<string>> StorageLocations { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Total size of the storage used by the machine image.
+        /// Total size of the storage used by the machine image.
         /// </summary>
         [Output("totalStorageBytes")]
         public Output<string> TotalStorageBytes { get; private set; } = null!;
@@ -153,12 +153,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class MachineImageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] The creation timestamp for this machine image in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -169,18 +163,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("guestFlush")]
         public Input<bool>? GuestFlush { get; set; }
-
-        /// <summary>
-        /// [Output Only] A unique identifier for this machine image. The server defines this identifier.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] The resource type, which is always compute#machineImage for machine image.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Encrypts the machine image using a customer-supplied encryption key.
@@ -206,18 +188,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
-        /// <summary>
-        /// [Output Only] Reserved for future use.
-        /// </summary>
-        [Input("satisfiesPzs")]
-        public Input<bool>? SatisfiesPzs { get; set; }
-
-        /// <summary>
-        /// [Output Only] The URL for this machine image. The server defines this URL.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
         [Input("sourceDiskEncryptionKeys")]
         private InputList<Inputs.SourceDiskEncryptionKeyArgs>? _sourceDiskEncryptionKeys;
 
@@ -238,18 +208,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("sourceInstance", required: true)]
         public Input<string> SourceInstance { get; set; } = null!;
 
-        /// <summary>
-        /// [Output Only] Properties of source instance.
-        /// </summary>
-        [Input("sourceInstanceProperties")]
-        public Input<Inputs.SourceInstancePropertiesArgs>? SourceInstanceProperties { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.Beta.MachineImageStatus>? Status { get; set; }
-
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;
 
@@ -261,12 +219,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
             get => _storageLocations ?? (_storageLocations = new InputList<string>());
             set => _storageLocations = value;
         }
-
-        /// <summary>
-        /// [Output Only] Total size of the storage used by the machine image.
-        /// </summary>
-        [Input("totalStorageBytes")]
-        public Input<string>? TotalStorageBytes { get; set; }
 
         public MachineImageArgs()
         {

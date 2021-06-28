@@ -41,11 +41,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool AdminEnabled;
         /// <summary>
-        /// [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
+        /// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterconnectCircuitInfoResponse> CircuitInfos;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -57,19 +57,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] A list of outages expected for this Interconnect.
+        /// A list of outages expected for this Interconnect.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterconnectOutageNotificationResponse> ExpectedOutages;
         /// <summary>
-        /// [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
+        /// IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
         /// </summary>
         public readonly string GoogleIpAddress;
         /// <summary>
-        /// [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
+        /// Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
         /// </summary>
         public readonly string GoogleReferenceId;
         /// <summary>
-        /// [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
+        /// A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
         /// </summary>
         public readonly ImmutableArray<string> InterconnectAttachments;
         /// <summary>
@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string InterconnectType;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#interconnect for interconnects.
+        /// Type of the resource. Always compute#interconnect for interconnects.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -111,18 +111,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string NocContactEmail;
         /// <summary>
-        /// [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
+        /// The current status of this Interconnect's functionality, which can take one of the following values: 
         /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
         /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
         /// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
         /// </summary>
         public readonly string OperationalStatus;
         /// <summary>
-        /// [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
+        /// IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
         /// </summary>
         public readonly string PeerIpAddress;
         /// <summary>
-        /// [Output Only] Number of links actually provisioned in this interconnect.
+        /// Number of links actually provisioned in this interconnect.
         /// </summary>
         public readonly int ProvisionedLinkCount;
         /// <summary>
@@ -130,11 +130,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly int RequestedLinkCount;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
+        /// The current state of Interconnect functionality, which can take one of the following values: 
         /// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
         /// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
         /// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.

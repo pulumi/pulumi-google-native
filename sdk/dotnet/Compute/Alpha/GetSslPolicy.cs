@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetSslPolicyResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] The list of features enabled in the SSL policy.
+        /// The list of features enabled in the SSL policy.
         /// </summary>
         public readonly ImmutableArray<string> EnabledFeatures;
         /// <summary>
@@ -76,11 +76,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Profile;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.ServerTlsSettingsResponse TlsSettings;
         /// <summary>
-        /// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+        /// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         /// </summary>
         public readonly ImmutableArray<Outputs.SslPolicyWarningsItemResponse> Warnings;
 

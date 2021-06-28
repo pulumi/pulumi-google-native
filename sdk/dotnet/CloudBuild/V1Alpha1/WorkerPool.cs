@@ -121,18 +121,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
     public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time at which the request to create the `WorkerPool` was received.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Time at which the request to delete the `WorkerPool` was received.
-        /// </summary>
-        [Input("deleteTime")]
-        public Input<string>? DeleteTime { get; set; }
-
-        /// <summary>
         /// User-defined name of the `WorkerPool`.
         /// </summary>
         [Input("name")]
@@ -155,24 +143,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
             get => _regions ?? (_regions = new InputList<Pulumi.GoogleNative.CloudBuild.V1Alpha1.WorkerPoolRegionsItem>());
             set => _regions = value;
         }
-
-        /// <summary>
-        /// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
-        /// </summary>
-        [Input("serviceAccountEmail")]
-        public Input<string>? ServiceAccountEmail { get; set; }
-
-        /// <summary>
-        /// WorkerPool Status.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.CloudBuild.V1Alpha1.WorkerPoolStatus>? Status { get; set; }
-
-        /// <summary>
-        /// Time at which the request to update the `WorkerPool` was received.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// Configuration to be used for a creating workers in the `WorkerPool`.

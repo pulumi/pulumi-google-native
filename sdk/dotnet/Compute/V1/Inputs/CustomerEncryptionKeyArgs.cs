@@ -30,12 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         [Input("rawKey")]
         public Input<string>? RawKey { get; set; }
 
-        /// <summary>
-        /// [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
-        /// </summary>
-        [Input("sha256")]
-        public Input<string>? Sha256 { get; set; }
-
         public CustomerEncryptionKeyArgs()
         {
         }

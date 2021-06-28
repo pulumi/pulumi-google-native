@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class PublicAdvertisedPrefix : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> IpCidrRange { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+        /// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -60,25 +60,25 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
+        /// The list of public delegated prefixes that exist for this public advertised prefix.
         /// </summary>
         [Output("publicDelegatedPrefixs")]
         public Output<ImmutableArray<Outputs.PublicAdvertisedPrefixPublicDelegatedPrefixResponse>> PublicDelegatedPrefixs { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL with id for the resource.
+        /// Server-defined URL with id for the resource.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The shared secret to be used for reverse DNS verification.
+        /// The shared secret to be used for reverse DNS verification.
         /// </summary>
         [Output("sharedSecret")]
         public Output<string> SharedSecret { get; private set; } = null!;
@@ -135,12 +135,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class PublicAdvertisedPrefixArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -153,22 +147,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? DnsVerificationIp { get; set; }
 
         /// <summary>
-        /// [Output Only] The unique identifier for the resource type. The server generates this identifier.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -179,38 +161,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("publicDelegatedPrefixs")]
-        private InputList<Inputs.PublicAdvertisedPrefixPublicDelegatedPrefixArgs>? _publicDelegatedPrefixs;
-
-        /// <summary>
-        /// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
-        /// </summary>
-        public InputList<Inputs.PublicAdvertisedPrefixPublicDelegatedPrefixArgs> PublicDelegatedPrefixs
-        {
-            get => _publicDelegatedPrefixs ?? (_publicDelegatedPrefixs = new InputList<Inputs.PublicAdvertisedPrefixPublicDelegatedPrefixArgs>());
-            set => _publicDelegatedPrefixs = value;
-        }
-
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL with id for the resource.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
-
-        /// <summary>
-        /// [Output Only] The shared secret to be used for reverse DNS verification.
-        /// </summary>
-        [Input("sharedSecret")]
-        public Input<string>? SharedSecret { get; set; }
 
         /// <summary>
         /// The status of the public advertised prefix.

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class AccessConfigResponse
     {
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+        /// Type of the resource. Always compute#accessConfig for access configs.
         /// </summary>
         public readonly string Kind;
         /// <summary>

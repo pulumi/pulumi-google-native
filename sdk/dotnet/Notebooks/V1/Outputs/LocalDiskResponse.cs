@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RuntimeGuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>
-        /// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        /// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         /// </summary>
         public readonly int Index;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// [Output Only] Any valid publicly visible licenses.
+        /// Any valid publicly visible licenses.
         /// </summary>
         public readonly ImmutableArray<string> Licenses;
         /// <summary>

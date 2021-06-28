@@ -108,24 +108,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 
     public sealed class InstructionArgs : Pulumi.ResourceArgs
     {
-        [Input("blockingResources")]
-        private InputList<string>? _blockingResources;
-
-        /// <summary>
-        /// The names of any related resources that are blocking changes to the instruction.
-        /// </summary>
-        public InputList<string> BlockingResources
-        {
-            get => _blockingResources ?? (_blockingResources = new InputList<string>());
-            set => _blockingResources = value;
-        }
-
-        /// <summary>
-        /// Creation time of instruction.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         /// <summary>
         /// Required. The data type of this instruction.
         /// </summary>
@@ -145,12 +127,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
         /// </summary>
         [Input("pdfInstruction")]
@@ -158,12 +134,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// Last update time of instruction.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public InstructionArgs()
         {

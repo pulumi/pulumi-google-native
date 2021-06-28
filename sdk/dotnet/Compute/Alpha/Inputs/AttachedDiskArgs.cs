@@ -74,12 +74,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         }
 
         /// <summary>
-        /// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-        /// </summary>
-        [Input("index")]
-        public Input<int>? Index { get; set; }
-
-        /// <summary>
         /// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
         /// 
         /// This property is mutually exclusive with the source property; you can only define one or the other, but not both.
@@ -94,24 +88,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskInterface>? Interface { get; set; }
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        [Input("licenses")]
-        private InputList<string>? _licenses;
-
-        /// <summary>
-        /// [Output Only] Any valid publicly visible licenses.
-        /// </summary>
-        public InputList<string> Licenses
-        {
-            get => _licenses ?? (_licenses = new InputList<string>());
-            set => _licenses = value;
-        }
-
-        /// <summary>
         /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
         /// </summary>
         [Input("mode")]
@@ -122,12 +98,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("savedState")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskSavedState>? SavedState { get; set; }
-
-        /// <summary>
-        /// [Output Only] shielded vm initial state stored on disk
-        /// </summary>
-        [Input("shieldedInstanceInitialState")]
-        public Input<Inputs.InitialStateConfigArgs>? ShieldedInstanceInitialState { get; set; }
 
         /// <summary>
         /// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
@@ -144,18 +114,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskType>? Type { get; set; }
-
-        [Input("userLicenses")]
-        private InputList<string>? _userLicenses;
-
-        /// <summary>
-        /// [Output Only] A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
-        /// </summary>
-        public InputList<string> UserLicenses
-        {
-            get => _userLicenses ?? (_userLicenses = new InputList<string>());
-            set => _userLicenses = value;
-        }
 
         public AttachedDiskArgs()
         {

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class Snapshot : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Set to true if snapshots are automatically created by applying resource policy on the target disk.
+        /// Set to true if snapshots are automatically created by applying resource policy on the target disk.
         /// </summary>
         [Output("autoCreated")]
         public Output<bool> AutoCreated { get; private set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ChainName { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Size of the source disk, specified in GB.
+        /// Size of the source disk, specified in GB.
         /// </summary>
         [Output("diskSizeGb")]
         public Output<string> DiskSizeGb { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Number of bytes downloaded to restore a snapshot to a disk.
+        /// Number of bytes downloaded to restore a snapshot to a disk.
         /// </summary>
         [Output("downloadBytes")]
         public Output<string> DownloadBytes { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> GuestFlush { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#snapshot for Snapshot resources.
+        /// Type of the resource. Always compute#snapshot for Snapshot resources.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -78,13 +78,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Integer license codes indicating which licenses are attached to this snapshot.
+        /// Integer license codes indicating which licenses are attached to this snapshot.
         /// </summary>
         [Output("licenseCodes")]
         public Output<ImmutableArray<string>> LicenseCodes { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
+        /// A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
         /// </summary>
         [Output("licenses")]
         public Output<ImmutableArray<string>> Licenses { get; private set; } = null!;
@@ -102,13 +102,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -138,25 +138,25 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceDiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
+        /// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         /// </summary>
         [Output("sourceDiskId")]
         public Output<string> SourceDiskId { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
+        /// The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
+        /// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
         /// </summary>
         [Output("storageBytes")]
         public Output<string> StorageBytes { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        /// An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         /// </summary>
         [Output("storageBytesStatus")]
         public Output<string> StorageBytesStatus { get; private set; } = null!;
@@ -213,22 +213,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class SnapshotArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Set to true if snapshots are automatically created by applying resource policy on the target disk.
-        /// </summary>
-        [Input("autoCreated")]
-        public Input<bool>? AutoCreated { get; set; }
-
-        /// <summary>
         /// Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         /// </summary>
         [Input("chainName")]
         public Input<string>? ChainName { get; set; }
-
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -237,34 +225,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// [Output Only] Size of the source disk, specified in GB.
-        /// </summary>
-        [Input("diskSizeGb")]
-        public Input<string>? DiskSizeGb { get; set; }
-
-        /// <summary>
-        /// [Output Only] Number of bytes downloaded to restore a snapshot to a disk.
-        /// </summary>
-        [Input("downloadBytes")]
-        public Input<string>? DownloadBytes { get; set; }
-
-        /// <summary>
         /// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
         /// </summary>
         [Input("guestFlush")]
         public Input<bool>? GuestFlush { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#snapshot for Snapshot resources.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -276,30 +240,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
-        }
-
-        [Input("licenseCodes")]
-        private InputList<string>? _licenseCodes;
-
-        /// <summary>
-        /// [Output Only] Integer license codes indicating which licenses are attached to this snapshot.
-        /// </summary>
-        public InputList<string> LicenseCodes
-        {
-            get => _licenseCodes ?? (_licenseCodes = new InputList<string>());
-            set => _licenseCodes = value;
-        }
-
-        [Input("licenses")]
-        private InputList<string>? _licenses;
-
-        /// <summary>
-        /// [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
-        /// </summary>
-        public InputList<string> Licenses
-        {
-            get => _licenses ?? (_licenses = new InputList<string>());
-            set => _licenses = value;
         }
 
         /// <summary>
@@ -319,18 +259,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Reserved for future use.
-        /// </summary>
-        [Input("satisfiesPzs")]
-        public Input<bool>? SatisfiesPzs { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         /// <summary>
         /// Encrypts the snapshot using a customer-supplied encryption key.
@@ -355,30 +283,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
-
-        /// <summary>
-        /// [Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
-        /// </summary>
-        [Input("sourceDiskId")]
-        public Input<string>? SourceDiskId { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.Beta.SnapshotStatus>? Status { get; set; }
-
-        /// <summary>
-        /// [Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
-        /// </summary>
-        [Input("storageBytes")]
-        public Input<string>? StorageBytes { get; set; }
-
-        /// <summary>
-        /// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
-        /// </summary>
-        [Input("storageBytesStatus")]
-        public Input<Pulumi.GoogleNative.Compute.Beta.SnapshotStorageBytesStatus>? StorageBytesStatus { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

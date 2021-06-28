@@ -160,12 +160,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
         /// </summary>
         [Input("notificationConfig")]

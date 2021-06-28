@@ -382,12 +382,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The source information for this configuration if available.
-        /// </summary>
-        [Input("sourceInfo")]
-        public Input<Inputs.SourceInfoArgs>? SourceInfo { get; set; }
-
-        /// <summary>
         /// System parameter configuration.
         /// </summary>
         [Input("systemParameters")]

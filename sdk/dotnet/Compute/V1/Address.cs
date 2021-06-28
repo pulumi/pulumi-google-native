@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> AddressType { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> IpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#address for addresses.
+        /// Type of the resource. Always compute#address for addresses.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -89,19 +89,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Purpose { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
+        /// The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
+        /// The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Subnetwork { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The URLs of the resources that are using this address.
+        /// The URLs of the resources that are using this address.
         /// </summary>
         [Output("users")]
         public Output<ImmutableArray<string>> Users { get; private set; } = null!;
@@ -176,34 +176,16 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<Pulumi.GoogleNative.Compute.V1.AddressAddressType>? AddressType { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this field when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
         /// </summary>
         [Input("ipVersion")]
         public Input<Pulumi.GoogleNative.Compute.V1.AddressIpVersion>? IpVersion { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#address for addresses.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
@@ -245,9 +227,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("purpose")]
         public Input<Pulumi.GoogleNative.Compute.V1.AddressPurpose>? Purpose { get; set; }
 
-        /// <summary>
-        /// [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -255,34 +234,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.V1.AddressStatus>? Status { get; set; }
-
-        /// <summary>
         /// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
-
-        [Input("users")]
-        private InputList<string>? _users;
-
-        /// <summary>
-        /// [Output Only] The URLs of the resources that are using this address.
-        /// </summary>
-        public InputList<string> Users
-        {
-            get => _users ?? (_users = new InputList<string>());
-            set => _users = value;
-        }
 
         public AddressArgs()
         {

@@ -15,12 +15,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The unique identifier of the training phrase.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("parts")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs>? _parts;
 

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class PacketMirroringMirroredResourceInfoInstanceInfoResponse
     {
         /// <summary>
-        /// [Output Only] Unique identifier for the instance; defined by the server.
+        /// Unique identifier for the instance; defined by the server.
         /// </summary>
         public readonly string CanonicalUrl;
         /// <summary>

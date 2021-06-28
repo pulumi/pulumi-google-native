@@ -8,52 +8,6 @@ using Pulumi;
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
     /// <summary>
-    /// Output only. Describes the current state of the job.
-    /// </summary>
-    [EnumType]
-    public readonly struct EvaluationJobState : IEquatable<EvaluationJobState>
-    {
-        private readonly string _value;
-
-        private EvaluationJobState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static EvaluationJobState StateUnspecified { get; } = new EvaluationJobState("STATE_UNSPECIFIED");
-        /// <summary>
-        /// The job is scheduled to run at the configured interval. You can pause or delete the job. When the job is in this state, it samples prediction input and output from your model version into your BigQuery table as predictions occur.
-        /// </summary>
-        public static EvaluationJobState Scheduled { get; } = new EvaluationJobState("SCHEDULED");
-        /// <summary>
-        /// The job is currently running. When the job runs, Data Labeling Service does several things: 1. If you have configured your job to use Data Labeling Service for ground truth labeling, the service creates a Dataset and a labeling task for all data sampled since the last time the job ran. Human labelers provide ground truth labels for your data. Human labeling may take hours, or even days, depending on how much data has been sampled. The job remains in the `RUNNING` state during this time, and it can even be running multiple times in parallel if it gets triggered again (for example 24 hours later) before the earlier run has completed. When human labelers have finished labeling the data, the next step occurs. If you have configured your job to provide your own ground truth labels, Data Labeling Service still creates a Dataset for newly sampled data, but it expects that you have already added ground truth labels to the BigQuery table by this time. The next step occurs immediately. 2. Data Labeling Service creates an Evaluation by comparing your model version's predictions with the ground truth labels. If the job remains in this state for a long time, it continues to sample prediction data into your BigQuery table and will run again at the next interval, even if it causes the job to run multiple times in parallel.
-        /// </summary>
-        public static EvaluationJobState Running { get; } = new EvaluationJobState("RUNNING");
-        /// <summary>
-        /// The job is not sampling prediction input and output into your BigQuery table and it will not run according to its schedule. You can resume the job.
-        /// </summary>
-        public static EvaluationJobState Paused { get; } = new EvaluationJobState("PAUSED");
-        /// <summary>
-        /// The job has this state right before it is deleted.
-        /// </summary>
-        public static EvaluationJobState Stopped { get; } = new EvaluationJobState("STOPPED");
-
-        public static bool operator ==(EvaluationJobState left, EvaluationJobState right) => left.Equals(right);
-        public static bool operator !=(EvaluationJobState left, EvaluationJobState right) => !left.Equals(right);
-
-        public static explicit operator string(EvaluationJobState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is EvaluationJobState other && Equals(other);
-        public bool Equals(EvaluationJobState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Optional. The type of how to aggregate answers.
     /// </summary>
     [EnumType]

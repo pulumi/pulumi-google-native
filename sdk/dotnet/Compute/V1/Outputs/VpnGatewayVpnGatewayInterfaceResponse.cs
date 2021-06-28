@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string InterconnectAttachment;
         /// <summary>
-        /// [Output Only] The external IP address for this VPN gateway interface.
+        /// The external IP address for this VPN gateway interface.
         /// </summary>
         public readonly string IpAddress;
 

@@ -168,18 +168,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         [Input("descriptorUrl")]
         public Input<string>? DescriptorUrl { get; set; }
 
-        /// <summary>
-        /// Unique identifier for the resource defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("insertTime")]
-        public Input<string>? InsertTime { get; set; }
-
         [Input("labels")]
         private InputList<Inputs.TypeProviderLabelEntryArgs>? _labels;
 
@@ -199,12 +187,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Operation that most recently ran, or is currently running, on this type provider.
-        /// </summary>
-        [Input("operation")]
-        public Input<Inputs.OperationArgs>? Operation { get; set; }
-
-        /// <summary>
         /// Options to apply when handling any resources in this service.
         /// </summary>
         [Input("options")]
@@ -212,12 +194,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// Self link for the type provider.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         public TypeProviderArgs()
         {

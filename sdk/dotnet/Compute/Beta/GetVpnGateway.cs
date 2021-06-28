@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetVpnGatewayResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
+        /// Type of resource. Always compute#vpnGateway for VPN gateways.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -70,11 +70,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// [Output Only] URL of the region where the VPN gateway resides.
+        /// URL of the region where the VPN gateway resides.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>

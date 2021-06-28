@@ -16,18 +16,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class DerivedArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This contains the base image URL for the derived image occurrence.
-        /// </summary>
-        [Input("baseResourceUrl")]
-        public Input<string>? BaseResourceUrl { get; set; }
-
-        /// <summary>
-        /// The number of layers by which this image differs from the associated image basis.
-        /// </summary>
-        [Input("distance")]
-        public Input<int>? Distance { get; set; }
-
-        /// <summary>
         /// Required. The fingerprint of the derived image.
         /// </summary>
         [Input("fingerprint")]

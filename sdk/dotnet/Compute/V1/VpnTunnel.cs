@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     public partial class VpnTunnel : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Detailed status message for the VPN tunnel.
+        /// Detailed status message for the VPN tunnel.
         /// </summary>
         [Output("detailedStatus")]
         public Output<string> DetailedStatus { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<int> IkeVersion { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
+        /// Type of resource. Always compute#vpnTunnel for VPN tunnels.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> PeerIp { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Router { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SharedSecretHash { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of the VPN tunnel, which can be one of the following: 
+        /// The status of the VPN tunnel, which can be one of the following: 
         /// - PROVISIONING: Resource is being allocated for the VPN tunnel. 
         /// - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
         /// - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
@@ -202,40 +202,16 @@ namespace Pulumi.GoogleNative.Compute.V1
     public sealed class VpnTunnelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// [Output Only] Detailed status message for the VPN tunnel.
-        /// </summary>
-        [Input("detailedStatus")]
-        public Input<string>? DetailedStatus { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
         /// </summary>
         [Input("ikeVersion")]
         public Input<int>? IkeVersion { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         [Input("localTrafficSelector")]
         private InputList<string>? _localTrafficSelector;
@@ -282,9 +258,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -310,12 +283,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Router { get; set; }
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
         /// Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
         /// </summary>
         [Input("sharedSecret")]
@@ -326,27 +293,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("sharedSecretHash")]
         public Input<string>? SharedSecretHash { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of the VPN tunnel, which can be one of the following: 
-        /// - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-        /// - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-        /// - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-        /// - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-        /// - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-        /// - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-        /// - NEGOTIATION_FAILURE: Handshake failed. 
-        /// - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-        /// - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-        /// - NO_INCOMING_PACKETS: No incoming packets from peer. 
-        /// - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-        /// - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-        /// - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-        /// - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-        /// - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.V1.VpnTunnelStatus>? Status { get; set; }
 
         /// <summary>
         /// URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.

@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     public sealed class GetPublicAdvertisedPrefixResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string IpCidrRange;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+        /// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -67,15 +67,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
+        /// The list of public delegated prefixes that exist for this public advertised prefix.
         /// </summary>
         public readonly ImmutableArray<Outputs.PublicAdvertisedPrefixPublicDelegatedPrefixResponse> PublicDelegatedPrefixs;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] The shared secret to be used for reverse DNS verification.
+        /// The shared secret to be used for reverse DNS verification.
         /// </summary>
         public readonly string SharedSecret;
         /// <summary>

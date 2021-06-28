@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string DiskSizeGb;
         /// <summary>
-        /// [Output Only] URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+        /// URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
         /// </summary>
         public readonly string DiskType;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Interface;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+        /// Type of the resource. Always compute#attachedDisk for attached disks.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// [Output Only] Any valid publicly visible licenses.
+        /// Any valid publicly visible licenses.
         /// </summary>
         public readonly ImmutableArray<string> Licenses;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Source;
         /// <summary>
-        /// [Output Only] A size of the storage used by the disk's snapshot by this machine image.
+        /// A size of the storage used by the disk's snapshot by this machine image.
         /// </summary>
         public readonly string StorageBytes;
         /// <summary>
-        /// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        /// An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         /// </summary>
         public readonly string StorageBytesStatus;
         /// <summary>

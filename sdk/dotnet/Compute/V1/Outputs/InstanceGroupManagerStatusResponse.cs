@@ -14,19 +14,19 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class InstanceGroupManagerStatusResponse
     {
         /// <summary>
-        /// [Output Only] The URL of the Autoscaler that targets this instance group manager.
+        /// The URL of the Autoscaler that targets this instance group manager.
         /// </summary>
         public readonly string Autoscaler;
         /// <summary>
-        /// [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        /// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         /// </summary>
         public readonly bool IsStable;
         /// <summary>
-        /// [Output Only] Stateful status of the given Instance Group Manager.
+        /// Stateful status of the given Instance Group Manager.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerStatusStatefulResponse Stateful;
         /// <summary>
-        /// [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+        /// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerStatusVersionTargetResponse VersionTarget;
 

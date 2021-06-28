@@ -19,12 +19,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Pulumi.GoogleNative.Compute.Beta.ResourcePolicyWeeklyCycleDayOfWeekDay>? Day { get; set; }
 
         /// <summary>
-        /// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-        /// </summary>
-        [Input("duration")]
-        public Input<string>? Duration { get; set; }
-
-        /// <summary>
         /// Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
         /// </summary>
         [Input("startTime")]

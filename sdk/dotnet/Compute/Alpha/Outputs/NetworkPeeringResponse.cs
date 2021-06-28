@@ -54,11 +54,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int PeerMtu;
         /// <summary>
-        /// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
+        /// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// [Output Only] Details about the current state of the peering.
+        /// Details about the current state of the peering.
         /// </summary>
         public readonly string StateDetails;
 

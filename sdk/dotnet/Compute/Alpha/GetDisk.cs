@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetDiskResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Interface;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#disk for disks.
+        /// Type of the resource. Always compute#disk for disks.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -84,11 +84,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// [Output Only] Last attach timestamp in RFC3339 text format.
+        /// Last attach timestamp in RFC3339 text format.
         /// </summary>
         public readonly string LastAttachTimestamp;
         /// <summary>
-        /// [Output Only] Last detach timestamp in RFC3339 text format.
+        /// Last detach timestamp in RFC3339 text format.
         /// </summary>
         public readonly string LastDetachTimestamp;
         /// <summary>
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
-        /// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -136,15 +136,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
+        /// Server-defined fully-qualified URL for this resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource's resource id.
+        /// Server-defined URL for this resource's resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SourceDisk;
         /// <summary>
-        /// [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
+        /// The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
         /// </summary>
         public readonly string SourceDiskId;
         /// <summary>
@@ -191,7 +191,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceImageEncryptionKey;
         /// <summary>
-        /// [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
+        /// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
         /// </summary>
         public readonly string SourceImageId;
         /// <summary>
@@ -202,7 +202,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SourceInstantSnapshot;
         /// <summary>
-        /// [Output Only] The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+        /// The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
         /// </summary>
         public readonly string SourceInstantSnapshotId;
         /// <summary>
@@ -217,7 +217,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceSnapshotEncryptionKey;
         /// <summary>
-        /// [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        /// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
         /// </summary>
         public readonly string SourceSnapshotId;
         /// <summary>
@@ -225,7 +225,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SourceStorageObject;
         /// <summary>
-        /// [Output Only] The status of disk creation.  
+        /// The status of disk creation.  
         /// - CREATING: Disk is provisioning. 
         /// - RESTORING: Source data is being copied into the disk. 
         /// - FAILED: Disk creation failed. 
@@ -243,11 +243,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<string> UserLicenses;
         /// <summary>
-        /// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
+        /// Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
         /// </summary>
         public readonly ImmutableArray<string> Users;
         /// <summary>
-        /// [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Zone;
 

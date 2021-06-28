@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly bool AutoCreateSubnetworks;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -55,11 +55,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] The gateway address for default routing out of the network, selected by GCP.
+        /// The gateway address for default routing out of the network, selected by GCP.
         /// </summary>
         public readonly string GatewayIPv4;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#network for networks.
+        /// Type of the resource. Always compute#network for networks.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] A list of network peerings for the resource.
+        /// A list of network peerings for the resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkPeeringResponse> Peerings;
         /// <summary>
@@ -79,11 +79,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.NetworkRoutingConfigResponse RoutingConfig;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+        /// Server-defined fully-qualified URLs for all subnetworks in this VPC network.
         /// </summary>
         public readonly ImmutableArray<string> Subnetworks;
 

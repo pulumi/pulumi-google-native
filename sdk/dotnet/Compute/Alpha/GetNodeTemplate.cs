@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string CpuOvercommitType;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public readonly string Description;
         public readonly ImmutableArray<Outputs.LocalDiskResponse> Disks;
         /// <summary>
-        /// [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
+        /// The type of the resource. Always compute#nodeTemplate for node templates.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -76,15 +76,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.NodeTemplateNodeTypeFlexibilityResponse NodeTypeFlexibility;
         /// <summary>
-        /// [Output Only] The name of the region where the node template resides, such as us-central1.
+        /// The name of the region where the node template resides, such as us-central1.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
@@ -96,11 +96,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.ServerBindingResponse ServerBinding;
         /// <summary>
-        /// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+        /// The status of the node template. One of the following values: CREATING, READY, and DELETING.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// [Output Only] An optional, human-readable explanation of the status.
+        /// An optional, human-readable explanation of the status.
         /// </summary>
         public readonly string StatusMessage;
 

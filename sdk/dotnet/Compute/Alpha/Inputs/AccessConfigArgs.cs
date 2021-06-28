@@ -16,24 +16,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class AccessConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
-        /// </summary>
-        [Input("externalIpv6")]
-        public Input<string>? ExternalIpv6 { get; set; }
-
-        /// <summary>
-        /// [Output Only] The prefix length of the external IPv6 range.
-        /// </summary>
-        [Input("externalIpv6PrefixLength")]
-        public Input<int>? ExternalIpv6PrefixLength { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        /// <summary>
         /// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
         /// </summary>
         [Input("name")]
@@ -54,12 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("networkTier")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.AccessConfigNetworkTier>? NetworkTier { get; set; }
-
-        /// <summary>
-        /// [Output Only] The public DNS domain name for the instance.
-        /// </summary>
-        [Input("publicDnsName")]
-        public Input<string>? PublicDnsName { get; set; }
 
         /// <summary>
         /// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.

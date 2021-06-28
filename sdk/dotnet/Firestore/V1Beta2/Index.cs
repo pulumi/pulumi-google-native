@@ -102,12 +102,6 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta2
             set => _fields = value;
         }
 
-        /// <summary>
-        /// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -116,12 +110,6 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta2
         /// </summary>
         [Input("queryScope")]
         public Input<Pulumi.GoogleNative.Firestore.V1Beta2.IndexQueryScope>? QueryScope { get; set; }
-
-        /// <summary>
-        /// The serving state of the index.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Firestore.V1Beta2.IndexState>? State { get; set; }
 
         public IndexArgs()
         {

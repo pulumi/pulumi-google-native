@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.PacketMirroringForwardingRuleInfoResponse CollectorIlb;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.PacketMirroringFilterResponse Filter;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.
+        /// Type of the resource. Always compute#packetMirroring for packet mirrorings.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -84,15 +84,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// [Output Only] URI of the region where the packetMirroring resides.
+        /// URI of the region where the packetMirroring resides.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
 

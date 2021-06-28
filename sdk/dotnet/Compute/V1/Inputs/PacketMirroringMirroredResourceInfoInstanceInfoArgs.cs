@@ -13,12 +13,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class PacketMirroringMirroredResourceInfoInstanceInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Unique identifier for the instance; defined by the server.
-        /// </summary>
-        [Input("canonicalUrl")]
-        public Input<string>? CanonicalUrl { get; set; }
-
-        /// <summary>
         /// Resource URL to the virtual machine instance which is being mirrored.
         /// </summary>
         [Input("url")]

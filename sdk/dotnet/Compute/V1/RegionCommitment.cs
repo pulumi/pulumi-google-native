@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Category { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Commitment end time in RFC3339 text format.
+        /// Commitment end time in RFC3339 text format.
         /// </summary>
         [Output("endTimestamp")]
         public Output<string> EndTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#commitment for commitments.
+        /// Type of the resource. Always compute#commitment for commitments.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the region where this commitment may be used.
+        /// URL of the region where this commitment may be used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -82,25 +82,25 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<ImmutableArray<Outputs.ResourceCommitmentResponse>> Resources { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Commitment start time in RFC3339 text format.
+        /// Commitment start time in RFC3339 text format.
         /// </summary>
         [Output("startTimestamp")]
         public Output<string> StartTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+        /// Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] An optional, human-readable explanation of the status.
+        /// An optional, human-readable explanation of the status.
         /// </summary>
         [Output("statusMessage")]
         public Output<string> StatusMessage { get; private set; } = null!;
@@ -157,34 +157,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<Pulumi.GoogleNative.Compute.V1.RegionCommitmentCategory>? Category { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// [Output Only] Commitment end time in RFC3339 text format.
-        /// </summary>
-        [Input("endTimestamp")]
-        public Input<string>? EndTimestamp { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#commitment for commitments.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// The license specification required as part of a license commitment.
@@ -207,9 +183,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// [Output Only] URL of the region where this commitment may be used.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -239,30 +212,6 @@ namespace Pulumi.GoogleNative.Compute.V1
             get => _resources ?? (_resources = new InputList<Inputs.ResourceCommitmentArgs>());
             set => _resources = value;
         }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Commitment start time in RFC3339 text format.
-        /// </summary>
-        [Input("startTimestamp")]
-        public Input<string>? StartTimestamp { get; set; }
-
-        /// <summary>
-        /// [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.V1.RegionCommitmentStatus>? Status { get; set; }
-
-        /// <summary>
-        /// [Output Only] An optional, human-readable explanation of the status.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
 
         public RegionCommitmentArgs()
         {

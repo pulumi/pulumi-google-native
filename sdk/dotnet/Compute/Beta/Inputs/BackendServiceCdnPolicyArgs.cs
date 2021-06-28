@@ -99,18 +99,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("signedUrlCacheMaxAgeSec")]
         public Input<string>? SignedUrlCacheMaxAgeSec { get; set; }
 
-        [Input("signedUrlKeyNames")]
-        private InputList<string>? _signedUrlKeyNames;
-
-        /// <summary>
-        /// [Output Only] Names of the keys for signing request URLs.
-        /// </summary>
-        public InputList<string> SignedUrlKeyNames
-        {
-            get => _signedUrlKeyNames ?? (_signedUrlKeyNames = new InputList<string>());
-            set => _signedUrlKeyNames = value;
-        }
-
         public BackendServiceCdnPolicyArgs()
         {
         }

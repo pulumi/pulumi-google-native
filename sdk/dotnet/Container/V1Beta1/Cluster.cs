@@ -433,24 +433,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<Inputs.ConfidentialNodesArgs>? ConfidentialNodes { get; set; }
 
         /// <summary>
-        /// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// [Output only] The current software version of the master endpoint.
-        /// </summary>
-        [Input("currentMasterVersion")]
-        public Input<string>? CurrentMasterVersion { get; set; }
-
-        /// <summary>
-        /// [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
-        /// </summary>
-        [Input("currentNodeVersion")]
-        public Input<string>? CurrentNodeVersion { get; set; }
-
-        /// <summary>
         /// Configuration of etcd encryption.
         /// </summary>
         [Input("databaseEncryption")]
@@ -475,18 +457,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<bool>? EnableKubernetesAlpha { get; set; }
 
         /// <summary>
-        /// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
-        /// </summary>
-        [Input("endpoint")]
-        public Input<string>? Endpoint { get; set; }
-
-        /// <summary>
-        /// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        /// </summary>
-        [Input("expireTime")]
-        public Input<string>? ExpireTime { get; set; }
-
-        /// <summary>
         /// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         /// </summary>
         [Input("initialClusterVersion")]
@@ -504,9 +474,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("legacyAbac")]
         public Input<Inputs.LegacyAbacArgs>? LegacyAbac { get; set; }
 
-        /// <summary>
-        /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
@@ -582,12 +549,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("networkPolicy")]
         public Input<Inputs.NetworkPolicyArgs>? NetworkPolicy { get; set; }
 
-        /// <summary>
-        /// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
-        /// </summary>
-        [Input("nodeIpv4CidrSize")]
-        public Input<int>? NodeIpv4CidrSize { get; set; }
-
         [Input("nodePools")]
         private InputList<Inputs.NodePoolArgs>? _nodePools;
 
@@ -652,28 +613,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<Inputs.ResourceUsageExportConfigArgs>? ResourceUsageExportConfig { get; set; }
 
         /// <summary>
-        /// [Output only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
-        /// </summary>
-        [Input("servicesIpv4Cidr")]
-        public Input<string>? ServicesIpv4Cidr { get; set; }
-
-        /// <summary>
         /// Shielded Nodes configuration.
         /// </summary>
         [Input("shieldedNodes")]
         public Input<Inputs.ShieldedNodesArgs>? ShieldedNodes { get; set; }
-
-        /// <summary>
-        /// [Output only] The current status of this cluster.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Container.V1Beta1.ClusterStatus>? Status { get; set; }
 
         /// <summary>
         /// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
@@ -686,12 +629,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("tpuConfig")]
         public Input<Inputs.TpuConfigArgs>? TpuConfig { get; set; }
-
-        /// <summary>
-        /// [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
-        /// </summary>
-        [Input("tpuIpv4CidrBlock")]
-        public Input<string>? TpuIpv4CidrBlock { get; set; }
 
         /// <summary>
         /// Cluster-level Vertical Pod Autoscaling configuration.

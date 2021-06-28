@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.ConsistentHashLoadBalancerSettingsResponse> ConsistentHash { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The resource URL for the edge security policy associated with this backend service.
+        /// The resource URL for the edge security policy associated with this backend service.
         /// </summary>
         [Output("edgeSecurityPolicy")]
         public Output<string> EdgeSecurityPolicy { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.BackendServiceIAPResponse> Iap { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#backendService for backend services.
+        /// Type of resource. Always compute#backendService for backend services.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -220,13 +220,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The resource URL for the security policy associated with this backend service.
+        /// The resource URL for the security policy associated with this backend service.
         /// </summary>
         [Output("securityPolicy")]
         public Output<string> SecurityPolicy { get; private set; } = null!;
@@ -240,13 +240,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.SecuritySettingsResponse> SecuritySettings { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -377,12 +377,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("consistentHash")]
         public Input<Inputs.ConsistentHashLoadBalancerSettingsArgs>? ConsistentHash { get; set; }
 
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
         [Input("customRequestHeaders")]
         private InputList<string>? _customRequestHeaders;
 
@@ -414,12 +408,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// [Output Only] The resource URL for the edge security policy associated with this backend service.
-        /// </summary>
-        [Input("edgeSecurityPolicy")]
-        public Input<string>? EdgeSecurityPolicy { get; set; }
-
-        /// <summary>
         /// If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
         /// </summary>
         [Input("enableCDN")]
@@ -448,18 +436,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("iap")]
         public Input<Inputs.BackendServiceIAPArgs>? Iap { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of resource. Always compute#backendService for backend services.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
@@ -548,20 +524,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("protocol")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.BackendServiceProtocol>? Protocol { get; set; }
 
-        /// <summary>
-        /// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] The resource URL for the security policy associated with this backend service.
-        /// </summary>
-        [Input("securityPolicy")]
-        public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
         /// This field specifies the security policy that applies to this backend service. This field is applicable to either:  
@@ -570,18 +534,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("securitySettings")]
         public Input<Inputs.SecuritySettingsArgs>? SecuritySettings { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
         /// Type of session affinity to use. The default is NONE.

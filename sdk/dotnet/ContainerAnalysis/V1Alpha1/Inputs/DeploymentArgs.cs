@@ -39,18 +39,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         [Input("platform")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.DeploymentPlatform>? Platform { get; set; }
 
-        [Input("resourceUri")]
-        private InputList<string>? _resourceUri;
-
-        /// <summary>
-        /// Resource URI for the artifact being deployed taken from the deployable field with the same name.
-        /// </summary>
-        public InputList<string> ResourceUri
-        {
-            get => _resourceUri ?? (_resourceUri = new InputList<string>());
-            set => _resourceUri = value;
-        }
-
         /// <summary>
         /// End of the lifetime of this deployment.
         /// </summary>

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.NodeGroupAutoscalingPolicyResponse> AutoscalingPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+        /// The type of the resource. Always compute#nodeGroup for node group.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -70,19 +70,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> NodeTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The total number of nodes in the node group.
+        /// The total number of nodes in the node group.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+        /// The name of the zone where the node group resides, such as us-central1-a.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -148,31 +148,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.NodeGroupAutoscalingPolicyArgs>? AutoscalingPolicy { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("initialNodeCount", required: true)]
         public Input<string> InitialNodeCount { get; set; } = null!;
-
-        /// <summary>
-        /// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
@@ -207,30 +189,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
-
-        /// <summary>
-        /// [Output Only] The total number of nodes in the node group.
-        /// </summary>
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
         [Input("status")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.NodeGroupStatus>? Status { get; set; }
 
-        /// <summary>
-        /// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
-        /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
 

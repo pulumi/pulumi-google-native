@@ -163,18 +163,6 @@ namespace Pulumi.GoogleNative.Testing.V1
         public Input<int>? FlakyTestAttempts { get; set; }
 
         /// <summary>
-        /// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-        /// </summary>
-        [Input("invalidMatrixDetails")]
-        public Input<Pulumi.GoogleNative.Testing.V1.TestMatrixInvalidMatrixDetails>? InvalidMatrixDetails { get; set; }
-
-        /// <summary>
-        /// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
-        /// </summary>
-        [Input("outcomeSummary")]
-        public Input<Pulumi.GoogleNative.Testing.V1.TestMatrixOutcomeSummary>? OutcomeSummary { get; set; }
-
-        /// <summary>
         /// The cloud project that owns the test matrix.
         /// </summary>
         [Input("project", required: true)]
@@ -190,40 +178,10 @@ namespace Pulumi.GoogleNative.Testing.V1
         public Input<Inputs.ResultStorageArgs>? ResultStorage { get; set; }
 
         /// <summary>
-        /// Indicates the current progress of the test matrix.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Testing.V1.TestMatrixState>? State { get; set; }
-
-        [Input("testExecutions")]
-        private InputList<Inputs.TestExecutionArgs>? _testExecutions;
-
-        /// <summary>
-        /// The list of test executions that the service creates for this matrix.
-        /// </summary>
-        public InputList<Inputs.TestExecutionArgs> TestExecutions
-        {
-            get => _testExecutions ?? (_testExecutions = new InputList<Inputs.TestExecutionArgs>());
-            set => _testExecutions = value;
-        }
-
-        /// <summary>
-        /// Unique id set by the service.
-        /// </summary>
-        [Input("testMatrixId")]
-        public Input<string>? TestMatrixId { get; set; }
-
-        /// <summary>
         /// Required. How to run the test.
         /// </summary>
         [Input("testSpecification")]
         public Input<Inputs.TestSpecificationArgs>? TestSpecification { get; set; }
-
-        /// <summary>
-        /// The time this test matrix was initially created.
-        /// </summary>
-        [Input("timestamp")]
-        public Input<string>? Timestamp { get; set; }
 
         public TestMatrixArgs()
         {

@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.BackendBucketCdnPolicyResponse> CdnPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+        /// The resource URL for the edge security policy associated with this backend bucket.
         /// </summary>
         [Output("edgeSecurityPolicy")]
         public Output<string> EdgeSecurityPolicy { get; private set; } = null!;
@@ -70,13 +70,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -138,12 +138,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("cdnPolicy")]
         public Input<Inputs.BackendBucketCdnPolicyArgs>? CdnPolicy { get; set; }
 
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
         [Input("customResponseHeaders")]
         private InputList<string>? _customResponseHeaders;
 
@@ -163,22 +157,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// [Output Only] The resource URL for the edge security policy associated with this backend bucket.
-        /// </summary>
-        [Input("edgeSecurityPolicy")]
-        public Input<string>? EdgeSecurityPolicy { get; set; }
-
-        /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
         /// </summary>
         [Input("enableCdn")]
         public Input<bool>? EnableCdn { get; set; }
-
-        /// <summary>
-        /// [Output Only] Unique identifier for the resource; defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Type of the resource.
@@ -197,18 +179,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
 
         public BackendBucketArgs()
         {

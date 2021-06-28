@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.RouterBgpPeerResponse> BgpPeers;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.RouterInterfaceResponse> Interfaces;
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#router for routers.
+        /// Type of resource. Always compute#router for routers.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -81,11 +81,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
 

@@ -16,18 +16,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     public sealed class EnvironmentConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-        /// </summary>
-        [Input("airflowUri")]
-        public Input<string>? AirflowUri { get; set; }
-
-        /// <summary>
-        /// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-        /// </summary>
-        [Input("dagGcsPrefix")]
-        public Input<string>? DagGcsPrefix { get; set; }
-
-        /// <summary>
         /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         /// </summary>
         [Input("databaseConfig")]
@@ -38,12 +26,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
-
-        /// <summary>
-        /// The Kubernetes Engine cluster used to run this environment.
-        /// </summary>
-        [Input("gkeCluster")]
-        public Input<string>? GkeCluster { get; set; }
 
         /// <summary>
         /// The configuration used for the Kubernetes Engine cluster.

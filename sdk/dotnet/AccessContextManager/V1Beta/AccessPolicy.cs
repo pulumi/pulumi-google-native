@@ -79,12 +79,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         /// </summary>
         [Input("parent")]

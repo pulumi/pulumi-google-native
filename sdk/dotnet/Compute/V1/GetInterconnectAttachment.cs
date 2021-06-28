@@ -64,19 +64,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly ImmutableArray<string> CandidateSubnets;
         /// <summary>
-        /// [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        /// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
         /// </summary>
         public readonly string CloudRouterIpAddress;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
-        /// [Output Only] IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        /// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
         /// </summary>
         public readonly string CustomerRouterIpAddress;
         /// <summary>
-        /// [Output Only] Dataplane version for this InterconnectAttachment.
+        /// Dataplane version for this InterconnectAttachment.
         /// </summary>
         public readonly int DataplaneVersion;
         /// <summary>
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly ImmutableArray<string> IpsecInternalAddresses;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
+        /// Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
+        /// The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
         /// - OS_ACTIVE: The attachment has been turned up and is ready to use. 
         /// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
         /// </summary>
@@ -137,11 +137,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.InterconnectAttachmentPartnerMetadataResponse PartnerMetadata;
         /// <summary>
-        /// [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
+        /// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
         /// </summary>
         public readonly Outputs.InterconnectAttachmentPrivateInfoResponse PrivateInterconnectInfo;
         /// <summary>
-        /// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -149,11 +149,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Router;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
+        /// The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
         /// - ACTIVE: The attachment has been turned up and is ready to use. 
         /// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
         /// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 

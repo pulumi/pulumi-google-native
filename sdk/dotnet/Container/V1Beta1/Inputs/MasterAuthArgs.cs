@@ -16,22 +16,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     public sealed class MasterAuthArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
-        /// </summary>
-        [Input("clientCertificate")]
-        public Input<string>? ClientCertificate { get; set; }
-
-        /// <summary>
         /// Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
         /// </summary>
         [Input("clientCertificateConfig")]
         public Input<Inputs.ClientCertificateConfigArgs>? ClientCertificateConfig { get; set; }
-
-        /// <summary>
-        /// [Output only] Base64-encoded private key used by clients to authenticate to the cluster endpoint.
-        /// </summary>
-        [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
 
         [Input("clusterCaCertificate")]
         public Input<string>? ClusterCaCertificate { get; set; }

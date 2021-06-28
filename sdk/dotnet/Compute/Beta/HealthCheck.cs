@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<int> CheckIntervalSec { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in 3339 text format.
+        /// Creation timestamp in 3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -70,13 +70,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Region where the health check resides. Not applicable to global health checks.
+        /// Region where the health check resides. Not applicable to global health checks.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -157,12 +157,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<int>? CheckIntervalSec { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in 3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -187,12 +181,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<Inputs.HTTPSHealthCheckArgs>? HttpsHealthCheck { get; set; }
 
         /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// Type of the resource.
         /// </summary>
         [Input("kind")]
@@ -213,20 +201,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// [Output Only] Region where the health check resides. Not applicable to global health checks.
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         [Input("sslHealthCheck")]
         public Input<Inputs.SSLHealthCheckArgs>? SslHealthCheck { get; set; }

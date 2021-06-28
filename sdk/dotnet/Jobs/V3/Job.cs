@@ -253,12 +253,6 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Input<Inputs.ApplicationInfoArgs>? ApplicationInfo { get; set; }
 
         /// <summary>
-        /// Display name of the company listing the job.
-        /// </summary>
-        [Input("companyDisplayName")]
-        public Input<string>? CompanyDisplayName { get; set; }
-
-        /// <summary>
         /// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
         /// </summary>
         [Input("companyName")]
@@ -299,12 +293,6 @@ namespace Pulumi.GoogleNative.Jobs.V3
         /// </summary>
         [Input("department")]
         public Input<string>? Department { get; set; }
-
-        /// <summary>
-        /// Derived details about the job posting.
-        /// </summary>
-        [Input("derivedInfo")]
-        public Input<Inputs.JobDerivedInfoArgs>? DerivedInfo { get; set; }
 
         /// <summary>
         /// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
@@ -373,12 +361,6 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The timestamp when this job posting was created.
-        /// </summary>
-        [Input("postingCreateTime")]
-        public Input<string>? PostingCreateTime { get; set; }
-
-        /// <summary>
         /// Optional but strongly recommended for the best service experience. The expiration timestamp of the job. After this timestamp, the job is marked as expired, and it no longer appears in search results. The expired job can't be deleted or listed by the DeleteJob and ListJobs APIs, but it can be retrieved with the GetJob API or updated with the UpdateJob API. An expired job can be updated and opened again by using a future expiration timestamp. Updating an expired job fails if there is another existing open job with same company_name, language_code and requisition_id. The expired jobs are retained in our system for 90 days. However, the overall expired job count cannot exceed 3 times the maximum of open jobs count over the past week, otherwise jobs with earlier expire time are cleaned first. Expired jobs are no longer accessible after they are cleaned out. Invalid timestamps are ignored, and treated as expire time not provided. Timestamp before the instant request is made is considered valid, the job will be treated as expired immediately. If this value is not provided at the time of job creation or is invalid, the job posting expires after 30 days from the job's creation time. For example, if the job was created on 2017/01/01 13:00AM UTC with an unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC. If this value is not provided on job update, it depends on the field masks set by UpdateJobRequest.update_mask. If the field masks include expiry_time, or the masks are empty meaning that every field is updated, the job posting expires after 30 days from the job's last update time. Otherwise the expiration date isn't updated.
         /// </summary>
         [Input("postingExpireTime")]
@@ -395,12 +377,6 @@ namespace Pulumi.GoogleNative.Jobs.V3
         /// </summary>
         [Input("postingRegion")]
         public Input<Pulumi.GoogleNative.Jobs.V3.JobPostingRegion>? PostingRegion { get; set; }
-
-        /// <summary>
-        /// The timestamp when this job posting was last updated.
-        /// </summary>
-        [Input("postingUpdateTime")]
-        public Input<string>? PostingUpdateTime { get; set; }
 
         /// <summary>
         /// Optional. Options for job processing.

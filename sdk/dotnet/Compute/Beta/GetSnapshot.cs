@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetSnapshotResult
     {
         /// <summary>
-        /// [Output Only] Set to true if snapshots are automatically created by applying resource policy on the target disk.
+        /// Set to true if snapshots are automatically created by applying resource policy on the target disk.
         /// </summary>
         public readonly bool AutoCreated;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string ChainName;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -53,11 +53,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] Size of the source disk, specified in GB.
+        /// Size of the source disk, specified in GB.
         /// </summary>
         public readonly string DiskSizeGb;
         /// <summary>
-        /// [Output Only] Number of bytes downloaded to restore a snapshot to a disk.
+        /// Number of bytes downloaded to restore a snapshot to a disk.
         /// </summary>
         public readonly string DownloadBytes;
         /// <summary>
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool GuestFlush;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#snapshot for Snapshot resources.
+        /// Type of the resource. Always compute#snapshot for Snapshot resources.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -79,11 +79,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// [Output Only] Integer license codes indicating which licenses are attached to this snapshot.
+        /// Integer license codes indicating which licenses are attached to this snapshot.
         /// </summary>
         public readonly ImmutableArray<string> LicenseCodes;
         /// <summary>
-        /// [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
+        /// A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
         /// </summary>
         public readonly ImmutableArray<string> Licenses;
         /// <summary>
@@ -95,11 +95,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
@@ -121,19 +121,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceDiskEncryptionKey;
         /// <summary>
-        /// [Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
+        /// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         /// </summary>
         public readonly string SourceDiskId;
         /// <summary>
-        /// [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
+        /// The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// [Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
+        /// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
         /// </summary>
         public readonly string StorageBytes;
         /// <summary>
-        /// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        /// An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         /// </summary>
         public readonly string StorageBytesStatus;
         /// <summary>

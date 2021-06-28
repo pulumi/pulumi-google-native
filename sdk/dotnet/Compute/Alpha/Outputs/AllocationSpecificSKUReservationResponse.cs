@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Count;
         /// <summary>
-        /// [Output Only] Indicates how many instances are in use.
+        /// Indicates how many instances are in use.
         /// </summary>
         public readonly string InUseCount;
         /// <summary>

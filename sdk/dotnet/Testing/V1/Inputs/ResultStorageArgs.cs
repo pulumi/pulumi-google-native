@@ -22,18 +22,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public Input<Inputs.GoogleCloudStorageArgs>? GoogleCloudStorage { get; set; }
 
         /// <summary>
-        /// URL to the results in the Firebase Web Console.
-        /// </summary>
-        [Input("resultsUrl")]
-        public Input<string>? ResultsUrl { get; set; }
-
-        /// <summary>
-        /// The tool results execution that results are written to.
-        /// </summary>
-        [Input("toolResultsExecution")]
-        public Input<Inputs.ToolResultsExecutionArgs>? ToolResultsExecution { get; set; }
-
-        /// <summary>
         /// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
         /// </summary>
         [Input("toolResultsHistory")]

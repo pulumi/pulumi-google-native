@@ -49,63 +49,6 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
-    /// [Output only] The current status of this cluster.
-    /// </summary>
-    [EnumType]
-    public readonly struct ClusterStatus : IEquatable<ClusterStatus>
-    {
-        private readonly string _value;
-
-        private ClusterStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Not set.
-        /// </summary>
-        public static ClusterStatus StatusUnspecified { get; } = new ClusterStatus("STATUS_UNSPECIFIED");
-        /// <summary>
-        /// The PROVISIONING state indicates the cluster is being created.
-        /// </summary>
-        public static ClusterStatus Provisioning { get; } = new ClusterStatus("PROVISIONING");
-        /// <summary>
-        /// The RUNNING state indicates the cluster has been created and is fully usable.
-        /// </summary>
-        public static ClusterStatus Running { get; } = new ClusterStatus("RUNNING");
-        /// <summary>
-        /// The RECONCILING state indicates that some work is actively being done on the cluster, such as upgrading the master or node software. Details can be found in the `statusMessage` field.
-        /// </summary>
-        public static ClusterStatus Reconciling { get; } = new ClusterStatus("RECONCILING");
-        /// <summary>
-        /// The STOPPING state indicates the cluster is being deleted.
-        /// </summary>
-        public static ClusterStatus Stopping { get; } = new ClusterStatus("STOPPING");
-        /// <summary>
-        /// The ERROR state indicates the cluster is unusable. It will be automatically deleted. Details can be found in the `statusMessage` field.
-        /// </summary>
-        public static ClusterStatus Error { get; } = new ClusterStatus("ERROR");
-        /// <summary>
-        /// The DEGRADED state indicates the cluster requires user action to restore full functionality. Details can be found in the `statusMessage` field.
-        /// </summary>
-        public static ClusterStatus Degraded { get; } = new ClusterStatus("DEGRADED");
-
-        public static bool operator ==(ClusterStatus left, ClusterStatus right) => left.Equals(right);
-        public static bool operator !=(ClusterStatus left, ClusterStatus right) => !left.Equals(right);
-
-        public static explicit operator string(ClusterStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ClusterStatus other && Equals(other);
-        public bool Equals(ClusterStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The desired state of IPv6 connectivity to Google Services.
     /// </summary>
     [EnumType]
@@ -266,63 +209,6 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is NetworkPolicyProvider other && Equals(other);
         public bool Equals(NetworkPolicyProvider other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// [Output only] The status of the nodes in this pool instance.
-    /// </summary>
-    [EnumType]
-    public readonly struct NodePoolStatus : IEquatable<NodePoolStatus>
-    {
-        private readonly string _value;
-
-        private NodePoolStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Not set.
-        /// </summary>
-        public static NodePoolStatus StatusUnspecified { get; } = new NodePoolStatus("STATUS_UNSPECIFIED");
-        /// <summary>
-        /// The PROVISIONING state indicates the node pool is being created.
-        /// </summary>
-        public static NodePoolStatus Provisioning { get; } = new NodePoolStatus("PROVISIONING");
-        /// <summary>
-        /// The RUNNING state indicates the node pool has been created and is fully usable.
-        /// </summary>
-        public static NodePoolStatus Running { get; } = new NodePoolStatus("RUNNING");
-        /// <summary>
-        /// The RUNNING_WITH_ERROR state indicates the node pool has been created and is partially usable. Some error state has occurred and some functionality may be impaired. Customer may need to reissue a request or trigger a new update.
-        /// </summary>
-        public static NodePoolStatus RunningWithError { get; } = new NodePoolStatus("RUNNING_WITH_ERROR");
-        /// <summary>
-        /// The RECONCILING state indicates that some work is actively being done on the node pool, such as upgrading node software. Details can be found in the `statusMessage` field.
-        /// </summary>
-        public static NodePoolStatus Reconciling { get; } = new NodePoolStatus("RECONCILING");
-        /// <summary>
-        /// The STOPPING state indicates the node pool is being deleted.
-        /// </summary>
-        public static NodePoolStatus Stopping { get; } = new NodePoolStatus("STOPPING");
-        /// <summary>
-        /// The ERROR state indicates the node pool may be unusable. Details can be found in the `statusMessage` field.
-        /// </summary>
-        public static NodePoolStatus Error { get; } = new NodePoolStatus("ERROR");
-
-        public static bool operator ==(NodePoolStatus left, NodePoolStatus right) => left.Equals(right);
-        public static bool operator !=(NodePoolStatus left, NodePoolStatus right) => !left.Equals(right);
-
-        public static explicit operator string(NodePoolStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is NodePoolStatus other && Equals(other);
-        public bool Equals(NodePoolStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

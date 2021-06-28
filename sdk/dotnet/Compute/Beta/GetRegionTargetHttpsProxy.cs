@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string AuthorizationPolicy;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<string> HttpFilters;
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
+        /// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -88,11 +88,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string QuicOverride;
         /// <summary>
-        /// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
+        /// URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>

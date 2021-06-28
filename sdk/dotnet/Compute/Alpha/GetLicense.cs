@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetLicenseResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -45,11 +45,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#license for licenses.
+        /// Type of resource. Always compute#license for licenses.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+        /// The unique code used to attach this license to images, snapshots, and disks.
         /// </summary>
         public readonly string LicenseCode;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public readonly string Name;
         public readonly Outputs.LicenseResourceRequirementsResponse ResourceRequirements;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>

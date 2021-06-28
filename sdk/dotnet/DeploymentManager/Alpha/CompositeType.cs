@@ -114,12 +114,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("insertTime")]
-        public Input<string>? InsertTime { get; set; }
-
         [Input("labels")]
         private InputList<Inputs.CompositeTypeLabelEntryArgs>? _labels;
 
@@ -138,20 +132,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The Operation that most recently ran, or is currently running, on this composite type.
-        /// </summary>
-        [Input("operation")]
-        public Input<Inputs.OperationArgs>? Operation { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// Server defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         [Input("status")]
         public Input<Pulumi.GoogleNative.DeploymentManager.Alpha.CompositeTypeStatus>? Status { get; set; }

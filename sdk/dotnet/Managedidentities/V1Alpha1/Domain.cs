@@ -156,20 +156,8 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
             set => _authorizedNetworks = value;
         }
 
-        /// <summary>
-        /// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
-
-        /// <summary>
-        /// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
-        /// </summary>
-        [Input("fqdn")]
-        public Input<string>? Fqdn { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -201,12 +189,6 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         [Input("managedIdentitiesAdminName")]
         public Input<string>? ManagedIdentitiesAdminName { get; set; }
 
-        /// <summary>
-        /// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -215,36 +197,6 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }
-
-        /// <summary>
-        /// The current state of this domain.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Managedidentities.V1Alpha1.DomainState>? State { get; set; }
-
-        /// <summary>
-        /// Additional information about the current status of this domain, if available.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
-
-        [Input("trusts")]
-        private InputList<Inputs.TrustArgs>? _trusts;
-
-        /// <summary>
-        /// The current trusts associated with the domain.
-        /// </summary>
-        public InputList<Inputs.TrustArgs> Trusts
-        {
-            get => _trusts ?? (_trusts = new InputList<Inputs.TrustArgs>());
-            set => _trusts = value;
-        }
-
-        /// <summary>
-        /// Last update time. Synthetic field is populated automatically by CCFE.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public DomainArgs()
         {

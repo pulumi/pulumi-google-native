@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class ResourcePolicyResourceStatusResponse
     {
         /// <summary>
-        /// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+        /// Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
         /// </summary>
         public readonly Outputs.ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse InstanceSchedulePolicy;
 

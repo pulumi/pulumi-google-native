@@ -16,12 +16,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class IosTestLoopArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bundle id for the application under test.
-        /// </summary>
-        [Input("appBundleId")]
-        public Input<string>? AppBundleId { get; set; }
-
-        /// <summary>
         /// Required. The .ipa of the application to test.
         /// </summary>
         [Input("appIpa")]

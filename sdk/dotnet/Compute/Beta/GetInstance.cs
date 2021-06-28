@@ -49,11 +49,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public readonly bool CanIpForward;
         public readonly Outputs.ConfidentialInstanceConfigResponse ConfidentialInstanceConfig;
         /// <summary>
-        /// [Output Only] The CPU platform used by this instance.
+        /// The CPU platform used by this instance.
         /// </summary>
         public readonly string CpuPlatform;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#instance for instances.
+        /// Type of the resource. Always compute#instance for instances.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -105,15 +105,15 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// [Output Only] Last start timestamp in RFC3339 text format.
+        /// Last start timestamp in RFC3339 text format.
         /// </summary>
         public readonly string LastStartTimestamp;
         /// <summary>
-        /// [Output Only] Last stop timestamp in RFC3339 text format.
+        /// Last stop timestamp in RFC3339 text format.
         /// </summary>
         public readonly string LastStopTimestamp;
         /// <summary>
-        /// [Output Only] Last suspended timestamp in RFC3339 text format.
+        /// Last suspended timestamp in RFC3339 text format.
         /// </summary>
         public readonly string LastSuspendedTimestamp;
         /// <summary>
@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
@@ -172,7 +172,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.SchedulingResponse Scheduling;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource.
+        /// Server-defined URL for this resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
@@ -200,15 +200,15 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceMachineImageEncryptionKey;
         /// <summary>
-        /// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+        /// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
         /// </summary>
         public readonly bool StartRestricted;
         /// <summary>
-        /// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+        /// The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// [Output Only] An optional, human-readable explanation of the status.
+        /// An optional, human-readable explanation of the status.
         /// </summary>
         public readonly string StatusMessage;
         /// <summary>
@@ -216,7 +216,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.TagsResponse Tags;
         /// <summary>
-        /// [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Zone;
 

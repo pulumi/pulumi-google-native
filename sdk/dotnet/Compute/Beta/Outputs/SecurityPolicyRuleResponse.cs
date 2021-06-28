@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string RuleNumber;
         /// <summary>
-        /// [Output Only] Calculation of the complexity of a single firewall security policy rule.
+        /// Calculation of the complexity of a single firewall security policy rule.
         /// </summary>
         public readonly int RuleTupleCount;
         /// <summary>
