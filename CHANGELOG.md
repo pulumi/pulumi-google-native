@@ -8,6 +8,12 @@ New features:
 - Populate fingerprint properties automatically
   [#126](https://github.com/pulumi/pulumi-google-native/issues/126)
 
+Bug fixes:
+
+- Fix the representation of properties marked as `[Output only]`
+  [#134](https://github.com/pulumi/pulumi-google-native/issues/134),
+  [#135](https://github.com/pulumi/pulumi-google-native/issues/135)
+
 ---
 
 ## 0.4.0 (2021-06-16)
