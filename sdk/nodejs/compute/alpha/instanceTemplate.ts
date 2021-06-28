@@ -36,17 +36,17 @@ export class InstanceTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] The creation timestamp for this instance template in RFC3339 text format.
+     * The creation timestamp for this instance template in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
+     * The resource type, which is always compute#instanceTemplate for instance templates.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -56,13 +56,13 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly properties!: pulumi.Output<outputs.compute.alpha.InstancePropertiesResponse>;
     /**
-     * [Output Only] The URL for this instance template. The server defines this URL.
+     * The URL for this instance template. The server defines this URL.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
      * The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
@@ -88,18 +88,17 @@ export class InstanceTemplate extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["properties"] = args ? args.properties : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
             inputs["sourceInstanceParams"] = args ? args.sourceInstanceParams : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -123,21 +122,9 @@ export class InstanceTemplate extends pulumi.CustomResource {
  */
 export interface InstanceTemplateArgs {
     /**
-     * [Output Only] The creation timestamp for this instance template in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] A unique identifier for this instance template. The server defines this identifier.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -148,14 +135,6 @@ export interface InstanceTemplateArgs {
      */
     properties?: pulumi.Input<inputs.compute.alpha.InstancePropertiesArgs>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] The URL for this instance template. The server defines this URL.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
     /**
      * The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 

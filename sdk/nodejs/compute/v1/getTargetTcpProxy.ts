@@ -29,7 +29,7 @@ export interface GetTargetTcpProxyArgs {
 
 export interface GetTargetTcpProxyResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -37,7 +37,7 @@ export interface GetTargetTcpProxyResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Type of the resource. Always compute#targetTcpProxy for target TCP proxies.
+     * Type of the resource. Always compute#targetTcpProxy for target TCP proxies.
      */
     readonly kind: string;
     /**
@@ -57,7 +57,7 @@ export interface GetTargetTcpProxyResult {
      */
     readonly proxyHeader: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**

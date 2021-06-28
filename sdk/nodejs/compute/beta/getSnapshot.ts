@@ -29,7 +29,7 @@ export interface GetSnapshotArgs {
 
 export interface GetSnapshotResult {
     /**
-     * [Output Only] Set to true if snapshots are automatically created by applying resource policy on the target disk.
+     * Set to true if snapshots are automatically created by applying resource policy on the target disk.
      */
     readonly autoCreated: boolean;
     /**
@@ -37,7 +37,7 @@ export interface GetSnapshotResult {
      */
     readonly chainName: string;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -45,11 +45,11 @@ export interface GetSnapshotResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Size of the source disk, specified in GB.
+     * Size of the source disk, specified in GB.
      */
     readonly diskSizeGb: string;
     /**
-     * [Output Only] Number of bytes downloaded to restore a snapshot to a disk.
+     * Number of bytes downloaded to restore a snapshot to a disk.
      */
     readonly downloadBytes: string;
     /**
@@ -57,7 +57,7 @@ export interface GetSnapshotResult {
      */
     readonly guestFlush: boolean;
     /**
-     * [Output Only] Type of the resource. Always compute#snapshot for Snapshot resources.
+     * Type of the resource. Always compute#snapshot for Snapshot resources.
      */
     readonly kind: string;
     /**
@@ -71,11 +71,11 @@ export interface GetSnapshotResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * [Output Only] Integer license codes indicating which licenses are attached to this snapshot.
+     * Integer license codes indicating which licenses are attached to this snapshot.
      */
     readonly licenseCodes: string[];
     /**
-     * [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
+     * A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
      */
     readonly licenses: string[];
     /**
@@ -87,11 +87,11 @@ export interface GetSnapshotResult {
      */
     readonly name: string;
     /**
-     * [Output Only] Reserved for future use.
+     * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
@@ -113,19 +113,19 @@ export interface GetSnapshotResult {
      */
     readonly sourceDiskEncryptionKey: outputs.compute.beta.CustomerEncryptionKeyResponse;
     /**
-     * [Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
+     * The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
      */
     readonly sourceDiskId: string;
     /**
-     * [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
+     * The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
      */
     readonly status: string;
     /**
-     * [Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
+     * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
      */
     readonly storageBytes: string;
     /**
-     * [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+     * An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
      */
     readonly storageBytesStatus: string;
     /**

@@ -35,7 +35,7 @@ export interface GetNodeGroupResult {
      */
     readonly autoscalingPolicy: outputs.compute.v1.NodeGroupAutoscalingPolicyResponse;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -44,7 +44,7 @@ export interface GetNodeGroupResult {
     readonly description: string;
     readonly fingerprint: string;
     /**
-     * [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+     * The type of the resource. Always compute#nodeGroup for node group.
      */
     readonly kind: string;
     /**
@@ -65,16 +65,16 @@ export interface GetNodeGroupResult {
      */
     readonly nodeTemplate: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] The total number of nodes in the node group.
+     * The total number of nodes in the node group.
      */
     readonly size: number;
     readonly status: string;
     /**
-     * [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+     * The name of the zone where the node group resides, such as us-central1-a.
      */
     readonly zone: string;
 }

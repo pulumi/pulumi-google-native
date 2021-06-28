@@ -67,7 +67,7 @@ export interface GetBackendServiceResult {
      */
     readonly consistentHash: outputs.compute.beta.ConsistentHashLoadBalancerSettingsResponse;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -105,7 +105,7 @@ export interface GetBackendServiceResult {
      */
     readonly iap: outputs.compute.beta.BackendServiceIAPResponse;
     /**
-     * [Output Only] Type of resource. Always compute#backendService for backend services.
+     * Type of resource. Always compute#backendService for backend services.
      */
     readonly kind: string;
     /**
@@ -175,11 +175,11 @@ export interface GetBackendServiceResult {
      */
     readonly protocol: string;
     /**
-     * [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] The resource URL for the security policy associated with this backend service.
+     * The resource URL for the security policy associated with this backend service.
      */
     readonly securityPolicy: string;
     /**
@@ -189,7 +189,7 @@ export interface GetBackendServiceResult {
      */
     readonly securitySettings: outputs.compute.beta.SecuritySettingsResponse;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**

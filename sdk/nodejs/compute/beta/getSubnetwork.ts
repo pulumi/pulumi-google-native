@@ -41,7 +41,7 @@ export interface GetSubnetworkResult {
      */
     readonly allowSubnetCidrRoutesOverlap: boolean;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -59,7 +59,7 @@ export interface GetSubnetworkResult {
      */
     readonly fingerprint: string;
     /**
-     * [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+     * The gateway address for default routes to reach destination addresses outside this subnetwork.
      */
     readonly gatewayAddress: string;
     /**
@@ -67,11 +67,11 @@ export interface GetSubnetworkResult {
      */
     readonly ipCidrRange: string;
     /**
-     * [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+     * The range of internal IPv6 addresses that are owned by this subnetwork.
      */
     readonly ipv6CidrRange: string;
     /**
-     * [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+     * Type of the resource. Always compute#subnetwork for Subnetwork resources.
      */
     readonly kind: string;
     /**
@@ -113,11 +113,11 @@ export interface GetSubnetworkResult {
      */
     readonly secondaryIpRanges: outputs.compute.beta.SubnetworkSecondaryRangeResponse[];
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+     * The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
      */
     readonly state: string;
 }

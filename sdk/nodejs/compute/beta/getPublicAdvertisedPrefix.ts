@@ -29,7 +29,7 @@ export interface GetPublicAdvertisedPrefixArgs {
 
 export interface GetPublicAdvertisedPrefixResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -51,7 +51,7 @@ export interface GetPublicAdvertisedPrefixResult {
      */
     readonly ipCidrRange: string;
     /**
-     * [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+     * Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
      */
     readonly kind: string;
     /**
@@ -59,15 +59,15 @@ export interface GetPublicAdvertisedPrefixResult {
      */
     readonly name: string;
     /**
-     * [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
+     * The list of public delegated prefixes that exist for this public advertised prefix.
      */
     readonly publicDelegatedPrefixs: outputs.compute.beta.PublicAdvertisedPrefixPublicDelegatedPrefixResponse[];
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] The shared secret to be used for reverse DNS verification.
+     * The shared secret to be used for reverse DNS verification.
      */
     readonly sharedSecret: string;
     /**

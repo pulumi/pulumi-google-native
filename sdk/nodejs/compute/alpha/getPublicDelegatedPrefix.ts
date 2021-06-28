@@ -31,7 +31,7 @@ export interface GetPublicDelegatedPrefixArgs {
 
 export interface GetPublicDelegatedPrefixResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -53,7 +53,7 @@ export interface GetPublicDelegatedPrefixResult {
      */
     readonly isLiveMigration: boolean;
     /**
-     * [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
+     * Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
      */
     readonly kind: string;
     /**
@@ -69,19 +69,19 @@ export interface GetPublicDelegatedPrefixResult {
      */
     readonly publicDelegatedSubPrefixs: outputs.compute.alpha.PublicDelegatedPrefixPublicDelegatedSubPrefixResponse[];
     /**
-     * [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL with id for the resource.
+     * Server-defined URL with id for the resource.
      */
     readonly selfLinkWithId: string;
     /**
-     * [Output Only] The status of the public delegated prefix.
+     * The status of the public delegated prefix.
      */
     readonly status: string;
 }

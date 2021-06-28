@@ -37,11 +37,11 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
      */
-    public readonly etag!: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
      */
@@ -62,10 +62,10 @@ export class AccessPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["title"] = args ? args.title : undefined;
+            inputs["etag"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
             inputs["etag"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -83,14 +83,6 @@ export class AccessPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AccessPolicy resource.
  */
 export interface AccessPolicyArgs {
-    /**
-     * An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
-     */
-    etag?: pulumi.Input<string>;
-    /**
-     * Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
-     */
-    name?: pulumi.Input<string>;
     /**
      * Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
      */

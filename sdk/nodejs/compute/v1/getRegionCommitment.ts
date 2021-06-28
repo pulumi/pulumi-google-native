@@ -35,7 +35,7 @@ export interface GetRegionCommitmentResult {
      */
     readonly category: string;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -43,11 +43,11 @@ export interface GetRegionCommitmentResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Commitment end time in RFC3339 text format.
+     * Commitment end time in RFC3339 text format.
      */
     readonly endTimestamp: string;
     /**
-     * [Output Only] Type of the resource. Always compute#commitment for commitments.
+     * Type of the resource. Always compute#commitment for commitments.
      */
     readonly kind: string;
     /**
@@ -63,7 +63,7 @@ export interface GetRegionCommitmentResult {
      */
     readonly plan: string;
     /**
-     * [Output Only] URL of the region where this commitment may be used.
+     * URL of the region where this commitment may be used.
      */
     readonly region: string;
     /**
@@ -75,19 +75,19 @@ export interface GetRegionCommitmentResult {
      */
     readonly resources: outputs.compute.v1.ResourceCommitmentResponse[];
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Commitment start time in RFC3339 text format.
+     * Commitment start time in RFC3339 text format.
      */
     readonly startTimestamp: string;
     /**
-     * [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+     * Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
      */
     readonly status: string;
     /**
-     * [Output Only] An optional, human-readable explanation of the status.
+     * An optional, human-readable explanation of the status.
      */
     readonly statusMessage: string;
 }

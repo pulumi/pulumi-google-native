@@ -42,7 +42,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The time at which this environment was created.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
      */
@@ -58,11 +58,11 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The time at which this environment was last modified.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
      */
-    public readonly uuid!: pulumi.Output<string>;
+    public /*out*/ readonly uuid!: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -82,14 +82,14 @@ export class Environment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["config"] = args ? args.config : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
-            inputs["uuid"] = args ? args.uuid : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["uuid"] = undefined /*out*/;
         } else {
             inputs["config"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -115,10 +115,6 @@ export interface EnvironmentArgs {
      */
     config?: pulumi.Input<inputs.composer.v1.EnvironmentConfigArgs>;
     /**
-     * The time at which this environment was created.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
      * Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -132,12 +128,4 @@ export interface EnvironmentArgs {
      * The current state of the environment.
      */
     state?: pulumi.Input<enums.composer.v1.EnvironmentState>;
-    /**
-     * The time at which this environment was last modified.
-     */
-    updateTime?: pulumi.Input<string>;
-    /**
-     * The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-     */
-    uuid?: pulumi.Input<string>;
 }

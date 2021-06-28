@@ -40,18 +40,18 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.alpha.NodeGroupAutoscalingPolicyResponse>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+     * The type of the resource. Always compute#nodeGroup for node group.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
      */
@@ -70,20 +70,20 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly nodeTemplate!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * [Output Only] The total number of nodes in the node group.
+     * The total number of nodes in the node group.
      */
-    public readonly size!: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
     public readonly status!: pulumi.Output<string>;
     /**
-     * [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+     * The name of the zone where the node group resides, such as us-central1-a.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -108,11 +108,8 @@ export class NodeGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["locationHint"] = args ? args.locationHint : undefined;
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
@@ -120,12 +117,14 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
-            inputs["size"] = args ? args.size : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["size"] = undefined /*out*/;
         } else {
             inputs["autoscalingPolicy"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -159,22 +158,10 @@ export interface NodeGroupArgs {
      */
     autoscalingPolicy?: pulumi.Input<inputs.compute.alpha.NodeGroupAutoscalingPolicyArgs>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
     initialNodeCount: pulumi.Input<string>;
-    /**
-     * [Output Only] The type of the resource. Always compute#nodeGroup for node group.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
      */
@@ -194,21 +181,6 @@ export interface NodeGroupArgs {
     nodeTemplate?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
-    /**
-     * [Output Only] The total number of nodes in the node group.
-     */
-    size?: pulumi.Input<number>;
     status?: pulumi.Input<enums.compute.alpha.NodeGroupStatus>;
-    /**
-     * [Output Only] The name of the zone where the node group resides, such as us-central1-a.
-     */
     zone: pulumi.Input<string>;
 }

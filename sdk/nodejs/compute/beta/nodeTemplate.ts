@@ -41,18 +41,18 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly cpuOvercommitType!: pulumi.Output<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     public readonly disks!: pulumi.Output<outputs.compute.beta.LocalDiskResponse[]>;
     /**
-     * [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
+     * The type of the resource. Always compute#nodeTemplate for node templates.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -72,13 +72,13 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly nodeTypeFlexibility!: pulumi.Output<outputs.compute.beta.NodeTemplateNodeTypeFlexibilityResponse>;
     /**
-     * [Output Only] The name of the region where the node template resides, such as us-central1.
+     * The name of the region where the node template resides, such as us-central1.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Sets the binding properties for the physical server. Valid values include:  
      * - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
@@ -88,13 +88,13 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly serverBinding!: pulumi.Output<outputs.compute.beta.ServerBindingResponse>;
     /**
-     * [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+     * The status of the node template. One of the following values: CREATING, READY, and DELETING.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * [Output Only] An optional, human-readable explanation of the status.
+     * An optional, human-readable explanation of the status.
      */
-    public readonly statusMessage!: pulumi.Output<string>;
+    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
 
     /**
      * Create a NodeTemplate resource with the given unique name, arguments, and options.
@@ -115,11 +115,8 @@ export class NodeTemplate extends pulumi.CustomResource {
             }
             inputs["accelerators"] = args ? args.accelerators : undefined;
             inputs["cpuOvercommitType"] = args ? args.cpuOvercommitType : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disks"] = args ? args.disks : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
             inputs["nodeType"] = args ? args.nodeType : undefined;
@@ -127,10 +124,12 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serverBinding"] = args ? args.serverBinding : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["statusMessage"] = args ? args.statusMessage : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
         } else {
             inputs["accelerators"] = undefined /*out*/;
             inputs["cpuOvercommitType"] = undefined /*out*/;
@@ -165,22 +164,10 @@ export interface NodeTemplateArgs {
      */
     cpuOvercommitType?: pulumi.Input<enums.compute.beta.NodeTemplateCpuOvercommitType>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
     disks?: pulumi.Input<pulumi.Input<inputs.compute.beta.LocalDiskArgs>[]>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -200,15 +187,8 @@ export interface NodeTemplateArgs {
      */
     nodeTypeFlexibility?: pulumi.Input<inputs.compute.beta.NodeTemplateNodeTypeFlexibilityArgs>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] The name of the region where the node template resides, such as us-central1.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
     /**
      * Sets the binding properties for the physical server. Valid values include:  
      * - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
@@ -217,12 +197,4 @@ export interface NodeTemplateArgs {
      * See Sole-tenant node options for more information.
      */
     serverBinding?: pulumi.Input<inputs.compute.beta.ServerBindingArgs>;
-    /**
-     * [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
-     */
-    status?: pulumi.Input<enums.compute.beta.NodeTemplateStatus>;
-    /**
-     * [Output Only] An optional, human-readable explanation of the status.
-     */
-    statusMessage?: pulumi.Input<string>;
 }

@@ -35,7 +35,7 @@ export interface GetPacketMirroringResult {
      */
     readonly collectorIlb: outputs.compute.v1.PacketMirroringForwardingRuleInfoResponse;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -53,7 +53,7 @@ export interface GetPacketMirroringResult {
      */
     readonly filter: outputs.compute.v1.PacketMirroringFilterResponse;
     /**
-     * [Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.
+     * Type of the resource. Always compute#packetMirroring for packet mirrorings.
      */
     readonly kind: string;
     /**
@@ -75,11 +75,11 @@ export interface GetPacketMirroringResult {
      */
     readonly priority: number;
     /**
-     * [Output Only] URI of the region where the packetMirroring resides.
+     * URI of the region where the packetMirroring resides.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
 }

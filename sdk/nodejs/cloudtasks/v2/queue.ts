@@ -46,7 +46,7 @@ export class Queue extends pulumi.CustomResource {
     /**
      * The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
      */
-    public readonly purgeTime!: pulumi.Output<string>;
+    public /*out*/ readonly purgeTime!: pulumi.Output<string>;
     /**
      * Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts. However they control task attempts in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc). The queue's actual dispatch rate is the result of: * Number of tasks in the queue * User-specified throttling: rate_limits, retry_config, and the queue's state. * System throttling due to `429` (Too Many Requests) or `503` (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic spikes.
      */
@@ -62,7 +62,7 @@ export class Queue extends pulumi.CustomResource {
     /**
      * The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Queue resource with the given unique name, arguments, and options.
@@ -85,11 +85,11 @@ export class Queue extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["purgeTime"] = args ? args.purgeTime : undefined;
             inputs["rateLimits"] = args ? args.rateLimits : undefined;
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
             inputs["stackdriverLoggingConfig"] = args ? args.stackdriverLoggingConfig : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["purgeTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
             inputs["appEngineRoutingOverride"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -121,10 +121,6 @@ export interface QueueArgs {
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
-     */
-    purgeTime?: pulumi.Input<string>;
-    /**
      * Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts. However they control task attempts in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc). The queue's actual dispatch rate is the result of: * Number of tasks in the queue * User-specified throttling: rate_limits, retry_config, and the queue's state. * System throttling due to `429` (Too Many Requests) or `503` (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic spikes.
      */
     rateLimits?: pulumi.Input<inputs.cloudtasks.v2.RateLimitsArgs>;
@@ -136,8 +132,4 @@ export interface QueueArgs {
      * Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
      */
     stackdriverLoggingConfig?: pulumi.Input<inputs.cloudtasks.v2.StackdriverLoggingConfigArgs>;
-    /**
-     * The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
-     */
-    state?: pulumi.Input<enums.cloudtasks.v2.QueueState>;
 }

@@ -31,7 +31,7 @@ export interface GetVpnGatewayArgs {
 
 export interface GetVpnGatewayResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -39,7 +39,7 @@ export interface GetVpnGatewayResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
+     * Type of resource. Always compute#vpnGateway for VPN gateways.
      */
     readonly kind: string;
     /**
@@ -61,11 +61,11 @@ export interface GetVpnGatewayResult {
      */
     readonly network: string;
     /**
-     * [Output Only] URL of the region where the VPN gateway resides.
+     * URL of the region where the VPN gateway resides.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**

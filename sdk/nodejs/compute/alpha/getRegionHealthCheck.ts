@@ -35,7 +35,7 @@ export interface GetRegionHealthCheckResult {
      */
     readonly checkIntervalSec: number;
     /**
-     * [Output Only] Creation timestamp in 3339 text format.
+     * Creation timestamp in 3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -63,15 +63,15 @@ export interface GetRegionHealthCheckResult {
      */
     readonly name: string;
     /**
-     * [Output Only] Region where the health check resides. Not applicable to global health checks.
+     * Region where the health check resides. Not applicable to global health checks.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     readonly sslHealthCheck: outputs.compute.alpha.SSLHealthCheckResponse;

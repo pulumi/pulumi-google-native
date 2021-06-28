@@ -29,7 +29,7 @@ export interface GetSslPolicyArgs {
 
 export interface GetSslPolicyResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -42,7 +42,7 @@ export interface GetSslPolicyResult {
      */
     readonly description: string;
     /**
-     * [Output Only] The list of features enabled in the SSL policy.
+     * The list of features enabled in the SSL policy.
      */
     readonly enabledFeatures: string[];
     /**
@@ -68,11 +68,11 @@ export interface GetSslPolicyResult {
      */
     readonly profile: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**
@@ -80,7 +80,7 @@ export interface GetSslPolicyResult {
      */
     readonly tlsSettings: outputs.compute.alpha.ServerTlsSettingsResponse;
     /**
-     * [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+     * If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
      */
     readonly warnings: outputs.compute.alpha.SslPolicyWarningsItemResponse[];
 }

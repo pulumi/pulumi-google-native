@@ -46,7 +46,7 @@ export class Occurrence extends pulumi.CustomResource {
     /**
      * The time this occurrence was created.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Describes the deployment of an artifact on a runtime.
      */
@@ -70,11 +70,11 @@ export class Occurrence extends pulumi.CustomResource {
     /**
      * This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
      */
@@ -90,7 +90,7 @@ export class Occurrence extends pulumi.CustomResource {
     /**
      * The time this occurrence was last updated.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Describes a security vulnerability.
      */
@@ -112,20 +112,20 @@ export class Occurrence extends pulumi.CustomResource {
             }
             inputs["attestation"] = args ? args.attestation : undefined;
             inputs["build"] = args ? args.build : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deployment"] = args ? args.deployment : undefined;
             inputs["derivedImage"] = args ? args.derivedImage : undefined;
             inputs["discovered"] = args ? args.discovered : undefined;
             inputs["installation"] = args ? args.installation : undefined;
             inputs["intoto"] = args ? args.intoto : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["noteName"] = args ? args.noteName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["remediation"] = args ? args.remediation : undefined;
             inputs["resource"] = args ? args.resource : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["vulnerability"] = args ? args.vulnerability : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["attestation"] = undefined /*out*/;
             inputs["build"] = undefined /*out*/;
@@ -163,10 +163,6 @@ export interface OccurrenceArgs {
      */
     build?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1BuildDetailsArgs>;
     /**
-     * The time this occurrence was created.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
      * Describes the deployment of an artifact on a runtime.
      */
     deployment?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DeploymentDetailsArgs>;
@@ -187,14 +183,6 @@ export interface OccurrenceArgs {
      */
     intoto?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1IntotoDetailsArgs>;
     /**
-     * This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
-     */
-    kind?: pulumi.Input<enums.containeranalysis.v1beta1.OccurrenceKind>;
-    /**
-     * The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-     */
-    name?: pulumi.Input<string>;
-    /**
      * Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
      */
     noteName?: pulumi.Input<string>;
@@ -207,10 +195,6 @@ export interface OccurrenceArgs {
      * Required. Immutable. The resource for which the occurrence applies.
      */
     resource?: pulumi.Input<inputs.containeranalysis.v1beta1.ResourceArgs>;
-    /**
-     * The time this occurrence was last updated.
-     */
-    updateTime?: pulumi.Input<string>;
     /**
      * Describes a security vulnerability.
      */

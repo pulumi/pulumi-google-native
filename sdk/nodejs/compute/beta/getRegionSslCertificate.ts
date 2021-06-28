@@ -35,7 +35,7 @@ export interface GetRegionSslCertificateResult {
      */
     readonly certificate: string;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -43,11 +43,11 @@ export interface GetRegionSslCertificateResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Expire time of the certificate. RFC3339
+     * Expire time of the certificate. RFC3339
      */
     readonly expireTime: string;
     /**
-     * [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+     * Type of the resource. Always compute#sslCertificate for SSL certificates.
      */
     readonly kind: string;
     /**
@@ -63,7 +63,7 @@ export interface GetRegionSslCertificateResult {
      */
     readonly privateKey: string;
     /**
-     * [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+     * URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
      */
     readonly region: string;
     /**
@@ -75,7 +75,7 @@ export interface GetRegionSslCertificateResult {
      */
     readonly selfManaged: outputs.compute.beta.SslCertificateSelfManagedSslCertificateResponse;
     /**
-     * [Output Only] Domains associated with the certificate via Subject Alternative Name.
+     * Domains associated with the certificate via Subject Alternative Name.
      */
     readonly subjectAlternativeNames: string[];
     /**

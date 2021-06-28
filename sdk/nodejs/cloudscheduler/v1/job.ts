@@ -54,7 +54,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The time the last job attempt started.
      */
-    public readonly lastAttemptTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastAttemptTime!: pulumi.Output<string>;
     /**
      * Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
      */
@@ -74,15 +74,15 @@ export class Job extends pulumi.CustomResource {
     /**
      * The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
      */
-    public readonly scheduleTime!: pulumi.Output<string>;
+    public /*out*/ readonly scheduleTime!: pulumi.Output<string>;
     /**
      * State of the job.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The response from the target for the last attempted execution.
      */
-    public readonly status!: pulumi.Output<outputs.cloudscheduler.v1.StatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.cloudscheduler.v1.StatusResponse>;
     /**
      * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
      */
@@ -90,7 +90,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The creation time of the job.
      */
-    public readonly userUpdateTime!: pulumi.Output<string>;
+    public /*out*/ readonly userUpdateTime!: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -113,18 +113,18 @@ export class Job extends pulumi.CustomResource {
             inputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["httpTarget"] = args ? args.httpTarget : undefined;
-            inputs["lastAttemptTime"] = args ? args.lastAttemptTime : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["pubsubTarget"] = args ? args.pubsubTarget : undefined;
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["scheduleTime"] = args ? args.scheduleTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["status"] = args ? args.status : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["userUpdateTime"] = args ? args.userUpdateTime : undefined;
+            inputs["lastAttemptTime"] = undefined /*out*/;
+            inputs["scheduleTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["userUpdateTime"] = undefined /*out*/;
         } else {
             inputs["appEngineHttpTarget"] = undefined /*out*/;
             inputs["attemptDeadline"] = undefined /*out*/;
@@ -168,10 +168,6 @@ export interface JobArgs {
      * HTTP target.
      */
     httpTarget?: pulumi.Input<inputs.cloudscheduler.v1.HttpTargetArgs>;
-    /**
-     * The time the last job attempt started.
-     */
-    lastAttemptTime?: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**
      * Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
@@ -191,23 +187,7 @@ export interface JobArgs {
      */
     schedule?: pulumi.Input<string>;
     /**
-     * The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
-     */
-    scheduleTime?: pulumi.Input<string>;
-    /**
-     * State of the job.
-     */
-    state?: pulumi.Input<enums.cloudscheduler.v1.JobState>;
-    /**
-     * The response from the target for the last attempted execution.
-     */
-    status?: pulumi.Input<inputs.cloudscheduler.v1.StatusArgs>;
-    /**
      * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
      */
     timeZone?: pulumi.Input<string>;
-    /**
-     * The creation time of the job.
-     */
-    userUpdateTime?: pulumi.Input<string>;
 }

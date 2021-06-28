@@ -54,7 +54,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
      */
-    public readonly instanceGroupUrls!: pulumi.Output<string[]>;
+    public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     /**
      * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
      */
@@ -78,15 +78,15 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * [Output only] The pod CIDR block size per node in this node pool.
      */
-    public readonly podIpv4CidrSize!: pulumi.Output<number>;
+    public /*out*/ readonly podIpv4CidrSize!: pulumi.Output<number>;
     /**
      * [Output only] Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * [Output only] The status of the nodes in this pool instance.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
@@ -121,7 +121,6 @@ export class NodePool extends pulumi.CustomResource {
             inputs["conditions"] = args ? args.conditions : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
-            inputs["instanceGroupUrls"] = args ? args.instanceGroupUrls : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["locations"] = args ? args.locations : undefined;
             inputs["management"] = args ? args.management : undefined;
@@ -129,12 +128,13 @@ export class NodePool extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["podIpv4CidrSize"] = args ? args.podIpv4CidrSize : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["status"] = args ? args.status : undefined;
             inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             inputs["version"] = args ? args.version : undefined;
+            inputs["instanceGroupUrls"] = undefined /*out*/;
+            inputs["podIpv4CidrSize"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         } else {
             inputs["autoscaling"] = undefined /*out*/;
             inputs["conditions"] = undefined /*out*/;
@@ -180,10 +180,6 @@ export interface NodePoolArgs {
      * The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
      */
     initialNodeCount?: pulumi.Input<number>;
-    /**
-     * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-     */
-    instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     location: pulumi.Input<string>;
     /**
      * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
@@ -209,19 +205,7 @@ export interface NodePoolArgs {
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */
     parent?: pulumi.Input<string>;
-    /**
-     * [Output only] The pod CIDR block size per node in this node pool.
-     */
-    podIpv4CidrSize?: pulumi.Input<number>;
     project: pulumi.Input<string>;
-    /**
-     * [Output only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output only] The status of the nodes in this pool instance.
-     */
-    status?: pulumi.Input<enums.container.v1beta1.NodePoolStatus>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */

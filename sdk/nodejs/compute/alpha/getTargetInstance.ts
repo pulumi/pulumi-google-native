@@ -31,7 +31,7 @@ export interface GetTargetInstanceArgs {
 
 export interface GetTargetInstanceResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -46,7 +46,7 @@ export interface GetTargetInstanceResult {
      */
     readonly instance: string;
     /**
-     * [Output Only] The type of the resource. Always compute#targetInstance for target instances.
+     * The type of the resource. Always compute#targetInstance for target instances.
      */
     readonly kind: string;
     /**
@@ -62,15 +62,15 @@ export interface GetTargetInstanceResult {
      */
     readonly network: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**
-     * [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly zone: string;
 }

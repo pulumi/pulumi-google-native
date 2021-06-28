@@ -54,31 +54,31 @@ export class Device extends pulumi.CustomResource {
     /**
      * [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
      */
-    public readonly lastConfigAckTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastConfigAckTime!: pulumi.Output<string>;
     /**
      * [Output only] The last time a cloud-to-device config version was sent to the device.
      */
-    public readonly lastConfigSendTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastConfigSendTime!: pulumi.Output<string>;
     /**
      * [Output only] The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other than OK.
      */
-    public readonly lastErrorStatus!: pulumi.Output<outputs.cloudiot.v1.StatusResponse>;
+    public /*out*/ readonly lastErrorStatus!: pulumi.Output<outputs.cloudiot.v1.StatusResponse>;
     /**
      * [Output only] The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub. This field is the timestamp of 'last_error_status'.
      */
-    public readonly lastErrorTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastErrorTime!: pulumi.Output<string>;
     /**
      * [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
      */
-    public readonly lastEventTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastEventTime!: pulumi.Output<string>;
     /**
      * [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
      */
-    public readonly lastHeartbeatTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastHeartbeatTime!: pulumi.Output<string>;
     /**
      * [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
      */
-    public readonly lastStateTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastStateTime!: pulumi.Output<string>;
     /**
      * **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
      */
@@ -94,11 +94,11 @@ export class Device extends pulumi.CustomResource {
     /**
      * [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
      */
-    public readonly numId!: pulumi.Output<string>;
+    public /*out*/ readonly numId!: pulumi.Output<string>;
     /**
      * [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
      */
-    public readonly state!: pulumi.Output<outputs.cloudiot.v1.DeviceStateResponse>;
+    public /*out*/ readonly state!: pulumi.Output<outputs.cloudiot.v1.DeviceStateResponse>;
 
     /**
      * Create a Device resource with the given unique name, arguments, and options.
@@ -125,21 +125,21 @@ export class Device extends pulumi.CustomResource {
             inputs["credentials"] = args ? args.credentials : undefined;
             inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["lastConfigAckTime"] = args ? args.lastConfigAckTime : undefined;
-            inputs["lastConfigSendTime"] = args ? args.lastConfigSendTime : undefined;
-            inputs["lastErrorStatus"] = args ? args.lastErrorStatus : undefined;
-            inputs["lastErrorTime"] = args ? args.lastErrorTime : undefined;
-            inputs["lastEventTime"] = args ? args.lastEventTime : undefined;
-            inputs["lastHeartbeatTime"] = args ? args.lastHeartbeatTime : undefined;
-            inputs["lastStateTime"] = args ? args.lastStateTime : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["logLevel"] = args ? args.logLevel : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["numId"] = args ? args.numId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["registryId"] = args ? args.registryId : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["lastConfigAckTime"] = undefined /*out*/;
+            inputs["lastConfigSendTime"] = undefined /*out*/;
+            inputs["lastErrorStatus"] = undefined /*out*/;
+            inputs["lastErrorTime"] = undefined /*out*/;
+            inputs["lastEventTime"] = undefined /*out*/;
+            inputs["lastHeartbeatTime"] = undefined /*out*/;
+            inputs["lastStateTime"] = undefined /*out*/;
+            inputs["numId"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
             inputs["blocked"] = undefined /*out*/;
             inputs["config"] = undefined /*out*/;
@@ -189,34 +189,6 @@ export interface DeviceArgs {
      * The user-defined device identifier. The device ID must be unique within a device registry.
      */
     id?: pulumi.Input<string>;
-    /**
-     * [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
-     */
-    lastConfigAckTime?: pulumi.Input<string>;
-    /**
-     * [Output only] The last time a cloud-to-device config version was sent to the device.
-     */
-    lastConfigSendTime?: pulumi.Input<string>;
-    /**
-     * [Output only] The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other than OK.
-     */
-    lastErrorStatus?: pulumi.Input<inputs.cloudiot.v1.StatusArgs>;
-    /**
-     * [Output only] The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub. This field is the timestamp of 'last_error_status'.
-     */
-    lastErrorTime?: pulumi.Input<string>;
-    /**
-     * [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-     */
-    lastEventTime?: pulumi.Input<string>;
-    /**
-     * [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-     */
-    lastHeartbeatTime?: pulumi.Input<string>;
-    /**
-     * [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-     */
-    lastStateTime?: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**
      * **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
@@ -230,14 +202,6 @@ export interface DeviceArgs {
      * The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
      */
     name?: pulumi.Input<string>;
-    /**
-     * [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-     */
-    numId?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     registryId: pulumi.Input<string>;
-    /**
-     * [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
-     */
-    state?: pulumi.Input<inputs.cloudiot.v1.DeviceStateArgs>;
 }

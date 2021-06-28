@@ -36,7 +36,7 @@ export interface GetNodeTemplateResult {
      */
     readonly cpuOvercommitType: string;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -45,7 +45,7 @@ export interface GetNodeTemplateResult {
     readonly description: string;
     readonly disks: outputs.compute.alpha.LocalDiskResponse[];
     /**
-     * [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
+     * The type of the resource. Always compute#nodeTemplate for node templates.
      */
     readonly kind: string;
     /**
@@ -67,15 +67,15 @@ export interface GetNodeTemplateResult {
      */
     readonly nodeTypeFlexibility: outputs.compute.alpha.NodeTemplateNodeTypeFlexibilityResponse;
     /**
-     * [Output Only] The name of the region where the node template resides, such as us-central1.
+     * The name of the region where the node template resides, such as us-central1.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**
@@ -87,11 +87,11 @@ export interface GetNodeTemplateResult {
      */
     readonly serverBinding: outputs.compute.alpha.ServerBindingResponse;
     /**
-     * [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+     * The status of the node template. One of the following values: CREATING, READY, and DELETING.
      */
     readonly status: string;
     /**
-     * [Output Only] An optional, human-readable explanation of the status.
+     * An optional, human-readable explanation of the status.
      */
     readonly statusMessage: string;
 }

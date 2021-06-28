@@ -50,7 +50,7 @@ export class WorkerPool extends pulumi.CustomResource {
     /**
      * State of the worker pool.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
      */
@@ -84,9 +84,9 @@ export class WorkerPool extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["poolId"] = args ? args.poolId : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["workerCount"] = args ? args.workerCount : undefined;
+            inputs["state"] = undefined /*out*/;
         } else {
             inputs["autoscale"] = undefined /*out*/;
             inputs["channel"] = undefined /*out*/;
@@ -128,10 +128,6 @@ export interface WorkerPoolArgs {
      */
     poolId?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * State of the worker pool.
-     */
-    state?: pulumi.Input<enums.remotebuildexecution.v1alpha.WorkerPoolState>;
     /**
      * Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
      */

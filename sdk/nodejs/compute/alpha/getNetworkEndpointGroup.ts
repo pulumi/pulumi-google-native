@@ -47,7 +47,7 @@ export interface GetNetworkEndpointGroupResult {
      */
     readonly cloudRun: outputs.compute.alpha.NetworkEndpointGroupCloudRunResponse;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -59,7 +59,7 @@ export interface GetNetworkEndpointGroupResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+     * Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
      */
     readonly kind: string;
     /**
@@ -79,15 +79,15 @@ export interface GetNetworkEndpointGroupResult {
      */
     readonly pscTargetService: string;
     /**
-     * [Output Only] The URL of the region where the network endpoint group is located.
+     * The URL of the region where the network endpoint group is located.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**
@@ -107,7 +107,7 @@ export interface GetNetworkEndpointGroupResult {
      */
     readonly type: string;
     /**
-     * [Output Only] The URL of the zone where the network endpoint group is located.
+     * The URL of the zone where the network endpoint group is located.
      */
     readonly zone: string;
 }

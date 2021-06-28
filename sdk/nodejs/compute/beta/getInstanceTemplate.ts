@@ -29,7 +29,7 @@ export interface GetInstanceTemplateArgs {
 
 export interface GetInstanceTemplateResult {
     /**
-     * [Output Only] The creation timestamp for this instance template in RFC3339 text format.
+     * The creation timestamp for this instance template in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -37,7 +37,7 @@ export interface GetInstanceTemplateResult {
      */
     readonly description: string;
     /**
-     * [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
+     * The resource type, which is always compute#instanceTemplate for instance templates.
      */
     readonly kind: string;
     /**
@@ -49,7 +49,7 @@ export interface GetInstanceTemplateResult {
      */
     readonly properties: outputs.compute.beta.InstancePropertiesResponse;
     /**
-     * [Output Only] The URL for this instance template. The server defines this URL.
+     * The URL for this instance template. The server defines this URL.
      */
     readonly selfLink: string;
     /**

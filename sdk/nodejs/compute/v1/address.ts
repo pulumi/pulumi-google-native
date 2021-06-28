@@ -44,9 +44,9 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly addressType!: pulumi.Output<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this field when you create the resource.
      */
@@ -56,9 +56,9 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly ipVersion!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#address for addresses.
+     * Type of the resource. Always compute#address for addresses.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */
@@ -87,25 +87,25 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly purpose!: pulumi.Output<string>;
     /**
-     * [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
+     * The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
+     * The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
-     * [Output Only] The URLs of the resources that are using this address.
+     * The URLs of the resources that are using this address.
      */
-    public readonly users!: pulumi.Output<string[]>;
+    public /*out*/ readonly users!: pulumi.Output<string[]>;
 
     /**
      * Create a Address resource with the given unique name, arguments, and options.
@@ -126,11 +126,8 @@ export class Address extends pulumi.CustomResource {
             }
             inputs["address"] = args ? args.address : undefined;
             inputs["addressType"] = args ? args.addressType : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["networkTier"] = args ? args.networkTier : undefined;
@@ -139,10 +136,12 @@ export class Address extends pulumi.CustomResource {
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["status"] = args ? args.status : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
-            inputs["users"] = args ? args.users : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["users"] = undefined /*out*/;
         } else {
             inputs["address"] = undefined /*out*/;
             inputs["addressType"] = undefined /*out*/;
@@ -181,25 +180,13 @@ export interface AddressArgs {
      */
     addressType?: pulumi.Input<enums.compute.v1.AddressAddressType>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this field when you create the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
      */
     ipVersion?: pulumi.Input<enums.compute.v1.AddressIpVersion>;
-    /**
-     * [Output Only] Type of the resource. Always compute#address for addresses.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */
@@ -228,25 +215,10 @@ export interface AddressArgs {
      * - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
      */
     purpose?: pulumi.Input<enums.compute.v1.AddressPurpose>;
-    /**
-     * [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
-     */
-    status?: pulumi.Input<enums.compute.v1.AddressStatus>;
     /**
      * The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.
      */
     subnetwork?: pulumi.Input<string>;
-    /**
-     * [Output Only] The URLs of the resources that are using this address.
-     */
-    users?: pulumi.Input<pulumi.Input<string>[]>;
 }

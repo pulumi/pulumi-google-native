@@ -57,27 +57,3 @@ export const IndexQueryScope = {
  * Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
  */
 export type IndexQueryScope = (typeof IndexQueryScope)[keyof typeof IndexQueryScope];
-
-export const IndexState = {
-    /**
-     * The state is unspecified.
-     */
-    StateUnspecified: "STATE_UNSPECIFIED",
-    /**
-     * The index is being created. There is an active long-running operation for the index. The index is updated when writing a document. Some index data may exist.
-     */
-    Creating: "CREATING",
-    /**
-     * The index is ready to be used. The index is updated when writing a document. The index is fully populated from all stored documents it applies to.
-     */
-    Ready: "READY",
-    /**
-     * The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist. Use the google.longrunning.Operations API to determine why the operation that last attempted to create this index failed, then re-create the index.
-     */
-    NeedsRepair: "NEEDS_REPAIR",
-} as const;
-
-/**
- * Output only. The serving state of the index.
- */
-export type IndexState = (typeof IndexState)[keyof typeof IndexState];

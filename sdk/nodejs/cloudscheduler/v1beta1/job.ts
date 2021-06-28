@@ -54,7 +54,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The time the last job attempt started.
      */
-    public readonly lastAttemptTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastAttemptTime!: pulumi.Output<string>;
     /**
      * Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.
      */
@@ -78,15 +78,15 @@ export class Job extends pulumi.CustomResource {
     /**
      * The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
      */
-    public readonly scheduleTime!: pulumi.Output<string>;
+    public /*out*/ readonly scheduleTime!: pulumi.Output<string>;
     /**
      * State of the job.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The response from the target for the last attempted execution.
      */
-    public readonly status!: pulumi.Output<outputs.cloudscheduler.v1beta1.StatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.cloudscheduler.v1beta1.StatusResponse>;
     /**
      * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
      */
@@ -94,7 +94,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The creation time of the job.
      */
-    public readonly userUpdateTime!: pulumi.Output<string>;
+    public /*out*/ readonly userUpdateTime!: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -117,7 +117,6 @@ export class Job extends pulumi.CustomResource {
             inputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["httpTarget"] = args ? args.httpTarget : undefined;
-            inputs["lastAttemptTime"] = args ? args.lastAttemptTime : undefined;
             inputs["legacyAppEngineCron"] = args ? args.legacyAppEngineCron : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -125,11 +124,12 @@ export class Job extends pulumi.CustomResource {
             inputs["pubsubTarget"] = args ? args.pubsubTarget : undefined;
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["scheduleTime"] = args ? args.scheduleTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["status"] = args ? args.status : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["userUpdateTime"] = args ? args.userUpdateTime : undefined;
+            inputs["lastAttemptTime"] = undefined /*out*/;
+            inputs["scheduleTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["userUpdateTime"] = undefined /*out*/;
         } else {
             inputs["appEngineHttpTarget"] = undefined /*out*/;
             inputs["attemptDeadline"] = undefined /*out*/;
@@ -175,10 +175,6 @@ export interface JobArgs {
      */
     httpTarget?: pulumi.Input<inputs.cloudscheduler.v1beta1.HttpTargetArgs>;
     /**
-     * The time the last job attempt started.
-     */
-    lastAttemptTime?: pulumi.Input<string>;
-    /**
      * Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.
      */
     legacyAppEngineCron?: pulumi.Input<boolean>;
@@ -201,23 +197,7 @@ export interface JobArgs {
      */
     schedule?: pulumi.Input<string>;
     /**
-     * The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
-     */
-    scheduleTime?: pulumi.Input<string>;
-    /**
-     * State of the job.
-     */
-    state?: pulumi.Input<enums.cloudscheduler.v1beta1.JobState>;
-    /**
-     * The response from the target for the last attempted execution.
-     */
-    status?: pulumi.Input<inputs.cloudscheduler.v1beta1.StatusArgs>;
-    /**
      * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
      */
     timeZone?: pulumi.Input<string>;
-    /**
-     * The creation time of the job.
-     */
-    userUpdateTime?: pulumi.Input<string>;
 }

@@ -31,7 +31,7 @@ export interface GetResourcePolicyArgs {
 
 export interface GetResourcePolicyResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     readonly description: string;
@@ -44,7 +44,7 @@ export interface GetResourcePolicyResult {
      */
     readonly instanceSchedulePolicy: outputs.compute.v1.ResourcePolicyInstanceSchedulePolicyResponse;
     /**
-     * [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
+     * Type of the resource. Always compute#resource_policies for resource policies.
      */
     readonly kind: string;
     /**
@@ -53,11 +53,11 @@ export interface GetResourcePolicyResult {
     readonly name: string;
     readonly region: string;
     /**
-     * [Output Only] The system status of the resource policy.
+     * The system status of the resource policy.
      */
     readonly resourceStatus: outputs.compute.v1.ResourcePolicyResourceStatusResponse;
     /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
+     * Server-defined fully-qualified URL for this resource.
      */
     readonly selfLink: string;
     /**
@@ -65,7 +65,7 @@ export interface GetResourcePolicyResult {
      */
     readonly snapshotSchedulePolicy: outputs.compute.v1.ResourcePolicySnapshotSchedulePolicyResponse;
     /**
-     * [Output Only] The status of resource policy creation.
+     * The status of resource policy creation.
      */
     readonly status: string;
 }

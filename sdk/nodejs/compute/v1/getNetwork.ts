@@ -39,7 +39,7 @@ export interface GetNetworkResult {
      */
     readonly autoCreateSubnetworks: boolean;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -47,11 +47,11 @@ export interface GetNetworkResult {
      */
     readonly description: string;
     /**
-     * [Output Only] The gateway address for default routing out of the network, selected by GCP.
+     * The gateway address for default routing out of the network, selected by GCP.
      */
     readonly gatewayIPv4: string;
     /**
-     * [Output Only] Type of the resource. Always compute#network for networks.
+     * Type of the resource. Always compute#network for networks.
      */
     readonly kind: string;
     /**
@@ -63,7 +63,7 @@ export interface GetNetworkResult {
      */
     readonly name: string;
     /**
-     * [Output Only] A list of network peerings for the resource.
+     * A list of network peerings for the resource.
      */
     readonly peerings: outputs.compute.v1.NetworkPeeringResponse[];
     /**
@@ -71,11 +71,11 @@ export interface GetNetworkResult {
      */
     readonly routingConfig: outputs.compute.v1.NetworkRoutingConfigResponse;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+     * Server-defined fully-qualified URLs for all subnetworks in this VPC network.
      */
     readonly subnetworks: string[];
 }

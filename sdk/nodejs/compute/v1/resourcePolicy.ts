@@ -36,9 +36,9 @@ export class ResourcePolicy extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string>;
     /**
      * Resource policy for instances for placement configuration.
@@ -49,30 +49,30 @@ export class ResourcePolicy extends pulumi.CustomResource {
      */
     public readonly instanceSchedulePolicy!: pulumi.Output<outputs.compute.v1.ResourcePolicyInstanceSchedulePolicyResponse>;
     /**
-     * [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
+     * Type of the resource. Always compute#resource_policies for resource policies.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] The system status of the resource policy.
+     * The system status of the resource policy.
      */
-    public readonly resourceStatus!: pulumi.Output<outputs.compute.v1.ResourcePolicyResourceStatusResponse>;
+    public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.v1.ResourcePolicyResourceStatusResponse>;
     /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
+     * Server-defined fully-qualified URL for this resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Resource policy for persistent disks for creating snapshots.
      */
     public readonly snapshotSchedulePolicy!: pulumi.Output<outputs.compute.v1.ResourcePolicySnapshotSchedulePolicyResponse>;
     /**
-     * [Output Only] The status of resource policy creation.
+     * The status of resource policy creation.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a ResourcePolicy resource with the given unique name, arguments, and options.
@@ -91,20 +91,19 @@ export class ResourcePolicy extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["instanceSchedulePolicy"] = args ? args.instanceSchedulePolicy : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["resourceStatus"] = args ? args.resourceStatus : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["snapshotSchedulePolicy"] = args ? args.snapshotSchedulePolicy : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["resourceStatus"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -129,27 +128,15 @@ export class ResourcePolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a ResourcePolicy resource.
  */
 export interface ResourcePolicyArgs {
-    /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     /**
      * Resource policy for instances for placement configuration.
      */
     groupPlacementPolicy?: pulumi.Input<inputs.compute.v1.ResourcePolicyGroupPlacementPolicyArgs>;
     /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * Resource policy for scheduling instance operations.
      */
     instanceSchedulePolicy?: pulumi.Input<inputs.compute.v1.ResourcePolicyInstanceSchedulePolicyArgs>;
-    /**
-     * [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -158,19 +145,7 @@ export interface ResourcePolicyArgs {
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
-     * [Output Only] The system status of the resource policy.
-     */
-    resourceStatus?: pulumi.Input<inputs.compute.v1.ResourcePolicyResourceStatusArgs>;
-    /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
      * Resource policy for persistent disks for creating snapshots.
      */
     snapshotSchedulePolicy?: pulumi.Input<inputs.compute.v1.ResourcePolicySnapshotSchedulePolicyArgs>;
-    /**
-     * [Output Only] The status of resource policy creation.
-     */
-    status?: pulumi.Input<enums.compute.v1.ResourcePolicyStatus>;
 }

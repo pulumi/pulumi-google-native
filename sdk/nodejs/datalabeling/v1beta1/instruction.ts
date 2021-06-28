@@ -38,11 +38,11 @@ export class Instruction extends pulumi.CustomResource {
     /**
      * The names of any related resources that are blocking changes to the instruction.
      */
-    public readonly blockingResources!: pulumi.Output<string[]>;
+    public /*out*/ readonly blockingResources!: pulumi.Output<string[]>;
     /**
      * Creation time of instruction.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Required. The data type of this instruction.
      */
@@ -58,7 +58,7 @@ export class Instruction extends pulumi.CustomResource {
     /**
      * Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
      */
@@ -66,7 +66,7 @@ export class Instruction extends pulumi.CustomResource {
     /**
      * Last update time of instruction.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Instruction resource with the given unique name, arguments, and options.
@@ -82,15 +82,15 @@ export class Instruction extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["blockingResources"] = args ? args.blockingResources : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["dataType"] = args ? args.dataType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["pdfInstruction"] = args ? args.pdfInstruction : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["blockingResources"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["blockingResources"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -113,14 +113,6 @@ export class Instruction extends pulumi.CustomResource {
  */
 export interface InstructionArgs {
     /**
-     * The names of any related resources that are blocking changes to the instruction.
-     */
-    blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Creation time of instruction.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
      * Required. The data type of this instruction.
      */
     dataType?: pulumi.Input<enums.datalabeling.v1beta1.InstructionDataType>;
@@ -133,16 +125,8 @@ export interface InstructionArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
-     */
-    name?: pulumi.Input<string>;
-    /**
      * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
      */
     pdfInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>;
     project: pulumi.Input<string>;
-    /**
-     * Last update time of instruction.
-     */
-    updateTime?: pulumi.Input<string>;
 }

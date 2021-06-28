@@ -38,15 +38,15 @@ export class Job extends pulumi.CustomResource {
     /**
      * When the job was created.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * When the job processing was completed.
      */
-    public readonly endTime!: pulumi.Output<string>;
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
      * The details of a failure or a cancellation.
      */
-    public readonly errorMessage!: pulumi.Output<string>;
+    public /*out*/ readonly errorMessage!: pulumi.Output<string>;
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
      */
@@ -70,11 +70,11 @@ export class Job extends pulumi.CustomResource {
     /**
      * When the job processing was started.
      */
-    public readonly startTime!: pulumi.Output<string>;
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
     /**
      * The detailed state of a job.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * Input parameters to create a training job.
      */
@@ -98,19 +98,19 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["errorMessage"] = args ? args.errorMessage : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["predictionInput"] = args ? args.predictionInput : undefined;
             inputs["predictionOutput"] = args ? args.predictionOutput : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["trainingInput"] = args ? args.trainingInput : undefined;
             inputs["trainingOutput"] = args ? args.trainingOutput : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["errorMessage"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
@@ -137,18 +137,6 @@ export class Job extends pulumi.CustomResource {
  */
 export interface JobArgs {
     /**
-     * When the job was created.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * When the job processing was completed.
-     */
-    endTime?: pulumi.Input<string>;
-    /**
-     * The details of a failure or a cancellation.
-     */
-    errorMessage?: pulumi.Input<string>;
-    /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
      */
     etag?: pulumi.Input<string>;
@@ -169,14 +157,6 @@ export interface JobArgs {
      */
     predictionOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionOutputArgs>;
     project: pulumi.Input<string>;
-    /**
-     * When the job processing was started.
-     */
-    startTime?: pulumi.Input<string>;
-    /**
-     * The detailed state of a job.
-     */
-    state?: pulumi.Input<enums.ml.v1.JobState>;
     /**
      * Input parameters to create a training job.
      */

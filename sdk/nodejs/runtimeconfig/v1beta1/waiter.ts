@@ -38,15 +38,15 @@ export class Waiter extends pulumi.CustomResource {
     /**
      * The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
      */
-    public readonly done!: pulumi.Output<boolean>;
+    public /*out*/ readonly done!: pulumi.Output<boolean>;
     /**
      * If the waiter ended due to a failure or timeout, this value will be set.
      */
-    public readonly error!: pulumi.Output<outputs.runtimeconfig.v1beta1.StatusResponse>;
+    public /*out*/ readonly error!: pulumi.Output<outputs.runtimeconfig.v1beta1.StatusResponse>;
     /**
      * [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
      */
@@ -82,15 +82,15 @@ export class Waiter extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["configId"] = args ? args.configId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["done"] = args ? args.done : undefined;
-            inputs["error"] = args ? args.error : undefined;
             inputs["failure"] = args ? args.failure : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["success"] = args ? args.success : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["done"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["done"] = undefined /*out*/;
@@ -112,18 +112,6 @@ export class Waiter extends pulumi.CustomResource {
  */
 export interface WaiterArgs {
     configId: pulumi.Input<string>;
-    /**
-     * The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
-     */
-    done?: pulumi.Input<boolean>;
-    /**
-     * If the waiter ended due to a failure or timeout, this value will be set.
-     */
-    error?: pulumi.Input<inputs.runtimeconfig.v1beta1.StatusArgs>;
     /**
      * [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
      */

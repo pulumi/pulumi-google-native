@@ -40,21 +40,21 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public readonly category!: pulumi.Output<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] Commitment end time in RFC3339 text format.
+     * Commitment end time in RFC3339 text format.
      */
-    public readonly endTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly endTimestamp!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#commitment for commitments.
+     * Type of the resource. Always compute#commitment for commitments.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The license specification required as part of a license commitment.
      */
@@ -68,7 +68,7 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public readonly plan!: pulumi.Output<string>;
     /**
-     * [Output Only] URL of the region where this commitment may be used.
+     * URL of the region where this commitment may be used.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -80,21 +80,21 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public readonly resources!: pulumi.Output<outputs.compute.v1.ResourceCommitmentResponse[]>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Commitment start time in RFC3339 text format.
+     * Commitment start time in RFC3339 text format.
      */
-    public readonly startTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly startTimestamp!: pulumi.Output<string>;
     /**
-     * [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+     * Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * [Output Only] An optional, human-readable explanation of the status.
+     * An optional, human-readable explanation of the status.
      */
-    public readonly statusMessage!: pulumi.Output<string>;
+    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
 
     /**
      * Create a RegionCommitment resource with the given unique name, arguments, and options.
@@ -114,11 +114,7 @@ export class RegionCommitment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             inputs["category"] = args ? args.category : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["endTimestamp"] = args ? args.endTimestamp : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["licenseResource"] = args ? args.licenseResource : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["plan"] = args ? args.plan : undefined;
@@ -127,10 +123,13 @@ export class RegionCommitment extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservations"] = args ? args.reservations : undefined;
             inputs["resources"] = args ? args.resources : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["startTimestamp"] = args ? args.startTimestamp : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["statusMessage"] = args ? args.statusMessage : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["endTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["startTimestamp"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
         } else {
             inputs["category"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -164,25 +163,9 @@ export interface RegionCommitmentArgs {
      */
     category?: pulumi.Input<enums.compute.v1.RegionCommitmentCategory>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] Commitment end time in RFC3339 text format.
-     */
-    endTimestamp?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#commitment for commitments.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * The license specification required as part of a license commitment.
      */
@@ -196,9 +179,6 @@ export interface RegionCommitmentArgs {
      */
     plan?: pulumi.Input<enums.compute.v1.RegionCommitmentPlan>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] URL of the region where this commitment may be used.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
@@ -209,20 +189,4 @@ export interface RegionCommitmentArgs {
      * A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.compute.v1.ResourceCommitmentArgs>[]>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Commitment start time in RFC3339 text format.
-     */
-    startTimestamp?: pulumi.Input<string>;
-    /**
-     * [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-     */
-    status?: pulumi.Input<enums.compute.v1.RegionCommitmentStatus>;
-    /**
-     * [Output Only] An optional, human-readable explanation of the status.
-     */
-    statusMessage?: pulumi.Input<string>;
 }

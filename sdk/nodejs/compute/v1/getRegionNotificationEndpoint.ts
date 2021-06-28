@@ -31,7 +31,7 @@ export interface GetRegionNotificationEndpointArgs {
 
 export interface GetRegionNotificationEndpointResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -43,7 +43,7 @@ export interface GetRegionNotificationEndpointResult {
      */
     readonly grpcSettings: outputs.compute.v1.NotificationEndpointGrpcSettingsResponse;
     /**
-     * [Output Only] Type of the resource. Always compute#notificationEndpoint for notification endpoints.
+     * Type of the resource. Always compute#notificationEndpoint for notification endpoints.
      */
     readonly kind: string;
     /**
@@ -51,11 +51,11 @@ export interface GetRegionNotificationEndpointResult {
      */
     readonly name: string;
     /**
-     * [Output Only] URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
 }

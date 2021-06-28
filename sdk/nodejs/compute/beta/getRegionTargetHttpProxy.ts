@@ -31,7 +31,7 @@ export interface GetRegionTargetHttpProxyArgs {
 
 export interface GetRegionTargetHttpProxyResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -48,7 +48,7 @@ export interface GetRegionTargetHttpProxyResult {
      */
     readonly httpFilters: string[];
     /**
-     * [Output Only] Type of resource. Always compute#targetHttpProxy for target HTTP proxies.
+     * Type of resource. Always compute#targetHttpProxy for target HTTP proxies.
      */
     readonly kind: string;
     /**
@@ -64,11 +64,11 @@ export interface GetRegionTargetHttpProxyResult {
      */
     readonly proxyBind: boolean;
     /**
-     * [Output Only] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
+     * URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**

@@ -46,13 +46,13 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly baseInstanceName!: pulumi.Output<string>;
     /**
-     * [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
+     * The creation timestamp for this managed instance group in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+     * The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
      */
-    public readonly currentActions!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerActionsSummaryResponse>;
+    public /*out*/ readonly currentActions!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerActionsSummaryResponse>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -72,17 +72,17 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * [Output Only] The URL of the Instance Group resource.
+     * The URL of the Instance Group resource.
      */
-    public readonly instanceGroup!: pulumi.Output<string>;
+    public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
     /**
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
      */
     public readonly instanceTemplate!: pulumi.Output<string>;
     /**
-     * [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
+     * The resource type, which is always compute#instanceGroupManager for managed instance groups.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
      */
@@ -92,13 +92,13 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly namedPorts!: pulumi.Output<outputs.compute.beta.NamedPortResponse[]>;
     /**
-     * [Output Only] The URL of the region where the managed instance group resides (for regional resources).
+     * The URL of the region where the managed instance group resides (for regional resources).
      */
-    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] The URL for this managed instance group. The server defines this URL.
+     * The URL for this managed instance group. The server defines this URL.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
      */
@@ -108,9 +108,9 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly statefulPolicy!: pulumi.Output<outputs.compute.beta.StatefulPolicyResponse>;
     /**
-     * [Output Only] The status of this managed instance group.
+     * The status of this managed instance group.
      */
-    public readonly status!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerStatusResponse>;
     /**
      * The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
      */
@@ -130,7 +130,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly versions!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerVersionResponse[]>;
     /**
-     * [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
+     * The URL of a zone where the managed instance group is located (for zonal resources).
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -153,30 +153,29 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
-            inputs["currentActions"] = args ? args.currentActions : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["distributionPolicy"] = args ? args.distributionPolicy : undefined;
             inputs["failoverAction"] = args ? args.failoverAction : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["instanceGroup"] = args ? args.instanceGroup : undefined;
             inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namedPorts"] = args ? args.namedPorts : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["statefulPolicy"] = args ? args.statefulPolicy : undefined;
-            inputs["status"] = args ? args.status : undefined;
             inputs["targetPools"] = args ? args.targetPools : undefined;
             inputs["targetSize"] = args ? args.targetSize : undefined;
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["versions"] = args ? args.versions : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["currentActions"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["instanceGroup"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         } else {
             inputs["autoHealingPolicies"] = undefined /*out*/;
             inputs["baseInstanceName"] = undefined /*out*/;
@@ -222,14 +221,6 @@ export interface InstanceGroupManagerArgs {
      */
     baseInstanceName?: pulumi.Input<string>;
     /**
-     * [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
-     * [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
-     */
-    currentActions?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerActionsSummaryArgs>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -242,21 +233,9 @@ export interface InstanceGroupManagerArgs {
      */
     failoverAction?: pulumi.Input<enums.compute.beta.InstanceGroupManagerFailoverAction>;
     /**
-     * [Output Only] A unique identifier for this resource type. The server generates this identifier.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] The URL of the Instance Group resource.
-     */
-    instanceGroup?: pulumi.Input<string>;
-    /**
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
      */
     instanceTemplate?: pulumi.Input<string>;
-    /**
-     * [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
      */
@@ -266,15 +245,7 @@ export interface InstanceGroupManagerArgs {
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.beta.NamedPortArgs>[]>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-     */
-    region?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] The URL for this managed instance group. The server defines this URL.
-     */
-    selfLink?: pulumi.Input<string>;
     /**
      * The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
      */
@@ -283,10 +254,6 @@ export interface InstanceGroupManagerArgs {
      * Stateful configuration for this Instanced Group Manager
      */
     statefulPolicy?: pulumi.Input<inputs.compute.beta.StatefulPolicyArgs>;
-    /**
-     * [Output Only] The status of this managed instance group.
-     */
-    status?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerStatusArgs>;
     /**
      * The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
      */
@@ -305,8 +272,5 @@ export interface InstanceGroupManagerArgs {
      * Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
      */
     versions?: pulumi.Input<pulumi.Input<inputs.compute.beta.InstanceGroupManagerVersionArgs>[]>;
-    /**
-     * [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
-     */
     zone: pulumi.Input<string>;
 }

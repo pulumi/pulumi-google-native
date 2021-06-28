@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -42,7 +41,7 @@ export class Variable extends pulumi.CustomResource {
     /**
      * The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The string value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8.
      */
@@ -50,7 +49,7 @@ export class Variable extends pulumi.CustomResource {
     /**
      * The time of the last variable update. Timestamp will be UTC timestamp.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set.
      */
@@ -77,10 +76,10 @@ export class Variable extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["text"] = args ? args.text : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["value"] = args ? args.value : undefined;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -107,17 +106,9 @@ export interface VariableArgs {
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
-     * The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls.
-     */
-    state?: pulumi.Input<enums.runtimeconfig.v1beta1.VariableState>;
-    /**
      * The string value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8.
      */
     text?: pulumi.Input<string>;
-    /**
-     * The time of the last variable update. Timestamp will be UTC timestamp.
-     */
-    updateTime?: pulumi.Input<string>;
     /**
      * The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set.
      */

@@ -36,21 +36,21 @@ export class InstanceGroup extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] The creation timestamp for this instance group in RFC3339 text format.
+     * The creation timestamp for this instance group in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
+     * The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * [Output Only] The resource type, which is always compute#instanceGroup for instance groups.
+     * The resource type, which is always compute#instanceGroup for instance groups.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
      */
@@ -64,27 +64,27 @@ export class InstanceGroup extends pulumi.CustomResource {
      */
     public readonly namedPorts!: pulumi.Output<outputs.compute.v1.NamedPortResponse[]>;
     /**
-     * [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+     * The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
      */
-    public readonly network!: pulumi.Output<string>;
+    public /*out*/ readonly network!: pulumi.Output<string>;
     /**
-     * [Output Only] The URL of the region where the instance group is located (for regional resources).
+     * The URL of the region where the instance group is located (for regional resources).
      */
-    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] The URL for this instance group. The server generates this URL.
+     * The URL for this instance group. The server generates this URL.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] The total number of instances in the instance group.
+     * The total number of instances in the instance group.
      */
-    public readonly size!: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
     /**
-     * [Output Only] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+     * The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
      */
-    public readonly subnetwork!: pulumi.Output<string>;
+    public /*out*/ readonly subnetwork!: pulumi.Output<string>;
     /**
-     * [Output Only] The URL of the zone where the instance group is located (for zonal resources).
+     * The URL of the zone where the instance group is located (for zonal resources).
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -105,21 +105,20 @@ export class InstanceGroup extends pulumi.CustomResource {
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namedPorts"] = args ? args.namedPorts : undefined;
-            inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["size"] = undefined /*out*/;
+            inputs["subnetwork"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -146,21 +145,9 @@ export class InstanceGroup extends pulumi.CustomResource {
  */
 export interface InstanceGroupArgs {
     /**
-     * [Output Only] The creation timestamp for this instance group in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] A unique identifier for this instance group, generated by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] The resource type, which is always compute#instanceGroup for instance groups.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
      */
@@ -173,30 +160,7 @@ export interface InstanceGroupArgs {
      * Named ports apply to all instances in this instance group.
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.v1.NamedPortArgs>[]>;
-    /**
-     * [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
-     */
-    network?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] The URL of the region where the instance group is located (for regional resources).
-     */
-    region?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] The URL for this instance group. The server generates this URL.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] The total number of instances in the instance group.
-     */
-    size?: pulumi.Input<number>;
-    /**
-     * [Output Only] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
-     */
-    subnetwork?: pulumi.Input<string>;
-    /**
-     * [Output Only] The URL of the zone where the instance group is located (for zonal resources).
-     */
     zone: pulumi.Input<string>;
 }

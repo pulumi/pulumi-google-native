@@ -36,9 +36,9 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -58,25 +58,25 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+     * Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
+     * The list of public delegated prefixes that exist for this public advertised prefix.
      */
-    public readonly publicDelegatedPrefixs!: pulumi.Output<outputs.compute.beta.PublicAdvertisedPrefixPublicDelegatedPrefixResponse[]>;
+    public /*out*/ readonly publicDelegatedPrefixs!: pulumi.Output<outputs.compute.beta.PublicAdvertisedPrefixPublicDelegatedPrefixResponse[]>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] The shared secret to be used for reverse DNS verification.
+     * The shared secret to be used for reverse DNS verification.
      */
-    public readonly sharedSecret!: pulumi.Output<string>;
+    public /*out*/ readonly sharedSecret!: pulumi.Output<string>;
     /**
      * The status of the public advertised prefix.
      */
@@ -96,20 +96,19 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsVerificationIp"] = args ? args.dnsVerificationIp : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["publicDelegatedPrefixs"] = args ? args.publicDelegatedPrefixs : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
             inputs["status"] = args ? args.status : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["publicDelegatedPrefixs"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["sharedSecret"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -135,10 +134,6 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
  */
 export interface PublicAdvertisedPrefixArgs {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -147,35 +142,15 @@ export interface PublicAdvertisedPrefixArgs {
      */
     dnsVerificationIp?: pulumi.Input<string>;
     /**
-     * [Output Only] The unique identifier for the resource type. The server generates this identifier.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
      */
     ipCidrRange?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
-     */
-    publicDelegatedPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.beta.PublicAdvertisedPrefixPublicDelegatedPrefixArgs>[]>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] The shared secret to be used for reverse DNS verification.
-     */
-    sharedSecret?: pulumi.Input<string>;
     /**
      * The status of the public advertised prefix.
      */

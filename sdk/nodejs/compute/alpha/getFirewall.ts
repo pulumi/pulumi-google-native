@@ -33,7 +33,7 @@ export interface GetFirewallResult {
      */
     readonly allowed: outputs.compute.alpha.FirewallAllowedItemResponse[];
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -57,7 +57,7 @@ export interface GetFirewallResult {
      */
     readonly disabled: boolean;
     /**
-     * [Output Only] Type of the resource. Always compute#firewall for firewall rules.
+     * Type of the resource. Always compute#firewall for firewall rules.
      */
     readonly kind: string;
     /**
@@ -82,11 +82,11 @@ export interface GetFirewallResult {
      */
     readonly priority: number;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**

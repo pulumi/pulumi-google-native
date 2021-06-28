@@ -35,7 +35,7 @@ export interface GetSecurityPolicyResult {
     readonly associations: outputs.compute.alpha.SecurityPolicyAssociationResponse[];
     readonly cloudArmorConfig: outputs.compute.alpha.SecurityPolicyCloudArmorConfigResponse;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -71,11 +71,11 @@ export interface GetSecurityPolicyResult {
      */
     readonly name: string;
     /**
-     * [Output Only] The parent of the security policy.
+     * The parent of the security policy.
      */
     readonly parent: string;
     /**
-     * [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
+     * Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */
     readonly ruleTupleCount: number;
     /**
@@ -83,11 +83,11 @@ export interface GetSecurityPolicyResult {
      */
     readonly rules: outputs.compute.alpha.SecurityPolicyRuleResponse[];
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**

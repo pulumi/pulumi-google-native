@@ -40,21 +40,21 @@ export class SslCertificate extends pulumi.CustomResource {
      */
     public readonly certificate!: pulumi.Output<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] Expire time of the certificate. RFC3339
+     * Expire time of the certificate. RFC3339
      */
-    public readonly expireTime!: pulumi.Output<string>;
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+     * Type of the resource. Always compute#sslCertificate for SSL certificates.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Configuration and status of a managed SSL certificate.
      */
@@ -68,21 +68,21 @@ export class SslCertificate extends pulumi.CustomResource {
      */
     public readonly privateKey!: pulumi.Output<string>;
     /**
-     * [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+     * URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
      */
-    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly region!: pulumi.Output<string>;
     /**
      * [Output only] Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Configuration and status of a self-managed SSL certificate.
      */
     public readonly selfManaged!: pulumi.Output<outputs.compute.beta.SslCertificateSelfManagedSslCertificateResponse>;
     /**
-     * [Output Only] Domains associated with the certificate via Subject Alternative Name.
+     * Domains associated with the certificate via Subject Alternative Name.
      */
-    public readonly subjectAlternativeNames!: pulumi.Output<string[]>;
+    public /*out*/ readonly subjectAlternativeNames!: pulumi.Output<string[]>;
     /**
      * (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
      */
@@ -103,21 +103,20 @@ export class SslCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["certificate"] = args ? args.certificate : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["managed"] = args ? args.managed : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["privateKey"] = args ? args.privateKey : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfManaged"] = args ? args.selfManaged : undefined;
-            inputs["subjectAlternativeNames"] = args ? args.subjectAlternativeNames : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["subjectAlternativeNames"] = undefined /*out*/;
         } else {
             inputs["certificate"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -149,25 +148,9 @@ export interface SslCertificateArgs {
      */
     certificate?: pulumi.Input<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] Expire time of the certificate. RFC3339
-     */
-    expireTime?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Configuration and status of a managed SSL certificate.
      */
@@ -181,23 +164,11 @@ export interface SslCertificateArgs {
      */
     privateKey?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
-     */
-    region?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
     /**
      * Configuration and status of a self-managed SSL certificate.
      */
     selfManaged?: pulumi.Input<inputs.compute.beta.SslCertificateSelfManagedSslCertificateArgs>;
-    /**
-     * [Output Only] Domains associated with the certificate via Subject Alternative Name.
-     */
-    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
      */

@@ -40,17 +40,17 @@ export class TargetSslProxy extends pulumi.CustomResource {
      */
     public readonly certificateMap!: pulumi.Output<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#targetSslProxy for target SSL proxies.
+     * Type of the resource. Always compute#targetSslProxy for target SSL proxies.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -60,9 +60,9 @@ export class TargetSslProxy extends pulumi.CustomResource {
      */
     public readonly proxyHeader!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * URL to the BackendService resource.
      */
@@ -91,18 +91,17 @@ export class TargetSslProxy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["certificateMap"] = args ? args.certificateMap : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["proxyHeader"] = args ? args.proxyHeader : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["service"] = args ? args.service : undefined;
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["certificateMap"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -131,21 +130,9 @@ export interface TargetSslProxyArgs {
      */
     certificateMap?: pulumi.Input<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#targetSslProxy for target SSL proxies.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -156,10 +143,6 @@ export interface TargetSslProxyArgs {
      */
     proxyHeader?: pulumi.Input<enums.compute.alpha.TargetSslProxyProxyHeader>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
     /**
      * URL to the BackendService resource.
      */

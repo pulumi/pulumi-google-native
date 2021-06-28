@@ -34,30 +34,6 @@ export const AppEngineHttpRequestHttpMethod = {
  */
 export type AppEngineHttpRequestHttpMethod = (typeof AppEngineHttpRequestHttpMethod)[keyof typeof AppEngineHttpRequestHttpMethod];
 
-export const QueueState = {
-    /**
-     * Unspecified state.
-     */
-    StateUnspecified: "STATE_UNSPECIFIED",
-    /**
-     * The queue is running. Tasks can be dispatched. If the queue was created using Cloud Tasks and the queue has had no activity (method calls or task dispatches) for 30 days, the queue may take a few minutes to re-activate. Some method calls may return NOT_FOUND and tasks may not be dispatched for a few minutes until the queue has been re-activated.
-     */
-    Running: "RUNNING",
-    /**
-     * Tasks are paused by the user. If the queue is paused then Cloud Tasks will stop delivering tasks from it, but more tasks can still be added to it by the user. When a pull queue is paused, all LeaseTasks calls will return a FAILED_PRECONDITION.
-     */
-    Paused: "PAUSED",
-    /**
-     * The queue is disabled. A queue becomes `DISABLED` when [queue.yaml](https://cloud.google.com/appengine/docs/python/config/queueref) or [queue.xml](https://cloud.google.com/appengine/docs/standard/java/config/queueref) is uploaded which does not contain the queue. You cannot directly disable a queue. When a queue is disabled, tasks can still be added to a queue but the tasks are not dispatched and LeaseTasks calls return a `FAILED_PRECONDITION` error. To permanently delete this queue and all of its tasks, call DeleteQueue.
-     */
-    Disabled: "DISABLED",
-} as const;
-
-/**
- * Output only. The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
- */
-export type QueueState = (typeof QueueState)[keyof typeof QueueState];
-
 export const TaskResponseView = {
     /**
      * Unspecified. Defaults to BASIC.
@@ -77,23 +53,3 @@ export const TaskResponseView = {
  * The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
  */
 export type TaskResponseView = (typeof TaskResponseView)[keyof typeof TaskResponseView];
-
-export const TaskView = {
-    /**
-     * Unspecified. Defaults to BASIC.
-     */
-    ViewUnspecified: "VIEW_UNSPECIFIED",
-    /**
-     * The basic view omits fields which can be large or can contain sensitive data. This view does not include the (payload in AppEngineHttpRequest and payload in PullMessage). These payloads are desirable to return only when needed, because they can be large and because of the sensitivity of the data that you choose to store in it.
-     */
-    Basic: "BASIC",
-    /**
-     * All information is returned. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Queue resource.
-     */
-    Full: "FULL",
-} as const;
-
-/**
- * Output only. The view specifies which subset of the Task has been returned.
- */
-export type TaskView = (typeof TaskView)[keyof typeof TaskView];

@@ -54,7 +54,6 @@ import * as gkehub from "./gkehub";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as jobs from "./jobs";
-import * as managedidentities from "./managedidentities";
 import * as memcache from "./memcache";
 import * as metastore from "./metastore";
 import * as ml from "./ml";
@@ -72,7 +71,6 @@ import * as redis from "./redis";
 import * as remotebuildexecution from "./remotebuildexecution";
 import * as retail from "./retail";
 import * as run from "./run";
-import * as runtimeconfig from "./runtimeconfig";
 import * as secretmanager from "./secretmanager";
 import * as securitycenter from "./securitycenter";
 import * as servicemanagement from "./servicemanagement";
@@ -138,7 +136,6 @@ export {
     healthcare,
     iam,
     jobs,
-    managedidentities,
     memcache,
     metastore,
     ml,
@@ -156,7 +153,6 @@ export {
     remotebuildexecution,
     retail,
     run,
-    runtimeconfig,
     secretmanager,
     securitycenter,
     servicemanagement,

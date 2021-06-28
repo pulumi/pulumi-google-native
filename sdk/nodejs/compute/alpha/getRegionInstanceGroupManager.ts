@@ -39,11 +39,11 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly baseInstanceName: string;
     /**
-     * [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
+     * The creation timestamp for this managed instance group in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
-     * [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+     * The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
      */
     readonly currentActions: outputs.compute.alpha.InstanceGroupManagerActionsSummaryResponse;
     /**
@@ -65,7 +65,7 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly fingerprint: string;
     /**
-     * [Output Only] The URL of the Instance Group resource.
+     * The URL of the Instance Group resource.
      */
     readonly instanceGroup: string;
     /**
@@ -77,7 +77,7 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly instanceTemplate: string;
     /**
-     * [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
+     * The resource type, which is always compute#instanceGroupManager for managed instance groups.
      */
     readonly kind: string;
     /**
@@ -89,15 +89,15 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly namedPorts: outputs.compute.alpha.NamedPortResponse[];
     /**
-     * [Output Only] The URL of the region where the managed instance group resides (for regional resources).
+     * The URL of the region where the managed instance group resides (for regional resources).
      */
     readonly region: string;
     /**
-     * [Output Only] The URL for this managed instance group. The server defines this URL.
+     * The URL for this managed instance group. The server defines this URL.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**
@@ -109,7 +109,7 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly statefulPolicy: outputs.compute.alpha.StatefulPolicyResponse;
     /**
-     * [Output Only] The status of this managed instance group.
+     * The status of this managed instance group.
      */
     readonly status: outputs.compute.alpha.InstanceGroupManagerStatusResponse;
     /**
@@ -143,7 +143,7 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly versions: outputs.compute.alpha.InstanceGroupManagerVersionResponse[];
     /**
-     * [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
+     * The URL of a zone where the managed instance group is located (for zonal resources).
      */
     readonly zone: string;
 }

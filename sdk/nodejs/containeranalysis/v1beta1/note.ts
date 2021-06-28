@@ -50,7 +50,7 @@ export class Note extends pulumi.CustomResource {
     /**
      * The time this note was created. This field can be used as a filter in list requests.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * A note describing something that can be deployed.
      */
@@ -70,7 +70,7 @@ export class Note extends pulumi.CustomResource {
     /**
      * The type of analysis. This field can be used as a filter in list requests.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * A detailed description of this note.
      */
@@ -78,7 +78,7 @@ export class Note extends pulumi.CustomResource {
     /**
      * The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * A note describing a package hosted by various package managers.
      */
@@ -98,7 +98,7 @@ export class Note extends pulumi.CustomResource {
     /**
      * The time this note was last updated. This field can be used as a filter in list requests.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * A note describing a package vulnerability.
      */
@@ -124,22 +124,22 @@ export class Note extends pulumi.CustomResource {
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
             inputs["baseImage"] = args ? args.baseImage : undefined;
             inputs["build"] = args ? args.build : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deployable"] = args ? args.deployable : undefined;
             inputs["discovery"] = args ? args.discovery : undefined;
             inputs["expirationTime"] = args ? args.expirationTime : undefined;
             inputs["intoto"] = args ? args.intoto : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["longDescription"] = args ? args.longDescription : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["noteId"] = args ? args.noteId : undefined;
             inputs["package"] = args ? args.package : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
             inputs["relatedUrl"] = args ? args.relatedUrl : undefined;
             inputs["shortDescription"] = args ? args.shortDescription : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["vulnerability"] = args ? args.vulnerability : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["attestationAuthority"] = undefined /*out*/;
             inputs["baseImage"] = undefined /*out*/;
@@ -183,10 +183,6 @@ export interface NoteArgs {
      */
     build?: pulumi.Input<inputs.containeranalysis.v1beta1.BuildArgs>;
     /**
-     * The time this note was created. This field can be used as a filter in list requests.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
      * A note describing something that can be deployed.
      */
     deployable?: pulumi.Input<inputs.containeranalysis.v1beta1.DeployableArgs>;
@@ -203,17 +199,9 @@ export interface NoteArgs {
      */
     intoto?: pulumi.Input<inputs.containeranalysis.v1beta1.InTotoArgs>;
     /**
-     * The type of analysis. This field can be used as a filter in list requests.
-     */
-    kind?: pulumi.Input<enums.containeranalysis.v1beta1.NoteKind>;
-    /**
      * A detailed description of this note.
      */
     longDescription?: pulumi.Input<string>;
-    /**
-     * The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-     */
-    name?: pulumi.Input<string>;
     noteId: pulumi.Input<string>;
     /**
      * A note describing a package hosted by various package managers.
@@ -232,10 +220,6 @@ export interface NoteArgs {
      * A one sentence description of this note.
      */
     shortDescription?: pulumi.Input<string>;
-    /**
-     * The time this note was last updated. This field can be used as a filter in list requests.
-     */
-    updateTime?: pulumi.Input<string>;
     /**
      * A note describing a package vulnerability.
      */

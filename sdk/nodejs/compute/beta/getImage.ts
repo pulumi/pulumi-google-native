@@ -33,7 +33,7 @@ export interface GetImageResult {
      */
     readonly archiveSizeBytes: string;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -67,7 +67,7 @@ export interface GetImageResult {
      */
     readonly imageEncryptionKey: outputs.compute.beta.CustomerEncryptionKeyResponse;
     /**
-     * [Output Only] Type of the resource. Always compute#image for images.
+     * Type of the resource. Always compute#image for images.
      */
     readonly kind: string;
     /**
@@ -97,11 +97,11 @@ export interface GetImageResult {
      */
     readonly rawDisk: outputs.compute.beta.ImageRawDiskResponse;
     /**
-     * [Output Only] Reserved for future use.
+     * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
@@ -120,7 +120,7 @@ export interface GetImageResult {
      */
     readonly sourceDiskEncryptionKey: outputs.compute.beta.CustomerEncryptionKeyResponse;
     /**
-     * [Output Only] The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
+     * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
      */
     readonly sourceDiskId: string;
     /**
@@ -138,7 +138,7 @@ export interface GetImageResult {
      */
     readonly sourceImageEncryptionKey: outputs.compute.beta.CustomerEncryptionKeyResponse;
     /**
-     * [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
+     * The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
      */
     readonly sourceImageId: string;
     /**
@@ -157,7 +157,7 @@ export interface GetImageResult {
      */
     readonly sourceSnapshotEncryptionKey: outputs.compute.beta.CustomerEncryptionKeyResponse;
     /**
-     * [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
+     * The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
      */
     readonly sourceSnapshotId: string;
     /**
@@ -165,7 +165,7 @@ export interface GetImageResult {
      */
     readonly sourceType: string;
     /**
-     * [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
+     * The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
      */
     readonly status: string;
     /**

@@ -9720,15 +9720,15 @@ export namespace compute {
          */
         export interface AccessConfigResponse {
             /**
-             * [Output Only] The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+             * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
              */
             externalIpv6: string;
             /**
-             * [Output Only] The prefix length of the external IPv6 range.
+             * The prefix length of the external IPv6 range.
              */
             externalIpv6PrefixLength: number;
             /**
-             * [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+             * Type of the resource. Always compute#accessConfig for access configs.
              */
             kind: string;
             /**
@@ -9748,7 +9748,7 @@ export namespace compute {
              */
             networkTier: string;
             /**
-             * [Output Only] The public DNS domain name for the instance.
+             * The public DNS domain name for the instance.
              */
             publicDnsName: string;
             /**
@@ -9868,7 +9868,7 @@ export namespace compute {
              */
             count: string;
             /**
-             * [Output Only] Indicates how many instances are in use.
+             * Indicates how many instances are in use.
              */
             inUseCount: string;
             /**
@@ -10023,7 +10023,7 @@ export namespace compute {
              */
             guestOsFeatures: outputs.compute.alpha.GuestOsFeatureResponse[];
             /**
-             * [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+             * A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
              */
             index: number;
             /**
@@ -10037,11 +10037,11 @@ export namespace compute {
              */
             interface: string;
             /**
-             * [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+             * Type of the resource. Always compute#attachedDisk for attached disks.
              */
             kind: string;
             /**
-             * [Output Only] Any valid publicly visible licenses.
+             * Any valid publicly visible licenses.
              */
             licenses: string[];
             /**
@@ -10053,7 +10053,7 @@ export namespace compute {
              */
             savedState: string;
             /**
-             * [Output Only] shielded vm initial state stored on disk
+             * shielded vm initial state stored on disk
              */
             shieldedInstanceInitialState: outputs.compute.alpha.InitialStateConfigResponse;
             /**
@@ -10069,7 +10069,7 @@ export namespace compute {
              */
             type: string;
             /**
-             * [Output Only] A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
+             * A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
              */
             userLicenses: string[];
         }
@@ -10373,7 +10373,7 @@ export namespace compute {
              */
             signedUrlCacheMaxAgeSec: string;
             /**
-             * [Output Only] Names of the keys for signing request URLs.
+             * Names of the keys for signing request URLs.
              */
             signedUrlKeyNames: string[];
         }
@@ -10538,7 +10538,7 @@ export namespace compute {
              */
             signedUrlCacheMaxAgeSec: string;
             /**
-             * [Output Only] Names of the keys for signing request URLs.
+             * Names of the keys for signing request URLs.
              */
             signedUrlKeyNames: string[];
         }
@@ -10633,7 +10633,7 @@ export namespace compute {
              */
             oauth2ClientSecret: string;
             /**
-             * [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+             * SHA256 hash value for the field oauth2_client_secret above.
              */
             oauth2ClientSecretSha256: string;
         }
@@ -11142,11 +11142,11 @@ export namespace compute {
              */
             attachmentTarget: string;
             /**
-             * [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+             * Deprecated, please use short name instead. The display name of the firewall policy of the association.
              */
             displayName: string;
             /**
-             * [Output Only] The firewall policy ID of the association.
+             * The firewall policy ID of the association.
              */
             firewallPolicyId: string;
             /**
@@ -11154,7 +11154,7 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] The short name of the firewall policy of the association.
+             * The short name of the firewall policy of the association.
              */
             shortName: string;
         }
@@ -11235,7 +11235,7 @@ export namespace compute {
              */
             priority: number;
             /**
-             * [Output Only] Calculation of the complexity of a single firewall policy rule.
+             * Calculation of the complexity of a single firewall policy rule.
              */
             ruleTupleCount: number;
             /**
@@ -11262,7 +11262,7 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+             * State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
              */
             state: string;
         }
@@ -11272,7 +11272,7 @@ export namespace compute {
          */
         export interface FixedOrPercentResponse {
             /**
-             * [Output Only] Absolute value of VM instances calculated based on the specific mode.
+             * Absolute value of VM instances calculated based on the specific mode.
              *
              *  
              * - If the value is fixed, then the calculated value is equal to the fixed value. 
@@ -11963,57 +11963,57 @@ export namespace compute {
 
         export interface InstanceGroupManagerActionsSummaryResponse {
             /**
-             * [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
+             * The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
              */
             abandoning: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
+             * The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
              *
              * If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
              */
             creating: number;
             /**
-             * [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+             * The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
              */
             creatingWithoutRetries: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
+             * The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
              */
             deleting: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
+             * The number of instances in the managed instance group that are running and have no scheduled actions.
              */
             none: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
+             * The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
              */
             recreating: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
+             * The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
              */
             refreshing: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+             * The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
              */
             restarting: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+             * The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
              */
             resuming: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+             * The number of instances in the managed instance group that are scheduled to be started or are currently being started.
              */
             starting: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+             * The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
              */
             stopping: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+             * The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
              */
             suspending: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
+             * The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
              */
             verifying: number;
         }
@@ -12055,19 +12055,19 @@ export namespace compute {
 
         export interface InstanceGroupManagerStatusResponse {
             /**
-             * [Output Only] The URL of the Autoscaler that targets this instance group manager.
+             * The URL of the Autoscaler that targets this instance group manager.
              */
             autoscaler: string;
             /**
-             * [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+             * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
              */
             isStable: boolean;
             /**
-             * [Output Only] Stateful status of the given Instance Group Manager.
+             * Stateful status of the given Instance Group Manager.
              */
             stateful: outputs.compute.alpha.InstanceGroupManagerStatusStatefulResponse;
             /**
-             * [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+             * A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
              */
             versionTarget: outputs.compute.alpha.InstanceGroupManagerStatusVersionTargetResponse;
         }
@@ -12081,18 +12081,18 @@ export namespace compute {
 
         export interface InstanceGroupManagerStatusStatefulResponse {
             /**
-             * [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+             * A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
              */
             hasStatefulConfig: boolean;
             /**
-             * [Output Only] Status of per-instance configs on the instance.
+             * Status of per-instance configs on the instance.
              */
             perInstanceConfigs: outputs.compute.alpha.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse;
         }
 
         export interface InstanceGroupManagerStatusVersionTargetResponse {
             /**
-             * [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+             * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
              */
             isReached: boolean;
         }
@@ -12281,7 +12281,7 @@ export namespace compute {
          */
         export interface InterconnectAttachmentPrivateInfoResponse {
             /**
-             * [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+             * 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
              */
             tag8021q: number;
         }
@@ -12546,7 +12546,7 @@ export namespace compute {
              */
             items: outputs.compute.alpha.MetadataItemsItemResponse[];
             /**
-             * [Output Only] Type of the resource. Always compute#metadata for metadata.
+             * Type of the resource. Always compute#metadata for metadata.
              */
             kind: string;
         }
@@ -12712,7 +12712,7 @@ export namespace compute {
              */
             fingerprint: string;
             /**
-             * [Output Only] The prefix length of the primary internal IPv6 range.
+             * The prefix length of the primary internal IPv6 range.
              */
             internalIpv6PrefixLength: number;
             /**
@@ -12720,21 +12720,21 @@ export namespace compute {
              */
             ipv6AccessConfigs: outputs.compute.alpha.AccessConfigResponse[];
             /**
-             * [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+             * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
              *
              * Valid only if stackType is IPV4_IPV6.
              */
             ipv6AccessType: string;
             /**
-             * [Output Only] An IPv6 internal network address for this network interface.
+             * An IPv6 internal network address for this network interface.
              */
             ipv6Address: string;
             /**
-             * [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
+             * Type of the resource. Always compute#networkInterface for network interfaces.
              */
             kind: string;
             /**
-             * [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+             * The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
              */
             name: string;
             /**
@@ -12838,11 +12838,11 @@ export namespace compute {
              */
             peerMtu: number;
             /**
-             * [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
+             * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
              */
             state: string;
             /**
-             * [Output Only] Details about the current state of the peering.
+             * Details about the current state of the peering.
              */
             stateDetails: string;
         }
@@ -12994,7 +12994,7 @@ export namespace compute {
 
         export interface PacketMirroringForwardingRuleInfoResponse {
             /**
-             * [Output Only] Unique identifier for the forwarding rule; defined by the server.
+             * Unique identifier for the forwarding rule; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -13005,7 +13005,7 @@ export namespace compute {
 
         export interface PacketMirroringMirroredResourceInfoInstanceInfoResponse {
             /**
-             * [Output Only] Unique identifier for the instance; defined by the server.
+             * Unique identifier for the instance; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -13037,7 +13037,7 @@ export namespace compute {
 
         export interface PacketMirroringMirroredResourceInfoSubnetInfoResponse {
             /**
-             * [Output Only] Unique identifier for the subnetwork; defined by the server.
+             * Unique identifier for the subnetwork; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -13048,7 +13048,7 @@ export namespace compute {
 
         export interface PacketMirroringNetworkInfoResponse {
             /**
-             * [Output Only] Unique identifier for the network; defined by the server.
+             * Unique identifier for the network; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -13190,11 +13190,11 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+             * The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
              */
             region: string;
             /**
-             * [Output Only] The status of the sub public delegated prefix.
+             * The status of the sub public delegated prefix.
              */
             status: string;
         }
@@ -13232,11 +13232,11 @@ export namespace compute {
          */
         export interface ReservationResponse {
             /**
-             * [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+             * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
              */
             commitment: string;
             /**
-             * [Output Only] Creation timestamp in RFC3339 text format.
+             * Creation timestamp in RFC3339 text format.
              */
             creationTimestamp: string;
             /**
@@ -13244,7 +13244,7 @@ export namespace compute {
              */
             description: string;
             /**
-             * [Output Only] Type of the resource. Always compute#reservations for reservations.
+             * Type of the resource. Always compute#reservations for reservations.
              */
             kind: string;
             /**
@@ -13252,15 +13252,15 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] Reserved for future use.
+             * Reserved for future use.
              */
             satisfiesPzs: boolean;
             /**
-             * [Output Only] Server-defined fully-qualified URL for this resource.
+             * Server-defined fully-qualified URL for this resource.
              */
             selfLink: string;
             /**
-             * [Output Only] Server-defined URL for this resource with the resource id.
+             * Server-defined URL for this resource with the resource id.
              */
             selfLinkWithId: string;
             /**
@@ -13276,7 +13276,7 @@ export namespace compute {
              */
             specificReservationRequired: boolean;
             /**
-             * [Output Only] The status of the reservation.
+             * The status of the reservation.
              */
             status: string;
             /**
@@ -13407,11 +13407,11 @@ export namespace compute {
 
         export interface ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse {
             /**
-             * [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+             * The last time the schedule successfully ran. The timestamp is an RFC3339 string.
              */
             lastRunStartTime: string;
             /**
-             * [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+             * The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
              */
             nextRunStartTime: string;
         }
@@ -13421,7 +13421,7 @@ export namespace compute {
          */
         export interface ResourcePolicyResourceStatusResponse {
             /**
-             * [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+             * Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
              */
             instanceSchedulePolicy: outputs.compute.alpha.ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse;
         }
@@ -13574,27 +13574,27 @@ export namespace compute {
 
         export interface RouteWarningsItemDataItemResponse {
             /**
-             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
              */
             key: string;
             /**
-             * [Output Only] A warning data value corresponding to the key.
+             * A warning data value corresponding to the key.
              */
             value: string;
         }
 
         export interface RouteWarningsItemResponse {
             /**
-             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             * A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
              */
             code: string;
             /**
-             * [Output Only] Metadata about this warning in key: value format. For example:
+             * Metadata about this warning in key: value format. For example:
              * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
              */
             data: outputs.compute.alpha.RouteWarningsItemDataItemResponse[];
             /**
-             * [Output Only] A human-readable description of the warning code.
+             * A human-readable description of the warning code.
              */
             message: string;
         }
@@ -13694,7 +13694,7 @@ export namespace compute {
              */
             ipAddress: string;
             /**
-             * [Output Only] The resource that configures and manages this BGP peer. 
+             * The resource that configures and manages this BGP peer. 
              * - MANAGED_BY_USER is the default value and can be managed by you or other users 
              * - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
              */
@@ -13758,7 +13758,7 @@ export namespace compute {
              */
             linkedVpnTunnel: string;
             /**
-             * [Output Only] The resource that configures and manages this interface. 
+             * The resource that configures and manages this interface. 
              * - MANAGED_BY_USER is the default value and can be managed directly by users. 
              * - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
              */
@@ -14012,7 +14012,7 @@ export namespace compute {
              */
             diskSizeGb: string;
             /**
-             * [Output Only] URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+             * URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
              */
             diskType: string;
             /**
@@ -14028,11 +14028,11 @@ export namespace compute {
              */
             interface: string;
             /**
-             * [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+             * Type of the resource. Always compute#attachedDisk for attached disks.
              */
             kind: string;
             /**
-             * [Output Only] Any valid publicly visible licenses.
+             * Any valid publicly visible licenses.
              */
             licenses: string[];
             /**
@@ -14044,11 +14044,11 @@ export namespace compute {
              */
             source: string;
             /**
-             * [Output Only] A size of the storage used by the disk's snapshot by this machine image.
+             * A size of the storage used by the disk's snapshot by this machine image.
              */
             storageBytes: string;
             /**
-             * [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+             * An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
              */
             storageBytesStatus: string;
             /**
@@ -14165,7 +14165,7 @@ export namespace compute {
              */
             attachmentId: string;
             /**
-             * [Output Only] The display name of the security policy of the association.
+             * The display name of the security policy of the association.
              */
             displayName: string;
             /**
@@ -14173,7 +14173,7 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] The security policy ID of the association.
+             * The security policy ID of the association.
              */
             securityPolicyId: string;
         }
@@ -14372,7 +14372,7 @@ export namespace compute {
              */
             ruleNumber: string;
             /**
-             * [Output Only] Calculation of the complexity of a single firewall security policy rule.
+             * Calculation of the complexity of a single firewall security policy rule.
              */
             ruleTupleCount: number;
             /**
@@ -14665,27 +14665,27 @@ export namespace compute {
 
         export interface SslPolicyWarningsItemDataItemResponse {
             /**
-             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
              */
             key: string;
             /**
-             * [Output Only] A warning data value corresponding to the key.
+             * A warning data value corresponding to the key.
              */
             value: string;
         }
 
         export interface SslPolicyWarningsItemResponse {
             /**
-             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             * A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
              */
             code: string;
             /**
-             * [Output Only] Metadata about this warning in key: value format. For example:
+             * Metadata about this warning in key: value format. For example:
              * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
              */
             data: outputs.compute.alpha.SslPolicyWarningsItemDataItemResponse[];
             /**
-             * [Output Only] A human-readable description of the warning code.
+             * A human-readable description of the warning code.
              */
             message: string;
         }
@@ -14905,7 +14905,7 @@ export namespace compute {
          */
         export interface UpcomingMaintenanceResponse {
             /**
-             * [Output Only] The start time window of the maintenance disruption.
+             * The start time window of the maintenance disruption.
              */
             startTimeWindow: outputs.compute.alpha.UpcomingMaintenanceTimeWindowResponse;
             /**
@@ -15005,7 +15005,7 @@ export namespace compute {
              */
             interconnectAttachment: string;
             /**
-             * [Output Only] The external IP address for this VPN gateway interface.
+             * The external IP address for this VPN gateway interface.
              */
             ipAddress: string;
         }
@@ -15054,7 +15054,7 @@ export namespace compute {
          */
         export interface AccessConfigResponse {
             /**
-             * [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+             * Type of the resource. Always compute#accessConfig for access configs.
              */
             kind: string;
             /**
@@ -15161,7 +15161,7 @@ export namespace compute {
              */
             count: string;
             /**
-             * [Output Only] Indicates how many instances are in use.
+             * Indicates how many instances are in use.
              */
             inUseCount: string;
             /**
@@ -15308,7 +15308,7 @@ export namespace compute {
              */
             guestOsFeatures: outputs.compute.beta.GuestOsFeatureResponse[];
             /**
-             * [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+             * A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
              */
             index: number;
             /**
@@ -15322,11 +15322,11 @@ export namespace compute {
              */
             interface: string;
             /**
-             * [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+             * Type of the resource. Always compute#attachedDisk for attached disks.
              */
             kind: string;
             /**
-             * [Output Only] Any valid publicly visible licenses.
+             * Any valid publicly visible licenses.
              */
             licenses: string[];
             /**
@@ -15334,7 +15334,7 @@ export namespace compute {
              */
             mode: string;
             /**
-             * [Output Only] shielded vm initial state stored on disk
+             * shielded vm initial state stored on disk
              */
             shieldedInstanceInitialState: outputs.compute.beta.InitialStateConfigResponse;
             /**
@@ -15650,7 +15650,7 @@ export namespace compute {
              */
             signedUrlCacheMaxAgeSec: string;
             /**
-             * [Output Only] Names of the keys for signing request URLs.
+             * Names of the keys for signing request URLs.
              */
             signedUrlKeyNames: string[];
         }
@@ -15815,7 +15815,7 @@ export namespace compute {
              */
             signedUrlCacheMaxAgeSec: string;
             /**
-             * [Output Only] Names of the keys for signing request URLs.
+             * Names of the keys for signing request URLs.
              */
             signedUrlKeyNames: string[];
         }
@@ -15891,7 +15891,7 @@ export namespace compute {
              */
             oauth2ClientSecret: string;
             /**
-             * [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+             * SHA256 hash value for the field oauth2_client_secret above.
              */
             oauth2ClientSecretSha256: string;
         }
@@ -16366,11 +16366,11 @@ export namespace compute {
              */
             attachmentTarget: string;
             /**
-             * [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+             * Deprecated, please use short name instead. The display name of the firewall policy of the association.
              */
             displayName: string;
             /**
-             * [Output Only] The firewall policy ID of the association.
+             * The firewall policy ID of the association.
              */
             firewallPolicyId: string;
             /**
@@ -16378,7 +16378,7 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] The short name of the firewall policy of the association.
+             * The short name of the firewall policy of the association.
              */
             shortName: string;
         }
@@ -16455,7 +16455,7 @@ export namespace compute {
              */
             priority: number;
             /**
-             * [Output Only] Calculation of the complexity of a single firewall policy rule.
+             * Calculation of the complexity of a single firewall policy rule.
              */
             ruleTupleCount: number;
             /**
@@ -16477,7 +16477,7 @@ export namespace compute {
          */
         export interface FixedOrPercentResponse {
             /**
-             * [Output Only] Absolute value of VM instances calculated based on the specific mode.
+             * Absolute value of VM instances calculated based on the specific mode.
              *
              *  
              * - If the value is fixed, then the calculated value is equal to the fixed value. 
@@ -17138,41 +17138,41 @@ export namespace compute {
 
         export interface InstanceGroupManagerActionsSummaryResponse {
             /**
-             * [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
+             * The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
              */
             abandoning: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
+             * The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
              *
              * If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
              */
             creating: number;
             /**
-             * [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+             * The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
              */
             creatingWithoutRetries: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
+             * The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
              */
             deleting: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
+             * The number of instances in the managed instance group that are running and have no scheduled actions.
              */
             none: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
+             * The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
              */
             recreating: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
+             * The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
              */
             refreshing: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+             * The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
              */
             restarting: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
+             * The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
              */
             verifying: number;
         }
@@ -17190,19 +17190,19 @@ export namespace compute {
 
         export interface InstanceGroupManagerStatusResponse {
             /**
-             * [Output Only] The URL of the Autoscaler that targets this instance group manager.
+             * The URL of the Autoscaler that targets this instance group manager.
              */
             autoscaler: string;
             /**
-             * [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+             * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
              */
             isStable: boolean;
             /**
-             * [Output Only] Stateful status of the given Instance Group Manager.
+             * Stateful status of the given Instance Group Manager.
              */
             stateful: outputs.compute.beta.InstanceGroupManagerStatusStatefulResponse;
             /**
-             * [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+             * A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
              */
             versionTarget: outputs.compute.beta.InstanceGroupManagerStatusVersionTargetResponse;
         }
@@ -17216,18 +17216,18 @@ export namespace compute {
 
         export interface InstanceGroupManagerStatusStatefulResponse {
             /**
-             * [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+             * A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
              */
             hasStatefulConfig: boolean;
             /**
-             * [Output Only] Status of per-instance configs on the instance.
+             * Status of per-instance configs on the instance.
              */
             perInstanceConfigs: outputs.compute.beta.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse;
         }
 
         export interface InstanceGroupManagerStatusVersionTargetResponse {
             /**
-             * [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+             * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
              */
             isReached: boolean;
         }
@@ -17416,7 +17416,7 @@ export namespace compute {
          */
         export interface InterconnectAttachmentPrivateInfoResponse {
             /**
-             * [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+             * 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
              */
             tag8021q: number;
         }
@@ -17667,7 +17667,7 @@ export namespace compute {
              */
             items: outputs.compute.beta.MetadataItemsItemResponse[];
             /**
-             * [Output Only] Type of the resource. Always compute#metadata for metadata.
+             * Type of the resource. Always compute#metadata for metadata.
              */
             kind: string;
         }
@@ -17785,15 +17785,15 @@ export namespace compute {
              */
             fingerprint: string;
             /**
-             * [Output Only] An IPv6 internal network address for this network interface.
+             * An IPv6 internal network address for this network interface.
              */
             ipv6Address: string;
             /**
-             * [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
+             * Type of the resource. Always compute#networkInterface for network interfaces.
              */
             kind: string;
             /**
-             * [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+             * The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
              */
             name: string;
             /**
@@ -17862,11 +17862,11 @@ export namespace compute {
              */
             peerMtu: number;
             /**
-             * [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
+             * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
              */
             state: string;
             /**
-             * [Output Only] Details about the current state of the peering.
+             * Details about the current state of the peering.
              */
             stateDetails: string;
         }
@@ -18013,7 +18013,7 @@ export namespace compute {
 
         export interface PacketMirroringForwardingRuleInfoResponse {
             /**
-             * [Output Only] Unique identifier for the forwarding rule; defined by the server.
+             * Unique identifier for the forwarding rule; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -18024,7 +18024,7 @@ export namespace compute {
 
         export interface PacketMirroringMirroredResourceInfoInstanceInfoResponse {
             /**
-             * [Output Only] Unique identifier for the instance; defined by the server.
+             * Unique identifier for the instance; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -18056,7 +18056,7 @@ export namespace compute {
 
         export interface PacketMirroringMirroredResourceInfoSubnetInfoResponse {
             /**
-             * [Output Only] Unique identifier for the subnetwork; defined by the server.
+             * Unique identifier for the subnetwork; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -18067,7 +18067,7 @@ export namespace compute {
 
         export interface PacketMirroringNetworkInfoResponse {
             /**
-             * [Output Only] Unique identifier for the network; defined by the server.
+             * Unique identifier for the network; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -18209,11 +18209,11 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+             * The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
              */
             region: string;
             /**
-             * [Output Only] The status of the sub public delegated prefix.
+             * The status of the sub public delegated prefix.
              */
             status: string;
         }
@@ -18251,11 +18251,11 @@ export namespace compute {
          */
         export interface ReservationResponse {
             /**
-             * [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+             * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
              */
             commitment: string;
             /**
-             * [Output Only] Creation timestamp in RFC3339 text format.
+             * Creation timestamp in RFC3339 text format.
              */
             creationTimestamp: string;
             /**
@@ -18263,7 +18263,7 @@ export namespace compute {
              */
             description: string;
             /**
-             * [Output Only] Type of the resource. Always compute#reservations for reservations.
+             * Type of the resource. Always compute#reservations for reservations.
              */
             kind: string;
             /**
@@ -18271,11 +18271,11 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] Reserved for future use.
+             * Reserved for future use.
              */
             satisfiesPzs: boolean;
             /**
-             * [Output Only] Server-defined fully-qualified URL for this resource.
+             * Server-defined fully-qualified URL for this resource.
              */
             selfLink: string;
             /**
@@ -18287,7 +18287,7 @@ export namespace compute {
              */
             specificReservationRequired: boolean;
             /**
-             * [Output Only] The status of the reservation.
+             * The status of the reservation.
              */
             status: string;
             /**
@@ -18406,11 +18406,11 @@ export namespace compute {
 
         export interface ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse {
             /**
-             * [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+             * The last time the schedule successfully ran. The timestamp is an RFC3339 string.
              */
             lastRunStartTime: string;
             /**
-             * [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+             * The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
              */
             nextRunStartTime: string;
         }
@@ -18420,7 +18420,7 @@ export namespace compute {
          */
         export interface ResourcePolicyResourceStatusResponse {
             /**
-             * [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+             * Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
              */
             instanceSchedulePolicy: outputs.compute.beta.ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse;
         }
@@ -18515,27 +18515,27 @@ export namespace compute {
 
         export interface RouteWarningsItemDataItemResponse {
             /**
-             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
              */
             key: string;
             /**
-             * [Output Only] A warning data value corresponding to the key.
+             * A warning data value corresponding to the key.
              */
             value: string;
         }
 
         export interface RouteWarningsItemResponse {
             /**
-             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             * A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
              */
             code: string;
             /**
-             * [Output Only] Metadata about this warning in key: value format. For example:
+             * Metadata about this warning in key: value format. For example:
              * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
              */
             data: outputs.compute.beta.RouteWarningsItemDataItemResponse[];
             /**
-             * [Output Only] A human-readable description of the warning code.
+             * A human-readable description of the warning code.
              */
             message: string;
         }
@@ -18623,7 +18623,7 @@ export namespace compute {
              */
             ipAddress: string;
             /**
-             * [Output Only] The resource that configures and manages this BGP peer. 
+             * The resource that configures and manages this BGP peer. 
              * - MANAGED_BY_USER is the default value and can be managed by you or other users 
              * - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
              */
@@ -18687,7 +18687,7 @@ export namespace compute {
              */
             linkedVpnTunnel: string;
             /**
-             * [Output Only] The resource that configures and manages this interface. 
+             * The resource that configures and manages this interface. 
              * - MANAGED_BY_USER is the default value and can be managed directly by users. 
              * - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
              */
@@ -18897,7 +18897,7 @@ export namespace compute {
              */
             diskSizeGb: string;
             /**
-             * [Output Only] URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+             * URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
              */
             diskType: string;
             /**
@@ -18913,11 +18913,11 @@ export namespace compute {
              */
             interface: string;
             /**
-             * [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+             * Type of the resource. Always compute#attachedDisk for attached disks.
              */
             kind: string;
             /**
-             * [Output Only] Any valid publicly visible licenses.
+             * Any valid publicly visible licenses.
              */
             licenses: string[];
             /**
@@ -18929,11 +18929,11 @@ export namespace compute {
              */
             source: string;
             /**
-             * [Output Only] A size of the storage used by the disk's snapshot by this machine image.
+             * A size of the storage used by the disk's snapshot by this machine image.
              */
             storageBytes: string;
             /**
-             * [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+             * An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
              */
             storageBytesStatus: string;
             /**
@@ -19022,7 +19022,7 @@ export namespace compute {
              */
             attachmentId: string;
             /**
-             * [Output Only] The display name of the security policy of the association.
+             * The display name of the security policy of the association.
              */
             displayName: string;
             /**
@@ -19030,7 +19030,7 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] The security policy ID of the association.
+             * The security policy ID of the association.
              */
             securityPolicyId: string;
         }
@@ -19130,7 +19130,7 @@ export namespace compute {
              */
             ruleNumber: string;
             /**
-             * [Output Only] Calculation of the complexity of a single firewall security policy rule.
+             * Calculation of the complexity of a single firewall security policy rule.
              */
             ruleTupleCount: number;
             /**
@@ -19392,27 +19392,27 @@ export namespace compute {
 
         export interface SslPolicyWarningsItemDataItemResponse {
             /**
-             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
              */
             key: string;
             /**
-             * [Output Only] A warning data value corresponding to the key.
+             * A warning data value corresponding to the key.
              */
             value: string;
         }
 
         export interface SslPolicyWarningsItemResponse {
             /**
-             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             * A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
              */
             code: string;
             /**
-             * [Output Only] Metadata about this warning in key: value format. For example:
+             * Metadata about this warning in key: value format. For example:
              * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
              */
             data: outputs.compute.beta.SslPolicyWarningsItemDataItemResponse[];
             /**
-             * [Output Only] A human-readable description of the warning code.
+             * A human-readable description of the warning code.
              */
             message: string;
         }
@@ -19615,7 +19615,7 @@ export namespace compute {
              */
             interconnectAttachment: string;
             /**
-             * [Output Only] The external IP address for this VPN gateway interface.
+             * The external IP address for this VPN gateway interface.
              */
             ipAddress: string;
         }
@@ -19664,7 +19664,7 @@ export namespace compute {
          */
         export interface AccessConfigResponse {
             /**
-             * [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+             * Type of the resource. Always compute#accessConfig for access configs.
              */
             kind: string;
             /**
@@ -19771,7 +19771,7 @@ export namespace compute {
              */
             count: string;
             /**
-             * [Output Only] Indicates how many instances are in use.
+             * Indicates how many instances are in use.
              */
             inUseCount: string;
             /**
@@ -19908,7 +19908,7 @@ export namespace compute {
              */
             guestOsFeatures: outputs.compute.v1.GuestOsFeatureResponse[];
             /**
-             * [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+             * A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
              */
             index: number;
             /**
@@ -19922,11 +19922,11 @@ export namespace compute {
              */
             interface: string;
             /**
-             * [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+             * Type of the resource. Always compute#attachedDisk for attached disks.
              */
             kind: string;
             /**
-             * [Output Only] Any valid publicly visible licenses.
+             * Any valid publicly visible licenses.
              */
             licenses: string[];
             /**
@@ -19934,7 +19934,7 @@ export namespace compute {
              */
             mode: string;
             /**
-             * [Output Only] shielded vm initial state stored on disk
+             * shielded vm initial state stored on disk
              */
             shieldedInstanceInitialState: outputs.compute.v1.InitialStateConfigResponse;
             /**
@@ -20235,7 +20235,7 @@ export namespace compute {
              */
             signedUrlCacheMaxAgeSec: string;
             /**
-             * [Output Only] Names of the keys for signing request URLs.
+             * Names of the keys for signing request URLs.
              */
             signedUrlKeyNames: string[];
         }
@@ -20400,7 +20400,7 @@ export namespace compute {
              */
             signedUrlCacheMaxAgeSec: string;
             /**
-             * [Output Only] Names of the keys for signing request URLs.
+             * Names of the keys for signing request URLs.
              */
             signedUrlKeyNames: string[];
         }
@@ -20442,7 +20442,7 @@ export namespace compute {
              */
             oauth2ClientSecret: string;
             /**
-             * [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+             * SHA256 hash value for the field oauth2_client_secret above.
              */
             oauth2ClientSecretSha256: string;
         }
@@ -20904,11 +20904,11 @@ export namespace compute {
              */
             attachmentTarget: string;
             /**
-             * [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+             * Deprecated, please use short name instead. The display name of the firewall policy of the association.
              */
             displayName: string;
             /**
-             * [Output Only] The firewall policy ID of the association.
+             * The firewall policy ID of the association.
              */
             firewallPolicyId: string;
             /**
@@ -20916,7 +20916,7 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] The short name of the firewall policy of the association.
+             * The short name of the firewall policy of the association.
              */
             shortName: string;
         }
@@ -20993,7 +20993,7 @@ export namespace compute {
              */
             priority: number;
             /**
-             * [Output Only] Calculation of the complexity of a single firewall policy rule.
+             * Calculation of the complexity of a single firewall policy rule.
              */
             ruleTupleCount: number;
             /**
@@ -21015,7 +21015,7 @@ export namespace compute {
          */
         export interface FixedOrPercentResponse {
             /**
-             * [Output Only] Absolute value of VM instances calculated based on the specific mode.
+             * Absolute value of VM instances calculated based on the specific mode.
              *
              *  
              * - If the value is fixed, then the calculated value is equal to the fixed value. 
@@ -21647,41 +21647,41 @@ export namespace compute {
 
         export interface InstanceGroupManagerActionsSummaryResponse {
             /**
-             * [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
+             * The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
              */
             abandoning: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
+             * The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
              *
              * If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
              */
             creating: number;
             /**
-             * [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+             * The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
              */
             creatingWithoutRetries: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
+             * The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
              */
             deleting: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
+             * The number of instances in the managed instance group that are running and have no scheduled actions.
              */
             none: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
+             * The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
              */
             recreating: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
+             * The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
              */
             refreshing: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+             * The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
              */
             restarting: number;
             /**
-             * [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
+             * The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
              */
             verifying: number;
         }
@@ -21699,19 +21699,19 @@ export namespace compute {
 
         export interface InstanceGroupManagerStatusResponse {
             /**
-             * [Output Only] The URL of the Autoscaler that targets this instance group manager.
+             * The URL of the Autoscaler that targets this instance group manager.
              */
             autoscaler: string;
             /**
-             * [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+             * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
              */
             isStable: boolean;
             /**
-             * [Output Only] Stateful status of the given Instance Group Manager.
+             * Stateful status of the given Instance Group Manager.
              */
             stateful: outputs.compute.v1.InstanceGroupManagerStatusStatefulResponse;
             /**
-             * [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+             * A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
              */
             versionTarget: outputs.compute.v1.InstanceGroupManagerStatusVersionTargetResponse;
         }
@@ -21725,18 +21725,18 @@ export namespace compute {
 
         export interface InstanceGroupManagerStatusStatefulResponse {
             /**
-             * [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+             * A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
              */
             hasStatefulConfig: boolean;
             /**
-             * [Output Only] Status of per-instance configs on the instance.
+             * Status of per-instance configs on the instance.
              */
             perInstanceConfigs: outputs.compute.v1.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse;
         }
 
         export interface InstanceGroupManagerStatusVersionTargetResponse {
             /**
-             * [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+             * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
              */
             isReached: boolean;
         }
@@ -21908,7 +21908,7 @@ export namespace compute {
          */
         export interface InterconnectAttachmentPrivateInfoResponse {
             /**
-             * [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+             * 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
              */
             tag8021q: number;
         }
@@ -22159,7 +22159,7 @@ export namespace compute {
              */
             items: outputs.compute.v1.MetadataItemsItemResponse[];
             /**
-             * [Output Only] Type of the resource. Always compute#metadata for metadata.
+             * Type of the resource. Always compute#metadata for metadata.
              */
             kind: string;
         }
@@ -22277,15 +22277,15 @@ export namespace compute {
              */
             fingerprint: string;
             /**
-             * [Output Only] An IPv6 internal network address for this network interface.
+             * An IPv6 internal network address for this network interface.
              */
             ipv6Address: string;
             /**
-             * [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
+             * Type of the resource. Always compute#networkInterface for network interfaces.
              */
             kind: string;
             /**
-             * [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+             * The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
              */
             name: string;
             /**
@@ -22354,11 +22354,11 @@ export namespace compute {
              */
             peerMtu: number;
             /**
-             * [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
+             * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
              */
             state: string;
             /**
-             * [Output Only] Details about the current state of the peering.
+             * Details about the current state of the peering.
              */
             stateDetails: string;
         }
@@ -22501,7 +22501,7 @@ export namespace compute {
 
         export interface PacketMirroringForwardingRuleInfoResponse {
             /**
-             * [Output Only] Unique identifier for the forwarding rule; defined by the server.
+             * Unique identifier for the forwarding rule; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -22512,7 +22512,7 @@ export namespace compute {
 
         export interface PacketMirroringMirroredResourceInfoInstanceInfoResponse {
             /**
-             * [Output Only] Unique identifier for the instance; defined by the server.
+             * Unique identifier for the instance; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -22544,7 +22544,7 @@ export namespace compute {
 
         export interface PacketMirroringMirroredResourceInfoSubnetInfoResponse {
             /**
-             * [Output Only] Unique identifier for the subnetwork; defined by the server.
+             * Unique identifier for the subnetwork; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -22555,7 +22555,7 @@ export namespace compute {
 
         export interface PacketMirroringNetworkInfoResponse {
             /**
-             * [Output Only] Unique identifier for the network; defined by the server.
+             * Unique identifier for the network; defined by the server.
              */
             canonicalUrl: string;
             /**
@@ -22697,11 +22697,11 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+             * The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
              */
             region: string;
             /**
-             * [Output Only] The status of the sub public delegated prefix.
+             * The status of the sub public delegated prefix.
              */
             status: string;
         }
@@ -22739,11 +22739,11 @@ export namespace compute {
          */
         export interface ReservationResponse {
             /**
-             * [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+             * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
              */
             commitment: string;
             /**
-             * [Output Only] Creation timestamp in RFC3339 text format.
+             * Creation timestamp in RFC3339 text format.
              */
             creationTimestamp: string;
             /**
@@ -22751,7 +22751,7 @@ export namespace compute {
              */
             description: string;
             /**
-             * [Output Only] Type of the resource. Always compute#reservations for reservations.
+             * Type of the resource. Always compute#reservations for reservations.
              */
             kind: string;
             /**
@@ -22759,11 +22759,11 @@ export namespace compute {
              */
             name: string;
             /**
-             * [Output Only] Reserved for future use.
+             * Reserved for future use.
              */
             satisfiesPzs: boolean;
             /**
-             * [Output Only] Server-defined fully-qualified URL for this resource.
+             * Server-defined fully-qualified URL for this resource.
              */
             selfLink: string;
             /**
@@ -22775,7 +22775,7 @@ export namespace compute {
              */
             specificReservationRequired: boolean;
             /**
-             * [Output Only] The status of the reservation.
+             * The status of the reservation.
              */
             status: string;
             /**
@@ -22894,11 +22894,11 @@ export namespace compute {
 
         export interface ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse {
             /**
-             * [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+             * The last time the schedule successfully ran. The timestamp is an RFC3339 string.
              */
             lastRunStartTime: string;
             /**
-             * [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+             * The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
              */
             nextRunStartTime: string;
         }
@@ -22908,7 +22908,7 @@ export namespace compute {
          */
         export interface ResourcePolicyResourceStatusResponse {
             /**
-             * [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+             * Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
              */
             instanceSchedulePolicy: outputs.compute.v1.ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse;
         }
@@ -23003,27 +23003,27 @@ export namespace compute {
 
         export interface RouteWarningsItemDataItemResponse {
             /**
-             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
              */
             key: string;
             /**
-             * [Output Only] A warning data value corresponding to the key.
+             * A warning data value corresponding to the key.
              */
             value: string;
         }
 
         export interface RouteWarningsItemResponse {
             /**
-             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             * A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
              */
             code: string;
             /**
-             * [Output Only] Metadata about this warning in key: value format. For example:
+             * Metadata about this warning in key: value format. For example:
              * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
              */
             data: outputs.compute.v1.RouteWarningsItemDataItemResponse[];
             /**
-             * [Output Only] A human-readable description of the warning code.
+             * A human-readable description of the warning code.
              */
             message: string;
         }
@@ -23070,7 +23070,7 @@ export namespace compute {
              */
             ipAddress: string;
             /**
-             * [Output Only] The resource that configures and manages this BGP peer. 
+             * The resource that configures and manages this BGP peer. 
              * - MANAGED_BY_USER is the default value and can be managed by you or other users 
              * - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
              */
@@ -23122,7 +23122,7 @@ export namespace compute {
              */
             linkedVpnTunnel: string;
             /**
-             * [Output Only] The resource that configures and manages this interface. 
+             * The resource that configures and manages this interface. 
              * - MANAGED_BY_USER is the default value and can be managed directly by users. 
              * - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
              */
@@ -23510,27 +23510,27 @@ export namespace compute {
 
         export interface SslPolicyWarningsItemDataItemResponse {
             /**
-             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
              */
             key: string;
             /**
-             * [Output Only] A warning data value corresponding to the key.
+             * A warning data value corresponding to the key.
              */
             value: string;
         }
 
         export interface SslPolicyWarningsItemResponse {
             /**
-             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             * A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
              */
             code: string;
             /**
-             * [Output Only] Metadata about this warning in key: value format. For example:
+             * Metadata about this warning in key: value format. For example:
              * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
              */
             data: outputs.compute.v1.SslPolicyWarningsItemDataItemResponse[];
             /**
-             * [Output Only] A human-readable description of the warning code.
+             * A human-readable description of the warning code.
              */
             message: string;
         }
@@ -23721,7 +23721,7 @@ export namespace compute {
              */
             interconnectAttachment: string;
             /**
-             * [Output Only] The external IP address for this VPN gateway interface.
+             * The external IP address for this VPN gateway interface.
              */
             ipAddress: string;
         }
@@ -32818,15 +32818,15 @@ export namespace deploymentmanager {
 
         export interface OperationErrorErrorsItemResponse {
             /**
-             * [Output Only] The error type identifier for this error.
+             * The error type identifier for this error.
              */
             code: string;
             /**
-             * [Output Only] Indicates the field in the request that caused the error. This property is optional.
+             * Indicates the field in the request that caused the error. This property is optional.
              */
             location: string;
             /**
-             * [Output Only] An optional, human-readable error message.
+             * An optional, human-readable error message.
              */
             message: string;
         }
@@ -32836,7 +32836,7 @@ export namespace deploymentmanager {
          */
         export interface OperationErrorResponse {
             /**
-             * [Output Only] The array of errors encountered while processing this operation.
+             * The array of errors encountered while processing this operation.
              */
             errors: outputs.deploymentmanager.alpha.OperationErrorErrorsItemResponse[];
         }
@@ -32846,117 +32846,117 @@ export namespace deploymentmanager {
          */
         export interface OperationResponse {
             /**
-             * [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
+             * The value of `requestId` if you provided it in the request. Not present otherwise.
              */
             clientOperationId: string;
             /**
-             * [Output Only] A textual description of the operation, which is set when the operation is created.
+             * A textual description of the operation, which is set when the operation is created.
              */
             description: string;
             /**
-             * [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
+             * The time that this operation was completed. This value is in RFC3339 text format.
              */
             endTime: string;
             /**
-             * [Output Only] If errors are generated during processing of the operation, this field will be populated.
+             * If errors are generated during processing of the operation, this field will be populated.
              */
             error: outputs.deploymentmanager.alpha.OperationErrorResponse;
             /**
-             * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
+             * If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
             httpErrorMessage: string;
             /**
-             * [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+             * If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
              */
             httpErrorStatusCode: number;
             /**
-             * [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
+             * The time that this operation was requested. This value is in RFC3339 text format.
              */
             insertTime: string;
             /**
-             * [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
+             * Type of the resource. Always `compute#operation` for Operation resources.
              */
             kind: string;
             /**
-             * [Output Only] Name of the operation.
+             * Name of the operation.
              */
             name: string;
             /**
-             * [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+             * An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
              */
             operationGroupId: string;
             /**
-             * [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
+             * The type of operation, such as `insert`, `update`, or `delete`, and so on.
              */
             operationType: string;
             /**
-             * [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
+             * An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
              */
             progress: number;
             /**
-             * [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
+             * The URL of the region where the operation resides. Only applicable when performing regional operations.
              */
             region: string;
             /**
-             * [Output Only] Server-defined URL for the resource.
+             * Server-defined URL for the resource.
              */
             selfLink: string;
             /**
-             * [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
+             * The time that this operation was started by the server. This value is in RFC3339 text format.
              */
             startTime: string;
             /**
-             * [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+             * The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
              */
             status: string;
             /**
-             * [Output Only] An optional textual description of the current status of the operation.
+             * An optional textual description of the current status of the operation.
              */
             statusMessage: string;
             /**
-             * [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
+             * The unique target ID, which identifies a specific incarnation of the target resource.
              */
             targetId: string;
             /**
-             * [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
+             * The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
              */
             targetLink: string;
             /**
-             * [Output Only] User who requested the operation, for example: `user@example.com`.
+             * User who requested the operation, for example: `user@example.com`.
              */
             user: string;
             /**
-             * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+             * If warning messages are generated during processing of the operation, this field will be populated.
              */
             warnings: outputs.deploymentmanager.alpha.OperationWarningsItemResponse[];
             /**
-             * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
+             * The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
             zone: string;
         }
 
         export interface OperationWarningsItemDataItemResponse {
             /**
-             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
              */
             key: string;
             /**
-             * [Output Only] A warning data value corresponding to the key.
+             * A warning data value corresponding to the key.
              */
             value: string;
         }
 
         export interface OperationWarningsItemResponse {
             /**
-             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             * A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
              */
             code: string;
             /**
-             * [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+             * Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
              */
             data: outputs.deploymentmanager.alpha.OperationWarningsItemDataItemResponse[];
             /**
-             * [Output Only] A human-readable description of the warning code.
+             * A human-readable description of the warning code.
              */
             message: string;
         }
@@ -33214,15 +33214,15 @@ export namespace deploymentmanager {
 
         export interface OperationErrorErrorsItemResponse {
             /**
-             * [Output Only] The error type identifier for this error.
+             * The error type identifier for this error.
              */
             code: string;
             /**
-             * [Output Only] Indicates the field in the request that caused the error. This property is optional.
+             * Indicates the field in the request that caused the error. This property is optional.
              */
             location: string;
             /**
-             * [Output Only] An optional, human-readable error message.
+             * An optional, human-readable error message.
              */
             message: string;
         }
@@ -33232,7 +33232,7 @@ export namespace deploymentmanager {
          */
         export interface OperationErrorResponse {
             /**
-             * [Output Only] The array of errors encountered while processing this operation.
+             * The array of errors encountered while processing this operation.
              */
             errors: outputs.deploymentmanager.v2.OperationErrorErrorsItemResponse[];
         }
@@ -33242,117 +33242,117 @@ export namespace deploymentmanager {
          */
         export interface OperationResponse {
             /**
-             * [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
+             * The value of `requestId` if you provided it in the request. Not present otherwise.
              */
             clientOperationId: string;
             /**
-             * [Output Only] A textual description of the operation, which is set when the operation is created.
+             * A textual description of the operation, which is set when the operation is created.
              */
             description: string;
             /**
-             * [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
+             * The time that this operation was completed. This value is in RFC3339 text format.
              */
             endTime: string;
             /**
-             * [Output Only] If errors are generated during processing of the operation, this field will be populated.
+             * If errors are generated during processing of the operation, this field will be populated.
              */
             error: outputs.deploymentmanager.v2.OperationErrorResponse;
             /**
-             * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
+             * If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
             httpErrorMessage: string;
             /**
-             * [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+             * If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
              */
             httpErrorStatusCode: number;
             /**
-             * [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
+             * The time that this operation was requested. This value is in RFC3339 text format.
              */
             insertTime: string;
             /**
-             * [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
+             * Type of the resource. Always `compute#operation` for Operation resources.
              */
             kind: string;
             /**
-             * [Output Only] Name of the operation.
+             * Name of the operation.
              */
             name: string;
             /**
-             * [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+             * An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
              */
             operationGroupId: string;
             /**
-             * [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
+             * The type of operation, such as `insert`, `update`, or `delete`, and so on.
              */
             operationType: string;
             /**
-             * [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
+             * An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
              */
             progress: number;
             /**
-             * [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
+             * The URL of the region where the operation resides. Only applicable when performing regional operations.
              */
             region: string;
             /**
-             * [Output Only] Server-defined URL for the resource.
+             * Server-defined URL for the resource.
              */
             selfLink: string;
             /**
-             * [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
+             * The time that this operation was started by the server. This value is in RFC3339 text format.
              */
             startTime: string;
             /**
-             * [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+             * The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
              */
             status: string;
             /**
-             * [Output Only] An optional textual description of the current status of the operation.
+             * An optional textual description of the current status of the operation.
              */
             statusMessage: string;
             /**
-             * [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
+             * The unique target ID, which identifies a specific incarnation of the target resource.
              */
             targetId: string;
             /**
-             * [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
+             * The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
              */
             targetLink: string;
             /**
-             * [Output Only] User who requested the operation, for example: `user@example.com`.
+             * User who requested the operation, for example: `user@example.com`.
              */
             user: string;
             /**
-             * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+             * If warning messages are generated during processing of the operation, this field will be populated.
              */
             warnings: outputs.deploymentmanager.v2.OperationWarningsItemResponse[];
             /**
-             * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
+             * The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
             zone: string;
         }
 
         export interface OperationWarningsItemDataItemResponse {
             /**
-             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
              */
             key: string;
             /**
-             * [Output Only] A warning data value corresponding to the key.
+             * A warning data value corresponding to the key.
              */
             value: string;
         }
 
         export interface OperationWarningsItemResponse {
             /**
-             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             * A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
              */
             code: string;
             /**
-             * [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+             * Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
              */
             data: outputs.deploymentmanager.v2.OperationWarningsItemDataItemResponse[];
             /**
-             * [Output Only] A human-readable description of the warning code.
+             * A human-readable description of the warning code.
              */
             message: string;
         }
@@ -33602,15 +33602,15 @@ export namespace deploymentmanager {
 
         export interface OperationErrorErrorsItemResponse {
             /**
-             * [Output Only] The error type identifier for this error.
+             * The error type identifier for this error.
              */
             code: string;
             /**
-             * [Output Only] Indicates the field in the request that caused the error. This property is optional.
+             * Indicates the field in the request that caused the error. This property is optional.
              */
             location: string;
             /**
-             * [Output Only] An optional, human-readable error message.
+             * An optional, human-readable error message.
              */
             message: string;
         }
@@ -33620,7 +33620,7 @@ export namespace deploymentmanager {
          */
         export interface OperationErrorResponse {
             /**
-             * [Output Only] The array of errors encountered while processing this operation.
+             * The array of errors encountered while processing this operation.
              */
             errors: outputs.deploymentmanager.v2beta.OperationErrorErrorsItemResponse[];
         }
@@ -33630,117 +33630,117 @@ export namespace deploymentmanager {
          */
         export interface OperationResponse {
             /**
-             * [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
+             * The value of `requestId` if you provided it in the request. Not present otherwise.
              */
             clientOperationId: string;
             /**
-             * [Output Only] A textual description of the operation, which is set when the operation is created.
+             * A textual description of the operation, which is set when the operation is created.
              */
             description: string;
             /**
-             * [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
+             * The time that this operation was completed. This value is in RFC3339 text format.
              */
             endTime: string;
             /**
-             * [Output Only] If errors are generated during processing of the operation, this field will be populated.
+             * If errors are generated during processing of the operation, this field will be populated.
              */
             error: outputs.deploymentmanager.v2beta.OperationErrorResponse;
             /**
-             * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
+             * If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
             httpErrorMessage: string;
             /**
-             * [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+             * If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
              */
             httpErrorStatusCode: number;
             /**
-             * [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
+             * The time that this operation was requested. This value is in RFC3339 text format.
              */
             insertTime: string;
             /**
-             * [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
+             * Type of the resource. Always `compute#operation` for Operation resources.
              */
             kind: string;
             /**
-             * [Output Only] Name of the operation.
+             * Name of the operation.
              */
             name: string;
             /**
-             * [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+             * An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
              */
             operationGroupId: string;
             /**
-             * [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
+             * The type of operation, such as `insert`, `update`, or `delete`, and so on.
              */
             operationType: string;
             /**
-             * [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
+             * An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
              */
             progress: number;
             /**
-             * [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
+             * The URL of the region where the operation resides. Only applicable when performing regional operations.
              */
             region: string;
             /**
-             * [Output Only] Server-defined URL for the resource.
+             * Server-defined URL for the resource.
              */
             selfLink: string;
             /**
-             * [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
+             * The time that this operation was started by the server. This value is in RFC3339 text format.
              */
             startTime: string;
             /**
-             * [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+             * The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
              */
             status: string;
             /**
-             * [Output Only] An optional textual description of the current status of the operation.
+             * An optional textual description of the current status of the operation.
              */
             statusMessage: string;
             /**
-             * [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
+             * The unique target ID, which identifies a specific incarnation of the target resource.
              */
             targetId: string;
             /**
-             * [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
+             * The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
              */
             targetLink: string;
             /**
-             * [Output Only] User who requested the operation, for example: `user@example.com`.
+             * User who requested the operation, for example: `user@example.com`.
              */
             user: string;
             /**
-             * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+             * If warning messages are generated during processing of the operation, this field will be populated.
              */
             warnings: outputs.deploymentmanager.v2beta.OperationWarningsItemResponse[];
             /**
-             * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
+             * The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
             zone: string;
         }
 
         export interface OperationWarningsItemDataItemResponse {
             /**
-             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             * A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
              */
             key: string;
             /**
-             * [Output Only] A warning data value corresponding to the key.
+             * A warning data value corresponding to the key.
              */
             value: string;
         }
 
         export interface OperationWarningsItemResponse {
             /**
-             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             * A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
              */
             code: string;
             /**
-             * [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+             * Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
              */
             data: outputs.deploymentmanager.v2beta.OperationWarningsItemDataItemResponse[];
             /**
-             * [Output Only] A human-readable description of the warning code.
+             * A human-readable description of the warning code.
              */
             message: string;
         }
@@ -50101,7 +50101,7 @@ export namespace notebooks {
              */
             guestOsFeatures: outputs.notebooks.v1.RuntimeGuestOsFeatureResponse[];
             /**
-             * [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+             * A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
              */
             index: number;
             /**
@@ -50117,7 +50117,7 @@ export namespace notebooks {
              */
             kind: string;
             /**
-             * [Output Only] Any valid publicly visible licenses.
+             * Any valid publicly visible licenses.
              */
             licenses: string[];
             /**

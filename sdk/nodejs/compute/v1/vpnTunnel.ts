@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -36,25 +35,25 @@ export class VpnTunnel extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] Detailed status message for the VPN tunnel.
+     * Detailed status message for the VPN tunnel.
      */
-    public readonly detailedStatus!: pulumi.Output<string>;
+    public /*out*/ readonly detailedStatus!: pulumi.Output<string>;
     /**
      * IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
      */
     public readonly ikeVersion!: pulumi.Output<number>;
     /**
-     * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
+     * Type of resource. Always compute#vpnTunnel for VPN tunnels.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is supported.
      */
@@ -80,7 +79,7 @@ export class VpnTunnel extends pulumi.CustomResource {
      */
     public readonly peerIp!: pulumi.Output<string>;
     /**
-     * [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -92,9 +91,9 @@ export class VpnTunnel extends pulumi.CustomResource {
      */
     public readonly router!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
      */
@@ -104,7 +103,7 @@ export class VpnTunnel extends pulumi.CustomResource {
      */
     public readonly sharedSecretHash!: pulumi.Output<string>;
     /**
-     * [Output Only] The status of the VPN tunnel, which can be one of the following: 
+     * The status of the VPN tunnel, which can be one of the following: 
      * - PROVISIONING: Resource is being allocated for the VPN tunnel. 
      * - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
      * - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
@@ -121,7 +120,7 @@ export class VpnTunnel extends pulumi.CustomResource {
      * - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
      * - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
      */
@@ -152,12 +151,8 @@ export class VpnTunnel extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["detailedStatus"] = args ? args.detailedStatus : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["ikeVersion"] = args ? args.ikeVersion : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["localTrafficSelector"] = args ? args.localTrafficSelector : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["peerExternalGateway"] = args ? args.peerExternalGateway : undefined;
@@ -169,13 +164,16 @@ export class VpnTunnel extends pulumi.CustomResource {
             inputs["remoteTrafficSelector"] = args ? args.remoteTrafficSelector : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["router"] = args ? args.router : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
             inputs["sharedSecretHash"] = args ? args.sharedSecretHash : undefined;
-            inputs["status"] = args ? args.status : undefined;
             inputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
             inputs["vpnGateway"] = args ? args.vpnGateway : undefined;
             inputs["vpnGatewayInterface"] = args ? args.vpnGatewayInterface : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["detailedStatus"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -211,29 +209,13 @@ export class VpnTunnel extends pulumi.CustomResource {
  */
 export interface VpnTunnelArgs {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * [Output Only] Detailed status message for the VPN tunnel.
-     */
-    detailedStatus?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
      */
     ikeVersion?: pulumi.Input<number>;
-    /**
-     * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is supported.
      */
@@ -259,9 +241,6 @@ export interface VpnTunnelArgs {
      */
     peerIp?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     region: pulumi.Input<string>;
     /**
      * Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
@@ -273,10 +252,6 @@ export interface VpnTunnelArgs {
      */
     router?: pulumi.Input<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
      * Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
      */
     sharedSecret?: pulumi.Input<string>;
@@ -284,25 +259,6 @@ export interface VpnTunnelArgs {
      * Hash of the shared secret.
      */
     sharedSecretHash?: pulumi.Input<string>;
-    /**
-     * [Output Only] The status of the VPN tunnel, which can be one of the following: 
-     * - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-     * - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-     * - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-     * - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-     * - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-     * - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-     * - NEGOTIATION_FAILURE: Handshake failed. 
-     * - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-     * - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-     * - NO_INCOMING_PACKETS: No incoming packets from peer. 
-     * - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-     * - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-     * - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-     * - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-     * - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
-     */
-    status?: pulumi.Input<enums.compute.v1.VpnTunnelStatus>;
     /**
      * URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
      */

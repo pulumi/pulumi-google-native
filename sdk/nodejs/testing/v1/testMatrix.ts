@@ -54,11 +54,11 @@ export class TestMatrix extends pulumi.CustomResource {
     /**
      * Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
      */
-    public readonly invalidMatrixDetails!: pulumi.Output<string>;
+    public /*out*/ readonly invalidMatrixDetails!: pulumi.Output<string>;
     /**
      * Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
      */
-    public readonly outcomeSummary!: pulumi.Output<string>;
+    public /*out*/ readonly outcomeSummary!: pulumi.Output<string>;
     /**
      * The cloud project that owns the test matrix.
      */
@@ -70,15 +70,15 @@ export class TestMatrix extends pulumi.CustomResource {
     /**
      * Indicates the current progress of the test matrix.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The list of test executions that the service creates for this matrix.
      */
-    public readonly testExecutions!: pulumi.Output<outputs.testing.v1.TestExecutionResponse[]>;
+    public /*out*/ readonly testExecutions!: pulumi.Output<outputs.testing.v1.TestExecutionResponse[]>;
     /**
      * Unique id set by the service.
      */
-    public readonly testMatrixId!: pulumi.Output<string>;
+    public /*out*/ readonly testMatrixId!: pulumi.Output<string>;
     /**
      * Required. How to run the test.
      */
@@ -86,7 +86,7 @@ export class TestMatrix extends pulumi.CustomResource {
     /**
      * The time this test matrix was initially created.
      */
-    public readonly timestamp!: pulumi.Output<string>;
+    public /*out*/ readonly timestamp!: pulumi.Output<string>;
 
     /**
      * Create a TestMatrix resource with the given unique name, arguments, and options.
@@ -106,16 +106,16 @@ export class TestMatrix extends pulumi.CustomResource {
             inputs["environmentMatrix"] = args ? args.environmentMatrix : undefined;
             inputs["failFast"] = args ? args.failFast : undefined;
             inputs["flakyTestAttempts"] = args ? args.flakyTestAttempts : undefined;
-            inputs["invalidMatrixDetails"] = args ? args.invalidMatrixDetails : undefined;
-            inputs["outcomeSummary"] = args ? args.outcomeSummary : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resultStorage"] = args ? args.resultStorage : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["testExecutions"] = args ? args.testExecutions : undefined;
-            inputs["testMatrixId"] = args ? args.testMatrixId : undefined;
             inputs["testSpecification"] = args ? args.testSpecification : undefined;
-            inputs["timestamp"] = args ? args.timestamp : undefined;
+            inputs["invalidMatrixDetails"] = undefined /*out*/;
+            inputs["outcomeSummary"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["testExecutions"] = undefined /*out*/;
+            inputs["testMatrixId"] = undefined /*out*/;
+            inputs["timestamp"] = undefined /*out*/;
         } else {
             inputs["clientInfo"] = undefined /*out*/;
             inputs["environmentMatrix"] = undefined /*out*/;
@@ -159,14 +159,6 @@ export interface TestMatrixArgs {
      */
     flakyTestAttempts?: pulumi.Input<number>;
     /**
-     * Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-     */
-    invalidMatrixDetails?: pulumi.Input<enums.testing.v1.TestMatrixInvalidMatrixDetails>;
-    /**
-     * Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
-     */
-    outcomeSummary?: pulumi.Input<enums.testing.v1.TestMatrixOutcomeSummary>;
-    /**
      * The cloud project that owns the test matrix.
      */
     project: pulumi.Input<string>;
@@ -176,23 +168,7 @@ export interface TestMatrixArgs {
      */
     resultStorage?: pulumi.Input<inputs.testing.v1.ResultStorageArgs>;
     /**
-     * Indicates the current progress of the test matrix.
-     */
-    state?: pulumi.Input<enums.testing.v1.TestMatrixState>;
-    /**
-     * The list of test executions that the service creates for this matrix.
-     */
-    testExecutions?: pulumi.Input<pulumi.Input<inputs.testing.v1.TestExecutionArgs>[]>;
-    /**
-     * Unique id set by the service.
-     */
-    testMatrixId?: pulumi.Input<string>;
-    /**
      * Required. How to run the test.
      */
     testSpecification?: pulumi.Input<inputs.testing.v1.TestSpecificationArgs>;
-    /**
-     * The time this test matrix was initially created.
-     */
-    timestamp?: pulumi.Input<string>;
 }

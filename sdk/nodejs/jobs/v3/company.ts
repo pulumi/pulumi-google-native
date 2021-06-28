@@ -42,7 +42,7 @@ export class Company extends pulumi.CustomResource {
     /**
      * Derived details about the company.
      */
-    public readonly derivedInfo!: pulumi.Output<outputs.jobs.v3.CompanyDerivedInfoResponse>;
+    public /*out*/ readonly derivedInfo!: pulumi.Output<outputs.jobs.v3.CompanyDerivedInfoResponse>;
     /**
      * Required. The display name of the company, for example, "Google LLC".
      */
@@ -82,7 +82,7 @@ export class Company extends pulumi.CustomResource {
     /**
      * Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
      */
-    public readonly suspended!: pulumi.Output<boolean>;
+    public /*out*/ readonly suspended!: pulumi.Output<boolean>;
     /**
      * Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
      */
@@ -103,7 +103,6 @@ export class Company extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["careerSiteUri"] = args ? args.careerSiteUri : undefined;
-            inputs["derivedInfo"] = args ? args.derivedInfo : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["eeoText"] = args ? args.eeoText : undefined;
             inputs["externalId"] = args ? args.externalId : undefined;
@@ -114,8 +113,9 @@ export class Company extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["size"] = args ? args.size : undefined;
-            inputs["suspended"] = args ? args.suspended : undefined;
             inputs["websiteUri"] = args ? args.websiteUri : undefined;
+            inputs["derivedInfo"] = undefined /*out*/;
+            inputs["suspended"] = undefined /*out*/;
         } else {
             inputs["careerSiteUri"] = undefined /*out*/;
             inputs["derivedInfo"] = undefined /*out*/;
@@ -146,10 +146,6 @@ export interface CompanyArgs {
      * Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
      */
     careerSiteUri?: pulumi.Input<string>;
-    /**
-     * Derived details about the company.
-     */
-    derivedInfo?: pulumi.Input<inputs.jobs.v3.CompanyDerivedInfoArgs>;
     /**
      * Required. The display name of the company, for example, "Google LLC".
      */
@@ -187,10 +183,6 @@ export interface CompanyArgs {
      * Optional. The employer's company size.
      */
     size?: pulumi.Input<enums.jobs.v3.CompanySize>;
-    /**
-     * Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
-     */
-    suspended?: pulumi.Input<boolean>;
     /**
      * Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
      */

@@ -31,7 +31,7 @@ export interface GetRegionDiskArgs {
 
 export interface GetRegionDiskResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -61,7 +61,7 @@ export interface GetRegionDiskResult {
      */
     readonly interface: string;
     /**
-     * [Output Only] Type of the resource. Always compute#disk for disks.
+     * Type of the resource. Always compute#disk for disks.
      */
     readonly kind: string;
     /**
@@ -75,11 +75,11 @@ export interface GetRegionDiskResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * [Output Only] Last attach timestamp in RFC3339 text format.
+     * Last attach timestamp in RFC3339 text format.
      */
     readonly lastAttachTimestamp: string;
     /**
-     * [Output Only] Last detach timestamp in RFC3339 text format.
+     * Last detach timestamp in RFC3339 text format.
      */
     readonly lastDetachTimestamp: string;
     /**
@@ -115,7 +115,7 @@ export interface GetRegionDiskResult {
      */
     readonly provisionedIops: string;
     /**
-     * [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
@@ -127,11 +127,11 @@ export interface GetRegionDiskResult {
      */
     readonly resourcePolicies: string[];
     /**
-     * [Output Only] Reserved for future use.
+     * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
     /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
+     * Server-defined fully-qualified URL for this resource.
      */
     readonly selfLink: string;
     /**
@@ -151,7 +151,7 @@ export interface GetRegionDiskResult {
      */
     readonly sourceDisk: string;
     /**
-     * [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
+     * The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
      */
     readonly sourceDiskId: string;
     /**
@@ -178,7 +178,7 @@ export interface GetRegionDiskResult {
      */
     readonly sourceImageEncryptionKey: outputs.compute.beta.CustomerEncryptionKeyResponse;
     /**
-     * [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
+     * The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
      */
     readonly sourceImageId: string;
     /**
@@ -193,7 +193,7 @@ export interface GetRegionDiskResult {
      */
     readonly sourceSnapshotEncryptionKey: outputs.compute.beta.CustomerEncryptionKeyResponse;
     /**
-     * [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+     * The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
      */
     readonly sourceSnapshotId: string;
     /**
@@ -201,7 +201,7 @@ export interface GetRegionDiskResult {
      */
     readonly sourceStorageObject: string;
     /**
-     * [Output Only] The status of disk creation.  
+     * The status of disk creation.  
      * - CREATING: Disk is provisioning. 
      * - RESTORING: Source data is being copied into the disk. 
      * - FAILED: Disk creation failed. 
@@ -214,11 +214,11 @@ export interface GetRegionDiskResult {
      */
     readonly type: string;
     /**
-     * [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
+     * Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
      */
     readonly users: string[];
     /**
-     * [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly zone: string;
 }

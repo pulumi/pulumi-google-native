@@ -40,9 +40,9 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly collectorIlb!: pulumi.Output<outputs.compute.beta.PacketMirroringForwardingRuleInfoResponse>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -58,9 +58,9 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly filter!: pulumi.Output<outputs.compute.beta.PacketMirroringFilterResponse>;
     /**
-     * [Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.
+     * Type of the resource. Always compute#packetMirroring for packet mirrorings.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
      */
@@ -80,13 +80,13 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * [Output Only] URI of the region where the packetMirroring resides.
+     * URI of the region where the packetMirroring resides.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a PacketMirroring resource with the given unique name, arguments, and options.
@@ -106,12 +106,9 @@ export class PacketMirroring extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             inputs["collectorIlb"] = args ? args.collectorIlb : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enable"] = args ? args.enable : undefined;
             inputs["filter"] = args ? args.filter : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["mirroredResources"] = args ? args.mirroredResources : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -119,7 +116,9 @@ export class PacketMirroring extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["collectorIlb"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -150,10 +149,6 @@ export interface PacketMirroringArgs {
      */
     collectorIlb?: pulumi.Input<inputs.compute.beta.PacketMirroringForwardingRuleInfoArgs>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -167,14 +162,6 @@ export interface PacketMirroringArgs {
      * Filter for mirrored traffic. If unspecified, all traffic is mirrored.
      */
     filter?: pulumi.Input<inputs.compute.beta.PacketMirroringFilterArgs>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
      */
@@ -194,13 +181,6 @@ export interface PacketMirroringArgs {
      */
     priority?: pulumi.Input<number>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] URI of the region where the packetMirroring resides.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
 }

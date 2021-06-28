@@ -46,11 +46,11 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
      */
-    public readonly fqdn!: pulumi.Output<string>;
+    public /*out*/ readonly fqdn!: pulumi.Output<string>;
     /**
      * Optional. Resource labels to represent user provided metadata
      */
@@ -66,7 +66,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */
@@ -74,19 +74,19 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The current state of this domain.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * Additional information about the current status of this domain, if available.
      */
-    public readonly statusMessage!: pulumi.Output<string>;
+    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
     /**
      * The current trusts associated with the domain.
      */
-    public readonly trusts!: pulumi.Output<outputs.managedidentities.v1alpha1.TrustResponse[]>;
+    public /*out*/ readonly trusts!: pulumi.Output<outputs.managedidentities.v1alpha1.TrustResponse[]>;
     /**
      * Last update time. Synthetic field is populated automatically by CCFE.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -104,19 +104,19 @@ export class Domain extends pulumi.CustomResource {
             }
             inputs["auditLogsEnabled"] = args ? args.auditLogsEnabled : undefined;
             inputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["fqdn"] = args ? args.fqdn : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locations"] = args ? args.locations : undefined;
             inputs["managedIdentitiesAdminName"] = args ? args.managedIdentitiesAdminName : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["statusMessage"] = args ? args.statusMessage : undefined;
-            inputs["trusts"] = args ? args.trusts : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["fqdn"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["trusts"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["auditLogsEnabled"] = undefined /*out*/;
             inputs["authorizedNetworks"] = undefined /*out*/;
@@ -151,15 +151,7 @@ export interface DomainArgs {
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
-     */
-    createTime?: pulumi.Input<string>;
     domainName?: pulumi.Input<string>;
-    /**
-     * Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
-     */
-    fqdn?: pulumi.Input<string>;
     /**
      * Optional. Resource labels to represent user provided metadata
      */
@@ -172,29 +164,9 @@ export interface DomainArgs {
      * Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
      */
     managedIdentitiesAdminName?: pulumi.Input<string>;
-    /**
-     * Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-     */
-    name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */
     reservedIpRange?: pulumi.Input<string>;
-    /**
-     * The current state of this domain.
-     */
-    state?: pulumi.Input<enums.managedidentities.v1alpha1.DomainState>;
-    /**
-     * Additional information about the current status of this domain, if available.
-     */
-    statusMessage?: pulumi.Input<string>;
-    /**
-     * The current trusts associated with the domain.
-     */
-    trusts?: pulumi.Input<pulumi.Input<inputs.managedidentities.v1alpha1.TrustArgs>[]>;
-    /**
-     * Last update time. Synthetic field is populated automatically by CCFE.
-     */
-    updateTime?: pulumi.Input<string>;
 }
