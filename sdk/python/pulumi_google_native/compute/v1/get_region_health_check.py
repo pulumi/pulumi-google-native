@@ -85,7 +85,7 @@ class GetRegionHealthCheckResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in 3339 text format.
+        Creation timestamp in 3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -153,7 +153,7 @@ class GetRegionHealthCheckResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] Region where the health check resides. Not applicable to global health checks.
+        Region where the health check resides. Not applicable to global health checks.
         """
         return pulumi.get(self, "region")
 
@@ -161,7 +161,7 @@ class GetRegionHealthCheckResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

@@ -22,7 +22,6 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'AuthorizationLoggingOptionsArgs',
-    'AutoscalerStatusDetailsArgs',
     'AutoscalingPolicyArgs',
     'AutoscalingPolicyCpuUtilizationArgs',
     'AutoscalingPolicyCustomMetricUtilizationArgs',
@@ -87,20 +86,12 @@ __all__ = [
     'HttpRouteRuleMatchArgs',
     'ImageRawDiskArgs',
     'InitialStateConfigArgs',
-    'InstanceGroupManagerActionsSummaryArgs',
     'InstanceGroupManagerAutoHealingPolicyArgs',
-    'InstanceGroupManagerStatusArgs',
-    'InstanceGroupManagerStatusStatefulArgs',
-    'InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs',
-    'InstanceGroupManagerStatusVersionTargetArgs',
     'InstanceGroupManagerUpdatePolicyArgs',
     'InstanceGroupManagerVersionArgs',
     'InstancePropertiesArgs',
     'Int64RangeMatchArgs',
     'InterconnectAttachmentPartnerMetadataArgs',
-    'InterconnectAttachmentPrivateInfoArgs',
-    'InterconnectCircuitInfoArgs',
-    'InterconnectOutageNotificationArgs',
     'LicenseResourceCommitmentArgs',
     'LicenseResourceRequirementsArgs',
     'LocalDiskArgs',
@@ -118,7 +109,6 @@ __all__ = [
     'NetworkEndpointGroupCloudFunctionArgs',
     'NetworkEndpointGroupCloudRunArgs',
     'NetworkInterfaceArgs',
-    'NetworkPeeringArgs',
     'NetworkRoutingConfigArgs',
     'NodeGroupAutoscalingPolicyArgs',
     'NodeGroupMaintenanceWindowArgs',
@@ -133,7 +123,6 @@ __all__ = [
     'PacketMirroringNetworkInfoArgs',
     'PathMatcherArgs',
     'PathRuleArgs',
-    'PublicAdvertisedPrefixPublicDelegatedPrefixArgs',
     'PublicDelegatedPrefixPublicDelegatedSubPrefixArgs',
     'RequestMirrorPolicyArgs',
     'ReservationArgs',
@@ -144,16 +133,12 @@ __all__ = [
     'ResourcePolicyHourlyCycleArgs',
     'ResourcePolicyInstanceSchedulePolicyArgs',
     'ResourcePolicyInstanceSchedulePolicyScheduleArgs',
-    'ResourcePolicyResourceStatusArgs',
-    'ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs',
     'ResourcePolicySnapshotSchedulePolicyArgs',
     'ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs',
     'ResourcePolicySnapshotSchedulePolicyScheduleArgs',
     'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs',
     'ResourcePolicyWeeklyCycleArgs',
     'ResourcePolicyWeeklyCycleDayOfWeekArgs',
-    'RouteWarningsItemArgs',
-    'RouteWarningsItemDataItemArgs',
     'RouterAdvertisedIpRangeArgs',
     'RouterBgpArgs',
     'RouterBgpPeerArgs',
@@ -176,8 +161,6 @@ __all__ = [
     'SourceInstanceParamsArgs',
     'SslCertificateManagedSslCertificateArgs',
     'SslCertificateSelfManagedSslCertificateArgs',
-    'SslPolicyWarningsItemArgs',
-    'SslPolicyWarningsItemDataItemArgs',
     'StatefulPolicyArgs',
     'StatefulPolicyPreservedStateArgs',
     'SubnetworkLogConfigArgs',
@@ -234,7 +217,6 @@ class AcceleratorConfigArgs:
 @pulumi.input_type
 class AccessConfigArgs:
     def __init__(__self__, *,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input['AccessConfigNetworkTier']] = None,
@@ -243,7 +225,6 @@ class AccessConfigArgs:
                  type: Optional[pulumi.Input['AccessConfigType']] = None):
         """
         An access configuration attached to an instance's network interface. Only one access config per instance is supported.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#accessConfig for access configs.
         :param pulumi.Input[str] name: The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
         :param pulumi.Input[str] nat_ip: An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         :param pulumi.Input['AccessConfigNetworkTier'] network_tier: This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD.
@@ -255,8 +236,6 @@ class AccessConfigArgs:
         :param pulumi.Input[bool] set_public_ptr: Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
         :param pulumi.Input['AccessConfigType'] type: The type of configuration. The default and only option is ONE_TO_ONE_NAT.
         """
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat_ip is not None:
@@ -269,18 +248,6 @@ class AccessConfigArgs:
             pulumi.set(__self__, "set_public_ptr", set_public_ptr)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#accessConfig for access configs.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -570,18 +537,14 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesArgs:
 class AllocationSpecificSKUReservationArgs:
     def __init__(__self__, *,
                  count: Optional[pulumi.Input[str]] = None,
-                 in_use_count: Optional[pulumi.Input[str]] = None,
                  instance_properties: Optional[pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs']] = None):
         """
         This reservation type allows to pre allocate specific instance configuration.
         :param pulumi.Input[str] count: Specifies the number of resources that are allocated.
-        :param pulumi.Input[str] in_use_count: [Output Only] Indicates how many instances are in use.
         :param pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
         """
         if count is not None:
             pulumi.set(__self__, "count", count)
-        if in_use_count is not None:
-            pulumi.set(__self__, "in_use_count", in_use_count)
         if instance_properties is not None:
             pulumi.set(__self__, "instance_properties", instance_properties)
 
@@ -596,18 +559,6 @@ class AllocationSpecificSKUReservationArgs:
     @count.setter
     def count(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "count", value)
-
-    @property
-    @pulumi.getter(name="inUseCount")
-    def in_use_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Indicates how many instances are in use.
-        """
-        return pulumi.get(self, "in_use_count")
-
-    @in_use_count.setter
-    def in_use_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "in_use_count", value)
 
     @property
     @pulumi.getter(name="instanceProperties")
@@ -631,13 +582,9 @@ class AttachedDiskArgs:
                  disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]] = None,
-                 index: Optional[pulumi.Input[int]] = None,
                  initialize_params: Optional[pulumi.Input['AttachedDiskInitializeParamsArgs']] = None,
                  interface: Optional[pulumi.Input['AttachedDiskInterface']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mode: Optional[pulumi.Input['AttachedDiskMode']] = None,
-                 shielded_instance_initial_state: Optional[pulumi.Input['InitialStateConfigArgs']] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['AttachedDiskType']] = None):
         """
@@ -658,15 +605,11 @@ class AttachedDiskArgs:
                Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group.
         :param pulumi.Input[str] disk_size_gb: The size of the disk in GB.
         :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
-        :param pulumi.Input[int] index: [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         :param pulumi.Input['AttachedDiskInitializeParamsArgs'] initialize_params: [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
                
                This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param pulumi.Input['AttachedDiskInterface'] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: [Output Only] Any valid publicly visible licenses.
         :param pulumi.Input['AttachedDiskMode'] mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
-        :param pulumi.Input['InitialStateConfigArgs'] shielded_instance_initial_state: [Output Only] shielded vm initial state stored on disk
         :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
                
                If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks.
@@ -686,20 +629,12 @@ class AttachedDiskArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
-        if index is not None:
-            pulumi.set(__self__, "index", index)
         if initialize_params is not None:
             pulumi.set(__self__, "initialize_params", initialize_params)
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if licenses is not None:
-            pulumi.set(__self__, "licenses", licenses)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
-        if shielded_instance_initial_state is not None:
-            pulumi.set(__self__, "shielded_instance_initial_state", shielded_instance_initial_state)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if type is not None:
@@ -788,18 +723,6 @@ class AttachedDiskArgs:
         pulumi.set(self, "guest_os_features", value)
 
     @property
-    @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-        """
-        return pulumi.get(self, "index")
-
-    @index.setter
-    def index(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "index", value)
-
-    @property
     @pulumi.getter(name="initializeParams")
     def initialize_params(self) -> Optional[pulumi.Input['AttachedDiskInitializeParamsArgs']]:
         """
@@ -827,30 +750,6 @@ class AttachedDiskArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
-    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        [Output Only] Any valid publicly visible licenses.
-        """
-        return pulumi.get(self, "licenses")
-
-    @licenses.setter
-    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "licenses", value)
-
-    @property
-    @pulumi.getter
     def mode(self) -> Optional[pulumi.Input['AttachedDiskMode']]:
         """
         The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
@@ -860,18 +759,6 @@ class AttachedDiskArgs:
     @mode.setter
     def mode(self, value: Optional[pulumi.Input['AttachedDiskMode']]):
         pulumi.set(self, "mode", value)
-
-    @property
-    @pulumi.getter(name="shieldedInstanceInitialState")
-    def shielded_instance_initial_state(self) -> Optional[pulumi.Input['InitialStateConfigArgs']]:
-        """
-        [Output Only] shielded vm initial state stored on disk
-        """
-        return pulumi.get(self, "shielded_instance_initial_state")
-
-    @shielded_instance_initial_state.setter
-    def shielded_instance_initial_state(self, value: Optional[pulumi.Input['InitialStateConfigArgs']]):
-        pulumi.set(self, "shielded_instance_initial_state", value)
 
     @property
     @pulumi.getter
@@ -1308,77 +1195,6 @@ class AuthorizationLoggingOptionsArgs:
     @permission_type.setter
     def permission_type(self, value: Optional[pulumi.Input['AuthorizationLoggingOptionsPermissionType']]):
         pulumi.set(self, "permission_type", value)
-
-
-@pulumi.input_type
-class AutoscalerStatusDetailsArgs:
-    def __init__(__self__, *,
-                 message: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['AutoscalerStatusDetailsType']] = None):
-        """
-        :param pulumi.Input[str] message: The status message.
-        :param pulumi.Input['AutoscalerStatusDetailsType'] type: The type of error, warning, or notice returned. Current set of possible values:  
-               - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state). 
-               - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group. 
-               - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas. 
-               - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling. 
-               - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels. 
-               - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group. 
-               - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling. 
-               - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer. 
-               - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved. 
-               - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any. 
-               - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it. 
-               - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances. 
-               - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region. 
-               - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist. 
-               - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate. 
-               - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
-        """
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        The status message.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['AutoscalerStatusDetailsType']]:
-        """
-        The type of error, warning, or notice returned. Current set of possible values:  
-        - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state). 
-        - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group. 
-        - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas. 
-        - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling. 
-        - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels. 
-        - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group. 
-        - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling. 
-        - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer. 
-        - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved. 
-        - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any. 
-        - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it. 
-        - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances. 
-        - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region. 
-        - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist. 
-        - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate. 
-        - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['AutoscalerStatusDetailsType']]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -2043,8 +1859,7 @@ class BackendBucketCdnPolicyArgs:
                  negative_caching_policy: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]] = None,
                  request_coalescing: Optional[pulumi.Input[bool]] = None,
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
-                 signed_url_cache_max_age_sec: Optional[pulumi.Input[str]] = None,
-                 signed_url_key_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 signed_url_cache_max_age_sec: Optional[pulumi.Input[str]] = None):
         """
         Message containing Cloud CDN configuration for a backend bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
@@ -2063,7 +1878,6 @@ class BackendBucketCdnPolicyArgs:
         :param pulumi.Input[bool] request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
         :param pulumi.Input[int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         :param pulumi.Input[str] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] signed_url_key_names: [Output Only] Names of the keys for signing request URLs.
         """
         if bypass_cache_on_request_headers is not None:
             pulumi.set(__self__, "bypass_cache_on_request_headers", bypass_cache_on_request_headers)
@@ -2085,8 +1899,6 @@ class BackendBucketCdnPolicyArgs:
             pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
-        if signed_url_key_names is not None:
-            pulumi.set(__self__, "signed_url_key_names", signed_url_key_names)
 
     @property
     @pulumi.getter(name="bypassCacheOnRequestHeaders")
@@ -2214,18 +2026,6 @@ class BackendBucketCdnPolicyArgs:
     def signed_url_cache_max_age_sec(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "signed_url_cache_max_age_sec", value)
 
-    @property
-    @pulumi.getter(name="signedUrlKeyNames")
-    def signed_url_key_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        [Output Only] Names of the keys for signing request URLs.
-        """
-        return pulumi.get(self, "signed_url_key_names")
-
-    @signed_url_key_names.setter
-    def signed_url_key_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "signed_url_key_names", value)
-
 
 @pulumi.input_type
 class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs:
@@ -2304,8 +2104,7 @@ class BackendServiceCdnPolicyArgs:
                  negative_caching_policy: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
                  request_coalescing: Optional[pulumi.Input[bool]] = None,
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
-                 signed_url_cache_max_age_sec: Optional[pulumi.Input[str]] = None,
-                 signed_url_key_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 signed_url_cache_max_age_sec: Optional[pulumi.Input[str]] = None):
         """
         Message containing Cloud CDN configuration for a backend service.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
@@ -2325,7 +2124,6 @@ class BackendServiceCdnPolicyArgs:
         :param pulumi.Input[bool] request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
         :param pulumi.Input[int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         :param pulumi.Input[str] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] signed_url_key_names: [Output Only] Names of the keys for signing request URLs.
         """
         if bypass_cache_on_request_headers is not None:
             pulumi.set(__self__, "bypass_cache_on_request_headers", bypass_cache_on_request_headers)
@@ -2349,8 +2147,6 @@ class BackendServiceCdnPolicyArgs:
             pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
-        if signed_url_key_names is not None:
-            pulumi.set(__self__, "signed_url_key_names", signed_url_key_names)
 
     @property
     @pulumi.getter(name="bypassCacheOnRequestHeaders")
@@ -2490,18 +2286,6 @@ class BackendServiceCdnPolicyArgs:
     def signed_url_cache_max_age_sec(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "signed_url_cache_max_age_sec", value)
 
-    @property
-    @pulumi.getter(name="signedUrlKeyNames")
-    def signed_url_key_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        [Output Only] Names of the keys for signing request URLs.
-        """
-        return pulumi.get(self, "signed_url_key_names")
-
-    @signed_url_key_names.setter
-    def signed_url_key_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "signed_url_key_names", value)
-
 
 @pulumi.input_type
 class BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs:
@@ -2632,14 +2416,12 @@ class BackendServiceIAPArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  oauth2_client_id: Optional[pulumi.Input[str]] = None,
-                 oauth2_client_secret: Optional[pulumi.Input[str]] = None,
-                 oauth2_client_secret_sha256: Optional[pulumi.Input[str]] = None):
+                 oauth2_client_secret: Optional[pulumi.Input[str]] = None):
         """
         Identity-Aware Proxy
         :param pulumi.Input[bool] enabled: Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
         :param pulumi.Input[str] oauth2_client_id: OAuth2 client ID to use for the authentication flow.
         :param pulumi.Input[str] oauth2_client_secret: OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
-        :param pulumi.Input[str] oauth2_client_secret_sha256: [Output Only] SHA256 hash value for the field oauth2_client_secret above.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -2647,8 +2429,6 @@ class BackendServiceIAPArgs:
             pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
         if oauth2_client_secret is not None:
             pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
-        if oauth2_client_secret_sha256 is not None:
-            pulumi.set(__self__, "oauth2_client_secret_sha256", oauth2_client_secret_sha256)
 
     @property
     @pulumi.getter
@@ -2685,18 +2465,6 @@ class BackendServiceIAPArgs:
     @oauth2_client_secret.setter
     def oauth2_client_secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oauth2_client_secret", value)
-
-    @property
-    @pulumi.getter(name="oauth2ClientSecretSha256")
-    def oauth2_client_secret_sha256(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] SHA256 hash value for the field oauth2_client_secret above.
-        """
-        return pulumi.get(self, "oauth2_client_secret_sha256")
-
-    @oauth2_client_secret_sha256.setter
-    def oauth2_client_secret_sha256(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "oauth2_client_secret_sha256", value)
 
 
 @pulumi.input_type
@@ -3434,13 +3202,11 @@ class CustomerEncryptionKeyArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  kms_key_service_account: Optional[pulumi.Input[str]] = None,
-                 raw_key: Optional[pulumi.Input[str]] = None,
-                 sha256: Optional[pulumi.Input[str]] = None):
+                 raw_key: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
         :param pulumi.Input[str] kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param pulumi.Input[str] sha256: [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         """
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -3448,8 +3214,6 @@ class CustomerEncryptionKeyArgs:
             pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
         if raw_key is not None:
             pulumi.set(__self__, "raw_key", raw_key)
-        if sha256 is not None:
-            pulumi.set(__self__, "sha256", sha256)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -3486,18 +3250,6 @@ class CustomerEncryptionKeyArgs:
     @raw_key.setter
     def raw_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "raw_key", value)
-
-    @property
-    @pulumi.getter
-    def sha256(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
-        """
-        return pulumi.get(self, "sha256")
-
-    @sha256.setter
-    def sha256(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sha256", value)
 
 
 @pulumi.input_type
@@ -4095,27 +3847,15 @@ class FirewallLogConfigArgs:
 class FirewallPolicyAssociationArgs:
     def __init__(__self__, *,
                  attachment_target: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 firewall_policy_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 short_name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
-        :param pulumi.Input[str] display_name: [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
-        :param pulumi.Input[str] firewall_policy_id: [Output Only] The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
-        :param pulumi.Input[str] short_name: [Output Only] The short name of the firewall policy of the association.
         """
         if attachment_target is not None:
             pulumi.set(__self__, "attachment_target", attachment_target)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if firewall_policy_id is not None:
-            pulumi.set(__self__, "firewall_policy_id", firewall_policy_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if short_name is not None:
-            pulumi.set(__self__, "short_name", short_name)
 
     @property
     @pulumi.getter(name="attachmentTarget")
@@ -4130,30 +3870,6 @@ class FirewallPolicyAssociationArgs:
         pulumi.set(self, "attachment_target", value)
 
     @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter(name="firewallPolicyId")
-    def firewall_policy_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The firewall policy ID of the association.
-        """
-        return pulumi.get(self, "firewall_policy_id")
-
-    @firewall_policy_id.setter
-    def firewall_policy_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "firewall_policy_id", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -4165,18 +3881,6 @@ class FirewallPolicyAssociationArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
-    @property
-    @pulumi.getter(name="shortName")
-    def short_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The short name of the firewall policy of the association.
-        """
-        return pulumi.get(self, "short_name")
-
-    @short_name.setter
-    def short_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "short_name", value)
-
 
 @pulumi.input_type
 class FirewallPolicyRuleArgs:
@@ -4186,10 +3890,8 @@ class FirewallPolicyRuleArgs:
                  direction: Optional[pulumi.Input['FirewallPolicyRuleDirection']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  match: Optional[pulumi.Input['FirewallPolicyRuleMatcherArgs']] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -4200,10 +3902,8 @@ class FirewallPolicyRuleArgs:
         :param pulumi.Input['FirewallPolicyRuleDirection'] direction: The direction in which this rule applies.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
-        :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
         :param pulumi.Input['FirewallPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
-        :param pulumi.Input[int] rule_tuple_count: [Output Only] Calculation of the complexity of a single firewall policy rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_secure_labels: A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
@@ -4218,14 +3918,10 @@ class FirewallPolicyRuleArgs:
             pulumi.set(__self__, "disabled", disabled)
         if enable_logging is not None:
             pulumi.set(__self__, "enable_logging", enable_logging)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if match is not None:
             pulumi.set(__self__, "match", match)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
-        if rule_tuple_count is not None:
-            pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
         if target_resources is not None:
             pulumi.set(__self__, "target_resources", target_resources)
         if target_secure_labels is not None:
@@ -4295,18 +3991,6 @@ class FirewallPolicyRuleArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
     def match(self) -> Optional[pulumi.Input['FirewallPolicyRuleMatcherArgs']]:
         """
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -4328,18 +4012,6 @@ class FirewallPolicyRuleArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
-
-    @property
-    @pulumi.getter(name="ruleTupleCount")
-    def rule_tuple_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] Calculation of the complexity of a single firewall policy rule.
-        """
-        return pulumi.get(self, "rule_tuple_count")
-
-    @rule_tuple_count.setter
-    def rule_tuple_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "rule_tuple_count", value)
 
     @property
     @pulumi.getter(name="targetResources")
@@ -4496,41 +4168,17 @@ class FirewallPolicyRuleMatcherLayer4ConfigArgs:
 @pulumi.input_type
 class FixedOrPercentArgs:
     def __init__(__self__, *,
-                 calculated: Optional[pulumi.Input[int]] = None,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):
         """
         Encapsulates numeric value that can be either absolute or relative.
-        :param pulumi.Input[int] calculated: [Output Only] Absolute value of VM instances calculated based on the specific mode.
-               
-                
-               - If the value is fixed, then the calculated value is equal to the fixed value. 
-               - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
         :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive integer.
         :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
         """
-        if calculated is not None:
-            pulumi.set(__self__, "calculated", calculated)
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
         if percent is not None:
             pulumi.set(__self__, "percent", percent)
-
-    @property
-    @pulumi.getter
-    def calculated(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] Absolute value of VM instances calculated based on the specific mode.
-
-         
-        - If the value is fixed, then the calculated value is equal to the fixed value. 
-        - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
-        """
-        return pulumi.get(self, "calculated")
-
-    @calculated.setter
-    def calculated(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "calculated", value)
 
     @property
     @pulumi.getter
@@ -6481,161 +6129,6 @@ class InitialStateConfigArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerActionsSummaryArgs:
-    def __init__(__self__, *,
-                 abandoning: Optional[pulumi.Input[int]] = None,
-                 creating: Optional[pulumi.Input[int]] = None,
-                 creating_without_retries: Optional[pulumi.Input[int]] = None,
-                 deleting: Optional[pulumi.Input[int]] = None,
-                 none: Optional[pulumi.Input[int]] = None,
-                 recreating: Optional[pulumi.Input[int]] = None,
-                 refreshing: Optional[pulumi.Input[int]] = None,
-                 restarting: Optional[pulumi.Input[int]] = None,
-                 verifying: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[int] abandoning: [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
-        :param pulumi.Input[int] creating: [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
-               
-               If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
-        :param pulumi.Input[int] creating_without_retries: [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
-        :param pulumi.Input[int] deleting: [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
-        :param pulumi.Input[int] none: [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
-        :param pulumi.Input[int] recreating: [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
-        :param pulumi.Input[int] refreshing: [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
-        :param pulumi.Input[int] restarting: [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
-        :param pulumi.Input[int] verifying: [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
-        """
-        if abandoning is not None:
-            pulumi.set(__self__, "abandoning", abandoning)
-        if creating is not None:
-            pulumi.set(__self__, "creating", creating)
-        if creating_without_retries is not None:
-            pulumi.set(__self__, "creating_without_retries", creating_without_retries)
-        if deleting is not None:
-            pulumi.set(__self__, "deleting", deleting)
-        if none is not None:
-            pulumi.set(__self__, "none", none)
-        if recreating is not None:
-            pulumi.set(__self__, "recreating", recreating)
-        if refreshing is not None:
-            pulumi.set(__self__, "refreshing", refreshing)
-        if restarting is not None:
-            pulumi.set(__self__, "restarting", restarting)
-        if verifying is not None:
-            pulumi.set(__self__, "verifying", verifying)
-
-    @property
-    @pulumi.getter
-    def abandoning(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
-        """
-        return pulumi.get(self, "abandoning")
-
-    @abandoning.setter
-    def abandoning(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "abandoning", value)
-
-    @property
-    @pulumi.getter
-    def creating(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
-
-        If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
-        """
-        return pulumi.get(self, "creating")
-
-    @creating.setter
-    def creating(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "creating", value)
-
-    @property
-    @pulumi.getter(name="creatingWithoutRetries")
-    def creating_without_retries(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
-        """
-        return pulumi.get(self, "creating_without_retries")
-
-    @creating_without_retries.setter
-    def creating_without_retries(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "creating_without_retries", value)
-
-    @property
-    @pulumi.getter
-    def deleting(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
-        """
-        return pulumi.get(self, "deleting")
-
-    @deleting.setter
-    def deleting(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "deleting", value)
-
-    @property
-    @pulumi.getter
-    def none(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
-        """
-        return pulumi.get(self, "none")
-
-    @none.setter
-    def none(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "none", value)
-
-    @property
-    @pulumi.getter
-    def recreating(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
-        """
-        return pulumi.get(self, "recreating")
-
-    @recreating.setter
-    def recreating(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "recreating", value)
-
-    @property
-    @pulumi.getter
-    def refreshing(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
-        """
-        return pulumi.get(self, "refreshing")
-
-    @refreshing.setter
-    def refreshing(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "refreshing", value)
-
-    @property
-    @pulumi.getter
-    def restarting(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
-        """
-        return pulumi.get(self, "restarting")
-
-    @restarting.setter
-    def restarting(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "restarting", value)
-
-    @property
-    @pulumi.getter
-    def verifying(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
-        """
-        return pulumi.get(self, "verifying")
-
-    @verifying.setter
-    def verifying(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "verifying", value)
-
-
-@pulumi.input_type
 class InstanceGroupManagerAutoHealingPolicyArgs:
     def __init__(__self__, *,
                  health_check: Optional[pulumi.Input[str]] = None,
@@ -6672,162 +6165,6 @@ class InstanceGroupManagerAutoHealingPolicyArgs:
     @initial_delay_sec.setter
     def initial_delay_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_delay_sec", value)
-
-
-@pulumi.input_type
-class InstanceGroupManagerStatusArgs:
-    def __init__(__self__, *,
-                 autoscaler: Optional[pulumi.Input[str]] = None,
-                 is_stable: Optional[pulumi.Input[bool]] = None,
-                 stateful: Optional[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']] = None,
-                 version_target: Optional[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']] = None):
-        """
-        :param pulumi.Input[str] autoscaler: [Output Only] The URL of the Autoscaler that targets this instance group manager.
-        :param pulumi.Input[bool] is_stable: [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-        :param pulumi.Input['InstanceGroupManagerStatusStatefulArgs'] stateful: [Output Only] Stateful status of the given Instance Group Manager.
-        :param pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs'] version_target: [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
-        """
-        if autoscaler is not None:
-            pulumi.set(__self__, "autoscaler", autoscaler)
-        if is_stable is not None:
-            pulumi.set(__self__, "is_stable", is_stable)
-        if stateful is not None:
-            pulumi.set(__self__, "stateful", stateful)
-        if version_target is not None:
-            pulumi.set(__self__, "version_target", version_target)
-
-    @property
-    @pulumi.getter
-    def autoscaler(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The URL of the Autoscaler that targets this instance group manager.
-        """
-        return pulumi.get(self, "autoscaler")
-
-    @autoscaler.setter
-    def autoscaler(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "autoscaler", value)
-
-    @property
-    @pulumi.getter(name="isStable")
-    def is_stable(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-        """
-        return pulumi.get(self, "is_stable")
-
-    @is_stable.setter
-    def is_stable(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_stable", value)
-
-    @property
-    @pulumi.getter
-    def stateful(self) -> Optional[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]:
-        """
-        [Output Only] Stateful status of the given Instance Group Manager.
-        """
-        return pulumi.get(self, "stateful")
-
-    @stateful.setter
-    def stateful(self, value: Optional[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]):
-        pulumi.set(self, "stateful", value)
-
-    @property
-    @pulumi.getter(name="versionTarget")
-    def version_target(self) -> Optional[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]:
-        """
-        [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
-        """
-        return pulumi.get(self, "version_target")
-
-    @version_target.setter
-    def version_target(self, value: Optional[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]):
-        pulumi.set(self, "version_target", value)
-
-
-@pulumi.input_type
-class InstanceGroupManagerStatusStatefulArgs:
-    def __init__(__self__, *,
-                 has_stateful_config: Optional[pulumi.Input[bool]] = None,
-                 per_instance_configs: Optional[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs']] = None):
-        """
-        :param pulumi.Input[bool] has_stateful_config: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs'] per_instance_configs: [Output Only] Status of per-instance configs on the instance.
-        """
-        if has_stateful_config is not None:
-            pulumi.set(__self__, "has_stateful_config", has_stateful_config)
-        if per_instance_configs is not None:
-            pulumi.set(__self__, "per_instance_configs", per_instance_configs)
-
-    @property
-    @pulumi.getter(name="hasStatefulConfig")
-    def has_stateful_config(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        """
-        return pulumi.get(self, "has_stateful_config")
-
-    @has_stateful_config.setter
-    def has_stateful_config(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "has_stateful_config", value)
-
-    @property
-    @pulumi.getter(name="perInstanceConfigs")
-    def per_instance_configs(self) -> Optional[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs']]:
-        """
-        [Output Only] Status of per-instance configs on the instance.
-        """
-        return pulumi.get(self, "per_instance_configs")
-
-    @per_instance_configs.setter
-    def per_instance_configs(self, value: Optional[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs']]):
-        pulumi.set(self, "per_instance_configs", value)
-
-
-@pulumi.input_type
-class InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs:
-    def __init__(__self__, *,
-                 all_effective: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[bool] all_effective: A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
-        """
-        if all_effective is not None:
-            pulumi.set(__self__, "all_effective", all_effective)
-
-    @property
-    @pulumi.getter(name="allEffective")
-    def all_effective(self) -> Optional[pulumi.Input[bool]]:
-        """
-        A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
-        """
-        return pulumi.get(self, "all_effective")
-
-    @all_effective.setter
-    def all_effective(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "all_effective", value)
-
-
-@pulumi.input_type
-class InstanceGroupManagerStatusVersionTargetArgs:
-    def __init__(__self__, *,
-                 is_reached: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[bool] is_reached: [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-        """
-        if is_reached is not None:
-            pulumi.set(__self__, "is_reached", is_reached)
-
-    @property
-    @pulumi.getter(name="isReached")
-    def is_reached(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-        """
-        return pulumi.get(self, "is_reached")
-
-    @is_reached.setter
-    def is_reached(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_reached", value)
 
 
 @pulumi.input_type
@@ -7416,232 +6753,6 @@ class InterconnectAttachmentPartnerMetadataArgs:
 
 
 @pulumi.input_type
-class InterconnectAttachmentPrivateInfoArgs:
-    def __init__(__self__, *,
-                 tag8021q: Optional[pulumi.Input[int]] = None):
-        """
-        Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED.
-        :param pulumi.Input[int] tag8021q: [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
-        """
-        if tag8021q is not None:
-            pulumi.set(__self__, "tag8021q", tag8021q)
-
-    @property
-    @pulumi.getter
-    def tag8021q(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
-        """
-        return pulumi.get(self, "tag8021q")
-
-    @tag8021q.setter
-    def tag8021q(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "tag8021q", value)
-
-
-@pulumi.input_type
-class InterconnectCircuitInfoArgs:
-    def __init__(__self__, *,
-                 customer_demarc_id: Optional[pulumi.Input[str]] = None,
-                 google_circuit_id: Optional[pulumi.Input[str]] = None,
-                 google_demarc_id: Optional[pulumi.Input[str]] = None):
-        """
-        Describes a single physical circuit between the Customer and Google. CircuitInfo objects are created by Google, so all fields are output only.
-        :param pulumi.Input[str] customer_demarc_id: Customer-side demarc ID for this circuit.
-        :param pulumi.Input[str] google_circuit_id: Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
-        :param pulumi.Input[str] google_demarc_id: Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by Google to the customer in the LOA.
-        """
-        if customer_demarc_id is not None:
-            pulumi.set(__self__, "customer_demarc_id", customer_demarc_id)
-        if google_circuit_id is not None:
-            pulumi.set(__self__, "google_circuit_id", google_circuit_id)
-        if google_demarc_id is not None:
-            pulumi.set(__self__, "google_demarc_id", google_demarc_id)
-
-    @property
-    @pulumi.getter(name="customerDemarcId")
-    def customer_demarc_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Customer-side demarc ID for this circuit.
-        """
-        return pulumi.get(self, "customer_demarc_id")
-
-    @customer_demarc_id.setter
-    def customer_demarc_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "customer_demarc_id", value)
-
-    @property
-    @pulumi.getter(name="googleCircuitId")
-    def google_circuit_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
-        """
-        return pulumi.get(self, "google_circuit_id")
-
-    @google_circuit_id.setter
-    def google_circuit_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "google_circuit_id", value)
-
-    @property
-    @pulumi.getter(name="googleDemarcId")
-    def google_demarc_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by Google to the customer in the LOA.
-        """
-        return pulumi.get(self, "google_demarc_id")
-
-    @google_demarc_id.setter
-    def google_demarc_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "google_demarc_id", value)
-
-
-@pulumi.input_type
-class InterconnectOutageNotificationArgs:
-    def __init__(__self__, *,
-                 affected_circuits: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 description: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 issue_type: Optional[pulumi.Input['InterconnectOutageNotificationIssueType']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input['InterconnectOutageNotificationSource']] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InterconnectOutageNotificationState']] = None):
-        """
-        Description of a planned outage on this Interconnect.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affected_circuits: If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be affected.
-        :param pulumi.Input[str] description: A description about the purpose of the outage.
-        :param pulumi.Input[str] end_time: Scheduled end time for the outage (milliseconds since Unix epoch).
-        :param pulumi.Input['InterconnectOutageNotificationIssueType'] issue_type: Form this outage is expected to take, which can take one of the following values: 
-               - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window. 
-               - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
-        :param pulumi.Input[str] name: Unique identifier for this outage notification.
-        :param pulumi.Input['InterconnectOutageNotificationSource'] source: The party that generated this notification, which can take the following value: 
-               - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
-        :param pulumi.Input[str] start_time: Scheduled start time for the outage (milliseconds since Unix epoch).
-        :param pulumi.Input['InterconnectOutageNotificationState'] state: State of this notification, which can take one of the following values: 
-               - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling. 
-               - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
-        """
-        if affected_circuits is not None:
-            pulumi.set(__self__, "affected_circuits", affected_circuits)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
-        if issue_type is not None:
-            pulumi.set(__self__, "issue_type", issue_type)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-
-    @property
-    @pulumi.getter(name="affectedCircuits")
-    def affected_circuits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be affected.
-        """
-        return pulumi.get(self, "affected_circuits")
-
-    @affected_circuits.setter
-    def affected_circuits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "affected_circuits", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A description about the purpose of the outage.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Scheduled end time for the outage (milliseconds since Unix epoch).
-        """
-        return pulumi.get(self, "end_time")
-
-    @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "end_time", value)
-
-    @property
-    @pulumi.getter(name="issueType")
-    def issue_type(self) -> Optional[pulumi.Input['InterconnectOutageNotificationIssueType']]:
-        """
-        Form this outage is expected to take, which can take one of the following values: 
-        - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window. 
-        - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
-        """
-        return pulumi.get(self, "issue_type")
-
-    @issue_type.setter
-    def issue_type(self, value: Optional[pulumi.Input['InterconnectOutageNotificationIssueType']]):
-        pulumi.set(self, "issue_type", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier for this outage notification.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['InterconnectOutageNotificationSource']]:
-        """
-        The party that generated this notification, which can take the following value: 
-        - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
-        """
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input['InterconnectOutageNotificationSource']]):
-        pulumi.set(self, "source", value)
-
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Scheduled start time for the outage (milliseconds since Unix epoch).
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['InterconnectOutageNotificationState']]:
-        """
-        State of this notification, which can take one of the following values: 
-        - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling. 
-        - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['InterconnectOutageNotificationState']]):
-        pulumi.set(self, "state", value)
-
-
-@pulumi.input_type
 class LicenseResourceCommitmentArgs:
     def __init__(__self__, *,
                  amount: Optional[pulumi.Input[str]] = None,
@@ -8014,17 +7125,13 @@ class LogConfigDataAccessOptionsArgs:
 @pulumi.input_type
 class MetadataArgs:
     def __init__(__self__, *,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['MetadataItemsItemArgs']]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None):
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['MetadataItemsItemArgs']]]] = None):
         """
         A metadata key/value entry.
         :param pulumi.Input[Sequence[pulumi.Input['MetadataItemsItemArgs']]] items: Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#metadata for metadata.
         """
         if items is not None:
             pulumi.set(__self__, "items", items)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
 
     @property
     @pulumi.getter
@@ -8037,18 +7144,6 @@ class MetadataArgs:
     @items.setter
     def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetadataItemsItemArgs']]]]):
         pulumi.set(self, "items", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#metadata for metadata.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
 
 @pulumi.input_type
@@ -8439,9 +7534,6 @@ class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]] = None,
                  alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]]] = None,
-                 ipv6_address: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['NetworkInterfaceNicType']] = None,
@@ -8450,9 +7542,6 @@ class NetworkInterfaceArgs:
         A network interface resource attached to an instance.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] access_configs: An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
         :param pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
-        :param pulumi.Input[str] ipv6_address: [Output Only] An IPv6 internal network address for this network interface.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
-        :param pulumi.Input[str] name: [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
         :param pulumi.Input[str] network: URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred.
                
                If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs:  
@@ -8469,12 +7558,6 @@ class NetworkInterfaceArgs:
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
-        if ipv6_address is not None:
-            pulumi.set(__self__, "ipv6_address", ipv6_address)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if network_ip is not None:
@@ -8507,42 +7590,6 @@ class NetworkInterfaceArgs:
     @alias_ip_ranges.setter
     def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
-
-    @property
-    @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] An IPv6 internal network address for this network interface.
-        """
-        return pulumi.get(self, "ipv6_address")
-
-    @ipv6_address.setter
-    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ipv6_address", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -8598,190 +7645,6 @@ class NetworkInterfaceArgs:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
-
-
-@pulumi.input_type
-class NetworkPeeringArgs:
-    def __init__(__self__, *,
-                 auto_create_routes: Optional[pulumi.Input[bool]] = None,
-                 exchange_subnet_routes: Optional[pulumi.Input[bool]] = None,
-                 export_custom_routes: Optional[pulumi.Input[bool]] = None,
-                 export_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
-                 import_custom_routes: Optional[pulumi.Input[bool]] = None,
-                 import_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None,
-                 peer_mtu: Optional[pulumi.Input[int]] = None,
-                 state: Optional[pulumi.Input['NetworkPeeringState']] = None,
-                 state_details: Optional[pulumi.Input[str]] = None):
-        """
-        A network peering attached to a network resource. The message includes the peering name, peer network, peering state, and a flag indicating whether Google Compute Engine should automatically create routes for the peering.
-        :param pulumi.Input[bool] auto_create_routes: This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-        :param pulumi.Input[bool] exchange_subnet_routes: Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-        :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to peer network.
-        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
-        :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes from peer network.
-        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
-        :param pulumi.Input[str] name: Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] network: The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
-        :param pulumi.Input[int] peer_mtu: Maximum Transmission Unit in bytes.
-        :param pulumi.Input['NetworkPeeringState'] state: [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-        :param pulumi.Input[str] state_details: [Output Only] Details about the current state of the peering.
-        """
-        if auto_create_routes is not None:
-            pulumi.set(__self__, "auto_create_routes", auto_create_routes)
-        if exchange_subnet_routes is not None:
-            pulumi.set(__self__, "exchange_subnet_routes", exchange_subnet_routes)
-        if export_custom_routes is not None:
-            pulumi.set(__self__, "export_custom_routes", export_custom_routes)
-        if export_subnet_routes_with_public_ip is not None:
-            pulumi.set(__self__, "export_subnet_routes_with_public_ip", export_subnet_routes_with_public_ip)
-        if import_custom_routes is not None:
-            pulumi.set(__self__, "import_custom_routes", import_custom_routes)
-        if import_subnet_routes_with_public_ip is not None:
-            pulumi.set(__self__, "import_subnet_routes_with_public_ip", import_subnet_routes_with_public_ip)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
-        if peer_mtu is not None:
-            pulumi.set(__self__, "peer_mtu", peer_mtu)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if state_details is not None:
-            pulumi.set(__self__, "state_details", state_details)
-
-    @property
-    @pulumi.getter(name="autoCreateRoutes")
-    def auto_create_routes(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-        """
-        return pulumi.get(self, "auto_create_routes")
-
-    @auto_create_routes.setter
-    def auto_create_routes(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "auto_create_routes", value)
-
-    @property
-    @pulumi.getter(name="exchangeSubnetRoutes")
-    def exchange_subnet_routes(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-        """
-        return pulumi.get(self, "exchange_subnet_routes")
-
-    @exchange_subnet_routes.setter
-    def exchange_subnet_routes(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "exchange_subnet_routes", value)
-
-    @property
-    @pulumi.getter(name="exportCustomRoutes")
-    def export_custom_routes(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to export the custom routes to peer network.
-        """
-        return pulumi.get(self, "export_custom_routes")
-
-    @export_custom_routes.setter
-    def export_custom_routes(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "export_custom_routes", value)
-
-    @property
-    @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
-    def export_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
-        """
-        return pulumi.get(self, "export_subnet_routes_with_public_ip")
-
-    @export_subnet_routes_with_public_ip.setter
-    def export_subnet_routes_with_public_ip(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "export_subnet_routes_with_public_ip", value)
-
-    @property
-    @pulumi.getter(name="importCustomRoutes")
-    def import_custom_routes(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to import the custom routes from peer network.
-        """
-        return pulumi.get(self, "import_custom_routes")
-
-    @import_custom_routes.setter
-    def import_custom_routes(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "import_custom_routes", value)
-
-    @property
-    @pulumi.getter(name="importSubnetRoutesWithPublicIp")
-    def import_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
-        """
-        return pulumi.get(self, "import_subnet_routes_with_public_ip")
-
-    @import_subnet_routes_with_public_ip.setter
-    def import_subnet_routes_with_public_ip(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "import_subnet_routes_with_public_ip", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
-    @property
-    @pulumi.getter(name="peerMtu")
-    def peer_mtu(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum Transmission Unit in bytes.
-        """
-        return pulumi.get(self, "peer_mtu")
-
-    @peer_mtu.setter
-    def peer_mtu(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "peer_mtu", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['NetworkPeeringState']]:
-        """
-        [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['NetworkPeeringState']]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="stateDetails")
-    def state_details(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Details about the current state of the peering.
-        """
-        return pulumi.get(self, "state_details")
-
-    @state_details.setter
-    def state_details(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "state_details", value)
 
 
 @pulumi.input_type
@@ -8866,29 +7729,13 @@ class NodeGroupAutoscalingPolicyArgs:
 @pulumi.input_type
 class NodeGroupMaintenanceWindowArgs:
     def __init__(__self__, *,
-                 maintenance_duration: Optional[pulumi.Input['DurationArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         Time window specified for daily maintenance operations. GCE's internal maintenance will be performed within this window.
-        :param pulumi.Input['DurationArgs'] maintenance_duration: [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
         :param pulumi.Input[str] start_time: Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
         """
-        if maintenance_duration is not None:
-            pulumi.set(__self__, "maintenance_duration", maintenance_duration)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-
-    @property
-    @pulumi.getter(name="maintenanceDuration")
-    def maintenance_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
-        """
-        [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-        """
-        return pulumi.get(self, "maintenance_duration")
-
-    @maintenance_duration.setter
-    def maintenance_duration(self, value: Optional[pulumi.Input['DurationArgs']]):
-        pulumi.set(self, "maintenance_duration", value)
 
     @property
     @pulumi.getter(name="startTime")
@@ -9274,28 +8121,12 @@ class PacketMirroringFilterArgs:
 @pulumi.input_type
 class PacketMirroringForwardingRuleInfoArgs:
     def __init__(__self__, *,
-                 canonical_url: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] canonical_url: [Output Only] Unique identifier for the forwarding rule; defined by the server.
         :param pulumi.Input[str] url: Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
         """
-        if canonical_url is not None:
-            pulumi.set(__self__, "canonical_url", canonical_url)
         if url is not None:
             pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter(name="canonicalUrl")
-    def canonical_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Unique identifier for the forwarding rule; defined by the server.
-        """
-        return pulumi.get(self, "canonical_url")
-
-    @canonical_url.setter
-    def canonical_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "canonical_url", value)
 
     @property
     @pulumi.getter
@@ -9380,28 +8211,12 @@ class PacketMirroringMirroredResourceInfoArgs:
 @pulumi.input_type
 class PacketMirroringMirroredResourceInfoInstanceInfoArgs:
     def __init__(__self__, *,
-                 canonical_url: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] canonical_url: [Output Only] Unique identifier for the instance; defined by the server.
         :param pulumi.Input[str] url: Resource URL to the virtual machine instance which is being mirrored.
         """
-        if canonical_url is not None:
-            pulumi.set(__self__, "canonical_url", canonical_url)
         if url is not None:
             pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter(name="canonicalUrl")
-    def canonical_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Unique identifier for the instance; defined by the server.
-        """
-        return pulumi.get(self, "canonical_url")
-
-    @canonical_url.setter
-    def canonical_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "canonical_url", value)
 
     @property
     @pulumi.getter
@@ -9419,28 +8234,12 @@ class PacketMirroringMirroredResourceInfoInstanceInfoArgs:
 @pulumi.input_type
 class PacketMirroringMirroredResourceInfoSubnetInfoArgs:
     def __init__(__self__, *,
-                 canonical_url: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] canonical_url: [Output Only] Unique identifier for the subnetwork; defined by the server.
         :param pulumi.Input[str] url: Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
         """
-        if canonical_url is not None:
-            pulumi.set(__self__, "canonical_url", canonical_url)
         if url is not None:
             pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter(name="canonicalUrl")
-    def canonical_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Unique identifier for the subnetwork; defined by the server.
-        """
-        return pulumi.get(self, "canonical_url")
-
-    @canonical_url.setter
-    def canonical_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "canonical_url", value)
 
     @property
     @pulumi.getter
@@ -9458,28 +8257,12 @@ class PacketMirroringMirroredResourceInfoSubnetInfoArgs:
 @pulumi.input_type
 class PacketMirroringNetworkInfoArgs:
     def __init__(__self__, *,
-                 canonical_url: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] canonical_url: [Output Only] Unique identifier for the network; defined by the server.
         :param pulumi.Input[str] url: URL of the network resource.
         """
-        if canonical_url is not None:
-            pulumi.set(__self__, "canonical_url", canonical_url)
         if url is not None:
             pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter(name="canonicalUrl")
-    def canonical_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Unique identifier for the network; defined by the server.
-        """
-        return pulumi.get(self, "canonical_url")
-
-    @canonical_url.setter
-    def canonical_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "canonical_url", value)
 
     @property
     @pulumi.getter
@@ -9747,103 +8530,13 @@ class PathRuleArgs:
 
 
 @pulumi.input_type
-class PublicAdvertisedPrefixPublicDelegatedPrefixArgs:
-    def __init__(__self__, *,
-                 ip_range: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
-        """
-        Represents a CIDR range which can be used to assign addresses.
-        :param pulumi.Input[str] ip_range: The IP address range of the public delegated prefix
-        :param pulumi.Input[str] name: The name of the public delegated prefix
-        :param pulumi.Input[str] project: The project number of the public delegated prefix
-        :param pulumi.Input[str] region: The region of the public delegated prefix if it is regional. If absent, the prefix is global.
-        :param pulumi.Input[str] status: The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
-        """
-        if ip_range is not None:
-            pulumi.set(__self__, "ip_range", ip_range)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="ipRange")
-    def ip_range(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IP address range of the public delegated prefix
-        """
-        return pulumi.get(self, "ip_range")
-
-    @ip_range.setter
-    def ip_range(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ip_range", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the public delegated prefix
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project number of the public delegated prefix
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region of the public delegated prefix if it is regional. If absent, the prefix is global.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-
-@pulumi.input_type
 class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
     def __init__(__self__, *,
                  delegatee_project: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  is_address: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixStatus']] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         Represents a sub PublicDelegatedPrefix.
         :param pulumi.Input[str] delegatee_project: Name of the project scoping this PublicDelegatedSubPrefix.
@@ -9851,8 +8544,6 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
         :param pulumi.Input[bool] is_address: Whether the sub prefix is delegated to create Address resources in the delegatee project.
         :param pulumi.Input[str] name: The name of the sub public delegated prefix.
-        :param pulumi.Input[str] region: [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
-        :param pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixStatus'] status: [Output Only] The status of the sub public delegated prefix.
         """
         if delegatee_project is not None:
             pulumi.set(__self__, "delegatee_project", delegatee_project)
@@ -9864,10 +8555,6 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
             pulumi.set(__self__, "is_address", is_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="delegateeProject")
@@ -9929,30 +8616,6 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixStatus']]:
-        """
-        [Output Only] The status of the sub public delegated prefix.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixStatus']]):
-        pulumi.set(self, "status", value)
-
 
 @pulumi.input_type
 class RequestMirrorPolicyArgs:
@@ -9981,81 +8644,29 @@ class RequestMirrorPolicyArgs:
 @pulumi.input_type
 class ReservationArgs:
     def __init__(__self__, *,
-                 commitment: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input['ReservationStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for {$api_version}.reservations ==)
-        :param pulumi.Input[str] commitment: [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#reservations for reservations.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
-        :param pulumi.Input['ReservationStatus'] status: [Output Only] The status of the reservation.
         :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
         """
-        if commitment is not None:
-            pulumi.set(__self__, "commitment", commitment)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if satisfies_pzs is not None:
-            pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if specific_reservation is not None:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
         if specific_reservation_required is not None:
             pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter
-    def commitment(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-        """
-        return pulumi.get(self, "commitment")
-
-    @commitment.setter
-    def commitment(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "commitment", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -10071,30 +8682,6 @@ class ReservationArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#reservations for reservations.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -10104,30 +8691,6 @@ class ReservationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="satisfiesPzs")
-    def satisfies_pzs(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Output Only] Reserved for future use.
-        """
-        return pulumi.get(self, "satisfies_pzs")
-
-    @satisfies_pzs.setter
-    def satisfies_pzs(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "satisfies_pzs", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined fully-qualified URL for this resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
 
     @property
     @pulumi.getter(name="specificReservation")
@@ -10152,18 +8715,6 @@ class ReservationArgs:
     @specific_reservation_required.setter
     def specific_reservation_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "specific_reservation_required", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ReservationStatus']]:
-        """
-        [Output Only] The status of the reservation.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['ReservationStatus']]):
-        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -10294,18 +8845,14 @@ class ResourceCommitmentArgs:
 class ResourcePolicyDailyCycleArgs:
     def __init__(__self__, *,
                  days_in_cycle: Optional[pulumi.Input[int]] = None,
-                 duration: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         Time window specified for daily operations.
         :param pulumi.Input[int] days_in_cycle: Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
-        :param pulumi.Input[str] duration: [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
         :param pulumi.Input[str] start_time: Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
         """
         if days_in_cycle is not None:
             pulumi.set(__self__, "days_in_cycle", days_in_cycle)
-        if duration is not None:
-            pulumi.set(__self__, "duration", duration)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
 
@@ -10320,18 +8867,6 @@ class ResourcePolicyDailyCycleArgs:
     @days_in_cycle.setter
     def days_in_cycle(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days_in_cycle", value)
-
-    @property
-    @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-        """
-        return pulumi.get(self, "duration")
-
-    @duration.setter
-    def duration(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "duration", value)
 
     @property
     @pulumi.getter(name="startTime")
@@ -10405,33 +8940,17 @@ class ResourcePolicyGroupPlacementPolicyArgs:
 @pulumi.input_type
 class ResourcePolicyHourlyCycleArgs:
     def __init__(__self__, *,
-                 duration: Optional[pulumi.Input[str]] = None,
                  hours_in_cycle: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         Time window specified for hourly operations.
-        :param pulumi.Input[str] duration: [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
         :param pulumi.Input[int] hours_in_cycle: Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
         :param pulumi.Input[str] start_time: Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
         """
-        if duration is not None:
-            pulumi.set(__self__, "duration", duration)
         if hours_in_cycle is not None:
             pulumi.set(__self__, "hours_in_cycle", hours_in_cycle)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-
-    @property
-    @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-        """
-        return pulumi.get(self, "duration")
-
-    @duration.setter
-    def duration(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "duration", value)
 
     @property
     @pulumi.getter(name="hoursInCycle")
@@ -10568,69 +9087,6 @@ class ResourcePolicyInstanceSchedulePolicyScheduleArgs:
     @schedule.setter
     def schedule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schedule", value)
-
-
-@pulumi.input_type
-class ResourcePolicyResourceStatusArgs:
-    def __init__(__self__, *,
-                 instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs']] = None):
-        """
-        Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
-        :param pulumi.Input['ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs'] instance_schedule_policy: [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
-        """
-        if instance_schedule_policy is not None:
-            pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
-
-    @property
-    @pulumi.getter(name="instanceSchedulePolicy")
-    def instance_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs']]:
-        """
-        [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
-        """
-        return pulumi.get(self, "instance_schedule_policy")
-
-    @instance_schedule_policy.setter
-    def instance_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs']]):
-        pulumi.set(self, "instance_schedule_policy", value)
-
-
-@pulumi.input_type
-class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs:
-    def __init__(__self__, *,
-                 last_run_start_time: Optional[pulumi.Input[str]] = None,
-                 next_run_start_time: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] last_run_start_time: [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
-        :param pulumi.Input[str] next_run_start_time: [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
-        """
-        if last_run_start_time is not None:
-            pulumi.set(__self__, "last_run_start_time", last_run_start_time)
-        if next_run_start_time is not None:
-            pulumi.set(__self__, "next_run_start_time", next_run_start_time)
-
-    @property
-    @pulumi.getter(name="lastRunStartTime")
-    def last_run_start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
-        """
-        return pulumi.get(self, "last_run_start_time")
-
-    @last_run_start_time.setter
-    def last_run_start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_run_start_time", value)
-
-    @property
-    @pulumi.getter(name="nextRunStartTime")
-    def next_run_start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
-        """
-        return pulumi.get(self, "next_run_start_time")
-
-    @next_run_start_time.setter
-    def next_run_start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "next_run_start_time", value)
 
 
 @pulumi.input_type
@@ -10873,17 +9329,13 @@ class ResourcePolicyWeeklyCycleArgs:
 class ResourcePolicyWeeklyCycleDayOfWeekArgs:
     def __init__(__self__, *,
                  day: Optional[pulumi.Input['ResourcePolicyWeeklyCycleDayOfWeekDay']] = None,
-                 duration: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ResourcePolicyWeeklyCycleDayOfWeekDay'] day: Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
-        :param pulumi.Input[str] duration: [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
         :param pulumi.Input[str] start_time: Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
-        if duration is not None:
-            pulumi.set(__self__, "duration", duration)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
 
@@ -10900,18 +9352,6 @@ class ResourcePolicyWeeklyCycleDayOfWeekArgs:
         pulumi.set(self, "day", value)
 
     @property
-    @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-        """
-        return pulumi.get(self, "duration")
-
-    @duration.setter
-    def duration(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "duration", value)
-
-    @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -10922,102 +9362,6 @@ class ResourcePolicyWeeklyCycleDayOfWeekArgs:
     @start_time.setter
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
-
-
-@pulumi.input_type
-class RouteWarningsItemArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input['RouteWarningsItemCode']] = None,
-                 data: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemDataItemArgs']]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input['RouteWarningsItemCode'] code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-        :param pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemDataItemArgs']]] data: [Output Only] Metadata about this warning in key: value format. For example:
-               "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-        :param pulumi.Input[str] message: [Output Only] A human-readable description of the warning code.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if data is not None:
-            pulumi.set(__self__, "data", data)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['RouteWarningsItemCode']]:
-        """
-        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input['RouteWarningsItemCode']]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemDataItemArgs']]]]:
-        """
-        [Output Only] Metadata about this warning in key: value format. For example:
-        "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-        """
-        return pulumi.get(self, "data")
-
-    @data.setter
-    def data(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemDataItemArgs']]]]):
-        pulumi.set(self, "data", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A human-readable description of the warning code.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-
-@pulumi.input_type
-class RouteWarningsItemDataItemArgs:
-    def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-        :param pulumi.Input[str] value: [Output Only] A warning data value corresponding to the key.
-        """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A warning data value corresponding to the key.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -11140,7 +9484,6 @@ class RouterBgpPeerArgs:
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  interface_name: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
-                 management_type: Optional[pulumi.Input['RouterBgpPeerManagementType']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None):
@@ -11153,9 +9496,6 @@ class RouterBgpPeerArgs:
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
         :param pulumi.Input[str] interface_name: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
-        :param pulumi.Input['RouterBgpPeerManagementType'] management_type: [Output Only] The resource that configures and manages this BGP peer. 
-               - MANAGED_BY_USER is the default value and can be managed by you or other users 
-               - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
@@ -11172,8 +9512,6 @@ class RouterBgpPeerArgs:
             pulumi.set(__self__, "interface_name", interface_name)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
-        if management_type is not None:
-            pulumi.set(__self__, "management_type", management_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if peer_asn is not None:
@@ -11256,20 +9594,6 @@ class RouterBgpPeerArgs:
         pulumi.set(self, "ip_address", value)
 
     @property
-    @pulumi.getter(name="managementType")
-    def management_type(self) -> Optional[pulumi.Input['RouterBgpPeerManagementType']]:
-        """
-        [Output Only] The resource that configures and manages this BGP peer. 
-        - MANAGED_BY_USER is the default value and can be managed by you or other users 
-        - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
-        """
-        return pulumi.get(self, "management_type")
-
-    @management_type.setter
-    def management_type(self, value: Optional[pulumi.Input['RouterBgpPeerManagementType']]):
-        pulumi.set(self, "management_type", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -11312,15 +9636,11 @@ class RouterInterfaceArgs:
                  ip_range: Optional[pulumi.Input[str]] = None,
                  linked_interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  linked_vpn_tunnel: Optional[pulumi.Input[str]] = None,
-                 management_type: Optional[pulumi.Input['RouterInterfaceManagementType']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be in the RFC3927 link-local IP address space. The value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents the IP address of the interface.
         :param pulumi.Input[str] linked_interconnect_attachment: URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
         :param pulumi.Input[str] linked_vpn_tunnel: URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
-        :param pulumi.Input['RouterInterfaceManagementType'] management_type: [Output Only] The resource that configures and manages this interface. 
-               - MANAGED_BY_USER is the default value and can be managed directly by users. 
-               - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
         :param pulumi.Input[str] name: Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         if ip_range is not None:
@@ -11329,8 +9649,6 @@ class RouterInterfaceArgs:
             pulumi.set(__self__, "linked_interconnect_attachment", linked_interconnect_attachment)
         if linked_vpn_tunnel is not None:
             pulumi.set(__self__, "linked_vpn_tunnel", linked_vpn_tunnel)
-        if management_type is not None:
-            pulumi.set(__self__, "management_type", management_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -11369,20 +9687,6 @@ class RouterInterfaceArgs:
     @linked_vpn_tunnel.setter
     def linked_vpn_tunnel(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "linked_vpn_tunnel", value)
-
-    @property
-    @pulumi.getter(name="managementType")
-    def management_type(self) -> Optional[pulumi.Input['RouterInterfaceManagementType']]:
-        """
-        [Output Only] The resource that configures and manages this interface. 
-        - MANAGED_BY_USER is the default value and can be managed directly by users. 
-        - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
-        """
-        return pulumi.get(self, "management_type")
-
-    @management_type.setter
-    def management_type(self, value: Optional[pulumi.Input['RouterInterfaceManagementType']]):
-        pulumi.set(self, "management_type", value)
 
     @property
     @pulumi.getter
@@ -12125,7 +10429,6 @@ class SecurityPolicyRuleArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  match: Optional[pulumi.Input['SecurityPolicyRuleMatcherArgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None):
@@ -12133,7 +10436,6 @@ class SecurityPolicyRuleArgs:
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
         :param pulumi.Input['SecurityPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
@@ -12142,8 +10444,6 @@ class SecurityPolicyRuleArgs:
             pulumi.set(__self__, "action", action)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if match is not None:
             pulumi.set(__self__, "match", match)
         if preview is not None:
@@ -12174,18 +10474,6 @@ class SecurityPolicyRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -12519,33 +10807,13 @@ class SourceInstanceParamsArgs:
 @pulumi.input_type
 class SslCertificateManagedSslCertificateArgs:
     def __init__(__self__, *,
-                 domain_status: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 status: Optional[pulumi.Input['SslCertificateManagedSslCertificateStatus']] = None):
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Configuration and status of a managed SSL certificate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] domain_status: [Output only] Detailed statuses of the domains specified for managed certificate resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
-        :param pulumi.Input['SslCertificateManagedSslCertificateStatus'] status: [Output only] Status of the managed certificate resource.
         """
-        if domain_status is not None:
-            pulumi.set(__self__, "domain_status", domain_status)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="domainStatus")
-    def domain_status(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        [Output only] Detailed statuses of the domains specified for managed certificate resource.
-        """
-        return pulumi.get(self, "domain_status")
-
-    @domain_status.setter
-    def domain_status(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "domain_status", value)
 
     @property
     @pulumi.getter
@@ -12558,18 +10826,6 @@ class SslCertificateManagedSslCertificateArgs:
     @domains.setter
     def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "domains", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['SslCertificateManagedSslCertificateStatus']]:
-        """
-        [Output only] Status of the managed certificate resource.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['SslCertificateManagedSslCertificateStatus']]):
-        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
@@ -12610,102 +10866,6 @@ class SslCertificateSelfManagedSslCertificateArgs:
     @private_key.setter
     def private_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_key", value)
-
-
-@pulumi.input_type
-class SslPolicyWarningsItemArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input['SslPolicyWarningsItemCode']] = None,
-                 data: Optional[pulumi.Input[Sequence[pulumi.Input['SslPolicyWarningsItemDataItemArgs']]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input['SslPolicyWarningsItemCode'] code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-        :param pulumi.Input[Sequence[pulumi.Input['SslPolicyWarningsItemDataItemArgs']]] data: [Output Only] Metadata about this warning in key: value format. For example:
-               "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-        :param pulumi.Input[str] message: [Output Only] A human-readable description of the warning code.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if data is not None:
-            pulumi.set(__self__, "data", data)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['SslPolicyWarningsItemCode']]:
-        """
-        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input['SslPolicyWarningsItemCode']]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SslPolicyWarningsItemDataItemArgs']]]]:
-        """
-        [Output Only] Metadata about this warning in key: value format. For example:
-        "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-        """
-        return pulumi.get(self, "data")
-
-    @data.setter
-    def data(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SslPolicyWarningsItemDataItemArgs']]]]):
-        pulumi.set(self, "data", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A human-readable description of the warning code.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-
-@pulumi.input_type
-class SslPolicyWarningsItemDataItemArgs:
-    def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-        :param pulumi.Input[str] value: [Output Only] A warning data value corresponding to the key.
-        """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A warning data value corresponding to the key.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -13250,21 +11410,17 @@ class UrlRewriteArgs:
 class VpnGatewayVpnGatewayInterfaceArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[int]] = None,
-                 interconnect_attachment: Optional[pulumi.Input[str]] = None,
-                 ip_address: Optional[pulumi.Input[str]] = None):
+                 interconnect_attachment: Optional[pulumi.Input[str]] = None):
         """
         A VPN gateway interface.
         :param pulumi.Input[int] id: The numeric ID of this VPN gateway interface.
         :param pulumi.Input[str] interconnect_attachment: URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
                Not currently available in all Interconnect locations.
-        :param pulumi.Input[str] ip_address: [Output Only] The external IP address for this VPN gateway interface.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if interconnect_attachment is not None:
             pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
-        if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
 
     @property
     @pulumi.getter
@@ -13290,18 +11446,6 @@ class VpnGatewayVpnGatewayInterfaceArgs:
     @interconnect_attachment.setter
     def interconnect_attachment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interconnect_attachment", value)
-
-    @property
-    @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The external IP address for this VPN gateway interface.
-        """
-        return pulumi.get(self, "ip_address")
-
-    @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ip_address", value)
 
 
 @pulumi.input_type

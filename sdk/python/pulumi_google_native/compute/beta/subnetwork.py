@@ -19,14 +19,9 @@ class SubnetworkArgs:
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
-                 gateway_address: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
-                 ipv6_cidr_range: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -35,9 +30,7 @@ class SubnetworkArgs:
                  purpose: Optional[pulumi.Input['SubnetworkPurpose']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['SubnetworkRole']] = None,
-                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['SubnetworkState']] = None):
+                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]]] = None):
         """
         The set of arguments for constructing a Subnetwork resource.
         :param pulumi.Input[str] region: URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
@@ -48,14 +41,9 @@ class SubnetworkArgs:
                The default value is false and applies to all existing subnetworks and automatically created subnetworks.
                
                This field cannot be set to true at resource creation time.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
-        :param pulumi.Input[str] gateway_address: [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
-        :param pulumi.Input[str] ipv6_cidr_range: [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can be set only at resource creation time.
@@ -66,29 +54,17 @@ class SubnetworkArgs:
         :param pulumi.Input['SubnetworkPurpose'] purpose: The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input['SubnetworkRole'] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input['SubnetworkState'] state: [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if allow_subnet_cidr_routes_overlap is not None:
             pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_flow_logs is not None:
             pulumi.set(__self__, "enable_flow_logs", enable_flow_logs)
-        if gateway_address is not None:
-            pulumi.set(__self__, "gateway_address", gateway_address)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
-        if ipv6_cidr_range is not None:
-            pulumi.set(__self__, "ipv6_cidr_range", ipv6_cidr_range)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if name is not None:
@@ -107,10 +83,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "role", role)
         if secondary_ip_ranges is not None:
             pulumi.set(__self__, "secondary_ip_ranges", secondary_ip_ranges)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -152,18 +124,6 @@ class SubnetworkArgs:
         pulumi.set(self, "allow_subnet_cidr_routes_overlap", value)
 
     @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -188,30 +148,6 @@ class SubnetworkArgs:
         pulumi.set(self, "enable_flow_logs", value)
 
     @property
-    @pulumi.getter(name="gatewayAddress")
-    def gateway_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
-        """
-        return pulumi.get(self, "gateway_address")
-
-    @gateway_address.setter
-    def gateway_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "gateway_address", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -222,30 +158,6 @@ class SubnetworkArgs:
     @ip_cidr_range.setter
     def ip_cidr_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_cidr_range", value)
-
-    @property
-    @pulumi.getter(name="ipv6CidrRange")
-    def ipv6_cidr_range(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
-        """
-        return pulumi.get(self, "ipv6_cidr_range")
-
-    @ipv6_cidr_range.setter
-    def ipv6_cidr_range(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ipv6_cidr_range", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter(name="logConfig")
@@ -354,30 +266,6 @@ class SubnetworkArgs:
     def secondary_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]]]):
         pulumi.set(self, "secondary_ip_ranges", value)
 
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['SubnetworkState']]:
-        """
-        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['SubnetworkState']]):
-        pulumi.set(self, "state", value)
-
 
 class Subnetwork(pulumi.CustomResource):
     @overload
@@ -385,14 +273,9 @@ class Subnetwork(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
-                 gateway_address: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
-                 ipv6_cidr_range: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -404,8 +287,6 @@ class Subnetwork(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['SubnetworkRole']] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['SubnetworkState']] = None,
                  __props__=None):
         """
         Creates a subnetwork in the specified project using the data included in the request.
@@ -419,14 +300,9 @@ class Subnetwork(pulumi.CustomResource):
                The default value is false and applies to all existing subnetworks and automatically created subnetworks.
                
                This field cannot be set to true at resource creation time.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
-        :param pulumi.Input[str] gateway_address: [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
-        :param pulumi.Input[str] ipv6_cidr_range: [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can be set only at resource creation time.
@@ -438,8 +314,6 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] region: URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
         :param pulumi.Input['SubnetworkRole'] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input['SubnetworkState'] state: [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
         """
         ...
     @overload
@@ -466,14 +340,9 @@ class Subnetwork(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
-                 gateway_address: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
-                 ipv6_cidr_range: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -485,8 +354,6 @@ class Subnetwork(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['SubnetworkRole']] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['SubnetworkState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -500,14 +367,9 @@ class Subnetwork(pulumi.CustomResource):
             __props__ = SubnetworkArgs.__new__(SubnetworkArgs)
 
             __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_flow_logs"] = enable_flow_logs
-            __props__.__dict__["gateway_address"] = gateway_address
-            __props__.__dict__["id"] = id
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
-            __props__.__dict__["ipv6_cidr_range"] = ipv6_cidr_range
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -523,9 +385,13 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["role"] = role
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["state"] = state
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["gateway_address"] = None
+            __props__.__dict__["ipv6_cidr_range"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["state"] = None
         super(Subnetwork, __self__).__init__(
             'google-native:compute/beta:Subnetwork',
             resource_name,
@@ -588,7 +454,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -622,7 +488,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="gatewayAddress")
     def gateway_address(self) -> pulumi.Output[str]:
         """
-        [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+        The gateway address for default routes to reach destination addresses outside this subnetwork.
         """
         return pulumi.get(self, "gateway_address")
 
@@ -638,7 +504,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="ipv6CidrRange")
     def ipv6_cidr_range(self) -> pulumi.Output[str]:
         """
-        [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+        The range of internal IPv6 addresses that are owned by this subnetwork.
         """
         return pulumi.get(self, "ipv6_cidr_range")
 
@@ -646,7 +512,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+        Type of the resource. Always compute#subnetwork for Subnetwork resources.
         """
         return pulumi.get(self, "kind")
 
@@ -728,7 +594,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -736,7 +602,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
         """
         return pulumi.get(self, "state")
 

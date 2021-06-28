@@ -67,7 +67,7 @@ class GetTargetPoolResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -111,7 +111,7 @@ class GetTargetPoolResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#targetPool for target pools.
+        Type of the resource. Always compute#targetPool for target pools.
         """
         return pulumi.get(self, "kind")
 
@@ -127,7 +127,7 @@ class GetTargetPoolResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the target pool resides.
+        URL of the region where the target pool resides.
         """
         return pulumi.get(self, "region")
 
@@ -135,7 +135,7 @@ class GetTargetPoolResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

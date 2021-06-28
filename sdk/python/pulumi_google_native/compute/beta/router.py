@@ -20,33 +20,24 @@ class RouterArgs:
                  region: pulumi.Input[str],
                  bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
                  bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerArgs']]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['RouterInterfaceArgs']]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nats: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatArgs']]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Router resource.
-        :param pulumi.Input[str] region: [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
         :param pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerArgs']]] bgp_peers: BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
                Not currently available in all Interconnect locations.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Sequence[pulumi.Input['RouterInterfaceArgs']]] interfaces: Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#router for routers.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input['RouterNatArgs']]] nats: A list of NAT services created in this router.
         :param pulumi.Input[str] network: URI of the network to which this router belongs.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -54,18 +45,12 @@ class RouterArgs:
             pulumi.set(__self__, "bgp", bgp)
         if bgp_peers is not None:
             pulumi.set(__self__, "bgp_peers", bgp_peers)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encrypted_interconnect_router is not None:
             pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nats is not None:
@@ -74,8 +59,6 @@ class RouterArgs:
             pulumi.set(__self__, "network", network)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
 
     @property
     @pulumi.getter
@@ -89,9 +72,6 @@ class RouterArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -123,18 +103,6 @@ class RouterArgs:
         pulumi.set(self, "bgp_peers", value)
 
     @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -161,18 +129,6 @@ class RouterArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
     def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterInterfaceArgs']]]]:
         """
         Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
@@ -182,18 +138,6 @@ class RouterArgs:
     @interfaces.setter
     def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterInterfaceArgs']]]]):
         pulumi.set(self, "interfaces", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of resource. Always compute#router for routers.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -240,18 +184,6 @@ class RouterArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
 
 class Router(pulumi.CustomResource):
     @overload
@@ -260,19 +192,15 @@ class Router(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
                  bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterBgpPeerArgs']]]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatArgs']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a Router resource in the specified project and region using the data included in the request.
@@ -281,18 +209,13 @@ class Router(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterBgpPeerArgs']]]] bgp_peers: BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
                Not currently available in all Interconnect locations.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]] interfaces: Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#router for routers.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatArgs']]]] nats: A list of NAT services created in this router.
         :param pulumi.Input[str] network: URI of the network to which this router belongs.
-        :param pulumi.Input[str] region: [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         ...
     @overload
@@ -320,19 +243,15 @@ class Router(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
                  bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterBgpPeerArgs']]]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatArgs']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -347,12 +266,9 @@ class Router(pulumi.CustomResource):
 
             __props__.__dict__["bgp"] = bgp
             __props__.__dict__["bgp_peers"] = bgp_peers
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypted_interconnect_router"] = encrypted_interconnect_router
-            __props__.__dict__["id"] = id
             __props__.__dict__["interfaces"] = interfaces
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["nats"] = nats
             __props__.__dict__["network"] = network
@@ -363,7 +279,9 @@ class Router(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["self_link"] = None
         super(Router, __self__).__init__(
             'google-native:compute/beta:Router',
             resource_name,
@@ -420,7 +338,7 @@ class Router(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -453,7 +371,7 @@ class Router(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of resource. Always compute#router for routers.
+        Type of resource. Always compute#router for routers.
         """
         return pulumi.get(self, "kind")
 
@@ -485,7 +403,7 @@ class Router(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -493,7 +411,7 @@ class Router(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

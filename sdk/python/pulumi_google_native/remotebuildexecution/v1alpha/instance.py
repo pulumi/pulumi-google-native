@@ -20,19 +20,13 @@ class InstanceArgs:
                  feature_policy: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_enabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InstanceState']] = None):
+                 parent: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs'] feature_policy: The policy to define whether or not RBE features can be used or how they can be used.
         :param pulumi.Input[str] instance_id: ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
         :param pulumi.Input[str] location: The location is a GCP region. Currently only `us-central1` is supported.
-        :param pulumi.Input[bool] logging_enabled: Whether stack driver logging is enabled for the instance.
-        :param pulumi.Input[str] name: Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
         :param pulumi.Input[str] parent: Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
-        :param pulumi.Input['InstanceState'] state: State of the instance.
         """
         pulumi.set(__self__, "project", project)
         if feature_policy is not None:
@@ -41,14 +35,8 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_id", instance_id)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if logging_enabled is not None:
-            pulumi.set(__self__, "logging_enabled", logging_enabled)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -96,30 +84,6 @@ class InstanceArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="loggingEnabled")
-    def logging_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether stack driver logging is enabled for the instance.
-        """
-        return pulumi.get(self, "logging_enabled")
-
-    @logging_enabled.setter
-    def logging_enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "logging_enabled", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
@@ -131,18 +95,6 @@ class InstanceArgs:
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
 
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['InstanceState']]:
-        """
-        State of the instance.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['InstanceState']]):
-        pulumi.set(self, "state", value)
-
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -152,11 +104,8 @@ class Instance(pulumi.CustomResource):
                  feature_policy: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_enabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InstanceState']] = None,
                  __props__=None):
         """
         Creates a new instance in the specified region. Returns a long running operation which contains an instance on completion. While the long running operation is in progress, any call to `GetInstance` returns an instance in state `CREATING`.
@@ -166,10 +115,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']] feature_policy: The policy to define whether or not RBE features can be used or how they can be used.
         :param pulumi.Input[str] instance_id: ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
         :param pulumi.Input[str] location: The location is a GCP region. Currently only `us-central1` is supported.
-        :param pulumi.Input[bool] logging_enabled: Whether stack driver logging is enabled for the instance.
-        :param pulumi.Input[str] name: Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
         :param pulumi.Input[str] parent: Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
-        :param pulumi.Input['InstanceState'] state: State of the instance.
         """
         ...
     @overload
@@ -198,11 +144,8 @@ class Instance(pulumi.CustomResource):
                  feature_policy: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_enabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InstanceState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -218,13 +161,13 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["feature_policy"] = feature_policy
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["location"] = location
-            __props__.__dict__["logging_enabled"] = logging_enabled
-            __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["state"] = state
+            __props__.__dict__["logging_enabled"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["state"] = None
         super(Instance, __self__).__init__(
             'google-native:remotebuildexecution/v1alpha:Instance',
             resource_name,

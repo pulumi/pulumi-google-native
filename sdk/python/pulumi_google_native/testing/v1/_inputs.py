@@ -22,7 +22,6 @@ __all__ = [
     'ClientInfoArgs',
     'ClientInfoDetailArgs',
     'DeviceFileArgs',
-    'EnvironmentArgs',
     'EnvironmentMatrixArgs',
     'EnvironmentVariableArgs',
     'FileReferenceArgs',
@@ -41,18 +40,13 @@ __all__ = [
     'ResultStorageArgs',
     'RoboDirectiveArgs',
     'RoboStartingIntentArgs',
-    'ShardArgs',
     'ShardingOptionArgs',
     'StartActivityIntentArgs',
     'SystraceSetupArgs',
-    'TestDetailsArgs',
-    'TestExecutionArgs',
     'TestSetupArgs',
     'TestSpecificationArgs',
     'TestTargetsForShardArgs',
-    'ToolResultsExecutionArgs',
     'ToolResultsHistoryArgs',
-    'ToolResultsStepArgs',
     'UniformShardingArgs',
 ]
 
@@ -825,46 +819,6 @@ class DeviceFileArgs:
 
 
 @pulumi.input_type
-class EnvironmentArgs:
-    def __init__(__self__, *,
-                 android_device: Optional[pulumi.Input['AndroidDeviceArgs']] = None,
-                 ios_device: Optional[pulumi.Input['IosDeviceArgs']] = None):
-        """
-        The environment in which the test is run.
-        :param pulumi.Input['AndroidDeviceArgs'] android_device: An Android device which must be used with an Android test.
-        :param pulumi.Input['IosDeviceArgs'] ios_device: An iOS device which must be used with an iOS test.
-        """
-        if android_device is not None:
-            pulumi.set(__self__, "android_device", android_device)
-        if ios_device is not None:
-            pulumi.set(__self__, "ios_device", ios_device)
-
-    @property
-    @pulumi.getter(name="androidDevice")
-    def android_device(self) -> Optional[pulumi.Input['AndroidDeviceArgs']]:
-        """
-        An Android device which must be used with an Android test.
-        """
-        return pulumi.get(self, "android_device")
-
-    @android_device.setter
-    def android_device(self, value: Optional[pulumi.Input['AndroidDeviceArgs']]):
-        pulumi.set(self, "android_device", value)
-
-    @property
-    @pulumi.getter(name="iosDevice")
-    def ios_device(self) -> Optional[pulumi.Input['IosDeviceArgs']]:
-        """
-        An iOS device which must be used with an iOS test.
-        """
-        return pulumi.get(self, "ios_device")
-
-    @ios_device.setter
-    def ios_device(self, value: Optional[pulumi.Input['IosDeviceArgs']]):
-        pulumi.set(self, "ios_device", value)
-
-
-@pulumi.input_type
 class EnvironmentMatrixArgs:
     def __init__(__self__, *,
                  android_device_list: Optional[pulumi.Input['AndroidDeviceListArgs']] = None,
@@ -1172,33 +1126,17 @@ class IosDeviceListArgs:
 @pulumi.input_type
 class IosTestLoopArgs:
     def __init__(__self__, *,
-                 app_bundle_id: Optional[pulumi.Input[str]] = None,
                  app_ipa: Optional[pulumi.Input['FileReferenceArgs']] = None,
                  scenarios: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
-        :param pulumi.Input[str] app_bundle_id: The bundle id for the application under test.
         :param pulumi.Input['FileReferenceArgs'] app_ipa: Required. The .ipa of the application to test.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] scenarios: The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
         """
-        if app_bundle_id is not None:
-            pulumi.set(__self__, "app_bundle_id", app_bundle_id)
         if app_ipa is not None:
             pulumi.set(__self__, "app_ipa", app_ipa)
         if scenarios is not None:
             pulumi.set(__self__, "scenarios", scenarios)
-
-    @property
-    @pulumi.getter(name="appBundleId")
-    def app_bundle_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The bundle id for the application under test.
-        """
-        return pulumi.get(self, "app_bundle_id")
-
-    @app_bundle_id.setter
-    def app_bundle_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "app_bundle_id", value)
 
     @property
     @pulumi.getter(name="appIpa")
@@ -1300,21 +1238,17 @@ class IosTestSetupArgs:
 @pulumi.input_type
 class IosXcTestArgs:
     def __init__(__self__, *,
-                 app_bundle_id: Optional[pulumi.Input[str]] = None,
                  test_special_entitlements: Optional[pulumi.Input[bool]] = None,
                  tests_zip: Optional[pulumi.Input['FileReferenceArgs']] = None,
                  xcode_version: Optional[pulumi.Input[str]] = None,
                  xctestrun: Optional[pulumi.Input['FileReferenceArgs']] = None):
         """
         A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
-        :param pulumi.Input[str] app_bundle_id: The bundle id for the application under test.
         :param pulumi.Input[bool] test_special_entitlements: The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
         :param pulumi.Input['FileReferenceArgs'] tests_zip: Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
         :param pulumi.Input[str] xcode_version: The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
         :param pulumi.Input['FileReferenceArgs'] xctestrun: An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.
         """
-        if app_bundle_id is not None:
-            pulumi.set(__self__, "app_bundle_id", app_bundle_id)
         if test_special_entitlements is not None:
             pulumi.set(__self__, "test_special_entitlements", test_special_entitlements)
         if tests_zip is not None:
@@ -1323,18 +1257,6 @@ class IosXcTestArgs:
             pulumi.set(__self__, "xcode_version", xcode_version)
         if xctestrun is not None:
             pulumi.set(__self__, "xctestrun", xctestrun)
-
-    @property
-    @pulumi.getter(name="appBundleId")
-    def app_bundle_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The bundle id for the application under test.
-        """
-        return pulumi.get(self, "app_bundle_id")
-
-    @app_bundle_id.setter
-    def app_bundle_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "app_bundle_id", value)
 
     @property
     @pulumi.getter(name="testSpecialEntitlements")
@@ -1502,22 +1424,14 @@ class RegularFileArgs:
 class ResultStorageArgs:
     def __init__(__self__, *,
                  google_cloud_storage: Optional[pulumi.Input['GoogleCloudStorageArgs']] = None,
-                 results_url: Optional[pulumi.Input[str]] = None,
-                 tool_results_execution: Optional[pulumi.Input['ToolResultsExecutionArgs']] = None,
                  tool_results_history: Optional[pulumi.Input['ToolResultsHistoryArgs']] = None):
         """
         Locations where the results of running the test are stored.
         :param pulumi.Input['GoogleCloudStorageArgs'] google_cloud_storage: Required.
-        :param pulumi.Input[str] results_url: URL to the results in the Firebase Web Console.
-        :param pulumi.Input['ToolResultsExecutionArgs'] tool_results_execution: The tool results execution that results are written to.
         :param pulumi.Input['ToolResultsHistoryArgs'] tool_results_history: The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
         """
         if google_cloud_storage is not None:
             pulumi.set(__self__, "google_cloud_storage", google_cloud_storage)
-        if results_url is not None:
-            pulumi.set(__self__, "results_url", results_url)
-        if tool_results_execution is not None:
-            pulumi.set(__self__, "tool_results_execution", tool_results_execution)
         if tool_results_history is not None:
             pulumi.set(__self__, "tool_results_history", tool_results_history)
 
@@ -1532,30 +1446,6 @@ class ResultStorageArgs:
     @google_cloud_storage.setter
     def google_cloud_storage(self, value: Optional[pulumi.Input['GoogleCloudStorageArgs']]):
         pulumi.set(self, "google_cloud_storage", value)
-
-    @property
-    @pulumi.getter(name="resultsUrl")
-    def results_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        URL to the results in the Firebase Web Console.
-        """
-        return pulumi.get(self, "results_url")
-
-    @results_url.setter
-    def results_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "results_url", value)
-
-    @property
-    @pulumi.getter(name="toolResultsExecution")
-    def tool_results_execution(self) -> Optional[pulumi.Input['ToolResultsExecutionArgs']]:
-        """
-        The tool results execution that results are written to.
-        """
-        return pulumi.get(self, "tool_results_execution")
-
-    @tool_results_execution.setter
-    def tool_results_execution(self, value: Optional[pulumi.Input['ToolResultsExecutionArgs']]):
-        pulumi.set(self, "tool_results_execution", value)
 
     @property
     @pulumi.getter(name="toolResultsHistory")
@@ -1683,62 +1573,6 @@ class RoboStartingIntentArgs:
 
 
 @pulumi.input_type
-class ShardArgs:
-    def __init__(__self__, *,
-                 num_shards: Optional[pulumi.Input[int]] = None,
-                 shard_index: Optional[pulumi.Input[int]] = None,
-                 test_targets_for_shard: Optional[pulumi.Input['TestTargetsForShardArgs']] = None):
-        """
-        Output only. Details about the shard.
-        :param pulumi.Input[int] num_shards: The total number of shards.
-        :param pulumi.Input[int] shard_index: The index of the shard among all the shards.
-        :param pulumi.Input['TestTargetsForShardArgs'] test_targets_for_shard: Test targets for each shard.
-        """
-        if num_shards is not None:
-            pulumi.set(__self__, "num_shards", num_shards)
-        if shard_index is not None:
-            pulumi.set(__self__, "shard_index", shard_index)
-        if test_targets_for_shard is not None:
-            pulumi.set(__self__, "test_targets_for_shard", test_targets_for_shard)
-
-    @property
-    @pulumi.getter(name="numShards")
-    def num_shards(self) -> Optional[pulumi.Input[int]]:
-        """
-        The total number of shards.
-        """
-        return pulumi.get(self, "num_shards")
-
-    @num_shards.setter
-    def num_shards(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "num_shards", value)
-
-    @property
-    @pulumi.getter(name="shardIndex")
-    def shard_index(self) -> Optional[pulumi.Input[int]]:
-        """
-        The index of the shard among all the shards.
-        """
-        return pulumi.get(self, "shard_index")
-
-    @shard_index.setter
-    def shard_index(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "shard_index", value)
-
-    @property
-    @pulumi.getter(name="testTargetsForShard")
-    def test_targets_for_shard(self) -> Optional[pulumi.Input['TestTargetsForShardArgs']]:
-        """
-        Test targets for each shard.
-        """
-        return pulumi.get(self, "test_targets_for_shard")
-
-    @test_targets_for_shard.setter
-    def test_targets_for_shard(self, value: Optional[pulumi.Input['TestTargetsForShardArgs']]):
-        pulumi.set(self, "test_targets_for_shard", value)
-
-
-@pulumi.input_type
 class ShardingOptionArgs:
     def __init__(__self__, *,
                  manual_sharding: Optional[pulumi.Input['ManualShardingArgs']] = None,
@@ -1855,214 +1689,6 @@ class SystraceSetupArgs:
     @duration_seconds.setter
     def duration_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "duration_seconds", value)
-
-
-@pulumi.input_type
-class TestDetailsArgs:
-    def __init__(__self__, *,
-                 error_message: Optional[pulumi.Input[str]] = None,
-                 progress_messages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        Additional details about the progress of the running test.
-        :param pulumi.Input[str] error_message: If the TestState is ERROR, then this string will contain human-readable details about the error.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] progress_messages: Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
-        """
-        if error_message is not None:
-            pulumi.set(__self__, "error_message", error_message)
-        if progress_messages is not None:
-            pulumi.set(__self__, "progress_messages", progress_messages)
-
-    @property
-    @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[str]]:
-        """
-        If the TestState is ERROR, then this string will contain human-readable details about the error.
-        """
-        return pulumi.get(self, "error_message")
-
-    @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "error_message", value)
-
-    @property
-    @pulumi.getter(name="progressMessages")
-    def progress_messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
-        """
-        return pulumi.get(self, "progress_messages")
-
-    @progress_messages.setter
-    def progress_messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "progress_messages", value)
-
-
-@pulumi.input_type
-class TestExecutionArgs:
-    def __init__(__self__, *,
-                 environment: Optional[pulumi.Input['EnvironmentArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 matrix_id: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 shard: Optional[pulumi.Input['ShardArgs']] = None,
-                 state: Optional[pulumi.Input['TestExecutionState']] = None,
-                 test_details: Optional[pulumi.Input['TestDetailsArgs']] = None,
-                 test_specification: Optional[pulumi.Input['TestSpecificationArgs']] = None,
-                 timestamp: Optional[pulumi.Input[str]] = None,
-                 tool_results_step: Optional[pulumi.Input['ToolResultsStepArgs']] = None):
-        """
-        A single test executed in a single environment.
-        :param pulumi.Input['EnvironmentArgs'] environment: How the host machine(s) are configured.
-        :param pulumi.Input[str] id: Unique id set by the service.
-        :param pulumi.Input[str] matrix_id: Id of the containing TestMatrix.
-        :param pulumi.Input[str] project: The cloud project that owns the test execution.
-        :param pulumi.Input['ShardArgs'] shard: Details about the shard.
-        :param pulumi.Input['TestExecutionState'] state: Indicates the current progress of the test execution (e.g., FINISHED).
-        :param pulumi.Input['TestDetailsArgs'] test_details: Additional details about the running test.
-        :param pulumi.Input['TestSpecificationArgs'] test_specification: How to run the test.
-        :param pulumi.Input[str] timestamp: The time this test execution was initially created.
-        :param pulumi.Input['ToolResultsStepArgs'] tool_results_step: Where the results for this execution are written.
-        """
-        if environment is not None:
-            pulumi.set(__self__, "environment", environment)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if matrix_id is not None:
-            pulumi.set(__self__, "matrix_id", matrix_id)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if shard is not None:
-            pulumi.set(__self__, "shard", shard)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if test_details is not None:
-            pulumi.set(__self__, "test_details", test_details)
-        if test_specification is not None:
-            pulumi.set(__self__, "test_specification", test_specification)
-        if timestamp is not None:
-            pulumi.set(__self__, "timestamp", timestamp)
-        if tool_results_step is not None:
-            pulumi.set(__self__, "tool_results_step", tool_results_step)
-
-    @property
-    @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input['EnvironmentArgs']]:
-        """
-        How the host machine(s) are configured.
-        """
-        return pulumi.get(self, "environment")
-
-    @environment.setter
-    def environment(self, value: Optional[pulumi.Input['EnvironmentArgs']]):
-        pulumi.set(self, "environment", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique id set by the service.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="matrixId")
-    def matrix_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Id of the containing TestMatrix.
-        """
-        return pulumi.get(self, "matrix_id")
-
-    @matrix_id.setter
-    def matrix_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "matrix_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The cloud project that owns the test execution.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def shard(self) -> Optional[pulumi.Input['ShardArgs']]:
-        """
-        Details about the shard.
-        """
-        return pulumi.get(self, "shard")
-
-    @shard.setter
-    def shard(self, value: Optional[pulumi.Input['ShardArgs']]):
-        pulumi.set(self, "shard", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['TestExecutionState']]:
-        """
-        Indicates the current progress of the test execution (e.g., FINISHED).
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['TestExecutionState']]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="testDetails")
-    def test_details(self) -> Optional[pulumi.Input['TestDetailsArgs']]:
-        """
-        Additional details about the running test.
-        """
-        return pulumi.get(self, "test_details")
-
-    @test_details.setter
-    def test_details(self, value: Optional[pulumi.Input['TestDetailsArgs']]):
-        pulumi.set(self, "test_details", value)
-
-    @property
-    @pulumi.getter(name="testSpecification")
-    def test_specification(self) -> Optional[pulumi.Input['TestSpecificationArgs']]:
-        """
-        How to run the test.
-        """
-        return pulumi.get(self, "test_specification")
-
-    @test_specification.setter
-    def test_specification(self, value: Optional[pulumi.Input['TestSpecificationArgs']]):
-        pulumi.set(self, "test_specification", value)
-
-    @property
-    @pulumi.getter
-    def timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time this test execution was initially created.
-        """
-        return pulumi.get(self, "timestamp")
-
-    @timestamp.setter
-    def timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "timestamp", value)
-
-    @property
-    @pulumi.getter(name="toolResultsStep")
-    def tool_results_step(self) -> Optional[pulumi.Input['ToolResultsStepArgs']]:
-        """
-        Where the results for this execution are written.
-        """
-        return pulumi.get(self, "tool_results_step")
-
-    @tool_results_step.setter
-    def tool_results_step(self, value: Optional[pulumi.Input['ToolResultsStepArgs']]):
-        pulumi.set(self, "tool_results_step", value)
 
 
 @pulumi.input_type
@@ -2394,62 +2020,6 @@ class TestTargetsForShardArgs:
 
 
 @pulumi.input_type
-class ToolResultsExecutionArgs:
-    def __init__(__self__, *,
-                 execution_id: Optional[pulumi.Input[str]] = None,
-                 history_id: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
-        """
-        Represents a tool results execution resource. This has the results of a TestMatrix.
-        :param pulumi.Input[str] execution_id: A tool results execution ID.
-        :param pulumi.Input[str] history_id: A tool results history ID.
-        :param pulumi.Input[str] project: The cloud project that owns the tool results execution.
-        """
-        if execution_id is not None:
-            pulumi.set(__self__, "execution_id", execution_id)
-        if history_id is not None:
-            pulumi.set(__self__, "history_id", history_id)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter(name="executionId")
-    def execution_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        A tool results execution ID.
-        """
-        return pulumi.get(self, "execution_id")
-
-    @execution_id.setter
-    def execution_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "execution_id", value)
-
-    @property
-    @pulumi.getter(name="historyId")
-    def history_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        A tool results history ID.
-        """
-        return pulumi.get(self, "history_id")
-
-    @history_id.setter
-    def history_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "history_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The cloud project that owns the tool results execution.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
-
-@pulumi.input_type
 class ToolResultsHistoryArgs:
     def __init__(__self__, *,
                  history_id: Optional[pulumi.Input[str]] = None,
@@ -2487,78 +2057,6 @@ class ToolResultsHistoryArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-
-@pulumi.input_type
-class ToolResultsStepArgs:
-    def __init__(__self__, *,
-                 execution_id: Optional[pulumi.Input[str]] = None,
-                 history_id: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 step_id: Optional[pulumi.Input[str]] = None):
-        """
-        Represents a tool results step resource. This has the results of a TestExecution.
-        :param pulumi.Input[str] execution_id: A tool results execution ID.
-        :param pulumi.Input[str] history_id: A tool results history ID.
-        :param pulumi.Input[str] project: The cloud project that owns the tool results step.
-        :param pulumi.Input[str] step_id: A tool results step ID.
-        """
-        if execution_id is not None:
-            pulumi.set(__self__, "execution_id", execution_id)
-        if history_id is not None:
-            pulumi.set(__self__, "history_id", history_id)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if step_id is not None:
-            pulumi.set(__self__, "step_id", step_id)
-
-    @property
-    @pulumi.getter(name="executionId")
-    def execution_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        A tool results execution ID.
-        """
-        return pulumi.get(self, "execution_id")
-
-    @execution_id.setter
-    def execution_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "execution_id", value)
-
-    @property
-    @pulumi.getter(name="historyId")
-    def history_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        A tool results history ID.
-        """
-        return pulumi.get(self, "history_id")
-
-    @history_id.setter
-    def history_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "history_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The cloud project that owns the tool results step.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="stepId")
-    def step_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        A tool results step ID.
-        """
-        return pulumi.get(self, "step_id")
-
-    @step_id.setter
-    def step_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "step_id", value)
 
 
 @pulumi.input_type

@@ -67,7 +67,7 @@ class GetRegionInPlaceSnapshotResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -83,7 +83,7 @@ class GetRegionInPlaceSnapshotResult:
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> str:
         """
-        [Output Only] Size of the source disk, specified in GB.
+        Size of the source disk, specified in GB.
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -99,7 +99,7 @@ class GetRegionInPlaceSnapshotResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#inPlaceSnapshot for InPlaceSnapshot resources.
+        Type of the resource. Always compute#inPlaceSnapshot for InPlaceSnapshot resources.
         """
         return pulumi.get(self, "kind")
 
@@ -133,7 +133,7 @@ class GetRegionInPlaceSnapshotResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -141,7 +141,7 @@ class GetRegionInPlaceSnapshotResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -149,7 +149,7 @@ class GetRegionInPlaceSnapshotResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource's resource id.
+        Server-defined URL for this resource's resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -168,7 +168,7 @@ class GetRegionInPlaceSnapshotResult:
     @pulumi.getter(name="sourceDiskId")
     def source_disk_id(self) -> str:
         """
-        [Output Only] The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
+        The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
 
@@ -176,7 +176,7 @@ class GetRegionInPlaceSnapshotResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
+        The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         """
         return pulumi.get(self, "status")
 
@@ -184,7 +184,7 @@ class GetRegionInPlaceSnapshotResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        [Output Only] URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "zone")
 

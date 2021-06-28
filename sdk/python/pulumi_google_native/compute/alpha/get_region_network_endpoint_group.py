@@ -115,7 +115,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -139,7 +139,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+        Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
         """
         return pulumi.get(self, "kind")
 
@@ -179,7 +179,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] The URL of the region where the network endpoint group is located.
+        The URL of the region where the network endpoint group is located.
         """
         return pulumi.get(self, "region")
 
@@ -187,7 +187,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -195,7 +195,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -235,7 +235,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        [Output Only] The URL of the zone where the network endpoint group is located.
+        The URL of the zone where the network endpoint group is located.
         """
         return pulumi.get(self, "zone")
 

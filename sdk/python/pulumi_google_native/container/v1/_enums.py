@@ -6,12 +6,10 @@ from enum import Enum
 
 __all__ = [
     'CloudRunConfigLoadBalancerType',
-    'ClusterStatus',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
     'DatabaseEncryptionState',
     'NetworkConfigPrivateIpv6GoogleAccess',
     'NetworkPolicyProvider',
-    'NodePoolStatus',
     'NodeTaintEffect',
     'ReleaseChannelChannel',
     'ReservationAffinityConsumeReservationType',
@@ -28,19 +26,6 @@ class CloudRunConfigLoadBalancerType(str, Enum):
     LOAD_BALANCER_TYPE_UNSPECIFIED = "LOAD_BALANCER_TYPE_UNSPECIFIED"
     LOAD_BALANCER_TYPE_EXTERNAL = "LOAD_BALANCER_TYPE_EXTERNAL"
     LOAD_BALANCER_TYPE_INTERNAL = "LOAD_BALANCER_TYPE_INTERNAL"
-
-
-class ClusterStatus(str, Enum):
-    """
-    [Output only] The current status of this cluster.
-    """
-    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
-    PROVISIONING = "PROVISIONING"
-    RUNNING = "RUNNING"
-    RECONCILING = "RECONCILING"
-    STOPPING = "STOPPING"
-    ERROR = "ERROR"
-    DEGRADED = "DEGRADED"
 
 
 class ClusterUpdateDesiredPrivateIpv6GoogleAccess(str, Enum):
@@ -78,19 +63,6 @@ class NetworkPolicyProvider(str, Enum):
     """
     PROVIDER_UNSPECIFIED = "PROVIDER_UNSPECIFIED"
     CALICO = "CALICO"
-
-
-class NodePoolStatus(str, Enum):
-    """
-    [Output only] The status of the nodes in this pool instance.
-    """
-    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
-    PROVISIONING = "PROVISIONING"
-    RUNNING = "RUNNING"
-    RUNNING_WITH_ERROR = "RUNNING_WITH_ERROR"
-    RECONCILING = "RECONCILING"
-    STOPPING = "STOPPING"
-    ERROR = "ERROR"
 
 
 class NodeTaintEffect(str, Enum):

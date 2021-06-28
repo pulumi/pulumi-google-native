@@ -5,23 +5,11 @@
 from enum import Enum
 
 __all__ = [
-    'EvaluationJobState',
     'GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType',
     'GoogleCloudDatalabelingV1beta1InputConfigAnnotationType',
     'GoogleCloudDatalabelingV1beta1InputConfigDataType',
     'InstructionDataType',
 ]
-
-
-class EvaluationJobState(str, Enum):
-    """
-    Output only. Describes the current state of the job.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    SCHEDULED = "SCHEDULED"
-    RUNNING = "RUNNING"
-    PAUSED = "PAUSED"
-    STOPPED = "STOPPED"
 
 
 class GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType(str, Enum):

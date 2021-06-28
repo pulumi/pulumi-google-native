@@ -74,7 +74,7 @@ class GetRouteResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -98,7 +98,7 @@ class GetRouteResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of this resource. Always compute#routes for Route resources.
+        Type of this resource. Always compute#routes for Route resources.
         """
         return pulumi.get(self, "kind")
 
@@ -166,7 +166,7 @@ class GetRouteResult:
     @pulumi.getter(name="nextHopPeering")
     def next_hop_peering(self) -> str:
         """
-        [Output Only] The network peering name that should handle matching packets, which should conform to RFC1035.
+        The network peering name that should handle matching packets, which should conform to RFC1035.
         """
         return pulumi.get(self, "next_hop_peering")
 
@@ -190,7 +190,7 @@ class GetRouteResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined fully-qualified URL for this resource.
+        Server-defined fully-qualified URL for this resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -206,7 +206,7 @@ class GetRouteResult:
     @pulumi.getter
     def warnings(self) -> Sequence['outputs.RouteWarningsItemResponse']:
         """
-        [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
         return pulumi.get(self, "warnings")
 

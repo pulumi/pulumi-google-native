@@ -7,8 +7,6 @@ from enum import Enum
 __all__ = [
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy',
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation',
-    'InstanceState',
-    'WorkerPoolState',
 ]
 
 
@@ -29,25 +27,3 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation(
     LINUX_ISOLATION_UNSPECIFIED = "LINUX_ISOLATION_UNSPECIFIED"
     GVISOR = "GVISOR"
     OFF = "OFF"
-
-
-class InstanceState(str, Enum):
-    """
-    Output only. State of the instance.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    CREATING = "CREATING"
-    RUNNING = "RUNNING"
-    INACTIVE = "INACTIVE"
-
-
-class WorkerPoolState(str, Enum):
-    """
-    Output only. State of the worker pool.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    CREATING = "CREATING"
-    RUNNING = "RUNNING"
-    UPDATING = "UPDATING"
-    DELETING = "DELETING"
-    INACTIVE = "INACTIVE"

@@ -59,7 +59,7 @@ class GetInstanceGroupResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] The creation timestamp for this instance group in RFC3339 text format.
+        The creation timestamp for this instance group in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -75,7 +75,7 @@ class GetInstanceGroupResult:
     @pulumi.getter
     def fingerprint(self) -> str:
         """
-        [Output Only] The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
+        The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -83,7 +83,7 @@ class GetInstanceGroupResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] The resource type, which is always compute#instanceGroup for instance groups.
+        The resource type, which is always compute#instanceGroup for instance groups.
         """
         return pulumi.get(self, "kind")
 
@@ -111,7 +111,7 @@ class GetInstanceGroupResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+        The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
         """
         return pulumi.get(self, "network")
 
@@ -119,7 +119,7 @@ class GetInstanceGroupResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] The URL of the region where the instance group is located (for regional resources).
+        The URL of the region where the instance group is located (for regional resources).
         """
         return pulumi.get(self, "region")
 
@@ -127,7 +127,7 @@ class GetInstanceGroupResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] The URL for this instance group. The server generates this URL.
+        The URL for this instance group. The server generates this URL.
         """
         return pulumi.get(self, "self_link")
 
@@ -135,7 +135,7 @@ class GetInstanceGroupResult:
     @pulumi.getter
     def size(self) -> int:
         """
-        [Output Only] The total number of instances in the instance group.
+        The total number of instances in the instance group.
         """
         return pulumi.get(self, "size")
 
@@ -143,7 +143,7 @@ class GetInstanceGroupResult:
     @pulumi.getter
     def subnetwork(self) -> str:
         """
-        [Output Only] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+        The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
         """
         return pulumi.get(self, "subnetwork")
 
@@ -151,7 +151,7 @@ class GetInstanceGroupResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        [Output Only] The URL of the zone where the instance group is located (for zonal resources).
+        The URL of the zone where the instance group is located (for zonal resources).
         """
         return pulumi.get(self, "zone")
 

@@ -49,7 +49,7 @@ class GetTargetHttpProxyResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -73,7 +73,7 @@ class GetTargetHttpProxyResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of resource. Always compute#targetHttpProxy for target HTTP proxies.
+        Type of resource. Always compute#targetHttpProxy for target HTTP proxies.
         """
         return pulumi.get(self, "kind")
 
@@ -101,7 +101,7 @@ class GetTargetHttpProxyResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
+        URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
         """
         return pulumi.get(self, "region")
 
@@ -109,7 +109,7 @@ class GetTargetHttpProxyResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

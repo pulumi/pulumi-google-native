@@ -25,17 +25,13 @@ class RegionBackendServiceArgs:
                  connection_draining: Optional[pulumi.Input['ConnectionDrainingArgs']] = None,
                  connection_tracking_policy: Optional[pulumi.Input['BackendServiceConnectionTrackingPolicyArgs']] = None,
                  consistent_hash: Optional[pulumi.Input['ConsistentHashLoadBalancerSettingsArgs']] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input['BackendServiceFailoverPolicyArgs']] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIAPArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']] = None,
                  locality_lb_policy: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
@@ -46,16 +42,12 @@ class RegionBackendServiceArgs:
                  port_name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input['SecuritySettingsArgs']] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  subsetting: Optional[pulumi.Input['SubsettingArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a RegionBackendService resource.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
                
                If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400).
@@ -77,17 +69,13 @@ class RegionBackendServiceArgs:
                - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
                
                Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied requests.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] edge_security_policy: [Output Only] The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[bool] enable_cdn: If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
         :param pulumi.Input['BackendServiceFailoverPolicyArgs'] failover_policy: Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         :param pulumi.Input['BackendServiceIAPArgs'] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#backendService for backend services.
         :param pulumi.Input['RegionBackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
         :param pulumi.Input['RegionBackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are:  
                - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
@@ -127,12 +115,9 @@ class RegionBackendServiceArgs:
                Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
                
                Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
-        :param pulumi.Input[str] security_policy: [Output Only] The resource URL for the security policy associated with this backend service.
         :param pulumi.Input['SecuritySettingsArgs'] security_settings: This field specifies the security policy that applies to this backend service. This field is applicable to either:  
                - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
                - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input['RegionBackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE.
                
                When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
@@ -160,16 +145,12 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "connection_tracking_policy", connection_tracking_policy)
         if consistent_hash is not None:
             pulumi.set(__self__, "consistent_hash", consistent_hash)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if custom_request_headers is not None:
             pulumi.set(__self__, "custom_request_headers", custom_request_headers)
         if custom_response_headers is not None:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if edge_security_policy is not None:
-            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
         if failover_policy is not None:
@@ -178,10 +159,6 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
             pulumi.set(__self__, "iap", iap)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if load_balancing_scheme is not None:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if locality_lb_policy is not None:
@@ -202,14 +179,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "protocol", protocol)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if security_policy is not None:
-            pulumi.set(__self__, "security_policy", security_policy)
         if security_settings is not None:
             pulumi.set(__self__, "security_settings", security_settings)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if self_link_with_id is not None:
-            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if subsetting is not None:
@@ -229,9 +200,6 @@ class RegionBackendServiceArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -333,18 +301,6 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "consistent_hash", value)
 
     @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
     @pulumi.getter(name="customRequestHeaders")
     def custom_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -379,18 +335,6 @@ class RegionBackendServiceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="edgeSecurityPolicy")
-    def edge_security_policy(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The resource URL for the edge security policy associated with this backend service.
-        """
-        return pulumi.get(self, "edge_security_policy")
-
-    @edge_security_policy.setter
-    def edge_security_policy(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "edge_security_policy", value)
 
     @property
     @pulumi.getter(name="enableCDN")
@@ -439,30 +383,6 @@ class RegionBackendServiceArgs:
     @iap.setter
     def iap(self, value: Optional[pulumi.Input['BackendServiceIAPArgs']]):
         pulumi.set(self, "iap", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of resource. Always compute#backendService for backend services.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter(name="loadBalancingScheme")
@@ -612,18 +532,6 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "request_id", value)
 
     @property
-    @pulumi.getter(name="securityPolicy")
-    def security_policy(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The resource URL for the security policy associated with this backend service.
-        """
-        return pulumi.get(self, "security_policy")
-
-    @security_policy.setter
-    def security_policy(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "security_policy", value)
-
-    @property
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> Optional[pulumi.Input['SecuritySettingsArgs']]:
         """
@@ -636,30 +544,6 @@ class RegionBackendServiceArgs:
     @security_settings.setter
     def security_settings(self, value: Optional[pulumi.Input['SecuritySettingsArgs']]):
         pulumi.set(self, "security_settings", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="selfLinkWithId")
-    def self_link_with_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for this resource with the resource id.
-        """
-        return pulumi.get(self, "self_link_with_id")
-
-    @self_link_with_id.setter
-    def self_link_with_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link_with_id", value)
 
     @property
     @pulumi.getter(name="sessionAffinity")
@@ -715,17 +599,13 @@ class RegionBackendService(pulumi.CustomResource):
                  connection_draining: Optional[pulumi.Input[pulumi.InputType['ConnectionDrainingArgs']]] = None,
                  connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceConnectionTrackingPolicyArgs']]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['ConsistentHashLoadBalancerSettingsArgs']]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceFailoverPolicyArgs']]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']] = None,
                  locality_lb_policy: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
@@ -738,10 +618,7 @@ class RegionBackendService(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  subsetting: Optional[pulumi.Input[pulumi.InputType['SubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -772,17 +649,13 @@ class RegionBackendService(pulumi.CustomResource):
                - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
                
                Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied requests.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] edge_security_policy: [Output Only] The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[bool] enable_cdn: If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
         :param pulumi.Input[pulumi.InputType['BackendServiceFailoverPolicyArgs']] failover_policy: Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         :param pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#backendService for backend services.
         :param pulumi.Input['RegionBackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
         :param pulumi.Input['RegionBackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are:  
                - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
@@ -822,13 +695,9 @@ class RegionBackendService(pulumi.CustomResource):
                Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
                
                Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] security_policy: [Output Only] The resource URL for the security policy associated with this backend service.
         :param pulumi.Input[pulumi.InputType['SecuritySettingsArgs']] security_settings: This field specifies the security policy that applies to this backend service. This field is applicable to either:  
                - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
                - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input['RegionBackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE.
                
                When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
@@ -871,17 +740,13 @@ class RegionBackendService(pulumi.CustomResource):
                  connection_draining: Optional[pulumi.Input[pulumi.InputType['ConnectionDrainingArgs']]] = None,
                  connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceConnectionTrackingPolicyArgs']]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['ConsistentHashLoadBalancerSettingsArgs']]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceFailoverPolicyArgs']]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']] = None,
                  locality_lb_policy: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
@@ -894,10 +759,7 @@ class RegionBackendService(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  subsetting: Optional[pulumi.Input[pulumi.InputType['SubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -920,17 +782,13 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["connection_draining"] = connection_draining
             __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
             __props__.__dict__["consistent_hash"] = consistent_hash
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["custom_request_headers"] = custom_request_headers
             __props__.__dict__["custom_response_headers"] = custom_response_headers
             __props__.__dict__["description"] = description
-            __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["failover_policy"] = failover_policy
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["iap"] = iap
-            __props__.__dict__["id"] = id
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
             __props__.__dict__["log_config"] = log_config
@@ -947,14 +805,17 @@ class RegionBackendService(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["security_settings"] = security_settings
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["edge_security_policy"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["security_policy"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["self_link_with_id"] = None
         super(RegionBackendService, __self__).__init__(
             'google-native:compute/alpha:RegionBackendService',
             resource_name,
@@ -1084,7 +945,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -1116,7 +977,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="edgeSecurityPolicy")
     def edge_security_policy(self) -> pulumi.Output[str]:
         """
-        [Output Only] The resource URL for the edge security policy associated with this backend service.
+        The resource URL for the edge security policy associated with this backend service.
         """
         return pulumi.get(self, "edge_security_policy")
 
@@ -1166,7 +1027,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of resource. Always compute#backendService for backend services.
+        Type of resource. Always compute#backendService for backend services.
         """
         return pulumi.get(self, "kind")
 
@@ -1276,7 +1137,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -1284,7 +1145,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> pulumi.Output[str]:
         """
-        [Output Only] The resource URL for the security policy associated with this backend service.
+        The resource URL for the security policy associated with this backend service.
         """
         return pulumi.get(self, "security_policy")
 
@@ -1302,7 +1163,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -1310,7 +1171,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 

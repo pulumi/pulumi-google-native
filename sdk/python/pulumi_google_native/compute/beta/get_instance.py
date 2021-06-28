@@ -176,7 +176,7 @@ class GetInstanceResult:
     @pulumi.getter(name="cpuPlatform")
     def cpu_platform(self) -> str:
         """
-        [Output Only] The CPU platform used by this instance.
+        The CPU platform used by this instance.
         """
         return pulumi.get(self, "cpu_platform")
 
@@ -184,7 +184,7 @@ class GetInstanceResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -258,7 +258,7 @@ class GetInstanceResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#instance for instances.
+        Type of the resource. Always compute#instance for instances.
         """
         return pulumi.get(self, "kind")
 
@@ -284,7 +284,7 @@ class GetInstanceResult:
     @pulumi.getter(name="lastStartTimestamp")
     def last_start_timestamp(self) -> str:
         """
-        [Output Only] Last start timestamp in RFC3339 text format.
+        Last start timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_start_timestamp")
 
@@ -292,7 +292,7 @@ class GetInstanceResult:
     @pulumi.getter(name="lastStopTimestamp")
     def last_stop_timestamp(self) -> str:
         """
-        [Output Only] Last stop timestamp in RFC3339 text format.
+        Last stop timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_stop_timestamp")
 
@@ -300,7 +300,7 @@ class GetInstanceResult:
     @pulumi.getter(name="lastSuspendedTimestamp")
     def last_suspended_timestamp(self) -> str:
         """
-        [Output Only] Last suspended timestamp in RFC3339 text format.
+        Last suspended timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_suspended_timestamp")
 
@@ -395,7 +395,7 @@ class GetInstanceResult:
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
-        [Output Only] Reserved for future use.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -411,7 +411,7 @@ class GetInstanceResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource.
+        Server-defined URL for this resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -471,7 +471,7 @@ class GetInstanceResult:
     @pulumi.getter(name="startRestricted")
     def start_restricted(self) -> bool:
         """
-        [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+        Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
         """
         return pulumi.get(self, "start_restricted")
 
@@ -479,7 +479,7 @@ class GetInstanceResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+        The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
         """
         return pulumi.get(self, "status")
 
@@ -487,7 +487,7 @@ class GetInstanceResult:
     @pulumi.getter(name="statusMessage")
     def status_message(self) -> str:
         """
-        [Output Only] An optional, human-readable explanation of the status.
+        An optional, human-readable explanation of the status.
         """
         return pulumi.get(self, "status_message")
 
@@ -503,7 +503,7 @@ class GetInstanceResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "zone")
 

@@ -52,7 +52,7 @@ class GetTargetVpnGatewayResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -68,7 +68,7 @@ class GetTargetVpnGatewayResult:
     @pulumi.getter(name="forwardingRules")
     def forwarding_rules(self) -> Sequence[str]:
         """
-        [Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
+        A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
         """
         return pulumi.get(self, "forwarding_rules")
 
@@ -76,7 +76,7 @@ class GetTargetVpnGatewayResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of resource. Always compute#targetVpnGateway for target VPN gateways.
+        Type of resource. Always compute#targetVpnGateway for target VPN gateways.
         """
         return pulumi.get(self, "kind")
 
@@ -100,7 +100,7 @@ class GetTargetVpnGatewayResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the target VPN gateway resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the target VPN gateway resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -108,7 +108,7 @@ class GetTargetVpnGatewayResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -116,7 +116,7 @@ class GetTargetVpnGatewayResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
+        The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
         """
         return pulumi.get(self, "status")
 
@@ -124,7 +124,7 @@ class GetTargetVpnGatewayResult:
     @pulumi.getter
     def tunnels(self) -> Sequence[str]:
         """
-        [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
+        A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
         """
         return pulumi.get(self, "tunnels")
 

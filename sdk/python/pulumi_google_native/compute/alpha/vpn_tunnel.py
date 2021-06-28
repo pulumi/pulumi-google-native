@@ -7,7 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
-from ._enums import *
 
 __all__ = ['VpnTunnelArgs', 'VpnTunnel']
 
@@ -16,12 +15,8 @@ class VpnTunnelArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 detailed_status: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ike_version: Optional[pulumi.Input[int]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  local_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -32,22 +27,15 @@ class VpnTunnelArgs:
                  remote_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  shared_secret_hash: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['VpnTunnelStatus']] = None,
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a VpnTunnel resource.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] detailed_status: [Output Only] Detailed status message for the VPN tunnel.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_traffic_selector: Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is supported.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -57,43 +45,18 @@ class VpnTunnelArgs:
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selector: Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
         :param pulumi.Input[str] router: URL of the router resource to be used for dynamic routing.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
-        :param pulumi.Input['VpnTunnelStatus'] status: [Output Only] The status of the VPN tunnel, which can be one of the following: 
-               - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-               - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-               - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-               - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-               - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-               - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-               - NEGOTIATION_FAILURE: Handshake failed. 
-               - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-               - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-               - NO_INCOMING_PACKETS: No incoming packets from peer. 
-               - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-               - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-               - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-               - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-               - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
         :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if detailed_status is not None:
-            pulumi.set(__self__, "detailed_status", detailed_status)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if ike_version is not None:
             pulumi.set(__self__, "ike_version", ike_version)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if local_traffic_selector is not None:
@@ -114,14 +77,10 @@ class VpnTunnelArgs:
             pulumi.set(__self__, "request_id", request_id)
         if router is not None:
             pulumi.set(__self__, "router", router)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if shared_secret is not None:
             pulumi.set(__self__, "shared_secret", shared_secret)
         if shared_secret_hash is not None:
             pulumi.set(__self__, "shared_secret_hash", shared_secret_hash)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if target_vpn_gateway is not None:
             pulumi.set(__self__, "target_vpn_gateway", target_vpn_gateway)
         if vpn_gateway is not None:
@@ -141,26 +100,11 @@ class VpnTunnelArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -175,30 +119,6 @@ class VpnTunnelArgs:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="detailedStatus")
-    def detailed_status(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Detailed status message for the VPN tunnel.
-        """
-        return pulumi.get(self, "detailed_status")
-
-    @detailed_status.setter
-    def detailed_status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "detailed_status", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> Optional[pulumi.Input[int]]:
         """
@@ -209,18 +129,6 @@ class VpnTunnelArgs:
     @ike_version.setter
     def ike_version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ike_version", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -340,18 +248,6 @@ class VpnTunnelArgs:
         pulumi.set(self, "router", value)
 
     @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
     @pulumi.getter(name="sharedSecret")
     def shared_secret(self) -> Optional[pulumi.Input[str]]:
         """
@@ -374,33 +270,6 @@ class VpnTunnelArgs:
     @shared_secret_hash.setter
     def shared_secret_hash(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_secret_hash", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['VpnTunnelStatus']]:
-        """
-        [Output Only] The status of the VPN tunnel, which can be one of the following: 
-        - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-        - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-        - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-        - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-        - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-        - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-        - NEGOTIATION_FAILURE: Handshake failed. 
-        - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-        - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-        - NO_INCOMING_PACKETS: No incoming packets from peer. 
-        - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-        - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-        - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-        - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-        - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['VpnTunnelStatus']]):
-        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter(name="targetVpnGateway")
@@ -444,12 +313,8 @@ class VpnTunnel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 detailed_status: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ike_version: Optional[pulumi.Input[int]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  local_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -462,10 +327,8 @@ class VpnTunnel(pulumi.CustomResource):
                  remote_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  shared_secret_hash: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['VpnTunnelStatus']] = None,
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
@@ -475,12 +338,8 @@ class VpnTunnel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] detailed_status: [Output Only] Detailed status message for the VPN tunnel.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_traffic_selector: Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is supported.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -488,28 +347,10 @@ class VpnTunnel(pulumi.CustomResource):
         :param pulumi.Input[int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
         :param pulumi.Input[str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selector: Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
         :param pulumi.Input[str] router: URL of the router resource to be used for dynamic routing.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
-        :param pulumi.Input['VpnTunnelStatus'] status: [Output Only] The status of the VPN tunnel, which can be one of the following: 
-               - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-               - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-               - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-               - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-               - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-               - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-               - NEGOTIATION_FAILURE: Handshake failed. 
-               - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-               - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-               - NO_INCOMING_PACKETS: No incoming packets from peer. 
-               - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-               - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-               - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-               - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-               - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
         :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
@@ -538,12 +379,8 @@ class VpnTunnel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 detailed_status: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ike_version: Optional[pulumi.Input[int]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  local_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -556,10 +393,8 @@ class VpnTunnel(pulumi.CustomResource):
                  remote_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  shared_secret_hash: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['VpnTunnelStatus']] = None,
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
@@ -575,12 +410,8 @@ class VpnTunnel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VpnTunnelArgs.__new__(VpnTunnelArgs)
 
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            __props__.__dict__["detailed_status"] = detailed_status
-            __props__.__dict__["id"] = id
             __props__.__dict__["ike_version"] = ike_version
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["labels"] = labels
             __props__.__dict__["local_traffic_selector"] = local_traffic_selector
             __props__.__dict__["name"] = name
@@ -597,14 +428,17 @@ class VpnTunnel(pulumi.CustomResource):
             __props__.__dict__["remote_traffic_selector"] = remote_traffic_selector
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["router"] = router
-            __props__.__dict__["self_link"] = self_link
             __props__.__dict__["shared_secret"] = shared_secret
             __props__.__dict__["shared_secret_hash"] = shared_secret_hash
-            __props__.__dict__["status"] = status
             __props__.__dict__["target_vpn_gateway"] = target_vpn_gateway
             __props__.__dict__["vpn_gateway"] = vpn_gateway
             __props__.__dict__["vpn_gateway_interface"] = vpn_gateway_interface
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["detailed_status"] = None
+            __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["status"] = None
         super(VpnTunnel, __self__).__init__(
             'google-native:compute/alpha:VpnTunnel',
             resource_name,
@@ -656,7 +490,7 @@ class VpnTunnel(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -672,7 +506,7 @@ class VpnTunnel(pulumi.CustomResource):
     @pulumi.getter(name="detailedStatus")
     def detailed_status(self) -> pulumi.Output[str]:
         """
-        [Output Only] Detailed status message for the VPN tunnel.
+        Detailed status message for the VPN tunnel.
         """
         return pulumi.get(self, "detailed_status")
 
@@ -688,7 +522,7 @@ class VpnTunnel(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
+        Type of resource. Always compute#vpnTunnel for VPN tunnels.
         """
         return pulumi.get(self, "kind")
 
@@ -762,7 +596,7 @@ class VpnTunnel(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -786,7 +620,7 @@ class VpnTunnel(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -810,7 +644,7 @@ class VpnTunnel(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        [Output Only] The status of the VPN tunnel, which can be one of the following: 
+        The status of the VPN tunnel, which can be one of the following: 
         - PROVISIONING: Resource is being allocated for the VPN tunnel. 
         - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
         - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 

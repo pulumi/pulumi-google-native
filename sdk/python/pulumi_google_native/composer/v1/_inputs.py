@@ -114,11 +114,8 @@ class EncryptionConfigArgs:
 @pulumi.input_type
 class EnvironmentConfigArgs:
     def __init__(__self__, *,
-                 airflow_uri: Optional[pulumi.Input[str]] = None,
-                 dag_gcs_prefix: Optional[pulumi.Input[str]] = None,
                  database_config: Optional[pulumi.Input['DatabaseConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
-                 gke_cluster: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['PrivateEnvironmentConfigArgs']] = None,
@@ -127,11 +124,8 @@ class EnvironmentConfigArgs:
                  web_server_network_access_control: Optional[pulumi.Input['WebServerNetworkAccessControlArgs']] = None):
         """
         Configuration information for an environment.
-        :param pulumi.Input[str] airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-        :param pulumi.Input[str] dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
         :param pulumi.Input['DatabaseConfigArgs'] database_config: Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
-        :param pulumi.Input[str] gke_cluster: The Kubernetes Engine cluster used to run this environment.
         :param pulumi.Input['NodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
         :param pulumi.Input['PrivateEnvironmentConfigArgs'] private_environment_config: The configuration used for the Private IP Cloud Composer environment.
@@ -139,16 +133,10 @@ class EnvironmentConfigArgs:
         :param pulumi.Input['WebServerConfigArgs'] web_server_config: Optional. The configuration settings for the Airflow web server App Engine instance.
         :param pulumi.Input['WebServerNetworkAccessControlArgs'] web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         """
-        if airflow_uri is not None:
-            pulumi.set(__self__, "airflow_uri", airflow_uri)
-        if dag_gcs_prefix is not None:
-            pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
         if database_config is not None:
             pulumi.set(__self__, "database_config", database_config)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
-        if gke_cluster is not None:
-            pulumi.set(__self__, "gke_cluster", gke_cluster)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -161,30 +149,6 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "web_server_config", web_server_config)
         if web_server_network_access_control is not None:
             pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
-
-    @property
-    @pulumi.getter(name="airflowUri")
-    def airflow_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-        """
-        return pulumi.get(self, "airflow_uri")
-
-    @airflow_uri.setter
-    def airflow_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "airflow_uri", value)
-
-    @property
-    @pulumi.getter(name="dagGcsPrefix")
-    def dag_gcs_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-        """
-        return pulumi.get(self, "dag_gcs_prefix")
-
-    @dag_gcs_prefix.setter
-    def dag_gcs_prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dag_gcs_prefix", value)
 
     @property
     @pulumi.getter(name="databaseConfig")
@@ -209,18 +173,6 @@ class EnvironmentConfigArgs:
     @encryption_config.setter
     def encryption_config(self, value: Optional[pulumi.Input['EncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
-
-    @property
-    @pulumi.getter(name="gkeCluster")
-    def gke_cluster(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Kubernetes Engine cluster used to run this environment.
-        """
-        return pulumi.get(self, "gke_cluster")
-
-    @gke_cluster.setter
-    def gke_cluster(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "gke_cluster", value)
 
     @property
     @pulumi.getter(name="nodeConfig")

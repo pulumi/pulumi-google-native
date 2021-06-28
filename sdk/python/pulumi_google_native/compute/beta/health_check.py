@@ -18,20 +18,16 @@ class HealthCheckArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  grpc_health_check: Optional[pulumi.Input['GRPCHealthCheckArgs']] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  http2_health_check: Optional[pulumi.Input['HTTP2HealthCheckArgs']] = None,
                  http_health_check: Optional[pulumi.Input['HTTPHealthCheckArgs']] = None,
                  https_health_check: Optional[pulumi.Input['HTTPSHealthCheckArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['HealthCheckLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  ssl_health_check: Optional[pulumi.Input['SSLHealthCheckArgs']] = None,
                  tcp_health_check: Optional[pulumi.Input['TCPHealthCheckArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -40,15 +36,11 @@ class HealthCheckArgs:
         """
         The set of arguments for constructing a HealthCheck resource.
         :param pulumi.Input[int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5 seconds.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in 3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: Type of the resource.
         :param pulumi.Input['HealthCheckLogConfigArgs'] log_config: Configure logging on this health check.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
-        :param pulumi.Input[str] region: [Output Only] Region where the health check resides. Not applicable to global health checks.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
         :param pulumi.Input['HealthCheckType'] type: Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
@@ -56,8 +48,6 @@ class HealthCheckArgs:
         pulumi.set(__self__, "project", project)
         if check_interval_sec is not None:
             pulumi.set(__self__, "check_interval_sec", check_interval_sec)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if grpc_health_check is not None:
@@ -70,20 +60,14 @@ class HealthCheckArgs:
             pulumi.set(__self__, "http_health_check", http_health_check)
         if https_health_check is not None:
             pulumi.set(__self__, "https_health_check", https_health_check)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if ssl_health_check is not None:
             pulumi.set(__self__, "ssl_health_check", ssl_health_check)
         if tcp_health_check is not None:
@@ -115,18 +99,6 @@ class HealthCheckArgs:
     @check_interval_sec.setter
     def check_interval_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "check_interval_sec", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in 3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -190,18 +162,6 @@ class HealthCheckArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         Type of the resource.
@@ -237,18 +197,6 @@ class HealthCheckArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Region where the health check resides. Not applicable to global health checks.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region", value)
-
-    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -256,18 +204,6 @@ class HealthCheckArgs:
     @request_id.setter
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
 
     @property
     @pulumi.getter(name="sslHealthCheck")
@@ -330,21 +266,17 @@ class HealthCheck(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  grpc_health_check: Optional[pulumi.Input[pulumi.InputType['GRPCHealthCheckArgs']]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  http2_health_check: Optional[pulumi.Input[pulumi.InputType['HTTP2HealthCheckArgs']]] = None,
                  http_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPHealthCheckArgs']]] = None,
                  https_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPSHealthCheckArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
                  tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -357,15 +289,11 @@ class HealthCheck(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5 seconds.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in 3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: Type of the resource.
         :param pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']] log_config: Configure logging on this health check.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
-        :param pulumi.Input[str] region: [Output Only] Region where the health check resides. Not applicable to global health checks.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
         :param pulumi.Input['HealthCheckType'] type: Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
@@ -395,21 +323,17 @@ class HealthCheck(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  grpc_health_check: Optional[pulumi.Input[pulumi.InputType['GRPCHealthCheckArgs']]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  http2_health_check: Optional[pulumi.Input[pulumi.InputType['HTTP2HealthCheckArgs']]] = None,
                  http_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPHealthCheckArgs']]] = None,
                  https_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPSHealthCheckArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
                  tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -428,28 +352,27 @@ class HealthCheck(pulumi.CustomResource):
             __props__ = HealthCheckArgs.__new__(HealthCheckArgs)
 
             __props__.__dict__["check_interval_sec"] = check_interval_sec
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["grpc_health_check"] = grpc_health_check
             __props__.__dict__["healthy_threshold"] = healthy_threshold
             __props__.__dict__["http2_health_check"] = http2_health_check
             __props__.__dict__["http_health_check"] = http_health_check
             __props__.__dict__["https_health_check"] = https_health_check
-            __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
             __props__.__dict__["ssl_health_check"] = ssl_health_check
             __props__.__dict__["tcp_health_check"] = tcp_health_check
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["type"] = type
             __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["region"] = None
+            __props__.__dict__["self_link"] = None
         super(HealthCheck, __self__).__init__(
             'google-native:compute/beta:HealthCheck',
             resource_name,
@@ -504,7 +427,7 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in 3339 text format.
+        Creation timestamp in 3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -572,7 +495,7 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] Region where the health check resides. Not applicable to global health checks.
+        Region where the health check resides. Not applicable to global health checks.
         """
         return pulumi.get(self, "region")
 
@@ -580,7 +503,7 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

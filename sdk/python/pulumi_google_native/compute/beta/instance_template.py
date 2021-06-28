@@ -17,47 +17,31 @@ __all__ = ['InstanceTemplateArgs', 'InstanceTemplate']
 class InstanceTemplateArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['InstancePropertiesArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_params: Optional[pulumi.Input['SourceInstanceParamsArgs']] = None):
         """
         The set of arguments for constructing a InstanceTemplate resource.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] The creation timestamp for this instance template in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] A unique identifier for this instance template. The server defines this identifier.
-        :param pulumi.Input[str] kind: [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['InstancePropertiesArgs'] properties: The instance properties for this instance template.
-        :param pulumi.Input[str] self_link: [Output Only] The URL for this instance template. The server defines this URL.
         :param pulumi.Input[str] source_instance: The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
                - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
                - projects/project/zones/zone/instances/instance
         :param pulumi.Input['SourceInstanceParamsArgs'] source_instance_params: The source instance params to use to create this instance template.
         """
         pulumi.set(__self__, "project", project)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if source_instance is not None:
             pulumi.set(__self__, "source_instance", source_instance)
         if source_instance_params is not None:
@@ -73,18 +57,6 @@ class InstanceTemplateArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The creation timestamp for this instance template in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -95,30 +67,6 @@ class InstanceTemplateArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A unique identifier for this instance template. The server defines this identifier.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -154,18 +102,6 @@ class InstanceTemplateArgs:
         pulumi.set(self, "request_id", value)
 
     @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The URL for this instance template. The server defines this URL.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
     @pulumi.getter(name="sourceInstance")
     def source_instance(self) -> Optional[pulumi.Input[str]]:
         """
@@ -197,15 +133,11 @@ class InstanceTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['InstancePropertiesArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_params: Optional[pulumi.Input[pulumi.InputType['SourceInstanceParamsArgs']]] = None,
                  __props__=None):
@@ -214,13 +146,9 @@ class InstanceTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] The creation timestamp for this instance template in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] A unique identifier for this instance template. The server defines this identifier.
-        :param pulumi.Input[str] kind: [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[pulumi.InputType['InstancePropertiesArgs']] properties: The instance properties for this instance template.
-        :param pulumi.Input[str] self_link: [Output Only] The URL for this instance template. The server defines this URL.
         :param pulumi.Input[str] source_instance: The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
                - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
                - projects/project/zones/zone/instances/instance
@@ -250,15 +178,11 @@ class InstanceTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['InstancePropertiesArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_params: Optional[pulumi.Input[pulumi.InputType['SourceInstanceParamsArgs']]] = None,
                  __props__=None):
@@ -273,19 +197,18 @@ class InstanceTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceTemplateArgs.__new__(InstanceTemplateArgs)
 
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            __props__.__dict__["id"] = id
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["properties"] = properties
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
             __props__.__dict__["source_instance"] = source_instance
             __props__.__dict__["source_instance_params"] = source_instance_params
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["self_link"] = None
         super(InstanceTemplate, __self__).__init__(
             'google-native:compute/beta:InstanceTemplate',
             resource_name,
@@ -322,7 +245,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] The creation timestamp for this instance template in RFC3339 text format.
+        The creation timestamp for this instance template in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -338,7 +261,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
+        The resource type, which is always compute#instanceTemplate for instance templates.
         """
         return pulumi.get(self, "kind")
 
@@ -362,7 +285,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] The URL for this instance template. The server defines this URL.
+        The URL for this instance template. The server defines this URL.
         """
         return pulumi.get(self, "self_link")
 

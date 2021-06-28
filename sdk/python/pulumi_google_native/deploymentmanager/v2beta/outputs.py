@@ -713,9 +713,9 @@ class OperationErrorErrorsItemResponse(dict):
                  location: str,
                  message: str):
         """
-        :param str code: [Output Only] The error type identifier for this error.
-        :param str location: [Output Only] Indicates the field in the request that caused the error. This property is optional.
-        :param str message: [Output Only] An optional, human-readable error message.
+        :param str code: The error type identifier for this error.
+        :param str location: Indicates the field in the request that caused the error. This property is optional.
+        :param str message: An optional, human-readable error message.
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "location", location)
@@ -725,7 +725,7 @@ class OperationErrorErrorsItemResponse(dict):
     @pulumi.getter
     def code(self) -> str:
         """
-        [Output Only] The error type identifier for this error.
+        The error type identifier for this error.
         """
         return pulumi.get(self, "code")
 
@@ -733,7 +733,7 @@ class OperationErrorErrorsItemResponse(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        [Output Only] Indicates the field in the request that caused the error. This property is optional.
+        Indicates the field in the request that caused the error. This property is optional.
         """
         return pulumi.get(self, "location")
 
@@ -741,7 +741,7 @@ class OperationErrorErrorsItemResponse(dict):
     @pulumi.getter
     def message(self) -> str:
         """
-        [Output Only] An optional, human-readable error message.
+        An optional, human-readable error message.
         """
         return pulumi.get(self, "message")
 
@@ -755,7 +755,7 @@ class OperationErrorResponse(dict):
                  errors: Sequence['outputs.OperationErrorErrorsItemResponse']):
         """
         [Output Only] If errors are generated during processing of the operation, this field will be populated.
-        :param Sequence['OperationErrorErrorsItemResponse'] errors: [Output Only] The array of errors encountered while processing this operation.
+        :param Sequence['OperationErrorErrorsItemResponse'] errors: The array of errors encountered while processing this operation.
         """
         pulumi.set(__self__, "errors", errors)
 
@@ -763,7 +763,7 @@ class OperationErrorResponse(dict):
     @pulumi.getter
     def errors(self) -> Sequence['outputs.OperationErrorErrorsItemResponse']:
         """
-        [Output Only] The array of errors encountered while processing this operation.
+        The array of errors encountered while processing this operation.
         """
         return pulumi.get(self, "errors")
 
@@ -837,28 +837,28 @@ class OperationResponse(dict):
                  zone: str):
         """
         Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
-        :param str client_operation_id: [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
-        :param str description: [Output Only] A textual description of the operation, which is set when the operation is created.
-        :param str end_time: [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
-        :param 'OperationErrorResponse' error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
-        :param str http_error_message: [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
-        :param int http_error_status_code: [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
-        :param str insert_time: [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
-        :param str kind: [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
-        :param str name: [Output Only] Name of the operation.
-        :param str operation_group_id: [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
-        :param str operation_type: [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
-        :param int progress: [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
-        :param str region: [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
-        :param str self_link: [Output Only] Server-defined URL for the resource.
-        :param str start_time: [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
-        :param str status: [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
-        :param str status_message: [Output Only] An optional textual description of the current status of the operation.
-        :param str target_id: [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
-        :param str target_link: [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
-        :param str user: [Output Only] User who requested the operation, for example: `user@example.com`.
-        :param Sequence['OperationWarningsItemResponse'] warnings: [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-        :param str zone: [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
+        :param str client_operation_id: The value of `requestId` if you provided it in the request. Not present otherwise.
+        :param str description: A textual description of the operation, which is set when the operation is created.
+        :param str end_time: The time that this operation was completed. This value is in RFC3339 text format.
+        :param 'OperationErrorResponse' error: If errors are generated during processing of the operation, this field will be populated.
+        :param str http_error_message: If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
+        :param int http_error_status_code: If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+        :param str insert_time: The time that this operation was requested. This value is in RFC3339 text format.
+        :param str kind: Type of the resource. Always `compute#operation` for Operation resources.
+        :param str name: Name of the operation.
+        :param str operation_group_id: An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+        :param str operation_type: The type of operation, such as `insert`, `update`, or `delete`, and so on.
+        :param int progress: An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
+        :param str region: The URL of the region where the operation resides. Only applicable when performing regional operations.
+        :param str self_link: Server-defined URL for the resource.
+        :param str start_time: The time that this operation was started by the server. This value is in RFC3339 text format.
+        :param str status: The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+        :param str status_message: An optional textual description of the current status of the operation.
+        :param str target_id: The unique target ID, which identifies a specific incarnation of the target resource.
+        :param str target_link: The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
+        :param str user: User who requested the operation, for example: `user@example.com`.
+        :param Sequence['OperationWarningsItemResponse'] warnings: If warning messages are generated during processing of the operation, this field will be populated.
+        :param str zone: The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         """
         pulumi.set(__self__, "client_operation_id", client_operation_id)
         pulumi.set(__self__, "description", description)
@@ -887,7 +887,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="clientOperationId")
     def client_operation_id(self) -> str:
         """
-        [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
+        The value of `requestId` if you provided it in the request. Not present otherwise.
         """
         return pulumi.get(self, "client_operation_id")
 
@@ -895,7 +895,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        [Output Only] A textual description of the operation, which is set when the operation is created.
+        A textual description of the operation, which is set when the operation is created.
         """
         return pulumi.get(self, "description")
 
@@ -903,7 +903,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> str:
         """
-        [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
+        The time that this operation was completed. This value is in RFC3339 text format.
         """
         return pulumi.get(self, "end_time")
 
@@ -911,7 +911,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def error(self) -> 'outputs.OperationErrorResponse':
         """
-        [Output Only] If errors are generated during processing of the operation, this field will be populated.
+        If errors are generated during processing of the operation, this field will be populated.
         """
         return pulumi.get(self, "error")
 
@@ -919,7 +919,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="httpErrorMessage")
     def http_error_message(self) -> str:
         """
-        [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
+        If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
         """
         return pulumi.get(self, "http_error_message")
 
@@ -927,7 +927,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="httpErrorStatusCode")
     def http_error_status_code(self) -> int:
         """
-        [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+        If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
         """
         return pulumi.get(self, "http_error_status_code")
 
@@ -935,7 +935,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="insertTime")
     def insert_time(self) -> str:
         """
-        [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
+        The time that this operation was requested. This value is in RFC3339 text format.
         """
         return pulumi.get(self, "insert_time")
 
@@ -943,7 +943,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
+        Type of the resource. Always `compute#operation` for Operation resources.
         """
         return pulumi.get(self, "kind")
 
@@ -951,7 +951,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        [Output Only] Name of the operation.
+        Name of the operation.
         """
         return pulumi.get(self, "name")
 
@@ -959,7 +959,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="operationGroupId")
     def operation_group_id(self) -> str:
         """
-        [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+        An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
         """
         return pulumi.get(self, "operation_group_id")
 
@@ -967,7 +967,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="operationType")
     def operation_type(self) -> str:
         """
-        [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
+        The type of operation, such as `insert`, `update`, or `delete`, and so on.
         """
         return pulumi.get(self, "operation_type")
 
@@ -975,7 +975,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def progress(self) -> int:
         """
-        [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
+        An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
         """
         return pulumi.get(self, "progress")
 
@@ -983,7 +983,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
+        The URL of the region where the operation resides. Only applicable when performing regional operations.
         """
         return pulumi.get(self, "region")
 
@@ -991,7 +991,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -999,7 +999,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         """
-        [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
+        The time that this operation was started by the server. This value is in RFC3339 text format.
         """
         return pulumi.get(self, "start_time")
 
@@ -1007,7 +1007,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+        The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
         """
         return pulumi.get(self, "status")
 
@@ -1015,7 +1015,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="statusMessage")
     def status_message(self) -> str:
         """
-        [Output Only] An optional textual description of the current status of the operation.
+        An optional textual description of the current status of the operation.
         """
         return pulumi.get(self, "status_message")
 
@@ -1023,7 +1023,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="targetId")
     def target_id(self) -> str:
         """
-        [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
+        The unique target ID, which identifies a specific incarnation of the target resource.
         """
         return pulumi.get(self, "target_id")
 
@@ -1031,7 +1031,7 @@ class OperationResponse(dict):
     @pulumi.getter(name="targetLink")
     def target_link(self) -> str:
         """
-        [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
+        The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
         """
         return pulumi.get(self, "target_link")
 
@@ -1039,7 +1039,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def user(self) -> str:
         """
-        [Output Only] User who requested the operation, for example: `user@example.com`.
+        User who requested the operation, for example: `user@example.com`.
         """
         return pulumi.get(self, "user")
 
@@ -1047,7 +1047,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def warnings(self) -> Sequence['outputs.OperationWarningsItemResponse']:
         """
-        [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+        If warning messages are generated during processing of the operation, this field will be populated.
         """
         return pulumi.get(self, "warnings")
 
@@ -1055,7 +1055,7 @@ class OperationResponse(dict):
     @pulumi.getter
     def zone(self) -> str:
         """
-        [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
+        The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         """
         return pulumi.get(self, "zone")
 
@@ -1066,8 +1066,8 @@ class OperationWarningsItemDataItemResponse(dict):
                  key: str,
                  value: str):
         """
-        :param str key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-        :param str value: [Output Only] A warning data value corresponding to the key.
+        :param str key: A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: A warning data value corresponding to the key.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -1076,7 +1076,7 @@ class OperationWarningsItemDataItemResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
         """
         return pulumi.get(self, "key")
 
@@ -1084,7 +1084,7 @@ class OperationWarningsItemDataItemResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        [Output Only] A warning data value corresponding to the key.
+        A warning data value corresponding to the key.
         """
         return pulumi.get(self, "value")
 
@@ -1096,9 +1096,9 @@ class OperationWarningsItemResponse(dict):
                  data: Sequence['outputs.OperationWarningsItemDataItemResponse'],
                  message: str):
         """
-        :param str code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-        :param Sequence['OperationWarningsItemDataItemResponse'] data: [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
-        :param str message: [Output Only] A human-readable description of the warning code.
+        :param str code: A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['OperationWarningsItemDataItemResponse'] data: Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+        :param str message: A human-readable description of the warning code.
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "data", data)
@@ -1108,7 +1108,7 @@ class OperationWarningsItemResponse(dict):
     @pulumi.getter
     def code(self) -> str:
         """
-        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
         """
         return pulumi.get(self, "code")
 
@@ -1116,7 +1116,7 @@ class OperationWarningsItemResponse(dict):
     @pulumi.getter
     def data(self) -> Sequence['outputs.OperationWarningsItemDataItemResponse']:
         """
-        [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+        Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
         """
         return pulumi.get(self, "data")
 
@@ -1124,7 +1124,7 @@ class OperationWarningsItemResponse(dict):
     @pulumi.getter
     def message(self) -> str:
         """
-        [Output Only] A human-readable description of the warning code.
+        A human-readable description of the warning code.
         """
         return pulumi.get(self, "message")
 

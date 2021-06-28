@@ -70,7 +70,7 @@ class GetNetworkResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -86,7 +86,7 @@ class GetNetworkResult:
     @pulumi.getter(name="gatewayIPv4")
     def gateway_i_pv4(self) -> str:
         """
-        [Output Only] The gateway address for default routing out of the network, selected by GCP.
+        The gateway address for default routing out of the network, selected by GCP.
         """
         return pulumi.get(self, "gateway_i_pv4")
 
@@ -94,7 +94,7 @@ class GetNetworkResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#network for networks.
+        Type of the resource. Always compute#network for networks.
         """
         return pulumi.get(self, "kind")
 
@@ -118,7 +118,7 @@ class GetNetworkResult:
     @pulumi.getter
     def peerings(self) -> Sequence['outputs.NetworkPeeringResponse']:
         """
-        [Output Only] A list of network peerings for the resource.
+        A list of network peerings for the resource.
         """
         return pulumi.get(self, "peerings")
 
@@ -134,7 +134,7 @@ class GetNetworkResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -142,7 +142,7 @@ class GetNetworkResult:
     @pulumi.getter
     def subnetworks(self) -> Sequence[str]:
         """
-        [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+        Server-defined fully-qualified URLs for all subnetworks in this VPC network.
         """
         return pulumi.get(self, "subnetworks")
 

@@ -132,7 +132,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -164,7 +164,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="externalIpv6Prefix")
     def external_ipv6_prefix(self) -> str:
         """
-        [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
+        The range of external IPv6 addresses that are owned by this subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 
@@ -190,7 +190,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="gatewayAddress")
     def gateway_address(self) -> str:
         """
-        [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+        The gateway address for default routes to reach destination addresses outside this subnetwork.
         """
         return pulumi.get(self, "gateway_address")
 
@@ -214,7 +214,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="ipv6CidrRange")
     def ipv6_cidr_range(self) -> str:
         """
-        [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+        The range of internal IPv6 addresses that are owned by this subnetwork.
         """
         return pulumi.get(self, "ipv6_cidr_range")
 
@@ -222,7 +222,7 @@ class GetSubnetworkResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+        Type of the resource. Always compute#subnetwork for Subnetwork resources.
         """
         return pulumi.get(self, "kind")
 
@@ -312,7 +312,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -320,7 +320,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -338,7 +338,7 @@ class GetSubnetworkResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
         """
         return pulumi.get(self, "state")
 

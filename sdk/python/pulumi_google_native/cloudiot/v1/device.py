@@ -24,18 +24,9 @@ class DeviceArgs:
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]] = None,
                  gateway_config: Optional[pulumi.Input['GatewayConfigArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 last_config_ack_time: Optional[pulumi.Input[str]] = None,
-                 last_config_send_time: Optional[pulumi.Input[str]] = None,
-                 last_error_status: Optional[pulumi.Input['StatusArgs']] = None,
-                 last_error_time: Optional[pulumi.Input[str]] = None,
-                 last_event_time: Optional[pulumi.Input[str]] = None,
-                 last_heartbeat_time: Optional[pulumi.Input[str]] = None,
-                 last_state_time: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 num_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['DeviceStateArgs']] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Device resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail. Can be used to temporarily prevent the device from connecting if, for example, the sensor is generating bad data and needs maintenance.
@@ -43,18 +34,9 @@ class DeviceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]] credentials: The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
         :param pulumi.Input['GatewayConfigArgs'] gateway_config: Gateway-related configuration and state.
         :param pulumi.Input[str] id: The user-defined device identifier. The device ID must be unique within a device registry.
-        :param pulumi.Input[str] last_config_ack_time: [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
-        :param pulumi.Input[str] last_config_send_time: [Output only] The last time a cloud-to-device config version was sent to the device.
-        :param pulumi.Input['StatusArgs'] last_error_status: [Output only] The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other than OK.
-        :param pulumi.Input[str] last_error_time: [Output only] The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub. This field is the timestamp of 'last_error_status'.
-        :param pulumi.Input[str] last_event_time: [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        :param pulumi.Input[str] last_heartbeat_time: [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        :param pulumi.Input[str] last_state_time: [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
         :param pulumi.Input['DeviceLogLevel'] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
-        :param pulumi.Input[str] num_id: [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-        :param pulumi.Input['DeviceStateArgs'] state: [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -69,30 +51,12 @@ class DeviceArgs:
             pulumi.set(__self__, "gateway_config", gateway_config)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if last_config_ack_time is not None:
-            pulumi.set(__self__, "last_config_ack_time", last_config_ack_time)
-        if last_config_send_time is not None:
-            pulumi.set(__self__, "last_config_send_time", last_config_send_time)
-        if last_error_status is not None:
-            pulumi.set(__self__, "last_error_status", last_error_status)
-        if last_error_time is not None:
-            pulumi.set(__self__, "last_error_time", last_error_time)
-        if last_event_time is not None:
-            pulumi.set(__self__, "last_event_time", last_event_time)
-        if last_heartbeat_time is not None:
-            pulumi.set(__self__, "last_heartbeat_time", last_heartbeat_time)
-        if last_state_time is not None:
-            pulumi.set(__self__, "last_state_time", last_state_time)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if num_id is not None:
-            pulumi.set(__self__, "num_id", num_id)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -182,90 +146,6 @@ class DeviceArgs:
         pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter(name="lastConfigAckTime")
-    def last_config_ack_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
-        """
-        return pulumi.get(self, "last_config_ack_time")
-
-    @last_config_ack_time.setter
-    def last_config_ack_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_config_ack_time", value)
-
-    @property
-    @pulumi.getter(name="lastConfigSendTime")
-    def last_config_send_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The last time a cloud-to-device config version was sent to the device.
-        """
-        return pulumi.get(self, "last_config_send_time")
-
-    @last_config_send_time.setter
-    def last_config_send_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_config_send_time", value)
-
-    @property
-    @pulumi.getter(name="lastErrorStatus")
-    def last_error_status(self) -> Optional[pulumi.Input['StatusArgs']]:
-        """
-        [Output only] The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other than OK.
-        """
-        return pulumi.get(self, "last_error_status")
-
-    @last_error_status.setter
-    def last_error_status(self, value: Optional[pulumi.Input['StatusArgs']]):
-        pulumi.set(self, "last_error_status", value)
-
-    @property
-    @pulumi.getter(name="lastErrorTime")
-    def last_error_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub. This field is the timestamp of 'last_error_status'.
-        """
-        return pulumi.get(self, "last_error_time")
-
-    @last_error_time.setter
-    def last_error_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_error_time", value)
-
-    @property
-    @pulumi.getter(name="lastEventTime")
-    def last_event_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        """
-        return pulumi.get(self, "last_event_time")
-
-    @last_event_time.setter
-    def last_event_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_event_time", value)
-
-    @property
-    @pulumi.getter(name="lastHeartbeatTime")
-    def last_heartbeat_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        """
-        return pulumi.get(self, "last_heartbeat_time")
-
-    @last_heartbeat_time.setter
-    def last_heartbeat_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_heartbeat_time", value)
-
-    @property
-    @pulumi.getter(name="lastStateTime")
-    def last_state_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        """
-        return pulumi.get(self, "last_state_time")
-
-    @last_state_time.setter
-    def last_state_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_state_time", value)
-
-    @property
     @pulumi.getter(name="logLevel")
     def log_level(self) -> Optional[pulumi.Input['DeviceLogLevel']]:
         """
@@ -301,30 +181,6 @@ class DeviceArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
-    @property
-    @pulumi.getter(name="numId")
-    def num_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-        """
-        return pulumi.get(self, "num_id")
-
-    @num_id.setter
-    def num_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "num_id", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['DeviceStateArgs']]:
-        """
-        [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['DeviceStateArgs']]):
-        pulumi.set(self, "state", value)
-
 
 class Device(pulumi.CustomResource):
     @overload
@@ -336,21 +192,12 @@ class Device(pulumi.CustomResource):
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 last_config_ack_time: Optional[pulumi.Input[str]] = None,
-                 last_config_send_time: Optional[pulumi.Input[str]] = None,
-                 last_error_status: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
-                 last_error_time: Optional[pulumi.Input[str]] = None,
-                 last_event_time: Optional[pulumi.Input[str]] = None,
-                 last_heartbeat_time: Optional[pulumi.Input[str]] = None,
-                 last_state_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 num_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  registry_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[pulumi.InputType['DeviceStateArgs']]] = None,
                  __props__=None):
         """
         Creates a device in a device registry.
@@ -362,18 +209,9 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
         :param pulumi.Input[pulumi.InputType['GatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
         :param pulumi.Input[str] id: The user-defined device identifier. The device ID must be unique within a device registry.
-        :param pulumi.Input[str] last_config_ack_time: [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
-        :param pulumi.Input[str] last_config_send_time: [Output only] The last time a cloud-to-device config version was sent to the device.
-        :param pulumi.Input[pulumi.InputType['StatusArgs']] last_error_status: [Output only] The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other than OK.
-        :param pulumi.Input[str] last_error_time: [Output only] The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub. This field is the timestamp of 'last_error_status'.
-        :param pulumi.Input[str] last_event_time: [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        :param pulumi.Input[str] last_heartbeat_time: [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        :param pulumi.Input[str] last_state_time: [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
         :param pulumi.Input['DeviceLogLevel'] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
-        :param pulumi.Input[str] num_id: [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-        :param pulumi.Input[pulumi.InputType['DeviceStateArgs']] state: [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
         """
         ...
     @overload
@@ -404,21 +242,12 @@ class Device(pulumi.CustomResource):
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 last_config_ack_time: Optional[pulumi.Input[str]] = None,
-                 last_config_send_time: Optional[pulumi.Input[str]] = None,
-                 last_error_status: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
-                 last_error_time: Optional[pulumi.Input[str]] = None,
-                 last_event_time: Optional[pulumi.Input[str]] = None,
-                 last_heartbeat_time: Optional[pulumi.Input[str]] = None,
-                 last_state_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 num_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  registry_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[pulumi.InputType['DeviceStateArgs']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -436,27 +265,27 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["credentials"] = credentials
             __props__.__dict__["gateway_config"] = gateway_config
             __props__.__dict__["id"] = id
-            __props__.__dict__["last_config_ack_time"] = last_config_ack_time
-            __props__.__dict__["last_config_send_time"] = last_config_send_time
-            __props__.__dict__["last_error_status"] = last_error_status
-            __props__.__dict__["last_error_time"] = last_error_time
-            __props__.__dict__["last_event_time"] = last_event_time
-            __props__.__dict__["last_heartbeat_time"] = last_heartbeat_time
-            __props__.__dict__["last_state_time"] = last_state_time
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["log_level"] = log_level
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
-            __props__.__dict__["num_id"] = num_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if registry_id is None and not opts.urn:
                 raise TypeError("Missing required property 'registry_id'")
             __props__.__dict__["registry_id"] = registry_id
-            __props__.__dict__["state"] = state
+            __props__.__dict__["last_config_ack_time"] = None
+            __props__.__dict__["last_config_send_time"] = None
+            __props__.__dict__["last_error_status"] = None
+            __props__.__dict__["last_error_time"] = None
+            __props__.__dict__["last_event_time"] = None
+            __props__.__dict__["last_heartbeat_time"] = None
+            __props__.__dict__["last_state_time"] = None
+            __props__.__dict__["num_id"] = None
+            __props__.__dict__["state"] = None
         super(Device, __self__).__init__(
             'google-native:cloudiot/v1:Device',
             resource_name,

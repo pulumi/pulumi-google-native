@@ -21,15 +21,9 @@ class TestMatrixArgs:
                  environment_matrix: Optional[pulumi.Input['EnvironmentMatrixArgs']] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
-                 invalid_matrix_details: Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']] = None,
-                 outcome_summary: Optional[pulumi.Input['TestMatrixOutcomeSummary']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input['ResultStorageArgs']] = None,
-                 state: Optional[pulumi.Input['TestMatrixState']] = None,
-                 test_executions: Optional[pulumi.Input[Sequence[pulumi.Input['TestExecutionArgs']]]] = None,
-                 test_matrix_id: Optional[pulumi.Input[str]] = None,
-                 test_specification: Optional[pulumi.Input['TestSpecificationArgs']] = None,
-                 timestamp: Optional[pulumi.Input[str]] = None):
+                 test_specification: Optional[pulumi.Input['TestSpecificationArgs']] = None):
         """
         The set of arguments for constructing a TestMatrix resource.
         :param pulumi.Input[str] project: The cloud project that owns the test matrix.
@@ -37,14 +31,8 @@ class TestMatrixArgs:
         :param pulumi.Input['EnvironmentMatrixArgs'] environment_matrix: Required. The devices the tests are being executed on.
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
-        :param pulumi.Input['TestMatrixInvalidMatrixDetails'] invalid_matrix_details: Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-        :param pulumi.Input['TestMatrixOutcomeSummary'] outcome_summary: Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
         :param pulumi.Input['ResultStorageArgs'] result_storage: Required. Where the results for the matrix are written.
-        :param pulumi.Input['TestMatrixState'] state: Indicates the current progress of the test matrix.
-        :param pulumi.Input[Sequence[pulumi.Input['TestExecutionArgs']]] test_executions: The list of test executions that the service creates for this matrix.
-        :param pulumi.Input[str] test_matrix_id: Unique id set by the service.
         :param pulumi.Input['TestSpecificationArgs'] test_specification: Required. How to run the test.
-        :param pulumi.Input[str] timestamp: The time this test matrix was initially created.
         """
         pulumi.set(__self__, "project", project)
         if client_info is not None:
@@ -55,24 +43,12 @@ class TestMatrixArgs:
             pulumi.set(__self__, "fail_fast", fail_fast)
         if flaky_test_attempts is not None:
             pulumi.set(__self__, "flaky_test_attempts", flaky_test_attempts)
-        if invalid_matrix_details is not None:
-            pulumi.set(__self__, "invalid_matrix_details", invalid_matrix_details)
-        if outcome_summary is not None:
-            pulumi.set(__self__, "outcome_summary", outcome_summary)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if result_storage is not None:
             pulumi.set(__self__, "result_storage", result_storage)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if test_executions is not None:
-            pulumi.set(__self__, "test_executions", test_executions)
-        if test_matrix_id is not None:
-            pulumi.set(__self__, "test_matrix_id", test_matrix_id)
         if test_specification is not None:
             pulumi.set(__self__, "test_specification", test_specification)
-        if timestamp is not None:
-            pulumi.set(__self__, "timestamp", timestamp)
 
     @property
     @pulumi.getter
@@ -135,30 +111,6 @@ class TestMatrixArgs:
         pulumi.set(self, "flaky_test_attempts", value)
 
     @property
-    @pulumi.getter(name="invalidMatrixDetails")
-    def invalid_matrix_details(self) -> Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']]:
-        """
-        Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-        """
-        return pulumi.get(self, "invalid_matrix_details")
-
-    @invalid_matrix_details.setter
-    def invalid_matrix_details(self, value: Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']]):
-        pulumi.set(self, "invalid_matrix_details", value)
-
-    @property
-    @pulumi.getter(name="outcomeSummary")
-    def outcome_summary(self) -> Optional[pulumi.Input['TestMatrixOutcomeSummary']]:
-        """
-        Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
-        """
-        return pulumi.get(self, "outcome_summary")
-
-    @outcome_summary.setter
-    def outcome_summary(self, value: Optional[pulumi.Input['TestMatrixOutcomeSummary']]):
-        pulumi.set(self, "outcome_summary", value)
-
-    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -180,42 +132,6 @@ class TestMatrixArgs:
         pulumi.set(self, "result_storage", value)
 
     @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['TestMatrixState']]:
-        """
-        Indicates the current progress of the test matrix.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['TestMatrixState']]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="testExecutions")
-    def test_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TestExecutionArgs']]]]:
-        """
-        The list of test executions that the service creates for this matrix.
-        """
-        return pulumi.get(self, "test_executions")
-
-    @test_executions.setter
-    def test_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TestExecutionArgs']]]]):
-        pulumi.set(self, "test_executions", value)
-
-    @property
-    @pulumi.getter(name="testMatrixId")
-    def test_matrix_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique id set by the service.
-        """
-        return pulumi.get(self, "test_matrix_id")
-
-    @test_matrix_id.setter
-    def test_matrix_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "test_matrix_id", value)
-
-    @property
     @pulumi.getter(name="testSpecification")
     def test_specification(self) -> Optional[pulumi.Input['TestSpecificationArgs']]:
         """
@@ -227,18 +143,6 @@ class TestMatrixArgs:
     def test_specification(self, value: Optional[pulumi.Input['TestSpecificationArgs']]):
         pulumi.set(self, "test_specification", value)
 
-    @property
-    @pulumi.getter
-    def timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time this test matrix was initially created.
-        """
-        return pulumi.get(self, "timestamp")
-
-    @timestamp.setter
-    def timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "timestamp", value)
-
 
 class TestMatrix(pulumi.CustomResource):
     @overload
@@ -249,16 +153,10 @@ class TestMatrix(pulumi.CustomResource):
                  environment_matrix: Optional[pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']]] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
-                 invalid_matrix_details: Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']] = None,
-                 outcome_summary: Optional[pulumi.Input['TestMatrixOutcomeSummary']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
-                 state: Optional[pulumi.Input['TestMatrixState']] = None,
-                 test_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]]] = None,
-                 test_matrix_id: Optional[pulumi.Input[str]] = None,
                  test_specification: Optional[pulumi.Input[pulumi.InputType['TestSpecificationArgs']]] = None,
-                 timestamp: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices.
@@ -269,15 +167,9 @@ class TestMatrix(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']] environment_matrix: Required. The devices the tests are being executed on.
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
-        :param pulumi.Input['TestMatrixInvalidMatrixDetails'] invalid_matrix_details: Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-        :param pulumi.Input['TestMatrixOutcomeSummary'] outcome_summary: Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
         :param pulumi.Input[str] project: The cloud project that owns the test matrix.
         :param pulumi.Input[pulumi.InputType['ResultStorageArgs']] result_storage: Required. Where the results for the matrix are written.
-        :param pulumi.Input['TestMatrixState'] state: Indicates the current progress of the test matrix.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]] test_executions: The list of test executions that the service creates for this matrix.
-        :param pulumi.Input[str] test_matrix_id: Unique id set by the service.
         :param pulumi.Input[pulumi.InputType['TestSpecificationArgs']] test_specification: Required. How to run the test.
-        :param pulumi.Input[str] timestamp: The time this test matrix was initially created.
         """
         ...
     @overload
@@ -307,16 +199,10 @@ class TestMatrix(pulumi.CustomResource):
                  environment_matrix: Optional[pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']]] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
-                 invalid_matrix_details: Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']] = None,
-                 outcome_summary: Optional[pulumi.Input['TestMatrixOutcomeSummary']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
-                 state: Optional[pulumi.Input['TestMatrixState']] = None,
-                 test_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]]] = None,
-                 test_matrix_id: Optional[pulumi.Input[str]] = None,
                  test_specification: Optional[pulumi.Input[pulumi.InputType['TestSpecificationArgs']]] = None,
-                 timestamp: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -333,18 +219,18 @@ class TestMatrix(pulumi.CustomResource):
             __props__.__dict__["environment_matrix"] = environment_matrix
             __props__.__dict__["fail_fast"] = fail_fast
             __props__.__dict__["flaky_test_attempts"] = flaky_test_attempts
-            __props__.__dict__["invalid_matrix_details"] = invalid_matrix_details
-            __props__.__dict__["outcome_summary"] = outcome_summary
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["result_storage"] = result_storage
-            __props__.__dict__["state"] = state
-            __props__.__dict__["test_executions"] = test_executions
-            __props__.__dict__["test_matrix_id"] = test_matrix_id
             __props__.__dict__["test_specification"] = test_specification
-            __props__.__dict__["timestamp"] = timestamp
+            __props__.__dict__["invalid_matrix_details"] = None
+            __props__.__dict__["outcome_summary"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["test_executions"] = None
+            __props__.__dict__["test_matrix_id"] = None
+            __props__.__dict__["timestamp"] = None
         super(TestMatrix, __self__).__init__(
             'google-native:testing/v1:TestMatrix',
             resource_name,

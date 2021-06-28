@@ -56,7 +56,7 @@ class GetSslPolicyResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -81,7 +81,7 @@ class GetSslPolicyResult:
     @pulumi.getter(name="enabledFeatures")
     def enabled_features(self) -> Sequence[str]:
         """
-        [Output Only] The list of features enabled in the SSL policy.
+        The list of features enabled in the SSL policy.
         """
         return pulumi.get(self, "enabled_features")
 
@@ -131,7 +131,7 @@ class GetSslPolicyResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -139,7 +139,7 @@ class GetSslPolicyResult:
     @pulumi.getter
     def warnings(self) -> Sequence['outputs.SslPolicyWarningsItemResponse']:
         """
-        [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+        If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """
         return pulumi.get(self, "warnings")
 

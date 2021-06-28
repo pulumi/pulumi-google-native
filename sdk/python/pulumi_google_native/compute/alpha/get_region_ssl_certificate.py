@@ -73,7 +73,7 @@ class GetRegionSslCertificateResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -89,7 +89,7 @@ class GetRegionSslCertificateResult:
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> str:
         """
-        [Output Only] Expire time of the certificate. RFC3339
+        Expire time of the certificate. RFC3339
         """
         return pulumi.get(self, "expire_time")
 
@@ -97,7 +97,7 @@ class GetRegionSslCertificateResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+        Type of the resource. Always compute#sslCertificate for SSL certificates.
         """
         return pulumi.get(self, "kind")
 
@@ -129,7 +129,7 @@ class GetRegionSslCertificateResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+        URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
         """
         return pulumi.get(self, "region")
 
@@ -145,7 +145,7 @@ class GetRegionSslCertificateResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -161,7 +161,7 @@ class GetRegionSslCertificateResult:
     @pulumi.getter(name="subjectAlternativeNames")
     def subject_alternative_names(self) -> Sequence[str]:
         """
-        [Output Only] Domains associated with the certificate via Subject Alternative Name.
+        Domains associated with the certificate via Subject Alternative Name.
         """
         return pulumi.get(self, "subject_alternative_names")
 

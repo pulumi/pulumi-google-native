@@ -38,7 +38,6 @@ class ConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  producer_project_id: Optional[pulumi.Input[str]] = None,
                  quota: Optional[pulumi.Input['QuotaArgs']] = None,
-                 source_info: Optional[pulumi.Input['SourceInfoArgs']] = None,
                  system_parameters: Optional[pulumi.Input['SystemParametersArgs']] = None,
                  system_types: Optional[pulumi.Input[Sequence[pulumi.Input['TypeArgs']]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -67,7 +66,6 @@ class ConfigArgs:
         :param pulumi.Input[str] name: The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
         :param pulumi.Input[str] producer_project_id: The Google project that owns this service.
         :param pulumi.Input['QuotaArgs'] quota: Quota configuration.
-        :param pulumi.Input['SourceInfoArgs'] source_info: The source information for this configuration if available.
         :param pulumi.Input['SystemParametersArgs'] system_parameters: System parameter configuration.
         :param pulumi.Input[Sequence[pulumi.Input['TypeArgs']]] system_types: A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
         :param pulumi.Input[str] title: The product title for this service.
@@ -117,8 +115,6 @@ class ConfigArgs:
             pulumi.set(__self__, "producer_project_id", producer_project_id)
         if quota is not None:
             pulumi.set(__self__, "quota", quota)
-        if source_info is not None:
-            pulumi.set(__self__, "source_info", source_info)
         if system_parameters is not None:
             pulumi.set(__self__, "system_parameters", system_parameters)
         if system_types is not None:
@@ -392,18 +388,6 @@ class ConfigArgs:
         pulumi.set(self, "quota", value)
 
     @property
-    @pulumi.getter(name="sourceInfo")
-    def source_info(self) -> Optional[pulumi.Input['SourceInfoArgs']]:
-        """
-        The source information for this configuration if available.
-        """
-        return pulumi.get(self, "source_info")
-
-    @source_info.setter
-    def source_info(self, value: Optional[pulumi.Input['SourceInfoArgs']]):
-        pulumi.set(self, "source_info", value)
-
-    @property
     @pulumi.getter(name="systemParameters")
     def system_parameters(self) -> Optional[pulumi.Input['SystemParametersArgs']]:
         """
@@ -491,7 +475,6 @@ class Config(pulumi.CustomResource):
                  producer_project_id: Optional[pulumi.Input[str]] = None,
                  quota: Optional[pulumi.Input[pulumi.InputType['QuotaArgs']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 source_info: Optional[pulumi.Input[pulumi.InputType['SourceInfoArgs']]] = None,
                  system_parameters: Optional[pulumi.Input[pulumi.InputType['SystemParametersArgs']]] = None,
                  system_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -524,7 +507,6 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[str] name: The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
         :param pulumi.Input[str] producer_project_id: The Google project that owns this service.
         :param pulumi.Input[pulumi.InputType['QuotaArgs']] quota: Quota configuration.
-        :param pulumi.Input[pulumi.InputType['SourceInfoArgs']] source_info: The source information for this configuration if available.
         :param pulumi.Input[pulumi.InputType['SystemParametersArgs']] system_parameters: System parameter configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]] system_types: A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
         :param pulumi.Input[str] title: The product title for this service.
@@ -577,7 +559,6 @@ class Config(pulumi.CustomResource):
                  producer_project_id: Optional[pulumi.Input[str]] = None,
                  quota: Optional[pulumi.Input[pulumi.InputType['QuotaArgs']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 source_info: Optional[pulumi.Input[pulumi.InputType['SourceInfoArgs']]] = None,
                  system_parameters: Optional[pulumi.Input[pulumi.InputType['SystemParametersArgs']]] = None,
                  system_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -619,12 +600,12 @@ class Config(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
-            __props__.__dict__["source_info"] = source_info
             __props__.__dict__["system_parameters"] = system_parameters
             __props__.__dict__["system_types"] = system_types
             __props__.__dict__["title"] = title
             __props__.__dict__["types"] = types
             __props__.__dict__["usage"] = usage
+            __props__.__dict__["source_info"] = None
         super(Config, __self__).__init__(
             'google-native:servicemanagement/v1:Config',
             resource_name,

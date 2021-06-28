@@ -18,18 +18,11 @@ class NetworkArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 gateway_i_pv4: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 peerings: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPeeringArgs']]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 routing_config: Optional[pulumi.Input['NetworkRoutingConfigArgs']] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 routing_config: Optional[pulumi.Input['NetworkRoutingConfigArgs']] = None):
         """
         The set of arguments for constructing a Network resource.
         :param pulumi.Input[bool] auto_create_subnetworks: Must be set to create a VPC network. If not set, a legacy network is created.
@@ -39,45 +32,24 @@ class NetworkArgs:
                An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
                
                For custom mode VPC networks, you can add subnets using the subnetworks insert method.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
-        :param pulumi.Input[str] gateway_i_pv4: [Output Only] The gateway address for default routing out of the network, selected by GCP.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#network for networks.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkPeeringArgs']]] peerings: [Output Only] A list of network peerings for the resource.
         :param pulumi.Input['NetworkRoutingConfigArgs'] routing_config: The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
         """
         pulumi.set(__self__, "project", project)
         if auto_create_subnetworks is not None:
             pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if gateway_i_pv4 is not None:
-            pulumi.set(__self__, "gateway_i_pv4", gateway_i_pv4)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if peerings is not None:
-            pulumi.set(__self__, "peerings", peerings)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if routing_config is not None:
             pulumi.set(__self__, "routing_config", routing_config)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if subnetworks is not None:
-            pulumi.set(__self__, "subnetworks", subnetworks)
 
     @property
     @pulumi.getter
@@ -107,18 +79,6 @@ class NetworkArgs:
         pulumi.set(self, "auto_create_subnetworks", value)
 
     @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -129,42 +89,6 @@ class NetworkArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="gatewayIPv4")
-    def gateway_i_pv4(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The gateway address for default routing out of the network, selected by GCP.
-        """
-        return pulumi.get(self, "gateway_i_pv4")
-
-    @gateway_i_pv4.setter
-    def gateway_i_pv4(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "gateway_i_pv4", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#network for networks.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -191,18 +115,6 @@ class NetworkArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter
-    def peerings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPeeringArgs']]]]:
-        """
-        [Output Only] A list of network peerings for the resource.
-        """
-        return pulumi.get(self, "peerings")
-
-    @peerings.setter
-    def peerings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPeeringArgs']]]]):
-        pulumi.set(self, "peerings", value)
-
-    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -223,30 +135,6 @@ class NetworkArgs:
     def routing_config(self, value: Optional[pulumi.Input['NetworkRoutingConfigArgs']]):
         pulumi.set(self, "routing_config", value)
 
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter
-    def subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
-        """
-        return pulumi.get(self, "subnetworks")
-
-    @subnetworks.setter
-    def subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "subnetworks", value)
-
 
 class Network(pulumi.CustomResource):
     @overload
@@ -254,19 +142,12 @@ class Network(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 gateway_i_pv4: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 peerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPeeringArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Creates a network in the specified project using the data included in the request.
@@ -280,17 +161,10 @@ class Network(pulumi.CustomResource):
                An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
                
                For custom mode VPC networks, you can add subnets using the subnetworks insert method.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
-        :param pulumi.Input[str] gateway_i_pv4: [Output Only] The gateway address for default routing out of the network, selected by GCP.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#network for networks.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPeeringArgs']]]] peerings: [Output Only] A list of network peerings for the resource.
         :param pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']] routing_config: The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
         """
         ...
     @overload
@@ -317,19 +191,12 @@ class Network(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 gateway_i_pv4: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 peerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPeeringArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -343,21 +210,20 @@ class Network(pulumi.CustomResource):
             __props__ = NetworkArgs.__new__(NetworkArgs)
 
             __props__.__dict__["auto_create_subnetworks"] = auto_create_subnetworks
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            __props__.__dict__["gateway_i_pv4"] = gateway_i_pv4
-            __props__.__dict__["id"] = id
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
-            __props__.__dict__["peerings"] = peerings
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["routing_config"] = routing_config
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["subnetworks"] = subnetworks
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["gateway_i_pv4"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["peerings"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["subnetworks"] = None
         super(Network, __self__).__init__(
             'google-native:compute/beta:Network',
             resource_name,
@@ -411,7 +277,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -427,7 +293,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="gatewayIPv4")
     def gateway_i_pv4(self) -> pulumi.Output[str]:
         """
-        [Output Only] The gateway address for default routing out of the network, selected by GCP.
+        The gateway address for default routing out of the network, selected by GCP.
         """
         return pulumi.get(self, "gateway_i_pv4")
 
@@ -435,7 +301,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of the resource. Always compute#network for networks.
+        Type of the resource. Always compute#network for networks.
         """
         return pulumi.get(self, "kind")
 
@@ -459,7 +325,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def peerings(self) -> pulumi.Output[Sequence['outputs.NetworkPeeringResponse']]:
         """
-        [Output Only] A list of network peerings for the resource.
+        A list of network peerings for the resource.
         """
         return pulumi.get(self, "peerings")
 
@@ -475,7 +341,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -483,7 +349,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def subnetworks(self) -> pulumi.Output[Sequence[str]]:
         """
-        [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+        Server-defined fully-qualified URLs for all subnetworks in this VPC network.
         """
         return pulumi.get(self, "subnetworks")
 

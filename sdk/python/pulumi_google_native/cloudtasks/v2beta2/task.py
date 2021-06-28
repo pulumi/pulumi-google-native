@@ -20,31 +20,23 @@ class TaskArgs:
                  project: pulumi.Input[str],
                  queue_id: pulumi.Input[str],
                  app_engine_http_request: Optional[pulumi.Input['AppEngineHttpRequestArgs']] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pull_message: Optional[pulumi.Input['PullMessageArgs']] = None,
                  response_view: Optional[pulumi.Input['TaskResponseView']] = None,
-                 schedule_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['TaskStatusArgs']] = None,
-                 view: Optional[pulumi.Input['TaskView']] = None):
+                 schedule_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Task resource.
         :param pulumi.Input['AppEngineHttpRequestArgs'] app_engine_http_request: App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
-        :param pulumi.Input[str] create_time: The time that the task was created. `create_time` will be truncated to the nearest second.
         :param pulumi.Input[str] name: Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         :param pulumi.Input['PullMessageArgs'] pull_message: LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
         :param pulumi.Input['TaskResponseView'] response_view: The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
         :param pulumi.Input[str] schedule_time: The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
-        :param pulumi.Input['TaskStatusArgs'] status: The task status.
-        :param pulumi.Input['TaskView'] view: The view specifies which subset of the Task has been returned.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "queue_id", queue_id)
         if app_engine_http_request is not None:
             pulumi.set(__self__, "app_engine_http_request", app_engine_http_request)
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if pull_message is not None:
@@ -53,10 +45,6 @@ class TaskArgs:
             pulumi.set(__self__, "response_view", response_view)
         if schedule_time is not None:
             pulumi.set(__self__, "schedule_time", schedule_time)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if view is not None:
-            pulumi.set(__self__, "view", view)
 
     @property
     @pulumi.getter
@@ -96,18 +84,6 @@ class TaskArgs:
     @app_engine_http_request.setter
     def app_engine_http_request(self, value: Optional[pulumi.Input['AppEngineHttpRequestArgs']]):
         pulumi.set(self, "app_engine_http_request", value)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time that the task was created. `create_time` will be truncated to the nearest second.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -157,30 +133,6 @@ class TaskArgs:
     def schedule_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schedule_time", value)
 
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['TaskStatusArgs']]:
-        """
-        The task status.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['TaskStatusArgs']]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
-    def view(self) -> Optional[pulumi.Input['TaskView']]:
-        """
-        The view specifies which subset of the Task has been returned.
-        """
-        return pulumi.get(self, "view")
-
-    @view.setter
-    def view(self, value: Optional[pulumi.Input['TaskView']]):
-        pulumi.set(self, "view", value)
-
 
 class Task(pulumi.CustomResource):
     @overload
@@ -188,7 +140,6 @@ class Task(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_request: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -196,8 +147,6 @@ class Task(pulumi.CustomResource):
                  queue_id: Optional[pulumi.Input[str]] = None,
                  response_view: Optional[pulumi.Input['TaskResponseView']] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['TaskStatusArgs']]] = None,
-                 view: Optional[pulumi.Input['TaskView']] = None,
                  __props__=None):
         """
         Creates a task and adds it to a queue. Tasks cannot be updated after creation; there is no UpdateTask command. * For App Engine queues, the maximum task size is 100KB. * For pull queues, the maximum task size is 1MB.
@@ -205,13 +154,10 @@ class Task(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']] app_engine_http_request: App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
-        :param pulumi.Input[str] create_time: The time that the task was created. `create_time` will be truncated to the nearest second.
         :param pulumi.Input[str] name: Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         :param pulumi.Input[pulumi.InputType['PullMessageArgs']] pull_message: LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
         :param pulumi.Input['TaskResponseView'] response_view: The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
         :param pulumi.Input[str] schedule_time: The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
-        :param pulumi.Input[pulumi.InputType['TaskStatusArgs']] status: The task status.
-        :param pulumi.Input['TaskView'] view: The view specifies which subset of the Task has been returned.
         """
         ...
     @overload
@@ -238,7 +184,6 @@ class Task(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_request: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -246,8 +191,6 @@ class Task(pulumi.CustomResource):
                  queue_id: Optional[pulumi.Input[str]] = None,
                  response_view: Optional[pulumi.Input['TaskResponseView']] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['TaskStatusArgs']]] = None,
-                 view: Optional[pulumi.Input['TaskView']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -261,7 +204,6 @@ class Task(pulumi.CustomResource):
             __props__ = TaskArgs.__new__(TaskArgs)
 
             __props__.__dict__["app_engine_http_request"] = app_engine_http_request
-            __props__.__dict__["create_time"] = create_time
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -275,8 +217,9 @@ class Task(pulumi.CustomResource):
             __props__.__dict__["queue_id"] = queue_id
             __props__.__dict__["response_view"] = response_view
             __props__.__dict__["schedule_time"] = schedule_time
-            __props__.__dict__["status"] = status
-            __props__.__dict__["view"] = view
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["view"] = None
         super(Task, __self__).__init__(
             'google-native:cloudtasks/v2beta2:Task',
             resource_name,

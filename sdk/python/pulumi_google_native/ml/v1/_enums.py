@@ -9,7 +9,6 @@ __all__ = [
     'GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType',
     'GoogleCloudMlV1_StudyConfig_ParameterSpecType',
     'GoogleCloudMlV1__AcceleratorConfigType',
-    'GoogleCloudMlV1__HyperparameterOutputState',
     'GoogleCloudMlV1__HyperparameterSpecAlgorithm',
     'GoogleCloudMlV1__HyperparameterSpecGoal',
     'GoogleCloudMlV1__MetricSpecName',
@@ -19,13 +18,9 @@ __all__ = [
     'GoogleCloudMlV1__PredictionInputOutputDataFormat',
     'GoogleCloudMlV1__StudyConfigAlgorithm',
     'GoogleCloudMlV1__TrainingInputScaleTier',
-    'GoogleCloudMlV1__VersionFramework',
-    'GoogleCloudMlV1__VersionState',
     'GoogleIamV1__AuditLogConfigLogType',
-    'JobState',
     'TrialState',
     'VersionFramework',
-    'VersionState',
 ]
 
 
@@ -72,20 +67,6 @@ class GoogleCloudMlV1__AcceleratorConfigType(str, Enum):
     NVIDIA_TESLA_A100 = "NVIDIA_TESLA_A100"
     TPU_V2 = "TPU_V2"
     TPU_V3 = "TPU_V3"
-
-
-class GoogleCloudMlV1__HyperparameterOutputState(str, Enum):
-    """
-    Output only. The detailed state of the trial.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    QUEUED = "QUEUED"
-    PREPARING = "PREPARING"
-    RUNNING = "RUNNING"
-    SUCCEEDED = "SUCCEEDED"
-    FAILED = "FAILED"
-    CANCELLING = "CANCELLING"
-    CANCELLED = "CANCELLED"
 
 
 class GoogleCloudMlV1__HyperparameterSpecAlgorithm(str, Enum):
@@ -182,28 +163,6 @@ class GoogleCloudMlV1__TrainingInputScaleTier(str, Enum):
     CUSTOM = "CUSTOM"
 
 
-class GoogleCloudMlV1__VersionFramework(str, Enum):
-    """
-    Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-    """
-    FRAMEWORK_UNSPECIFIED = "FRAMEWORK_UNSPECIFIED"
-    TENSORFLOW = "TENSORFLOW"
-    SCIKIT_LEARN = "SCIKIT_LEARN"
-    XGBOOST = "XGBOOST"
-
-
-class GoogleCloudMlV1__VersionState(str, Enum):
-    """
-    Output only. The state of a version.
-    """
-    UNKNOWN = "UNKNOWN"
-    READY = "READY"
-    CREATING = "CREATING"
-    FAILED = "FAILED"
-    DELETING = "DELETING"
-    UPDATING = "UPDATING"
-
-
 class GoogleIamV1__AuditLogConfigLogType(str, Enum):
     """
     The log type that this config enables.
@@ -212,20 +171,6 @@ class GoogleIamV1__AuditLogConfigLogType(str, Enum):
     ADMIN_READ = "ADMIN_READ"
     DATA_WRITE = "DATA_WRITE"
     DATA_READ = "DATA_READ"
-
-
-class JobState(str, Enum):
-    """
-    Output only. The detailed state of a job.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    QUEUED = "QUEUED"
-    PREPARING = "PREPARING"
-    RUNNING = "RUNNING"
-    SUCCEEDED = "SUCCEEDED"
-    FAILED = "FAILED"
-    CANCELLING = "CANCELLING"
-    CANCELLED = "CANCELLED"
 
 
 class TrialState(str, Enum):
@@ -247,15 +192,3 @@ class VersionFramework(str, Enum):
     TENSORFLOW = "TENSORFLOW"
     SCIKIT_LEARN = "SCIKIT_LEARN"
     XGBOOST = "XGBOOST"
-
-
-class VersionState(str, Enum):
-    """
-    Output only. The state of a version.
-    """
-    UNKNOWN = "UNKNOWN"
-    READY = "READY"
-    CREATING = "CREATING"
-    FAILED = "FAILED"
-    DELETING = "DELETING"
-    UPDATING = "UPDATING"

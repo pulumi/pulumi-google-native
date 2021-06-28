@@ -17,40 +17,24 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 error_message: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  prediction_input: Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputArgs']] = None,
                  prediction_output: Optional[pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs']] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['JobState']] = None,
                  training_input: Optional[pulumi.Input['GoogleCloudMlV1__TrainingInputArgs']] = None,
                  training_output: Optional[pulumi.Input['GoogleCloudMlV1__TrainingOutputArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
-        :param pulumi.Input[str] create_time: When the job was created.
-        :param pulumi.Input[str] end_time: When the job processing was completed.
-        :param pulumi.Input[str] error_message: The details of a failure or a cancellation.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
         :param pulumi.Input[str] job_id: Required. The user-specified id of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
         :param pulumi.Input['GoogleCloudMlV1__PredictionInputArgs'] prediction_input: Input parameters to create a prediction job.
         :param pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs'] prediction_output: The current prediction job result.
-        :param pulumi.Input[str] start_time: When the job processing was started.
-        :param pulumi.Input['JobState'] state: The detailed state of a job.
         :param pulumi.Input['GoogleCloudMlV1__TrainingInputArgs'] training_input: Input parameters to create a training job.
         :param pulumi.Input['GoogleCloudMlV1__TrainingOutputArgs'] training_output: The current training job result.
         """
         pulumi.set(__self__, "project", project)
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
-        if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
-        if error_message is not None:
-            pulumi.set(__self__, "error_message", error_message)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if job_id is not None:
@@ -61,10 +45,6 @@ class JobArgs:
             pulumi.set(__self__, "prediction_input", prediction_input)
         if prediction_output is not None:
             pulumi.set(__self__, "prediction_output", prediction_output)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
         if training_input is not None:
             pulumi.set(__self__, "training_input", training_input)
         if training_output is not None:
@@ -78,42 +58,6 @@ class JobArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        When the job was created.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        When the job processing was completed.
-        """
-        return pulumi.get(self, "end_time")
-
-    @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "end_time", value)
-
-    @property
-    @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[str]]:
-        """
-        The details of a failure or a cancellation.
-        """
-        return pulumi.get(self, "error_message")
-
-    @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "error_message", value)
 
     @property
     @pulumi.getter
@@ -176,30 +120,6 @@ class JobArgs:
         pulumi.set(self, "prediction_output", value)
 
     @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        When the job processing was started.
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['JobState']]:
-        """
-        The detailed state of a job.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['JobState']]):
-        pulumi.set(self, "state", value)
-
-    @property
     @pulumi.getter(name="trainingInput")
     def training_input(self) -> Optional[pulumi.Input['GoogleCloudMlV1__TrainingInputArgs']]:
         """
@@ -229,17 +149,12 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 error_message: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  prediction_input: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionInputArgs']]] = None,
                  prediction_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['JobState']] = None,
                  training_input: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingInputArgs']]] = None,
                  training_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingOutputArgs']]] = None,
                  __props__=None):
@@ -248,16 +163,11 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: When the job was created.
-        :param pulumi.Input[str] end_time: When the job processing was completed.
-        :param pulumi.Input[str] error_message: The details of a failure or a cancellation.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
         :param pulumi.Input[str] job_id: Required. The user-specified id of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionInputArgs']] prediction_input: Input parameters to create a prediction job.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']] prediction_output: The current prediction job result.
-        :param pulumi.Input[str] start_time: When the job processing was started.
-        :param pulumi.Input['JobState'] state: The detailed state of a job.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingInputArgs']] training_input: Input parameters to create a training job.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingOutputArgs']] training_output: The current training job result.
         """
@@ -285,17 +195,12 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 error_message: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  prediction_input: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionInputArgs']]] = None,
                  prediction_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['JobState']] = None,
                  training_input: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingInputArgs']]] = None,
                  training_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingOutputArgs']]] = None,
                  __props__=None):
@@ -310,9 +215,6 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
-            __props__.__dict__["create_time"] = create_time
-            __props__.__dict__["end_time"] = end_time
-            __props__.__dict__["error_message"] = error_message
             __props__.__dict__["etag"] = etag
             __props__.__dict__["job_id"] = job_id
             __props__.__dict__["labels"] = labels
@@ -321,10 +223,13 @@ class Job(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["start_time"] = start_time
-            __props__.__dict__["state"] = state
             __props__.__dict__["training_input"] = training_input
             __props__.__dict__["training_output"] = training_output
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["end_time"] = None
+            __props__.__dict__["error_message"] = None
+            __props__.__dict__["start_time"] = None
+            __props__.__dict__["state"] = None
         super(Job, __self__).__init__(
             'google-native:ml/v1:Job',
             resource_name,

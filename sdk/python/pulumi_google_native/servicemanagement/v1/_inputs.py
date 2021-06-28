@@ -57,7 +57,6 @@ __all__ = [
     'QuotaArgs',
     'QuotaLimitArgs',
     'SourceContextArgs',
-    'SourceInfoArgs',
     'SystemParameterArgs',
     'SystemParameterRuleArgs',
     'SystemParametersArgs',
@@ -3110,30 +3109,6 @@ class SourceContextArgs:
     @file_name.setter
     def file_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_name", value)
-
-
-@pulumi.input_type
-class SourceInfoArgs:
-    def __init__(__self__, *,
-                 source_files: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
-        """
-        Source information used to create a Service Config
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] source_files: All files used during config generation.
-        """
-        if source_files is not None:
-            pulumi.set(__self__, "source_files", source_files)
-
-    @property
-    @pulumi.getter(name="sourceFiles")
-    def source_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        All files used during config generation.
-        """
-        return pulumi.get(self, "source_files")
-
-    @source_files.setter
-    def source_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "source_files", value)
 
 
 @pulumi.input_type

@@ -9,7 +9,6 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
 from ._enums import *
-from ._inputs import *
 
 __all__ = ['InterconnectArgs', 'Interconnect']
 
@@ -18,88 +17,40 @@ class InterconnectArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
-                 circuit_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 expected_outages: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectOutageNotificationArgs']]]] = None,
-                 google_ip_address: Optional[pulumi.Input[str]] = None,
-                 google_reference_id: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
-                 operational_status: Optional[pulumi.Input['InterconnectOperationalStatus']] = None,
-                 peer_ip_address: Optional[pulumi.Input[str]] = None,
-                 provisioned_link_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 requested_link_count: Optional[pulumi.Input[int]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InterconnectState']] = None):
+                 requested_link_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Interconnect resource.
         :param pulumi.Input[bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]] circuit_infos: [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a crossconnect.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectOutageNotificationArgs']]] expected_outages: [Output Only] A list of outages expected for this Interconnect.
-        :param pulumi.Input[str] google_ip_address: [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
-        :param pulumi.Input[str] google_reference_id: [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] interconnect_attachments: [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
         :param pulumi.Input['InterconnectInterconnectType'] interconnect_type: Type of interconnect, which can take one of the following values: 
                - PARTNER: A partner-managed interconnection shared between customers though a partner. 
                - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#interconnect for interconnects.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: 
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
-        :param pulumi.Input['InterconnectOperationalStatus'] operational_status: [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
-               - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
-               - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
-               - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-        :param pulumi.Input[str] peer_ip_address: [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
-        :param pulumi.Input[int] provisioned_link_count: [Output Only] Number of links actually provisioned in this interconnect.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input['InterconnectState'] state: [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
-               - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
-               - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
-               - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
         """
         pulumi.set(__self__, "project", project)
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
-        if circuit_infos is not None:
-            pulumi.set(__self__, "circuit_infos", circuit_infos)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if customer_name is not None:
             pulumi.set(__self__, "customer_name", customer_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if expected_outages is not None:
-            pulumi.set(__self__, "expected_outages", expected_outages)
-        if google_ip_address is not None:
-            pulumi.set(__self__, "google_ip_address", google_ip_address)
-        if google_reference_id is not None:
-            pulumi.set(__self__, "google_reference_id", google_reference_id)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if interconnect_attachments is not None:
-            pulumi.set(__self__, "interconnect_attachments", interconnect_attachments)
         if interconnect_type is not None:
             pulumi.set(__self__, "interconnect_type", interconnect_type)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if link_type is not None:
             pulumi.set(__self__, "link_type", link_type)
         if location is not None:
@@ -108,20 +59,10 @@ class InterconnectArgs:
             pulumi.set(__self__, "name", name)
         if noc_contact_email is not None:
             pulumi.set(__self__, "noc_contact_email", noc_contact_email)
-        if operational_status is not None:
-            pulumi.set(__self__, "operational_status", operational_status)
-        if peer_ip_address is not None:
-            pulumi.set(__self__, "peer_ip_address", peer_ip_address)
-        if provisioned_link_count is not None:
-            pulumi.set(__self__, "provisioned_link_count", provisioned_link_count)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if requested_link_count is not None:
             pulumi.set(__self__, "requested_link_count", requested_link_count)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -143,30 +84,6 @@ class InterconnectArgs:
     @admin_enabled.setter
     def admin_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "admin_enabled", value)
-
-    @property
-    @pulumi.getter(name="circuitInfos")
-    def circuit_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]]:
-        """
-        [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
-        """
-        return pulumi.get(self, "circuit_infos")
-
-    @circuit_infos.setter
-    def circuit_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]]):
-        pulumi.set(self, "circuit_infos", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter(name="customerName")
@@ -193,66 +110,6 @@ class InterconnectArgs:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="expectedOutages")
-    def expected_outages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectOutageNotificationArgs']]]]:
-        """
-        [Output Only] A list of outages expected for this Interconnect.
-        """
-        return pulumi.get(self, "expected_outages")
-
-    @expected_outages.setter
-    def expected_outages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectOutageNotificationArgs']]]]):
-        pulumi.set(self, "expected_outages", value)
-
-    @property
-    @pulumi.getter(name="googleIpAddress")
-    def google_ip_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
-        """
-        return pulumi.get(self, "google_ip_address")
-
-    @google_ip_address.setter
-    def google_ip_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "google_ip_address", value)
-
-    @property
-    @pulumi.getter(name="googleReferenceId")
-    def google_reference_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
-        """
-        return pulumi.get(self, "google_reference_id")
-
-    @google_reference_id.setter
-    def google_reference_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "google_reference_id", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="interconnectAttachments")
-    def interconnect_attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
-        """
-        return pulumi.get(self, "interconnect_attachments")
-
-    @interconnect_attachments.setter
-    def interconnect_attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "interconnect_attachments", value)
-
-    @property
     @pulumi.getter(name="interconnectType")
     def interconnect_type(self) -> Optional[pulumi.Input['InterconnectInterconnectType']]:
         """
@@ -265,18 +122,6 @@ class InterconnectArgs:
     @interconnect_type.setter
     def interconnect_type(self, value: Optional[pulumi.Input['InterconnectInterconnectType']]):
         pulumi.set(self, "interconnect_type", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#interconnect for interconnects.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter(name="linkType")
@@ -329,45 +174,6 @@ class InterconnectArgs:
         pulumi.set(self, "noc_contact_email", value)
 
     @property
-    @pulumi.getter(name="operationalStatus")
-    def operational_status(self) -> Optional[pulumi.Input['InterconnectOperationalStatus']]:
-        """
-        [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
-        - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
-        - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
-        - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-        """
-        return pulumi.get(self, "operational_status")
-
-    @operational_status.setter
-    def operational_status(self, value: Optional[pulumi.Input['InterconnectOperationalStatus']]):
-        pulumi.set(self, "operational_status", value)
-
-    @property
-    @pulumi.getter(name="peerIpAddress")
-    def peer_ip_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
-        """
-        return pulumi.get(self, "peer_ip_address")
-
-    @peer_ip_address.setter
-    def peer_ip_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "peer_ip_address", value)
-
-    @property
-    @pulumi.getter(name="provisionedLinkCount")
-    def provisioned_link_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] Number of links actually provisioned in this interconnect.
-        """
-        return pulumi.get(self, "provisioned_link_count")
-
-    @provisioned_link_count.setter
-    def provisioned_link_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "provisioned_link_count", value)
-
-    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -388,33 +194,6 @@ class InterconnectArgs:
     def requested_link_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "requested_link_count", value)
 
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['InterconnectState']]:
-        """
-        [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
-        - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
-        - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
-        - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['InterconnectState']]):
-        pulumi.set(self, "state", value)
-
 
 class Interconnect(pulumi.CustomResource):
     @overload
@@ -422,29 +201,16 @@ class Interconnect(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
-                 circuit_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectCircuitInfoArgs']]]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 expected_outages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectOutageNotificationArgs']]]]] = None,
-                 google_ip_address: Optional[pulumi.Input[str]] = None,
-                 google_reference_id: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
-                 operational_status: Optional[pulumi.Input['InterconnectOperationalStatus']] = None,
-                 peer_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 provisioned_link_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InterconnectState']] = None,
                  __props__=None):
         """
         Creates a Interconnect in the specified project using the data included in the request.
@@ -452,37 +218,18 @@ class Interconnect(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectCircuitInfoArgs']]]] circuit_infos: [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a crossconnect.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectOutageNotificationArgs']]]] expected_outages: [Output Only] A list of outages expected for this Interconnect.
-        :param pulumi.Input[str] google_ip_address: [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
-        :param pulumi.Input[str] google_reference_id: [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] interconnect_attachments: [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
         :param pulumi.Input['InterconnectInterconnectType'] interconnect_type: Type of interconnect, which can take one of the following values: 
                - PARTNER: A partner-managed interconnection shared between customers though a partner. 
                - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#interconnect for interconnects.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: 
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
-        :param pulumi.Input['InterconnectOperationalStatus'] operational_status: [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
-               - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
-               - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
-               - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-        :param pulumi.Input[str] peer_ip_address: [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
-        :param pulumi.Input[int] provisioned_link_count: [Output Only] Number of links actually provisioned in this interconnect.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input['InterconnectState'] state: [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
-               - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
-               - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
-               - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
         """
         ...
     @overload
@@ -509,29 +256,16 @@ class Interconnect(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
-                 circuit_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectCircuitInfoArgs']]]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 expected_outages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectOutageNotificationArgs']]]]] = None,
-                 google_ip_address: Optional[pulumi.Input[str]] = None,
-                 google_reference_id: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
-                 operational_status: Optional[pulumi.Input['InterconnectOperationalStatus']] = None,
-                 peer_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 provisioned_link_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InterconnectState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -545,31 +279,30 @@ class Interconnect(pulumi.CustomResource):
             __props__ = InterconnectArgs.__new__(InterconnectArgs)
 
             __props__.__dict__["admin_enabled"] = admin_enabled
-            __props__.__dict__["circuit_infos"] = circuit_infos
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["customer_name"] = customer_name
             __props__.__dict__["description"] = description
-            __props__.__dict__["expected_outages"] = expected_outages
-            __props__.__dict__["google_ip_address"] = google_ip_address
-            __props__.__dict__["google_reference_id"] = google_reference_id
-            __props__.__dict__["id"] = id
-            __props__.__dict__["interconnect_attachments"] = interconnect_attachments
             __props__.__dict__["interconnect_type"] = interconnect_type
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["link_type"] = link_type
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["noc_contact_email"] = noc_contact_email
-            __props__.__dict__["operational_status"] = operational_status
-            __props__.__dict__["peer_ip_address"] = peer_ip_address
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["provisioned_link_count"] = provisioned_link_count
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["requested_link_count"] = requested_link_count
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["state"] = state
+            __props__.__dict__["circuit_infos"] = None
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["expected_outages"] = None
+            __props__.__dict__["google_ip_address"] = None
+            __props__.__dict__["google_reference_id"] = None
+            __props__.__dict__["interconnect_attachments"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["operational_status"] = None
+            __props__.__dict__["peer_ip_address"] = None
+            __props__.__dict__["provisioned_link_count"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["state"] = None
         super(Interconnect, __self__).__init__(
             'google-native:compute/v1:Interconnect',
             resource_name,
@@ -627,7 +360,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="circuitInfos")
     def circuit_infos(self) -> pulumi.Output[Sequence['outputs.InterconnectCircuitInfoResponse']]:
         """
-        [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
+        A list of CircuitInfo objects, that describe the individual circuits in this LAG.
         """
         return pulumi.get(self, "circuit_infos")
 
@@ -635,7 +368,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -659,7 +392,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="expectedOutages")
     def expected_outages(self) -> pulumi.Output[Sequence['outputs.InterconnectOutageNotificationResponse']]:
         """
-        [Output Only] A list of outages expected for this Interconnect.
+        A list of outages expected for this Interconnect.
         """
         return pulumi.get(self, "expected_outages")
 
@@ -667,7 +400,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="googleIpAddress")
     def google_ip_address(self) -> pulumi.Output[str]:
         """
-        [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
+        IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
         """
         return pulumi.get(self, "google_ip_address")
 
@@ -675,7 +408,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="googleReferenceId")
     def google_reference_id(self) -> pulumi.Output[str]:
         """
-        [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
+        Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
         """
         return pulumi.get(self, "google_reference_id")
 
@@ -683,7 +416,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="interconnectAttachments")
     def interconnect_attachments(self) -> pulumi.Output[Sequence[str]]:
         """
-        [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
+        A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
         """
         return pulumi.get(self, "interconnect_attachments")
 
@@ -701,7 +434,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of the resource. Always compute#interconnect for interconnects.
+        Type of the resource. Always compute#interconnect for interconnects.
         """
         return pulumi.get(self, "kind")
 
@@ -743,7 +476,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> pulumi.Output[str]:
         """
-        [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
+        The current status of this Interconnect's functionality, which can take one of the following values: 
         - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
         - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
         - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
@@ -754,7 +487,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="peerIpAddress")
     def peer_ip_address(self) -> pulumi.Output[str]:
         """
-        [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
+        IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
         """
         return pulumi.get(self, "peer_ip_address")
 
@@ -762,7 +495,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="provisionedLinkCount")
     def provisioned_link_count(self) -> pulumi.Output[int]:
         """
-        [Output Only] Number of links actually provisioned in this interconnect.
+        Number of links actually provisioned in this interconnect.
         """
         return pulumi.get(self, "provisioned_link_count")
 
@@ -778,7 +511,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -786,7 +519,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
+        The current state of Interconnect functionality, which can take one of the following values: 
         - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
         - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
         - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.

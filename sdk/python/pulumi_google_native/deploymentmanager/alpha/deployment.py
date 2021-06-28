@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
-from ._enums import *
 from ._inputs import *
 
 __all__ = ['DeploymentArgs', 'Deployment']
@@ -21,31 +20,17 @@ class DeploymentArgs:
                  credential: Optional[pulumi.Input['CredentialArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 insert_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelEntryArgs']]]] = None,
-                 manifest: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operation: Optional[pulumi.Input['OperationArgs']] = None,
-                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentOutputEntryArgs']]]] = None,
                  preview: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input['TargetConfigurationArgs']] = None,
-                 update: Optional[pulumi.Input['DeploymentUpdateArgs']] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 target: Optional[pulumi.Input['TargetConfigurationArgs']] = None):
         """
         The set of arguments for constructing a Deployment resource.
         :param pulumi.Input['CredentialArgs'] credential: User provided default credential for the deployment.
         :param pulumi.Input[str] description: An optional user-provided description of the deployment.
-        :param pulumi.Input[str] insert_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelEntryArgs']]] labels: Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        :param pulumi.Input[str] manifest: URL of the manifest representing the last manifest that was successfully deployed. If no manifest has been successfully deployed, this field will be absent.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input['OperationArgs'] operation: The Operation that most recently ran, or is currently running, on this deployment.
-        :param pulumi.Input[Sequence[pulumi.Input['DeploymentOutputEntryArgs']]] outputs: List of outputs from the last manifest that deployed successfully.
-        :param pulumi.Input[str] self_link: Server defined URL for the resource.
         :param pulumi.Input['TargetConfigurationArgs'] target: [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
-        :param pulumi.Input['DeploymentUpdateArgs'] update: If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
-        :param pulumi.Input[str] update_time: Update timestamp in RFC3339 text format.
         """
         pulumi.set(__self__, "project", project)
         if create_policy is not None:
@@ -56,28 +41,14 @@ class DeploymentArgs:
             pulumi.set(__self__, "description", description)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if insert_time is not None:
-            pulumi.set(__self__, "insert_time", insert_time)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if manifest is not None:
-            pulumi.set(__self__, "manifest", manifest)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if operation is not None:
-            pulumi.set(__self__, "operation", operation)
-        if outputs is not None:
-            pulumi.set(__self__, "outputs", outputs)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if target is not None:
             pulumi.set(__self__, "target", target)
-        if update is not None:
-            pulumi.set(__self__, "update", update)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -131,18 +102,6 @@ class DeploymentArgs:
         pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter(name="insertTime")
-    def insert_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "insert_time")
-
-    @insert_time.setter
-    def insert_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "insert_time", value)
-
-    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelEntryArgs']]]]:
         """
@@ -153,18 +112,6 @@ class DeploymentArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelEntryArgs']]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def manifest(self) -> Optional[pulumi.Input[str]]:
-        """
-        URL of the manifest representing the last manifest that was successfully deployed. If no manifest has been successfully deployed, this field will be absent.
-        """
-        return pulumi.get(self, "manifest")
-
-    @manifest.setter
-    def manifest(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "manifest", value)
 
     @property
     @pulumi.getter
@@ -180,48 +127,12 @@ class DeploymentArgs:
 
     @property
     @pulumi.getter
-    def operation(self) -> Optional[pulumi.Input['OperationArgs']]:
-        """
-        The Operation that most recently ran, or is currently running, on this deployment.
-        """
-        return pulumi.get(self, "operation")
-
-    @operation.setter
-    def operation(self, value: Optional[pulumi.Input['OperationArgs']]):
-        pulumi.set(self, "operation", value)
-
-    @property
-    @pulumi.getter
-    def outputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentOutputEntryArgs']]]]:
-        """
-        List of outputs from the last manifest that deployed successfully.
-        """
-        return pulumi.get(self, "outputs")
-
-    @outputs.setter
-    def outputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentOutputEntryArgs']]]]):
-        pulumi.set(self, "outputs", value)
-
-    @property
-    @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "preview")
 
     @preview.setter
     def preview(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "preview", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        Server defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
 
     @property
     @pulumi.getter
@@ -235,30 +146,6 @@ class DeploymentArgs:
     def target(self, value: Optional[pulumi.Input['TargetConfigurationArgs']]):
         pulumi.set(self, "target", value)
 
-    @property
-    @pulumi.getter
-    def update(self) -> Optional[pulumi.Input['DeploymentUpdateArgs']]:
-        """
-        If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
-        """
-        return pulumi.get(self, "update")
-
-    @update.setter
-    def update(self, value: Optional[pulumi.Input['DeploymentUpdateArgs']]):
-        pulumi.set(self, "update", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Update timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
-
 
 class Deployment(pulumi.CustomResource):
     @overload
@@ -269,18 +156,11 @@ class Deployment(pulumi.CustomResource):
                  credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 insert_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelEntryArgs']]]]] = None,
-                 manifest: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operation: Optional[pulumi.Input[pulumi.InputType['OperationArgs']]] = None,
-                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentOutputEntryArgs']]]]] = None,
                  preview: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[pulumi.InputType['TargetConfigurationArgs']]] = None,
-                 update: Optional[pulumi.Input[pulumi.InputType['DeploymentUpdateArgs']]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a deployment and all of the resources described by the deployment manifest.
@@ -289,16 +169,9 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CredentialArgs']] credential: User provided default credential for the deployment.
         :param pulumi.Input[str] description: An optional user-provided description of the deployment.
-        :param pulumi.Input[str] insert_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelEntryArgs']]]] labels: Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        :param pulumi.Input[str] manifest: URL of the manifest representing the last manifest that was successfully deployed. If no manifest has been successfully deployed, this field will be absent.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[pulumi.InputType['OperationArgs']] operation: The Operation that most recently ran, or is currently running, on this deployment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentOutputEntryArgs']]]] outputs: List of outputs from the last manifest that deployed successfully.
-        :param pulumi.Input[str] self_link: Server defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['TargetConfigurationArgs']] target: [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
-        :param pulumi.Input[pulumi.InputType['DeploymentUpdateArgs']] update: If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
-        :param pulumi.Input[str] update_time: Update timestamp in RFC3339 text format.
         """
         ...
     @overload
@@ -328,18 +201,11 @@ class Deployment(pulumi.CustomResource):
                  credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 insert_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelEntryArgs']]]]] = None,
-                 manifest: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operation: Optional[pulumi.Input[pulumi.InputType['OperationArgs']]] = None,
-                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentOutputEntryArgs']]]]] = None,
                  preview: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[pulumi.InputType['TargetConfigurationArgs']]] = None,
-                 update: Optional[pulumi.Input[pulumi.InputType['DeploymentUpdateArgs']]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -356,21 +222,21 @@ class Deployment(pulumi.CustomResource):
             __props__.__dict__["credential"] = credential
             __props__.__dict__["description"] = description
             __props__.__dict__["id"] = id
-            __props__.__dict__["insert_time"] = insert_time
             __props__.__dict__["labels"] = labels
-            __props__.__dict__["manifest"] = manifest
             __props__.__dict__["name"] = name
-            __props__.__dict__["operation"] = operation
-            __props__.__dict__["outputs"] = outputs
             __props__.__dict__["preview"] = preview
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["self_link"] = self_link
             __props__.__dict__["target"] = target
-            __props__.__dict__["update"] = update
-            __props__.__dict__["update_time"] = update_time
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["insert_time"] = None
+            __props__.__dict__["manifest"] = None
+            __props__.__dict__["operation"] = None
+            __props__.__dict__["outputs"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["update"] = None
+            __props__.__dict__["update_time"] = None
         super(Deployment, __self__).__init__(
             'google-native:deploymentmanager/alpha:Deployment',
             resource_name,

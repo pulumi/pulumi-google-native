@@ -53,7 +53,7 @@ class GetVpnGatewayResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -69,7 +69,7 @@ class GetVpnGatewayResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
+        Type of resource. Always compute#vpnGateway for VPN gateways.
         """
         return pulumi.get(self, "kind")
 
@@ -111,7 +111,7 @@ class GetVpnGatewayResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the VPN gateway resides.
+        URL of the region where the VPN gateway resides.
         """
         return pulumi.get(self, "region")
 
@@ -119,7 +119,7 @@ class GetVpnGatewayResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

@@ -20,18 +20,12 @@ class DomainArgs:
                  site_id: pulumi.Input[str],
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
-                 provisioning: Optional[pulumi.Input['DomainProvisioningArgs']] = None,
-                 site: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['DomainStatus']] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 site: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[str] domain_name: Required. The domain name of the association.
         :param pulumi.Input['DomainRedirectArgs'] domain_redirect: If set, the domain should redirect with the provided parameters.
-        :param pulumi.Input['DomainProvisioningArgs'] provisioning: Information about the provisioning of certificates and the health of the DNS resolution for the domain.
         :param pulumi.Input[str] site: Required. The site name of the association.
-        :param pulumi.Input['DomainStatus'] status: Additional status of the domain association.
-        :param pulumi.Input[str] update_time: The time at which the domain was last updated.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "site_id", site_id)
@@ -39,14 +33,8 @@ class DomainArgs:
             pulumi.set(__self__, "domain_name", domain_name)
         if domain_redirect is not None:
             pulumi.set(__self__, "domain_redirect", domain_redirect)
-        if provisioning is not None:
-            pulumi.set(__self__, "provisioning", provisioning)
         if site is not None:
             pulumi.set(__self__, "site", site)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -92,18 +80,6 @@ class DomainArgs:
 
     @property
     @pulumi.getter
-    def provisioning(self) -> Optional[pulumi.Input['DomainProvisioningArgs']]:
-        """
-        Information about the provisioning of certificates and the health of the DNS resolution for the domain.
-        """
-        return pulumi.get(self, "provisioning")
-
-    @provisioning.setter
-    def provisioning(self, value: Optional[pulumi.Input['DomainProvisioningArgs']]):
-        pulumi.set(self, "provisioning", value)
-
-    @property
-    @pulumi.getter
     def site(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The site name of the association.
@@ -114,30 +90,6 @@ class DomainArgs:
     def site(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "site", value)
 
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['DomainStatus']]:
-        """
-        Additional status of the domain association.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['DomainStatus']]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time at which the domain was last updated.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
-
 
 class Domain(pulumi.CustomResource):
     @overload
@@ -147,11 +99,8 @@ class Domain(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 provisioning: Optional[pulumi.Input[pulumi.InputType['DomainProvisioningArgs']]] = None,
                  site: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['DomainStatus']] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a domain mapping on the specified site.
@@ -160,10 +109,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Required. The domain name of the association.
         :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] domain_redirect: If set, the domain should redirect with the provided parameters.
-        :param pulumi.Input[pulumi.InputType['DomainProvisioningArgs']] provisioning: Information about the provisioning of certificates and the health of the DNS resolution for the domain.
         :param pulumi.Input[str] site: Required. The site name of the association.
-        :param pulumi.Input['DomainStatus'] status: Additional status of the domain association.
-        :param pulumi.Input[str] update_time: The time at which the domain was last updated.
         """
         ...
     @overload
@@ -192,11 +138,8 @@ class Domain(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 provisioning: Optional[pulumi.Input[pulumi.InputType['DomainProvisioningArgs']]] = None,
                  site: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['DomainStatus']] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -214,13 +157,13 @@ class Domain(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["provisioning"] = provisioning
             __props__.__dict__["site"] = site
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
-            __props__.__dict__["status"] = status
-            __props__.__dict__["update_time"] = update_time
+            __props__.__dict__["provisioning"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["update_time"] = None
         super(Domain, __self__).__init__(
             'google-native:firebasehosting/v1beta1:Domain',
             resource_name,

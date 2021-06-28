@@ -75,7 +75,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -91,7 +91,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
+        Type of the resource. Always compute#autoscaler for autoscalers.
         """
         return pulumi.get(self, "kind")
 
@@ -107,7 +107,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter(name="recommendedSize")
     def recommended_size(self) -> int:
         """
-        [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
+        Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
         """
         return pulumi.get(self, "recommended_size")
 
@@ -115,7 +115,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
+        URL of the region where the instance group resides (for autoscalers living in regional scope).
         """
         return pulumi.get(self, "region")
 
@@ -123,7 +123,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter(name="scalingScheduleStatus")
     def scaling_schedule_status(self) -> Mapping[str, str]:
         """
-        [Output Only] Status information of existing scaling schedules.
+        Status information of existing scaling schedules.
         """
         return pulumi.get(self, "scaling_schedule_status")
 
@@ -131,7 +131,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -139,7 +139,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -147,7 +147,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the autoscaler configuration. Current set of possible values:  
+        The status of the autoscaler configuration. Current set of possible values:  
         - PENDING: Autoscaler backend hasn't read new/updated configuration. 
         - DELETING: Configuration is being deleted. 
         - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
@@ -159,7 +159,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter(name="statusDetails")
     def status_details(self) -> Sequence['outputs.AutoscalerStatusDetailsResponse']:
         """
-        [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
+        Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
         """
         return pulumi.get(self, "status_details")
 
@@ -175,7 +175,7 @@ class GetRegionAutoscalerResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
+        URL of the zone where the instance group resides (for autoscalers living in zonal scope).
         """
         return pulumi.get(self, "zone")
 

@@ -300,7 +300,7 @@ class AccessConfigResponse(dict):
                  type: str):
         """
         An access configuration attached to an instance's network interface. Only one access config per instance is supported.
-        :param str kind: [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+        :param str kind: Type of the resource. Always compute#accessConfig for access configs.
         :param str name: The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
         :param str nat_ip: An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         :param str network_tier: This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD.
@@ -324,7 +324,7 @@ class AccessConfigResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+        Type of the resource. Always compute#accessConfig for access configs.
         """
         return pulumi.get(self, "kind")
 
@@ -653,7 +653,7 @@ class AllocationSpecificSKUReservationResponse(dict):
         """
         This reservation type allows to pre allocate specific instance configuration.
         :param str count: Specifies the number of resources that are allocated.
-        :param str in_use_count: [Output Only] Indicates how many instances are in use.
+        :param str in_use_count: Indicates how many instances are in use.
         :param 'AllocationSpecificSKUAllocationReservedInstancePropertiesResponse' instance_properties: The instance properties for the reservation.
         """
         pulumi.set(__self__, "count", count)
@@ -672,7 +672,7 @@ class AllocationSpecificSKUReservationResponse(dict):
     @pulumi.getter(name="inUseCount")
     def in_use_count(self) -> str:
         """
-        [Output Only] Indicates how many instances are in use.
+        Indicates how many instances are in use.
         """
         return pulumi.get(self, "in_use_count")
 
@@ -1031,15 +1031,15 @@ class AttachedDiskResponse(dict):
                Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group.
         :param str disk_size_gb: The size of the disk in GB.
         :param Sequence['GuestOsFeatureResponse'] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
-        :param int index: [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        :param int index: A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         :param 'AttachedDiskInitializeParamsResponse' initialize_params: [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
                
                This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
-        :param str kind: [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
-        :param Sequence[str] licenses: [Output Only] Any valid publicly visible licenses.
+        :param str kind: Type of the resource. Always compute#attachedDisk for attached disks.
+        :param Sequence[str] licenses: Any valid publicly visible licenses.
         :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
-        :param 'InitialStateConfigResponse' shielded_instance_initial_state: [Output Only] shielded vm initial state stored on disk
+        :param 'InitialStateConfigResponse' shielded_instance_initial_state: shielded vm initial state stored on disk
         :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
                
                If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks.
@@ -1125,7 +1125,7 @@ class AttachedDiskResponse(dict):
     @pulumi.getter
     def index(self) -> int:
         """
-        [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         """
         return pulumi.get(self, "index")
 
@@ -1151,7 +1151,7 @@ class AttachedDiskResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+        Type of the resource. Always compute#attachedDisk for attached disks.
         """
         return pulumi.get(self, "kind")
 
@@ -1159,7 +1159,7 @@ class AttachedDiskResponse(dict):
     @pulumi.getter
     def licenses(self) -> Sequence[str]:
         """
-        [Output Only] Any valid publicly visible licenses.
+        Any valid publicly visible licenses.
         """
         return pulumi.get(self, "licenses")
 
@@ -1175,7 +1175,7 @@ class AttachedDiskResponse(dict):
     @pulumi.getter(name="shieldedInstanceInitialState")
     def shielded_instance_initial_state(self) -> 'outputs.InitialStateConfigResponse':
         """
-        [Output Only] shielded vm initial state stored on disk
+        shielded vm initial state stored on disk
         """
         return pulumi.get(self, "shielded_instance_initial_state")
 
@@ -2070,7 +2070,7 @@ class BackendBucketCdnPolicyResponse(dict):
         :param bool request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
         :param int serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         :param str signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
-        :param Sequence[str] signed_url_key_names: [Output Only] Names of the keys for signing request URLs.
+        :param Sequence[str] signed_url_key_names: Names of the keys for signing request URLs.
         """
         pulumi.set(__self__, "bypass_cache_on_request_headers", bypass_cache_on_request_headers)
         pulumi.set(__self__, "cache_mode", cache_mode)
@@ -2174,7 +2174,7 @@ class BackendBucketCdnPolicyResponse(dict):
     @pulumi.getter(name="signedUrlKeyNames")
     def signed_url_key_names(self) -> Sequence[str]:
         """
-        [Output Only] Names of the keys for signing request URLs.
+        Names of the keys for signing request URLs.
         """
         return pulumi.get(self, "signed_url_key_names")
 
@@ -2559,7 +2559,7 @@ class BackendServiceCdnPolicyResponse(dict):
         :param bool request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
         :param int serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         :param str signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
-        :param Sequence[str] signed_url_key_names: [Output Only] Names of the keys for signing request URLs.
+        :param Sequence[str] signed_url_key_names: Names of the keys for signing request URLs.
         """
         pulumi.set(__self__, "bypass_cache_on_request_headers", bypass_cache_on_request_headers)
         pulumi.set(__self__, "cache_key_policy", cache_key_policy)
@@ -2672,7 +2672,7 @@ class BackendServiceCdnPolicyResponse(dict):
     @pulumi.getter(name="signedUrlKeyNames")
     def signed_url_key_names(self) -> Sequence[str]:
         """
-        [Output Only] Names of the keys for signing request URLs.
+        Names of the keys for signing request URLs.
         """
         return pulumi.get(self, "signed_url_key_names")
 
@@ -2879,7 +2879,7 @@ class BackendServiceIAPResponse(dict):
         :param bool enabled: Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
         :param str oauth2_client_id: OAuth2 client ID to use for the authentication flow.
         :param str oauth2_client_secret: OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
-        :param str oauth2_client_secret_sha256: [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+        :param str oauth2_client_secret_sha256: SHA256 hash value for the field oauth2_client_secret above.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
@@ -2914,7 +2914,7 @@ class BackendServiceIAPResponse(dict):
     @pulumi.getter(name="oauth2ClientSecretSha256")
     def oauth2_client_secret_sha256(self) -> str:
         """
-        [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+        SHA256 hash value for the field oauth2_client_secret above.
         """
         return pulumi.get(self, "oauth2_client_secret_sha256")
 
@@ -4402,10 +4402,10 @@ class FirewallPolicyAssociationResponse(dict):
                  short_name: str):
         """
         :param str attachment_target: The target that the firewall policy is attached to.
-        :param str display_name: [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
-        :param str firewall_policy_id: [Output Only] The firewall policy ID of the association.
+        :param str display_name: Deprecated, please use short name instead. The display name of the firewall policy of the association.
+        :param str firewall_policy_id: The firewall policy ID of the association.
         :param str name: The name for an association.
-        :param str short_name: [Output Only] The short name of the firewall policy of the association.
+        :param str short_name: The short name of the firewall policy of the association.
         """
         pulumi.set(__self__, "attachment_target", attachment_target)
         pulumi.set(__self__, "display_name", display_name)
@@ -4425,7 +4425,7 @@ class FirewallPolicyAssociationResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+        Deprecated, please use short name instead. The display name of the firewall policy of the association.
         """
         return pulumi.get(self, "display_name")
 
@@ -4433,7 +4433,7 @@ class FirewallPolicyAssociationResponse(dict):
     @pulumi.getter(name="firewallPolicyId")
     def firewall_policy_id(self) -> str:
         """
-        [Output Only] The firewall policy ID of the association.
+        The firewall policy ID of the association.
         """
         return pulumi.get(self, "firewall_policy_id")
 
@@ -4449,7 +4449,7 @@ class FirewallPolicyAssociationResponse(dict):
     @pulumi.getter(name="shortName")
     def short_name(self) -> str:
         """
-        [Output Only] The short name of the firewall policy of the association.
+        The short name of the firewall policy of the association.
         """
         return pulumi.get(self, "short_name")
 
@@ -4635,7 +4635,7 @@ class FirewallPolicyRuleResponse(dict):
         :param str kind: [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
         :param 'FirewallPolicyRuleMatcherResponse' match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
-        :param int rule_tuple_count: [Output Only] Calculation of the complexity of a single firewall policy rule.
+        :param int rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
         :param Sequence[str] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param Sequence[str] target_secure_labels: A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
         :param Sequence[str] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
@@ -4721,7 +4721,7 @@ class FirewallPolicyRuleResponse(dict):
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> int:
         """
-        [Output Only] Calculation of the complexity of a single firewall policy rule.
+        Calculation of the complexity of a single firewall policy rule.
         """
         return pulumi.get(self, "rule_tuple_count")
 
@@ -4761,7 +4761,7 @@ class FixedOrPercentResponse(dict):
                  percent: int):
         """
         Encapsulates numeric value that can be either absolute or relative.
-        :param int calculated: [Output Only] Absolute value of VM instances calculated based on the specific mode.
+        :param int calculated: Absolute value of VM instances calculated based on the specific mode.
                
                 
                - If the value is fixed, then the calculated value is equal to the fixed value. 
@@ -4777,7 +4777,7 @@ class FixedOrPercentResponse(dict):
     @pulumi.getter
     def calculated(self) -> int:
         """
-        [Output Only] Absolute value of VM instances calculated based on the specific mode.
+        Absolute value of VM instances calculated based on the specific mode.
 
          
         - If the value is fixed, then the calculated value is equal to the fixed value. 
@@ -6824,17 +6824,17 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
                  restarting: int,
                  verifying: int):
         """
-        :param int abandoning: [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
-        :param int creating: [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
+        :param int abandoning: The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
+        :param int creating: The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
                
                If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
-        :param int creating_without_retries: [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
-        :param int deleting: [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
-        :param int none: [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
-        :param int recreating: [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
-        :param int refreshing: [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
-        :param int restarting: [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
-        :param int verifying: [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
+        :param int creating_without_retries: The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+        :param int deleting: The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
+        :param int none: The number of instances in the managed instance group that are running and have no scheduled actions.
+        :param int recreating: The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
+        :param int refreshing: The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
+        :param int restarting: The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+        :param int verifying: The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
         """
         pulumi.set(__self__, "abandoning", abandoning)
         pulumi.set(__self__, "creating", creating)
@@ -6850,7 +6850,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @pulumi.getter
     def abandoning(self) -> int:
         """
-        [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
+        The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
         """
         return pulumi.get(self, "abandoning")
 
@@ -6858,7 +6858,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @pulumi.getter
     def creating(self) -> int:
         """
-        [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
+        The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
 
         If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
         """
@@ -6868,7 +6868,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @pulumi.getter(name="creatingWithoutRetries")
     def creating_without_retries(self) -> int:
         """
-        [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+        The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
         """
         return pulumi.get(self, "creating_without_retries")
 
@@ -6876,7 +6876,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @pulumi.getter
     def deleting(self) -> int:
         """
-        [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
+        The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
         """
         return pulumi.get(self, "deleting")
 
@@ -6884,7 +6884,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @pulumi.getter
     def none(self) -> int:
         """
-        [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
+        The number of instances in the managed instance group that are running and have no scheduled actions.
         """
         return pulumi.get(self, "none")
 
@@ -6892,7 +6892,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @pulumi.getter
     def recreating(self) -> int:
         """
-        [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
+        The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
         """
         return pulumi.get(self, "recreating")
 
@@ -6900,7 +6900,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @pulumi.getter
     def refreshing(self) -> int:
         """
-        [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
+        The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
         """
         return pulumi.get(self, "refreshing")
 
@@ -6908,7 +6908,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @pulumi.getter
     def restarting(self) -> int:
         """
-        [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+        The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
         """
         return pulumi.get(self, "restarting")
 
@@ -6916,7 +6916,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @pulumi.getter
     def verifying(self) -> int:
         """
-        [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
+        The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
         """
         return pulumi.get(self, "verifying")
 
@@ -6996,10 +6996,10 @@ class InstanceGroupManagerStatusResponse(dict):
                  stateful: 'outputs.InstanceGroupManagerStatusStatefulResponse',
                  version_target: 'outputs.InstanceGroupManagerStatusVersionTargetResponse'):
         """
-        :param str autoscaler: [Output Only] The URL of the Autoscaler that targets this instance group manager.
-        :param bool is_stable: [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-        :param 'InstanceGroupManagerStatusStatefulResponse' stateful: [Output Only] Stateful status of the given Instance Group Manager.
-        :param 'InstanceGroupManagerStatusVersionTargetResponse' version_target: [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+        :param str autoscaler: The URL of the Autoscaler that targets this instance group manager.
+        :param bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        :param 'InstanceGroupManagerStatusStatefulResponse' stateful: Stateful status of the given Instance Group Manager.
+        :param 'InstanceGroupManagerStatusVersionTargetResponse' version_target: A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         """
         pulumi.set(__self__, "autoscaler", autoscaler)
         pulumi.set(__self__, "is_stable", is_stable)
@@ -7010,7 +7010,7 @@ class InstanceGroupManagerStatusResponse(dict):
     @pulumi.getter
     def autoscaler(self) -> str:
         """
-        [Output Only] The URL of the Autoscaler that targets this instance group manager.
+        The URL of the Autoscaler that targets this instance group manager.
         """
         return pulumi.get(self, "autoscaler")
 
@@ -7018,7 +7018,7 @@ class InstanceGroupManagerStatusResponse(dict):
     @pulumi.getter(name="isStable")
     def is_stable(self) -> bool:
         """
-        [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         """
         return pulumi.get(self, "is_stable")
 
@@ -7026,7 +7026,7 @@ class InstanceGroupManagerStatusResponse(dict):
     @pulumi.getter
     def stateful(self) -> 'outputs.InstanceGroupManagerStatusStatefulResponse':
         """
-        [Output Only] Stateful status of the given Instance Group Manager.
+        Stateful status of the given Instance Group Manager.
         """
         return pulumi.get(self, "stateful")
 
@@ -7034,7 +7034,7 @@ class InstanceGroupManagerStatusResponse(dict):
     @pulumi.getter(name="versionTarget")
     def version_target(self) -> 'outputs.InstanceGroupManagerStatusVersionTargetResponse':
         """
-        [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+        A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         """
         return pulumi.get(self, "version_target")
 
@@ -7099,8 +7099,8 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
                  has_stateful_config: bool,
                  per_instance_configs: 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse'):
         """
-        :param bool has_stateful_config: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: [Output Only] Status of per-instance configs on the instance.
+        :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: Status of per-instance configs on the instance.
         """
         pulumi.set(__self__, "has_stateful_config", has_stateful_config)
         pulumi.set(__self__, "per_instance_configs", per_instance_configs)
@@ -7109,7 +7109,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
     @pulumi.getter(name="hasStatefulConfig")
     def has_stateful_config(self) -> bool:
         """
-        [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
         """
         return pulumi.get(self, "has_stateful_config")
 
@@ -7117,7 +7117,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
     @pulumi.getter(name="perInstanceConfigs")
     def per_instance_configs(self) -> 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse':
         """
-        [Output Only] Status of per-instance configs on the instance.
+        Status of per-instance configs on the instance.
         """
         return pulumi.get(self, "per_instance_configs")
 
@@ -7144,7 +7144,7 @@ class InstanceGroupManagerStatusVersionTargetResponse(dict):
     def __init__(__self__, *,
                  is_reached: bool):
         """
-        :param bool is_reached: [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        :param bool is_reached: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
         pulumi.set(__self__, "is_reached", is_reached)
 
@@ -7152,7 +7152,7 @@ class InstanceGroupManagerStatusVersionTargetResponse(dict):
     @pulumi.getter(name="isReached")
     def is_reached(self) -> bool:
         """
-        [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
         return pulumi.get(self, "is_reached")
 
@@ -7778,7 +7778,7 @@ class InterconnectAttachmentPrivateInfoResponse(dict):
                  tag8021q: int):
         """
         Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED.
-        :param int tag8021q: [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+        :param int tag8021q: 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
         """
         pulumi.set(__self__, "tag8021q", tag8021q)
 
@@ -7786,7 +7786,7 @@ class InterconnectAttachmentPrivateInfoResponse(dict):
     @pulumi.getter
     def tag8021q(self) -> int:
         """
-        [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+        802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
         """
         return pulumi.get(self, "tag8021q")
 
@@ -8563,7 +8563,7 @@ class MetadataResponse(dict):
                
                To see the latest fingerprint, make a get() request to retrieve the resource.
         :param Sequence['MetadataItemsItemResponse'] items: Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-        :param str kind: [Output Only] Type of the resource. Always compute#metadata for metadata.
+        :param str kind: Type of the resource. Always compute#metadata for metadata.
         """
         pulumi.set(__self__, "fingerprint", fingerprint)
         pulumi.set(__self__, "items", items)
@@ -8591,7 +8591,7 @@ class MetadataResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#metadata for metadata.
+        Type of the resource. Always compute#metadata for metadata.
         """
         return pulumi.get(self, "kind")
 
@@ -8911,9 +8911,9 @@ class NetworkInterfaceResponse(dict):
         :param Sequence['AccessConfigResponse'] access_configs: An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
         :param Sequence['AliasIpRangeResponse'] alias_ip_ranges: An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
         :param str fingerprint: Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface. The request will fail with error 400 Bad Request if the fingerprint is not provided, or 412 Precondition Failed if the fingerprint is out of date.
-        :param str ipv6_address: [Output Only] An IPv6 internal network address for this network interface.
-        :param str kind: [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
-        :param str name: [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+        :param str ipv6_address: An IPv6 internal network address for this network interface.
+        :param str kind: Type of the resource. Always compute#networkInterface for network interfaces.
+        :param str name: The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
         :param str network: URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred.
                
                If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs:  
@@ -8965,7 +8965,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> str:
         """
-        [Output Only] An IPv6 internal network address for this network interface.
+        An IPv6 internal network address for this network interface.
         """
         return pulumi.get(self, "ipv6_address")
 
@@ -8973,7 +8973,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
+        Type of the resource. Always compute#networkInterface for network interfaces.
         """
         return pulumi.get(self, "kind")
 
@@ -8981,7 +8981,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+        The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
         """
         return pulumi.get(self, "name")
 
@@ -9084,8 +9084,8 @@ class NetworkPeeringResponse(dict):
         :param str name: Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param str network: The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
         :param int peer_mtu: Maximum Transmission Unit in bytes.
-        :param str state: [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-        :param str state_details: [Output Only] Details about the current state of the peering.
+        :param str state: State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
+        :param str state_details: Details about the current state of the peering.
         """
         pulumi.set(__self__, "auto_create_routes", auto_create_routes)
         pulumi.set(__self__, "exchange_subnet_routes", exchange_subnet_routes)
@@ -9175,7 +9175,7 @@ class NetworkPeeringResponse(dict):
     @pulumi.getter
     def state(self) -> str:
         """
-        [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
+        State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
         """
         return pulumi.get(self, "state")
 
@@ -9183,7 +9183,7 @@ class NetworkPeeringResponse(dict):
     @pulumi.getter(name="stateDetails")
     def state_details(self) -> str:
         """
-        [Output Only] Details about the current state of the peering.
+        Details about the current state of the peering.
         """
         return pulumi.get(self, "state_details")
 
@@ -9746,7 +9746,7 @@ class PacketMirroringForwardingRuleInfoResponse(dict):
                  canonical_url: str,
                  url: str):
         """
-        :param str canonical_url: [Output Only] Unique identifier for the forwarding rule; defined by the server.
+        :param str canonical_url: Unique identifier for the forwarding rule; defined by the server.
         :param str url: Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
         """
         pulumi.set(__self__, "canonical_url", canonical_url)
@@ -9756,7 +9756,7 @@ class PacketMirroringForwardingRuleInfoResponse(dict):
     @pulumi.getter(name="canonicalUrl")
     def canonical_url(self) -> str:
         """
-        [Output Only] Unique identifier for the forwarding rule; defined by the server.
+        Unique identifier for the forwarding rule; defined by the server.
         """
         return pulumi.get(self, "canonical_url")
 
@@ -9792,7 +9792,7 @@ class PacketMirroringMirroredResourceInfoInstanceInfoResponse(dict):
                  canonical_url: str,
                  url: str):
         """
-        :param str canonical_url: [Output Only] Unique identifier for the instance; defined by the server.
+        :param str canonical_url: Unique identifier for the instance; defined by the server.
         :param str url: Resource URL to the virtual machine instance which is being mirrored.
         """
         pulumi.set(__self__, "canonical_url", canonical_url)
@@ -9802,7 +9802,7 @@ class PacketMirroringMirroredResourceInfoInstanceInfoResponse(dict):
     @pulumi.getter(name="canonicalUrl")
     def canonical_url(self) -> str:
         """
-        [Output Only] Unique identifier for the instance; defined by the server.
+        Unique identifier for the instance; defined by the server.
         """
         return pulumi.get(self, "canonical_url")
 
@@ -9890,7 +9890,7 @@ class PacketMirroringMirroredResourceInfoSubnetInfoResponse(dict):
                  canonical_url: str,
                  url: str):
         """
-        :param str canonical_url: [Output Only] Unique identifier for the subnetwork; defined by the server.
+        :param str canonical_url: Unique identifier for the subnetwork; defined by the server.
         :param str url: Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
         """
         pulumi.set(__self__, "canonical_url", canonical_url)
@@ -9900,7 +9900,7 @@ class PacketMirroringMirroredResourceInfoSubnetInfoResponse(dict):
     @pulumi.getter(name="canonicalUrl")
     def canonical_url(self) -> str:
         """
-        [Output Only] Unique identifier for the subnetwork; defined by the server.
+        Unique identifier for the subnetwork; defined by the server.
         """
         return pulumi.get(self, "canonical_url")
 
@@ -9936,7 +9936,7 @@ class PacketMirroringNetworkInfoResponse(dict):
                  canonical_url: str,
                  url: str):
         """
-        :param str canonical_url: [Output Only] Unique identifier for the network; defined by the server.
+        :param str canonical_url: Unique identifier for the network; defined by the server.
         :param str url: URL of the network resource.
         """
         pulumi.set(__self__, "canonical_url", canonical_url)
@@ -9946,7 +9946,7 @@ class PacketMirroringNetworkInfoResponse(dict):
     @pulumi.getter(name="canonicalUrl")
     def canonical_url(self) -> str:
         """
-        [Output Only] Unique identifier for the network; defined by the server.
+        Unique identifier for the network; defined by the server.
         """
         return pulumi.get(self, "canonical_url")
 
@@ -10327,8 +10327,8 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
         :param str ip_cidr_range: The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
         :param bool is_address: Whether the sub prefix is delegated to create Address resources in the delegatee project.
         :param str name: The name of the sub public delegated prefix.
-        :param str region: [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
-        :param str status: [Output Only] The status of the sub public delegated prefix.
+        :param str region: The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+        :param str status: The status of the sub public delegated prefix.
         """
         pulumi.set(__self__, "delegatee_project", delegatee_project)
         pulumi.set(__self__, "description", description)
@@ -10382,7 +10382,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+        The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
         """
         return pulumi.get(self, "region")
 
@@ -10390,7 +10390,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the sub public delegated prefix.
+        The status of the sub public delegated prefix.
         """
         return pulumi.get(self, "status")
 
@@ -10539,16 +10539,16 @@ class ReservationResponse(dict):
                  zone: str):
         """
         Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for {$api_version}.reservations ==)
-        :param str commitment: [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-        :param str creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
+        :param str commitment: Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        :param str creation_timestamp: Creation timestamp in RFC3339 text format.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
-        :param str kind: [Output Only] Type of the resource. Always compute#reservations for reservations.
+        :param str kind: Type of the resource. Always compute#reservations for reservations.
         :param str name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param bool satisfies_pzs: [Output Only] Reserved for future use.
-        :param str self_link: [Output Only] Server-defined fully-qualified URL for this resource.
+        :param bool satisfies_pzs: Reserved for future use.
+        :param str self_link: Server-defined fully-qualified URL for this resource.
         :param 'AllocationSpecificSKUReservationResponse' specific_reservation: Reservation for instances with specific machine shapes.
         :param bool specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
-        :param str status: [Output Only] The status of the reservation.
+        :param str status: The status of the reservation.
         :param str zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
         """
         pulumi.set(__self__, "commitment", commitment)
@@ -10567,7 +10567,7 @@ class ReservationResponse(dict):
     @pulumi.getter
     def commitment(self) -> str:
         """
-        [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         """
         return pulumi.get(self, "commitment")
 
@@ -10575,7 +10575,7 @@ class ReservationResponse(dict):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -10591,7 +10591,7 @@ class ReservationResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#reservations for reservations.
+        Type of the resource. Always compute#reservations for reservations.
         """
         return pulumi.get(self, "kind")
 
@@ -10607,7 +10607,7 @@ class ReservationResponse(dict):
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
-        [Output Only] Reserved for future use.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -10615,7 +10615,7 @@ class ReservationResponse(dict):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined fully-qualified URL for this resource.
+        Server-defined fully-qualified URL for this resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -10639,7 +10639,7 @@ class ReservationResponse(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the reservation.
+        The status of the reservation.
         """
         return pulumi.get(self, "status")
 
@@ -11040,8 +11040,8 @@ class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse(dict):
                  last_run_start_time: str,
                  next_run_start_time: str):
         """
-        :param str last_run_start_time: [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
-        :param str next_run_start_time: [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+        :param str last_run_start_time: The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+        :param str next_run_start_time: The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
         """
         pulumi.set(__self__, "last_run_start_time", last_run_start_time)
         pulumi.set(__self__, "next_run_start_time", next_run_start_time)
@@ -11050,7 +11050,7 @@ class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse(dict):
     @pulumi.getter(name="lastRunStartTime")
     def last_run_start_time(self) -> str:
         """
-        [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+        The last time the schedule successfully ran. The timestamp is an RFC3339 string.
         """
         return pulumi.get(self, "last_run_start_time")
 
@@ -11058,7 +11058,7 @@ class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse(dict):
     @pulumi.getter(name="nextRunStartTime")
     def next_run_start_time(self) -> str:
         """
-        [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+        The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
         """
         return pulumi.get(self, "next_run_start_time")
 
@@ -11089,7 +11089,7 @@ class ResourcePolicyResourceStatusResponse(dict):
                  instance_schedule_policy: 'outputs.ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse'):
         """
         Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
-        :param 'ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse' instance_schedule_policy: [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+        :param 'ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse' instance_schedule_policy: Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
         """
         pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
 
@@ -11097,7 +11097,7 @@ class ResourcePolicyResourceStatusResponse(dict):
     @pulumi.getter(name="instanceSchedulePolicy")
     def instance_schedule_policy(self) -> 'outputs.ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse':
         """
-        [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+        Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
         """
         return pulumi.get(self, "instance_schedule_policy")
 
@@ -11448,8 +11448,8 @@ class RouteWarningsItemDataItemResponse(dict):
                  key: str,
                  value: str):
         """
-        :param str key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-        :param str value: [Output Only] A warning data value corresponding to the key.
+        :param str key: A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: A warning data value corresponding to the key.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -11458,7 +11458,7 @@ class RouteWarningsItemDataItemResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
         """
         return pulumi.get(self, "key")
 
@@ -11466,7 +11466,7 @@ class RouteWarningsItemDataItemResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        [Output Only] A warning data value corresponding to the key.
+        A warning data value corresponding to the key.
         """
         return pulumi.get(self, "value")
 
@@ -11478,10 +11478,10 @@ class RouteWarningsItemResponse(dict):
                  data: Sequence['outputs.RouteWarningsItemDataItemResponse'],
                  message: str):
         """
-        :param str code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-        :param Sequence['RouteWarningsItemDataItemResponse'] data: [Output Only] Metadata about this warning in key: value format. For example:
+        :param str code: A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['RouteWarningsItemDataItemResponse'] data: Metadata about this warning in key: value format. For example:
                "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-        :param str message: [Output Only] A human-readable description of the warning code.
+        :param str message: A human-readable description of the warning code.
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "data", data)
@@ -11491,7 +11491,7 @@ class RouteWarningsItemResponse(dict):
     @pulumi.getter
     def code(self) -> str:
         """
-        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
         """
         return pulumi.get(self, "code")
 
@@ -11499,7 +11499,7 @@ class RouteWarningsItemResponse(dict):
     @pulumi.getter
     def data(self) -> Sequence['outputs.RouteWarningsItemDataItemResponse']:
         """
-        [Output Only] Metadata about this warning in key: value format. For example:
+        Metadata about this warning in key: value format. For example:
         "data": [ { "key": "scope", "value": "zones/us-east1-d" }
         """
         return pulumi.get(self, "data")
@@ -11508,7 +11508,7 @@ class RouteWarningsItemResponse(dict):
     @pulumi.getter
     def message(self) -> str:
         """
-        [Output Only] A human-readable description of the warning code.
+        A human-readable description of the warning code.
         """
         return pulumi.get(self, "message")
 
@@ -11705,7 +11705,7 @@ class RouterBgpPeerResponse(dict):
                If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
         :param str interface_name: Name of the interface the BGP peer is associated with.
         :param str ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
-        :param str management_type: [Output Only] The resource that configures and manages this BGP peer. 
+        :param str management_type: The resource that configures and manages this BGP peer. 
                - MANAGED_BY_USER is the default value and can be managed by you or other users 
                - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
         :param str name: Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -11800,7 +11800,7 @@ class RouterBgpPeerResponse(dict):
     @pulumi.getter(name="managementType")
     def management_type(self) -> str:
         """
-        [Output Only] The resource that configures and manages this BGP peer. 
+        The resource that configures and manages this BGP peer. 
         - MANAGED_BY_USER is the default value and can be managed by you or other users 
         - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
         """
@@ -11974,7 +11974,7 @@ class RouterInterfaceResponse(dict):
         :param str ip_range: IP address and range of the interface. The IP range must be in the RFC3927 link-local IP address space. The value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents the IP address of the interface.
         :param str linked_interconnect_attachment: URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
         :param str linked_vpn_tunnel: URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
-        :param str management_type: [Output Only] The resource that configures and manages this interface. 
+        :param str management_type: The resource that configures and manages this interface. 
                - MANAGED_BY_USER is the default value and can be managed directly by users. 
                - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
         :param str name: Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -12019,7 +12019,7 @@ class RouterInterfaceResponse(dict):
     @pulumi.getter(name="managementType")
     def management_type(self) -> str:
         """
-        [Output Only] The resource that configures and manages this interface. 
+        The resource that configures and manages this interface. 
         - MANAGED_BY_USER is the default value and can be managed directly by users. 
         - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
         """
@@ -12630,16 +12630,16 @@ class SavedAttachedDiskResponse(dict):
         :param str device_name: Specifies the name of the disk attached to the source instance.
         :param 'CustomerEncryptionKeyResponse' disk_encryption_key: The encryption key for the disk.
         :param str disk_size_gb: The size of the disk in base-2 GB.
-        :param str disk_type: [Output Only] URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+        :param str disk_type: URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
         :param Sequence['GuestOsFeatureResponse'] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
         :param int index: Specifies zero-based index of the disk that is attached to the source instance.
         :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
-        :param str kind: [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
-        :param Sequence[str] licenses: [Output Only] Any valid publicly visible licenses.
+        :param str kind: Type of the resource. Always compute#attachedDisk for attached disks.
+        :param Sequence[str] licenses: Any valid publicly visible licenses.
         :param str mode: The mode in which this disk is attached to the source instance, either READ_WRITE or READ_ONLY.
         :param str source: Specifies a URL of the disk attached to the source instance.
-        :param str storage_bytes: [Output Only] A size of the storage used by the disk's snapshot by this machine image.
-        :param str storage_bytes_status: [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        :param str storage_bytes: A size of the storage used by the disk's snapshot by this machine image.
+        :param str storage_bytes_status: An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         :param str type: Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
         """
         pulumi.set(__self__, "auto_delete", auto_delete)
@@ -12703,7 +12703,7 @@ class SavedAttachedDiskResponse(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         """
-        [Output Only] URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+        URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
         """
         return pulumi.get(self, "disk_type")
 
@@ -12735,7 +12735,7 @@ class SavedAttachedDiskResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+        Type of the resource. Always compute#attachedDisk for attached disks.
         """
         return pulumi.get(self, "kind")
 
@@ -12743,7 +12743,7 @@ class SavedAttachedDiskResponse(dict):
     @pulumi.getter
     def licenses(self) -> Sequence[str]:
         """
-        [Output Only] Any valid publicly visible licenses.
+        Any valid publicly visible licenses.
         """
         return pulumi.get(self, "licenses")
 
@@ -12767,7 +12767,7 @@ class SavedAttachedDiskResponse(dict):
     @pulumi.getter(name="storageBytes")
     def storage_bytes(self) -> str:
         """
-        [Output Only] A size of the storage used by the disk's snapshot by this machine image.
+        A size of the storage used by the disk's snapshot by this machine image.
         """
         return pulumi.get(self, "storage_bytes")
 
@@ -12775,7 +12775,7 @@ class SavedAttachedDiskResponse(dict):
     @pulumi.getter(name="storageBytesStatus")
     def storage_bytes_status(self) -> str:
         """
-        [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         """
         return pulumi.get(self, "storage_bytes_status")
 
@@ -13057,9 +13057,9 @@ class SecurityPolicyAssociationResponse(dict):
                  security_policy_id: str):
         """
         :param str attachment_id: The resource that the security policy is attached to.
-        :param str display_name: [Output Only] The display name of the security policy of the association.
+        :param str display_name: The display name of the security policy of the association.
         :param str name: The name for an association.
-        :param str security_policy_id: [Output Only] The security policy ID of the association.
+        :param str security_policy_id: The security policy ID of the association.
         """
         pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -13078,7 +13078,7 @@ class SecurityPolicyAssociationResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        [Output Only] The display name of the security policy of the association.
+        The display name of the security policy of the association.
         """
         return pulumi.get(self, "display_name")
 
@@ -13094,7 +13094,7 @@ class SecurityPolicyAssociationResponse(dict):
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> str:
         """
-        [Output Only] The security policy ID of the association.
+        The security policy ID of the association.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -13339,7 +13339,7 @@ class SecurityPolicyRuleResponse(dict):
         :param bool preview: If set to true, the specified action is not enforced.
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param str rule_number: Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
-        :param int rule_tuple_count: [Output Only] Calculation of the complexity of a single firewall security policy rule.
+        :param int rule_tuple_count: Calculation of the complexity of a single firewall security policy rule.
         :param Sequence[str] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
                
                This field may only be specified when versioned_expr is set to FIREWALL.
@@ -13436,7 +13436,7 @@ class SecurityPolicyRuleResponse(dict):
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> int:
         """
-        [Output Only] Calculation of the complexity of a single firewall security policy rule.
+        Calculation of the complexity of a single firewall security policy rule.
         """
         return pulumi.get(self, "rule_tuple_count")
 
@@ -14302,8 +14302,8 @@ class SslPolicyWarningsItemDataItemResponse(dict):
                  key: str,
                  value: str):
         """
-        :param str key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-        :param str value: [Output Only] A warning data value corresponding to the key.
+        :param str key: A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: A warning data value corresponding to the key.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -14312,7 +14312,7 @@ class SslPolicyWarningsItemDataItemResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
         """
         return pulumi.get(self, "key")
 
@@ -14320,7 +14320,7 @@ class SslPolicyWarningsItemDataItemResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        [Output Only] A warning data value corresponding to the key.
+        A warning data value corresponding to the key.
         """
         return pulumi.get(self, "value")
 
@@ -14332,10 +14332,10 @@ class SslPolicyWarningsItemResponse(dict):
                  data: Sequence['outputs.SslPolicyWarningsItemDataItemResponse'],
                  message: str):
         """
-        :param str code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-        :param Sequence['SslPolicyWarningsItemDataItemResponse'] data: [Output Only] Metadata about this warning in key: value format. For example:
+        :param str code: A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['SslPolicyWarningsItemDataItemResponse'] data: Metadata about this warning in key: value format. For example:
                "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-        :param str message: [Output Only] A human-readable description of the warning code.
+        :param str message: A human-readable description of the warning code.
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "data", data)
@@ -14345,7 +14345,7 @@ class SslPolicyWarningsItemResponse(dict):
     @pulumi.getter
     def code(self) -> str:
         """
-        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
         """
         return pulumi.get(self, "code")
 
@@ -14353,7 +14353,7 @@ class SslPolicyWarningsItemResponse(dict):
     @pulumi.getter
     def data(self) -> Sequence['outputs.SslPolicyWarningsItemDataItemResponse']:
         """
-        [Output Only] Metadata about this warning in key: value format. For example:
+        Metadata about this warning in key: value format. For example:
         "data": [ { "key": "scope", "value": "zones/us-east1-d" }
         """
         return pulumi.get(self, "data")
@@ -14362,7 +14362,7 @@ class SslPolicyWarningsItemResponse(dict):
     @pulumi.getter
     def message(self) -> str:
         """
-        [Output Only] A human-readable description of the warning code.
+        A human-readable description of the warning code.
         """
         return pulumi.get(self, "message")
 
@@ -14987,7 +14987,7 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
         A VPN gateway interface.
         :param str interconnect_attachment: URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
                Not currently available in all Interconnect locations.
-        :param str ip_address: [Output Only] The external IP address for this VPN gateway interface.
+        :param str ip_address: The external IP address for this VPN gateway interface.
         """
         pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         pulumi.set(__self__, "ip_address", ip_address)
@@ -15005,7 +15005,7 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
         """
-        [Output Only] The external IP address for this VPN gateway interface.
+        The external IP address for this VPN gateway interface.
         """
         return pulumi.get(self, "ip_address")
 

@@ -13,15 +13,12 @@ __all__ = [
     'AppEngineHttpRequestArgs',
     'AppEngineHttpTargetArgs',
     'AppEngineRoutingArgs',
-    'AttemptStatusArgs',
     'BindingArgs',
     'ExprArgs',
     'PullMessageArgs',
     'PullTargetArgs',
     'RateLimitsArgs',
     'RetryConfigArgs',
-    'StatusArgs',
-    'TaskStatusArgs',
 ]
 
 @pulumi.input_type
@@ -139,37 +136,21 @@ class AppEngineHttpTargetArgs:
 @pulumi.input_type
 class AppEngineRoutingArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-        :param pulumi.Input[str] host: The host that the task is sent to. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the queue's project ID. Some tasks which were created using the App Engine SDK use a custom domain name. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the task will be sent to the service which is the default service when the task is attempted. If version is empty, then the task will be sent to the version which is the default version when the task is attempted. If instance is empty, then the task will be sent to an instance which is available when the task is attempted. If service, version, or instance is invalid, then the task will be sent to the default version of the default service when the task is attempted.
         :param pulumi.Input[str] instance: App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
         :param pulumi.Input[str] service: App service. By default, the task is sent to the service which is the default service when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
         :param pulumi.Input[str] version: App version. By default, the task is sent to the version which is the default version when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
         """
-        if host is not None:
-            pulumi.set(__self__, "host", host)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if service is not None:
             pulumi.set(__self__, "service", service)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[str]]:
-        """
-        The host that the task is sent to. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the queue's project ID. Some tasks which were created using the App Engine SDK use a custom domain name. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the task will be sent to the service which is the default service when the task is attempted. If version is empty, then the task will be sent to the version which is the default version when the task is attempted. If instance is empty, then the task will be sent to an instance which is available when the task is attempted. If service, version, or instance is invalid, then the task will be sent to the default version of the default service when the task is attempted.
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host", value)
 
     @property
     @pulumi.getter
@@ -206,78 +187,6 @@ class AppEngineRoutingArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
-
-
-@pulumi.input_type
-class AttemptStatusArgs:
-    def __init__(__self__, *,
-                 dispatch_time: Optional[pulumi.Input[str]] = None,
-                 response_status: Optional[pulumi.Input['StatusArgs']] = None,
-                 response_time: Optional[pulumi.Input[str]] = None,
-                 schedule_time: Optional[pulumi.Input[str]] = None):
-        """
-        The status of a task attempt.
-        :param pulumi.Input[str] dispatch_time: The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-        :param pulumi.Input['StatusArgs'] response_status: The response from the target for this attempt. If the task has not been attempted or the task is currently running then the response status is unset.
-        :param pulumi.Input[str] response_time: The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-        :param pulumi.Input[str] schedule_time: The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-        """
-        if dispatch_time is not None:
-            pulumi.set(__self__, "dispatch_time", dispatch_time)
-        if response_status is not None:
-            pulumi.set(__self__, "response_status", response_status)
-        if response_time is not None:
-            pulumi.set(__self__, "response_time", response_time)
-        if schedule_time is not None:
-            pulumi.set(__self__, "schedule_time", schedule_time)
-
-    @property
-    @pulumi.getter(name="dispatchTime")
-    def dispatch_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-        """
-        return pulumi.get(self, "dispatch_time")
-
-    @dispatch_time.setter
-    def dispatch_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dispatch_time", value)
-
-    @property
-    @pulumi.getter(name="responseStatus")
-    def response_status(self) -> Optional[pulumi.Input['StatusArgs']]:
-        """
-        The response from the target for this attempt. If the task has not been attempted or the task is currently running then the response status is unset.
-        """
-        return pulumi.get(self, "response_status")
-
-    @response_status.setter
-    def response_status(self, value: Optional[pulumi.Input['StatusArgs']]):
-        pulumi.set(self, "response_status", value)
-
-    @property
-    @pulumi.getter(name="responseTime")
-    def response_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-        """
-        return pulumi.get(self, "response_time")
-
-    @response_time.setter
-    def response_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "response_time", value)
-
-    @property
-    @pulumi.getter(name="scheduleTime")
-    def schedule_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-        """
-        return pulumi.get(self, "schedule_time")
-
-    @schedule_time.setter
-    def schedule_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "schedule_time", value)
 
 
 @pulumi.input_type
@@ -615,133 +524,5 @@ class RetryConfigArgs:
     @unlimited_attempts.setter
     def unlimited_attempts(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "unlimited_attempts", value)
-
-
-@pulumi.input_type
-class StatusArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-
-@pulumi.input_type
-class TaskStatusArgs:
-    def __init__(__self__, *,
-                 attempt_dispatch_count: Optional[pulumi.Input[int]] = None,
-                 attempt_response_count: Optional[pulumi.Input[int]] = None,
-                 first_attempt_status: Optional[pulumi.Input['AttemptStatusArgs']] = None,
-                 last_attempt_status: Optional[pulumi.Input['AttemptStatusArgs']] = None):
-        """
-        Status of the task.
-        :param pulumi.Input[int] attempt_dispatch_count: The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
-        :param pulumi.Input[int] attempt_response_count: The number of attempts which have received a response. This field is not calculated for pull tasks.
-        :param pulumi.Input['AttemptStatusArgs'] first_attempt_status: The status of the task's first attempt. Only dispatch_time will be set. The other AttemptStatus information is not retained by Cloud Tasks. This field is not calculated for pull tasks.
-        :param pulumi.Input['AttemptStatusArgs'] last_attempt_status: The status of the task's last attempt. This field is not calculated for pull tasks.
-        """
-        if attempt_dispatch_count is not None:
-            pulumi.set(__self__, "attempt_dispatch_count", attempt_dispatch_count)
-        if attempt_response_count is not None:
-            pulumi.set(__self__, "attempt_response_count", attempt_response_count)
-        if first_attempt_status is not None:
-            pulumi.set(__self__, "first_attempt_status", first_attempt_status)
-        if last_attempt_status is not None:
-            pulumi.set(__self__, "last_attempt_status", last_attempt_status)
-
-    @property
-    @pulumi.getter(name="attemptDispatchCount")
-    def attempt_dispatch_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
-        """
-        return pulumi.get(self, "attempt_dispatch_count")
-
-    @attempt_dispatch_count.setter
-    def attempt_dispatch_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "attempt_dispatch_count", value)
-
-    @property
-    @pulumi.getter(name="attemptResponseCount")
-    def attempt_response_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of attempts which have received a response. This field is not calculated for pull tasks.
-        """
-        return pulumi.get(self, "attempt_response_count")
-
-    @attempt_response_count.setter
-    def attempt_response_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "attempt_response_count", value)
-
-    @property
-    @pulumi.getter(name="firstAttemptStatus")
-    def first_attempt_status(self) -> Optional[pulumi.Input['AttemptStatusArgs']]:
-        """
-        The status of the task's first attempt. Only dispatch_time will be set. The other AttemptStatus information is not retained by Cloud Tasks. This field is not calculated for pull tasks.
-        """
-        return pulumi.get(self, "first_attempt_status")
-
-    @first_attempt_status.setter
-    def first_attempt_status(self, value: Optional[pulumi.Input['AttemptStatusArgs']]):
-        pulumi.set(self, "first_attempt_status", value)
-
-    @property
-    @pulumi.getter(name="lastAttemptStatus")
-    def last_attempt_status(self) -> Optional[pulumi.Input['AttemptStatusArgs']]:
-        """
-        The status of the task's last attempt. This field is not calculated for pull tasks.
-        """
-        return pulumi.get(self, "last_attempt_status")
-
-    @last_attempt_status.setter
-    def last_attempt_status(self, value: Optional[pulumi.Input['AttemptStatusArgs']]):
-        pulumi.set(self, "last_attempt_status", value)
 
 
