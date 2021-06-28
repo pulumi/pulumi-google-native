@@ -42,46 +42,6 @@ func (e CloudRunConfigLoadBalancerType) ToStringPtrOutputWithContext(ctx context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output only] The current status of this cluster.
-type ClusterStatus pulumi.String
-
-const (
-	// Not set.
-	ClusterStatusStatusUnspecified = ClusterStatus("STATUS_UNSPECIFIED")
-	// The PROVISIONING state indicates the cluster is being created.
-	ClusterStatusProvisioning = ClusterStatus("PROVISIONING")
-	// The RUNNING state indicates the cluster has been created and is fully usable.
-	ClusterStatusRunning = ClusterStatus("RUNNING")
-	// The RECONCILING state indicates that some work is actively being done on the cluster, such as upgrading the master or node software. Details can be found in the `statusMessage` field.
-	ClusterStatusReconciling = ClusterStatus("RECONCILING")
-	// The STOPPING state indicates the cluster is being deleted.
-	ClusterStatusStopping = ClusterStatus("STOPPING")
-	// The ERROR state indicates the cluster is unusable. It will be automatically deleted. Details can be found in the `statusMessage` field.
-	ClusterStatusError = ClusterStatus("ERROR")
-	// The DEGRADED state indicates the cluster requires user action to restore full functionality. Details can be found in the `statusMessage` field.
-	ClusterStatusDegraded = ClusterStatus("DEGRADED")
-)
-
-func (ClusterStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e ClusterStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ClusterStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ClusterStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ClusterStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The desired state of IPv6 connectivity to Google Services.
 type ClusterUpdateDesiredPrivateIpv6GoogleAccess pulumi.String
 
@@ -209,46 +169,6 @@ func (e NetworkPolicyProvider) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e NetworkPolicyProvider) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output only] The status of the nodes in this pool instance.
-type NodePoolStatus pulumi.String
-
-const (
-	// Not set.
-	NodePoolStatusStatusUnspecified = NodePoolStatus("STATUS_UNSPECIFIED")
-	// The PROVISIONING state indicates the node pool is being created.
-	NodePoolStatusProvisioning = NodePoolStatus("PROVISIONING")
-	// The RUNNING state indicates the node pool has been created and is fully usable.
-	NodePoolStatusRunning = NodePoolStatus("RUNNING")
-	// The RUNNING_WITH_ERROR state indicates the node pool has been created and is partially usable. Some error state has occurred and some functionality may be impaired. Customer may need to reissue a request or trigger a new update.
-	NodePoolStatusRunningWithError = NodePoolStatus("RUNNING_WITH_ERROR")
-	// The RECONCILING state indicates that some work is actively being done on the node pool, such as upgrading node software. Details can be found in the `statusMessage` field.
-	NodePoolStatusReconciling = NodePoolStatus("RECONCILING")
-	// The STOPPING state indicates the node pool is being deleted.
-	NodePoolStatusStopping = NodePoolStatus("STOPPING")
-	// The ERROR state indicates the node pool may be unusable. Details can be found in the `statusMessage` field.
-	NodePoolStatusError = NodePoolStatus("ERROR")
-)
-
-func (NodePoolStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e NodePoolStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NodePoolStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NodePoolStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e NodePoolStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 

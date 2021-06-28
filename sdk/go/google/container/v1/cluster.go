@@ -366,12 +366,6 @@ type clusterArgs struct {
 	Conditions []StatusCondition `pulumi:"conditions"`
 	// Configuration of Confidential Nodes
 	ConfidentialNodes *ConfidentialNodes `pulumi:"confidentialNodes"`
-	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	CreateTime *string `pulumi:"createTime"`
-	// [Output only] The current software version of the master endpoint.
-	CurrentMasterVersion *string `pulumi:"currentMasterVersion"`
-	// [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
-	CurrentNodeVersion *string `pulumi:"currentNodeVersion"`
 	// Configuration of etcd encryption.
 	DatabaseEncryption *DatabaseEncryption `pulumi:"databaseEncryption"`
 	// The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
@@ -382,18 +376,13 @@ type clusterArgs struct {
 	EnableKubernetesAlpha *bool `pulumi:"enableKubernetesAlpha"`
 	// Enable the ability to use Cloud TPUs in this cluster.
 	EnableTpu *bool `pulumi:"enableTpu"`
-	// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
-	Endpoint *string `pulumi:"endpoint"`
-	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	ExpireTime *string `pulumi:"expireTime"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion *string `pulumi:"initialClusterVersion"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy *IPAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac *LegacyAbac `pulumi:"legacyAbac"`
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-	Location string `pulumi:"location"`
+	Location   string      `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations []string `pulumi:"locations"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
@@ -414,8 +403,6 @@ type clusterArgs struct {
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicy `pulumi:"networkPolicy"`
-	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
-	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools []NodePoolType `pulumi:"nodePools"`
 	// Notification configuration of the cluster.
@@ -431,18 +418,10 @@ type clusterArgs struct {
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
 	ResourceUsageExportConfig *ResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
-	// [Output only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
-	ServicesIpv4Cidr *string `pulumi:"servicesIpv4Cidr"`
 	// Shielded Nodes configuration.
 	ShieldedNodes *ShieldedNodes `pulumi:"shieldedNodes"`
-	// [Output only] The current status of this cluster.
-	Status *string `pulumi:"status"`
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
-	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
@@ -467,12 +446,6 @@ type ClusterArgs struct {
 	Conditions StatusConditionArrayInput
 	// Configuration of Confidential Nodes
 	ConfidentialNodes ConfidentialNodesPtrInput
-	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	CreateTime pulumi.StringPtrInput
-	// [Output only] The current software version of the master endpoint.
-	CurrentMasterVersion pulumi.StringPtrInput
-	// [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
-	CurrentNodeVersion pulumi.StringPtrInput
 	// Configuration of etcd encryption.
 	DatabaseEncryption DatabaseEncryptionPtrInput
 	// The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
@@ -483,18 +456,13 @@ type ClusterArgs struct {
 	EnableKubernetesAlpha pulumi.BoolPtrInput
 	// Enable the ability to use Cloud TPUs in this cluster.
 	EnableTpu pulumi.BoolPtrInput
-	// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
-	Endpoint pulumi.StringPtrInput
-	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	ExpireTime pulumi.StringPtrInput
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringPtrInput
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyPtrInput
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac LegacyAbacPtrInput
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-	Location pulumi.StringInput
+	Location   pulumi.StringInput
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayInput
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
@@ -515,8 +483,6 @@ type ClusterArgs struct {
 	NetworkConfig NetworkConfigPtrInput
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyPtrInput
-	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
-	NodeIpv4CidrSize pulumi.IntPtrInput
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools NodePoolTypeArrayInput
 	// Notification configuration of the cluster.
@@ -532,18 +498,10 @@ type ClusterArgs struct {
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
 	ResourceUsageExportConfig ResourceUsageExportConfigPtrInput
-	// [Output only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
-	ServicesIpv4Cidr pulumi.StringPtrInput
 	// Shielded Nodes configuration.
 	ShieldedNodes ShieldedNodesPtrInput
-	// [Output only] The current status of this cluster.
-	Status *ClusterStatus
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
 	Subnetwork pulumi.StringPtrInput
-	// [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
-	TpuIpv4CidrBlock pulumi.StringPtrInput
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling VerticalPodAutoscalingPtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.

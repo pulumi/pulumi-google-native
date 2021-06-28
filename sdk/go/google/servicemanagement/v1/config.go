@@ -258,8 +258,6 @@ type configArgs struct {
 	// Quota configuration.
 	Quota       *Quota `pulumi:"quota"`
 	ServiceName string `pulumi:"serviceName"`
-	// The source information for this configuration if available.
-	SourceInfo *SourceInfo `pulumi:"sourceInfo"`
 	// System parameter configuration.
 	SystemParameters *SystemParameters `pulumi:"systemParameters"`
 	// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
@@ -317,8 +315,6 @@ type ConfigArgs struct {
 	// Quota configuration.
 	Quota       QuotaPtrInput
 	ServiceName pulumi.StringInput
-	// The source information for this configuration if available.
-	SourceInfo SourceInfoPtrInput
 	// System parameter configuration.
 	SystemParameters SystemParametersPtrInput
 	// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.

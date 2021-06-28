@@ -30,7 +30,7 @@ type LookupTargetPoolResult struct {
 	//
 	// In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
 	BackupPool string `pulumi:"backupPool"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -44,15 +44,15 @@ type LookupTargetPoolResult struct {
 	HealthChecks []string `pulumi:"healthChecks"`
 	// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
 	Instances []string `pulumi:"instances"`
-	// [Output Only] Type of the resource. Always compute#targetPool for target pools.
+	// Type of the resource. Always compute#targetPool for target pools.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
-	// [Output Only] URL of the region where the target pool resides.
+	// URL of the region where the target pool resides.
 	Region string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
 	// Session affinity option, must be one of the following values:
 	// NONE: Connections from the same client IP may go to any instance in the pool.

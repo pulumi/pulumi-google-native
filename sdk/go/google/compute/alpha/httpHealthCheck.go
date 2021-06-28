@@ -17,7 +17,7 @@ type HttpHealthCheck struct {
 
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec pulumi.IntOutput `pulumi:"checkIntervalSec"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -25,7 +25,7 @@ type HttpHealthCheck struct {
 	HealthyThreshold pulumi.IntOutput `pulumi:"healthyThreshold"`
 	// The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
 	Host pulumi.StringOutput `pulumi:"host"`
-	// [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
+	// Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -33,9 +33,9 @@ type HttpHealthCheck struct {
 	Port pulumi.IntOutput `pulumi:"port"`
 	// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
 	RequestPath pulumi.StringOutput `pulumi:"requestPath"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec pulumi.IntOutput `pulumi:"timeoutSec"`
@@ -77,7 +77,7 @@ func GetHttpHealthCheck(ctx *pulumi.Context,
 type httpHealthCheckState struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec *int `pulumi:"checkIntervalSec"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -85,7 +85,7 @@ type httpHealthCheckState struct {
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
 	Host *string `pulumi:"host"`
-	// [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
+	// Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
@@ -93,9 +93,9 @@ type httpHealthCheckState struct {
 	Port *int `pulumi:"port"`
 	// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
 	RequestPath *string `pulumi:"requestPath"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec *int `pulumi:"timeoutSec"`
@@ -106,7 +106,7 @@ type httpHealthCheckState struct {
 type HttpHealthCheckState struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec pulumi.IntPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -114,7 +114,7 @@ type HttpHealthCheckState struct {
 	HealthyThreshold pulumi.IntPtrInput
 	// The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
 	Host pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
+	// Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
@@ -122,9 +122,9 @@ type HttpHealthCheckState struct {
 	Port pulumi.IntPtrInput
 	// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
 	RequestPath pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec pulumi.IntPtrInput
@@ -139,18 +139,12 @@ func (HttpHealthCheckState) ElementType() reflect.Type {
 type httpHealthCheckArgs struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec *int `pulumi:"checkIntervalSec"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
 	Host *string `pulumi:"host"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
-	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTP health check request. The default value is 80.
@@ -159,10 +153,6 @@ type httpHealthCheckArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
 	RequestPath *string `pulumi:"requestPath"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec *int `pulumi:"timeoutSec"`
 	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
@@ -173,18 +163,12 @@ type httpHealthCheckArgs struct {
 type HttpHealthCheckArgs struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec pulumi.IntPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
 	// The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
 	Host pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
-	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTP health check request. The default value is 80.
@@ -193,10 +177,6 @@ type HttpHealthCheckArgs struct {
 	RequestId pulumi.StringPtrInput
 	// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
 	RequestPath pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec pulumi.IntPtrInput
 	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.

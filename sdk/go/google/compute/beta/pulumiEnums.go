@@ -195,35 +195,6 @@ func (e AddressPurpose) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
-type AddressStatus pulumi.String
-
-const (
-	AddressStatusInUse     = AddressStatus("IN_USE")
-	AddressStatusReserved  = AddressStatus("RESERVED")
-	AddressStatusReserving = AddressStatus("RESERVING")
-)
-
-func (AddressStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e AddressStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AddressStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AddressStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AddressStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
 type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface pulumi.String
 
@@ -423,102 +394,6 @@ func (e AuthorizationLoggingOptionsPermissionType) ToStringPtrOutput() pulumi.St
 }
 
 func (e AuthorizationLoggingOptionsPermissionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of the autoscaler configuration. Current set of possible values:
-// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-// - DELETING: Configuration is being deleted.
-// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
-type AutoscalerStatus pulumi.String
-
-const (
-	AutoscalerStatusActive   = AutoscalerStatus("ACTIVE")
-	AutoscalerStatusDeleting = AutoscalerStatus("DELETING")
-	AutoscalerStatusError    = AutoscalerStatus("ERROR")
-	AutoscalerStatusPending  = AutoscalerStatus("PENDING")
-)
-
-func (AutoscalerStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e AutoscalerStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AutoscalerStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AutoscalerStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AutoscalerStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// The type of error, warning, or notice returned. Current set of possible values:
-// - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state).
-// - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group.
-// - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas.
-// - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling.
-// - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels.
-// - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group.
-// - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling.
-// - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer.
-// - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved.
-// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any.
-// - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it.
-// - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances.
-// - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region.
-// - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist.
-// - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate.
-// - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
-type AutoscalerStatusDetailsType pulumi.String
-
-const (
-	AutoscalerStatusDetailsTypeAllInstancesUnhealthy                        = AutoscalerStatusDetailsType("ALL_INSTANCES_UNHEALTHY")
-	AutoscalerStatusDetailsTypeBackendServiceDoesNotExist                   = AutoscalerStatusDetailsType("BACKEND_SERVICE_DOES_NOT_EXIST")
-	AutoscalerStatusDetailsTypeCappedAtMaxNumReplicas                       = AutoscalerStatusDetailsType("CAPPED_AT_MAX_NUM_REPLICAS")
-	AutoscalerStatusDetailsTypeCustomMetricDataPointsTooSparse              = AutoscalerStatusDetailsType("CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE")
-	AutoscalerStatusDetailsTypeCustomMetricInvalid                          = AutoscalerStatusDetailsType("CUSTOM_METRIC_INVALID")
-	AutoscalerStatusDetailsTypeMinEqualsMax                                 = AutoscalerStatusDetailsType("MIN_EQUALS_MAX")
-	AutoscalerStatusDetailsTypeMissingCustomMetricDataPoints                = AutoscalerStatusDetailsType("MISSING_CUSTOM_METRIC_DATA_POINTS")
-	AutoscalerStatusDetailsTypeMissingLoadBalancingDataPoints               = AutoscalerStatusDetailsType("MISSING_LOAD_BALANCING_DATA_POINTS")
-	AutoscalerStatusDetailsTypeModeOff                                      = AutoscalerStatusDetailsType("MODE_OFF")
-	AutoscalerStatusDetailsTypeModeOnlyScaleOut                             = AutoscalerStatusDetailsType("MODE_ONLY_SCALE_OUT")
-	AutoscalerStatusDetailsTypeModeOnlyUp                                   = AutoscalerStatusDetailsType("MODE_ONLY_UP")
-	AutoscalerStatusDetailsTypeMoreThanOneBackendService                    = AutoscalerStatusDetailsType("MORE_THAN_ONE_BACKEND_SERVICE")
-	AutoscalerStatusDetailsTypeNotEnoughQuotaAvailable                      = AutoscalerStatusDetailsType("NOT_ENOUGH_QUOTA_AVAILABLE")
-	AutoscalerStatusDetailsTypeRegionResourceStockout                       = AutoscalerStatusDetailsType("REGION_RESOURCE_STOCKOUT")
-	AutoscalerStatusDetailsTypeScalingTargetDoesNotExist                    = AutoscalerStatusDetailsType("SCALING_TARGET_DOES_NOT_EXIST")
-	AutoscalerStatusDetailsTypeScheduledInstancesGreaterThanAutoscalerMax   = AutoscalerStatusDetailsType("SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX")
-	AutoscalerStatusDetailsTypeScheduledInstancesLessThanAutoscalerMin      = AutoscalerStatusDetailsType("SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN")
-	AutoscalerStatusDetailsTypeUnknown                                      = AutoscalerStatusDetailsType("UNKNOWN")
-	AutoscalerStatusDetailsTypeUnsupportedMaxRateLoadBalancingConfiguration = AutoscalerStatusDetailsType("UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION")
-	AutoscalerStatusDetailsTypeZoneResourceStockout                         = AutoscalerStatusDetailsType("ZONE_RESOURCE_STOCKOUT")
-)
-
-func (AutoscalerStatusDetailsType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e AutoscalerStatusDetailsType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AutoscalerStatusDetailsType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AutoscalerStatusDetailsType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AutoscalerStatusDetailsType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -1132,42 +1007,6 @@ func (e DiskInterface) ToStringPtrOutputWithContext(ctx context.Context) pulumi.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of disk creation.
-// - CREATING: Disk is provisioning.
-// - RESTORING: Source data is being copied into the disk.
-// - FAILED: Disk creation failed.
-// - READY: Disk is ready for use.
-// - DELETING: Disk is deleting.
-type DiskStatus pulumi.String
-
-const (
-	DiskStatusCreating  = DiskStatus("CREATING")
-	DiskStatusDeleting  = DiskStatus("DELETING")
-	DiskStatusFailed    = DiskStatus("FAILED")
-	DiskStatusReady     = DiskStatus("READY")
-	DiskStatusRestoring = DiskStatus("RESTORING")
-)
-
-func (DiskStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e DiskStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DiskStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DiskStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DiskStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
 type DistributionPolicyTargetShape pulumi.String
 
@@ -1646,35 +1485,6 @@ func (e GlobalAddressPurpose) ToStringPtrOutputWithContext(ctx context.Context) 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
-type GlobalAddressStatus pulumi.String
-
-const (
-	GlobalAddressStatusInUse     = GlobalAddressStatus("IN_USE")
-	GlobalAddressStatusReserved  = GlobalAddressStatus("RESERVED")
-	GlobalAddressStatusReserving = GlobalAddressStatus("RESERVING")
-)
-
-func (GlobalAddressStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e GlobalAddressStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GlobalAddressStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GlobalAddressStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e GlobalAddressStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The IP protocol to which this rule applies.
 //
 // For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
@@ -1851,35 +1661,6 @@ func (e GlobalNetworkEndpointGroupNetworkEndpointType) ToStringPtrOutput() pulum
 }
 
 func (e GlobalNetworkEndpointGroupNetworkEndpointType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of the public delegated prefix.
-type GlobalPublicDelegatedPrefixStatus pulumi.String
-
-const (
-	GlobalPublicDelegatedPrefixStatusAnnounced    = GlobalPublicDelegatedPrefixStatus("ANNOUNCED")
-	GlobalPublicDelegatedPrefixStatusDeleting     = GlobalPublicDelegatedPrefixStatus("DELETING")
-	GlobalPublicDelegatedPrefixStatusInitializing = GlobalPublicDelegatedPrefixStatus("INITIALIZING")
-)
-
-func (GlobalPublicDelegatedPrefixStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e GlobalPublicDelegatedPrefixStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GlobalPublicDelegatedPrefixStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GlobalPublicDelegatedPrefixStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e GlobalPublicDelegatedPrefixStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -2227,36 +2008,6 @@ func (e ImageSourceType) ToStringPtrOutputWithContext(ctx context.Context) pulum
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
-type ImageStatus pulumi.String
-
-const (
-	ImageStatusDeleting = ImageStatus("DELETING")
-	ImageStatusFailed   = ImageStatus("FAILED")
-	ImageStatusPending  = ImageStatus("PENDING")
-	ImageStatusReady    = ImageStatus("READY")
-)
-
-func (ImageStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e ImageStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ImageStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ImageStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ImageStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 type InstanceGroupManagerFailoverAction pulumi.String
 
@@ -2547,42 +2298,6 @@ func (e InstancePropertiesPrivateIpv6GoogleAccess) ToStringPtrOutputWithContext(
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
-type InstanceStatus pulumi.String
-
-const (
-	InstanceStatusDeprovisioning = InstanceStatus("DEPROVISIONING")
-	InstanceStatusProvisioning   = InstanceStatus("PROVISIONING")
-	InstanceStatusRepairing      = InstanceStatus("REPAIRING")
-	InstanceStatusRunning        = InstanceStatus("RUNNING")
-	InstanceStatusStaging        = InstanceStatus("STAGING")
-	InstanceStatusStopped        = InstanceStatus("STOPPED")
-	InstanceStatusStopping       = InstanceStatus("STOPPING")
-	InstanceStatusSuspended      = InstanceStatus("SUSPENDED")
-	InstanceStatusSuspending     = InstanceStatus("SUSPENDING")
-	InstanceStatusTerminated     = InstanceStatus("TERMINATED")
-)
-
-func (InstanceStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InstanceStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InstanceStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InstanceStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InstanceStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values:
 // - BPS_50M: 50 Mbit/s
 // - BPS_100M: 100 Mbit/s
@@ -2696,75 +2411,6 @@ func (e InterconnectAttachmentEncryption) ToStringPtrOutputWithContext(ctx conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
-// - OS_ACTIVE: The attachment has been turned up and is ready to use.
-// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-type InterconnectAttachmentOperationalStatus pulumi.String
-
-const (
-	InterconnectAttachmentOperationalStatusOsActive        = InterconnectAttachmentOperationalStatus("OS_ACTIVE")
-	InterconnectAttachmentOperationalStatusOsUnprovisioned = InterconnectAttachmentOperationalStatus("OS_UNPROVISIONED")
-)
-
-func (InterconnectAttachmentOperationalStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InterconnectAttachmentOperationalStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectAttachmentOperationalStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectAttachmentOperationalStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InterconnectAttachmentOperationalStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
-// - ACTIVE: The attachment has been turned up and is ready to use.
-// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side.
-// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it.
-// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it.
-// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
-type InterconnectAttachmentStateEnum pulumi.String
-
-const (
-	InterconnectAttachmentStateEnumActive                 = InterconnectAttachmentStateEnum("ACTIVE")
-	InterconnectAttachmentStateEnumDefunct                = InterconnectAttachmentStateEnum("DEFUNCT")
-	InterconnectAttachmentStateEnumPartnerRequestReceived = InterconnectAttachmentStateEnum("PARTNER_REQUEST_RECEIVED")
-	InterconnectAttachmentStateEnumPendingCustomer        = InterconnectAttachmentStateEnum("PENDING_CUSTOMER")
-	InterconnectAttachmentStateEnumPendingPartner         = InterconnectAttachmentStateEnum("PENDING_PARTNER")
-	InterconnectAttachmentStateEnumStateUnspecified       = InterconnectAttachmentStateEnum("STATE_UNSPECIFIED")
-	InterconnectAttachmentStateEnumUnprovisioned          = InterconnectAttachmentStateEnum("UNPROVISIONED")
-)
-
-func (InterconnectAttachmentStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InterconnectAttachmentStateEnum) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectAttachmentStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectAttachmentStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InterconnectAttachmentStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The type of interconnect attachment this is, which can take one of the following values:
 // - DEDICATED: an attachment to a Dedicated Interconnect.
 // - PARTNER: an attachment to a Partner Interconnect, created by the customer.
@@ -2858,162 +2504,6 @@ func (e InterconnectLinkType) ToStringPtrOutputWithContext(ctx context.Context) 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The current status of this Interconnect's functionality, which can take one of the following values:
-// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect.
-// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect.
-// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-type InterconnectOperationalStatus pulumi.String
-
-const (
-	InterconnectOperationalStatusOsActive        = InterconnectOperationalStatus("OS_ACTIVE")
-	InterconnectOperationalStatusOsUnprovisioned = InterconnectOperationalStatus("OS_UNPROVISIONED")
-)
-
-func (InterconnectOperationalStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InterconnectOperationalStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectOperationalStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectOperationalStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InterconnectOperationalStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// Form this outage is expected to take, which can take one of the following values:
-// - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window.
-// - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
-type InterconnectOutageNotificationIssueType pulumi.String
-
-const (
-	InterconnectOutageNotificationIssueTypeItOutage        = InterconnectOutageNotificationIssueType("IT_OUTAGE")
-	InterconnectOutageNotificationIssueTypeItPartialOutage = InterconnectOutageNotificationIssueType("IT_PARTIAL_OUTAGE")
-	InterconnectOutageNotificationIssueTypeOutage          = InterconnectOutageNotificationIssueType("OUTAGE")
-	InterconnectOutageNotificationIssueTypePartialOutage   = InterconnectOutageNotificationIssueType("PARTIAL_OUTAGE")
-)
-
-func (InterconnectOutageNotificationIssueType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InterconnectOutageNotificationIssueType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectOutageNotificationIssueType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectOutageNotificationIssueType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InterconnectOutageNotificationIssueType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// The party that generated this notification, which can take the following value:
-// - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
-type InterconnectOutageNotificationSource pulumi.String
-
-const (
-	InterconnectOutageNotificationSourceGoogle     = InterconnectOutageNotificationSource("GOOGLE")
-	InterconnectOutageNotificationSourceNsrcGoogle = InterconnectOutageNotificationSource("NSRC_GOOGLE")
-)
-
-func (InterconnectOutageNotificationSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InterconnectOutageNotificationSource) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectOutageNotificationSource) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectOutageNotificationSource) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InterconnectOutageNotificationSource) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// State of this notification, which can take one of the following values:
-// - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling.
-// - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
-type InterconnectOutageNotificationState pulumi.String
-
-const (
-	InterconnectOutageNotificationStateActive     = InterconnectOutageNotificationState("ACTIVE")
-	InterconnectOutageNotificationStateCancelled  = InterconnectOutageNotificationState("CANCELLED")
-	InterconnectOutageNotificationStateCompleted  = InterconnectOutageNotificationState("COMPLETED")
-	InterconnectOutageNotificationStateNsActive   = InterconnectOutageNotificationState("NS_ACTIVE")
-	InterconnectOutageNotificationStateNsCanceled = InterconnectOutageNotificationState("NS_CANCELED")
-)
-
-func (InterconnectOutageNotificationState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InterconnectOutageNotificationState) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectOutageNotificationState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectOutageNotificationState) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InterconnectOutageNotificationState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The current state of Interconnect functionality, which can take one of the following values:
-// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect.
-// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect.
-// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-type InterconnectStateEnum pulumi.String
-
-const (
-	InterconnectStateEnumActive        = InterconnectStateEnum("ACTIVE")
-	InterconnectStateEnumUnprovisioned = InterconnectStateEnum("UNPROVISIONED")
-)
-
-func (InterconnectStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e InterconnectStateEnum) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InterconnectStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InterconnectStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The log_name to populate in the Cloud Audit Record.
 type LogConfigCloudAuditOptionsLogName pulumi.String
 
@@ -3067,37 +2557,6 @@ func (e LogConfigDataAccessOptionsLogMode) ToStringPtrOutput() pulumi.StringPtrO
 }
 
 func (e LogConfigDataAccessOptionsLogMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
-type MachineImageStatus pulumi.String
-
-const (
-	MachineImageStatusCreating  = MachineImageStatus("CREATING")
-	MachineImageStatusDeleting  = MachineImageStatus("DELETING")
-	MachineImageStatusInvalid   = MachineImageStatus("INVALID")
-	MachineImageStatusReady     = MachineImageStatus("READY")
-	MachineImageStatusUploading = MachineImageStatus("UPLOADING")
-)
-
-func (MachineImageStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e MachineImageStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e MachineImageStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e MachineImageStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e MachineImageStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -3191,34 +2650,6 @@ func (e NetworkInterfaceNicType) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e NetworkInterfaceNicType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-type NetworkPeeringState pulumi.String
-
-const (
-	NetworkPeeringStateActive   = NetworkPeeringState("ACTIVE")
-	NetworkPeeringStateInactive = NetworkPeeringState("INACTIVE")
-)
-
-func (NetworkPeeringState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e NetworkPeeringState) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NetworkPeeringState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NetworkPeeringState) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e NetworkPeeringState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -3395,36 +2826,6 @@ func (e NodeTemplateCpuOvercommitType) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
-type NodeTemplateStatus pulumi.String
-
-const (
-	NodeTemplateStatusCreating = NodeTemplateStatus("CREATING")
-	NodeTemplateStatusDeleting = NodeTemplateStatus("DELETING")
-	NodeTemplateStatusInvalid  = NodeTemplateStatus("INVALID")
-	NodeTemplateStatusReady    = NodeTemplateStatus("READY")
-)
-
-func (NodeTemplateStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e NodeTemplateStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NodeTemplateStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NodeTemplateStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e NodeTemplateStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 type OrganizationSecurityPolicyType pulumi.String
 
@@ -3542,97 +2943,6 @@ func (e PublicAdvertisedPrefixStatus) ToStringPtrOutput() pulumi.StringPtrOutput
 }
 
 func (e PublicAdvertisedPrefixStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of the sub public delegated prefix.
-type PublicDelegatedPrefixPublicDelegatedSubPrefixStatus pulumi.String
-
-const (
-	PublicDelegatedPrefixPublicDelegatedSubPrefixStatusActive   = PublicDelegatedPrefixPublicDelegatedSubPrefixStatus("ACTIVE")
-	PublicDelegatedPrefixPublicDelegatedSubPrefixStatusInactive = PublicDelegatedPrefixPublicDelegatedSubPrefixStatus("INACTIVE")
-)
-
-func (PublicDelegatedPrefixPublicDelegatedSubPrefixStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e PublicDelegatedPrefixPublicDelegatedSubPrefixStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicDelegatedPrefixPublicDelegatedSubPrefixStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicDelegatedPrefixPublicDelegatedSubPrefixStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e PublicDelegatedPrefixPublicDelegatedSubPrefixStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of the public delegated prefix.
-type PublicDelegatedPrefixStatus pulumi.String
-
-const (
-	PublicDelegatedPrefixStatusAnnounced    = PublicDelegatedPrefixStatus("ANNOUNCED")
-	PublicDelegatedPrefixStatusDeleting     = PublicDelegatedPrefixStatus("DELETING")
-	PublicDelegatedPrefixStatusInitializing = PublicDelegatedPrefixStatus("INITIALIZING")
-)
-
-func (PublicDelegatedPrefixStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e PublicDelegatedPrefixStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicDelegatedPrefixStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicDelegatedPrefixStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e PublicDelegatedPrefixStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of the autoscaler configuration. Current set of possible values:
-// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-// - DELETING: Configuration is being deleted.
-// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
-type RegionAutoscalerStatus pulumi.String
-
-const (
-	RegionAutoscalerStatusActive   = RegionAutoscalerStatus("ACTIVE")
-	RegionAutoscalerStatusDeleting = RegionAutoscalerStatus("DELETING")
-	RegionAutoscalerStatusError    = RegionAutoscalerStatus("ERROR")
-	RegionAutoscalerStatusPending  = RegionAutoscalerStatus("PENDING")
-)
-
-func (RegionAutoscalerStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e RegionAutoscalerStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionAutoscalerStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionAutoscalerStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RegionAutoscalerStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -3851,36 +3161,6 @@ func (e RegionCommitmentPlan) ToStringPtrOutputWithContext(ctx context.Context) 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-type RegionCommitmentStatus pulumi.String
-
-const (
-	RegionCommitmentStatusActive       = RegionCommitmentStatus("ACTIVE")
-	RegionCommitmentStatusCreating     = RegionCommitmentStatus("CREATING")
-	RegionCommitmentStatusExpired      = RegionCommitmentStatus("EXPIRED")
-	RegionCommitmentStatusNotYetActive = RegionCommitmentStatus("NOT_YET_ACTIVE")
-)
-
-func (RegionCommitmentStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e RegionCommitmentStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionCommitmentStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionCommitmentStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RegionCommitmentStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
 type RegionCommitmentType pulumi.String
 
@@ -3941,42 +3221,6 @@ func (e RegionDiskInterface) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e RegionDiskInterface) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of disk creation.
-// - CREATING: Disk is provisioning.
-// - RESTORING: Source data is being copied into the disk.
-// - FAILED: Disk creation failed.
-// - READY: Disk is ready for use.
-// - DELETING: Disk is deleting.
-type RegionDiskStatus pulumi.String
-
-const (
-	RegionDiskStatusCreating  = RegionDiskStatus("CREATING")
-	RegionDiskStatusDeleting  = RegionDiskStatus("DELETING")
-	RegionDiskStatusFailed    = RegionDiskStatus("FAILED")
-	RegionDiskStatusReady     = RegionDiskStatus("READY")
-	RegionDiskStatusRestoring = RegionDiskStatus("RESTORING")
-)
-
-func (RegionDiskStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e RegionDiskStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionDiskStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionDiskStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RegionDiskStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -4196,37 +3440,6 @@ func (e ReservationAffinityConsumeReservationType) ToStringPtrOutputWithContext(
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of the reservation.
-type ReservationStatus pulumi.String
-
-const (
-	ReservationStatusCreating = ReservationStatus("CREATING")
-	ReservationStatusDeleting = ReservationStatus("DELETING")
-	ReservationStatusInvalid  = ReservationStatus("INVALID")
-	ReservationStatusReady    = ReservationStatus("READY")
-	ReservationStatusUpdating = ReservationStatus("UPDATING")
-)
-
-func (ReservationStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e ReservationStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ReservationStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ReservationStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ReservationStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
 type ResourceCommitmentType pulumi.String
 
@@ -4315,37 +3528,6 @@ func (e ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete) T
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// [Output Only] The status of resource policy creation.
-type ResourcePolicyStatus pulumi.String
-
-const (
-	ResourcePolicyStatusCreating = ResourcePolicyStatus("CREATING")
-	ResourcePolicyStatusDeleting = ResourcePolicyStatus("DELETING")
-	ResourcePolicyStatusExpired  = ResourcePolicyStatus("EXPIRED")
-	ResourcePolicyStatusInvalid  = ResourcePolicyStatus("INVALID")
-	ResourcePolicyStatusReady    = ResourcePolicyStatus("READY")
-)
-
-func (ResourcePolicyStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e ResourcePolicyStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ResourcePolicyStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ResourcePolicyStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ResourcePolicyStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
 type ResourcePolicyWeeklyCycleDayOfWeekDay pulumi.String
 
@@ -4377,57 +3559,6 @@ func (e ResourcePolicyWeeklyCycleDayOfWeekDay) ToStringPtrOutput() pulumi.String
 }
 
 func (e ResourcePolicyWeeklyCycleDayOfWeekDay) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-type RouteWarningsItemCode pulumi.String
-
-const (
-	RouteWarningsItemCodeCleanupFailed                       = RouteWarningsItemCode("CLEANUP_FAILED")
-	RouteWarningsItemCodeDeprecatedResourceUsed              = RouteWarningsItemCode("DEPRECATED_RESOURCE_USED")
-	RouteWarningsItemCodeDeprecatedTypeUsed                  = RouteWarningsItemCode("DEPRECATED_TYPE_USED")
-	RouteWarningsItemCodeDiskSizeLargerThanImageSize         = RouteWarningsItemCode("DISK_SIZE_LARGER_THAN_IMAGE_SIZE")
-	RouteWarningsItemCodeExperimentalTypeUsed                = RouteWarningsItemCode("EXPERIMENTAL_TYPE_USED")
-	RouteWarningsItemCodeExternalApiWarning                  = RouteWarningsItemCode("EXTERNAL_API_WARNING")
-	RouteWarningsItemCodeFieldValueOverriden                 = RouteWarningsItemCode("FIELD_VALUE_OVERRIDEN")
-	RouteWarningsItemCodeInjectedKernelsDeprecated           = RouteWarningsItemCode("INJECTED_KERNELS_DEPRECATED")
-	RouteWarningsItemCodeLargeDeploymentWarning              = RouteWarningsItemCode("LARGE_DEPLOYMENT_WARNING")
-	RouteWarningsItemCodeMissingTypeDependency               = RouteWarningsItemCode("MISSING_TYPE_DEPENDENCY")
-	RouteWarningsItemCodeNextHopAddressNotAssigned           = RouteWarningsItemCode("NEXT_HOP_ADDRESS_NOT_ASSIGNED")
-	RouteWarningsItemCodeNextHopCannotIpForward              = RouteWarningsItemCode("NEXT_HOP_CANNOT_IP_FORWARD")
-	RouteWarningsItemCodeNextHopInstanceNotFound             = RouteWarningsItemCode("NEXT_HOP_INSTANCE_NOT_FOUND")
-	RouteWarningsItemCodeNextHopInstanceNotOnNetwork         = RouteWarningsItemCode("NEXT_HOP_INSTANCE_NOT_ON_NETWORK")
-	RouteWarningsItemCodeNextHopNotRunning                   = RouteWarningsItemCode("NEXT_HOP_NOT_RUNNING")
-	RouteWarningsItemCodeNotCriticalError                    = RouteWarningsItemCode("NOT_CRITICAL_ERROR")
-	RouteWarningsItemCodeNoResultsOnPage                     = RouteWarningsItemCode("NO_RESULTS_ON_PAGE")
-	RouteWarningsItemCodePartialSuccess                      = RouteWarningsItemCode("PARTIAL_SUCCESS")
-	RouteWarningsItemCodeRequiredTosAgreement                = RouteWarningsItemCode("REQUIRED_TOS_AGREEMENT")
-	RouteWarningsItemCodeResourceInUseByOtherResourceWarning = RouteWarningsItemCode("RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING")
-	RouteWarningsItemCodeResourceNotDeleted                  = RouteWarningsItemCode("RESOURCE_NOT_DELETED")
-	RouteWarningsItemCodeSchemaValidationIgnored             = RouteWarningsItemCode("SCHEMA_VALIDATION_IGNORED")
-	RouteWarningsItemCodeSingleInstancePropertyTemplate      = RouteWarningsItemCode("SINGLE_INSTANCE_PROPERTY_TEMPLATE")
-	RouteWarningsItemCodeUndeclaredProperties                = RouteWarningsItemCode("UNDECLARED_PROPERTIES")
-	RouteWarningsItemCodeUnreachable                         = RouteWarningsItemCode("UNREACHABLE")
-)
-
-func (RouteWarningsItemCode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e RouteWarningsItemCode) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RouteWarningsItemCode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RouteWarningsItemCode) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RouteWarningsItemCode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -4687,66 +3818,6 @@ func (e RouterBgpPeerEnable) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e RouterBgpPeerEnable) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The resource that configures and manages this BGP peer.
-// - MANAGED_BY_USER is the default value and can be managed by you or other users
-// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
-type RouterBgpPeerManagementType pulumi.String
-
-const (
-	RouterBgpPeerManagementTypeManagedByAttachment = RouterBgpPeerManagementType("MANAGED_BY_ATTACHMENT")
-	RouterBgpPeerManagementTypeManagedByUser       = RouterBgpPeerManagementType("MANAGED_BY_USER")
-)
-
-func (RouterBgpPeerManagementType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e RouterBgpPeerManagementType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RouterBgpPeerManagementType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RouterBgpPeerManagementType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RouterBgpPeerManagementType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The resource that configures and manages this interface.
-// - MANAGED_BY_USER is the default value and can be managed directly by users.
-// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
-type RouterInterfaceManagementType pulumi.String
-
-const (
-	RouterInterfaceManagementTypeManagedByAttachment = RouterInterfaceManagementType("MANAGED_BY_ATTACHMENT")
-	RouterInterfaceManagementTypeManagedByUser       = RouterInterfaceManagementType("MANAGED_BY_USER")
-)
-
-func (RouterInterfaceManagementType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e RouterInterfaceManagementType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RouterInterfaceManagementType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RouterInterfaceManagementType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RouterInterfaceManagementType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -5011,118 +4082,6 @@ func (e SSLHealthCheckProxyHeader) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
-type SavedAttachedDiskInterface pulumi.String
-
-const (
-	SavedAttachedDiskInterfaceNvme = SavedAttachedDiskInterface("NVME")
-	SavedAttachedDiskInterfaceScsi = SavedAttachedDiskInterface("SCSI")
-)
-
-func (SavedAttachedDiskInterface) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SavedAttachedDiskInterface) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SavedAttachedDiskInterface) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SavedAttachedDiskInterface) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SavedAttachedDiskInterface) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// The mode in which this disk is attached to the source instance, either READ_WRITE or READ_ONLY.
-type SavedAttachedDiskMode pulumi.String
-
-const (
-	SavedAttachedDiskModeReadOnly  = SavedAttachedDiskMode("READ_ONLY")
-	SavedAttachedDiskModeReadWrite = SavedAttachedDiskMode("READ_WRITE")
-)
-
-func (SavedAttachedDiskMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SavedAttachedDiskMode) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SavedAttachedDiskMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SavedAttachedDiskMode) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SavedAttachedDiskMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
-type SavedAttachedDiskStorageBytesStatus pulumi.String
-
-const (
-	SavedAttachedDiskStorageBytesStatusUpdating = SavedAttachedDiskStorageBytesStatus("UPDATING")
-	SavedAttachedDiskStorageBytesStatusUpToDate = SavedAttachedDiskStorageBytesStatus("UP_TO_DATE")
-)
-
-func (SavedAttachedDiskStorageBytesStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SavedAttachedDiskStorageBytesStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SavedAttachedDiskStorageBytesStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SavedAttachedDiskStorageBytesStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SavedAttachedDiskStorageBytesStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
-type SavedAttachedDiskType pulumi.String
-
-const (
-	SavedAttachedDiskTypePersistent = SavedAttachedDiskType("PERSISTENT")
-	SavedAttachedDiskTypeScratch    = SavedAttachedDiskType("SCRATCH")
-)
-
-func (SavedAttachedDiskType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SavedAttachedDiskType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SavedAttachedDiskType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SavedAttachedDiskType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SavedAttachedDiskType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
 type SchedulingNodeAffinityOperator pulumi.String
 
@@ -5320,37 +4279,6 @@ func (e ServerBindingType) ToStringPtrOutputWithContext(ctx context.Context) pul
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The status of a connected endpoint to this service attachment.
-type ServiceAttachmentConnectedEndpointStatus pulumi.String
-
-const (
-	ServiceAttachmentConnectedEndpointStatusAccepted          = ServiceAttachmentConnectedEndpointStatus("ACCEPTED")
-	ServiceAttachmentConnectedEndpointStatusClosed            = ServiceAttachmentConnectedEndpointStatus("CLOSED")
-	ServiceAttachmentConnectedEndpointStatusPending           = ServiceAttachmentConnectedEndpointStatus("PENDING")
-	ServiceAttachmentConnectedEndpointStatusRejected          = ServiceAttachmentConnectedEndpointStatus("REJECTED")
-	ServiceAttachmentConnectedEndpointStatusStatusUnspecified = ServiceAttachmentConnectedEndpointStatus("STATUS_UNSPECIFIED")
-)
-
-func (ServiceAttachmentConnectedEndpointStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e ServiceAttachmentConnectedEndpointStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ServiceAttachmentConnectedEndpointStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ServiceAttachmentConnectedEndpointStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ServiceAttachmentConnectedEndpointStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
 type ServiceAttachmentConnectionPreference pulumi.String
 
@@ -5376,157 +4304,6 @@ func (e ServiceAttachmentConnectionPreference) ToStringPtrOutput() pulumi.String
 }
 
 func (e ServiceAttachmentConnectionPreference) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// The status of the forwarding rule.
-type ServiceAttachmentConsumerForwardingRuleStatus pulumi.String
-
-const (
-	ServiceAttachmentConsumerForwardingRuleStatusAccepted          = ServiceAttachmentConsumerForwardingRuleStatus("ACCEPTED")
-	ServiceAttachmentConsumerForwardingRuleStatusClosed            = ServiceAttachmentConsumerForwardingRuleStatus("CLOSED")
-	ServiceAttachmentConsumerForwardingRuleStatusPending           = ServiceAttachmentConsumerForwardingRuleStatus("PENDING")
-	ServiceAttachmentConsumerForwardingRuleStatusRejected          = ServiceAttachmentConsumerForwardingRuleStatus("REJECTED")
-	ServiceAttachmentConsumerForwardingRuleStatusStatusUnspecified = ServiceAttachmentConsumerForwardingRuleStatus("STATUS_UNSPECIFIED")
-)
-
-func (ServiceAttachmentConsumerForwardingRuleStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e ServiceAttachmentConsumerForwardingRuleStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ServiceAttachmentConsumerForwardingRuleStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ServiceAttachmentConsumerForwardingRuleStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ServiceAttachmentConsumerForwardingRuleStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
-type SnapshotStatus pulumi.String
-
-const (
-	SnapshotStatusCreating  = SnapshotStatus("CREATING")
-	SnapshotStatusDeleting  = SnapshotStatus("DELETING")
-	SnapshotStatusFailed    = SnapshotStatus("FAILED")
-	SnapshotStatusReady     = SnapshotStatus("READY")
-	SnapshotStatusUploading = SnapshotStatus("UPLOADING")
-)
-
-func (SnapshotStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SnapshotStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SnapshotStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SnapshotStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SnapshotStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
-type SnapshotStorageBytesStatus pulumi.String
-
-const (
-	SnapshotStorageBytesStatusUpdating = SnapshotStorageBytesStatus("UPDATING")
-	SnapshotStorageBytesStatusUpToDate = SnapshotStorageBytesStatus("UP_TO_DATE")
-)
-
-func (SnapshotStorageBytesStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SnapshotStorageBytesStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SnapshotStorageBytesStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SnapshotStorageBytesStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SnapshotStorageBytesStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// PostKeyRevocationActionType of the instance.
-type SourceInstancePropertiesPostKeyRevocationActionType pulumi.String
-
-const (
-	SourceInstancePropertiesPostKeyRevocationActionTypeNoop                                   = SourceInstancePropertiesPostKeyRevocationActionType("NOOP")
-	SourceInstancePropertiesPostKeyRevocationActionTypePostKeyRevocationActionTypeUnspecified = SourceInstancePropertiesPostKeyRevocationActionType("POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED")
-	SourceInstancePropertiesPostKeyRevocationActionTypeShutdown                               = SourceInstancePropertiesPostKeyRevocationActionType("SHUTDOWN")
-)
-
-func (SourceInstancePropertiesPostKeyRevocationActionType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SourceInstancePropertiesPostKeyRevocationActionType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SourceInstancePropertiesPostKeyRevocationActionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SourceInstancePropertiesPostKeyRevocationActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SourceInstancePropertiesPostKeyRevocationActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output only] Status of the managed certificate resource.
-type SslCertificateManagedSslCertificateStatus pulumi.String
-
-const (
-	SslCertificateManagedSslCertificateStatusActive                              = SslCertificateManagedSslCertificateStatus("ACTIVE")
-	SslCertificateManagedSslCertificateStatusManagedCertificateStatusUnspecified = SslCertificateManagedSslCertificateStatus("MANAGED_CERTIFICATE_STATUS_UNSPECIFIED")
-	SslCertificateManagedSslCertificateStatusProvisioning                        = SslCertificateManagedSslCertificateStatus("PROVISIONING")
-	SslCertificateManagedSslCertificateStatusProvisioningFailed                  = SslCertificateManagedSslCertificateStatus("PROVISIONING_FAILED")
-	SslCertificateManagedSslCertificateStatusProvisioningFailedPermanently       = SslCertificateManagedSslCertificateStatus("PROVISIONING_FAILED_PERMANENTLY")
-	SslCertificateManagedSslCertificateStatusRenewalFailed                       = SslCertificateManagedSslCertificateStatus("RENEWAL_FAILED")
-)
-
-func (SslCertificateManagedSslCertificateStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SslCertificateManagedSslCertificateStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SslCertificateManagedSslCertificateStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SslCertificateManagedSslCertificateStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SslCertificateManagedSslCertificateStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -5615,57 +4392,6 @@ func (e SslPolicyProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e SslPolicyProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-type SslPolicyWarningsItemCode pulumi.String
-
-const (
-	SslPolicyWarningsItemCodeCleanupFailed                       = SslPolicyWarningsItemCode("CLEANUP_FAILED")
-	SslPolicyWarningsItemCodeDeprecatedResourceUsed              = SslPolicyWarningsItemCode("DEPRECATED_RESOURCE_USED")
-	SslPolicyWarningsItemCodeDeprecatedTypeUsed                  = SslPolicyWarningsItemCode("DEPRECATED_TYPE_USED")
-	SslPolicyWarningsItemCodeDiskSizeLargerThanImageSize         = SslPolicyWarningsItemCode("DISK_SIZE_LARGER_THAN_IMAGE_SIZE")
-	SslPolicyWarningsItemCodeExperimentalTypeUsed                = SslPolicyWarningsItemCode("EXPERIMENTAL_TYPE_USED")
-	SslPolicyWarningsItemCodeExternalApiWarning                  = SslPolicyWarningsItemCode("EXTERNAL_API_WARNING")
-	SslPolicyWarningsItemCodeFieldValueOverriden                 = SslPolicyWarningsItemCode("FIELD_VALUE_OVERRIDEN")
-	SslPolicyWarningsItemCodeInjectedKernelsDeprecated           = SslPolicyWarningsItemCode("INJECTED_KERNELS_DEPRECATED")
-	SslPolicyWarningsItemCodeLargeDeploymentWarning              = SslPolicyWarningsItemCode("LARGE_DEPLOYMENT_WARNING")
-	SslPolicyWarningsItemCodeMissingTypeDependency               = SslPolicyWarningsItemCode("MISSING_TYPE_DEPENDENCY")
-	SslPolicyWarningsItemCodeNextHopAddressNotAssigned           = SslPolicyWarningsItemCode("NEXT_HOP_ADDRESS_NOT_ASSIGNED")
-	SslPolicyWarningsItemCodeNextHopCannotIpForward              = SslPolicyWarningsItemCode("NEXT_HOP_CANNOT_IP_FORWARD")
-	SslPolicyWarningsItemCodeNextHopInstanceNotFound             = SslPolicyWarningsItemCode("NEXT_HOP_INSTANCE_NOT_FOUND")
-	SslPolicyWarningsItemCodeNextHopInstanceNotOnNetwork         = SslPolicyWarningsItemCode("NEXT_HOP_INSTANCE_NOT_ON_NETWORK")
-	SslPolicyWarningsItemCodeNextHopNotRunning                   = SslPolicyWarningsItemCode("NEXT_HOP_NOT_RUNNING")
-	SslPolicyWarningsItemCodeNotCriticalError                    = SslPolicyWarningsItemCode("NOT_CRITICAL_ERROR")
-	SslPolicyWarningsItemCodeNoResultsOnPage                     = SslPolicyWarningsItemCode("NO_RESULTS_ON_PAGE")
-	SslPolicyWarningsItemCodePartialSuccess                      = SslPolicyWarningsItemCode("PARTIAL_SUCCESS")
-	SslPolicyWarningsItemCodeRequiredTosAgreement                = SslPolicyWarningsItemCode("REQUIRED_TOS_AGREEMENT")
-	SslPolicyWarningsItemCodeResourceInUseByOtherResourceWarning = SslPolicyWarningsItemCode("RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING")
-	SslPolicyWarningsItemCodeResourceNotDeleted                  = SslPolicyWarningsItemCode("RESOURCE_NOT_DELETED")
-	SslPolicyWarningsItemCodeSchemaValidationIgnored             = SslPolicyWarningsItemCode("SCHEMA_VALIDATION_IGNORED")
-	SslPolicyWarningsItemCodeSingleInstancePropertyTemplate      = SslPolicyWarningsItemCode("SINGLE_INSTANCE_PROPERTY_TEMPLATE")
-	SslPolicyWarningsItemCodeUndeclaredProperties                = SslPolicyWarningsItemCode("UNDECLARED_PROPERTIES")
-	SslPolicyWarningsItemCodeUnreachable                         = SslPolicyWarningsItemCode("UNREACHABLE")
-)
-
-func (SslPolicyWarningsItemCode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SslPolicyWarningsItemCode) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SslPolicyWarningsItemCode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SslPolicyWarningsItemCode) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SslPolicyWarningsItemCode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -5816,34 +4542,6 @@ func (e SubnetworkRole) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e SubnetworkRole) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-type SubnetworkStateEnum pulumi.String
-
-const (
-	SubnetworkStateEnumDraining = SubnetworkStateEnum("DRAINING")
-	SubnetworkStateEnumReady    = SubnetworkStateEnum("READY")
-)
-
-func (SubnetworkStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e SubnetworkStateEnum) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SubnetworkStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SubnetworkStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SubnetworkStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -6086,89 +4784,5 @@ func (e TargetTcpProxyProxyHeader) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e TargetTcpProxyProxyHeader) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
-type TargetVpnGatewayStatus pulumi.String
-
-const (
-	TargetVpnGatewayStatusCreating = TargetVpnGatewayStatus("CREATING")
-	TargetVpnGatewayStatusDeleting = TargetVpnGatewayStatus("DELETING")
-	TargetVpnGatewayStatusFailed   = TargetVpnGatewayStatus("FAILED")
-	TargetVpnGatewayStatusReady    = TargetVpnGatewayStatus("READY")
-)
-
-func (TargetVpnGatewayStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e TargetVpnGatewayStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TargetVpnGatewayStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e TargetVpnGatewayStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e TargetVpnGatewayStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// [Output Only] The status of the VPN tunnel, which can be one of the following:
-// - PROVISIONING: Resource is being allocated for the VPN tunnel.
-// - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel.
-// - FIRST_HANDSHAKE: Successful first handshake with the peer VPN.
-// - ESTABLISHED: Secure session is successfully established with the peer VPN.
-// - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS
-// - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret).
-// - NEGOTIATION_FAILURE: Handshake failed.
-// - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
-// - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.
-// - NO_INCOMING_PACKETS: No incoming packets from peer.
-// - REJECTED: Tunnel configuration was rejected, can be result of being denied access.
-// - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources.
-// - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state.
-// - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT.
-// - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
-type VpnTunnelStatus pulumi.String
-
-const (
-	VpnTunnelStatusAllocatingResources  = VpnTunnelStatus("ALLOCATING_RESOURCES")
-	VpnTunnelStatusAuthorizationError   = VpnTunnelStatus("AUTHORIZATION_ERROR")
-	VpnTunnelStatusDeprovisioning       = VpnTunnelStatus("DEPROVISIONING")
-	VpnTunnelStatusEstablished          = VpnTunnelStatus("ESTABLISHED")
-	VpnTunnelStatusFailed               = VpnTunnelStatus("FAILED")
-	VpnTunnelStatusFirstHandshake       = VpnTunnelStatus("FIRST_HANDSHAKE")
-	VpnTunnelStatusNegotiationFailure   = VpnTunnelStatus("NEGOTIATION_FAILURE")
-	VpnTunnelStatusNetworkError         = VpnTunnelStatus("NETWORK_ERROR")
-	VpnTunnelStatusNoIncomingPackets    = VpnTunnelStatus("NO_INCOMING_PACKETS")
-	VpnTunnelStatusProvisioning         = VpnTunnelStatus("PROVISIONING")
-	VpnTunnelStatusRejected             = VpnTunnelStatus("REJECTED")
-	VpnTunnelStatusStopped              = VpnTunnelStatus("STOPPED")
-	VpnTunnelStatusWaitingForFullConfig = VpnTunnelStatus("WAITING_FOR_FULL_CONFIG")
-)
-
-func (VpnTunnelStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e VpnTunnelStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e VpnTunnelStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e VpnTunnelStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e VpnTunnelStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }

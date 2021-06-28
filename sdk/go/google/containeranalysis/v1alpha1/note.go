@@ -161,16 +161,12 @@ type noteArgs struct {
 	BaseImage *Basis `pulumi:"baseImage"`
 	// Build provenance type for a verifiable build.
 	BuildType *BuildType `pulumi:"buildType"`
-	// The time this note was created. This field can be used as a filter in list requests.
-	CreateTime *string `pulumi:"createTime"`
 	// A note describing something that can be deployed.
 	Deployable *Deployable `pulumi:"deployable"`
 	// A note describing a provider/analysis type.
 	Discovery *Discovery `pulumi:"discovery"`
 	// Time of expiration for this note, null if note does not expire.
 	ExpirationTime *string `pulumi:"expirationTime"`
-	// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
-	Kind *string `pulumi:"kind"`
 	// A detailed description of this `Note`.
 	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
@@ -183,8 +179,6 @@ type noteArgs struct {
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
 	// A one sentence description of this `Note`.
 	ShortDescription *string `pulumi:"shortDescription"`
-	// The time this note was last updated. This field can be used as a filter in list requests.
-	UpdateTime *string `pulumi:"updateTime"`
 	// A note describing an upgrade.
 	Upgrade *UpgradeNote `pulumi:"upgrade"`
 	// A package vulnerability type of note.
@@ -199,16 +193,12 @@ type NoteArgs struct {
 	BaseImage BasisPtrInput
 	// Build provenance type for a verifiable build.
 	BuildType BuildTypePtrInput
-	// The time this note was created. This field can be used as a filter in list requests.
-	CreateTime pulumi.StringPtrInput
 	// A note describing something that can be deployed.
 	Deployable DeployablePtrInput
 	// A note describing a provider/analysis type.
 	Discovery DiscoveryPtrInput
 	// Time of expiration for this note, null if note does not expire.
 	ExpirationTime pulumi.StringPtrInput
-	// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
-	Kind *NoteKind
 	// A detailed description of this `Note`.
 	LongDescription pulumi.StringPtrInput
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
@@ -221,8 +211,6 @@ type NoteArgs struct {
 	RelatedUrl RelatedUrlArrayInput
 	// A one sentence description of this `Note`.
 	ShortDescription pulumi.StringPtrInput
-	// The time this note was last updated. This field can be used as a filter in list requests.
-	UpdateTime pulumi.StringPtrInput
 	// A note describing an upgrade.
 	Upgrade UpgradeNotePtrInput
 	// A package vulnerability type of note.

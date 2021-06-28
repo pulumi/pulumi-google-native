@@ -24,15 +24,15 @@ type LookupVpnTunnelArgs struct {
 }
 
 type LookupVpnTunnelResult struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// [Output Only] Detailed status message for the VPN tunnel.
+	// Detailed status message for the VPN tunnel.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
 	IkeVersion int `pulumi:"ikeVersion"`
-	// [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
+	// Type of resource. Always compute#vpnTunnel for VPN tunnels.
 	Kind string `pulumi:"kind"`
 	// Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is supported.
 	LocalTrafficSelector []string `pulumi:"localTrafficSelector"`
@@ -46,19 +46,19 @@ type LookupVpnTunnelResult struct {
 	PeerGcpGateway string `pulumi:"peerGcpGateway"`
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp string `pulumi:"peerIp"`
-	// [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
 	// Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
 	RemoteTrafficSelector []string `pulumi:"remoteTrafficSelector"`
 	// URL of the router resource to be used for dynamic routing.
 	Router string `pulumi:"router"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
 	SharedSecret string `pulumi:"sharedSecret"`
 	// Hash of the shared secret.
 	SharedSecretHash string `pulumi:"sharedSecretHash"`
-	// [Output Only] The status of the VPN tunnel, which can be one of the following:
+	// The status of the VPN tunnel, which can be one of the following:
 	// - PROVISIONING: Resource is being allocated for the VPN tunnel.
 	// - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel.
 	// - FIRST_HANDSHAKE: Successful first handshake with the peer VPN.

@@ -91,30 +91,22 @@ func (AnnotationSpecSetState) ElementType() reflect.Type {
 type annotationSpecSetArgs struct {
 	// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
 	AnnotationSpecs []GoogleCloudDatalabelingV1beta1AnnotationSpec `pulumi:"annotationSpecs"`
-	// The names of any related resources that are blocking changes to the annotation spec set.
-	BlockingResources []string `pulumi:"blockingResources"`
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
 	Description *string `pulumi:"description"`
 	// Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project     string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AnnotationSpecSet resource.
 type AnnotationSpecSetArgs struct {
 	// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
 	AnnotationSpecs GoogleCloudDatalabelingV1beta1AnnotationSpecArrayInput
-	// The names of any related resources that are blocking changes to the annotation spec set.
-	BlockingResources pulumi.StringArrayInput
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
 	Description pulumi.StringPtrInput
 	// Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
 	DisplayName pulumi.StringPtrInput
-	// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project     pulumi.StringInput
 }
 
 func (AnnotationSpecSetArgs) ElementType() reflect.Type {

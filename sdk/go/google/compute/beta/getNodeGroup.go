@@ -26,12 +26,12 @@ type LookupNodeGroupArgs struct {
 type LookupNodeGroupResult struct {
 	// Specifies how autoscaling should behave.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyResponse `pulumi:"autoscalingPolicy"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
 	Fingerprint string `pulumi:"fingerprint"`
-	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+	// The type of the resource. Always compute#nodeGroup for node group.
 	Kind string `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint string `pulumi:"locationHint"`
@@ -42,11 +42,11 @@ type LookupNodeGroupResult struct {
 	Name string `pulumi:"name"`
 	// URL of the node template to create the node group from.
 	NodeTemplate string `pulumi:"nodeTemplate"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output Only] The total number of nodes in the node group.
+	// The total number of nodes in the node group.
 	Size   int    `pulumi:"size"`
 	Status string `pulumi:"status"`
-	// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+	// The name of the zone where the node group resides, such as us-central1-a.
 	Zone string `pulumi:"zone"`
 }

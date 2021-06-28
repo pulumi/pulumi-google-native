@@ -2448,284 +2448,6 @@ func (o DeploymentLabelEntryResponseArrayOutput) Index(i pulumi.IntInput) Deploy
 	}).(DeploymentLabelEntryResponseOutput)
 }
 
-type DeploymentUpdate struct {
-	// An optional user-provided description of the deployment after the current update has been applied.
-	Description *string `pulumi:"description"`
-	// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-	Labels []DeploymentUpdateLabelEntry `pulumi:"labels"`
-	// URL of the manifest representing the update configuration of this deployment.
-	Manifest *string `pulumi:"manifest"`
-}
-
-// DeploymentUpdateInput is an input type that accepts DeploymentUpdateArgs and DeploymentUpdateOutput values.
-// You can construct a concrete instance of `DeploymentUpdateInput` via:
-//
-//          DeploymentUpdateArgs{...}
-type DeploymentUpdateInput interface {
-	pulumi.Input
-
-	ToDeploymentUpdateOutput() DeploymentUpdateOutput
-	ToDeploymentUpdateOutputWithContext(context.Context) DeploymentUpdateOutput
-}
-
-type DeploymentUpdateArgs struct {
-	// An optional user-provided description of the deployment after the current update has been applied.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-	Labels DeploymentUpdateLabelEntryArrayInput `pulumi:"labels"`
-	// URL of the manifest representing the update configuration of this deployment.
-	Manifest pulumi.StringPtrInput `pulumi:"manifest"`
-}
-
-func (DeploymentUpdateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentUpdate)(nil)).Elem()
-}
-
-func (i DeploymentUpdateArgs) ToDeploymentUpdateOutput() DeploymentUpdateOutput {
-	return i.ToDeploymentUpdateOutputWithContext(context.Background())
-}
-
-func (i DeploymentUpdateArgs) ToDeploymentUpdateOutputWithContext(ctx context.Context) DeploymentUpdateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdateOutput)
-}
-
-func (i DeploymentUpdateArgs) ToDeploymentUpdatePtrOutput() DeploymentUpdatePtrOutput {
-	return i.ToDeploymentUpdatePtrOutputWithContext(context.Background())
-}
-
-func (i DeploymentUpdateArgs) ToDeploymentUpdatePtrOutputWithContext(ctx context.Context) DeploymentUpdatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdateOutput).ToDeploymentUpdatePtrOutputWithContext(ctx)
-}
-
-// DeploymentUpdatePtrInput is an input type that accepts DeploymentUpdateArgs, DeploymentUpdatePtr and DeploymentUpdatePtrOutput values.
-// You can construct a concrete instance of `DeploymentUpdatePtrInput` via:
-//
-//          DeploymentUpdateArgs{...}
-//
-//  or:
-//
-//          nil
-type DeploymentUpdatePtrInput interface {
-	pulumi.Input
-
-	ToDeploymentUpdatePtrOutput() DeploymentUpdatePtrOutput
-	ToDeploymentUpdatePtrOutputWithContext(context.Context) DeploymentUpdatePtrOutput
-}
-
-type deploymentUpdatePtrType DeploymentUpdateArgs
-
-func DeploymentUpdatePtr(v *DeploymentUpdateArgs) DeploymentUpdatePtrInput {
-	return (*deploymentUpdatePtrType)(v)
-}
-
-func (*deploymentUpdatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentUpdate)(nil)).Elem()
-}
-
-func (i *deploymentUpdatePtrType) ToDeploymentUpdatePtrOutput() DeploymentUpdatePtrOutput {
-	return i.ToDeploymentUpdatePtrOutputWithContext(context.Background())
-}
-
-func (i *deploymentUpdatePtrType) ToDeploymentUpdatePtrOutputWithContext(ctx context.Context) DeploymentUpdatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdatePtrOutput)
-}
-
-type DeploymentUpdateOutput struct{ *pulumi.OutputState }
-
-func (DeploymentUpdateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentUpdate)(nil)).Elem()
-}
-
-func (o DeploymentUpdateOutput) ToDeploymentUpdateOutput() DeploymentUpdateOutput {
-	return o
-}
-
-func (o DeploymentUpdateOutput) ToDeploymentUpdateOutputWithContext(ctx context.Context) DeploymentUpdateOutput {
-	return o
-}
-
-func (o DeploymentUpdateOutput) ToDeploymentUpdatePtrOutput() DeploymentUpdatePtrOutput {
-	return o.ToDeploymentUpdatePtrOutputWithContext(context.Background())
-}
-
-func (o DeploymentUpdateOutput) ToDeploymentUpdatePtrOutputWithContext(ctx context.Context) DeploymentUpdatePtrOutput {
-	return o.ApplyT(func(v DeploymentUpdate) *DeploymentUpdate {
-		return &v
-	}).(DeploymentUpdatePtrOutput)
-}
-
-// An optional user-provided description of the deployment after the current update has been applied.
-func (o DeploymentUpdateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentUpdate) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-func (o DeploymentUpdateOutput) Labels() DeploymentUpdateLabelEntryArrayOutput {
-	return o.ApplyT(func(v DeploymentUpdate) []DeploymentUpdateLabelEntry { return v.Labels }).(DeploymentUpdateLabelEntryArrayOutput)
-}
-
-// URL of the manifest representing the update configuration of this deployment.
-func (o DeploymentUpdateOutput) Manifest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentUpdate) *string { return v.Manifest }).(pulumi.StringPtrOutput)
-}
-
-type DeploymentUpdatePtrOutput struct{ *pulumi.OutputState }
-
-func (DeploymentUpdatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeploymentUpdate)(nil)).Elem()
-}
-
-func (o DeploymentUpdatePtrOutput) ToDeploymentUpdatePtrOutput() DeploymentUpdatePtrOutput {
-	return o
-}
-
-func (o DeploymentUpdatePtrOutput) ToDeploymentUpdatePtrOutputWithContext(ctx context.Context) DeploymentUpdatePtrOutput {
-	return o
-}
-
-func (o DeploymentUpdatePtrOutput) Elem() DeploymentUpdateOutput {
-	return o.ApplyT(func(v *DeploymentUpdate) DeploymentUpdate { return *v }).(DeploymentUpdateOutput)
-}
-
-// An optional user-provided description of the deployment after the current update has been applied.
-func (o DeploymentUpdatePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentUpdate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-func (o DeploymentUpdatePtrOutput) Labels() DeploymentUpdateLabelEntryArrayOutput {
-	return o.ApplyT(func(v *DeploymentUpdate) []DeploymentUpdateLabelEntry {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(DeploymentUpdateLabelEntryArrayOutput)
-}
-
-// URL of the manifest representing the update configuration of this deployment.
-func (o DeploymentUpdatePtrOutput) Manifest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeploymentUpdate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Manifest
-	}).(pulumi.StringPtrOutput)
-}
-
-// Label object for DeploymentUpdate
-type DeploymentUpdateLabelEntry struct {
-	// Key of the label
-	Key *string `pulumi:"key"`
-	// Value of the label
-	Value *string `pulumi:"value"`
-}
-
-// DeploymentUpdateLabelEntryInput is an input type that accepts DeploymentUpdateLabelEntryArgs and DeploymentUpdateLabelEntryOutput values.
-// You can construct a concrete instance of `DeploymentUpdateLabelEntryInput` via:
-//
-//          DeploymentUpdateLabelEntryArgs{...}
-type DeploymentUpdateLabelEntryInput interface {
-	pulumi.Input
-
-	ToDeploymentUpdateLabelEntryOutput() DeploymentUpdateLabelEntryOutput
-	ToDeploymentUpdateLabelEntryOutputWithContext(context.Context) DeploymentUpdateLabelEntryOutput
-}
-
-// Label object for DeploymentUpdate
-type DeploymentUpdateLabelEntryArgs struct {
-	// Key of the label
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Value of the label
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (DeploymentUpdateLabelEntryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentUpdateLabelEntry)(nil)).Elem()
-}
-
-func (i DeploymentUpdateLabelEntryArgs) ToDeploymentUpdateLabelEntryOutput() DeploymentUpdateLabelEntryOutput {
-	return i.ToDeploymentUpdateLabelEntryOutputWithContext(context.Background())
-}
-
-func (i DeploymentUpdateLabelEntryArgs) ToDeploymentUpdateLabelEntryOutputWithContext(ctx context.Context) DeploymentUpdateLabelEntryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdateLabelEntryOutput)
-}
-
-// DeploymentUpdateLabelEntryArrayInput is an input type that accepts DeploymentUpdateLabelEntryArray and DeploymentUpdateLabelEntryArrayOutput values.
-// You can construct a concrete instance of `DeploymentUpdateLabelEntryArrayInput` via:
-//
-//          DeploymentUpdateLabelEntryArray{ DeploymentUpdateLabelEntryArgs{...} }
-type DeploymentUpdateLabelEntryArrayInput interface {
-	pulumi.Input
-
-	ToDeploymentUpdateLabelEntryArrayOutput() DeploymentUpdateLabelEntryArrayOutput
-	ToDeploymentUpdateLabelEntryArrayOutputWithContext(context.Context) DeploymentUpdateLabelEntryArrayOutput
-}
-
-type DeploymentUpdateLabelEntryArray []DeploymentUpdateLabelEntryInput
-
-func (DeploymentUpdateLabelEntryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeploymentUpdateLabelEntry)(nil)).Elem()
-}
-
-func (i DeploymentUpdateLabelEntryArray) ToDeploymentUpdateLabelEntryArrayOutput() DeploymentUpdateLabelEntryArrayOutput {
-	return i.ToDeploymentUpdateLabelEntryArrayOutputWithContext(context.Background())
-}
-
-func (i DeploymentUpdateLabelEntryArray) ToDeploymentUpdateLabelEntryArrayOutputWithContext(ctx context.Context) DeploymentUpdateLabelEntryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentUpdateLabelEntryArrayOutput)
-}
-
-// Label object for DeploymentUpdate
-type DeploymentUpdateLabelEntryOutput struct{ *pulumi.OutputState }
-
-func (DeploymentUpdateLabelEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentUpdateLabelEntry)(nil)).Elem()
-}
-
-func (o DeploymentUpdateLabelEntryOutput) ToDeploymentUpdateLabelEntryOutput() DeploymentUpdateLabelEntryOutput {
-	return o
-}
-
-func (o DeploymentUpdateLabelEntryOutput) ToDeploymentUpdateLabelEntryOutputWithContext(ctx context.Context) DeploymentUpdateLabelEntryOutput {
-	return o
-}
-
-// Key of the label
-func (o DeploymentUpdateLabelEntryOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentUpdateLabelEntry) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Value of the label
-func (o DeploymentUpdateLabelEntryOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentUpdateLabelEntry) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type DeploymentUpdateLabelEntryArrayOutput struct{ *pulumi.OutputState }
-
-func (DeploymentUpdateLabelEntryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeploymentUpdateLabelEntry)(nil)).Elem()
-}
-
-func (o DeploymentUpdateLabelEntryArrayOutput) ToDeploymentUpdateLabelEntryArrayOutput() DeploymentUpdateLabelEntryArrayOutput {
-	return o
-}
-
-func (o DeploymentUpdateLabelEntryArrayOutput) ToDeploymentUpdateLabelEntryArrayOutputWithContext(ctx context.Context) DeploymentUpdateLabelEntryArrayOutput {
-	return o
-}
-
-func (o DeploymentUpdateLabelEntryArrayOutput) Index(i pulumi.IntInput) DeploymentUpdateLabelEntryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentUpdateLabelEntry {
-		return vs[0].([]DeploymentUpdateLabelEntry)[vs[1].(int)]
-	}).(DeploymentUpdateLabelEntryOutput)
-}
-
 // Label object for DeploymentUpdate
 type DeploymentUpdateLabelEntryResponse struct {
 	// Key of the label
@@ -3955,813 +3677,12 @@ func (o InputMappingResponseArrayOutput) Index(i pulumi.IntInput) InputMappingRe
 	}).(InputMappingResponseOutput)
 }
 
-// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
-type Operation struct {
-	// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
-	ClientOperationId *string `pulumi:"clientOperationId"`
-	// [Output Only] A textual description of the operation, which is set when the operation is created.
-	Description *string `pulumi:"description"`
-	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
-	EndTime *string `pulumi:"endTime"`
-	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error *OperationError `pulumi:"error"`
-	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
-	HttpErrorMessage *string `pulumi:"httpErrorMessage"`
-	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
-	HttpErrorStatusCode *int `pulumi:"httpErrorStatusCode"`
-	// [Output Only] The unique identifier for the operation. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
-	InsertTime *string `pulumi:"insertTime"`
-	// [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
-	Kind *string `pulumi:"kind"`
-	// [Output Only] Name of the operation.
-	Name *string `pulumi:"name"`
-	// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
-	OperationGroupId *string `pulumi:"operationGroupId"`
-	// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
-	OperationType *string `pulumi:"operationType"`
-	// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
-	Progress *int `pulumi:"progress"`
-	// [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
-	Region *string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
-	StartTime *string `pulumi:"startTime"`
-	// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
-	Status *string `pulumi:"status"`
-	// [Output Only] An optional textual description of the current status of the operation.
-	StatusMessage *string `pulumi:"statusMessage"`
-	// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
-	TargetId *string `pulumi:"targetId"`
-	// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
-	TargetLink *string `pulumi:"targetLink"`
-	// [Output Only] User who requested the operation, for example: `user@example.com`.
-	User *string `pulumi:"user"`
-	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings []OperationWarningsItem `pulumi:"warnings"`
-	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
-	Zone *string `pulumi:"zone"`
-}
-
-// OperationInput is an input type that accepts OperationArgs and OperationOutput values.
-// You can construct a concrete instance of `OperationInput` via:
-//
-//          OperationArgs{...}
-type OperationInput interface {
-	pulumi.Input
-
-	ToOperationOutput() OperationOutput
-	ToOperationOutputWithContext(context.Context) OperationOutput
-}
-
-// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
-type OperationArgs struct {
-	// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
-	ClientOperationId pulumi.StringPtrInput `pulumi:"clientOperationId"`
-	// [Output Only] A textual description of the operation, which is set when the operation is created.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error OperationErrorPtrInput `pulumi:"error"`
-	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
-	HttpErrorMessage pulumi.StringPtrInput `pulumi:"httpErrorMessage"`
-	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
-	HttpErrorStatusCode pulumi.IntPtrInput `pulumi:"httpErrorStatusCode"`
-	// [Output Only] The unique identifier for the operation. This identifier is defined by the server.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
-	InsertTime pulumi.StringPtrInput `pulumi:"insertTime"`
-	// [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// [Output Only] Name of the operation.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
-	OperationGroupId pulumi.StringPtrInput `pulumi:"operationGroupId"`
-	// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
-	OperationType pulumi.StringPtrInput `pulumi:"operationType"`
-	// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
-	Progress pulumi.IntPtrInput `pulumi:"progress"`
-	// [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
-	// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
-	Status *OperationStatus `pulumi:"status"`
-	// [Output Only] An optional textual description of the current status of the operation.
-	StatusMessage pulumi.StringPtrInput `pulumi:"statusMessage"`
-	// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
-	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
-	// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
-	TargetLink pulumi.StringPtrInput `pulumi:"targetLink"`
-	// [Output Only] User who requested the operation, for example: `user@example.com`.
-	User pulumi.StringPtrInput `pulumi:"user"`
-	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings OperationWarningsItemArrayInput `pulumi:"warnings"`
-	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
-	Zone pulumi.StringPtrInput `pulumi:"zone"`
-}
-
-func (OperationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Operation)(nil)).Elem()
-}
-
-func (i OperationArgs) ToOperationOutput() OperationOutput {
-	return i.ToOperationOutputWithContext(context.Background())
-}
-
-func (i OperationArgs) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationOutput)
-}
-
-func (i OperationArgs) ToOperationPtrOutput() OperationPtrOutput {
-	return i.ToOperationPtrOutputWithContext(context.Background())
-}
-
-func (i OperationArgs) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationOutput).ToOperationPtrOutputWithContext(ctx)
-}
-
-// OperationPtrInput is an input type that accepts OperationArgs, OperationPtr and OperationPtrOutput values.
-// You can construct a concrete instance of `OperationPtrInput` via:
-//
-//          OperationArgs{...}
-//
-//  or:
-//
-//          nil
-type OperationPtrInput interface {
-	pulumi.Input
-
-	ToOperationPtrOutput() OperationPtrOutput
-	ToOperationPtrOutputWithContext(context.Context) OperationPtrOutput
-}
-
-type operationPtrType OperationArgs
-
-func OperationPtr(v *OperationArgs) OperationPtrInput {
-	return (*operationPtrType)(v)
-}
-
-func (*operationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Operation)(nil)).Elem()
-}
-
-func (i *operationPtrType) ToOperationPtrOutput() OperationPtrOutput {
-	return i.ToOperationPtrOutputWithContext(context.Background())
-}
-
-func (i *operationPtrType) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationPtrOutput)
-}
-
-// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
-type OperationOutput struct{ *pulumi.OutputState }
-
-func (OperationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Operation)(nil)).Elem()
-}
-
-func (o OperationOutput) ToOperationOutput() OperationOutput {
-	return o
-}
-
-func (o OperationOutput) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
-	return o
-}
-
-func (o OperationOutput) ToOperationPtrOutput() OperationPtrOutput {
-	return o.ToOperationPtrOutputWithContext(context.Background())
-}
-
-func (o OperationOutput) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
-	return o.ApplyT(func(v Operation) *Operation {
-		return &v
-	}).(OperationPtrOutput)
-}
-
-// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
-func (o OperationOutput) ClientOperationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.ClientOperationId }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] A textual description of the operation, which is set when the operation is created.
-func (o OperationOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
-func (o OperationOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationOutput) Error() OperationErrorPtrOutput {
-	return o.ApplyT(func(v Operation) *OperationError { return v.Error }).(OperationErrorPtrOutput)
-}
-
-// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
-func (o OperationOutput) HttpErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.HttpErrorMessage }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
-func (o OperationOutput) HttpErrorStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Operation) *int { return v.HttpErrorStatusCode }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The unique identifier for the operation. This identifier is defined by the server.
-func (o OperationOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
-func (o OperationOutput) InsertTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.InsertTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
-func (o OperationOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Name of the operation.
-func (o OperationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
-func (o OperationOutput) OperationGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.OperationGroupId }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
-func (o OperationOutput) OperationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.OperationType }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
-func (o OperationOutput) Progress() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Operation) *int { return v.Progress }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
-func (o OperationOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Server-defined URL for the resource.
-func (o OperationOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
-func (o OperationOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
-func (o OperationOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] An optional textual description of the current status of the operation.
-func (o OperationOutput) StatusMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.StatusMessage }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
-func (o OperationOutput) TargetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.TargetId }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
-func (o OperationOutput) TargetLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.TargetLink }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] User who requested the operation, for example: `user@example.com`.
-func (o OperationOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.User }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationOutput) Warnings() OperationWarningsItemArrayOutput {
-	return o.ApplyT(func(v Operation) []OperationWarningsItem { return v.Warnings }).(OperationWarningsItemArrayOutput)
-}
-
-// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
-func (o OperationOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.Zone }).(pulumi.StringPtrOutput)
-}
-
-type OperationPtrOutput struct{ *pulumi.OutputState }
-
-func (OperationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Operation)(nil)).Elem()
-}
-
-func (o OperationPtrOutput) ToOperationPtrOutput() OperationPtrOutput {
-	return o
-}
-
-func (o OperationPtrOutput) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
-	return o
-}
-
-func (o OperationPtrOutput) Elem() OperationOutput {
-	return o.ApplyT(func(v *Operation) Operation { return *v }).(OperationOutput)
-}
-
-// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
-func (o OperationPtrOutput) ClientOperationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientOperationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] A textual description of the operation, which is set when the operation is created.
-func (o OperationPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
-func (o OperationPtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationPtrOutput) Error() OperationErrorPtrOutput {
-	return o.ApplyT(func(v *Operation) *OperationError {
-		if v == nil {
-			return nil
-		}
-		return v.Error
-	}).(OperationErrorPtrOutput)
-}
-
-// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
-func (o OperationPtrOutput) HttpErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HttpErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
-func (o OperationPtrOutput) HttpErrorStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Operation) *int {
-		if v == nil {
-			return nil
-		}
-		return v.HttpErrorStatusCode
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The unique identifier for the operation. This identifier is defined by the server.
-func (o OperationPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
-func (o OperationPtrOutput) InsertTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InsertTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
-func (o OperationPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Name of the operation.
-func (o OperationPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
-func (o OperationPtrOutput) OperationGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OperationGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
-func (o OperationPtrOutput) OperationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OperationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
-func (o OperationPtrOutput) Progress() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Operation) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Progress
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
-func (o OperationPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Server-defined URL for the resource.
-func (o OperationPtrOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SelfLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
-func (o OperationPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
-func (o OperationPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] An optional textual description of the current status of the operation.
-func (o OperationPtrOutput) StatusMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StatusMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
-func (o OperationPtrOutput) TargetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TargetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
-func (o OperationPtrOutput) TargetLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TargetLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] User who requested the operation, for example: `user@example.com`.
-func (o OperationPtrOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.User
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationPtrOutput) Warnings() OperationWarningsItemArrayOutput {
-	return o.ApplyT(func(v *Operation) []OperationWarningsItem {
-		if v == nil {
-			return nil
-		}
-		return v.Warnings
-	}).(OperationWarningsItemArrayOutput)
-}
-
-// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
-func (o OperationPtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Zone
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type OperationError struct {
-	// [Output Only] The array of errors encountered while processing this operation.
-	Errors []OperationErrorErrorsItem `pulumi:"errors"`
-}
-
-// OperationErrorInput is an input type that accepts OperationErrorArgs and OperationErrorOutput values.
-// You can construct a concrete instance of `OperationErrorInput` via:
-//
-//          OperationErrorArgs{...}
-type OperationErrorInput interface {
-	pulumi.Input
-
-	ToOperationErrorOutput() OperationErrorOutput
-	ToOperationErrorOutputWithContext(context.Context) OperationErrorOutput
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type OperationErrorArgs struct {
-	// [Output Only] The array of errors encountered while processing this operation.
-	Errors OperationErrorErrorsItemArrayInput `pulumi:"errors"`
-}
-
-func (OperationErrorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationError)(nil)).Elem()
-}
-
-func (i OperationErrorArgs) ToOperationErrorOutput() OperationErrorOutput {
-	return i.ToOperationErrorOutputWithContext(context.Background())
-}
-
-func (i OperationErrorArgs) ToOperationErrorOutputWithContext(ctx context.Context) OperationErrorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorOutput)
-}
-
-func (i OperationErrorArgs) ToOperationErrorPtrOutput() OperationErrorPtrOutput {
-	return i.ToOperationErrorPtrOutputWithContext(context.Background())
-}
-
-func (i OperationErrorArgs) ToOperationErrorPtrOutputWithContext(ctx context.Context) OperationErrorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorOutput).ToOperationErrorPtrOutputWithContext(ctx)
-}
-
-// OperationErrorPtrInput is an input type that accepts OperationErrorArgs, OperationErrorPtr and OperationErrorPtrOutput values.
-// You can construct a concrete instance of `OperationErrorPtrInput` via:
-//
-//          OperationErrorArgs{...}
-//
-//  or:
-//
-//          nil
-type OperationErrorPtrInput interface {
-	pulumi.Input
-
-	ToOperationErrorPtrOutput() OperationErrorPtrOutput
-	ToOperationErrorPtrOutputWithContext(context.Context) OperationErrorPtrOutput
-}
-
-type operationErrorPtrType OperationErrorArgs
-
-func OperationErrorPtr(v *OperationErrorArgs) OperationErrorPtrInput {
-	return (*operationErrorPtrType)(v)
-}
-
-func (*operationErrorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationError)(nil)).Elem()
-}
-
-func (i *operationErrorPtrType) ToOperationErrorPtrOutput() OperationErrorPtrOutput {
-	return i.ToOperationErrorPtrOutputWithContext(context.Background())
-}
-
-func (i *operationErrorPtrType) ToOperationErrorPtrOutputWithContext(ctx context.Context) OperationErrorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorPtrOutput)
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type OperationErrorOutput struct{ *pulumi.OutputState }
-
-func (OperationErrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationError)(nil)).Elem()
-}
-
-func (o OperationErrorOutput) ToOperationErrorOutput() OperationErrorOutput {
-	return o
-}
-
-func (o OperationErrorOutput) ToOperationErrorOutputWithContext(ctx context.Context) OperationErrorOutput {
-	return o
-}
-
-func (o OperationErrorOutput) ToOperationErrorPtrOutput() OperationErrorPtrOutput {
-	return o.ToOperationErrorPtrOutputWithContext(context.Background())
-}
-
-func (o OperationErrorOutput) ToOperationErrorPtrOutputWithContext(ctx context.Context) OperationErrorPtrOutput {
-	return o.ApplyT(func(v OperationError) *OperationError {
-		return &v
-	}).(OperationErrorPtrOutput)
-}
-
-// [Output Only] The array of errors encountered while processing this operation.
-func (o OperationErrorOutput) Errors() OperationErrorErrorsItemArrayOutput {
-	return o.ApplyT(func(v OperationError) []OperationErrorErrorsItem { return v.Errors }).(OperationErrorErrorsItemArrayOutput)
-}
-
-type OperationErrorPtrOutput struct{ *pulumi.OutputState }
-
-func (OperationErrorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationError)(nil)).Elem()
-}
-
-func (o OperationErrorPtrOutput) ToOperationErrorPtrOutput() OperationErrorPtrOutput {
-	return o
-}
-
-func (o OperationErrorPtrOutput) ToOperationErrorPtrOutputWithContext(ctx context.Context) OperationErrorPtrOutput {
-	return o
-}
-
-func (o OperationErrorPtrOutput) Elem() OperationErrorOutput {
-	return o.ApplyT(func(v *OperationError) OperationError { return *v }).(OperationErrorOutput)
-}
-
-// [Output Only] The array of errors encountered while processing this operation.
-func (o OperationErrorPtrOutput) Errors() OperationErrorErrorsItemArrayOutput {
-	return o.ApplyT(func(v *OperationError) []OperationErrorErrorsItem {
-		if v == nil {
-			return nil
-		}
-		return v.Errors
-	}).(OperationErrorErrorsItemArrayOutput)
-}
-
-type OperationErrorErrorsItem struct {
-	// [Output Only] The error type identifier for this error.
-	Code *string `pulumi:"code"`
-	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
-	Location *string `pulumi:"location"`
-	// [Output Only] An optional, human-readable error message.
-	Message *string `pulumi:"message"`
-}
-
-// OperationErrorErrorsItemInput is an input type that accepts OperationErrorErrorsItemArgs and OperationErrorErrorsItemOutput values.
-// You can construct a concrete instance of `OperationErrorErrorsItemInput` via:
-//
-//          OperationErrorErrorsItemArgs{...}
-type OperationErrorErrorsItemInput interface {
-	pulumi.Input
-
-	ToOperationErrorErrorsItemOutput() OperationErrorErrorsItemOutput
-	ToOperationErrorErrorsItemOutputWithContext(context.Context) OperationErrorErrorsItemOutput
-}
-
-type OperationErrorErrorsItemArgs struct {
-	// [Output Only] The error type identifier for this error.
-	Code pulumi.StringPtrInput `pulumi:"code"`
-	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// [Output Only] An optional, human-readable error message.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (OperationErrorErrorsItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationErrorErrorsItem)(nil)).Elem()
-}
-
-func (i OperationErrorErrorsItemArgs) ToOperationErrorErrorsItemOutput() OperationErrorErrorsItemOutput {
-	return i.ToOperationErrorErrorsItemOutputWithContext(context.Background())
-}
-
-func (i OperationErrorErrorsItemArgs) ToOperationErrorErrorsItemOutputWithContext(ctx context.Context) OperationErrorErrorsItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorErrorsItemOutput)
-}
-
-// OperationErrorErrorsItemArrayInput is an input type that accepts OperationErrorErrorsItemArray and OperationErrorErrorsItemArrayOutput values.
-// You can construct a concrete instance of `OperationErrorErrorsItemArrayInput` via:
-//
-//          OperationErrorErrorsItemArray{ OperationErrorErrorsItemArgs{...} }
-type OperationErrorErrorsItemArrayInput interface {
-	pulumi.Input
-
-	ToOperationErrorErrorsItemArrayOutput() OperationErrorErrorsItemArrayOutput
-	ToOperationErrorErrorsItemArrayOutputWithContext(context.Context) OperationErrorErrorsItemArrayOutput
-}
-
-type OperationErrorErrorsItemArray []OperationErrorErrorsItemInput
-
-func (OperationErrorErrorsItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationErrorErrorsItem)(nil)).Elem()
-}
-
-func (i OperationErrorErrorsItemArray) ToOperationErrorErrorsItemArrayOutput() OperationErrorErrorsItemArrayOutput {
-	return i.ToOperationErrorErrorsItemArrayOutputWithContext(context.Background())
-}
-
-func (i OperationErrorErrorsItemArray) ToOperationErrorErrorsItemArrayOutputWithContext(ctx context.Context) OperationErrorErrorsItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorErrorsItemArrayOutput)
-}
-
-type OperationErrorErrorsItemOutput struct{ *pulumi.OutputState }
-
-func (OperationErrorErrorsItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationErrorErrorsItem)(nil)).Elem()
-}
-
-func (o OperationErrorErrorsItemOutput) ToOperationErrorErrorsItemOutput() OperationErrorErrorsItemOutput {
-	return o
-}
-
-func (o OperationErrorErrorsItemOutput) ToOperationErrorErrorsItemOutputWithContext(ctx context.Context) OperationErrorErrorsItemOutput {
-	return o
-}
-
-// [Output Only] The error type identifier for this error.
-func (o OperationErrorErrorsItemOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationErrorErrorsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Indicates the field in the request that caused the error. This property is optional.
-func (o OperationErrorErrorsItemOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationErrorErrorsItem) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] An optional, human-readable error message.
-func (o OperationErrorErrorsItemOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationErrorErrorsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type OperationErrorErrorsItemArrayOutput struct{ *pulumi.OutputState }
-
-func (OperationErrorErrorsItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationErrorErrorsItem)(nil)).Elem()
-}
-
-func (o OperationErrorErrorsItemArrayOutput) ToOperationErrorErrorsItemArrayOutput() OperationErrorErrorsItemArrayOutput {
-	return o
-}
-
-func (o OperationErrorErrorsItemArrayOutput) ToOperationErrorErrorsItemArrayOutputWithContext(ctx context.Context) OperationErrorErrorsItemArrayOutput {
-	return o
-}
-
-func (o OperationErrorErrorsItemArrayOutput) Index(i pulumi.IntInput) OperationErrorErrorsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationErrorErrorsItem {
-		return vs[0].([]OperationErrorErrorsItem)[vs[1].(int)]
-	}).(OperationErrorErrorsItemOutput)
-}
-
 type OperationErrorErrorsItemResponse struct {
-	// [Output Only] The error type identifier for this error.
+	// The error type identifier for this error.
 	Code string `pulumi:"code"`
-	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	// Indicates the field in the request that caused the error. This property is optional.
 	Location string `pulumi:"location"`
-	// [Output Only] An optional, human-readable error message.
+	// An optional, human-readable error message.
 	Message string `pulumi:"message"`
 }
 
@@ -4777,11 +3698,11 @@ type OperationErrorErrorsItemResponseInput interface {
 }
 
 type OperationErrorErrorsItemResponseArgs struct {
-	// [Output Only] The error type identifier for this error.
+	// The error type identifier for this error.
 	Code pulumi.StringInput `pulumi:"code"`
-	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	// Indicates the field in the request that caused the error. This property is optional.
 	Location pulumi.StringInput `pulumi:"location"`
-	// [Output Only] An optional, human-readable error message.
+	// An optional, human-readable error message.
 	Message pulumi.StringInput `pulumi:"message"`
 }
 
@@ -4836,17 +3757,17 @@ func (o OperationErrorErrorsItemResponseOutput) ToOperationErrorErrorsItemRespon
 	return o
 }
 
-// [Output Only] The error type identifier for this error.
+// The error type identifier for this error.
 func (o OperationErrorErrorsItemResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationErrorErrorsItemResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
-// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+// Indicates the field in the request that caused the error. This property is optional.
 func (o OperationErrorErrorsItemResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationErrorErrorsItemResponse) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// [Output Only] An optional, human-readable error message.
+// An optional, human-readable error message.
 func (o OperationErrorErrorsItemResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationErrorErrorsItemResponse) string { return v.Message }).(pulumi.StringOutput)
 }
@@ -4873,7 +3794,7 @@ func (o OperationErrorErrorsItemResponseArrayOutput) Index(i pulumi.IntInput) Op
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
 type OperationErrorResponse struct {
-	// [Output Only] The array of errors encountered while processing this operation.
+	// The array of errors encountered while processing this operation.
 	Errors []OperationErrorErrorsItemResponse `pulumi:"errors"`
 }
 
@@ -4890,7 +3811,7 @@ type OperationErrorResponseInput interface {
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
 type OperationErrorResponseArgs struct {
-	// [Output Only] The array of errors encountered while processing this operation.
+	// The array of errors encountered while processing this operation.
 	Errors OperationErrorErrorsItemResponseArrayInput `pulumi:"errors"`
 }
 
@@ -4972,7 +3893,7 @@ func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutputWithConte
 	}).(OperationErrorResponsePtrOutput)
 }
 
-// [Output Only] The array of errors encountered while processing this operation.
+// The array of errors encountered while processing this operation.
 func (o OperationErrorResponseOutput) Errors() OperationErrorErrorsItemResponseArrayOutput {
 	return o.ApplyT(func(v OperationErrorResponse) []OperationErrorErrorsItemResponse { return v.Errors }).(OperationErrorErrorsItemResponseArrayOutput)
 }
@@ -4995,7 +3916,7 @@ func (o OperationErrorResponsePtrOutput) Elem() OperationErrorResponseOutput {
 	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse { return *v }).(OperationErrorResponseOutput)
 }
 
-// [Output Only] The array of errors encountered while processing this operation.
+// The array of errors encountered while processing this operation.
 func (o OperationErrorResponsePtrOutput) Errors() OperationErrorErrorsItemResponseArrayOutput {
 	return o.ApplyT(func(v *OperationErrorResponse) []OperationErrorErrorsItemResponse {
 		if v == nil {
@@ -5007,49 +3928,49 @@ func (o OperationErrorResponsePtrOutput) Errors() OperationErrorErrorsItemRespon
 
 // Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
 type OperationResponse struct {
-	// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
+	// The value of `requestId` if you provided it in the request. Not present otherwise.
 	ClientOperationId string `pulumi:"clientOperationId"`
-	// [Output Only] A textual description of the operation, which is set when the operation is created.
+	// A textual description of the operation, which is set when the operation is created.
 	Description string `pulumi:"description"`
-	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
+	// The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime string `pulumi:"endTime"`
-	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+	// If errors are generated during processing of the operation, this field will be populated.
 	Error OperationErrorResponse `pulumi:"error"`
-	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
+	// If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage string `pulumi:"httpErrorMessage"`
-	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+	// If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
 	HttpErrorStatusCode int `pulumi:"httpErrorStatusCode"`
-	// [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
+	// The time that this operation was requested. This value is in RFC3339 text format.
 	InsertTime string `pulumi:"insertTime"`
-	// [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
+	// Type of the resource. Always `compute#operation` for Operation resources.
 	Kind string `pulumi:"kind"`
-	// [Output Only] Name of the operation.
+	// Name of the operation.
 	Name string `pulumi:"name"`
-	// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+	// An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
 	OperationGroupId string `pulumi:"operationGroupId"`
-	// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
+	// The type of operation, such as `insert`, `update`, or `delete`, and so on.
 	OperationType string `pulumi:"operationType"`
-	// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
+	// An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
 	Progress int `pulumi:"progress"`
-	// [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
+	// The URL of the region where the operation resides. Only applicable when performing regional operations.
 	Region string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
+	// The time that this operation was started by the server. This value is in RFC3339 text format.
 	StartTime string `pulumi:"startTime"`
-	// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+	// The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
 	Status string `pulumi:"status"`
-	// [Output Only] An optional textual description of the current status of the operation.
+	// An optional textual description of the current status of the operation.
 	StatusMessage string `pulumi:"statusMessage"`
-	// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
+	// The unique target ID, which identifies a specific incarnation of the target resource.
 	TargetId string `pulumi:"targetId"`
-	// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
+	// The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
 	TargetLink string `pulumi:"targetLink"`
-	// [Output Only] User who requested the operation, for example: `user@example.com`.
+	// User who requested the operation, for example: `user@example.com`.
 	User string `pulumi:"user"`
-	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+	// If warning messages are generated during processing of the operation, this field will be populated.
 	Warnings []OperationWarningsItemResponse `pulumi:"warnings"`
-	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
+	// The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone string `pulumi:"zone"`
 }
 
@@ -5066,49 +3987,49 @@ type OperationResponseInput interface {
 
 // Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
 type OperationResponseArgs struct {
-	// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
+	// The value of `requestId` if you provided it in the request. Not present otherwise.
 	ClientOperationId pulumi.StringInput `pulumi:"clientOperationId"`
-	// [Output Only] A textual description of the operation, which is set when the operation is created.
+	// A textual description of the operation, which is set when the operation is created.
 	Description pulumi.StringInput `pulumi:"description"`
-	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
+	// The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+	// If errors are generated during processing of the operation, this field will be populated.
 	Error OperationErrorResponseInput `pulumi:"error"`
-	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
+	// If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage pulumi.StringInput `pulumi:"httpErrorMessage"`
-	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+	// If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
 	HttpErrorStatusCode pulumi.IntInput `pulumi:"httpErrorStatusCode"`
-	// [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
+	// The time that this operation was requested. This value is in RFC3339 text format.
 	InsertTime pulumi.StringInput `pulumi:"insertTime"`
-	// [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
+	// Type of the resource. Always `compute#operation` for Operation resources.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// [Output Only] Name of the operation.
+	// Name of the operation.
 	Name pulumi.StringInput `pulumi:"name"`
-	// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+	// An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
 	OperationGroupId pulumi.StringInput `pulumi:"operationGroupId"`
-	// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
+	// The type of operation, such as `insert`, `update`, or `delete`, and so on.
 	OperationType pulumi.StringInput `pulumi:"operationType"`
-	// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
+	// An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
 	Progress pulumi.IntInput `pulumi:"progress"`
-	// [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
+	// The URL of the region where the operation resides. Only applicable when performing regional operations.
 	Region pulumi.StringInput `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringInput `pulumi:"selfLink"`
-	// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
+	// The time that this operation was started by the server. This value is in RFC3339 text format.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+	// The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// [Output Only] An optional textual description of the current status of the operation.
+	// An optional textual description of the current status of the operation.
 	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
-	// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
+	// The unique target ID, which identifies a specific incarnation of the target resource.
 	TargetId pulumi.StringInput `pulumi:"targetId"`
-	// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
+	// The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
 	TargetLink pulumi.StringInput `pulumi:"targetLink"`
-	// [Output Only] User who requested the operation, for example: `user@example.com`.
+	// User who requested the operation, for example: `user@example.com`.
 	User pulumi.StringInput `pulumi:"user"`
-	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+	// If warning messages are generated during processing of the operation, this field will be populated.
 	Warnings OperationWarningsItemResponseArrayInput `pulumi:"warnings"`
-	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
+	// The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -5190,112 +4111,112 @@ func (o OperationResponseOutput) ToOperationResponsePtrOutputWithContext(ctx con
 	}).(OperationResponsePtrOutput)
 }
 
-// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
+// The value of `requestId` if you provided it in the request. Not present otherwise.
 func (o OperationResponseOutput) ClientOperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.ClientOperationId }).(pulumi.StringOutput)
 }
 
-// [Output Only] A textual description of the operation, which is set when the operation is created.
+// A textual description of the operation, which is set when the operation is created.
 func (o OperationResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
+// The time that this operation was completed. This value is in RFC3339 text format.
 func (o OperationResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+// If errors are generated during processing of the operation, this field will be populated.
 func (o OperationResponseOutput) Error() OperationErrorResponseOutput {
 	return o.ApplyT(func(v OperationResponse) OperationErrorResponse { return v.Error }).(OperationErrorResponseOutput)
 }
 
-// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
+// If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 func (o OperationResponseOutput) HttpErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.HttpErrorMessage }).(pulumi.StringOutput)
 }
 
-// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+// If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
 func (o OperationResponseOutput) HttpErrorStatusCode() pulumi.IntOutput {
 	return o.ApplyT(func(v OperationResponse) int { return v.HttpErrorStatusCode }).(pulumi.IntOutput)
 }
 
-// [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
+// The time that this operation was requested. This value is in RFC3339 text format.
 func (o OperationResponseOutput) InsertTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.InsertTime }).(pulumi.StringOutput)
 }
 
-// [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
+// Type of the resource. Always `compute#operation` for Operation resources.
 func (o OperationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// [Output Only] Name of the operation.
+// Name of the operation.
 func (o OperationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+// An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
 func (o OperationResponseOutput) OperationGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.OperationGroupId }).(pulumi.StringOutput)
 }
 
-// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
+// The type of operation, such as `insert`, `update`, or `delete`, and so on.
 func (o OperationResponseOutput) OperationType() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.OperationType }).(pulumi.StringOutput)
 }
 
-// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
+// An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
 func (o OperationResponseOutput) Progress() pulumi.IntOutput {
 	return o.ApplyT(func(v OperationResponse) int { return v.Progress }).(pulumi.IntOutput)
 }
 
-// [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
+// The URL of the region where the operation resides. Only applicable when performing regional operations.
 func (o OperationResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// [Output Only] Server-defined URL for the resource.
+// Server-defined URL for the resource.
 func (o OperationResponseOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
+// The time that this operation was started by the server. This value is in RFC3339 text format.
 func (o OperationResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+// The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
 func (o OperationResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// [Output Only] An optional textual description of the current status of the operation.
+// An optional textual description of the current status of the operation.
 func (o OperationResponseOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
-// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
+// The unique target ID, which identifies a specific incarnation of the target resource.
 func (o OperationResponseOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.TargetId }).(pulumi.StringOutput)
 }
 
-// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
+// The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
 func (o OperationResponseOutput) TargetLink() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.TargetLink }).(pulumi.StringOutput)
 }
 
-// [Output Only] User who requested the operation, for example: `user@example.com`.
+// User who requested the operation, for example: `user@example.com`.
 func (o OperationResponseOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.User }).(pulumi.StringOutput)
 }
 
-// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+// If warning messages are generated during processing of the operation, this field will be populated.
 func (o OperationResponseOutput) Warnings() OperationWarningsItemResponseArrayOutput {
 	return o.ApplyT(func(v OperationResponse) []OperationWarningsItemResponse { return v.Warnings }).(OperationWarningsItemResponseArrayOutput)
 }
 
-// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
+// The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 func (o OperationResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -5318,7 +4239,7 @@ func (o OperationResponsePtrOutput) Elem() OperationResponseOutput {
 	return o.ApplyT(func(v *OperationResponse) OperationResponse { return *v }).(OperationResponseOutput)
 }
 
-// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
+// The value of `requestId` if you provided it in the request. Not present otherwise.
 func (o OperationResponsePtrOutput) ClientOperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5328,7 +4249,7 @@ func (o OperationResponsePtrOutput) ClientOperationId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] A textual description of the operation, which is set when the operation is created.
+// A textual description of the operation, which is set when the operation is created.
 func (o OperationResponsePtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5338,7 +4259,7 @@ func (o OperationResponsePtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
+// The time that this operation was completed. This value is in RFC3339 text format.
 func (o OperationResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5348,7 +4269,7 @@ func (o OperationResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+// If errors are generated during processing of the operation, this field will be populated.
 func (o OperationResponsePtrOutput) Error() OperationErrorResponsePtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *OperationErrorResponse {
 		if v == nil {
@@ -5358,7 +4279,7 @@ func (o OperationResponsePtrOutput) Error() OperationErrorResponsePtrOutput {
 	}).(OperationErrorResponsePtrOutput)
 }
 
-// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
+// If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 func (o OperationResponsePtrOutput) HttpErrorMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5368,7 +4289,7 @@ func (o OperationResponsePtrOutput) HttpErrorMessage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+// If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
 func (o OperationResponsePtrOutput) HttpErrorStatusCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *int {
 		if v == nil {
@@ -5378,7 +4299,7 @@ func (o OperationResponsePtrOutput) HttpErrorStatusCode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
+// The time that this operation was requested. This value is in RFC3339 text format.
 func (o OperationResponsePtrOutput) InsertTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5388,7 +4309,7 @@ func (o OperationResponsePtrOutput) InsertTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
+// Type of the resource. Always `compute#operation` for Operation resources.
 func (o OperationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5398,7 +4319,7 @@ func (o OperationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Name of the operation.
+// Name of the operation.
 func (o OperationResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5408,7 +4329,7 @@ func (o OperationResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+// An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
 func (o OperationResponsePtrOutput) OperationGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5418,7 +4339,7 @@ func (o OperationResponsePtrOutput) OperationGroupId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
+// The type of operation, such as `insert`, `update`, or `delete`, and so on.
 func (o OperationResponsePtrOutput) OperationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5428,7 +4349,7 @@ func (o OperationResponsePtrOutput) OperationType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
+// An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
 func (o OperationResponsePtrOutput) Progress() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *int {
 		if v == nil {
@@ -5438,7 +4359,7 @@ func (o OperationResponsePtrOutput) Progress() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
+// The URL of the region where the operation resides. Only applicable when performing regional operations.
 func (o OperationResponsePtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5448,7 +4369,7 @@ func (o OperationResponsePtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Server-defined URL for the resource.
+// Server-defined URL for the resource.
 func (o OperationResponsePtrOutput) SelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5458,7 +4379,7 @@ func (o OperationResponsePtrOutput) SelfLink() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
+// The time that this operation was started by the server. This value is in RFC3339 text format.
 func (o OperationResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5468,7 +4389,7 @@ func (o OperationResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+// The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
 func (o OperationResponsePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5478,7 +4399,7 @@ func (o OperationResponsePtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] An optional textual description of the current status of the operation.
+// An optional textual description of the current status of the operation.
 func (o OperationResponsePtrOutput) StatusMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5488,7 +4409,7 @@ func (o OperationResponsePtrOutput) StatusMessage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
+// The unique target ID, which identifies a specific incarnation of the target resource.
 func (o OperationResponsePtrOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5498,7 +4419,7 @@ func (o OperationResponsePtrOutput) TargetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
+// The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
 func (o OperationResponsePtrOutput) TargetLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5508,7 +4429,7 @@ func (o OperationResponsePtrOutput) TargetLink() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] User who requested the operation, for example: `user@example.com`.
+// User who requested the operation, for example: `user@example.com`.
 func (o OperationResponsePtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5518,7 +4439,7 @@ func (o OperationResponsePtrOutput) User() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+// If warning messages are generated during processing of the operation, this field will be populated.
 func (o OperationResponsePtrOutput) Warnings() OperationWarningsItemResponseArrayOutput {
 	return o.ApplyT(func(v *OperationResponse) []OperationWarningsItemResponse {
 		if v == nil {
@@ -5528,7 +4449,7 @@ func (o OperationResponsePtrOutput) Warnings() OperationWarningsItemResponseArra
 	}).(OperationWarningsItemResponseArrayOutput)
 }
 
-// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
+// The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 func (o OperationResponsePtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperationResponse) *string {
 		if v == nil {
@@ -5538,231 +4459,10 @@ func (o OperationResponsePtrOutput) Zone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type OperationWarningsItem struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code *string `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data []OperationWarningsItemDataItem `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message *string `pulumi:"message"`
-}
-
-// OperationWarningsItemInput is an input type that accepts OperationWarningsItemArgs and OperationWarningsItemOutput values.
-// You can construct a concrete instance of `OperationWarningsItemInput` via:
-//
-//          OperationWarningsItemArgs{...}
-type OperationWarningsItemInput interface {
-	pulumi.Input
-
-	ToOperationWarningsItemOutput() OperationWarningsItemOutput
-	ToOperationWarningsItemOutputWithContext(context.Context) OperationWarningsItemOutput
-}
-
-type OperationWarningsItemArgs struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code *OperationWarningsItemCode `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data OperationWarningsItemDataItemArrayInput `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (OperationWarningsItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationWarningsItem)(nil)).Elem()
-}
-
-func (i OperationWarningsItemArgs) ToOperationWarningsItemOutput() OperationWarningsItemOutput {
-	return i.ToOperationWarningsItemOutputWithContext(context.Background())
-}
-
-func (i OperationWarningsItemArgs) ToOperationWarningsItemOutputWithContext(ctx context.Context) OperationWarningsItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemOutput)
-}
-
-// OperationWarningsItemArrayInput is an input type that accepts OperationWarningsItemArray and OperationWarningsItemArrayOutput values.
-// You can construct a concrete instance of `OperationWarningsItemArrayInput` via:
-//
-//          OperationWarningsItemArray{ OperationWarningsItemArgs{...} }
-type OperationWarningsItemArrayInput interface {
-	pulumi.Input
-
-	ToOperationWarningsItemArrayOutput() OperationWarningsItemArrayOutput
-	ToOperationWarningsItemArrayOutputWithContext(context.Context) OperationWarningsItemArrayOutput
-}
-
-type OperationWarningsItemArray []OperationWarningsItemInput
-
-func (OperationWarningsItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationWarningsItem)(nil)).Elem()
-}
-
-func (i OperationWarningsItemArray) ToOperationWarningsItemArrayOutput() OperationWarningsItemArrayOutput {
-	return i.ToOperationWarningsItemArrayOutputWithContext(context.Background())
-}
-
-func (i OperationWarningsItemArray) ToOperationWarningsItemArrayOutputWithContext(ctx context.Context) OperationWarningsItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemArrayOutput)
-}
-
-type OperationWarningsItemOutput struct{ *pulumi.OutputState }
-
-func (OperationWarningsItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationWarningsItem)(nil)).Elem()
-}
-
-func (o OperationWarningsItemOutput) ToOperationWarningsItemOutput() OperationWarningsItemOutput {
-	return o
-}
-
-func (o OperationWarningsItemOutput) ToOperationWarningsItemOutputWithContext(ctx context.Context) OperationWarningsItemOutput {
-	return o
-}
-
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-func (o OperationWarningsItemOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationWarningsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-func (o OperationWarningsItemOutput) Data() OperationWarningsItemDataItemArrayOutput {
-	return o.ApplyT(func(v OperationWarningsItem) []OperationWarningsItemDataItem { return v.Data }).(OperationWarningsItemDataItemArrayOutput)
-}
-
-// [Output Only] A human-readable description of the warning code.
-func (o OperationWarningsItemOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationWarningsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type OperationWarningsItemArrayOutput struct{ *pulumi.OutputState }
-
-func (OperationWarningsItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationWarningsItem)(nil)).Elem()
-}
-
-func (o OperationWarningsItemArrayOutput) ToOperationWarningsItemArrayOutput() OperationWarningsItemArrayOutput {
-	return o
-}
-
-func (o OperationWarningsItemArrayOutput) ToOperationWarningsItemArrayOutputWithContext(ctx context.Context) OperationWarningsItemArrayOutput {
-	return o
-}
-
-func (o OperationWarningsItemArrayOutput) Index(i pulumi.IntInput) OperationWarningsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationWarningsItem {
-		return vs[0].([]OperationWarningsItem)[vs[1].(int)]
-	}).(OperationWarningsItemOutput)
-}
-
-type OperationWarningsItemDataItem struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key *string `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value *string `pulumi:"value"`
-}
-
-// OperationWarningsItemDataItemInput is an input type that accepts OperationWarningsItemDataItemArgs and OperationWarningsItemDataItemOutput values.
-// You can construct a concrete instance of `OperationWarningsItemDataItemInput` via:
-//
-//          OperationWarningsItemDataItemArgs{...}
-type OperationWarningsItemDataItemInput interface {
-	pulumi.Input
-
-	ToOperationWarningsItemDataItemOutput() OperationWarningsItemDataItemOutput
-	ToOperationWarningsItemDataItemOutputWithContext(context.Context) OperationWarningsItemDataItemOutput
-}
-
-type OperationWarningsItemDataItemArgs struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (OperationWarningsItemDataItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationWarningsItemDataItem)(nil)).Elem()
-}
-
-func (i OperationWarningsItemDataItemArgs) ToOperationWarningsItemDataItemOutput() OperationWarningsItemDataItemOutput {
-	return i.ToOperationWarningsItemDataItemOutputWithContext(context.Background())
-}
-
-func (i OperationWarningsItemDataItemArgs) ToOperationWarningsItemDataItemOutputWithContext(ctx context.Context) OperationWarningsItemDataItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemDataItemOutput)
-}
-
-// OperationWarningsItemDataItemArrayInput is an input type that accepts OperationWarningsItemDataItemArray and OperationWarningsItemDataItemArrayOutput values.
-// You can construct a concrete instance of `OperationWarningsItemDataItemArrayInput` via:
-//
-//          OperationWarningsItemDataItemArray{ OperationWarningsItemDataItemArgs{...} }
-type OperationWarningsItemDataItemArrayInput interface {
-	pulumi.Input
-
-	ToOperationWarningsItemDataItemArrayOutput() OperationWarningsItemDataItemArrayOutput
-	ToOperationWarningsItemDataItemArrayOutputWithContext(context.Context) OperationWarningsItemDataItemArrayOutput
-}
-
-type OperationWarningsItemDataItemArray []OperationWarningsItemDataItemInput
-
-func (OperationWarningsItemDataItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationWarningsItemDataItem)(nil)).Elem()
-}
-
-func (i OperationWarningsItemDataItemArray) ToOperationWarningsItemDataItemArrayOutput() OperationWarningsItemDataItemArrayOutput {
-	return i.ToOperationWarningsItemDataItemArrayOutputWithContext(context.Background())
-}
-
-func (i OperationWarningsItemDataItemArray) ToOperationWarningsItemDataItemArrayOutputWithContext(ctx context.Context) OperationWarningsItemDataItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemDataItemArrayOutput)
-}
-
-type OperationWarningsItemDataItemOutput struct{ *pulumi.OutputState }
-
-func (OperationWarningsItemDataItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationWarningsItemDataItem)(nil)).Elem()
-}
-
-func (o OperationWarningsItemDataItemOutput) ToOperationWarningsItemDataItemOutput() OperationWarningsItemDataItemOutput {
-	return o
-}
-
-func (o OperationWarningsItemDataItemOutput) ToOperationWarningsItemDataItemOutputWithContext(ctx context.Context) OperationWarningsItemDataItemOutput {
-	return o
-}
-
-// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-func (o OperationWarningsItemDataItemOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationWarningsItemDataItem) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] A warning data value corresponding to the key.
-func (o OperationWarningsItemDataItemOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationWarningsItemDataItem) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type OperationWarningsItemDataItemArrayOutput struct{ *pulumi.OutputState }
-
-func (OperationWarningsItemDataItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OperationWarningsItemDataItem)(nil)).Elem()
-}
-
-func (o OperationWarningsItemDataItemArrayOutput) ToOperationWarningsItemDataItemArrayOutput() OperationWarningsItemDataItemArrayOutput {
-	return o
-}
-
-func (o OperationWarningsItemDataItemArrayOutput) ToOperationWarningsItemDataItemArrayOutputWithContext(ctx context.Context) OperationWarningsItemDataItemArrayOutput {
-	return o
-}
-
-func (o OperationWarningsItemDataItemArrayOutput) Index(i pulumi.IntInput) OperationWarningsItemDataItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationWarningsItemDataItem {
-		return vs[0].([]OperationWarningsItemDataItem)[vs[1].(int)]
-	}).(OperationWarningsItemDataItemOutput)
-}
-
 type OperationWarningsItemDataItemResponse struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 	Key string `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
+	// A warning data value corresponding to the key.
 	Value string `pulumi:"value"`
 }
 
@@ -5778,9 +4478,9 @@ type OperationWarningsItemDataItemResponseInput interface {
 }
 
 type OperationWarningsItemDataItemResponseArgs struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 	Key pulumi.StringInput `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
+	// A warning data value corresponding to the key.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -5835,12 +4535,12 @@ func (o OperationWarningsItemDataItemResponseOutput) ToOperationWarningsItemData
 	return o
 }
 
-// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 func (o OperationWarningsItemDataItemResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationWarningsItemDataItemResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// [Output Only] A warning data value corresponding to the key.
+// A warning data value corresponding to the key.
 func (o OperationWarningsItemDataItemResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationWarningsItemDataItemResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5866,11 +4566,11 @@ func (o OperationWarningsItemDataItemResponseArrayOutput) Index(i pulumi.IntInpu
 }
 
 type OperationWarningsItemResponse struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
 	Code string `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 	Data []OperationWarningsItemDataItemResponse `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
+	// A human-readable description of the warning code.
 	Message string `pulumi:"message"`
 }
 
@@ -5886,11 +4586,11 @@ type OperationWarningsItemResponseInput interface {
 }
 
 type OperationWarningsItemResponseArgs struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
 	Code pulumi.StringInput `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 	Data OperationWarningsItemDataItemResponseArrayInput `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
+	// A human-readable description of the warning code.
 	Message pulumi.StringInput `pulumi:"message"`
 }
 
@@ -5945,17 +4645,17 @@ func (o OperationWarningsItemResponseOutput) ToOperationWarningsItemResponseOutp
 	return o
 }
 
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
 func (o OperationWarningsItemResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationWarningsItemResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
-// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 func (o OperationWarningsItemResponseOutput) Data() OperationWarningsItemDataItemResponseArrayOutput {
 	return o.ApplyT(func(v OperationWarningsItemResponse) []OperationWarningsItemDataItemResponse { return v.Data }).(OperationWarningsItemDataItemResponseArrayOutput)
 }
 
-// [Output Only] A human-readable description of the warning code.
+// A human-readable description of the warning code.
 func (o OperationWarningsItemResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationWarningsItemResponse) string { return v.Message }).(pulumi.StringOutput)
 }
@@ -8210,10 +6910,6 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentLabelEntryArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelEntryResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelEntryResponseArrayOutput{})
-	pulumi.RegisterOutputType(DeploymentUpdateOutput{})
-	pulumi.RegisterOutputType(DeploymentUpdatePtrOutput{})
-	pulumi.RegisterOutputType(DeploymentUpdateLabelEntryOutput{})
-	pulumi.RegisterOutputType(DeploymentUpdateLabelEntryArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentUpdateLabelEntryResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentUpdateLabelEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentUpdateResponseOutput{})
@@ -8233,22 +6929,12 @@ func init() {
 	pulumi.RegisterOutputType(InputMappingArrayOutput{})
 	pulumi.RegisterOutputType(InputMappingResponseOutput{})
 	pulumi.RegisterOutputType(InputMappingResponseArrayOutput{})
-	pulumi.RegisterOutputType(OperationOutput{})
-	pulumi.RegisterOutputType(OperationPtrOutput{})
-	pulumi.RegisterOutputType(OperationErrorOutput{})
-	pulumi.RegisterOutputType(OperationErrorPtrOutput{})
-	pulumi.RegisterOutputType(OperationErrorErrorsItemOutput{})
-	pulumi.RegisterOutputType(OperationErrorErrorsItemArrayOutput{})
 	pulumi.RegisterOutputType(OperationErrorErrorsItemResponseOutput{})
 	pulumi.RegisterOutputType(OperationErrorErrorsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(OperationErrorResponseOutput{})
 	pulumi.RegisterOutputType(OperationErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(OperationResponseOutput{})
 	pulumi.RegisterOutputType(OperationResponsePtrOutput{})
-	pulumi.RegisterOutputType(OperationWarningsItemOutput{})
-	pulumi.RegisterOutputType(OperationWarningsItemArrayOutput{})
-	pulumi.RegisterOutputType(OperationWarningsItemDataItemOutput{})
-	pulumi.RegisterOutputType(OperationWarningsItemDataItemArrayOutput{})
 	pulumi.RegisterOutputType(OperationWarningsItemDataItemResponseOutput{})
 	pulumi.RegisterOutputType(OperationWarningsItemDataItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(OperationWarningsItemResponseOutput{})

@@ -139,8 +139,6 @@ func (CompanyState) ElementType() reflect.Type {
 type companyArgs struct {
 	// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri *string `pulumi:"careerSiteUri"`
-	// Derived details about the company.
-	DerivedInfo *CompanyDerivedInfo `pulumi:"derivedInfo"`
 	// Required. The display name of the company, for example, "Google LLC".
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
@@ -160,8 +158,6 @@ type companyArgs struct {
 	Project string  `pulumi:"project"`
 	// Optional. The employer's company size.
 	Size *string `pulumi:"size"`
-	// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
-	Suspended *bool `pulumi:"suspended"`
 	// Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
 	WebsiteUri *string `pulumi:"websiteUri"`
 }
@@ -170,8 +166,6 @@ type companyArgs struct {
 type CompanyArgs struct {
 	// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri pulumi.StringPtrInput
-	// Derived details about the company.
-	DerivedInfo CompanyDerivedInfoPtrInput
 	// Required. The display name of the company, for example, "Google LLC".
 	DisplayName pulumi.StringPtrInput
 	// Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
@@ -191,8 +185,6 @@ type CompanyArgs struct {
 	Project pulumi.StringInput
 	// Optional. The employer's company size.
 	Size *CompanySize
-	// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
-	Suspended pulumi.BoolPtrInput
 	// Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
 	WebsiteUri pulumi.StringPtrInput
 }

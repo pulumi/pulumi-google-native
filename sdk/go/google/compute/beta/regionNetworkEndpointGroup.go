@@ -23,13 +23,13 @@ type RegionNetworkEndpointGroup struct {
 	CloudFunction NetworkEndpointGroupCloudFunctionResponseOutput `pulumi:"cloudFunction"`
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudRun NetworkEndpointGroupCloudRunResponseOutput `pulumi:"cloudRun"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// The default port used if the port number is not specified in the network endpoint.
 	DefaultPort pulumi.IntOutput `pulumi:"defaultPort"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+	// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -37,15 +37,15 @@ type RegionNetworkEndpointGroup struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType pulumi.StringOutput `pulumi:"networkEndpointType"`
-	// [Output Only] The URL of the region where the network endpoint group is located.
+	// The URL of the region where the network endpoint group is located.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
-	// [Output Only] The URL of the zone where the network endpoint group is located.
+	// The URL of the zone where the network endpoint group is located.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -92,13 +92,13 @@ type regionNetworkEndpointGroupState struct {
 	CloudFunction *NetworkEndpointGroupCloudFunctionResponse `pulumi:"cloudFunction"`
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudRun *NetworkEndpointGroupCloudRunResponse `pulumi:"cloudRun"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// The default port used if the port number is not specified in the network endpoint.
 	DefaultPort *int `pulumi:"defaultPort"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+	// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
@@ -106,15 +106,15 @@ type regionNetworkEndpointGroupState struct {
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
-	// [Output Only] The URL of the region where the network endpoint group is located.
+	// The URL of the region where the network endpoint group is located.
 	Region *string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size *int `pulumi:"size"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// [Output Only] The URL of the zone where the network endpoint group is located.
+	// The URL of the zone where the network endpoint group is located.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -127,13 +127,13 @@ type RegionNetworkEndpointGroupState struct {
 	CloudFunction NetworkEndpointGroupCloudFunctionResponsePtrInput
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudRun NetworkEndpointGroupCloudRunResponsePtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// The default port used if the port number is not specified in the network endpoint.
 	DefaultPort pulumi.IntPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+	// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
 	Kind pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
@@ -141,15 +141,15 @@ type RegionNetworkEndpointGroupState struct {
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType pulumi.StringPtrInput
-	// [Output Only] The URL of the region where the network endpoint group is located.
+	// The URL of the region where the network endpoint group is located.
 	Region pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size pulumi.IntPtrInput
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput
-	// [Output Only] The URL of the zone where the network endpoint group is located.
+	// The URL of the zone where the network endpoint group is located.
 	Zone pulumi.StringPtrInput
 }
 
@@ -166,16 +166,10 @@ type regionNetworkEndpointGroupArgs struct {
 	CloudFunction *NetworkEndpointGroupCloudFunction `pulumi:"cloudFunction"`
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudRun *NetworkEndpointGroupCloudRun `pulumi:"cloudRun"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// The default port used if the port number is not specified in the network endpoint.
 	DefaultPort *int `pulumi:"defaultPort"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
-	Kind *string `pulumi:"kind"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
@@ -183,17 +177,10 @@ type regionNetworkEndpointGroupArgs struct {
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	Project             string  `pulumi:"project"`
-	// [Output Only] The URL of the region where the network endpoint group is located.
-	Region    string  `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output only] Number of network endpoints in the network endpoint group.
-	Size *int `pulumi:"size"`
+	Region              string  `pulumi:"region"`
+	RequestId           *string `pulumi:"requestId"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// [Output Only] The URL of the zone where the network endpoint group is located.
-	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a RegionNetworkEndpointGroup resource.
@@ -206,16 +193,10 @@ type RegionNetworkEndpointGroupArgs struct {
 	CloudFunction NetworkEndpointGroupCloudFunctionPtrInput
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
 	CloudRun NetworkEndpointGroupCloudRunPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// The default port used if the port number is not specified in the network endpoint.
 	DefaultPort pulumi.IntPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
-	Kind pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
@@ -223,17 +204,10 @@ type RegionNetworkEndpointGroupArgs struct {
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType *RegionNetworkEndpointGroupNetworkEndpointType
 	Project             pulumi.StringInput
-	// [Output Only] The URL of the region where the network endpoint group is located.
-	Region    pulumi.StringInput
-	RequestId pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output only] Number of network endpoints in the network endpoint group.
-	Size pulumi.IntPtrInput
+	Region              pulumi.StringInput
+	RequestId           pulumi.StringPtrInput
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput
-	// [Output Only] The URL of the zone where the network endpoint group is located.
-	Zone pulumi.StringPtrInput
 }
 
 func (RegionNetworkEndpointGroupArgs) ElementType() reflect.Type {

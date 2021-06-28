@@ -26,13 +26,13 @@ type LookupRegionCommitmentArgs struct {
 type LookupRegionCommitmentResult struct {
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
 	Category string `pulumi:"category"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// [Output Only] Commitment end time in RFC3339 text format.
+	// Commitment end time in RFC3339 text format.
 	EndTimestamp string `pulumi:"endTimestamp"`
-	// [Output Only] Type of the resource. Always compute#commitment for commitments.
+	// Type of the resource. Always compute#commitment for commitments.
 	Kind string `pulumi:"kind"`
 	// The license specification required as part of a license commitment.
 	LicenseResource LicenseResourceCommitmentResponse `pulumi:"licenseResource"`
@@ -40,21 +40,21 @@ type LookupRegionCommitmentResult struct {
 	Name string `pulumi:"name"`
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	Plan string `pulumi:"plan"`
-	// [Output Only] URL of the region where this commitment may be used.
+	// URL of the region where this commitment may be used.
 	Region string `pulumi:"region"`
 	// List of reservations in this commitment.
 	Reservations []ReservationResponse `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources []ResourceCommitmentResponse `pulumi:"resources"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// [Output Only] Commitment start time in RFC3339 text format.
+	// Commitment start time in RFC3339 text format.
 	StartTimestamp string `pulumi:"startTimestamp"`
-	// [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+	// Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
 	Status string `pulumi:"status"`
-	// [Output Only] An optional, human-readable explanation of the status.
+	// An optional, human-readable explanation of the status.
 	StatusMessage string `pulumi:"statusMessage"`
 	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
 	Type string `pulumi:"type"`

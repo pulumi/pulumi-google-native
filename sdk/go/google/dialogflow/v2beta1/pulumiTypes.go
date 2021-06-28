@@ -16708,8 +16708,6 @@ func (o GoogleCloudDialogflowV2beta1IntentParameterResponseArrayOutput) Index(i 
 
 // Represents an example that the agent is trained on.
 type GoogleCloudDialogflowV2beta1IntentTrainingPhrase struct {
-	// The unique identifier of this training phrase.
-	Name *string `pulumi:"name"`
 	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
 	Parts []GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart `pulumi:"parts"`
 	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
@@ -16731,8 +16729,6 @@ type GoogleCloudDialogflowV2beta1IntentTrainingPhraseInput interface {
 
 // Represents an example that the agent is trained on.
 type GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs struct {
-	// The unique identifier of this training phrase.
-	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
 	Parts GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArrayInput `pulumi:"parts"`
 	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
@@ -16791,11 +16787,6 @@ func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseOutput) ToGoogleCloudDia
 
 func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseOutput) ToGoogleCloudDialogflowV2beta1IntentTrainingPhraseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1IntentTrainingPhraseOutput {
 	return o
-}
-
-// The unique identifier of this training phrase.
-func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1IntentTrainingPhrase) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.

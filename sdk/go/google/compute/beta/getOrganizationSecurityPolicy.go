@@ -25,7 +25,7 @@ type LookupOrganizationSecurityPolicyResult struct {
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigResponse `pulumi:"adaptiveProtectionConfig"`
 	// A list of associations that belong to this policy.
 	Associations []SecurityPolicyAssociationResponse `pulumi:"associations"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -45,15 +45,15 @@ type LookupOrganizationSecurityPolicyResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
-	// [Output Only] The parent of the security policy.
+	// The parent of the security policy.
 	Parent string `pulumi:"parent"`
-	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
+	// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules []SecurityPolicyRuleResponse `pulumi:"rules"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type string `pulumi:"type"`

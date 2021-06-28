@@ -26,13 +26,13 @@ type LookupInstanceGroupArgs struct {
 }
 
 type LookupInstanceGroupResult struct {
-	// [Output Only] The creation timestamp for this instance group in RFC3339 text format.
+	// The creation timestamp for this instance group in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// [Output Only] The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
+	// The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
 	Fingerprint string `pulumi:"fingerprint"`
-	// [Output Only] The resource type, which is always compute#instanceGroup for instance groups.
+	// The resource type, which is always compute#instanceGroup for instance groups.
 	Kind string `pulumi:"kind"`
 	// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name string `pulumi:"name"`
@@ -42,16 +42,16 @@ type LookupInstanceGroupResult struct {
 	//
 	// Named ports apply to all instances in this instance group.
 	NamedPorts []NamedPortResponse `pulumi:"namedPorts"`
-	// [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+	// The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Network string `pulumi:"network"`
-	// [Output Only] The URL of the region where the instance group is located (for regional resources).
+	// The URL of the region where the instance group is located (for regional resources).
 	Region string `pulumi:"region"`
-	// [Output Only] The URL for this instance group. The server generates this URL.
+	// The URL for this instance group. The server generates this URL.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output Only] The total number of instances in the instance group.
+	// The total number of instances in the instance group.
 	Size int `pulumi:"size"`
-	// [Output Only] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+	// The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Subnetwork string `pulumi:"subnetwork"`
-	// [Output Only] The URL of the zone where the instance group is located (for zonal resources).
+	// The URL of the zone where the instance group is located (for zonal resources).
 	Zone string `pulumi:"zone"`
 }

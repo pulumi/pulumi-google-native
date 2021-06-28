@@ -17,7 +17,7 @@ type HealthCheck struct {
 
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec pulumi.IntOutput `pulumi:"checkIntervalSec"`
-	// [Output Only] Creation timestamp in 3339 text format.
+	// Creation timestamp in 3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     pulumi.StringOutput           `pulumi:"description"`
@@ -33,11 +33,11 @@ type HealthCheck struct {
 	LogConfig HealthCheckLogConfigResponseOutput `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Output Only] Region where the health check resides. Not applicable to global health checks.
+	// Region where the health check resides. Not applicable to global health checks.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput          `pulumi:"selfLinkWithId"`
 	SslHealthCheck SSLHealthCheckResponseOutput `pulumi:"sslHealthCheck"`
 	TcpHealthCheck TCPHealthCheckResponseOutput `pulumi:"tcpHealthCheck"`
@@ -84,7 +84,7 @@ func GetHealthCheck(ctx *pulumi.Context,
 type healthCheckState struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec *int `pulumi:"checkIntervalSec"`
-	// [Output Only] Creation timestamp in 3339 text format.
+	// Creation timestamp in 3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     *string                  `pulumi:"description"`
@@ -100,11 +100,11 @@ type healthCheckState struct {
 	LogConfig *HealthCheckLogConfigResponse `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
 	Name *string `pulumi:"name"`
-	// [Output Only] Region where the health check resides. Not applicable to global health checks.
+	// Region where the health check resides. Not applicable to global health checks.
 	Region *string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string                 `pulumi:"selfLinkWithId"`
 	SslHealthCheck *SSLHealthCheckResponse `pulumi:"sslHealthCheck"`
 	TcpHealthCheck *TCPHealthCheckResponse `pulumi:"tcpHealthCheck"`
@@ -120,7 +120,7 @@ type healthCheckState struct {
 type HealthCheckState struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec pulumi.IntPtrInput
-	// [Output Only] Creation timestamp in 3339 text format.
+	// Creation timestamp in 3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     pulumi.StringPtrInput
@@ -136,11 +136,11 @@ type HealthCheckState struct {
 	LogConfig HealthCheckLogConfigResponsePtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
 	Name pulumi.StringPtrInput
-	// [Output Only] Region where the health check resides. Not applicable to global health checks.
+	// Region where the health check resides. Not applicable to global health checks.
 	Region pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	SslHealthCheck SSLHealthCheckResponsePtrInput
 	TcpHealthCheck TCPHealthCheckResponsePtrInput
@@ -160,8 +160,6 @@ func (HealthCheckState) ElementType() reflect.Type {
 type healthCheckArgs struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec *int `pulumi:"checkIntervalSec"`
-	// [Output Only] Creation timestamp in 3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     *string          `pulumi:"description"`
 	GrpcHealthCheck *GRPCHealthCheck `pulumi:"grpcHealthCheck"`
@@ -170,22 +168,14 @@ type healthCheckArgs struct {
 	Http2HealthCheck *HTTP2HealthCheck `pulumi:"http2HealthCheck"`
 	HttpHealthCheck  *HTTPHealthCheck  `pulumi:"httpHealthCheck"`
 	HttpsHealthCheck *HTTPSHealthCheck `pulumi:"httpsHealthCheck"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
 	// Type of the resource.
 	Kind *string `pulumi:"kind"`
 	// Configure logging on this health check.
 	LogConfig *HealthCheckLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
-	// [Output Only] Region where the health check resides. Not applicable to global health checks.
-	Region    *string `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string         `pulumi:"selfLinkWithId"`
+	Name           *string         `pulumi:"name"`
+	Project        string          `pulumi:"project"`
+	RequestId      *string         `pulumi:"requestId"`
 	SslHealthCheck *SSLHealthCheck `pulumi:"sslHealthCheck"`
 	TcpHealthCheck *TCPHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
@@ -201,8 +191,6 @@ type healthCheckArgs struct {
 type HealthCheckArgs struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec pulumi.IntPtrInput
-	// [Output Only] Creation timestamp in 3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     pulumi.StringPtrInput
 	GrpcHealthCheck GRPCHealthCheckPtrInput
@@ -211,22 +199,14 @@ type HealthCheckArgs struct {
 	Http2HealthCheck HTTP2HealthCheckPtrInput
 	HttpHealthCheck  HTTPHealthCheckPtrInput
 	HttpsHealthCheck HTTPSHealthCheckPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
 	// Type of the resource.
 	Kind pulumi.StringPtrInput
 	// Configure logging on this health check.
 	LogConfig HealthCheckLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
-	// [Output Only] Region where the health check resides. Not applicable to global health checks.
-	Region    pulumi.StringPtrInput
-	RequestId pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	Project        pulumi.StringInput
+	RequestId      pulumi.StringPtrInput
 	SslHealthCheck SSLHealthCheckPtrInput
 	TcpHealthCheck TCPHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.

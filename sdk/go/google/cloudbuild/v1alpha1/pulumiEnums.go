@@ -89,39 +89,3 @@ func (o WorkerPoolRegionsItemArrayOutput) Index(i pulumi.IntInput) pulumi.String
 		return vs[0].([]WorkerPoolRegionsItem)[vs[1].(int)].ToStringOutput()
 	}).(pulumi.StringOutput)
 }
-
-// Output only. WorkerPool Status.
-type WorkerPoolStatus pulumi.String
-
-const (
-	// Status of the `WorkerPool` is unknown.
-	WorkerPoolStatusStatusUnspecified = WorkerPoolStatus("STATUS_UNSPECIFIED")
-	// `WorkerPool` is being created.
-	WorkerPoolStatusCreating = WorkerPoolStatus("CREATING")
-	// `WorkerPool` is running.
-	WorkerPoolStatusRunning = WorkerPoolStatus("RUNNING")
-	// `WorkerPool` is being deleted: cancelling builds and draining workers.
-	WorkerPoolStatusDeleting = WorkerPoolStatus("DELETING")
-	// `WorkerPool` is deleted.
-	WorkerPoolStatusDeleted = WorkerPoolStatus("DELETED")
-)
-
-func (WorkerPoolStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e WorkerPoolStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e WorkerPoolStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e WorkerPoolStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e WorkerPoolStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}

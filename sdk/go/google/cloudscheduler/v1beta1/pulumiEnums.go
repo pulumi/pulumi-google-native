@@ -93,39 +93,3 @@ func (e HttpTargetHttpMethod) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e HttpTargetHttpMethod) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
-
-// Output only. State of the job.
-type JobStateEnum pulumi.String
-
-const (
-	// Unspecified state.
-	JobStateEnumStateUnspecified = JobStateEnum("STATE_UNSPECIFIED")
-	// The job is executing normally.
-	JobStateEnumEnabled = JobStateEnum("ENABLED")
-	// The job is paused by the user. It will not execute. A user can intentionally pause the job using PauseJobRequest.
-	JobStateEnumPaused = JobStateEnum("PAUSED")
-	// The job is disabled by the system due to error. The user cannot directly set a job to be disabled.
-	JobStateEnumDisabled = JobStateEnum("DISABLED")
-	// The job state resulting from a failed CloudScheduler.UpdateJob operation. To recover a job from this state, retry CloudScheduler.UpdateJob until a successful response is received.
-	JobStateEnumUpdateFailed = JobStateEnum("UPDATE_FAILED")
-)
-
-func (JobStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e JobStateEnum) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e JobStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e JobStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e JobStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}

@@ -766,16 +766,10 @@ func (o EncryptionConfigResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 
 // Configuration information for an environment.
 type EnvironmentConfig struct {
-	// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-	AirflowUri *string `pulumi:"airflowUri"`
-	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig *DatabaseConfig `pulumi:"databaseConfig"`
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
-	// The Kubernetes Engine cluster used to run this environment.
-	GkeCluster *string `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
@@ -803,16 +797,10 @@ type EnvironmentConfigInput interface {
 
 // Configuration information for an environment.
 type EnvironmentConfigArgs struct {
-	// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-	AirflowUri pulumi.StringPtrInput `pulumi:"airflowUri"`
-	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig DatabaseConfigPtrInput `pulumi:"databaseConfig"`
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
-	// The Kubernetes Engine cluster used to run this environment.
-	GkeCluster pulumi.StringPtrInput `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigPtrInput `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
@@ -905,16 +893,6 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx con
 	}).(EnvironmentConfigPtrOutput)
 }
 
-// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-func (o EnvironmentConfigOutput) AirflowUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *string { return v.AirflowUri }).(pulumi.StringPtrOutput)
-}
-
-// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
-}
-
 // Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *DatabaseConfig { return v.DatabaseConfig }).(DatabaseConfigPtrOutput)
@@ -923,11 +901,6 @@ func (o EnvironmentConfigOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 // Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
-}
-
-// The Kubernetes Engine cluster used to run this environment.
-func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
 }
 
 // The configuration used for the Kubernetes Engine cluster.
@@ -978,26 +951,6 @@ func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) EnvironmentConfig { return *v }).(EnvironmentConfigOutput)
 }
 
-// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-func (o EnvironmentConfigPtrOutput) AirflowUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AirflowUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DagGcsPrefix
-	}).(pulumi.StringPtrOutput)
-}
-
 // Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigPtrOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *DatabaseConfig {
@@ -1016,16 +969,6 @@ func (o EnvironmentConfigPtrOutput) EncryptionConfig() EncryptionConfigPtrOutput
 		}
 		return v.EncryptionConfig
 	}).(EncryptionConfigPtrOutput)
-}
-
-// The Kubernetes Engine cluster used to run this environment.
-func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GkeCluster
-	}).(pulumi.StringPtrOutput)
 }
 
 // The configuration used for the Kubernetes Engine cluster.

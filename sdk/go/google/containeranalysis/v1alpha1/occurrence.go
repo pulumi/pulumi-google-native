@@ -159,8 +159,6 @@ type occurrenceArgs struct {
 	Attestation *Attestation `pulumi:"attestation"`
 	// Build details for a verifiable build.
 	BuildDetails *BuildDetails `pulumi:"buildDetails"`
-	// The time this `Occurrence` was created.
-	CreateTime *string `pulumi:"createTime"`
 	// Describes the deployment of an artifact on a runtime.
 	Deployment *Deployment `pulumi:"deployment"`
 	// Describes how this resource derives from the basis in the associated note.
@@ -169,10 +167,6 @@ type occurrenceArgs struct {
 	Discovered *Discovered `pulumi:"discovered"`
 	// Describes the installation of a package on the linked resource.
 	Installation *Installation `pulumi:"installation"`
-	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-	Kind *string `pulumi:"kind"`
-	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
-	Name *string `pulumi:"name"`
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 	NoteName *string `pulumi:"noteName"`
 	Project  string  `pulumi:"project"`
@@ -182,8 +176,6 @@ type occurrenceArgs struct {
 	Resource *Resource `pulumi:"resource"`
 	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
 	ResourceUrl *string `pulumi:"resourceUrl"`
-	// The time this `Occurrence` was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 	// Describes an upgrade.
 	Upgrade *UpgradeOccurrence `pulumi:"upgrade"`
 	// Details of a security vulnerability note.
@@ -196,8 +188,6 @@ type OccurrenceArgs struct {
 	Attestation AttestationPtrInput
 	// Build details for a verifiable build.
 	BuildDetails BuildDetailsPtrInput
-	// The time this `Occurrence` was created.
-	CreateTime pulumi.StringPtrInput
 	// Describes the deployment of an artifact on a runtime.
 	Deployment DeploymentPtrInput
 	// Describes how this resource derives from the basis in the associated note.
@@ -206,10 +196,6 @@ type OccurrenceArgs struct {
 	Discovered DiscoveredPtrInput
 	// Describes the installation of a package on the linked resource.
 	Installation InstallationPtrInput
-	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-	Kind *OccurrenceKind
-	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
-	Name pulumi.StringPtrInput
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 	NoteName pulumi.StringPtrInput
 	Project  pulumi.StringInput
@@ -219,8 +205,6 @@ type OccurrenceArgs struct {
 	Resource ResourcePtrInput
 	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
 	ResourceUrl pulumi.StringPtrInput
-	// The time this `Occurrence` was last updated.
-	UpdateTime pulumi.StringPtrInput
 	// Describes an upgrade.
 	Upgrade UpgradeOccurrencePtrInput
 	// Details of a security vulnerability note.

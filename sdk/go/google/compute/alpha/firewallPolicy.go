@@ -16,7 +16,7 @@ type FirewallPolicy struct {
 
 	// A list of associations that belong to this firewall policy.
 	Associations FirewallPolicyAssociationResponseArrayOutput `pulumi:"associations"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -28,19 +28,19 @@ type FirewallPolicy struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Output Only] The parent of the firewall policy.
+	// The parent of the firewall policy.
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
 	Rules FirewallPolicyRuleResponseArrayOutput `pulumi:"rules"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
@@ -77,7 +77,7 @@ func GetFirewallPolicy(ctx *pulumi.Context,
 type firewallPolicyState struct {
 	// A list of associations that belong to this firewall policy.
 	Associations []FirewallPolicyAssociationResponse `pulumi:"associations"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -89,19 +89,19 @@ type firewallPolicyState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
 	Kind *string `pulumi:"kind"`
-	// [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name *string `pulumi:"name"`
-	// [Output Only] The parent of the firewall policy.
+	// The parent of the firewall policy.
 	Parent *string `pulumi:"parent"`
-	// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
-	// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
 	Rules []FirewallPolicyRuleResponse `pulumi:"rules"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName *string `pulumi:"shortName"`
@@ -110,7 +110,7 @@ type firewallPolicyState struct {
 type FirewallPolicyState struct {
 	// A list of associations that belong to this firewall policy.
 	Associations FirewallPolicyAssociationResponseArrayInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -122,19 +122,19 @@ type FirewallPolicyState struct {
 	Fingerprint pulumi.StringPtrInput
 	// [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
 	Kind pulumi.StringPtrInput
-	// [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name pulumi.StringPtrInput
-	// [Output Only] The parent of the firewall policy.
+	// The parent of the firewall policy.
 	Parent pulumi.StringPtrInput
-	// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
-	// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntPtrInput
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
 	Rules FirewallPolicyRuleResponseArrayInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName pulumi.StringPtrInput
@@ -147,32 +147,14 @@ func (FirewallPolicyState) ElementType() reflect.Type {
 type firewallPolicyArgs struct {
 	// A list of associations that belong to this firewall policy.
 	Associations []FirewallPolicyAssociation `pulumi:"associations"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Depreacted, please use short name instead. User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	DisplayName *string `pulumi:"displayName"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
-	Kind *string `pulumi:"kind"`
-	// [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
-	Name *string `pulumi:"name"`
-	// [Output Only] The parent of the firewall policy.
-	Parent   *string `pulumi:"parent"`
-	ParentId *string `pulumi:"parentId"`
-	// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    *string `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
-	RuleTupleCount *int `pulumi:"ruleTupleCount"`
+	ParentId    *string `pulumi:"parentId"`
+	RequestId   *string `pulumi:"requestId"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
 	Rules []FirewallPolicyRule `pulumi:"rules"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName *string `pulumi:"shortName"`
 }
@@ -181,32 +163,14 @@ type firewallPolicyArgs struct {
 type FirewallPolicyArgs struct {
 	// A list of associations that belong to this firewall policy.
 	Associations FirewallPolicyAssociationArrayInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Depreacted, please use short name instead. User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	DisplayName pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
-	Kind pulumi.StringPtrInput
-	// [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
-	Name pulumi.StringPtrInput
-	// [Output Only] The parent of the firewall policy.
-	Parent   pulumi.StringPtrInput
-	ParentId pulumi.StringPtrInput
-	// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    pulumi.StringPtrInput
-	RequestId pulumi.StringPtrInput
-	// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
-	RuleTupleCount pulumi.IntPtrInput
+	ParentId    pulumi.StringPtrInput
+	RequestId   pulumi.StringPtrInput
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
 	Rules FirewallPolicyRuleArrayInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
 	// User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ShortName pulumi.StringPtrInput
 }

@@ -157,10 +157,8 @@ type nodePoolArgs struct {
 	// The node configuration of the pool.
 	Config *NodeConfig `pulumi:"config"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-	InitialNodeCount *int `pulumi:"initialNodeCount"`
-	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
-	Location          string   `pulumi:"location"`
+	InitialNodeCount *int   `pulumi:"initialNodeCount"`
+	Location         string `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations []string `pulumi:"locations"`
 	// NodeManagement configuration for this NodePool.
@@ -170,14 +168,8 @@ type nodePoolArgs struct {
 	// The name of the node pool.
 	Name *string `pulumi:"name"`
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent *string `pulumi:"parent"`
-	// [Output only] The pod CIDR block size per node in this node pool.
-	PodIpv4CidrSize *int   `pulumi:"podIpv4CidrSize"`
-	Project         string `pulumi:"project"`
-	// [Output only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output only] The status of the nodes in this pool instance.
-	Status *string `pulumi:"status"`
+	Parent  *string `pulumi:"parent"`
+	Project string  `pulumi:"project"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -195,9 +187,7 @@ type NodePoolArgs struct {
 	Config NodeConfigPtrInput
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount pulumi.IntPtrInput
-	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-	InstanceGroupUrls pulumi.StringArrayInput
-	Location          pulumi.StringInput
+	Location         pulumi.StringInput
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayInput
 	// NodeManagement configuration for this NodePool.
@@ -207,14 +197,8 @@ type NodePoolArgs struct {
 	// The name of the node pool.
 	Name pulumi.StringPtrInput
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent pulumi.StringPtrInput
-	// [Output only] The pod CIDR block size per node in this node pool.
-	PodIpv4CidrSize pulumi.IntPtrInput
-	Project         pulumi.StringInput
-	// [Output only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output only] The status of the nodes in this pool instance.
-	Status *NodePoolStatus
+	Parent  pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput
 	// The version of the Kubernetes of this node.

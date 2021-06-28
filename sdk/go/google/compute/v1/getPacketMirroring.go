@@ -26,7 +26,7 @@ type LookupPacketMirroringArgs struct {
 type LookupPacketMirroringResult struct {
 	// The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
 	CollectorIlb PacketMirroringForwardingRuleInfoResponse `pulumi:"collectorIlb"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -36,7 +36,7 @@ type LookupPacketMirroringResult struct {
 	Enable string `pulumi:"enable"`
 	// Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 	Filter PacketMirroringFilterResponse `pulumi:"filter"`
-	// [Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.
+	// Type of the resource. Always compute#packetMirroring for packet mirrorings.
 	Kind string `pulumi:"kind"`
 	// PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
 	MirroredResources PacketMirroringMirroredResourceInfoResponse `pulumi:"mirroredResources"`
@@ -48,8 +48,8 @@ type LookupPacketMirroringResult struct {
 	//
 	// Default value is 1000. Valid range is 0 through 65535.
 	Priority int `pulumi:"priority"`
-	// [Output Only] URI of the region where the packetMirroring resides.
+	// URI of the region where the packetMirroring resides.
 	Region string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 }

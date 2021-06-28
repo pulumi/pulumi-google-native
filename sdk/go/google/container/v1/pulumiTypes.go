@@ -1072,10 +1072,6 @@ func (o AuthenticatorGroupsConfigResponsePtrOutput) SecurityGroup() pulumi.Strin
 
 // AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed.
 type AutoUpgradeOptions struct {
-	// [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	AutoUpgradeStartTime *string `pulumi:"autoUpgradeStartTime"`
-	// [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
-	Description *string `pulumi:"description"`
 }
 
 // AutoUpgradeOptionsInput is an input type that accepts AutoUpgradeOptionsArgs and AutoUpgradeOptionsOutput values.
@@ -1091,10 +1087,6 @@ type AutoUpgradeOptionsInput interface {
 
 // AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed.
 type AutoUpgradeOptionsArgs struct {
-	// [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	AutoUpgradeStartTime pulumi.StringPtrInput `pulumi:"autoUpgradeStartTime"`
-	// [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
-	Description pulumi.StringPtrInput `pulumi:"description"`
 }
 
 func (AutoUpgradeOptionsArgs) ElementType() reflect.Type {
@@ -1175,16 +1167,6 @@ func (o AutoUpgradeOptionsOutput) ToAutoUpgradeOptionsPtrOutputWithContext(ctx c
 	}).(AutoUpgradeOptionsPtrOutput)
 }
 
-// [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-func (o AutoUpgradeOptionsOutput) AutoUpgradeStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutoUpgradeOptions) *string { return v.AutoUpgradeStartTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
-func (o AutoUpgradeOptionsOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutoUpgradeOptions) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
 type AutoUpgradeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoUpgradeOptionsPtrOutput) ElementType() reflect.Type {
@@ -1201,26 +1183,6 @@ func (o AutoUpgradeOptionsPtrOutput) ToAutoUpgradeOptionsPtrOutputWithContext(ct
 
 func (o AutoUpgradeOptionsPtrOutput) Elem() AutoUpgradeOptionsOutput {
 	return o.ApplyT(func(v *AutoUpgradeOptions) AutoUpgradeOptions { return *v }).(AutoUpgradeOptionsOutput)
-}
-
-// [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-func (o AutoUpgradeOptionsPtrOutput) AutoUpgradeStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutoUpgradeOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AutoUpgradeStartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
-func (o AutoUpgradeOptionsPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutoUpgradeOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
 }
 
 // AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed.
@@ -4991,8 +4953,6 @@ func (o ConsumptionMeteringConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutp
 
 // Time window specified for daily maintenance operations.
 type DailyMaintenanceWindow struct {
-	// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario. Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
-	Duration *string `pulumi:"duration"`
 	// Time within the maintenance window to start the maintenance operations. Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
 	StartTime *string `pulumi:"startTime"`
 }
@@ -5010,8 +4970,6 @@ type DailyMaintenanceWindowInput interface {
 
 // Time window specified for daily maintenance operations.
 type DailyMaintenanceWindowArgs struct {
-	// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario. Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
-	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// Time within the maintenance window to start the maintenance operations. Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
@@ -5094,11 +5052,6 @@ func (o DailyMaintenanceWindowOutput) ToDailyMaintenanceWindowPtrOutputWithConte
 	}).(DailyMaintenanceWindowPtrOutput)
 }
 
-// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario. Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
-func (o DailyMaintenanceWindowOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DailyMaintenanceWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
-}
-
 // Time within the maintenance window to start the maintenance operations. Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
 func (o DailyMaintenanceWindowOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DailyMaintenanceWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
@@ -5120,16 +5073,6 @@ func (o DailyMaintenanceWindowPtrOutput) ToDailyMaintenanceWindowPtrOutputWithCo
 
 func (o DailyMaintenanceWindowPtrOutput) Elem() DailyMaintenanceWindowOutput {
 	return o.ApplyT(func(v *DailyMaintenanceWindow) DailyMaintenanceWindow { return *v }).(DailyMaintenanceWindowOutput)
-}
-
-// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario. Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
-func (o DailyMaintenanceWindowPtrOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DailyMaintenanceWindow) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Duration
-	}).(pulumi.StringPtrOutput)
 }
 
 // Time within the maintenance window to start the maintenance operations. Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
@@ -9141,14 +9084,8 @@ func (o MaintenanceWindowResponsePtrOutput) RecurringWindow() RecurringTimeWindo
 
 // The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates.
 type MasterAuth struct {
-	// [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
-	ClientCertificate *string `pulumi:"clientCertificate"`
 	// Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
 	ClientCertificateConfig *ClientCertificateConfig `pulumi:"clientCertificateConfig"`
-	// [Output only] Base64-encoded private key used by clients to authenticate to the cluster endpoint.
-	ClientKey *string `pulumi:"clientKey"`
-	// [Output only] Base64-encoded public certificate that is the root of trust for the cluster.
-	ClusterCaCertificate *string `pulumi:"clusterCaCertificate"`
 	// The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password. If a password is provided for cluster creation, username must be non-empty. Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
 	Password *string `pulumi:"password"`
 	// The username to use for HTTP basic authentication to the master endpoint. For clusters v1.6.0 and later, basic authentication can be disabled by leaving username unspecified (or setting it to the empty string). Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
@@ -9168,14 +9105,8 @@ type MasterAuthInput interface {
 
 // The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates.
 type MasterAuthArgs struct {
-	// [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
-	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
 	ClientCertificateConfig ClientCertificateConfigPtrInput `pulumi:"clientCertificateConfig"`
-	// [Output only] Base64-encoded private key used by clients to authenticate to the cluster endpoint.
-	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
-	// [Output only] Base64-encoded public certificate that is the root of trust for the cluster.
-	ClusterCaCertificate pulumi.StringPtrInput `pulumi:"clusterCaCertificate"`
 	// The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password. If a password is provided for cluster creation, username must be non-empty. Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The username to use for HTTP basic authentication to the master endpoint. For clusters v1.6.0 and later, basic authentication can be disabled by leaving username unspecified (or setting it to the empty string). Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
@@ -9260,24 +9191,9 @@ func (o MasterAuthOutput) ToMasterAuthPtrOutputWithContext(ctx context.Context) 
 	}).(MasterAuthPtrOutput)
 }
 
-// [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
-func (o MasterAuthOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MasterAuth) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
-}
-
 // Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
 func (o MasterAuthOutput) ClientCertificateConfig() ClientCertificateConfigPtrOutput {
 	return o.ApplyT(func(v MasterAuth) *ClientCertificateConfig { return v.ClientCertificateConfig }).(ClientCertificateConfigPtrOutput)
-}
-
-// [Output only] Base64-encoded private key used by clients to authenticate to the cluster endpoint.
-func (o MasterAuthOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MasterAuth) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] Base64-encoded public certificate that is the root of trust for the cluster.
-func (o MasterAuthOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MasterAuth) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
 
 // The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password. If a password is provided for cluster creation, username must be non-empty. Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
@@ -9308,16 +9224,6 @@ func (o MasterAuthPtrOutput) Elem() MasterAuthOutput {
 	return o.ApplyT(func(v *MasterAuth) MasterAuth { return *v }).(MasterAuthOutput)
 }
 
-// [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
-func (o MasterAuthPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MasterAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientCertificate
-	}).(pulumi.StringPtrOutput)
-}
-
 // Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
 func (o MasterAuthPtrOutput) ClientCertificateConfig() ClientCertificateConfigPtrOutput {
 	return o.ApplyT(func(v *MasterAuth) *ClientCertificateConfig {
@@ -9326,26 +9232,6 @@ func (o MasterAuthPtrOutput) ClientCertificateConfig() ClientCertificateConfigPt
 		}
 		return v.ClientCertificateConfig
 	}).(ClientCertificateConfigPtrOutput)
-}
-
-// [Output only] Base64-encoded private key used by clients to authenticate to the cluster endpoint.
-func (o MasterAuthPtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MasterAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] Base64-encoded public certificate that is the root of trust for the cluster.
-func (o MasterAuthPtrOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MasterAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterCaCertificate
-	}).(pulumi.StringPtrOutput)
 }
 
 // The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password. If a password is provided for cluster creation, username must be non-empty. Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
@@ -10177,12 +10063,8 @@ type NetworkConfig struct {
 	DefaultSnatStatus *DefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility *bool `pulumi:"enableIntraNodeVisibility"`
-	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
-	Network *string `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
-	// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
-	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
@@ -10202,12 +10084,8 @@ type NetworkConfigArgs struct {
 	DefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"defaultSnatStatus"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility pulumi.BoolPtrInput `pulumi:"enableIntraNodeVisibility"`
-	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
-	Network pulumi.StringPtrInput `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess *NetworkConfigPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
-	// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
-	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
 
 func (NetworkConfigArgs) ElementType() reflect.Type {
@@ -10298,19 +10176,9 @@ func (o NetworkConfigOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolPtrOutput)
 }
 
-// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
-func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
-}
-
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 func (o NetworkConfigOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringPtrOutput)
-}
-
-// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
-func (o NetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
 type NetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -10351,16 +10219,6 @@ func (o NetworkConfigPtrOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
-func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 func (o NetworkConfigPtrOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
@@ -10368,16 +10226,6 @@ func (o NetworkConfigPtrOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.PrivateIpv6GoogleAccess
-	}).(pulumi.StringPtrOutput)
-}
-
-// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
-func (o NetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Subnetwork
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12929,8 +12777,6 @@ type NodePoolType struct {
 	Config *NodeConfig `pulumi:"config"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
-	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations []string `pulumi:"locations"`
 	// NodeManagement configuration for this NodePool.
@@ -12939,12 +12785,6 @@ type NodePoolType struct {
 	MaxPodsConstraint *MaxPodsConstraint `pulumi:"maxPodsConstraint"`
 	// The name of the node pool.
 	Name *string `pulumi:"name"`
-	// [Output only] The pod CIDR block size per node in this node pool.
-	PodIpv4CidrSize *int `pulumi:"podIpv4CidrSize"`
-	// [Output only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output only] The status of the nodes in this pool instance.
-	Status *string `pulumi:"status"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -12972,8 +12812,6 @@ type NodePoolTypeArgs struct {
 	Config NodeConfigPtrInput `pulumi:"config"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount pulumi.IntPtrInput `pulumi:"initialNodeCount"`
-	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-	InstanceGroupUrls pulumi.StringArrayInput `pulumi:"instanceGroupUrls"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayInput `pulumi:"locations"`
 	// NodeManagement configuration for this NodePool.
@@ -12982,12 +12820,6 @@ type NodePoolTypeArgs struct {
 	MaxPodsConstraint MaxPodsConstraintPtrInput `pulumi:"maxPodsConstraint"`
 	// The name of the node pool.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// [Output only] The pod CIDR block size per node in this node pool.
-	PodIpv4CidrSize pulumi.IntPtrInput `pulumi:"podIpv4CidrSize"`
-	// [Output only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
-	// [Output only] The status of the nodes in this pool instance.
-	Status *NodePoolStatus `pulumi:"status"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -13066,11 +12898,6 @@ func (o NodePoolTypeOutput) InitialNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *int { return v.InitialNodeCount }).(pulumi.IntPtrOutput)
 }
 
-// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-func (o NodePoolTypeOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NodePoolType) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
-}
-
 // The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 func (o NodePoolTypeOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodePoolType) []string { return v.Locations }).(pulumi.StringArrayOutput)
@@ -13089,21 +12916,6 @@ func (o NodePoolTypeOutput) MaxPodsConstraint() MaxPodsConstraintPtrOutput {
 // The name of the node pool.
 func (o NodePoolTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The pod CIDR block size per node in this node pool.
-func (o NodePoolTypeOutput) PodIpv4CidrSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *int { return v.PodIpv4CidrSize }).(pulumi.IntPtrOutput)
-}
-
-// [Output only] Server-defined URL for the resource.
-func (o NodePoolTypeOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The status of the nodes in this pool instance.
-func (o NodePoolTypeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // Upgrade settings control disruption and speed of the upgrade.
@@ -14249,12 +14061,6 @@ type PrivateClusterConfig struct {
 	MasterGlobalAccessConfig *PrivateClusterMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
 	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
-	// The peering name in the customer VPC used by this cluster.
-	PeeringName *string `pulumi:"peeringName"`
-	// The internal IP address of this cluster's master endpoint.
-	PrivateEndpoint *string `pulumi:"privateEndpoint"`
-	// The external IP address of this cluster's master endpoint.
-	PublicEndpoint *string `pulumi:"publicEndpoint"`
 }
 
 // PrivateClusterConfigInput is an input type that accepts PrivateClusterConfigArgs and PrivateClusterConfigOutput values.
@@ -14278,12 +14084,6 @@ type PrivateClusterConfigArgs struct {
 	MasterGlobalAccessConfig PrivateClusterMasterGlobalAccessConfigPtrInput `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
 	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
-	// The peering name in the customer VPC used by this cluster.
-	PeeringName pulumi.StringPtrInput `pulumi:"peeringName"`
-	// The internal IP address of this cluster's master endpoint.
-	PrivateEndpoint pulumi.StringPtrInput `pulumi:"privateEndpoint"`
-	// The external IP address of this cluster's master endpoint.
-	PublicEndpoint pulumi.StringPtrInput `pulumi:"publicEndpoint"`
 }
 
 func (PrivateClusterConfigArgs) ElementType() reflect.Type {
@@ -14386,21 +14186,6 @@ func (o PrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput
 	return o.ApplyT(func(v PrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The peering name in the customer VPC used by this cluster.
-func (o PrivateClusterConfigOutput) PeeringName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateClusterConfig) *string { return v.PeeringName }).(pulumi.StringPtrOutput)
-}
-
-// The internal IP address of this cluster's master endpoint.
-func (o PrivateClusterConfigOutput) PrivateEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateClusterConfig) *string { return v.PrivateEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// The external IP address of this cluster's master endpoint.
-func (o PrivateClusterConfigOutput) PublicEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateClusterConfig) *string { return v.PublicEndpoint }).(pulumi.StringPtrOutput)
-}
-
 type PrivateClusterConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (PrivateClusterConfigPtrOutput) ElementType() reflect.Type {
@@ -14456,36 +14241,6 @@ func (o PrivateClusterConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOut
 			return nil
 		}
 		return v.MasterIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// The peering name in the customer VPC used by this cluster.
-func (o PrivateClusterConfigPtrOutput) PeeringName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PeeringName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The internal IP address of this cluster's master endpoint.
-func (o PrivateClusterConfigPtrOutput) PrivateEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The external IP address of this cluster's master endpoint.
-func (o PrivateClusterConfigPtrOutput) PublicEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublicEndpoint
 	}).(pulumi.StringPtrOutput)
 }
 

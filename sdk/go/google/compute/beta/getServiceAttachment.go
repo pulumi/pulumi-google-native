@@ -24,19 +24,19 @@ type LookupServiceAttachmentArgs struct {
 }
 
 type LookupServiceAttachmentResult struct {
-	// [Output Only] An array of connections for all the consumers connected to this service attachment.
+	// An array of connections for all the consumers connected to this service attachment.
 	ConnectedEndpoints []ServiceAttachmentConnectedEndpointResponse `pulumi:"connectedEndpoints"`
 	// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
 	ConnectionPreference string `pulumi:"connectionPreference"`
-	// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
+	// An array of forwarding rules for all the consumers connected to this service attachment.
 	ConsumerForwardingRules []ServiceAttachmentConsumerForwardingRuleResponse `pulumi:"consumerForwardingRules"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
 	// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
 	EnableProxyProtocol bool `pulumi:"enableProxyProtocol"`
-	// [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
+	// Type of the resource. Always compute#serviceAttachment for service attachments.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
@@ -44,11 +44,11 @@ type LookupServiceAttachmentResult struct {
 	NatSubnets []string `pulumi:"natSubnets"`
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule string `pulumi:"producerForwardingRule"`
-	// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+	// An 128-bit global unique ID of the PSC service attachment.
 	PscServiceAttachmentId Uint128Response `pulumi:"pscServiceAttachmentId"`
-	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService string `pulumi:"targetService"`

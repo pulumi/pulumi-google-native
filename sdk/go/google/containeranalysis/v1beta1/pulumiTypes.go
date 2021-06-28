@@ -5152,8 +5152,6 @@ type Deployment struct {
 	DeployTime *string `pulumi:"deployTime"`
 	// Platform hosting this deployment.
 	Platform *string `pulumi:"platform"`
-	// Resource URI for the artifact being deployed taken from the deployable field with the same name.
-	ResourceUri []string `pulumi:"resourceUri"`
 	// End of the lifetime of this deployment.
 	UndeployTime *string `pulumi:"undeployTime"`
 	// Identity of the user that triggered this deployment.
@@ -5181,8 +5179,6 @@ type DeploymentArgs struct {
 	DeployTime pulumi.StringPtrInput `pulumi:"deployTime"`
 	// Platform hosting this deployment.
 	Platform *DeploymentPlatform `pulumi:"platform"`
-	// Resource URI for the artifact being deployed taken from the deployable field with the same name.
-	ResourceUri pulumi.StringArrayInput `pulumi:"resourceUri"`
 	// End of the lifetime of this deployment.
 	UndeployTime pulumi.StringPtrInput `pulumi:"undeployTime"`
 	// Identity of the user that triggered this deployment.
@@ -5287,11 +5283,6 @@ func (o DeploymentOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Deployment) *string { return v.Platform }).(pulumi.StringPtrOutput)
 }
 
-// Resource URI for the artifact being deployed taken from the deployable field with the same name.
-func (o DeploymentOutput) ResourceUri() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Deployment) []string { return v.ResourceUri }).(pulumi.StringArrayOutput)
-}
-
 // End of the lifetime of this deployment.
 func (o DeploymentOutput) UndeployTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Deployment) *string { return v.UndeployTime }).(pulumi.StringPtrOutput)
@@ -5358,16 +5349,6 @@ func (o DeploymentPtrOutput) Platform() pulumi.StringPtrOutput {
 		}
 		return v.Platform
 	}).(pulumi.StringPtrOutput)
-}
-
-// Resource URI for the artifact being deployed taken from the deployable field with the same name.
-func (o DeploymentPtrOutput) ResourceUri() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Deployment) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceUri
-	}).(pulumi.StringArrayOutput)
 }
 
 // End of the lifetime of this deployment.
@@ -5640,10 +5621,6 @@ func (o DeploymentResponsePtrOutput) UserEmail() pulumi.StringPtrOutput {
 
 // Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 type Derived struct {
-	// This contains the base image URL for the derived image occurrence.
-	BaseResourceUrl *string `pulumi:"baseResourceUrl"`
-	// The number of layers by which this image differs from the associated image basis.
-	Distance *int `pulumi:"distance"`
 	// Required. The fingerprint of the derived image.
 	Fingerprint *Fingerprint `pulumi:"fingerprint"`
 	// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
@@ -5663,10 +5640,6 @@ type DerivedInput interface {
 
 // Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 type DerivedArgs struct {
-	// This contains the base image URL for the derived image occurrence.
-	BaseResourceUrl pulumi.StringPtrInput `pulumi:"baseResourceUrl"`
-	// The number of layers by which this image differs from the associated image basis.
-	Distance pulumi.IntPtrInput `pulumi:"distance"`
 	// Required. The fingerprint of the derived image.
 	Fingerprint FingerprintPtrInput `pulumi:"fingerprint"`
 	// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
@@ -5751,16 +5724,6 @@ func (o DerivedOutput) ToDerivedPtrOutputWithContext(ctx context.Context) Derive
 	}).(DerivedPtrOutput)
 }
 
-// This contains the base image URL for the derived image occurrence.
-func (o DerivedOutput) BaseResourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Derived) *string { return v.BaseResourceUrl }).(pulumi.StringPtrOutput)
-}
-
-// The number of layers by which this image differs from the associated image basis.
-func (o DerivedOutput) Distance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Derived) *int { return v.Distance }).(pulumi.IntPtrOutput)
-}
-
 // Required. The fingerprint of the derived image.
 func (o DerivedOutput) Fingerprint() FingerprintPtrOutput {
 	return o.ApplyT(func(v Derived) *Fingerprint { return v.Fingerprint }).(FingerprintPtrOutput)
@@ -5787,26 +5750,6 @@ func (o DerivedPtrOutput) ToDerivedPtrOutputWithContext(ctx context.Context) Der
 
 func (o DerivedPtrOutput) Elem() DerivedOutput {
 	return o.ApplyT(func(v *Derived) Derived { return *v }).(DerivedOutput)
-}
-
-// This contains the base image URL for the derived image occurrence.
-func (o DerivedPtrOutput) BaseResourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Derived) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BaseResourceUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of layers by which this image differs from the associated image basis.
-func (o DerivedPtrOutput) Distance() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Derived) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Distance
-	}).(pulumi.IntPtrOutput)
 }
 
 // Required. The fingerprint of the derived image.
@@ -8125,8 +8068,6 @@ type Fingerprint struct {
 	V1Name *string `pulumi:"v1Name"`
 	// Required. The ordered list of v2 blobs that represent a given image.
 	V2Blob []string `pulumi:"v2Blob"`
-	// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
-	V2Name *string `pulumi:"v2Name"`
 }
 
 // FingerprintInput is an input type that accepts FingerprintArgs and FingerprintOutput values.
@@ -8146,8 +8087,6 @@ type FingerprintArgs struct {
 	V1Name pulumi.StringPtrInput `pulumi:"v1Name"`
 	// Required. The ordered list of v2 blobs that represent a given image.
 	V2Blob pulumi.StringArrayInput `pulumi:"v2Blob"`
-	// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
-	V2Name pulumi.StringPtrInput `pulumi:"v2Name"`
 }
 
 func (FingerprintArgs) ElementType() reflect.Type {
@@ -8238,11 +8177,6 @@ func (o FingerprintOutput) V2Blob() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Fingerprint) []string { return v.V2Blob }).(pulumi.StringArrayOutput)
 }
 
-// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
-func (o FingerprintOutput) V2Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Fingerprint) *string { return v.V2Name }).(pulumi.StringPtrOutput)
-}
-
 type FingerprintPtrOutput struct{ *pulumi.OutputState }
 
 func (FingerprintPtrOutput) ElementType() reflect.Type {
@@ -8279,16 +8213,6 @@ func (o FingerprintPtrOutput) V2Blob() pulumi.StringArrayOutput {
 		}
 		return v.V2Blob
 	}).(pulumi.StringArrayOutput)
-}
-
-// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
-func (o FingerprintPtrOutput) V2Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Fingerprint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.V2Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // A set of properties that uniquely identify a given Docker image.
@@ -11571,20 +11495,10 @@ func (o GrafeasV1beta1PackageDetailsResponsePtrOutput) Installation() Installati
 
 // Details of a vulnerability Occurrence.
 type GrafeasV1beta1VulnerabilityDetails struct {
-	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
-	CvssScore *float64 `pulumi:"cvssScore"`
 	// The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
 	EffectiveSeverity *string `pulumi:"effectiveSeverity"`
-	// A detailed description of this vulnerability.
-	LongDescription *string `pulumi:"longDescription"`
 	// Required. The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue []PackageIssue `pulumi:"packageIssue"`
-	// URLs related to this vulnerability.
-	RelatedUrls []RelatedUrl `pulumi:"relatedUrls"`
-	// The note provider assigned Severity of the vulnerability.
-	Severity *string `pulumi:"severity"`
-	// A one sentence description of this vulnerability.
-	ShortDescription *string `pulumi:"shortDescription"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc)
 	Type *string `pulumi:"type"`
 }
@@ -11602,20 +11516,10 @@ type GrafeasV1beta1VulnerabilityDetailsInput interface {
 
 // Details of a vulnerability Occurrence.
 type GrafeasV1beta1VulnerabilityDetailsArgs struct {
-	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
-	CvssScore pulumi.Float64PtrInput `pulumi:"cvssScore"`
 	// The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
 	EffectiveSeverity *GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity `pulumi:"effectiveSeverity"`
-	// A detailed description of this vulnerability.
-	LongDescription pulumi.StringPtrInput `pulumi:"longDescription"`
 	// Required. The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueArrayInput `pulumi:"packageIssue"`
-	// URLs related to this vulnerability.
-	RelatedUrls RelatedUrlArrayInput `pulumi:"relatedUrls"`
-	// The note provider assigned Severity of the vulnerability.
-	Severity *GrafeasV1beta1VulnerabilityDetailsSeverity `pulumi:"severity"`
-	// A one sentence description of this vulnerability.
-	ShortDescription pulumi.StringPtrInput `pulumi:"shortDescription"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc)
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -11698,39 +11602,14 @@ func (o GrafeasV1beta1VulnerabilityDetailsOutput) ToGrafeasV1beta1VulnerabilityD
 	}).(GrafeasV1beta1VulnerabilityDetailsPtrOutput)
 }
 
-// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
-func (o GrafeasV1beta1VulnerabilityDetailsOutput) CvssScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) *float64 { return v.CvssScore }).(pulumi.Float64PtrOutput)
-}
-
 // The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
 func (o GrafeasV1beta1VulnerabilityDetailsOutput) EffectiveSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) *string { return v.EffectiveSeverity }).(pulumi.StringPtrOutput)
 }
 
-// A detailed description of this vulnerability.
-func (o GrafeasV1beta1VulnerabilityDetailsOutput) LongDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) *string { return v.LongDescription }).(pulumi.StringPtrOutput)
-}
-
 // Required. The set of affected locations and their fixes (if available) within the associated resource.
 func (o GrafeasV1beta1VulnerabilityDetailsOutput) PackageIssue() PackageIssueArrayOutput {
 	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) []PackageIssue { return v.PackageIssue }).(PackageIssueArrayOutput)
-}
-
-// URLs related to this vulnerability.
-func (o GrafeasV1beta1VulnerabilityDetailsOutput) RelatedUrls() RelatedUrlArrayOutput {
-	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) []RelatedUrl { return v.RelatedUrls }).(RelatedUrlArrayOutput)
-}
-
-// The note provider assigned Severity of the vulnerability.
-func (o GrafeasV1beta1VulnerabilityDetailsOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) *string { return v.Severity }).(pulumi.StringPtrOutput)
-}
-
-// A one sentence description of this vulnerability.
-func (o GrafeasV1beta1VulnerabilityDetailsOutput) ShortDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) *string { return v.ShortDescription }).(pulumi.StringPtrOutput)
 }
 
 // The type of package; whether native or non native(ruby gems, node.js packages etc)
@@ -11756,16 +11635,6 @@ func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) Elem() GrafeasV1beta1Vulner
 	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) GrafeasV1beta1VulnerabilityDetails { return *v }).(GrafeasV1beta1VulnerabilityDetailsOutput)
 }
 
-// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
-func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) CvssScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.CvssScore
-	}).(pulumi.Float64PtrOutput)
-}
-
 // The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
 func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) EffectiveSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) *string {
@@ -11773,16 +11642,6 @@ func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) EffectiveSeverity() pulumi.
 			return nil
 		}
 		return v.EffectiveSeverity
-	}).(pulumi.StringPtrOutput)
-}
-
-// A detailed description of this vulnerability.
-func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) LongDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LongDescription
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11794,36 +11653,6 @@ func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) PackageIssue() PackageIssue
 		}
 		return v.PackageIssue
 	}).(PackageIssueArrayOutput)
-}
-
-// URLs related to this vulnerability.
-func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) RelatedUrls() RelatedUrlArrayOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) []RelatedUrl {
-		if v == nil {
-			return nil
-		}
-		return v.RelatedUrls
-	}).(RelatedUrlArrayOutput)
-}
-
-// The note provider assigned Severity of the vulnerability.
-func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Severity
-	}).(pulumi.StringPtrOutput)
-}
-
-// A one sentence description of this vulnerability.
-func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) ShortDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ShortDescription
-	}).(pulumi.StringPtrOutput)
 }
 
 // The type of package; whether native or non native(ruby gems, node.js packages etc)
@@ -12827,8 +12656,6 @@ func (o InTotoResponsePtrOutput) Threshold() pulumi.StringPtrOutput {
 type Installation struct {
 	// Required. All of the places within the filesystem versions of this package have been found.
 	Location []Location `pulumi:"location"`
-	// The name of the installed package.
-	Name *string `pulumi:"name"`
 }
 
 // InstallationInput is an input type that accepts InstallationArgs and InstallationOutput values.
@@ -12846,8 +12673,6 @@ type InstallationInput interface {
 type InstallationArgs struct {
 	// Required. All of the places within the filesystem versions of this package have been found.
 	Location LocationArrayInput `pulumi:"location"`
-	// The name of the installed package.
-	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (InstallationArgs) ElementType() reflect.Type {
@@ -12933,11 +12758,6 @@ func (o InstallationOutput) Location() LocationArrayOutput {
 	return o.ApplyT(func(v Installation) []Location { return v.Location }).(LocationArrayOutput)
 }
 
-// The name of the installed package.
-func (o InstallationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Installation) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
 type InstallationPtrOutput struct{ *pulumi.OutputState }
 
 func (InstallationPtrOutput) ElementType() reflect.Type {
@@ -12964,16 +12784,6 @@ func (o InstallationPtrOutput) Location() LocationArrayOutput {
 		}
 		return v.Location
 	}).(LocationArrayOutput)
-}
-
-// The name of the installed package.
-func (o InstallationPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Installation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // This represents how a particular software package may be installed on a system.

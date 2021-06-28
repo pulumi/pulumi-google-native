@@ -16,8 +16,6 @@ type GoogleCloudDatalabelingV1beta1AnnotationSpec struct {
 	Description *string `pulumi:"description"`
 	// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
-	Index *int `pulumi:"index"`
 }
 
 // GoogleCloudDatalabelingV1beta1AnnotationSpecInput is an input type that accepts GoogleCloudDatalabelingV1beta1AnnotationSpecArgs and GoogleCloudDatalabelingV1beta1AnnotationSpecOutput values.
@@ -37,8 +35,6 @@ type GoogleCloudDatalabelingV1beta1AnnotationSpecArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
-	Index pulumi.IntPtrInput `pulumi:"index"`
 }
 
 func (GoogleCloudDatalabelingV1beta1AnnotationSpecArgs) ElementType() reflect.Type {
@@ -101,11 +97,6 @@ func (o GoogleCloudDatalabelingV1beta1AnnotationSpecOutput) Description() pulumi
 // Required. The display name of the AnnotationSpec. Maximum of 64 characters.
 func (o GoogleCloudDatalabelingV1beta1AnnotationSpecOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1AnnotationSpec) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
-func (o GoogleCloudDatalabelingV1beta1AnnotationSpecOutput) Index() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1AnnotationSpec) *int { return v.Index }).(pulumi.IntPtrOutput)
 }
 
 type GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput struct{ *pulumi.OutputState }
@@ -244,112 +235,6 @@ func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatalabelingV1beta1AnnotationSpecResponse {
 		return vs[0].([]GoogleCloudDatalabelingV1beta1AnnotationSpecResponse)[vs[1].(int)]
 	}).(GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput)
-}
-
-// Records a failed evaluation job run.
-type GoogleCloudDatalabelingV1beta1Attempt struct {
-	AttemptTime *string `pulumi:"attemptTime"`
-	// Details of errors that occurred.
-	PartialFailures []GoogleRpcStatus `pulumi:"partialFailures"`
-}
-
-// GoogleCloudDatalabelingV1beta1AttemptInput is an input type that accepts GoogleCloudDatalabelingV1beta1AttemptArgs and GoogleCloudDatalabelingV1beta1AttemptOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1AttemptInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1AttemptArgs{...}
-type GoogleCloudDatalabelingV1beta1AttemptInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1AttemptOutput() GoogleCloudDatalabelingV1beta1AttemptOutput
-	ToGoogleCloudDatalabelingV1beta1AttemptOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1AttemptOutput
-}
-
-// Records a failed evaluation job run.
-type GoogleCloudDatalabelingV1beta1AttemptArgs struct {
-	AttemptTime pulumi.StringPtrInput `pulumi:"attemptTime"`
-	// Details of errors that occurred.
-	PartialFailures GoogleRpcStatusArrayInput `pulumi:"partialFailures"`
-}
-
-func (GoogleCloudDatalabelingV1beta1AttemptArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1Attempt)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1AttemptArgs) ToGoogleCloudDatalabelingV1beta1AttemptOutput() GoogleCloudDatalabelingV1beta1AttemptOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1AttemptOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1AttemptArgs) ToGoogleCloudDatalabelingV1beta1AttemptOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AttemptOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1AttemptOutput)
-}
-
-// GoogleCloudDatalabelingV1beta1AttemptArrayInput is an input type that accepts GoogleCloudDatalabelingV1beta1AttemptArray and GoogleCloudDatalabelingV1beta1AttemptArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1AttemptArrayInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1AttemptArray{ GoogleCloudDatalabelingV1beta1AttemptArgs{...} }
-type GoogleCloudDatalabelingV1beta1AttemptArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1AttemptArrayOutput() GoogleCloudDatalabelingV1beta1AttemptArrayOutput
-	ToGoogleCloudDatalabelingV1beta1AttemptArrayOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1AttemptArrayOutput
-}
-
-type GoogleCloudDatalabelingV1beta1AttemptArray []GoogleCloudDatalabelingV1beta1AttemptInput
-
-func (GoogleCloudDatalabelingV1beta1AttemptArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatalabelingV1beta1Attempt)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1AttemptArray) ToGoogleCloudDatalabelingV1beta1AttemptArrayOutput() GoogleCloudDatalabelingV1beta1AttemptArrayOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1AttemptArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1AttemptArray) ToGoogleCloudDatalabelingV1beta1AttemptArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AttemptArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1AttemptArrayOutput)
-}
-
-// Records a failed evaluation job run.
-type GoogleCloudDatalabelingV1beta1AttemptOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1AttemptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1Attempt)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1AttemptOutput) ToGoogleCloudDatalabelingV1beta1AttemptOutput() GoogleCloudDatalabelingV1beta1AttemptOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1AttemptOutput) ToGoogleCloudDatalabelingV1beta1AttemptOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AttemptOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1AttemptOutput) AttemptTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1Attempt) *string { return v.AttemptTime }).(pulumi.StringPtrOutput)
-}
-
-// Details of errors that occurred.
-func (o GoogleCloudDatalabelingV1beta1AttemptOutput) PartialFailures() GoogleRpcStatusArrayOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1Attempt) []GoogleRpcStatus { return v.PartialFailures }).(GoogleRpcStatusArrayOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1AttemptArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1AttemptArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatalabelingV1beta1Attempt)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1AttemptArrayOutput) ToGoogleCloudDatalabelingV1beta1AttemptArrayOutput() GoogleCloudDatalabelingV1beta1AttemptArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1AttemptArrayOutput) ToGoogleCloudDatalabelingV1beta1AttemptArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1AttemptArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1AttemptArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatalabelingV1beta1AttemptOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatalabelingV1beta1Attempt {
-		return vs[0].([]GoogleCloudDatalabelingV1beta1Attempt)[vs[1].(int)]
-	}).(GoogleCloudDatalabelingV1beta1AttemptOutput)
 }
 
 // Records a failed evaluation job run.
@@ -4170,31 +4055,6 @@ func (i *googleCloudDatalabelingV1beta1InputConfigPtrType) ToGoogleCloudDatalabe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1InputConfigPtrOutput)
 }
 
-// GoogleCloudDatalabelingV1beta1InputConfigArrayInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigArray and GoogleCloudDatalabelingV1beta1InputConfigArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1InputConfigArrayInput` via:
-//
-//          GoogleCloudDatalabelingV1beta1InputConfigArray{ GoogleCloudDatalabelingV1beta1InputConfigArgs{...} }
-type GoogleCloudDatalabelingV1beta1InputConfigArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatalabelingV1beta1InputConfigArrayOutput() GoogleCloudDatalabelingV1beta1InputConfigArrayOutput
-	ToGoogleCloudDatalabelingV1beta1InputConfigArrayOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1InputConfigArrayOutput
-}
-
-type GoogleCloudDatalabelingV1beta1InputConfigArray []GoogleCloudDatalabelingV1beta1InputConfigInput
-
-func (GoogleCloudDatalabelingV1beta1InputConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatalabelingV1beta1InputConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudDatalabelingV1beta1InputConfigArray) ToGoogleCloudDatalabelingV1beta1InputConfigArrayOutput() GoogleCloudDatalabelingV1beta1InputConfigArrayOutput {
-	return i.ToGoogleCloudDatalabelingV1beta1InputConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatalabelingV1beta1InputConfigArray) ToGoogleCloudDatalabelingV1beta1InputConfigArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1InputConfigArrayOutput)
-}
-
 // The configuration of input data, including data type, location, etc.
 type GoogleCloudDatalabelingV1beta1InputConfigOutput struct{ *pulumi.OutputState }
 
@@ -4336,26 +4196,6 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) TextMetadata() Googl
 		}
 		return v.TextMetadata
 	}).(GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput)
-}
-
-type GoogleCloudDatalabelingV1beta1InputConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatalabelingV1beta1InputConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatalabelingV1beta1InputConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigArrayOutput) ToGoogleCloudDatalabelingV1beta1InputConfigArrayOutput() GoogleCloudDatalabelingV1beta1InputConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigArrayOutput) ToGoogleCloudDatalabelingV1beta1InputConfigArrayOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatalabelingV1beta1InputConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatalabelingV1beta1InputConfig {
-		return vs[0].([]GoogleCloudDatalabelingV1beta1InputConfig)[vs[1].(int)]
-	}).(GoogleCloudDatalabelingV1beta1InputConfigOutput)
 }
 
 // The configuration of input data, including data type, location, etc.
@@ -6283,124 +6123,6 @@ func (o GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput) LanguageCod
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type GoogleRpcStatus struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code *int `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message *string `pulumi:"message"`
-}
-
-// GoogleRpcStatusInput is an input type that accepts GoogleRpcStatusArgs and GoogleRpcStatusOutput values.
-// You can construct a concrete instance of `GoogleRpcStatusInput` via:
-//
-//          GoogleRpcStatusArgs{...}
-type GoogleRpcStatusInput interface {
-	pulumi.Input
-
-	ToGoogleRpcStatusOutput() GoogleRpcStatusOutput
-	ToGoogleRpcStatusOutputWithContext(context.Context) GoogleRpcStatusOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type GoogleRpcStatusArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntPtrInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (GoogleRpcStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleRpcStatus)(nil)).Elem()
-}
-
-func (i GoogleRpcStatusArgs) ToGoogleRpcStatusOutput() GoogleRpcStatusOutput {
-	return i.ToGoogleRpcStatusOutputWithContext(context.Background())
-}
-
-func (i GoogleRpcStatusArgs) ToGoogleRpcStatusOutputWithContext(ctx context.Context) GoogleRpcStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusOutput)
-}
-
-// GoogleRpcStatusArrayInput is an input type that accepts GoogleRpcStatusArray and GoogleRpcStatusArrayOutput values.
-// You can construct a concrete instance of `GoogleRpcStatusArrayInput` via:
-//
-//          GoogleRpcStatusArray{ GoogleRpcStatusArgs{...} }
-type GoogleRpcStatusArrayInput interface {
-	pulumi.Input
-
-	ToGoogleRpcStatusArrayOutput() GoogleRpcStatusArrayOutput
-	ToGoogleRpcStatusArrayOutputWithContext(context.Context) GoogleRpcStatusArrayOutput
-}
-
-type GoogleRpcStatusArray []GoogleRpcStatusInput
-
-func (GoogleRpcStatusArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleRpcStatus)(nil)).Elem()
-}
-
-func (i GoogleRpcStatusArray) ToGoogleRpcStatusArrayOutput() GoogleRpcStatusArrayOutput {
-	return i.ToGoogleRpcStatusArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleRpcStatusArray) ToGoogleRpcStatusArrayOutputWithContext(ctx context.Context) GoogleRpcStatusArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusArrayOutput)
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type GoogleRpcStatusOutput struct{ *pulumi.OutputState }
-
-func (GoogleRpcStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleRpcStatus)(nil)).Elem()
-}
-
-func (o GoogleRpcStatusOutput) ToGoogleRpcStatusOutput() GoogleRpcStatusOutput {
-	return o
-}
-
-func (o GoogleRpcStatusOutput) ToGoogleRpcStatusOutputWithContext(ctx context.Context) GoogleRpcStatusOutput {
-	return o
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o GoogleRpcStatusOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleRpcStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o GoogleRpcStatusOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v GoogleRpcStatus) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o GoogleRpcStatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleRpcStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type GoogleRpcStatusArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleRpcStatusArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleRpcStatus)(nil)).Elem()
-}
-
-func (o GoogleRpcStatusArrayOutput) ToGoogleRpcStatusArrayOutput() GoogleRpcStatusArrayOutput {
-	return o
-}
-
-func (o GoogleRpcStatusArrayOutput) ToGoogleRpcStatusArrayOutputWithContext(ctx context.Context) GoogleRpcStatusArrayOutput {
-	return o
-}
-
-func (o GoogleRpcStatusArrayOutput) Index(i pulumi.IntInput) GoogleRpcStatusOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleRpcStatus {
-		return vs[0].([]GoogleRpcStatus)[vs[1].(int)]
-	}).(GoogleRpcStatusOutput)
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type GoogleRpcStatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
@@ -6523,8 +6245,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AttemptOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AttemptArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AttemptResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1BigQuerySourceOutput{})
@@ -6569,7 +6289,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput{})
@@ -6597,8 +6316,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1TextMetadataResponsePtrOutput{})
-	pulumi.RegisterOutputType(GoogleRpcStatusOutput{})
-	pulumi.RegisterOutputType(GoogleRpcStatusArrayOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseArrayOutput{})
 }

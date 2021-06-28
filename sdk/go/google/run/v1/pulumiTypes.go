@@ -10227,8 +10227,6 @@ type TrafficTarget struct {
 	RevisionName *string `pulumi:"revisionName"`
 	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
 	Tag *string `pulumi:"tag"`
-	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
-	Url *string `pulumi:"url"`
 }
 
 // TrafficTargetInput is an input type that accepts TrafficTargetArgs and TrafficTargetOutput values.
@@ -10254,8 +10252,6 @@ type TrafficTargetArgs struct {
 	RevisionName pulumi.StringPtrInput `pulumi:"revisionName"`
 	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
-	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (TrafficTargetArgs) ElementType() reflect.Type {
@@ -10333,11 +10329,6 @@ func (o TrafficTargetOutput) RevisionName() pulumi.StringPtrOutput {
 // Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
 func (o TrafficTargetOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.Tag }).(pulumi.StringPtrOutput)
-}
-
-// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
-func (o TrafficTargetOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TrafficTarget) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 type TrafficTargetArrayOutput struct{ *pulumi.OutputState }

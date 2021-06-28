@@ -15,7 +15,7 @@ import (
 type UrlMap struct {
 	pulumi.CustomResourceState
 
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
 	// Only one of defaultRouteAction or defaultUrlRedirect must be set.
@@ -43,15 +43,15 @@ type UrlMap struct {
 	HeaderAction HttpHeaderActionResponseOutput `pulumi:"headerAction"`
 	// The list of HostRules to use against the URL.
 	HostRules HostRuleResponseArrayOutput `pulumi:"hostRules"`
-	// [Output Only] Type of the resource. Always compute#urlMaps for url maps.
+	// Type of the resource. Always compute#urlMaps for url maps.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers PathMatcherResponseArrayOutput `pulumi:"pathMatchers"`
-	// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -90,7 +90,7 @@ func GetUrlMap(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UrlMap resources.
 type urlMapState struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
 	// Only one of defaultRouteAction or defaultUrlRedirect must be set.
@@ -118,15 +118,15 @@ type urlMapState struct {
 	HeaderAction *HttpHeaderActionResponse `pulumi:"headerAction"`
 	// The list of HostRules to use against the URL.
 	HostRules []HostRuleResponse `pulumi:"hostRules"`
-	// [Output Only] Type of the resource. Always compute#urlMaps for url maps.
+	// Type of the resource. Always compute#urlMaps for url maps.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers []PathMatcherResponse `pulumi:"pathMatchers"`
-	// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -134,7 +134,7 @@ type urlMapState struct {
 }
 
 type UrlMapState struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
 	// Only one of defaultRouteAction or defaultUrlRedirect must be set.
@@ -162,15 +162,15 @@ type UrlMapState struct {
 	HeaderAction HttpHeaderActionResponsePtrInput
 	// The list of HostRules to use against the URL.
 	HostRules HostRuleResponseArrayInput
-	// [Output Only] Type of the resource. Always compute#urlMaps for url maps.
+	// Type of the resource. Always compute#urlMaps for url maps.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers PathMatcherResponseArrayInput
-	// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -182,8 +182,6 @@ func (UrlMapState) ElementType() reflect.Type {
 }
 
 type urlMapArgs struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
 	// Only one of defaultRouteAction or defaultUrlRedirect must be set.
 	// UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction.
@@ -206,20 +204,12 @@ type urlMapArgs struct {
 	HeaderAction *HttpHeaderAction `pulumi:"headerAction"`
 	// The list of HostRules to use against the URL.
 	HostRules []HostRule `pulumi:"hostRules"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output Only] Type of the resource. Always compute#urlMaps for url maps.
-	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers []PathMatcher `pulumi:"pathMatchers"`
 	Project      string        `pulumi:"project"`
-	// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    *string `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
+	RequestId    *string       `pulumi:"requestId"`
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
 	Tests []UrlMapTest `pulumi:"tests"`
@@ -227,8 +217,6 @@ type urlMapArgs struct {
 
 // The set of arguments for constructing a UrlMap resource.
 type UrlMapArgs struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
 	// Only one of defaultRouteAction or defaultUrlRedirect must be set.
 	// UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction.
@@ -251,20 +239,12 @@ type UrlMapArgs struct {
 	HeaderAction HttpHeaderActionPtrInput
 	// The list of HostRules to use against the URL.
 	HostRules HostRuleArrayInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#urlMaps for url maps.
-	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers PathMatcherArrayInput
 	Project      pulumi.StringInput
-	// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    pulumi.StringPtrInput
-	RequestId pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
+	RequestId    pulumi.StringPtrInput
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
 	Tests UrlMapTestArrayInput

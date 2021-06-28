@@ -15,7 +15,7 @@ import (
 type GlobalPublicDelegatedPrefix struct {
 	pulumi.CustomResourceState
 
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -27,7 +27,7 @@ type GlobalPublicDelegatedPrefix struct {
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolOutput `pulumi:"isLiveMigration"`
-	// [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
+	// Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -35,13 +35,13 @@ type GlobalPublicDelegatedPrefix struct {
 	ParentPrefix pulumi.StringOutput `pulumi:"parentPrefix"`
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput `pulumi:"publicDelegatedSubPrefixs"`
-	// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// [Output Only] The status of the public delegated prefix.
+	// The status of the public delegated prefix.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -77,7 +77,7 @@ func GetGlobalPublicDelegatedPrefix(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GlobalPublicDelegatedPrefix resources.
 type globalPublicDelegatedPrefixState struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -89,7 +89,7 @@ type globalPublicDelegatedPrefixState struct {
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
-	// [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
+	// Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
@@ -97,18 +97,18 @@ type globalPublicDelegatedPrefixState struct {
 	ParentPrefix *string `pulumi:"parentPrefix"`
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs []PublicDelegatedPrefixPublicDelegatedSubPrefixResponse `pulumi:"publicDelegatedSubPrefixs"`
-	// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] The status of the public delegated prefix.
+	// The status of the public delegated prefix.
 	Status *string `pulumi:"status"`
 }
 
 type GlobalPublicDelegatedPrefixState struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -120,7 +120,7 @@ type GlobalPublicDelegatedPrefixState struct {
 	IpCidrRange pulumi.StringPtrInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
-	// [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
+	// Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
@@ -128,13 +128,13 @@ type GlobalPublicDelegatedPrefixState struct {
 	ParentPrefix pulumi.StringPtrInput
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayInput
-	// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] The status of the public delegated prefix.
+	// The status of the public delegated prefix.
 	Status pulumi.StringPtrInput
 }
 
@@ -143,18 +143,12 @@ func (GlobalPublicDelegatedPrefixState) ElementType() reflect.Type {
 }
 
 type globalPublicDelegatedPrefixArgs struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
-	Id *string `pulumi:"id"`
 	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
-	// [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
-	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
@@ -162,31 +156,17 @@ type globalPublicDelegatedPrefixArgs struct {
 	Project      string  `pulumi:"project"`
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs []PublicDelegatedPrefixPublicDelegatedSubPrefix `pulumi:"publicDelegatedSubPrefixs"`
-	// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    *string `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] The status of the public delegated prefix.
-	Status *string `pulumi:"status"`
+	RequestId                 *string                                         `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a GlobalPublicDelegatedPrefix resource.
 type GlobalPublicDelegatedPrefixArgs struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
-	Id pulumi.StringPtrInput
 	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringPtrInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
-	// [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
-	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
@@ -194,15 +174,7 @@ type GlobalPublicDelegatedPrefixArgs struct {
 	Project      pulumi.StringInput
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput
-	// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    pulumi.StringPtrInput
-	RequestId pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL with id for the resource.
-	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] The status of the public delegated prefix.
-	Status *GlobalPublicDelegatedPrefixStatus
+	RequestId                 pulumi.StringPtrInput
 }
 
 func (GlobalPublicDelegatedPrefixArgs) ElementType() reflect.Type {

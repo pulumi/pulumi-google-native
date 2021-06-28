@@ -103,37 +103,3 @@ func (e IndexQueryScope) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e IndexQueryScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
-
-// Output only. The serving state of the index.
-type IndexStateEnum pulumi.String
-
-const (
-	// The state is unspecified.
-	IndexStateEnumStateUnspecified = IndexStateEnum("STATE_UNSPECIFIED")
-	// The index is being created. There is an active long-running operation for the index. The index is updated when writing a document. Some index data may exist.
-	IndexStateEnumCreating = IndexStateEnum("CREATING")
-	// The index is ready to be used. The index is updated when writing a document. The index is fully populated from all stored documents it applies to.
-	IndexStateEnumReady = IndexStateEnum("READY")
-	// The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist. Use the google.longrunning.Operations API to determine why the operation that last attempted to create this index failed, then re-create the index.
-	IndexStateEnumNeedsRepair = IndexStateEnum("NEEDS_REPAIR")
-)
-
-func (IndexStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e IndexStateEnum) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e IndexStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e IndexStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e IndexStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}

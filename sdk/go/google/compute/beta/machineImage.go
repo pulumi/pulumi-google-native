@@ -15,13 +15,13 @@ import (
 type MachineImage struct {
 	pulumi.CustomResourceState
 
-	// [Output Only] The creation timestamp for this machine image in RFC3339 text format.
+	// The creation timestamp for this machine image in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
 	GuestFlush pulumi.BoolOutput `pulumi:"guestFlush"`
-	// [Output Only] The resource type, which is always compute#machineImage for machine image.
+	// The resource type, which is always compute#machineImage for machine image.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Encrypts the machine image using a customer-supplied encryption key.
 	//
@@ -33,9 +33,9 @@ type MachineImage struct {
 	MachineImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Output Only] Reserved for future use.
+	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
-	// [Output Only] The URL for this machine image. The server defines this URL.
+	// The URL for this machine image. The server defines this URL.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys SourceDiskEncryptionKeyResponseArrayOutput `pulumi:"sourceDiskEncryptionKeys"`
@@ -43,13 +43,13 @@ type MachineImage struct {
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
 	// - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
-	// [Output Only] Properties of source instance.
+	// Properties of source instance.
 	SourceInstanceProperties SourceInstancePropertiesResponseOutput `pulumi:"sourceInstanceProperties"`
-	// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+	// The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
 	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
-	// [Output Only] Total size of the storage used by the machine image.
+	// Total size of the storage used by the machine image.
 	TotalStorageBytes pulumi.StringOutput `pulumi:"totalStorageBytes"`
 }
 
@@ -88,13 +88,13 @@ func GetMachineImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MachineImage resources.
 type machineImageState struct {
-	// [Output Only] The creation timestamp for this machine image in RFC3339 text format.
+	// The creation timestamp for this machine image in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
 	GuestFlush *bool `pulumi:"guestFlush"`
-	// [Output Only] The resource type, which is always compute#machineImage for machine image.
+	// The resource type, which is always compute#machineImage for machine image.
 	Kind *string `pulumi:"kind"`
 	// Encrypts the machine image using a customer-supplied encryption key.
 	//
@@ -106,9 +106,9 @@ type machineImageState struct {
 	MachineImageEncryptionKey *CustomerEncryptionKeyResponse `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// [Output Only] Reserved for future use.
+	// Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
-	// [Output Only] The URL for this machine image. The server defines this URL.
+	// The URL for this machine image. The server defines this URL.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys []SourceDiskEncryptionKeyResponse `pulumi:"sourceDiskEncryptionKeys"`
@@ -116,24 +116,24 @@ type machineImageState struct {
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
 	// - projects/project/zones/zone/instances/instance
 	SourceInstance *string `pulumi:"sourceInstance"`
-	// [Output Only] Properties of source instance.
+	// Properties of source instance.
 	SourceInstanceProperties *SourceInstancePropertiesResponse `pulumi:"sourceInstanceProperties"`
-	// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+	// The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
 	Status *string `pulumi:"status"`
 	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
 	StorageLocations []string `pulumi:"storageLocations"`
-	// [Output Only] Total size of the storage used by the machine image.
+	// Total size of the storage used by the machine image.
 	TotalStorageBytes *string `pulumi:"totalStorageBytes"`
 }
 
 type MachineImageState struct {
-	// [Output Only] The creation timestamp for this machine image in RFC3339 text format.
+	// The creation timestamp for this machine image in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
 	GuestFlush pulumi.BoolPtrInput
-	// [Output Only] The resource type, which is always compute#machineImage for machine image.
+	// The resource type, which is always compute#machineImage for machine image.
 	Kind pulumi.StringPtrInput
 	// Encrypts the machine image using a customer-supplied encryption key.
 	//
@@ -145,9 +145,9 @@ type MachineImageState struct {
 	MachineImageEncryptionKey CustomerEncryptionKeyResponsePtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// [Output Only] Reserved for future use.
+	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
-	// [Output Only] The URL for this machine image. The server defines this URL.
+	// The URL for this machine image. The server defines this URL.
 	SelfLink pulumi.StringPtrInput
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys SourceDiskEncryptionKeyResponseArrayInput
@@ -155,13 +155,13 @@ type MachineImageState struct {
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
 	// - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringPtrInput
-	// [Output Only] Properties of source instance.
+	// Properties of source instance.
 	SourceInstanceProperties SourceInstancePropertiesResponsePtrInput
-	// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+	// The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
 	Status pulumi.StringPtrInput
 	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
 	StorageLocations pulumi.StringArrayInput
-	// [Output Only] Total size of the storage used by the machine image.
+	// Total size of the storage used by the machine image.
 	TotalStorageBytes pulumi.StringPtrInput
 }
 
@@ -170,16 +170,10 @@ func (MachineImageState) ElementType() reflect.Type {
 }
 
 type machineImageArgs struct {
-	// [Output Only] The creation timestamp for this machine image in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
 	GuestFlush *bool `pulumi:"guestFlush"`
-	// [Output Only] A unique identifier for this machine image. The server defines this identifier.
-	Id *string `pulumi:"id"`
-	// [Output Only] The resource type, which is always compute#machineImage for machine image.
-	Kind *string `pulumi:"kind"`
 	// Encrypts the machine image using a customer-supplied encryption key.
 	//
 	// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.
@@ -192,38 +186,22 @@ type machineImageArgs struct {
 	Name      *string `pulumi:"name"`
 	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Reserved for future use.
-	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
-	// [Output Only] The URL for this machine image. The server defines this URL.
-	SelfLink *string `pulumi:"selfLink"`
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys []SourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKeys"`
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
 	// - projects/project/zones/zone/instances/instance
 	SourceInstance string `pulumi:"sourceInstance"`
-	// [Output Only] Properties of source instance.
-	SourceInstanceProperties *SourceInstanceProperties `pulumi:"sourceInstanceProperties"`
-	// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
-	Status *string `pulumi:"status"`
 	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
 	StorageLocations []string `pulumi:"storageLocations"`
-	// [Output Only] Total size of the storage used by the machine image.
-	TotalStorageBytes *string `pulumi:"totalStorageBytes"`
 }
 
 // The set of arguments for constructing a MachineImage resource.
 type MachineImageArgs struct {
-	// [Output Only] The creation timestamp for this machine image in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
 	GuestFlush pulumi.BoolPtrInput
-	// [Output Only] A unique identifier for this machine image. The server defines this identifier.
-	Id pulumi.StringPtrInput
-	// [Output Only] The resource type, which is always compute#machineImage for machine image.
-	Kind pulumi.StringPtrInput
 	// Encrypts the machine image using a customer-supplied encryption key.
 	//
 	// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.
@@ -236,24 +214,14 @@ type MachineImageArgs struct {
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
-	// [Output Only] Reserved for future use.
-	SatisfiesPzs pulumi.BoolPtrInput
-	// [Output Only] The URL for this machine image. The server defines this URL.
-	SelfLink pulumi.StringPtrInput
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys SourceDiskEncryptionKeyArrayInput
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
 	// - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringInput
-	// [Output Only] Properties of source instance.
-	SourceInstanceProperties SourceInstancePropertiesPtrInput
-	// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
-	Status *MachineImageStatus
 	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
 	StorageLocations pulumi.StringArrayInput
-	// [Output Only] Total size of the storage used by the machine image.
-	TotalStorageBytes pulumi.StringPtrInput
 }
 
 func (MachineImageArgs) ElementType() reflect.Type {

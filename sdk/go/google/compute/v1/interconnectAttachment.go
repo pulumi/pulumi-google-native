@@ -33,13 +33,13 @@ type InterconnectAttachment struct {
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets pulumi.StringArrayOutput `pulumi:"candidateSubnets"`
-	// [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
 	CloudRouterIpAddress pulumi.StringOutput `pulumi:"cloudRouterIpAddress"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// [Output Only] IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress pulumi.StringOutput `pulumi:"customerRouterIpAddress"`
-	// [Output Only] Dataplane version for this InterconnectAttachment.
+	// Dataplane version for this InterconnectAttachment.
 	DataplaneVersion pulumi.IntOutput `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -58,13 +58,13 @@ type InterconnectAttachment struct {
 	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
 	// Not currently available in all Interconnect locations.
 	IpsecInternalAddresses pulumi.StringArrayOutput `pulumi:"ipsecInternalAddresses"`
-	// [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
+	// Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
 	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
+	// The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
 	// - OS_ACTIVE: The attachment has been turned up and is ready to use.
 	// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 	OperationalStatus pulumi.StringOutput `pulumi:"operationalStatus"`
@@ -74,15 +74,15 @@ type InterconnectAttachment struct {
 	PartnerAsn pulumi.StringOutput `pulumi:"partnerAsn"`
 	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata InterconnectAttachmentPartnerMetadataResponseOutput `pulumi:"partnerMetadata"`
-	// [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
+	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
 	PrivateInterconnectInfo InterconnectAttachmentPrivateInfoResponseOutput `pulumi:"privateInterconnectInfo"`
-	// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router pulumi.StringOutput `pulumi:"router"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
+	// The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
 	// - ACTIVE: The attachment has been turned up and is ready to use.
 	// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 	// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side.
@@ -152,13 +152,13 @@ type interconnectAttachmentState struct {
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets []string `pulumi:"candidateSubnets"`
-	// [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
 	CloudRouterIpAddress *string `pulumi:"cloudRouterIpAddress"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// [Output Only] IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress *string `pulumi:"customerRouterIpAddress"`
-	// [Output Only] Dataplane version for this InterconnectAttachment.
+	// Dataplane version for this InterconnectAttachment.
 	DataplaneVersion *int `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -177,13 +177,13 @@ type interconnectAttachmentState struct {
 	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
 	// Not currently available in all Interconnect locations.
 	IpsecInternalAddresses []string `pulumi:"ipsecInternalAddresses"`
-	// [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
+	// Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
 	Kind *string `pulumi:"kind"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
+	// The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
 	// - OS_ACTIVE: The attachment has been turned up and is ready to use.
 	// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 	OperationalStatus *string `pulumi:"operationalStatus"`
@@ -193,15 +193,15 @@ type interconnectAttachmentState struct {
 	PartnerAsn *string `pulumi:"partnerAsn"`
 	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata *InterconnectAttachmentPartnerMetadataResponse `pulumi:"partnerMetadata"`
-	// [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
+	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
 	PrivateInterconnectInfo *InterconnectAttachmentPrivateInfoResponse `pulumi:"privateInterconnectInfo"`
-	// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router *string `pulumi:"router"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
+	// The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
 	// - ACTIVE: The attachment has been turned up and is ready to use.
 	// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 	// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side.
@@ -237,13 +237,13 @@ type InterconnectAttachmentState struct {
 	Bandwidth pulumi.StringPtrInput
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets pulumi.StringArrayInput
-	// [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
 	CloudRouterIpAddress pulumi.StringPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// [Output Only] IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress pulumi.StringPtrInput
-	// [Output Only] Dataplane version for this InterconnectAttachment.
+	// Dataplane version for this InterconnectAttachment.
 	DataplaneVersion pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -262,13 +262,13 @@ type InterconnectAttachmentState struct {
 	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
 	// Not currently available in all Interconnect locations.
 	IpsecInternalAddresses pulumi.StringArrayInput
-	// [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
+	// Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
 	Kind pulumi.StringPtrInput
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
+	// The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
 	// - OS_ACTIVE: The attachment has been turned up and is ready to use.
 	// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 	OperationalStatus pulumi.StringPtrInput
@@ -278,15 +278,15 @@ type InterconnectAttachmentState struct {
 	PartnerAsn pulumi.StringPtrInput
 	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata InterconnectAttachmentPartnerMetadataResponsePtrInput
-	// [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
+	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
 	PrivateInterconnectInfo InterconnectAttachmentPrivateInfoResponsePtrInput
-	// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
+	// The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
 	// - ACTIVE: The attachment has been turned up and is ready to use.
 	// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 	// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side.
@@ -326,14 +326,6 @@ type interconnectAttachmentArgs struct {
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets []string `pulumi:"candidateSubnets"`
-	// [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
-	CloudRouterIpAddress *string `pulumi:"cloudRouterIpAddress"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// [Output Only] IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
-	CustomerRouterIpAddress *string `pulumi:"customerRouterIpAddress"`
-	// [Output Only] Dataplane version for this InterconnectAttachment.
-	DataplaneVersion *int `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values:
@@ -346,47 +338,26 @@ type interconnectAttachmentArgs struct {
 	// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option.
 	//   Not currently available in all Interconnect locations.
 	Encryption *string `pulumi:"encryption"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
 	Interconnect *string `pulumi:"interconnect"`
 	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
 	// Not currently available in all Interconnect locations.
 	IpsecInternalAddresses []string `pulumi:"ipsecInternalAddresses"`
-	// [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
-	Kind *string `pulumi:"kind"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
-	// - OS_ACTIVE: The attachment has been turned up and is ready to use.
-	// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-	OperationalStatus *string `pulumi:"operationalStatus"`
 	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey *string `pulumi:"pairingKey"`
 	// Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerAsn *string `pulumi:"partnerAsn"`
 	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata *InterconnectAttachmentPartnerMetadata `pulumi:"partnerMetadata"`
-	// [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
-	PrivateInterconnectInfo *InterconnectAttachmentPrivateInfo `pulumi:"privateInterconnectInfo"`
-	Project                 string                             `pulumi:"project"`
-	// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    string  `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
+	Project         string                                 `pulumi:"project"`
+	Region          string                                 `pulumi:"region"`
+	RequestId       *string                                `pulumi:"requestId"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router *string `pulumi:"router"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
-	// - ACTIVE: The attachment has been turned up and is ready to use.
-	// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-	// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side.
-	// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it.
-	// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it.
-	// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
-	State *string `pulumi:"state"`
 	// The type of interconnect attachment this is, which can take one of the following values:
 	// - DEDICATED: an attachment to a Dedicated Interconnect.
 	// - PARTNER: an attachment to a Partner Interconnect, created by the customer.
@@ -417,14 +388,6 @@ type InterconnectAttachmentArgs struct {
 	Bandwidth *InterconnectAttachmentBandwidth
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets pulumi.StringArrayInput
-	// [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
-	CloudRouterIpAddress pulumi.StringPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// [Output Only] IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
-	CustomerRouterIpAddress pulumi.StringPtrInput
-	// [Output Only] Dataplane version for this InterconnectAttachment.
-	DataplaneVersion pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values:
@@ -437,47 +400,26 @@ type InterconnectAttachmentArgs struct {
 	// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option.
 	//   Not currently available in all Interconnect locations.
 	Encryption *InterconnectAttachmentEncryption
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
 	Interconnect pulumi.StringPtrInput
 	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
 	// Not currently available in all Interconnect locations.
 	IpsecInternalAddresses pulumi.StringArrayInput
-	// [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
-	Kind pulumi.StringPtrInput
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
-	// - OS_ACTIVE: The attachment has been turned up and is ready to use.
-	// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-	OperationalStatus *InterconnectAttachmentOperationalStatus
 	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey pulumi.StringPtrInput
 	// Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerAsn pulumi.StringPtrInput
 	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata InterconnectAttachmentPartnerMetadataPtrInput
-	// [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
-	PrivateInterconnectInfo InterconnectAttachmentPrivateInfoPtrInput
-	Project                 pulumi.StringInput
-	// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    pulumi.StringInput
-	RequestId pulumi.StringPtrInput
+	Project         pulumi.StringInput
+	Region          pulumi.StringInput
+	RequestId       pulumi.StringPtrInput
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
-	// - ACTIVE: The attachment has been turned up and is ready to use.
-	// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-	// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side.
-	// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it.
-	// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it.
-	// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
-	State *InterconnectAttachmentStateEnum
 	// The type of interconnect attachment this is, which can take one of the following values:
 	// - DEDICATED: an attachment to a Dedicated Interconnect.
 	// - PARTNER: an attachment to a Partner Interconnect, created by the customer.

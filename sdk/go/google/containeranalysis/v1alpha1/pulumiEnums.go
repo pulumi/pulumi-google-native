@@ -348,94 +348,6 @@ func (e LayerDirective) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Output only. This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
-type NoteKind pulumi.String
-
-const (
-	// Unknown
-	NoteKindKindUnspecified = NoteKind("KIND_UNSPECIFIED")
-	// The note and occurrence represent a package vulnerability.
-	NoteKindPackageVulnerability = NoteKind("PACKAGE_VULNERABILITY")
-	// The note and occurrence assert build provenance.
-	NoteKindBuildDetails = NoteKind("BUILD_DETAILS")
-	// This represents an image basis relationship.
-	NoteKindImageBasis = NoteKind("IMAGE_BASIS")
-	// This represents a package installed via a package manager.
-	NoteKindPackageManager = NoteKind("PACKAGE_MANAGER")
-	// The note and occurrence track deployment events.
-	NoteKindDeployable = NoteKind("DEPLOYABLE")
-	// The note and occurrence track the initial discovery status of a resource.
-	NoteKindDiscovery = NoteKind("DISCOVERY")
-	// This represents a logical "role" that can attest to artifacts.
-	NoteKindAttestationAuthority = NoteKind("ATTESTATION_AUTHORITY")
-	// This represents an available software upgrade.
-	NoteKindUpgrade = NoteKind("UPGRADE")
-)
-
-func (NoteKind) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e NoteKind) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NoteKind) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NoteKind) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e NoteKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// Output only. This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-type OccurrenceKind pulumi.String
-
-const (
-	// Unknown
-	OccurrenceKindKindUnspecified = OccurrenceKind("KIND_UNSPECIFIED")
-	// The note and occurrence represent a package vulnerability.
-	OccurrenceKindPackageVulnerability = OccurrenceKind("PACKAGE_VULNERABILITY")
-	// The note and occurrence assert build provenance.
-	OccurrenceKindBuildDetails = OccurrenceKind("BUILD_DETAILS")
-	// This represents an image basis relationship.
-	OccurrenceKindImageBasis = OccurrenceKind("IMAGE_BASIS")
-	// This represents a package installed via a package manager.
-	OccurrenceKindPackageManager = OccurrenceKind("PACKAGE_MANAGER")
-	// The note and occurrence track deployment events.
-	OccurrenceKindDeployable = OccurrenceKind("DEPLOYABLE")
-	// The note and occurrence track the initial discovery status of a resource.
-	OccurrenceKindDiscovery = OccurrenceKind("DISCOVERY")
-	// This represents a logical "role" that can attest to artifacts.
-	OccurrenceKindAttestationAuthority = OccurrenceKind("ATTESTATION_AUTHORITY")
-	// This represents an available software upgrade.
-	OccurrenceKindUpgrade = OccurrenceKind("UPGRADE")
-)
-
-func (OccurrenceKind) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e OccurrenceKind) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e OccurrenceKind) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e OccurrenceKind) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e OccurrenceKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
 type PgpSignedAttestationContentType pulumi.String
 
@@ -533,44 +445,6 @@ func (e VulnerabilityDetailsEffectiveSeverity) ToStringPtrOutput() pulumi.String
 }
 
 func (e VulnerabilityDetailsEffectiveSeverity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// Output only. The note provider assigned Severity of the vulnerability.
-type VulnerabilityDetailsSeverity pulumi.String
-
-const (
-	// Unknown Impact
-	VulnerabilityDetailsSeveritySeverityUnspecified = VulnerabilityDetailsSeverity("SEVERITY_UNSPECIFIED")
-	// Minimal Impact
-	VulnerabilityDetailsSeverityMinimal = VulnerabilityDetailsSeverity("MINIMAL")
-	// Low Impact
-	VulnerabilityDetailsSeverityLow = VulnerabilityDetailsSeverity("LOW")
-	// Medium Impact
-	VulnerabilityDetailsSeverityMedium = VulnerabilityDetailsSeverity("MEDIUM")
-	// High Impact
-	VulnerabilityDetailsSeverityHigh = VulnerabilityDetailsSeverity("HIGH")
-	// Critical Impact
-	VulnerabilityDetailsSeverityCritical = VulnerabilityDetailsSeverity("CRITICAL")
-)
-
-func (VulnerabilityDetailsSeverity) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e VulnerabilityDetailsSeverity) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e VulnerabilityDetailsSeverity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e VulnerabilityDetailsSeverity) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e VulnerabilityDetailsSeverity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 

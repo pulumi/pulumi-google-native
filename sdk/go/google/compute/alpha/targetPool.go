@@ -21,7 +21,7 @@ type TargetPool struct {
 	//
 	// In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
 	BackupPool pulumi.StringOutput `pulumi:"backupPool"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -35,15 +35,15 @@ type TargetPool struct {
 	HealthChecks pulumi.StringArrayOutput `pulumi:"healthChecks"`
 	// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
-	// [Output Only] Type of the resource. Always compute#targetPool for target pools.
+	// Type of the resource. Always compute#targetPool for target pools.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Output Only] URL of the region where the target pool resides.
+	// URL of the region where the target pool resides.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// Session affinity option, must be one of the following values:
 	// NONE: Connections from the same client IP may go to any instance in the pool.
@@ -93,7 +93,7 @@ type targetPoolState struct {
 	//
 	// In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
 	BackupPool *string `pulumi:"backupPool"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -107,15 +107,15 @@ type targetPoolState struct {
 	HealthChecks []string `pulumi:"healthChecks"`
 	// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
 	Instances []string `pulumi:"instances"`
-	// [Output Only] Type of the resource. Always compute#targetPool for target pools.
+	// Type of the resource. Always compute#targetPool for target pools.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// [Output Only] URL of the region where the target pool resides.
+	// URL of the region where the target pool resides.
 	Region *string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// Session affinity option, must be one of the following values:
 	// NONE: Connections from the same client IP may go to any instance in the pool.
@@ -131,7 +131,7 @@ type TargetPoolState struct {
 	//
 	// In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
 	BackupPool pulumi.StringPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -145,15 +145,15 @@ type TargetPoolState struct {
 	HealthChecks pulumi.StringArrayInput
 	// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
 	Instances pulumi.StringArrayInput
-	// [Output Only] Type of the resource. Always compute#targetPool for target pools.
+	// Type of the resource. Always compute#targetPool for target pools.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// [Output Only] URL of the region where the target pool resides.
+	// URL of the region where the target pool resides.
 	Region pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// Session affinity option, must be one of the following values:
 	// NONE: Connections from the same client IP may go to any instance in the pool.
@@ -173,8 +173,6 @@ type targetPoolArgs struct {
 	//
 	// In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
 	BackupPool *string `pulumi:"backupPool"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool (i.e., not as a backup pool to some other target pool). The value of the field must be in [0, 1].
@@ -185,22 +183,13 @@ type targetPoolArgs struct {
 	FailoverRatio *float64 `pulumi:"failoverRatio"`
 	// The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. Only legacy HttpHealthChecks are supported. Only one health check may be specified.
 	HealthChecks []string `pulumi:"healthChecks"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
 	// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
 	Instances []string `pulumi:"instances"`
-	// [Output Only] Type of the resource. Always compute#targetPool for target pools.
-	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
-	// [Output Only] URL of the region where the target pool resides.
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// Session affinity option, must be one of the following values:
 	// NONE: Connections from the same client IP may go to any instance in the pool.
 	// CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.
@@ -216,8 +205,6 @@ type TargetPoolArgs struct {
 	//
 	// In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
 	BackupPool pulumi.StringPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool (i.e., not as a backup pool to some other target pool). The value of the field must be in [0, 1].
@@ -228,22 +215,13 @@ type TargetPoolArgs struct {
 	FailoverRatio pulumi.Float64PtrInput
 	// The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. Only legacy HttpHealthChecks are supported. Only one health check may be specified.
 	HealthChecks pulumi.StringArrayInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
 	// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
 	Instances pulumi.StringArrayInput
-	// [Output Only] Type of the resource. Always compute#targetPool for target pools.
-	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
-	// [Output Only] URL of the region where the target pool resides.
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
 	// Session affinity option, must be one of the following values:
 	// NONE: Connections from the same client IP may go to any instance in the pool.
 	// CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.

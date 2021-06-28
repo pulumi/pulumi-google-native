@@ -23,14 +23,14 @@ type LookupSslPolicyArgs struct {
 }
 
 type LookupSslPolicyResult struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// A list of features enabled when the selected profile is CUSTOM. The
 	// - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
 	CustomFeatures []string `pulumi:"customFeatures"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// [Output Only] The list of features enabled in the SSL policy.
+	// The list of features enabled in the SSL policy.
 	EnabledFeatures []string `pulumi:"enabledFeatures"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
 	//
@@ -44,8 +44,8 @@ type LookupSslPolicyResult struct {
 	Name string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
 	Profile string `pulumi:"profile"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+	// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
 	Warnings []SslPolicyWarningsItemResponse `pulumi:"warnings"`
 }

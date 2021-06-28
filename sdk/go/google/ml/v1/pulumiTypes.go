@@ -6446,18 +6446,12 @@ type GoogleCloudMlV1__HyperparameterOutput struct {
 	AllMetrics []GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric `pulumi:"allMetrics"`
 	// Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that have succeeded.
 	BuiltInAlgorithmOutput *GoogleCloudMlV1__BuiltInAlgorithmOutput `pulumi:"builtInAlgorithmOutput"`
-	// End time for the trial.
-	EndTime *string `pulumi:"endTime"`
 	// The final objective metric seen for this trial.
 	FinalMetric *GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric `pulumi:"finalMetric"`
 	// The hyperparameters given to this trial.
 	Hyperparameters map[string]string `pulumi:"hyperparameters"`
 	// True if the trial is stopped early.
 	IsTrialStoppedEarly *bool `pulumi:"isTrialStoppedEarly"`
-	// Start time for the trial.
-	StartTime *string `pulumi:"startTime"`
-	// The detailed state of the trial.
-	State *string `pulumi:"state"`
 	// The trial id for these results.
 	TrialId *string `pulumi:"trialId"`
 }
@@ -6479,18 +6473,12 @@ type GoogleCloudMlV1__HyperparameterOutputArgs struct {
 	AllMetrics GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayInput `pulumi:"allMetrics"`
 	// Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that have succeeded.
 	BuiltInAlgorithmOutput GoogleCloudMlV1__BuiltInAlgorithmOutputPtrInput `pulumi:"builtInAlgorithmOutput"`
-	// End time for the trial.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// The final objective metric seen for this trial.
 	FinalMetric GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrInput `pulumi:"finalMetric"`
 	// The hyperparameters given to this trial.
 	Hyperparameters pulumi.StringMapInput `pulumi:"hyperparameters"`
 	// True if the trial is stopped early.
 	IsTrialStoppedEarly pulumi.BoolPtrInput `pulumi:"isTrialStoppedEarly"`
-	// Start time for the trial.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// The detailed state of the trial.
-	State *GoogleCloudMlV1__HyperparameterOutputState `pulumi:"state"`
 	// The trial id for these results.
 	TrialId pulumi.StringPtrInput `pulumi:"trialId"`
 }
@@ -6561,11 +6549,6 @@ func (o GoogleCloudMlV1__HyperparameterOutputOutput) BuiltInAlgorithmOutput() Go
 	}).(GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput)
 }
 
-// End time for the trial.
-func (o GoogleCloudMlV1__HyperparameterOutputOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutput) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
 // The final objective metric seen for this trial.
 func (o GoogleCloudMlV1__HyperparameterOutputOutput) FinalMetric() GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutput) *GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
@@ -6581,16 +6564,6 @@ func (o GoogleCloudMlV1__HyperparameterOutputOutput) Hyperparameters() pulumi.St
 // True if the trial is stopped early.
 func (o GoogleCloudMlV1__HyperparameterOutputOutput) IsTrialStoppedEarly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutput) *bool { return v.IsTrialStoppedEarly }).(pulumi.BoolPtrOutput)
-}
-
-// Start time for the trial.
-func (o GoogleCloudMlV1__HyperparameterOutputOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutput) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// The detailed state of the trial.
-func (o GoogleCloudMlV1__HyperparameterOutputOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutput) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // The trial id for these results.
@@ -7914,8 +7887,6 @@ func (o GoogleCloudMlV1__ManualScalingResponsePtrOutput) Nodes() pulumi.IntPtrOu
 
 // A message representing a measurement.
 type GoogleCloudMlV1__Measurement struct {
-	// Time that the trial has been running at the point of this measurement.
-	ElapsedTime *string `pulumi:"elapsedTime"`
 	// Provides a list of metrics that act as inputs into the objective function.
 	Metrics []GoogleCloudMlV1_Measurement_Metric `pulumi:"metrics"`
 	// The number of steps a machine learning model has been trained for. Must be non-negative.
@@ -7935,8 +7906,6 @@ type GoogleCloudMlV1__MeasurementInput interface {
 
 // A message representing a measurement.
 type GoogleCloudMlV1__MeasurementArgs struct {
-	// Time that the trial has been running at the point of this measurement.
-	ElapsedTime pulumi.StringPtrInput `pulumi:"elapsedTime"`
 	// Provides a list of metrics that act as inputs into the objective function.
 	Metrics GoogleCloudMlV1_Measurement_MetricArrayInput `pulumi:"metrics"`
 	// The number of steps a machine learning model has been trained for. Must be non-negative.
@@ -8046,11 +8015,6 @@ func (o GoogleCloudMlV1__MeasurementOutput) ToGoogleCloudMlV1__MeasurementPtrOut
 	}).(GoogleCloudMlV1__MeasurementPtrOutput)
 }
 
-// Time that the trial has been running at the point of this measurement.
-func (o GoogleCloudMlV1__MeasurementOutput) ElapsedTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Measurement) *string { return v.ElapsedTime }).(pulumi.StringPtrOutput)
-}
-
 // Provides a list of metrics that act as inputs into the objective function.
 func (o GoogleCloudMlV1__MeasurementOutput) Metrics() GoogleCloudMlV1_Measurement_MetricArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__Measurement) []GoogleCloudMlV1_Measurement_Metric { return v.Metrics }).(GoogleCloudMlV1_Measurement_MetricArrayOutput)
@@ -8077,16 +8041,6 @@ func (o GoogleCloudMlV1__MeasurementPtrOutput) ToGoogleCloudMlV1__MeasurementPtr
 
 func (o GoogleCloudMlV1__MeasurementPtrOutput) Elem() GoogleCloudMlV1__MeasurementOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__Measurement) GoogleCloudMlV1__Measurement { return *v }).(GoogleCloudMlV1__MeasurementOutput)
-}
-
-// Time that the trial has been running at the point of this measurement.
-func (o GoogleCloudMlV1__MeasurementPtrOutput) ElapsedTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Measurement) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ElapsedTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Provides a list of metrics that act as inputs into the objective function.
@@ -13685,577 +13639,6 @@ func (o GoogleCloudMlV1__TrainingOutputResponsePtrOutput) Trials() GoogleCloudMl
 }
 
 // Represents a version of the model. Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have multiple versions. You can get information about all of the versions of a given model by calling projects.models.versions.list.
-type GoogleCloudMlV1__Version struct {
-	// Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
-	AcceleratorConfig *GoogleCloudMlV1__AcceleratorConfig `pulumi:"acceleratorConfig"`
-	// Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
-	AutoScaling *GoogleCloudMlV1__AutoScaling `pulumi:"autoScaling"`
-	// Optional. Specifies a custom container to use for serving predictions. If you specify this field, then `machineType` is required. If you specify this field, then `deploymentUri` is optional. If you specify this field, then you must not specify `runtimeVersion`, `packageUris`, `framework`, `pythonVersion`, or `predictionClass`.
-	Container *GoogleCloudMlV1__ContainerSpec `pulumi:"container"`
-	// The time the version was created.
-	CreateTime *string `pulumi:"createTime"`
-	// The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
-	DeploymentUri *string `pulumi:"deploymentUri"`
-	// Optional. The description specified for the version when it was created.
-	Description *string `pulumi:"description"`
-	// The details of a failure or a cancellation.
-	ErrorMessage *string `pulumi:"errorMessage"`
-	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
-	Etag *string `pulumi:"etag"`
-	// Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
-	ExplanationConfig *GoogleCloudMlV1__ExplanationConfig `pulumi:"explanationConfig"`
-	// Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-	Framework *string `pulumi:"framework"`
-	// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
-	IsDefault *bool `pulumi:"isDefault"`
-	// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
-	Labels map[string]string `pulumi:"labels"`
-	// The time the version was last used for prediction.
-	LastUseTime *string `pulumi:"lastUseTime"`
-	// Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
-	MachineType *string `pulumi:"machineType"`
-	// Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
-	ManualScaling *GoogleCloudMlV1__ManualScaling `pulumi:"manualScaling"`
-	// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
-	Name *string `pulumi:"name"`
-	// Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
-	PackageUris []string `pulumi:"packageUris"`
-	// Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): """Interface for constructing custom predictors.""" def predict(self, instances, **kwargs): """Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. """ raise NotImplementedError() @classmethod def from_path(cls, model_dir): """Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. """ raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
-	PredictionClass *string `pulumi:"predictionClass"`
-	// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
-	PythonVersion *string `pulumi:"pythonVersion"`
-	// Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
-	RequestLoggingConfig *GoogleCloudMlV1__RequestLoggingConfig `pulumi:"requestLoggingConfig"`
-	// Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ``` json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" }  ``` See RouteMap for more details about these default values.
-	Routes *GoogleCloudMlV1__RouteMap `pulumi:"routes"`
-	// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
-	RuntimeVersion *string `pulumi:"runtimeVersion"`
-	// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
-	ServiceAccount *string `pulumi:"serviceAccount"`
-	// The state of a version.
-	State *string `pulumi:"state"`
-}
-
-// GoogleCloudMlV1__VersionInput is an input type that accepts GoogleCloudMlV1__VersionArgs and GoogleCloudMlV1__VersionOutput values.
-// You can construct a concrete instance of `GoogleCloudMlV1__VersionInput` via:
-//
-//          GoogleCloudMlV1__VersionArgs{...}
-type GoogleCloudMlV1__VersionInput interface {
-	pulumi.Input
-
-	ToGoogleCloudMlV1__VersionOutput() GoogleCloudMlV1__VersionOutput
-	ToGoogleCloudMlV1__VersionOutputWithContext(context.Context) GoogleCloudMlV1__VersionOutput
-}
-
-// Represents a version of the model. Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have multiple versions. You can get information about all of the versions of a given model by calling projects.models.versions.list.
-type GoogleCloudMlV1__VersionArgs struct {
-	// Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
-	AcceleratorConfig GoogleCloudMlV1__AcceleratorConfigPtrInput `pulumi:"acceleratorConfig"`
-	// Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
-	AutoScaling GoogleCloudMlV1__AutoScalingPtrInput `pulumi:"autoScaling"`
-	// Optional. Specifies a custom container to use for serving predictions. If you specify this field, then `machineType` is required. If you specify this field, then `deploymentUri` is optional. If you specify this field, then you must not specify `runtimeVersion`, `packageUris`, `framework`, `pythonVersion`, or `predictionClass`.
-	Container GoogleCloudMlV1__ContainerSpecPtrInput `pulumi:"container"`
-	// The time the version was created.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
-	DeploymentUri pulumi.StringPtrInput `pulumi:"deploymentUri"`
-	// Optional. The description specified for the version when it was created.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The details of a failure or a cancellation.
-	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
-	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
-	Etag pulumi.StringPtrInput `pulumi:"etag"`
-	// Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
-	ExplanationConfig GoogleCloudMlV1__ExplanationConfigPtrInput `pulumi:"explanationConfig"`
-	// Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-	Framework *GoogleCloudMlV1__VersionFramework `pulumi:"framework"`
-	// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
-	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
-	// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The time the version was last used for prediction.
-	LastUseTime pulumi.StringPtrInput `pulumi:"lastUseTime"`
-	// Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
-	ManualScaling GoogleCloudMlV1__ManualScalingPtrInput `pulumi:"manualScaling"`
-	// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
-	PackageUris pulumi.StringArrayInput `pulumi:"packageUris"`
-	// Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): """Interface for constructing custom predictors.""" def predict(self, instances, **kwargs): """Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. """ raise NotImplementedError() @classmethod def from_path(cls, model_dir): """Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. """ raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
-	PredictionClass pulumi.StringPtrInput `pulumi:"predictionClass"`
-	// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
-	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
-	// Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
-	RequestLoggingConfig GoogleCloudMlV1__RequestLoggingConfigPtrInput `pulumi:"requestLoggingConfig"`
-	// Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ``` json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" }  ``` See RouteMap for more details about these default values.
-	Routes GoogleCloudMlV1__RouteMapPtrInput `pulumi:"routes"`
-	// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
-	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
-	// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
-	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
-	// The state of a version.
-	State *GoogleCloudMlV1__VersionState `pulumi:"state"`
-}
-
-func (GoogleCloudMlV1__VersionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudMlV1__Version)(nil)).Elem()
-}
-
-func (i GoogleCloudMlV1__VersionArgs) ToGoogleCloudMlV1__VersionOutput() GoogleCloudMlV1__VersionOutput {
-	return i.ToGoogleCloudMlV1__VersionOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudMlV1__VersionArgs) ToGoogleCloudMlV1__VersionOutputWithContext(ctx context.Context) GoogleCloudMlV1__VersionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__VersionOutput)
-}
-
-func (i GoogleCloudMlV1__VersionArgs) ToGoogleCloudMlV1__VersionPtrOutput() GoogleCloudMlV1__VersionPtrOutput {
-	return i.ToGoogleCloudMlV1__VersionPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudMlV1__VersionArgs) ToGoogleCloudMlV1__VersionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__VersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__VersionOutput).ToGoogleCloudMlV1__VersionPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudMlV1__VersionPtrInput is an input type that accepts GoogleCloudMlV1__VersionArgs, GoogleCloudMlV1__VersionPtr and GoogleCloudMlV1__VersionPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudMlV1__VersionPtrInput` via:
-//
-//          GoogleCloudMlV1__VersionArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudMlV1__VersionPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudMlV1__VersionPtrOutput() GoogleCloudMlV1__VersionPtrOutput
-	ToGoogleCloudMlV1__VersionPtrOutputWithContext(context.Context) GoogleCloudMlV1__VersionPtrOutput
-}
-
-type googleCloudMlV1__VersionPtrType GoogleCloudMlV1__VersionArgs
-
-func GoogleCloudMlV1__VersionPtr(v *GoogleCloudMlV1__VersionArgs) GoogleCloudMlV1__VersionPtrInput {
-	return (*googleCloudMlV1__VersionPtrType)(v)
-}
-
-func (*googleCloudMlV1__VersionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudMlV1__Version)(nil)).Elem()
-}
-
-func (i *googleCloudMlV1__VersionPtrType) ToGoogleCloudMlV1__VersionPtrOutput() GoogleCloudMlV1__VersionPtrOutput {
-	return i.ToGoogleCloudMlV1__VersionPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudMlV1__VersionPtrType) ToGoogleCloudMlV1__VersionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__VersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMlV1__VersionPtrOutput)
-}
-
-// Represents a version of the model. Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have multiple versions. You can get information about all of the versions of a given model by calling projects.models.versions.list.
-type GoogleCloudMlV1__VersionOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudMlV1__VersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudMlV1__Version)(nil)).Elem()
-}
-
-func (o GoogleCloudMlV1__VersionOutput) ToGoogleCloudMlV1__VersionOutput() GoogleCloudMlV1__VersionOutput {
-	return o
-}
-
-func (o GoogleCloudMlV1__VersionOutput) ToGoogleCloudMlV1__VersionOutputWithContext(ctx context.Context) GoogleCloudMlV1__VersionOutput {
-	return o
-}
-
-func (o GoogleCloudMlV1__VersionOutput) ToGoogleCloudMlV1__VersionPtrOutput() GoogleCloudMlV1__VersionPtrOutput {
-	return o.ToGoogleCloudMlV1__VersionPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudMlV1__VersionOutput) ToGoogleCloudMlV1__VersionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__VersionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *GoogleCloudMlV1__Version {
-		return &v
-	}).(GoogleCloudMlV1__VersionPtrOutput)
-}
-
-// Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
-func (o GoogleCloudMlV1__VersionOutput) AcceleratorConfig() GoogleCloudMlV1__AcceleratorConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *GoogleCloudMlV1__AcceleratorConfig { return v.AcceleratorConfig }).(GoogleCloudMlV1__AcceleratorConfigPtrOutput)
-}
-
-// Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
-func (o GoogleCloudMlV1__VersionOutput) AutoScaling() GoogleCloudMlV1__AutoScalingPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *GoogleCloudMlV1__AutoScaling { return v.AutoScaling }).(GoogleCloudMlV1__AutoScalingPtrOutput)
-}
-
-// Optional. Specifies a custom container to use for serving predictions. If you specify this field, then `machineType` is required. If you specify this field, then `deploymentUri` is optional. If you specify this field, then you must not specify `runtimeVersion`, `packageUris`, `framework`, `pythonVersion`, or `predictionClass`.
-func (o GoogleCloudMlV1__VersionOutput) Container() GoogleCloudMlV1__ContainerSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *GoogleCloudMlV1__ContainerSpec { return v.Container }).(GoogleCloudMlV1__ContainerSpecPtrOutput)
-}
-
-// The time the version was created.
-func (o GoogleCloudMlV1__VersionOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
-}
-
-// The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
-func (o GoogleCloudMlV1__VersionOutput) DeploymentUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.DeploymentUri }).(pulumi.StringPtrOutput)
-}
-
-// Optional. The description specified for the version when it was created.
-func (o GoogleCloudMlV1__VersionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The details of a failure or a cancellation.
-func (o GoogleCloudMlV1__VersionOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
-}
-
-// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
-func (o GoogleCloudMlV1__VersionOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.Etag }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
-func (o GoogleCloudMlV1__VersionOutput) ExplanationConfig() GoogleCloudMlV1__ExplanationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *GoogleCloudMlV1__ExplanationConfig { return v.ExplanationConfig }).(GoogleCloudMlV1__ExplanationConfigPtrOutput)
-}
-
-// Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-func (o GoogleCloudMlV1__VersionOutput) Framework() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.Framework }).(pulumi.StringPtrOutput)
-}
-
-// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
-func (o GoogleCloudMlV1__VersionOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
-}
-
-// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
-func (o GoogleCloudMlV1__VersionOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// The time the version was last used for prediction.
-func (o GoogleCloudMlV1__VersionOutput) LastUseTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.LastUseTime }).(pulumi.StringPtrOutput)
-}
-
-// Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
-func (o GoogleCloudMlV1__VersionOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.MachineType }).(pulumi.StringPtrOutput)
-}
-
-// Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
-func (o GoogleCloudMlV1__VersionOutput) ManualScaling() GoogleCloudMlV1__ManualScalingPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *GoogleCloudMlV1__ManualScaling { return v.ManualScaling }).(GoogleCloudMlV1__ManualScalingPtrOutput)
-}
-
-// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
-func (o GoogleCloudMlV1__VersionOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
-func (o GoogleCloudMlV1__VersionOutput) PackageUris() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) []string { return v.PackageUris }).(pulumi.StringArrayOutput)
-}
-
-// Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): """Interface for constructing custom predictors.""" def predict(self, instances, **kwargs): """Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. """ raise NotImplementedError() @classmethod def from_path(cls, model_dir): """Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. """ raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
-func (o GoogleCloudMlV1__VersionOutput) PredictionClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.PredictionClass }).(pulumi.StringPtrOutput)
-}
-
-// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
-func (o GoogleCloudMlV1__VersionOutput) PythonVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
-}
-
-// Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
-func (o GoogleCloudMlV1__VersionOutput) RequestLoggingConfig() GoogleCloudMlV1__RequestLoggingConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *GoogleCloudMlV1__RequestLoggingConfig { return v.RequestLoggingConfig }).(GoogleCloudMlV1__RequestLoggingConfigPtrOutput)
-}
-
-// Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ``` json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" }  ``` See RouteMap for more details about these default values.
-func (o GoogleCloudMlV1__VersionOutput) Routes() GoogleCloudMlV1__RouteMapPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *GoogleCloudMlV1__RouteMap { return v.Routes }).(GoogleCloudMlV1__RouteMapPtrOutput)
-}
-
-// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
-func (o GoogleCloudMlV1__VersionOutput) RuntimeVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
-func (o GoogleCloudMlV1__VersionOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
-}
-
-// The state of a version.
-func (o GoogleCloudMlV1__VersionOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Version) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type GoogleCloudMlV1__VersionPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudMlV1__VersionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudMlV1__Version)(nil)).Elem()
-}
-
-func (o GoogleCloudMlV1__VersionPtrOutput) ToGoogleCloudMlV1__VersionPtrOutput() GoogleCloudMlV1__VersionPtrOutput {
-	return o
-}
-
-func (o GoogleCloudMlV1__VersionPtrOutput) ToGoogleCloudMlV1__VersionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__VersionPtrOutput {
-	return o
-}
-
-func (o GoogleCloudMlV1__VersionPtrOutput) Elem() GoogleCloudMlV1__VersionOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) GoogleCloudMlV1__Version { return *v }).(GoogleCloudMlV1__VersionOutput)
-}
-
-// Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
-func (o GoogleCloudMlV1__VersionPtrOutput) AcceleratorConfig() GoogleCloudMlV1__AcceleratorConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *GoogleCloudMlV1__AcceleratorConfig {
-		if v == nil {
-			return nil
-		}
-		return v.AcceleratorConfig
-	}).(GoogleCloudMlV1__AcceleratorConfigPtrOutput)
-}
-
-// Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
-func (o GoogleCloudMlV1__VersionPtrOutput) AutoScaling() GoogleCloudMlV1__AutoScalingPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *GoogleCloudMlV1__AutoScaling {
-		if v == nil {
-			return nil
-		}
-		return v.AutoScaling
-	}).(GoogleCloudMlV1__AutoScalingPtrOutput)
-}
-
-// Optional. Specifies a custom container to use for serving predictions. If you specify this field, then `machineType` is required. If you specify this field, then `deploymentUri` is optional. If you specify this field, then you must not specify `runtimeVersion`, `packageUris`, `framework`, `pythonVersion`, or `predictionClass`.
-func (o GoogleCloudMlV1__VersionPtrOutput) Container() GoogleCloudMlV1__ContainerSpecPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *GoogleCloudMlV1__ContainerSpec {
-		if v == nil {
-			return nil
-		}
-		return v.Container
-	}).(GoogleCloudMlV1__ContainerSpecPtrOutput)
-}
-
-// The time the version was created.
-func (o GoogleCloudMlV1__VersionPtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
-func (o GoogleCloudMlV1__VersionPtrOutput) DeploymentUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeploymentUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The description specified for the version when it was created.
-func (o GoogleCloudMlV1__VersionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// The details of a failure or a cancellation.
-func (o GoogleCloudMlV1__VersionPtrOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
-func (o GoogleCloudMlV1__VersionPtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Etag
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
-func (o GoogleCloudMlV1__VersionPtrOutput) ExplanationConfig() GoogleCloudMlV1__ExplanationConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *GoogleCloudMlV1__ExplanationConfig {
-		if v == nil {
-			return nil
-		}
-		return v.ExplanationConfig
-	}).(GoogleCloudMlV1__ExplanationConfigPtrOutput)
-}
-
-// Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-func (o GoogleCloudMlV1__VersionPtrOutput) Framework() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Framework
-	}).(pulumi.StringPtrOutput)
-}
-
-// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
-func (o GoogleCloudMlV1__VersionPtrOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsDefault
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
-func (o GoogleCloudMlV1__VersionPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// The time the version was last used for prediction.
-func (o GoogleCloudMlV1__VersionPtrOutput) LastUseTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastUseTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
-func (o GoogleCloudMlV1__VersionPtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
-func (o GoogleCloudMlV1__VersionPtrOutput) ManualScaling() GoogleCloudMlV1__ManualScalingPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *GoogleCloudMlV1__ManualScaling {
-		if v == nil {
-			return nil
-		}
-		return v.ManualScaling
-	}).(GoogleCloudMlV1__ManualScalingPtrOutput)
-}
-
-// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
-func (o GoogleCloudMlV1__VersionPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
-func (o GoogleCloudMlV1__VersionPtrOutput) PackageUris() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) []string {
-		if v == nil {
-			return nil
-		}
-		return v.PackageUris
-	}).(pulumi.StringArrayOutput)
-}
-
-// Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): """Interface for constructing custom predictors.""" def predict(self, instances, **kwargs): """Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. """ raise NotImplementedError() @classmethod def from_path(cls, model_dir): """Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. """ raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
-func (o GoogleCloudMlV1__VersionPtrOutput) PredictionClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PredictionClass
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
-func (o GoogleCloudMlV1__VersionPtrOutput) PythonVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PythonVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
-func (o GoogleCloudMlV1__VersionPtrOutput) RequestLoggingConfig() GoogleCloudMlV1__RequestLoggingConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *GoogleCloudMlV1__RequestLoggingConfig {
-		if v == nil {
-			return nil
-		}
-		return v.RequestLoggingConfig
-	}).(GoogleCloudMlV1__RequestLoggingConfigPtrOutput)
-}
-
-// Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ``` json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" }  ``` See RouteMap for more details about these default values.
-func (o GoogleCloudMlV1__VersionPtrOutput) Routes() GoogleCloudMlV1__RouteMapPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *GoogleCloudMlV1__RouteMap {
-		if v == nil {
-			return nil
-		}
-		return v.Routes
-	}).(GoogleCloudMlV1__RouteMapPtrOutput)
-}
-
-// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
-func (o GoogleCloudMlV1__VersionPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RuntimeVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
-func (o GoogleCloudMlV1__VersionPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The state of a version.
-func (o GoogleCloudMlV1__VersionPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Version) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Represents a version of the model. Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have multiple versions. You can get information about all of the versions of a given model by calling projects.models.versions.list.
 type GoogleCloudMlV1__VersionResponse struct {
 	// Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
 	AcceleratorConfig GoogleCloudMlV1__AcceleratorConfigResponse `pulumi:"acceleratorConfig"`
@@ -16248,8 +15631,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudMlV1__TrainingOutputPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudMlV1__TrainingOutputResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudMlV1__TrainingOutputResponsePtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudMlV1__VersionOutput{})
-	pulumi.RegisterOutputType(GoogleCloudMlV1__VersionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudMlV1__VersionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudMlV1__VersionResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudMlV1__XraiAttributionOutput{})

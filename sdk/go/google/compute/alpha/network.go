@@ -23,29 +23,29 @@ type Network struct {
 	//
 	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks pulumi.BoolOutput `pulumi:"autoCreateSubnetworks"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// [Output Only] URL of the firewall policy the network is associated with.
+	// URL of the firewall policy the network is associated with.
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
-	// [Output Only] The gateway address for default routing out of the network, selected by GCP.
+	// The gateway address for default routing out of the network, selected by GCP.
 	GatewayIPv4 pulumi.StringOutput `pulumi:"gatewayIPv4"`
-	// [Output Only] Type of the resource. Always compute#network for networks.
+	// Type of the resource. Always compute#network for networks.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
 	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Output Only] A list of network peerings for the resource.
+	// A list of network peerings for the resource.
 	Peerings NetworkPeeringResponseArrayOutput `pulumi:"peerings"`
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig NetworkRoutingConfigResponseOutput `pulumi:"routingConfig"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+	// Server-defined fully-qualified URLs for all subnetworks in this VPC network.
 	Subnetworks pulumi.StringArrayOutput `pulumi:"subnetworks"`
 }
 
@@ -89,29 +89,29 @@ type networkState struct {
 	//
 	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks *bool `pulumi:"autoCreateSubnetworks"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Output Only] URL of the firewall policy the network is associated with.
+	// URL of the firewall policy the network is associated with.
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
-	// [Output Only] The gateway address for default routing out of the network, selected by GCP.
+	// The gateway address for default routing out of the network, selected by GCP.
 	GatewayIPv4 *string `pulumi:"gatewayIPv4"`
-	// [Output Only] Type of the resource. Always compute#network for networks.
+	// Type of the resource. Always compute#network for networks.
 	Kind *string `pulumi:"kind"`
 	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name *string `pulumi:"name"`
-	// [Output Only] A list of network peerings for the resource.
+	// A list of network peerings for the resource.
 	Peerings []NetworkPeeringResponse `pulumi:"peerings"`
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig *NetworkRoutingConfigResponse `pulumi:"routingConfig"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+	// Server-defined fully-qualified URLs for all subnetworks in this VPC network.
 	Subnetworks []string `pulumi:"subnetworks"`
 }
 
@@ -124,29 +124,29 @@ type NetworkState struct {
 	//
 	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks pulumi.BoolPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringPtrInput
-	// [Output Only] URL of the firewall policy the network is associated with.
+	// URL of the firewall policy the network is associated with.
 	FirewallPolicy pulumi.StringPtrInput
-	// [Output Only] The gateway address for default routing out of the network, selected by GCP.
+	// The gateway address for default routing out of the network, selected by GCP.
 	GatewayIPv4 pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#network for networks.
+	// Type of the resource. Always compute#network for networks.
 	Kind pulumi.StringPtrInput
 	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name pulumi.StringPtrInput
-	// [Output Only] A list of network peerings for the resource.
+	// A list of network peerings for the resource.
 	Peerings NetworkPeeringResponseArrayInput
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig NetworkRoutingConfigResponsePtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+	// Server-defined fully-qualified URLs for all subnetworks in this VPC network.
 	Subnetworks pulumi.StringArrayInput
 }
 
@@ -163,34 +163,16 @@ type networkArgs struct {
 	//
 	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks *bool `pulumi:"autoCreateSubnetworks"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Output Only] URL of the firewall policy the network is associated with.
-	FirewallPolicy *string `pulumi:"firewallPolicy"`
-	// [Output Only] The gateway address for default routing out of the network, selected by GCP.
-	GatewayIPv4 *string `pulumi:"gatewayIPv4"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output Only] Type of the resource. Always compute#network for networks.
-	Kind *string `pulumi:"kind"`
 	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-	Name *string `pulumi:"name"`
-	// [Output Only] A list of network peerings for the resource.
-	Peerings  []NetworkPeering `pulumi:"peerings"`
-	Project   string           `pulumi:"project"`
-	RequestId *string          `pulumi:"requestId"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig *NetworkRoutingConfig `pulumi:"routingConfig"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
-	Subnetworks []string `pulumi:"subnetworks"`
 }
 
 // The set of arguments for constructing a Network resource.
@@ -203,34 +185,16 @@ type NetworkArgs struct {
 	//
 	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks pulumi.BoolPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringPtrInput
-	// [Output Only] URL of the firewall policy the network is associated with.
-	FirewallPolicy pulumi.StringPtrInput
-	// [Output Only] The gateway address for default routing out of the network, selected by GCP.
-	GatewayIPv4 pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#network for networks.
-	Kind pulumi.StringPtrInput
 	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
-	Name pulumi.StringPtrInput
-	// [Output Only] A list of network peerings for the resource.
-	Peerings  NetworkPeeringArrayInput
+	Name      pulumi.StringPtrInput
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig NetworkRoutingConfigPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
-	Subnetworks pulumi.StringArrayInput
 }
 
 func (NetworkArgs) ElementType() reflect.Type {

@@ -15,7 +15,7 @@ import (
 type PublicAdvertisedPrefix struct {
 	pulumi.CustomResourceState
 
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -27,17 +27,17 @@ type PublicAdvertisedPrefix struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
-	// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+	// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
+	// The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput `pulumi:"publicDelegatedPrefixs"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// [Output Only] The shared secret to be used for reverse DNS verification.
+	// The shared secret to be used for reverse DNS verification.
 	SharedSecret pulumi.StringOutput `pulumi:"sharedSecret"`
 	// The status of the public advertised prefix.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -75,7 +75,7 @@ func GetPublicAdvertisedPrefix(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PublicAdvertisedPrefix resources.
 type publicAdvertisedPrefixState struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -87,24 +87,24 @@ type publicAdvertisedPrefixState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
-	// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+	// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
+	// The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs []PublicAdvertisedPrefixPublicDelegatedPrefixResponse `pulumi:"publicDelegatedPrefixs"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] The shared secret to be used for reverse DNS verification.
+	// The shared secret to be used for reverse DNS verification.
 	SharedSecret *string `pulumi:"sharedSecret"`
 	// The status of the public advertised prefix.
 	Status *string `pulumi:"status"`
 }
 
 type PublicAdvertisedPrefixState struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -116,17 +116,17 @@ type PublicAdvertisedPrefixState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+	// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
+	// The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] The shared secret to be used for reverse DNS verification.
+	// The shared secret to be used for reverse DNS verification.
 	SharedSecret pulumi.StringPtrInput
 	// The status of the public advertised prefix.
 	Status pulumi.StringPtrInput
@@ -137,60 +137,32 @@ func (PublicAdvertisedPrefixState) ElementType() reflect.Type {
 }
 
 type publicAdvertisedPrefixArgs struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp *string `pulumi:"dnsVerificationIp"`
-	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
-	Id *string `pulumi:"id"`
 	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
-	// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
-	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
-	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
-	PublicDelegatedPrefixs []PublicAdvertisedPrefixPublicDelegatedPrefix `pulumi:"publicDelegatedPrefixs"`
-	RequestId              *string                                       `pulumi:"requestId"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] The shared secret to be used for reverse DNS verification.
-	SharedSecret *string `pulumi:"sharedSecret"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// The status of the public advertised prefix.
 	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a PublicAdvertisedPrefix resource.
 type PublicAdvertisedPrefixArgs struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
-	Id pulumi.StringPtrInput
 	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
-	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
-	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
-	PublicDelegatedPrefixs PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput
-	RequestId              pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL with id for the resource.
-	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] The shared secret to be used for reverse DNS verification.
-	SharedSecret pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// The status of the public advertised prefix.
 	Status *PublicAdvertisedPrefixStatus
 }

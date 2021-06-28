@@ -107,44 +107,28 @@ func (InstructionState) ElementType() reflect.Type {
 }
 
 type instructionArgs struct {
-	// The names of any related resources that are blocking changes to the instruction.
-	BlockingResources []string `pulumi:"blockingResources"`
-	// Creation time of instruction.
-	CreateTime *string `pulumi:"createTime"`
 	// Required. The data type of this instruction.
 	DataType *string `pulumi:"dataType"`
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
 	// Required. The display name of the instruction. Maximum of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
-	Name *string `pulumi:"name"`
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
 	PdfInstruction *GoogleCloudDatalabelingV1beta1PdfInstruction `pulumi:"pdfInstruction"`
 	Project        string                                        `pulumi:"project"`
-	// Last update time of instruction.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Instruction resource.
 type InstructionArgs struct {
-	// The names of any related resources that are blocking changes to the instruction.
-	BlockingResources pulumi.StringArrayInput
-	// Creation time of instruction.
-	CreateTime pulumi.StringPtrInput
 	// Required. The data type of this instruction.
 	DataType *InstructionDataType
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
 	// Required. The display name of the instruction. Maximum of 64 characters.
 	DisplayName pulumi.StringPtrInput
-	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
-	Name pulumi.StringPtrInput
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
 	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionPtrInput
 	Project        pulumi.StringInput
-	// Last update time of instruction.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (InstructionArgs) ElementType() reflect.Type {
