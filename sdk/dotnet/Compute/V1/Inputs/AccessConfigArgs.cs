@@ -16,12 +16,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class AccessConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        /// <summary>
         /// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
         /// </summary>
         [Input("name")]

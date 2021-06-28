@@ -28,12 +28,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        /// <summary>
         /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         /// </summary>
         [Input("match")]

@@ -127,7 +127,7 @@ class GetImageResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -189,7 +189,7 @@ class GetImageResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#image for images.
+        Type of the resource. Always compute#image for images.
         """
         return pulumi.get(self, "kind")
 
@@ -255,7 +255,7 @@ class GetImageResult:
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
-        [Output Only] Reserved for future use.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -263,7 +263,7 @@ class GetImageResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -271,7 +271,7 @@ class GetImageResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource's resource id.
+        Server-defined URL for this resource's resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -306,7 +306,7 @@ class GetImageResult:
     @pulumi.getter(name="sourceDiskId")
     def source_disk_id(self) -> str:
         """
-        [Output Only] The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
+        The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
 
@@ -336,7 +336,7 @@ class GetImageResult:
     @pulumi.getter(name="sourceImageId")
     def source_image_id(self) -> str:
         """
-        [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
+        The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
         """
         return pulumi.get(self, "source_image_id")
 
@@ -367,7 +367,7 @@ class GetImageResult:
     @pulumi.getter(name="sourceSnapshotId")
     def source_snapshot_id(self) -> str:
         """
-        [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
+        The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
         """
         return pulumi.get(self, "source_snapshot_id")
 
@@ -383,7 +383,7 @@ class GetImageResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
+        The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
         """
         return pulumi.get(self, "status")
 

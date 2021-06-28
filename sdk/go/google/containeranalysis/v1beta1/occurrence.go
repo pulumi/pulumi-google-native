@@ -153,8 +153,6 @@ type occurrenceArgs struct {
 	Attestation *Details `pulumi:"attestation"`
 	// Describes a verifiable build.
 	Build *GrafeasV1beta1BuildDetails `pulumi:"build"`
-	// The time this occurrence was created.
-	CreateTime *string `pulumi:"createTime"`
 	// Describes the deployment of an artifact on a runtime.
 	Deployment *GrafeasV1beta1DeploymentDetails `pulumi:"deployment"`
 	// Describes how this resource derives from the basis in the associated note.
@@ -165,10 +163,6 @@ type occurrenceArgs struct {
 	Installation *GrafeasV1beta1PackageDetails `pulumi:"installation"`
 	// Describes a specific in-toto link.
 	Intoto *GrafeasV1beta1IntotoDetails `pulumi:"intoto"`
-	// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
-	Kind *string `pulumi:"kind"`
-	// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-	Name *string `pulumi:"name"`
 	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
 	NoteName *string `pulumi:"noteName"`
 	Project  string  `pulumi:"project"`
@@ -176,8 +170,6 @@ type occurrenceArgs struct {
 	Remediation *string `pulumi:"remediation"`
 	// Required. Immutable. The resource for which the occurrence applies.
 	Resource *Resource `pulumi:"resource"`
-	// The time this occurrence was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 	// Describes a security vulnerability.
 	Vulnerability *GrafeasV1beta1VulnerabilityDetails `pulumi:"vulnerability"`
 }
@@ -188,8 +180,6 @@ type OccurrenceArgs struct {
 	Attestation DetailsPtrInput
 	// Describes a verifiable build.
 	Build GrafeasV1beta1BuildDetailsPtrInput
-	// The time this occurrence was created.
-	CreateTime pulumi.StringPtrInput
 	// Describes the deployment of an artifact on a runtime.
 	Deployment GrafeasV1beta1DeploymentDetailsPtrInput
 	// Describes how this resource derives from the basis in the associated note.
@@ -200,10 +190,6 @@ type OccurrenceArgs struct {
 	Installation GrafeasV1beta1PackageDetailsPtrInput
 	// Describes a specific in-toto link.
 	Intoto GrafeasV1beta1IntotoDetailsPtrInput
-	// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
-	Kind *OccurrenceKind
-	// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-	Name pulumi.StringPtrInput
 	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
 	NoteName pulumi.StringPtrInput
 	Project  pulumi.StringInput
@@ -211,8 +197,6 @@ type OccurrenceArgs struct {
 	Remediation pulumi.StringPtrInput
 	// Required. Immutable. The resource for which the occurrence applies.
 	Resource ResourcePtrInput
-	// The time this occurrence was last updated.
-	UpdateTime pulumi.StringPtrInput
 	// Describes a security vulnerability.
 	Vulnerability GrafeasV1beta1VulnerabilityDetailsPtrInput
 }

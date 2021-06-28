@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetServiceAttachmentResult
     {
         /// <summary>
-        /// [Output Only] An array of connections for all the consumers connected to this service attachment.
+        /// An array of connections for all the consumers connected to this service attachment.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceAttachmentConnectedEndpointResponse> ConnectedEndpoints;
         /// <summary>
@@ -48,11 +48,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string ConnectionPreference;
         /// <summary>
-        /// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
+        /// An array of forwarding rules for all the consumers connected to this service attachment.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceAttachmentConsumerForwardingRuleResponse> ConsumerForwardingRules;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool EnableProxyProtocol;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
+        /// Type of the resource. Always compute#serviceAttachment for service attachments.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -80,15 +80,15 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string ProducerForwardingRule;
         /// <summary>
-        /// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+        /// An 128-bit global unique ID of the PSC service attachment.
         /// </summary>
         public readonly Outputs.Uint128Response PscServiceAttachmentId;
         /// <summary>
-        /// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>

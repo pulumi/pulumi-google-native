@@ -47,7 +47,7 @@ class GetLicenseResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -63,7 +63,7 @@ class GetLicenseResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of resource. Always compute#license for licenses.
+        Type of resource. Always compute#license for licenses.
         """
         return pulumi.get(self, "kind")
 
@@ -71,7 +71,7 @@ class GetLicenseResult:
     @pulumi.getter(name="licenseCode")
     def license_code(self) -> str:
         """
-        [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+        The unique code used to attach this license to images, snapshots, and disks.
         """
         return pulumi.get(self, "license_code")
 
@@ -92,7 +92,7 @@ class GetLicenseResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

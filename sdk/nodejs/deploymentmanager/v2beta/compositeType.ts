@@ -42,7 +42,7 @@ export class CompositeType extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public readonly insertTime!: pulumi.Output<string>;
+    public /*out*/ readonly insertTime!: pulumi.Output<string>;
     /**
      * Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */
@@ -54,11 +54,11 @@ export class CompositeType extends pulumi.CustomResource {
     /**
      * The Operation that most recently ran, or is currently running, on this composite type.
      */
-    public readonly operation!: pulumi.Output<outputs.deploymentmanager.v2beta.OperationResponse>;
+    public /*out*/ readonly operation!: pulumi.Output<outputs.deploymentmanager.v2beta.OperationResponse>;
     /**
      * Server defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     public readonly status!: pulumi.Output<string>;
     /**
      * Files for the template type.
@@ -81,14 +81,14 @@ export class CompositeType extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["insertTime"] = args ? args.insertTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["operation"] = args ? args.operation : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["templateContents"] = args ? args.templateContents : undefined;
+            inputs["insertTime"] = undefined /*out*/;
+            inputs["operation"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["description"] = undefined /*out*/;
             inputs["insertTime"] = undefined /*out*/;
@@ -116,10 +116,6 @@ export interface CompositeTypeArgs {
     description?: pulumi.Input<string>;
     id?: pulumi.Input<string>;
     /**
-     * Creation timestamp in RFC3339 text format.
-     */
-    insertTime?: pulumi.Input<string>;
-    /**
      * Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2beta.CompositeTypeLabelEntryArgs>[]>;
@@ -127,15 +123,7 @@ export interface CompositeTypeArgs {
      * Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The Operation that most recently ran, or is currently running, on this composite type.
-     */
-    operation?: pulumi.Input<inputs.deploymentmanager.v2beta.OperationArgs>;
     project: pulumi.Input<string>;
-    /**
-     * Server defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
     status?: pulumi.Input<enums.deploymentmanager.v2beta.CompositeTypeStatus>;
     /**
      * Files for the template type.

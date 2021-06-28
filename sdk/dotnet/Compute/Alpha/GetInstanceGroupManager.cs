@@ -48,11 +48,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string BaseInstanceName;
         /// <summary>
-        /// [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
+        /// The creation timestamp for this managed instance group in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
-        /// [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+        /// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerActionsSummaryResponse CurrentActions;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
-        /// [Output Only] The URL of the Instance Group resource.
+        /// The URL of the Instance Group resource.
         /// </summary>
         public readonly string InstanceGroup;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string InstanceTemplate;
         /// <summary>
-        /// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
+        /// The resource type, which is always compute#instanceGroupManager for managed instance groups.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -98,15 +98,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<Outputs.NamedPortResponse> NamedPorts;
         /// <summary>
-        /// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
+        /// The URL of the region where the managed instance group resides (for regional resources).
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] The URL for this managed instance group. The server defines this URL.
+        /// The URL for this managed instance group. The server defines this URL.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.StatefulPolicyResponse StatefulPolicy;
         /// <summary>
-        /// [Output Only] The status of this managed instance group.
+        /// The status of this managed instance group.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerStatusResponse Status;
         /// <summary>
@@ -152,7 +152,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceGroupManagerVersionResponse> Versions;
         /// <summary>
-        /// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
+        /// The URL of a zone where the managed instance group is located (for zonal resources).
         /// </summary>
         public readonly string Zone;
 

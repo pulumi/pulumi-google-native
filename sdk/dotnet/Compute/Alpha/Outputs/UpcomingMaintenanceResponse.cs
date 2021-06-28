@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class UpcomingMaintenanceResponse
     {
         /// <summary>
-        /// [Output Only] The start time window of the maintenance disruption.
+        /// The start time window of the maintenance disruption.
         /// </summary>
         public readonly Outputs.UpcomingMaintenanceTimeWindowResponse StartTimeWindow;
         /// <summary>

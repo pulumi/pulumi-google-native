@@ -138,12 +138,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("insertTime")]
-        public Input<string>? InsertTime { get; set; }
-
         [Input("labels")]
         private InputList<Inputs.DeploymentLabelEntryArgs>? _labels;
 
@@ -157,22 +151,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         }
 
         /// <summary>
-        /// URL of the manifest representing the last manifest that was successfully deployed. If no manifest has been successfully deployed, this field will be absent.
-        /// </summary>
-        [Input("manifest")]
-        public Input<string>? Manifest { get; set; }
-
-        /// <summary>
         /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The Operation that most recently ran, or is currently running, on this deployment.
-        /// </summary>
-        [Input("operation")]
-        public Input<Inputs.OperationArgs>? Operation { get; set; }
 
         [Input("preview")]
         public Input<string>? Preview { get; set; }
@@ -181,28 +163,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Server defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
         /// [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
         /// </summary>
         [Input("target")]
         public Input<Inputs.TargetConfigurationArgs>? Target { get; set; }
-
-        /// <summary>
-        /// If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
-        /// </summary>
-        [Input("update")]
-        public Input<Inputs.DeploymentUpdateArgs>? Update { get; set; }
-
-        /// <summary>
-        /// Update timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public DeploymentArgs()
         {

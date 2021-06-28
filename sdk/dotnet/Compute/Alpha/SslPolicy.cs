@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class SslPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The list of features enabled in the SSL policy.
+        /// The list of features enabled in the SSL policy.
         /// </summary>
         [Output("enabledFeatures")]
         public Output<ImmutableArray<string>> EnabledFeatures { get; private set; } = null!;
@@ -73,13 +73,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Profile { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.ServerTlsSettingsResponse> TlsSettings { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+        /// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         /// </summary>
         [Output("warnings")]
         public Output<ImmutableArray<Outputs.SslPolicyWarningsItemResponse>> Warnings { get; private set; } = null!;
@@ -141,12 +141,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class SslPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
         [Input("customFeatures")]
         private InputList<string>? _customFeatures;
 
@@ -165,30 +159,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("enabledFeatures")]
-        private InputList<string>? _enabledFeatures;
-
-        /// <summary>
-        /// [Output Only] The list of features enabled in the SSL policy.
-        /// </summary>
-        public InputList<string> EnabledFeatures
-        {
-            get => _enabledFeatures ?? (_enabledFeatures = new InputList<string>());
-            set => _enabledFeatures = value;
-        }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
@@ -215,34 +185,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
-
-        /// <summary>
         /// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         /// </summary>
         [Input("tlsSettings")]
         public Input<Inputs.ServerTlsSettingsArgs>? TlsSettings { get; set; }
-
-        [Input("warnings")]
-        private InputList<Inputs.SslPolicyWarningsItemArgs>? _warnings;
-
-        /// <summary>
-        /// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-        /// </summary>
-        public InputList<Inputs.SslPolicyWarningsItemArgs> Warnings
-        {
-            get => _warnings ?? (_warnings = new InputList<Inputs.SslPolicyWarningsItemArgs>());
-            set => _warnings = value;
-        }
 
         public SslPolicyArgs()
         {

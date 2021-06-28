@@ -11,7 +11,6 @@ __all__ = [
     'AddressIpVersion',
     'AddressNetworkTier',
     'AddressPurpose',
-    'AddressStatus',
     'AllocationShareSettingsShareType',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval',
@@ -22,8 +21,6 @@ __all__ = [
     'AttachedDiskType',
     'AuditLogConfigLogType',
     'AuthorizationLoggingOptionsPermissionType',
-    'AutoscalerStatus',
-    'AutoscalerStatusDetailsType',
     'AutoscalingPolicyCpuUtilizationPredictiveMethod',
     'AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType',
     'AutoscalingPolicyMode',
@@ -44,14 +41,12 @@ __all__ = [
     'DeprecationStatusState',
     'DiskInstantiationConfigInstantiateFrom',
     'DiskInterface',
-    'DiskStatus',
     'DistributionPolicyTargetShape',
     'ExternalVpnGatewayRedundancyType',
     'FileContentBufferFileType',
     'FirewallDirection',
     'FirewallLogConfigMetadata',
     'FirewallPolicyRuleDirection',
-    'FirewallPolicyRuleSecureTagState',
     'ForwardingRuleIPProtocol',
     'ForwardingRuleIpVersion',
     'ForwardingRuleLoadBalancingScheme',
@@ -62,7 +57,6 @@ __all__ = [
     'GlobalAddressIpVersion',
     'GlobalAddressNetworkTier',
     'GlobalAddressPurpose',
-    'GlobalAddressStatus',
     'GlobalForwardingRuleIPProtocol',
     'GlobalForwardingRuleIpVersion',
     'GlobalForwardingRuleLoadBalancingScheme',
@@ -70,7 +64,6 @@ __all__ = [
     'GlobalForwardingRulePscConnectionStatus',
     'GlobalNetworkEndpointGroupNetworkEndpointType',
     'GlobalNetworkEndpointGroupType',
-    'GlobalPublicDelegatedPrefixStatus',
     'GuestOsFeatureType',
     'HTTP2HealthCheckPortSpecification',
     'HTTP2HealthCheckProxyHeader',
@@ -85,7 +78,6 @@ __all__ = [
     'HttpRedirectActionRedirectResponseCode',
     'ImageRawDiskContainerType',
     'ImageSourceType',
-    'ImageStatus',
     'InstanceGroupManagerFailoverAction',
     'InstanceGroupManagerUpdatePolicyInstanceRedistributionType',
     'InstanceGroupManagerUpdatePolicyMinimalAction',
@@ -96,30 +88,19 @@ __all__ = [
     'InstancePrivateIpv6GoogleAccess',
     'InstancePropertiesPostKeyRevocationActionType',
     'InstancePropertiesPrivateIpv6GoogleAccess',
-    'InstanceStatus',
     'InterconnectAttachmentBandwidth',
     'InterconnectAttachmentEdgeAvailabilityDomain',
     'InterconnectAttachmentEncryption',
-    'InterconnectAttachmentOperationalStatus',
-    'InterconnectAttachmentState',
     'InterconnectAttachmentType',
     'InterconnectInterconnectType',
     'InterconnectLinkType',
-    'InterconnectOperationalStatus',
-    'InterconnectOutageNotificationIssueType',
-    'InterconnectOutageNotificationSource',
-    'InterconnectOutageNotificationState',
-    'InterconnectState',
     'LogConfigCloudAuditOptionsLogName',
     'LogConfigDataAccessOptionsLogMode',
-    'MachineImageStatus',
     'MetadataFilterFilterMatchCriteria',
     'NetworkEndpointGroupNetworkEndpointType',
     'NetworkEndpointGroupType',
-    'NetworkInterfaceIpv6AccessType',
     'NetworkInterfaceNicType',
     'NetworkInterfaceStackType',
-    'NetworkPeeringState',
     'NetworkPerformanceConfigExternalIpEgressBandwidthTier',
     'NetworkPerformanceConfigTotalEgressBandwidthTier',
     'NetworkRoutingConfigRoutingMode',
@@ -127,35 +108,26 @@ __all__ = [
     'NodeGroupMaintenancePolicy',
     'NodeGroupStatus',
     'NodeTemplateCpuOvercommitType',
-    'NodeTemplateStatus',
     'OrganizationSecurityPolicyType',
     'PacketMirroringEnable',
     'PacketMirroringFilterDirection',
     'PublicAdvertisedPrefixStatus',
-    'PublicDelegatedPrefixPublicDelegatedSubPrefixStatus',
-    'PublicDelegatedPrefixStatus',
-    'RegionAutoscalerStatus',
     'RegionBackendServiceLoadBalancingScheme',
     'RegionBackendServiceLocalityLbPolicy',
     'RegionBackendServiceProtocol',
     'RegionBackendServiceSessionAffinity',
     'RegionCommitmentCategory',
     'RegionCommitmentPlan',
-    'RegionCommitmentStatus',
     'RegionCommitmentType',
     'RegionDiskInterface',
-    'RegionDiskStatus',
     'RegionHealthCheckServiceHealthStatusAggregationPolicy',
     'RegionHealthCheckType',
-    'RegionInPlaceSnapshotStatus',
     'RegionInstanceGroupManagerFailoverAction',
-    'RegionInstantSnapshotStatus',
     'RegionNetworkEndpointGroupNetworkEndpointType',
     'RegionNetworkEndpointGroupType',
     'RegionSslCertificateType',
     'RegionTargetHttpsProxyQuicOverride',
     'ReservationAffinityConsumeReservationType',
-    'ReservationStatus',
     'ResourceCommitmentType',
     'ResourcePolicyGroupPlacementPolicyCollocation',
     'ResourcePolicyGroupPlacementPolicyLocality',
@@ -163,9 +135,7 @@ __all__ = [
     'ResourcePolicyGroupPlacementPolicyStyle',
     'ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch',
     'ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete',
-    'ResourcePolicyStatus',
     'ResourcePolicyWeeklyCycleDayOfWeekDay',
-    'RouteWarningsItemCode',
     'RouterBgpAdvertiseMode',
     'RouterBgpAdvertisedGroupsItem',
     'RouterBgpPeerAdvertiseMode',
@@ -174,8 +144,6 @@ __all__ = [
     'RouterBgpPeerBfdPacketMode',
     'RouterBgpPeerBfdSessionInitializationMode',
     'RouterBgpPeerEnable',
-    'RouterBgpPeerManagementType',
-    'RouterInterfaceManagementType',
     'RouterNatLogConfigFilter',
     'RouterNatNatIpAllocateOption',
     'RouterNatSourceSubnetworkIpRangesToNat',
@@ -183,10 +151,6 @@ __all__ = [
     'RuleAction',
     'SSLHealthCheckPortSpecification',
     'SSLHealthCheckProxyHeader',
-    'SavedAttachedDiskInterface',
-    'SavedAttachedDiskMode',
-    'SavedAttachedDiskStorageBytesStatus',
-    'SavedAttachedDiskType',
     'SchedulingMaintenanceInterval',
     'SchedulingNodeAffinityOperator',
     'SchedulingOnHostMaintenance',
@@ -197,17 +161,10 @@ __all__ = [
     'SecurityPolicyType',
     'ServerBindingType',
     'ServerTlsSettingsTlsMode',
-    'ServiceAttachmentConnectedEndpointStatus',
     'ServiceAttachmentConnectionPreference',
-    'ServiceAttachmentConsumerForwardingRuleStatus',
-    'SnapshotStatus',
-    'SnapshotStorageBytesStatus',
-    'SourceInstancePropertiesPostKeyRevocationActionType',
-    'SslCertificateManagedSslCertificateStatus',
     'SslCertificateType',
     'SslPolicyMinTlsVersion',
     'SslPolicyProfile',
-    'SslPolicyWarningsItemCode',
     'SubnetworkAggregationInterval',
     'SubnetworkIpv6AccessType',
     'SubnetworkLogConfigAggregationInterval',
@@ -217,7 +174,6 @@ __all__ = [
     'SubnetworkPurpose',
     'SubnetworkRole',
     'SubnetworkStackType',
-    'SubnetworkState',
     'SubsettingPolicy',
     'TCPHealthCheckPortSpecification',
     'TCPHealthCheckProxyHeader',
@@ -226,13 +182,8 @@ __all__ = [
     'TargetPoolSessionAffinity',
     'TargetSslProxyProxyHeader',
     'TargetTcpProxyProxyHeader',
-    'TargetVpnGatewayStatus',
     'TlsCertificateContextCertificateSource',
     'TlsValidationContextValidationSource',
-    'UpcomingMaintenanceType',
-    'VpnTunnelStatus',
-    'ZoneInPlaceSnapshotStatus',
-    'ZoneInstantSnapshotStatus',
 ]
 
 
@@ -308,15 +259,6 @@ class AddressPurpose(str, Enum):
     PSC_PRODUCER_NAT_RANGE = "PSC_PRODUCER_NAT_RANGE"
     SHARED_LOADBALANCER_VIP = "SHARED_LOADBALANCER_VIP"
     VPC_PEERING = "VPC_PEERING"
-
-
-class AddressStatus(str, Enum):
-    """
-    [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
-    """
-    IN_USE = "IN_USE"
-    RESERVED = "RESERVED"
-    RESERVING = "RESERVING"
 
 
 class AllocationShareSettingsShareType(str, Enum):
@@ -407,62 +349,6 @@ class AuthorizationLoggingOptionsPermissionType(str, Enum):
     DATA_READ = "DATA_READ"
     DATA_WRITE = "DATA_WRITE"
     PERMISSION_TYPE_UNSPECIFIED = "PERMISSION_TYPE_UNSPECIFIED"
-
-
-class AutoscalerStatus(str, Enum):
-    """
-    [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-    - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-    - DELETING: Configuration is being deleted. 
-    - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-    - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
-    """
-    ACTIVE = "ACTIVE"
-    DELETING = "DELETING"
-    ERROR = "ERROR"
-    PENDING = "PENDING"
-
-
-class AutoscalerStatusDetailsType(str, Enum):
-    """
-    The type of error, warning, or notice returned. Current set of possible values:  
-    - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state). 
-    - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group. 
-    - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas. 
-    - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling. 
-    - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels. 
-    - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group. 
-    - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling. 
-    - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer. 
-    - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved. 
-    - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any. 
-    - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it. 
-    - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances. 
-    - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region. 
-    - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist. 
-    - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate. 
-    - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
-    """
-    ALL_INSTANCES_UNHEALTHY = "ALL_INSTANCES_UNHEALTHY"
-    BACKEND_SERVICE_DOES_NOT_EXIST = "BACKEND_SERVICE_DOES_NOT_EXIST"
-    CAPPED_AT_MAX_NUM_REPLICAS = "CAPPED_AT_MAX_NUM_REPLICAS"
-    CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE = "CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE"
-    CUSTOM_METRIC_INVALID = "CUSTOM_METRIC_INVALID"
-    MIN_EQUALS_MAX = "MIN_EQUALS_MAX"
-    MISSING_CUSTOM_METRIC_DATA_POINTS = "MISSING_CUSTOM_METRIC_DATA_POINTS"
-    MISSING_LOAD_BALANCING_DATA_POINTS = "MISSING_LOAD_BALANCING_DATA_POINTS"
-    MODE_OFF = "MODE_OFF"
-    MODE_ONLY_SCALE_OUT = "MODE_ONLY_SCALE_OUT"
-    MODE_ONLY_UP = "MODE_ONLY_UP"
-    MORE_THAN_ONE_BACKEND_SERVICE = "MORE_THAN_ONE_BACKEND_SERVICE"
-    NOT_ENOUGH_QUOTA_AVAILABLE = "NOT_ENOUGH_QUOTA_AVAILABLE"
-    REGION_RESOURCE_STOCKOUT = "REGION_RESOURCE_STOCKOUT"
-    SCALING_TARGET_DOES_NOT_EXIST = "SCALING_TARGET_DOES_NOT_EXIST"
-    SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX = "SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX"
-    SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN = "SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN"
-    UNKNOWN = "UNKNOWN"
-    UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION = "UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION"
-    ZONE_RESOURCE_STOCKOUT = "ZONE_RESOURCE_STOCKOUT"
 
 
 class AutoscalingPolicyCpuUtilizationPredictiveMethod(str, Enum):
@@ -738,22 +624,6 @@ class DiskInterface(str, Enum):
     UNSPECIFIED = "UNSPECIFIED"
 
 
-class DiskStatus(str, Enum):
-    """
-    [Output Only] The status of disk creation.  
-    - CREATING: Disk is provisioning. 
-    - RESTORING: Source data is being copied into the disk. 
-    - FAILED: Disk creation failed. 
-    - READY: Disk is ready for use. 
-    - DELETING: Disk is deleting.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    FAILED = "FAILED"
-    READY = "READY"
-    RESTORING = "RESTORING"
-
-
 class DistributionPolicyTargetShape(str, Enum):
     """
     The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
@@ -803,14 +673,6 @@ class FirewallPolicyRuleDirection(str, Enum):
     """
     EGRESS = "EGRESS"
     INGRESS = "INGRESS"
-
-
-class FirewallPolicyRuleSecureTagState(str, Enum):
-    """
-    [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
-    """
-    EFFECTIVE = "EFFECTIVE"
-    INEFFECTIVE = "INEFFECTIVE"
 
 
 class ForwardingRuleIPProtocol(str, Enum):
@@ -960,15 +822,6 @@ class GlobalAddressPurpose(str, Enum):
     VPC_PEERING = "VPC_PEERING"
 
 
-class GlobalAddressStatus(str, Enum):
-    """
-    [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
-    """
-    IN_USE = "IN_USE"
-    RESERVED = "RESERVED"
-    RESERVING = "RESERVING"
-
-
 class GlobalForwardingRuleIPProtocol(str, Enum):
     """
     The IP protocol to which this rule applies.
@@ -1069,15 +922,6 @@ class GlobalNetworkEndpointGroupType(str, Enum):
     Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
     """
     LOAD_BALANCING = "LOAD_BALANCING"
-
-
-class GlobalPublicDelegatedPrefixStatus(str, Enum):
-    """
-    [Output Only] The status of the public delegated prefix.
-    """
-    ANNOUNCED = "ANNOUNCED"
-    DELETING = "DELETING"
-    INITIALIZING = "INITIALIZING"
 
 
 class GuestOsFeatureType(str, Enum):
@@ -1236,16 +1080,6 @@ class ImageSourceType(str, Enum):
     RAW = "RAW"
 
 
-class ImageStatus(str, Enum):
-    """
-    [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
-    """
-    DELETING = "DELETING"
-    FAILED = "FAILED"
-    PENDING = "PENDING"
-    READY = "READY"
-
-
 class InstanceGroupManagerFailoverAction(str, Enum):
     """
     The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
@@ -1336,22 +1170,6 @@ class InstancePropertiesPrivateIpv6GoogleAccess(str, Enum):
     INHERIT_FROM_SUBNETWORK = "INHERIT_FROM_SUBNETWORK"
 
 
-class InstanceStatus(str, Enum):
-    """
-    [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
-    """
-    DEPROVISIONING = "DEPROVISIONING"
-    PROVISIONING = "PROVISIONING"
-    REPAIRING = "REPAIRING"
-    RUNNING = "RUNNING"
-    STAGING = "STAGING"
-    STOPPED = "STOPPED"
-    STOPPING = "STOPPING"
-    SUSPENDED = "SUSPENDED"
-    SUSPENDING = "SUSPENDING"
-    TERMINATED = "TERMINATED"
-
-
 class InterconnectAttachmentBandwidth(str, Enum):
     """
     Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: 
@@ -1405,35 +1223,6 @@ class InterconnectAttachmentEncryption(str, Enum):
     NONE = "NONE"
 
 
-class InterconnectAttachmentOperationalStatus(str, Enum):
-    """
-    [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
-    - OS_ACTIVE: The attachment has been turned up and is ready to use. 
-    - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-    """
-    OS_ACTIVE = "OS_ACTIVE"
-    OS_UNPROVISIONED = "OS_UNPROVISIONED"
-
-
-class InterconnectAttachmentState(str, Enum):
-    """
-    [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
-    - ACTIVE: The attachment has been turned up and is ready to use. 
-    - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
-    - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 
-    - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. 
-    - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. 
-    - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
-    """
-    ACTIVE = "ACTIVE"
-    DEFUNCT = "DEFUNCT"
-    PARTNER_REQUEST_RECEIVED = "PARTNER_REQUEST_RECEIVED"
-    PENDING_CUSTOMER = "PENDING_CUSTOMER"
-    PENDING_PARTNER = "PENDING_PARTNER"
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    UNPROVISIONED = "UNPROVISIONED"
-
-
 class InterconnectAttachmentType(str, Enum):
     """
     The type of interconnect attachment this is, which can take one of the following values: 
@@ -1467,62 +1256,6 @@ class InterconnectLinkType(str, Enum):
     LINK_TYPE_ETHERNET10G_LR = "LINK_TYPE_ETHERNET_10G_LR"
 
 
-class InterconnectOperationalStatus(str, Enum):
-    """
-    [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
-    - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
-    - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
-    - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-    """
-    OS_ACTIVE = "OS_ACTIVE"
-    OS_UNPROVISIONED = "OS_UNPROVISIONED"
-
-
-class InterconnectOutageNotificationIssueType(str, Enum):
-    """
-    Form this outage is expected to take, which can take one of the following values: 
-    - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window. 
-    - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
-    """
-    IT_OUTAGE = "IT_OUTAGE"
-    IT_PARTIAL_OUTAGE = "IT_PARTIAL_OUTAGE"
-    OUTAGE = "OUTAGE"
-    PARTIAL_OUTAGE = "PARTIAL_OUTAGE"
-
-
-class InterconnectOutageNotificationSource(str, Enum):
-    """
-    The party that generated this notification, which can take the following value: 
-    - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
-    """
-    GOOGLE = "GOOGLE"
-    NSRC_GOOGLE = "NSRC_GOOGLE"
-
-
-class InterconnectOutageNotificationState(str, Enum):
-    """
-    State of this notification, which can take one of the following values: 
-    - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling. 
-    - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
-    """
-    ACTIVE = "ACTIVE"
-    CANCELLED = "CANCELLED"
-    COMPLETED = "COMPLETED"
-    NS_ACTIVE = "NS_ACTIVE"
-    NS_CANCELED = "NS_CANCELED"
-
-
-class InterconnectState(str, Enum):
-    """
-    [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
-    - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
-    - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
-    - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-    """
-    ACTIVE = "ACTIVE"
-    UNPROVISIONED = "UNPROVISIONED"
-
-
 class LogConfigCloudAuditOptionsLogName(str, Enum):
     """
     The log_name to populate in the Cloud Audit Record.
@@ -1535,17 +1268,6 @@ class LogConfigCloudAuditOptionsLogName(str, Enum):
 class LogConfigDataAccessOptionsLogMode(str, Enum):
     LOG_FAIL_CLOSED = "LOG_FAIL_CLOSED"
     LOG_MODE_UNSPECIFIED = "LOG_MODE_UNSPECIFIED"
-
-
-class MachineImageStatus(str, Enum):
-    """
-    [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    INVALID = "INVALID"
-    READY = "READY"
-    UPLOADING = "UPLOADING"
 
 
 class MetadataFilterFilterMatchCriteria(str, Enum):
@@ -1581,17 +1303,6 @@ class NetworkEndpointGroupType(str, Enum):
     LOAD_BALANCING = "LOAD_BALANCING"
 
 
-class NetworkInterfaceIpv6AccessType(str, Enum):
-    """
-    [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
-
-    Valid only if stackType is IPV4_IPV6.
-    """
-    EXTERNAL = "EXTERNAL"
-    INTERNAL = "INTERNAL"
-    UNSPECIFIED_IPV6_ACCESS_TYPE = "UNSPECIFIED_IPV6_ACCESS_TYPE"
-
-
 class NetworkInterfaceNicType(str, Enum):
     """
     The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -1610,14 +1321,6 @@ class NetworkInterfaceStackType(str, Enum):
     IPV4_IPV6 = "IPV4_IPV6"
     IPV4_ONLY = "IPV4_ONLY"
     UNSPECIFIED_STACK_TYPE = "UNSPECIFIED_STACK_TYPE"
-
-
-class NetworkPeeringState(str, Enum):
-    """
-    [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-    """
-    ACTIVE = "ACTIVE"
-    INACTIVE = "INACTIVE"
 
 
 class NetworkPerformanceConfigExternalIpEgressBandwidthTier(str, Enum):
@@ -1674,16 +1377,6 @@ class NodeTemplateCpuOvercommitType(str, Enum):
     NONE = "NONE"
 
 
-class NodeTemplateStatus(str, Enum):
-    """
-    [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    INVALID = "INVALID"
-    READY = "READY"
-
-
 class OrganizationSecurityPolicyType(str, Enum):
     """
     The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
@@ -1723,37 +1416,6 @@ class PublicAdvertisedPrefixStatus(str, Enum):
     PTR_CONFIGURED = "PTR_CONFIGURED"
     REVERSE_DNS_LOOKUP_FAILED = "REVERSE_DNS_LOOKUP_FAILED"
     VALIDATED = "VALIDATED"
-
-
-class PublicDelegatedPrefixPublicDelegatedSubPrefixStatus(str, Enum):
-    """
-    [Output Only] The status of the sub public delegated prefix.
-    """
-    ACTIVE = "ACTIVE"
-    INACTIVE = "INACTIVE"
-
-
-class PublicDelegatedPrefixStatus(str, Enum):
-    """
-    [Output Only] The status of the public delegated prefix.
-    """
-    ANNOUNCED = "ANNOUNCED"
-    DELETING = "DELETING"
-    INITIALIZING = "INITIALIZING"
-
-
-class RegionAutoscalerStatus(str, Enum):
-    """
-    [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-    - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-    - DELETING: Configuration is being deleted. 
-    - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-    - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
-    """
-    ACTIVE = "ACTIVE"
-    DELETING = "DELETING"
-    ERROR = "ERROR"
-    PENDING = "PENDING"
 
 
 class RegionBackendServiceLoadBalancingScheme(str, Enum):
@@ -1853,16 +1515,6 @@ class RegionCommitmentPlan(str, Enum):
     TWELVE_MONTH = "TWELVE_MONTH"
 
 
-class RegionCommitmentStatus(str, Enum):
-    """
-    [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-    """
-    ACTIVE = "ACTIVE"
-    CREATING = "CREATING"
-    EXPIRED = "EXPIRED"
-    NOT_YET_ACTIVE = "NOT_YET_ACTIVE"
-
-
 class RegionCommitmentType(str, Enum):
     """
     The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
@@ -1886,22 +1538,6 @@ class RegionDiskInterface(str, Enum):
     NVME = "NVME"
     SCSI = "SCSI"
     UNSPECIFIED = "UNSPECIFIED"
-
-
-class RegionDiskStatus(str, Enum):
-    """
-    [Output Only] The status of disk creation.  
-    - CREATING: Disk is provisioning. 
-    - RESTORING: Source data is being copied into the disk. 
-    - FAILED: Disk creation failed. 
-    - READY: Disk is ready for use. 
-    - DELETING: Disk is deleting.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    FAILED = "FAILED"
-    READY = "READY"
-    RESTORING = "RESTORING"
 
 
 class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):
@@ -1928,32 +1564,12 @@ class RegionHealthCheckType(str, Enum):
     UDP = "UDP"
 
 
-class RegionInPlaceSnapshotStatus(str, Enum):
-    """
-    [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    FAILED = "FAILED"
-    READY = "READY"
-
-
 class RegionInstanceGroupManagerFailoverAction(str, Enum):
     """
     The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
     """
     NO_FAILOVER = "NO_FAILOVER"
     UNKNOWN = "UNKNOWN"
-
-
-class RegionInstantSnapshotStatus(str, Enum):
-    """
-    [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    FAILED = "FAILED"
-    READY = "READY"
 
 
 class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
@@ -2008,17 +1624,6 @@ class ReservationAffinityConsumeReservationType(str, Enum):
     SPECIFIC_RESERVATION = "SPECIFIC_RESERVATION"
     SPECIFIC_THEN_ANY_RESERVATION = "SPECIFIC_THEN_ANY_RESERVATION"
     UNSPECIFIED = "UNSPECIFIED"
-
-
-class ReservationStatus(str, Enum):
-    """
-    [Output Only] The status of the reservation.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    INVALID = "INVALID"
-    READY = "READY"
-    UPDATING = "UPDATING"
 
 
 class ResourceCommitmentType(str, Enum):
@@ -2085,17 +1690,6 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete(str,
     UNSPECIFIED_ON_SOURCE_DISK_DELETE = "UNSPECIFIED_ON_SOURCE_DISK_DELETE"
 
 
-class ResourcePolicyStatus(str, Enum):
-    """
-    [Output Only] The status of resource policy creation.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    EXPIRED = "EXPIRED"
-    INVALID = "INVALID"
-    READY = "READY"
-
-
 class ResourcePolicyWeeklyCycleDayOfWeekDay(str, Enum):
     """
     Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
@@ -2108,37 +1702,6 @@ class ResourcePolicyWeeklyCycleDayOfWeekDay(str, Enum):
     THURSDAY = "THURSDAY"
     TUESDAY = "TUESDAY"
     WEDNESDAY = "WEDNESDAY"
-
-
-class RouteWarningsItemCode(str, Enum):
-    """
-    [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-    """
-    CLEANUP_FAILED = "CLEANUP_FAILED"
-    DEPRECATED_RESOURCE_USED = "DEPRECATED_RESOURCE_USED"
-    DEPRECATED_TYPE_USED = "DEPRECATED_TYPE_USED"
-    DISK_SIZE_LARGER_THAN_IMAGE_SIZE = "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
-    EXPERIMENTAL_TYPE_USED = "EXPERIMENTAL_TYPE_USED"
-    EXTERNAL_API_WARNING = "EXTERNAL_API_WARNING"
-    FIELD_VALUE_OVERRIDEN = "FIELD_VALUE_OVERRIDEN"
-    INJECTED_KERNELS_DEPRECATED = "INJECTED_KERNELS_DEPRECATED"
-    LARGE_DEPLOYMENT_WARNING = "LARGE_DEPLOYMENT_WARNING"
-    MISSING_TYPE_DEPENDENCY = "MISSING_TYPE_DEPENDENCY"
-    NEXT_HOP_ADDRESS_NOT_ASSIGNED = "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
-    NEXT_HOP_CANNOT_IP_FORWARD = "NEXT_HOP_CANNOT_IP_FORWARD"
-    NEXT_HOP_INSTANCE_NOT_FOUND = "NEXT_HOP_INSTANCE_NOT_FOUND"
-    NEXT_HOP_INSTANCE_NOT_ON_NETWORK = "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
-    NEXT_HOP_NOT_RUNNING = "NEXT_HOP_NOT_RUNNING"
-    NOT_CRITICAL_ERROR = "NOT_CRITICAL_ERROR"
-    NO_RESULTS_ON_PAGE = "NO_RESULTS_ON_PAGE"
-    PARTIAL_SUCCESS = "PARTIAL_SUCCESS"
-    REQUIRED_TOS_AGREEMENT = "REQUIRED_TOS_AGREEMENT"
-    RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING = "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
-    RESOURCE_NOT_DELETED = "RESOURCE_NOT_DELETED"
-    SCHEMA_VALIDATION_IGNORED = "SCHEMA_VALIDATION_IGNORED"
-    SINGLE_INSTANCE_PROPERTY_TEMPLATE = "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
-    UNDECLARED_PROPERTIES = "UNDECLARED_PROPERTIES"
-    UNREACHABLE = "UNREACHABLE"
 
 
 class RouterBgpAdvertiseMode(str, Enum):
@@ -2205,26 +1768,6 @@ class RouterBgpPeerEnable(str, Enum):
     """
     FALSE = "FALSE"
     TRUE = "TRUE"
-
-
-class RouterBgpPeerManagementType(str, Enum):
-    """
-    [Output Only] The resource that configures and manages this BGP peer. 
-    - MANAGED_BY_USER is the default value and can be managed by you or other users 
-    - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
-    """
-    MANAGED_BY_ATTACHMENT = "MANAGED_BY_ATTACHMENT"
-    MANAGED_BY_USER = "MANAGED_BY_USER"
-
-
-class RouterInterfaceManagementType(str, Enum):
-    """
-    [Output Only] The resource that configures and manages this interface. 
-    - MANAGED_BY_USER is the default value and can be managed directly by users. 
-    - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
-    """
-    MANAGED_BY_ATTACHMENT = "MANAGED_BY_ATTACHMENT"
-    MANAGED_BY_USER = "MANAGED_BY_USER"
 
 
 class RouterNatLogConfigFilter(str, Enum):
@@ -2300,39 +1843,6 @@ class SSLHealthCheckProxyHeader(str, Enum):
     """
     NONE = "NONE"
     PROXY_V1 = "PROXY_V1"
-
-
-class SavedAttachedDiskInterface(str, Enum):
-    """
-    Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
-    """
-    NVDIMM = "NVDIMM"
-    NVME = "NVME"
-    SCSI = "SCSI"
-
-
-class SavedAttachedDiskMode(str, Enum):
-    """
-    The mode in which this disk is attached to the source instance, either READ_WRITE or READ_ONLY.
-    """
-    READ_ONLY = "READ_ONLY"
-    READ_WRITE = "READ_WRITE"
-
-
-class SavedAttachedDiskStorageBytesStatus(str, Enum):
-    """
-    [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
-    """
-    UPDATING = "UPDATING"
-    UP_TO_DATE = "UP_TO_DATE"
-
-
-class SavedAttachedDiskType(str, Enum):
-    """
-    Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
-    """
-    PERSISTENT = "PERSISTENT"
-    SCRATCH = "SCRATCH"
 
 
 class SchedulingMaintenanceInterval(str, Enum):
@@ -2419,17 +1929,6 @@ class ServerTlsSettingsTlsMode(str, Enum):
     SIMPLE = "SIMPLE"
 
 
-class ServiceAttachmentConnectedEndpointStatus(str, Enum):
-    """
-    The status of a connected endpoint to this service attachment.
-    """
-    ACCEPTED = "ACCEPTED"
-    CLOSED = "CLOSED"
-    PENDING = "PENDING"
-    REJECTED = "REJECTED"
-    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
-
-
 class ServiceAttachmentConnectionPreference(str, Enum):
     """
     The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
@@ -2437,57 +1936,6 @@ class ServiceAttachmentConnectionPreference(str, Enum):
     ACCEPT_AUTOMATIC = "ACCEPT_AUTOMATIC"
     ACCEPT_MANUAL = "ACCEPT_MANUAL"
     CONNECTION_PREFERENCE_UNSPECIFIED = "CONNECTION_PREFERENCE_UNSPECIFIED"
-
-
-class ServiceAttachmentConsumerForwardingRuleStatus(str, Enum):
-    """
-    The status of the forwarding rule.
-    """
-    ACCEPTED = "ACCEPTED"
-    CLOSED = "CLOSED"
-    PENDING = "PENDING"
-    REJECTED = "REJECTED"
-    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
-
-
-class SnapshotStatus(str, Enum):
-    """
-    [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    FAILED = "FAILED"
-    READY = "READY"
-    UPLOADING = "UPLOADING"
-
-
-class SnapshotStorageBytesStatus(str, Enum):
-    """
-    [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
-    """
-    UPDATING = "UPDATING"
-    UP_TO_DATE = "UP_TO_DATE"
-
-
-class SourceInstancePropertiesPostKeyRevocationActionType(str, Enum):
-    """
-    PostKeyRevocationActionType of the instance.
-    """
-    NOOP = "NOOP"
-    POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED = "POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
-    SHUTDOWN = "SHUTDOWN"
-
-
-class SslCertificateManagedSslCertificateStatus(str, Enum):
-    """
-    [Output only] Status of the managed certificate resource.
-    """
-    ACTIVE = "ACTIVE"
-    MANAGED_CERTIFICATE_STATUS_UNSPECIFIED = "MANAGED_CERTIFICATE_STATUS_UNSPECIFIED"
-    PROVISIONING = "PROVISIONING"
-    PROVISIONING_FAILED = "PROVISIONING_FAILED"
-    PROVISIONING_FAILED_PERMANENTLY = "PROVISIONING_FAILED_PERMANENTLY"
-    RENEWAL_FAILED = "RENEWAL_FAILED"
 
 
 class SslCertificateType(str, Enum):
@@ -2516,37 +1964,6 @@ class SslPolicyProfile(str, Enum):
     CUSTOM = "CUSTOM"
     MODERN = "MODERN"
     RESTRICTED = "RESTRICTED"
-
-
-class SslPolicyWarningsItemCode(str, Enum):
-    """
-    [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-    """
-    CLEANUP_FAILED = "CLEANUP_FAILED"
-    DEPRECATED_RESOURCE_USED = "DEPRECATED_RESOURCE_USED"
-    DEPRECATED_TYPE_USED = "DEPRECATED_TYPE_USED"
-    DISK_SIZE_LARGER_THAN_IMAGE_SIZE = "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
-    EXPERIMENTAL_TYPE_USED = "EXPERIMENTAL_TYPE_USED"
-    EXTERNAL_API_WARNING = "EXTERNAL_API_WARNING"
-    FIELD_VALUE_OVERRIDEN = "FIELD_VALUE_OVERRIDEN"
-    INJECTED_KERNELS_DEPRECATED = "INJECTED_KERNELS_DEPRECATED"
-    LARGE_DEPLOYMENT_WARNING = "LARGE_DEPLOYMENT_WARNING"
-    MISSING_TYPE_DEPENDENCY = "MISSING_TYPE_DEPENDENCY"
-    NEXT_HOP_ADDRESS_NOT_ASSIGNED = "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
-    NEXT_HOP_CANNOT_IP_FORWARD = "NEXT_HOP_CANNOT_IP_FORWARD"
-    NEXT_HOP_INSTANCE_NOT_FOUND = "NEXT_HOP_INSTANCE_NOT_FOUND"
-    NEXT_HOP_INSTANCE_NOT_ON_NETWORK = "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
-    NEXT_HOP_NOT_RUNNING = "NEXT_HOP_NOT_RUNNING"
-    NOT_CRITICAL_ERROR = "NOT_CRITICAL_ERROR"
-    NO_RESULTS_ON_PAGE = "NO_RESULTS_ON_PAGE"
-    PARTIAL_SUCCESS = "PARTIAL_SUCCESS"
-    REQUIRED_TOS_AGREEMENT = "REQUIRED_TOS_AGREEMENT"
-    RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING = "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
-    RESOURCE_NOT_DELETED = "RESOURCE_NOT_DELETED"
-    SCHEMA_VALIDATION_IGNORED = "SCHEMA_VALIDATION_IGNORED"
-    SINGLE_INSTANCE_PROPERTY_TEMPLATE = "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
-    UNDECLARED_PROPERTIES = "UNDECLARED_PROPERTIES"
-    UNREACHABLE = "UNREACHABLE"
 
 
 class SubnetworkAggregationInterval(str, Enum):
@@ -2642,14 +2059,6 @@ class SubnetworkStackType(str, Enum):
     UNSPECIFIED_STACK_TYPE = "UNSPECIFIED_STACK_TYPE"
 
 
-class SubnetworkState(str, Enum):
-    """
-    [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-    """
-    DRAINING = "DRAINING"
-    READY = "READY"
-
-
 class SubsettingPolicy(str, Enum):
     CONSISTENT_HASH_SUBSETTING = "CONSISTENT_HASH_SUBSETTING"
     NONE = "NONE"
@@ -2731,16 +2140,6 @@ class TargetTcpProxyProxyHeader(str, Enum):
     PROXY_V1 = "PROXY_V1"
 
 
-class TargetVpnGatewayStatus(str, Enum):
-    """
-    [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    FAILED = "FAILED"
-    READY = "READY"
-
-
 class TlsCertificateContextCertificateSource(str, Enum):
     """
     Defines how TLS certificates are obtained.
@@ -2757,66 +2156,3 @@ class TlsValidationContextValidationSource(str, Enum):
     INVALID = "INVALID"
     USE_PATH = "USE_PATH"
     USE_SDS = "USE_SDS"
-
-
-class UpcomingMaintenanceType(str, Enum):
-    """
-    Defines the type of maintenance.
-    """
-    SCHEDULED = "SCHEDULED"
-    UNKNOWN_TYPE = "UNKNOWN_TYPE"
-    UNSCHEDULED = "UNSCHEDULED"
-
-
-class VpnTunnelStatus(str, Enum):
-    """
-    [Output Only] The status of the VPN tunnel, which can be one of the following: 
-    - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-    - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-    - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-    - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-    - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-    - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-    - NEGOTIATION_FAILURE: Handshake failed. 
-    - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-    - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-    - NO_INCOMING_PACKETS: No incoming packets from peer. 
-    - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-    - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-    - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-    - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-    - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
-    """
-    ALLOCATING_RESOURCES = "ALLOCATING_RESOURCES"
-    AUTHORIZATION_ERROR = "AUTHORIZATION_ERROR"
-    DEPROVISIONING = "DEPROVISIONING"
-    ESTABLISHED = "ESTABLISHED"
-    FAILED = "FAILED"
-    FIRST_HANDSHAKE = "FIRST_HANDSHAKE"
-    NEGOTIATION_FAILURE = "NEGOTIATION_FAILURE"
-    NETWORK_ERROR = "NETWORK_ERROR"
-    NO_INCOMING_PACKETS = "NO_INCOMING_PACKETS"
-    PROVISIONING = "PROVISIONING"
-    REJECTED = "REJECTED"
-    STOPPED = "STOPPED"
-    WAITING_FOR_FULL_CONFIG = "WAITING_FOR_FULL_CONFIG"
-
-
-class ZoneInPlaceSnapshotStatus(str, Enum):
-    """
-    [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    FAILED = "FAILED"
-    READY = "READY"
-
-
-class ZoneInstantSnapshotStatus(str, Enum):
-    """
-    [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-    """
-    CREATING = "CREATING"
-    DELETING = "DELETING"
-    FAILED = "FAILED"
-    READY = "READY"

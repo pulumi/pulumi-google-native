@@ -39,12 +39,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("oauth2ClientSecret")]
         public Input<string>? Oauth2ClientSecret { get; set; }
 
-        /// <summary>
-        /// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
-        /// </summary>
-        [Input("oauth2ClientSecretSha256")]
-        public Input<string>? Oauth2ClientSecretSha256 { get; set; }
-
         public BackendServiceIAPArgs()
         {
         }

@@ -17,13 +17,13 @@ type RegionSslCertificate struct {
 
 	// A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// [Output Only] Expire time of the certificate. RFC3339
+	// Expire time of the certificate. RFC3339
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
-	// [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+	// Type of the resource. Always compute#sslCertificate for SSL certificates.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Configuration and status of a managed SSL certificate.
 	Managed SslCertificateManagedSslCertificateResponseOutput `pulumi:"managed"`
@@ -31,15 +31,15 @@ type RegionSslCertificate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
-	// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+	// URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// Configuration and status of a self-managed SSL certificate.
 	SelfManaged SslCertificateSelfManagedSslCertificateResponseOutput `pulumi:"selfManaged"`
-	// [Output Only] Domains associated with the certificate via Subject Alternative Name.
+	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames pulumi.StringArrayOutput `pulumi:"subjectAlternativeNames"`
 	// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -82,13 +82,13 @@ func GetRegionSslCertificate(ctx *pulumi.Context,
 type regionSslCertificateState struct {
 	// A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
 	Certificate *string `pulumi:"certificate"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Output Only] Expire time of the certificate. RFC3339
+	// Expire time of the certificate. RFC3339
 	ExpireTime *string `pulumi:"expireTime"`
-	// [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+	// Type of the resource. Always compute#sslCertificate for SSL certificates.
 	Kind *string `pulumi:"kind"`
 	// Configuration and status of a managed SSL certificate.
 	Managed *SslCertificateManagedSslCertificateResponse `pulumi:"managed"`
@@ -96,15 +96,15 @@ type regionSslCertificateState struct {
 	Name *string `pulumi:"name"`
 	// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
 	PrivateKey *string `pulumi:"privateKey"`
-	// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+	// URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
 	Region *string `pulumi:"region"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// Configuration and status of a self-managed SSL certificate.
 	SelfManaged *SslCertificateSelfManagedSslCertificateResponse `pulumi:"selfManaged"`
-	// [Output Only] Domains associated with the certificate via Subject Alternative Name.
+	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
 	// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
 	Type *string `pulumi:"type"`
@@ -113,13 +113,13 @@ type regionSslCertificateState struct {
 type RegionSslCertificateState struct {
 	// A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
 	Certificate pulumi.StringPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// [Output Only] Expire time of the certificate. RFC3339
+	// Expire time of the certificate. RFC3339
 	ExpireTime pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+	// Type of the resource. Always compute#sslCertificate for SSL certificates.
 	Kind pulumi.StringPtrInput
 	// Configuration and status of a managed SSL certificate.
 	Managed SslCertificateManagedSslCertificateResponsePtrInput
@@ -127,15 +127,15 @@ type RegionSslCertificateState struct {
 	Name pulumi.StringPtrInput
 	// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
 	PrivateKey pulumi.StringPtrInput
-	// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+	// URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
 	Region pulumi.StringPtrInput
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// Configuration and status of a self-managed SSL certificate.
 	SelfManaged SslCertificateSelfManagedSslCertificateResponsePtrInput
-	// [Output Only] Domains associated with the certificate via Subject Alternative Name.
+	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames pulumi.StringArrayInput
 	// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
 	Type pulumi.StringPtrInput
@@ -148,16 +148,8 @@ func (RegionSslCertificateState) ElementType() reflect.Type {
 type regionSslCertificateArgs struct {
 	// A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
 	Certificate *string `pulumi:"certificate"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Output Only] Expire time of the certificate. RFC3339
-	ExpireTime *string `pulumi:"expireTime"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
-	Kind *string `pulumi:"kind"`
 	// Configuration and status of a managed SSL certificate.
 	Managed *SslCertificateManagedSslCertificate `pulumi:"managed"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -165,17 +157,10 @@ type regionSslCertificateArgs struct {
 	// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
 	PrivateKey *string `pulumi:"privateKey"`
 	Project    string  `pulumi:"project"`
-	// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
-	Region    string  `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
-	// [Output only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
+	Region     string  `pulumi:"region"`
+	RequestId  *string `pulumi:"requestId"`
 	// Configuration and status of a self-managed SSL certificate.
 	SelfManaged *SslCertificateSelfManagedSslCertificate `pulumi:"selfManaged"`
-	// [Output Only] Domains associated with the certificate via Subject Alternative Name.
-	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
 	// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
 	Type *string `pulumi:"type"`
 }
@@ -184,16 +169,8 @@ type regionSslCertificateArgs struct {
 type RegionSslCertificateArgs struct {
 	// A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
 	Certificate pulumi.StringPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// [Output Only] Expire time of the certificate. RFC3339
-	ExpireTime pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
-	Kind pulumi.StringPtrInput
 	// Configuration and status of a managed SSL certificate.
 	Managed SslCertificateManagedSslCertificatePtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -201,17 +178,10 @@ type RegionSslCertificateArgs struct {
 	// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
 	PrivateKey pulumi.StringPtrInput
 	Project    pulumi.StringInput
-	// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
-	Region    pulumi.StringInput
-	RequestId pulumi.StringPtrInput
-	// [Output only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
+	Region     pulumi.StringInput
+	RequestId  pulumi.StringPtrInput
 	// Configuration and status of a self-managed SSL certificate.
 	SelfManaged SslCertificateSelfManagedSslCertificatePtrInput
-	// [Output Only] Domains associated with the certificate via Subject Alternative Name.
-	SubjectAlternativeNames pulumi.StringArrayInput
 	// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
 	Type *RegionSslCertificateType
 }

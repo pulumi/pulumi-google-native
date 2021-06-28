@@ -13,12 +13,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class PacketMirroringNetworkInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Unique identifier for the network; defined by the server.
-        /// </summary>
-        [Input("canonicalUrl")]
-        public Input<string>? CanonicalUrl { get; set; }
-
-        /// <summary>
         /// URL of the network resource.
         /// </summary>
         [Input("url")]

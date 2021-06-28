@@ -107,8 +107,6 @@ func (ModelState) ElementType() reflect.Type {
 }
 
 type modelArgs struct {
-	// The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
-	DefaultVersion *GoogleCloudMlV1__Version `pulumi:"defaultVersion"`
 	// Optional. The description specified for the model when it was created.
 	Description *string `pulumi:"description"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetModel`, and systems are expected to put that etag in the request to `UpdateModel` to ensure that their change will be applied to the model as intended.
@@ -128,8 +126,6 @@ type modelArgs struct {
 
 // The set of arguments for constructing a Model resource.
 type ModelArgs struct {
-	// The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
-	DefaultVersion GoogleCloudMlV1__VersionPtrInput
 	// Optional. The description specified for the model when it was created.
 	Description pulumi.StringPtrInput
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetModel`, and systems are expected to put that etag in the request to `UpdateModel` to ensure that their change will be applied to the model as intended.

@@ -109,12 +109,6 @@ namespace Pulumi.GoogleNative.Ml.V1
     public sealed class ModelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
-        /// </summary>
-        [Input("defaultVersion")]
-        public Input<Inputs.GoogleCloudMlV1__VersionArgs>? DefaultVersion { get; set; }
-
-        /// <summary>
         /// Optional. The description specified for the model when it was created.
         /// </summary>
         [Input("description")]

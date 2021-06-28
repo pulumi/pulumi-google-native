@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class ExternalVpnGateway : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableArray<Outputs.ExternalVpnGatewayInterfaceResponse>> Interfaces { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#externalVpnGateway for externalVpnGateways.
+        /// Type of the resource. Always compute#externalVpnGateway for externalVpnGateways.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> RedundancyType { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -117,22 +117,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class ExternalVpnGatewayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("interfaces")]
         private InputList<Inputs.ExternalVpnGatewayInterfaceArgs>? _interfaces;
@@ -145,12 +133,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             get => _interfaces ?? (_interfaces = new InputList<Inputs.ExternalVpnGatewayInterfaceArgs>());
             set => _interfaces = value;
         }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#externalVpnGateway for externalVpnGateways.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -181,12 +163,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         public ExternalVpnGatewayArgs()
         {

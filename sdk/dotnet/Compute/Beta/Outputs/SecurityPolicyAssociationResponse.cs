@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string AttachmentId;
         /// <summary>
-        /// [Output Only] The display name of the security policy of the association.
+        /// The display name of the security policy of the association.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] The security policy ID of the association.
+        /// The security policy ID of the association.
         /// </summary>
         public readonly string SecurityPolicyId;
 

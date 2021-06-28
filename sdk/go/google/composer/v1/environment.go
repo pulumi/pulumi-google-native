@@ -106,8 +106,6 @@ func (EnvironmentState) ElementType() reflect.Type {
 type environmentArgs struct {
 	// Configuration parameters for this environment.
 	Config *EnvironmentConfig `pulumi:"config"`
-	// The time at which this environment was created.
-	CreateTime *string `pulumi:"createTime"`
 	// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
@@ -116,18 +114,12 @@ type environmentArgs struct {
 	Project string  `pulumi:"project"`
 	// The current state of the environment.
 	State *string `pulumi:"state"`
-	// The time at which this environment was last modified.
-	UpdateTime *string `pulumi:"updateTime"`
-	// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-	Uuid *string `pulumi:"uuid"`
 }
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
 	// Configuration parameters for this environment.
 	Config EnvironmentConfigPtrInput
-	// The time at which this environment was created.
-	CreateTime pulumi.StringPtrInput
 	// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
@@ -136,10 +128,6 @@ type EnvironmentArgs struct {
 	Project pulumi.StringInput
 	// The current state of the environment.
 	State *EnvironmentStateEnum
-	// The time at which this environment was last modified.
-	UpdateTime pulumi.StringPtrInput
-	// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-	Uuid pulumi.StringPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {

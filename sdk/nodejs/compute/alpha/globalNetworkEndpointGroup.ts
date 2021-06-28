@@ -52,9 +52,9 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly cloudRun!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupCloudRunResponse>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * The default port used if the port number is not specified in the network endpoint.
      */
@@ -64,9 +64,9 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+     * Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -84,17 +84,17 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly pscTargetService!: pulumi.Output<string>;
     /**
-     * [Output Only] The URL of the region where the network endpoint group is located.
+     * The URL of the region where the network endpoint group is located.
      */
-    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
      */
@@ -102,7 +102,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
     /**
      * [Output only] Number of network endpoints in the network endpoint group.
      */
-    public readonly size!: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
     /**
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      */
@@ -112,9 +112,9 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * [Output Only] The URL of the zone where the network endpoint group is located.
+     * The URL of the zone where the network endpoint group is located.
      */
-    public readonly zone!: pulumi.Output<string>;
+    public /*out*/ readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a GlobalNetworkEndpointGroup resource with the given unique name, arguments, and options.
@@ -134,25 +134,24 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["appEngine"] = args ? args.appEngine : undefined;
             inputs["cloudFunction"] = args ? args.cloudFunction : undefined;
             inputs["cloudRun"] = args ? args.cloudRun : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["defaultPort"] = args ? args.defaultPort : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["pscTargetService"] = args ? args.pscTargetService : undefined;
-            inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
-            inputs["size"] = args ? args.size : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["type"] = args ? args.type : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["size"] = undefined /*out*/;
+            inputs["zone"] = undefined /*out*/;
         } else {
             inputs["annotations"] = undefined /*out*/;
             inputs["appEngine"] = undefined /*out*/;
@@ -203,10 +202,6 @@ export interface GlobalNetworkEndpointGroupArgs {
      */
     cloudRun?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupCloudRunArgs>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * The default port used if the port number is not specified in the network endpoint.
      */
     defaultPort?: pulumi.Input<number>;
@@ -214,14 +209,6 @@ export interface GlobalNetworkEndpointGroupArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -239,27 +226,11 @@ export interface GlobalNetworkEndpointGroupArgs {
      * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
      */
     pscTargetService?: pulumi.Input<string>;
-    /**
-     * [Output Only] The URL of the region where the network endpoint group is located.
-     */
-    region?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
      */
     serverlessDeployment?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupServerlessDeploymentArgs>;
-    /**
-     * [Output only] Number of network endpoints in the network endpoint group.
-     */
-    size?: pulumi.Input<number>;
     /**
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      */
@@ -268,8 +239,4 @@ export interface GlobalNetworkEndpointGroupArgs {
      * Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
      */
     type?: pulumi.Input<enums.compute.alpha.GlobalNetworkEndpointGroupType>;
-    /**
-     * [Output Only] The URL of the zone where the network endpoint group is located.
-     */
-    zone?: pulumi.Input<string>;
 }

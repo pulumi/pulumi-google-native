@@ -47,9 +47,9 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly certificateMap!: pulumi.Output<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -64,9 +64,9 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly httpFilters!: pulumi.Output<string[]>;
     /**
-     * [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
+     * Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -88,17 +88,17 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly quicOverride!: pulumi.Output<string>;
     /**
-     * [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
+     * URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
      */
-    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
      * Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.
      * serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -138,24 +138,23 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             }
             inputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
             inputs["certificateMap"] = args ? args.certificateMap : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["httpFilters"] = args ? args.httpFilters : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["quicOverride"] = args ? args.quicOverride : undefined;
-            inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
         } else {
             inputs["authorizationPolicy"] = undefined /*out*/;
             inputs["certificateMap"] = undefined /*out*/;
@@ -198,10 +197,6 @@ export interface TargetHttpsProxyArgs {
      */
     certificateMap?: pulumi.Input<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -210,14 +205,6 @@ export interface TargetHttpsProxyArgs {
      * httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
      */
     httpFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -239,19 +226,7 @@ export interface TargetHttpsProxyArgs {
      * - If the quic-override flag is not specified, NONE is implied.
      */
     quicOverride?: pulumi.Input<enums.compute.alpha.TargetHttpsProxyQuicOverride>;
-    /**
-     * [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
-     */
-    region?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
     /**
      * Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.
      * serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.

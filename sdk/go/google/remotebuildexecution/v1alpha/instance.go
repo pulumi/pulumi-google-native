@@ -95,15 +95,9 @@ type instanceArgs struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The location is a GCP region. Currently only `us-central1` is supported.
 	Location *string `pulumi:"location"`
-	// Whether stack driver logging is enabled for the instance.
-	LoggingEnabled *bool `pulumi:"loggingEnabled"`
-	// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
-	Name *string `pulumi:"name"`
 	// Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
 	Parent  *string `pulumi:"parent"`
 	Project string  `pulumi:"project"`
-	// State of the instance.
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -114,15 +108,9 @@ type InstanceArgs struct {
 	InstanceId pulumi.StringPtrInput
 	// The location is a GCP region. Currently only `us-central1` is supported.
 	Location pulumi.StringPtrInput
-	// Whether stack driver logging is enabled for the instance.
-	LoggingEnabled pulumi.BoolPtrInput
-	// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
-	Name pulumi.StringPtrInput
 	// Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
 	Parent  pulumi.StringPtrInput
 	Project pulumi.StringInput
-	// State of the instance.
-	State *InstanceStateEnum
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

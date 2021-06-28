@@ -74,9 +74,9 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly consistentHash!: pulumi.Output<outputs.compute.alpha.ConsistentHashLoadBalancerSettingsResponse>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * Headers that the HTTP/S load balancer should add to proxied requests.
      */
@@ -90,9 +90,9 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] The resource URL for the edge security policy associated with this backend service.
+     * The resource URL for the edge security policy associated with this backend service.
      */
-    public readonly edgeSecurityPolicy!: pulumi.Output<string>;
+    public /*out*/ readonly edgeSecurityPolicy!: pulumi.Output<string>;
     /**
      * If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
      */
@@ -116,9 +116,9 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly iap!: pulumi.Output<outputs.compute.alpha.BackendServiceIAPResponse>;
     /**
-     * [Output Only] Type of resource. Always compute#backendService for backend services.
+     * Type of resource. Always compute#backendService for backend services.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
      */
@@ -186,13 +186,13 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] The resource URL for the security policy associated with this backend service.
+     * The resource URL for the security policy associated with this backend service.
      */
-    public readonly securityPolicy!: pulumi.Output<string>;
+    public /*out*/ readonly securityPolicy!: pulumi.Output<string>;
     /**
      * This field specifies the security policy that applies to this backend service. This field is applicable to either:  
      * - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
@@ -200,13 +200,13 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly securitySettings!: pulumi.Output<outputs.compute.alpha.SecuritySettingsResponse>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
      * Type of session affinity to use. The default is NONE.
      *
@@ -249,17 +249,13 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["connectionDraining"] = args ? args.connectionDraining : undefined;
             inputs["connectionTrackingPolicy"] = args ? args.connectionTrackingPolicy : undefined;
             inputs["consistentHash"] = args ? args.consistentHash : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
             inputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
             inputs["enableCDN"] = args ? args.enableCDN : undefined;
             inputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
             inputs["iap"] = args ? args.iap : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             inputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
@@ -272,14 +268,17 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             inputs["securitySettings"] = args ? args.securitySettings : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             inputs["subsetting"] = args ? args.subsetting : undefined;
             inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["edgeSecurityPolicy"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["securityPolicy"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
         } else {
             inputs["affinityCookieTtlSec"] = undefined /*out*/;
             inputs["backends"] = undefined /*out*/;
@@ -367,10 +366,6 @@ export interface RegionBackendServiceArgs {
      */
     consistentHash?: pulumi.Input<inputs.compute.alpha.ConsistentHashLoadBalancerSettingsArgs>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * Headers that the HTTP/S load balancer should add to proxied requests.
      */
     customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
@@ -382,10 +377,6 @@ export interface RegionBackendServiceArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] The resource URL for the edge security policy associated with this backend service.
-     */
-    edgeSecurityPolicy?: pulumi.Input<string>;
     /**
      * If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
      */
@@ -402,14 +393,6 @@ export interface RegionBackendServiceArgs {
      * The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
      */
     iap?: pulumi.Input<inputs.compute.alpha.BackendServiceIAPArgs>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of resource. Always compute#backendService for backend services.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
      */
@@ -477,29 +460,14 @@ export interface RegionBackendServiceArgs {
      * Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
      */
     protocol?: pulumi.Input<enums.compute.alpha.RegionBackendServiceProtocol>;
-    /**
-     * [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] The resource URL for the security policy associated with this backend service.
-     */
-    securityPolicy?: pulumi.Input<string>;
     /**
      * This field specifies the security policy that applies to this backend service. This field is applicable to either:  
      * - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
      * - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      */
     securitySettings?: pulumi.Input<inputs.compute.alpha.SecuritySettingsArgs>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
     /**
      * Type of session affinity to use. The default is NONE.
      *

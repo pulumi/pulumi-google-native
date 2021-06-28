@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetResourcePolicyResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         public readonly string Description;
@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.ResourcePolicyInstanceSchedulePolicyResponse InstanceSchedulePolicy;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
+        /// Type of the resource. Always compute#resource_policies for resource policies.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -62,11 +62,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public readonly string Name;
         public readonly string Region;
         /// <summary>
-        /// [Output Only] The system status of the resource policy.
+        /// The system status of the resource policy.
         /// </summary>
         public readonly Outputs.ResourcePolicyResourceStatusResponse ResourceStatus;
         /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
+        /// Server-defined fully-qualified URL for this resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.ResourcePolicySnapshotSchedulePolicyResponse SnapshotSchedulePolicy;
         /// <summary>
-        /// [Output Only] The status of resource policy creation.
+        /// The status of resource policy creation.
         /// </summary>
         public readonly string Status;
 

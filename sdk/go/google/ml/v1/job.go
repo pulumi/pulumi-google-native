@@ -131,12 +131,6 @@ func (JobState) ElementType() reflect.Type {
 }
 
 type jobArgs struct {
-	// When the job was created.
-	CreateTime *string `pulumi:"createTime"`
-	// When the job processing was completed.
-	EndTime *string `pulumi:"endTime"`
-	// The details of a failure or a cancellation.
-	ErrorMessage *string `pulumi:"errorMessage"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
 	Etag *string `pulumi:"etag"`
 	// Required. The user-specified id of the job.
@@ -148,10 +142,6 @@ type jobArgs struct {
 	// The current prediction job result.
 	PredictionOutput *GoogleCloudMlV1__PredictionOutput `pulumi:"predictionOutput"`
 	Project          string                             `pulumi:"project"`
-	// When the job processing was started.
-	StartTime *string `pulumi:"startTime"`
-	// The detailed state of a job.
-	State *string `pulumi:"state"`
 	// Input parameters to create a training job.
 	TrainingInput *GoogleCloudMlV1__TrainingInput `pulumi:"trainingInput"`
 	// The current training job result.
@@ -160,12 +150,6 @@ type jobArgs struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
-	// When the job was created.
-	CreateTime pulumi.StringPtrInput
-	// When the job processing was completed.
-	EndTime pulumi.StringPtrInput
-	// The details of a failure or a cancellation.
-	ErrorMessage pulumi.StringPtrInput
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
 	Etag pulumi.StringPtrInput
 	// Required. The user-specified id of the job.
@@ -177,10 +161,6 @@ type JobArgs struct {
 	// The current prediction job result.
 	PredictionOutput GoogleCloudMlV1__PredictionOutputPtrInput
 	Project          pulumi.StringInput
-	// When the job processing was started.
-	StartTime pulumi.StringPtrInput
-	// The detailed state of a job.
-	State *JobStateEnum
 	// Input parameters to create a training job.
 	TrainingInput GoogleCloudMlV1__TrainingInputPtrInput
 	// The current training job result.

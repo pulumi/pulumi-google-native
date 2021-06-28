@@ -42,7 +42,7 @@ export class Index extends pulumi.CustomResource {
     /**
      * A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
      */
@@ -50,7 +50,7 @@ export class Index extends pulumi.CustomResource {
     /**
      * The serving state of the index.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Index resource with the given unique name, arguments, and options.
@@ -75,10 +75,10 @@ export class Index extends pulumi.CustomResource {
             inputs["collectionGroupId"] = args ? args.collectionGroupId : undefined;
             inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["fields"] = args ? args.fields : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["queryScope"] = args ? args.queryScope : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
             inputs["fields"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -102,17 +102,9 @@ export interface IndexArgs {
      * The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
      */
     fields?: pulumi.Input<pulumi.Input<inputs.firestore.v1beta2.GoogleFirestoreAdminV1beta2IndexFieldArgs>[]>;
-    /**
-     * A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
-     */
-    name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
      */
     queryScope?: pulumi.Input<enums.firestore.v1beta2.IndexQueryScope>;
-    /**
-     * The serving state of the index.
-     */
-    state?: pulumi.Input<enums.firestore.v1beta2.IndexState>;
 }

@@ -855,11 +855,11 @@ class LocalDiskResponse(dict):
         :param bool boot: Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
         :param str device_name: Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
         :param Sequence['RuntimeGuestOsFeatureResponse'] guest_os_features: Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
-        :param int index: [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        :param int index: A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         :param 'LocalDiskInitializeParamsResponse' initialize_params: Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
         :param str kind: Type of the resource. Always compute#attachedDisk for attached disks.
-        :param Sequence[str] licenses: [Output Only] Any valid publicly visible licenses.
+        :param Sequence[str] licenses: Any valid publicly visible licenses.
         :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
         :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource.
         :param str type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
@@ -913,7 +913,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter
     def index(self) -> int:
         """
-        [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         """
         return pulumi.get(self, "index")
 
@@ -945,7 +945,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter
     def licenses(self) -> Sequence[str]:
         """
-        [Output Only] Any valid publicly visible licenses.
+        Any valid publicly visible licenses.
         """
         return pulumi.get(self, "licenses")
 

@@ -7,14 +7,12 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
-from ._enums import *
 
 __all__ = [
     'BindingArgs',
     'CardinalityArgs',
     'EndConditionArgs',
     'ExprArgs',
-    'StatusArgs',
 ]
 
 @pulumi.input_type
@@ -207,61 +205,5 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class StatusArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
 
 

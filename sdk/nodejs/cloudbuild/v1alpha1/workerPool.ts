@@ -38,11 +38,11 @@ export class WorkerPool extends pulumi.CustomResource {
     /**
      * Time at which the request to create the `WorkerPool` was received.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Time at which the request to delete the `WorkerPool` was received.
      */
-    public readonly deleteTime!: pulumi.Output<string>;
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
      * User-defined name of the `WorkerPool`.
      */
@@ -58,15 +58,15 @@ export class WorkerPool extends pulumi.CustomResource {
     /**
      * The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string>;
+    public /*out*/ readonly serviceAccountEmail!: pulumi.Output<string>;
     /**
      * WorkerPool Status.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Time at which the request to update the `WorkerPool` was received.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Configuration to be used for a creating workers in the `WorkerPool`.
      */
@@ -90,16 +90,16 @@ export class WorkerPool extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["deleteTime"] = args ? args.deleteTime : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["regions"] = args ? args.regions : undefined;
-            inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["workerCount"] = args ? args.workerCount : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["serviceAccountEmail"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
@@ -124,14 +124,6 @@ export class WorkerPool extends pulumi.CustomResource {
  */
 export interface WorkerPoolArgs {
     /**
-     * Time at which the request to create the `WorkerPool` was received.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * Time at which the request to delete the `WorkerPool` was received.
-     */
-    deleteTime?: pulumi.Input<string>;
-    /**
      * User-defined name of the `WorkerPool`.
      */
     name?: pulumi.Input<string>;
@@ -143,18 +135,6 @@ export interface WorkerPoolArgs {
      * List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
      */
     regions?: pulumi.Input<pulumi.Input<enums.cloudbuild.v1alpha1.WorkerPoolRegionsItem>[]>;
-    /**
-     * The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
-     */
-    serviceAccountEmail?: pulumi.Input<string>;
-    /**
-     * WorkerPool Status.
-     */
-    status?: pulumi.Input<enums.cloudbuild.v1alpha1.WorkerPoolStatus>;
-    /**
-     * Time at which the request to update the `WorkerPool` was received.
-     */
-    updateTime?: pulumi.Input<string>;
     /**
      * Configuration to be used for a creating workers in the `WorkerPool`.
      */

@@ -6,9 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AppEngineHttpRequestHttpMethod',
-    'QueueState',
     'TaskResponseView',
-    'TaskView',
 ]
 
 
@@ -24,28 +22,9 @@ class AppEngineHttpRequestHttpMethod(str, Enum):
     DELETE = "DELETE"
 
 
-class QueueState(str, Enum):
-    """
-    Output only. The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    RUNNING = "RUNNING"
-    PAUSED = "PAUSED"
-    DISABLED = "DISABLED"
-
-
 class TaskResponseView(str, Enum):
     """
     The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
-    """
-    VIEW_UNSPECIFIED = "VIEW_UNSPECIFIED"
-    BASIC = "BASIC"
-    FULL = "FULL"
-
-
-class TaskView(str, Enum):
-    """
-    Output only. The view specifies which subset of the Task has been returned.
     """
     VIEW_UNSPECIFIED = "VIEW_UNSPECIFIED"
     BASIC = "BASIC"

@@ -42,7 +42,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     public sealed class GetInstanceGroupResult
     {
         /// <summary>
-        /// [Output Only] The creation timestamp for this instance group in RFC3339 text format.
+        /// The creation timestamp for this instance group in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
+        /// The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
-        /// [Output Only] The resource type, which is always compute#instanceGroup for instance groups.
+        /// The resource type, which is always compute#instanceGroup for instance groups.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -70,27 +70,27 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.NamedPortResponse> NamedPorts;
         /// <summary>
-        /// [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+        /// The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// [Output Only] The URL of the region where the instance group is located (for regional resources).
+        /// The URL of the region where the instance group is located (for regional resources).
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] The URL for this instance group. The server generates this URL.
+        /// The URL for this instance group. The server generates this URL.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] The total number of instances in the instance group.
+        /// The total number of instances in the instance group.
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// [Output Only] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+        /// The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
         /// </summary>
         public readonly string Subnetwork;
         /// <summary>
-        /// [Output Only] The URL of the zone where the instance group is located (for zonal resources).
+        /// The URL of the zone where the instance group is located (for zonal resources).
         /// </summary>
         public readonly string Zone;
 

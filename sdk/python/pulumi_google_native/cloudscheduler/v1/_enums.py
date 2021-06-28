@@ -7,7 +7,6 @@ from enum import Enum
 __all__ = [
     'AppEngineHttpTargetHttpMethod',
     'HttpTargetHttpMethod',
-    'JobState',
 ]
 
 
@@ -37,14 +36,3 @@ class HttpTargetHttpMethod(str, Enum):
     DELETE = "DELETE"
     PATCH = "PATCH"
     OPTIONS = "OPTIONS"
-
-
-class JobState(str, Enum):
-    """
-    Output only. State of the job.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    ENABLED = "ENABLED"
-    PAUSED = "PAUSED"
-    DISABLED = "DISABLED"
-    UPDATE_FAILED = "UPDATE_FAILED"

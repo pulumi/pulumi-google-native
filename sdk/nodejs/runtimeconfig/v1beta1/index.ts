@@ -14,9 +14,6 @@ export * from "./getWaiter";
 export * from "./variable";
 export * from "./waiter";
 
-// Export enums:
-export * from "../../types/enums/runtimeconfig/v1beta1";
-
 // Import resources to register:
 import { Config } from "./config";
 import { ConfigIamPolicy } from "./configIamPolicy";

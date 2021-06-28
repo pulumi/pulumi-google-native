@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetExternalVpnGatewayResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<Outputs.ExternalVpnGatewayInterfaceResponse> Interfaces;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#externalVpnGateway for externalVpnGateways.
+        /// Type of the resource. Always compute#externalVpnGateway for externalVpnGateways.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string RedundancyType;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
 

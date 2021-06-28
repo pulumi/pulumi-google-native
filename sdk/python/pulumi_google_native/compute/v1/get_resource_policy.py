@@ -56,7 +56,7 @@ class GetResourcePolicyResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -85,7 +85,7 @@ class GetResourcePolicyResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
+        Type of the resource. Always compute#resource_policies for resource policies.
         """
         return pulumi.get(self, "kind")
 
@@ -106,7 +106,7 @@ class GetResourcePolicyResult:
     @pulumi.getter(name="resourceStatus")
     def resource_status(self) -> 'outputs.ResourcePolicyResourceStatusResponse':
         """
-        [Output Only] The system status of the resource policy.
+        The system status of the resource policy.
         """
         return pulumi.get(self, "resource_status")
 
@@ -114,7 +114,7 @@ class GetResourcePolicyResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined fully-qualified URL for this resource.
+        Server-defined fully-qualified URL for this resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -130,7 +130,7 @@ class GetResourcePolicyResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of resource policy creation.
+        The status of resource policy creation.
         """
         return pulumi.get(self, "status")
 

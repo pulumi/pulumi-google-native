@@ -31,11 +31,11 @@ export interface GetReservationArgs {
 
 export interface GetReservationResult {
     /**
-     * [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
      */
     readonly commitment: string;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -43,7 +43,7 @@ export interface GetReservationResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Type of the resource. Always compute#reservations for reservations.
+     * Type of the resource. Always compute#reservations for reservations.
      */
     readonly kind: string;
     /**
@@ -51,11 +51,11 @@ export interface GetReservationResult {
      */
     readonly name: string;
     /**
-     * [Output Only] Reserved for future use.
+     * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
     /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
+     * Server-defined fully-qualified URL for this resource.
      */
     readonly selfLink: string;
     /**
@@ -67,7 +67,7 @@ export interface GetReservationResult {
      */
     readonly specificReservationRequired: boolean;
     /**
-     * [Output Only] The status of the reservation.
+     * The status of the reservation.
      */
     readonly status: string;
     /**

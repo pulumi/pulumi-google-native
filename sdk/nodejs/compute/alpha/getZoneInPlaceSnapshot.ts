@@ -31,7 +31,7 @@ export interface GetZoneInPlaceSnapshotArgs {
 
 export interface GetZoneInPlaceSnapshotResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -39,7 +39,7 @@ export interface GetZoneInPlaceSnapshotResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Size of the source disk, specified in GB.
+     * Size of the source disk, specified in GB.
      */
     readonly diskSizeGb: string;
     /**
@@ -47,7 +47,7 @@ export interface GetZoneInPlaceSnapshotResult {
      */
     readonly guestFlush: boolean;
     /**
-     * [Output Only] Type of the resource. Always compute#inPlaceSnapshot for InPlaceSnapshot resources.
+     * Type of the resource. Always compute#inPlaceSnapshot for InPlaceSnapshot resources.
      */
     readonly kind: string;
     /**
@@ -65,15 +65,15 @@ export interface GetZoneInPlaceSnapshotResult {
      */
     readonly name: string;
     /**
-     * [Output Only] URL of the region where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource's resource id.
+     * Server-defined URL for this resource's resource id.
      */
     readonly selfLinkWithId: string;
     /**
@@ -84,15 +84,15 @@ export interface GetZoneInPlaceSnapshotResult {
      */
     readonly sourceDisk: string;
     /**
-     * [Output Only] The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
+     * The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
      */
     readonly sourceDiskId: string;
     /**
-     * [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
+     * The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
      */
     readonly status: string;
     /**
-     * [Output Only] URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly zone: string;
 }

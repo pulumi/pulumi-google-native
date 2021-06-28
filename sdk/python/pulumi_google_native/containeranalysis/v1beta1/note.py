@@ -21,38 +21,30 @@ class NoteArgs:
                  attestation_authority: Optional[pulumi.Input['AuthorityArgs']] = None,
                  base_image: Optional[pulumi.Input['BasisArgs']] = None,
                  build: Optional[pulumi.Input['BuildArgs']] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  deployable: Optional[pulumi.Input['DeployableArgs']] = None,
                  discovery: Optional[pulumi.Input['DiscoveryArgs']] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  intoto: Optional[pulumi.Input['InTotoArgs']] = None,
-                 kind: Optional[pulumi.Input['NoteKind']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input['PackageArgs']] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  vulnerability: Optional[pulumi.Input['VulnerabilityArgs']] = None):
         """
         The set of arguments for constructing a Note resource.
         :param pulumi.Input['AuthorityArgs'] attestation_authority: A note describing an attestation role.
         :param pulumi.Input['BasisArgs'] base_image: A note describing a base image.
         :param pulumi.Input['BuildArgs'] build: A note describing build provenance for a verifiable build.
-        :param pulumi.Input[str] create_time: The time this note was created. This field can be used as a filter in list requests.
         :param pulumi.Input['DeployableArgs'] deployable: A note describing something that can be deployed.
         :param pulumi.Input['DiscoveryArgs'] discovery: A note describing the initial analysis of a resource.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Empty if note does not expire.
         :param pulumi.Input['InTotoArgs'] intoto: A note describing an in-toto link.
-        :param pulumi.Input['NoteKind'] kind: The type of analysis. This field can be used as a filter in list requests.
         :param pulumi.Input[str] long_description: A detailed description of this note.
-        :param pulumi.Input[str] name: The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
         :param pulumi.Input['PackageArgs'] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]] related_url: URLs associated with this note.
         :param pulumi.Input[str] short_description: A one sentence description of this note.
-        :param pulumi.Input[str] update_time: The time this note was last updated. This field can be used as a filter in list requests.
         :param pulumi.Input['VulnerabilityArgs'] vulnerability: A note describing a package vulnerability.
         """
         pulumi.set(__self__, "note_id", note_id)
@@ -63,8 +55,6 @@ class NoteArgs:
             pulumi.set(__self__, "base_image", base_image)
         if build is not None:
             pulumi.set(__self__, "build", build)
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if deployable is not None:
             pulumi.set(__self__, "deployable", deployable)
         if discovery is not None:
@@ -73,12 +63,8 @@ class NoteArgs:
             pulumi.set(__self__, "expiration_time", expiration_time)
         if intoto is not None:
             pulumi.set(__self__, "intoto", intoto)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if long_description is not None:
             pulumi.set(__self__, "long_description", long_description)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if package is not None:
             pulumi.set(__self__, "package", package)
         if related_note_names is not None:
@@ -87,8 +73,6 @@ class NoteArgs:
             pulumi.set(__self__, "related_url", related_url)
         if short_description is not None:
             pulumi.set(__self__, "short_description", short_description)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
         if vulnerability is not None:
             pulumi.set(__self__, "vulnerability", vulnerability)
 
@@ -147,18 +131,6 @@ class NoteArgs:
         pulumi.set(self, "build", value)
 
     @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time this note was created. This field can be used as a filter in list requests.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
-
-    @property
     @pulumi.getter
     def deployable(self) -> Optional[pulumi.Input['DeployableArgs']]:
         """
@@ -207,18 +179,6 @@ class NoteArgs:
         pulumi.set(self, "intoto", value)
 
     @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input['NoteKind']]:
-        """
-        The type of analysis. This field can be used as a filter in list requests.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input['NoteKind']]):
-        pulumi.set(self, "kind", value)
-
-    @property
     @pulumi.getter(name="longDescription")
     def long_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -229,18 +189,6 @@ class NoteArgs:
     @long_description.setter
     def long_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "long_description", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -291,18 +239,6 @@ class NoteArgs:
         pulumi.set(self, "short_description", value)
 
     @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time this note was last updated. This field can be used as a filter in list requests.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
-
-    @property
     @pulumi.getter
     def vulnerability(self) -> Optional[pulumi.Input['VulnerabilityArgs']]:
         """
@@ -323,21 +259,17 @@ class Note(pulumi.CustomResource):
                  attestation_authority: Optional[pulumi.Input[pulumi.InputType['AuthorityArgs']]] = None,
                  base_image: Optional[pulumi.Input[pulumi.InputType['BasisArgs']]] = None,
                  build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  intoto: Optional[pulumi.Input[pulumi.InputType['InTotoArgs']]] = None,
-                 kind: Optional[pulumi.Input['NoteKind']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityArgs']]] = None,
                  __props__=None):
         """
@@ -348,19 +280,15 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AuthorityArgs']] attestation_authority: A note describing an attestation role.
         :param pulumi.Input[pulumi.InputType['BasisArgs']] base_image: A note describing a base image.
         :param pulumi.Input[pulumi.InputType['BuildArgs']] build: A note describing build provenance for a verifiable build.
-        :param pulumi.Input[str] create_time: The time this note was created. This field can be used as a filter in list requests.
         :param pulumi.Input[pulumi.InputType['DeployableArgs']] deployable: A note describing something that can be deployed.
         :param pulumi.Input[pulumi.InputType['DiscoveryArgs']] discovery: A note describing the initial analysis of a resource.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Empty if note does not expire.
         :param pulumi.Input[pulumi.InputType['InTotoArgs']] intoto: A note describing an in-toto link.
-        :param pulumi.Input['NoteKind'] kind: The type of analysis. This field can be used as a filter in list requests.
         :param pulumi.Input[str] long_description: A detailed description of this note.
-        :param pulumi.Input[str] name: The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
         :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note.
         :param pulumi.Input[str] short_description: A one sentence description of this note.
-        :param pulumi.Input[str] update_time: The time this note was last updated. This field can be used as a filter in list requests.
         :param pulumi.Input[pulumi.InputType['VulnerabilityArgs']] vulnerability: A note describing a package vulnerability.
         """
         ...
@@ -390,21 +318,17 @@ class Note(pulumi.CustomResource):
                  attestation_authority: Optional[pulumi.Input[pulumi.InputType['AuthorityArgs']]] = None,
                  base_image: Optional[pulumi.Input[pulumi.InputType['BasisArgs']]] = None,
                  build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  intoto: Optional[pulumi.Input[pulumi.InputType['InTotoArgs']]] = None,
-                 kind: Optional[pulumi.Input['NoteKind']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -421,14 +345,11 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["attestation_authority"] = attestation_authority
             __props__.__dict__["base_image"] = base_image
             __props__.__dict__["build"] = build
-            __props__.__dict__["create_time"] = create_time
             __props__.__dict__["deployable"] = deployable
             __props__.__dict__["discovery"] = discovery
             __props__.__dict__["expiration_time"] = expiration_time
             __props__.__dict__["intoto"] = intoto
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["long_description"] = long_description
-            __props__.__dict__["name"] = name
             if note_id is None and not opts.urn:
                 raise TypeError("Missing required property 'note_id'")
             __props__.__dict__["note_id"] = note_id
@@ -439,8 +360,11 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["related_note_names"] = related_note_names
             __props__.__dict__["related_url"] = related_url
             __props__.__dict__["short_description"] = short_description
-            __props__.__dict__["update_time"] = update_time
             __props__.__dict__["vulnerability"] = vulnerability
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["update_time"] = None
         super(Note, __self__).__init__(
             'google-native:containeranalysis/v1beta1:Note',
             resource_name,

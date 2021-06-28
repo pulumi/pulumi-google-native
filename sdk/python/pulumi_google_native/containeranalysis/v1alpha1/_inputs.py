@@ -778,7 +778,6 @@ class DeploymentArgs:
                  config: Optional[pulumi.Input[str]] = None,
                  deploy_time: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input['DeploymentPlatform']] = None,
-                 resource_uri: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  undeploy_time: Optional[pulumi.Input[str]] = None,
                  user_email: Optional[pulumi.Input[str]] = None):
         """
@@ -787,7 +786,6 @@ class DeploymentArgs:
         :param pulumi.Input[str] config: Configuration used to create this deployment.
         :param pulumi.Input[str] deploy_time: Beginning of the lifetime of this deployment.
         :param pulumi.Input['DeploymentPlatform'] platform: Platform hosting this deployment.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_uri: Resource URI for the artifact being deployed taken from the deployable field with the same name.
         :param pulumi.Input[str] undeploy_time: End of the lifetime of this deployment.
         :param pulumi.Input[str] user_email: Identity of the user that triggered this deployment.
         """
@@ -799,8 +797,6 @@ class DeploymentArgs:
             pulumi.set(__self__, "deploy_time", deploy_time)
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
-        if resource_uri is not None:
-            pulumi.set(__self__, "resource_uri", resource_uri)
         if undeploy_time is not None:
             pulumi.set(__self__, "undeploy_time", undeploy_time)
         if user_email is not None:
@@ -855,18 +851,6 @@ class DeploymentArgs:
         pulumi.set(self, "platform", value)
 
     @property
-    @pulumi.getter(name="resourceUri")
-    def resource_uri(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Resource URI for the artifact being deployed taken from the deployable field with the same name.
-        """
-        return pulumi.get(self, "resource_uri")
-
-    @resource_uri.setter
-    def resource_uri(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "resource_uri", value)
-
-    @property
     @pulumi.getter(name="undeployTime")
     def undeploy_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -894,49 +878,17 @@ class DeploymentArgs:
 @pulumi.input_type
 class DerivedArgs:
     def __init__(__self__, *,
-                 base_resource_url: Optional[pulumi.Input[str]] = None,
-                 distance: Optional[pulumi.Input[int]] = None,
                  fingerprint: Optional[pulumi.Input['FingerprintArgs']] = None,
                  layer_info: Optional[pulumi.Input[Sequence[pulumi.Input['LayerArgs']]]] = None):
         """
         Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
-        :param pulumi.Input[str] base_resource_url: This contains the base image URL for the derived image occurrence.
-        :param pulumi.Input[int] distance: The number of layers by which this image differs from the associated image basis.
         :param pulumi.Input['FingerprintArgs'] fingerprint: The fingerprint of the derived image.
         :param pulumi.Input[Sequence[pulumi.Input['LayerArgs']]] layer_info: This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
         """
-        if base_resource_url is not None:
-            pulumi.set(__self__, "base_resource_url", base_resource_url)
-        if distance is not None:
-            pulumi.set(__self__, "distance", distance)
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if layer_info is not None:
             pulumi.set(__self__, "layer_info", layer_info)
-
-    @property
-    @pulumi.getter(name="baseResourceUrl")
-    def base_resource_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        This contains the base image URL for the derived image occurrence.
-        """
-        return pulumi.get(self, "base_resource_url")
-
-    @base_resource_url.setter
-    def base_resource_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "base_resource_url", value)
-
-    @property
-    @pulumi.getter
-    def distance(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of layers by which this image differs from the associated image basis.
-        """
-        return pulumi.get(self, "distance")
-
-    @distance.setter
-    def distance(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "distance", value)
 
     @property
     @pulumi.getter
@@ -1423,20 +1375,16 @@ class ExprArgs:
 class FingerprintArgs:
     def __init__(__self__, *,
                  v1_name: Optional[pulumi.Input[str]] = None,
-                 v2_blob: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 v2_name: Optional[pulumi.Input[str]] = None):
+                 v2_blob: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A set of properties that uniquely identify a given Docker image.
         :param pulumi.Input[str] v1_name: The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] v2_blob: The ordered list of v2 blobs that represent a given image.
-        :param pulumi.Input[str] v2_name: The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
         """
         if v1_name is not None:
             pulumi.set(__self__, "v1_name", v1_name)
         if v2_blob is not None:
             pulumi.set(__self__, "v2_blob", v2_blob)
-        if v2_name is not None:
-            pulumi.set(__self__, "v2_name", v2_name)
 
     @property
     @pulumi.getter(name="v1Name")
@@ -1461,18 +1409,6 @@ class FingerprintArgs:
     @v2_blob.setter
     def v2_blob(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "v2_blob", value)
-
-    @property
-    @pulumi.getter(name="v2Name")
-    def v2_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
-        """
-        return pulumi.get(self, "v2_name")
-
-    @v2_name.setter
-    def v2_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "v2_name", value)
 
 
 @pulumi.input_type
@@ -1878,17 +1814,13 @@ class HashArgs:
 @pulumi.input_type
 class InstallationArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 location: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]] = None):
         """
         This represents how a particular software package may be installed on a system.
         :param pulumi.Input[Sequence[pulumi.Input['LocationArgs']]] location: All of the places within the filesystem versions of this package have been found.
-        :param pulumi.Input[str] name: The name of the installed package.
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -1901,18 +1833,6 @@ class InstallationArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the installed package.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -2834,41 +2754,21 @@ class VersionArgs:
 @pulumi.input_type
 class VulnerabilityDetailsArgs:
     def __init__(__self__, *,
-                 cvss_score: Optional[pulumi.Input[float]] = None,
                  effective_severity: Optional[pulumi.Input['VulnerabilityDetailsEffectiveSeverity']] = None,
                  package_issue: Optional[pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]]] = None,
-                 severity: Optional[pulumi.Input['VulnerabilityDetailsSeverity']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Used by Occurrence to point to where the vulnerability exists and how to fix it.
-        :param pulumi.Input[float] cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
         :param pulumi.Input['VulnerabilityDetailsEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
         :param pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
-        :param pulumi.Input['VulnerabilityDetailsSeverity'] severity: The note provider assigned Severity of the vulnerability.
         :param pulumi.Input[str] type: The type of package; whether native or non native(ruby gems, node.js packages etc)
         """
-        if cvss_score is not None:
-            pulumi.set(__self__, "cvss_score", cvss_score)
         if effective_severity is not None:
             pulumi.set(__self__, "effective_severity", effective_severity)
         if package_issue is not None:
             pulumi.set(__self__, "package_issue", package_issue)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="cvssScore")
-    def cvss_score(self) -> Optional[pulumi.Input[float]]:
-        """
-        The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
-        """
-        return pulumi.get(self, "cvss_score")
-
-    @cvss_score.setter
-    def cvss_score(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "cvss_score", value)
 
     @property
     @pulumi.getter(name="effectiveSeverity")
@@ -2893,18 +2793,6 @@ class VulnerabilityDetailsArgs:
     @package_issue.setter
     def package_issue(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]]]):
         pulumi.set(self, "package_issue", value)
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input['VulnerabilityDetailsSeverity']]:
-        """
-        The note provider assigned Severity of the vulnerability.
-        """
-        return pulumi.get(self, "severity")
-
-    @severity.setter
-    def severity(self, value: Optional[pulumi.Input['VulnerabilityDetailsSeverity']]):
-        pulumi.set(self, "severity", value)
 
     @property
     @pulumi.getter

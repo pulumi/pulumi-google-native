@@ -46,15 +46,15 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Whether stack driver logging is enabled for the instance.
      */
-    public readonly loggingEnabled!: pulumi.Output<boolean>;
+    public /*out*/ readonly loggingEnabled!: pulumi.Output<boolean>;
     /**
      * Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * State of the instance.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -73,11 +73,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["featurePolicy"] = args ? args.featurePolicy : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["location"] = args ? args.location : undefined;
-            inputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["loggingEnabled"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
             inputs["featurePolicy"] = undefined /*out*/;
             inputs["location"] = undefined /*out*/;
@@ -109,20 +109,8 @@ export interface InstanceArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Whether stack driver logging is enabled for the instance.
-     */
-    loggingEnabled?: pulumi.Input<boolean>;
-    /**
-     * Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
-     */
-    name?: pulumi.Input<string>;
-    /**
      * Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
      */
     parent?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * State of the instance.
-     */
-    state?: pulumi.Input<enums.remotebuildexecution.v1alpha.InstanceState>;
 }

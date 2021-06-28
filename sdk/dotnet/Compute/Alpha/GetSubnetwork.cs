@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool AllowSubnetCidrRoutesOverlap;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool EnableL2;
         /// <summary>
-        /// [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
+        /// The range of external IPv6 addresses that are owned by this subnetwork.
         /// </summary>
         public readonly string ExternalIpv6Prefix;
         /// <summary>
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly double FlowSampling;
         /// <summary>
-        /// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+        /// The gateway address for default routes to reach destination addresses outside this subnetwork.
         /// </summary>
         public readonly string GatewayAddress;
         /// <summary>
@@ -96,11 +96,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Ipv6AccessType;
         /// <summary>
-        /// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+        /// The range of internal IPv6 addresses that are owned by this subnetwork.
         /// </summary>
         public readonly string Ipv6CidrRange;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+        /// Type of the resource. Always compute#subnetwork for Subnetwork resources.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -146,11 +146,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<Outputs.SubnetworkSecondaryRangeResponse> SecondaryIpRanges;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string StackType;
         /// <summary>
-        /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        /// The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
         /// </summary>
         public readonly string State;
         /// <summary>

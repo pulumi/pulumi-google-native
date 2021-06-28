@@ -79,10 +79,6 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
-	// An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
-	Etag *string `pulumi:"etag"`
-	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
-	Name *string `pulumi:"name"`
 	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
 	Parent *string `pulumi:"parent"`
 	// Required. Human readable title. Does not affect behavior.
@@ -91,10 +87,6 @@ type accessPolicyArgs struct {
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
-	// An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
-	Etag pulumi.StringPtrInput
-	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
-	Name pulumi.StringPtrInput
 	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
 	Parent pulumi.StringPtrInput
 	// Required. Human readable title. Does not affect behavior.

@@ -29,7 +29,7 @@ export interface GetExternalVpnGatewayArgs {
 
 export interface GetExternalVpnGatewayResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -41,7 +41,7 @@ export interface GetExternalVpnGatewayResult {
      */
     readonly interfaces: outputs.compute.v1.ExternalVpnGatewayInterfaceResponse[];
     /**
-     * [Output Only] Type of the resource. Always compute#externalVpnGateway for externalVpnGateways.
+     * Type of the resource. Always compute#externalVpnGateway for externalVpnGateways.
      */
     readonly kind: string;
     /**
@@ -63,7 +63,7 @@ export interface GetExternalVpnGatewayResult {
      */
     readonly redundancyType: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
 }

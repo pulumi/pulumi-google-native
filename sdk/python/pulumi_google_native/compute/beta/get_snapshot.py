@@ -95,7 +95,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="autoCreated")
     def auto_created(self) -> bool:
         """
-        [Output Only] Set to true if snapshots are automatically created by applying resource policy on the target disk.
+        Set to true if snapshots are automatically created by applying resource policy on the target disk.
         """
         return pulumi.get(self, "auto_created")
 
@@ -111,7 +111,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -127,7 +127,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> str:
         """
-        [Output Only] Size of the source disk, specified in GB.
+        Size of the source disk, specified in GB.
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -135,7 +135,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="downloadBytes")
     def download_bytes(self) -> str:
         """
-        [Output Only] Number of bytes downloaded to restore a snapshot to a disk.
+        Number of bytes downloaded to restore a snapshot to a disk.
         """
         return pulumi.get(self, "download_bytes")
 
@@ -151,7 +151,7 @@ class GetSnapshotResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#snapshot for Snapshot resources.
+        Type of the resource. Always compute#snapshot for Snapshot resources.
         """
         return pulumi.get(self, "kind")
 
@@ -177,7 +177,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="licenseCodes")
     def license_codes(self) -> Sequence[str]:
         """
-        [Output Only] Integer license codes indicating which licenses are attached to this snapshot.
+        Integer license codes indicating which licenses are attached to this snapshot.
         """
         return pulumi.get(self, "license_codes")
 
@@ -185,7 +185,7 @@ class GetSnapshotResult:
     @pulumi.getter
     def licenses(self) -> Sequence[str]:
         """
-        [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
+        A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
         """
         return pulumi.get(self, "licenses")
 
@@ -209,7 +209,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
-        [Output Only] Reserved for future use.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -217,7 +217,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -255,7 +255,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="sourceDiskId")
     def source_disk_id(self) -> str:
         """
-        [Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
+        The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
 
@@ -263,7 +263,7 @@ class GetSnapshotResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
+        The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
         """
         return pulumi.get(self, "status")
 
@@ -271,7 +271,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="storageBytes")
     def storage_bytes(self) -> str:
         """
-        [Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
+        A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
         """
         return pulumi.get(self, "storage_bytes")
 
@@ -279,7 +279,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="storageBytesStatus")
     def storage_bytes_status(self) -> str:
         """
-        [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         """
         return pulumi.get(self, "storage_bytes_status")
 

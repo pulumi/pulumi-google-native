@@ -15,7 +15,7 @@ import (
 type RegionHealthCheckService struct {
 	pulumi.CustomResourceState
 
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -35,11 +35,11 @@ type RegionHealthCheckService struct {
 	NetworkEndpointGroups pulumi.StringArrayOutput `pulumi:"networkEndpointGroups"`
 	// List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
 	NotificationEndpoints pulumi.StringArrayOutput `pulumi:"notificationEndpoints"`
-	// [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 }
 
@@ -78,7 +78,7 @@ func GetRegionHealthCheckService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionHealthCheckService resources.
 type regionHealthCheckServiceState struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -98,16 +98,16 @@ type regionHealthCheckServiceState struct {
 	NetworkEndpointGroups []string `pulumi:"networkEndpointGroups"`
 	// List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
 	NotificationEndpoints []string `pulumi:"notificationEndpoints"`
-	// [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 }
 
 type RegionHealthCheckServiceState struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -127,11 +127,11 @@ type RegionHealthCheckServiceState struct {
 	NetworkEndpointGroups pulumi.StringArrayInput
 	// List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
 	NotificationEndpoints pulumi.StringArrayInput
-	// [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId pulumi.StringPtrInput
 }
 
@@ -140,8 +140,6 @@ func (RegionHealthCheckServiceState) ElementType() reflect.Type {
 }
 
 type regionHealthCheckServiceArgs struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
@@ -150,10 +148,6 @@ type regionHealthCheckServiceArgs struct {
 	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
 	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
 	HealthStatusAggregationPolicy *string `pulumi:"healthStatusAggregationPolicy"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
-	Kind *string `pulumi:"kind"`
 	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// List of URLs to the NetworkEndpointGroup resources. Must not have more than 100. For regional HealthCheckService, NEGs must be in zones in the region of the HealthCheckService.
@@ -161,19 +155,12 @@ type regionHealthCheckServiceArgs struct {
 	// List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
 	NotificationEndpoints []string `pulumi:"notificationEndpoints"`
 	Project               string   `pulumi:"project"`
-	// [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    string  `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
+	Region                string   `pulumi:"region"`
+	RequestId             *string  `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a RegionHealthCheckService resource.
 type RegionHealthCheckServiceArgs struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
@@ -182,10 +169,6 @@ type RegionHealthCheckServiceArgs struct {
 	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
 	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
 	HealthStatusAggregationPolicy *RegionHealthCheckServiceHealthStatusAggregationPolicy
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
-	Kind pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// List of URLs to the NetworkEndpointGroup resources. Must not have more than 100. For regional HealthCheckService, NEGs must be in zones in the region of the HealthCheckService.
@@ -193,13 +176,8 @@ type RegionHealthCheckServiceArgs struct {
 	// List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
 	NotificationEndpoints pulumi.StringArrayInput
 	Project               pulumi.StringInput
-	// [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    pulumi.StringInput
-	RequestId pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL with id for the resource.
-	SelfLinkWithId pulumi.StringPtrInput
+	Region                pulumi.StringInput
+	RequestId             pulumi.StringPtrInput
 }
 
 func (RegionHealthCheckServiceArgs) ElementType() reflect.Type {

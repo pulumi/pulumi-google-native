@@ -17,18 +17,12 @@ class TargetHttpsProxyArgs:
                  project: pulumi.Input[str],
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  quic_override: Optional[pulumi.Input['TargetHttpsProxyQuicOverride']] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
@@ -40,12 +34,9 @@ class TargetHttpsProxyArgs:
                authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                Note: This field currently has no impact.
         :param pulumi.Input[str] certificate_map: URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_filters: URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list.
                httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                
@@ -57,9 +48,6 @@ class TargetHttpsProxyArgs:
                - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
                - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
                - If the quic-override flag is not specified, NONE is implied.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] server_tls_policy: Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.
                serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                If left blank, communications are not encrypted.
@@ -76,30 +64,18 @@ class TargetHttpsProxyArgs:
             pulumi.set(__self__, "authorization_policy", authorization_policy)
         if certificate_map is not None:
             pulumi.set(__self__, "certificate_map", certificate_map)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if http_filters is not None:
             pulumi.set(__self__, "http_filters", http_filters)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if proxy_bind is not None:
             pulumi.set(__self__, "proxy_bind", proxy_bind)
         if quic_override is not None:
             pulumi.set(__self__, "quic_override", quic_override)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if self_link_with_id is not None:
-            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if server_tls_policy is not None:
             pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if ssl_certificates is not None:
@@ -146,18 +122,6 @@ class TargetHttpsProxyArgs:
         pulumi.set(self, "certificate_map", value)
 
     @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -181,30 +145,6 @@ class TargetHttpsProxyArgs:
     @http_filters.setter
     def http_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "http_filters", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -251,18 +191,6 @@ class TargetHttpsProxyArgs:
         pulumi.set(self, "quic_override", value)
 
     @property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region", value)
-
-    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -270,30 +198,6 @@ class TargetHttpsProxyArgs:
     @request_id.setter
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="selfLinkWithId")
-    def self_link_with_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for this resource with the resource id.
-        """
-        return pulumi.get(self, "self_link_with_id")
-
-    @self_link_with_id.setter
-    def self_link_with_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link_with_id", value)
 
     @property
     @pulumi.getter(name="serverTlsPolicy")
@@ -357,19 +261,13 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  quic_override: Optional[pulumi.Input['TargetHttpsProxyQuicOverride']] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
@@ -385,12 +283,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
                authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                Note: This field currently has no impact.
         :param pulumi.Input[str] certificate_map: URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_filters: URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list.
                httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                
@@ -402,9 +297,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
                - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
                - If the quic-override flag is not specified, NONE is implied.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] server_tls_policy: Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.
                serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                If left blank, communications are not encrypted.
@@ -442,19 +334,13 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  quic_override: Optional[pulumi.Input['TargetHttpsProxyQuicOverride']] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
@@ -473,26 +359,25 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
             __props__.__dict__["authorization_policy"] = authorization_policy
             __props__.__dict__["certificate_map"] = certificate_map
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["http_filters"] = http_filters
-            __props__.__dict__["id"] = id
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
             __props__.__dict__["quic_override"] = quic_override
-            __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["server_tls_policy"] = server_tls_policy
             __props__.__dict__["ssl_certificates"] = ssl_certificates
             __props__.__dict__["ssl_policy"] = ssl_policy
             __props__.__dict__["url_map"] = url_map
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["region"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["self_link_with_id"] = None
         super(TargetHttpsProxy, __self__).__init__(
             'google-native:compute/alpha:TargetHttpsProxy',
             resource_name,
@@ -557,7 +442,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -590,7 +475,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
+        Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
         """
         return pulumi.get(self, "kind")
 
@@ -630,7 +515,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
+        URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
         """
         return pulumi.get(self, "region")
 
@@ -638,7 +523,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -646,7 +531,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 

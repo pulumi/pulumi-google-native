@@ -31,13 +31,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.ConfidentialInstanceConfigResponse> ConfidentialInstanceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The CPU platform used by this instance.
+        /// The CPU platform used by this instance.
         /// </summary>
         [Output("cpuPlatform")]
         public Output<string> CpuPlatform { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> InstanceEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#instance for instances.
+        /// Type of the resource. Always compute#instance for instances.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -127,19 +127,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Last start timestamp in RFC3339 text format.
+        /// Last start timestamp in RFC3339 text format.
         /// </summary>
         [Output("lastStartTimestamp")]
         public Output<string> LastStartTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Last stop timestamp in RFC3339 text format.
+        /// Last stop timestamp in RFC3339 text format.
         /// </summary>
         [Output("lastStopTimestamp")]
         public Output<string> LastStopTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Last suspended timestamp in RFC3339 text format.
+        /// Last suspended timestamp in RFC3339 text format.
         /// </summary>
         [Output("lastSuspendedTimestamp")]
         public Output<string> LastSuspendedTimestamp { get; private set; } = null!;
@@ -218,13 +218,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableArray<string>> ResourcePolicies { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        /// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
         /// </summary>
         [Output("resourceStatus")]
         public Output<Outputs.ResourceStatusResponse> ResourceStatus { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
@@ -248,13 +248,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableArray<string>> SecureTags { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource.
+        /// Server-defined URL for this resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -298,19 +298,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceMachineImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+        /// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
         /// </summary>
         [Output("startRestricted")]
         public Output<bool> StartRestricted { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+        /// The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] An optional, human-readable explanation of the status.
+        /// An optional, human-readable explanation of the status.
         /// </summary>
         [Output("statusMessage")]
         public Output<string> StatusMessage { get; private set; } = null!;
@@ -322,13 +322,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.TagsResponse> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Specifies upcoming maintenance for the instance.
+        /// Specifies upcoming maintenance for the instance.
         /// </summary>
         [Output("upcomingMaintenance")]
         public Output<Outputs.UpcomingMaintenanceResponse> UpcomingMaintenance { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -394,18 +394,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.ConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
 
         /// <summary>
-        /// [Output Only] The CPU platform used by this instance.
-        /// </summary>
-        [Input("cpuPlatform")]
-        public Input<string>? CpuPlatform { get; set; }
-
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// Whether the resource should be protected against deletion.
         /// </summary>
         [Input("deletionProtection")]
@@ -460,12 +448,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// Encrypts or decrypts data for an instance with a customer-supplied encryption key.
         /// 
         /// If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
@@ -479,12 +461,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("instanceEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? InstanceEncryptionKey { get; set; }
 
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#instance for instances.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -496,24 +472,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
-
-        /// <summary>
-        /// [Output Only] Last start timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("lastStartTimestamp")]
-        public Input<string>? LastStartTimestamp { get; set; }
-
-        /// <summary>
-        /// [Output Only] Last stop timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("lastStopTimestamp")]
-        public Input<string>? LastStopTimestamp { get; set; }
-
-        /// <summary>
-        /// [Output Only] Last suspended timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("lastSuspendedTimestamp")]
-        public Input<string>? LastSuspendedTimestamp { get; set; }
 
         /// <summary>
         /// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
@@ -607,18 +565,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
-        /// </summary>
-        [Input("resourceStatus")]
-        public Input<Inputs.ResourceStatusArgs>? ResourceStatus { get; set; }
-
-        /// <summary>
-        /// [Output Only] Reserved for future use.
-        /// </summary>
-        [Input("satisfiesPzs")]
-        public Input<bool>? SatisfiesPzs { get; set; }
-
-        /// <summary>
         /// Sets the scheduling options for this instance.
         /// </summary>
         [Input("scheduling")]
@@ -647,18 +593,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             get => _secureTags ?? (_secureTags = new InputList<string>());
             set => _secureTags = value;
         }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
 
         [Input("serviceAccounts")]
         private InputList<Inputs.ServiceAccountArgs>? _serviceAccounts;
@@ -708,38 +642,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceMachineImageEncryptionKey { get; set; }
 
         /// <summary>
-        /// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
-        /// </summary>
-        [Input("startRestricted")]
-        public Input<bool>? StartRestricted { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceStatus>? Status { get; set; }
-
-        /// <summary>
-        /// [Output Only] An optional, human-readable explanation of the status.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
-
-        /// <summary>
         /// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         /// </summary>
         [Input("tags")]
         public Input<Inputs.TagsArgs>? Tags { get; set; }
 
-        /// <summary>
-        /// [Output Only] Specifies upcoming maintenance for the instance.
-        /// </summary>
-        [Input("upcomingMaintenance")]
-        public Input<Inputs.UpcomingMaintenanceArgs>? UpcomingMaintenance { get; set; }
-
-        /// <summary>
-        /// [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
 

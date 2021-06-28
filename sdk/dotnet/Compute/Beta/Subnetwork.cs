@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> AllowSubnetCidrRoutesOverlap { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+        /// The gateway address for default routes to reach destination addresses outside this subnetwork.
         /// </summary>
         [Output("gatewayAddress")]
         public Output<string> GatewayAddress { get; private set; } = null!;
@@ -66,13 +66,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> IpCidrRange { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+        /// The range of internal IPv6 addresses that are owned by this subnetwork.
         /// </summary>
         [Output("ipv6CidrRange")]
         public Output<string> Ipv6CidrRange { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+        /// Type of the resource. Always compute#subnetwork for Subnetwork resources.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -134,13 +134,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<Outputs.SubnetworkSecondaryRangeResponse>> SecondaryIpRanges { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        /// The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -203,12 +203,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<bool>? AllowSubnetCidrRoutesOverlap { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         /// </summary>
         [Input("description")]
@@ -221,34 +215,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<bool>? EnableFlowLogs { get; set; }
 
         /// <summary>
-        /// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
-        /// </summary>
-        [Input("gatewayAddress")]
-        public Input<string>? GatewayAddress { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
-
-        /// <summary>
-        /// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
-        /// </summary>
-        [Input("ipv6CidrRange")]
-        public Input<string>? Ipv6CidrRange { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
@@ -317,18 +287,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
             get => _secondaryIpRanges ?? (_secondaryIpRanges = new InputList<Inputs.SubnetworkSecondaryRangeArgs>());
             set => _secondaryIpRanges = value;
         }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Compute.Beta.SubnetworkState>? State { get; set; }
 
         public SubnetworkArgs()
         {

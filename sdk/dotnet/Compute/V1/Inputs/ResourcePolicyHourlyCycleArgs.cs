@@ -16,12 +16,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class ResourcePolicyHourlyCycleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-        /// </summary>
-        [Input("duration")]
-        public Input<string>? Duration { get; set; }
-
-        /// <summary>
         /// Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
         /// </summary>
         [Input("hoursInCycle")]

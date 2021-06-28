@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
     public sealed class OperationErrorErrorsItemResponse
     {
         /// <summary>
-        /// [Output Only] The error type identifier for this error.
+        /// The error type identifier for this error.
         /// </summary>
         public readonly string Code;
         /// <summary>
-        /// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+        /// Indicates the field in the request that caused the error. This property is optional.
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// [Output Only] An optional, human-readable error message.
+        /// An optional, human-readable error message.
         /// </summary>
         public readonly string Message;
 

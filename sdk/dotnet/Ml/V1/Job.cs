@@ -133,24 +133,6 @@ namespace Pulumi.GoogleNative.Ml.V1
     public sealed class JobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When the job was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// When the job processing was completed.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        /// <summary>
-        /// The details of a failure or a cancellation.
-        /// </summary>
-        [Input("errorMessage")]
-        public Input<string>? ErrorMessage { get; set; }
-
-        /// <summary>
         /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
         /// </summary>
         [Input("etag")]
@@ -188,18 +170,6 @@ namespace Pulumi.GoogleNative.Ml.V1
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// When the job processing was started.
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
-
-        /// <summary>
-        /// The detailed state of a job.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Ml.V1.JobState>? State { get; set; }
 
         /// <summary>
         /// Input parameters to create a training job.

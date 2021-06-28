@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.NetworkEndpointGroupCloudRunResponse CloudRun;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+        /// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -84,11 +84,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string NetworkEndpointType;
         /// <summary>
-        /// [Output Only] The URL of the region where the network endpoint group is located.
+        /// The URL of the region where the network endpoint group is located.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Subnetwork;
         /// <summary>
-        /// [Output Only] The URL of the zone where the network endpoint group is located.
+        /// The URL of the zone where the network endpoint group is located.
         /// </summary>
         public readonly string Zone;
 

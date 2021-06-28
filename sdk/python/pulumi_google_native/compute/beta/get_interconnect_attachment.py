@@ -143,7 +143,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="cloudRouterIpAddress")
     def cloud_router_ip_address(self) -> str:
         """
-        [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
         """
         return pulumi.get(self, "cloud_router_ip_address")
 
@@ -151,7 +151,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -159,7 +159,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="customerRouterIpAddress")
     def customer_router_ip_address(self) -> str:
         """
-        [Output Only] IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
         """
         return pulumi.get(self, "customer_router_ip_address")
 
@@ -167,7 +167,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="dataplaneVersion")
     def dataplane_version(self) -> int:
         """
-        [Output Only] Dataplane version for this InterconnectAttachment.
+        Dataplane version for this InterconnectAttachment.
         """
         return pulumi.get(self, "dataplane_version")
 
@@ -222,7 +222,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
+        Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
         """
         return pulumi.get(self, "kind")
 
@@ -264,7 +264,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> str:
         """
-        [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
+        The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
         - OS_ACTIVE: The attachment has been turned up and is ready to use. 
         - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
         """
@@ -298,7 +298,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="privateInterconnectInfo")
     def private_interconnect_info(self) -> 'outputs.InterconnectAttachmentPrivateInfoResponse':
         """
-        [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
+        Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
         """
         return pulumi.get(self, "private_interconnect_info")
 
@@ -306,7 +306,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -322,7 +322,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -330,7 +330,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
+        The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
         - ACTIVE: The attachment has been turned up and is ready to use. 
         - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
         - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 

@@ -700,8 +700,6 @@ func (o AppEngineHttpRequestResponsePtrOutput) RelativeUri() pulumi.StringPtrOut
 
 // App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 type AppEngineRouting struct {
-	// The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
-	Host *string `pulumi:"host"`
 	// App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 	Instance *string `pulumi:"instance"`
 	// App service. By default, the task is sent to the service which is the default service when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
@@ -723,8 +721,6 @@ type AppEngineRoutingInput interface {
 
 // App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 type AppEngineRoutingArgs struct {
-	// The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
-	Host pulumi.StringPtrInput `pulumi:"host"`
 	// App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
 	// App service. By default, the task is sent to the service which is the default service when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
@@ -811,11 +807,6 @@ func (o AppEngineRoutingOutput) ToAppEngineRoutingPtrOutputWithContext(ctx conte
 	}).(AppEngineRoutingPtrOutput)
 }
 
-// The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
-func (o AppEngineRoutingOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEngineRouting) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
 // App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 func (o AppEngineRoutingOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEngineRouting) *string { return v.Instance }).(pulumi.StringPtrOutput)
@@ -847,16 +838,6 @@ func (o AppEngineRoutingPtrOutput) ToAppEngineRoutingPtrOutputWithContext(ctx co
 
 func (o AppEngineRoutingPtrOutput) Elem() AppEngineRoutingOutput {
 	return o.ApplyT(func(v *AppEngineRouting) AppEngineRouting { return *v }).(AppEngineRoutingOutput)
-}
-
-// The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
-func (o AppEngineRoutingPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineRouting) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
 }
 
 // App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
@@ -1077,197 +1058,6 @@ func (o AppEngineRoutingResponsePtrOutput) Version() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// The status of a task attempt.
-type Attempt struct {
-	// The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-	DispatchTime *string `pulumi:"dispatchTime"`
-	// The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
-	ResponseStatus *Status `pulumi:"responseStatus"`
-	// The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-	ResponseTime *string `pulumi:"responseTime"`
-	// The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-	ScheduleTime *string `pulumi:"scheduleTime"`
-}
-
-// AttemptInput is an input type that accepts AttemptArgs and AttemptOutput values.
-// You can construct a concrete instance of `AttemptInput` via:
-//
-//          AttemptArgs{...}
-type AttemptInput interface {
-	pulumi.Input
-
-	ToAttemptOutput() AttemptOutput
-	ToAttemptOutputWithContext(context.Context) AttemptOutput
-}
-
-// The status of a task attempt.
-type AttemptArgs struct {
-	// The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-	DispatchTime pulumi.StringPtrInput `pulumi:"dispatchTime"`
-	// The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
-	ResponseStatus StatusPtrInput `pulumi:"responseStatus"`
-	// The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-	ResponseTime pulumi.StringPtrInput `pulumi:"responseTime"`
-	// The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-	ScheduleTime pulumi.StringPtrInput `pulumi:"scheduleTime"`
-}
-
-func (AttemptArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Attempt)(nil)).Elem()
-}
-
-func (i AttemptArgs) ToAttemptOutput() AttemptOutput {
-	return i.ToAttemptOutputWithContext(context.Background())
-}
-
-func (i AttemptArgs) ToAttemptOutputWithContext(ctx context.Context) AttemptOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttemptOutput)
-}
-
-func (i AttemptArgs) ToAttemptPtrOutput() AttemptPtrOutput {
-	return i.ToAttemptPtrOutputWithContext(context.Background())
-}
-
-func (i AttemptArgs) ToAttemptPtrOutputWithContext(ctx context.Context) AttemptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttemptOutput).ToAttemptPtrOutputWithContext(ctx)
-}
-
-// AttemptPtrInput is an input type that accepts AttemptArgs, AttemptPtr and AttemptPtrOutput values.
-// You can construct a concrete instance of `AttemptPtrInput` via:
-//
-//          AttemptArgs{...}
-//
-//  or:
-//
-//          nil
-type AttemptPtrInput interface {
-	pulumi.Input
-
-	ToAttemptPtrOutput() AttemptPtrOutput
-	ToAttemptPtrOutputWithContext(context.Context) AttemptPtrOutput
-}
-
-type attemptPtrType AttemptArgs
-
-func AttemptPtr(v *AttemptArgs) AttemptPtrInput {
-	return (*attemptPtrType)(v)
-}
-
-func (*attemptPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Attempt)(nil)).Elem()
-}
-
-func (i *attemptPtrType) ToAttemptPtrOutput() AttemptPtrOutput {
-	return i.ToAttemptPtrOutputWithContext(context.Background())
-}
-
-func (i *attemptPtrType) ToAttemptPtrOutputWithContext(ctx context.Context) AttemptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttemptPtrOutput)
-}
-
-// The status of a task attempt.
-type AttemptOutput struct{ *pulumi.OutputState }
-
-func (AttemptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Attempt)(nil)).Elem()
-}
-
-func (o AttemptOutput) ToAttemptOutput() AttemptOutput {
-	return o
-}
-
-func (o AttemptOutput) ToAttemptOutputWithContext(ctx context.Context) AttemptOutput {
-	return o
-}
-
-func (o AttemptOutput) ToAttemptPtrOutput() AttemptPtrOutput {
-	return o.ToAttemptPtrOutputWithContext(context.Background())
-}
-
-func (o AttemptOutput) ToAttemptPtrOutputWithContext(ctx context.Context) AttemptPtrOutput {
-	return o.ApplyT(func(v Attempt) *Attempt {
-		return &v
-	}).(AttemptPtrOutput)
-}
-
-// The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-func (o AttemptOutput) DispatchTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Attempt) *string { return v.DispatchTime }).(pulumi.StringPtrOutput)
-}
-
-// The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
-func (o AttemptOutput) ResponseStatus() StatusPtrOutput {
-	return o.ApplyT(func(v Attempt) *Status { return v.ResponseStatus }).(StatusPtrOutput)
-}
-
-// The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-func (o AttemptOutput) ResponseTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Attempt) *string { return v.ResponseTime }).(pulumi.StringPtrOutput)
-}
-
-// The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-func (o AttemptOutput) ScheduleTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Attempt) *string { return v.ScheduleTime }).(pulumi.StringPtrOutput)
-}
-
-type AttemptPtrOutput struct{ *pulumi.OutputState }
-
-func (AttemptPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Attempt)(nil)).Elem()
-}
-
-func (o AttemptPtrOutput) ToAttemptPtrOutput() AttemptPtrOutput {
-	return o
-}
-
-func (o AttemptPtrOutput) ToAttemptPtrOutputWithContext(ctx context.Context) AttemptPtrOutput {
-	return o
-}
-
-func (o AttemptPtrOutput) Elem() AttemptOutput {
-	return o.ApplyT(func(v *Attempt) Attempt { return *v }).(AttemptOutput)
-}
-
-// The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-func (o AttemptPtrOutput) DispatchTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Attempt) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DispatchTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
-func (o AttemptPtrOutput) ResponseStatus() StatusPtrOutput {
-	return o.ApplyT(func(v *Attempt) *Status {
-		if v == nil {
-			return nil
-		}
-		return v.ResponseStatus
-	}).(StatusPtrOutput)
-}
-
-// The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-func (o AttemptPtrOutput) ResponseTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Attempt) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResponseTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-func (o AttemptPtrOutput) ScheduleTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Attempt) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScheduleTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4590,178 +4380,6 @@ func (o StackdriverLoggingConfigResponsePtrOutput) SamplingRatio() pulumi.Float6
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type Status struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code *int `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message *string `pulumi:"message"`
-}
-
-// StatusInput is an input type that accepts StatusArgs and StatusOutput values.
-// You can construct a concrete instance of `StatusInput` via:
-//
-//          StatusArgs{...}
-type StatusInput interface {
-	pulumi.Input
-
-	ToStatusOutput() StatusOutput
-	ToStatusOutputWithContext(context.Context) StatusOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntPtrInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (StatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
-}
-
-func (i StatusArgs) ToStatusOutput() StatusOutput {
-	return i.ToStatusOutputWithContext(context.Background())
-}
-
-func (i StatusArgs) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput)
-}
-
-func (i StatusArgs) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
-}
-
-func (i StatusArgs) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput).ToStatusPtrOutputWithContext(ctx)
-}
-
-// StatusPtrInput is an input type that accepts StatusArgs, StatusPtr and StatusPtrOutput values.
-// You can construct a concrete instance of `StatusPtrInput` via:
-//
-//          StatusArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusPtrInput interface {
-	pulumi.Input
-
-	ToStatusPtrOutput() StatusPtrOutput
-	ToStatusPtrOutputWithContext(context.Context) StatusPtrOutput
-}
-
-type statusPtrType StatusArgs
-
-func StatusPtr(v *StatusArgs) StatusPtrInput {
-	return (*statusPtrType)(v)
-}
-
-func (*statusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
-}
-
-func (i *statusPtrType) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *statusPtrType) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusPtrOutput)
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusOutput struct{ *pulumi.OutputState }
-
-func (StatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
-}
-
-func (o StatusOutput) ToStatusOutput() StatusOutput {
-	return o
-}
-
-func (o StatusOutput) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
-	return o
-}
-
-func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
-	return o.ToStatusPtrOutputWithContext(context.Background())
-}
-
-func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o.ApplyT(func(v Status) *Status {
-		return &v
-	}).(StatusPtrOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Status) *int { return v.Code }).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Status) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Status) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type StatusPtrOutput struct{ *pulumi.OutputState }
-
-func (StatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
-}
-
-func (o StatusPtrOutput) ToStatusPtrOutput() StatusPtrOutput {
-	return o
-}
-
-func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o
-}
-
-func (o StatusPtrOutput) Elem() StatusOutput {
-	return o.ApplyT(func(v *Status) Status { return *v }).(StatusOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusPtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Status) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Status) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Status) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
@@ -4946,8 +4564,6 @@ func init() {
 	pulumi.RegisterOutputType(AppEngineRoutingPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineRoutingResponseOutput{})
 	pulumi.RegisterOutputType(AppEngineRoutingResponsePtrOutput{})
-	pulumi.RegisterOutputType(AttemptOutput{})
-	pulumi.RegisterOutputType(AttemptPtrOutput{})
 	pulumi.RegisterOutputType(AttemptResponseOutput{})
 	pulumi.RegisterOutputType(AttemptResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
@@ -4987,8 +4603,6 @@ func init() {
 	pulumi.RegisterOutputType(StackdriverLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(StackdriverLoggingConfigResponseOutput{})
 	pulumi.RegisterOutputType(StackdriverLoggingConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(StatusOutput{})
-	pulumi.RegisterOutputType(StatusPtrOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 }

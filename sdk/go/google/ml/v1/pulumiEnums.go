@@ -156,48 +156,6 @@ func (e GoogleCloudMlV1__AcceleratorConfigType) ToStringPtrOutputWithContext(ctx
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Output only. The detailed state of the trial.
-type GoogleCloudMlV1__HyperparameterOutputState pulumi.String
-
-const (
-	// The job state is unspecified.
-	GoogleCloudMlV1__HyperparameterOutputStateStateUnspecified = GoogleCloudMlV1__HyperparameterOutputState("STATE_UNSPECIFIED")
-	// The job has been just created and processing has not yet begun.
-	GoogleCloudMlV1__HyperparameterOutputStateQueued = GoogleCloudMlV1__HyperparameterOutputState("QUEUED")
-	// The service is preparing to run the job.
-	GoogleCloudMlV1__HyperparameterOutputStatePreparing = GoogleCloudMlV1__HyperparameterOutputState("PREPARING")
-	// The job is in progress.
-	GoogleCloudMlV1__HyperparameterOutputStateRunning = GoogleCloudMlV1__HyperparameterOutputState("RUNNING")
-	// The job completed successfully.
-	GoogleCloudMlV1__HyperparameterOutputStateSucceeded = GoogleCloudMlV1__HyperparameterOutputState("SUCCEEDED")
-	// The job failed. `error_message` should contain the details of the failure.
-	GoogleCloudMlV1__HyperparameterOutputStateFailed = GoogleCloudMlV1__HyperparameterOutputState("FAILED")
-	// The job is being cancelled. `error_message` should describe the reason for the cancellation.
-	GoogleCloudMlV1__HyperparameterOutputStateCancelling = GoogleCloudMlV1__HyperparameterOutputState("CANCELLING")
-	// The job has been cancelled. `error_message` should describe the reason for the cancellation.
-	GoogleCloudMlV1__HyperparameterOutputStateCancelled = GoogleCloudMlV1__HyperparameterOutputState("CANCELLED")
-)
-
-func (GoogleCloudMlV1__HyperparameterOutputState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e GoogleCloudMlV1__HyperparameterOutputState) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GoogleCloudMlV1__HyperparameterOutputState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GoogleCloudMlV1__HyperparameterOutputState) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e GoogleCloudMlV1__HyperparameterOutputState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
 type GoogleCloudMlV1__HyperparameterSpecAlgorithm pulumi.String
 
@@ -512,78 +470,6 @@ func (e GoogleCloudMlV1__TrainingInputScaleTier) ToStringPtrOutputWithContext(ct
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-type GoogleCloudMlV1__VersionFramework pulumi.String
-
-const (
-	// Unspecified framework. Assigns a value based on the file suffix.
-	GoogleCloudMlV1__VersionFrameworkFrameworkUnspecified = GoogleCloudMlV1__VersionFramework("FRAMEWORK_UNSPECIFIED")
-	// Tensorflow framework.
-	GoogleCloudMlV1__VersionFrameworkTensorflow = GoogleCloudMlV1__VersionFramework("TENSORFLOW")
-	// Scikit-learn framework.
-	GoogleCloudMlV1__VersionFrameworkScikitLearn = GoogleCloudMlV1__VersionFramework("SCIKIT_LEARN")
-	// XGBoost framework.
-	GoogleCloudMlV1__VersionFrameworkXgboost = GoogleCloudMlV1__VersionFramework("XGBOOST")
-)
-
-func (GoogleCloudMlV1__VersionFramework) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e GoogleCloudMlV1__VersionFramework) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GoogleCloudMlV1__VersionFramework) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GoogleCloudMlV1__VersionFramework) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e GoogleCloudMlV1__VersionFramework) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// Output only. The state of a version.
-type GoogleCloudMlV1__VersionState pulumi.String
-
-const (
-	// The version state is unspecified.
-	GoogleCloudMlV1__VersionStateUnknown = GoogleCloudMlV1__VersionState("UNKNOWN")
-	// The version is ready for prediction.
-	GoogleCloudMlV1__VersionStateReady = GoogleCloudMlV1__VersionState("READY")
-	// The version is being created. New UpdateVersion and DeleteVersion requests will fail if a version is in the CREATING state.
-	GoogleCloudMlV1__VersionStateCreating = GoogleCloudMlV1__VersionState("CREATING")
-	// The version failed to be created, possibly cancelled. `error_message` should contain the details of the failure.
-	GoogleCloudMlV1__VersionStateFailed = GoogleCloudMlV1__VersionState("FAILED")
-	// The version is being deleted. New UpdateVersion and DeleteVersion requests will fail if a version is in the DELETING state.
-	GoogleCloudMlV1__VersionStateDeleting = GoogleCloudMlV1__VersionState("DELETING")
-	// The version is being updated. New UpdateVersion and DeleteVersion requests will fail if a version is in the UPDATING state.
-	GoogleCloudMlV1__VersionStateUpdating = GoogleCloudMlV1__VersionState("UPDATING")
-)
-
-func (GoogleCloudMlV1__VersionState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e GoogleCloudMlV1__VersionState) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GoogleCloudMlV1__VersionState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GoogleCloudMlV1__VersionState) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e GoogleCloudMlV1__VersionState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // The log type that this config enables.
 type GoogleIamV1__AuditLogConfigLogType pulumi.String
 
@@ -615,48 +501,6 @@ func (e GoogleIamV1__AuditLogConfigLogType) ToStringPtrOutput() pulumi.StringPtr
 }
 
 func (e GoogleIamV1__AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// Output only. The detailed state of a job.
-type JobStateEnum pulumi.String
-
-const (
-	// The job state is unspecified.
-	JobStateEnumStateUnspecified = JobStateEnum("STATE_UNSPECIFIED")
-	// The job has been just created and processing has not yet begun.
-	JobStateEnumQueued = JobStateEnum("QUEUED")
-	// The service is preparing to run the job.
-	JobStateEnumPreparing = JobStateEnum("PREPARING")
-	// The job is in progress.
-	JobStateEnumRunning = JobStateEnum("RUNNING")
-	// The job completed successfully.
-	JobStateEnumSucceeded = JobStateEnum("SUCCEEDED")
-	// The job failed. `error_message` should contain the details of the failure.
-	JobStateEnumFailed = JobStateEnum("FAILED")
-	// The job is being cancelled. `error_message` should describe the reason for the cancellation.
-	JobStateEnumCancelling = JobStateEnum("CANCELLING")
-	// The job has been cancelled. `error_message` should describe the reason for the cancellation.
-	JobStateEnumCancelled = JobStateEnum("CANCELLED")
-)
-
-func (JobStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e JobStateEnum) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e JobStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e JobStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e JobStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -727,43 +571,5 @@ func (e VersionFramework) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e VersionFramework) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// Output only. The state of a version.
-type VersionStateEnum pulumi.String
-
-const (
-	// The version state is unspecified.
-	VersionStateEnumUnknown = VersionStateEnum("UNKNOWN")
-	// The version is ready for prediction.
-	VersionStateEnumReady = VersionStateEnum("READY")
-	// The version is being created. New UpdateVersion and DeleteVersion requests will fail if a version is in the CREATING state.
-	VersionStateEnumCreating = VersionStateEnum("CREATING")
-	// The version failed to be created, possibly cancelled. `error_message` should contain the details of the failure.
-	VersionStateEnumFailed = VersionStateEnum("FAILED")
-	// The version is being deleted. New UpdateVersion and DeleteVersion requests will fail if a version is in the DELETING state.
-	VersionStateEnumDeleting = VersionStateEnum("DELETING")
-	// The version is being updated. New UpdateVersion and DeleteVersion requests will fail if a version is in the UPDATING state.
-	VersionStateEnumUpdating = VersionStateEnum("UPDATING")
-)
-
-func (VersionStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e VersionStateEnum) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e VersionStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e VersionStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e VersionStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }

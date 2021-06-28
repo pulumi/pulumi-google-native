@@ -19,21 +19,15 @@ class CompositeTypeArgs:
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 insert_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['CompositeTypeLabelEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operation: Optional[pulumi.Input['OperationArgs']] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input['TemplateContentsArgs']] = None):
         """
         The set of arguments for constructing a CompositeType resource.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
-        :param pulumi.Input[str] insert_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input['CompositeTypeLabelEntryArgs']]] labels: Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         :param pulumi.Input[str] name: Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
-        :param pulumi.Input['OperationArgs'] operation: The Operation that most recently ran, or is currently running, on this composite type.
-        :param pulumi.Input[str] self_link: Server defined URL for the resource.
         :param pulumi.Input['TemplateContentsArgs'] template_contents: Files for the template type.
         """
         pulumi.set(__self__, "project", project)
@@ -41,16 +35,10 @@ class CompositeTypeArgs:
             pulumi.set(__self__, "description", description)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if insert_time is not None:
-            pulumi.set(__self__, "insert_time", insert_time)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if operation is not None:
-            pulumi.set(__self__, "operation", operation)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if template_contents is not None:
@@ -87,18 +75,6 @@ class CompositeTypeArgs:
         pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter(name="insertTime")
-    def insert_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "insert_time")
-
-    @insert_time.setter
-    def insert_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "insert_time", value)
-
-    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompositeTypeLabelEntryArgs']]]]:
         """
@@ -121,30 +97,6 @@ class CompositeTypeArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def operation(self) -> Optional[pulumi.Input['OperationArgs']]:
-        """
-        The Operation that most recently ran, or is currently running, on this composite type.
-        """
-        return pulumi.get(self, "operation")
-
-    @operation.setter
-    def operation(self, value: Optional[pulumi.Input['OperationArgs']]):
-        pulumi.set(self, "operation", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        Server defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
 
     @property
     @pulumi.getter
@@ -175,12 +127,9 @@ class CompositeType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 insert_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operation: Optional[pulumi.Input[pulumi.InputType['OperationArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input[pulumi.InputType['TemplateContentsArgs']]] = None,
                  __props__=None):
@@ -190,11 +139,8 @@ class CompositeType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
-        :param pulumi.Input[str] insert_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]] labels: Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         :param pulumi.Input[str] name: Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
-        :param pulumi.Input[pulumi.InputType['OperationArgs']] operation: The Operation that most recently ran, or is currently running, on this composite type.
-        :param pulumi.Input[str] self_link: Server defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['TemplateContentsArgs']] template_contents: Files for the template type.
         """
         ...
@@ -223,12 +169,9 @@ class CompositeType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 insert_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operation: Optional[pulumi.Input[pulumi.InputType['OperationArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input[pulumi.InputType['TemplateContentsArgs']]] = None,
                  __props__=None):
@@ -245,16 +188,16 @@ class CompositeType(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["id"] = id
-            __props__.__dict__["insert_time"] = insert_time
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            __props__.__dict__["operation"] = operation
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["self_link"] = self_link
             __props__.__dict__["status"] = status
             __props__.__dict__["template_contents"] = template_contents
+            __props__.__dict__["insert_time"] = None
+            __props__.__dict__["operation"] = None
+            __props__.__dict__["self_link"] = None
         super(CompositeType, __self__).__init__(
             'google-native:deploymentmanager/alpha:CompositeType',
             resource_name,

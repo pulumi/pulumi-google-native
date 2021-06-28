@@ -31,7 +31,7 @@ export interface GetRegionUrlMapArgs {
 
 export interface GetRegionUrlMapResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -75,7 +75,7 @@ export interface GetRegionUrlMapResult {
      */
     readonly hostRules: outputs.compute.v1.HostRuleResponse[];
     /**
-     * [Output Only] Type of the resource. Always compute#urlMaps for url maps.
+     * Type of the resource. Always compute#urlMaps for url maps.
      */
     readonly kind: string;
     /**
@@ -87,11 +87,11 @@ export interface GetRegionUrlMapResult {
      */
     readonly pathMatchers: outputs.compute.v1.PathMatcherResponse[];
     /**
-     * [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**

@@ -29,7 +29,7 @@ export interface GetTargetGrpcProxyArgs {
 
 export interface GetTargetGrpcProxyResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -41,7 +41,7 @@ export interface GetTargetGrpcProxyResult {
      */
     readonly fingerprint: string;
     /**
-     * [Output Only] Type of the resource. Always compute#targetGrpcProxy for target grpc proxies.
+     * Type of the resource. Always compute#targetGrpcProxy for target grpc proxies.
      */
     readonly kind: string;
     /**
@@ -49,11 +49,11 @@ export interface GetTargetGrpcProxyResult {
      */
     readonly name: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL with id for the resource.
+     * Server-defined URL with id for the resource.
      */
     readonly selfLinkWithId: string;
     /**

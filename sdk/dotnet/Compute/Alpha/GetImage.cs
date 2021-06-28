@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string ArchiveSizeBytes;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -75,7 +75,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse ImageEncryptionKey;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#image for images.
+        /// Type of the resource. Always compute#image for images.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -109,15 +109,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.RolloutPolicyResponse RolloutOverride;
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource's resource id.
+        /// Server-defined URL for this resource's resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceDiskEncryptionKey;
         /// <summary>
-        /// [Output Only] The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
+        /// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
         /// </summary>
         public readonly string SourceDiskId;
         /// <summary>
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceImageEncryptionKey;
         /// <summary>
-        /// [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
+        /// The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
         /// </summary>
         public readonly string SourceImageId;
         /// <summary>
@@ -173,7 +173,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceSnapshotEncryptionKey;
         /// <summary>
-        /// [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
+        /// The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
         /// </summary>
         public readonly string SourceSnapshotId;
         /// <summary>
@@ -181,7 +181,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SourceType;
         /// <summary>
-        /// [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
+        /// The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -42,7 +42,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
     /**
      * The names of any related resources that are blocking changes to the annotation spec set.
      */
-    public readonly blockingResources!: pulumi.Output<string[]>;
+    public /*out*/ readonly blockingResources!: pulumi.Output<string[]>;
     /**
      * Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
      */
@@ -54,7 +54,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
     /**
      * The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
 
     /**
      * Create a AnnotationSpecSet resource with the given unique name, arguments, and options.
@@ -71,11 +71,11 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["annotationSpecs"] = args ? args.annotationSpecs : undefined;
-            inputs["blockingResources"] = args ? args.blockingResources : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["blockingResources"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
             inputs["annotationSpecs"] = undefined /*out*/;
             inputs["blockingResources"] = undefined /*out*/;
@@ -99,10 +99,6 @@ export interface AnnotationSpecSetArgs {
      */
     annotationSpecs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs>[]>;
     /**
-     * The names of any related resources that are blocking changes to the annotation spec set.
-     */
-    blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
      */
     description?: pulumi.Input<string>;
@@ -110,9 +106,5 @@ export interface AnnotationSpecSetArgs {
      * Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
      */
     displayName?: pulumi.Input<string>;
-    /**
-     * The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-     */
-    name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
 }

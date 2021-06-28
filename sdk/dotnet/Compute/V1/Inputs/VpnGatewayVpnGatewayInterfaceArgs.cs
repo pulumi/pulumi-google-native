@@ -28,12 +28,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         [Input("interconnectAttachment")]
         public Input<string>? InterconnectAttachment { get; set; }
 
-        /// <summary>
-        /// [Output Only] The external IP address for this VPN gateway interface.
-        /// </summary>
-        [Input("ipAddress")]
-        public Input<string>? IpAddress { get; set; }
-
         public VpnGatewayVpnGatewayInterfaceArgs()
         {
         }

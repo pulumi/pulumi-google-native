@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse
     {
         /// <summary>
-        /// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+        /// The last time the schedule successfully ran. The timestamp is an RFC3339 string.
         /// </summary>
         public readonly string LastRunStartTime;
         /// <summary>
-        /// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+        /// The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
         /// </summary>
         public readonly string NextRunStartTime;
 

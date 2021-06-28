@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetRegionInPlaceSnapshotResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] Size of the source disk, specified in GB.
+        /// Size of the source disk, specified in GB.
         /// </summary>
         public readonly string DiskSizeGb;
         /// <summary>
@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool GuestFlush;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#inPlaceSnapshot for InPlaceSnapshot resources.
+        /// Type of the resource. Always compute#inPlaceSnapshot for InPlaceSnapshot resources.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -74,15 +74,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] URL of the region where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource's resource id.
+        /// Server-defined URL for this resource's resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
@@ -93,15 +93,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SourceDisk;
         /// <summary>
-        /// [Output Only] The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
+        /// The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
         /// </summary>
         public readonly string SourceDiskId;
         /// <summary>
-        /// [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
+        /// The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// [Output Only] URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Zone;
 

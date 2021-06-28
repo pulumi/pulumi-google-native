@@ -36,9 +36,9 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -60,7 +60,7 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
     /**
      * [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -74,17 +74,17 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
      */
     public readonly notificationEndpoints!: pulumi.Output<string[]>;
     /**
-     * [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL with id for the resource.
+     * Server-defined URL with id for the resource.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
 
     /**
      * Create a RegionHealthCheckService resource with the given unique name, arguments, and options.
@@ -103,21 +103,20 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
             inputs["healthStatusAggregationPolicy"] = args ? args.healthStatusAggregationPolicy : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkEndpointGroups"] = args ? args.networkEndpointGroups : undefined;
             inputs["notificationEndpoints"] = args ? args.notificationEndpoints : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -144,10 +143,6 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
  */
 export interface RegionHealthCheckServiceArgs {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -162,14 +157,6 @@ export interface RegionHealthCheckServiceArgs {
      */
     healthStatusAggregationPolicy?: pulumi.Input<enums.compute.alpha.RegionHealthCheckServiceHealthStatusAggregationPolicy>;
     /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
-     */
-    kind?: pulumi.Input<string>;
-    /**
      * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
@@ -182,17 +169,6 @@ export interface RegionHealthCheckServiceArgs {
      */
     notificationEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL with id for the resource.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
 }

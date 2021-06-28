@@ -23,7 +23,7 @@ type Subnetwork struct {
 	//
 	// This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolOutput `pulumi:"allowSubnetCidrRoutesOverlap"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -33,13 +33,13 @@ type Subnetwork struct {
 	//
 	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress pulumi.StringOutput `pulumi:"gatewayAddress"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
-	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+	// The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange pulumi.StringOutput `pulumi:"ipv6CidrRange"`
-	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+	// Type of the resource. Always compute#subnetwork for Subnetwork resources.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
 	LogConfig SubnetworkLogConfigResponseOutput `pulumi:"logConfig"`
@@ -61,9 +61,9 @@ type Subnetwork struct {
 	Role pulumi.StringOutput `pulumi:"role"`
 	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
 	SecondaryIpRanges SubnetworkSecondaryRangeResponseArrayOutput `pulumi:"secondaryIpRanges"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+	// The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -110,7 +110,7 @@ type subnetworkState struct {
 	//
 	// This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description *string `pulumi:"description"`
@@ -120,13 +120,13 @@ type subnetworkState struct {
 	//
 	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint *string `pulumi:"fingerprint"`
-	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress *string `pulumi:"gatewayAddress"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
-	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+	// The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange *string `pulumi:"ipv6CidrRange"`
-	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+	// Type of the resource. Always compute#subnetwork for Subnetwork resources.
 	Kind *string `pulumi:"kind"`
 	// This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
 	LogConfig *SubnetworkLogConfigResponse `pulumi:"logConfig"`
@@ -148,9 +148,9 @@ type subnetworkState struct {
 	Role *string `pulumi:"role"`
 	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
 	SecondaryIpRanges []SubnetworkSecondaryRangeResponse `pulumi:"secondaryIpRanges"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+	// The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
 	State *string `pulumi:"state"`
 }
 
@@ -163,7 +163,7 @@ type SubnetworkState struct {
 	//
 	// This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description pulumi.StringPtrInput
@@ -173,13 +173,13 @@ type SubnetworkState struct {
 	//
 	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint pulumi.StringPtrInput
-	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress pulumi.StringPtrInput
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange pulumi.StringPtrInput
-	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+	// The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+	// Type of the resource. Always compute#subnetwork for Subnetwork resources.
 	Kind pulumi.StringPtrInput
 	// This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
 	LogConfig SubnetworkLogConfigResponsePtrInput
@@ -201,9 +201,9 @@ type SubnetworkState struct {
 	Role pulumi.StringPtrInput
 	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
 	SecondaryIpRanges SubnetworkSecondaryRangeResponseArrayInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+	// The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
 	State pulumi.StringPtrInput
 }
 
@@ -220,22 +220,12 @@ type subnetworkArgs struct {
 	//
 	// This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description *string `pulumi:"description"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs *bool `pulumi:"enableFlowLogs"`
-	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
-	GatewayAddress *string `pulumi:"gatewayAddress"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
-	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
-	Ipv6CidrRange *string `pulumi:"ipv6CidrRange"`
-	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
-	Kind *string `pulumi:"kind"`
 	// This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
 	LogConfig *SubnetworkLogConfig `pulumi:"logConfig"`
 	// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -258,10 +248,6 @@ type subnetworkArgs struct {
 	Role *string `pulumi:"role"`
 	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
 	SecondaryIpRanges []SubnetworkSecondaryRange `pulumi:"secondaryIpRanges"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Subnetwork resource.
@@ -274,22 +260,12 @@ type SubnetworkArgs struct {
 	//
 	// This field cannot be set to true at resource creation time.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description pulumi.StringPtrInput
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs pulumi.BoolPtrInput
-	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
-	GatewayAddress pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange pulumi.StringPtrInput
-	// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
-	Ipv6CidrRange pulumi.StringPtrInput
-	// [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
-	Kind pulumi.StringPtrInput
 	// This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
 	LogConfig SubnetworkLogConfigPtrInput
 	// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -312,10 +288,6 @@ type SubnetworkArgs struct {
 	Role *SubnetworkRole
 	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
 	SecondaryIpRanges SubnetworkSecondaryRangeArrayInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-	State *SubnetworkStateEnum
 }
 
 func (SubnetworkArgs) ElementType() reflect.Type {

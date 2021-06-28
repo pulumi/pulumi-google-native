@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// [Output Only] Calculation of the complexity of a single firewall policy rule.
+        /// Calculation of the complexity of a single firewall policy rule.
         /// </summary>
         public readonly int RuleTupleCount;
         /// <summary>

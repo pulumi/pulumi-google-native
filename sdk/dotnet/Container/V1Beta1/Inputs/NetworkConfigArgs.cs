@@ -40,22 +40,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<bool>? EnableL4ilbSubsetting { get; set; }
 
         /// <summary>
-        /// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
-        /// </summary>
-        [Input("network")]
-        public Input<string>? Network { get; set; }
-
-        /// <summary>
         /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Container.V1Beta1.NetworkConfigPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
-
-        /// <summary>
-        /// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
-        /// </summary>
-        [Input("subnetwork")]
-        public Input<string>? Subnetwork { get; set; }
 
         public NetworkConfigArgs()
         {

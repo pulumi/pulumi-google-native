@@ -250,12 +250,6 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 type DeviceConfig struct {
 	// The device configuration data.
 	BinaryData *string `pulumi:"binaryData"`
-	// [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
-	CloudUpdateTime *string `pulumi:"cloudUpdateTime"`
-	// [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
-	DeviceAckTime *string `pulumi:"deviceAckTime"`
-	// [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
-	Version *string `pulumi:"version"`
 }
 
 // DeviceConfigInput is an input type that accepts DeviceConfigArgs and DeviceConfigOutput values.
@@ -273,12 +267,6 @@ type DeviceConfigInput interface {
 type DeviceConfigArgs struct {
 	// The device configuration data.
 	BinaryData pulumi.StringPtrInput `pulumi:"binaryData"`
-	// [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
-	CloudUpdateTime pulumi.StringPtrInput `pulumi:"cloudUpdateTime"`
-	// [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
-	DeviceAckTime pulumi.StringPtrInput `pulumi:"deviceAckTime"`
-	// [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
-	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (DeviceConfigArgs) ElementType() reflect.Type {
@@ -364,21 +352,6 @@ func (o DeviceConfigOutput) BinaryData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
 }
 
-// [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
-func (o DeviceConfigOutput) CloudUpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceConfig) *string { return v.CloudUpdateTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
-func (o DeviceConfigOutput) DeviceAckTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceConfig) *string { return v.DeviceAckTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
-func (o DeviceConfigOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
 type DeviceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DeviceConfigPtrOutput) ElementType() reflect.Type {
@@ -404,36 +377,6 @@ func (o DeviceConfigPtrOutput) BinaryData() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.BinaryData
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
-func (o DeviceConfigPtrOutput) CloudUpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudUpdateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
-func (o DeviceConfigPtrOutput) DeviceAckTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeviceAckTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
-func (o DeviceConfigPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -844,159 +787,6 @@ func (o DeviceCredentialResponseArrayOutput) Index(i pulumi.IntInput) DeviceCred
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceCredentialResponse {
 		return vs[0].([]DeviceCredentialResponse)[vs[1].(int)]
 	}).(DeviceCredentialResponseOutput)
-}
-
-// The device state, as reported by the device.
-type DeviceStateType struct {
-	// The device state data.
-	BinaryData *string `pulumi:"binaryData"`
-	// [Output only] The time at which this state version was updated in Cloud IoT Core.
-	UpdateTime *string `pulumi:"updateTime"`
-}
-
-// DeviceStateTypeInput is an input type that accepts DeviceStateTypeArgs and DeviceStateTypeOutput values.
-// You can construct a concrete instance of `DeviceStateTypeInput` via:
-//
-//          DeviceStateTypeArgs{...}
-type DeviceStateTypeInput interface {
-	pulumi.Input
-
-	ToDeviceStateTypeOutput() DeviceStateTypeOutput
-	ToDeviceStateTypeOutputWithContext(context.Context) DeviceStateTypeOutput
-}
-
-// The device state, as reported by the device.
-type DeviceStateTypeArgs struct {
-	// The device state data.
-	BinaryData pulumi.StringPtrInput `pulumi:"binaryData"`
-	// [Output only] The time at which this state version was updated in Cloud IoT Core.
-	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
-}
-
-func (DeviceStateTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceStateType)(nil)).Elem()
-}
-
-func (i DeviceStateTypeArgs) ToDeviceStateTypeOutput() DeviceStateTypeOutput {
-	return i.ToDeviceStateTypeOutputWithContext(context.Background())
-}
-
-func (i DeviceStateTypeArgs) ToDeviceStateTypeOutputWithContext(ctx context.Context) DeviceStateTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput)
-}
-
-func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
-}
-
-func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput).ToDeviceStateTypePtrOutputWithContext(ctx)
-}
-
-// DeviceStateTypePtrInput is an input type that accepts DeviceStateTypeArgs, DeviceStateTypePtr and DeviceStateTypePtrOutput values.
-// You can construct a concrete instance of `DeviceStateTypePtrInput` via:
-//
-//          DeviceStateTypeArgs{...}
-//
-//  or:
-//
-//          nil
-type DeviceStateTypePtrInput interface {
-	pulumi.Input
-
-	ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput
-	ToDeviceStateTypePtrOutputWithContext(context.Context) DeviceStateTypePtrOutput
-}
-
-type deviceStateTypePtrType DeviceStateTypeArgs
-
-func DeviceStateTypePtr(v *DeviceStateTypeArgs) DeviceStateTypePtrInput {
-	return (*deviceStateTypePtrType)(v)
-}
-
-func (*deviceStateTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
-}
-
-func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
-}
-
-func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypePtrOutput)
-}
-
-// The device state, as reported by the device.
-type DeviceStateTypeOutput struct{ *pulumi.OutputState }
-
-func (DeviceStateTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceStateType)(nil)).Elem()
-}
-
-func (o DeviceStateTypeOutput) ToDeviceStateTypeOutput() DeviceStateTypeOutput {
-	return o
-}
-
-func (o DeviceStateTypeOutput) ToDeviceStateTypeOutputWithContext(ctx context.Context) DeviceStateTypeOutput {
-	return o
-}
-
-func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return o.ToDeviceStateTypePtrOutputWithContext(context.Background())
-}
-
-func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return o.ApplyT(func(v DeviceStateType) *DeviceStateType {
-		return &v
-	}).(DeviceStateTypePtrOutput)
-}
-
-// The device state data.
-func (o DeviceStateTypeOutput) BinaryData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceStateType) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The time at which this state version was updated in Cloud IoT Core.
-func (o DeviceStateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceStateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
-}
-
-type DeviceStateTypePtrOutput struct{ *pulumi.OutputState }
-
-func (DeviceStateTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
-}
-
-func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return o
-}
-
-func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return o
-}
-
-func (o DeviceStateTypePtrOutput) Elem() DeviceStateTypeOutput {
-	return o.ApplyT(func(v *DeviceStateType) DeviceStateType { return *v }).(DeviceStateTypeOutput)
-}
-
-// The device state data.
-func (o DeviceStateTypePtrOutput) BinaryData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceStateType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BinaryData
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The time at which this state version was updated in Cloud IoT Core.
-func (o DeviceStateTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceStateType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UpdateTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // The device state, as reported by the device.
@@ -1649,10 +1439,6 @@ type GatewayConfig struct {
 	GatewayAuthMethod *string `pulumi:"gatewayAuthMethod"`
 	// Indicates whether the device is a gateway.
 	GatewayType *string `pulumi:"gatewayType"`
-	// [Output only] The ID of the gateway the device accessed most recently.
-	LastAccessedGatewayId *string `pulumi:"lastAccessedGatewayId"`
-	// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
-	LastAccessedGatewayTime *string `pulumi:"lastAccessedGatewayTime"`
 }
 
 // GatewayConfigInput is an input type that accepts GatewayConfigArgs and GatewayConfigOutput values.
@@ -1672,10 +1458,6 @@ type GatewayConfigArgs struct {
 	GatewayAuthMethod *GatewayConfigGatewayAuthMethod `pulumi:"gatewayAuthMethod"`
 	// Indicates whether the device is a gateway.
 	GatewayType *GatewayConfigGatewayType `pulumi:"gatewayType"`
-	// [Output only] The ID of the gateway the device accessed most recently.
-	LastAccessedGatewayId pulumi.StringPtrInput `pulumi:"lastAccessedGatewayId"`
-	// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
-	LastAccessedGatewayTime pulumi.StringPtrInput `pulumi:"lastAccessedGatewayTime"`
 }
 
 func (GatewayConfigArgs) ElementType() reflect.Type {
@@ -1766,16 +1548,6 @@ func (o GatewayConfigOutput) GatewayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayConfig) *string { return v.GatewayType }).(pulumi.StringPtrOutput)
 }
 
-// [Output only] The ID of the gateway the device accessed most recently.
-func (o GatewayConfigOutput) LastAccessedGatewayId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayConfig) *string { return v.LastAccessedGatewayId }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
-func (o GatewayConfigOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayConfig) *string { return v.LastAccessedGatewayTime }).(pulumi.StringPtrOutput)
-}
-
 type GatewayConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (GatewayConfigPtrOutput) ElementType() reflect.Type {
@@ -1811,26 +1583,6 @@ func (o GatewayConfigPtrOutput) GatewayType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.GatewayType
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The ID of the gateway the device accessed most recently.
-func (o GatewayConfigPtrOutput) LastAccessedGatewayId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastAccessedGatewayId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
-func (o GatewayConfigPtrOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastAccessedGatewayTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2567,8 +2319,6 @@ type PublicKeyCertificate struct {
 	Certificate *string `pulumi:"certificate"`
 	// The certificate format.
 	Format *string `pulumi:"format"`
-	// [Output only] The certificate details. Used only for X.509 certificates.
-	X509Details *X509CertificateDetails `pulumi:"x509Details"`
 }
 
 // PublicKeyCertificateInput is an input type that accepts PublicKeyCertificateArgs and PublicKeyCertificateOutput values.
@@ -2588,8 +2338,6 @@ type PublicKeyCertificateArgs struct {
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
 	// The certificate format.
 	Format *PublicKeyCertificateFormat `pulumi:"format"`
-	// [Output only] The certificate details. Used only for X.509 certificates.
-	X509Details X509CertificateDetailsPtrInput `pulumi:"x509Details"`
 }
 
 func (PublicKeyCertificateArgs) ElementType() reflect.Type {
@@ -2680,11 +2428,6 @@ func (o PublicKeyCertificateOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PublicKeyCertificate) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// [Output only] The certificate details. Used only for X.509 certificates.
-func (o PublicKeyCertificateOutput) X509Details() X509CertificateDetailsPtrOutput {
-	return o.ApplyT(func(v PublicKeyCertificate) *X509CertificateDetails { return v.X509Details }).(X509CertificateDetailsPtrOutput)
-}
-
 type PublicKeyCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (PublicKeyCertificatePtrOutput) ElementType() reflect.Type {
@@ -2721,16 +2464,6 @@ func (o PublicKeyCertificatePtrOutput) Format() pulumi.StringPtrOutput {
 		}
 		return v.Format
 	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The certificate details. Used only for X.509 certificates.
-func (o PublicKeyCertificatePtrOutput) X509Details() X509CertificateDetailsPtrOutput {
-	return o.ApplyT(func(v *PublicKeyCertificate) *X509CertificateDetails {
-		if v == nil {
-			return nil
-		}
-		return v.X509Details
-	}).(X509CertificateDetailsPtrOutput)
 }
 
 // A public key certificate format and data.
@@ -3492,178 +3225,6 @@ func (o StateNotificationConfigResponsePtrOutput) PubsubTopicName() pulumi.Strin
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type Status struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code *int `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message *string `pulumi:"message"`
-}
-
-// StatusInput is an input type that accepts StatusArgs and StatusOutput values.
-// You can construct a concrete instance of `StatusInput` via:
-//
-//          StatusArgs{...}
-type StatusInput interface {
-	pulumi.Input
-
-	ToStatusOutput() StatusOutput
-	ToStatusOutputWithContext(context.Context) StatusOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntPtrInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (StatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
-}
-
-func (i StatusArgs) ToStatusOutput() StatusOutput {
-	return i.ToStatusOutputWithContext(context.Background())
-}
-
-func (i StatusArgs) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput)
-}
-
-func (i StatusArgs) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
-}
-
-func (i StatusArgs) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput).ToStatusPtrOutputWithContext(ctx)
-}
-
-// StatusPtrInput is an input type that accepts StatusArgs, StatusPtr and StatusPtrOutput values.
-// You can construct a concrete instance of `StatusPtrInput` via:
-//
-//          StatusArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusPtrInput interface {
-	pulumi.Input
-
-	ToStatusPtrOutput() StatusPtrOutput
-	ToStatusPtrOutputWithContext(context.Context) StatusPtrOutput
-}
-
-type statusPtrType StatusArgs
-
-func StatusPtr(v *StatusArgs) StatusPtrInput {
-	return (*statusPtrType)(v)
-}
-
-func (*statusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
-}
-
-func (i *statusPtrType) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *statusPtrType) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusPtrOutput)
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusOutput struct{ *pulumi.OutputState }
-
-func (StatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
-}
-
-func (o StatusOutput) ToStatusOutput() StatusOutput {
-	return o
-}
-
-func (o StatusOutput) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
-	return o
-}
-
-func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
-	return o.ToStatusPtrOutputWithContext(context.Background())
-}
-
-func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o.ApplyT(func(v Status) *Status {
-		return &v
-	}).(StatusPtrOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Status) *int { return v.Code }).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Status) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Status) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type StatusPtrOutput struct{ *pulumi.OutputState }
-
-func (StatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
-}
-
-func (o StatusPtrOutput) ToStatusPtrOutput() StatusPtrOutput {
-	return o
-}
-
-func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o
-}
-
-func (o StatusPtrOutput) Elem() StatusOutput {
-	return o.ApplyT(func(v *Status) Status { return *v }).(StatusOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusPtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Status) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Status) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Status) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
@@ -3836,235 +3397,6 @@ func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
 }
 
 // Details of an X.509 certificate. For informational purposes only.
-type X509CertificateDetails struct {
-	// The time the certificate becomes invalid.
-	ExpiryTime *string `pulumi:"expiryTime"`
-	// The entity that signed the certificate.
-	Issuer *string `pulumi:"issuer"`
-	// The type of public key in the certificate.
-	PublicKeyType *string `pulumi:"publicKeyType"`
-	// The algorithm used to sign the certificate.
-	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
-	// The time the certificate becomes valid.
-	StartTime *string `pulumi:"startTime"`
-	// The entity the certificate and public key belong to.
-	Subject *string `pulumi:"subject"`
-}
-
-// X509CertificateDetailsInput is an input type that accepts X509CertificateDetailsArgs and X509CertificateDetailsOutput values.
-// You can construct a concrete instance of `X509CertificateDetailsInput` via:
-//
-//          X509CertificateDetailsArgs{...}
-type X509CertificateDetailsInput interface {
-	pulumi.Input
-
-	ToX509CertificateDetailsOutput() X509CertificateDetailsOutput
-	ToX509CertificateDetailsOutputWithContext(context.Context) X509CertificateDetailsOutput
-}
-
-// Details of an X.509 certificate. For informational purposes only.
-type X509CertificateDetailsArgs struct {
-	// The time the certificate becomes invalid.
-	ExpiryTime pulumi.StringPtrInput `pulumi:"expiryTime"`
-	// The entity that signed the certificate.
-	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
-	// The type of public key in the certificate.
-	PublicKeyType pulumi.StringPtrInput `pulumi:"publicKeyType"`
-	// The algorithm used to sign the certificate.
-	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
-	// The time the certificate becomes valid.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// The entity the certificate and public key belong to.
-	Subject pulumi.StringPtrInput `pulumi:"subject"`
-}
-
-func (X509CertificateDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*X509CertificateDetails)(nil)).Elem()
-}
-
-func (i X509CertificateDetailsArgs) ToX509CertificateDetailsOutput() X509CertificateDetailsOutput {
-	return i.ToX509CertificateDetailsOutputWithContext(context.Background())
-}
-
-func (i X509CertificateDetailsArgs) ToX509CertificateDetailsOutputWithContext(ctx context.Context) X509CertificateDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(X509CertificateDetailsOutput)
-}
-
-func (i X509CertificateDetailsArgs) ToX509CertificateDetailsPtrOutput() X509CertificateDetailsPtrOutput {
-	return i.ToX509CertificateDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i X509CertificateDetailsArgs) ToX509CertificateDetailsPtrOutputWithContext(ctx context.Context) X509CertificateDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(X509CertificateDetailsOutput).ToX509CertificateDetailsPtrOutputWithContext(ctx)
-}
-
-// X509CertificateDetailsPtrInput is an input type that accepts X509CertificateDetailsArgs, X509CertificateDetailsPtr and X509CertificateDetailsPtrOutput values.
-// You can construct a concrete instance of `X509CertificateDetailsPtrInput` via:
-//
-//          X509CertificateDetailsArgs{...}
-//
-//  or:
-//
-//          nil
-type X509CertificateDetailsPtrInput interface {
-	pulumi.Input
-
-	ToX509CertificateDetailsPtrOutput() X509CertificateDetailsPtrOutput
-	ToX509CertificateDetailsPtrOutputWithContext(context.Context) X509CertificateDetailsPtrOutput
-}
-
-type x509certificateDetailsPtrType X509CertificateDetailsArgs
-
-func X509CertificateDetailsPtr(v *X509CertificateDetailsArgs) X509CertificateDetailsPtrInput {
-	return (*x509certificateDetailsPtrType)(v)
-}
-
-func (*x509certificateDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**X509CertificateDetails)(nil)).Elem()
-}
-
-func (i *x509certificateDetailsPtrType) ToX509CertificateDetailsPtrOutput() X509CertificateDetailsPtrOutput {
-	return i.ToX509CertificateDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *x509certificateDetailsPtrType) ToX509CertificateDetailsPtrOutputWithContext(ctx context.Context) X509CertificateDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(X509CertificateDetailsPtrOutput)
-}
-
-// Details of an X.509 certificate. For informational purposes only.
-type X509CertificateDetailsOutput struct{ *pulumi.OutputState }
-
-func (X509CertificateDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*X509CertificateDetails)(nil)).Elem()
-}
-
-func (o X509CertificateDetailsOutput) ToX509CertificateDetailsOutput() X509CertificateDetailsOutput {
-	return o
-}
-
-func (o X509CertificateDetailsOutput) ToX509CertificateDetailsOutputWithContext(ctx context.Context) X509CertificateDetailsOutput {
-	return o
-}
-
-func (o X509CertificateDetailsOutput) ToX509CertificateDetailsPtrOutput() X509CertificateDetailsPtrOutput {
-	return o.ToX509CertificateDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o X509CertificateDetailsOutput) ToX509CertificateDetailsPtrOutputWithContext(ctx context.Context) X509CertificateDetailsPtrOutput {
-	return o.ApplyT(func(v X509CertificateDetails) *X509CertificateDetails {
-		return &v
-	}).(X509CertificateDetailsPtrOutput)
-}
-
-// The time the certificate becomes invalid.
-func (o X509CertificateDetailsOutput) ExpiryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v X509CertificateDetails) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
-}
-
-// The entity that signed the certificate.
-func (o X509CertificateDetailsOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v X509CertificateDetails) *string { return v.Issuer }).(pulumi.StringPtrOutput)
-}
-
-// The type of public key in the certificate.
-func (o X509CertificateDetailsOutput) PublicKeyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v X509CertificateDetails) *string { return v.PublicKeyType }).(pulumi.StringPtrOutput)
-}
-
-// The algorithm used to sign the certificate.
-func (o X509CertificateDetailsOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v X509CertificateDetails) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
-}
-
-// The time the certificate becomes valid.
-func (o X509CertificateDetailsOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v X509CertificateDetails) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// The entity the certificate and public key belong to.
-func (o X509CertificateDetailsOutput) Subject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v X509CertificateDetails) *string { return v.Subject }).(pulumi.StringPtrOutput)
-}
-
-type X509CertificateDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (X509CertificateDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**X509CertificateDetails)(nil)).Elem()
-}
-
-func (o X509CertificateDetailsPtrOutput) ToX509CertificateDetailsPtrOutput() X509CertificateDetailsPtrOutput {
-	return o
-}
-
-func (o X509CertificateDetailsPtrOutput) ToX509CertificateDetailsPtrOutputWithContext(ctx context.Context) X509CertificateDetailsPtrOutput {
-	return o
-}
-
-func (o X509CertificateDetailsPtrOutput) Elem() X509CertificateDetailsOutput {
-	return o.ApplyT(func(v *X509CertificateDetails) X509CertificateDetails { return *v }).(X509CertificateDetailsOutput)
-}
-
-// The time the certificate becomes invalid.
-func (o X509CertificateDetailsPtrOutput) ExpiryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *X509CertificateDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExpiryTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The entity that signed the certificate.
-func (o X509CertificateDetailsPtrOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *X509CertificateDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Issuer
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of public key in the certificate.
-func (o X509CertificateDetailsPtrOutput) PublicKeyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *X509CertificateDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublicKeyType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The algorithm used to sign the certificate.
-func (o X509CertificateDetailsPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *X509CertificateDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SignatureAlgorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time the certificate becomes valid.
-func (o X509CertificateDetailsPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *X509CertificateDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The entity the certificate and public key belong to.
-func (o X509CertificateDetailsPtrOutput) Subject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *X509CertificateDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Subject
-	}).(pulumi.StringPtrOutput)
-}
-
-// Details of an X.509 certificate. For informational purposes only.
 type X509CertificateDetailsResponse struct {
 	// The time the certificate becomes invalid.
 	ExpiryTime string `pulumi:"expiryTime"`
@@ -4177,8 +3509,6 @@ func init() {
 	pulumi.RegisterOutputType(DeviceCredentialArrayOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialResponseOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialResponseArrayOutput{})
-	pulumi.RegisterOutputType(DeviceStateTypeOutput{})
-	pulumi.RegisterOutputType(DeviceStateTypePtrOutput{})
 	pulumi.RegisterOutputType(DeviceStateResponseOutput{})
 	pulumi.RegisterOutputType(DeviceStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(EventNotificationConfigOutput{})
@@ -4214,11 +3544,7 @@ func init() {
 	pulumi.RegisterOutputType(StateNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(StateNotificationConfigResponseOutput{})
 	pulumi.RegisterOutputType(StateNotificationConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(StatusOutput{})
-	pulumi.RegisterOutputType(StatusPtrOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
-	pulumi.RegisterOutputType(X509CertificateDetailsOutput{})
-	pulumi.RegisterOutputType(X509CertificateDetailsPtrOutput{})
 	pulumi.RegisterOutputType(X509CertificateDetailsResponseOutput{})
 }

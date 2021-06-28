@@ -36,21 +36,21 @@ export class ServiceAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] An array of connections for all the consumers connected to this service attachment.
+     * An array of connections for all the consumers connected to this service attachment.
      */
-    public readonly connectedEndpoints!: pulumi.Output<outputs.compute.beta.ServiceAttachmentConnectedEndpointResponse[]>;
+    public /*out*/ readonly connectedEndpoints!: pulumi.Output<outputs.compute.beta.ServiceAttachmentConnectedEndpointResponse[]>;
     /**
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      */
     public readonly connectionPreference!: pulumi.Output<string>;
     /**
-     * [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
+     * An array of forwarding rules for all the consumers connected to this service attachment.
      */
-    public readonly consumerForwardingRules!: pulumi.Output<outputs.compute.beta.ServiceAttachmentConsumerForwardingRuleResponse[]>;
+    public /*out*/ readonly consumerForwardingRules!: pulumi.Output<outputs.compute.beta.ServiceAttachmentConsumerForwardingRuleResponse[]>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -60,9 +60,9 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean>;
     /**
-     * [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
+     * Type of the resource. Always compute#serviceAttachment for service attachments.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -76,17 +76,17 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly producerForwardingRule!: pulumi.Output<string>;
     /**
-     * [Output Only] An 128-bit global unique ID of the PSC service attachment.
+     * An 128-bit global unique ID of the PSC service attachment.
      */
-    public readonly pscServiceAttachmentId!: pulumi.Output<outputs.compute.beta.Uint128Response>;
+    public /*out*/ readonly pscServiceAttachmentId!: pulumi.Output<outputs.compute.beta.Uint128Response>;
     /**
-     * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
@@ -109,23 +109,22 @@ export class ServiceAttachment extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["connectedEndpoints"] = args ? args.connectedEndpoints : undefined;
             inputs["connectionPreference"] = args ? args.connectionPreference : undefined;
-            inputs["consumerForwardingRules"] = args ? args.consumerForwardingRules : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["natSubnets"] = args ? args.natSubnets : undefined;
             inputs["producerForwardingRule"] = args ? args.producerForwardingRule : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["pscServiceAttachmentId"] = args ? args.pscServiceAttachmentId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["targetService"] = args ? args.targetService : undefined;
+            inputs["connectedEndpoints"] = undefined /*out*/;
+            inputs["consumerForwardingRules"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["pscServiceAttachmentId"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["connectedEndpoints"] = undefined /*out*/;
             inputs["connectionPreference"] = undefined /*out*/;
@@ -154,21 +153,9 @@ export class ServiceAttachment extends pulumi.CustomResource {
  */
 export interface ServiceAttachmentArgs {
     /**
-     * [Output Only] An array of connections for all the consumers connected to this service attachment.
-     */
-    connectedEndpoints?: pulumi.Input<pulumi.Input<inputs.compute.beta.ServiceAttachmentConnectedEndpointArgs>[]>;
-    /**
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      */
     connectionPreference?: pulumi.Input<enums.compute.beta.ServiceAttachmentConnectionPreference>;
-    /**
-     * [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
-     */
-    consumerForwardingRules?: pulumi.Input<pulumi.Input<inputs.compute.beta.ServiceAttachmentConsumerForwardingRuleArgs>[]>;
-    /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -177,14 +164,6 @@ export interface ServiceAttachmentArgs {
      * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
-    /**
-     * [Output Only] The unique identifier for the resource type. The server generates this identifier.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -198,19 +177,8 @@ export interface ServiceAttachmentArgs {
      */
     producerForwardingRule?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] An 128-bit global unique ID of the PSC service attachment.
-     */
-    pscServiceAttachmentId?: pulumi.Input<inputs.compute.beta.Uint128Args>;
-    /**
-     * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */

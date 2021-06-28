@@ -72,7 +72,7 @@ class GetBackendBucketResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -96,7 +96,7 @@ class GetBackendBucketResult:
     @pulumi.getter(name="edgeSecurityPolicy")
     def edge_security_policy(self) -> str:
         """
-        [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+        The resource URL for the edge security policy associated with this backend bucket.
         """
         return pulumi.get(self, "edge_security_policy")
 
@@ -128,7 +128,7 @@ class GetBackendBucketResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -136,7 +136,7 @@ class GetBackendBucketResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 

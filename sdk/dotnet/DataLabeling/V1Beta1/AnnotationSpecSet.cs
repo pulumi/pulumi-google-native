@@ -102,18 +102,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
             set => _annotationSpecs = value;
         }
 
-        [Input("blockingResources")]
-        private InputList<string>? _blockingResources;
-
-        /// <summary>
-        /// The names of any related resources that are blocking changes to the annotation spec set.
-        /// </summary>
-        public InputList<string> BlockingResources
-        {
-            get => _blockingResources ?? (_blockingResources = new InputList<string>());
-            set => _blockingResources = value;
-        }
-
         /// <summary>
         /// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
         /// </summary>
@@ -125,12 +113,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

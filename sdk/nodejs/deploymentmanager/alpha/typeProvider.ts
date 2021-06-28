@@ -58,7 +58,7 @@ export class TypeProvider extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public readonly insertTime!: pulumi.Output<string>;
+    public /*out*/ readonly insertTime!: pulumi.Output<string>;
     /**
      * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
      */
@@ -70,7 +70,7 @@ export class TypeProvider extends pulumi.CustomResource {
     /**
      * The Operation that most recently ran, or is currently running, on this type provider.
      */
-    public readonly operation!: pulumi.Output<outputs.deploymentmanager.alpha.OperationResponse>;
+    public /*out*/ readonly operation!: pulumi.Output<outputs.deploymentmanager.alpha.OperationResponse>;
     /**
      * Options to apply when handling any resources in this service.
      */
@@ -78,7 +78,7 @@ export class TypeProvider extends pulumi.CustomResource {
     /**
      * Self link for the type provider.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a TypeProvider resource with the given unique name, arguments, and options.
@@ -99,14 +99,13 @@ export class TypeProvider extends pulumi.CustomResource {
             inputs["customCertificateAuthorityRoots"] = args ? args.customCertificateAuthorityRoots : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["descriptorUrl"] = args ? args.descriptorUrl : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["insertTime"] = args ? args.insertTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["operation"] = args ? args.operation : undefined;
             inputs["options"] = args ? args.options : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
+            inputs["insertTime"] = undefined /*out*/;
+            inputs["operation"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["collectionOverrides"] = undefined /*out*/;
             inputs["credential"] = undefined /*out*/;
@@ -152,14 +151,6 @@ export interface TypeProviderArgs {
      */
     descriptorUrl?: pulumi.Input<string>;
     /**
-     * Unique identifier for the resource defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Creation timestamp in RFC3339 text format.
-     */
-    insertTime?: pulumi.Input<string>;
-    /**
      * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
      */
     labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.TypeProviderLabelEntryArgs>[]>;
@@ -168,16 +159,8 @@ export interface TypeProviderArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Operation that most recently ran, or is currently running, on this type provider.
-     */
-    operation?: pulumi.Input<inputs.deploymentmanager.alpha.OperationArgs>;
-    /**
      * Options to apply when handling any resources in this service.
      */
     options?: pulumi.Input<inputs.deploymentmanager.alpha.OptionsArgs>;
     project: pulumi.Input<string>;
-    /**
-     * Self link for the type provider.
-     */
-    selfLink?: pulumi.Input<string>;
 }

@@ -145,25 +145,13 @@ type testMatrixArgs struct {
 	FailFast *bool `pulumi:"failFast"`
 	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
 	FlakyTestAttempts *int `pulumi:"flakyTestAttempts"`
-	// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-	InvalidMatrixDetails *string `pulumi:"invalidMatrixDetails"`
-	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
-	OutcomeSummary *string `pulumi:"outcomeSummary"`
 	// The cloud project that owns the test matrix.
 	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// Required. Where the results for the matrix are written.
 	ResultStorage *ResultStorage `pulumi:"resultStorage"`
-	// Indicates the current progress of the test matrix.
-	State *string `pulumi:"state"`
-	// The list of test executions that the service creates for this matrix.
-	TestExecutions []TestExecution `pulumi:"testExecutions"`
-	// Unique id set by the service.
-	TestMatrixId *string `pulumi:"testMatrixId"`
 	// Required. How to run the test.
 	TestSpecification *TestSpecification `pulumi:"testSpecification"`
-	// The time this test matrix was initially created.
-	Timestamp *string `pulumi:"timestamp"`
 }
 
 // The set of arguments for constructing a TestMatrix resource.
@@ -176,25 +164,13 @@ type TestMatrixArgs struct {
 	FailFast pulumi.BoolPtrInput
 	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
 	FlakyTestAttempts pulumi.IntPtrInput
-	// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-	InvalidMatrixDetails *TestMatrixInvalidMatrixDetails
-	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
-	OutcomeSummary *TestMatrixOutcomeSummary
 	// The cloud project that owns the test matrix.
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// Required. Where the results for the matrix are written.
 	ResultStorage ResultStoragePtrInput
-	// Indicates the current progress of the test matrix.
-	State *TestMatrixStateEnum
-	// The list of test executions that the service creates for this matrix.
-	TestExecutions TestExecutionArrayInput
-	// Unique id set by the service.
-	TestMatrixId pulumi.StringPtrInput
 	// Required. How to run the test.
 	TestSpecification TestSpecificationPtrInput
-	// The time this test matrix was initially created.
-	Timestamp pulumi.StringPtrInput
 }
 
 func (TestMatrixArgs) ElementType() reflect.Type {

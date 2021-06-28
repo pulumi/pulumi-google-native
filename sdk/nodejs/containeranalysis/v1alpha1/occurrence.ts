@@ -46,7 +46,7 @@ export class Occurrence extends pulumi.CustomResource {
     /**
      * The time this `Occurrence` was created.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Describes the deployment of an artifact on a runtime.
      */
@@ -66,11 +66,11 @@ export class Occurrence extends pulumi.CustomResource {
     /**
      * This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
      */
@@ -90,7 +90,7 @@ export class Occurrence extends pulumi.CustomResource {
     /**
      * The time this `Occurrence` was last updated.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Describes an upgrade.
      */
@@ -116,21 +116,21 @@ export class Occurrence extends pulumi.CustomResource {
             }
             inputs["attestation"] = args ? args.attestation : undefined;
             inputs["buildDetails"] = args ? args.buildDetails : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deployment"] = args ? args.deployment : undefined;
             inputs["derivedImage"] = args ? args.derivedImage : undefined;
             inputs["discovered"] = args ? args.discovered : undefined;
             inputs["installation"] = args ? args.installation : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["noteName"] = args ? args.noteName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["remediation"] = args ? args.remediation : undefined;
             inputs["resource"] = args ? args.resource : undefined;
             inputs["resourceUrl"] = args ? args.resourceUrl : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["upgrade"] = args ? args.upgrade : undefined;
             inputs["vulnerabilityDetails"] = args ? args.vulnerabilityDetails : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["attestation"] = undefined /*out*/;
             inputs["buildDetails"] = undefined /*out*/;
@@ -169,10 +169,6 @@ export interface OccurrenceArgs {
      */
     buildDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildDetailsArgs>;
     /**
-     * The time this `Occurrence` was created.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
      * Describes the deployment of an artifact on a runtime.
      */
     deployment?: pulumi.Input<inputs.containeranalysis.v1alpha1.DeploymentArgs>;
@@ -188,14 +184,6 @@ export interface OccurrenceArgs {
      * Describes the installation of a package on the linked resource.
      */
     installation?: pulumi.Input<inputs.containeranalysis.v1alpha1.InstallationArgs>;
-    /**
-     * This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-     */
-    kind?: pulumi.Input<enums.containeranalysis.v1alpha1.OccurrenceKind>;
-    /**
-     * The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
-     */
-    name?: pulumi.Input<string>;
     /**
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
      */
@@ -213,10 +201,6 @@ export interface OccurrenceArgs {
      * The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
      */
     resourceUrl?: pulumi.Input<string>;
-    /**
-     * The time this `Occurrence` was last updated.
-     */
-    updateTime?: pulumi.Input<string>;
     /**
      * Describes an upgrade.
      */

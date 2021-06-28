@@ -46,7 +46,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * Information about the provisioning of certificates and the health of the DNS resolution for the domain.
      */
-    public readonly provisioning!: pulumi.Output<outputs.firebasehosting.v1beta1.DomainProvisioningResponse>;
+    public /*out*/ readonly provisioning!: pulumi.Output<outputs.firebasehosting.v1beta1.DomainProvisioningResponse>;
     /**
      * Required. The site name of the association.
      */
@@ -54,11 +54,11 @@ export class Domain extends pulumi.CustomResource {
     /**
      * Additional status of the domain association.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The time at which the domain was last updated.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -80,11 +80,11 @@ export class Domain extends pulumi.CustomResource {
             inputs["domainName"] = args ? args.domainName : undefined;
             inputs["domainRedirect"] = args ? args.domainRedirect : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["provisioning"] = args ? args.provisioning : undefined;
             inputs["site"] = args ? args.site : undefined;
             inputs["siteId"] = args ? args.siteId : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["provisioning"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["domainName"] = undefined /*out*/;
             inputs["domainRedirect"] = undefined /*out*/;
@@ -114,20 +114,8 @@ export interface DomainArgs {
     domainRedirect?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainRedirectArgs>;
     project: pulumi.Input<string>;
     /**
-     * Information about the provisioning of certificates and the health of the DNS resolution for the domain.
-     */
-    provisioning?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainProvisioningArgs>;
-    /**
      * Required. The site name of the association.
      */
     site?: pulumi.Input<string>;
     siteId: pulumi.Input<string>;
-    /**
-     * Additional status of the domain association.
-     */
-    status?: pulumi.Input<enums.firebasehosting.v1beta1.DomainStatus>;
-    /**
-     * The time at which the domain was last updated.
-     */
-    updateTime?: pulumi.Input<string>;
 }

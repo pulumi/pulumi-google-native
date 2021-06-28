@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Certificate;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -52,11 +52,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] Expire time of the certificate. RFC3339
+        /// Expire time of the certificate. RFC3339
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+        /// Type of the resource. Always compute#sslCertificate for SSL certificates.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string PrivateKey;
         /// <summary>
-        /// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+        /// URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.SslCertificateSelfManagedSslCertificateResponse SelfManaged;
         /// <summary>
-        /// [Output Only] Domains associated with the certificate via Subject Alternative Name.
+        /// Domains associated with the certificate via Subject Alternative Name.
         /// </summary>
         public readonly ImmutableArray<string> SubjectAlternativeNames;
         /// <summary>

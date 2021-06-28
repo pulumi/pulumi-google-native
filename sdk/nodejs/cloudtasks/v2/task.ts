@@ -42,11 +42,11 @@ export class Task extends pulumi.CustomResource {
     /**
      * The time that the task was created. `create_time` will be truncated to the nearest second.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
      */
-    public readonly dispatchCount!: pulumi.Output<number>;
+    public /*out*/ readonly dispatchCount!: pulumi.Output<number>;
     /**
      * The deadline for requests sent to the worker. If the worker does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the task according to the RetryConfig. Note that when the request is cancelled, Cloud Tasks will stop listening for the response, but whether the worker stops processing depends on the worker. For example, if the worker is stuck, it may not react to cancelled requests. The default and maximum values depend on the type of request: * For HTTP tasks, the default is 10 minutes. The deadline must be in the interval [15 seconds, 30 minutes]. * For App Engine tasks, 0 indicates that the request has the default deadline. The default deadline depends on the [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling) of the service: 10 minutes for standard apps with automatic scaling, 24 hours for standard apps with manual and basic scaling, and 60 minutes for flex apps. If the request deadline is set, it must be in the interval [15 seconds, 24 hours 15 seconds]. Regardless of the task's `dispatch_deadline`, the app handler will not run for longer than than the service's timeout. We recommend setting the `dispatch_deadline` to at most a few seconds more than the app handler's timeout. For more information see [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts). `dispatch_deadline` will be truncated to the nearest millisecond. The deadline is an approximate deadline.
      */
@@ -54,7 +54,7 @@ export class Task extends pulumi.CustomResource {
     /**
      * The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
      */
-    public readonly firstAttempt!: pulumi.Output<outputs.cloudtasks.v2.AttemptResponse>;
+    public /*out*/ readonly firstAttempt!: pulumi.Output<outputs.cloudtasks.v2.AttemptResponse>;
     /**
      * HTTP request that is sent to the worker. An HTTP task is a task that has HttpRequest set.
      */
@@ -62,7 +62,7 @@ export class Task extends pulumi.CustomResource {
     /**
      * The status of the task's last attempt.
      */
-    public readonly lastAttempt!: pulumi.Output<outputs.cloudtasks.v2.AttemptResponse>;
+    public /*out*/ readonly lastAttempt!: pulumi.Output<outputs.cloudtasks.v2.AttemptResponse>;
     /**
      * Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
      */
@@ -70,7 +70,7 @@ export class Task extends pulumi.CustomResource {
     /**
      * The number of attempts which have received a response.
      */
-    public readonly responseCount!: pulumi.Output<number>;
+    public /*out*/ readonly responseCount!: pulumi.Output<number>;
     /**
      * The time when the task is scheduled to be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
      */
@@ -78,7 +78,7 @@ export class Task extends pulumi.CustomResource {
     /**
      * The view specifies which subset of the Task has been returned.
      */
-    public readonly view!: pulumi.Output<string>;
+    public /*out*/ readonly view!: pulumi.Output<string>;
 
     /**
      * Create a Task resource with the given unique name, arguments, and options.
@@ -101,20 +101,20 @@ export class Task extends pulumi.CustomResource {
                 throw new Error("Missing required property 'queueId'");
             }
             inputs["appEngineHttpRequest"] = args ? args.appEngineHttpRequest : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["dispatchCount"] = args ? args.dispatchCount : undefined;
             inputs["dispatchDeadline"] = args ? args.dispatchDeadline : undefined;
-            inputs["firstAttempt"] = args ? args.firstAttempt : undefined;
             inputs["httpRequest"] = args ? args.httpRequest : undefined;
-            inputs["lastAttempt"] = args ? args.lastAttempt : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["queueId"] = args ? args.queueId : undefined;
-            inputs["responseCount"] = args ? args.responseCount : undefined;
             inputs["responseView"] = args ? args.responseView : undefined;
             inputs["scheduleTime"] = args ? args.scheduleTime : undefined;
-            inputs["view"] = args ? args.view : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["dispatchCount"] = undefined /*out*/;
+            inputs["firstAttempt"] = undefined /*out*/;
+            inputs["lastAttempt"] = undefined /*out*/;
+            inputs["responseCount"] = undefined /*out*/;
+            inputs["view"] = undefined /*out*/;
         } else {
             inputs["appEngineHttpRequest"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -144,29 +144,13 @@ export interface TaskArgs {
      */
     appEngineHttpRequest?: pulumi.Input<inputs.cloudtasks.v2.AppEngineHttpRequestArgs>;
     /**
-     * The time that the task was created. `create_time` will be truncated to the nearest second.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
-     */
-    dispatchCount?: pulumi.Input<number>;
-    /**
      * The deadline for requests sent to the worker. If the worker does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the task according to the RetryConfig. Note that when the request is cancelled, Cloud Tasks will stop listening for the response, but whether the worker stops processing depends on the worker. For example, if the worker is stuck, it may not react to cancelled requests. The default and maximum values depend on the type of request: * For HTTP tasks, the default is 10 minutes. The deadline must be in the interval [15 seconds, 30 minutes]. * For App Engine tasks, 0 indicates that the request has the default deadline. The default deadline depends on the [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling) of the service: 10 minutes for standard apps with automatic scaling, 24 hours for standard apps with manual and basic scaling, and 60 minutes for flex apps. If the request deadline is set, it must be in the interval [15 seconds, 24 hours 15 seconds]. Regardless of the task's `dispatch_deadline`, the app handler will not run for longer than than the service's timeout. We recommend setting the `dispatch_deadline` to at most a few seconds more than the app handler's timeout. For more information see [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts). `dispatch_deadline` will be truncated to the nearest millisecond. The deadline is an approximate deadline.
      */
     dispatchDeadline?: pulumi.Input<string>;
     /**
-     * The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
-     */
-    firstAttempt?: pulumi.Input<inputs.cloudtasks.v2.AttemptArgs>;
-    /**
      * HTTP request that is sent to the worker. An HTTP task is a task that has HttpRequest set.
      */
     httpRequest?: pulumi.Input<inputs.cloudtasks.v2.HttpRequestArgs>;
-    /**
-     * The status of the task's last attempt.
-     */
-    lastAttempt?: pulumi.Input<inputs.cloudtasks.v2.AttemptArgs>;
     location: pulumi.Input<string>;
     /**
      * Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
@@ -175,10 +159,6 @@ export interface TaskArgs {
     project: pulumi.Input<string>;
     queueId: pulumi.Input<string>;
     /**
-     * The number of attempts which have received a response.
-     */
-    responseCount?: pulumi.Input<number>;
-    /**
      * The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
      */
     responseView?: pulumi.Input<enums.cloudtasks.v2.TaskResponseView>;
@@ -186,8 +166,4 @@ export interface TaskArgs {
      * The time when the task is scheduled to be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
      */
     scheduleTime?: pulumi.Input<string>;
-    /**
-     * The view specifies which subset of the Task has been returned.
-     */
-    view?: pulumi.Input<enums.cloudtasks.v2.TaskView>;
 }

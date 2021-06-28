@@ -11,7 +11,6 @@ from ._enums import *
 
 __all__ = [
     'GoogleCloudDatalabelingV1beta1AnnotationSpecArgs',
-    'GoogleCloudDatalabelingV1beta1AttemptArgs',
     'GoogleCloudDatalabelingV1beta1BigQuerySourceArgs',
     'GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs',
     'GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs',
@@ -29,27 +28,22 @@ __all__ = [
     'GoogleCloudDatalabelingV1beta1SentimentConfigArgs',
     'GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs',
     'GoogleCloudDatalabelingV1beta1TextMetadataArgs',
-    'GoogleRpcStatusArgs',
 ]
 
 @pulumi.input_type
 class GoogleCloudDatalabelingV1beta1AnnotationSpecArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 index: Optional[pulumi.Input[int]] = None):
+                 display_name: Optional[pulumi.Input[str]] = None):
         """
         Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
         :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
         :param pulumi.Input[str] display_name: Required. The display name of the AnnotationSpec. Maximum of 64 characters.
-        :param pulumi.Input[int] index: This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if index is not None:
-            pulumi.set(__self__, "index", index)
 
     @property
     @pulumi.getter
@@ -74,54 +68,6 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[int]]:
-        """
-        This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
-        """
-        return pulumi.get(self, "index")
-
-    @index.setter
-    def index(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "index", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatalabelingV1beta1AttemptArgs:
-    def __init__(__self__, *,
-                 attempt_time: Optional[pulumi.Input[str]] = None,
-                 partial_failures: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleRpcStatusArgs']]]] = None):
-        """
-        Records a failed evaluation job run.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleRpcStatusArgs']]] partial_failures: Details of errors that occurred.
-        """
-        if attempt_time is not None:
-            pulumi.set(__self__, "attempt_time", attempt_time)
-        if partial_failures is not None:
-            pulumi.set(__self__, "partial_failures", partial_failures)
-
-    @property
-    @pulumi.getter(name="attemptTime")
-    def attempt_time(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "attempt_time")
-
-    @attempt_time.setter
-    def attempt_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "attempt_time", value)
-
-    @property
-    @pulumi.getter(name="partialFailures")
-    def partial_failures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleRpcStatusArgs']]]]:
-        """
-        Details of errors that occurred.
-        """
-        return pulumi.get(self, "partial_failures")
-
-    @partial_failures.setter
-    def partial_failures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleRpcStatusArgs']]]]):
-        pulumi.set(self, "partial_failures", value)
 
 
 @pulumi.input_type
@@ -964,61 +910,5 @@ class GoogleCloudDatalabelingV1beta1TextMetadataArgs:
     @language_code.setter
     def language_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "language_code", value)
-
-
-@pulumi.input_type
-class GoogleRpcStatusArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
 
 

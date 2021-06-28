@@ -3438,37 +3438,21 @@ class GoogleCloudDialogflowV2beta1IntentParameterArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
                  parts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs']]]] = None,
                  times_added_count: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseType']] = None):
         """
         Represents an example that the agent is trained on.
-        :param pulumi.Input[str] name: The unique identifier of this training phrase.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs']]] parts: Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
         :param pulumi.Input[int] times_added_count: Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseType'] type: Required. The type of the training phrase.
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if parts is not None:
             pulumi.set(__self__, "parts", parts)
         if times_added_count is not None:
             pulumi.set(__self__, "times_added_count", times_added_count)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique identifier of this training phrase.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter

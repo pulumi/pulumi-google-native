@@ -163,12 +163,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Input<Inputs.GrafeasV1beta1BuildDetailsArgs>? Build { get; set; }
 
         /// <summary>
-        /// The time this occurrence was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Describes the deployment of an artifact on a runtime.
         /// </summary>
         [Input("deployment")]
@@ -199,18 +193,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Input<Inputs.GrafeasV1beta1IntotoDetailsArgs>? Intoto { get; set; }
 
         /// <summary>
-        /// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
-        /// </summary>
-        [Input("kind")]
-        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.OccurrenceKind>? Kind { get; set; }
-
-        /// <summary>
-        /// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         /// </summary>
         [Input("noteName")]
@@ -230,12 +212,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         [Input("resource")]
         public Input<Inputs.ResourceArgs>? Resource { get; set; }
-
-        /// <summary>
-        /// The time this occurrence was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// Describes a security vulnerability.

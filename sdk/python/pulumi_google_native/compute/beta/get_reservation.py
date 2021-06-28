@@ -56,7 +56,7 @@ class GetReservationResult:
     @pulumi.getter
     def commitment(self) -> str:
         """
-        [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         """
         return pulumi.get(self, "commitment")
 
@@ -64,7 +64,7 @@ class GetReservationResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -80,7 +80,7 @@ class GetReservationResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#reservations for reservations.
+        Type of the resource. Always compute#reservations for reservations.
         """
         return pulumi.get(self, "kind")
 
@@ -96,7 +96,7 @@ class GetReservationResult:
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
-        [Output Only] Reserved for future use.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -104,7 +104,7 @@ class GetReservationResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined fully-qualified URL for this resource.
+        Server-defined fully-qualified URL for this resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -128,7 +128,7 @@ class GetReservationResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the reservation.
+        The status of the reservation.
         """
         return pulumi.get(self, "status")
 

@@ -37,7 +37,7 @@ export interface GetAutoscalerResult {
      */
     readonly autoscalingPolicy: outputs.compute.v1.AutoscalingPolicyResponse;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -45,7 +45,7 @@ export interface GetAutoscalerResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
+     * Type of the resource. Always compute#autoscaler for autoscalers.
      */
     readonly kind: string;
     /**
@@ -53,23 +53,23 @@ export interface GetAutoscalerResult {
      */
     readonly name: string;
     /**
-     * [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
+     * Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
      */
     readonly recommendedSize: number;
     /**
-     * [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
+     * URL of the region where the instance group resides (for autoscalers living in regional scope).
      */
     readonly region: string;
     /**
-     * [Output Only] Status information of existing scaling schedules.
+     * Status information of existing scaling schedules.
      */
     readonly scalingScheduleStatus: {[key: string]: string};
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] The status of the autoscaler configuration. Current set of possible values:  
+     * The status of the autoscaler configuration. Current set of possible values:  
      * - PENDING: Autoscaler backend hasn't read new/updated configuration. 
      * - DELETING: Configuration is being deleted. 
      * - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
@@ -77,7 +77,7 @@ export interface GetAutoscalerResult {
      */
     readonly status: string;
     /**
-     * [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
+     * Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
      */
     readonly statusDetails: outputs.compute.v1.AutoscalerStatusDetailsResponse[];
     /**
@@ -85,7 +85,7 @@ export interface GetAutoscalerResult {
      */
     readonly target: string;
     /**
-     * [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
+     * URL of the zone where the instance group resides (for autoscalers living in zonal scope).
      */
     readonly zone: string;
 }

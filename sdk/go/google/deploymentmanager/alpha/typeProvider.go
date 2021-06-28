@@ -135,21 +135,13 @@ type typeProviderArgs struct {
 	Description *string `pulumi:"description"`
 	// Descriptor Url for the this type provider.
 	DescriptorUrl *string `pulumi:"descriptorUrl"`
-	// Unique identifier for the resource defined by the server.
-	Id *string `pulumi:"id"`
-	// Creation timestamp in RFC3339 text format.
-	InsertTime *string `pulumi:"insertTime"`
 	// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
 	Labels []TypeProviderLabelEntry `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The Operation that most recently ran, or is currently running, on this type provider.
-	Operation *Operation `pulumi:"operation"`
 	// Options to apply when handling any resources in this service.
 	Options *Options `pulumi:"options"`
 	Project string   `pulumi:"project"`
-	// Self link for the type provider.
-	SelfLink *string `pulumi:"selfLink"`
 }
 
 // The set of arguments for constructing a TypeProvider resource.
@@ -164,21 +156,13 @@ type TypeProviderArgs struct {
 	Description pulumi.StringPtrInput
 	// Descriptor Url for the this type provider.
 	DescriptorUrl pulumi.StringPtrInput
-	// Unique identifier for the resource defined by the server.
-	Id pulumi.StringPtrInput
-	// Creation timestamp in RFC3339 text format.
-	InsertTime pulumi.StringPtrInput
 	// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
 	Labels TypeProviderLabelEntryArrayInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The Operation that most recently ran, or is currently running, on this type provider.
-	Operation OperationPtrInput
 	// Options to apply when handling any resources in this service.
 	Options OptionsPtrInput
 	Project pulumi.StringInput
-	// Self link for the type provider.
-	SelfLink pulumi.StringPtrInput
 }
 
 func (TypeProviderArgs) ElementType() reflect.Type {

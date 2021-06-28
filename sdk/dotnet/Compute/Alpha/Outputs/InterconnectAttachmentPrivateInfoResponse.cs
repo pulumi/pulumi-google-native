@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class InterconnectAttachmentPrivateInfoResponse
     {
         /// <summary>
-        /// [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+        /// 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
         /// </summary>
         public readonly int Tag8021q;
 

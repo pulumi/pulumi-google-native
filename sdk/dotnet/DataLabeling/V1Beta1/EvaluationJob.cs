@@ -126,24 +126,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("annotationSpecSet")]
         public Input<string>? AnnotationSpecSet { get; set; }
 
-        [Input("attempts")]
-        private InputList<Inputs.GoogleCloudDatalabelingV1beta1AttemptArgs>? _attempts;
-
-        /// <summary>
-        /// Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudDatalabelingV1beta1AttemptArgs> Attempts
-        {
-            get => _attempts ?? (_attempts = new InputList<Inputs.GoogleCloudDatalabelingV1beta1AttemptArgs>());
-            set => _attempts = value;
-        }
-
-        /// <summary>
-        /// Timestamp of when this evaluation job was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         /// <summary>
         /// Required. Description of the job. The description can be up to 25,000 characters long.
         /// </summary>
@@ -168,12 +150,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("modelVersion")]
         public Input<string>? ModelVersion { get; set; }
 
-        /// <summary>
-        /// After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -182,12 +158,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
-
-        /// <summary>
-        /// Describes the current state of the job.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.EvaluationJobState>? State { get; set; }
 
         public EvaluationJobArgs()
         {

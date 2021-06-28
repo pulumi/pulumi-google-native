@@ -33,7 +33,7 @@ export interface GetHttpHealthCheckResult {
      */
     readonly checkIntervalSec: number;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -49,7 +49,7 @@ export interface GetHttpHealthCheckResult {
      */
     readonly host: string;
     /**
-     * [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
+     * Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
      */
     readonly kind: string;
     /**
@@ -65,11 +65,11 @@ export interface GetHttpHealthCheckResult {
      */
     readonly requestPath: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**

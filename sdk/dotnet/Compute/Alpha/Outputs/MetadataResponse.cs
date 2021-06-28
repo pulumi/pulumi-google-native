@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.MetadataItemsItemResponse> Items;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#metadata for metadata.
+        /// Type of the resource. Always compute#metadata for metadata.
         /// </summary>
         public readonly string Kind;
 

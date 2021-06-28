@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<string>? Count { get; set; }
 
         /// <summary>
-        /// [Output Only] Indicates how many instances are in use.
-        /// </summary>
-        [Input("inUseCount")]
-        public Input<string>? InUseCount { get; set; }
-
-        /// <summary>
         /// The instance properties for the reservation.
         /// </summary>
         [Input("instanceProperties")]

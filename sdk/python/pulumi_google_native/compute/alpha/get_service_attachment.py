@@ -74,7 +74,7 @@ class GetServiceAttachmentResult:
     @pulumi.getter(name="connectedEndpoints")
     def connected_endpoints(self) -> Sequence['outputs.ServiceAttachmentConnectedEndpointResponse']:
         """
-        [Output Only] An array of connections for all the consumers connected to this service attachment.
+        An array of connections for all the consumers connected to this service attachment.
         """
         return pulumi.get(self, "connected_endpoints")
 
@@ -98,7 +98,7 @@ class GetServiceAttachmentResult:
     @pulumi.getter(name="consumerForwardingRules")
     def consumer_forwarding_rules(self) -> Sequence['outputs.ServiceAttachmentConsumerForwardingRuleResponse']:
         """
-        [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
+        An array of forwarding rules for all the consumers connected to this service attachment.
         """
         return pulumi.get(self, "consumer_forwarding_rules")
 
@@ -114,7 +114,7 @@ class GetServiceAttachmentResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -146,7 +146,7 @@ class GetServiceAttachmentResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
+        Type of the resource. Always compute#serviceAttachment for service attachments.
         """
         return pulumi.get(self, "kind")
 
@@ -178,7 +178,7 @@ class GetServiceAttachmentResult:
     @pulumi.getter(name="pscServiceAttachmentId")
     def psc_service_attachment_id(self) -> 'outputs.Uint128Response':
         """
-        [Output Only] An 128-bit global unique ID of the PSC service attachment.
+        An 128-bit global unique ID of the PSC service attachment.
         """
         return pulumi.get(self, "psc_service_attachment_id")
 
@@ -186,7 +186,7 @@ class GetServiceAttachmentResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -194,7 +194,7 @@ class GetServiceAttachmentResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

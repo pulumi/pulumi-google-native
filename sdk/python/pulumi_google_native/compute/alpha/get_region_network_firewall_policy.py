@@ -73,7 +73,7 @@ class GetRegionNetworkFirewallPolicyResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -115,7 +115,7 @@ class GetRegionNetworkFirewallPolicyResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+        Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
         """
         return pulumi.get(self, "name")
 
@@ -123,7 +123,7 @@ class GetRegionNetworkFirewallPolicyResult:
     @pulumi.getter
     def parent(self) -> str:
         """
-        [Output Only] The parent of the firewall policy.
+        The parent of the firewall policy.
         """
         return pulumi.get(self, "parent")
 
@@ -131,7 +131,7 @@ class GetRegionNetworkFirewallPolicyResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -139,7 +139,7 @@ class GetRegionNetworkFirewallPolicyResult:
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> int:
         """
-        [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+        Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         """
         return pulumi.get(self, "rule_tuple_count")
 
@@ -155,7 +155,7 @@ class GetRegionNetworkFirewallPolicyResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -163,7 +163,7 @@ class GetRegionNetworkFirewallPolicyResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 

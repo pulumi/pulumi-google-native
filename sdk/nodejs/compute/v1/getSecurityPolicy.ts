@@ -29,7 +29,7 @@ export interface GetSecurityPolicyArgs {
 
 export interface GetSecurityPolicyResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -55,7 +55,7 @@ export interface GetSecurityPolicyResult {
      */
     readonly rules: outputs.compute.v1.SecurityPolicyRuleResponse[];
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
 }

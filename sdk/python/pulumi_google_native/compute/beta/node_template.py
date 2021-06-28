@@ -20,42 +20,29 @@ class NodeTemplateArgs:
                  region: pulumi.Input[str],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['LocalDiskArgs']]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  node_type_flexibility: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 server_binding: Optional[pulumi.Input['ServerBindingArgs']] = None,
-                 status: Optional[pulumi.Input['NodeTemplateStatus']] = None,
-                 status_message: Optional[pulumi.Input[str]] = None):
+                 server_binding: Optional[pulumi.Input['ServerBindingArgs']] = None):
         """
         The set of arguments for constructing a NodeTemplate resource.
-        :param pulumi.Input[str] region: [Output Only] The name of the region where the node template resides, such as us-central1.
         :param pulumi.Input['NodeTemplateCpuOvercommitType'] cpu_overcommit_type: CPU overcommit.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
         :param pulumi.Input[str] node_type: The node type to use for nodes group that are created from this template.
         :param pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs'] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
                
                This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input['ServerBindingArgs'] server_binding: Sets the binding properties for the physical server. Valid values include:  
                - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
                - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
                
                See Sole-tenant node options for more information.
-        :param pulumi.Input['NodeTemplateStatus'] status: [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
-        :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -63,16 +50,10 @@ class NodeTemplateArgs:
             pulumi.set(__self__, "accelerators", accelerators)
         if cpu_overcommit_type is not None:
             pulumi.set(__self__, "cpu_overcommit_type", cpu_overcommit_type)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_affinity_labels is not None:
@@ -83,14 +64,8 @@ class NodeTemplateArgs:
             pulumi.set(__self__, "node_type_flexibility", node_type_flexibility)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if server_binding is not None:
             pulumi.set(__self__, "server_binding", server_binding)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if status_message is not None:
-            pulumi.set(__self__, "status_message", status_message)
 
     @property
     @pulumi.getter
@@ -104,9 +79,6 @@ class NodeTemplateArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        [Output Only] The name of the region where the node template resides, such as us-central1.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -135,18 +107,6 @@ class NodeTemplateArgs:
         pulumi.set(self, "cpu_overcommit_type", value)
 
     @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -166,30 +126,6 @@ class NodeTemplateArgs:
     @disks.setter
     def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LocalDiskArgs']]]]):
         pulumi.set(self, "disks", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -251,18 +187,6 @@ class NodeTemplateArgs:
         pulumi.set(self, "request_id", value)
 
     @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
     @pulumi.getter(name="serverBinding")
     def server_binding(self) -> Optional[pulumi.Input['ServerBindingArgs']]:
         """
@@ -278,30 +202,6 @@ class NodeTemplateArgs:
     def server_binding(self, value: Optional[pulumi.Input['ServerBindingArgs']]):
         pulumi.set(self, "server_binding", value)
 
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['NodeTemplateStatus']]:
-        """
-        [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['NodeTemplateStatus']]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="statusMessage")
-    def status_message(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] An optional, human-readable explanation of the status.
-        """
-        return pulumi.get(self, "status_message")
-
-    @status_message.setter
-    def status_message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status_message", value)
-
 
 class NodeTemplate(pulumi.CustomResource):
     @overload
@@ -310,11 +210,8 @@ class NodeTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LocalDiskArgs']]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -322,10 +219,7 @@ class NodeTemplate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  server_binding: Optional[pulumi.Input[pulumi.InputType['ServerBindingArgs']]] = None,
-                 status: Optional[pulumi.Input['NodeTemplateStatus']] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a NodeTemplate resource in the specified project using the data included in the request.
@@ -333,25 +227,18 @@ class NodeTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['NodeTemplateCpuOvercommitType'] cpu_overcommit_type: CPU overcommit.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
         :param pulumi.Input[str] node_type: The node type to use for nodes group that are created from this template.
         :param pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
                
                This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
-        :param pulumi.Input[str] region: [Output Only] The name of the region where the node template resides, such as us-central1.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['ServerBindingArgs']] server_binding: Sets the binding properties for the physical server. Valid values include:  
                - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
                - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
                
                See Sole-tenant node options for more information.
-        :param pulumi.Input['NodeTemplateStatus'] status: [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
-        :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         """
         ...
     @overload
@@ -379,11 +266,8 @@ class NodeTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LocalDiskArgs']]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -391,10 +275,7 @@ class NodeTemplate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  server_binding: Optional[pulumi.Input[pulumi.InputType['ServerBindingArgs']]] = None,
-                 status: Optional[pulumi.Input['NodeTemplateStatus']] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -409,11 +290,8 @@ class NodeTemplate(pulumi.CustomResource):
 
             __props__.__dict__["accelerators"] = accelerators
             __props__.__dict__["cpu_overcommit_type"] = cpu_overcommit_type
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["disks"] = disks
-            __props__.__dict__["id"] = id
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["node_affinity_labels"] = node_affinity_labels
             __props__.__dict__["node_type"] = node_type
@@ -425,10 +303,12 @@ class NodeTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
             __props__.__dict__["server_binding"] = server_binding
-            __props__.__dict__["status"] = status
-            __props__.__dict__["status_message"] = status_message
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["status_message"] = None
         super(NodeTemplate, __self__).__init__(
             'google-native:compute/beta:NodeTemplate',
             resource_name,
@@ -485,7 +365,7 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -506,7 +386,7 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
+        The type of the resource. Always compute#nodeTemplate for node templates.
         """
         return pulumi.get(self, "kind")
 
@@ -548,7 +428,7 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] The name of the region where the node template resides, such as us-central1.
+        The name of the region where the node template resides, such as us-central1.
         """
         return pulumi.get(self, "region")
 
@@ -556,7 +436,7 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -576,7 +456,7 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+        The status of the node template. One of the following values: CREATING, READY, and DELETING.
         """
         return pulumi.get(self, "status")
 
@@ -584,7 +464,7 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter(name="statusMessage")
     def status_message(self) -> pulumi.Output[str]:
         """
-        [Output Only] An optional, human-readable explanation of the status.
+        An optional, human-readable explanation of the status.
         """
         return pulumi.get(self, "status_message")
 

@@ -46,7 +46,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public readonly insertTime!: pulumi.Output<string>;
+    public /*out*/ readonly insertTime!: pulumi.Output<string>;
     /**
      * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */
@@ -54,7 +54,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * URL of the manifest representing the last manifest that was successfully deployed. If no manifest has been successfully deployed, this field will be absent.
      */
-    public readonly manifest!: pulumi.Output<string>;
+    public /*out*/ readonly manifest!: pulumi.Output<string>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -62,11 +62,11 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * The Operation that most recently ran, or is currently running, on this deployment.
      */
-    public readonly operation!: pulumi.Output<outputs.deploymentmanager.v2.OperationResponse>;
+    public /*out*/ readonly operation!: pulumi.Output<outputs.deploymentmanager.v2.OperationResponse>;
     /**
      * Server defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
      */
@@ -74,11 +74,11 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
      */
-    public readonly update!: pulumi.Output<outputs.deploymentmanager.v2.DeploymentUpdateResponse>;
+    public /*out*/ readonly update!: pulumi.Output<outputs.deploymentmanager.v2.DeploymentUpdateResponse>;
     /**
      * Update timestamp in RFC3339 text format.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Deployment resource with the given unique name, arguments, and options.
@@ -97,18 +97,18 @@ export class Deployment extends pulumi.CustomResource {
             inputs["createPolicy"] = args ? args.createPolicy : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["insertTime"] = args ? args.insertTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["manifest"] = args ? args.manifest : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["operation"] = args ? args.operation : undefined;
             inputs["preview"] = args ? args.preview : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["target"] = args ? args.target : undefined;
-            inputs["update"] = args ? args.update : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["insertTime"] = undefined /*out*/;
+            inputs["manifest"] = undefined /*out*/;
+            inputs["operation"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["update"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["description"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
@@ -140,41 +140,17 @@ export interface DeploymentArgs {
     description?: pulumi.Input<string>;
     id?: pulumi.Input<string>;
     /**
-     * Creation timestamp in RFC3339 text format.
-     */
-    insertTime?: pulumi.Input<string>;
-    /**
      * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2.DeploymentLabelEntryArgs>[]>;
     /**
-     * URL of the manifest representing the last manifest that was successfully deployed. If no manifest has been successfully deployed, this field will be absent.
-     */
-    manifest?: pulumi.Input<string>;
-    /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The Operation that most recently ran, or is currently running, on this deployment.
-     */
-    operation?: pulumi.Input<inputs.deploymentmanager.v2.OperationArgs>;
     preview?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * Server defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
     /**
      * [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
      */
     target?: pulumi.Input<inputs.deploymentmanager.v2.TargetConfigurationArgs>;
-    /**
-     * If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
-     */
-    update?: pulumi.Input<inputs.deploymentmanager.v2.DeploymentUpdateArgs>;
-    /**
-     * Update timestamp in RFC3339 text format.
-     */
-    updateTime?: pulumi.Input<string>;
 }

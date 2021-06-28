@@ -36,9 +36,9 @@ export class Route extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this field when you create the resource.
      */
@@ -48,9 +48,9 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly destRange!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of this resource. Always compute#routes for Route resources.
+     * Type of this resource. Always compute#routes for Route resources.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */
@@ -84,9 +84,9 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly nextHopNetwork!: pulumi.Output<string>;
     /**
-     * [Output Only] The network peering name that should handle matching packets, which should conform to RFC1035.
+     * The network peering name that should handle matching packets, which should conform to RFC1035.
      */
-    public readonly nextHopPeering!: pulumi.Output<string>;
+    public /*out*/ readonly nextHopPeering!: pulumi.Output<string>;
     /**
      * The URL to a VpnTunnel that should handle matching packets.
      */
@@ -96,17 +96,17 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
+     * Server-defined fully-qualified URL for this resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * A list of instance tags to which this route applies.
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
-     * [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      */
-    public readonly warnings!: pulumi.Output<outputs.compute.v1.RouteWarningsItemResponse[]>;
+    public /*out*/ readonly warnings!: pulumi.Output<outputs.compute.v1.RouteWarningsItemResponse[]>;
 
     /**
      * Create a Route resource with the given unique name, arguments, and options.
@@ -122,11 +122,8 @@ export class Route extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destRange"] = args ? args.destRange : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["nextHopGateway"] = args ? args.nextHopGateway : undefined;
@@ -134,14 +131,16 @@ export class Route extends pulumi.CustomResource {
             inputs["nextHopInstance"] = args ? args.nextHopInstance : undefined;
             inputs["nextHopIp"] = args ? args.nextHopIp : undefined;
             inputs["nextHopNetwork"] = args ? args.nextHopNetwork : undefined;
-            inputs["nextHopPeering"] = args ? args.nextHopPeering : undefined;
             inputs["nextHopVpnTunnel"] = args ? args.nextHopVpnTunnel : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["tags"] = args ? args.tags : undefined;
-            inputs["warnings"] = args ? args.warnings : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["nextHopPeering"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["warnings"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -173,10 +172,6 @@ export class Route extends pulumi.CustomResource {
  */
 export interface RouteArgs {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this field when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -184,14 +179,6 @@ export interface RouteArgs {
      * The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
      */
     destRange?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of this resource. Always compute#routes for Route resources.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */
@@ -225,10 +212,6 @@ export interface RouteArgs {
      */
     nextHopNetwork?: pulumi.Input<string>;
     /**
-     * [Output Only] The network peering name that should handle matching packets, which should conform to RFC1035.
-     */
-    nextHopPeering?: pulumi.Input<string>;
-    /**
      * The URL to a VpnTunnel that should handle matching packets.
      */
     nextHopVpnTunnel?: pulumi.Input<string>;
@@ -239,15 +222,7 @@ export interface RouteArgs {
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
      * A list of instance tags to which this route applies.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-     */
-    warnings?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouteWarningsItemArgs>[]>;
 }

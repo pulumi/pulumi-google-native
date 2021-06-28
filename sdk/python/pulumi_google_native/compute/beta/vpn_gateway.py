@@ -17,39 +17,24 @@ class VpnGatewayArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VpnGatewayVpnGatewayInterfaceArgs']]]] = None):
         """
         The set of arguments for constructing a VpnGateway resource.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the VPN gateway resides.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['VpnGatewayVpnGatewayInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -58,8 +43,6 @@ class VpnGatewayArgs:
             pulumi.set(__self__, "network", network)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if vpn_interfaces is not None:
             pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
 
@@ -75,26 +58,11 @@ class VpnGatewayArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        [Output Only] URL of the region where the VPN gateway resides.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -107,30 +75,6 @@ class VpnGatewayArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -178,18 +122,6 @@ class VpnGatewayArgs:
         pulumi.set(self, "request_id", value)
 
     @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
     @pulumi.getter(name="vpnInterfaces")
     def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnGatewayVpnGatewayInterfaceArgs']]]]:
         """
@@ -207,17 +139,13 @@ class VpnGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnGatewayVpnGatewayInterfaceArgs']]]]] = None,
                  __props__=None):
         """
@@ -225,15 +153,10 @@ class VpnGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the VPN gateway resides.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnGatewayVpnGatewayInterfaceArgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
         """
         ...
@@ -260,17 +183,13 @@ class VpnGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnGatewayVpnGatewayInterfaceArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -284,10 +203,7 @@ class VpnGateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VpnGatewayArgs.__new__(VpnGatewayArgs)
 
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            __props__.__dict__["id"] = id
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -298,9 +214,11 @@ class VpnGateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
             __props__.__dict__["vpn_interfaces"] = vpn_interfaces
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["self_link"] = None
         super(VpnGateway, __self__).__init__(
             'google-native:compute/beta:VpnGateway',
             resource_name,
@@ -339,7 +257,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -355,7 +273,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
+        Type of resource. Always compute#vpnGateway for VPN gateways.
         """
         return pulumi.get(self, "kind")
 
@@ -397,7 +315,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] URL of the region where the VPN gateway resides.
+        URL of the region where the VPN gateway resides.
         """
         return pulumi.get(self, "region")
 
@@ -405,7 +323,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

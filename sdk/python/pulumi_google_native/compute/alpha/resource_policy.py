@@ -18,63 +18,35 @@ class ResourcePolicyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_status: Optional[pulumi.Input['ResourcePolicyResourceStatusArgs']] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
-                 status: Optional[pulumi.Input['ResourcePolicyStatus']] = None,
                  vm_maintenance_policy: Optional[pulumi.Input['ResourcePolicyVmMaintenancePolicyArgs']] = None):
         """
         The set of arguments for constructing a ResourcePolicy resource.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs'] group_placement_policy: Resource policy for instances for placement configuration.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs'] instance_schedule_policy: Resource policy for scheduling instance operations.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input['ResourcePolicyResourceStatusArgs'] resource_status: [Output Only] The system status of the resource policy.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs'] snapshot_schedule_policy: Resource policy for persistent disks for creating snapshots.
-        :param pulumi.Input['ResourcePolicyStatus'] status: [Output Only] The status of resource policy creation.
         :param pulumi.Input['ResourcePolicyVmMaintenancePolicyArgs'] vm_maintenance_policy: Resource policy applicable to VMs for infrastructure maintenance.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if group_placement_policy is not None:
             pulumi.set(__self__, "group_placement_policy", group_placement_policy)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if instance_schedule_policy is not None:
             pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if resource_status is not None:
-            pulumi.set(__self__, "resource_status", resource_status)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if self_link_with_id is not None:
-            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if snapshot_schedule_policy is not None:
             pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if vm_maintenance_policy is not None:
             pulumi.set(__self__, "vm_maintenance_policy", vm_maintenance_policy)
 
@@ -95,18 +67,6 @@ class ResourcePolicyArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -130,18 +90,6 @@ class ResourcePolicyArgs:
         pulumi.set(self, "group_placement_policy", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="instanceSchedulePolicy")
     def instance_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]:
         """
@@ -152,18 +100,6 @@ class ResourcePolicyArgs:
     @instance_schedule_policy.setter
     def instance_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]):
         pulumi.set(self, "instance_schedule_policy", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -187,42 +123,6 @@ class ResourcePolicyArgs:
         pulumi.set(self, "request_id", value)
 
     @property
-    @pulumi.getter(name="resourceStatus")
-    def resource_status(self) -> Optional[pulumi.Input['ResourcePolicyResourceStatusArgs']]:
-        """
-        [Output Only] The system status of the resource policy.
-        """
-        return pulumi.get(self, "resource_status")
-
-    @resource_status.setter
-    def resource_status(self, value: Optional[pulumi.Input['ResourcePolicyResourceStatusArgs']]):
-        pulumi.set(self, "resource_status", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined fully-qualified URL for this resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="selfLinkWithId")
-    def self_link_with_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for this resource with the resource id.
-        """
-        return pulumi.get(self, "self_link_with_id")
-
-    @self_link_with_id.setter
-    def self_link_with_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link_with_id", value)
-
-    @property
     @pulumi.getter(name="snapshotSchedulePolicy")
     def snapshot_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']]:
         """
@@ -233,18 +133,6 @@ class ResourcePolicyArgs:
     @snapshot_schedule_policy.setter
     def snapshot_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']]):
         pulumi.set(self, "snapshot_schedule_policy", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ResourcePolicyStatus']]:
-        """
-        [Output Only] The status of resource policy creation.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['ResourcePolicyStatus']]):
-        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter(name="vmMaintenancePolicy")
@@ -264,21 +152,14 @@ class ResourcePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_status: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyResourceStatusArgs']]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']]] = None,
-                 status: Optional[pulumi.Input['ResourcePolicyStatus']] = None,
                  vm_maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyVmMaintenancePolicyArgs']]] = None,
                  __props__=None):
         """
@@ -286,17 +167,10 @@ class ResourcePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances for placement configuration.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']] instance_schedule_policy: Resource policy for scheduling instance operations.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyResourceStatusArgs']] resource_status: [Output Only] The system status of the resource policy.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']] snapshot_schedule_policy: Resource policy for persistent disks for creating snapshots.
-        :param pulumi.Input['ResourcePolicyStatus'] status: [Output Only] The status of resource policy creation.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyVmMaintenancePolicyArgs']] vm_maintenance_policy: Resource policy applicable to VMs for infrastructure maintenance.
         """
         ...
@@ -323,21 +197,14 @@ class ResourcePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_status: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyResourceStatusArgs']]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']]] = None,
-                 status: Optional[pulumi.Input['ResourcePolicyStatus']] = None,
                  vm_maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyVmMaintenancePolicyArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -351,12 +218,9 @@ class ResourcePolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourcePolicyArgs.__new__(ResourcePolicyArgs)
 
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["group_placement_policy"] = group_placement_policy
-            __props__.__dict__["id"] = id
             __props__.__dict__["instance_schedule_policy"] = instance_schedule_policy
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -365,12 +229,14 @@ class ResourcePolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["resource_status"] = resource_status
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["snapshot_schedule_policy"] = snapshot_schedule_policy
-            __props__.__dict__["status"] = status
             __props__.__dict__["vm_maintenance_policy"] = vm_maintenance_policy
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["resource_status"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["self_link_with_id"] = None
+            __props__.__dict__["status"] = None
         super(ResourcePolicy, __self__).__init__(
             'google-native:compute/alpha:ResourcePolicy',
             resource_name,
@@ -412,7 +278,7 @@ class ResourcePolicy(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -441,7 +307,7 @@ class ResourcePolicy(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
+        Type of the resource. Always compute#resource_policies for resource policies.
         """
         return pulumi.get(self, "kind")
 
@@ -462,7 +328,7 @@ class ResourcePolicy(pulumi.CustomResource):
     @pulumi.getter(name="resourceStatus")
     def resource_status(self) -> pulumi.Output['outputs.ResourcePolicyResourceStatusResponse']:
         """
-        [Output Only] The system status of the resource policy.
+        The system status of the resource policy.
         """
         return pulumi.get(self, "resource_status")
 
@@ -470,7 +336,7 @@ class ResourcePolicy(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined fully-qualified URL for this resource.
+        Server-defined fully-qualified URL for this resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -478,7 +344,7 @@ class ResourcePolicy(pulumi.CustomResource):
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -494,7 +360,7 @@ class ResourcePolicy(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        [Output Only] The status of resource policy creation.
+        The status of resource policy creation.
         """
         return pulumi.get(self, "status")
 

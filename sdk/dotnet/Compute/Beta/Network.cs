@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> AutoCreateSubnetworks { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The gateway address for default routing out of the network, selected by GCP.
+        /// The gateway address for default routing out of the network, selected by GCP.
         /// </summary>
         [Output("gatewayIPv4")]
         public Output<string> GatewayIPv4 { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#network for networks.
+        /// Type of the resource. Always compute#network for networks.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] A list of network peerings for the resource.
+        /// A list of network peerings for the resource.
         /// </summary>
         [Output("peerings")]
         public Output<ImmutableArray<Outputs.NetworkPeeringResponse>> Peerings { get; private set; } = null!;
@@ -76,13 +76,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.NetworkRoutingConfigResponse> RoutingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+        /// Server-defined fully-qualified URLs for all subnetworks in this VPC network.
         /// </summary>
         [Output("subnetworks")]
         public Output<ImmutableArray<string>> Subnetworks { get; private set; } = null!;
@@ -145,34 +145,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<bool>? AutoCreateSubnetworks { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this field when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// [Output Only] The gateway address for default routing out of the network, selected by GCP.
-        /// </summary>
-        [Input("gatewayIPv4")]
-        public Input<string>? GatewayIPv4 { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#network for networks.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
@@ -186,18 +162,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("peerings")]
-        private InputList<Inputs.NetworkPeeringArgs>? _peerings;
-
-        /// <summary>
-        /// [Output Only] A list of network peerings for the resource.
-        /// </summary>
-        public InputList<Inputs.NetworkPeeringArgs> Peerings
-        {
-            get => _peerings ?? (_peerings = new InputList<Inputs.NetworkPeeringArgs>());
-            set => _peerings = value;
-        }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -209,24 +173,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("routingConfig")]
         public Input<Inputs.NetworkRoutingConfigArgs>? RoutingConfig { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        [Input("subnetworks")]
-        private InputList<string>? _subnetworks;
-
-        /// <summary>
-        /// [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
-        /// </summary>
-        public InputList<string> Subnetworks
-        {
-            get => _subnetworks ?? (_subnetworks = new InputList<string>());
-            set => _subnetworks = value;
-        }
 
         public NetworkArgs()
         {

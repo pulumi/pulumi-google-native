@@ -59,7 +59,7 @@ class GetPublicAdvertisedPrefixResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -101,7 +101,7 @@ class GetPublicAdvertisedPrefixResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+        Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
         """
         return pulumi.get(self, "kind")
 
@@ -117,7 +117,7 @@ class GetPublicAdvertisedPrefixResult:
     @pulumi.getter(name="publicDelegatedPrefixs")
     def public_delegated_prefixs(self) -> Sequence['outputs.PublicAdvertisedPrefixPublicDelegatedPrefixResponse']:
         """
-        [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
+        The list of public delegated prefixes that exist for this public advertised prefix.
         """
         return pulumi.get(self, "public_delegated_prefixs")
 
@@ -125,7 +125,7 @@ class GetPublicAdvertisedPrefixResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -133,7 +133,7 @@ class GetPublicAdvertisedPrefixResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL with id for the resource.
+        Server-defined URL with id for the resource.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -141,7 +141,7 @@ class GetPublicAdvertisedPrefixResult:
     @pulumi.getter(name="sharedSecret")
     def shared_secret(self) -> str:
         """
-        [Output Only] The shared secret to be used for reverse DNS verification.
+        The shared secret to be used for reverse DNS verification.
         """
         return pulumi.get(self, "shared_secret")
 

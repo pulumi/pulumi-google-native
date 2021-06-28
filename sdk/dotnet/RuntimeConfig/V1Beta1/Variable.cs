@@ -106,22 +106,10 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.RuntimeConfig.V1Beta1.VariableState>? State { get; set; }
-
-        /// <summary>
         /// The string value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8.
         /// </summary>
         [Input("text")]
         public Input<string>? Text { get; set; }
-
-        /// <summary>
-        /// The time of the last variable update. Timestamp will be UTC timestamp.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set.

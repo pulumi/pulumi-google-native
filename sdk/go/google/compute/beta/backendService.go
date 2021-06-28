@@ -43,7 +43,7 @@ type BackendService struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsistentHash ConsistentHashLoadBalancerSettingsResponseOutput `pulumi:"consistentHash"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders pulumi.StringArrayOutput `pulumi:"customRequestHeaders"`
@@ -63,7 +63,7 @@ type BackendService struct {
 	HealthChecks pulumi.StringArrayOutput `pulumi:"healthChecks"`
 	// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
 	Iap BackendServiceIAPResponseOutput `pulumi:"iap"`
-	// [Output Only] Type of resource. Always compute#backendService for backend services.
+	// Type of resource. Always compute#backendService for backend services.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 	LoadBalancingScheme pulumi.StringOutput `pulumi:"loadBalancingScheme"`
@@ -111,15 +111,15 @@ type BackendService struct {
 	//
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] The resource URL for the security policy associated with this backend service.
+	// The resource URL for the security policy associated with this backend service.
 	SecurityPolicy pulumi.StringOutput `pulumi:"securityPolicy"`
 	// This field specifies the security policy that applies to this backend service. This field is applicable to either:
 	// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
 	// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings SecuritySettingsResponseOutput `pulumi:"securitySettings"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE.
 	//
@@ -196,7 +196,7 @@ type backendServiceState struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsistentHash *ConsistentHashLoadBalancerSettingsResponse `pulumi:"consistentHash"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
@@ -216,7 +216,7 @@ type backendServiceState struct {
 	HealthChecks []string `pulumi:"healthChecks"`
 	// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
 	Iap *BackendServiceIAPResponse `pulumi:"iap"`
-	// [Output Only] Type of resource. Always compute#backendService for backend services.
+	// Type of resource. Always compute#backendService for backend services.
 	Kind *string `pulumi:"kind"`
 	// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
@@ -264,15 +264,15 @@ type backendServiceState struct {
 	//
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol *string `pulumi:"protocol"`
-	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
-	// [Output Only] The resource URL for the security policy associated with this backend service.
+	// The resource URL for the security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// This field specifies the security policy that applies to this backend service. This field is applicable to either:
 	// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
 	// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings *SecuritySettingsResponse `pulumi:"securitySettings"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE.
 	//
@@ -318,7 +318,7 @@ type BackendServiceState struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsistentHash ConsistentHashLoadBalancerSettingsResponsePtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders pulumi.StringArrayInput
@@ -338,7 +338,7 @@ type BackendServiceState struct {
 	HealthChecks pulumi.StringArrayInput
 	// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
 	Iap BackendServiceIAPResponsePtrInput
-	// [Output Only] Type of resource. Always compute#backendService for backend services.
+	// Type of resource. Always compute#backendService for backend services.
 	Kind pulumi.StringPtrInput
 	// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 	LoadBalancingScheme pulumi.StringPtrInput
@@ -386,15 +386,15 @@ type BackendServiceState struct {
 	//
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol pulumi.StringPtrInput
-	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
-	// [Output Only] The resource URL for the security policy associated with this backend service.
+	// The resource URL for the security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
 	// This field specifies the security policy that applies to this backend service. This field is applicable to either:
 	// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
 	// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings SecuritySettingsResponsePtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE.
 	//
@@ -444,8 +444,6 @@ type backendServiceArgs struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsistentHash *ConsistentHashLoadBalancerSettings `pulumi:"consistentHash"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
@@ -460,10 +458,6 @@ type backendServiceArgs struct {
 	HealthChecks []string `pulumi:"healthChecks"`
 	// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
 	Iap *BackendServiceIAP `pulumi:"iap"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output Only] Type of resource. Always compute#backendService for backend services.
-	Kind *string `pulumi:"kind"`
 	// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality. The possible values are:
@@ -510,18 +504,12 @@ type backendServiceArgs struct {
 	// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
 	//
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
-	Protocol *string `pulumi:"protocol"`
-	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    *string `pulumi:"region"`
+	Protocol  *string `pulumi:"protocol"`
 	RequestId *string `pulumi:"requestId"`
-	// [Output Only] The resource URL for the security policy associated with this backend service.
-	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// This field specifies the security policy that applies to this backend service. This field is applicable to either:
 	// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
 	// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings *SecuritySettings `pulumi:"securitySettings"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE.
 	//
 	// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
@@ -567,8 +555,6 @@ type BackendServiceArgs struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsistentHash ConsistentHashLoadBalancerSettingsPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders pulumi.StringArrayInput
 	// Headers that the HTTP/S load balancer should add to proxied responses.
@@ -583,10 +569,6 @@ type BackendServiceArgs struct {
 	HealthChecks pulumi.StringArrayInput
 	// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
 	Iap BackendServiceIAPPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// [Output Only] Type of resource. Always compute#backendService for backend services.
-	Kind pulumi.StringPtrInput
 	// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 	LoadBalancingScheme *BackendServiceLoadBalancingScheme
 	// The load balancing algorithm used within the scope of the locality. The possible values are:
@@ -633,18 +615,12 @@ type BackendServiceArgs struct {
 	// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
 	//
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
-	Protocol *BackendServiceProtocol
-	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region    pulumi.StringPtrInput
+	Protocol  *BackendServiceProtocol
 	RequestId pulumi.StringPtrInput
-	// [Output Only] The resource URL for the security policy associated with this backend service.
-	SecurityPolicy pulumi.StringPtrInput
 	// This field specifies the security policy that applies to this backend service. This field is applicable to either:
 	// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
 	// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings SecuritySettingsPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE.
 	//
 	// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.

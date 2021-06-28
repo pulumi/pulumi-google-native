@@ -38,7 +38,7 @@ export class Model extends pulumi.CustomResource {
     /**
      * The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
      */
-    public readonly defaultVersion!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__VersionResponse>;
+    public /*out*/ readonly defaultVersion!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__VersionResponse>;
     /**
      * Optional. The description specified for the model when it was created.
      */
@@ -82,7 +82,6 @@ export class Model extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["defaultVersion"] = args ? args.defaultVersion : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -91,6 +90,7 @@ export class Model extends pulumi.CustomResource {
             inputs["onlinePredictionLogging"] = args ? args.onlinePredictionLogging : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["regions"] = args ? args.regions : undefined;
+            inputs["defaultVersion"] = undefined /*out*/;
         } else {
             inputs["defaultVersion"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -112,10 +112,6 @@ export class Model extends pulumi.CustomResource {
  * The set of arguments for constructing a Model resource.
  */
 export interface ModelArgs {
-    /**
-     * The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
-     */
-    defaultVersion?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__VersionArgs>;
     /**
      * Optional. The description specified for the model when it was created.
      */

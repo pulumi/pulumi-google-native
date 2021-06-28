@@ -128,7 +128,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -166,7 +166,7 @@ class GetRegionDiskResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#disk for disks.
+        Type of the resource. Always compute#disk for disks.
         """
         return pulumi.get(self, "kind")
 
@@ -192,7 +192,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="lastAttachTimestamp")
     def last_attach_timestamp(self) -> str:
         """
-        [Output Only] Last attach timestamp in RFC3339 text format.
+        Last attach timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_attach_timestamp")
 
@@ -200,7 +200,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="lastDetachTimestamp")
     def last_detach_timestamp(self) -> str:
         """
-        [Output Only] Last detach timestamp in RFC3339 text format.
+        Last detach timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_detach_timestamp")
 
@@ -264,7 +264,7 @@ class GetRegionDiskResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -288,7 +288,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
-        [Output Only] Reserved for future use.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -296,7 +296,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined fully-qualified URL for this resource.
+        Server-defined fully-qualified URL for this resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -328,7 +328,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="sourceDiskId")
     def source_disk_id(self) -> str:
         """
-        [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
+        The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
         """
         return pulumi.get(self, "source_disk_id")
 
@@ -367,7 +367,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="sourceImageId")
     def source_image_id(self) -> str:
         """
-        [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
+        The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
         """
         return pulumi.get(self, "source_image_id")
 
@@ -394,7 +394,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="sourceSnapshotId")
     def source_snapshot_id(self) -> str:
         """
-        [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
         """
         return pulumi.get(self, "source_snapshot_id")
 
@@ -410,7 +410,7 @@ class GetRegionDiskResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of disk creation.  
+        The status of disk creation.  
         - CREATING: Disk is provisioning. 
         - RESTORING: Source data is being copied into the disk. 
         - FAILED: Disk creation failed. 
@@ -431,7 +431,7 @@ class GetRegionDiskResult:
     @pulumi.getter
     def users(self) -> Sequence[str]:
         """
-        [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
+        Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
         """
         return pulumi.get(self, "users")
 
@@ -439,7 +439,7 @@ class GetRegionDiskResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "zone")
 

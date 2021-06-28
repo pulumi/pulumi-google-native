@@ -103,15 +103,9 @@ type domainArgs struct {
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect *DomainRedirect `pulumi:"domainRedirect"`
 	Project        string          `pulumi:"project"`
-	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
-	Provisioning *DomainProvisioning `pulumi:"provisioning"`
 	// Required. The site name of the association.
 	Site   *string `pulumi:"site"`
 	SiteId string  `pulumi:"siteId"`
-	// Additional status of the domain association.
-	Status *string `pulumi:"status"`
-	// The time at which the domain was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Domain resource.
@@ -121,15 +115,9 @@ type DomainArgs struct {
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect DomainRedirectPtrInput
 	Project        pulumi.StringInput
-	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
-	Provisioning DomainProvisioningPtrInput
 	// Required. The site name of the association.
 	Site   pulumi.StringPtrInput
 	SiteId pulumi.StringInput
-	// Additional status of the domain association.
-	Status *DomainStatus
-	// The time at which the domain was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (DomainArgs) ElementType() reflect.Type {

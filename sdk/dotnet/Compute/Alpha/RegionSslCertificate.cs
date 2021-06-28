@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Certificate { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Expire time of the certificate. RFC3339
+        /// Expire time of the certificate. RFC3339
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+        /// Type of the resource. Always compute#sslCertificate for SSL certificates.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> PrivateKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+        /// URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.SslCertificateSelfManagedSslCertificateResponse> SelfManaged { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Domains associated with the certificate via Subject Alternative Name.
+        /// Domains associated with the certificate via Subject Alternative Name.
         /// </summary>
         [Output("subjectAlternativeNames")]
         public Output<ImmutableArray<string>> SubjectAlternativeNames { get; private set; } = null!;
@@ -151,34 +151,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// [Output Only] Expire time of the certificate. RFC3339
-        /// </summary>
-        [Input("expireTime")]
-        public Input<string>? ExpireTime { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Configuration and status of a managed SSL certificate.
@@ -201,9 +177,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -211,34 +184,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// [Output only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
-
-        /// <summary>
         /// Configuration and status of a self-managed SSL certificate.
         /// </summary>
         [Input("selfManaged")]
         public Input<Inputs.SslCertificateSelfManagedSslCertificateArgs>? SelfManaged { get; set; }
-
-        [Input("subjectAlternativeNames")]
-        private InputList<string>? _subjectAlternativeNames;
-
-        /// <summary>
-        /// [Output Only] Domains associated with the certificate via Subject Alternative Name.
-        /// </summary>
-        public InputList<string> SubjectAlternativeNames
-        {
-            get => _subjectAlternativeNames ?? (_subjectAlternativeNames = new InputList<string>());
-            set => _subjectAlternativeNames = value;
-        }
 
         /// <summary>
         /// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.

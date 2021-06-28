@@ -47,7 +47,7 @@ class GetInstanceTemplateResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] The creation timestamp for this instance template in RFC3339 text format.
+        The creation timestamp for this instance template in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -63,7 +63,7 @@ class GetInstanceTemplateResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
+        The resource type, which is always compute#instanceTemplate for instance templates.
         """
         return pulumi.get(self, "kind")
 
@@ -87,7 +87,7 @@ class GetInstanceTemplateResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] The URL for this instance template. The server defines this URL.
+        The URL for this instance template. The server defines this URL.
         """
         return pulumi.get(self, "self_link")
 

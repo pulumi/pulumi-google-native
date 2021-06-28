@@ -26,7 +26,7 @@ type LookupRegionHealthCheckArgs struct {
 type LookupRegionHealthCheckResult struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec int `pulumi:"checkIntervalSec"`
-	// [Output Only] Creation timestamp in 3339 text format.
+	// Creation timestamp in 3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     string                  `pulumi:"description"`
@@ -42,11 +42,11 @@ type LookupRegionHealthCheckResult struct {
 	LogConfig HealthCheckLogConfigResponse `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
 	Name string `pulumi:"name"`
-	// [Output Only] Region where the health check resides. Not applicable to global health checks.
+	// Region where the health check resides. Not applicable to global health checks.
 	Region string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string                 `pulumi:"selfLinkWithId"`
 	SslHealthCheck SSLHealthCheckResponse `pulumi:"sslHealthCheck"`
 	TcpHealthCheck TCPHealthCheckResponse `pulumi:"tcpHealthCheck"`

@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>
-        /// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        /// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         /// </summary>
         public readonly int Index;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Interface;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+        /// Type of the resource. Always compute#attachedDisk for attached disks.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// [Output Only] Any valid publicly visible licenses.
+        /// Any valid publicly visible licenses.
         /// </summary>
         public readonly ImmutableArray<string> Licenses;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string SavedState;
         /// <summary>
-        /// [Output Only] shielded vm initial state stored on disk
+        /// shielded vm initial state stored on disk
         /// </summary>
         public readonly Outputs.InitialStateConfigResponse ShieldedInstanceInitialState;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// [Output Only] A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
+        /// A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
         /// </summary>
         public readonly ImmutableArray<string> UserLicenses;
 

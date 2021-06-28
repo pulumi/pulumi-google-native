@@ -40,9 +40,9 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly allowed!: pulumi.Output<outputs.compute.beta.FirewallAllowedItemResponse[]>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
      */
@@ -64,9 +64,9 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
-     * [Output Only] Type of the resource. Always compute#firewall for firewall rules.
+     * Type of the resource. Always compute#firewall for firewall rules.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
      */
@@ -89,9 +89,9 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Only IPv4 is supported.
      */
@@ -128,26 +128,25 @@ export class Firewall extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["allowed"] = args ? args.allowed : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["denied"] = args ? args.denied : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destinationRanges"] = args ? args.destinationRanges : undefined;
             inputs["direction"] = args ? args.direction : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sourceRanges"] = args ? args.sourceRanges : undefined;
             inputs["sourceServiceAccounts"] = args ? args.sourceServiceAccounts : undefined;
             inputs["sourceTags"] = args ? args.sourceTags : undefined;
             inputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
             inputs["targetTags"] = args ? args.targetTags : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["allowed"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -184,10 +183,6 @@ export interface FirewallArgs {
      */
     allowed?: pulumi.Input<pulumi.Input<inputs.compute.beta.FirewallAllowedItemArgs>[]>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
      */
     denied?: pulumi.Input<pulumi.Input<inputs.compute.beta.FirewallDeniedItemArgs>[]>;
@@ -207,14 +202,6 @@ export interface FirewallArgs {
      * Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
      */
     disabled?: pulumi.Input<boolean>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#firewall for firewall rules.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
      */
@@ -238,10 +225,6 @@ export interface FirewallArgs {
     priority?: pulumi.Input<number>;
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
     /**
      * If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Only IPv4 is supported.
      */

@@ -183,18 +183,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
 
-        [Input("instanceGroupUrls")]
-        private InputList<string>? _instanceGroupUrls;
-
-        /// <summary>
-        /// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-        /// </summary>
-        public InputList<string> InstanceGroupUrls
-        {
-            get => _instanceGroupUrls ?? (_instanceGroupUrls = new InputList<string>());
-            set => _instanceGroupUrls = value;
-        }
-
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
@@ -240,26 +228,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
-        /// <summary>
-        /// [Output only] The pod CIDR block size per node in this node pool.
-        /// </summary>
-        [Input("podIpv4CidrSize")]
-        public Input<int>? PodIpv4CidrSize { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// [Output only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output only] The status of the nodes in this pool instance.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Container.V1Beta1.NodePoolStatus>? Status { get; set; }
 
         /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.

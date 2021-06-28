@@ -22,10 +22,7 @@ __all__ = [
     'DistributionArchitecture',
     'GenericSignedAttestationContentType',
     'GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity',
-    'GrafeasV1beta1VulnerabilityDetailsSeverity',
     'LayerDirective',
-    'NoteKind',
-    'OccurrenceKind',
     'PgpSignedAttestationContentType',
     'VersionKind',
     'VulnerabilitySeverity',
@@ -183,18 +180,6 @@ class GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity(str, Enum):
     CRITICAL = "CRITICAL"
 
 
-class GrafeasV1beta1VulnerabilityDetailsSeverity(str, Enum):
-    """
-    Output only. The note provider assigned Severity of the vulnerability.
-    """
-    SEVERITY_UNSPECIFIED = "SEVERITY_UNSPECIFIED"
-    MINIMAL = "MINIMAL"
-    LOW = "LOW"
-    MEDIUM = "MEDIUM"
-    HIGH = "HIGH"
-    CRITICAL = "CRITICAL"
-
-
 class LayerDirective(str, Enum):
     """
     Required. The recovered Dockerfile directive used to construct this layer.
@@ -217,36 +202,6 @@ class LayerDirective(str, Enum):
     STOPSIGNAL = "STOPSIGNAL"
     HEALTHCHECK = "HEALTHCHECK"
     SHELL = "SHELL"
-
-
-class NoteKind(str, Enum):
-    """
-    Output only. The type of analysis. This field can be used as a filter in list requests.
-    """
-    NOTE_KIND_UNSPECIFIED = "NOTE_KIND_UNSPECIFIED"
-    VULNERABILITY = "VULNERABILITY"
-    BUILD = "BUILD"
-    IMAGE = "IMAGE"
-    PACKAGE = "PACKAGE"
-    DEPLOYMENT = "DEPLOYMENT"
-    DISCOVERY = "DISCOVERY"
-    ATTESTATION = "ATTESTATION"
-    INTOTO = "INTOTO"
-
-
-class OccurrenceKind(str, Enum):
-    """
-    Output only. This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
-    """
-    NOTE_KIND_UNSPECIFIED = "NOTE_KIND_UNSPECIFIED"
-    VULNERABILITY = "VULNERABILITY"
-    BUILD = "BUILD"
-    IMAGE = "IMAGE"
-    PACKAGE = "PACKAGE"
-    DEPLOYMENT = "DEPLOYMENT"
-    DISCOVERY = "DISCOVERY"
-    ATTESTATION = "ATTESTATION"
-    INTOTO = "INTOTO"
 
 
 class PgpSignedAttestationContentType(str, Enum):

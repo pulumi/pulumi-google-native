@@ -118,46 +118,6 @@ export const GoogleCloudMlV1__AcceleratorConfigType = {
  */
 export type GoogleCloudMlV1__AcceleratorConfigType = (typeof GoogleCloudMlV1__AcceleratorConfigType)[keyof typeof GoogleCloudMlV1__AcceleratorConfigType];
 
-export const GoogleCloudMlV1__HyperparameterOutputState = {
-    /**
-     * The job state is unspecified.
-     */
-    StateUnspecified: "STATE_UNSPECIFIED",
-    /**
-     * The job has been just created and processing has not yet begun.
-     */
-    Queued: "QUEUED",
-    /**
-     * The service is preparing to run the job.
-     */
-    Preparing: "PREPARING",
-    /**
-     * The job is in progress.
-     */
-    Running: "RUNNING",
-    /**
-     * The job completed successfully.
-     */
-    Succeeded: "SUCCEEDED",
-    /**
-     * The job failed. `error_message` should contain the details of the failure.
-     */
-    Failed: "FAILED",
-    /**
-     * The job is being cancelled. `error_message` should describe the reason for the cancellation.
-     */
-    Cancelling: "CANCELLING",
-    /**
-     * The job has been cancelled. `error_message` should describe the reason for the cancellation.
-     */
-    Cancelled: "CANCELLED",
-} as const;
-
-/**
- * Output only. The detailed state of the trial.
- */
-export type GoogleCloudMlV1__HyperparameterOutputState = (typeof GoogleCloudMlV1__HyperparameterOutputState)[keyof typeof GoogleCloudMlV1__HyperparameterOutputState];
-
 export const GoogleCloudMlV1__HyperparameterSpecAlgorithm = {
     /**
      * The default algorithm used by the hyperparameter tuning service. This is a Bayesian optimization algorithm.
@@ -390,62 +350,6 @@ export const GoogleCloudMlV1__TrainingInputScaleTier = {
  */
 export type GoogleCloudMlV1__TrainingInputScaleTier = (typeof GoogleCloudMlV1__TrainingInputScaleTier)[keyof typeof GoogleCloudMlV1__TrainingInputScaleTier];
 
-export const GoogleCloudMlV1__VersionFramework = {
-    /**
-     * Unspecified framework. Assigns a value based on the file suffix.
-     */
-    FrameworkUnspecified: "FRAMEWORK_UNSPECIFIED",
-    /**
-     * Tensorflow framework.
-     */
-    Tensorflow: "TENSORFLOW",
-    /**
-     * Scikit-learn framework.
-     */
-    ScikitLearn: "SCIKIT_LEARN",
-    /**
-     * XGBoost framework.
-     */
-    Xgboost: "XGBOOST",
-} as const;
-
-/**
- * Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
- */
-export type GoogleCloudMlV1__VersionFramework = (typeof GoogleCloudMlV1__VersionFramework)[keyof typeof GoogleCloudMlV1__VersionFramework];
-
-export const GoogleCloudMlV1__VersionState = {
-    /**
-     * The version state is unspecified.
-     */
-    Unknown: "UNKNOWN",
-    /**
-     * The version is ready for prediction.
-     */
-    Ready: "READY",
-    /**
-     * The version is being created. New UpdateVersion and DeleteVersion requests will fail if a version is in the CREATING state.
-     */
-    Creating: "CREATING",
-    /**
-     * The version failed to be created, possibly cancelled. `error_message` should contain the details of the failure.
-     */
-    Failed: "FAILED",
-    /**
-     * The version is being deleted. New UpdateVersion and DeleteVersion requests will fail if a version is in the DELETING state.
-     */
-    Deleting: "DELETING",
-    /**
-     * The version is being updated. New UpdateVersion and DeleteVersion requests will fail if a version is in the UPDATING state.
-     */
-    Updating: "UPDATING",
-} as const;
-
-/**
- * Output only. The state of a version.
- */
-export type GoogleCloudMlV1__VersionState = (typeof GoogleCloudMlV1__VersionState)[keyof typeof GoogleCloudMlV1__VersionState];
-
 export const GoogleIamV1__AuditLogConfigLogType = {
     /**
      * Default case. Should never be this.
@@ -469,46 +373,6 @@ export const GoogleIamV1__AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type GoogleIamV1__AuditLogConfigLogType = (typeof GoogleIamV1__AuditLogConfigLogType)[keyof typeof GoogleIamV1__AuditLogConfigLogType];
-
-export const JobState = {
-    /**
-     * The job state is unspecified.
-     */
-    StateUnspecified: "STATE_UNSPECIFIED",
-    /**
-     * The job has been just created and processing has not yet begun.
-     */
-    Queued: "QUEUED",
-    /**
-     * The service is preparing to run the job.
-     */
-    Preparing: "PREPARING",
-    /**
-     * The job is in progress.
-     */
-    Running: "RUNNING",
-    /**
-     * The job completed successfully.
-     */
-    Succeeded: "SUCCEEDED",
-    /**
-     * The job failed. `error_message` should contain the details of the failure.
-     */
-    Failed: "FAILED",
-    /**
-     * The job is being cancelled. `error_message` should describe the reason for the cancellation.
-     */
-    Cancelling: "CANCELLING",
-    /**
-     * The job has been cancelled. `error_message` should describe the reason for the cancellation.
-     */
-    Cancelled: "CANCELLED",
-} as const;
-
-/**
- * Output only. The detailed state of a job.
- */
-export type JobState = (typeof JobState)[keyof typeof JobState];
 
 export const TrialState = {
     /**
@@ -561,35 +425,3 @@ export const VersionFramework = {
  * Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
  */
 export type VersionFramework = (typeof VersionFramework)[keyof typeof VersionFramework];
-
-export const VersionState = {
-    /**
-     * The version state is unspecified.
-     */
-    Unknown: "UNKNOWN",
-    /**
-     * The version is ready for prediction.
-     */
-    Ready: "READY",
-    /**
-     * The version is being created. New UpdateVersion and DeleteVersion requests will fail if a version is in the CREATING state.
-     */
-    Creating: "CREATING",
-    /**
-     * The version failed to be created, possibly cancelled. `error_message` should contain the details of the failure.
-     */
-    Failed: "FAILED",
-    /**
-     * The version is being deleted. New UpdateVersion and DeleteVersion requests will fail if a version is in the DELETING state.
-     */
-    Deleting: "DELETING",
-    /**
-     * The version is being updated. New UpdateVersion and DeleteVersion requests will fail if a version is in the UPDATING state.
-     */
-    Updating: "UPDATING",
-} as const;
-
-/**
- * Output only. The state of a version.
- */
-export type VersionState = (typeof VersionState)[keyof typeof VersionState];

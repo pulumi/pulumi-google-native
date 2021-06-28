@@ -16,12 +16,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     public sealed class DailyMaintenanceWindowArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-        /// </summary>
-        [Input("duration")]
-        public Input<string>? Duration { get; set; }
-
-        /// <summary>
         /// Time within the maintenance window to start the maintenance operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
         /// </summary>
         [Input("startTime")]

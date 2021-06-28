@@ -35,7 +35,7 @@ export interface GetRegionNetworkFirewallPolicyResult {
      */
     readonly associations: outputs.compute.alpha.FirewallPolicyAssociationResponse[];
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -57,19 +57,19 @@ export interface GetRegionNetworkFirewallPolicyResult {
      */
     readonly kind: string;
     /**
-     * [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+     * Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
      */
     readonly name: string;
     /**
-     * [Output Only] The parent of the firewall policy.
+     * The parent of the firewall policy.
      */
     readonly parent: string;
     /**
-     * [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+     * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
     readonly ruleTupleCount: number;
     /**
@@ -77,11 +77,11 @@ export interface GetRegionNetworkFirewallPolicyResult {
      */
     readonly rules: outputs.compute.alpha.FirewallPolicyRuleResponse[];
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**

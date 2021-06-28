@@ -68,7 +68,7 @@ class GetMachineImageResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] The creation timestamp for this machine image in RFC3339 text format.
+        The creation timestamp for this machine image in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -92,7 +92,7 @@ class GetMachineImageResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] The resource type, which is always compute#machineImage for machine image.
+        The resource type, which is always compute#machineImage for machine image.
         """
         return pulumi.get(self, "kind")
 
@@ -122,7 +122,7 @@ class GetMachineImageResult:
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
-        [Output Only] Reserved for future use.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -130,7 +130,7 @@ class GetMachineImageResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] The URL for this machine image. The server defines this URL.
+        The URL for this machine image. The server defines this URL.
         """
         return pulumi.get(self, "self_link")
 
@@ -138,7 +138,7 @@ class GetMachineImageResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -164,7 +164,7 @@ class GetMachineImageResult:
     @pulumi.getter(name="sourceInstanceProperties")
     def source_instance_properties(self) -> 'outputs.SourceInstancePropertiesResponse':
         """
-        [Output Only] Properties of source instance.
+        Properties of source instance.
         """
         return pulumi.get(self, "source_instance_properties")
 
@@ -172,7 +172,7 @@ class GetMachineImageResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+        The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
         """
         return pulumi.get(self, "status")
 
@@ -188,7 +188,7 @@ class GetMachineImageResult:
     @pulumi.getter(name="totalStorageBytes")
     def total_storage_bytes(self) -> str:
         """
-        [Output Only] Total size of the storage used by the machine image.
+        Total size of the storage used by the machine image.
         """
         return pulumi.get(self, "total_storage_bytes")
 

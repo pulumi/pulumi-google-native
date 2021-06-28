@@ -15,18 +15,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// </summary>
     public sealed class AutoUpgradeOptionsArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        /// </summary>
-        [Input("autoUpgradeStartTime")]
-        public Input<string>? AutoUpgradeStartTime { get; set; }
-
-        /// <summary>
-        /// [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
         public AutoUpgradeOptionsArgs()
         {
         }

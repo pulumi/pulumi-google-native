@@ -37,7 +37,7 @@ export interface GetBackendBucketResult {
      */
     readonly cdnPolicy: outputs.compute.alpha.BackendBucketCdnPolicyResponse;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -49,7 +49,7 @@ export interface GetBackendBucketResult {
      */
     readonly description: string;
     /**
-     * [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+     * The resource URL for the edge security policy associated with this backend bucket.
      */
     readonly edgeSecurityPolicy: string;
     /**
@@ -65,11 +65,11 @@ export interface GetBackendBucketResult {
      */
     readonly name: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
 }

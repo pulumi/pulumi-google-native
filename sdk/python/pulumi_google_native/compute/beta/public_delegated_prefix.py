@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
-from ._enums import *
 from ._inputs import *
 
 __all__ = ['PublicDelegatedPrefixArgs', 'PublicDelegatedPrefix']
@@ -18,47 +17,30 @@ class PublicDelegatedPrefixArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  is_live_migration: Optional[pulumi.Input[bool]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_prefix: Optional[pulumi.Input[str]] = None,
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['PublicDelegatedPrefixStatus']] = None):
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PublicDelegatedPrefix resource.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         :param pulumi.Input[Sequence[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]] public_delegated_sub_prefixs: The list of sub public delegated prefixes that exist for this public delegated prefix.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input['PublicDelegatedPrefixStatus'] status: [Output Only] The status of the public delegated prefix.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if is_live_migration is not None:
             pulumi.set(__self__, "is_live_migration", is_live_migration)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parent_prefix is not None:
@@ -67,10 +49,6 @@ class PublicDelegatedPrefixArgs:
             pulumi.set(__self__, "public_delegated_sub_prefixs", public_delegated_sub_prefixs)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -84,26 +62,11 @@ class PublicDelegatedPrefixArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -116,18 +79,6 @@ class PublicDelegatedPrefixArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource type. The server generates this identifier.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -152,18 +103,6 @@ class PublicDelegatedPrefixArgs:
     @is_live_migration.setter
     def is_live_migration(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_live_migration", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -210,68 +149,33 @@ class PublicDelegatedPrefixArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['PublicDelegatedPrefixStatus']]:
-        """
-        [Output Only] The status of the public delegated prefix.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['PublicDelegatedPrefixStatus']]):
-        pulumi.set(self, "status", value)
-
 
 class PublicDelegatedPrefix(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  is_live_migration: Optional[pulumi.Input[bool]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_prefix: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['PublicDelegatedPrefixStatus']] = None,
                  __props__=None):
         """
         Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]] public_delegated_sub_prefixs: The list of sub public delegated prefixes that exist for this public delegated prefix.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input['PublicDelegatedPrefixStatus'] status: [Output Only] The status of the public delegated prefix.
         """
         ...
     @overload
@@ -297,20 +201,15 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  is_live_migration: Optional[pulumi.Input[bool]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_prefix: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['PublicDelegatedPrefixStatus']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -323,12 +222,9 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PublicDelegatedPrefixArgs.__new__(PublicDelegatedPrefixArgs)
 
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            __props__.__dict__["id"] = id
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["is_live_migration"] = is_live_migration
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["parent_prefix"] = parent_prefix
             if project is None and not opts.urn:
@@ -339,9 +235,11 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["status"] = status
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["status"] = None
         super(PublicDelegatedPrefix, __self__).__init__(
             'google-native:compute/beta:PublicDelegatedPrefix',
             resource_name,
@@ -382,7 +280,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -424,7 +322,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
+        Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
         """
         return pulumi.get(self, "kind")
 
@@ -456,7 +354,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -464,7 +362,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -472,7 +370,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        [Output Only] The status of the public delegated prefix.
+        The status of the public delegated prefix.
         """
         return pulumi.get(self, "status")
 

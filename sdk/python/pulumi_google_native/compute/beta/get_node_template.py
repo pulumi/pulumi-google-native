@@ -81,7 +81,7 @@ class GetNodeTemplateResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -102,7 +102,7 @@ class GetNodeTemplateResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
+        The type of the resource. Always compute#nodeTemplate for node templates.
         """
         return pulumi.get(self, "kind")
 
@@ -144,7 +144,7 @@ class GetNodeTemplateResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] The name of the region where the node template resides, such as us-central1.
+        The name of the region where the node template resides, such as us-central1.
         """
         return pulumi.get(self, "region")
 
@@ -152,7 +152,7 @@ class GetNodeTemplateResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -172,7 +172,7 @@ class GetNodeTemplateResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+        The status of the node template. One of the following values: CREATING, READY, and DELETING.
         """
         return pulumi.get(self, "status")
 
@@ -180,7 +180,7 @@ class GetNodeTemplateResult:
     @pulumi.getter(name="statusMessage")
     def status_message(self) -> str:
         """
-        [Output Only] An optional, human-readable explanation of the status.
+        An optional, human-readable explanation of the status.
         """
         return pulumi.get(self, "status_message")
 

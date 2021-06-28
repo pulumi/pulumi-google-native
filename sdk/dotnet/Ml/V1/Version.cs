@@ -235,12 +235,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Input<Inputs.GoogleCloudMlV1__ContainerSpecArgs>? Container { get; set; }
 
         /// <summary>
-        /// The time the version was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
         /// </summary>
         [Input("deploymentUri")]
@@ -251,12 +245,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The details of a failure or a cancellation.
-        /// </summary>
-        [Input("errorMessage")]
-        public Input<string>? ErrorMessage { get; set; }
 
         /// <summary>
         /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
@@ -276,12 +264,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("framework")]
         public Input<Pulumi.GoogleNative.Ml.V1.VersionFramework>? Framework { get; set; }
 
-        /// <summary>
-        /// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
-        /// </summary>
-        [Input("isDefault")]
-        public Input<bool>? IsDefault { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -293,12 +275,6 @@ namespace Pulumi.GoogleNative.Ml.V1
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
-
-        /// <summary>
-        /// The time the version was last used for prediction.
-        /// </summary>
-        [Input("lastUseTime")]
-        public Input<string>? LastUseTime { get; set; }
 
         /// <summary>
         /// Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
@@ -371,12 +347,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
-
-        /// <summary>
-        /// The state of a version.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Ml.V1.VersionState>? State { get; set; }
 
         public VersionArgs()
         {

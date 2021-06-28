@@ -31,7 +31,7 @@ export interface GetVpnTunnelArgs {
 
 export interface GetVpnTunnelResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -39,7 +39,7 @@ export interface GetVpnTunnelResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Detailed status message for the VPN tunnel.
+     * Detailed status message for the VPN tunnel.
      */
     readonly detailedStatus: string;
     /**
@@ -47,7 +47,7 @@ export interface GetVpnTunnelResult {
      */
     readonly ikeVersion: number;
     /**
-     * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
+     * Type of resource. Always compute#vpnTunnel for VPN tunnels.
      */
     readonly kind: string;
     /**
@@ -85,7 +85,7 @@ export interface GetVpnTunnelResult {
      */
     readonly peerIp: string;
     /**
-     * [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
@@ -97,7 +97,7 @@ export interface GetVpnTunnelResult {
      */
     readonly router: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
@@ -109,7 +109,7 @@ export interface GetVpnTunnelResult {
      */
     readonly sharedSecretHash: string;
     /**
-     * [Output Only] The status of the VPN tunnel, which can be one of the following: 
+     * The status of the VPN tunnel, which can be one of the following: 
      * - PROVISIONING: Resource is being allocated for the VPN tunnel. 
      * - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
      * - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 

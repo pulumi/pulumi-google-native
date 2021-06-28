@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class License : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#license for licenses.
+        /// Type of resource. Always compute#license for licenses.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+        /// The unique code used to attach this license to images, snapshots, and disks.
         /// </summary>
         [Output("licenseCode")]
         public Output<string> LicenseCode { get; private set; } = null!;
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.LicenseResourceRequirementsResponse> ResourceRequirements { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -106,34 +106,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class LicenseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional textual description of the resource; provided by the client when the resource is created.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of resource. Always compute#license for licenses.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
-        /// </summary>
-        [Input("licenseCode")]
-        public Input<string>? LicenseCode { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
@@ -149,12 +125,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Input("resourceRequirements")]
         public Input<Inputs.LicenseResourceRequirementsArgs>? ResourceRequirements { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         /// <summary>
         /// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.

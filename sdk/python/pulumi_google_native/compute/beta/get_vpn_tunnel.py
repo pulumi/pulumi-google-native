@@ -91,7 +91,7 @@ class GetVpnTunnelResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -107,7 +107,7 @@ class GetVpnTunnelResult:
     @pulumi.getter(name="detailedStatus")
     def detailed_status(self) -> str:
         """
-        [Output Only] Detailed status message for the VPN tunnel.
+        Detailed status message for the VPN tunnel.
         """
         return pulumi.get(self, "detailed_status")
 
@@ -123,7 +123,7 @@ class GetVpnTunnelResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
+        Type of resource. Always compute#vpnTunnel for VPN tunnels.
         """
         return pulumi.get(self, "kind")
 
@@ -197,7 +197,7 @@ class GetVpnTunnelResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -221,7 +221,7 @@ class GetVpnTunnelResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -245,7 +245,7 @@ class GetVpnTunnelResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the VPN tunnel, which can be one of the following: 
+        The status of the VPN tunnel, which can be one of the following: 
         - PROVISIONING: Resource is being allocated for the VPN tunnel. 
         - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
         - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 

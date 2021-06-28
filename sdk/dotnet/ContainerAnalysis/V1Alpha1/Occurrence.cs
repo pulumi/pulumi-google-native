@@ -169,12 +169,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Input<Inputs.BuildDetailsArgs>? BuildDetails { get; set; }
 
         /// <summary>
-        /// The time this `Occurrence` was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Describes the deployment of an artifact on a runtime.
         /// </summary>
         [Input("deployment")]
@@ -197,18 +191,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Input("installation")]
         public Input<Inputs.InstallationArgs>? Installation { get; set; }
-
-        /// <summary>
-        /// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-        /// </summary>
-        [Input("kind")]
-        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.OccurrenceKind>? Kind { get; set; }
-
-        /// <summary>
-        /// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
@@ -236,12 +218,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Input("resourceUrl")]
         public Input<string>? ResourceUrl { get; set; }
-
-        /// <summary>
-        /// The time this `Occurrence` was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// Describes an upgrade.

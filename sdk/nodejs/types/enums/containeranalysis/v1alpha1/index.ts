@@ -282,94 +282,6 @@ export const LayerDirective = {
  */
 export type LayerDirective = (typeof LayerDirective)[keyof typeof LayerDirective];
 
-export const NoteKind = {
-    /**
-     * Unknown
-     */
-    KindUnspecified: "KIND_UNSPECIFIED",
-    /**
-     * The note and occurrence represent a package vulnerability.
-     */
-    PackageVulnerability: "PACKAGE_VULNERABILITY",
-    /**
-     * The note and occurrence assert build provenance.
-     */
-    BuildDetails: "BUILD_DETAILS",
-    /**
-     * This represents an image basis relationship.
-     */
-    ImageBasis: "IMAGE_BASIS",
-    /**
-     * This represents a package installed via a package manager.
-     */
-    PackageManager: "PACKAGE_MANAGER",
-    /**
-     * The note and occurrence track deployment events.
-     */
-    Deployable: "DEPLOYABLE",
-    /**
-     * The note and occurrence track the initial discovery status of a resource.
-     */
-    Discovery: "DISCOVERY",
-    /**
-     * This represents a logical "role" that can attest to artifacts.
-     */
-    AttestationAuthority: "ATTESTATION_AUTHORITY",
-    /**
-     * This represents an available software upgrade.
-     */
-    Upgrade: "UPGRADE",
-} as const;
-
-/**
- * Output only. This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
- */
-export type NoteKind = (typeof NoteKind)[keyof typeof NoteKind];
-
-export const OccurrenceKind = {
-    /**
-     * Unknown
-     */
-    KindUnspecified: "KIND_UNSPECIFIED",
-    /**
-     * The note and occurrence represent a package vulnerability.
-     */
-    PackageVulnerability: "PACKAGE_VULNERABILITY",
-    /**
-     * The note and occurrence assert build provenance.
-     */
-    BuildDetails: "BUILD_DETAILS",
-    /**
-     * This represents an image basis relationship.
-     */
-    ImageBasis: "IMAGE_BASIS",
-    /**
-     * This represents a package installed via a package manager.
-     */
-    PackageManager: "PACKAGE_MANAGER",
-    /**
-     * The note and occurrence track deployment events.
-     */
-    Deployable: "DEPLOYABLE",
-    /**
-     * The note and occurrence track the initial discovery status of a resource.
-     */
-    Discovery: "DISCOVERY",
-    /**
-     * This represents a logical "role" that can attest to artifacts.
-     */
-    AttestationAuthority: "ATTESTATION_AUTHORITY",
-    /**
-     * This represents an available software upgrade.
-     */
-    Upgrade: "UPGRADE",
-} as const;
-
-/**
- * Output only. This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
- */
-export type OccurrenceKind = (typeof OccurrenceKind)[keyof typeof OccurrenceKind];
-
 export const PgpSignedAttestationContentType = {
     /**
      * `ContentType` is not set.
@@ -437,38 +349,6 @@ export const VulnerabilityDetailsEffectiveSeverity = {
  * The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
  */
 export type VulnerabilityDetailsEffectiveSeverity = (typeof VulnerabilityDetailsEffectiveSeverity)[keyof typeof VulnerabilityDetailsEffectiveSeverity];
-
-export const VulnerabilityDetailsSeverity = {
-    /**
-     * Unknown Impact
-     */
-    SeverityUnspecified: "SEVERITY_UNSPECIFIED",
-    /**
-     * Minimal Impact
-     */
-    Minimal: "MINIMAL",
-    /**
-     * Low Impact
-     */
-    Low: "LOW",
-    /**
-     * Medium Impact
-     */
-    Medium: "MEDIUM",
-    /**
-     * High Impact
-     */
-    High: "HIGH",
-    /**
-     * Critical Impact
-     */
-    Critical: "CRITICAL",
-} as const;
-
-/**
- * Output only. The note provider assigned Severity of the vulnerability.
- */
-export type VulnerabilityDetailsSeverity = (typeof VulnerabilityDetailsSeverity)[keyof typeof VulnerabilityDetailsSeverity];
 
 export const VulnerabilityTypeSeverity = {
     /**

@@ -85,18 +85,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
-
-        /// <summary>
-        /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         /// </summary>
         [Input("parent")]

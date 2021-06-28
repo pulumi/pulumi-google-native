@@ -33,7 +33,7 @@ export interface GetTargetSslProxyResult {
      */
     readonly certificateMap: string;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -41,7 +41,7 @@ export interface GetTargetSslProxyResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Type of the resource. Always compute#targetSslProxy for target SSL proxies.
+     * Type of the resource. Always compute#targetSslProxy for target SSL proxies.
      */
     readonly kind: string;
     /**
@@ -53,7 +53,7 @@ export interface GetTargetSslProxyResult {
      */
     readonly proxyHeader: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**

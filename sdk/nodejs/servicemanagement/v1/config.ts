@@ -118,7 +118,7 @@ export class Config extends pulumi.CustomResource {
     /**
      * The source information for this configuration if available.
      */
-    public readonly sourceInfo!: pulumi.Output<outputs.servicemanagement.v1.SourceInfoResponse>;
+    public /*out*/ readonly sourceInfo!: pulumi.Output<outputs.servicemanagement.v1.SourceInfoResponse>;
     /**
      * System parameter configuration.
      */
@@ -176,12 +176,12 @@ export class Config extends pulumi.CustomResource {
             inputs["producerProjectId"] = args ? args.producerProjectId : undefined;
             inputs["quota"] = args ? args.quota : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["sourceInfo"] = args ? args.sourceInfo : undefined;
             inputs["systemParameters"] = args ? args.systemParameters : undefined;
             inputs["systemTypes"] = args ? args.systemTypes : undefined;
             inputs["title"] = args ? args.title : undefined;
             inputs["types"] = args ? args.types : undefined;
             inputs["usage"] = args ? args.usage : undefined;
+            inputs["sourceInfo"] = undefined /*out*/;
         } else {
             inputs["apis"] = undefined /*out*/;
             inputs["authentication"] = undefined /*out*/;
@@ -306,10 +306,6 @@ export interface ConfigArgs {
      */
     quota?: pulumi.Input<inputs.servicemanagement.v1.QuotaArgs>;
     serviceName: pulumi.Input<string>;
-    /**
-     * The source information for this configuration if available.
-     */
-    sourceInfo?: pulumi.Input<inputs.servicemanagement.v1.SourceInfoArgs>;
     /**
      * System parameter configuration.
      */

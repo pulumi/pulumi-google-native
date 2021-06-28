@@ -175,12 +175,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Input<Inputs.BuildTypeArgs>? BuildType { get; set; }
 
         /// <summary>
-        /// The time this note was created. This field can be used as a filter in list requests.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// A note describing something that can be deployed.
         /// </summary>
         [Input("deployable")]
@@ -197,12 +191,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Input("expirationTime")]
         public Input<string>? ExpirationTime { get; set; }
-
-        /// <summary>
-        /// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
-        /// </summary>
-        [Input("kind")]
-        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.NoteKind>? Kind { get; set; }
 
         /// <summary>
         /// A detailed description of this `Note`.
@@ -245,12 +233,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Input("shortDescription")]
         public Input<string>? ShortDescription { get; set; }
-
-        /// <summary>
-        /// The time this note was last updated. This field can be used as a filter in list requests.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// A note describing an upgrade.

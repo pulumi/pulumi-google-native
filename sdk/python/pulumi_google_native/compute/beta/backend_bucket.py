@@ -19,51 +19,39 @@ class BackendBucketArgs:
                  project: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BackendBucket resource.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
         :param pulumi.Input['BackendBucketCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendBucket.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
-        :param pulumi.Input[str] id: [Output Only] Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] kind: Type of the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         pulumi.set(__self__, "project", project)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if cdn_policy is not None:
             pulumi.set(__self__, "cdn_policy", cdn_policy)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if custom_response_headers is not None:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
 
     @property
     @pulumi.getter
@@ -97,18 +85,6 @@ class BackendBucketArgs:
     @cdn_policy.setter
     def cdn_policy(self, value: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']]):
         pulumi.set(self, "cdn_policy", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter(name="customResponseHeaders")
@@ -148,18 +124,6 @@ class BackendBucketArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Unique identifier for the resource; defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         Type of the resource.
@@ -191,18 +155,6 @@ class BackendBucketArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
 
 class BackendBucket(pulumi.CustomResource):
     @overload
@@ -211,16 +163,13 @@ class BackendBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a BackendBucket resource in the specified project using the data included in the request.
@@ -229,14 +178,11 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
         :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendBucket.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
-        :param pulumi.Input[str] id: [Output Only] Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] kind: Type of the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         ...
     @overload
@@ -264,16 +210,13 @@ class BackendBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -288,18 +231,17 @@ class BackendBucket(pulumi.CustomResource):
 
             __props__.__dict__["bucket_name"] = bucket_name
             __props__.__dict__["cdn_policy"] = cdn_policy
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["custom_response_headers"] = custom_response_headers
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_cdn"] = enable_cdn
-            __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["self_link"] = None
         super(BackendBucket, __self__).__init__(
             'google-native:compute/beta:BackendBucket',
             resource_name,
@@ -353,7 +295,7 @@ class BackendBucket(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -401,7 +343,7 @@ class BackendBucket(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

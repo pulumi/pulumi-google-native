@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class PacketMirroringNetworkInfoResponse
     {
         /// <summary>
-        /// [Output Only] Unique identifier for the network; defined by the server.
+        /// Unique identifier for the network; defined by the server.
         /// </summary>
         public readonly string CanonicalUrl;
         /// <summary>

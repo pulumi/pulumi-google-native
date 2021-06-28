@@ -46,7 +46,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Display name of the company listing the job.
      */
-    public readonly companyDisplayName!: pulumi.Output<string>;
+    public /*out*/ readonly companyDisplayName!: pulumi.Output<string>;
     /**
      * Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
      */
@@ -70,7 +70,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Derived details about the job posting.
      */
-    public readonly derivedInfo!: pulumi.Output<outputs.jobs.v3.JobDerivedInfoResponse>;
+    public /*out*/ readonly derivedInfo!: pulumi.Output<outputs.jobs.v3.JobDerivedInfoResponse>;
     /**
      * Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
      */
@@ -110,7 +110,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The timestamp when this job posting was created.
      */
-    public readonly postingCreateTime!: pulumi.Output<string>;
+    public /*out*/ readonly postingCreateTime!: pulumi.Output<string>;
     /**
      * Optional but strongly recommended for the best service experience. The expiration timestamp of the job. After this timestamp, the job is marked as expired, and it no longer appears in search results. The expired job can't be deleted or listed by the DeleteJob and ListJobs APIs, but it can be retrieved with the GetJob API or updated with the UpdateJob API. An expired job can be updated and opened again by using a future expiration timestamp. Updating an expired job fails if there is another existing open job with same company_name, language_code and requisition_id. The expired jobs are retained in our system for 90 days. However, the overall expired job count cannot exceed 3 times the maximum of open jobs count over the past week, otherwise jobs with earlier expire time are cleaned first. Expired jobs are no longer accessible after they are cleaned out. Invalid timestamps are ignored, and treated as expire time not provided. Timestamp before the instant request is made is considered valid, the job will be treated as expired immediately. If this value is not provided at the time of job creation or is invalid, the job posting expires after 30 days from the job's creation time. For example, if the job was created on 2017/01/01 13:00AM UTC with an unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC. If this value is not provided on job update, it depends on the field masks set by UpdateJobRequest.update_mask. If the field masks include expiry_time, or the masks are empty meaning that every field is updated, the job posting expires after 30 days from the job's last update time. Otherwise the expiration date isn't updated.
      */
@@ -126,7 +126,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The timestamp when this job posting was last updated.
      */
-    public readonly postingUpdateTime!: pulumi.Output<string>;
+    public /*out*/ readonly postingUpdateTime!: pulumi.Output<string>;
     /**
      * Optional. Options for job processing.
      */
@@ -168,13 +168,11 @@ export class Job extends pulumi.CustomResource {
             }
             inputs["addresses"] = args ? args.addresses : undefined;
             inputs["applicationInfo"] = args ? args.applicationInfo : undefined;
-            inputs["companyDisplayName"] = args ? args.companyDisplayName : undefined;
             inputs["companyName"] = args ? args.companyName : undefined;
             inputs["compensationInfo"] = args ? args.compensationInfo : undefined;
             inputs["customAttributes"] = args ? args.customAttributes : undefined;
             inputs["degreeTypes"] = args ? args.degreeTypes : undefined;
             inputs["department"] = args ? args.department : undefined;
-            inputs["derivedInfo"] = args ? args.derivedInfo : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["employmentTypes"] = args ? args.employmentTypes : undefined;
             inputs["incentives"] = args ? args.incentives : undefined;
@@ -184,11 +182,9 @@ export class Job extends pulumi.CustomResource {
             inputs["jobStartTime"] = args ? args.jobStartTime : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["postingCreateTime"] = args ? args.postingCreateTime : undefined;
             inputs["postingExpireTime"] = args ? args.postingExpireTime : undefined;
             inputs["postingPublishTime"] = args ? args.postingPublishTime : undefined;
             inputs["postingRegion"] = args ? args.postingRegion : undefined;
-            inputs["postingUpdateTime"] = args ? args.postingUpdateTime : undefined;
             inputs["processingOptions"] = args ? args.processingOptions : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["promotionValue"] = args ? args.promotionValue : undefined;
@@ -196,6 +192,10 @@ export class Job extends pulumi.CustomResource {
             inputs["requisitionId"] = args ? args.requisitionId : undefined;
             inputs["responsibilities"] = args ? args.responsibilities : undefined;
             inputs["title"] = args ? args.title : undefined;
+            inputs["companyDisplayName"] = undefined /*out*/;
+            inputs["derivedInfo"] = undefined /*out*/;
+            inputs["postingCreateTime"] = undefined /*out*/;
+            inputs["postingUpdateTime"] = undefined /*out*/;
         } else {
             inputs["addresses"] = undefined /*out*/;
             inputs["applicationInfo"] = undefined /*out*/;
@@ -247,10 +247,6 @@ export interface JobArgs {
      */
     applicationInfo?: pulumi.Input<inputs.jobs.v3.ApplicationInfoArgs>;
     /**
-     * Display name of the company listing the job.
-     */
-    companyDisplayName?: pulumi.Input<string>;
-    /**
      * Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
      */
     companyName?: pulumi.Input<string>;
@@ -270,10 +266,6 @@ export interface JobArgs {
      * Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
      */
     department?: pulumi.Input<string>;
-    /**
-     * Derived details about the job posting.
-     */
-    derivedInfo?: pulumi.Input<inputs.jobs.v3.JobDerivedInfoArgs>;
     /**
      * Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
      */
@@ -311,10 +303,6 @@ export interface JobArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The timestamp when this job posting was created.
-     */
-    postingCreateTime?: pulumi.Input<string>;
-    /**
      * Optional but strongly recommended for the best service experience. The expiration timestamp of the job. After this timestamp, the job is marked as expired, and it no longer appears in search results. The expired job can't be deleted or listed by the DeleteJob and ListJobs APIs, but it can be retrieved with the GetJob API or updated with the UpdateJob API. An expired job can be updated and opened again by using a future expiration timestamp. Updating an expired job fails if there is another existing open job with same company_name, language_code and requisition_id. The expired jobs are retained in our system for 90 days. However, the overall expired job count cannot exceed 3 times the maximum of open jobs count over the past week, otherwise jobs with earlier expire time are cleaned first. Expired jobs are no longer accessible after they are cleaned out. Invalid timestamps are ignored, and treated as expire time not provided. Timestamp before the instant request is made is considered valid, the job will be treated as expired immediately. If this value is not provided at the time of job creation or is invalid, the job posting expires after 30 days from the job's creation time. For example, if the job was created on 2017/01/01 13:00AM UTC with an unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC. If this value is not provided on job update, it depends on the field masks set by UpdateJobRequest.update_mask. If the field masks include expiry_time, or the masks are empty meaning that every field is updated, the job posting expires after 30 days from the job's last update time. Otherwise the expiration date isn't updated.
      */
     postingExpireTime?: pulumi.Input<string>;
@@ -326,10 +314,6 @@ export interface JobArgs {
      * Optional. The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.
      */
     postingRegion?: pulumi.Input<enums.jobs.v3.JobPostingRegion>;
-    /**
-     * The timestamp when this job posting was last updated.
-     */
-    postingUpdateTime?: pulumi.Input<string>;
     /**
      * Optional. Options for job processing.
      */

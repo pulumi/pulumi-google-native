@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> CertificateMap { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableArray<string>> HttpFilters { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
+        /// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -88,19 +88,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> QuicOverride { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
+        /// URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -196,12 +196,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? CertificateMap { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -219,18 +213,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             get => _httpFilters ?? (_httpFilters = new InputList<string>());
             set => _httpFilters = value;
         }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -261,26 +243,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("quicOverride")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.TargetHttpsProxyQuicOverride>? QuicOverride { get; set; }
 
-        /// <summary>
-        /// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
         /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.

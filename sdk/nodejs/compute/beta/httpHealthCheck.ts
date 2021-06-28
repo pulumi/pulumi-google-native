@@ -39,9 +39,9 @@ export class HttpHealthCheck extends pulumi.CustomResource {
      */
     public readonly checkIntervalSec!: pulumi.Output<number>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -55,9 +55,9 @@ export class HttpHealthCheck extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
+     * Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -71,9 +71,9 @@ export class HttpHealthCheck extends pulumi.CustomResource {
      */
     public readonly requestPath!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
      */
@@ -98,20 +98,19 @@ export class HttpHealthCheck extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             inputs["host"] = args ? args.host : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["requestPath"] = args ? args.requestPath : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["checkIntervalSec"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -142,10 +141,6 @@ export interface HttpHealthCheckArgs {
      */
     checkIntervalSec?: pulumi.Input<number>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -157,14 +152,6 @@ export interface HttpHealthCheckArgs {
      * The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
      */
     host?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -179,10 +166,6 @@ export interface HttpHealthCheckArgs {
      * The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
      */
     requestPath?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
     /**
      * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
      */

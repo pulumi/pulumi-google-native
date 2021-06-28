@@ -49,7 +49,7 @@ class GetTargetGrpcProxyResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -73,7 +73,7 @@ class GetTargetGrpcProxyResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#targetGrpcProxy for target grpc proxies.
+        Type of the resource. Always compute#targetGrpcProxy for target grpc proxies.
         """
         return pulumi.get(self, "kind")
 
@@ -89,7 +89,7 @@ class GetTargetGrpcProxyResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -97,7 +97,7 @@ class GetTargetGrpcProxyResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL with id for the resource.
+        Server-defined URL with id for the resource.
         """
         return pulumi.get(self, "self_link_with_id")
 

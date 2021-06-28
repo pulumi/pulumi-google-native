@@ -39,7 +39,7 @@ export interface GetTargetPoolResult {
      */
     readonly backupPool: string;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -63,7 +63,7 @@ export interface GetTargetPoolResult {
      */
     readonly instances: string[];
     /**
-     * [Output Only] Type of the resource. Always compute#targetPool for target pools.
+     * Type of the resource. Always compute#targetPool for target pools.
      */
     readonly kind: string;
     /**
@@ -71,11 +71,11 @@ export interface GetTargetPoolResult {
      */
     readonly name: string;
     /**
-     * [Output Only] URL of the region where the target pool resides.
+     * URL of the region where the target pool resides.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**

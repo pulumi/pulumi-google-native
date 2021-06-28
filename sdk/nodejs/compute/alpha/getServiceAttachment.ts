@@ -31,7 +31,7 @@ export interface GetServiceAttachmentArgs {
 
 export interface GetServiceAttachmentResult {
     /**
-     * [Output Only] An array of connections for all the consumers connected to this service attachment.
+     * An array of connections for all the consumers connected to this service attachment.
      */
     readonly connectedEndpoints: outputs.compute.alpha.ServiceAttachmentConnectedEndpointResponse[];
     /**
@@ -43,7 +43,7 @@ export interface GetServiceAttachmentResult {
      */
     readonly consumerAcceptLists: outputs.compute.alpha.ServiceAttachmentConsumerProjectLimitResponse[];
     /**
-     * [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
+     * An array of forwarding rules for all the consumers connected to this service attachment.
      */
     readonly consumerForwardingRules: outputs.compute.alpha.ServiceAttachmentConsumerForwardingRuleResponse[];
     /**
@@ -51,7 +51,7 @@ export interface GetServiceAttachmentResult {
      */
     readonly consumerRejectLists: string[];
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -67,7 +67,7 @@ export interface GetServiceAttachmentResult {
      */
     readonly fingerprint: string;
     /**
-     * [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
+     * Type of the resource. Always compute#serviceAttachment for service attachments.
      */
     readonly kind: string;
     /**
@@ -83,15 +83,15 @@ export interface GetServiceAttachmentResult {
      */
     readonly producerForwardingRule: string;
     /**
-     * [Output Only] An 128-bit global unique ID of the PSC service attachment.
+     * An 128-bit global unique ID of the PSC service attachment.
      */
     readonly pscServiceAttachmentId: outputs.compute.alpha.Uint128Response;
     /**
-     * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**

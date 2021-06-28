@@ -36,9 +36,9 @@ export class MachineImage extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] The creation timestamp for this machine image in RFC3339 text format.
+     * The creation timestamp for this machine image in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -48,9 +48,9 @@ export class MachineImage extends pulumi.CustomResource {
      */
     public readonly guestFlush!: pulumi.Output<boolean>;
     /**
-     * [Output Only] The resource type, which is always compute#machineImage for machine image.
+     * The resource type, which is always compute#machineImage for machine image.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Encrypts the machine image using a customer-supplied encryption key.
      *
@@ -66,17 +66,17 @@ export class MachineImage extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [Output Only] Reserved for future use.
+     * Reserved for future use.
      */
-    public readonly satisfiesPzs!: pulumi.Output<boolean>;
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
-     * [Output Only] The URL for this machine image. The server defines this URL.
+     * The URL for this machine image. The server defines this URL.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
      * [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
      */
@@ -88,21 +88,21 @@ export class MachineImage extends pulumi.CustomResource {
      */
     public readonly sourceInstance!: pulumi.Output<string>;
     /**
-     * [Output Only] Properties of source instance.
+     * Properties of source instance.
      */
-    public readonly sourceInstanceProperties!: pulumi.Output<outputs.compute.alpha.SourceInstancePropertiesResponse>;
+    public /*out*/ readonly sourceInstanceProperties!: pulumi.Output<outputs.compute.alpha.SourceInstancePropertiesResponse>;
     /**
-     * [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+     * The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
      */
     public readonly storageLocations!: pulumi.Output<string[]>;
     /**
-     * [Output Only] Total size of the storage used by the machine image.
+     * Total size of the storage used by the machine image.
      */
-    public readonly totalStorageBytes!: pulumi.Output<string>;
+    public /*out*/ readonly totalStorageBytes!: pulumi.Output<string>;
 
     /**
      * Create a MachineImage resource with the given unique name, arguments, and options.
@@ -121,24 +121,23 @@ export class MachineImage extends pulumi.CustomResource {
             if ((!args || args.sourceInstance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceInstance'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["guestFlush"] = args ? args.guestFlush : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["machineImageEncryptionKey"] = args ? args.machineImageEncryptionKey : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["sourceDiskEncryptionKeys"] = args ? args.sourceDiskEncryptionKeys : undefined;
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
-            inputs["sourceInstanceProperties"] = args ? args.sourceInstanceProperties : undefined;
-            inputs["status"] = args ? args.status : undefined;
             inputs["storageLocations"] = args ? args.storageLocations : undefined;
-            inputs["totalStorageBytes"] = args ? args.totalStorageBytes : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["sourceInstanceProperties"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["totalStorageBytes"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -168,10 +167,6 @@ export class MachineImage extends pulumi.CustomResource {
  */
 export interface MachineImageArgs {
     /**
-     * [Output Only] The creation timestamp for this machine image in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -179,14 +174,6 @@ export interface MachineImageArgs {
      * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
      */
     guestFlush?: pulumi.Input<boolean>;
-    /**
-     * [Output Only] A unique identifier for this machine image. The server defines this identifier.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] The resource type, which is always compute#machineImage for machine image.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Encrypts the machine image using a customer-supplied encryption key.
      *
@@ -204,18 +191,6 @@ export interface MachineImageArgs {
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
-     * [Output Only] Reserved for future use.
-     */
-    satisfiesPzs?: pulumi.Input<boolean>;
-    /**
-     * [Output Only] The URL for this machine image. The server defines this URL.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
-    /**
      * [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
      */
     sourceDiskEncryptionKeys?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SourceDiskEncryptionKeyArgs>[]>;
@@ -226,19 +201,7 @@ export interface MachineImageArgs {
      */
     sourceInstance: pulumi.Input<string>;
     /**
-     * [Output Only] Properties of source instance.
-     */
-    sourceInstanceProperties?: pulumi.Input<inputs.compute.alpha.SourceInstancePropertiesArgs>;
-    /**
-     * [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
-     */
-    status?: pulumi.Input<enums.compute.alpha.MachineImageStatus>;
-    /**
      * The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
      */
     storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * [Output Only] Total size of the storage used by the machine image.
-     */
-    totalStorageBytes?: pulumi.Input<string>;
 }

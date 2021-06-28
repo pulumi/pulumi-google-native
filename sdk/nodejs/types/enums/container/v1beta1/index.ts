@@ -42,42 +42,6 @@ export const ClusterAutoscalingAutoscalingProfile = {
  */
 export type ClusterAutoscalingAutoscalingProfile = (typeof ClusterAutoscalingAutoscalingProfile)[keyof typeof ClusterAutoscalingAutoscalingProfile];
 
-export const ClusterStatus = {
-    /**
-     * Not set.
-     */
-    StatusUnspecified: "STATUS_UNSPECIFIED",
-    /**
-     * The PROVISIONING state indicates the cluster is being created.
-     */
-    Provisioning: "PROVISIONING",
-    /**
-     * The RUNNING state indicates the cluster has been created and is fully usable.
-     */
-    Running: "RUNNING",
-    /**
-     * The RECONCILING state indicates that some work is actively being done on the cluster, such as upgrading the master or node software. Details can be found in the `statusMessage` field.
-     */
-    Reconciling: "RECONCILING",
-    /**
-     * The STOPPING state indicates the cluster is being deleted.
-     */
-    Stopping: "STOPPING",
-    /**
-     * The ERROR state indicates the cluster may be unusable. Details can be found in the `statusMessage` field.
-     */
-    Error: "ERROR",
-    /**
-     * The DEGRADED state indicates the cluster requires user action to restore full functionality. Details can be found in the `statusMessage` field.
-     */
-    Degraded: "DEGRADED",
-} as const;
-
-/**
- * [Output only] The current status of this cluster.
- */
-export type ClusterStatus = (typeof ClusterStatus)[keyof typeof ClusterStatus];
-
 export const ClusterTelemetryType = {
     /**
      * Not set.
@@ -241,42 +205,6 @@ export const NetworkPolicyProvider = {
  * The selected network policy provider.
  */
 export type NetworkPolicyProvider = (typeof NetworkPolicyProvider)[keyof typeof NetworkPolicyProvider];
-
-export const NodePoolStatus = {
-    /**
-     * Not set.
-     */
-    StatusUnspecified: "STATUS_UNSPECIFIED",
-    /**
-     * The PROVISIONING state indicates the node pool is being created.
-     */
-    Provisioning: "PROVISIONING",
-    /**
-     * The RUNNING state indicates the node pool has been created and is fully usable.
-     */
-    Running: "RUNNING",
-    /**
-     * The RUNNING_WITH_ERROR state indicates the node pool has been created and is partially usable. Some error state has occurred and some functionality may be impaired. Customer may need to reissue a request or trigger a new update.
-     */
-    RunningWithError: "RUNNING_WITH_ERROR",
-    /**
-     * The RECONCILING state indicates that some work is actively being done on the node pool, such as upgrading node software. Details can be found in the `statusMessage` field.
-     */
-    Reconciling: "RECONCILING",
-    /**
-     * The STOPPING state indicates the node pool is being deleted.
-     */
-    Stopping: "STOPPING",
-    /**
-     * The ERROR state indicates the node pool may be unusable. Details can be found in the `statusMessage` field.
-     */
-    Error: "ERROR",
-} as const;
-
-/**
- * [Output only] The status of the nodes in this pool instance.
- */
-export type NodePoolStatus = (typeof NodePoolStatus)[keyof typeof NodePoolStatus];
 
 export const NodeTaintEffect = {
     /**

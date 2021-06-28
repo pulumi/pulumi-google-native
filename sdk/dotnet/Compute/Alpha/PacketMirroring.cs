@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.PacketMirroringForwardingRuleInfoResponse> CollectorIlb { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.PacketMirroringFilterResponse> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.
+        /// Type of the resource. Always compute#packetMirroring for packet mirrorings.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -80,19 +80,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URI of the region where the packetMirroring resides.
+        /// URI of the region where the packetMirroring resides.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -149,12 +149,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.PacketMirroringForwardingRuleInfoArgs>? CollectorIlb { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -173,18 +167,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("filter")]
         public Input<Inputs.PacketMirroringFilterArgs>? Filter { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
@@ -215,26 +197,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// [Output Only] URI of the region where the packetMirroring resides.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
 
         public PacketMirroringArgs()
         {

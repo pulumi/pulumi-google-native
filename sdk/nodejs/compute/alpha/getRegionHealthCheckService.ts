@@ -31,7 +31,7 @@ export interface GetRegionHealthCheckServiceArgs {
 
 export interface GetRegionHealthCheckServiceResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -69,15 +69,15 @@ export interface GetRegionHealthCheckServiceResult {
      */
     readonly notificationEndpoints: string[];
     /**
-     * [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL with id for the resource.
+     * Server-defined URL with id for the resource.
      */
     readonly selfLinkWithId: string;
 }

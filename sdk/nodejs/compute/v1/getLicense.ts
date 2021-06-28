@@ -29,7 +29,7 @@ export interface GetLicenseArgs {
 
 export interface GetLicenseResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -37,11 +37,11 @@ export interface GetLicenseResult {
      */
     readonly description: string;
     /**
-     * [Output Only] Type of resource. Always compute#license for licenses.
+     * Type of resource. Always compute#license for licenses.
      */
     readonly kind: string;
     /**
-     * [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+     * The unique code used to attach this license to images, snapshots, and disks.
      */
     readonly licenseCode: string;
     /**
@@ -50,7 +50,7 @@ export interface GetLicenseResult {
     readonly name: string;
     readonly resourceRequirements: outputs.compute.v1.LicenseResourceRequirementsResponse;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**

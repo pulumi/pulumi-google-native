@@ -19,7 +19,7 @@ type Router struct {
 	Bgp RouterBgpResponseOutput `pulumi:"bgp"`
 	// BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
 	BgpPeers RouterBgpPeerResponseArrayOutput `pulumi:"bgpPeers"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -28,7 +28,7 @@ type Router struct {
 	EncryptedInterconnectRouter pulumi.BoolOutput `pulumi:"encryptedInterconnectRouter"`
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces RouterInterfaceResponseArrayOutput `pulumi:"interfaces"`
-	// [Output Only] Type of resource. Always compute#router for routers.
+	// Type of resource. Always compute#router for routers.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -36,9 +36,9 @@ type Router struct {
 	Nats RouterNatResponseArrayOutput `pulumi:"nats"`
 	// URI of the network to which this router belongs.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
@@ -81,7 +81,7 @@ type routerState struct {
 	Bgp *RouterBgpResponse `pulumi:"bgp"`
 	// BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
 	BgpPeers []RouterBgpPeerResponse `pulumi:"bgpPeers"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -90,7 +90,7 @@ type routerState struct {
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces []RouterInterfaceResponse `pulumi:"interfaces"`
-	// [Output Only] Type of resource. Always compute#router for routers.
+	// Type of resource. Always compute#router for routers.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
@@ -98,9 +98,9 @@ type routerState struct {
 	Nats []RouterNatResponse `pulumi:"nats"`
 	// URI of the network to which this router belongs.
 	Network *string `pulumi:"network"`
-	// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 }
 
@@ -109,7 +109,7 @@ type RouterState struct {
 	Bgp RouterBgpResponsePtrInput
 	// BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
 	BgpPeers RouterBgpPeerResponseArrayInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -118,7 +118,7 @@ type RouterState struct {
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces RouterInterfaceResponseArrayInput
-	// [Output Only] Type of resource. Always compute#router for routers.
+	// Type of resource. Always compute#router for routers.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
@@ -126,9 +126,9 @@ type RouterState struct {
 	Nats RouterNatResponseArrayInput
 	// URI of the network to which this router belongs.
 	Network pulumi.StringPtrInput
-	// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 }
 
@@ -141,31 +141,22 @@ type routerArgs struct {
 	Bgp *RouterBgp `pulumi:"bgp"`
 	// BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
 	BgpPeers []RouterBgpPeer `pulumi:"bgpPeers"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
 	// Not currently available in all Interconnect locations.
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces []RouterInterface `pulumi:"interfaces"`
-	// [Output Only] Type of resource. Always compute#router for routers.
-	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// A list of NAT services created in this router.
 	Nats []RouterNat `pulumi:"nats"`
 	// URI of the network to which this router belongs.
-	Network *string `pulumi:"network"`
-	Project string  `pulumi:"project"`
-	// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	Network   *string `pulumi:"network"`
+	Project   string  `pulumi:"project"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
 }
 
 // The set of arguments for constructing a Router resource.
@@ -174,31 +165,22 @@ type RouterArgs struct {
 	Bgp RouterBgpPtrInput
 	// BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
 	BgpPeers RouterBgpPeerArrayInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
 	// Not currently available in all Interconnect locations.
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces RouterInterfaceArrayInput
-	// [Output Only] Type of resource. Always compute#router for routers.
-	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// A list of NAT services created in this router.
 	Nats RouterNatArrayInput
 	// URI of the network to which this router belongs.
-	Network pulumi.StringPtrInput
-	Project pulumi.StringInput
-	// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	Network   pulumi.StringPtrInput
+	Project   pulumi.StringInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
 }
 
 func (RouterArgs) ElementType() reflect.Type {

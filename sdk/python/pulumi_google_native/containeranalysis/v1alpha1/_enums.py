@@ -14,12 +14,9 @@ __all__ = [
     'GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind',
     'HashType',
     'LayerDirective',
-    'NoteKind',
-    'OccurrenceKind',
     'PgpSignedAttestationContentType',
     'VersionKind',
     'VulnerabilityDetailsEffectiveSeverity',
-    'VulnerabilityDetailsSeverity',
     'VulnerabilityTypeSeverity',
 ]
 
@@ -130,36 +127,6 @@ class LayerDirective(str, Enum):
     SHELL = "SHELL"
 
 
-class NoteKind(str, Enum):
-    """
-    Output only. This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
-    """
-    KIND_UNSPECIFIED = "KIND_UNSPECIFIED"
-    PACKAGE_VULNERABILITY = "PACKAGE_VULNERABILITY"
-    BUILD_DETAILS = "BUILD_DETAILS"
-    IMAGE_BASIS = "IMAGE_BASIS"
-    PACKAGE_MANAGER = "PACKAGE_MANAGER"
-    DEPLOYABLE = "DEPLOYABLE"
-    DISCOVERY = "DISCOVERY"
-    ATTESTATION_AUTHORITY = "ATTESTATION_AUTHORITY"
-    UPGRADE = "UPGRADE"
-
-
-class OccurrenceKind(str, Enum):
-    """
-    Output only. This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-    """
-    KIND_UNSPECIFIED = "KIND_UNSPECIFIED"
-    PACKAGE_VULNERABILITY = "PACKAGE_VULNERABILITY"
-    BUILD_DETAILS = "BUILD_DETAILS"
-    IMAGE_BASIS = "IMAGE_BASIS"
-    PACKAGE_MANAGER = "PACKAGE_MANAGER"
-    DEPLOYABLE = "DEPLOYABLE"
-    DISCOVERY = "DISCOVERY"
-    ATTESTATION_AUTHORITY = "ATTESTATION_AUTHORITY"
-    UPGRADE = "UPGRADE"
-
-
 class PgpSignedAttestationContentType(str, Enum):
     """
     Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -180,18 +147,6 @@ class VersionKind(str, Enum):
 class VulnerabilityDetailsEffectiveSeverity(str, Enum):
     """
     The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
-    """
-    SEVERITY_UNSPECIFIED = "SEVERITY_UNSPECIFIED"
-    MINIMAL = "MINIMAL"
-    LOW = "LOW"
-    MEDIUM = "MEDIUM"
-    HIGH = "HIGH"
-    CRITICAL = "CRITICAL"
-
-
-class VulnerabilityDetailsSeverity(str, Enum):
-    """
-    Output only. The note provider assigned Severity of the vulnerability.
     """
     SEVERITY_UNSPECIFIED = "SEVERITY_UNSPECIFIED"
     MINIMAL = "MINIMAL"

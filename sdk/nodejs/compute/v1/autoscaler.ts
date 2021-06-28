@@ -42,55 +42,55 @@ export class Autoscaler extends pulumi.CustomResource {
      */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.v1.AutoscalingPolicyResponse>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
+     * Type of the resource. Always compute#autoscaler for autoscalers.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
+     * Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
      */
-    public readonly recommendedSize!: pulumi.Output<number>;
+    public /*out*/ readonly recommendedSize!: pulumi.Output<number>;
     /**
-     * [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
+     * URL of the region where the instance group resides (for autoscalers living in regional scope).
      */
-    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Status information of existing scaling schedules.
+     * Status information of existing scaling schedules.
      */
-    public readonly scalingScheduleStatus!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly scalingScheduleStatus!: pulumi.Output<{[key: string]: string}>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] The status of the autoscaler configuration. Current set of possible values:  
+     * The status of the autoscaler configuration. Current set of possible values:  
      * - PENDING: Autoscaler backend hasn't read new/updated configuration. 
      * - DELETING: Configuration is being deleted. 
      * - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
      * - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
+     * Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
      */
-    public readonly statusDetails!: pulumi.Output<outputs.compute.v1.AutoscalerStatusDetailsResponse[]>;
+    public /*out*/ readonly statusDetails!: pulumi.Output<outputs.compute.v1.AutoscalerStatusDetailsResponse[]>;
     /**
      * URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
      */
     public readonly target!: pulumi.Output<string>;
     /**
-     * [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
+     * URL of the zone where the instance group resides (for autoscalers living in zonal scope).
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -112,21 +112,20 @@ export class Autoscaler extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["recommendedSize"] = args ? args.recommendedSize : undefined;
-            inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["scalingScheduleStatus"] = args ? args.scalingScheduleStatus : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["statusDetails"] = args ? args.statusDetails : undefined;
             inputs["target"] = args ? args.target : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["recommendedSize"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["scalingScheduleStatus"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusDetails"] = undefined /*out*/;
         } else {
             inputs["autoscalingPolicy"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -160,61 +159,18 @@ export interface AutoscalerArgs {
      */
     autoscalingPolicy?: pulumi.Input<inputs.compute.v1.AutoscalingPolicyArgs>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
-     */
-    recommendedSize?: pulumi.Input<number>;
-    /**
-     * [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
-     */
-    region?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Status information of existing scaling schedules.
-     */
-    scalingScheduleStatus?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-     * - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-     * - DELETING: Configuration is being deleted. 
-     * - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-     * - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
-     */
-    status?: pulumi.Input<enums.compute.v1.AutoscalerStatus>;
-    /**
-     * [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
-     */
-    statusDetails?: pulumi.Input<pulumi.Input<inputs.compute.v1.AutoscalerStatusDetailsArgs>[]>;
     /**
      * URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
      */
     target?: pulumi.Input<string>;
-    /**
-     * [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
-     */
     zone: pulumi.Input<string>;
 }

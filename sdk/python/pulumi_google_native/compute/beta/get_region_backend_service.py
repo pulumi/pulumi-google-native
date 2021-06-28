@@ -188,7 +188,7 @@ class GetRegionBackendServiceResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -262,7 +262,7 @@ class GetRegionBackendServiceResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of resource. Always compute#backendService for backend services.
+        Type of resource. Always compute#backendService for backend services.
         """
         return pulumi.get(self, "kind")
 
@@ -372,7 +372,7 @@ class GetRegionBackendServiceResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -380,7 +380,7 @@ class GetRegionBackendServiceResult:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> str:
         """
-        [Output Only] The resource URL for the security policy associated with this backend service.
+        The resource URL for the security policy associated with this backend service.
         """
         return pulumi.get(self, "security_policy")
 
@@ -398,7 +398,7 @@ class GetRegionBackendServiceResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 

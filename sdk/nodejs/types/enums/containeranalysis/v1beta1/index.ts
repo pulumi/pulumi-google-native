@@ -307,38 +307,6 @@ export const GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity = {
  */
 export type GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity = (typeof GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity)[keyof typeof GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity];
 
-export const GrafeasV1beta1VulnerabilityDetailsSeverity = {
-    /**
-     * Unknown.
-     */
-    SeverityUnspecified: "SEVERITY_UNSPECIFIED",
-    /**
-     * Minimal severity.
-     */
-    Minimal: "MINIMAL",
-    /**
-     * Low severity.
-     */
-    Low: "LOW",
-    /**
-     * Medium severity.
-     */
-    Medium: "MEDIUM",
-    /**
-     * High severity.
-     */
-    High: "HIGH",
-    /**
-     * Critical severity.
-     */
-    Critical: "CRITICAL",
-} as const;
-
-/**
- * Output only. The note provider assigned Severity of the vulnerability.
- */
-export type GrafeasV1beta1VulnerabilityDetailsSeverity = (typeof GrafeasV1beta1VulnerabilityDetailsSeverity)[keyof typeof GrafeasV1beta1VulnerabilityDetailsSeverity];
-
 export const LayerDirective = {
     /**
      * Default value for unsupported/missing directive.
@@ -418,94 +386,6 @@ export const LayerDirective = {
  * Required. The recovered Dockerfile directive used to construct this layer.
  */
 export type LayerDirective = (typeof LayerDirective)[keyof typeof LayerDirective];
-
-export const NoteKind = {
-    /**
-     * Default value. This value is unused.
-     */
-    NoteKindUnspecified: "NOTE_KIND_UNSPECIFIED",
-    /**
-     * The note and occurrence represent a package vulnerability.
-     */
-    Vulnerability: "VULNERABILITY",
-    /**
-     * The note and occurrence assert build provenance.
-     */
-    Build: "BUILD",
-    /**
-     * This represents an image basis relationship.
-     */
-    Image: "IMAGE",
-    /**
-     * This represents a package installed via a package manager.
-     */
-    Package: "PACKAGE",
-    /**
-     * The note and occurrence track deployment events.
-     */
-    Deployment: "DEPLOYMENT",
-    /**
-     * The note and occurrence track the initial discovery status of a resource.
-     */
-    Discovery: "DISCOVERY",
-    /**
-     * This represents a logical "role" that can attest to artifacts.
-     */
-    Attestation: "ATTESTATION",
-    /**
-     * This represents an in-toto link.
-     */
-    Intoto: "INTOTO",
-} as const;
-
-/**
- * Output only. The type of analysis. This field can be used as a filter in list requests.
- */
-export type NoteKind = (typeof NoteKind)[keyof typeof NoteKind];
-
-export const OccurrenceKind = {
-    /**
-     * Default value. This value is unused.
-     */
-    NoteKindUnspecified: "NOTE_KIND_UNSPECIFIED",
-    /**
-     * The note and occurrence represent a package vulnerability.
-     */
-    Vulnerability: "VULNERABILITY",
-    /**
-     * The note and occurrence assert build provenance.
-     */
-    Build: "BUILD",
-    /**
-     * This represents an image basis relationship.
-     */
-    Image: "IMAGE",
-    /**
-     * This represents a package installed via a package manager.
-     */
-    Package: "PACKAGE",
-    /**
-     * The note and occurrence track deployment events.
-     */
-    Deployment: "DEPLOYMENT",
-    /**
-     * The note and occurrence track the initial discovery status of a resource.
-     */
-    Discovery: "DISCOVERY",
-    /**
-     * This represents a logical "role" that can attest to artifacts.
-     */
-    Attestation: "ATTESTATION",
-    /**
-     * This represents an in-toto link.
-     */
-    Intoto: "INTOTO",
-} as const;
-
-/**
- * Output only. This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
- */
-export type OccurrenceKind = (typeof OccurrenceKind)[keyof typeof OccurrenceKind];
 
 export const PgpSignedAttestationContentType = {
     /**

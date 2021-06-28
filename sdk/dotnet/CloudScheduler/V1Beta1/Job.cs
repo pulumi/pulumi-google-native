@@ -175,12 +175,6 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1
         public Input<Inputs.HttpTargetArgs>? HttpTarget { get; set; }
 
         /// <summary>
-        /// The time the last job attempt started.
-        /// </summary>
-        [Input("lastAttemptTime")]
-        public Input<string>? LastAttemptTime { get; set; }
-
-        /// <summary>
         /// Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.
         /// </summary>
         [Input("legacyAppEngineCron")]
@@ -217,34 +211,10 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
-        /// </summary>
-        [Input("scheduleTime")]
-        public Input<string>? ScheduleTime { get; set; }
-
-        /// <summary>
-        /// State of the job.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.CloudScheduler.V1Beta1.JobState>? State { get; set; }
-
-        /// <summary>
-        /// The response from the target for the last attempted execution.
-        /// </summary>
-        [Input("status")]
-        public Input<Inputs.StatusArgs>? Status { get; set; }
-
-        /// <summary>
         /// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
-
-        /// <summary>
-        /// The creation time of the job.
-        /// </summary>
-        [Input("userUpdateTime")]
-        public Input<string>? UserUpdateTime { get; set; }
 
         public JobArgs()
         {

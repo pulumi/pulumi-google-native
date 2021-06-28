@@ -19,36 +19,28 @@ class OccurrenceArgs:
                  project: pulumi.Input[str],
                  attestation: Optional[pulumi.Input['AttestationArgs']] = None,
                  build_details: Optional[pulumi.Input['BuildDetailsArgs']] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input['DeploymentArgs']] = None,
                  derived_image: Optional[pulumi.Input['DerivedArgs']] = None,
                  discovered: Optional[pulumi.Input['DiscoveredArgs']] = None,
                  installation: Optional[pulumi.Input['InstallationArgs']] = None,
-                 kind: Optional[pulumi.Input['OccurrenceKind']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input['ResourceArgs']] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  upgrade: Optional[pulumi.Input['UpgradeOccurrenceArgs']] = None,
                  vulnerability_details: Optional[pulumi.Input['VulnerabilityDetailsArgs']] = None):
         """
         The set of arguments for constructing a Occurrence resource.
         :param pulumi.Input['AttestationArgs'] attestation: Describes an attestation of an artifact.
         :param pulumi.Input['BuildDetailsArgs'] build_details: Build details for a verifiable build.
-        :param pulumi.Input[str] create_time: The time this `Occurrence` was created.
         :param pulumi.Input['DeploymentArgs'] deployment: Describes the deployment of an artifact on a runtime.
         :param pulumi.Input['DerivedArgs'] derived_image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input['DiscoveredArgs'] discovered: Describes the initial scan status for this resource.
         :param pulumi.Input['InstallationArgs'] installation: Describes the installation of a package on the linked resource.
-        :param pulumi.Input['OccurrenceKind'] kind: This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-        :param pulumi.Input[str] name: The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
         :param pulumi.Input['ResourceArgs'] resource:  The resource for which the `Occurrence` applies.
         :param pulumi.Input[str] resource_url: The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
-        :param pulumi.Input[str] update_time: The time this `Occurrence` was last updated.
         :param pulumi.Input['UpgradeOccurrenceArgs'] upgrade: Describes an upgrade.
         :param pulumi.Input['VulnerabilityDetailsArgs'] vulnerability_details: Details of a security vulnerability note.
         """
@@ -57,8 +49,6 @@ class OccurrenceArgs:
             pulumi.set(__self__, "attestation", attestation)
         if build_details is not None:
             pulumi.set(__self__, "build_details", build_details)
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if deployment is not None:
             pulumi.set(__self__, "deployment", deployment)
         if derived_image is not None:
@@ -67,10 +57,6 @@ class OccurrenceArgs:
             pulumi.set(__self__, "discovered", discovered)
         if installation is not None:
             pulumi.set(__self__, "installation", installation)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if note_name is not None:
             pulumi.set(__self__, "note_name", note_name)
         if remediation is not None:
@@ -79,8 +65,6 @@ class OccurrenceArgs:
             pulumi.set(__self__, "resource", resource)
         if resource_url is not None:
             pulumi.set(__self__, "resource_url", resource_url)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
         if upgrade is not None:
             pulumi.set(__self__, "upgrade", upgrade)
         if vulnerability_details is not None:
@@ -118,18 +102,6 @@ class OccurrenceArgs:
     @build_details.setter
     def build_details(self, value: Optional[pulumi.Input['BuildDetailsArgs']]):
         pulumi.set(self, "build_details", value)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time this `Occurrence` was created.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -180,30 +152,6 @@ class OccurrenceArgs:
         pulumi.set(self, "installation", value)
 
     @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input['OccurrenceKind']]:
-        """
-        This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input['OccurrenceKind']]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="noteName")
     def note_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -252,18 +200,6 @@ class OccurrenceArgs:
         pulumi.set(self, "resource_url", value)
 
     @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time this `Occurrence` was last updated.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
-
-    @property
     @pulumi.getter
     def upgrade(self) -> Optional[pulumi.Input['UpgradeOccurrenceArgs']]:
         """
@@ -295,19 +231,15 @@ class Occurrence(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation: Optional[pulumi.Input[pulumi.InputType['AttestationArgs']]] = None,
                  build_details: Optional[pulumi.Input[pulumi.InputType['BuildDetailsArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
                  derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
                  discovered: Optional[pulumi.Input[pulumi.InputType['DiscoveredArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
-                 kind: Optional[pulumi.Input['OccurrenceKind']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
                  vulnerability_details: Optional[pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']]] = None,
                  __props__=None):
@@ -318,18 +250,14 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AttestationArgs']] attestation: Describes an attestation of an artifact.
         :param pulumi.Input[pulumi.InputType['BuildDetailsArgs']] build_details: Build details for a verifiable build.
-        :param pulumi.Input[str] create_time: The time this `Occurrence` was created.
         :param pulumi.Input[pulumi.InputType['DeploymentArgs']] deployment: Describes the deployment of an artifact on a runtime.
         :param pulumi.Input[pulumi.InputType['DerivedArgs']] derived_image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input[pulumi.InputType['DiscoveredArgs']] discovered: Describes the initial scan status for this resource.
         :param pulumi.Input[pulumi.InputType['InstallationArgs']] installation: Describes the installation of a package on the linked resource.
-        :param pulumi.Input['OccurrenceKind'] kind: This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-        :param pulumi.Input[str] name: The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource:  The resource for which the `Occurrence` applies.
         :param pulumi.Input[str] resource_url: The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
-        :param pulumi.Input[str] update_time: The time this `Occurrence` was last updated.
         :param pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']] upgrade: Describes an upgrade.
         :param pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']] vulnerability_details: Details of a security vulnerability note.
         """
@@ -359,19 +287,15 @@ class Occurrence(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation: Optional[pulumi.Input[pulumi.InputType['AttestationArgs']]] = None,
                  build_details: Optional[pulumi.Input[pulumi.InputType['BuildDetailsArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
                  derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
                  discovered: Optional[pulumi.Input[pulumi.InputType['DiscoveredArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
-                 kind: Optional[pulumi.Input['OccurrenceKind']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
                  vulnerability_details: Optional[pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']]] = None,
                  __props__=None):
@@ -388,13 +312,10 @@ class Occurrence(pulumi.CustomResource):
 
             __props__.__dict__["attestation"] = attestation
             __props__.__dict__["build_details"] = build_details
-            __props__.__dict__["create_time"] = create_time
             __props__.__dict__["deployment"] = deployment
             __props__.__dict__["derived_image"] = derived_image
             __props__.__dict__["discovered"] = discovered
             __props__.__dict__["installation"] = installation
-            __props__.__dict__["kind"] = kind
-            __props__.__dict__["name"] = name
             __props__.__dict__["note_name"] = note_name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -402,9 +323,12 @@ class Occurrence(pulumi.CustomResource):
             __props__.__dict__["remediation"] = remediation
             __props__.__dict__["resource"] = resource
             __props__.__dict__["resource_url"] = resource_url
-            __props__.__dict__["update_time"] = update_time
             __props__.__dict__["upgrade"] = upgrade
             __props__.__dict__["vulnerability_details"] = vulnerability_details
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["update_time"] = None
         super(Occurrence, __self__).__init__(
             'google-native:containeranalysis/v1alpha1:Occurrence',
             resource_name,

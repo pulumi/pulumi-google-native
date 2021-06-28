@@ -34,11 +34,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+        /// The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] The status of the sub public delegated prefix.
+        /// The status of the sub public delegated prefix.
         /// </summary>
         public readonly string Status;
 

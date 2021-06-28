@@ -36,9 +36,9 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -58,9 +58,9 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      */
     public readonly isLiveMigration!: pulumi.Output<boolean>;
     /**
-     * [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
+     * Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -74,17 +74,17 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      */
     public readonly publicDelegatedSubPrefixs!: pulumi.Output<outputs.compute.v1.PublicDelegatedPrefixPublicDelegatedSubPrefixResponse[]>;
     /**
-     * [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] The status of the public delegated prefix.
+     * The status of the public delegated prefix.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a PublicDelegatedPrefix resource with the given unique name, arguments, and options.
@@ -103,21 +103,20 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["isLiveMigration"] = args ? args.isLiveMigration : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parentPrefix"] = args ? args.parentPrefix : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["publicDelegatedSubPrefixs"] = args ? args.publicDelegatedSubPrefixs : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -144,17 +143,9 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
  */
 export interface PublicDelegatedPrefixArgs {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource type. The server generates this identifier.
-     */
-    id?: pulumi.Input<string>;
     /**
      * The IPv4 address range, in CIDR format, represented by this public delegated prefix.
      */
@@ -163,10 +154,6 @@ export interface PublicDelegatedPrefixArgs {
      * If true, the prefix will be live migrated.
      */
     isLiveMigration?: pulumi.Input<boolean>;
-    /**
-     * [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -180,17 +167,6 @@ export interface PublicDelegatedPrefixArgs {
      * The list of sub public delegated prefixes that exist for this public delegated prefix.
      */
     publicDelegatedSubPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.v1.PublicDelegatedPrefixPublicDelegatedSubPrefixArgs>[]>;
-    /**
-     * [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] The status of the public delegated prefix.
-     */
-    status?: pulumi.Input<enums.compute.v1.PublicDelegatedPrefixStatus>;
 }

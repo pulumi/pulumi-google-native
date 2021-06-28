@@ -44,9 +44,9 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly bgpPeers!: pulumi.Output<outputs.compute.v1.RouterBgpPeerResponse[]>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -61,9 +61,9 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly interfaces!: pulumi.Output<outputs.compute.v1.RouterInterfaceResponse[]>;
     /**
-     * [Output Only] Type of resource. Always compute#router for routers.
+     * Type of resource. Always compute#router for routers.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -77,13 +77,13 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a Router resource with the given unique name, arguments, and options.
@@ -104,19 +104,18 @@ export class Router extends pulumi.CustomResource {
             }
             inputs["bgp"] = args ? args.bgp : undefined;
             inputs["bgpPeers"] = args ? args.bgpPeers : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["encryptedInterconnectRouter"] = args ? args.encryptedInterconnectRouter : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["interfaces"] = args ? args.interfaces : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nats"] = args ? args.nats : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["bgp"] = undefined /*out*/;
             inputs["bgpPeers"] = undefined /*out*/;
@@ -151,10 +150,6 @@ export interface RouterArgs {
      */
     bgpPeers?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouterBgpPeerArgs>[]>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -164,17 +159,9 @@ export interface RouterArgs {
      */
     encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouterInterfaceArgs>[]>;
-    /**
-     * [Output Only] Type of resource. Always compute#router for routers.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -188,13 +175,6 @@ export interface RouterArgs {
      */
     network?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
 }

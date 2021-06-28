@@ -15,12 +15,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// </summary>
     public sealed class GoogleCloudMlV1__MeasurementArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Time that the trial has been running at the point of this measurement.
-        /// </summary>
-        [Input("elapsedTime")]
-        public Input<string>? ElapsedTime { get; set; }
-
         [Input("metrics")]
         private InputList<Inputs.GoogleCloudMlV1_Measurement_MetricArgs>? _metrics;
 

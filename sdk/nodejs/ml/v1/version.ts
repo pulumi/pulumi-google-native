@@ -50,7 +50,7 @@ export class Version extends pulumi.CustomResource {
     /**
      * The time the version was created.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
      */
@@ -62,7 +62,7 @@ export class Version extends pulumi.CustomResource {
     /**
      * The details of a failure or a cancellation.
      */
-    public readonly errorMessage!: pulumi.Output<string>;
+    public /*out*/ readonly errorMessage!: pulumi.Output<string>;
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
      */
@@ -78,7 +78,7 @@ export class Version extends pulumi.CustomResource {
     /**
      * If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
      */
-    public readonly isDefault!: pulumi.Output<boolean>;
+    public /*out*/ readonly isDefault!: pulumi.Output<boolean>;
     /**
      * Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */
@@ -94,7 +94,7 @@ export class Version extends pulumi.CustomResource {
     /**
      * The time the version was last used for prediction.
      */
-    public readonly lastUseTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastUseTime!: pulumi.Output<string>;
     /**
      * Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
      */
@@ -138,7 +138,7 @@ export class Version extends pulumi.CustomResource {
     /**
      * The state of a version.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Version resource with the given unique name, arguments, and options.
@@ -160,16 +160,12 @@ export class Version extends pulumi.CustomResource {
             inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
             inputs["autoScaling"] = args ? args.autoScaling : undefined;
             inputs["container"] = args ? args.container : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deploymentUri"] = args ? args.deploymentUri : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["errorMessage"] = args ? args.errorMessage : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["explanationConfig"] = args ? args.explanationConfig : undefined;
             inputs["framework"] = args ? args.framework : undefined;
-            inputs["isDefault"] = args ? args.isDefault : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["lastUseTime"] = args ? args.lastUseTime : undefined;
             inputs["machineType"] = args ? args.machineType : undefined;
             inputs["manualScaling"] = args ? args.manualScaling : undefined;
             inputs["modelId"] = args ? args.modelId : undefined;
@@ -182,9 +178,13 @@ export class Version extends pulumi.CustomResource {
             inputs["routes"] = args ? args.routes : undefined;
             inputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["errorMessage"] = undefined /*out*/;
+            inputs["isDefault"] = undefined /*out*/;
             inputs["lastMigrationModelId"] = undefined /*out*/;
             inputs["lastMigrationTime"] = undefined /*out*/;
+            inputs["lastUseTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
             inputs["acceleratorConfig"] = undefined /*out*/;
             inputs["autoScaling"] = undefined /*out*/;
@@ -237,10 +237,6 @@ export interface VersionArgs {
      */
     container?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ContainerSpecArgs>;
     /**
-     * The time the version was created.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
      * The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
      */
     deploymentUri?: pulumi.Input<string>;
@@ -248,10 +244,6 @@ export interface VersionArgs {
      * Optional. The description specified for the version when it was created.
      */
     description?: pulumi.Input<string>;
-    /**
-     * The details of a failure or a cancellation.
-     */
-    errorMessage?: pulumi.Input<string>;
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
      */
@@ -265,17 +257,9 @@ export interface VersionArgs {
      */
     framework?: pulumi.Input<enums.ml.v1.VersionFramework>;
     /**
-     * If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
-     */
-    isDefault?: pulumi.Input<boolean>;
-    /**
      * Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The time the version was last used for prediction.
-     */
-    lastUseTime?: pulumi.Input<string>;
     /**
      * Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
      */
@@ -318,8 +302,4 @@ export interface VersionArgs {
      * Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
      */
     serviceAccount?: pulumi.Input<string>;
-    /**
-     * The state of a version.
-     */
-    state?: pulumi.Input<enums.ml.v1.VersionState>;
 }

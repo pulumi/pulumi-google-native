@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetTargetVpnGatewayResult
     {
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -48,11 +48,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
+        /// A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
         /// </summary>
         public readonly ImmutableArray<string> ForwardingRules;
         /// <summary>
-        /// [Output Only] Type of resource. Always compute#targetVpnGateway for target VPN gateways.
+        /// Type of resource. Always compute#targetVpnGateway for target VPN gateways.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -74,19 +74,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// [Output Only] URL of the region where the target VPN gateway resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the target VPN gateway resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
+        /// The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
+        /// A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
         /// </summary>
         public readonly ImmutableArray<string> Tunnels;
 

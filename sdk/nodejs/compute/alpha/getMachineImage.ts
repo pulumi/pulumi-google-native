@@ -29,7 +29,7 @@ export interface GetMachineImageArgs {
 
 export interface GetMachineImageResult {
     /**
-     * [Output Only] The creation timestamp for this machine image in RFC3339 text format.
+     * The creation timestamp for this machine image in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -41,7 +41,7 @@ export interface GetMachineImageResult {
      */
     readonly guestFlush: boolean;
     /**
-     * [Output Only] The resource type, which is always compute#machineImage for machine image.
+     * The resource type, which is always compute#machineImage for machine image.
      */
     readonly kind: string;
     /**
@@ -59,15 +59,15 @@ export interface GetMachineImageResult {
      */
     readonly name: string;
     /**
-     * [Output Only] Reserved for future use.
+     * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
     /**
-     * [Output Only] The URL for this machine image. The server defines this URL.
+     * The URL for this machine image. The server defines this URL.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**
@@ -81,11 +81,11 @@ export interface GetMachineImageResult {
      */
     readonly sourceInstance: string;
     /**
-     * [Output Only] Properties of source instance.
+     * Properties of source instance.
      */
     readonly sourceInstanceProperties: outputs.compute.alpha.SourceInstancePropertiesResponse;
     /**
-     * [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+     * The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
      */
     readonly status: string;
     /**
@@ -93,7 +93,7 @@ export interface GetMachineImageResult {
      */
     readonly storageLocations: string[];
     /**
-     * [Output Only] Total size of the storage used by the machine image.
+     * Total size of the storage used by the machine image.
      */
     readonly totalStorageBytes: string;
 }

@@ -27,12 +27,12 @@ type LookupNodeTemplateResult struct {
 	Accelerators []AcceleratorConfigResponse `pulumi:"accelerators"`
 	// CPU overcommit.
 	CpuOvercommitType string `pulumi:"cpuOvercommitType"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string              `pulumi:"description"`
 	Disks       []LocalDiskResponse `pulumi:"disks"`
-	// [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
+	// The type of the resource. Always compute#nodeTemplate for node templates.
 	Kind string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
@@ -44,9 +44,9 @@ type LookupNodeTemplateResult struct {
 	//
 	// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityResponse `pulumi:"nodeTypeFlexibility"`
-	// [Output Only] The name of the region where the node template resides, such as us-central1.
+	// The name of the region where the node template resides, such as us-central1.
 	Region string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Sets the binding properties for the physical server. Valid values include:
 	// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server
@@ -54,8 +54,8 @@ type LookupNodeTemplateResult struct {
 	//
 	// See Sole-tenant node options for more information.
 	ServerBinding ServerBindingResponse `pulumi:"serverBinding"`
-	// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+	// The status of the node template. One of the following values: CREATING, READY, and DELETING.
 	Status string `pulumi:"status"`
-	// [Output Only] An optional, human-readable explanation of the status.
+	// An optional, human-readable explanation of the status.
 	StatusMessage string `pulumi:"statusMessage"`
 }

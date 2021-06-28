@@ -107,18 +107,12 @@ type compositeTypeArgs struct {
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description *string `pulumi:"description"`
 	Id          *string `pulumi:"id"`
-	// Creation timestamp in RFC3339 text format.
-	InsertTime *string `pulumi:"insertTime"`
 	// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
 	Labels []CompositeTypeLabelEntry `pulumi:"labels"`
 	// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
-	Name *string `pulumi:"name"`
-	// The Operation that most recently ran, or is currently running, on this composite type.
-	Operation *Operation `pulumi:"operation"`
-	Project   string     `pulumi:"project"`
-	// Server defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	Status   *string `pulumi:"status"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
+	Status  *string `pulumi:"status"`
 	// Files for the template type.
 	TemplateContents *TemplateContents `pulumi:"templateContents"`
 }
@@ -128,18 +122,12 @@ type CompositeTypeArgs struct {
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringPtrInput
 	Id          pulumi.StringPtrInput
-	// Creation timestamp in RFC3339 text format.
-	InsertTime pulumi.StringPtrInput
 	// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
 	Labels CompositeTypeLabelEntryArrayInput
 	// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
-	Name pulumi.StringPtrInput
-	// The Operation that most recently ran, or is currently running, on this composite type.
-	Operation OperationPtrInput
-	Project   pulumi.StringInput
-	// Server defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	Status   *CompositeTypeStatus
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
+	Status  *CompositeTypeStatus
 	// Files for the template type.
 	TemplateContents TemplateContentsPtrInput
 }

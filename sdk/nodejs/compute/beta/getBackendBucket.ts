@@ -37,7 +37,7 @@ export interface GetBackendBucketResult {
      */
     readonly cdnPolicy: outputs.compute.beta.BackendBucketCdnPolicyResponse;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -61,7 +61,7 @@ export interface GetBackendBucketResult {
      */
     readonly name: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
 }

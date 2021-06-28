@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class FixedOrPercentResponse
     {
         /// <summary>
-        /// [Output Only] Absolute value of VM instances calculated based on the specific mode.
+        /// Absolute value of VM instances calculated based on the specific mode.
         /// 
         ///  
         /// - If the value is fixed, then the calculated value is equal to the fixed value. 

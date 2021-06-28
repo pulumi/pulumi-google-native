@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         /// </summary>
         [Output("commitment")]
         public Output<string> Commitment { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#reservations for reservations.
+        /// Type of the resource. Always compute#reservations for reservations.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -46,19 +46,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
+        /// Server-defined fully-qualified URL for this resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> SpecificReservationRequired { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The status of the reservation.
+        /// The status of the reservation.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -139,34 +139,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class ReservationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-        /// </summary>
-        [Input("commitment")]
-        public Input<string>? Commitment { get; set; }
-
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#reservations for reservations.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -179,24 +155,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Reserved for future use.
-        /// </summary>
-        [Input("satisfiesPzs")]
-        public Input<bool>? SatisfiesPzs { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
         /// Share-settings for shared-reservation
@@ -215,12 +173,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("specificReservationRequired")]
         public Input<bool>? SpecificReservationRequired { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of the reservation.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.Alpha.ReservationStatus>? Status { get; set; }
 
         /// <summary>
         /// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.

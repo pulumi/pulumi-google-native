@@ -21,8 +21,6 @@ class InstanceArgs:
                  advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']] = None,
-                 cpu_platform: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
@@ -30,13 +28,8 @@ class InstanceArgs:
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 last_start_timestamp: Optional[pulumi.Input[str]] = None,
-                 last_stop_timestamp: Optional[pulumi.Input[str]] = None,
-                 last_suspended_timestamp: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['MetadataArgs']] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -49,13 +42,9 @@ class InstanceArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 resource_status: Optional[pulumi.Input['ResourceStatusArgs']] = None,
-                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  scheduling: Optional[pulumi.Input['SchedulingArgs']] = None,
                  secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input['ShieldedInstanceIntegrityPolicyArgs']] = None,
@@ -64,18 +53,11 @@ class InstanceArgs:
                  source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
-                 start_restricted: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input['InstanceStatus']] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input['TagsArgs']] = None,
-                 upcoming_maintenance: Optional[pulumi.Input['UpcomingMaintenanceArgs']] = None):
+                 tags: Optional[pulumi.Input['TagsArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] zone: [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
-        :param pulumi.Input[str] cpu_platform: [Output Only] The CPU platform used by this instance.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[bool] deletion_protection: Whether the resource should be protected against deletion.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
@@ -83,7 +65,6 @@ class InstanceArgs:
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] instance_encryption_key: Encrypts or decrypts data for an instance with a customer-supplied encryption key.
                
                If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
@@ -93,11 +74,7 @@ class InstanceArgs:
                If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later.
                
                Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#instance for instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[str] last_start_timestamp: [Output Only] Last start timestamp in RFC3339 text format.
-        :param pulumi.Input[str] last_stop_timestamp: [Output Only] Last stop timestamp in RFC3339 text format.
-        :param pulumi.Input[str] last_suspended_timestamp: [Output Only] Last suspended timestamp in RFC3339 text format.
         :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
                zones/us-central1-f/machineTypes/n1-standard-1
                
@@ -118,13 +95,9 @@ class InstanceArgs:
         :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
-        :param pulumi.Input['ResourceStatusArgs'] resource_status: [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
-        :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input['SchedulingArgs'] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_labels: Secure labels to apply to this instance. These can be later modified by the update method. Maximum number of secure labels allowed is 300.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 300.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for this resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
                
                Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
@@ -132,11 +105,7 @@ class InstanceArgs:
         :param pulumi.Input['ShieldedVmIntegrityPolicyArgs'] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
         :param pulumi.Input[str] source_machine_image: Source machine image
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
-        :param pulumi.Input[bool] start_restricted: [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
-        :param pulumi.Input['InstanceStatus'] status: [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
-        :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         :param pulumi.Input['TagsArgs'] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
-        :param pulumi.Input['UpcomingMaintenanceArgs'] upcoming_maintenance: [Output Only] Specifies upcoming maintenance for the instance.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
@@ -146,10 +115,6 @@ class InstanceArgs:
             pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if confidential_instance_config is not None:
             pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
-        if cpu_platform is not None:
-            pulumi.set(__self__, "cpu_platform", cpu_platform)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -164,20 +129,10 @@ class InstanceArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if instance_encryption_key is not None:
             pulumi.set(__self__, "instance_encryption_key", instance_encryption_key)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if last_start_timestamp is not None:
-            pulumi.set(__self__, "last_start_timestamp", last_start_timestamp)
-        if last_stop_timestamp is not None:
-            pulumi.set(__self__, "last_stop_timestamp", last_stop_timestamp)
-        if last_suspended_timestamp is not None:
-            pulumi.set(__self__, "last_suspended_timestamp", last_suspended_timestamp)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if metadata is not None:
@@ -202,20 +157,12 @@ class InstanceArgs:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
-        if resource_status is not None:
-            pulumi.set(__self__, "resource_status", resource_status)
-        if satisfies_pzs is not None:
-            pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if scheduling is not None:
             pulumi.set(__self__, "scheduling", scheduling)
         if secure_labels is not None:
             pulumi.set(__self__, "secure_labels", secure_labels)
         if secure_tags is not None:
             pulumi.set(__self__, "secure_tags", secure_tags)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if self_link_with_id is not None:
-            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if service_accounts is not None:
             pulumi.set(__self__, "service_accounts", service_accounts)
         if shielded_instance_config is not None:
@@ -232,16 +179,8 @@ class InstanceArgs:
             pulumi.set(__self__, "source_machine_image", source_machine_image)
         if source_machine_image_encryption_key is not None:
             pulumi.set(__self__, "source_machine_image_encryption_key", source_machine_image_encryption_key)
-        if start_restricted is not None:
-            pulumi.set(__self__, "start_restricted", start_restricted)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if status_message is not None:
-            pulumi.set(__self__, "status_message", status_message)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if upcoming_maintenance is not None:
-            pulumi.set(__self__, "upcoming_maintenance", upcoming_maintenance)
 
     @property
     @pulumi.getter
@@ -255,9 +194,6 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
-        """
-        [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -296,30 +232,6 @@ class InstanceArgs:
     @confidential_instance_config.setter
     def confidential_instance_config(self, value: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']]):
         pulumi.set(self, "confidential_instance_config", value)
-
-    @property
-    @pulumi.getter(name="cpuPlatform")
-    def cpu_platform(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The CPU platform used by this instance.
-        """
-        return pulumi.get(self, "cpu_platform")
-
-    @cpu_platform.setter
-    def cpu_platform(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cpu_platform", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -406,18 +318,6 @@ class InstanceArgs:
         pulumi.set(self, "hostname", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="instanceEncryptionKey")
     def instance_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
         """
@@ -439,18 +339,6 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#instance for instances.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this instance. These can be later modified by the setLabels method.
@@ -460,42 +348,6 @@ class InstanceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter(name="lastStartTimestamp")
-    def last_start_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Last start timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "last_start_timestamp")
-
-    @last_start_timestamp.setter
-    def last_start_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_start_timestamp", value)
-
-    @property
-    @pulumi.getter(name="lastStopTimestamp")
-    def last_stop_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Last stop timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "last_stop_timestamp")
-
-    @last_stop_timestamp.setter
-    def last_stop_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_stop_timestamp", value)
-
-    @property
-    @pulumi.getter(name="lastSuspendedTimestamp")
-    def last_suspended_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Last suspended timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "last_suspended_timestamp")
-
-    @last_suspended_timestamp.setter
-    def last_suspended_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_suspended_timestamp", value)
 
     @property
     @pulumi.getter(name="machineType")
@@ -646,30 +498,6 @@ class InstanceArgs:
         pulumi.set(self, "resource_policies", value)
 
     @property
-    @pulumi.getter(name="resourceStatus")
-    def resource_status(self) -> Optional[pulumi.Input['ResourceStatusArgs']]:
-        """
-        [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
-        """
-        return pulumi.get(self, "resource_status")
-
-    @resource_status.setter
-    def resource_status(self, value: Optional[pulumi.Input['ResourceStatusArgs']]):
-        pulumi.set(self, "resource_status", value)
-
-    @property
-    @pulumi.getter(name="satisfiesPzs")
-    def satisfies_pzs(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Output Only] Reserved for future use.
-        """
-        return pulumi.get(self, "satisfies_pzs")
-
-    @satisfies_pzs.setter
-    def satisfies_pzs(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "satisfies_pzs", value)
-
-    @property
     @pulumi.getter
     def scheduling(self) -> Optional[pulumi.Input['SchedulingArgs']]:
         """
@@ -704,30 +532,6 @@ class InstanceArgs:
     @secure_tags.setter
     def secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "secure_tags", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for this resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="selfLinkWithId")
-    def self_link_with_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for this resource with the resource id.
-        """
-        return pulumi.get(self, "self_link_with_id")
-
-    @self_link_with_id.setter
-    def self_link_with_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link_with_id", value)
 
     @property
     @pulumi.getter(name="serviceAccounts")
@@ -819,42 +623,6 @@ class InstanceArgs:
         pulumi.set(self, "source_machine_image_encryption_key", value)
 
     @property
-    @pulumi.getter(name="startRestricted")
-    def start_restricted(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
-        """
-        return pulumi.get(self, "start_restricted")
-
-    @start_restricted.setter
-    def start_restricted(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "start_restricted", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['InstanceStatus']]:
-        """
-        [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['InstanceStatus']]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="statusMessage")
-    def status_message(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] An optional, human-readable explanation of the status.
-        """
-        return pulumi.get(self, "status_message")
-
-    @status_message.setter
-    def status_message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status_message", value)
-
-    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input['TagsArgs']]:
         """
@@ -866,18 +634,6 @@ class InstanceArgs:
     def tags(self, value: Optional[pulumi.Input['TagsArgs']]):
         pulumi.set(self, "tags", value)
 
-    @property
-    @pulumi.getter(name="upcomingMaintenance")
-    def upcoming_maintenance(self) -> Optional[pulumi.Input['UpcomingMaintenanceArgs']]:
-        """
-        [Output Only] Specifies upcoming maintenance for the instance.
-        """
-        return pulumi.get(self, "upcoming_maintenance")
-
-    @upcoming_maintenance.setter
-    def upcoming_maintenance(self, value: Optional[pulumi.Input['UpcomingMaintenanceArgs']]):
-        pulumi.set(self, "upcoming_maintenance", value)
-
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -887,8 +643,6 @@ class Instance(pulumi.CustomResource):
                  advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['ConfidentialInstanceConfigArgs']]] = None,
-                 cpu_platform: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
@@ -896,13 +650,8 @@ class Instance(pulumi.CustomResource):
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 last_start_timestamp: Optional[pulumi.Input[str]] = None,
-                 last_stop_timestamp: Optional[pulumi.Input[str]] = None,
-                 last_suspended_timestamp: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -916,13 +665,9 @@ class Instance(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 resource_status: Optional[pulumi.Input[pulumi.InputType['ResourceStatusArgs']]] = None,
-                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
                  secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
@@ -931,11 +676,7 @@ class Instance(pulumi.CustomResource):
                  source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
-                 start_restricted: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input['InstanceStatus']] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[pulumi.InputType['TagsArgs']]] = None,
-                 upcoming_maintenance: Optional[pulumi.Input[pulumi.InputType['UpcomingMaintenanceArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -945,8 +686,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
-        :param pulumi.Input[str] cpu_platform: [Output Only] The CPU platform used by this instance.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[bool] deletion_protection: Whether the resource should be protected against deletion.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
@@ -954,7 +693,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] instance_encryption_key: Encrypts or decrypts data for an instance with a customer-supplied encryption key.
                
                If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
@@ -964,11 +702,7 @@ class Instance(pulumi.CustomResource):
                If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later.
                
                Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#instance for instances.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[str] last_start_timestamp: [Output Only] Last start timestamp in RFC3339 text format.
-        :param pulumi.Input[str] last_stop_timestamp: [Output Only] Last stop timestamp in RFC3339 text format.
-        :param pulumi.Input[str] last_suspended_timestamp: [Output Only] Last suspended timestamp in RFC3339 text format.
         :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
                zones/us-central1-f/machineTypes/n1-standard-1
                
@@ -989,13 +723,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
-        :param pulumi.Input[pulumi.InputType['ResourceStatusArgs']] resource_status: [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
-        :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[pulumi.InputType['SchedulingArgs']] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_labels: Secure labels to apply to this instance. These can be later modified by the update method. Maximum number of secure labels allowed is 300.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 300.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for this resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
                
                Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
@@ -1003,12 +733,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
         :param pulumi.Input[str] source_machine_image: Source machine image
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
-        :param pulumi.Input[bool] start_restricted: [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
-        :param pulumi.Input['InstanceStatus'] status: [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
-        :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         :param pulumi.Input[pulumi.InputType['TagsArgs']] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
-        :param pulumi.Input[pulumi.InputType['UpcomingMaintenanceArgs']] upcoming_maintenance: [Output Only] Specifies upcoming maintenance for the instance.
-        :param pulumi.Input[str] zone: [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         ...
     @overload
@@ -1037,8 +762,6 @@ class Instance(pulumi.CustomResource):
                  advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['ConfidentialInstanceConfigArgs']]] = None,
-                 cpu_platform: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
@@ -1046,13 +769,8 @@ class Instance(pulumi.CustomResource):
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 last_start_timestamp: Optional[pulumi.Input[str]] = None,
-                 last_stop_timestamp: Optional[pulumi.Input[str]] = None,
-                 last_suspended_timestamp: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -1066,13 +784,9 @@ class Instance(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 resource_status: Optional[pulumi.Input[pulumi.InputType['ResourceStatusArgs']]] = None,
-                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
                  secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
@@ -1081,11 +795,7 @@ class Instance(pulumi.CustomResource):
                  source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
-                 start_restricted: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input['InstanceStatus']] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[pulumi.InputType['TagsArgs']]] = None,
-                 upcoming_maintenance: Optional[pulumi.Input[pulumi.InputType['UpcomingMaintenanceArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -1102,8 +812,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["advanced_machine_features"] = advanced_machine_features
             __props__.__dict__["can_ip_forward"] = can_ip_forward
             __props__.__dict__["confidential_instance_config"] = confidential_instance_config
-            __props__.__dict__["cpu_platform"] = cpu_platform
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["disks"] = disks
@@ -1111,13 +819,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
             __props__.__dict__["guest_accelerators"] = guest_accelerators
             __props__.__dict__["hostname"] = hostname
-            __props__.__dict__["id"] = id
             __props__.__dict__["instance_encryption_key"] = instance_encryption_key
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["labels"] = labels
-            __props__.__dict__["last_start_timestamp"] = last_start_timestamp
-            __props__.__dict__["last_stop_timestamp"] = last_stop_timestamp
-            __props__.__dict__["last_suspended_timestamp"] = last_suspended_timestamp
             __props__.__dict__["machine_type"] = machine_type
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["min_cpu_platform"] = min_cpu_platform
@@ -1133,13 +836,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
-            __props__.__dict__["resource_status"] = resource_status
-            __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["secure_labels"] = secure_labels
             __props__.__dict__["secure_tags"] = secure_tags
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["service_accounts"] = service_accounts
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["shielded_instance_integrity_policy"] = shielded_instance_integrity_policy
@@ -1148,16 +847,26 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["source_instance_template"] = source_instance_template
             __props__.__dict__["source_machine_image"] = source_machine_image
             __props__.__dict__["source_machine_image_encryption_key"] = source_machine_image_encryption_key
-            __props__.__dict__["start_restricted"] = start_restricted
-            __props__.__dict__["status"] = status
-            __props__.__dict__["status_message"] = status_message
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["upcoming_maintenance"] = upcoming_maintenance
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["cpu_platform"] = None
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["last_start_timestamp"] = None
+            __props__.__dict__["last_stop_timestamp"] = None
+            __props__.__dict__["last_suspended_timestamp"] = None
+            __props__.__dict__["resource_status"] = None
+            __props__.__dict__["satisfies_pzs"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["self_link_with_id"] = None
+            __props__.__dict__["start_restricted"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["status_message"] = None
+            __props__.__dict__["upcoming_maintenance"] = None
         super(Instance, __self__).__init__(
             'google-native:compute/alpha:Instance',
             resource_name,
@@ -1258,7 +967,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="cpuPlatform")
     def cpu_platform(self) -> pulumi.Output[str]:
         """
-        [Output Only] The CPU platform used by this instance.
+        The CPU platform used by this instance.
         """
         return pulumi.get(self, "cpu_platform")
 
@@ -1266,7 +975,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -1356,7 +1065,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of the resource. Always compute#instance for instances.
+        Type of the resource. Always compute#instance for instances.
         """
         return pulumi.get(self, "kind")
 
@@ -1382,7 +1091,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="lastStartTimestamp")
     def last_start_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Last start timestamp in RFC3339 text format.
+        Last start timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_start_timestamp")
 
@@ -1390,7 +1099,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="lastStopTimestamp")
     def last_stop_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Last stop timestamp in RFC3339 text format.
+        Last stop timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_stop_timestamp")
 
@@ -1398,7 +1107,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="lastSuspendedTimestamp")
     def last_suspended_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Last suspended timestamp in RFC3339 text format.
+        Last suspended timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_suspended_timestamp")
 
@@ -1501,7 +1210,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="resourceStatus")
     def resource_status(self) -> pulumi.Output['outputs.ResourceStatusResponse']:
         """
-        [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
         """
         return pulumi.get(self, "resource_status")
 
@@ -1509,7 +1218,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
-        [Output Only] Reserved for future use.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -1541,7 +1250,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for this resource.
+        Server-defined URL for this resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -1549,7 +1258,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -1609,7 +1318,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="startRestricted")
     def start_restricted(self) -> pulumi.Output[bool]:
         """
-        [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+        Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
         """
         return pulumi.get(self, "start_restricted")
 
@@ -1617,7 +1326,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+        The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
         """
         return pulumi.get(self, "status")
 
@@ -1625,7 +1334,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="statusMessage")
     def status_message(self) -> pulumi.Output[str]:
         """
-        [Output Only] An optional, human-readable explanation of the status.
+        An optional, human-readable explanation of the status.
         """
         return pulumi.get(self, "status_message")
 
@@ -1641,7 +1350,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="upcomingMaintenance")
     def upcoming_maintenance(self) -> pulumi.Output['outputs.UpcomingMaintenanceResponse']:
         """
-        [Output Only] Specifies upcoming maintenance for the instance.
+        Specifies upcoming maintenance for the instance.
         """
         return pulumi.get(self, "upcoming_maintenance")
 
@@ -1649,7 +1358,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "zone")
 

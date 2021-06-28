@@ -61,51 +61,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
     }
 
     /// <summary>
-    /// Output only. The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
-    /// </summary>
-    [EnumType]
-    public readonly struct QueueState : IEquatable<QueueState>
-    {
-        private readonly string _value;
-
-        private QueueState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Unspecified state.
-        /// </summary>
-        public static QueueState StateUnspecified { get; } = new QueueState("STATE_UNSPECIFIED");
-        /// <summary>
-        /// The queue is running. Tasks can be dispatched. If the queue was created using Cloud Tasks and the queue has had no activity (method calls or task dispatches) for 30 days, the queue may take a few minutes to re-activate. Some method calls may return NOT_FOUND and tasks may not be dispatched for a few minutes until the queue has been re-activated.
-        /// </summary>
-        public static QueueState Running { get; } = new QueueState("RUNNING");
-        /// <summary>
-        /// Tasks are paused by the user. If the queue is paused then Cloud Tasks will stop delivering tasks from it, but more tasks can still be added to it by the user. When a pull queue is paused, all LeaseTasks calls will return a FAILED_PRECONDITION.
-        /// </summary>
-        public static QueueState Paused { get; } = new QueueState("PAUSED");
-        /// <summary>
-        /// The queue is disabled. A queue becomes `DISABLED` when [queue.yaml](https://cloud.google.com/appengine/docs/python/config/queueref) or [queue.xml](https://cloud.google.com/appengine/docs/standard/java/config/queueref) is uploaded which does not contain the queue. You cannot directly disable a queue. When a queue is disabled, tasks can still be added to a queue but the tasks are not dispatched and LeaseTasks calls return a `FAILED_PRECONDITION` error. To permanently delete this queue and all of its tasks, call DeleteQueue.
-        /// </summary>
-        public static QueueState Disabled { get; } = new QueueState("DISABLED");
-
-        public static bool operator ==(QueueState left, QueueState right) => left.Equals(right);
-        public static bool operator !=(QueueState left, QueueState right) => !left.Equals(right);
-
-        public static explicit operator string(QueueState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is QueueState other && Equals(other);
-        public bool Equals(QueueState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
     /// </summary>
     [EnumType]
@@ -139,47 +94,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is TaskResponseView other && Equals(other);
         public bool Equals(TaskResponseView other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Output only. The view specifies which subset of the Task has been returned.
-    /// </summary>
-    [EnumType]
-    public readonly struct TaskView : IEquatable<TaskView>
-    {
-        private readonly string _value;
-
-        private TaskView(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Unspecified. Defaults to BASIC.
-        /// </summary>
-        public static TaskView ViewUnspecified { get; } = new TaskView("VIEW_UNSPECIFIED");
-        /// <summary>
-        /// The basic view omits fields which can be large or can contain sensitive data. This view does not include the (payload in AppEngineHttpRequest and payload in PullMessage). These payloads are desirable to return only when needed, because they can be large and because of the sensitivity of the data that you choose to store in it.
-        /// </summary>
-        public static TaskView Basic { get; } = new TaskView("BASIC");
-        /// <summary>
-        /// All information is returned. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Queue resource.
-        /// </summary>
-        public static TaskView Full { get; } = new TaskView("FULL");
-
-        public static bool operator ==(TaskView left, TaskView right) => left.Equals(right);
-        public static bool operator !=(TaskView left, TaskView right) => !left.Equals(right);
-
-        public static explicit operator string(TaskView value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is TaskView other && Equals(other);
-        public bool Equals(TaskView other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

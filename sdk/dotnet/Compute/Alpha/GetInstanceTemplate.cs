@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetInstanceTemplateResult
     {
         /// <summary>
-        /// [Output Only] The creation timestamp for this instance template in RFC3339 text format.
+        /// The creation timestamp for this instance template in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
+        /// The resource type, which is always compute#instanceTemplate for instance templates.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -57,11 +57,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.InstancePropertiesResponse Properties;
         /// <summary>
-        /// [Output Only] The URL for this instance template. The server defines this URL.
+        /// The URL for this instance template. The server defines this URL.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>

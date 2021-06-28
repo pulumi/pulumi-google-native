@@ -26,31 +26,3 @@ export const WorkerPoolRegionsItem = {
 } as const;
 
 export type WorkerPoolRegionsItem = (typeof WorkerPoolRegionsItem)[keyof typeof WorkerPoolRegionsItem];
-
-export const WorkerPoolStatus = {
-    /**
-     * Status of the `WorkerPool` is unknown.
-     */
-    StatusUnspecified: "STATUS_UNSPECIFIED",
-    /**
-     * `WorkerPool` is being created.
-     */
-    Creating: "CREATING",
-    /**
-     * `WorkerPool` is running.
-     */
-    Running: "RUNNING",
-    /**
-     * `WorkerPool` is being deleted: cancelling builds and draining workers.
-     */
-    Deleting: "DELETING",
-    /**
-     * `WorkerPool` is deleted.
-     */
-    Deleted: "DELETED",
-} as const;
-
-/**
- * Output only. WorkerPool Status.
- */
-export type WorkerPoolStatus = (typeof WorkerPoolStatus)[keyof typeof WorkerPoolStatus];

@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string BackupPool;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly ImmutableArray<string> Instances;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#targetPool for target pools.
+        /// Type of the resource. Always compute#targetPool for target pools.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -80,11 +80,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] URL of the region where the target pool resides.
+        /// URL of the region where the target pool resides.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>

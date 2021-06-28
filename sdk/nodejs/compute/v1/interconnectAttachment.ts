@@ -60,21 +60,21 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly candidateSubnets!: pulumi.Output<string[]>;
     /**
-     * [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
      */
-    public readonly cloudRouterIpAddress!: pulumi.Output<string>;
+    public /*out*/ readonly cloudRouterIpAddress!: pulumi.Output<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * [Output Only] IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
      */
-    public readonly customerRouterIpAddress!: pulumi.Output<string>;
+    public /*out*/ readonly customerRouterIpAddress!: pulumi.Output<string>;
     /**
-     * [Output Only] Dataplane version for this InterconnectAttachment.
+     * Dataplane version for this InterconnectAttachment.
      */
-    public readonly dataplaneVersion!: pulumi.Output<number>;
+    public /*out*/ readonly dataplaneVersion!: pulumi.Output<number>;
     /**
      * An optional description of this resource.
      */
@@ -103,9 +103,9 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly ipsecInternalAddresses!: pulumi.Output<string[]>;
     /**
-     * [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
+     * Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
      */
@@ -115,11 +115,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
+     * The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
      * - OS_ACTIVE: The attachment has been turned up and is ready to use. 
      * - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
      */
-    public readonly operationalStatus!: pulumi.Output<string>;
+    public /*out*/ readonly operationalStatus!: pulumi.Output<string>;
     /**
      * [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
      */
@@ -133,11 +133,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly partnerMetadata!: pulumi.Output<outputs.compute.v1.InterconnectAttachmentPartnerMetadataResponse>;
     /**
-     * [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
+     * Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
      */
-    public readonly privateInterconnectInfo!: pulumi.Output<outputs.compute.v1.InterconnectAttachmentPrivateInfoResponse>;
+    public /*out*/ readonly privateInterconnectInfo!: pulumi.Output<outputs.compute.v1.InterconnectAttachmentPrivateInfoResponse>;
     /**
-     * [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -145,11 +145,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly router!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
+     * The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
      * - ACTIVE: The attachment has been turned up and is ready to use. 
      * - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
      * - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 
@@ -157,7 +157,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. 
      * - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The type of interconnect attachment this is, which can take one of the following values: 
      * - DEDICATED: an attachment to a Dedicated Interconnect. 
@@ -190,33 +190,32 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["adminEnabled"] = args ? args.adminEnabled : undefined;
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
             inputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
-            inputs["cloudRouterIpAddress"] = args ? args.cloudRouterIpAddress : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
-            inputs["customerRouterIpAddress"] = args ? args.customerRouterIpAddress : undefined;
-            inputs["dataplaneVersion"] = args ? args.dataplaneVersion : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
             inputs["encryption"] = args ? args.encryption : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["interconnect"] = args ? args.interconnect : undefined;
             inputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["mtu"] = args ? args.mtu : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["operationalStatus"] = args ? args.operationalStatus : undefined;
             inputs["pairingKey"] = args ? args.pairingKey : undefined;
             inputs["partnerAsn"] = args ? args.partnerAsn : undefined;
             inputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
-            inputs["privateInterconnectInfo"] = args ? args.privateInterconnectInfo : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["router"] = args ? args.router : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["validateOnly"] = args ? args.validateOnly : undefined;
             inputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
+            inputs["cloudRouterIpAddress"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["customerRouterIpAddress"] = undefined /*out*/;
+            inputs["dataplaneVersion"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["operationalStatus"] = undefined /*out*/;
+            inputs["privateInterconnectInfo"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
             inputs["adminEnabled"] = undefined /*out*/;
             inputs["bandwidth"] = undefined /*out*/;
@@ -281,22 +280,6 @@ export interface InterconnectAttachmentArgs {
      */
     candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
-     */
-    cloudRouterIpAddress?: pulumi.Input<string>;
-    /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
-     * [Output Only] IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
-     */
-    customerRouterIpAddress?: pulumi.Input<string>;
-    /**
-     * [Output Only] Dataplane version for this InterconnectAttachment.
-     */
-    dataplaneVersion?: pulumi.Input<number>;
-    /**
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
@@ -315,10 +298,6 @@ export interface InterconnectAttachmentArgs {
      */
     encryption?: pulumi.Input<enums.compute.v1.InterconnectAttachmentEncryption>;
     /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * URL of the underlying Interconnect object that this attachment's traffic will traverse through.
      */
     interconnect?: pulumi.Input<string>;
@@ -328,10 +307,6 @@ export interface InterconnectAttachmentArgs {
      */
     ipsecInternalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
-     */
-    kind?: pulumi.Input<string>;
-    /**
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
      */
     mtu?: pulumi.Input<number>;
@@ -339,12 +314,6 @@ export interface InterconnectAttachmentArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
-    /**
-     * [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
-     * - OS_ACTIVE: The attachment has been turned up and is ready to use. 
-     * - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-     */
-    operationalStatus?: pulumi.Input<enums.compute.v1.InterconnectAttachmentOperationalStatus>;
     /**
      * [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
      */
@@ -357,34 +326,13 @@ export interface InterconnectAttachmentArgs {
      * Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
      */
     partnerMetadata?: pulumi.Input<inputs.compute.v1.InterconnectAttachmentPartnerMetadataArgs>;
-    /**
-     * [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
-     */
-    privateInterconnectInfo?: pulumi.Input<inputs.compute.v1.InterconnectAttachmentPrivateInfoArgs>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
      */
     router?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
-     * - ACTIVE: The attachment has been turned up and is ready to use. 
-     * - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
-     * - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 
-     * - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. 
-     * - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. 
-     * - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
-     */
-    state?: pulumi.Input<enums.compute.v1.InterconnectAttachmentState>;
     /**
      * The type of interconnect attachment this is, which can take one of the following values: 
      * - DEDICATED: an attachment to a Dedicated Interconnect. 

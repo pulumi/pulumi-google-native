@@ -22,13 +22,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> AdminEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
+        /// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
         /// </summary>
         [Output("circuitInfos")]
         public Output<ImmutableArray<Outputs.InterconnectCircuitInfoResponse>> CircuitInfos { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -46,25 +46,25 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] A list of outages expected for this Interconnect.
+        /// A list of outages expected for this Interconnect.
         /// </summary>
         [Output("expectedOutages")]
         public Output<ImmutableArray<Outputs.InterconnectOutageNotificationResponse>> ExpectedOutages { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
+        /// IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
         /// </summary>
         [Output("googleIpAddress")]
         public Output<string> GoogleIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
+        /// Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
         /// </summary>
         [Output("googleReferenceId")]
         public Output<string> GoogleReferenceId { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
+        /// A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
         /// </summary>
         [Output("interconnectAttachments")]
         public Output<ImmutableArray<string>> InterconnectAttachments { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> InterconnectType { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#interconnect for interconnects.
+        /// Type of the resource. Always compute#interconnect for interconnects.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> NocContactEmail { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
+        /// The current status of this Interconnect's functionality, which can take one of the following values: 
         /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
         /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
         /// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
@@ -133,13 +133,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> OperationalStatus { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
+        /// IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
         /// </summary>
         [Output("peerIpAddress")]
         public Output<string> PeerIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Number of links actually provisioned in this interconnect.
+        /// Number of links actually provisioned in this interconnect.
         /// </summary>
         [Output("provisionedLinkCount")]
         public Output<int> ProvisionedLinkCount { get; private set; } = null!;
@@ -151,19 +151,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<int> RequestedLinkCount { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
+        /// The current state of Interconnect functionality, which can take one of the following values: 
         /// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
         /// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
         /// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
@@ -222,24 +222,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("adminEnabled")]
         public Input<bool>? AdminEnabled { get; set; }
 
-        [Input("circuitInfos")]
-        private InputList<Inputs.InterconnectCircuitInfoArgs>? _circuitInfos;
-
-        /// <summary>
-        /// [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
-        /// </summary>
-        public InputList<Inputs.InterconnectCircuitInfoArgs> CircuitInfos
-        {
-            get => _circuitInfos ?? (_circuitInfos = new InputList<Inputs.InterconnectCircuitInfoArgs>());
-            set => _circuitInfos = value;
-        }
-
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
         /// <summary>
         /// Customer name, to put in the Letter of Authorization as the party authorized to request a crossconnect.
         /// </summary>
@@ -252,48 +234,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("expectedOutages")]
-        private InputList<Inputs.InterconnectOutageNotificationArgs>? _expectedOutages;
-
-        /// <summary>
-        /// [Output Only] A list of outages expected for this Interconnect.
-        /// </summary>
-        public InputList<Inputs.InterconnectOutageNotificationArgs> ExpectedOutages
-        {
-            get => _expectedOutages ?? (_expectedOutages = new InputList<Inputs.InterconnectOutageNotificationArgs>());
-            set => _expectedOutages = value;
-        }
-
-        /// <summary>
-        /// [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
-        /// </summary>
-        [Input("googleIpAddress")]
-        public Input<string>? GoogleIpAddress { get; set; }
-
-        /// <summary>
-        /// [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
-        /// </summary>
-        [Input("googleReferenceId")]
-        public Input<string>? GoogleReferenceId { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("interconnectAttachments")]
-        private InputList<string>? _interconnectAttachments;
-
-        /// <summary>
-        /// [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
-        /// </summary>
-        public InputList<string> InterconnectAttachments
-        {
-            get => _interconnectAttachments ?? (_interconnectAttachments = new InputList<string>());
-            set => _interconnectAttachments = value;
-        }
-
         /// <summary>
         /// Type of interconnect, which can take one of the following values: 
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner. 
@@ -301,12 +241,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("interconnectType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectInterconnectType>? InterconnectType { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#interconnect for interconnects.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -346,29 +280,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("nocContactEmail")]
         public Input<string>? NocContactEmail { get; set; }
 
-        /// <summary>
-        /// [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
-        /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
-        /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
-        /// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-        /// </summary>
-        [Input("operationalStatus")]
-        public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectOperationalStatus>? OperationalStatus { get; set; }
-
-        /// <summary>
-        /// [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
-        /// </summary>
-        [Input("peerIpAddress")]
-        public Input<string>? PeerIpAddress { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// [Output Only] Number of links actually provisioned in this interconnect.
-        /// </summary>
-        [Input("provisionedLinkCount")]
-        public Input<int>? ProvisionedLinkCount { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
@@ -378,27 +291,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("requestedLinkCount")]
         public Input<int>? RequestedLinkCount { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
-        /// </summary>
-        [Input("selfLinkWithId")]
-        public Input<string>? SelfLinkWithId { get; set; }
-
-        /// <summary>
-        /// [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
-        /// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
-        /// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
-        /// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectState>? State { get; set; }
 
         public InterconnectArgs()
         {

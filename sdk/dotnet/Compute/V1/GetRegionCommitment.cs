@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Category;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -52,11 +52,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] Commitment end time in RFC3339 text format.
+        /// Commitment end time in RFC3339 text format.
         /// </summary>
         public readonly string EndTimestamp;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#commitment for commitments.
+        /// Type of the resource. Always compute#commitment for commitments.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Plan;
         /// <summary>
-        /// [Output Only] URL of the region where this commitment may be used.
+        /// URL of the region where this commitment may be used.
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -84,19 +84,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.ResourceCommitmentResponse> Resources;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Commitment start time in RFC3339 text format.
+        /// Commitment start time in RFC3339 text format.
         /// </summary>
         public readonly string StartTimestamp;
         /// <summary>
-        /// [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+        /// Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// [Output Only] An optional, human-readable explanation of the status.
+        /// An optional, human-readable explanation of the status.
         /// </summary>
         public readonly string StatusMessage;
 

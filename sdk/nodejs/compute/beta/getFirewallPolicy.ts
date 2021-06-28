@@ -31,7 +31,7 @@ export interface GetFirewallPolicyResult {
      */
     readonly associations: outputs.compute.beta.FirewallPolicyAssociationResponse[];
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -53,15 +53,15 @@ export interface GetFirewallPolicyResult {
      */
     readonly kind: string;
     /**
-     * [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
+     * Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
      */
     readonly name: string;
     /**
-     * [Output Only] The parent of the firewall policy.
+     * The parent of the firewall policy.
      */
     readonly parent: string;
     /**
-     * [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
+     * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
     readonly ruleTupleCount: number;
     /**
@@ -69,11 +69,11 @@ export interface GetFirewallPolicyResult {
      */
     readonly rules: outputs.compute.beta.FirewallPolicyRuleResponse[];
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
     /**

@@ -15,18 +15,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// </summary>
     public sealed class SslCertificateManagedSslCertificateArgs : Pulumi.ResourceArgs
     {
-        [Input("domainStatus")]
-        private InputMap<string>? _domainStatus;
-
-        /// <summary>
-        /// [Output only] Detailed statuses of the domains specified for managed certificate resource.
-        /// </summary>
-        public InputMap<string> DomainStatus
-        {
-            get => _domainStatus ?? (_domainStatus = new InputMap<string>());
-            set => _domainStatus = value;
-        }
-
         [Input("domains")]
         private InputList<string>? _domains;
 
@@ -38,12 +26,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
             get => _domains ?? (_domains = new InputList<string>());
             set => _domains = value;
         }
-
-        /// <summary>
-        /// [Output only] Status of the managed certificate resource.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.V1.SslCertificateManagedSslCertificateStatus>? Status { get; set; }
 
         public SslCertificateManagedSslCertificateArgs()
         {

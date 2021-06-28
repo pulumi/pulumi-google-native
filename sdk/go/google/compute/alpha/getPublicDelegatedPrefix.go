@@ -24,7 +24,7 @@ type LookupPublicDelegatedPrefixArgs struct {
 }
 
 type LookupPublicDelegatedPrefixResult struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -36,7 +36,7 @@ type LookupPublicDelegatedPrefixResult struct {
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration bool `pulumi:"isLiveMigration"`
-	// [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
+	// Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
@@ -44,12 +44,12 @@ type LookupPublicDelegatedPrefixResult struct {
 	ParentPrefix string `pulumi:"parentPrefix"`
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs []PublicDelegatedPrefixPublicDelegatedSubPrefixResponse `pulumi:"publicDelegatedSubPrefixs"`
-	// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL with id for the resource.
+	// Server-defined URL with id for the resource.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// [Output Only] The status of the public delegated prefix.
+	// The status of the public delegated prefix.
 	Status string `pulumi:"status"`
 }

@@ -29,7 +29,7 @@ export interface GetRouteArgs {
 
 export interface GetRouteResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -41,7 +41,7 @@ export interface GetRouteResult {
      */
     readonly destRange: string;
     /**
-     * [Output Only] Type of this resource. Always compute#routes for Route resources.
+     * Type of this resource. Always compute#routes for Route resources.
      */
     readonly kind: string;
     /**
@@ -77,7 +77,7 @@ export interface GetRouteResult {
      */
     readonly nextHopNetwork: string;
     /**
-     * [Output Only] The network peering name that should handle matching packets, which should conform to RFC1035.
+     * The network peering name that should handle matching packets, which should conform to RFC1035.
      */
     readonly nextHopPeering: string;
     /**
@@ -89,7 +89,7 @@ export interface GetRouteResult {
      */
     readonly priority: number;
     /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
+     * Server-defined fully-qualified URL for this resource.
      */
     readonly selfLink: string;
     /**
@@ -97,7 +97,7 @@ export interface GetRouteResult {
      */
     readonly tags: string[];
     /**
-     * [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+     * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      */
     readonly warnings: outputs.compute.v1.RouteWarningsItemResponse[];
 }

@@ -36,9 +36,9 @@ export class Subnetwork extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
      */
@@ -54,21 +54,21 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+     * The gateway address for default routes to reach destination addresses outside this subnetwork.
      */
-    public readonly gatewayAddress!: pulumi.Output<string>;
+    public /*out*/ readonly gatewayAddress!: pulumi.Output<string>;
     /**
      * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
-     * [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+     * The range of internal IPv6 addresses that are owned by this subnetwork.
      */
-    public readonly ipv6CidrRange!: pulumi.Output<string>;
+    public /*out*/ readonly ipv6CidrRange!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+     * Type of the resource. Always compute#subnetwork for Subnetwork resources.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
      */
@@ -108,13 +108,13 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly secondaryIpRanges!: pulumi.Output<outputs.compute.v1.SubnetworkSecondaryRangeResponse[]>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+     * The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Subnetwork resource with the given unique name, arguments, and options.
@@ -133,14 +133,9 @@ export class Subnetwork extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
-            inputs["gatewayAddress"] = args ? args.gatewayAddress : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            inputs["ipv6CidrRange"] = args ? args.ipv6CidrRange : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -152,9 +147,13 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["gatewayAddress"] = undefined /*out*/;
+            inputs["ipv6CidrRange"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -188,10 +187,6 @@ export class Subnetwork extends pulumi.CustomResource {
  */
 export interface SubnetworkArgs {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
      */
     description?: pulumi.Input<string>;
@@ -200,25 +195,9 @@ export interface SubnetworkArgs {
      */
     enableFlowLogs?: pulumi.Input<boolean>;
     /**
-     * [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
-     */
-    gatewayAddress?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
      */
     ipCidrRange?: pulumi.Input<string>;
-    /**
-     * [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
-     */
-    ipv6CidrRange?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
      */
@@ -259,12 +238,4 @@ export interface SubnetworkArgs {
      * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.v1.SubnetworkSecondaryRangeArgs>[]>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-     */
-    state?: pulumi.Input<enums.compute.v1.SubnetworkState>;
 }

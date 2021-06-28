@@ -39,7 +39,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyAssociationResponse> Associations;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -75,11 +75,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] The parent of the security policy.
+        /// The parent of the security policy.
         /// </summary>
         public readonly string Parent;
         /// <summary>
-        /// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
+        /// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         /// </summary>
         public readonly int RuleTupleCount;
         /// <summary>
@@ -87,11 +87,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRuleResponse> Rules;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>

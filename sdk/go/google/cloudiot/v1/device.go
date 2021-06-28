@@ -170,34 +170,16 @@ type deviceArgs struct {
 	// Gateway-related configuration and state.
 	GatewayConfig *GatewayConfig `pulumi:"gatewayConfig"`
 	// The user-defined device identifier. The device ID must be unique within a device registry.
-	Id *string `pulumi:"id"`
-	// [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
-	LastConfigAckTime *string `pulumi:"lastConfigAckTime"`
-	// [Output only] The last time a cloud-to-device config version was sent to the device.
-	LastConfigSendTime *string `pulumi:"lastConfigSendTime"`
-	// [Output only] The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other than OK.
-	LastErrorStatus *Status `pulumi:"lastErrorStatus"`
-	// [Output only] The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub. This field is the timestamp of 'last_error_status'.
-	LastErrorTime *string `pulumi:"lastErrorTime"`
-	// [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-	LastEventTime *string `pulumi:"lastEventTime"`
-	// [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-	LastHeartbeatTime *string `pulumi:"lastHeartbeatTime"`
-	// [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-	LastStateTime *string `pulumi:"lastStateTime"`
-	Location      string  `pulumi:"location"`
+	Id       *string `pulumi:"id"`
+	Location string  `pulumi:"location"`
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 	LogLevel *string `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
-	Name *string `pulumi:"name"`
-	// [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-	NumId      *string `pulumi:"numId"`
+	Name       *string `pulumi:"name"`
 	Project    string  `pulumi:"project"`
 	RegistryId string  `pulumi:"registryId"`
-	// [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
-	State *DeviceStateType `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Device resource.
@@ -211,34 +193,16 @@ type DeviceArgs struct {
 	// Gateway-related configuration and state.
 	GatewayConfig GatewayConfigPtrInput
 	// The user-defined device identifier. The device ID must be unique within a device registry.
-	Id pulumi.StringPtrInput
-	// [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
-	LastConfigAckTime pulumi.StringPtrInput
-	// [Output only] The last time a cloud-to-device config version was sent to the device.
-	LastConfigSendTime pulumi.StringPtrInput
-	// [Output only] The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other than OK.
-	LastErrorStatus StatusPtrInput
-	// [Output only] The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub. This field is the timestamp of 'last_error_status'.
-	LastErrorTime pulumi.StringPtrInput
-	// [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-	LastEventTime pulumi.StringPtrInput
-	// [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-	LastHeartbeatTime pulumi.StringPtrInput
-	// [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-	LastStateTime pulumi.StringPtrInput
-	Location      pulumi.StringInput
+	Id       pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 	LogLevel *DeviceLogLevel
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
 	Metadata pulumi.StringMapInput
 	// The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
-	Name pulumi.StringPtrInput
-	// [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-	NumId      pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	Project    pulumi.StringInput
 	RegistryId pulumi.StringInput
-	// [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
-	State DeviceStateTypePtrInput
 }
 
 func (DeviceArgs) ElementType() reflect.Type {

@@ -40,11 +40,11 @@ export interface GetInstanceResult {
     readonly canIpForward: boolean;
     readonly confidentialInstanceConfig: outputs.compute.beta.ConfidentialInstanceConfigResponse;
     /**
-     * [Output Only] The CPU platform used by this instance.
+     * The CPU platform used by this instance.
      */
     readonly cpuPlatform: string;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -82,7 +82,7 @@ export interface GetInstanceResult {
      */
     readonly hostname: string;
     /**
-     * [Output Only] Type of the resource. Always compute#instance for instances.
+     * Type of the resource. Always compute#instance for instances.
      */
     readonly kind: string;
     /**
@@ -96,15 +96,15 @@ export interface GetInstanceResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * [Output Only] Last start timestamp in RFC3339 text format.
+     * Last start timestamp in RFC3339 text format.
      */
     readonly lastStartTimestamp: string;
     /**
-     * [Output Only] Last stop timestamp in RFC3339 text format.
+     * Last stop timestamp in RFC3339 text format.
      */
     readonly lastStopTimestamp: string;
     /**
-     * [Output Only] Last suspended timestamp in RFC3339 text format.
+     * Last suspended timestamp in RFC3339 text format.
      */
     readonly lastSuspendedTimestamp: string;
     /**
@@ -155,7 +155,7 @@ export interface GetInstanceResult {
      */
     readonly resourcePolicies: string[];
     /**
-     * [Output Only] Reserved for future use.
+     * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
     /**
@@ -163,7 +163,7 @@ export interface GetInstanceResult {
      */
     readonly scheduling: outputs.compute.beta.SchedulingResponse;
     /**
-     * [Output Only] Server-defined URL for this resource.
+     * Server-defined URL for this resource.
      */
     readonly selfLink: string;
     /**
@@ -191,15 +191,15 @@ export interface GetInstanceResult {
      */
     readonly sourceMachineImageEncryptionKey: outputs.compute.beta.CustomerEncryptionKeyResponse;
     /**
-     * [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+     * Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
      */
     readonly startRestricted: boolean;
     /**
-     * [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+     * The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
      */
     readonly status: string;
     /**
-     * [Output Only] An optional, human-readable explanation of the status.
+     * An optional, human-readable explanation of the status.
      */
     readonly statusMessage: string;
     /**
@@ -207,7 +207,7 @@ export interface GetInstanceResult {
      */
     readonly tags: outputs.compute.beta.TagsResponse;
     /**
-     * [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly zone: string;
 }

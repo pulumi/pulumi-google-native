@@ -345,42 +345,11 @@ class AuthenticatorGroupsConfigArgs:
 
 @pulumi.input_type
 class AutoUpgradeOptionsArgs:
-    def __init__(__self__, *,
-                 auto_upgrade_start_time: Optional[pulumi.Input[str]] = None,
-                 description: Optional[pulumi.Input[str]] = None):
+    def __init__(__self__):
         """
         AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed.
-        :param pulumi.Input[str] auto_upgrade_start_time: [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        :param pulumi.Input[str] description: [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
         """
-        if auto_upgrade_start_time is not None:
-            pulumi.set(__self__, "auto_upgrade_start_time", auto_upgrade_start_time)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter(name="autoUpgradeStartTime")
-    def auto_upgrade_start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        """
-        return pulumi.get(self, "auto_upgrade_start_time")
-
-    @auto_upgrade_start_time.setter
-    def auto_upgrade_start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "auto_upgrade_start_time", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
+        pass
 
 
 @pulumi.input_type
@@ -898,29 +867,13 @@ class ConsumptionMeteringConfigArgs:
 @pulumi.input_type
 class DailyMaintenanceWindowArgs:
     def __init__(__self__, *,
-                 duration: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         Time window specified for daily maintenance operations.
-        :param pulumi.Input[str] duration: [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
         :param pulumi.Input[str] start_time: Time within the maintenance window to start the maintenance operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
         """
-        if duration is not None:
-            pulumi.set(__self__, "duration", duration)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-
-    @property
-    @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-        """
-        return pulumi.get(self, "duration")
-
-    @duration.setter
-    def duration(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "duration", value)
 
     @property
     @pulumi.getter(name="startTime")
@@ -1531,44 +1484,24 @@ class MasterArgs:
 @pulumi.input_type
 class MasterAuthArgs:
     def __init__(__self__, *,
-                 client_certificate: Optional[pulumi.Input[str]] = None,
                  client_certificate_config: Optional[pulumi.Input['ClientCertificateConfigArgs']] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_certificate: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates.
-        :param pulumi.Input[str] client_certificate: [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
         :param pulumi.Input['ClientCertificateConfigArgs'] client_certificate_config: Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
-        :param pulumi.Input[str] client_key: [Output only] Base64-encoded private key used by clients to authenticate to the cluster endpoint.
         :param pulumi.Input[str] password: The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password. If a password is provided for cluster creation, username must be non-empty. Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
         :param pulumi.Input[str] username: The username to use for HTTP basic authentication to the master endpoint. For clusters v1.6.0 and later, basic authentication can be disabled by leaving username unspecified (or setting it to the empty string). Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
         """
-        if client_certificate is not None:
-            pulumi.set(__self__, "client_certificate", client_certificate)
         if client_certificate_config is not None:
             pulumi.set(__self__, "client_certificate_config", client_certificate_config)
-        if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
         if cluster_ca_certificate is not None:
             pulumi.set(__self__, "cluster_ca_certificate", cluster_ca_certificate)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
-        """
-        return pulumi.get(self, "client_certificate")
-
-    @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_certificate", value)
 
     @property
     @pulumi.getter(name="clientCertificateConfig")
@@ -1581,18 +1514,6 @@ class MasterAuthArgs:
     @client_certificate_config.setter
     def client_certificate_config(self, value: Optional[pulumi.Input['ClientCertificateConfigArgs']]):
         pulumi.set(self, "client_certificate_config", value)
-
-    @property
-    @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Base64-encoded private key used by clients to authenticate to the cluster endpoint.
-        """
-        return pulumi.get(self, "client_key")
-
-    @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_key", value)
 
     @property
     @pulumi.getter(name="clusterCaCertificate")
@@ -1699,18 +1620,14 @@ class NetworkConfigArgs:
                  default_snat_status: Optional[pulumi.Input['DefaultSnatStatusArgs']] = None,
                  enable_intra_node_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_l4ilb_subsetting: Optional[pulumi.Input[bool]] = None,
-                 network: Optional[pulumi.Input[str]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']] = None,
-                 subnetwork: Optional[pulumi.Input[str]] = None):
+                 private_ipv6_google_access: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']] = None):
         """
         NetworkConfig reports the relative names of network & subnetwork.
         :param pulumi.Input['NetworkConfigDatapathProvider'] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input['DefaultSnatStatusArgs'] default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         :param pulumi.Input[bool] enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
-        :param pulumi.Input[str] network: The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         :param pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-        :param pulumi.Input[str] subnetwork: The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         """
         if datapath_provider is not None:
             pulumi.set(__self__, "datapath_provider", datapath_provider)
@@ -1720,12 +1637,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
         if enable_l4ilb_subsetting is not None:
             pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
-        if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
     @pulumi.getter(name="datapathProvider")
@@ -1776,18 +1689,6 @@ class NetworkConfigArgs:
         pulumi.set(self, "enable_l4ilb_subsetting", value)
 
     @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        """
-        The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
-    @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']]:
         """
@@ -1798,18 +1699,6 @@ class NetworkConfigArgs:
     @private_ipv6_google_access.setter
     def private_ipv6_google_access(self, value: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']]):
         pulumi.set(self, "private_ipv6_google_access", value)
-
-    @property
-    @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[str]]:
-        """
-        The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
-        """
-        return pulumi.get(self, "subnetwork")
-
-    @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subnetwork", value)
 
 
 @pulumi.input_type
@@ -2427,15 +2316,11 @@ class NodePoolArgs:
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
-                 instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
                  max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
-                 pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['NodePoolStatus']] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -2444,15 +2329,11 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input['NodeConfigArgs'] config: The node configuration of the pool.
         :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
         :param pulumi.Input['MaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
-        :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
-        :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
-        :param pulumi.Input['NodePoolStatus'] status: [Output only] The status of the nodes in this pool instance.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -2464,8 +2345,6 @@ class NodePoolArgs:
             pulumi.set(__self__, "config", config)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
-        if instance_group_urls is not None:
-            pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if management is not None:
@@ -2476,12 +2355,6 @@ class NodePoolArgs:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
-        if pod_ipv4_cidr_size is not None:
-            pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -2534,18 +2407,6 @@ class NodePoolArgs:
     @initial_node_count.setter
     def initial_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_node_count", value)
-
-    @property
-    @pulumi.getter(name="instanceGroupUrls")
-    def instance_group_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-        """
-        return pulumi.get(self, "instance_group_urls")
-
-    @instance_group_urls.setter
-    def instance_group_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "instance_group_urls", value)
 
     @property
     @pulumi.getter
@@ -2606,42 +2467,6 @@ class NodePoolArgs:
     @network_config.setter
     def network_config(self, value: Optional[pulumi.Input['NodeNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
-
-    @property
-    @pulumi.getter(name="podIpv4CidrSize")
-    def pod_ipv4_cidr_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output only] The pod CIDR block size per node in this node pool.
-        """
-        return pulumi.get(self, "pod_ipv4_cidr_size")
-
-    @pod_ipv4_cidr_size.setter
-    def pod_ipv4_cidr_size(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "pod_ipv4_cidr_size", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['NodePoolStatus']]:
-        """
-        [Output only] The status of the nodes in this pool instance.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['NodePoolStatus']]):
-        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -2850,19 +2675,13 @@ class PrivateClusterConfigArgs:
                  enable_private_endpoint: Optional[pulumi.Input[bool]] = None,
                  enable_private_nodes: Optional[pulumi.Input[bool]] = None,
                  master_global_access_config: Optional[pulumi.Input['PrivateClusterMasterGlobalAccessConfigArgs']] = None,
-                 master_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-                 peering_name: Optional[pulumi.Input[str]] = None,
-                 private_endpoint: Optional[pulumi.Input[str]] = None,
-                 public_endpoint: Optional[pulumi.Input[str]] = None):
+                 master_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
         """
         Configuration options for private clusters.
         :param pulumi.Input[bool] enable_private_endpoint: Whether the master's internal IP address is used as the cluster endpoint.
         :param pulumi.Input[bool] enable_private_nodes: Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918 private addresses and communicate with the master via private networking.
         :param pulumi.Input['PrivateClusterMasterGlobalAccessConfigArgs'] master_global_access_config: Controls master global access settings.
         :param pulumi.Input[str] master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
-        :param pulumi.Input[str] peering_name: The peering name in the customer VPC used by this cluster.
-        :param pulumi.Input[str] private_endpoint: The internal IP address of this cluster's master endpoint.
-        :param pulumi.Input[str] public_endpoint: The external IP address of this cluster's master endpoint.
         """
         if enable_private_endpoint is not None:
             pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
@@ -2872,12 +2691,6 @@ class PrivateClusterConfigArgs:
             pulumi.set(__self__, "master_global_access_config", master_global_access_config)
         if master_ipv4_cidr_block is not None:
             pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
-        if peering_name is not None:
-            pulumi.set(__self__, "peering_name", peering_name)
-        if private_endpoint is not None:
-            pulumi.set(__self__, "private_endpoint", private_endpoint)
-        if public_endpoint is not None:
-            pulumi.set(__self__, "public_endpoint", public_endpoint)
 
     @property
     @pulumi.getter(name="enablePrivateEndpoint")
@@ -2926,42 +2739,6 @@ class PrivateClusterConfigArgs:
     @master_ipv4_cidr_block.setter
     def master_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "master_ipv4_cidr_block", value)
-
-    @property
-    @pulumi.getter(name="peeringName")
-    def peering_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The peering name in the customer VPC used by this cluster.
-        """
-        return pulumi.get(self, "peering_name")
-
-    @peering_name.setter
-    def peering_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "peering_name", value)
-
-    @property
-    @pulumi.getter(name="privateEndpoint")
-    def private_endpoint(self) -> Optional[pulumi.Input[str]]:
-        """
-        The internal IP address of this cluster's master endpoint.
-        """
-        return pulumi.get(self, "private_endpoint")
-
-    @private_endpoint.setter
-    def private_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "private_endpoint", value)
-
-    @property
-    @pulumi.getter(name="publicEndpoint")
-    def public_endpoint(self) -> Optional[pulumi.Input[str]]:
-        """
-        The external IP address of this cluster's master endpoint.
-        """
-        return pulumi.get(self, "public_endpoint")
-
-    @public_endpoint.setter
-    def public_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "public_endpoint", value)
 
 
 @pulumi.input_type

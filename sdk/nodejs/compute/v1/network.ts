@@ -46,21 +46,21 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly autoCreateSubnetworks!: pulumi.Output<boolean>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this field when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] The gateway address for default routing out of the network, selected by GCP.
+     * The gateway address for default routing out of the network, selected by GCP.
      */
-    public readonly gatewayIPv4!: pulumi.Output<string>;
+    public /*out*/ readonly gatewayIPv4!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#network for networks.
+     * Type of the resource. Always compute#network for networks.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
      */
@@ -70,21 +70,21 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [Output Only] A list of network peerings for the resource.
+     * A list of network peerings for the resource.
      */
-    public readonly peerings!: pulumi.Output<outputs.compute.v1.NetworkPeeringResponse[]>;
+    public /*out*/ readonly peerings!: pulumi.Output<outputs.compute.v1.NetworkPeeringResponse[]>;
     /**
      * The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
      */
     public readonly routingConfig!: pulumi.Output<outputs.compute.v1.NetworkRoutingConfigResponse>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+     * Server-defined fully-qualified URLs for all subnetworks in this VPC network.
      */
-    public readonly subnetworks!: pulumi.Output<string[]>;
+    public /*out*/ readonly subnetworks!: pulumi.Output<string[]>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -101,19 +101,18 @@ export class Network extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["gatewayIPv4"] = args ? args.gatewayIPv4 : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["mtu"] = args ? args.mtu : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["peerings"] = args ? args.peerings : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["routingConfig"] = args ? args.routingConfig : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["subnetworks"] = args ? args.subnetworks : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["gatewayIPv4"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["peerings"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["subnetworks"] = undefined /*out*/;
         } else {
             inputs["autoCreateSubnetworks"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -149,25 +148,9 @@ export interface NetworkArgs {
      */
     autoCreateSubnetworks?: pulumi.Input<boolean>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this field when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] The gateway address for default routing out of the network, selected by GCP.
-     */
-    gatewayIPv4?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#network for networks.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
      */
@@ -176,22 +159,10 @@ export interface NetworkArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */
     name?: pulumi.Input<string>;
-    /**
-     * [Output Only] A list of network peerings for the resource.
-     */
-    peerings?: pulumi.Input<pulumi.Input<inputs.compute.v1.NetworkPeeringArgs>[]>;
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
      */
     routingConfig?: pulumi.Input<inputs.compute.v1.NetworkRoutingConfigArgs>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
-     */
-    subnetworks?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -23,7 +23,7 @@ type LookupSecurityPolicyArgs struct {
 }
 
 type LookupSecurityPolicyResult struct {
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -37,6 +37,6 @@ type LookupSecurityPolicyResult struct {
 	Name string `pulumi:"name"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules []SecurityPolicyRuleResponse `pulumi:"rules"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 }

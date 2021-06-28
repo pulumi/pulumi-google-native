@@ -13,7 +13,6 @@ __all__ = [
     'BindingArgs',
     'DeviceConfigArgs',
     'DeviceCredentialArgs',
-    'DeviceStateArgs',
     'EventNotificationConfigArgs',
     'ExprArgs',
     'GatewayConfigArgs',
@@ -23,8 +22,6 @@ __all__ = [
     'PublicKeyCredentialArgs',
     'RegistryCredentialArgs',
     'StateNotificationConfigArgs',
-    'StatusArgs',
-    'X509CertificateDetailsArgs',
 ]
 
 @pulumi.input_type
@@ -86,25 +83,13 @@ class BindingArgs:
 @pulumi.input_type
 class DeviceConfigArgs:
     def __init__(__self__, *,
-                 binary_data: Optional[pulumi.Input[str]] = None,
-                 cloud_update_time: Optional[pulumi.Input[str]] = None,
-                 device_ack_time: Optional[pulumi.Input[str]] = None,
-                 version: Optional[pulumi.Input[str]] = None):
+                 binary_data: Optional[pulumi.Input[str]] = None):
         """
         The device configuration. Eventually delivered to devices.
         :param pulumi.Input[str] binary_data: The device configuration data.
-        :param pulumi.Input[str] cloud_update_time: [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
-        :param pulumi.Input[str] device_ack_time: [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
-        :param pulumi.Input[str] version: [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
         """
         if binary_data is not None:
             pulumi.set(__self__, "binary_data", binary_data)
-        if cloud_update_time is not None:
-            pulumi.set(__self__, "cloud_update_time", cloud_update_time)
-        if device_ack_time is not None:
-            pulumi.set(__self__, "device_ack_time", device_ack_time)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="binaryData")
@@ -117,42 +102,6 @@ class DeviceConfigArgs:
     @binary_data.setter
     def binary_data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "binary_data", value)
-
-    @property
-    @pulumi.getter(name="cloudUpdateTime")
-    def cloud_update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
-        """
-        return pulumi.get(self, "cloud_update_time")
-
-    @cloud_update_time.setter
-    def cloud_update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cloud_update_time", value)
-
-    @property
-    @pulumi.getter(name="deviceAckTime")
-    def device_ack_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
-        """
-        return pulumi.get(self, "device_ack_time")
-
-    @device_ack_time.setter
-    def device_ack_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "device_ack_time", value)
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -193,46 +142,6 @@ class DeviceCredentialArgs:
     @public_key.setter
     def public_key(self, value: Optional[pulumi.Input['PublicKeyCredentialArgs']]):
         pulumi.set(self, "public_key", value)
-
-
-@pulumi.input_type
-class DeviceStateArgs:
-    def __init__(__self__, *,
-                 binary_data: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
-        """
-        The device state, as reported by the device.
-        :param pulumi.Input[str] binary_data: The device state data.
-        :param pulumi.Input[str] update_time: [Output only] The time at which this state version was updated in Cloud IoT Core.
-        """
-        if binary_data is not None:
-            pulumi.set(__self__, "binary_data", binary_data)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="binaryData")
-    def binary_data(self) -> Optional[pulumi.Input[str]]:
-        """
-        The device state data.
-        """
-        return pulumi.get(self, "binary_data")
-
-    @binary_data.setter
-    def binary_data(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "binary_data", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The time at which this state version was updated in Cloud IoT Core.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type
@@ -351,24 +260,16 @@ class ExprArgs:
 class GatewayConfigArgs:
     def __init__(__self__, *,
                  gateway_auth_method: Optional[pulumi.Input['GatewayConfigGatewayAuthMethod']] = None,
-                 gateway_type: Optional[pulumi.Input['GatewayConfigGatewayType']] = None,
-                 last_accessed_gateway_id: Optional[pulumi.Input[str]] = None,
-                 last_accessed_gateway_time: Optional[pulumi.Input[str]] = None):
+                 gateway_type: Optional[pulumi.Input['GatewayConfigGatewayType']] = None):
         """
         Gateway-related configuration and state.
         :param pulumi.Input['GatewayConfigGatewayAuthMethod'] gateway_auth_method: Indicates how to authorize and/or authenticate devices to access the gateway.
         :param pulumi.Input['GatewayConfigGatewayType'] gateway_type: Indicates whether the device is a gateway.
-        :param pulumi.Input[str] last_accessed_gateway_id: [Output only] The ID of the gateway the device accessed most recently.
-        :param pulumi.Input[str] last_accessed_gateway_time: [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
         """
         if gateway_auth_method is not None:
             pulumi.set(__self__, "gateway_auth_method", gateway_auth_method)
         if gateway_type is not None:
             pulumi.set(__self__, "gateway_type", gateway_type)
-        if last_accessed_gateway_id is not None:
-            pulumi.set(__self__, "last_accessed_gateway_id", last_accessed_gateway_id)
-        if last_accessed_gateway_time is not None:
-            pulumi.set(__self__, "last_accessed_gateway_time", last_accessed_gateway_time)
 
     @property
     @pulumi.getter(name="gatewayAuthMethod")
@@ -393,30 +294,6 @@ class GatewayConfigArgs:
     @gateway_type.setter
     def gateway_type(self, value: Optional[pulumi.Input['GatewayConfigGatewayType']]):
         pulumi.set(self, "gateway_type", value)
-
-    @property
-    @pulumi.getter(name="lastAccessedGatewayId")
-    def last_accessed_gateway_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The ID of the gateway the device accessed most recently.
-        """
-        return pulumi.get(self, "last_accessed_gateway_id")
-
-    @last_accessed_gateway_id.setter
-    def last_accessed_gateway_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_accessed_gateway_id", value)
-
-    @property
-    @pulumi.getter(name="lastAccessedGatewayTime")
-    def last_accessed_gateway_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
-        """
-        return pulumi.get(self, "last_accessed_gateway_time")
-
-    @last_accessed_gateway_time.setter
-    def last_accessed_gateway_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_accessed_gateway_time", value)
 
 
 @pulumi.input_type
@@ -471,20 +348,16 @@ class MqttConfigArgs:
 class PublicKeyCertificateArgs:
     def __init__(__self__, *,
                  certificate: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input['PublicKeyCertificateFormat']] = None,
-                 x509_details: Optional[pulumi.Input['X509CertificateDetailsArgs']] = None):
+                 format: Optional[pulumi.Input['PublicKeyCertificateFormat']] = None):
         """
         A public key certificate format and data.
         :param pulumi.Input[str] certificate: The certificate data.
         :param pulumi.Input['PublicKeyCertificateFormat'] format: The certificate format.
-        :param pulumi.Input['X509CertificateDetailsArgs'] x509_details: [Output only] The certificate details. Used only for X.509 certificates.
         """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
         if format is not None:
             pulumi.set(__self__, "format", format)
-        if x509_details is not None:
-            pulumi.set(__self__, "x509_details", x509_details)
 
     @property
     @pulumi.getter
@@ -509,18 +382,6 @@ class PublicKeyCertificateArgs:
     @format.setter
     def format(self, value: Optional[pulumi.Input['PublicKeyCertificateFormat']]):
         pulumi.set(self, "format", value)
-
-    @property
-    @pulumi.getter(name="x509Details")
-    def x509_details(self) -> Optional[pulumi.Input['X509CertificateDetailsArgs']]:
-        """
-        [Output only] The certificate details. Used only for X.509 certificates.
-        """
-        return pulumi.get(self, "x509_details")
-
-    @x509_details.setter
-    def x509_details(self, value: Optional[pulumi.Input['X509CertificateDetailsArgs']]):
-        pulumi.set(self, "x509_details", value)
 
 
 @pulumi.input_type
@@ -609,165 +470,5 @@ class StateNotificationConfigArgs:
     @pubsub_topic_name.setter
     def pubsub_topic_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pubsub_topic_name", value)
-
-
-@pulumi.input_type
-class StatusArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-
-@pulumi.input_type
-class X509CertificateDetailsArgs:
-    def __init__(__self__, *,
-                 expiry_time: Optional[pulumi.Input[str]] = None,
-                 issuer: Optional[pulumi.Input[str]] = None,
-                 public_key_type: Optional[pulumi.Input[str]] = None,
-                 signature_algorithm: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 subject: Optional[pulumi.Input[str]] = None):
-        """
-        Details of an X.509 certificate. For informational purposes only.
-        :param pulumi.Input[str] expiry_time: The time the certificate becomes invalid.
-        :param pulumi.Input[str] issuer: The entity that signed the certificate.
-        :param pulumi.Input[str] public_key_type: The type of public key in the certificate.
-        :param pulumi.Input[str] signature_algorithm: The algorithm used to sign the certificate.
-        :param pulumi.Input[str] start_time: The time the certificate becomes valid.
-        :param pulumi.Input[str] subject: The entity the certificate and public key belong to.
-        """
-        if expiry_time is not None:
-            pulumi.set(__self__, "expiry_time", expiry_time)
-        if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
-        if public_key_type is not None:
-            pulumi.set(__self__, "public_key_type", public_key_type)
-        if signature_algorithm is not None:
-            pulumi.set(__self__, "signature_algorithm", signature_algorithm)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-        if subject is not None:
-            pulumi.set(__self__, "subject", subject)
-
-    @property
-    @pulumi.getter(name="expiryTime")
-    def expiry_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time the certificate becomes invalid.
-        """
-        return pulumi.get(self, "expiry_time")
-
-    @expiry_time.setter
-    def expiry_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expiry_time", value)
-
-    @property
-    @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[str]]:
-        """
-        The entity that signed the certificate.
-        """
-        return pulumi.get(self, "issuer")
-
-    @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "issuer", value)
-
-    @property
-    @pulumi.getter(name="publicKeyType")
-    def public_key_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of public key in the certificate.
-        """
-        return pulumi.get(self, "public_key_type")
-
-    @public_key_type.setter
-    def public_key_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "public_key_type", value)
-
-    @property
-    @pulumi.getter(name="signatureAlgorithm")
-    def signature_algorithm(self) -> Optional[pulumi.Input[str]]:
-        """
-        The algorithm used to sign the certificate.
-        """
-        return pulumi.get(self, "signature_algorithm")
-
-    @signature_algorithm.setter
-    def signature_algorithm(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "signature_algorithm", value)
-
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time the certificate becomes valid.
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
-
-    @property
-    @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[str]]:
-        """
-        The entity the certificate and public key belong to.
-        """
-        return pulumi.get(self, "subject")
-
-    @subject.setter
-    def subject(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subject", value)
 
 

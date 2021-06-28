@@ -27,12 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _items = value;
         }
 
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#metadata for metadata.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
         public MetadataArgs()
         {
         }

@@ -73,7 +73,7 @@ class GetNodeGroupResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -94,7 +94,7 @@ class GetNodeGroupResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+        The type of the resource. Always compute#nodeGroup for node group.
         """
         return pulumi.get(self, "kind")
 
@@ -139,7 +139,7 @@ class GetNodeGroupResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -147,7 +147,7 @@ class GetNodeGroupResult:
     @pulumi.getter
     def size(self) -> int:
         """
-        [Output Only] The total number of nodes in the node group.
+        The total number of nodes in the node group.
         """
         return pulumi.get(self, "size")
 
@@ -160,7 +160,7 @@ class GetNodeGroupResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+        The name of the zone where the node group resides, such as us-central1-a.
         """
         return pulumi.get(self, "zone")
 

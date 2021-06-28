@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetMachineImageResult
     {
         /// <summary>
-        /// [Output Only] The creation timestamp for this machine image in RFC3339 text format.
+        /// The creation timestamp for this machine image in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool GuestFlush;
         /// <summary>
-        /// [Output Only] The resource type, which is always compute#machineImage for machine image.
+        /// The resource type, which is always compute#machineImage for machine image.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -67,15 +67,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
-        /// [Output Only] The URL for this machine image. The server defines this URL.
+        /// The URL for this machine image. The server defines this URL.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
@@ -89,11 +89,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SourceInstance;
         /// <summary>
-        /// [Output Only] Properties of source instance.
+        /// Properties of source instance.
         /// </summary>
         public readonly Outputs.SourceInstancePropertiesResponse SourceInstanceProperties;
         /// <summary>
-        /// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+        /// The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<string> StorageLocations;
         /// <summary>
-        /// [Output Only] Total size of the storage used by the machine image.
+        /// Total size of the storage used by the machine image.
         /// </summary>
         public readonly string TotalStorageBytes;
 

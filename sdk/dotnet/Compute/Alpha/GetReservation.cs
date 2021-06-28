@@ -40,11 +40,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetReservationResult
     {
         /// <summary>
-        /// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         /// </summary>
         public readonly string Commitment;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#reservations for reservations.
+        /// Type of the resource. Always compute#reservations for reservations.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -60,15 +60,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
-        /// [Output Only] Server-defined fully-qualified URL for this resource.
+        /// Server-defined fully-qualified URL for this resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool SpecificReservationRequired;
         /// <summary>
-        /// [Output Only] The status of the reservation.
+        /// The status of the reservation.
         /// </summary>
         public readonly string Status;
         /// <summary>

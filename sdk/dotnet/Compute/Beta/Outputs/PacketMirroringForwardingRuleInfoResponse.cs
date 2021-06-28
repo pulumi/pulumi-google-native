@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class PacketMirroringForwardingRuleInfoResponse
     {
         /// <summary>
-        /// [Output Only] Unique identifier for the forwarding rule; defined by the server.
+        /// Unique identifier for the forwarding rule; defined by the server.
         /// </summary>
         public readonly string CanonicalUrl;
         /// <summary>

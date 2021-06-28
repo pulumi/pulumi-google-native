@@ -100,7 +100,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="circuitInfos")
     def circuit_infos(self) -> Sequence['outputs.InterconnectCircuitInfoResponse']:
         """
-        [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
+        A list of CircuitInfo objects, that describe the individual circuits in this LAG.
         """
         return pulumi.get(self, "circuit_infos")
 
@@ -108,7 +108,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -132,7 +132,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="expectedOutages")
     def expected_outages(self) -> Sequence['outputs.InterconnectOutageNotificationResponse']:
         """
-        [Output Only] A list of outages expected for this Interconnect.
+        A list of outages expected for this Interconnect.
         """
         return pulumi.get(self, "expected_outages")
 
@@ -140,7 +140,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="googleIpAddress")
     def google_ip_address(self) -> str:
         """
-        [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
+        IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
         """
         return pulumi.get(self, "google_ip_address")
 
@@ -148,7 +148,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="googleReferenceId")
     def google_reference_id(self) -> str:
         """
-        [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
+        Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
         """
         return pulumi.get(self, "google_reference_id")
 
@@ -156,7 +156,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="interconnectAttachments")
     def interconnect_attachments(self) -> Sequence[str]:
         """
-        [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
+        A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
         """
         return pulumi.get(self, "interconnect_attachments")
 
@@ -174,7 +174,7 @@ class GetInterconnectResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#interconnect for interconnects.
+        Type of the resource. Always compute#interconnect for interconnects.
         """
         return pulumi.get(self, "kind")
 
@@ -234,7 +234,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> str:
         """
-        [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
+        The current status of this Interconnect's functionality, which can take one of the following values: 
         - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
         - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
         - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
@@ -245,7 +245,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="peerIpAddress")
     def peer_ip_address(self) -> str:
         """
-        [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
+        IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
         """
         return pulumi.get(self, "peer_ip_address")
 
@@ -253,7 +253,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="provisionedLinkCount")
     def provisioned_link_count(self) -> int:
         """
-        [Output Only] Number of links actually provisioned in this interconnect.
+        Number of links actually provisioned in this interconnect.
         """
         return pulumi.get(self, "provisioned_link_count")
 
@@ -269,7 +269,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -277,7 +277,7 @@ class GetInterconnectResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
+        The current state of Interconnect functionality, which can take one of the following values: 
         - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
         - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
         - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.

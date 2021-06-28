@@ -108,12 +108,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         [Input("appEngineHttpRequest")]
         public Input<Inputs.AppEngineHttpRequestArgs>? AppEngineHttpRequest { get; set; }
 
-        /// <summary>
-        /// The time that the task was created. `create_time` will be truncated to the nearest second.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
@@ -146,18 +140,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         /// </summary>
         [Input("scheduleTime")]
         public Input<string>? ScheduleTime { get; set; }
-
-        /// <summary>
-        /// The task status.
-        /// </summary>
-        [Input("status")]
-        public Input<Inputs.TaskStatusArgs>? Status { get; set; }
-
-        /// <summary>
-        /// The view specifies which subset of the Task has been returned.
-        /// </summary>
-        [Input("view")]
-        public Input<Pulumi.GoogleNative.CloudTasks.V2Beta2.TaskView>? View { get; set; }
 
         public TaskArgs()
         {

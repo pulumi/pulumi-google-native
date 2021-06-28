@@ -8,7 +8,6 @@ __all__ = [
     'GoogleFirestoreAdminV1beta2IndexFieldArrayConfig',
     'GoogleFirestoreAdminV1beta2IndexFieldOrder',
     'IndexQueryScope',
-    'IndexState',
 ]
 
 
@@ -36,13 +35,3 @@ class IndexQueryScope(str, Enum):
     QUERY_SCOPE_UNSPECIFIED = "QUERY_SCOPE_UNSPECIFIED"
     COLLECTION = "COLLECTION"
     COLLECTION_GROUP = "COLLECTION_GROUP"
-
-
-class IndexState(str, Enum):
-    """
-    Output only. The serving state of the index.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    CREATING = "CREATING"
-    READY = "READY"
-    NEEDS_REPAIR = "NEEDS_REPAIR"

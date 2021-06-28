@@ -40,9 +40,9 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public readonly checkIntervalSec!: pulumi.Output<number>;
     /**
-     * [Output Only] Creation timestamp in 3339 text format.
+     * Creation timestamp in 3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -68,17 +68,17 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [Output Only] Region where the health check resides. Not applicable to global health checks.
+     * Region where the health check resides. Not applicable to global health checks.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     public readonly sslHealthCheck!: pulumi.Output<outputs.compute.alpha.SSLHealthCheckResponse>;
     public readonly tcpHealthCheck!: pulumi.Output<outputs.compute.alpha.TCPHealthCheckResponse>;
     /**
@@ -113,28 +113,27 @@ export class RegionHealthCheck extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
             inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             inputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
             inputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
             inputs["httpsHealthCheck"] = args ? args.httpsHealthCheck : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["sslHealthCheck"] = args ? args.sslHealthCheck : undefined;
             inputs["tcpHealthCheck"] = args ? args.tcpHealthCheck : undefined;
             inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["udpHealthCheck"] = args ? args.udpHealthCheck : undefined;
             inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
         } else {
             inputs["checkIntervalSec"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -173,10 +172,6 @@ export interface RegionHealthCheckArgs {
      */
     checkIntervalSec?: pulumi.Input<number>;
     /**
-     * [Output Only] Creation timestamp in 3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -188,10 +183,6 @@ export interface RegionHealthCheckArgs {
     http2HealthCheck?: pulumi.Input<inputs.compute.alpha.HTTP2HealthCheckArgs>;
     httpHealthCheck?: pulumi.Input<inputs.compute.alpha.HTTPHealthCheckArgs>;
     httpsHealthCheck?: pulumi.Input<inputs.compute.alpha.HTTPSHealthCheckArgs>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
     /**
      * Type of the resource.
      */
@@ -205,19 +196,8 @@ export interface RegionHealthCheckArgs {
      */
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output Only] Region where the health check resides. Not applicable to global health checks.
-     */
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
     sslHealthCheck?: pulumi.Input<inputs.compute.alpha.SSLHealthCheckArgs>;
     tcpHealthCheck?: pulumi.Input<inputs.compute.alpha.TCPHealthCheckArgs>;
     /**

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Outputs
     public sealed class OperationErrorResponse
     {
         /// <summary>
-        /// [Output Only] The array of errors encountered while processing this operation.
+        /// The array of errors encountered while processing this operation.
         /// </summary>
         public readonly ImmutableArray<Outputs.OperationErrorErrorsItemResponse> Errors;
 

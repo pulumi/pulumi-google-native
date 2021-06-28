@@ -108,12 +108,6 @@ namespace Pulumi.GoogleNative.Composer.V1
         [Input("config")]
         public Input<Inputs.EnvironmentConfigArgs>? Config { get; set; }
 
-        /// <summary>
-        /// The time at which this environment was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -143,18 +137,6 @@ namespace Pulumi.GoogleNative.Composer.V1
         /// </summary>
         [Input("state")]
         public Input<Pulumi.GoogleNative.Composer.V1.EnvironmentState>? State { get; set; }
-
-        /// <summary>
-        /// The time at which this environment was last modified.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
-
-        /// <summary>
-        /// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-        /// </summary>
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
 
         public EnvironmentArgs()
         {

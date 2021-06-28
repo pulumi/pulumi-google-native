@@ -170,8 +170,6 @@ type noteArgs struct {
 	BaseImage *Basis `pulumi:"baseImage"`
 	// A note describing build provenance for a verifiable build.
 	Build *Build `pulumi:"build"`
-	// The time this note was created. This field can be used as a filter in list requests.
-	CreateTime *string `pulumi:"createTime"`
 	// A note describing something that can be deployed.
 	Deployable *Deployable `pulumi:"deployable"`
 	// A note describing the initial analysis of a resource.
@@ -180,13 +178,9 @@ type noteArgs struct {
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// A note describing an in-toto link.
 	Intoto *InToto `pulumi:"intoto"`
-	// The type of analysis. This field can be used as a filter in list requests.
-	Kind *string `pulumi:"kind"`
 	// A detailed description of this note.
 	LongDescription *string `pulumi:"longDescription"`
-	// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-	Name   *string `pulumi:"name"`
-	NoteId string  `pulumi:"noteId"`
+	NoteId          string  `pulumi:"noteId"`
 	// A note describing a package hosted by various package managers.
 	Package *Package `pulumi:"package"`
 	Project string   `pulumi:"project"`
@@ -196,8 +190,6 @@ type noteArgs struct {
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
 	// A one sentence description of this note.
 	ShortDescription *string `pulumi:"shortDescription"`
-	// The time this note was last updated. This field can be used as a filter in list requests.
-	UpdateTime *string `pulumi:"updateTime"`
 	// A note describing a package vulnerability.
 	Vulnerability *Vulnerability `pulumi:"vulnerability"`
 }
@@ -210,8 +202,6 @@ type NoteArgs struct {
 	BaseImage BasisPtrInput
 	// A note describing build provenance for a verifiable build.
 	Build BuildPtrInput
-	// The time this note was created. This field can be used as a filter in list requests.
-	CreateTime pulumi.StringPtrInput
 	// A note describing something that can be deployed.
 	Deployable DeployablePtrInput
 	// A note describing the initial analysis of a resource.
@@ -220,13 +210,9 @@ type NoteArgs struct {
 	ExpirationTime pulumi.StringPtrInput
 	// A note describing an in-toto link.
 	Intoto InTotoPtrInput
-	// The type of analysis. This field can be used as a filter in list requests.
-	Kind *NoteKind
 	// A detailed description of this note.
 	LongDescription pulumi.StringPtrInput
-	// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-	Name   pulumi.StringPtrInput
-	NoteId pulumi.StringInput
+	NoteId          pulumi.StringInput
 	// A note describing a package hosted by various package managers.
 	Package PackagePtrInput
 	Project pulumi.StringInput
@@ -236,8 +222,6 @@ type NoteArgs struct {
 	RelatedUrl RelatedUrlArrayInput
 	// A one sentence description of this note.
 	ShortDescription pulumi.StringPtrInput
-	// The time this note was last updated. This field can be used as a filter in list requests.
-	UpdateTime pulumi.StringPtrInput
 	// A note describing a package vulnerability.
 	Vulnerability VulnerabilityPtrInput
 }

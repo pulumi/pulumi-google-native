@@ -18,7 +18,7 @@ type SecurityPolicy struct {
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigResponseOutput `pulumi:"adaptiveProtectionConfig"`
 	// A list of associations that belong to this policy.
 	Associations SecurityPolicyAssociationResponseArrayOutput `pulumi:"associations"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -38,15 +38,15 @@ type SecurityPolicy struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Output Only] The parent of the security policy.
+	// The parent of the security policy.
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
+	// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules SecurityPolicyRuleResponseArrayOutput `pulumi:"rules"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -87,7 +87,7 @@ type securityPolicyState struct {
 	AdaptiveProtectionConfig *SecurityPolicyAdaptiveProtectionConfigResponse `pulumi:"adaptiveProtectionConfig"`
 	// A list of associations that belong to this policy.
 	Associations []SecurityPolicyAssociationResponse `pulumi:"associations"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -107,15 +107,15 @@ type securityPolicyState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// [Output Only] The parent of the security policy.
+	// The parent of the security policy.
 	Parent *string `pulumi:"parent"`
-	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
+	// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules []SecurityPolicyRuleResponse `pulumi:"rules"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type *string `pulumi:"type"`
@@ -125,7 +125,7 @@ type SecurityPolicyState struct {
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigResponsePtrInput
 	// A list of associations that belong to this policy.
 	Associations SecurityPolicyAssociationResponseArrayInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -145,15 +145,15 @@ type SecurityPolicyState struct {
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// [Output Only] The parent of the security policy.
+	// The parent of the security policy.
 	Parent pulumi.StringPtrInput
-	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
+	// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntPtrInput
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules SecurityPolicyRuleResponseArrayInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type pulumi.StringPtrInput
@@ -167,32 +167,18 @@ type securityPolicyArgs struct {
 	AdaptiveProtectionConfig *SecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfig"`
 	// A list of associations that belong to this policy.
 	Associations []SecurityPolicyAssociation `pulumi:"associations"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// User-provided name of the Organization security plicy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63 characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	DisplayName *string `pulumi:"displayName"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output only] Type of the resource. Always compute#securityPolicyfor security policies
-	Kind *string `pulumi:"kind"`
 	// Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// [Output Only] The parent of the security policy.
-	Parent    *string `pulumi:"parent"`
+	Name      *string `pulumi:"name"`
 	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
-	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
-	RuleTupleCount *int `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules []SecurityPolicyRule `pulumi:"rules"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type         *string `pulumi:"type"`
 	ValidateOnly *string `pulumi:"validateOnly"`
@@ -203,32 +189,18 @@ type SecurityPolicyArgs struct {
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrInput
 	// A list of associations that belong to this policy.
 	Associations SecurityPolicyAssociationArrayInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// User-provided name of the Organization security plicy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63 characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	DisplayName pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// [Output only] Type of the resource. Always compute#securityPolicyfor security policies
-	Kind pulumi.StringPtrInput
 	// Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// [Output Only] The parent of the security policy.
-	Parent    pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
-	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
-	RuleTupleCount pulumi.IntPtrInput
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules SecurityPolicyRuleArrayInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type         *SecurityPolicyType
 	ValidateOnly pulumi.StringPtrInput

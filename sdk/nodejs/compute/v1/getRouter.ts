@@ -39,7 +39,7 @@ export interface GetRouterResult {
      */
     readonly bgpPeers: outputs.compute.v1.RouterBgpPeerResponse[];
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -56,7 +56,7 @@ export interface GetRouterResult {
      */
     readonly interfaces: outputs.compute.v1.RouterInterfaceResponse[];
     /**
-     * [Output Only] Type of resource. Always compute#router for routers.
+     * Type of resource. Always compute#router for routers.
      */
     readonly kind: string;
     /**
@@ -72,11 +72,11 @@ export interface GetRouterResult {
      */
     readonly network: string;
     /**
-     * [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
 }

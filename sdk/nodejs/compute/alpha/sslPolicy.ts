@@ -36,9 +36,9 @@ export class SslPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * A list of features enabled when the selected profile is CUSTOM. The
      * - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
@@ -49,9 +49,9 @@ export class SslPolicy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] The list of features enabled in the SSL policy.
+     * The list of features enabled in the SSL policy.
      */
-    public readonly enabledFeatures!: pulumi.Output<string[]>;
+    public /*out*/ readonly enabledFeatures!: pulumi.Output<string[]>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
      *
@@ -61,7 +61,7 @@ export class SslPolicy extends pulumi.CustomResource {
     /**
      * [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
      */
@@ -75,21 +75,21 @@ export class SslPolicy extends pulumi.CustomResource {
      */
     public readonly profile!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
      * Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
     public readonly tlsSettings!: pulumi.Output<outputs.compute.alpha.ServerTlsSettingsResponse>;
     /**
-     * [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+     * If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
      */
-    public readonly warnings!: pulumi.Output<outputs.compute.alpha.SslPolicyWarningsItemResponse[]>;
+    public /*out*/ readonly warnings!: pulumi.Output<outputs.compute.alpha.SslPolicyWarningsItemResponse[]>;
 
     /**
      * Create a SslPolicy resource with the given unique name, arguments, and options.
@@ -105,22 +105,21 @@ export class SslPolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["customFeatures"] = args ? args.customFeatures : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["enabledFeatures"] = args ? args.enabledFeatures : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["profile"] = args ? args.profile : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["tlsSettings"] = args ? args.tlsSettings : undefined;
-            inputs["warnings"] = args ? args.warnings : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["enabledFeatures"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["warnings"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["customFeatures"] = undefined /*out*/;
@@ -148,10 +147,6 @@ export class SslPolicy extends pulumi.CustomResource {
  */
 export interface SslPolicyArgs {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * A list of features enabled when the selected profile is CUSTOM. The
      * - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
      */
@@ -160,18 +155,6 @@ export interface SslPolicyArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] The list of features enabled in the SSL policy.
-     */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
      */
@@ -187,19 +170,7 @@ export interface SslPolicyArgs {
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
-    /**
      * Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
     tlsSettings?: pulumi.Input<inputs.compute.alpha.ServerTlsSettingsArgs>;
-    /**
-     * [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-     */
-    warnings?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SslPolicyWarningsItemArgs>[]>;
 }

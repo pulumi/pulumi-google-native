@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class AccessConfigResponse
     {
         /// <summary>
-        /// [Output Only] The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
         /// </summary>
         public readonly string ExternalIpv6;
         /// <summary>
-        /// [Output Only] The prefix length of the external IPv6 range.
+        /// The prefix length of the external IPv6 range.
         /// </summary>
         public readonly int ExternalIpv6PrefixLength;
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+        /// Type of the resource. Always compute#accessConfig for access configs.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string NetworkTier;
         /// <summary>
-        /// [Output Only] The public DNS domain name for the instance.
+        /// The public DNS domain name for the instance.
         /// </summary>
         public readonly string PublicDnsName;
         /// <summary>

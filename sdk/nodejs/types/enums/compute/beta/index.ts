@@ -79,17 +79,6 @@ export const AddressPurpose = {
  */
 export type AddressPurpose = (typeof AddressPurpose)[keyof typeof AddressPurpose];
 
-export const AddressStatus = {
-    InUse: "IN_USE",
-    Reserved: "RESERVED",
-    Reserving: "RESERVING",
-} as const;
-
-/**
- * [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
- */
-export type AddressStatus = (typeof AddressStatus)[keyof typeof AddressStatus];
-
 export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface = {
     Nvme: "NVME",
     Scsi: "SCSI",
@@ -165,66 +154,6 @@ export const AuthorizationLoggingOptionsPermissionType = {
  * The type of the permission that was checked.
  */
 export type AuthorizationLoggingOptionsPermissionType = (typeof AuthorizationLoggingOptionsPermissionType)[keyof typeof AuthorizationLoggingOptionsPermissionType];
-
-export const AutoscalerStatus = {
-    Active: "ACTIVE",
-    Deleting: "DELETING",
-    Error: "ERROR",
-    Pending: "PENDING",
-} as const;
-
-/**
- * [Output Only] The status of the autoscaler configuration. Current set of possible values:  
- * - PENDING: Autoscaler backend hasn't read new/updated configuration. 
- * - DELETING: Configuration is being deleted. 
- * - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
- * - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
- */
-export type AutoscalerStatus = (typeof AutoscalerStatus)[keyof typeof AutoscalerStatus];
-
-export const AutoscalerStatusDetailsType = {
-    AllInstancesUnhealthy: "ALL_INSTANCES_UNHEALTHY",
-    BackendServiceDoesNotExist: "BACKEND_SERVICE_DOES_NOT_EXIST",
-    CappedAtMaxNumReplicas: "CAPPED_AT_MAX_NUM_REPLICAS",
-    CustomMetricDataPointsTooSparse: "CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE",
-    CustomMetricInvalid: "CUSTOM_METRIC_INVALID",
-    MinEqualsMax: "MIN_EQUALS_MAX",
-    MissingCustomMetricDataPoints: "MISSING_CUSTOM_METRIC_DATA_POINTS",
-    MissingLoadBalancingDataPoints: "MISSING_LOAD_BALANCING_DATA_POINTS",
-    ModeOff: "MODE_OFF",
-    ModeOnlyScaleOut: "MODE_ONLY_SCALE_OUT",
-    ModeOnlyUp: "MODE_ONLY_UP",
-    MoreThanOneBackendService: "MORE_THAN_ONE_BACKEND_SERVICE",
-    NotEnoughQuotaAvailable: "NOT_ENOUGH_QUOTA_AVAILABLE",
-    RegionResourceStockout: "REGION_RESOURCE_STOCKOUT",
-    ScalingTargetDoesNotExist: "SCALING_TARGET_DOES_NOT_EXIST",
-    ScheduledInstancesGreaterThanAutoscalerMax: "SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX",
-    ScheduledInstancesLessThanAutoscalerMin: "SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN",
-    Unknown: "UNKNOWN",
-    UnsupportedMaxRateLoadBalancingConfiguration: "UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION",
-    ZoneResourceStockout: "ZONE_RESOURCE_STOCKOUT",
-} as const;
-
-/**
- * The type of error, warning, or notice returned. Current set of possible values:  
- * - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state). 
- * - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group. 
- * - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas. 
- * - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling. 
- * - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels. 
- * - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group. 
- * - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling. 
- * - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer. 
- * - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved. 
- * - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any. 
- * - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it. 
- * - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances. 
- * - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region. 
- * - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist. 
- * - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate. 
- * - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
- */
-export type AutoscalerStatusDetailsType = (typeof AutoscalerStatusDetailsType)[keyof typeof AutoscalerStatusDetailsType];
 
 export const AutoscalingPolicyCpuUtilizationPredictiveMethod = {
     None: "NONE",
@@ -512,24 +441,6 @@ export const DiskInterface = {
  */
 export type DiskInterface = (typeof DiskInterface)[keyof typeof DiskInterface];
 
-export const DiskStatus = {
-    Creating: "CREATING",
-    Deleting: "DELETING",
-    Failed: "FAILED",
-    Ready: "READY",
-    Restoring: "RESTORING",
-} as const;
-
-/**
- * [Output Only] The status of disk creation.  
- * - CREATING: Disk is provisioning. 
- * - RESTORING: Source data is being copied into the disk. 
- * - FAILED: Disk creation failed. 
- * - READY: Disk is ready for use. 
- * - DELETING: Disk is deleting.
- */
-export type DiskStatus = (typeof DiskStatus)[keyof typeof DiskStatus];
-
 export const DistributionPolicyTargetShape = {
     Any: "ANY",
     Balanced: "BALANCED",
@@ -740,17 +651,6 @@ export const GlobalAddressPurpose = {
  */
 export type GlobalAddressPurpose = (typeof GlobalAddressPurpose)[keyof typeof GlobalAddressPurpose];
 
-export const GlobalAddressStatus = {
-    InUse: "IN_USE",
-    Reserved: "RESERVED",
-    Reserving: "RESERVING",
-} as const;
-
-/**
- * [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
- */
-export type GlobalAddressStatus = (typeof GlobalAddressStatus)[keyof typeof GlobalAddressStatus];
-
 export const GlobalForwardingRuleIPProtocol = {
     Ah: "AH",
     Esp: "ESP",
@@ -840,17 +740,6 @@ export const GlobalNetworkEndpointGroupNetworkEndpointType = {
  * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
  */
 export type GlobalNetworkEndpointGroupNetworkEndpointType = (typeof GlobalNetworkEndpointGroupNetworkEndpointType)[keyof typeof GlobalNetworkEndpointGroupNetworkEndpointType];
-
-export const GlobalPublicDelegatedPrefixStatus = {
-    Announced: "ANNOUNCED",
-    Deleting: "DELETING",
-    Initializing: "INITIALIZING",
-} as const;
-
-/**
- * [Output Only] The status of the public delegated prefix.
- */
-export type GlobalPublicDelegatedPrefixStatus = (typeof GlobalPublicDelegatedPrefixStatus)[keyof typeof GlobalPublicDelegatedPrefixStatus];
 
 export const GuestOsFeatureType = {
     FeatureTypeUnspecified: "FEATURE_TYPE_UNSPECIFIED",
@@ -1001,18 +890,6 @@ export const ImageSourceType = {
  */
 export type ImageSourceType = (typeof ImageSourceType)[keyof typeof ImageSourceType];
 
-export const ImageStatus = {
-    Deleting: "DELETING",
-    Failed: "FAILED",
-    Pending: "PENDING",
-    Ready: "READY",
-} as const;
-
-/**
- * [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
- */
-export type ImageStatus = (typeof ImageStatus)[keyof typeof ImageStatus];
-
 export const InstanceGroupManagerFailoverAction = {
     NoFailover: "NO_FAILOVER",
     Unknown: "UNKNOWN",
@@ -1123,24 +1000,6 @@ export const InstancePropertiesPrivateIpv6GoogleAccess = {
  */
 export type InstancePropertiesPrivateIpv6GoogleAccess = (typeof InstancePropertiesPrivateIpv6GoogleAccess)[keyof typeof InstancePropertiesPrivateIpv6GoogleAccess];
 
-export const InstanceStatus = {
-    Deprovisioning: "DEPROVISIONING",
-    Provisioning: "PROVISIONING",
-    Repairing: "REPAIRING",
-    Running: "RUNNING",
-    Staging: "STAGING",
-    Stopped: "STOPPED",
-    Stopping: "STOPPING",
-    Suspended: "SUSPENDED",
-    Suspending: "SUSPENDING",
-    Terminated: "TERMINATED",
-} as const;
-
-/**
- * [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
- */
-export type InstanceStatus = (typeof InstanceStatus)[keyof typeof InstanceStatus];
-
 export const InterconnectAttachmentBandwidth = {
     Bps100m: "BPS_100M",
     Bps10g: "BPS_10G",
@@ -1200,39 +1059,6 @@ export const InterconnectAttachmentEncryption = {
  */
 export type InterconnectAttachmentEncryption = (typeof InterconnectAttachmentEncryption)[keyof typeof InterconnectAttachmentEncryption];
 
-export const InterconnectAttachmentOperationalStatus = {
-    OsActive: "OS_ACTIVE",
-    OsUnprovisioned: "OS_UNPROVISIONED",
-} as const;
-
-/**
- * [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
- * - OS_ACTIVE: The attachment has been turned up and is ready to use. 
- * - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
- */
-export type InterconnectAttachmentOperationalStatus = (typeof InterconnectAttachmentOperationalStatus)[keyof typeof InterconnectAttachmentOperationalStatus];
-
-export const InterconnectAttachmentState = {
-    Active: "ACTIVE",
-    Defunct: "DEFUNCT",
-    PartnerRequestReceived: "PARTNER_REQUEST_RECEIVED",
-    PendingCustomer: "PENDING_CUSTOMER",
-    PendingPartner: "PENDING_PARTNER",
-    StateUnspecified: "STATE_UNSPECIFIED",
-    Unprovisioned: "UNPROVISIONED",
-} as const;
-
-/**
- * [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
- * - ACTIVE: The attachment has been turned up and is ready to use. 
- * - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
- * - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 
- * - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. 
- * - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. 
- * - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
- */
-export type InterconnectAttachmentState = (typeof InterconnectAttachmentState)[keyof typeof InterconnectAttachmentState];
-
 export const InterconnectAttachmentType = {
     Dedicated: "DEDICATED",
     Partner: "PARTNER",
@@ -1272,72 +1098,6 @@ export const InterconnectLinkType = {
  */
 export type InterconnectLinkType = (typeof InterconnectLinkType)[keyof typeof InterconnectLinkType];
 
-export const InterconnectOperationalStatus = {
-    OsActive: "OS_ACTIVE",
-    OsUnprovisioned: "OS_UNPROVISIONED",
-} as const;
-
-/**
- * [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
- * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
- * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
- * - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
- */
-export type InterconnectOperationalStatus = (typeof InterconnectOperationalStatus)[keyof typeof InterconnectOperationalStatus];
-
-export const InterconnectOutageNotificationIssueType = {
-    ItOutage: "IT_OUTAGE",
-    ItPartialOutage: "IT_PARTIAL_OUTAGE",
-    Outage: "OUTAGE",
-    PartialOutage: "PARTIAL_OUTAGE",
-} as const;
-
-/**
- * Form this outage is expected to take, which can take one of the following values: 
- * - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window. 
- * - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
- */
-export type InterconnectOutageNotificationIssueType = (typeof InterconnectOutageNotificationIssueType)[keyof typeof InterconnectOutageNotificationIssueType];
-
-export const InterconnectOutageNotificationSource = {
-    Google: "GOOGLE",
-    NsrcGoogle: "NSRC_GOOGLE",
-} as const;
-
-/**
- * The party that generated this notification, which can take the following value: 
- * - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
- */
-export type InterconnectOutageNotificationSource = (typeof InterconnectOutageNotificationSource)[keyof typeof InterconnectOutageNotificationSource];
-
-export const InterconnectOutageNotificationState = {
-    Active: "ACTIVE",
-    Cancelled: "CANCELLED",
-    Completed: "COMPLETED",
-    NsActive: "NS_ACTIVE",
-    NsCanceled: "NS_CANCELED",
-} as const;
-
-/**
- * State of this notification, which can take one of the following values: 
- * - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling. 
- * - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
- */
-export type InterconnectOutageNotificationState = (typeof InterconnectOutageNotificationState)[keyof typeof InterconnectOutageNotificationState];
-
-export const InterconnectState = {
-    Active: "ACTIVE",
-    Unprovisioned: "UNPROVISIONED",
-} as const;
-
-/**
- * [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
- * - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
- * - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
- * - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
- */
-export type InterconnectState = (typeof InterconnectState)[keyof typeof InterconnectState];
-
 export const LogConfigCloudAuditOptionsLogName = {
     AdminActivity: "ADMIN_ACTIVITY",
     DataAccess: "DATA_ACCESS",
@@ -1355,19 +1115,6 @@ export const LogConfigDataAccessOptionsLogMode = {
 } as const;
 
 export type LogConfigDataAccessOptionsLogMode = (typeof LogConfigDataAccessOptionsLogMode)[keyof typeof LogConfigDataAccessOptionsLogMode];
-
-export const MachineImageStatus = {
-    Creating: "CREATING",
-    Deleting: "DELETING",
-    Invalid: "INVALID",
-    Ready: "READY",
-    Uploading: "UPLOADING",
-} as const;
-
-/**
- * [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
- */
-export type MachineImageStatus = (typeof MachineImageStatus)[keyof typeof MachineImageStatus];
 
 export const MetadataFilterFilterMatchCriteria = {
     MatchAll: "MATCH_ALL",
@@ -1407,16 +1154,6 @@ export const NetworkInterfaceNicType = {
  * The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
  */
 export type NetworkInterfaceNicType = (typeof NetworkInterfaceNicType)[keyof typeof NetworkInterfaceNicType];
-
-export const NetworkPeeringState = {
-    Active: "ACTIVE",
-    Inactive: "INACTIVE",
-} as const;
-
-/**
- * [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
- */
-export type NetworkPeeringState = (typeof NetworkPeeringState)[keyof typeof NetworkPeeringState];
 
 export const NetworkPerformanceConfigTotalEgressBandwidthTier = {
     Default: "DEFAULT",
@@ -1479,18 +1216,6 @@ export const NodeTemplateCpuOvercommitType = {
  */
 export type NodeTemplateCpuOvercommitType = (typeof NodeTemplateCpuOvercommitType)[keyof typeof NodeTemplateCpuOvercommitType];
 
-export const NodeTemplateStatus = {
-    Creating: "CREATING",
-    Deleting: "DELETING",
-    Invalid: "INVALID",
-    Ready: "READY",
-} as const;
-
-/**
- * [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
- */
-export type NodeTemplateStatus = (typeof NodeTemplateStatus)[keyof typeof NodeTemplateStatus];
-
 export const OrganizationSecurityPolicyType = {
     CloudArmor: "CLOUD_ARMOR",
     Firewall: "FIREWALL",
@@ -1538,43 +1263,6 @@ export const PublicAdvertisedPrefixStatus = {
  * The status of the public advertised prefix.
  */
 export type PublicAdvertisedPrefixStatus = (typeof PublicAdvertisedPrefixStatus)[keyof typeof PublicAdvertisedPrefixStatus];
-
-export const PublicDelegatedPrefixPublicDelegatedSubPrefixStatus = {
-    Active: "ACTIVE",
-    Inactive: "INACTIVE",
-} as const;
-
-/**
- * [Output Only] The status of the sub public delegated prefix.
- */
-export type PublicDelegatedPrefixPublicDelegatedSubPrefixStatus = (typeof PublicDelegatedPrefixPublicDelegatedSubPrefixStatus)[keyof typeof PublicDelegatedPrefixPublicDelegatedSubPrefixStatus];
-
-export const PublicDelegatedPrefixStatus = {
-    Announced: "ANNOUNCED",
-    Deleting: "DELETING",
-    Initializing: "INITIALIZING",
-} as const;
-
-/**
- * [Output Only] The status of the public delegated prefix.
- */
-export type PublicDelegatedPrefixStatus = (typeof PublicDelegatedPrefixStatus)[keyof typeof PublicDelegatedPrefixStatus];
-
-export const RegionAutoscalerStatus = {
-    Active: "ACTIVE",
-    Deleting: "DELETING",
-    Error: "ERROR",
-    Pending: "PENDING",
-} as const;
-
-/**
- * [Output Only] The status of the autoscaler configuration. Current set of possible values:  
- * - PENDING: Autoscaler backend hasn't read new/updated configuration. 
- * - DELETING: Configuration is being deleted. 
- * - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
- * - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
- */
-export type RegionAutoscalerStatus = (typeof RegionAutoscalerStatus)[keyof typeof RegionAutoscalerStatus];
 
 export const RegionBackendServiceLoadBalancingScheme = {
     External: "EXTERNAL",
@@ -1683,18 +1371,6 @@ export const RegionCommitmentPlan = {
  */
 export type RegionCommitmentPlan = (typeof RegionCommitmentPlan)[keyof typeof RegionCommitmentPlan];
 
-export const RegionCommitmentStatus = {
-    Active: "ACTIVE",
-    Creating: "CREATING",
-    Expired: "EXPIRED",
-    NotYetActive: "NOT_YET_ACTIVE",
-} as const;
-
-/**
- * [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
- */
-export type RegionCommitmentStatus = (typeof RegionCommitmentStatus)[keyof typeof RegionCommitmentStatus];
-
 export const RegionCommitmentType = {
     AcceleratorOptimized: "ACCELERATOR_OPTIMIZED",
     ComputeOptimized: "COMPUTE_OPTIMIZED",
@@ -1721,24 +1397,6 @@ export const RegionDiskInterface = {
  * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
  */
 export type RegionDiskInterface = (typeof RegionDiskInterface)[keyof typeof RegionDiskInterface];
-
-export const RegionDiskStatus = {
-    Creating: "CREATING",
-    Deleting: "DELETING",
-    Failed: "FAILED",
-    Ready: "READY",
-    Restoring: "RESTORING",
-} as const;
-
-/**
- * [Output Only] The status of disk creation.  
- * - CREATING: Disk is provisioning. 
- * - RESTORING: Source data is being copied into the disk. 
- * - FAILED: Disk creation failed. 
- * - READY: Disk is ready for use. 
- * - DELETING: Disk is deleting.
- */
-export type RegionDiskStatus = (typeof RegionDiskStatus)[keyof typeof RegionDiskStatus];
 
 export const RegionHealthCheckServiceHealthStatusAggregationPolicy = {
     And: "AND",
@@ -1830,19 +1488,6 @@ export const ReservationAffinityConsumeReservationType = {
  */
 export type ReservationAffinityConsumeReservationType = (typeof ReservationAffinityConsumeReservationType)[keyof typeof ReservationAffinityConsumeReservationType];
 
-export const ReservationStatus = {
-    Creating: "CREATING",
-    Deleting: "DELETING",
-    Invalid: "INVALID",
-    Ready: "READY",
-    Updating: "UPDATING",
-} as const;
-
-/**
- * [Output Only] The status of the reservation.
- */
-export type ReservationStatus = (typeof ReservationStatus)[keyof typeof ReservationStatus];
-
 export const ResourceCommitmentType = {
     Accelerator: "ACCELERATOR",
     LocalSsd: "LOCAL_SSD",
@@ -1877,19 +1522,6 @@ export const ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDele
  */
 export type ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete = (typeof ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete)[keyof typeof ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete];
 
-export const ResourcePolicyStatus = {
-    Creating: "CREATING",
-    Deleting: "DELETING",
-    Expired: "EXPIRED",
-    Invalid: "INVALID",
-    Ready: "READY",
-} as const;
-
-/**
- * [Output Only] The status of resource policy creation.
- */
-export type ResourcePolicyStatus = (typeof ResourcePolicyStatus)[keyof typeof ResourcePolicyStatus];
-
 export const ResourcePolicyWeeklyCycleDayOfWeekDay = {
     Friday: "FRIDAY",
     Invalid: "INVALID",
@@ -1905,39 +1537,6 @@ export const ResourcePolicyWeeklyCycleDayOfWeekDay = {
  * Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
  */
 export type ResourcePolicyWeeklyCycleDayOfWeekDay = (typeof ResourcePolicyWeeklyCycleDayOfWeekDay)[keyof typeof ResourcePolicyWeeklyCycleDayOfWeekDay];
-
-export const RouteWarningsItemCode = {
-    CleanupFailed: "CLEANUP_FAILED",
-    DeprecatedResourceUsed: "DEPRECATED_RESOURCE_USED",
-    DeprecatedTypeUsed: "DEPRECATED_TYPE_USED",
-    DiskSizeLargerThanImageSize: "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
-    ExperimentalTypeUsed: "EXPERIMENTAL_TYPE_USED",
-    ExternalApiWarning: "EXTERNAL_API_WARNING",
-    FieldValueOverriden: "FIELD_VALUE_OVERRIDEN",
-    InjectedKernelsDeprecated: "INJECTED_KERNELS_DEPRECATED",
-    LargeDeploymentWarning: "LARGE_DEPLOYMENT_WARNING",
-    MissingTypeDependency: "MISSING_TYPE_DEPENDENCY",
-    NextHopAddressNotAssigned: "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
-    NextHopCannotIpForward: "NEXT_HOP_CANNOT_IP_FORWARD",
-    NextHopInstanceNotFound: "NEXT_HOP_INSTANCE_NOT_FOUND",
-    NextHopInstanceNotOnNetwork: "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
-    NextHopNotRunning: "NEXT_HOP_NOT_RUNNING",
-    NotCriticalError: "NOT_CRITICAL_ERROR",
-    NoResultsOnPage: "NO_RESULTS_ON_PAGE",
-    PartialSuccess: "PARTIAL_SUCCESS",
-    RequiredTosAgreement: "REQUIRED_TOS_AGREEMENT",
-    ResourceInUseByOtherResourceWarning: "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
-    ResourceNotDeleted: "RESOURCE_NOT_DELETED",
-    SchemaValidationIgnored: "SCHEMA_VALIDATION_IGNORED",
-    SingleInstancePropertyTemplate: "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
-    UndeclaredProperties: "UNDECLARED_PROPERTIES",
-    Unreachable: "UNREACHABLE",
-} as const;
-
-/**
- * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
- */
-export type RouteWarningsItemCode = (typeof RouteWarningsItemCode)[keyof typeof RouteWarningsItemCode];
 
 export const RouterBgpAdvertiseMode = {
     Custom: "CUSTOM",
@@ -1995,30 +1594,6 @@ export const RouterBgpPeerEnable = {
  * If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
  */
 export type RouterBgpPeerEnable = (typeof RouterBgpPeerEnable)[keyof typeof RouterBgpPeerEnable];
-
-export const RouterBgpPeerManagementType = {
-    ManagedByAttachment: "MANAGED_BY_ATTACHMENT",
-    ManagedByUser: "MANAGED_BY_USER",
-} as const;
-
-/**
- * [Output Only] The resource that configures and manages this BGP peer. 
- * - MANAGED_BY_USER is the default value and can be managed by you or other users 
- * - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
- */
-export type RouterBgpPeerManagementType = (typeof RouterBgpPeerManagementType)[keyof typeof RouterBgpPeerManagementType];
-
-export const RouterInterfaceManagementType = {
-    ManagedByAttachment: "MANAGED_BY_ATTACHMENT",
-    ManagedByUser: "MANAGED_BY_USER",
-} as const;
-
-/**
- * [Output Only] The resource that configures and manages this interface. 
- * - MANAGED_BY_USER is the default value and can be managed directly by users. 
- * - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
- */
-export type RouterInterfaceManagementType = (typeof RouterInterfaceManagementType)[keyof typeof RouterInterfaceManagementType];
 
 export const RouterNatLogConfigFilter = {
     All: "ALL",
@@ -2109,46 +1684,6 @@ export const SSLHealthCheckProxyHeader = {
  */
 export type SSLHealthCheckProxyHeader = (typeof SSLHealthCheckProxyHeader)[keyof typeof SSLHealthCheckProxyHeader];
 
-export const SavedAttachedDiskInterface = {
-    Nvme: "NVME",
-    Scsi: "SCSI",
-} as const;
-
-/**
- * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
- */
-export type SavedAttachedDiskInterface = (typeof SavedAttachedDiskInterface)[keyof typeof SavedAttachedDiskInterface];
-
-export const SavedAttachedDiskMode = {
-    ReadOnly: "READ_ONLY",
-    ReadWrite: "READ_WRITE",
-} as const;
-
-/**
- * The mode in which this disk is attached to the source instance, either READ_WRITE or READ_ONLY.
- */
-export type SavedAttachedDiskMode = (typeof SavedAttachedDiskMode)[keyof typeof SavedAttachedDiskMode];
-
-export const SavedAttachedDiskStorageBytesStatus = {
-    Updating: "UPDATING",
-    UpToDate: "UP_TO_DATE",
-} as const;
-
-/**
- * [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
- */
-export type SavedAttachedDiskStorageBytesStatus = (typeof SavedAttachedDiskStorageBytesStatus)[keyof typeof SavedAttachedDiskStorageBytesStatus];
-
-export const SavedAttachedDiskType = {
-    Persistent: "PERSISTENT",
-    Scratch: "SCRATCH",
-} as const;
-
-/**
- * Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
- */
-export type SavedAttachedDiskType = (typeof SavedAttachedDiskType)[keyof typeof SavedAttachedDiskType];
-
 export const SchedulingNodeAffinityOperator = {
     In: "IN",
     NotIn: "NOT_IN",
@@ -2218,19 +1753,6 @@ export const ServerBindingType = {
 
 export type ServerBindingType = (typeof ServerBindingType)[keyof typeof ServerBindingType];
 
-export const ServiceAttachmentConnectedEndpointStatus = {
-    Accepted: "ACCEPTED",
-    Closed: "CLOSED",
-    Pending: "PENDING",
-    Rejected: "REJECTED",
-    StatusUnspecified: "STATUS_UNSPECIFIED",
-} as const;
-
-/**
- * The status of a connected endpoint to this service attachment.
- */
-export type ServiceAttachmentConnectedEndpointStatus = (typeof ServiceAttachmentConnectedEndpointStatus)[keyof typeof ServiceAttachmentConnectedEndpointStatus];
-
 export const ServiceAttachmentConnectionPreference = {
     AcceptAutomatic: "ACCEPT_AUTOMATIC",
     ConnectionPreferenceUnspecified: "CONNECTION_PREFERENCE_UNSPECIFIED",
@@ -2240,67 +1762,6 @@ export const ServiceAttachmentConnectionPreference = {
  * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
  */
 export type ServiceAttachmentConnectionPreference = (typeof ServiceAttachmentConnectionPreference)[keyof typeof ServiceAttachmentConnectionPreference];
-
-export const ServiceAttachmentConsumerForwardingRuleStatus = {
-    Accepted: "ACCEPTED",
-    Closed: "CLOSED",
-    Pending: "PENDING",
-    Rejected: "REJECTED",
-    StatusUnspecified: "STATUS_UNSPECIFIED",
-} as const;
-
-/**
- * The status of the forwarding rule.
- */
-export type ServiceAttachmentConsumerForwardingRuleStatus = (typeof ServiceAttachmentConsumerForwardingRuleStatus)[keyof typeof ServiceAttachmentConsumerForwardingRuleStatus];
-
-export const SnapshotStatus = {
-    Creating: "CREATING",
-    Deleting: "DELETING",
-    Failed: "FAILED",
-    Ready: "READY",
-    Uploading: "UPLOADING",
-} as const;
-
-/**
- * [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
- */
-export type SnapshotStatus = (typeof SnapshotStatus)[keyof typeof SnapshotStatus];
-
-export const SnapshotStorageBytesStatus = {
-    Updating: "UPDATING",
-    UpToDate: "UP_TO_DATE",
-} as const;
-
-/**
- * [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
- */
-export type SnapshotStorageBytesStatus = (typeof SnapshotStorageBytesStatus)[keyof typeof SnapshotStorageBytesStatus];
-
-export const SourceInstancePropertiesPostKeyRevocationActionType = {
-    Noop: "NOOP",
-    PostKeyRevocationActionTypeUnspecified: "POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED",
-    Shutdown: "SHUTDOWN",
-} as const;
-
-/**
- * PostKeyRevocationActionType of the instance.
- */
-export type SourceInstancePropertiesPostKeyRevocationActionType = (typeof SourceInstancePropertiesPostKeyRevocationActionType)[keyof typeof SourceInstancePropertiesPostKeyRevocationActionType];
-
-export const SslCertificateManagedSslCertificateStatus = {
-    Active: "ACTIVE",
-    ManagedCertificateStatusUnspecified: "MANAGED_CERTIFICATE_STATUS_UNSPECIFIED",
-    Provisioning: "PROVISIONING",
-    ProvisioningFailed: "PROVISIONING_FAILED",
-    ProvisioningFailedPermanently: "PROVISIONING_FAILED_PERMANENTLY",
-    RenewalFailed: "RENEWAL_FAILED",
-} as const;
-
-/**
- * [Output only] Status of the managed certificate resource.
- */
-export type SslCertificateManagedSslCertificateStatus = (typeof SslCertificateManagedSslCertificateStatus)[keyof typeof SslCertificateManagedSslCertificateStatus];
 
 export const SslCertificateType = {
     Managed: "MANAGED",
@@ -2335,39 +1796,6 @@ export const SslPolicyProfile = {
  * Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
  */
 export type SslPolicyProfile = (typeof SslPolicyProfile)[keyof typeof SslPolicyProfile];
-
-export const SslPolicyWarningsItemCode = {
-    CleanupFailed: "CLEANUP_FAILED",
-    DeprecatedResourceUsed: "DEPRECATED_RESOURCE_USED",
-    DeprecatedTypeUsed: "DEPRECATED_TYPE_USED",
-    DiskSizeLargerThanImageSize: "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
-    ExperimentalTypeUsed: "EXPERIMENTAL_TYPE_USED",
-    ExternalApiWarning: "EXTERNAL_API_WARNING",
-    FieldValueOverriden: "FIELD_VALUE_OVERRIDEN",
-    InjectedKernelsDeprecated: "INJECTED_KERNELS_DEPRECATED",
-    LargeDeploymentWarning: "LARGE_DEPLOYMENT_WARNING",
-    MissingTypeDependency: "MISSING_TYPE_DEPENDENCY",
-    NextHopAddressNotAssigned: "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
-    NextHopCannotIpForward: "NEXT_HOP_CANNOT_IP_FORWARD",
-    NextHopInstanceNotFound: "NEXT_HOP_INSTANCE_NOT_FOUND",
-    NextHopInstanceNotOnNetwork: "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
-    NextHopNotRunning: "NEXT_HOP_NOT_RUNNING",
-    NotCriticalError: "NOT_CRITICAL_ERROR",
-    NoResultsOnPage: "NO_RESULTS_ON_PAGE",
-    PartialSuccess: "PARTIAL_SUCCESS",
-    RequiredTosAgreement: "REQUIRED_TOS_AGREEMENT",
-    ResourceInUseByOtherResourceWarning: "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
-    ResourceNotDeleted: "RESOURCE_NOT_DELETED",
-    SchemaValidationIgnored: "SCHEMA_VALIDATION_IGNORED",
-    SingleInstancePropertyTemplate: "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
-    UndeclaredProperties: "UNDECLARED_PROPERTIES",
-    Unreachable: "UNREACHABLE",
-} as const;
-
-/**
- * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
- */
-export type SslPolicyWarningsItemCode = (typeof SslPolicyWarningsItemCode)[keyof typeof SslPolicyWarningsItemCode];
 
 export const SubnetworkLogConfigAggregationInterval = {
     Interval10Min: "INTERVAL_10_MIN",
@@ -2428,16 +1856,6 @@ export const SubnetworkRole = {
  * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
  */
 export type SubnetworkRole = (typeof SubnetworkRole)[keyof typeof SubnetworkRole];
-
-export const SubnetworkState = {
-    Draining: "DRAINING",
-    Ready: "READY",
-} as const;
-
-/**
- * [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
- */
-export type SubnetworkState = (typeof SubnetworkState)[keyof typeof SubnetworkState];
 
 export const SubsettingPolicy = {
     ConsistentHashSubsetting: "CONSISTENT_HASH_SUBSETTING",
@@ -2535,51 +1953,3 @@ export const TargetTcpProxyProxyHeader = {
  * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
  */
 export type TargetTcpProxyProxyHeader = (typeof TargetTcpProxyProxyHeader)[keyof typeof TargetTcpProxyProxyHeader];
-
-export const TargetVpnGatewayStatus = {
-    Creating: "CREATING",
-    Deleting: "DELETING",
-    Failed: "FAILED",
-    Ready: "READY",
-} as const;
-
-/**
- * [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
- */
-export type TargetVpnGatewayStatus = (typeof TargetVpnGatewayStatus)[keyof typeof TargetVpnGatewayStatus];
-
-export const VpnTunnelStatus = {
-    AllocatingResources: "ALLOCATING_RESOURCES",
-    AuthorizationError: "AUTHORIZATION_ERROR",
-    Deprovisioning: "DEPROVISIONING",
-    Established: "ESTABLISHED",
-    Failed: "FAILED",
-    FirstHandshake: "FIRST_HANDSHAKE",
-    NegotiationFailure: "NEGOTIATION_FAILURE",
-    NetworkError: "NETWORK_ERROR",
-    NoIncomingPackets: "NO_INCOMING_PACKETS",
-    Provisioning: "PROVISIONING",
-    Rejected: "REJECTED",
-    Stopped: "STOPPED",
-    WaitingForFullConfig: "WAITING_FOR_FULL_CONFIG",
-} as const;
-
-/**
- * [Output Only] The status of the VPN tunnel, which can be one of the following: 
- * - PROVISIONING: Resource is being allocated for the VPN tunnel. 
- * - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
- * - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
- * - ESTABLISHED: Secure session is successfully established with the peer VPN. 
- * - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
- * - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
- * - NEGOTIATION_FAILURE: Handshake failed. 
- * - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
- * - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
- * - NO_INCOMING_PACKETS: No incoming packets from peer. 
- * - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
- * - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
- * - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
- * - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
- * - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
- */
-export type VpnTunnelStatus = (typeof VpnTunnelStatus)[keyof typeof VpnTunnelStatus];

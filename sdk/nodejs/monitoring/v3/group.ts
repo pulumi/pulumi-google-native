@@ -49,7 +49,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
      */
@@ -72,10 +72,10 @@ export class Group extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["isCluster"] = args ? args.isCluster : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["parentName"] = args ? args.parentName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["validateOnly"] = args ? args.validateOnly : undefined;
+            inputs["name"] = undefined /*out*/;
         } else {
             inputs["displayName"] = undefined /*out*/;
             inputs["filter"] = undefined /*out*/;
@@ -106,10 +106,6 @@ export interface GroupArgs {
      * If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
      */
     isCluster?: pulumi.Input<boolean>;
-    /**
-     * The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
-     */
-    name?: pulumi.Input<string>;
     /**
      * The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
      */

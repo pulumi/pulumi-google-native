@@ -45,18 +45,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
-        /// <summary>
-        /// [Output Only] The status of the sub public delegated prefix.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.V1.PublicDelegatedPrefixPublicDelegatedSubPrefixStatus>? Status { get; set; }
-
         public PublicDelegatedPrefixPublicDelegatedSubPrefixArgs()
         {
         }

@@ -25,7 +25,7 @@ type LookupHttpsHealthCheckArgs struct {
 type LookupHttpsHealthCheckResult struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec int `pulumi:"checkIntervalSec"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -41,7 +41,7 @@ type LookupHttpsHealthCheckResult struct {
 	Port int `pulumi:"port"`
 	// The request path of the HTTPS health check request. The default value is "/".
 	RequestPath string `pulumi:"requestPath"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have a greater value than checkIntervalSec.
 	TimeoutSec int `pulumi:"timeoutSec"`

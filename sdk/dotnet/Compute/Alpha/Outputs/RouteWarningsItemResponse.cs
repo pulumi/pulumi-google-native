@@ -14,16 +14,16 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class RouteWarningsItemResponse
     {
         /// <summary>
-        /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        /// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
         /// </summary>
         public readonly string Code;
         /// <summary>
-        /// [Output Only] Metadata about this warning in key: value format. For example:
+        /// Metadata about this warning in key: value format. For example:
         /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
         /// </summary>
         public readonly ImmutableArray<Outputs.RouteWarningsItemDataItemResponse> Data;
         /// <summary>
-        /// [Output Only] A human-readable description of the warning code.
+        /// A human-readable description of the warning code.
         /// </summary>
         public readonly string Message;
 

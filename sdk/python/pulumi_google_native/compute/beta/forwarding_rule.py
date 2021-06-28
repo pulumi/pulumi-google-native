@@ -23,12 +23,9 @@ class ForwardingRuleArgs:
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input['ForwardingRuleIpVersion']] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['ForwardingRuleLoadBalancingScheme']] = None,
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['MetadataFilterArgs']]]] = None,
@@ -37,17 +34,13 @@ class ForwardingRuleArgs:
                  network_tier: Optional[pulumi.Input['ForwardingRuleNetworkTier']] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 psc_connection_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
-                 service_name: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ForwardingRule resource.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[str] ip_address: IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
                
                If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
@@ -78,12 +71,9 @@ class ForwardingRuleArgs:
                When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule.
         :param pulumi.Input[bool] allow_global_access: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
         :param pulumi.Input[str] backend_service: Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input['ForwardingRuleIpVersion'] ip_version: The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['ForwardingRuleLoadBalancingScheme'] load_balancing_scheme: Specifies the forwarding rule type.
                
@@ -136,17 +126,12 @@ class ForwardingRuleArgs:
                For Internal TCP/UDP Load Balancing, if you specify allPorts, you should not specify ports.
                
                For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
-        :param pulumi.Input[str] psc_connection_id: [Output Only] The PSC connection id of the PSC Forwarding Rule.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]] service_directory_registrations: Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
                
                It is only supported for Internal TCP/UDP Load Balancing and Internal HTTP(S) Load Balancing.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name.
                
                The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               This field is only used for internal load balancing.
-        :param pulumi.Input[str] service_name: [Output Only] The internal fully qualified service name for this Forwarding Rule.
                
                This field is only used for internal load balancing.
         :param pulumi.Input[str] subnetwork: This field is only used for internal load balancing.
@@ -167,18 +152,12 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "allow_global_access", allow_global_access)
         if backend_service is not None:
             pulumi.set(__self__, "backend_service", backend_service)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
         if is_mirroring_collector is not None:
             pulumi.set(__self__, "is_mirroring_collector", is_mirroring_collector)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if load_balancing_scheme is not None:
@@ -195,18 +174,12 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "port_range", port_range)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
-        if psc_connection_id is not None:
-            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
         if service_directory_registrations is not None:
             pulumi.set(__self__, "service_directory_registrations", service_directory_registrations)
         if service_label is not None:
             pulumi.set(__self__, "service_label", service_label)
-        if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if target is not None:
@@ -224,9 +197,6 @@ class ForwardingRuleArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -319,18 +289,6 @@ class ForwardingRuleArgs:
         pulumi.set(self, "backend_service", value)
 
     @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -341,18 +299,6 @@ class ForwardingRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -377,18 +323,6 @@ class ForwardingRuleArgs:
     @is_mirroring_collector.setter
     def is_mirroring_collector(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_mirroring_collector", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -531,18 +465,6 @@ class ForwardingRuleArgs:
         pulumi.set(self, "ports", value)
 
     @property
-    @pulumi.getter(name="pscConnectionId")
-    def psc_connection_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The PSC connection id of the PSC Forwarding Rule.
-        """
-        return pulumi.get(self, "psc_connection_id")
-
-    @psc_connection_id.setter
-    def psc_connection_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "psc_connection_id", value)
-
-    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -550,18 +472,6 @@ class ForwardingRuleArgs:
     @request_id.setter
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
 
     @property
     @pulumi.getter(name="serviceDirectoryRegistrations")
@@ -592,20 +502,6 @@ class ForwardingRuleArgs:
     @service_label.setter
     def service_label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_label", value)
-
-    @property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The internal fully qualified service name for this Forwarding Rule.
-
-        This field is only used for internal load balancing.
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "service_name", value)
 
     @property
     @pulumi.getter
@@ -643,12 +539,9 @@ class ForwardingRule(pulumi.CustomResource):
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input['ForwardingRuleIpVersion']] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['ForwardingRuleLoadBalancingScheme']] = None,
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetadataFilterArgs']]]]] = None,
@@ -658,13 +551,10 @@ class ForwardingRule(pulumi.CustomResource):
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_connection_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
-                 service_name: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -703,12 +593,9 @@ class ForwardingRule(pulumi.CustomResource):
                When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule.
         :param pulumi.Input[bool] allow_global_access: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
         :param pulumi.Input[str] backend_service: Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input['ForwardingRuleIpVersion'] ip_version: The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['ForwardingRuleLoadBalancingScheme'] load_balancing_scheme: Specifies the forwarding rule type.
                
@@ -761,18 +648,12 @@ class ForwardingRule(pulumi.CustomResource):
                For Internal TCP/UDP Load Balancing, if you specify allPorts, you should not specify ports.
                
                For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
-        :param pulumi.Input[str] psc_connection_id: [Output Only] The PSC connection id of the PSC Forwarding Rule.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]] service_directory_registrations: Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
                
                It is only supported for Internal TCP/UDP Load Balancing and Internal HTTP(S) Load Balancing.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name.
                
                The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               This field is only used for internal load balancing.
-        :param pulumi.Input[str] service_name: [Output Only] The internal fully qualified service name for this Forwarding Rule.
                
                This field is only used for internal load balancing.
         :param pulumi.Input[str] subnetwork: This field is only used for internal load balancing.
@@ -810,12 +691,9 @@ class ForwardingRule(pulumi.CustomResource):
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input['ForwardingRuleIpVersion']] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['ForwardingRuleLoadBalancingScheme']] = None,
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetadataFilterArgs']]]]] = None,
@@ -825,13 +703,10 @@ class ForwardingRule(pulumi.CustomResource):
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_connection_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
-                 service_name: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -851,12 +726,9 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["all_ports"] = all_ports
             __props__.__dict__["allow_global_access"] = allow_global_access
             __props__.__dict__["backend_service"] = backend_service
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            __props__.__dict__["id"] = id
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["is_mirroring_collector"] = is_mirroring_collector
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["labels"] = labels
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["metadata_filters"] = metadata_filters
@@ -868,19 +740,21 @@ class ForwardingRule(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["psc_connection_id"] = psc_connection_id
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
             __props__.__dict__["service_directory_registrations"] = service_directory_registrations
             __props__.__dict__["service_label"] = service_label
-            __props__.__dict__["service_name"] = service_name
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["target"] = target
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["psc_connection_id"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["service_name"] = None
         super(ForwardingRule, __self__).__init__(
             'google-native:compute/beta:ForwardingRule',
             resource_name,
@@ -1002,7 +876,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -1044,7 +918,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
+        Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
         """
         return pulumi.get(self, "kind")
 
@@ -1170,7 +1044,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="pscConnectionId")
     def psc_connection_id(self) -> pulumi.Output[str]:
         """
-        [Output Only] The PSC connection id of the PSC Forwarding Rule.
+        The PSC connection id of the PSC Forwarding Rule.
         """
         return pulumi.get(self, "psc_connection_id")
 
@@ -1178,7 +1052,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -1186,7 +1060,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -1216,7 +1090,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        [Output Only] The internal fully qualified service name for this Forwarding Rule.
+        The internal fully qualified service name for this Forwarding Rule.
 
         This field is only used for internal load balancing.
         """

@@ -1591,33 +1591,17 @@ class GoogleCloudDialogflowCxV3IntentParameterArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
                  parts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs']]]] = None,
                  repeat_count: Optional[pulumi.Input[int]] = None):
         """
         Represents an example that the agent is trained on to identify the intent.
-        :param pulumi.Input[str] id: The unique identifier of the training phrase.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs']]] parts: Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
         :param pulumi.Input[int] repeat_count: Indicates how many times this example was added to the intent.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if parts is not None:
             pulumi.set(__self__, "parts", parts)
         if repeat_count is not None:
             pulumi.set(__self__, "repeat_count", repeat_count)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique identifier of the training phrase.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter

@@ -19,22 +19,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? AttachmentId { get; set; }
 
         /// <summary>
-        /// [Output Only] The display name of the security policy of the association.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
         /// The name for an association.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// [Output Only] The security policy ID of the association.
-        /// </summary>
-        [Input("securityPolicyId")]
-        public Input<string>? SecurityPolicyId { get; set; }
 
         public SecurityPolicyAssociationArgs()
         {

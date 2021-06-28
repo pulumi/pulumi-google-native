@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.NodeGroupAutoscalingPolicyResponse AutoscalingPolicy;
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public readonly string Description;
         public readonly string Fingerprint;
         /// <summary>
-        /// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+        /// The type of the resource. Always compute#nodeGroup for node group.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -74,16 +74,16 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string NodeTemplate;
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output Only] The total number of nodes in the node group.
+        /// The total number of nodes in the node group.
         /// </summary>
         public readonly int Size;
         public readonly string Status;
         /// <summary>
-        /// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+        /// The name of the zone where the node group resides, such as us-central1-a.
         /// </summary>
         public readonly string Zone;
 

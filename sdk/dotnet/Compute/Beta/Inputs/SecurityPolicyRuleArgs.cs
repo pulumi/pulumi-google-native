@@ -42,12 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<bool>? EnableLogging { get; set; }
 
         /// <summary>
-        /// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        /// <summary>
         /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         /// </summary>
         [Input("match")]
@@ -70,12 +64,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// </summary>
         [Input("ruleNumber")]
         public Input<string>? RuleNumber { get; set; }
-
-        /// <summary>
-        /// [Output Only] Calculation of the complexity of a single firewall security policy rule.
-        /// </summary>
-        [Input("ruleTupleCount")]
-        public Input<int>? RuleTupleCount { get; set; }
 
         [Input("targetResources")]
         private InputList<string>? _targetResources;

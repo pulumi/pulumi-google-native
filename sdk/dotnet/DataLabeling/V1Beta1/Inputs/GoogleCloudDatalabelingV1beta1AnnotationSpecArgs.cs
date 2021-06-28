@@ -27,12 +27,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
-        /// </summary>
-        [Input("index")]
-        public Input<int>? Index { get; set; }
-
         public GoogleCloudDatalabelingV1beta1AnnotationSpecArgs()
         {
         }

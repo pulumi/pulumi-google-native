@@ -154,9 +154,7 @@ type jobArgs struct {
 	Description *string `pulumi:"description"`
 	// HTTP target.
 	HttpTarget *HttpTarget `pulumi:"httpTarget"`
-	// The time the last job attempt started.
-	LastAttemptTime *string `pulumi:"lastAttemptTime"`
-	Location        string  `pulumi:"location"`
+	Location   string      `pulumi:"location"`
 	// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
@@ -166,16 +164,8 @@ type jobArgs struct {
 	RetryConfig *RetryConfig `pulumi:"retryConfig"`
 	// Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.
 	Schedule *string `pulumi:"schedule"`
-	// The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
-	ScheduleTime *string `pulumi:"scheduleTime"`
-	// State of the job.
-	State *string `pulumi:"state"`
-	// The response from the target for the last attempted execution.
-	Status *Status `pulumi:"status"`
 	// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone *string `pulumi:"timeZone"`
-	// The creation time of the job.
-	UserUpdateTime *string `pulumi:"userUpdateTime"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -188,9 +178,7 @@ type JobArgs struct {
 	Description pulumi.StringPtrInput
 	// HTTP target.
 	HttpTarget HttpTargetPtrInput
-	// The time the last job attempt started.
-	LastAttemptTime pulumi.StringPtrInput
-	Location        pulumi.StringInput
+	Location   pulumi.StringInput
 	// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
@@ -200,16 +188,8 @@ type JobArgs struct {
 	RetryConfig RetryConfigPtrInput
 	// Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.
 	Schedule pulumi.StringPtrInput
-	// The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
-	ScheduleTime pulumi.StringPtrInput
-	// State of the job.
-	State *JobStateEnum
-	// The response from the target for the last attempted execution.
-	Status StatusPtrInput
 	// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone pulumi.StringPtrInput
-	// The creation time of the job.
-	UserUpdateTime pulumi.StringPtrInput
 }
 
 func (JobArgs) ElementType() reflect.Type {

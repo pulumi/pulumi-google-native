@@ -33,11 +33,11 @@ export interface GetInterconnectResult {
      */
     readonly adminEnabled: boolean;
     /**
-     * [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
+     * A list of CircuitInfo objects, that describe the individual circuits in this LAG.
      */
     readonly circuitInfos: outputs.compute.v1.InterconnectCircuitInfoResponse[];
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -49,19 +49,19 @@ export interface GetInterconnectResult {
      */
     readonly description: string;
     /**
-     * [Output Only] A list of outages expected for this Interconnect.
+     * A list of outages expected for this Interconnect.
      */
     readonly expectedOutages: outputs.compute.v1.InterconnectOutageNotificationResponse[];
     /**
-     * [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
+     * IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
      */
     readonly googleIpAddress: string;
     /**
-     * [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
+     * Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
      */
     readonly googleReferenceId: string;
     /**
-     * [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
+     * A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
      */
     readonly interconnectAttachments: string[];
     /**
@@ -71,7 +71,7 @@ export interface GetInterconnectResult {
      */
     readonly interconnectType: string;
     /**
-     * [Output Only] Type of the resource. Always compute#interconnect for interconnects.
+     * Type of the resource. Always compute#interconnect for interconnects.
      */
     readonly kind: string;
     /**
@@ -93,18 +93,18 @@ export interface GetInterconnectResult {
      */
     readonly nocContactEmail: string;
     /**
-     * [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
+     * The current status of this Interconnect's functionality, which can take one of the following values: 
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
      * - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
      */
     readonly operationalStatus: string;
     /**
-     * [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
+     * IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
      */
     readonly peerIpAddress: string;
     /**
-     * [Output Only] Number of links actually provisioned in this interconnect.
+     * Number of links actually provisioned in this interconnect.
      */
     readonly provisionedLinkCount: number;
     /**
@@ -112,11 +112,11 @@ export interface GetInterconnectResult {
      */
     readonly requestedLinkCount: number;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
+     * The current state of Interconnect functionality, which can take one of the following values: 
      * - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
      * - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
      * - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.

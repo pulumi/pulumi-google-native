@@ -78,7 +78,7 @@ class GetRouterResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -111,7 +111,7 @@ class GetRouterResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of resource. Always compute#router for routers.
+        Type of resource. Always compute#router for routers.
         """
         return pulumi.get(self, "kind")
 
@@ -143,7 +143,7 @@ class GetRouterResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
 
@@ -151,7 +151,7 @@ class GetRouterResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -159,7 +159,7 @@ class GetRouterResult:
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> str:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 

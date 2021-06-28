@@ -63,14 +63,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// [Output Only] The resource that configures and manages this BGP peer. 
-        /// - MANAGED_BY_USER is the default value and can be managed by you or other users 
-        /// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
-        /// </summary>
-        [Input("managementType")]
-        public Input<Pulumi.GoogleNative.Compute.V1.RouterBgpPeerManagementType>? ManagementType { get; set; }
-
-        /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]

@@ -230,8 +230,6 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfig struct {
-	// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
-	Kind *string `pulumi:"kind"`
 	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
 	Name *string `pulumi:"name"`
 	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
@@ -263,8 +261,6 @@ type AccessConfigInput interface {
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfigArgs struct {
-	// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
@@ -335,11 +331,6 @@ func (o AccessConfigOutput) ToAccessConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
-func (o AccessConfigOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
 // The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
 func (o AccessConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -396,7 +387,7 @@ func (o AccessConfigArrayOutput) Index(i pulumi.IntInput) AccessConfigOutput {
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfigResponse struct {
-	// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+	// Type of the resource. Always compute#accessConfig for access configs.
 	Kind string `pulumi:"kind"`
 	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
 	Name string `pulumi:"name"`
@@ -429,7 +420,7 @@ type AccessConfigResponseInput interface {
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfigResponseArgs struct {
-	// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+	// Type of the resource. Always compute#accessConfig for access configs.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -501,7 +492,7 @@ func (o AccessConfigResponseOutput) ToAccessConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-// [Output Only] Type of the resource. Always compute#accessConfig for access configs.
+// Type of the resource. Always compute#accessConfig for access configs.
 func (o AccessConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -1744,8 +1735,6 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesResponsePtrOutp
 type AllocationSpecificSKUReservation struct {
 	// Specifies the number of resources that are allocated.
 	Count *string `pulumi:"count"`
-	// [Output Only] Indicates how many instances are in use.
-	InUseCount *string `pulumi:"inUseCount"`
 	// The instance properties for the reservation.
 	InstanceProperties *AllocationSpecificSKUAllocationReservedInstanceProperties `pulumi:"instanceProperties"`
 }
@@ -1765,8 +1754,6 @@ type AllocationSpecificSKUReservationInput interface {
 type AllocationSpecificSKUReservationArgs struct {
 	// Specifies the number of resources that are allocated.
 	Count pulumi.StringPtrInput `pulumi:"count"`
-	// [Output Only] Indicates how many instances are in use.
-	InUseCount pulumi.StringPtrInput `pulumi:"inUseCount"`
 	// The instance properties for the reservation.
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesPtrInput `pulumi:"instanceProperties"`
 }
@@ -1854,11 +1841,6 @@ func (o AllocationSpecificSKUReservationOutput) Count() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AllocationSpecificSKUReservation) *string { return v.Count }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Indicates how many instances are in use.
-func (o AllocationSpecificSKUReservationOutput) InUseCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AllocationSpecificSKUReservation) *string { return v.InUseCount }).(pulumi.StringPtrOutput)
-}
-
 // The instance properties for the reservation.
 func (o AllocationSpecificSKUReservationOutput) InstanceProperties() AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput {
 	return o.ApplyT(func(v AllocationSpecificSKUReservation) *AllocationSpecificSKUAllocationReservedInstanceProperties {
@@ -1894,16 +1876,6 @@ func (o AllocationSpecificSKUReservationPtrOutput) Count() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Indicates how many instances are in use.
-func (o AllocationSpecificSKUReservationPtrOutput) InUseCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AllocationSpecificSKUReservation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InUseCount
-	}).(pulumi.StringPtrOutput)
-}
-
 // The instance properties for the reservation.
 func (o AllocationSpecificSKUReservationPtrOutput) InstanceProperties() AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput {
 	return o.ApplyT(func(v *AllocationSpecificSKUReservation) *AllocationSpecificSKUAllocationReservedInstanceProperties {
@@ -1918,7 +1890,7 @@ func (o AllocationSpecificSKUReservationPtrOutput) InstanceProperties() Allocati
 type AllocationSpecificSKUReservationResponse struct {
 	// Specifies the number of resources that are allocated.
 	Count string `pulumi:"count"`
-	// [Output Only] Indicates how many instances are in use.
+	// Indicates how many instances are in use.
 	InUseCount string `pulumi:"inUseCount"`
 	// The instance properties for the reservation.
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesResponse `pulumi:"instanceProperties"`
@@ -1939,7 +1911,7 @@ type AllocationSpecificSKUReservationResponseInput interface {
 type AllocationSpecificSKUReservationResponseArgs struct {
 	// Specifies the number of resources that are allocated.
 	Count pulumi.StringInput `pulumi:"count"`
-	// [Output Only] Indicates how many instances are in use.
+	// Indicates how many instances are in use.
 	InUseCount pulumi.StringInput `pulumi:"inUseCount"`
 	// The instance properties for the reservation.
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesResponseInput `pulumi:"instanceProperties"`
@@ -2028,7 +2000,7 @@ func (o AllocationSpecificSKUReservationResponseOutput) Count() pulumi.StringOut
 	return o.ApplyT(func(v AllocationSpecificSKUReservationResponse) string { return v.Count }).(pulumi.StringOutput)
 }
 
-// [Output Only] Indicates how many instances are in use.
+// Indicates how many instances are in use.
 func (o AllocationSpecificSKUReservationResponseOutput) InUseCount() pulumi.StringOutput {
 	return o.ApplyT(func(v AllocationSpecificSKUReservationResponse) string { return v.InUseCount }).(pulumi.StringOutput)
 }
@@ -2068,7 +2040,7 @@ func (o AllocationSpecificSKUReservationResponsePtrOutput) Count() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Indicates how many instances are in use.
+// Indicates how many instances are in use.
 func (o AllocationSpecificSKUReservationResponsePtrOutput) InUseCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AllocationSpecificSKUReservationResponse) *string {
 		if v == nil {
@@ -2112,22 +2084,14 @@ type AttachedDisk struct {
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
-	// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-	Index *int `pulumi:"index"`
 	// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
 	//
 	// This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams *AttachedDiskInitializeParams `pulumi:"initializeParams"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
 	Interface *string `pulumi:"interface"`
-	// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
-	Kind *string `pulumi:"kind"`
-	// [Output Only] Any valid publicly visible licenses.
-	Licenses []string `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
 	Mode *string `pulumi:"mode"`
-	// [Output Only] shielded vm initial state stored on disk
-	ShieldedInstanceInitialState *InitialStateConfig `pulumi:"shieldedInstanceInitialState"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
 	//
 	// If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks.
@@ -2173,22 +2137,14 @@ type AttachedDiskArgs struct {
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures GuestOsFeatureArrayInput `pulumi:"guestOsFeatures"`
-	// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-	Index pulumi.IntPtrInput `pulumi:"index"`
 	// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
 	//
 	// This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams AttachedDiskInitializeParamsPtrInput `pulumi:"initializeParams"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
 	Interface *AttachedDiskInterface `pulumi:"interface"`
-	// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// [Output Only] Any valid publicly visible licenses.
-	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
 	Mode *AttachedDiskMode `pulumi:"mode"`
-	// [Output Only] shielded vm initial state stored on disk
-	ShieldedInstanceInitialState InitialStateConfigPtrInput `pulumi:"shieldedInstanceInitialState"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
 	//
 	// If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks.
@@ -2291,11 +2247,6 @@ func (o AttachedDiskOutput) GuestOsFeatures() GuestOsFeatureArrayOutput {
 	return o.ApplyT(func(v AttachedDisk) []GuestOsFeature { return v.GuestOsFeatures }).(GuestOsFeatureArrayOutput)
 }
 
-// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-func (o AttachedDiskOutput) Index() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AttachedDisk) *int { return v.Index }).(pulumi.IntPtrOutput)
-}
-
 // [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
 //
 // This property is mutually exclusive with the source property; you can only define one or the other, but not both.
@@ -2308,24 +2259,9 @@ func (o AttachedDiskOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDisk) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
-func (o AttachedDiskOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AttachedDisk) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Any valid publicly visible licenses.
-func (o AttachedDiskOutput) Licenses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AttachedDisk) []string { return v.Licenses }).(pulumi.StringArrayOutput)
-}
-
 // The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
 func (o AttachedDiskOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] shielded vm initial state stored on disk
-func (o AttachedDiskOutput) ShieldedInstanceInitialState() InitialStateConfigPtrOutput {
-	return o.ApplyT(func(v AttachedDisk) *InitialStateConfig { return v.ShieldedInstanceInitialState }).(InitialStateConfigPtrOutput)
 }
 
 // Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
@@ -3088,7 +3024,7 @@ type AttachedDiskResponse struct {
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
-	// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index int `pulumi:"index"`
 	// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
 	//
@@ -3096,13 +3032,13 @@ type AttachedDiskResponse struct {
 	InitializeParams AttachedDiskInitializeParamsResponse `pulumi:"initializeParams"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
 	Interface string `pulumi:"interface"`
-	// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind string `pulumi:"kind"`
-	// [Output Only] Any valid publicly visible licenses.
+	// Any valid publicly visible licenses.
 	Licenses []string `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
 	Mode string `pulumi:"mode"`
-	// [Output Only] shielded vm initial state stored on disk
+	// shielded vm initial state stored on disk
 	ShieldedInstanceInitialState InitialStateConfigResponse `pulumi:"shieldedInstanceInitialState"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
 	//
@@ -3149,7 +3085,7 @@ type AttachedDiskResponseArgs struct {
 	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures GuestOsFeatureResponseArrayInput `pulumi:"guestOsFeatures"`
-	// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index pulumi.IntInput `pulumi:"index"`
 	// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
 	//
@@ -3157,13 +3093,13 @@ type AttachedDiskResponseArgs struct {
 	InitializeParams AttachedDiskInitializeParamsResponseInput `pulumi:"initializeParams"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
 	Interface pulumi.StringInput `pulumi:"interface"`
-	// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// [Output Only] Any valid publicly visible licenses.
+	// Any valid publicly visible licenses.
 	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
 	Mode pulumi.StringInput `pulumi:"mode"`
-	// [Output Only] shielded vm initial state stored on disk
+	// shielded vm initial state stored on disk
 	ShieldedInstanceInitialState InitialStateConfigResponseInput `pulumi:"shieldedInstanceInitialState"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
 	//
@@ -3267,7 +3203,7 @@ func (o AttachedDiskResponseOutput) GuestOsFeatures() GuestOsFeatureResponseArra
 	return o.ApplyT(func(v AttachedDiskResponse) []GuestOsFeatureResponse { return v.GuestOsFeatures }).(GuestOsFeatureResponseArrayOutput)
 }
 
-// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 func (o AttachedDiskResponseOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v AttachedDiskResponse) int { return v.Index }).(pulumi.IntOutput)
 }
@@ -3284,12 +3220,12 @@ func (o AttachedDiskResponseOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskResponse) string { return v.Interface }).(pulumi.StringOutput)
 }
 
-// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
+// Type of the resource. Always compute#attachedDisk for attached disks.
 func (o AttachedDiskResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// [Output Only] Any valid publicly visible licenses.
+// Any valid publicly visible licenses.
 func (o AttachedDiskResponseOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttachedDiskResponse) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
@@ -3299,7 +3235,7 @@ func (o AttachedDiskResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// [Output Only] shielded vm initial state stored on disk
+// shielded vm initial state stored on disk
 func (o AttachedDiskResponseOutput) ShieldedInstanceInitialState() InitialStateConfigResponseOutput {
 	return o.ApplyT(func(v AttachedDiskResponse) InitialStateConfigResponse { return v.ShieldedInstanceInitialState }).(InitialStateConfigResponseOutput)
 }
@@ -4057,160 +3993,6 @@ func (o AuthorizationLoggingOptionsResponseOutput) ToAuthorizationLoggingOptions
 // The type of the permission that was checked.
 func (o AuthorizationLoggingOptionsResponseOutput) PermissionType() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthorizationLoggingOptionsResponse) string { return v.PermissionType }).(pulumi.StringOutput)
-}
-
-type AutoscalerStatusDetails struct {
-	// The status message.
-	Message *string `pulumi:"message"`
-	// The type of error, warning, or notice returned. Current set of possible values:
-	// - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state).
-	// - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group.
-	// - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas.
-	// - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling.
-	// - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels.
-	// - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group.
-	// - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling.
-	// - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer.
-	// - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved.
-	// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any.
-	// - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it.
-	// - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances.
-	// - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region.
-	// - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist.
-	// - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate.
-	// - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
-	Type *string `pulumi:"type"`
-}
-
-// AutoscalerStatusDetailsInput is an input type that accepts AutoscalerStatusDetailsArgs and AutoscalerStatusDetailsOutput values.
-// You can construct a concrete instance of `AutoscalerStatusDetailsInput` via:
-//
-//          AutoscalerStatusDetailsArgs{...}
-type AutoscalerStatusDetailsInput interface {
-	pulumi.Input
-
-	ToAutoscalerStatusDetailsOutput() AutoscalerStatusDetailsOutput
-	ToAutoscalerStatusDetailsOutputWithContext(context.Context) AutoscalerStatusDetailsOutput
-}
-
-type AutoscalerStatusDetailsArgs struct {
-	// The status message.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-	// The type of error, warning, or notice returned. Current set of possible values:
-	// - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state).
-	// - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group.
-	// - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas.
-	// - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling.
-	// - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels.
-	// - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group.
-	// - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling.
-	// - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer.
-	// - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved.
-	// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any.
-	// - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it.
-	// - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances.
-	// - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region.
-	// - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist.
-	// - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate.
-	// - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
-	Type *AutoscalerStatusDetailsType `pulumi:"type"`
-}
-
-func (AutoscalerStatusDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoscalerStatusDetails)(nil)).Elem()
-}
-
-func (i AutoscalerStatusDetailsArgs) ToAutoscalerStatusDetailsOutput() AutoscalerStatusDetailsOutput {
-	return i.ToAutoscalerStatusDetailsOutputWithContext(context.Background())
-}
-
-func (i AutoscalerStatusDetailsArgs) ToAutoscalerStatusDetailsOutputWithContext(ctx context.Context) AutoscalerStatusDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerStatusDetailsOutput)
-}
-
-// AutoscalerStatusDetailsArrayInput is an input type that accepts AutoscalerStatusDetailsArray and AutoscalerStatusDetailsArrayOutput values.
-// You can construct a concrete instance of `AutoscalerStatusDetailsArrayInput` via:
-//
-//          AutoscalerStatusDetailsArray{ AutoscalerStatusDetailsArgs{...} }
-type AutoscalerStatusDetailsArrayInput interface {
-	pulumi.Input
-
-	ToAutoscalerStatusDetailsArrayOutput() AutoscalerStatusDetailsArrayOutput
-	ToAutoscalerStatusDetailsArrayOutputWithContext(context.Context) AutoscalerStatusDetailsArrayOutput
-}
-
-type AutoscalerStatusDetailsArray []AutoscalerStatusDetailsInput
-
-func (AutoscalerStatusDetailsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AutoscalerStatusDetails)(nil)).Elem()
-}
-
-func (i AutoscalerStatusDetailsArray) ToAutoscalerStatusDetailsArrayOutput() AutoscalerStatusDetailsArrayOutput {
-	return i.ToAutoscalerStatusDetailsArrayOutputWithContext(context.Background())
-}
-
-func (i AutoscalerStatusDetailsArray) ToAutoscalerStatusDetailsArrayOutputWithContext(ctx context.Context) AutoscalerStatusDetailsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerStatusDetailsArrayOutput)
-}
-
-type AutoscalerStatusDetailsOutput struct{ *pulumi.OutputState }
-
-func (AutoscalerStatusDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoscalerStatusDetails)(nil)).Elem()
-}
-
-func (o AutoscalerStatusDetailsOutput) ToAutoscalerStatusDetailsOutput() AutoscalerStatusDetailsOutput {
-	return o
-}
-
-func (o AutoscalerStatusDetailsOutput) ToAutoscalerStatusDetailsOutputWithContext(ctx context.Context) AutoscalerStatusDetailsOutput {
-	return o
-}
-
-// The status message.
-func (o AutoscalerStatusDetailsOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutoscalerStatusDetails) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// The type of error, warning, or notice returned. Current set of possible values:
-// - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state).
-// - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group.
-// - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas.
-// - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to be a credible base for autoscaling.
-// - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not exist or does not have the necessary labels.
-// - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group.
-// - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric configured for autoscaling.
-// - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to scale based on a load balancing signal but the instance group has not received any requests from the load balancer.
-// - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change automatically. The autoscaling configuration is preserved.
-// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The autoscaler can add instances but not remove any.
-// - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one backend service attached to it.
-// - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the necessary resources, such as CPU or number of instances.
-// - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there is a resource stockout in the chosen region.
-// - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist.
-// - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate.
-// - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
-func (o AutoscalerStatusDetailsOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutoscalerStatusDetails) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type AutoscalerStatusDetailsArrayOutput struct{ *pulumi.OutputState }
-
-func (AutoscalerStatusDetailsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AutoscalerStatusDetails)(nil)).Elem()
-}
-
-func (o AutoscalerStatusDetailsArrayOutput) ToAutoscalerStatusDetailsArrayOutput() AutoscalerStatusDetailsArrayOutput {
-	return o
-}
-
-func (o AutoscalerStatusDetailsArrayOutput) ToAutoscalerStatusDetailsArrayOutputWithContext(ctx context.Context) AutoscalerStatusDetailsArrayOutput {
-	return o
-}
-
-func (o AutoscalerStatusDetailsArrayOutput) Index(i pulumi.IntInput) AutoscalerStatusDetailsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoscalerStatusDetails {
-		return vs[0].([]AutoscalerStatusDetails)[vs[1].(int)]
-	}).(AutoscalerStatusDetailsOutput)
 }
 
 type AutoscalerStatusDetailsResponse struct {
@@ -6581,8 +6363,6 @@ type BackendBucketCdnPolicy struct {
 	ServeWhileStale *int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec *string `pulumi:"signedUrlCacheMaxAgeSec"`
-	// [Output Only] Names of the keys for signing request URLs.
-	SignedUrlKeyNames []string `pulumi:"signedUrlKeyNames"`
 }
 
 // BackendBucketCdnPolicyInput is an input type that accepts BackendBucketCdnPolicyArgs and BackendBucketCdnPolicyOutput values.
@@ -6624,8 +6404,6 @@ type BackendBucketCdnPolicyArgs struct {
 	ServeWhileStale pulumi.IntPtrInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec pulumi.StringPtrInput `pulumi:"signedUrlCacheMaxAgeSec"`
-	// [Output Only] Names of the keys for signing request URLs.
-	SignedUrlKeyNames pulumi.StringArrayInput `pulumi:"signedUrlKeyNames"`
 }
 
 func (BackendBucketCdnPolicyArgs) ElementType() reflect.Type {
@@ -6766,11 +6544,6 @@ func (o BackendBucketCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.StringPtr
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *string { return v.SignedUrlCacheMaxAgeSec }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Names of the keys for signing request URLs.
-func (o BackendBucketCdnPolicyOutput) SignedUrlKeyNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BackendBucketCdnPolicy) []string { return v.SignedUrlKeyNames }).(pulumi.StringArrayOutput)
-}
-
 type BackendBucketCdnPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketCdnPolicyPtrOutput) ElementType() reflect.Type {
@@ -6893,16 +6666,6 @@ func (o BackendBucketCdnPolicyPtrOutput) SignedUrlCacheMaxAgeSec() pulumi.String
 		}
 		return v.SignedUrlCacheMaxAgeSec
 	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Names of the keys for signing request URLs.
-func (o BackendBucketCdnPolicyPtrOutput) SignedUrlKeyNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BackendBucketCdnPolicy) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SignedUrlKeyNames
-	}).(pulumi.StringArrayOutput)
 }
 
 // Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
@@ -7351,7 +7114,7 @@ type BackendBucketCdnPolicyResponse struct {
 	ServeWhileStale int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec string `pulumi:"signedUrlCacheMaxAgeSec"`
-	// [Output Only] Names of the keys for signing request URLs.
+	// Names of the keys for signing request URLs.
 	SignedUrlKeyNames []string `pulumi:"signedUrlKeyNames"`
 }
 
@@ -7394,7 +7157,7 @@ type BackendBucketCdnPolicyResponseArgs struct {
 	ServeWhileStale pulumi.IntInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec pulumi.StringInput `pulumi:"signedUrlCacheMaxAgeSec"`
-	// [Output Only] Names of the keys for signing request URLs.
+	// Names of the keys for signing request URLs.
 	SignedUrlKeyNames pulumi.StringArrayInput `pulumi:"signedUrlKeyNames"`
 }
 
@@ -7536,7 +7299,7 @@ func (o BackendBucketCdnPolicyResponseOutput) SignedUrlCacheMaxAgeSec() pulumi.S
 	return o.ApplyT(func(v BackendBucketCdnPolicyResponse) string { return v.SignedUrlCacheMaxAgeSec }).(pulumi.StringOutput)
 }
 
-// [Output Only] Names of the keys for signing request URLs.
+// Names of the keys for signing request URLs.
 func (o BackendBucketCdnPolicyResponseOutput) SignedUrlKeyNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicyResponse) []string { return v.SignedUrlKeyNames }).(pulumi.StringArrayOutput)
 }
@@ -7665,7 +7428,7 @@ func (o BackendBucketCdnPolicyResponsePtrOutput) SignedUrlCacheMaxAgeSec() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Names of the keys for signing request URLs.
+// Names of the keys for signing request URLs.
 func (o BackendBucketCdnPolicyResponsePtrOutput) SignedUrlKeyNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicyResponse) []string {
 		if v == nil {
@@ -7985,8 +7748,6 @@ type BackendServiceCdnPolicy struct {
 	ServeWhileStale *int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec *string `pulumi:"signedUrlCacheMaxAgeSec"`
-	// [Output Only] Names of the keys for signing request URLs.
-	SignedUrlKeyNames []string `pulumi:"signedUrlKeyNames"`
 }
 
 // BackendServiceCdnPolicyInput is an input type that accepts BackendServiceCdnPolicyArgs and BackendServiceCdnPolicyOutput values.
@@ -8030,8 +7791,6 @@ type BackendServiceCdnPolicyArgs struct {
 	ServeWhileStale pulumi.IntPtrInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec pulumi.StringPtrInput `pulumi:"signedUrlCacheMaxAgeSec"`
-	// [Output Only] Names of the keys for signing request URLs.
-	SignedUrlKeyNames pulumi.StringArrayInput `pulumi:"signedUrlKeyNames"`
 }
 
 func (BackendServiceCdnPolicyArgs) ElementType() reflect.Type {
@@ -8177,11 +7936,6 @@ func (o BackendServiceCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.StringPt
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *string { return v.SignedUrlCacheMaxAgeSec }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Names of the keys for signing request URLs.
-func (o BackendServiceCdnPolicyOutput) SignedUrlKeyNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BackendServiceCdnPolicy) []string { return v.SignedUrlKeyNames }).(pulumi.StringArrayOutput)
-}
-
 type BackendServiceCdnPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceCdnPolicyPtrOutput) ElementType() reflect.Type {
@@ -8314,16 +8068,6 @@ func (o BackendServiceCdnPolicyPtrOutput) SignedUrlCacheMaxAgeSec() pulumi.Strin
 		}
 		return v.SignedUrlCacheMaxAgeSec
 	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Names of the keys for signing request URLs.
-func (o BackendServiceCdnPolicyPtrOutput) SignedUrlKeyNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BackendServiceCdnPolicy) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SignedUrlKeyNames
-	}).(pulumi.StringArrayOutput)
 }
 
 // Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
@@ -8774,7 +8518,7 @@ type BackendServiceCdnPolicyResponse struct {
 	ServeWhileStale int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec string `pulumi:"signedUrlCacheMaxAgeSec"`
-	// [Output Only] Names of the keys for signing request URLs.
+	// Names of the keys for signing request URLs.
 	SignedUrlKeyNames []string `pulumi:"signedUrlKeyNames"`
 }
 
@@ -8819,7 +8563,7 @@ type BackendServiceCdnPolicyResponseArgs struct {
 	ServeWhileStale pulumi.IntInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec pulumi.StringInput `pulumi:"signedUrlCacheMaxAgeSec"`
-	// [Output Only] Names of the keys for signing request URLs.
+	// Names of the keys for signing request URLs.
 	SignedUrlKeyNames pulumi.StringArrayInput `pulumi:"signedUrlKeyNames"`
 }
 
@@ -8966,7 +8710,7 @@ func (o BackendServiceCdnPolicyResponseOutput) SignedUrlCacheMaxAgeSec() pulumi.
 	return o.ApplyT(func(v BackendServiceCdnPolicyResponse) string { return v.SignedUrlCacheMaxAgeSec }).(pulumi.StringOutput)
 }
 
-// [Output Only] Names of the keys for signing request URLs.
+// Names of the keys for signing request URLs.
 func (o BackendServiceCdnPolicyResponseOutput) SignedUrlKeyNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicyResponse) []string { return v.SignedUrlKeyNames }).(pulumi.StringArrayOutput)
 }
@@ -9105,7 +8849,7 @@ func (o BackendServiceCdnPolicyResponsePtrOutput) SignedUrlCacheMaxAgeSec() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Names of the keys for signing request URLs.
+// Names of the keys for signing request URLs.
 func (o BackendServiceCdnPolicyResponsePtrOutput) SignedUrlKeyNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicyResponse) []string {
 		if v == nil {
@@ -9483,8 +9227,6 @@ type BackendServiceIAP struct {
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
 	Oauth2ClientSecret *string `pulumi:"oauth2ClientSecret"`
-	// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
-	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
 }
 
 // BackendServiceIAPInput is an input type that accepts BackendServiceIAPArgs and BackendServiceIAPOutput values.
@@ -9506,8 +9248,6 @@ type BackendServiceIAPArgs struct {
 	Oauth2ClientId pulumi.StringPtrInput `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
 	Oauth2ClientSecret pulumi.StringPtrInput `pulumi:"oauth2ClientSecret"`
-	// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
-	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
 }
 
 func (BackendServiceIAPArgs) ElementType() reflect.Type {
@@ -9603,11 +9343,6 @@ func (o BackendServiceIAPOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceIAP) *string { return v.Oauth2ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
-func (o BackendServiceIAPOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BackendServiceIAP) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
-}
-
 type BackendServiceIAPPtrOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceIAPPtrOutput) ElementType() reflect.Type {
@@ -9656,16 +9391,6 @@ func (o BackendServiceIAPPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
-func (o BackendServiceIAPPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackendServiceIAP) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Oauth2ClientSecretSha256
-	}).(pulumi.StringPtrOutput)
-}
-
 // Identity-Aware Proxy
 type BackendServiceIAPResponse struct {
 	// Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
@@ -9674,7 +9399,7 @@ type BackendServiceIAPResponse struct {
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
 	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
-	// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+	// SHA256 hash value for the field oauth2_client_secret above.
 	Oauth2ClientSecretSha256 string `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -9697,7 +9422,7 @@ type BackendServiceIAPResponseArgs struct {
 	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
 	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
-	// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+	// SHA256 hash value for the field oauth2_client_secret above.
 	Oauth2ClientSecretSha256 pulumi.StringInput `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -9794,7 +9519,7 @@ func (o BackendServiceIAPResponseOutput) Oauth2ClientSecret() pulumi.StringOutpu
 	return o.ApplyT(func(v BackendServiceIAPResponse) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
 }
 
-// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+// SHA256 hash value for the field oauth2_client_secret above.
 func (o BackendServiceIAPResponseOutput) Oauth2ClientSecretSha256() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceIAPResponse) string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringOutput)
 }
@@ -9847,7 +9572,7 @@ func (o BackendServiceIAPResponsePtrOutput) Oauth2ClientSecret() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+// SHA256 hash value for the field oauth2_client_secret above.
 func (o BackendServiceIAPResponsePtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceIAPResponse) *string {
 		if v == nil {
@@ -13466,8 +13191,6 @@ type CustomerEncryptionKey struct {
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey *string `pulumi:"rawKey"`
-	// [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
-	Sha256 *string `pulumi:"sha256"`
 }
 
 // CustomerEncryptionKeyInput is an input type that accepts CustomerEncryptionKeyArgs and CustomerEncryptionKeyOutput values.
@@ -13488,8 +13211,6 @@ type CustomerEncryptionKeyArgs struct {
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
-	// [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
-	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
 }
 
 func (CustomerEncryptionKeyArgs) ElementType() reflect.Type {
@@ -13584,11 +13305,6 @@ func (o CustomerEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
 
-// [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
-func (o CustomerEncryptionKeyOutput) Sha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.Sha256 }).(pulumi.StringPtrOutput)
-}
-
 type CustomerEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (CustomerEncryptionKeyPtrOutput) ElementType() reflect.Type {
@@ -13634,16 +13350,6 @@ func (o CustomerEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.RawKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
-func (o CustomerEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Sha256
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17344,14 +17050,8 @@ func (o FirewallLogConfigResponsePtrOutput) Metadata() pulumi.StringPtrOutput {
 type FirewallPolicyAssociation struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget *string `pulumi:"attachmentTarget"`
-	// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
-	DisplayName *string `pulumi:"displayName"`
-	// [Output Only] The firewall policy ID of the association.
-	FirewallPolicyId *string `pulumi:"firewallPolicyId"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
-	// [Output Only] The short name of the firewall policy of the association.
-	ShortName *string `pulumi:"shortName"`
 }
 
 // FirewallPolicyAssociationInput is an input type that accepts FirewallPolicyAssociationArgs and FirewallPolicyAssociationOutput values.
@@ -17368,14 +17068,8 @@ type FirewallPolicyAssociationInput interface {
 type FirewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringPtrInput `pulumi:"attachmentTarget"`
-	// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// [Output Only] The firewall policy ID of the association.
-	FirewallPolicyId pulumi.StringPtrInput `pulumi:"firewallPolicyId"`
 	// The name for an association.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// [Output Only] The short name of the firewall policy of the association.
-	ShortName pulumi.StringPtrInput `pulumi:"shortName"`
 }
 
 func (FirewallPolicyAssociationArgs) ElementType() reflect.Type {
@@ -17434,24 +17128,9 @@ func (o FirewallPolicyAssociationOutput) AttachmentTarget() pulumi.StringPtrOutp
 	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.AttachmentTarget }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
-func (o FirewallPolicyAssociationOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The firewall policy ID of the association.
-func (o FirewallPolicyAssociationOutput) FirewallPolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.FirewallPolicyId }).(pulumi.StringPtrOutput)
-}
-
 // The name for an association.
 func (o FirewallPolicyAssociationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The short name of the firewall policy of the association.
-func (o FirewallPolicyAssociationOutput) ShortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.ShortName }).(pulumi.StringPtrOutput)
 }
 
 type FirewallPolicyAssociationArrayOutput struct{ *pulumi.OutputState }
@@ -17477,13 +17156,13 @@ func (o FirewallPolicyAssociationArrayOutput) Index(i pulumi.IntInput) FirewallP
 type FirewallPolicyAssociationResponse struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget string `pulumi:"attachmentTarget"`
-	// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+	// Deprecated, please use short name instead. The display name of the firewall policy of the association.
 	DisplayName string `pulumi:"displayName"`
-	// [Output Only] The firewall policy ID of the association.
+	// The firewall policy ID of the association.
 	FirewallPolicyId string `pulumi:"firewallPolicyId"`
 	// The name for an association.
 	Name string `pulumi:"name"`
-	// [Output Only] The short name of the firewall policy of the association.
+	// The short name of the firewall policy of the association.
 	ShortName string `pulumi:"shortName"`
 }
 
@@ -17501,13 +17180,13 @@ type FirewallPolicyAssociationResponseInput interface {
 type FirewallPolicyAssociationResponseArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringInput `pulumi:"attachmentTarget"`
-	// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+	// Deprecated, please use short name instead. The display name of the firewall policy of the association.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// [Output Only] The firewall policy ID of the association.
+	// The firewall policy ID of the association.
 	FirewallPolicyId pulumi.StringInput `pulumi:"firewallPolicyId"`
 	// The name for an association.
 	Name pulumi.StringInput `pulumi:"name"`
-	// [Output Only] The short name of the firewall policy of the association.
+	// The short name of the firewall policy of the association.
 	ShortName pulumi.StringInput `pulumi:"shortName"`
 }
 
@@ -17567,12 +17246,12 @@ func (o FirewallPolicyAssociationResponseOutput) AttachmentTarget() pulumi.Strin
 	return o.ApplyT(func(v FirewallPolicyAssociationResponse) string { return v.AttachmentTarget }).(pulumi.StringOutput)
 }
 
-// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+// Deprecated, please use short name instead. The display name of the firewall policy of the association.
 func (o FirewallPolicyAssociationResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallPolicyAssociationResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// [Output Only] The firewall policy ID of the association.
+// The firewall policy ID of the association.
 func (o FirewallPolicyAssociationResponseOutput) FirewallPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallPolicyAssociationResponse) string { return v.FirewallPolicyId }).(pulumi.StringOutput)
 }
@@ -17582,7 +17261,7 @@ func (o FirewallPolicyAssociationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallPolicyAssociationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Output Only] The short name of the firewall policy of the association.
+// The short name of the firewall policy of the association.
 func (o FirewallPolicyAssociationResponseOutput) ShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallPolicyAssociationResponse) string { return v.ShortName }).(pulumi.StringOutput)
 }
@@ -17619,14 +17298,10 @@ type FirewallPolicyRule struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
 	EnableLogging *bool `pulumi:"enableLogging"`
-	// [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
-	Kind *string `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *FirewallPolicyRuleMatcher `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority *int `pulumi:"priority"`
-	// [Output Only] Calculation of the complexity of a single firewall policy rule.
-	RuleTupleCount *int `pulumi:"ruleTupleCount"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
@@ -17658,14 +17333,10 @@ type FirewallPolicyRuleArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
 	EnableLogging pulumi.BoolPtrInput `pulumi:"enableLogging"`
-	// [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match FirewallPolicyRuleMatcherPtrInput `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// [Output Only] Calculation of the complexity of a single firewall policy rule.
-	RuleTupleCount pulumi.IntPtrInput `pulumi:"ruleTupleCount"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
 	// A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
@@ -17751,11 +17422,6 @@ func (o FirewallPolicyRuleOutput) EnableLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *bool { return v.EnableLogging }).(pulumi.BoolPtrOutput)
 }
 
-// [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
-func (o FirewallPolicyRuleOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
 // A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 func (o FirewallPolicyRuleOutput) Match() FirewallPolicyRuleMatcherPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *FirewallPolicyRuleMatcher { return v.Match }).(FirewallPolicyRuleMatcherPtrOutput)
@@ -17764,11 +17430,6 @@ func (o FirewallPolicyRuleOutput) Match() FirewallPolicyRuleMatcherPtrOutput {
 // An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 func (o FirewallPolicyRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] Calculation of the complexity of a single firewall policy rule.
-func (o FirewallPolicyRuleOutput) RuleTupleCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FirewallPolicyRule) *int { return v.RuleTupleCount }).(pulumi.IntPtrOutput)
 }
 
 // A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
@@ -18323,7 +17984,7 @@ type FirewallPolicyRuleResponse struct {
 	Match FirewallPolicyRuleMatcherResponse `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority int `pulumi:"priority"`
-	// [Output Only] Calculation of the complexity of a single firewall policy rule.
+	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
@@ -18362,7 +18023,7 @@ type FirewallPolicyRuleResponseArgs struct {
 	Match FirewallPolicyRuleMatcherResponseInput `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntInput `pulumi:"priority"`
-	// [Output Only] Calculation of the complexity of a single firewall policy rule.
+	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntInput `pulumi:"ruleTupleCount"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
@@ -18464,7 +18125,7 @@ func (o FirewallPolicyRuleResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) int { return v.Priority }).(pulumi.IntOutput)
 }
 
-// [Output Only] Calculation of the complexity of a single firewall policy rule.
+// Calculation of the complexity of a single firewall policy rule.
 func (o FirewallPolicyRuleResponseOutput) RuleTupleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) int { return v.RuleTupleCount }).(pulumi.IntOutput)
 }
@@ -18506,11 +18167,6 @@ func (o FirewallPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) Firewall
 
 // Encapsulates numeric value that can be either absolute or relative.
 type FixedOrPercent struct {
-	// [Output Only] Absolute value of VM instances calculated based on the specific mode.
-	//
-	// - If the value is fixed, then the calculated value is equal to the fixed value.
-	// - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
-	Calculated *int `pulumi:"calculated"`
 	// Specifies a fixed number of VM instances. This must be a positive integer.
 	Fixed *int `pulumi:"fixed"`
 	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
@@ -18530,11 +18186,6 @@ type FixedOrPercentInput interface {
 
 // Encapsulates numeric value that can be either absolute or relative.
 type FixedOrPercentArgs struct {
-	// [Output Only] Absolute value of VM instances calculated based on the specific mode.
-	//
-	// - If the value is fixed, then the calculated value is equal to the fixed value.
-	// - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
-	Calculated pulumi.IntPtrInput `pulumi:"calculated"`
 	// Specifies a fixed number of VM instances. This must be a positive integer.
 	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
 	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
@@ -18619,14 +18270,6 @@ func (o FixedOrPercentOutput) ToFixedOrPercentPtrOutputWithContext(ctx context.C
 	}).(FixedOrPercentPtrOutput)
 }
 
-// [Output Only] Absolute value of VM instances calculated based on the specific mode.
-//
-// - If the value is fixed, then the calculated value is equal to the fixed value.
-// - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
-func (o FixedOrPercentOutput) Calculated() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FixedOrPercent) *int { return v.Calculated }).(pulumi.IntPtrOutput)
-}
-
 // Specifies a fixed number of VM instances. This must be a positive integer.
 func (o FixedOrPercentOutput) Fixed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FixedOrPercent) *int { return v.Fixed }).(pulumi.IntPtrOutput)
@@ -18655,19 +18298,6 @@ func (o FixedOrPercentPtrOutput) Elem() FixedOrPercentOutput {
 	return o.ApplyT(func(v *FixedOrPercent) FixedOrPercent { return *v }).(FixedOrPercentOutput)
 }
 
-// [Output Only] Absolute value of VM instances calculated based on the specific mode.
-//
-// - If the value is fixed, then the calculated value is equal to the fixed value.
-// - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
-func (o FixedOrPercentPtrOutput) Calculated() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FixedOrPercent) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Calculated
-	}).(pulumi.IntPtrOutput)
-}
-
 // Specifies a fixed number of VM instances. This must be a positive integer.
 func (o FixedOrPercentPtrOutput) Fixed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FixedOrPercent) *int {
@@ -18690,7 +18320,7 @@ func (o FixedOrPercentPtrOutput) Percent() pulumi.IntPtrOutput {
 
 // Encapsulates numeric value that can be either absolute or relative.
 type FixedOrPercentResponse struct {
-	// [Output Only] Absolute value of VM instances calculated based on the specific mode.
+	// Absolute value of VM instances calculated based on the specific mode.
 	//
 	// - If the value is fixed, then the calculated value is equal to the fixed value.
 	// - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
@@ -18714,7 +18344,7 @@ type FixedOrPercentResponseInput interface {
 
 // Encapsulates numeric value that can be either absolute or relative.
 type FixedOrPercentResponseArgs struct {
-	// [Output Only] Absolute value of VM instances calculated based on the specific mode.
+	// Absolute value of VM instances calculated based on the specific mode.
 	//
 	// - If the value is fixed, then the calculated value is equal to the fixed value.
 	// - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
@@ -18803,7 +18433,7 @@ func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponsePtrOutputWithConte
 	}).(FixedOrPercentResponsePtrOutput)
 }
 
-// [Output Only] Absolute value of VM instances calculated based on the specific mode.
+// Absolute value of VM instances calculated based on the specific mode.
 //
 // - If the value is fixed, then the calculated value is equal to the fixed value.
 // - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
@@ -18839,7 +18469,7 @@ func (o FixedOrPercentResponsePtrOutput) Elem() FixedOrPercentResponseOutput {
 	return o.ApplyT(func(v *FixedOrPercentResponse) FixedOrPercentResponse { return *v }).(FixedOrPercentResponseOutput)
 }
 
-// [Output Only] Absolute value of VM instances calculated based on the specific mode.
+// Absolute value of VM instances calculated based on the specific mode.
 //
 // - If the value is fixed, then the calculated value is equal to the fixed value.
 // - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded up.
@@ -27206,317 +26836,26 @@ func (o InitialStateConfigResponsePtrOutput) Pk() FileContentBufferResponsePtrOu
 	}).(FileContentBufferResponsePtrOutput)
 }
 
-type InstanceGroupManagerActionsSummary struct {
-	// [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
-	Abandoning *int `pulumi:"abandoning"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
-	//
-	// If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
-	Creating *int `pulumi:"creating"`
-	// [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
-	CreatingWithoutRetries *int `pulumi:"creatingWithoutRetries"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
-	Deleting *int `pulumi:"deleting"`
-	// [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
-	None *int `pulumi:"none"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
-	Recreating *int `pulumi:"recreating"`
-	// [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
-	Refreshing *int `pulumi:"refreshing"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
-	Restarting *int `pulumi:"restarting"`
-	// [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
-	Verifying *int `pulumi:"verifying"`
-}
-
-// InstanceGroupManagerActionsSummaryInput is an input type that accepts InstanceGroupManagerActionsSummaryArgs and InstanceGroupManagerActionsSummaryOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerActionsSummaryInput` via:
-//
-//          InstanceGroupManagerActionsSummaryArgs{...}
-type InstanceGroupManagerActionsSummaryInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerActionsSummaryOutput() InstanceGroupManagerActionsSummaryOutput
-	ToInstanceGroupManagerActionsSummaryOutputWithContext(context.Context) InstanceGroupManagerActionsSummaryOutput
-}
-
-type InstanceGroupManagerActionsSummaryArgs struct {
-	// [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
-	Abandoning pulumi.IntPtrInput `pulumi:"abandoning"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
-	//
-	// If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
-	Creating pulumi.IntPtrInput `pulumi:"creating"`
-	// [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
-	CreatingWithoutRetries pulumi.IntPtrInput `pulumi:"creatingWithoutRetries"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
-	Deleting pulumi.IntPtrInput `pulumi:"deleting"`
-	// [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
-	None pulumi.IntPtrInput `pulumi:"none"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
-	Recreating pulumi.IntPtrInput `pulumi:"recreating"`
-	// [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
-	Refreshing pulumi.IntPtrInput `pulumi:"refreshing"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
-	Restarting pulumi.IntPtrInput `pulumi:"restarting"`
-	// [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
-	Verifying pulumi.IntPtrInput `pulumi:"verifying"`
-}
-
-func (InstanceGroupManagerActionsSummaryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerActionsSummary)(nil)).Elem()
-}
-
-func (i InstanceGroupManagerActionsSummaryArgs) ToInstanceGroupManagerActionsSummaryOutput() InstanceGroupManagerActionsSummaryOutput {
-	return i.ToInstanceGroupManagerActionsSummaryOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerActionsSummaryArgs) ToInstanceGroupManagerActionsSummaryOutputWithContext(ctx context.Context) InstanceGroupManagerActionsSummaryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerActionsSummaryOutput)
-}
-
-func (i InstanceGroupManagerActionsSummaryArgs) ToInstanceGroupManagerActionsSummaryPtrOutput() InstanceGroupManagerActionsSummaryPtrOutput {
-	return i.ToInstanceGroupManagerActionsSummaryPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerActionsSummaryArgs) ToInstanceGroupManagerActionsSummaryPtrOutputWithContext(ctx context.Context) InstanceGroupManagerActionsSummaryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerActionsSummaryOutput).ToInstanceGroupManagerActionsSummaryPtrOutputWithContext(ctx)
-}
-
-// InstanceGroupManagerActionsSummaryPtrInput is an input type that accepts InstanceGroupManagerActionsSummaryArgs, InstanceGroupManagerActionsSummaryPtr and InstanceGroupManagerActionsSummaryPtrOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerActionsSummaryPtrInput` via:
-//
-//          InstanceGroupManagerActionsSummaryArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceGroupManagerActionsSummaryPtrInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerActionsSummaryPtrOutput() InstanceGroupManagerActionsSummaryPtrOutput
-	ToInstanceGroupManagerActionsSummaryPtrOutputWithContext(context.Context) InstanceGroupManagerActionsSummaryPtrOutput
-}
-
-type instanceGroupManagerActionsSummaryPtrType InstanceGroupManagerActionsSummaryArgs
-
-func InstanceGroupManagerActionsSummaryPtr(v *InstanceGroupManagerActionsSummaryArgs) InstanceGroupManagerActionsSummaryPtrInput {
-	return (*instanceGroupManagerActionsSummaryPtrType)(v)
-}
-
-func (*instanceGroupManagerActionsSummaryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerActionsSummary)(nil)).Elem()
-}
-
-func (i *instanceGroupManagerActionsSummaryPtrType) ToInstanceGroupManagerActionsSummaryPtrOutput() InstanceGroupManagerActionsSummaryPtrOutput {
-	return i.ToInstanceGroupManagerActionsSummaryPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceGroupManagerActionsSummaryPtrType) ToInstanceGroupManagerActionsSummaryPtrOutputWithContext(ctx context.Context) InstanceGroupManagerActionsSummaryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerActionsSummaryPtrOutput)
-}
-
-type InstanceGroupManagerActionsSummaryOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerActionsSummaryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerActionsSummary)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerActionsSummaryOutput) ToInstanceGroupManagerActionsSummaryOutput() InstanceGroupManagerActionsSummaryOutput {
-	return o
-}
-
-func (o InstanceGroupManagerActionsSummaryOutput) ToInstanceGroupManagerActionsSummaryOutputWithContext(ctx context.Context) InstanceGroupManagerActionsSummaryOutput {
-	return o
-}
-
-func (o InstanceGroupManagerActionsSummaryOutput) ToInstanceGroupManagerActionsSummaryPtrOutput() InstanceGroupManagerActionsSummaryPtrOutput {
-	return o.ToInstanceGroupManagerActionsSummaryPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerActionsSummaryOutput) ToInstanceGroupManagerActionsSummaryPtrOutputWithContext(ctx context.Context) InstanceGroupManagerActionsSummaryPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *InstanceGroupManagerActionsSummary {
-		return &v
-	}).(InstanceGroupManagerActionsSummaryPtrOutput)
-}
-
-// [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
-func (o InstanceGroupManagerActionsSummaryOutput) Abandoning() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *int { return v.Abandoning }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
-//
-// If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
-func (o InstanceGroupManagerActionsSummaryOutput) Creating() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *int { return v.Creating }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
-func (o InstanceGroupManagerActionsSummaryOutput) CreatingWithoutRetries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *int { return v.CreatingWithoutRetries }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
-func (o InstanceGroupManagerActionsSummaryOutput) Deleting() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *int { return v.Deleting }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
-func (o InstanceGroupManagerActionsSummaryOutput) None() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *int { return v.None }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
-func (o InstanceGroupManagerActionsSummaryOutput) Recreating() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *int { return v.Recreating }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
-func (o InstanceGroupManagerActionsSummaryOutput) Refreshing() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *int { return v.Refreshing }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
-func (o InstanceGroupManagerActionsSummaryOutput) Restarting() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *int { return v.Restarting }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
-func (o InstanceGroupManagerActionsSummaryOutput) Verifying() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerActionsSummary) *int { return v.Verifying }).(pulumi.IntPtrOutput)
-}
-
-type InstanceGroupManagerActionsSummaryPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerActionsSummaryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerActionsSummary)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerActionsSummaryPtrOutput) ToInstanceGroupManagerActionsSummaryPtrOutput() InstanceGroupManagerActionsSummaryPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerActionsSummaryPtrOutput) ToInstanceGroupManagerActionsSummaryPtrOutputWithContext(ctx context.Context) InstanceGroupManagerActionsSummaryPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerActionsSummaryPtrOutput) Elem() InstanceGroupManagerActionsSummaryOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) InstanceGroupManagerActionsSummary { return *v }).(InstanceGroupManagerActionsSummaryOutput)
-}
-
-// [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
-func (o InstanceGroupManagerActionsSummaryPtrOutput) Abandoning() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Abandoning
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
-//
-// If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
-func (o InstanceGroupManagerActionsSummaryPtrOutput) Creating() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Creating
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
-func (o InstanceGroupManagerActionsSummaryPtrOutput) CreatingWithoutRetries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CreatingWithoutRetries
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
-func (o InstanceGroupManagerActionsSummaryPtrOutput) Deleting() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Deleting
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
-func (o InstanceGroupManagerActionsSummaryPtrOutput) None() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.None
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
-func (o InstanceGroupManagerActionsSummaryPtrOutput) Recreating() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Recreating
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
-func (o InstanceGroupManagerActionsSummaryPtrOutput) Refreshing() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Refreshing
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
-func (o InstanceGroupManagerActionsSummaryPtrOutput) Restarting() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Restarting
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
-func (o InstanceGroupManagerActionsSummaryPtrOutput) Verifying() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerActionsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Verifying
-	}).(pulumi.IntPtrOutput)
-}
-
 type InstanceGroupManagerActionsSummaryResponse struct {
-	// [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
+	// The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
 	Abandoning int `pulumi:"abandoning"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
+	// The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
 	//
 	// If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
 	Creating int `pulumi:"creating"`
-	// [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+	// The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
 	CreatingWithoutRetries int `pulumi:"creatingWithoutRetries"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
+	// The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
 	Deleting int `pulumi:"deleting"`
-	// [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
+	// The number of instances in the managed instance group that are running and have no scheduled actions.
 	None int `pulumi:"none"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
+	// The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
 	Recreating int `pulumi:"recreating"`
-	// [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
+	// The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
 	Refreshing int `pulumi:"refreshing"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+	// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
 	Restarting int `pulumi:"restarting"`
-	// [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
+	// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 	Verifying int `pulumi:"verifying"`
 }
 
@@ -27532,25 +26871,25 @@ type InstanceGroupManagerActionsSummaryResponseInput interface {
 }
 
 type InstanceGroupManagerActionsSummaryResponseArgs struct {
-	// [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
+	// The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
 	Abandoning pulumi.IntInput `pulumi:"abandoning"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
+	// The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
 	//
 	// If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
 	Creating pulumi.IntInput `pulumi:"creating"`
-	// [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+	// The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
 	CreatingWithoutRetries pulumi.IntInput `pulumi:"creatingWithoutRetries"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
+	// The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
 	Deleting pulumi.IntInput `pulumi:"deleting"`
-	// [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
+	// The number of instances in the managed instance group that are running and have no scheduled actions.
 	None pulumi.IntInput `pulumi:"none"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
+	// The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
 	Recreating pulumi.IntInput `pulumi:"recreating"`
-	// [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
+	// The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
 	Refreshing pulumi.IntInput `pulumi:"refreshing"`
-	// [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+	// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
 	Restarting pulumi.IntInput `pulumi:"restarting"`
-	// [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
+	// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 	Verifying pulumi.IntInput `pulumi:"verifying"`
 }
 
@@ -27631,49 +26970,49 @@ func (o InstanceGroupManagerActionsSummaryResponseOutput) ToInstanceGroupManager
 	}).(InstanceGroupManagerActionsSummaryResponsePtrOutput)
 }
 
-// [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
+// The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Abandoning() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Abandoning }).(pulumi.IntOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
+// The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
 //
 // If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Creating() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Creating }).(pulumi.IntOutput)
 }
 
-// [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+// The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) CreatingWithoutRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.CreatingWithoutRetries }).(pulumi.IntOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
+// The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Deleting() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Deleting }).(pulumi.IntOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
+// The number of instances in the managed instance group that are running and have no scheduled actions.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) None() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.None }).(pulumi.IntOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
+// The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Recreating() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Recreating }).(pulumi.IntOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
+// The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Refreshing() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Refreshing }).(pulumi.IntOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Restarting() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Restarting }).(pulumi.IntOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
+// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Verifying() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Verifying }).(pulumi.IntOutput)
 }
@@ -27698,7 +27037,7 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Elem() InstanceGrou
 	}).(InstanceGroupManagerActionsSummaryResponseOutput)
 }
 
-// [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
+// The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
 func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Abandoning() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
 		if v == nil {
@@ -27708,7 +27047,7 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Abandoning() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
+// The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.
 //
 // If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
 func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Creating() pulumi.IntPtrOutput {
@@ -27720,7 +27059,7 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Creating() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+// The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
 func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) CreatingWithoutRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
 		if v == nil {
@@ -27730,7 +27069,7 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) CreatingWithoutRetr
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
+// The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
 func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Deleting() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
 		if v == nil {
@@ -27740,7 +27079,7 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Deleting() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions.
+// The number of instances in the managed instance group that are running and have no scheduled actions.
 func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) None() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
 		if v == nil {
@@ -27750,7 +27089,7 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) None() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
+// The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
 func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Recreating() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
 		if v == nil {
@@ -27760,7 +27099,7 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Recreating() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
+// The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
 func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Refreshing() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
 		if v == nil {
@@ -27770,7 +27109,7 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Refreshing() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
+// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
 func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Restarting() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
 		if v == nil {
@@ -27780,7 +27119,7 @@ func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Restarting() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
+// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
 func (o InstanceGroupManagerActionsSummaryResponsePtrOutput) Verifying() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerActionsSummaryResponse) *int {
 		if v == nil {
@@ -28002,202 +27341,14 @@ func (o InstanceGroupManagerAutoHealingPolicyResponseArrayOutput) Index(i pulumi
 	}).(InstanceGroupManagerAutoHealingPolicyResponseOutput)
 }
 
-type InstanceGroupManagerStatus struct {
-	// [Output Only] The URL of the Autoscaler that targets this instance group manager.
-	Autoscaler *string `pulumi:"autoscaler"`
-	// [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-	IsStable *bool `pulumi:"isStable"`
-	// [Output Only] Stateful status of the given Instance Group Manager.
-	Stateful *InstanceGroupManagerStatusStateful `pulumi:"stateful"`
-	// [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
-	VersionTarget *InstanceGroupManagerStatusVersionTarget `pulumi:"versionTarget"`
-}
-
-// InstanceGroupManagerStatusInput is an input type that accepts InstanceGroupManagerStatusArgs and InstanceGroupManagerStatusOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerStatusInput` via:
-//
-//          InstanceGroupManagerStatusArgs{...}
-type InstanceGroupManagerStatusInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerStatusOutput() InstanceGroupManagerStatusOutput
-	ToInstanceGroupManagerStatusOutputWithContext(context.Context) InstanceGroupManagerStatusOutput
-}
-
-type InstanceGroupManagerStatusArgs struct {
-	// [Output Only] The URL of the Autoscaler that targets this instance group manager.
-	Autoscaler pulumi.StringPtrInput `pulumi:"autoscaler"`
-	// [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-	IsStable pulumi.BoolPtrInput `pulumi:"isStable"`
-	// [Output Only] Stateful status of the given Instance Group Manager.
-	Stateful InstanceGroupManagerStatusStatefulPtrInput `pulumi:"stateful"`
-	// [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
-	VersionTarget InstanceGroupManagerStatusVersionTargetPtrInput `pulumi:"versionTarget"`
-}
-
-func (InstanceGroupManagerStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerStatus)(nil)).Elem()
-}
-
-func (i InstanceGroupManagerStatusArgs) ToInstanceGroupManagerStatusOutput() InstanceGroupManagerStatusOutput {
-	return i.ToInstanceGroupManagerStatusOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerStatusArgs) ToInstanceGroupManagerStatusOutputWithContext(ctx context.Context) InstanceGroupManagerStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusOutput)
-}
-
-func (i InstanceGroupManagerStatusArgs) ToInstanceGroupManagerStatusPtrOutput() InstanceGroupManagerStatusPtrOutput {
-	return i.ToInstanceGroupManagerStatusPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerStatusArgs) ToInstanceGroupManagerStatusPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusOutput).ToInstanceGroupManagerStatusPtrOutputWithContext(ctx)
-}
-
-// InstanceGroupManagerStatusPtrInput is an input type that accepts InstanceGroupManagerStatusArgs, InstanceGroupManagerStatusPtr and InstanceGroupManagerStatusPtrOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerStatusPtrInput` via:
-//
-//          InstanceGroupManagerStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceGroupManagerStatusPtrInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerStatusPtrOutput() InstanceGroupManagerStatusPtrOutput
-	ToInstanceGroupManagerStatusPtrOutputWithContext(context.Context) InstanceGroupManagerStatusPtrOutput
-}
-
-type instanceGroupManagerStatusPtrType InstanceGroupManagerStatusArgs
-
-func InstanceGroupManagerStatusPtr(v *InstanceGroupManagerStatusArgs) InstanceGroupManagerStatusPtrInput {
-	return (*instanceGroupManagerStatusPtrType)(v)
-}
-
-func (*instanceGroupManagerStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerStatus)(nil)).Elem()
-}
-
-func (i *instanceGroupManagerStatusPtrType) ToInstanceGroupManagerStatusPtrOutput() InstanceGroupManagerStatusPtrOutput {
-	return i.ToInstanceGroupManagerStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceGroupManagerStatusPtrType) ToInstanceGroupManagerStatusPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusPtrOutput)
-}
-
-type InstanceGroupManagerStatusOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerStatus)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerStatusOutput) ToInstanceGroupManagerStatusOutput() InstanceGroupManagerStatusOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusOutput) ToInstanceGroupManagerStatusOutputWithContext(ctx context.Context) InstanceGroupManagerStatusOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusOutput) ToInstanceGroupManagerStatusPtrOutput() InstanceGroupManagerStatusPtrOutput {
-	return o.ToInstanceGroupManagerStatusPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerStatusOutput) ToInstanceGroupManagerStatusPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatus) *InstanceGroupManagerStatus {
-		return &v
-	}).(InstanceGroupManagerStatusPtrOutput)
-}
-
-// [Output Only] The URL of the Autoscaler that targets this instance group manager.
-func (o InstanceGroupManagerStatusOutput) Autoscaler() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatus) *string { return v.Autoscaler }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-func (o InstanceGroupManagerStatusOutput) IsStable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatus) *bool { return v.IsStable }).(pulumi.BoolPtrOutput)
-}
-
-// [Output Only] Stateful status of the given Instance Group Manager.
-func (o InstanceGroupManagerStatusOutput) Stateful() InstanceGroupManagerStatusStatefulPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatus) *InstanceGroupManagerStatusStateful { return v.Stateful }).(InstanceGroupManagerStatusStatefulPtrOutput)
-}
-
-// [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
-func (o InstanceGroupManagerStatusOutput) VersionTarget() InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatus) *InstanceGroupManagerStatusVersionTarget { return v.VersionTarget }).(InstanceGroupManagerStatusVersionTargetPtrOutput)
-}
-
-type InstanceGroupManagerStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerStatus)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerStatusPtrOutput) ToInstanceGroupManagerStatusPtrOutput() InstanceGroupManagerStatusPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusPtrOutput) ToInstanceGroupManagerStatusPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusPtrOutput) Elem() InstanceGroupManagerStatusOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatus) InstanceGroupManagerStatus { return *v }).(InstanceGroupManagerStatusOutput)
-}
-
-// [Output Only] The URL of the Autoscaler that targets this instance group manager.
-func (o InstanceGroupManagerStatusPtrOutput) Autoscaler() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Autoscaler
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-func (o InstanceGroupManagerStatusPtrOutput) IsStable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatus) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsStable
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Output Only] Stateful status of the given Instance Group Manager.
-func (o InstanceGroupManagerStatusPtrOutput) Stateful() InstanceGroupManagerStatusStatefulPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatus) *InstanceGroupManagerStatusStateful {
-		if v == nil {
-			return nil
-		}
-		return v.Stateful
-	}).(InstanceGroupManagerStatusStatefulPtrOutput)
-}
-
-// [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
-func (o InstanceGroupManagerStatusPtrOutput) VersionTarget() InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatus) *InstanceGroupManagerStatusVersionTarget {
-		if v == nil {
-			return nil
-		}
-		return v.VersionTarget
-	}).(InstanceGroupManagerStatusVersionTargetPtrOutput)
-}
-
 type InstanceGroupManagerStatusResponse struct {
-	// [Output Only] The URL of the Autoscaler that targets this instance group manager.
+	// The URL of the Autoscaler that targets this instance group manager.
 	Autoscaler string `pulumi:"autoscaler"`
-	// [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
 	IsStable bool `pulumi:"isStable"`
-	// [Output Only] Stateful status of the given Instance Group Manager.
+	// Stateful status of the given Instance Group Manager.
 	Stateful InstanceGroupManagerStatusStatefulResponse `pulumi:"stateful"`
-	// [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 	VersionTarget InstanceGroupManagerStatusVersionTargetResponse `pulumi:"versionTarget"`
 }
 
@@ -28213,13 +27364,13 @@ type InstanceGroupManagerStatusResponseInput interface {
 }
 
 type InstanceGroupManagerStatusResponseArgs struct {
-	// [Output Only] The URL of the Autoscaler that targets this instance group manager.
+	// The URL of the Autoscaler that targets this instance group manager.
 	Autoscaler pulumi.StringInput `pulumi:"autoscaler"`
-	// [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
 	IsStable pulumi.BoolInput `pulumi:"isStable"`
-	// [Output Only] Stateful status of the given Instance Group Manager.
+	// Stateful status of the given Instance Group Manager.
 	Stateful InstanceGroupManagerStatusStatefulResponseInput `pulumi:"stateful"`
-	// [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 	VersionTarget InstanceGroupManagerStatusVersionTargetResponseInput `pulumi:"versionTarget"`
 }
 
@@ -28300,24 +27451,24 @@ func (o InstanceGroupManagerStatusResponseOutput) ToInstanceGroupManagerStatusRe
 	}).(InstanceGroupManagerStatusResponsePtrOutput)
 }
 
-// [Output Only] The URL of the Autoscaler that targets this instance group manager.
+// The URL of the Autoscaler that targets this instance group manager.
 func (o InstanceGroupManagerStatusResponseOutput) Autoscaler() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusResponse) string { return v.Autoscaler }).(pulumi.StringOutput)
 }
 
-// [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
 func (o InstanceGroupManagerStatusResponseOutput) IsStable() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusResponse) bool { return v.IsStable }).(pulumi.BoolOutput)
 }
 
-// [Output Only] Stateful status of the given Instance Group Manager.
+// Stateful status of the given Instance Group Manager.
 func (o InstanceGroupManagerStatusResponseOutput) Stateful() InstanceGroupManagerStatusStatefulResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusResponse) InstanceGroupManagerStatusStatefulResponse {
 		return v.Stateful
 	}).(InstanceGroupManagerStatusStatefulResponseOutput)
 }
 
-// [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 func (o InstanceGroupManagerStatusResponseOutput) VersionTarget() InstanceGroupManagerStatusVersionTargetResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusResponse) InstanceGroupManagerStatusVersionTargetResponse {
 		return v.VersionTarget
@@ -28342,7 +27493,7 @@ func (o InstanceGroupManagerStatusResponsePtrOutput) Elem() InstanceGroupManager
 	return o.ApplyT(func(v *InstanceGroupManagerStatusResponse) InstanceGroupManagerStatusResponse { return *v }).(InstanceGroupManagerStatusResponseOutput)
 }
 
-// [Output Only] The URL of the Autoscaler that targets this instance group manager.
+// The URL of the Autoscaler that targets this instance group manager.
 func (o InstanceGroupManagerStatusResponsePtrOutput) Autoscaler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerStatusResponse) *string {
 		if v == nil {
@@ -28352,7 +27503,7 @@ func (o InstanceGroupManagerStatusResponsePtrOutput) Autoscaler() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
 func (o InstanceGroupManagerStatusResponsePtrOutput) IsStable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerStatusResponse) *bool {
 		if v == nil {
@@ -28362,7 +27513,7 @@ func (o InstanceGroupManagerStatusResponsePtrOutput) IsStable() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [Output Only] Stateful status of the given Instance Group Manager.
+// Stateful status of the given Instance Group Manager.
 func (o InstanceGroupManagerStatusResponsePtrOutput) Stateful() InstanceGroupManagerStatusStatefulResponsePtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerStatusResponse) *InstanceGroupManagerStatusStatefulResponse {
 		if v == nil {
@@ -28372,7 +27523,7 @@ func (o InstanceGroupManagerStatusResponsePtrOutput) Stateful() InstanceGroupMan
 	}).(InstanceGroupManagerStatusStatefulResponsePtrOutput)
 }
 
-// [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 func (o InstanceGroupManagerStatusResponsePtrOutput) VersionTarget() InstanceGroupManagerStatusVersionTargetResponsePtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerStatusResponse) *InstanceGroupManagerStatusVersionTargetResponse {
 		if v == nil {
@@ -28380,291 +27531,6 @@ func (o InstanceGroupManagerStatusResponsePtrOutput) VersionTarget() InstanceGro
 		}
 		return &v.VersionTarget
 	}).(InstanceGroupManagerStatusVersionTargetResponsePtrOutput)
-}
-
-type InstanceGroupManagerStatusStateful struct {
-	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-	HasStatefulConfig *bool `pulumi:"hasStatefulConfig"`
-	// [Output Only] Status of per-instance configs on the instance.
-	PerInstanceConfigs *InstanceGroupManagerStatusStatefulPerInstanceConfigs `pulumi:"perInstanceConfigs"`
-}
-
-// InstanceGroupManagerStatusStatefulInput is an input type that accepts InstanceGroupManagerStatusStatefulArgs and InstanceGroupManagerStatusStatefulOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerStatusStatefulInput` via:
-//
-//          InstanceGroupManagerStatusStatefulArgs{...}
-type InstanceGroupManagerStatusStatefulInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerStatusStatefulOutput() InstanceGroupManagerStatusStatefulOutput
-	ToInstanceGroupManagerStatusStatefulOutputWithContext(context.Context) InstanceGroupManagerStatusStatefulOutput
-}
-
-type InstanceGroupManagerStatusStatefulArgs struct {
-	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-	HasStatefulConfig pulumi.BoolPtrInput `pulumi:"hasStatefulConfig"`
-	// [Output Only] Status of per-instance configs on the instance.
-	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrInput `pulumi:"perInstanceConfigs"`
-}
-
-func (InstanceGroupManagerStatusStatefulArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerStatusStateful)(nil)).Elem()
-}
-
-func (i InstanceGroupManagerStatusStatefulArgs) ToInstanceGroupManagerStatusStatefulOutput() InstanceGroupManagerStatusStatefulOutput {
-	return i.ToInstanceGroupManagerStatusStatefulOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerStatusStatefulArgs) ToInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulOutput)
-}
-
-func (i InstanceGroupManagerStatusStatefulArgs) ToInstanceGroupManagerStatusStatefulPtrOutput() InstanceGroupManagerStatusStatefulPtrOutput {
-	return i.ToInstanceGroupManagerStatusStatefulPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerStatusStatefulArgs) ToInstanceGroupManagerStatusStatefulPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulOutput).ToInstanceGroupManagerStatusStatefulPtrOutputWithContext(ctx)
-}
-
-// InstanceGroupManagerStatusStatefulPtrInput is an input type that accepts InstanceGroupManagerStatusStatefulArgs, InstanceGroupManagerStatusStatefulPtr and InstanceGroupManagerStatusStatefulPtrOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerStatusStatefulPtrInput` via:
-//
-//          InstanceGroupManagerStatusStatefulArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceGroupManagerStatusStatefulPtrInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerStatusStatefulPtrOutput() InstanceGroupManagerStatusStatefulPtrOutput
-	ToInstanceGroupManagerStatusStatefulPtrOutputWithContext(context.Context) InstanceGroupManagerStatusStatefulPtrOutput
-}
-
-type instanceGroupManagerStatusStatefulPtrType InstanceGroupManagerStatusStatefulArgs
-
-func InstanceGroupManagerStatusStatefulPtr(v *InstanceGroupManagerStatusStatefulArgs) InstanceGroupManagerStatusStatefulPtrInput {
-	return (*instanceGroupManagerStatusStatefulPtrType)(v)
-}
-
-func (*instanceGroupManagerStatusStatefulPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerStatusStateful)(nil)).Elem()
-}
-
-func (i *instanceGroupManagerStatusStatefulPtrType) ToInstanceGroupManagerStatusStatefulPtrOutput() InstanceGroupManagerStatusStatefulPtrOutput {
-	return i.ToInstanceGroupManagerStatusStatefulPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceGroupManagerStatusStatefulPtrType) ToInstanceGroupManagerStatusStatefulPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulPtrOutput)
-}
-
-type InstanceGroupManagerStatusStatefulOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerStatusStatefulOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerStatusStateful)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerStatusStatefulOutput) ToInstanceGroupManagerStatusStatefulOutput() InstanceGroupManagerStatusStatefulOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusStatefulOutput) ToInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusStatefulOutput) ToInstanceGroupManagerStatusStatefulPtrOutput() InstanceGroupManagerStatusStatefulPtrOutput {
-	return o.ToInstanceGroupManagerStatusStatefulPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerStatusStatefulOutput) ToInstanceGroupManagerStatusStatefulPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusStateful) *InstanceGroupManagerStatusStateful {
-		return &v
-	}).(InstanceGroupManagerStatusStatefulPtrOutput)
-}
-
-// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-func (o InstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusStateful) *bool { return v.HasStatefulConfig }).(pulumi.BoolPtrOutput)
-}
-
-// [Output Only] Status of per-instance configs on the instance.
-func (o InstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusStateful) *InstanceGroupManagerStatusStatefulPerInstanceConfigs {
-		return v.PerInstanceConfigs
-	}).(InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput)
-}
-
-type InstanceGroupManagerStatusStatefulPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerStatusStatefulPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerStatusStateful)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerStatusStatefulPtrOutput) ToInstanceGroupManagerStatusStatefulPtrOutput() InstanceGroupManagerStatusStatefulPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusStatefulPtrOutput) ToInstanceGroupManagerStatusStatefulPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusStatefulPtrOutput) Elem() InstanceGroupManagerStatusStatefulOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatusStateful) InstanceGroupManagerStatusStateful { return *v }).(InstanceGroupManagerStatusStatefulOutput)
-}
-
-// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-func (o InstanceGroupManagerStatusStatefulPtrOutput) HasStatefulConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatusStateful) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.HasStatefulConfig
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Output Only] Status of per-instance configs on the instance.
-func (o InstanceGroupManagerStatusStatefulPtrOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatusStateful) *InstanceGroupManagerStatusStatefulPerInstanceConfigs {
-		if v == nil {
-			return nil
-		}
-		return v.PerInstanceConfigs
-	}).(InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput)
-}
-
-type InstanceGroupManagerStatusStatefulPerInstanceConfigs struct {
-	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
-	AllEffective *bool `pulumi:"allEffective"`
-}
-
-// InstanceGroupManagerStatusStatefulPerInstanceConfigsInput is an input type that accepts InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs and InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerStatusStatefulPerInstanceConfigsInput` via:
-//
-//          InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs{...}
-type InstanceGroupManagerStatusStatefulPerInstanceConfigsInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerStatusStatefulPerInstanceConfigsOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput
-	ToInstanceGroupManagerStatusStatefulPerInstanceConfigsOutputWithContext(context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput
-}
-
-type InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs struct {
-	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
-	AllEffective pulumi.BoolPtrInput `pulumi:"allEffective"`
-}
-
-func (InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerStatusStatefulPerInstanceConfigs)(nil)).Elem()
-}
-
-func (i InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput {
-	return i.ToInstanceGroupManagerStatusStatefulPerInstanceConfigsOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput)
-}
-
-func (i InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return i.ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput).ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutputWithContext(ctx)
-}
-
-// InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrInput is an input type that accepts InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs, InstanceGroupManagerStatusStatefulPerInstanceConfigsPtr and InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrInput` via:
-//
-//          InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput
-	ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutputWithContext(context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput
-}
-
-type instanceGroupManagerStatusStatefulPerInstanceConfigsPtrType InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs
-
-func InstanceGroupManagerStatusStatefulPerInstanceConfigsPtr(v *InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs) InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrInput {
-	return (*instanceGroupManagerStatusStatefulPerInstanceConfigsPtrType)(v)
-}
-
-func (*instanceGroupManagerStatusStatefulPerInstanceConfigsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerStatusStatefulPerInstanceConfigs)(nil)).Elem()
-}
-
-func (i *instanceGroupManagerStatusStatefulPerInstanceConfigsPtrType) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return i.ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceGroupManagerStatusStatefulPerInstanceConfigsPtrType) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput)
-}
-
-type InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerStatusStatefulPerInstanceConfigs)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return o.ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulPerInstanceConfigs) *InstanceGroupManagerStatusStatefulPerInstanceConfigs {
-		return &v
-	}).(InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput)
-}
-
-// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
-func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput) AllEffective() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulPerInstanceConfigs) *bool { return v.AllEffective }).(pulumi.BoolPtrOutput)
-}
-
-type InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerStatusStatefulPerInstanceConfigs)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput() InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput) ToInstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput) Elem() InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatusStatefulPerInstanceConfigs) InstanceGroupManagerStatusStatefulPerInstanceConfigs {
-		return *v
-	}).(InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput)
-}
-
-// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
-func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput) AllEffective() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatusStatefulPerInstanceConfigs) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllEffective
-	}).(pulumi.BoolPtrOutput)
 }
 
 type InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse struct {
@@ -28801,9 +27667,9 @@ func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsResponsePtrOutput) A
 }
 
 type InstanceGroupManagerStatusStatefulResponse struct {
-	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
-	// [Output Only] Status of per-instance configs on the instance.
+	// Status of per-instance configs on the instance.
 	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse `pulumi:"perInstanceConfigs"`
 }
 
@@ -28819,9 +27685,9 @@ type InstanceGroupManagerStatusStatefulResponseInput interface {
 }
 
 type InstanceGroupManagerStatusStatefulResponseArgs struct {
-	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig pulumi.BoolInput `pulumi:"hasStatefulConfig"`
-	// [Output Only] Status of per-instance configs on the instance.
+	// Status of per-instance configs on the instance.
 	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseInput `pulumi:"perInstanceConfigs"`
 }
 
@@ -28902,12 +27768,12 @@ func (o InstanceGroupManagerStatusStatefulResponseOutput) ToInstanceGroupManager
 	}).(InstanceGroupManagerStatusStatefulResponsePtrOutput)
 }
 
-// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) HasStatefulConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
 }
 
-// [Output Only] Status of per-instance configs on the instance.
+// Status of per-instance configs on the instance.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
 		return v.PerInstanceConfigs
@@ -28934,7 +27800,7 @@ func (o InstanceGroupManagerStatusStatefulResponsePtrOutput) Elem() InstanceGrou
 	}).(InstanceGroupManagerStatusStatefulResponseOutput)
 }
 
-// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 func (o InstanceGroupManagerStatusStatefulResponsePtrOutput) HasStatefulConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerStatusStatefulResponse) *bool {
 		if v == nil {
@@ -28944,7 +27810,7 @@ func (o InstanceGroupManagerStatusStatefulResponsePtrOutput) HasStatefulConfig()
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [Output Only] Status of per-instance configs on the instance.
+// Status of per-instance configs on the instance.
 func (o InstanceGroupManagerStatusStatefulResponsePtrOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigsResponsePtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerStatusStatefulResponse) *InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
 		if v == nil {
@@ -28954,139 +27820,8 @@ func (o InstanceGroupManagerStatusStatefulResponsePtrOutput) PerInstanceConfigs(
 	}).(InstanceGroupManagerStatusStatefulPerInstanceConfigsResponsePtrOutput)
 }
 
-type InstanceGroupManagerStatusVersionTarget struct {
-	// [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-	IsReached *bool `pulumi:"isReached"`
-}
-
-// InstanceGroupManagerStatusVersionTargetInput is an input type that accepts InstanceGroupManagerStatusVersionTargetArgs and InstanceGroupManagerStatusVersionTargetOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerStatusVersionTargetInput` via:
-//
-//          InstanceGroupManagerStatusVersionTargetArgs{...}
-type InstanceGroupManagerStatusVersionTargetInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerStatusVersionTargetOutput() InstanceGroupManagerStatusVersionTargetOutput
-	ToInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Context) InstanceGroupManagerStatusVersionTargetOutput
-}
-
-type InstanceGroupManagerStatusVersionTargetArgs struct {
-	// [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-	IsReached pulumi.BoolPtrInput `pulumi:"isReached"`
-}
-
-func (InstanceGroupManagerStatusVersionTargetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerStatusVersionTarget)(nil)).Elem()
-}
-
-func (i InstanceGroupManagerStatusVersionTargetArgs) ToInstanceGroupManagerStatusVersionTargetOutput() InstanceGroupManagerStatusVersionTargetOutput {
-	return i.ToInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerStatusVersionTargetArgs) ToInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusVersionTargetOutput)
-}
-
-func (i InstanceGroupManagerStatusVersionTargetArgs) ToInstanceGroupManagerStatusVersionTargetPtrOutput() InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return i.ToInstanceGroupManagerStatusVersionTargetPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerStatusVersionTargetArgs) ToInstanceGroupManagerStatusVersionTargetPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusVersionTargetOutput).ToInstanceGroupManagerStatusVersionTargetPtrOutputWithContext(ctx)
-}
-
-// InstanceGroupManagerStatusVersionTargetPtrInput is an input type that accepts InstanceGroupManagerStatusVersionTargetArgs, InstanceGroupManagerStatusVersionTargetPtr and InstanceGroupManagerStatusVersionTargetPtrOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerStatusVersionTargetPtrInput` via:
-//
-//          InstanceGroupManagerStatusVersionTargetArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceGroupManagerStatusVersionTargetPtrInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerStatusVersionTargetPtrOutput() InstanceGroupManagerStatusVersionTargetPtrOutput
-	ToInstanceGroupManagerStatusVersionTargetPtrOutputWithContext(context.Context) InstanceGroupManagerStatusVersionTargetPtrOutput
-}
-
-type instanceGroupManagerStatusVersionTargetPtrType InstanceGroupManagerStatusVersionTargetArgs
-
-func InstanceGroupManagerStatusVersionTargetPtr(v *InstanceGroupManagerStatusVersionTargetArgs) InstanceGroupManagerStatusVersionTargetPtrInput {
-	return (*instanceGroupManagerStatusVersionTargetPtrType)(v)
-}
-
-func (*instanceGroupManagerStatusVersionTargetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerStatusVersionTarget)(nil)).Elem()
-}
-
-func (i *instanceGroupManagerStatusVersionTargetPtrType) ToInstanceGroupManagerStatusVersionTargetPtrOutput() InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return i.ToInstanceGroupManagerStatusVersionTargetPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceGroupManagerStatusVersionTargetPtrType) ToInstanceGroupManagerStatusVersionTargetPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatusVersionTargetPtrOutput)
-}
-
-type InstanceGroupManagerStatusVersionTargetOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerStatusVersionTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerStatusVersionTarget)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerStatusVersionTargetOutput) ToInstanceGroupManagerStatusVersionTargetOutput() InstanceGroupManagerStatusVersionTargetOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusVersionTargetOutput) ToInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusVersionTargetOutput) ToInstanceGroupManagerStatusVersionTargetPtrOutput() InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return o.ToInstanceGroupManagerStatusVersionTargetPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerStatusVersionTargetOutput) ToInstanceGroupManagerStatusVersionTargetPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusVersionTarget) *InstanceGroupManagerStatusVersionTarget {
-		return &v
-	}).(InstanceGroupManagerStatusVersionTargetPtrOutput)
-}
-
-// [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-func (o InstanceGroupManagerStatusVersionTargetOutput) IsReached() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusVersionTarget) *bool { return v.IsReached }).(pulumi.BoolPtrOutput)
-}
-
-type InstanceGroupManagerStatusVersionTargetPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerStatusVersionTargetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerStatusVersionTarget)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerStatusVersionTargetPtrOutput) ToInstanceGroupManagerStatusVersionTargetPtrOutput() InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusVersionTargetPtrOutput) ToInstanceGroupManagerStatusVersionTargetPtrOutputWithContext(ctx context.Context) InstanceGroupManagerStatusVersionTargetPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusVersionTargetPtrOutput) Elem() InstanceGroupManagerStatusVersionTargetOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatusVersionTarget) InstanceGroupManagerStatusVersionTarget { return *v }).(InstanceGroupManagerStatusVersionTargetOutput)
-}
-
-// [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-func (o InstanceGroupManagerStatusVersionTargetPtrOutput) IsReached() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatusVersionTarget) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsReached
-	}).(pulumi.BoolPtrOutput)
-}
-
 type InstanceGroupManagerStatusVersionTargetResponse struct {
-	// [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
 	IsReached bool `pulumi:"isReached"`
 }
 
@@ -29102,7 +27837,7 @@ type InstanceGroupManagerStatusVersionTargetResponseInput interface {
 }
 
 type InstanceGroupManagerStatusVersionTargetResponseArgs struct {
-	// [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
 	IsReached pulumi.BoolInput `pulumi:"isReached"`
 }
 
@@ -29183,7 +27918,7 @@ func (o InstanceGroupManagerStatusVersionTargetResponseOutput) ToInstanceGroupMa
 	}).(InstanceGroupManagerStatusVersionTargetResponsePtrOutput)
 }
 
-// [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
 func (o InstanceGroupManagerStatusVersionTargetResponseOutput) IsReached() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusVersionTargetResponse) bool { return v.IsReached }).(pulumi.BoolOutput)
 }
@@ -29208,7 +27943,7 @@ func (o InstanceGroupManagerStatusVersionTargetResponsePtrOutput) Elem() Instanc
 	}).(InstanceGroupManagerStatusVersionTargetResponseOutput)
 }
 
-// [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
 func (o InstanceGroupManagerStatusVersionTargetResponsePtrOutput) IsReached() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerStatusVersionTargetResponse) *bool {
 		if v == nil {
@@ -31488,142 +30223,8 @@ func (o InterconnectAttachmentPartnerMetadataResponsePtrOutput) PortalUrl() pulu
 }
 
 // Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED.
-type InterconnectAttachmentPrivateInfo struct {
-	// [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
-	Tag8021q *int `pulumi:"tag8021q"`
-}
-
-// InterconnectAttachmentPrivateInfoInput is an input type that accepts InterconnectAttachmentPrivateInfoArgs and InterconnectAttachmentPrivateInfoOutput values.
-// You can construct a concrete instance of `InterconnectAttachmentPrivateInfoInput` via:
-//
-//          InterconnectAttachmentPrivateInfoArgs{...}
-type InterconnectAttachmentPrivateInfoInput interface {
-	pulumi.Input
-
-	ToInterconnectAttachmentPrivateInfoOutput() InterconnectAttachmentPrivateInfoOutput
-	ToInterconnectAttachmentPrivateInfoOutputWithContext(context.Context) InterconnectAttachmentPrivateInfoOutput
-}
-
-// Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED.
-type InterconnectAttachmentPrivateInfoArgs struct {
-	// [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
-	Tag8021q pulumi.IntPtrInput `pulumi:"tag8021q"`
-}
-
-func (InterconnectAttachmentPrivateInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachmentPrivateInfo)(nil)).Elem()
-}
-
-func (i InterconnectAttachmentPrivateInfoArgs) ToInterconnectAttachmentPrivateInfoOutput() InterconnectAttachmentPrivateInfoOutput {
-	return i.ToInterconnectAttachmentPrivateInfoOutputWithContext(context.Background())
-}
-
-func (i InterconnectAttachmentPrivateInfoArgs) ToInterconnectAttachmentPrivateInfoOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPrivateInfoOutput)
-}
-
-func (i InterconnectAttachmentPrivateInfoArgs) ToInterconnectAttachmentPrivateInfoPtrOutput() InterconnectAttachmentPrivateInfoPtrOutput {
-	return i.ToInterconnectAttachmentPrivateInfoPtrOutputWithContext(context.Background())
-}
-
-func (i InterconnectAttachmentPrivateInfoArgs) ToInterconnectAttachmentPrivateInfoPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPrivateInfoOutput).ToInterconnectAttachmentPrivateInfoPtrOutputWithContext(ctx)
-}
-
-// InterconnectAttachmentPrivateInfoPtrInput is an input type that accepts InterconnectAttachmentPrivateInfoArgs, InterconnectAttachmentPrivateInfoPtr and InterconnectAttachmentPrivateInfoPtrOutput values.
-// You can construct a concrete instance of `InterconnectAttachmentPrivateInfoPtrInput` via:
-//
-//          InterconnectAttachmentPrivateInfoArgs{...}
-//
-//  or:
-//
-//          nil
-type InterconnectAttachmentPrivateInfoPtrInput interface {
-	pulumi.Input
-
-	ToInterconnectAttachmentPrivateInfoPtrOutput() InterconnectAttachmentPrivateInfoPtrOutput
-	ToInterconnectAttachmentPrivateInfoPtrOutputWithContext(context.Context) InterconnectAttachmentPrivateInfoPtrOutput
-}
-
-type interconnectAttachmentPrivateInfoPtrType InterconnectAttachmentPrivateInfoArgs
-
-func InterconnectAttachmentPrivateInfoPtr(v *InterconnectAttachmentPrivateInfoArgs) InterconnectAttachmentPrivateInfoPtrInput {
-	return (*interconnectAttachmentPrivateInfoPtrType)(v)
-}
-
-func (*interconnectAttachmentPrivateInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InterconnectAttachmentPrivateInfo)(nil)).Elem()
-}
-
-func (i *interconnectAttachmentPrivateInfoPtrType) ToInterconnectAttachmentPrivateInfoPtrOutput() InterconnectAttachmentPrivateInfoPtrOutput {
-	return i.ToInterconnectAttachmentPrivateInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *interconnectAttachmentPrivateInfoPtrType) ToInterconnectAttachmentPrivateInfoPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentPrivateInfoPtrOutput)
-}
-
-// Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED.
-type InterconnectAttachmentPrivateInfoOutput struct{ *pulumi.OutputState }
-
-func (InterconnectAttachmentPrivateInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachmentPrivateInfo)(nil)).Elem()
-}
-
-func (o InterconnectAttachmentPrivateInfoOutput) ToInterconnectAttachmentPrivateInfoOutput() InterconnectAttachmentPrivateInfoOutput {
-	return o
-}
-
-func (o InterconnectAttachmentPrivateInfoOutput) ToInterconnectAttachmentPrivateInfoOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInfoOutput {
-	return o
-}
-
-func (o InterconnectAttachmentPrivateInfoOutput) ToInterconnectAttachmentPrivateInfoPtrOutput() InterconnectAttachmentPrivateInfoPtrOutput {
-	return o.ToInterconnectAttachmentPrivateInfoPtrOutputWithContext(context.Background())
-}
-
-func (o InterconnectAttachmentPrivateInfoOutput) ToInterconnectAttachmentPrivateInfoPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInfoPtrOutput {
-	return o.ApplyT(func(v InterconnectAttachmentPrivateInfo) *InterconnectAttachmentPrivateInfo {
-		return &v
-	}).(InterconnectAttachmentPrivateInfoPtrOutput)
-}
-
-// [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
-func (o InterconnectAttachmentPrivateInfoOutput) Tag8021q() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InterconnectAttachmentPrivateInfo) *int { return v.Tag8021q }).(pulumi.IntPtrOutput)
-}
-
-type InterconnectAttachmentPrivateInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (InterconnectAttachmentPrivateInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InterconnectAttachmentPrivateInfo)(nil)).Elem()
-}
-
-func (o InterconnectAttachmentPrivateInfoPtrOutput) ToInterconnectAttachmentPrivateInfoPtrOutput() InterconnectAttachmentPrivateInfoPtrOutput {
-	return o
-}
-
-func (o InterconnectAttachmentPrivateInfoPtrOutput) ToInterconnectAttachmentPrivateInfoPtrOutputWithContext(ctx context.Context) InterconnectAttachmentPrivateInfoPtrOutput {
-	return o
-}
-
-func (o InterconnectAttachmentPrivateInfoPtrOutput) Elem() InterconnectAttachmentPrivateInfoOutput {
-	return o.ApplyT(func(v *InterconnectAttachmentPrivateInfo) InterconnectAttachmentPrivateInfo { return *v }).(InterconnectAttachmentPrivateInfoOutput)
-}
-
-// [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
-func (o InterconnectAttachmentPrivateInfoPtrOutput) Tag8021q() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InterconnectAttachmentPrivateInfo) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Tag8021q
-	}).(pulumi.IntPtrOutput)
-}
-
-// Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED.
 type InterconnectAttachmentPrivateInfoResponse struct {
-	// [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+	// 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
 	Tag8021q int `pulumi:"tag8021q"`
 }
 
@@ -31640,7 +30241,7 @@ type InterconnectAttachmentPrivateInfoResponseInput interface {
 
 // Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED.
 type InterconnectAttachmentPrivateInfoResponseArgs struct {
-	// [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+	// 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
 	Tag8021q pulumi.IntInput `pulumi:"tag8021q"`
 }
 
@@ -31722,7 +30323,7 @@ func (o InterconnectAttachmentPrivateInfoResponseOutput) ToInterconnectAttachmen
 	}).(InterconnectAttachmentPrivateInfoResponsePtrOutput)
 }
 
-// [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+// 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
 func (o InterconnectAttachmentPrivateInfoResponseOutput) Tag8021q() pulumi.IntOutput {
 	return o.ApplyT(func(v InterconnectAttachmentPrivateInfoResponse) int { return v.Tag8021q }).(pulumi.IntOutput)
 }
@@ -31747,7 +30348,7 @@ func (o InterconnectAttachmentPrivateInfoResponsePtrOutput) Elem() InterconnectA
 	}).(InterconnectAttachmentPrivateInfoResponseOutput)
 }
 
-// [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
+// 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
 func (o InterconnectAttachmentPrivateInfoResponsePtrOutput) Tag8021q() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InterconnectAttachmentPrivateInfoResponse) *int {
 		if v == nil {
@@ -31755,124 +30356,6 @@ func (o InterconnectAttachmentPrivateInfoResponsePtrOutput) Tag8021q() pulumi.In
 		}
 		return &v.Tag8021q
 	}).(pulumi.IntPtrOutput)
-}
-
-// Describes a single physical circuit between the Customer and Google. CircuitInfo objects are created by Google, so all fields are output only.
-type InterconnectCircuitInfo struct {
-	// Customer-side demarc ID for this circuit.
-	CustomerDemarcId *string `pulumi:"customerDemarcId"`
-	// Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
-	GoogleCircuitId *string `pulumi:"googleCircuitId"`
-	// Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by Google to the customer in the LOA.
-	GoogleDemarcId *string `pulumi:"googleDemarcId"`
-}
-
-// InterconnectCircuitInfoInput is an input type that accepts InterconnectCircuitInfoArgs and InterconnectCircuitInfoOutput values.
-// You can construct a concrete instance of `InterconnectCircuitInfoInput` via:
-//
-//          InterconnectCircuitInfoArgs{...}
-type InterconnectCircuitInfoInput interface {
-	pulumi.Input
-
-	ToInterconnectCircuitInfoOutput() InterconnectCircuitInfoOutput
-	ToInterconnectCircuitInfoOutputWithContext(context.Context) InterconnectCircuitInfoOutput
-}
-
-// Describes a single physical circuit between the Customer and Google. CircuitInfo objects are created by Google, so all fields are output only.
-type InterconnectCircuitInfoArgs struct {
-	// Customer-side demarc ID for this circuit.
-	CustomerDemarcId pulumi.StringPtrInput `pulumi:"customerDemarcId"`
-	// Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
-	GoogleCircuitId pulumi.StringPtrInput `pulumi:"googleCircuitId"`
-	// Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by Google to the customer in the LOA.
-	GoogleDemarcId pulumi.StringPtrInput `pulumi:"googleDemarcId"`
-}
-
-func (InterconnectCircuitInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectCircuitInfo)(nil)).Elem()
-}
-
-func (i InterconnectCircuitInfoArgs) ToInterconnectCircuitInfoOutput() InterconnectCircuitInfoOutput {
-	return i.ToInterconnectCircuitInfoOutputWithContext(context.Background())
-}
-
-func (i InterconnectCircuitInfoArgs) ToInterconnectCircuitInfoOutputWithContext(ctx context.Context) InterconnectCircuitInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectCircuitInfoOutput)
-}
-
-// InterconnectCircuitInfoArrayInput is an input type that accepts InterconnectCircuitInfoArray and InterconnectCircuitInfoArrayOutput values.
-// You can construct a concrete instance of `InterconnectCircuitInfoArrayInput` via:
-//
-//          InterconnectCircuitInfoArray{ InterconnectCircuitInfoArgs{...} }
-type InterconnectCircuitInfoArrayInput interface {
-	pulumi.Input
-
-	ToInterconnectCircuitInfoArrayOutput() InterconnectCircuitInfoArrayOutput
-	ToInterconnectCircuitInfoArrayOutputWithContext(context.Context) InterconnectCircuitInfoArrayOutput
-}
-
-type InterconnectCircuitInfoArray []InterconnectCircuitInfoInput
-
-func (InterconnectCircuitInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InterconnectCircuitInfo)(nil)).Elem()
-}
-
-func (i InterconnectCircuitInfoArray) ToInterconnectCircuitInfoArrayOutput() InterconnectCircuitInfoArrayOutput {
-	return i.ToInterconnectCircuitInfoArrayOutputWithContext(context.Background())
-}
-
-func (i InterconnectCircuitInfoArray) ToInterconnectCircuitInfoArrayOutputWithContext(ctx context.Context) InterconnectCircuitInfoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectCircuitInfoArrayOutput)
-}
-
-// Describes a single physical circuit between the Customer and Google. CircuitInfo objects are created by Google, so all fields are output only.
-type InterconnectCircuitInfoOutput struct{ *pulumi.OutputState }
-
-func (InterconnectCircuitInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectCircuitInfo)(nil)).Elem()
-}
-
-func (o InterconnectCircuitInfoOutput) ToInterconnectCircuitInfoOutput() InterconnectCircuitInfoOutput {
-	return o
-}
-
-func (o InterconnectCircuitInfoOutput) ToInterconnectCircuitInfoOutputWithContext(ctx context.Context) InterconnectCircuitInfoOutput {
-	return o
-}
-
-// Customer-side demarc ID for this circuit.
-func (o InterconnectCircuitInfoOutput) CustomerDemarcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectCircuitInfo) *string { return v.CustomerDemarcId }).(pulumi.StringPtrOutput)
-}
-
-// Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
-func (o InterconnectCircuitInfoOutput) GoogleCircuitId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectCircuitInfo) *string { return v.GoogleCircuitId }).(pulumi.StringPtrOutput)
-}
-
-// Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by Google to the customer in the LOA.
-func (o InterconnectCircuitInfoOutput) GoogleDemarcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectCircuitInfo) *string { return v.GoogleDemarcId }).(pulumi.StringPtrOutput)
-}
-
-type InterconnectCircuitInfoArrayOutput struct{ *pulumi.OutputState }
-
-func (InterconnectCircuitInfoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InterconnectCircuitInfo)(nil)).Elem()
-}
-
-func (o InterconnectCircuitInfoArrayOutput) ToInterconnectCircuitInfoArrayOutput() InterconnectCircuitInfoArrayOutput {
-	return o
-}
-
-func (o InterconnectCircuitInfoArrayOutput) ToInterconnectCircuitInfoArrayOutputWithContext(ctx context.Context) InterconnectCircuitInfoArrayOutput {
-	return o
-}
-
-func (o InterconnectCircuitInfoArrayOutput) Index(i pulumi.IntInput) InterconnectCircuitInfoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectCircuitInfo {
-		return vs[0].([]InterconnectCircuitInfo)[vs[1].(int)]
-	}).(InterconnectCircuitInfoOutput)
 }
 
 // Describes a single physical circuit between the Customer and Google. CircuitInfo objects are created by Google, so all fields are output only.
@@ -31991,184 +30474,6 @@ func (o InterconnectCircuitInfoResponseArrayOutput) Index(i pulumi.IntInput) Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectCircuitInfoResponse {
 		return vs[0].([]InterconnectCircuitInfoResponse)[vs[1].(int)]
 	}).(InterconnectCircuitInfoResponseOutput)
-}
-
-// Description of a planned outage on this Interconnect.
-type InterconnectOutageNotification struct {
-	// If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be affected.
-	AffectedCircuits []string `pulumi:"affectedCircuits"`
-	// A description about the purpose of the outage.
-	Description *string `pulumi:"description"`
-	// Scheduled end time for the outage (milliseconds since Unix epoch).
-	EndTime *string `pulumi:"endTime"`
-	// Form this outage is expected to take, which can take one of the following values:
-	// - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window.
-	// - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
-	IssueType *string `pulumi:"issueType"`
-	// Unique identifier for this outage notification.
-	Name *string `pulumi:"name"`
-	// The party that generated this notification, which can take the following value:
-	// - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
-	Source *string `pulumi:"source"`
-	// Scheduled start time for the outage (milliseconds since Unix epoch).
-	StartTime *string `pulumi:"startTime"`
-	// State of this notification, which can take one of the following values:
-	// - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling.
-	// - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
-	State *string `pulumi:"state"`
-}
-
-// InterconnectOutageNotificationInput is an input type that accepts InterconnectOutageNotificationArgs and InterconnectOutageNotificationOutput values.
-// You can construct a concrete instance of `InterconnectOutageNotificationInput` via:
-//
-//          InterconnectOutageNotificationArgs{...}
-type InterconnectOutageNotificationInput interface {
-	pulumi.Input
-
-	ToInterconnectOutageNotificationOutput() InterconnectOutageNotificationOutput
-	ToInterconnectOutageNotificationOutputWithContext(context.Context) InterconnectOutageNotificationOutput
-}
-
-// Description of a planned outage on this Interconnect.
-type InterconnectOutageNotificationArgs struct {
-	// If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be affected.
-	AffectedCircuits pulumi.StringArrayInput `pulumi:"affectedCircuits"`
-	// A description about the purpose of the outage.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Scheduled end time for the outage (milliseconds since Unix epoch).
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Form this outage is expected to take, which can take one of the following values:
-	// - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window.
-	// - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
-	IssueType *InterconnectOutageNotificationIssueType `pulumi:"issueType"`
-	// Unique identifier for this outage notification.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The party that generated this notification, which can take the following value:
-	// - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
-	Source *InterconnectOutageNotificationSource `pulumi:"source"`
-	// Scheduled start time for the outage (milliseconds since Unix epoch).
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// State of this notification, which can take one of the following values:
-	// - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling.
-	// - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
-	State *InterconnectOutageNotificationState `pulumi:"state"`
-}
-
-func (InterconnectOutageNotificationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectOutageNotification)(nil)).Elem()
-}
-
-func (i InterconnectOutageNotificationArgs) ToInterconnectOutageNotificationOutput() InterconnectOutageNotificationOutput {
-	return i.ToInterconnectOutageNotificationOutputWithContext(context.Background())
-}
-
-func (i InterconnectOutageNotificationArgs) ToInterconnectOutageNotificationOutputWithContext(ctx context.Context) InterconnectOutageNotificationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectOutageNotificationOutput)
-}
-
-// InterconnectOutageNotificationArrayInput is an input type that accepts InterconnectOutageNotificationArray and InterconnectOutageNotificationArrayOutput values.
-// You can construct a concrete instance of `InterconnectOutageNotificationArrayInput` via:
-//
-//          InterconnectOutageNotificationArray{ InterconnectOutageNotificationArgs{...} }
-type InterconnectOutageNotificationArrayInput interface {
-	pulumi.Input
-
-	ToInterconnectOutageNotificationArrayOutput() InterconnectOutageNotificationArrayOutput
-	ToInterconnectOutageNotificationArrayOutputWithContext(context.Context) InterconnectOutageNotificationArrayOutput
-}
-
-type InterconnectOutageNotificationArray []InterconnectOutageNotificationInput
-
-func (InterconnectOutageNotificationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InterconnectOutageNotification)(nil)).Elem()
-}
-
-func (i InterconnectOutageNotificationArray) ToInterconnectOutageNotificationArrayOutput() InterconnectOutageNotificationArrayOutput {
-	return i.ToInterconnectOutageNotificationArrayOutputWithContext(context.Background())
-}
-
-func (i InterconnectOutageNotificationArray) ToInterconnectOutageNotificationArrayOutputWithContext(ctx context.Context) InterconnectOutageNotificationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InterconnectOutageNotificationArrayOutput)
-}
-
-// Description of a planned outage on this Interconnect.
-type InterconnectOutageNotificationOutput struct{ *pulumi.OutputState }
-
-func (InterconnectOutageNotificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectOutageNotification)(nil)).Elem()
-}
-
-func (o InterconnectOutageNotificationOutput) ToInterconnectOutageNotificationOutput() InterconnectOutageNotificationOutput {
-	return o
-}
-
-func (o InterconnectOutageNotificationOutput) ToInterconnectOutageNotificationOutputWithContext(ctx context.Context) InterconnectOutageNotificationOutput {
-	return o
-}
-
-// If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be affected.
-func (o InterconnectOutageNotificationOutput) AffectedCircuits() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InterconnectOutageNotification) []string { return v.AffectedCircuits }).(pulumi.StringArrayOutput)
-}
-
-// A description about the purpose of the outage.
-func (o InterconnectOutageNotificationOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectOutageNotification) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Scheduled end time for the outage (milliseconds since Unix epoch).
-func (o InterconnectOutageNotificationOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectOutageNotification) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// Form this outage is expected to take, which can take one of the following values:
-// - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window.
-// - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
-func (o InterconnectOutageNotificationOutput) IssueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectOutageNotification) *string { return v.IssueType }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier for this outage notification.
-func (o InterconnectOutageNotificationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectOutageNotification) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The party that generated this notification, which can take the following value:
-// - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
-func (o InterconnectOutageNotificationOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectOutageNotification) *string { return v.Source }).(pulumi.StringPtrOutput)
-}
-
-// Scheduled start time for the outage (milliseconds since Unix epoch).
-func (o InterconnectOutageNotificationOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectOutageNotification) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// State of this notification, which can take one of the following values:
-// - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling.
-// - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
-func (o InterconnectOutageNotificationOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectOutageNotification) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type InterconnectOutageNotificationArrayOutput struct{ *pulumi.OutputState }
-
-func (InterconnectOutageNotificationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InterconnectOutageNotification)(nil)).Elem()
-}
-
-func (o InterconnectOutageNotificationArrayOutput) ToInterconnectOutageNotificationArrayOutput() InterconnectOutageNotificationArrayOutput {
-	return o
-}
-
-func (o InterconnectOutageNotificationArrayOutput) ToInterconnectOutageNotificationArrayOutputWithContext(ctx context.Context) InterconnectOutageNotificationArrayOutput {
-	return o
-}
-
-func (o InterconnectOutageNotificationArrayOutput) Index(i pulumi.IntInput) InterconnectOutageNotificationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectOutageNotification {
-		return vs[0].([]InterconnectOutageNotification)[vs[1].(int)]
-	}).(InterconnectOutageNotificationOutput)
 }
 
 // Description of a planned outage on this Interconnect.
@@ -34376,8 +32681,6 @@ func (o LogConfigResponseArrayOutput) Index(i pulumi.IntInput) LogConfigResponse
 type Metadata struct {
 	// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
 	Items []MetadataItemsItem `pulumi:"items"`
-	// [Output Only] Type of the resource. Always compute#metadata for metadata.
-	Kind *string `pulumi:"kind"`
 }
 
 // MetadataInput is an input type that accepts MetadataArgs and MetadataOutput values.
@@ -34395,8 +32698,6 @@ type MetadataInput interface {
 type MetadataArgs struct {
 	// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
 	Items MetadataItemsItemArrayInput `pulumi:"items"`
-	// [Output Only] Type of the resource. Always compute#metadata for metadata.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
 }
 
 func (MetadataArgs) ElementType() reflect.Type {
@@ -34482,11 +32783,6 @@ func (o MetadataOutput) Items() MetadataItemsItemArrayOutput {
 	return o.ApplyT(func(v Metadata) []MetadataItemsItem { return v.Items }).(MetadataItemsItemArrayOutput)
 }
 
-// [Output Only] Type of the resource. Always compute#metadata for metadata.
-func (o MetadataOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Metadata) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
 type MetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (MetadataPtrOutput) ElementType() reflect.Type {
@@ -34513,16 +32809,6 @@ func (o MetadataPtrOutput) Items() MetadataItemsItemArrayOutput {
 		}
 		return v.Items
 	}).(MetadataItemsItemArrayOutput)
-}
-
-// [Output Only] Type of the resource. Always compute#metadata for metadata.
-func (o MetadataPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Metadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Kind
-	}).(pulumi.StringPtrOutput)
 }
 
 // Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies.
@@ -35229,7 +33515,7 @@ type MetadataResponse struct {
 	Fingerprint string `pulumi:"fingerprint"`
 	// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
 	Items []MetadataItemsItemResponse `pulumi:"items"`
-	// [Output Only] Type of the resource. Always compute#metadata for metadata.
+	// Type of the resource. Always compute#metadata for metadata.
 	Kind string `pulumi:"kind"`
 }
 
@@ -35252,7 +33538,7 @@ type MetadataResponseArgs struct {
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
 	// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
 	Items MetadataItemsItemResponseArrayInput `pulumi:"items"`
-	// [Output Only] Type of the resource. Always compute#metadata for metadata.
+	// Type of the resource. Always compute#metadata for metadata.
 	Kind pulumi.StringInput `pulumi:"kind"`
 }
 
@@ -35346,7 +33632,7 @@ func (o MetadataResponseOutput) Items() MetadataItemsItemResponseArrayOutput {
 	return o.ApplyT(func(v MetadataResponse) []MetadataItemsItemResponse { return v.Items }).(MetadataItemsItemResponseArrayOutput)
 }
 
-// [Output Only] Type of the resource. Always compute#metadata for metadata.
+// Type of the resource. Always compute#metadata for metadata.
 func (o MetadataResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -35391,7 +33677,7 @@ func (o MetadataResponsePtrOutput) Items() MetadataItemsItemResponseArrayOutput 
 	}).(MetadataItemsItemResponseArrayOutput)
 }
 
-// [Output Only] Type of the resource. Always compute#metadata for metadata.
+// Type of the resource. Always compute#metadata for metadata.
 func (o MetadataResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetadataResponse) *string {
 		if v == nil {
@@ -36865,12 +35151,6 @@ type NetworkInterface struct {
 	AccessConfigs []AccessConfig `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
 	AliasIpRanges []AliasIpRange `pulumi:"aliasIpRanges"`
-	// [Output Only] An IPv6 internal network address for this network interface.
-	Ipv6Address *string `pulumi:"ipv6Address"`
-	// [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
-	Kind *string `pulumi:"kind"`
-	// [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
-	Name *string `pulumi:"name"`
 	// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred.
 	//
 	// If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs:
@@ -36905,12 +35185,6 @@ type NetworkInterfaceArgs struct {
 	AccessConfigs AccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
 	AliasIpRanges AliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
-	// [Output Only] An IPv6 internal network address for this network interface.
-	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
-	// [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
-	Name pulumi.StringPtrInput `pulumi:"name"`
 	// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred.
 	//
 	// If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs:
@@ -36990,21 +35264,6 @@ func (o NetworkInterfaceOutput) AliasIpRanges() AliasIpRangeArrayOutput {
 	return o.ApplyT(func(v NetworkInterface) []AliasIpRange { return v.AliasIpRanges }).(AliasIpRangeArrayOutput)
 }
 
-// [Output Only] An IPv6 internal network address for this network interface.
-func (o NetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
-func (o NetworkInterfaceOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkInterface) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
-func (o NetworkInterfaceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkInterface) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
 // URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred.
 //
 // If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs:
@@ -37060,11 +35319,11 @@ type NetworkInterfaceResponse struct {
 	AliasIpRanges []AliasIpRangeResponse `pulumi:"aliasIpRanges"`
 	// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface. The request will fail with error 400 Bad Request if the fingerprint is not provided, or 412 Precondition Failed if the fingerprint is out of date.
 	Fingerprint string `pulumi:"fingerprint"`
-	// [Output Only] An IPv6 internal network address for this network interface.
+	// An IPv6 internal network address for this network interface.
 	Ipv6Address string `pulumi:"ipv6Address"`
-	// [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
+	// Type of the resource. Always compute#networkInterface for network interfaces.
 	Kind string `pulumi:"kind"`
-	// [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+	// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
 	Name string `pulumi:"name"`
 	// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred.
 	//
@@ -37102,11 +35361,11 @@ type NetworkInterfaceResponseArgs struct {
 	AliasIpRanges AliasIpRangeResponseArrayInput `pulumi:"aliasIpRanges"`
 	// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface. The request will fail with error 400 Bad Request if the fingerprint is not provided, or 412 Precondition Failed if the fingerprint is out of date.
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
-	// [Output Only] An IPv6 internal network address for this network interface.
+	// An IPv6 internal network address for this network interface.
 	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
-	// [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
+	// Type of the resource. Always compute#networkInterface for network interfaces.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+	// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
 	Name pulumi.StringInput `pulumi:"name"`
 	// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred.
 	//
@@ -37192,17 +35451,17 @@ func (o NetworkInterfaceResponseOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// [Output Only] An IPv6 internal network address for this network interface.
+// An IPv6 internal network address for this network interface.
 func (o NetworkInterfaceResponseOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
-// [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
+// Type of the resource. Always compute#networkInterface for network interfaces.
 func (o NetworkInterfaceResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
 func (o NetworkInterfaceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -37255,196 +35514,6 @@ func (o NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) NetworkInt
 }
 
 // A network peering attached to a network resource. The message includes the peering name, peer network, peering state, and a flag indicating whether Google Compute Engine should automatically create routes for the peering.
-type NetworkPeering struct {
-	// This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-	AutoCreateRoutes *bool `pulumi:"autoCreateRoutes"`
-	// Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-	ExchangeSubnetRoutes *bool `pulumi:"exchangeSubnetRoutes"`
-	// Whether to export the custom routes to peer network.
-	ExportCustomRoutes *bool `pulumi:"exportCustomRoutes"`
-	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
-	ExportSubnetRoutesWithPublicIp *bool `pulumi:"exportSubnetRoutesWithPublicIp"`
-	// Whether to import the custom routes from peer network.
-	ImportCustomRoutes *bool `pulumi:"importCustomRoutes"`
-	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
-	ImportSubnetRoutesWithPublicIp *bool `pulumi:"importSubnetRoutesWithPublicIp"`
-	// Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
-	Network *string `pulumi:"network"`
-	// Maximum Transmission Unit in bytes.
-	PeerMtu *int `pulumi:"peerMtu"`
-	// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-	State *string `pulumi:"state"`
-	// [Output Only] Details about the current state of the peering.
-	StateDetails *string `pulumi:"stateDetails"`
-}
-
-// NetworkPeeringInput is an input type that accepts NetworkPeeringArgs and NetworkPeeringOutput values.
-// You can construct a concrete instance of `NetworkPeeringInput` via:
-//
-//          NetworkPeeringArgs{...}
-type NetworkPeeringInput interface {
-	pulumi.Input
-
-	ToNetworkPeeringOutput() NetworkPeeringOutput
-	ToNetworkPeeringOutputWithContext(context.Context) NetworkPeeringOutput
-}
-
-// A network peering attached to a network resource. The message includes the peering name, peer network, peering state, and a flag indicating whether Google Compute Engine should automatically create routes for the peering.
-type NetworkPeeringArgs struct {
-	// This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-	AutoCreateRoutes pulumi.BoolPtrInput `pulumi:"autoCreateRoutes"`
-	// Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-	ExchangeSubnetRoutes pulumi.BoolPtrInput `pulumi:"exchangeSubnetRoutes"`
-	// Whether to export the custom routes to peer network.
-	ExportCustomRoutes pulumi.BoolPtrInput `pulumi:"exportCustomRoutes"`
-	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
-	ExportSubnetRoutesWithPublicIp pulumi.BoolPtrInput `pulumi:"exportSubnetRoutesWithPublicIp"`
-	// Whether to import the custom routes from peer network.
-	ImportCustomRoutes pulumi.BoolPtrInput `pulumi:"importCustomRoutes"`
-	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
-	ImportSubnetRoutesWithPublicIp pulumi.BoolPtrInput `pulumi:"importSubnetRoutesWithPublicIp"`
-	// Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
-	Network pulumi.StringPtrInput `pulumi:"network"`
-	// Maximum Transmission Unit in bytes.
-	PeerMtu pulumi.IntPtrInput `pulumi:"peerMtu"`
-	// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-	State *NetworkPeeringState `pulumi:"state"`
-	// [Output Only] Details about the current state of the peering.
-	StateDetails pulumi.StringPtrInput `pulumi:"stateDetails"`
-}
-
-func (NetworkPeeringArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPeering)(nil)).Elem()
-}
-
-func (i NetworkPeeringArgs) ToNetworkPeeringOutput() NetworkPeeringOutput {
-	return i.ToNetworkPeeringOutputWithContext(context.Background())
-}
-
-func (i NetworkPeeringArgs) ToNetworkPeeringOutputWithContext(ctx context.Context) NetworkPeeringOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringOutput)
-}
-
-// NetworkPeeringArrayInput is an input type that accepts NetworkPeeringArray and NetworkPeeringArrayOutput values.
-// You can construct a concrete instance of `NetworkPeeringArrayInput` via:
-//
-//          NetworkPeeringArray{ NetworkPeeringArgs{...} }
-type NetworkPeeringArrayInput interface {
-	pulumi.Input
-
-	ToNetworkPeeringArrayOutput() NetworkPeeringArrayOutput
-	ToNetworkPeeringArrayOutputWithContext(context.Context) NetworkPeeringArrayOutput
-}
-
-type NetworkPeeringArray []NetworkPeeringInput
-
-func (NetworkPeeringArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkPeering)(nil)).Elem()
-}
-
-func (i NetworkPeeringArray) ToNetworkPeeringArrayOutput() NetworkPeeringArrayOutput {
-	return i.ToNetworkPeeringArrayOutputWithContext(context.Background())
-}
-
-func (i NetworkPeeringArray) ToNetworkPeeringArrayOutputWithContext(ctx context.Context) NetworkPeeringArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringArrayOutput)
-}
-
-// A network peering attached to a network resource. The message includes the peering name, peer network, peering state, and a flag indicating whether Google Compute Engine should automatically create routes for the peering.
-type NetworkPeeringOutput struct{ *pulumi.OutputState }
-
-func (NetworkPeeringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPeering)(nil)).Elem()
-}
-
-func (o NetworkPeeringOutput) ToNetworkPeeringOutput() NetworkPeeringOutput {
-	return o
-}
-
-func (o NetworkPeeringOutput) ToNetworkPeeringOutputWithContext(ctx context.Context) NetworkPeeringOutput {
-	return o
-}
-
-// This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-func (o NetworkPeeringOutput) AutoCreateRoutes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *bool { return v.AutoCreateRoutes }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-func (o NetworkPeeringOutput) ExchangeSubnetRoutes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *bool { return v.ExchangeSubnetRoutes }).(pulumi.BoolPtrOutput)
-}
-
-// Whether to export the custom routes to peer network.
-func (o NetworkPeeringOutput) ExportCustomRoutes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *bool { return v.ExportCustomRoutes }).(pulumi.BoolPtrOutput)
-}
-
-// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
-func (o NetworkPeeringOutput) ExportSubnetRoutesWithPublicIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *bool { return v.ExportSubnetRoutesWithPublicIp }).(pulumi.BoolPtrOutput)
-}
-
-// Whether to import the custom routes from peer network.
-func (o NetworkPeeringOutput) ImportCustomRoutes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *bool { return v.ImportCustomRoutes }).(pulumi.BoolPtrOutput)
-}
-
-// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
-func (o NetworkPeeringOutput) ImportSubnetRoutesWithPublicIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *bool { return v.ImportSubnetRoutesWithPublicIp }).(pulumi.BoolPtrOutput)
-}
-
-// Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (o NetworkPeeringOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
-func (o NetworkPeeringOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *string { return v.Network }).(pulumi.StringPtrOutput)
-}
-
-// Maximum Transmission Unit in bytes.
-func (o NetworkPeeringOutput) PeerMtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *int { return v.PeerMtu }).(pulumi.IntPtrOutput)
-}
-
-// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-func (o NetworkPeeringOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Details about the current state of the peering.
-func (o NetworkPeeringOutput) StateDetails() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkPeering) *string { return v.StateDetails }).(pulumi.StringPtrOutput)
-}
-
-type NetworkPeeringArrayOutput struct{ *pulumi.OutputState }
-
-func (NetworkPeeringArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkPeering)(nil)).Elem()
-}
-
-func (o NetworkPeeringArrayOutput) ToNetworkPeeringArrayOutput() NetworkPeeringArrayOutput {
-	return o
-}
-
-func (o NetworkPeeringArrayOutput) ToNetworkPeeringArrayOutputWithContext(ctx context.Context) NetworkPeeringArrayOutput {
-	return o
-}
-
-func (o NetworkPeeringArrayOutput) Index(i pulumi.IntInput) NetworkPeeringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkPeering {
-		return vs[0].([]NetworkPeering)[vs[1].(int)]
-	}).(NetworkPeeringOutput)
-}
-
-// A network peering attached to a network resource. The message includes the peering name, peer network, peering state, and a flag indicating whether Google Compute Engine should automatically create routes for the peering.
 type NetworkPeeringResponse struct {
 	// This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
 	AutoCreateRoutes bool `pulumi:"autoCreateRoutes"`
@@ -37464,9 +35533,9 @@ type NetworkPeeringResponse struct {
 	Network string `pulumi:"network"`
 	// Maximum Transmission Unit in bytes.
 	PeerMtu int `pulumi:"peerMtu"`
-	// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
+	// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
 	State string `pulumi:"state"`
-	// [Output Only] Details about the current state of the peering.
+	// Details about the current state of the peering.
 	StateDetails string `pulumi:"stateDetails"`
 }
 
@@ -37501,9 +35570,9 @@ type NetworkPeeringResponseArgs struct {
 	Network pulumi.StringInput `pulumi:"network"`
 	// Maximum Transmission Unit in bytes.
 	PeerMtu pulumi.IntInput `pulumi:"peerMtu"`
-	// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
+	// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
 	State pulumi.StringInput `pulumi:"state"`
-	// [Output Only] Details about the current state of the peering.
+	// Details about the current state of the peering.
 	StateDetails pulumi.StringInput `pulumi:"stateDetails"`
 }
 
@@ -37604,12 +35673,12 @@ func (o NetworkPeeringResponseOutput) PeerMtu() pulumi.IntOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) int { return v.PeerMtu }).(pulumi.IntOutput)
 }
 
-// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
+// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
 func (o NetworkPeeringResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
-// [Output Only] Details about the current state of the peering.
+// Details about the current state of the peering.
 func (o NetworkPeeringResponseOutput) StateDetails() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) string { return v.StateDetails }).(pulumi.StringOutput)
 }
@@ -38242,8 +36311,6 @@ func (o NodeGroupAutoscalingPolicyResponsePtrOutput) Mode() pulumi.StringPtrOutp
 
 // Time window specified for daily maintenance operations. GCE's internal maintenance will be performed within this window.
 type NodeGroupMaintenanceWindow struct {
-	// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-	MaintenanceDuration *Duration `pulumi:"maintenanceDuration"`
 	// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
 	StartTime *string `pulumi:"startTime"`
 }
@@ -38261,8 +36328,6 @@ type NodeGroupMaintenanceWindowInput interface {
 
 // Time window specified for daily maintenance operations. GCE's internal maintenance will be performed within this window.
 type NodeGroupMaintenanceWindowArgs struct {
-	// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-	MaintenanceDuration DurationPtrInput `pulumi:"maintenanceDuration"`
 	// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
@@ -38345,11 +36410,6 @@ func (o NodeGroupMaintenanceWindowOutput) ToNodeGroupMaintenanceWindowPtrOutputW
 	}).(NodeGroupMaintenanceWindowPtrOutput)
 }
 
-// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-func (o NodeGroupMaintenanceWindowOutput) MaintenanceDuration() DurationPtrOutput {
-	return o.ApplyT(func(v NodeGroupMaintenanceWindow) *Duration { return v.MaintenanceDuration }).(DurationPtrOutput)
-}
-
 // Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
 func (o NodeGroupMaintenanceWindowOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeGroupMaintenanceWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
@@ -38371,16 +36431,6 @@ func (o NodeGroupMaintenanceWindowPtrOutput) ToNodeGroupMaintenanceWindowPtrOutp
 
 func (o NodeGroupMaintenanceWindowPtrOutput) Elem() NodeGroupMaintenanceWindowOutput {
 	return o.ApplyT(func(v *NodeGroupMaintenanceWindow) NodeGroupMaintenanceWindow { return *v }).(NodeGroupMaintenanceWindowOutput)
-}
-
-// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-func (o NodeGroupMaintenanceWindowPtrOutput) MaintenanceDuration() DurationPtrOutput {
-	return o.ApplyT(func(v *NodeGroupMaintenanceWindow) *Duration {
-		if v == nil {
-			return nil
-		}
-		return v.MaintenanceDuration
-	}).(DurationPtrOutput)
 }
 
 // Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
@@ -40265,8 +38315,6 @@ func (o PacketMirroringFilterResponsePtrOutput) Direction() pulumi.StringPtrOutp
 }
 
 type PacketMirroringForwardingRuleInfo struct {
-	// [Output Only] Unique identifier for the forwarding rule; defined by the server.
-	CanonicalUrl *string `pulumi:"canonicalUrl"`
 	// Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
 	Url *string `pulumi:"url"`
 }
@@ -40283,8 +38331,6 @@ type PacketMirroringForwardingRuleInfoInput interface {
 }
 
 type PacketMirroringForwardingRuleInfoArgs struct {
-	// [Output Only] Unique identifier for the forwarding rule; defined by the server.
-	CanonicalUrl pulumi.StringPtrInput `pulumi:"canonicalUrl"`
 	// Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
@@ -40366,11 +38412,6 @@ func (o PacketMirroringForwardingRuleInfoOutput) ToPacketMirroringForwardingRule
 	}).(PacketMirroringForwardingRuleInfoPtrOutput)
 }
 
-// [Output Only] Unique identifier for the forwarding rule; defined by the server.
-func (o PacketMirroringForwardingRuleInfoOutput) CanonicalUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PacketMirroringForwardingRuleInfo) *string { return v.CanonicalUrl }).(pulumi.StringPtrOutput)
-}
-
 // Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
 func (o PacketMirroringForwardingRuleInfoOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PacketMirroringForwardingRuleInfo) *string { return v.Url }).(pulumi.StringPtrOutput)
@@ -40394,16 +38435,6 @@ func (o PacketMirroringForwardingRuleInfoPtrOutput) Elem() PacketMirroringForwar
 	return o.ApplyT(func(v *PacketMirroringForwardingRuleInfo) PacketMirroringForwardingRuleInfo { return *v }).(PacketMirroringForwardingRuleInfoOutput)
 }
 
-// [Output Only] Unique identifier for the forwarding rule; defined by the server.
-func (o PacketMirroringForwardingRuleInfoPtrOutput) CanonicalUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PacketMirroringForwardingRuleInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CanonicalUrl
-	}).(pulumi.StringPtrOutput)
-}
-
 // Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
 func (o PacketMirroringForwardingRuleInfoPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PacketMirroringForwardingRuleInfo) *string {
@@ -40415,7 +38446,7 @@ func (o PacketMirroringForwardingRuleInfoPtrOutput) Url() pulumi.StringPtrOutput
 }
 
 type PacketMirroringForwardingRuleInfoResponse struct {
-	// [Output Only] Unique identifier for the forwarding rule; defined by the server.
+	// Unique identifier for the forwarding rule; defined by the server.
 	CanonicalUrl string `pulumi:"canonicalUrl"`
 	// Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
 	Url string `pulumi:"url"`
@@ -40433,7 +38464,7 @@ type PacketMirroringForwardingRuleInfoResponseInput interface {
 }
 
 type PacketMirroringForwardingRuleInfoResponseArgs struct {
-	// [Output Only] Unique identifier for the forwarding rule; defined by the server.
+	// Unique identifier for the forwarding rule; defined by the server.
 	CanonicalUrl pulumi.StringInput `pulumi:"canonicalUrl"`
 	// Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -40516,7 +38547,7 @@ func (o PacketMirroringForwardingRuleInfoResponseOutput) ToPacketMirroringForwar
 	}).(PacketMirroringForwardingRuleInfoResponsePtrOutput)
 }
 
-// [Output Only] Unique identifier for the forwarding rule; defined by the server.
+// Unique identifier for the forwarding rule; defined by the server.
 func (o PacketMirroringForwardingRuleInfoResponseOutput) CanonicalUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v PacketMirroringForwardingRuleInfoResponse) string { return v.CanonicalUrl }).(pulumi.StringOutput)
 }
@@ -40546,7 +38577,7 @@ func (o PacketMirroringForwardingRuleInfoResponsePtrOutput) Elem() PacketMirrori
 	}).(PacketMirroringForwardingRuleInfoResponseOutput)
 }
 
-// [Output Only] Unique identifier for the forwarding rule; defined by the server.
+// Unique identifier for the forwarding rule; defined by the server.
 func (o PacketMirroringForwardingRuleInfoResponsePtrOutput) CanonicalUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PacketMirroringForwardingRuleInfoResponse) *string {
 		if v == nil {
@@ -40764,8 +38795,6 @@ func (o PacketMirroringMirroredResourceInfoPtrOutput) Tags() pulumi.StringArrayO
 }
 
 type PacketMirroringMirroredResourceInfoInstanceInfo struct {
-	// [Output Only] Unique identifier for the instance; defined by the server.
-	CanonicalUrl *string `pulumi:"canonicalUrl"`
 	// Resource URL to the virtual machine instance which is being mirrored.
 	Url *string `pulumi:"url"`
 }
@@ -40782,8 +38811,6 @@ type PacketMirroringMirroredResourceInfoInstanceInfoInput interface {
 }
 
 type PacketMirroringMirroredResourceInfoInstanceInfoArgs struct {
-	// [Output Only] Unique identifier for the instance; defined by the server.
-	CanonicalUrl pulumi.StringPtrInput `pulumi:"canonicalUrl"`
 	// Resource URL to the virtual machine instance which is being mirrored.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
@@ -40839,11 +38866,6 @@ func (o PacketMirroringMirroredResourceInfoInstanceInfoOutput) ToPacketMirroring
 	return o
 }
 
-// [Output Only] Unique identifier for the instance; defined by the server.
-func (o PacketMirroringMirroredResourceInfoInstanceInfoOutput) CanonicalUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PacketMirroringMirroredResourceInfoInstanceInfo) *string { return v.CanonicalUrl }).(pulumi.StringPtrOutput)
-}
-
 // Resource URL to the virtual machine instance which is being mirrored.
 func (o PacketMirroringMirroredResourceInfoInstanceInfoOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PacketMirroringMirroredResourceInfoInstanceInfo) *string { return v.Url }).(pulumi.StringPtrOutput)
@@ -40870,7 +38892,7 @@ func (o PacketMirroringMirroredResourceInfoInstanceInfoArrayOutput) Index(i pulu
 }
 
 type PacketMirroringMirroredResourceInfoInstanceInfoResponse struct {
-	// [Output Only] Unique identifier for the instance; defined by the server.
+	// Unique identifier for the instance; defined by the server.
 	CanonicalUrl string `pulumi:"canonicalUrl"`
 	// Resource URL to the virtual machine instance which is being mirrored.
 	Url string `pulumi:"url"`
@@ -40888,7 +38910,7 @@ type PacketMirroringMirroredResourceInfoInstanceInfoResponseInput interface {
 }
 
 type PacketMirroringMirroredResourceInfoInstanceInfoResponseArgs struct {
-	// [Output Only] Unique identifier for the instance; defined by the server.
+	// Unique identifier for the instance; defined by the server.
 	CanonicalUrl pulumi.StringInput `pulumi:"canonicalUrl"`
 	// Resource URL to the virtual machine instance which is being mirrored.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -40945,7 +38967,7 @@ func (o PacketMirroringMirroredResourceInfoInstanceInfoResponseOutput) ToPacketM
 	return o
 }
 
-// [Output Only] Unique identifier for the instance; defined by the server.
+// Unique identifier for the instance; defined by the server.
 func (o PacketMirroringMirroredResourceInfoInstanceInfoResponseOutput) CanonicalUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v PacketMirroringMirroredResourceInfoInstanceInfoResponse) string { return v.CanonicalUrl }).(pulumi.StringOutput)
 }
@@ -41175,8 +39197,6 @@ func (o PacketMirroringMirroredResourceInfoResponsePtrOutput) Tags() pulumi.Stri
 }
 
 type PacketMirroringMirroredResourceInfoSubnetInfo struct {
-	// [Output Only] Unique identifier for the subnetwork; defined by the server.
-	CanonicalUrl *string `pulumi:"canonicalUrl"`
 	// Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
 	Url *string `pulumi:"url"`
 }
@@ -41193,8 +39213,6 @@ type PacketMirroringMirroredResourceInfoSubnetInfoInput interface {
 }
 
 type PacketMirroringMirroredResourceInfoSubnetInfoArgs struct {
-	// [Output Only] Unique identifier for the subnetwork; defined by the server.
-	CanonicalUrl pulumi.StringPtrInput `pulumi:"canonicalUrl"`
 	// Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
@@ -41250,11 +39268,6 @@ func (o PacketMirroringMirroredResourceInfoSubnetInfoOutput) ToPacketMirroringMi
 	return o
 }
 
-// [Output Only] Unique identifier for the subnetwork; defined by the server.
-func (o PacketMirroringMirroredResourceInfoSubnetInfoOutput) CanonicalUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PacketMirroringMirroredResourceInfoSubnetInfo) *string { return v.CanonicalUrl }).(pulumi.StringPtrOutput)
-}
-
 // Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
 func (o PacketMirroringMirroredResourceInfoSubnetInfoOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PacketMirroringMirroredResourceInfoSubnetInfo) *string { return v.Url }).(pulumi.StringPtrOutput)
@@ -41281,7 +39294,7 @@ func (o PacketMirroringMirroredResourceInfoSubnetInfoArrayOutput) Index(i pulumi
 }
 
 type PacketMirroringMirroredResourceInfoSubnetInfoResponse struct {
-	// [Output Only] Unique identifier for the subnetwork; defined by the server.
+	// Unique identifier for the subnetwork; defined by the server.
 	CanonicalUrl string `pulumi:"canonicalUrl"`
 	// Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
 	Url string `pulumi:"url"`
@@ -41299,7 +39312,7 @@ type PacketMirroringMirroredResourceInfoSubnetInfoResponseInput interface {
 }
 
 type PacketMirroringMirroredResourceInfoSubnetInfoResponseArgs struct {
-	// [Output Only] Unique identifier for the subnetwork; defined by the server.
+	// Unique identifier for the subnetwork; defined by the server.
 	CanonicalUrl pulumi.StringInput `pulumi:"canonicalUrl"`
 	// Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -41356,7 +39369,7 @@ func (o PacketMirroringMirroredResourceInfoSubnetInfoResponseOutput) ToPacketMir
 	return o
 }
 
-// [Output Only] Unique identifier for the subnetwork; defined by the server.
+// Unique identifier for the subnetwork; defined by the server.
 func (o PacketMirroringMirroredResourceInfoSubnetInfoResponseOutput) CanonicalUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v PacketMirroringMirroredResourceInfoSubnetInfoResponse) string { return v.CanonicalUrl }).(pulumi.StringOutput)
 }
@@ -41387,8 +39400,6 @@ func (o PacketMirroringMirroredResourceInfoSubnetInfoResponseArrayOutput) Index(
 }
 
 type PacketMirroringNetworkInfo struct {
-	// [Output Only] Unique identifier for the network; defined by the server.
-	CanonicalUrl *string `pulumi:"canonicalUrl"`
 	// URL of the network resource.
 	Url *string `pulumi:"url"`
 }
@@ -41405,8 +39416,6 @@ type PacketMirroringNetworkInfoInput interface {
 }
 
 type PacketMirroringNetworkInfoArgs struct {
-	// [Output Only] Unique identifier for the network; defined by the server.
-	CanonicalUrl pulumi.StringPtrInput `pulumi:"canonicalUrl"`
 	// URL of the network resource.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
@@ -41488,11 +39497,6 @@ func (o PacketMirroringNetworkInfoOutput) ToPacketMirroringNetworkInfoPtrOutputW
 	}).(PacketMirroringNetworkInfoPtrOutput)
 }
 
-// [Output Only] Unique identifier for the network; defined by the server.
-func (o PacketMirroringNetworkInfoOutput) CanonicalUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PacketMirroringNetworkInfo) *string { return v.CanonicalUrl }).(pulumi.StringPtrOutput)
-}
-
 // URL of the network resource.
 func (o PacketMirroringNetworkInfoOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PacketMirroringNetworkInfo) *string { return v.Url }).(pulumi.StringPtrOutput)
@@ -41516,16 +39520,6 @@ func (o PacketMirroringNetworkInfoPtrOutput) Elem() PacketMirroringNetworkInfoOu
 	return o.ApplyT(func(v *PacketMirroringNetworkInfo) PacketMirroringNetworkInfo { return *v }).(PacketMirroringNetworkInfoOutput)
 }
 
-// [Output Only] Unique identifier for the network; defined by the server.
-func (o PacketMirroringNetworkInfoPtrOutput) CanonicalUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PacketMirroringNetworkInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CanonicalUrl
-	}).(pulumi.StringPtrOutput)
-}
-
 // URL of the network resource.
 func (o PacketMirroringNetworkInfoPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PacketMirroringNetworkInfo) *string {
@@ -41537,7 +39531,7 @@ func (o PacketMirroringNetworkInfoPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type PacketMirroringNetworkInfoResponse struct {
-	// [Output Only] Unique identifier for the network; defined by the server.
+	// Unique identifier for the network; defined by the server.
 	CanonicalUrl string `pulumi:"canonicalUrl"`
 	// URL of the network resource.
 	Url string `pulumi:"url"`
@@ -41555,7 +39549,7 @@ type PacketMirroringNetworkInfoResponseInput interface {
 }
 
 type PacketMirroringNetworkInfoResponseArgs struct {
-	// [Output Only] Unique identifier for the network; defined by the server.
+	// Unique identifier for the network; defined by the server.
 	CanonicalUrl pulumi.StringInput `pulumi:"canonicalUrl"`
 	// URL of the network resource.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -41638,7 +39632,7 @@ func (o PacketMirroringNetworkInfoResponseOutput) ToPacketMirroringNetworkInfoRe
 	}).(PacketMirroringNetworkInfoResponsePtrOutput)
 }
 
-// [Output Only] Unique identifier for the network; defined by the server.
+// Unique identifier for the network; defined by the server.
 func (o PacketMirroringNetworkInfoResponseOutput) CanonicalUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v PacketMirroringNetworkInfoResponse) string { return v.CanonicalUrl }).(pulumi.StringOutput)
 }
@@ -41666,7 +39660,7 @@ func (o PacketMirroringNetworkInfoResponsePtrOutput) Elem() PacketMirroringNetwo
 	return o.ApplyT(func(v *PacketMirroringNetworkInfoResponse) PacketMirroringNetworkInfoResponse { return *v }).(PacketMirroringNetworkInfoResponseOutput)
 }
 
-// [Output Only] Unique identifier for the network; defined by the server.
+// Unique identifier for the network; defined by the server.
 func (o PacketMirroringNetworkInfoResponsePtrOutput) CanonicalUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PacketMirroringNetworkInfoResponse) *string {
 		if v == nil {
@@ -42399,142 +40393,6 @@ func (o PathRuleResponseArrayOutput) Index(i pulumi.IntInput) PathRuleResponseOu
 }
 
 // Represents a CIDR range which can be used to assign addresses.
-type PublicAdvertisedPrefixPublicDelegatedPrefix struct {
-	// The IP address range of the public delegated prefix
-	IpRange *string `pulumi:"ipRange"`
-	// The name of the public delegated prefix
-	Name *string `pulumi:"name"`
-	// The project number of the public delegated prefix
-	Project *string `pulumi:"project"`
-	// The region of the public delegated prefix if it is regional. If absent, the prefix is global.
-	Region *string `pulumi:"region"`
-	// The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
-	Status *string `pulumi:"status"`
-}
-
-// PublicAdvertisedPrefixPublicDelegatedPrefixInput is an input type that accepts PublicAdvertisedPrefixPublicDelegatedPrefixArgs and PublicAdvertisedPrefixPublicDelegatedPrefixOutput values.
-// You can construct a concrete instance of `PublicAdvertisedPrefixPublicDelegatedPrefixInput` via:
-//
-//          PublicAdvertisedPrefixPublicDelegatedPrefixArgs{...}
-type PublicAdvertisedPrefixPublicDelegatedPrefixInput interface {
-	pulumi.Input
-
-	ToPublicAdvertisedPrefixPublicDelegatedPrefixOutput() PublicAdvertisedPrefixPublicDelegatedPrefixOutput
-	ToPublicAdvertisedPrefixPublicDelegatedPrefixOutputWithContext(context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixOutput
-}
-
-// Represents a CIDR range which can be used to assign addresses.
-type PublicAdvertisedPrefixPublicDelegatedPrefixArgs struct {
-	// The IP address range of the public delegated prefix
-	IpRange pulumi.StringPtrInput `pulumi:"ipRange"`
-	// The name of the public delegated prefix
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The project number of the public delegated prefix
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// The region of the public delegated prefix if it is regional. If absent, the prefix is global.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PublicAdvertisedPrefixPublicDelegatedPrefixArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicAdvertisedPrefixPublicDelegatedPrefix)(nil)).Elem()
-}
-
-func (i PublicAdvertisedPrefixPublicDelegatedPrefixArgs) ToPublicAdvertisedPrefixPublicDelegatedPrefixOutput() PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
-	return i.ToPublicAdvertisedPrefixPublicDelegatedPrefixOutputWithContext(context.Background())
-}
-
-func (i PublicAdvertisedPrefixPublicDelegatedPrefixArgs) ToPublicAdvertisedPrefixPublicDelegatedPrefixOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PublicAdvertisedPrefixPublicDelegatedPrefixOutput)
-}
-
-// PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput is an input type that accepts PublicAdvertisedPrefixPublicDelegatedPrefixArray and PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput values.
-// You can construct a concrete instance of `PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput` via:
-//
-//          PublicAdvertisedPrefixPublicDelegatedPrefixArray{ PublicAdvertisedPrefixPublicDelegatedPrefixArgs{...} }
-type PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput interface {
-	pulumi.Input
-
-	ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput() PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput
-	ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutputWithContext(context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput
-}
-
-type PublicAdvertisedPrefixPublicDelegatedPrefixArray []PublicAdvertisedPrefixPublicDelegatedPrefixInput
-
-func (PublicAdvertisedPrefixPublicDelegatedPrefixArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PublicAdvertisedPrefixPublicDelegatedPrefix)(nil)).Elem()
-}
-
-func (i PublicAdvertisedPrefixPublicDelegatedPrefixArray) ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput() PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput {
-	return i.ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutputWithContext(context.Background())
-}
-
-func (i PublicAdvertisedPrefixPublicDelegatedPrefixArray) ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput)
-}
-
-// Represents a CIDR range which can be used to assign addresses.
-type PublicAdvertisedPrefixPublicDelegatedPrefixOutput struct{ *pulumi.OutputState }
-
-func (PublicAdvertisedPrefixPublicDelegatedPrefixOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicAdvertisedPrefixPublicDelegatedPrefix)(nil)).Elem()
-}
-
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) ToPublicAdvertisedPrefixPublicDelegatedPrefixOutput() PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
-	return o
-}
-
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) ToPublicAdvertisedPrefixPublicDelegatedPrefixOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
-	return o
-}
-
-// The IP address range of the public delegated prefix
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) IpRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.IpRange }).(pulumi.StringPtrOutput)
-}
-
-// The name of the public delegated prefix
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The project number of the public delegated prefix
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// The region of the public delegated prefix if it is regional. If absent, the prefix is global.
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput struct{ *pulumi.OutputState }
-
-func (PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PublicAdvertisedPrefixPublicDelegatedPrefix)(nil)).Elem()
-}
-
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput) ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput() PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput {
-	return o
-}
-
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput) ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput {
-	return o
-}
-
-func (o PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput) Index(i pulumi.IntInput) PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PublicAdvertisedPrefixPublicDelegatedPrefix {
-		return vs[0].([]PublicAdvertisedPrefixPublicDelegatedPrefix)[vs[1].(int)]
-	}).(PublicAdvertisedPrefixPublicDelegatedPrefixOutput)
-}
-
-// Represents a CIDR range which can be used to assign addresses.
 type PublicAdvertisedPrefixPublicDelegatedPrefixResponse struct {
 	// The IP address range of the public delegated prefix
 	IpRange string `pulumi:"ipRange"`
@@ -42682,10 +40540,6 @@ type PublicDelegatedPrefixPublicDelegatedSubPrefix struct {
 	IsAddress *bool `pulumi:"isAddress"`
 	// The name of the sub public delegated prefix.
 	Name *string `pulumi:"name"`
-	// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
-	Region *string `pulumi:"region"`
-	// [Output Only] The status of the sub public delegated prefix.
-	Status *string `pulumi:"status"`
 }
 
 // PublicDelegatedPrefixPublicDelegatedSubPrefixInput is an input type that accepts PublicDelegatedPrefixPublicDelegatedSubPrefixArgs and PublicDelegatedPrefixPublicDelegatedSubPrefixOutput values.
@@ -42711,10 +40565,6 @@ type PublicDelegatedPrefixPublicDelegatedSubPrefixArgs struct {
 	IsAddress pulumi.BoolPtrInput `pulumi:"isAddress"`
 	// The name of the sub public delegated prefix.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// [Output Only] The status of the sub public delegated prefix.
-	Status *PublicDelegatedPrefixPublicDelegatedSubPrefixStatus `pulumi:"status"`
 }
 
 func (PublicDelegatedPrefixPublicDelegatedSubPrefixArgs) ElementType() reflect.Type {
@@ -42794,16 +40644,6 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) Name() pulumi.Strin
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
-func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The status of the sub public delegated prefix.
-func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
 type PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput struct{ *pulumi.OutputState }
 
 func (PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput) ElementType() reflect.Type {
@@ -42836,9 +40676,9 @@ type PublicDelegatedPrefixPublicDelegatedSubPrefixResponse struct {
 	IsAddress bool `pulumi:"isAddress"`
 	// The name of the sub public delegated prefix.
 	Name string `pulumi:"name"`
-	// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+	// The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
 	Region string `pulumi:"region"`
-	// [Output Only] The status of the sub public delegated prefix.
+	// The status of the sub public delegated prefix.
 	Status string `pulumi:"status"`
 }
 
@@ -42865,9 +40705,9 @@ type PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArgs struct {
 	IsAddress pulumi.BoolInput `pulumi:"isAddress"`
 	// The name of the sub public delegated prefix.
 	Name pulumi.StringInput `pulumi:"name"`
-	// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+	// The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
 	Region pulumi.StringInput `pulumi:"region"`
-	// [Output Only] The status of the sub public delegated prefix.
+	// The status of the sub public delegated prefix.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -42948,12 +40788,12 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) Name() pulu
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefixResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+// The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
 func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefixResponse) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// [Output Only] The status of the sub public delegated prefix.
+// The status of the sub public delegated prefix.
 func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefixResponse) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -43248,28 +41088,14 @@ func (o RequestMirrorPolicyResponsePtrOutput) BackendService() pulumi.StringPtrO
 
 // Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for {$api_version}.reservations ==)
 type ReservationType struct {
-	// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-	Commitment *string `pulumi:"commitment"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// [Output Only] Type of the resource. Always compute#reservations for reservations.
-	Kind *string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// [Output Only] Reserved for future use.
-	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
-	// [Output Only] Server-defined fully-qualified URL for this resource.
-	SelfLink *string `pulumi:"selfLink"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation *AllocationSpecificSKUReservation `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
 	SpecificReservationRequired *bool `pulumi:"specificReservationRequired"`
-	// [Output Only] The status of the reservation.
-	Status *string `pulumi:"status"`
 	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
 	Zone *string `pulumi:"zone"`
 }
@@ -43287,28 +41113,14 @@ type ReservationTypeInput interface {
 
 // Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for {$api_version}.reservations ==)
 type ReservationTypeArgs struct {
-	// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-	Commitment pulumi.StringPtrInput `pulumi:"commitment"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// [Output Only] Type of the resource. Always compute#reservations for reservations.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// [Output Only] Reserved for future use.
-	SatisfiesPzs pulumi.BoolPtrInput `pulumi:"satisfiesPzs"`
-	// [Output Only] Server-defined fully-qualified URL for this resource.
-	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationPtrInput `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
 	SpecificReservationRequired pulumi.BoolPtrInput `pulumi:"specificReservationRequired"`
-	// [Output Only] The status of the reservation.
-	Status *ReservationStatus `pulumi:"status"`
 	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -43365,44 +41177,14 @@ func (o ReservationTypeOutput) ToReservationTypeOutputWithContext(ctx context.Co
 	return o
 }
 
-// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-func (o ReservationTypeOutput) Commitment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReservationType) *string { return v.Commitment }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Creation timestamp in RFC3339 text format.
-func (o ReservationTypeOutput) CreationTimestamp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReservationType) *string { return v.CreationTimestamp }).(pulumi.StringPtrOutput)
-}
-
 // An optional description of this resource. Provide this property when you create the resource.
 func (o ReservationTypeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationType) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-func (o ReservationTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReservationType) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Type of the resource. Always compute#reservations for reservations.
-func (o ReservationTypeOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReservationType) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
 // The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o ReservationTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationType) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Reserved for future use.
-func (o ReservationTypeOutput) SatisfiesPzs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ReservationType) *bool { return v.SatisfiesPzs }).(pulumi.BoolPtrOutput)
-}
-
-// [Output Only] Server-defined fully-qualified URL for this resource.
-func (o ReservationTypeOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReservationType) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
 // Reservation for instances with specific machine shapes.
@@ -43413,11 +41195,6 @@ func (o ReservationTypeOutput) SpecificReservation() AllocationSpecificSKUReserv
 // Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
 func (o ReservationTypeOutput) SpecificReservationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReservationType) *bool { return v.SpecificReservationRequired }).(pulumi.BoolPtrOutput)
-}
-
-// [Output Only] The status of the reservation.
-func (o ReservationTypeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReservationType) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
@@ -43791,25 +41568,25 @@ func (o ReservationAffinityResponsePtrOutput) Values() pulumi.StringArrayOutput 
 
 // Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for {$api_version}.reservations ==)
 type ReservationResponse struct {
-	// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 	Commitment string `pulumi:"commitment"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// [Output Only] Type of the resource. Always compute#reservations for reservations.
+	// Type of the resource. Always compute#reservations for reservations.
 	Kind string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
-	// [Output Only] Reserved for future use.
+	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
-	// [Output Only] Server-defined fully-qualified URL for this resource.
+	// Server-defined fully-qualified URL for this resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
 	SpecificReservationRequired bool `pulumi:"specificReservationRequired"`
-	// [Output Only] The status of the reservation.
+	// The status of the reservation.
 	Status string `pulumi:"status"`
 	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
 	Zone string `pulumi:"zone"`
@@ -43828,25 +41605,25 @@ type ReservationResponseInput interface {
 
 // Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for {$api_version}.reservations ==)
 type ReservationResponseArgs struct {
-	// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 	Commitment pulumi.StringInput `pulumi:"commitment"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
-	// [Output Only] Type of the resource. Always compute#reservations for reservations.
+	// Type of the resource. Always compute#reservations for reservations.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringInput `pulumi:"name"`
-	// [Output Only] Reserved for future use.
+	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolInput `pulumi:"satisfiesPzs"`
-	// [Output Only] Server-defined fully-qualified URL for this resource.
+	// Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringInput `pulumi:"selfLink"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponseInput `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
 	SpecificReservationRequired pulumi.BoolInput `pulumi:"specificReservationRequired"`
-	// [Output Only] The status of the reservation.
+	// The status of the reservation.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
 	Zone pulumi.StringInput `pulumi:"zone"`
@@ -43904,12 +41681,12 @@ func (o ReservationResponseOutput) ToReservationResponseOutputWithContext(ctx co
 	return o
 }
 
-// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 func (o ReservationResponseOutput) Commitment() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Commitment }).(pulumi.StringOutput)
 }
 
-// [Output Only] Creation timestamp in RFC3339 text format.
+// Creation timestamp in RFC3339 text format.
 func (o ReservationResponseOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
@@ -43919,7 +41696,7 @@ func (o ReservationResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// [Output Only] Type of the resource. Always compute#reservations for reservations.
+// Type of the resource. Always compute#reservations for reservations.
 func (o ReservationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -43929,12 +41706,12 @@ func (o ReservationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Output Only] Reserved for future use.
+// Reserved for future use.
 func (o ReservationResponseOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v ReservationResponse) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
-// [Output Only] Server-defined fully-qualified URL for this resource.
+// Server-defined fully-qualified URL for this resource.
 func (o ReservationResponseOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.SelfLink }).(pulumi.StringOutput)
 }
@@ -43949,7 +41726,7 @@ func (o ReservationResponseOutput) SpecificReservationRequired() pulumi.BoolOutp
 	return o.ApplyT(func(v ReservationResponse) bool { return v.SpecificReservationRequired }).(pulumi.BoolOutput)
 }
 
-// [Output Only] The status of the reservation.
+// The status of the reservation.
 func (o ReservationResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -44219,8 +41996,6 @@ func (o ResourceCommitmentResponseArrayOutput) Index(i pulumi.IntInput) Resource
 type ResourcePolicyDailyCycle struct {
 	// Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
 	DaysInCycle *int `pulumi:"daysInCycle"`
-	// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-	Duration *string `pulumi:"duration"`
 	// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
 	StartTime *string `pulumi:"startTime"`
 }
@@ -44240,8 +42015,6 @@ type ResourcePolicyDailyCycleInput interface {
 type ResourcePolicyDailyCycleArgs struct {
 	// Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
 	DaysInCycle pulumi.IntPtrInput `pulumi:"daysInCycle"`
-	// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
@@ -44329,11 +42102,6 @@ func (o ResourcePolicyDailyCycleOutput) DaysInCycle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyDailyCycle) *int { return v.DaysInCycle }).(pulumi.IntPtrOutput)
 }
 
-// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-func (o ResourcePolicyDailyCycleOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePolicyDailyCycle) *string { return v.Duration }).(pulumi.StringPtrOutput)
-}
-
 // Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
 func (o ResourcePolicyDailyCycleOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyDailyCycle) *string { return v.StartTime }).(pulumi.StringPtrOutput)
@@ -44365,16 +42133,6 @@ func (o ResourcePolicyDailyCyclePtrOutput) DaysInCycle() pulumi.IntPtrOutput {
 		}
 		return v.DaysInCycle
 	}).(pulumi.IntPtrOutput)
-}
-
-// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
-func (o ResourcePolicyDailyCyclePtrOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePolicyDailyCycle) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Duration
-	}).(pulumi.StringPtrOutput)
 }
 
 // Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
@@ -44907,8 +42665,6 @@ func (o ResourcePolicyGroupPlacementPolicyResponsePtrOutput) VmCount() pulumi.In
 
 // Time window specified for hourly operations.
 type ResourcePolicyHourlyCycle struct {
-	// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-	Duration *string `pulumi:"duration"`
 	// Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
 	HoursInCycle *int `pulumi:"hoursInCycle"`
 	// Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
@@ -44928,8 +42684,6 @@ type ResourcePolicyHourlyCycleInput interface {
 
 // Time window specified for hourly operations.
 type ResourcePolicyHourlyCycleArgs struct {
-	// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
 	HoursInCycle pulumi.IntPtrInput `pulumi:"hoursInCycle"`
 	// Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
@@ -45014,11 +42768,6 @@ func (o ResourcePolicyHourlyCycleOutput) ToResourcePolicyHourlyCyclePtrOutputWit
 	}).(ResourcePolicyHourlyCyclePtrOutput)
 }
 
-// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-func (o ResourcePolicyHourlyCycleOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePolicyHourlyCycle) *string { return v.Duration }).(pulumi.StringPtrOutput)
-}
-
 // Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
 func (o ResourcePolicyHourlyCycleOutput) HoursInCycle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyHourlyCycle) *int { return v.HoursInCycle }).(pulumi.IntPtrOutput)
@@ -45045,16 +42794,6 @@ func (o ResourcePolicyHourlyCyclePtrOutput) ToResourcePolicyHourlyCyclePtrOutput
 
 func (o ResourcePolicyHourlyCyclePtrOutput) Elem() ResourcePolicyHourlyCycleOutput {
 	return o.ApplyT(func(v *ResourcePolicyHourlyCycle) ResourcePolicyHourlyCycle { return *v }).(ResourcePolicyHourlyCycleOutput)
-}
-
-// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-func (o ResourcePolicyHourlyCyclePtrOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePolicyHourlyCycle) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Duration
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
@@ -45951,298 +43690,10 @@ func (o ResourcePolicyInstanceSchedulePolicyScheduleResponsePtrOutput) Schedule(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
-type ResourcePolicyResourceStatus struct {
-	// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
-	InstanceSchedulePolicy *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus `pulumi:"instanceSchedulePolicy"`
-}
-
-// ResourcePolicyResourceStatusInput is an input type that accepts ResourcePolicyResourceStatusArgs and ResourcePolicyResourceStatusOutput values.
-// You can construct a concrete instance of `ResourcePolicyResourceStatusInput` via:
-//
-//          ResourcePolicyResourceStatusArgs{...}
-type ResourcePolicyResourceStatusInput interface {
-	pulumi.Input
-
-	ToResourcePolicyResourceStatusOutput() ResourcePolicyResourceStatusOutput
-	ToResourcePolicyResourceStatusOutputWithContext(context.Context) ResourcePolicyResourceStatusOutput
-}
-
-// Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
-type ResourcePolicyResourceStatusArgs struct {
-	// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
-	InstanceSchedulePolicy ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput `pulumi:"instanceSchedulePolicy"`
-}
-
-func (ResourcePolicyResourceStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcePolicyResourceStatus)(nil)).Elem()
-}
-
-func (i ResourcePolicyResourceStatusArgs) ToResourcePolicyResourceStatusOutput() ResourcePolicyResourceStatusOutput {
-	return i.ToResourcePolicyResourceStatusOutputWithContext(context.Background())
-}
-
-func (i ResourcePolicyResourceStatusArgs) ToResourcePolicyResourceStatusOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusOutput)
-}
-
-func (i ResourcePolicyResourceStatusArgs) ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput {
-	return i.ToResourcePolicyResourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i ResourcePolicyResourceStatusArgs) ToResourcePolicyResourceStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusOutput).ToResourcePolicyResourceStatusPtrOutputWithContext(ctx)
-}
-
-// ResourcePolicyResourceStatusPtrInput is an input type that accepts ResourcePolicyResourceStatusArgs, ResourcePolicyResourceStatusPtr and ResourcePolicyResourceStatusPtrOutput values.
-// You can construct a concrete instance of `ResourcePolicyResourceStatusPtrInput` via:
-//
-//          ResourcePolicyResourceStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type ResourcePolicyResourceStatusPtrInput interface {
-	pulumi.Input
-
-	ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput
-	ToResourcePolicyResourceStatusPtrOutputWithContext(context.Context) ResourcePolicyResourceStatusPtrOutput
-}
-
-type resourcePolicyResourceStatusPtrType ResourcePolicyResourceStatusArgs
-
-func ResourcePolicyResourceStatusPtr(v *ResourcePolicyResourceStatusArgs) ResourcePolicyResourceStatusPtrInput {
-	return (*resourcePolicyResourceStatusPtrType)(v)
-}
-
-func (*resourcePolicyResourceStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcePolicyResourceStatus)(nil)).Elem()
-}
-
-func (i *resourcePolicyResourceStatusPtrType) ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput {
-	return i.ToResourcePolicyResourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *resourcePolicyResourceStatusPtrType) ToResourcePolicyResourceStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusPtrOutput)
-}
-
-// Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
-type ResourcePolicyResourceStatusOutput struct{ *pulumi.OutputState }
-
-func (ResourcePolicyResourceStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcePolicyResourceStatus)(nil)).Elem()
-}
-
-func (o ResourcePolicyResourceStatusOutput) ToResourcePolicyResourceStatusOutput() ResourcePolicyResourceStatusOutput {
-	return o
-}
-
-func (o ResourcePolicyResourceStatusOutput) ToResourcePolicyResourceStatusOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusOutput {
-	return o
-}
-
-func (o ResourcePolicyResourceStatusOutput) ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput {
-	return o.ToResourcePolicyResourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (o ResourcePolicyResourceStatusOutput) ToResourcePolicyResourceStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusPtrOutput {
-	return o.ApplyT(func(v ResourcePolicyResourceStatus) *ResourcePolicyResourceStatus {
-		return &v
-	}).(ResourcePolicyResourceStatusPtrOutput)
-}
-
-// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
-func (o ResourcePolicyResourceStatusOutput) InstanceSchedulePolicy() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return o.ApplyT(func(v ResourcePolicyResourceStatus) *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
-		return v.InstanceSchedulePolicy
-	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput)
-}
-
-type ResourcePolicyResourceStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourcePolicyResourceStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcePolicyResourceStatus)(nil)).Elem()
-}
-
-func (o ResourcePolicyResourceStatusPtrOutput) ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput {
-	return o
-}
-
-func (o ResourcePolicyResourceStatusPtrOutput) ToResourcePolicyResourceStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusPtrOutput {
-	return o
-}
-
-func (o ResourcePolicyResourceStatusPtrOutput) Elem() ResourcePolicyResourceStatusOutput {
-	return o.ApplyT(func(v *ResourcePolicyResourceStatus) ResourcePolicyResourceStatus { return *v }).(ResourcePolicyResourceStatusOutput)
-}
-
-// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
-func (o ResourcePolicyResourceStatusPtrOutput) InstanceSchedulePolicy() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return o.ApplyT(func(v *ResourcePolicyResourceStatus) *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceSchedulePolicy
-	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput)
-}
-
-type ResourcePolicyResourceStatusInstanceSchedulePolicyStatus struct {
-	// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
-	LastRunStartTime *string `pulumi:"lastRunStartTime"`
-	// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
-	NextRunStartTime *string `pulumi:"nextRunStartTime"`
-}
-
-// ResourcePolicyResourceStatusInstanceSchedulePolicyStatusInput is an input type that accepts ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs and ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput values.
-// You can construct a concrete instance of `ResourcePolicyResourceStatusInstanceSchedulePolicyStatusInput` via:
-//
-//          ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs{...}
-type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusInput interface {
-	pulumi.Input
-
-	ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput
-	ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutputWithContext(context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput
-}
-
-type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs struct {
-	// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
-	LastRunStartTime pulumi.StringPtrInput `pulumi:"lastRunStartTime"`
-	// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
-	NextRunStartTime pulumi.StringPtrInput `pulumi:"nextRunStartTime"`
-}
-
-func (ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcePolicyResourceStatusInstanceSchedulePolicyStatus)(nil)).Elem()
-}
-
-func (i ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
-	return i.ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutputWithContext(context.Background())
-}
-
-func (i ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput)
-}
-
-func (i ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return i.ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(context.Background())
-}
-
-func (i ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput).ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx)
-}
-
-// ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput is an input type that accepts ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs, ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtr and ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput values.
-// You can construct a concrete instance of `ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput` via:
-//
-//          ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput interface {
-	pulumi.Input
-
-	ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput
-	ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput
-}
-
-type resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs
-
-func ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtr(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput {
-	return (*resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType)(v)
-}
-
-func (*resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcePolicyResourceStatusInstanceSchedulePolicyStatus)(nil)).Elem()
-}
-
-func (i *resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return i.ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput)
-}
-
-type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput struct{ *pulumi.OutputState }
-
-func (ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcePolicyResourceStatusInstanceSchedulePolicyStatus)(nil)).Elem()
-}
-
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
-	return o
-}
-
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
-	return o
-}
-
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return o.ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(context.Background())
-}
-
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return o.ApplyT(func(v ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
-		return &v
-	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput)
-}
-
-// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) LastRunStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *string { return v.LastRunStartTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) NextRunStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *string { return v.NextRunStartTime }).(pulumi.StringPtrOutput)
-}
-
-type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcePolicyResourceStatusInstanceSchedulePolicyStatus)(nil)).Elem()
-}
-
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return o
-}
-
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
-	return o
-}
-
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) Elem() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
-	return o.ApplyT(func(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
-		return *v
-	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput)
-}
-
-// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) LastRunStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastRunStartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
-func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) NextRunStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NextRunStartTime
-	}).(pulumi.StringPtrOutput)
-}
-
 type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse struct {
-	// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+	// The last time the schedule successfully ran. The timestamp is an RFC3339 string.
 	LastRunStartTime string `pulumi:"lastRunStartTime"`
-	// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+	// The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
 	NextRunStartTime string `pulumi:"nextRunStartTime"`
 }
 
@@ -46258,9 +43709,9 @@ type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseInput inter
 }
 
 type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseArgs struct {
-	// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+	// The last time the schedule successfully ran. The timestamp is an RFC3339 string.
 	LastRunStartTime pulumi.StringInput `pulumi:"lastRunStartTime"`
-	// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+	// The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
 	NextRunStartTime pulumi.StringInput `pulumi:"nextRunStartTime"`
 }
 
@@ -46341,14 +43792,14 @@ func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseOutput) 
 	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponsePtrOutput)
 }
 
-// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+// The last time the schedule successfully ran. The timestamp is an RFC3339 string.
 func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseOutput) LastRunStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse) string {
 		return v.LastRunStartTime
 	}).(pulumi.StringOutput)
 }
 
-// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+// The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
 func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseOutput) NextRunStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse) string {
 		return v.NextRunStartTime
@@ -46375,7 +43826,7 @@ func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponsePtrOutpu
 	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseOutput)
 }
 
-// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+// The last time the schedule successfully ran. The timestamp is an RFC3339 string.
 func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponsePtrOutput) LastRunStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse) *string {
 		if v == nil {
@@ -46385,7 +43836,7 @@ func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponsePtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+// The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
 func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponsePtrOutput) NextRunStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse) *string {
 		if v == nil {
@@ -46397,7 +43848,7 @@ func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponsePtrOutpu
 
 // Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
 type ResourcePolicyResourceStatusResponse struct {
-	// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+	// Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
 	InstanceSchedulePolicy ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse `pulumi:"instanceSchedulePolicy"`
 }
 
@@ -46414,7 +43865,7 @@ type ResourcePolicyResourceStatusResponseInput interface {
 
 // Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
 type ResourcePolicyResourceStatusResponseArgs struct {
-	// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+	// Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
 	InstanceSchedulePolicy ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseInput `pulumi:"instanceSchedulePolicy"`
 }
 
@@ -46496,7 +43947,7 @@ func (o ResourcePolicyResourceStatusResponseOutput) ToResourcePolicyResourceStat
 	}).(ResourcePolicyResourceStatusResponsePtrOutput)
 }
 
-// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+// Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
 func (o ResourcePolicyResourceStatusResponseOutput) InstanceSchedulePolicy() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseOutput {
 	return o.ApplyT(func(v ResourcePolicyResourceStatusResponse) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse {
 		return v.InstanceSchedulePolicy
@@ -46521,7 +43972,7 @@ func (o ResourcePolicyResourceStatusResponsePtrOutput) Elem() ResourcePolicyReso
 	return o.ApplyT(func(v *ResourcePolicyResourceStatusResponse) ResourcePolicyResourceStatusResponse { return *v }).(ResourcePolicyResourceStatusResponseOutput)
 }
 
-// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+// Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
 func (o ResourcePolicyResourceStatusResponsePtrOutput) InstanceSchedulePolicy() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponsePtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyResourceStatusResponse) *ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse {
 		if v == nil {
@@ -48060,8 +45511,6 @@ func (o ResourcePolicyWeeklyCyclePtrOutput) DayOfWeeks() ResourcePolicyWeeklyCyc
 type ResourcePolicyWeeklyCycleDayOfWeek struct {
 	// Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
 	Day *string `pulumi:"day"`
-	// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-	Duration *string `pulumi:"duration"`
 	// Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 	StartTime *string `pulumi:"startTime"`
 }
@@ -48080,8 +45529,6 @@ type ResourcePolicyWeeklyCycleDayOfWeekInput interface {
 type ResourcePolicyWeeklyCycleDayOfWeekArgs struct {
 	// Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
 	Day *ResourcePolicyWeeklyCycleDayOfWeekDay `pulumi:"day"`
-	// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
@@ -48140,11 +45587,6 @@ func (o ResourcePolicyWeeklyCycleDayOfWeekOutput) ToResourcePolicyWeeklyCycleDay
 // Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
 func (o ResourcePolicyWeeklyCycleDayOfWeekOutput) Day() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyWeeklyCycleDayOfWeek) *string { return v.Day }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-func (o ResourcePolicyWeeklyCycleDayOfWeekOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePolicyWeeklyCycleDayOfWeek) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
 // Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
@@ -48423,234 +45865,10 @@ func (o ResourcePolicyWeeklyCycleResponsePtrOutput) DayOfWeeks() ResourcePolicyW
 	}).(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput)
 }
 
-type RouteWarningsItem struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code *string `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example:
-	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data []RouteWarningsItemDataItem `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message *string `pulumi:"message"`
-}
-
-// RouteWarningsItemInput is an input type that accepts RouteWarningsItemArgs and RouteWarningsItemOutput values.
-// You can construct a concrete instance of `RouteWarningsItemInput` via:
-//
-//          RouteWarningsItemArgs{...}
-type RouteWarningsItemInput interface {
-	pulumi.Input
-
-	ToRouteWarningsItemOutput() RouteWarningsItemOutput
-	ToRouteWarningsItemOutputWithContext(context.Context) RouteWarningsItemOutput
-}
-
-type RouteWarningsItemArgs struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code *RouteWarningsItemCode `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example:
-	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data RouteWarningsItemDataItemArrayInput `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (RouteWarningsItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteWarningsItem)(nil)).Elem()
-}
-
-func (i RouteWarningsItemArgs) ToRouteWarningsItemOutput() RouteWarningsItemOutput {
-	return i.ToRouteWarningsItemOutputWithContext(context.Background())
-}
-
-func (i RouteWarningsItemArgs) ToRouteWarningsItemOutputWithContext(ctx context.Context) RouteWarningsItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteWarningsItemOutput)
-}
-
-// RouteWarningsItemArrayInput is an input type that accepts RouteWarningsItemArray and RouteWarningsItemArrayOutput values.
-// You can construct a concrete instance of `RouteWarningsItemArrayInput` via:
-//
-//          RouteWarningsItemArray{ RouteWarningsItemArgs{...} }
-type RouteWarningsItemArrayInput interface {
-	pulumi.Input
-
-	ToRouteWarningsItemArrayOutput() RouteWarningsItemArrayOutput
-	ToRouteWarningsItemArrayOutputWithContext(context.Context) RouteWarningsItemArrayOutput
-}
-
-type RouteWarningsItemArray []RouteWarningsItemInput
-
-func (RouteWarningsItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouteWarningsItem)(nil)).Elem()
-}
-
-func (i RouteWarningsItemArray) ToRouteWarningsItemArrayOutput() RouteWarningsItemArrayOutput {
-	return i.ToRouteWarningsItemArrayOutputWithContext(context.Background())
-}
-
-func (i RouteWarningsItemArray) ToRouteWarningsItemArrayOutputWithContext(ctx context.Context) RouteWarningsItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteWarningsItemArrayOutput)
-}
-
-type RouteWarningsItemOutput struct{ *pulumi.OutputState }
-
-func (RouteWarningsItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteWarningsItem)(nil)).Elem()
-}
-
-func (o RouteWarningsItemOutput) ToRouteWarningsItemOutput() RouteWarningsItemOutput {
-	return o
-}
-
-func (o RouteWarningsItemOutput) ToRouteWarningsItemOutputWithContext(ctx context.Context) RouteWarningsItemOutput {
-	return o
-}
-
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-func (o RouteWarningsItemOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteWarningsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Metadata about this warning in key: value format. For example:
-// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-func (o RouteWarningsItemOutput) Data() RouteWarningsItemDataItemArrayOutput {
-	return o.ApplyT(func(v RouteWarningsItem) []RouteWarningsItemDataItem { return v.Data }).(RouteWarningsItemDataItemArrayOutput)
-}
-
-// [Output Only] A human-readable description of the warning code.
-func (o RouteWarningsItemOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteWarningsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type RouteWarningsItemArrayOutput struct{ *pulumi.OutputState }
-
-func (RouteWarningsItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouteWarningsItem)(nil)).Elem()
-}
-
-func (o RouteWarningsItemArrayOutput) ToRouteWarningsItemArrayOutput() RouteWarningsItemArrayOutput {
-	return o
-}
-
-func (o RouteWarningsItemArrayOutput) ToRouteWarningsItemArrayOutputWithContext(ctx context.Context) RouteWarningsItemArrayOutput {
-	return o
-}
-
-func (o RouteWarningsItemArrayOutput) Index(i pulumi.IntInput) RouteWarningsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteWarningsItem {
-		return vs[0].([]RouteWarningsItem)[vs[1].(int)]
-	}).(RouteWarningsItemOutput)
-}
-
-type RouteWarningsItemDataItem struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key *string `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value *string `pulumi:"value"`
-}
-
-// RouteWarningsItemDataItemInput is an input type that accepts RouteWarningsItemDataItemArgs and RouteWarningsItemDataItemOutput values.
-// You can construct a concrete instance of `RouteWarningsItemDataItemInput` via:
-//
-//          RouteWarningsItemDataItemArgs{...}
-type RouteWarningsItemDataItemInput interface {
-	pulumi.Input
-
-	ToRouteWarningsItemDataItemOutput() RouteWarningsItemDataItemOutput
-	ToRouteWarningsItemDataItemOutputWithContext(context.Context) RouteWarningsItemDataItemOutput
-}
-
-type RouteWarningsItemDataItemArgs struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (RouteWarningsItemDataItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteWarningsItemDataItem)(nil)).Elem()
-}
-
-func (i RouteWarningsItemDataItemArgs) ToRouteWarningsItemDataItemOutput() RouteWarningsItemDataItemOutput {
-	return i.ToRouteWarningsItemDataItemOutputWithContext(context.Background())
-}
-
-func (i RouteWarningsItemDataItemArgs) ToRouteWarningsItemDataItemOutputWithContext(ctx context.Context) RouteWarningsItemDataItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteWarningsItemDataItemOutput)
-}
-
-// RouteWarningsItemDataItemArrayInput is an input type that accepts RouteWarningsItemDataItemArray and RouteWarningsItemDataItemArrayOutput values.
-// You can construct a concrete instance of `RouteWarningsItemDataItemArrayInput` via:
-//
-//          RouteWarningsItemDataItemArray{ RouteWarningsItemDataItemArgs{...} }
-type RouteWarningsItemDataItemArrayInput interface {
-	pulumi.Input
-
-	ToRouteWarningsItemDataItemArrayOutput() RouteWarningsItemDataItemArrayOutput
-	ToRouteWarningsItemDataItemArrayOutputWithContext(context.Context) RouteWarningsItemDataItemArrayOutput
-}
-
-type RouteWarningsItemDataItemArray []RouteWarningsItemDataItemInput
-
-func (RouteWarningsItemDataItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouteWarningsItemDataItem)(nil)).Elem()
-}
-
-func (i RouteWarningsItemDataItemArray) ToRouteWarningsItemDataItemArrayOutput() RouteWarningsItemDataItemArrayOutput {
-	return i.ToRouteWarningsItemDataItemArrayOutputWithContext(context.Background())
-}
-
-func (i RouteWarningsItemDataItemArray) ToRouteWarningsItemDataItemArrayOutputWithContext(ctx context.Context) RouteWarningsItemDataItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteWarningsItemDataItemArrayOutput)
-}
-
-type RouteWarningsItemDataItemOutput struct{ *pulumi.OutputState }
-
-func (RouteWarningsItemDataItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteWarningsItemDataItem)(nil)).Elem()
-}
-
-func (o RouteWarningsItemDataItemOutput) ToRouteWarningsItemDataItemOutput() RouteWarningsItemDataItemOutput {
-	return o
-}
-
-func (o RouteWarningsItemDataItemOutput) ToRouteWarningsItemDataItemOutputWithContext(ctx context.Context) RouteWarningsItemDataItemOutput {
-	return o
-}
-
-// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-func (o RouteWarningsItemDataItemOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteWarningsItemDataItem) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] A warning data value corresponding to the key.
-func (o RouteWarningsItemDataItemOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouteWarningsItemDataItem) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type RouteWarningsItemDataItemArrayOutput struct{ *pulumi.OutputState }
-
-func (RouteWarningsItemDataItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouteWarningsItemDataItem)(nil)).Elem()
-}
-
-func (o RouteWarningsItemDataItemArrayOutput) ToRouteWarningsItemDataItemArrayOutput() RouteWarningsItemDataItemArrayOutput {
-	return o
-}
-
-func (o RouteWarningsItemDataItemArrayOutput) ToRouteWarningsItemDataItemArrayOutputWithContext(ctx context.Context) RouteWarningsItemDataItemArrayOutput {
-	return o
-}
-
-func (o RouteWarningsItemDataItemArrayOutput) Index(i pulumi.IntInput) RouteWarningsItemDataItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteWarningsItemDataItem {
-		return vs[0].([]RouteWarningsItemDataItem)[vs[1].(int)]
-	}).(RouteWarningsItemDataItemOutput)
-}
-
 type RouteWarningsItemDataItemResponse struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 	Key string `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
+	// A warning data value corresponding to the key.
 	Value string `pulumi:"value"`
 }
 
@@ -48666,9 +45884,9 @@ type RouteWarningsItemDataItemResponseInput interface {
 }
 
 type RouteWarningsItemDataItemResponseArgs struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 	Key pulumi.StringInput `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
+	// A warning data value corresponding to the key.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -48723,12 +45941,12 @@ func (o RouteWarningsItemDataItemResponseOutput) ToRouteWarningsItemDataItemResp
 	return o
 }
 
-// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 func (o RouteWarningsItemDataItemResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteWarningsItemDataItemResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// [Output Only] A warning data value corresponding to the key.
+// A warning data value corresponding to the key.
 func (o RouteWarningsItemDataItemResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteWarningsItemDataItemResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -48754,12 +45972,12 @@ func (o RouteWarningsItemDataItemResponseArrayOutput) Index(i pulumi.IntInput) R
 }
 
 type RouteWarningsItemResponse struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
 	Code string `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example:
+	// Metadata about this warning in key: value format. For example:
 	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 	Data []RouteWarningsItemDataItemResponse `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
+	// A human-readable description of the warning code.
 	Message string `pulumi:"message"`
 }
 
@@ -48775,12 +45993,12 @@ type RouteWarningsItemResponseInput interface {
 }
 
 type RouteWarningsItemResponseArgs struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
 	Code pulumi.StringInput `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example:
+	// Metadata about this warning in key: value format. For example:
 	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 	Data RouteWarningsItemDataItemResponseArrayInput `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
+	// A human-readable description of the warning code.
 	Message pulumi.StringInput `pulumi:"message"`
 }
 
@@ -48835,18 +46053,18 @@ func (o RouteWarningsItemResponseOutput) ToRouteWarningsItemResponseOutputWithCo
 	return o
 }
 
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
 func (o RouteWarningsItemResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteWarningsItemResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
-// [Output Only] Metadata about this warning in key: value format. For example:
+// Metadata about this warning in key: value format. For example:
 // "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 func (o RouteWarningsItemResponseOutput) Data() RouteWarningsItemDataItemResponseArrayOutput {
 	return o.ApplyT(func(v RouteWarningsItemResponse) []RouteWarningsItemDataItemResponse { return v.Data }).(RouteWarningsItemDataItemResponseArrayOutput)
 }
 
-// [Output Only] A human-readable description of the warning code.
+// A human-readable description of the warning code.
 func (o RouteWarningsItemResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteWarningsItemResponse) string { return v.Message }).(pulumi.StringOutput)
 }
@@ -49292,10 +46510,6 @@ type RouterBgpPeer struct {
 	InterfaceName *string `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress *string `pulumi:"ipAddress"`
-	// [Output Only] The resource that configures and manages this BGP peer.
-	// - MANAGED_BY_USER is the default value and can be managed by you or other users
-	// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
-	ManagementType *string `pulumi:"managementType"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -49330,10 +46544,6 @@ type RouterBgpPeerArgs struct {
 	InterfaceName pulumi.StringPtrInput `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	// [Output Only] The resource that configures and manages this BGP peer.
-	// - MANAGED_BY_USER is the default value and can be managed by you or other users
-	// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
-	ManagementType *RouterBgpPeerManagementType `pulumi:"managementType"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -49425,13 +46635,6 @@ func (o RouterBgpPeerOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The resource that configures and manages this BGP peer.
-// - MANAGED_BY_USER is the default value and can be managed by you or other users
-// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
-func (o RouterBgpPeerOutput) ManagementType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouterBgpPeer) *string { return v.ManagementType }).(pulumi.StringPtrOutput)
-}
-
 // Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o RouterBgpPeerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -49482,7 +46685,7 @@ type RouterBgpPeerResponse struct {
 	InterfaceName string `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress string `pulumi:"ipAddress"`
-	// [Output Only] The resource that configures and manages this BGP peer.
+	// The resource that configures and manages this BGP peer.
 	// - MANAGED_BY_USER is the default value and can be managed by you or other users
 	// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType string `pulumi:"managementType"`
@@ -49520,7 +46723,7 @@ type RouterBgpPeerResponseArgs struct {
 	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// [Output Only] The resource that configures and manages this BGP peer.
+	// The resource that configures and manages this BGP peer.
 	// - MANAGED_BY_USER is the default value and can be managed by you or other users
 	// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType pulumi.StringInput `pulumi:"managementType"`
@@ -49615,7 +46818,7 @@ func (o RouterBgpPeerResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// [Output Only] The resource that configures and manages this BGP peer.
+// The resource that configures and manages this BGP peer.
 // - MANAGED_BY_USER is the default value and can be managed by you or other users
 // - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 func (o RouterBgpPeerResponseOutput) ManagementType() pulumi.StringOutput {
@@ -49852,10 +47055,6 @@ type RouterInterface struct {
 	LinkedInterconnectAttachment *string `pulumi:"linkedInterconnectAttachment"`
 	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
 	LinkedVpnTunnel *string `pulumi:"linkedVpnTunnel"`
-	// [Output Only] The resource that configures and manages this interface.
-	// - MANAGED_BY_USER is the default value and can be managed directly by users.
-	// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
-	ManagementType *string `pulumi:"managementType"`
 	// Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 }
@@ -49878,10 +47077,6 @@ type RouterInterfaceArgs struct {
 	LinkedInterconnectAttachment pulumi.StringPtrInput `pulumi:"linkedInterconnectAttachment"`
 	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
 	LinkedVpnTunnel pulumi.StringPtrInput `pulumi:"linkedVpnTunnel"`
-	// [Output Only] The resource that configures and manages this interface.
-	// - MANAGED_BY_USER is the default value and can be managed directly by users.
-	// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
-	ManagementType *RouterInterfaceManagementType `pulumi:"managementType"`
 	// Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -49952,13 +47147,6 @@ func (o RouterInterfaceOutput) LinkedVpnTunnel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterInterface) *string { return v.LinkedVpnTunnel }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The resource that configures and manages this interface.
-// - MANAGED_BY_USER is the default value and can be managed directly by users.
-// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
-func (o RouterInterfaceOutput) ManagementType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouterInterface) *string { return v.ManagementType }).(pulumi.StringPtrOutput)
-}
-
 // Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o RouterInterfaceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterInterface) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -49991,7 +47179,7 @@ type RouterInterfaceResponse struct {
 	LinkedInterconnectAttachment string `pulumi:"linkedInterconnectAttachment"`
 	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
 	LinkedVpnTunnel string `pulumi:"linkedVpnTunnel"`
-	// [Output Only] The resource that configures and manages this interface.
+	// The resource that configures and manages this interface.
 	// - MANAGED_BY_USER is the default value and can be managed directly by users.
 	// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType string `pulumi:"managementType"`
@@ -50017,7 +47205,7 @@ type RouterInterfaceResponseArgs struct {
 	LinkedInterconnectAttachment pulumi.StringInput `pulumi:"linkedInterconnectAttachment"`
 	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
 	LinkedVpnTunnel pulumi.StringInput `pulumi:"linkedVpnTunnel"`
-	// [Output Only] The resource that configures and manages this interface.
+	// The resource that configures and manages this interface.
 	// - MANAGED_BY_USER is the default value and can be managed directly by users.
 	// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType pulumi.StringInput `pulumi:"managementType"`
@@ -50091,7 +47279,7 @@ func (o RouterInterfaceResponseOutput) LinkedVpnTunnel() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterInterfaceResponse) string { return v.LinkedVpnTunnel }).(pulumi.StringOutput)
 }
 
-// [Output Only] The resource that configures and manages this interface.
+// The resource that configures and manages this interface.
 // - MANAGED_BY_USER is the default value and can be managed directly by users.
 // - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
 func (o RouterInterfaceResponseOutput) ManagementType() pulumi.StringOutput {
@@ -52553,8 +49741,6 @@ type SecurityPolicyRule struct {
 	Action *string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
-	Kind *string `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *SecurityPolicyRuleMatcher `pulumi:"match"`
 	// If set to true, the specified action is not enforced.
@@ -52580,8 +49766,6 @@ type SecurityPolicyRuleArgs struct {
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherPtrInput `pulumi:"match"`
 	// If set to true, the specified action is not enforced.
@@ -52650,11 +49834,6 @@ func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
 // An optional description of this resource. Provide this property when you create the resource.
 func (o SecurityPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
-func (o SecurityPolicyRuleOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -54971,12 +52150,8 @@ func (o SourceInstanceParamsResponsePtrOutput) DiskConfigs() DiskInstantiationCo
 
 // Configuration and status of a managed SSL certificate.
 type SslCertificateManagedSslCertificate struct {
-	// [Output only] Detailed statuses of the domains specified for managed certificate resource.
-	DomainStatus map[string]string `pulumi:"domainStatus"`
 	// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
 	Domains []string `pulumi:"domains"`
-	// [Output only] Status of the managed certificate resource.
-	Status *string `pulumi:"status"`
 }
 
 // SslCertificateManagedSslCertificateInput is an input type that accepts SslCertificateManagedSslCertificateArgs and SslCertificateManagedSslCertificateOutput values.
@@ -54992,12 +52167,8 @@ type SslCertificateManagedSslCertificateInput interface {
 
 // Configuration and status of a managed SSL certificate.
 type SslCertificateManagedSslCertificateArgs struct {
-	// [Output only] Detailed statuses of the domains specified for managed certificate resource.
-	DomainStatus pulumi.StringMapInput `pulumi:"domainStatus"`
 	// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
-	// [Output only] Status of the managed certificate resource.
-	Status *SslCertificateManagedSslCertificateStatus `pulumi:"status"`
 }
 
 func (SslCertificateManagedSslCertificateArgs) ElementType() reflect.Type {
@@ -55078,19 +52249,9 @@ func (o SslCertificateManagedSslCertificateOutput) ToSslCertificateManagedSslCer
 	}).(SslCertificateManagedSslCertificatePtrOutput)
 }
 
-// [Output only] Detailed statuses of the domains specified for managed certificate resource.
-func (o SslCertificateManagedSslCertificateOutput) DomainStatus() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SslCertificateManagedSslCertificate) map[string]string { return v.DomainStatus }).(pulumi.StringMapOutput)
-}
-
 // The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
 func (o SslCertificateManagedSslCertificateOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SslCertificateManagedSslCertificate) []string { return v.Domains }).(pulumi.StringArrayOutput)
-}
-
-// [Output only] Status of the managed certificate resource.
-func (o SslCertificateManagedSslCertificateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCertificateManagedSslCertificate) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type SslCertificateManagedSslCertificatePtrOutput struct{ *pulumi.OutputState }
@@ -55111,16 +52272,6 @@ func (o SslCertificateManagedSslCertificatePtrOutput) Elem() SslCertificateManag
 	return o.ApplyT(func(v *SslCertificateManagedSslCertificate) SslCertificateManagedSslCertificate { return *v }).(SslCertificateManagedSslCertificateOutput)
 }
 
-// [Output only] Detailed statuses of the domains specified for managed certificate resource.
-func (o SslCertificateManagedSslCertificatePtrOutput) DomainStatus() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SslCertificateManagedSslCertificate) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.DomainStatus
-	}).(pulumi.StringMapOutput)
-}
-
 // The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
 func (o SslCertificateManagedSslCertificatePtrOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SslCertificateManagedSslCertificate) []string {
@@ -55129,16 +52280,6 @@ func (o SslCertificateManagedSslCertificatePtrOutput) Domains() pulumi.StringArr
 		}
 		return v.Domains
 	}).(pulumi.StringArrayOutput)
-}
-
-// [Output only] Status of the managed certificate resource.
-func (o SslCertificateManagedSslCertificatePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCertificateManagedSslCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration and status of a managed SSL certificate.
@@ -55623,234 +52764,10 @@ func (o SslCertificateSelfManagedSslCertificateResponsePtrOutput) PrivateKey() p
 	}).(pulumi.StringPtrOutput)
 }
 
-type SslPolicyWarningsItem struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code *string `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example:
-	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data []SslPolicyWarningsItemDataItem `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message *string `pulumi:"message"`
-}
-
-// SslPolicyWarningsItemInput is an input type that accepts SslPolicyWarningsItemArgs and SslPolicyWarningsItemOutput values.
-// You can construct a concrete instance of `SslPolicyWarningsItemInput` via:
-//
-//          SslPolicyWarningsItemArgs{...}
-type SslPolicyWarningsItemInput interface {
-	pulumi.Input
-
-	ToSslPolicyWarningsItemOutput() SslPolicyWarningsItemOutput
-	ToSslPolicyWarningsItemOutputWithContext(context.Context) SslPolicyWarningsItemOutput
-}
-
-type SslPolicyWarningsItemArgs struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code *SslPolicyWarningsItemCode `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example:
-	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data SslPolicyWarningsItemDataItemArrayInput `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (SslPolicyWarningsItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslPolicyWarningsItem)(nil)).Elem()
-}
-
-func (i SslPolicyWarningsItemArgs) ToSslPolicyWarningsItemOutput() SslPolicyWarningsItemOutput {
-	return i.ToSslPolicyWarningsItemOutputWithContext(context.Background())
-}
-
-func (i SslPolicyWarningsItemArgs) ToSslPolicyWarningsItemOutputWithContext(ctx context.Context) SslPolicyWarningsItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslPolicyWarningsItemOutput)
-}
-
-// SslPolicyWarningsItemArrayInput is an input type that accepts SslPolicyWarningsItemArray and SslPolicyWarningsItemArrayOutput values.
-// You can construct a concrete instance of `SslPolicyWarningsItemArrayInput` via:
-//
-//          SslPolicyWarningsItemArray{ SslPolicyWarningsItemArgs{...} }
-type SslPolicyWarningsItemArrayInput interface {
-	pulumi.Input
-
-	ToSslPolicyWarningsItemArrayOutput() SslPolicyWarningsItemArrayOutput
-	ToSslPolicyWarningsItemArrayOutputWithContext(context.Context) SslPolicyWarningsItemArrayOutput
-}
-
-type SslPolicyWarningsItemArray []SslPolicyWarningsItemInput
-
-func (SslPolicyWarningsItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SslPolicyWarningsItem)(nil)).Elem()
-}
-
-func (i SslPolicyWarningsItemArray) ToSslPolicyWarningsItemArrayOutput() SslPolicyWarningsItemArrayOutput {
-	return i.ToSslPolicyWarningsItemArrayOutputWithContext(context.Background())
-}
-
-func (i SslPolicyWarningsItemArray) ToSslPolicyWarningsItemArrayOutputWithContext(ctx context.Context) SslPolicyWarningsItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslPolicyWarningsItemArrayOutput)
-}
-
-type SslPolicyWarningsItemOutput struct{ *pulumi.OutputState }
-
-func (SslPolicyWarningsItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslPolicyWarningsItem)(nil)).Elem()
-}
-
-func (o SslPolicyWarningsItemOutput) ToSslPolicyWarningsItemOutput() SslPolicyWarningsItemOutput {
-	return o
-}
-
-func (o SslPolicyWarningsItemOutput) ToSslPolicyWarningsItemOutputWithContext(ctx context.Context) SslPolicyWarningsItemOutput {
-	return o
-}
-
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-func (o SslPolicyWarningsItemOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslPolicyWarningsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Metadata about this warning in key: value format. For example:
-// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-func (o SslPolicyWarningsItemOutput) Data() SslPolicyWarningsItemDataItemArrayOutput {
-	return o.ApplyT(func(v SslPolicyWarningsItem) []SslPolicyWarningsItemDataItem { return v.Data }).(SslPolicyWarningsItemDataItemArrayOutput)
-}
-
-// [Output Only] A human-readable description of the warning code.
-func (o SslPolicyWarningsItemOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslPolicyWarningsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type SslPolicyWarningsItemArrayOutput struct{ *pulumi.OutputState }
-
-func (SslPolicyWarningsItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SslPolicyWarningsItem)(nil)).Elem()
-}
-
-func (o SslPolicyWarningsItemArrayOutput) ToSslPolicyWarningsItemArrayOutput() SslPolicyWarningsItemArrayOutput {
-	return o
-}
-
-func (o SslPolicyWarningsItemArrayOutput) ToSslPolicyWarningsItemArrayOutputWithContext(ctx context.Context) SslPolicyWarningsItemArrayOutput {
-	return o
-}
-
-func (o SslPolicyWarningsItemArrayOutput) Index(i pulumi.IntInput) SslPolicyWarningsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SslPolicyWarningsItem {
-		return vs[0].([]SslPolicyWarningsItem)[vs[1].(int)]
-	}).(SslPolicyWarningsItemOutput)
-}
-
-type SslPolicyWarningsItemDataItem struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key *string `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value *string `pulumi:"value"`
-}
-
-// SslPolicyWarningsItemDataItemInput is an input type that accepts SslPolicyWarningsItemDataItemArgs and SslPolicyWarningsItemDataItemOutput values.
-// You can construct a concrete instance of `SslPolicyWarningsItemDataItemInput` via:
-//
-//          SslPolicyWarningsItemDataItemArgs{...}
-type SslPolicyWarningsItemDataItemInput interface {
-	pulumi.Input
-
-	ToSslPolicyWarningsItemDataItemOutput() SslPolicyWarningsItemDataItemOutput
-	ToSslPolicyWarningsItemDataItemOutputWithContext(context.Context) SslPolicyWarningsItemDataItemOutput
-}
-
-type SslPolicyWarningsItemDataItemArgs struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (SslPolicyWarningsItemDataItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslPolicyWarningsItemDataItem)(nil)).Elem()
-}
-
-func (i SslPolicyWarningsItemDataItemArgs) ToSslPolicyWarningsItemDataItemOutput() SslPolicyWarningsItemDataItemOutput {
-	return i.ToSslPolicyWarningsItemDataItemOutputWithContext(context.Background())
-}
-
-func (i SslPolicyWarningsItemDataItemArgs) ToSslPolicyWarningsItemDataItemOutputWithContext(ctx context.Context) SslPolicyWarningsItemDataItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslPolicyWarningsItemDataItemOutput)
-}
-
-// SslPolicyWarningsItemDataItemArrayInput is an input type that accepts SslPolicyWarningsItemDataItemArray and SslPolicyWarningsItemDataItemArrayOutput values.
-// You can construct a concrete instance of `SslPolicyWarningsItemDataItemArrayInput` via:
-//
-//          SslPolicyWarningsItemDataItemArray{ SslPolicyWarningsItemDataItemArgs{...} }
-type SslPolicyWarningsItemDataItemArrayInput interface {
-	pulumi.Input
-
-	ToSslPolicyWarningsItemDataItemArrayOutput() SslPolicyWarningsItemDataItemArrayOutput
-	ToSslPolicyWarningsItemDataItemArrayOutputWithContext(context.Context) SslPolicyWarningsItemDataItemArrayOutput
-}
-
-type SslPolicyWarningsItemDataItemArray []SslPolicyWarningsItemDataItemInput
-
-func (SslPolicyWarningsItemDataItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SslPolicyWarningsItemDataItem)(nil)).Elem()
-}
-
-func (i SslPolicyWarningsItemDataItemArray) ToSslPolicyWarningsItemDataItemArrayOutput() SslPolicyWarningsItemDataItemArrayOutput {
-	return i.ToSslPolicyWarningsItemDataItemArrayOutputWithContext(context.Background())
-}
-
-func (i SslPolicyWarningsItemDataItemArray) ToSslPolicyWarningsItemDataItemArrayOutputWithContext(ctx context.Context) SslPolicyWarningsItemDataItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslPolicyWarningsItemDataItemArrayOutput)
-}
-
-type SslPolicyWarningsItemDataItemOutput struct{ *pulumi.OutputState }
-
-func (SslPolicyWarningsItemDataItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslPolicyWarningsItemDataItem)(nil)).Elem()
-}
-
-func (o SslPolicyWarningsItemDataItemOutput) ToSslPolicyWarningsItemDataItemOutput() SslPolicyWarningsItemDataItemOutput {
-	return o
-}
-
-func (o SslPolicyWarningsItemDataItemOutput) ToSslPolicyWarningsItemDataItemOutputWithContext(ctx context.Context) SslPolicyWarningsItemDataItemOutput {
-	return o
-}
-
-// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-func (o SslPolicyWarningsItemDataItemOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslPolicyWarningsItemDataItem) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] A warning data value corresponding to the key.
-func (o SslPolicyWarningsItemDataItemOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslPolicyWarningsItemDataItem) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type SslPolicyWarningsItemDataItemArrayOutput struct{ *pulumi.OutputState }
-
-func (SslPolicyWarningsItemDataItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SslPolicyWarningsItemDataItem)(nil)).Elem()
-}
-
-func (o SslPolicyWarningsItemDataItemArrayOutput) ToSslPolicyWarningsItemDataItemArrayOutput() SslPolicyWarningsItemDataItemArrayOutput {
-	return o
-}
-
-func (o SslPolicyWarningsItemDataItemArrayOutput) ToSslPolicyWarningsItemDataItemArrayOutputWithContext(ctx context.Context) SslPolicyWarningsItemDataItemArrayOutput {
-	return o
-}
-
-func (o SslPolicyWarningsItemDataItemArrayOutput) Index(i pulumi.IntInput) SslPolicyWarningsItemDataItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SslPolicyWarningsItemDataItem {
-		return vs[0].([]SslPolicyWarningsItemDataItem)[vs[1].(int)]
-	}).(SslPolicyWarningsItemDataItemOutput)
-}
-
 type SslPolicyWarningsItemDataItemResponse struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 	Key string `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
+	// A warning data value corresponding to the key.
 	Value string `pulumi:"value"`
 }
 
@@ -55866,9 +52783,9 @@ type SslPolicyWarningsItemDataItemResponseInput interface {
 }
 
 type SslPolicyWarningsItemDataItemResponseArgs struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 	Key pulumi.StringInput `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
+	// A warning data value corresponding to the key.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -55923,12 +52840,12 @@ func (o SslPolicyWarningsItemDataItemResponseOutput) ToSslPolicyWarningsItemData
 	return o
 }
 
-// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
 func (o SslPolicyWarningsItemDataItemResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SslPolicyWarningsItemDataItemResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// [Output Only] A warning data value corresponding to the key.
+// A warning data value corresponding to the key.
 func (o SslPolicyWarningsItemDataItemResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SslPolicyWarningsItemDataItemResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -55954,12 +52871,12 @@ func (o SslPolicyWarningsItemDataItemResponseArrayOutput) Index(i pulumi.IntInpu
 }
 
 type SslPolicyWarningsItemResponse struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
 	Code string `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example:
+	// Metadata about this warning in key: value format. For example:
 	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 	Data []SslPolicyWarningsItemDataItemResponse `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
+	// A human-readable description of the warning code.
 	Message string `pulumi:"message"`
 }
 
@@ -55975,12 +52892,12 @@ type SslPolicyWarningsItemResponseInput interface {
 }
 
 type SslPolicyWarningsItemResponseArgs struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
 	Code pulumi.StringInput `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example:
+	// Metadata about this warning in key: value format. For example:
 	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 	Data SslPolicyWarningsItemDataItemResponseArrayInput `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
+	// A human-readable description of the warning code.
 	Message pulumi.StringInput `pulumi:"message"`
 }
 
@@ -56035,18 +52952,18 @@ func (o SslPolicyWarningsItemResponseOutput) ToSslPolicyWarningsItemResponseOutp
 	return o
 }
 
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
 func (o SslPolicyWarningsItemResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v SslPolicyWarningsItemResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
-// [Output Only] Metadata about this warning in key: value format. For example:
+// Metadata about this warning in key: value format. For example:
 // "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 func (o SslPolicyWarningsItemResponseOutput) Data() SslPolicyWarningsItemDataItemResponseArrayOutput {
 	return o.ApplyT(func(v SslPolicyWarningsItemResponse) []SslPolicyWarningsItemDataItemResponse { return v.Data }).(SslPolicyWarningsItemDataItemResponseArrayOutput)
 }
 
-// [Output Only] A human-readable description of the warning code.
+// A human-readable description of the warning code.
 func (o SslPolicyWarningsItemResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v SslPolicyWarningsItemResponse) string { return v.Message }).(pulumi.StringOutput)
 }
@@ -58939,8 +55856,6 @@ type VpnGatewayVpnGatewayInterface struct {
 	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
 	// Not currently available in all Interconnect locations.
 	InterconnectAttachment *string `pulumi:"interconnectAttachment"`
-	// [Output Only] The external IP address for this VPN gateway interface.
-	IpAddress *string `pulumi:"ipAddress"`
 }
 
 // VpnGatewayVpnGatewayInterfaceInput is an input type that accepts VpnGatewayVpnGatewayInterfaceArgs and VpnGatewayVpnGatewayInterfaceOutput values.
@@ -58961,8 +55876,6 @@ type VpnGatewayVpnGatewayInterfaceArgs struct {
 	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
 	// Not currently available in all Interconnect locations.
 	InterconnectAttachment pulumi.StringPtrInput `pulumi:"interconnectAttachment"`
-	// [Output Only] The external IP address for this VPN gateway interface.
-	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 }
 
 func (VpnGatewayVpnGatewayInterfaceArgs) ElementType() reflect.Type {
@@ -59028,11 +55941,6 @@ func (o VpnGatewayVpnGatewayInterfaceOutput) InterconnectAttachment() pulumi.Str
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterface) *string { return v.InterconnectAttachment }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The external IP address for this VPN gateway interface.
-func (o VpnGatewayVpnGatewayInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpnGatewayVpnGatewayInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
-}
-
 type VpnGatewayVpnGatewayInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (VpnGatewayVpnGatewayInterfaceArrayOutput) ElementType() reflect.Type {
@@ -59058,7 +55966,7 @@ type VpnGatewayVpnGatewayInterfaceResponse struct {
 	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
 	// Not currently available in all Interconnect locations.
 	InterconnectAttachment string `pulumi:"interconnectAttachment"`
-	// [Output Only] The external IP address for this VPN gateway interface.
+	// The external IP address for this VPN gateway interface.
 	IpAddress string `pulumi:"ipAddress"`
 }
 
@@ -59078,7 +55986,7 @@ type VpnGatewayVpnGatewayInterfaceResponseArgs struct {
 	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
 	// Not currently available in all Interconnect locations.
 	InterconnectAttachment pulumi.StringInput `pulumi:"interconnectAttachment"`
-	// [Output Only] The external IP address for this VPN gateway interface.
+	// The external IP address for this VPN gateway interface.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 }
 
@@ -59140,7 +56048,7 @@ func (o VpnGatewayVpnGatewayInterfaceResponseOutput) InterconnectAttachment() pu
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.InterconnectAttachment }).(pulumi.StringOutput)
 }
 
-// [Output Only] The external IP address for this VPN gateway interface.
+// The external IP address for this VPN gateway interface.
 func (o VpnGatewayVpnGatewayInterfaceResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
@@ -59478,8 +56386,6 @@ func init() {
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsOutput{})
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsResponseOutput{})
-	pulumi.RegisterOutputType(AutoscalerStatusDetailsOutput{})
-	pulumi.RegisterOutputType(AutoscalerStatusDetailsArrayOutput{})
 	pulumi.RegisterOutputType(AutoscalerStatusDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AutoscalerStatusDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyOutput{})
@@ -59738,28 +56644,18 @@ func init() {
 	pulumi.RegisterOutputType(InitialStateConfigPtrOutput{})
 	pulumi.RegisterOutputType(InitialStateConfigResponseOutput{})
 	pulumi.RegisterOutputType(InitialStateConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerActionsSummaryOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerActionsSummaryPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerActionsSummaryResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerActionsSummaryResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyResponseArrayOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerStatusOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerStatusPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusResponsePtrOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulPtrOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulPerInstanceConfigsOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulPerInstanceConfigsResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulResponsePtrOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerStatusVersionTargetOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerStatusVersionTargetPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusVersionTargetResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusVersionTargetResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyOutput{})
@@ -59781,16 +56677,10 @@ func init() {
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataResponseOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataResponsePtrOutput{})
-	pulumi.RegisterOutputType(InterconnectAttachmentPrivateInfoOutput{})
-	pulumi.RegisterOutputType(InterconnectAttachmentPrivateInfoPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPrivateInfoResponseOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPrivateInfoResponsePtrOutput{})
-	pulumi.RegisterOutputType(InterconnectCircuitInfoOutput{})
-	pulumi.RegisterOutputType(InterconnectCircuitInfoArrayOutput{})
 	pulumi.RegisterOutputType(InterconnectCircuitInfoResponseOutput{})
 	pulumi.RegisterOutputType(InterconnectCircuitInfoResponseArrayOutput{})
-	pulumi.RegisterOutputType(InterconnectOutageNotificationOutput{})
-	pulumi.RegisterOutputType(InterconnectOutageNotificationArrayOutput{})
 	pulumi.RegisterOutputType(InterconnectOutageNotificationResponseOutput{})
 	pulumi.RegisterOutputType(InterconnectOutageNotificationResponseArrayOutput{})
 	pulumi.RegisterOutputType(LicenseResourceCommitmentOutput{})
@@ -59858,8 +56748,6 @@ func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseArrayOutput{})
-	pulumi.RegisterOutputType(NetworkPeeringOutput{})
-	pulumi.RegisterOutputType(NetworkPeeringArrayOutput{})
 	pulumi.RegisterOutputType(NetworkPeeringResponseOutput{})
 	pulumi.RegisterOutputType(NetworkPeeringResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkRoutingConfigOutput{})
@@ -59918,8 +56806,6 @@ func init() {
 	pulumi.RegisterOutputType(PathRuleArrayOutput{})
 	pulumi.RegisterOutputType(PathRuleResponseOutput{})
 	pulumi.RegisterOutputType(PathRuleResponseArrayOutput{})
-	pulumi.RegisterOutputType(PublicAdvertisedPrefixPublicDelegatedPrefixOutput{})
-	pulumi.RegisterOutputType(PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput{})
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixPublicDelegatedPrefixResponseOutput{})
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixOutput{})
@@ -59962,10 +56848,6 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicySchedulePtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyScheduleResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyScheduleResponsePtrOutput{})
-	pulumi.RegisterOutputType(ResourcePolicyResourceStatusOutput{})
-	pulumi.RegisterOutputType(ResourcePolicyResourceStatusPtrOutput{})
-	pulumi.RegisterOutputType(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput{})
-	pulumi.RegisterOutputType(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyResourceStatusResponseOutput{})
@@ -59994,10 +56876,6 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleResponsePtrOutput{})
-	pulumi.RegisterOutputType(RouteWarningsItemOutput{})
-	pulumi.RegisterOutputType(RouteWarningsItemArrayOutput{})
-	pulumi.RegisterOutputType(RouteWarningsItemDataItemOutput{})
-	pulumi.RegisterOutputType(RouteWarningsItemDataItemArrayOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemDataItemResponseOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemDataItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemResponseOutput{})
@@ -60087,10 +56965,6 @@ func init() {
 	pulumi.RegisterOutputType(SslCertificateSelfManagedSslCertificatePtrOutput{})
 	pulumi.RegisterOutputType(SslCertificateSelfManagedSslCertificateResponseOutput{})
 	pulumi.RegisterOutputType(SslCertificateSelfManagedSslCertificateResponsePtrOutput{})
-	pulumi.RegisterOutputType(SslPolicyWarningsItemOutput{})
-	pulumi.RegisterOutputType(SslPolicyWarningsItemArrayOutput{})
-	pulumi.RegisterOutputType(SslPolicyWarningsItemDataItemOutput{})
-	pulumi.RegisterOutputType(SslPolicyWarningsItemDataItemArrayOutput{})
 	pulumi.RegisterOutputType(SslPolicyWarningsItemDataItemResponseOutput{})
 	pulumi.RegisterOutputType(SslPolicyWarningsItemDataItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(SslPolicyWarningsItemResponseOutput{})

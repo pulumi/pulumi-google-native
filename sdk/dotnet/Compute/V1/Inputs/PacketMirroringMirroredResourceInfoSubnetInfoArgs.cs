@@ -13,12 +13,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class PacketMirroringMirroredResourceInfoSubnetInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] Unique identifier for the subnetwork; defined by the server.
-        /// </summary>
-        [Input("canonicalUrl")]
-        public Input<string>? CanonicalUrl { get; set; }
-
-        /// <summary>
         /// Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
         /// </summary>
         [Input("url")]

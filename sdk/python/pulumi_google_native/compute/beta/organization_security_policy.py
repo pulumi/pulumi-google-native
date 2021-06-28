@@ -18,70 +18,42 @@ class OrganizationSecurityPolicyArgs:
     def __init__(__self__, *,
                  adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAssociationArgs']]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['OrganizationSecurityPolicyType']] = None):
         """
         The set of arguments for constructing a OrganizationSecurityPolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAssociationArgs']]] associations: A list of associations that belong to this policy.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] display_name: User-provided name of the Organization security plicy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63 characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#securityPolicyfor security policies
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] parent: [Output Only] The parent of the security policy.
-        :param pulumi.Input[int] rule_tuple_count: [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input['OrganizationSecurityPolicyType'] type: The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
         """
         if adaptive_protection_config is not None:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
         if associations is not None:
             pulumi.set(__self__, "associations", associations)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if parent is not None:
-            pulumi.set(__self__, "parent", parent)
         if parent_id is not None:
             pulumi.set(__self__, "parent_id", parent_id)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if rule_tuple_count is not None:
-            pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if self_link_with_id is not None:
-            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -105,18 +77,6 @@ class OrganizationSecurityPolicyArgs:
     @associations.setter
     def associations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAssociationArgs']]]]):
         pulumi.set(self, "associations", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -144,30 +104,6 @@ class OrganizationSecurityPolicyArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Type of the resource. Always compute#securityPolicyfor security policies
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -191,18 +127,6 @@ class OrganizationSecurityPolicyArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The parent of the security policy.
-        """
-        return pulumi.get(self, "parent")
-
-    @parent.setter
-    def parent(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "parent", value)
-
-    @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "parent_id")
@@ -221,18 +145,6 @@ class OrganizationSecurityPolicyArgs:
         pulumi.set(self, "request_id", value)
 
     @property
-    @pulumi.getter(name="ruleTupleCount")
-    def rule_tuple_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
-        """
-        return pulumi.get(self, "rule_tuple_count")
-
-    @rule_tuple_count.setter
-    def rule_tuple_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "rule_tuple_count", value)
-
-    @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]:
         """
@@ -243,30 +155,6 @@ class OrganizationSecurityPolicyArgs:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="selfLinkWithId")
-    def self_link_with_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for this resource with the resource id.
-        """
-        return pulumi.get(self, "self_link_with_id")
-
-    @self_link_with_id.setter
-    def self_link_with_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link_with_id", value)
 
     @property
     @pulumi.getter
@@ -288,20 +176,13 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyAssociationArgs']]]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['OrganizationSecurityPolicyType']] = None,
                  __props__=None):
         """
@@ -310,18 +191,11 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyAssociationArgs']]]] associations: A list of associations that belong to this policy.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] display_name: User-provided name of the Organization security plicy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63 characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#securityPolicyfor security policies
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] parent: [Output Only] The parent of the security policy.
-        :param pulumi.Input[int] rule_tuple_count: [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input['OrganizationSecurityPolicyType'] type: The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
         """
         ...
@@ -350,20 +224,13 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyAssociationArgs']]]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['OrganizationSecurityPolicyType']] = None,
                  __props__=None):
         if opts is None:
@@ -379,23 +246,22 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
             __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
             __props__.__dict__["associations"] = associations
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            __props__.__dict__["id"] = id
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            __props__.__dict__["parent"] = parent
             __props__.__dict__["parent_id"] = parent_id
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["rule_tuple_count"] = rule_tuple_count
             __props__.__dict__["rules"] = rules
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["type"] = type
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["parent"] = None
+            __props__.__dict__["rule_tuple_count"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["self_link_with_id"] = None
         super(OrganizationSecurityPolicy, __self__).__init__(
             'google-native:compute/beta:OrganizationSecurityPolicy',
             resource_name,
@@ -453,7 +319,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -521,7 +387,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[str]:
         """
-        [Output Only] The parent of the security policy.
+        The parent of the security policy.
         """
         return pulumi.get(self, "parent")
 
@@ -529,7 +395,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> pulumi.Output[int]:
         """
-        [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
+        Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         """
         return pulumi.get(self, "rule_tuple_count")
 
@@ -545,7 +411,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -553,7 +419,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 

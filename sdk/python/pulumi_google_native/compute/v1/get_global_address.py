@@ -86,7 +86,7 @@ class GetGlobalAddressResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -110,7 +110,7 @@ class GetGlobalAddressResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#address for addresses.
+        Type of the resource. Always compute#address for addresses.
         """
         return pulumi.get(self, "kind")
 
@@ -165,7 +165,7 @@ class GetGlobalAddressResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
+        The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
         """
         return pulumi.get(self, "region")
 
@@ -173,7 +173,7 @@ class GetGlobalAddressResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -181,7 +181,7 @@ class GetGlobalAddressResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
+        The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
         """
         return pulumi.get(self, "status")
 
@@ -197,7 +197,7 @@ class GetGlobalAddressResult:
     @pulumi.getter
     def users(self) -> Sequence[str]:
         """
-        [Output Only] The URLs of the resources that are using this address.
+        The URLs of the resources that are using this address.
         """
         return pulumi.get(self, "users")
 

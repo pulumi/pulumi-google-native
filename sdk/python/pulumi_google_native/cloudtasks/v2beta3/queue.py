@@ -20,11 +20,9 @@ class QueueArgs:
                  project: pulumi.Input[str],
                  app_engine_http_queue: Optional[pulumi.Input['AppEngineHttpQueueArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 purge_time: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input['RateLimitsArgs']] = None,
                  retry_config: Optional[pulumi.Input['RetryConfigArgs']] = None,
                  stackdriver_logging_config: Optional[pulumi.Input['StackdriverLoggingConfigArgs']] = None,
-                 state: Optional[pulumi.Input['QueueState']] = None,
                  task_ttl: Optional[pulumi.Input[str]] = None,
                  tombstone_ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['QueueType']] = None):
@@ -32,11 +30,9 @@ class QueueArgs:
         The set of arguments for constructing a Queue resource.
         :param pulumi.Input['AppEngineHttpQueueArgs'] app_engine_http_queue: AppEngineHttpQueue settings apply only to App Engine tasks in this queue. Http tasks are not affected by this proto.
         :param pulumi.Input[str] name: Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
-        :param pulumi.Input[str] purge_time: The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
         :param pulumi.Input['RateLimitsArgs'] rate_limits: Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts. However they control task attempts in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc). The queue's actual dispatch rate is the result of: * Number of tasks in the queue * User-specified throttling: rate_limits, retry_config, and the queue's state. * System throttling due to `429` (Too Many Requests) or `503` (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic spikes.
         :param pulumi.Input['RetryConfigArgs'] retry_config: Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
         :param pulumi.Input['StackdriverLoggingConfigArgs'] stackdriver_logging_config: Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
-        :param pulumi.Input['QueueState'] state: The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
         :param pulumi.Input[str] task_ttl: The maximum amount of time that a task will be retained in this queue. Queues created by Cloud Tasks have a default `task_ttl` of 31 days. After a task has lived for `task_ttl`, the task will be deleted regardless of whether it was dispatched or not. The `task_ttl` for queues created via queue.yaml/xml is equal to the maximum duration because there is a [storage quota](https://cloud.google.com/appengine/quotas#Task_Queue) for these queues. To view the maximum valid duration, see the documentation for Duration.
         :param pulumi.Input[str] tombstone_ttl: The task tombstone time to live (TTL). After a task is deleted or executed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour.
         :param pulumi.Input['QueueType'] type: Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left unspecified, the default value of `PUSH` is selected.
@@ -47,16 +43,12 @@ class QueueArgs:
             pulumi.set(__self__, "app_engine_http_queue", app_engine_http_queue)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if purge_time is not None:
-            pulumi.set(__self__, "purge_time", purge_time)
         if rate_limits is not None:
             pulumi.set(__self__, "rate_limits", rate_limits)
         if retry_config is not None:
             pulumi.set(__self__, "retry_config", retry_config)
         if stackdriver_logging_config is not None:
             pulumi.set(__self__, "stackdriver_logging_config", stackdriver_logging_config)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
         if task_ttl is not None:
             pulumi.set(__self__, "task_ttl", task_ttl)
         if tombstone_ttl is not None:
@@ -107,18 +99,6 @@ class QueueArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="purgeTime")
-    def purge_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
-        """
-        return pulumi.get(self, "purge_time")
-
-    @purge_time.setter
-    def purge_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "purge_time", value)
-
-    @property
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> Optional[pulumi.Input['RateLimitsArgs']]:
         """
@@ -153,18 +133,6 @@ class QueueArgs:
     @stackdriver_logging_config.setter
     def stackdriver_logging_config(self, value: Optional[pulumi.Input['StackdriverLoggingConfigArgs']]):
         pulumi.set(self, "stackdriver_logging_config", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['QueueState']]:
-        """
-        The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['QueueState']]):
-        pulumi.set(self, "state", value)
 
     @property
     @pulumi.getter(name="taskTtl")
@@ -212,11 +180,9 @@ class Queue(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 purge_time: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']]] = None,
-                 state: Optional[pulumi.Input['QueueState']] = None,
                  task_ttl: Optional[pulumi.Input[str]] = None,
                  tombstone_ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['QueueType']] = None,
@@ -228,11 +194,9 @@ class Queue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AppEngineHttpQueueArgs']] app_engine_http_queue: AppEngineHttpQueue settings apply only to App Engine tasks in this queue. Http tasks are not affected by this proto.
         :param pulumi.Input[str] name: Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
-        :param pulumi.Input[str] purge_time: The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
         :param pulumi.Input[pulumi.InputType['RateLimitsArgs']] rate_limits: Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts. However they control task attempts in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc). The queue's actual dispatch rate is the result of: * Number of tasks in the queue * User-specified throttling: rate_limits, retry_config, and the queue's state. * System throttling due to `429` (Too Many Requests) or `503` (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic spikes.
         :param pulumi.Input[pulumi.InputType['RetryConfigArgs']] retry_config: Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
         :param pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']] stackdriver_logging_config: Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
-        :param pulumi.Input['QueueState'] state: The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
         :param pulumi.Input[str] task_ttl: The maximum amount of time that a task will be retained in this queue. Queues created by Cloud Tasks have a default `task_ttl` of 31 days. After a task has lived for `task_ttl`, the task will be deleted regardless of whether it was dispatched or not. The `task_ttl` for queues created via queue.yaml/xml is equal to the maximum duration because there is a [storage quota](https://cloud.google.com/appengine/quotas#Task_Queue) for these queues. To view the maximum valid duration, see the documentation for Duration.
         :param pulumi.Input[str] tombstone_ttl: The task tombstone time to live (TTL). After a task is deleted or executed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour.
         :param pulumi.Input['QueueType'] type: Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left unspecified, the default value of `PUSH` is selected.
@@ -265,11 +229,9 @@ class Queue(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 purge_time: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']]] = None,
-                 state: Optional[pulumi.Input['QueueState']] = None,
                  task_ttl: Optional[pulumi.Input[str]] = None,
                  tombstone_ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['QueueType']] = None,
@@ -293,14 +255,14 @@ class Queue(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["purge_time"] = purge_time
             __props__.__dict__["rate_limits"] = rate_limits
             __props__.__dict__["retry_config"] = retry_config
             __props__.__dict__["stackdriver_logging_config"] = stackdriver_logging_config
-            __props__.__dict__["state"] = state
             __props__.__dict__["task_ttl"] = task_ttl
             __props__.__dict__["tombstone_ttl"] = tombstone_ttl
             __props__.__dict__["type"] = type
+            __props__.__dict__["purge_time"] = None
+            __props__.__dict__["state"] = None
             __props__.__dict__["stats"] = None
         super(Queue, __self__).__init__(
             'google-native:cloudtasks/v2beta3:Queue',

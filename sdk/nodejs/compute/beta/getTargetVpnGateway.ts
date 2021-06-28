@@ -31,7 +31,7 @@ export interface GetTargetVpnGatewayArgs {
 
 export interface GetTargetVpnGatewayResult {
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
     /**
@@ -39,11 +39,11 @@ export interface GetTargetVpnGatewayResult {
      */
     readonly description: string;
     /**
-     * [Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
+     * A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
      */
     readonly forwardingRules: string[];
     /**
-     * [Output Only] Type of resource. Always compute#targetVpnGateway for target VPN gateways.
+     * Type of resource. Always compute#targetVpnGateway for target VPN gateways.
      */
     readonly kind: string;
     /**
@@ -65,19 +65,19 @@ export interface GetTargetVpnGatewayResult {
      */
     readonly network: string;
     /**
-     * [Output Only] URL of the region where the target VPN gateway resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     * URL of the region where the target VPN gateway resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
     readonly selfLink: string;
     /**
-     * [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
+     * The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
      */
     readonly status: string;
     /**
-     * [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
+     * A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
      */
     readonly tunnels: string[];
 }

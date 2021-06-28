@@ -6,7 +6,6 @@ from enum import Enum
 
 __all__ = [
     'WorkerPoolRegionsItem',
-    'WorkerPoolStatus',
 ]
 
 
@@ -16,14 +15,3 @@ class WorkerPoolRegionsItem(str, Enum):
     US_WEST1 = "us-west1"
     US_EAST1 = "us-east1"
     US_EAST4 = "us-east4"
-
-
-class WorkerPoolStatus(str, Enum):
-    """
-    Output only. WorkerPool Status.
-    """
-    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
-    CREATING = "CREATING"
-    RUNNING = "RUNNING"
-    DELETING = "DELETING"
-    DELETED = "DELETED"

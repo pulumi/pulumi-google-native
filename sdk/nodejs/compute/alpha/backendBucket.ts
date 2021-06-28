@@ -44,9 +44,9 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.alpha.BackendBucketCdnPolicyResponse>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * Headers that the HTTP/S load balancer should add to proxied responses.
      */
@@ -56,9 +56,9 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+     * The resource URL for the edge security policy associated with this backend bucket.
      */
-    public readonly edgeSecurityPolicy!: pulumi.Output<string>;
+    public /*out*/ readonly edgeSecurityPolicy!: pulumi.Output<string>;
     /**
      * If true, enable Cloud CDN for this BackendBucket.
      */
@@ -72,13 +72,13 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for the resource.
+     * Server-defined URL for the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
 
     /**
      * Create a BackendBucket resource with the given unique name, arguments, and options.
@@ -96,18 +96,17 @@ export class BackendBucket extends pulumi.CustomResource {
             }
             inputs["bucketName"] = args ? args.bucketName : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
             inputs["enableCdn"] = args ? args.enableCdn : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["edgeSecurityPolicy"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
         } else {
             inputs["bucketName"] = undefined /*out*/;
             inputs["cdnPolicy"] = undefined /*out*/;
@@ -141,10 +140,6 @@ export interface BackendBucketArgs {
      */
     cdnPolicy?: pulumi.Input<inputs.compute.alpha.BackendBucketCdnPolicyArgs>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * Headers that the HTTP/S load balancer should add to proxied responses.
      */
     customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
@@ -153,17 +148,9 @@ export interface BackendBucketArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * [Output Only] The resource URL for the edge security policy associated with this backend bucket.
-     */
-    edgeSecurityPolicy?: pulumi.Input<string>;
-    /**
      * If true, enable Cloud CDN for this BackendBucket.
      */
     enableCdn?: pulumi.Input<boolean>;
-    /**
-     * [Output Only] Unique identifier for the resource; defined by the server.
-     */
-    id?: pulumi.Input<string>;
     /**
      * Type of the resource.
      */
@@ -174,12 +161,4 @@ export interface BackendBucketArgs {
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for the resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
 }

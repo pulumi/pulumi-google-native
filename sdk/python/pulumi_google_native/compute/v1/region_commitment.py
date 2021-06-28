@@ -19,54 +19,29 @@ class RegionCommitmentArgs:
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 end_timestamp: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input['LicenseResourceCommitmentArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['RegionCommitmentPlan']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 start_timestamp: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['RegionCommitmentStatus']] = None,
-                 status_message: Optional[pulumi.Input[str]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]]] = None):
         """
         The set of arguments for constructing a RegionCommitment resource.
-        :param pulumi.Input[str] region: [Output Only] URL of the region where this commitment may be used.
         :param pulumi.Input['RegionCommitmentCategory'] category: The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] end_timestamp: [Output Only] Commitment end time in RFC3339 text format.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#commitment for commitments.
         :param pulumi.Input['LicenseResourceCommitmentArgs'] license_resource: The license specification required as part of a license commitment.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['RegionCommitmentPlan'] plan: The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         :param pulumi.Input[Sequence[pulumi.Input['ReservationArgs']]] reservations: List of reservations in this commitment.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]] resources: A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] start_timestamp: [Output Only] Commitment start time in RFC3339 text format.
-        :param pulumi.Input['RegionCommitmentStatus'] status: [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-        :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if category is not None:
             pulumi.set(__self__, "category", category)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if end_timestamp is not None:
-            pulumi.set(__self__, "end_timestamp", end_timestamp)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if license_resource is not None:
             pulumi.set(__self__, "license_resource", license_resource)
         if name is not None:
@@ -79,14 +54,6 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "reservations", reservations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if start_timestamp is not None:
-            pulumi.set(__self__, "start_timestamp", start_timestamp)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if status_message is not None:
-            pulumi.set(__self__, "status_message", status_message)
 
     @property
     @pulumi.getter
@@ -100,9 +67,6 @@ class RegionCommitmentArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        [Output Only] URL of the region where this commitment may be used.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -122,18 +86,6 @@ class RegionCommitmentArgs:
         pulumi.set(self, "category", value)
 
     @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Creation timestamp in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -144,42 +96,6 @@ class RegionCommitmentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="endTimestamp")
-    def end_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Commitment end time in RFC3339 text format.
-        """
-        return pulumi.get(self, "end_timestamp")
-
-    @end_timestamp.setter
-    def end_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "end_timestamp", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Type of the resource. Always compute#commitment for commitments.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter(name="licenseResource")
@@ -250,54 +166,6 @@ class RegionCommitmentArgs:
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]]]):
         pulumi.set(self, "resources", value)
 
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="startTimestamp")
-    def start_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Commitment start time in RFC3339 text format.
-        """
-        return pulumi.get(self, "start_timestamp")
-
-    @start_timestamp.setter
-    def start_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_timestamp", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['RegionCommitmentStatus']]:
-        """
-        [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['RegionCommitmentStatus']]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="statusMessage")
-    def status_message(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] An optional, human-readable explanation of the status.
-        """
-        return pulumi.get(self, "status_message")
-
-    @status_message.setter
-    def status_message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status_message", value)
-
 
 class RegionCommitment(pulumi.CustomResource):
     @overload
@@ -305,11 +173,7 @@ class RegionCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 end_timestamp: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input[pulumi.InputType['LicenseResourceCommitmentArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['RegionCommitmentPlan']] = None,
@@ -318,10 +182,6 @@ class RegionCommitment(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 start_timestamp: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['RegionCommitmentStatus']] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a commitment in the specified project using the data included in the request.
@@ -329,21 +189,12 @@ class RegionCommitment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['RegionCommitmentCategory'] category: The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] end_timestamp: [Output Only] Commitment end time in RFC3339 text format.
-        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#commitment for commitments.
         :param pulumi.Input[pulumi.InputType['LicenseResourceCommitmentArgs']] license_resource: The license specification required as part of a license commitment.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['RegionCommitmentPlan'] plan: The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
-        :param pulumi.Input[str] region: [Output Only] URL of the region where this commitment may be used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]] reservations: List of reservations in this commitment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]] resources: A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
-        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] start_timestamp: [Output Only] Commitment start time in RFC3339 text format.
-        :param pulumi.Input['RegionCommitmentStatus'] status: [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-        :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         """
         ...
     @overload
@@ -370,11 +221,7 @@ class RegionCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 end_timestamp: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input[pulumi.InputType['LicenseResourceCommitmentArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['RegionCommitmentPlan']] = None,
@@ -383,10 +230,6 @@ class RegionCommitment(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 start_timestamp: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['RegionCommitmentStatus']] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -400,11 +243,7 @@ class RegionCommitment(pulumi.CustomResource):
             __props__ = RegionCommitmentArgs.__new__(RegionCommitmentArgs)
 
             __props__.__dict__["category"] = category
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            __props__.__dict__["end_timestamp"] = end_timestamp
-            __props__.__dict__["id"] = id
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["license_resource"] = license_resource
             __props__.__dict__["name"] = name
             __props__.__dict__["plan"] = plan
@@ -417,10 +256,13 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reservations"] = reservations
             __props__.__dict__["resources"] = resources
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["start_timestamp"] = start_timestamp
-            __props__.__dict__["status"] = status
-            __props__.__dict__["status_message"] = status_message
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["end_timestamp"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["start_timestamp"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["status_message"] = None
         super(RegionCommitment, __self__).__init__(
             'google-native:compute/v1:RegionCommitment',
             resource_name,
@@ -472,7 +314,7 @@ class RegionCommitment(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -488,7 +330,7 @@ class RegionCommitment(pulumi.CustomResource):
     @pulumi.getter(name="endTimestamp")
     def end_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Commitment end time in RFC3339 text format.
+        Commitment end time in RFC3339 text format.
         """
         return pulumi.get(self, "end_timestamp")
 
@@ -496,7 +338,7 @@ class RegionCommitment(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] Type of the resource. Always compute#commitment for commitments.
+        Type of the resource. Always compute#commitment for commitments.
         """
         return pulumi.get(self, "kind")
 
@@ -528,7 +370,7 @@ class RegionCommitment(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] URL of the region where this commitment may be used.
+        URL of the region where this commitment may be used.
         """
         return pulumi.get(self, "region")
 
@@ -552,7 +394,7 @@ class RegionCommitment(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -560,7 +402,7 @@ class RegionCommitment(pulumi.CustomResource):
     @pulumi.getter(name="startTimestamp")
     def start_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Commitment start time in RFC3339 text format.
+        Commitment start time in RFC3339 text format.
         """
         return pulumi.get(self, "start_timestamp")
 
@@ -568,7 +410,7 @@ class RegionCommitment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+        Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
         """
         return pulumi.get(self, "status")
 
@@ -576,7 +418,7 @@ class RegionCommitment(pulumi.CustomResource):
     @pulumi.getter(name="statusMessage")
     def status_message(self) -> pulumi.Output[str]:
         """
-        [Output Only] An optional, human-readable explanation of the status.
+        An optional, human-readable explanation of the status.
         """
         return pulumi.get(self, "status_message")
 

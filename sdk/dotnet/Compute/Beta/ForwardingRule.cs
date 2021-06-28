@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> BackendService { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> IsMirroringCollector { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
+        /// Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -209,19 +209,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<string>> Ports { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The PSC connection id of the PSC Forwarding Rule.
+        /// The PSC connection id of the PSC Forwarding Rule.
         /// </summary>
         [Output("pscConnectionId")]
         public Output<string> PscConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ServiceLabel { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The internal fully qualified service name for this Forwarding Rule.
+        /// The internal fully qualified service name for this Forwarding Rule.
         /// 
         /// This field is only used for internal load balancing.
         /// </summary>
@@ -366,22 +366,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? BackendService { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
@@ -394,12 +382,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("isMirroringCollector")]
         public Input<bool>? IsMirroringCollector { get; set; }
-
-        /// <summary>
-        /// [Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -514,26 +496,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// [Output Only] The PSC connection id of the PSC Forwarding Rule.
-        /// </summary>
-        [Input("pscConnectionId")]
-        public Input<string>? PscConnectionId { get; set; }
-
-        /// <summary>
-        /// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         [Input("serviceDirectoryRegistrations")]
         private InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs>? _serviceDirectoryRegistrations;
@@ -558,14 +525,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("serviceLabel")]
         public Input<string>? ServiceLabel { get; set; }
-
-        /// <summary>
-        /// [Output Only] The internal fully qualified service name for this Forwarding Rule.
-        /// 
-        /// This field is only used for internal load balancing.
-        /// </summary>
-        [Input("serviceName")]
-        public Input<string>? ServiceName { get; set; }
 
         /// <summary>
         /// This field is only used for internal load balancing.

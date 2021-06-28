@@ -121,10 +121,6 @@ func (EvaluationJobState) ElementType() reflect.Type {
 type evaluationJobArgs struct {
 	// Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
 	AnnotationSpecSet *string `pulumi:"annotationSpecSet"`
-	// Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
-	Attempts []GoogleCloudDatalabelingV1beta1Attempt `pulumi:"attempts"`
-	// Timestamp of when this evaluation job was created.
-	CreateTime *string `pulumi:"createTime"`
 	// Required. Description of the job. The description can be up to 25,000 characters long.
 	Description *string `pulumi:"description"`
 	// Required. Configuration details for the evaluation job.
@@ -133,23 +129,15 @@ type evaluationJobArgs struct {
 	LabelMissingGroundTruth *bool `pulumi:"labelMissingGroundTruth"`
 	// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
 	ModelVersion *string `pulumi:"modelVersion"`
-	// After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project      string  `pulumi:"project"`
 	// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
 	Schedule *string `pulumi:"schedule"`
-	// Describes the current state of the job.
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a EvaluationJob resource.
 type EvaluationJobArgs struct {
 	// Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
 	AnnotationSpecSet pulumi.StringPtrInput
-	// Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
-	Attempts GoogleCloudDatalabelingV1beta1AttemptArrayInput
-	// Timestamp of when this evaluation job was created.
-	CreateTime pulumi.StringPtrInput
 	// Required. Description of the job. The description can be up to 25,000 characters long.
 	Description pulumi.StringPtrInput
 	// Required. Configuration details for the evaluation job.
@@ -158,13 +146,9 @@ type EvaluationJobArgs struct {
 	LabelMissingGroundTruth pulumi.BoolPtrInput
 	// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
 	ModelVersion pulumi.StringPtrInput
-	// After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project      pulumi.StringInput
 	// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
 	Schedule pulumi.StringPtrInput
-	// Describes the current state of the job.
-	State *EvaluationJobStateEnum
 }
 
 func (EvaluationJobArgs) ElementType() reflect.Type {

@@ -661,7 +661,8 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 		if isDeprecated(value.Description) {
 			continue
 		}
-		if !isOutput && value.ReadOnly {
+		readOnly := value.ReadOnly || isReadOnly(value.Description)
+		if !isOutput && readOnly {
 			continue
 		}
 		if isOutput && name == "id" {
@@ -701,10 +702,8 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 				result.requiredSpecs.Add(sdkName)
 			}
 
-			description := strings.TrimPrefix(prop.Description, "Output only. ")
-
 			result.specs[sdkName] = schema.PropertySpec{
-				Description: description,
+				Description: clearDescription(prop.Description),
 				TypeSpec:    *typeSpec,
 			}
 		}
@@ -921,6 +920,21 @@ func isDeprecated(description string) bool {
 		strings.Contains(description, "[Deprecated]") ||
 		strings.Contains(description, "Deprecated in favor") ||
 		strings.Contains(description, "This field is deprecated")
+}
+
+// isReadOnly returns true if the description of a property or a parameter signals that it is
+// an output-only property.
+func isReadOnly(description string) bool {
+	lowerDesc := strings.ToLower(description)
+	return strings.HasPrefix(lowerDesc, "[output only]") ||
+		strings.HasPrefix(lowerDesc, "output only.")
+}
+
+// clearDescription removes annotations like "output only" from description text.
+func clearDescription(description string) string {
+	description = strings.TrimPrefix(description, "Output only. ")
+	description = strings.TrimPrefix(description, "[Output Only] ")
+	return description
 }
 
 func rawMessage(v interface{}) json.RawMessage {

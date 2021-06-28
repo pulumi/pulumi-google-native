@@ -17,12 +17,12 @@ type NodeGroup struct {
 
 	// Specifies how autoscaling should behave.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyResponseOutput `pulumi:"autoscalingPolicy"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+	// The type of the resource. Always compute#nodeGroup for node group.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint pulumi.StringOutput `pulumi:"locationHint"`
@@ -33,14 +33,14 @@ type NodeGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// URL of the node template to create the node group from.
 	NodeTemplate pulumi.StringOutput `pulumi:"nodeTemplate"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// [Output Only] The total number of nodes in the node group.
+	// The total number of nodes in the node group.
 	Size   pulumi.IntOutput    `pulumi:"size"`
 	Status pulumi.StringOutput `pulumi:"status"`
-	// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+	// The name of the zone where the node group resides, such as us-central1-a.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -84,12 +84,12 @@ func GetNodeGroup(ctx *pulumi.Context,
 type nodeGroupState struct {
 	// Specifies how autoscaling should behave.
 	AutoscalingPolicy *NodeGroupAutoscalingPolicyResponse `pulumi:"autoscalingPolicy"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	Fingerprint *string `pulumi:"fingerprint"`
-	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+	// The type of the resource. Always compute#nodeGroup for node group.
 	Kind *string `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint *string `pulumi:"locationHint"`
@@ -100,26 +100,26 @@ type nodeGroupState struct {
 	Name *string `pulumi:"name"`
 	// URL of the node template to create the node group from.
 	NodeTemplate *string `pulumi:"nodeTemplate"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] The total number of nodes in the node group.
+	// The total number of nodes in the node group.
 	Size   *int    `pulumi:"size"`
 	Status *string `pulumi:"status"`
-	// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+	// The name of the zone where the node group resides, such as us-central1-a.
 	Zone *string `pulumi:"zone"`
 }
 
 type NodeGroupState struct {
 	// Specifies how autoscaling should behave.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyResponsePtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	Fingerprint pulumi.StringPtrInput
-	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+	// The type of the resource. Always compute#nodeGroup for node group.
 	Kind pulumi.StringPtrInput
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint pulumi.StringPtrInput
@@ -130,14 +130,14 @@ type NodeGroupState struct {
 	Name pulumi.StringPtrInput
 	// URL of the node template to create the node group from.
 	NodeTemplate pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
+	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] The total number of nodes in the node group.
+	// The total number of nodes in the node group.
 	Size   pulumi.IntPtrInput
 	Status pulumi.StringPtrInput
-	// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+	// The name of the zone where the node group resides, such as us-central1-a.
 	Zone pulumi.StringPtrInput
 }
 
@@ -148,15 +148,9 @@ func (NodeGroupState) ElementType() reflect.Type {
 type nodeGroupArgs struct {
 	// Specifies how autoscaling should behave.
 	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description *string `pulumi:"description"`
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id               *string `pulumi:"id"`
+	Description      *string `pulumi:"description"`
 	InitialNodeCount string  `pulumi:"initialNodeCount"`
-	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
-	Kind *string `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint *string `pulumi:"locationHint"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
@@ -168,30 +162,17 @@ type nodeGroupArgs struct {
 	NodeTemplate *string `pulumi:"nodeTemplate"`
 	Project      string  `pulumi:"project"`
 	RequestId    *string `pulumi:"requestId"`
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// [Output Only] The total number of nodes in the node group.
-	Size   *int    `pulumi:"size"`
-	Status *string `pulumi:"status"`
-	// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
-	Zone string `pulumi:"zone"`
+	Status       *string `pulumi:"status"`
+	Zone         string  `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a NodeGroup resource.
 type NodeGroupArgs struct {
 	// Specifies how autoscaling should behave.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
-	// [Output Only] Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description pulumi.StringPtrInput
-	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id               pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
 	InitialNodeCount pulumi.StringInput
-	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
-	Kind pulumi.StringPtrInput
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint pulumi.StringPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
@@ -203,15 +184,8 @@ type NodeGroupArgs struct {
 	NodeTemplate pulumi.StringPtrInput
 	Project      pulumi.StringInput
 	RequestId    pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output Only] Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
-	// [Output Only] The total number of nodes in the node group.
-	Size   pulumi.IntPtrInput
-	Status *NodeGroupStatus
-	// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
-	Zone pulumi.StringInput
+	Status       *NodeGroupStatus
+	Zone         pulumi.StringInput
 }
 
 func (NodeGroupArgs) ElementType() reflect.Type {

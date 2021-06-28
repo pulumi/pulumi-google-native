@@ -10,84 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
-type DomainProvisioningCertStatus pulumi.String
-
-const (
-	// Unspecified certificate provisioning status.
-	DomainProvisioningCertStatusCertStatusUnspecified = DomainProvisioningCertStatus("CERT_STATUS_UNSPECIFIED")
-	// Waiting for certificate challenge to be created.
-	DomainProvisioningCertStatusCertPending = DomainProvisioningCertStatus("CERT_PENDING")
-	// Waiting for certificate challenge to be met.
-	DomainProvisioningCertStatusCertMissing = DomainProvisioningCertStatus("CERT_MISSING")
-	// Certificate challenge met; attempting to acquire/propagate certificate.
-	DomainProvisioningCertStatusCertProcessing = DomainProvisioningCertStatus("CERT_PROCESSING")
-	// Certificate obtained; propagating to the CDN.
-	DomainProvisioningCertStatusCertPropagating = DomainProvisioningCertStatus("CERT_PROPAGATING")
-	// Certificate provisioned and deployed across the CDN.
-	DomainProvisioningCertStatusCertActive = DomainProvisioningCertStatus("CERT_ACTIVE")
-	// Certificate provisioning failed in a non-recoverable manner.
-	DomainProvisioningCertStatusCertError = DomainProvisioningCertStatus("CERT_ERROR")
-)
-
-func (DomainProvisioningCertStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e DomainProvisioningCertStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DomainProvisioningCertStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DomainProvisioningCertStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DomainProvisioningCertStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// The DNS record match status as of the last DNS fetch.
-type DomainProvisioningDnsStatus pulumi.String
-
-const (
-	// Unspecified DNS status.
-	DomainProvisioningDnsStatusDnsStatusUnspecified = DomainProvisioningDnsStatus("DNS_STATUS_UNSPECIFIED")
-	// No DNS records have been specified for this domain yet.
-	DomainProvisioningDnsStatusDnsPending = DomainProvisioningDnsStatus("DNS_PENDING")
-	// None of the required DNS records have been detected on the domain.
-	DomainProvisioningDnsStatusDnsMissing = DomainProvisioningDnsStatus("DNS_MISSING")
-	// Some of the required DNS records were detected, but not all of them. No extra (non-required) DNS records were detected.
-	DomainProvisioningDnsStatusDnsPartialMatch = DomainProvisioningDnsStatus("DNS_PARTIAL_MATCH")
-	// All required DNS records were detected. No extra (non-required) DNS records were detected.
-	DomainProvisioningDnsStatusDnsMatch = DomainProvisioningDnsStatus("DNS_MATCH")
-	// The domain has at least one of the required DNS records, and it has at least one extra (non-required) DNS record.
-	DomainProvisioningDnsStatusDnsExtraneousMatch = DomainProvisioningDnsStatus("DNS_EXTRANEOUS_MATCH")
-)
-
-func (DomainProvisioningDnsStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e DomainProvisioningDnsStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DomainProvisioningDnsStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DomainProvisioningDnsStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DomainProvisioningDnsStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
 // Required. The redirect status code.
 type DomainRedirectType pulumi.String
 
@@ -115,41 +37,5 @@ func (e DomainRedirectType) ToStringPtrOutput() pulumi.StringPtrOutput {
 }
 
 func (e DomainRedirectType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-// Output only. Additional status of the domain association.
-type DomainStatus pulumi.String
-
-const (
-	// Unspecified domain association status.
-	DomainStatusDomainStatusUnspecified = DomainStatus("DOMAIN_STATUS_UNSPECIFIED")
-	// An external operation is in progress on the domain association and no further operations can be performed until it is complete. Formerly used for metabase updates. Not currently used
-	DomainStatusDomainChangePending = DomainStatus("DOMAIN_CHANGE_PENDING")
-	// The domain association is active and no additional action is required.
-	DomainStatusDomainActive = DomainStatus("DOMAIN_ACTIVE")
-	// The domain was previously verified in the legacy system. User must reverify the domain through the ownership service.
-	DomainStatusDomainVerificationRequired = DomainStatus("DOMAIN_VERIFICATION_REQUIRED")
-	// The domain verification has been lost and the domain is in the grace period before being removed from the Firebase Hosting site.
-	DomainStatusDomainVerificationLost = DomainStatus("DOMAIN_VERIFICATION_LOST")
-)
-
-func (DomainStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
-}
-
-func (e DomainStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DomainStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e DomainStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e DomainStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }

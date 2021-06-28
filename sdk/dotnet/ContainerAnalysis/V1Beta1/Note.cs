@@ -181,12 +181,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Input<Inputs.BuildArgs>? Build { get; set; }
 
         /// <summary>
-        /// The time this note was created. This field can be used as a filter in list requests.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// A note describing something that can be deployed.
         /// </summary>
         [Input("deployable")]
@@ -211,22 +205,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Input<Inputs.InTotoArgs>? Intoto { get; set; }
 
         /// <summary>
-        /// The type of analysis. This field can be used as a filter in list requests.
-        /// </summary>
-        [Input("kind")]
-        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.NoteKind>? Kind { get; set; }
-
-        /// <summary>
         /// A detailed description of this note.
         /// </summary>
         [Input("longDescription")]
         public Input<string>? LongDescription { get; set; }
-
-        /// <summary>
-        /// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("noteId", required: true)]
         public Input<string> NoteId { get; set; } = null!;
@@ -269,12 +251,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         [Input("shortDescription")]
         public Input<string>? ShortDescription { get; set; }
-
-        /// <summary>
-        /// The time this note was last updated. This field can be used as a filter in list requests.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// A note describing a package vulnerability.

@@ -21,9 +21,9 @@ type InstanceGroupManager struct {
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyResponseArrayOutput `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 	BaseInstanceName pulumi.StringOutput `pulumi:"baseInstanceName"`
-	// [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
+	// The creation timestamp for this managed instance group in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+	// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
 	CurrentActions InstanceGroupManagerActionsSummaryResponseOutput `pulumi:"currentActions"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -35,25 +35,25 @@ type InstanceGroupManager struct {
 	//
 	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// [Output Only] The URL of the Instance Group resource.
+	// The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate pulumi.StringOutput `pulumi:"instanceTemplate"`
-	// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
+	// The resource type, which is always compute#instanceGroupManager for managed instance groups.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortResponseArrayOutput `pulumi:"namedPorts"`
-	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
+	// The URL of the region where the managed instance group resides (for regional resources).
 	Region pulumi.StringOutput `pulumi:"region"`
-	// [Output Only] The URL for this managed instance group. The server defines this URL.
+	// The URL for this managed instance group. The server defines this URL.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyResponseOutput `pulumi:"statefulPolicy"`
-	// [Output Only] The status of this managed instance group.
+	// The status of this managed instance group.
 	Status InstanceGroupManagerStatusResponseOutput `pulumi:"status"`
 	// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
 	TargetPools pulumi.StringArrayOutput `pulumi:"targetPools"`
@@ -65,7 +65,7 @@ type InstanceGroupManager struct {
 	//
 	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionResponseArrayOutput `pulumi:"versions"`
-	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
+	// The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -108,9 +108,9 @@ type instanceGroupManagerState struct {
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicyResponse `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 	BaseInstanceName *string `pulumi:"baseInstanceName"`
-	// [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
+	// The creation timestamp for this managed instance group in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+	// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
 	CurrentActions *InstanceGroupManagerActionsSummaryResponse `pulumi:"currentActions"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -122,25 +122,25 @@ type instanceGroupManagerState struct {
 	//
 	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint *string `pulumi:"fingerprint"`
-	// [Output Only] The URL of the Instance Group resource.
+	// The URL of the Instance Group resource.
 	InstanceGroup *string `pulumi:"instanceGroup"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate *string `pulumi:"instanceTemplate"`
-	// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
+	// The resource type, which is always compute#instanceGroupManager for managed instance groups.
 	Kind *string `pulumi:"kind"`
 	// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name *string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts []NamedPortResponse `pulumi:"namedPorts"`
-	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
+	// The URL of the region where the managed instance group resides (for regional resources).
 	Region *string `pulumi:"region"`
-	// [Output Only] The URL for this managed instance group. The server defines this URL.
+	// The URL for this managed instance group. The server defines this URL.
 	SelfLink *string `pulumi:"selfLink"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy *StatefulPolicyResponse `pulumi:"statefulPolicy"`
-	// [Output Only] The status of this managed instance group.
+	// The status of this managed instance group.
 	Status *InstanceGroupManagerStatusResponse `pulumi:"status"`
 	// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
 	TargetPools []string `pulumi:"targetPools"`
@@ -152,7 +152,7 @@ type instanceGroupManagerState struct {
 	//
 	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersionResponse `pulumi:"versions"`
-	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
+	// The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone *string `pulumi:"zone"`
 }
 
@@ -161,9 +161,9 @@ type InstanceGroupManagerState struct {
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyResponseArrayInput
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 	BaseInstanceName pulumi.StringPtrInput
-	// [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
+	// The creation timestamp for this managed instance group in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+	// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
 	CurrentActions InstanceGroupManagerActionsSummaryResponsePtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -175,25 +175,25 @@ type InstanceGroupManagerState struct {
 	//
 	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint pulumi.StringPtrInput
-	// [Output Only] The URL of the Instance Group resource.
+	// The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringPtrInput
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate pulumi.StringPtrInput
-	// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
+	// The resource type, which is always compute#instanceGroupManager for managed instance groups.
 	Kind pulumi.StringPtrInput
 	// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringPtrInput
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortResponseArrayInput
-	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
+	// The URL of the region where the managed instance group resides (for regional resources).
 	Region pulumi.StringPtrInput
-	// [Output Only] The URL for this managed instance group. The server defines this URL.
+	// The URL for this managed instance group. The server defines this URL.
 	SelfLink pulumi.StringPtrInput
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount pulumi.StringPtrInput
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyResponsePtrInput
-	// [Output Only] The status of this managed instance group.
+	// The status of this managed instance group.
 	Status InstanceGroupManagerStatusResponsePtrInput
 	// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
 	TargetPools pulumi.StringArrayInput
@@ -205,7 +205,7 @@ type InstanceGroupManagerState struct {
 	//
 	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionResponseArrayInput
-	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
+	// The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone pulumi.StringPtrInput
 }
 
@@ -218,40 +218,24 @@ type instanceGroupManagerArgs struct {
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicy `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 	BaseInstanceName *string `pulumi:"baseInstanceName"`
-	// [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
-	CurrentActions *InstanceGroupManagerActionsSummary `pulumi:"currentActions"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy *DistributionPolicy `pulumi:"distributionPolicy"`
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction *string `pulumi:"failoverAction"`
-	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
-	Id *string `pulumi:"id"`
-	// [Output Only] The URL of the Instance Group resource.
-	InstanceGroup *string `pulumi:"instanceGroup"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate *string `pulumi:"instanceTemplate"`
-	// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
-	Kind *string `pulumi:"kind"`
 	// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name *string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
 	Project    string      `pulumi:"project"`
-	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region    *string `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
-	// [Output Only] The URL for this managed instance group. The server defines this URL.
-	SelfLink *string `pulumi:"selfLink"`
+	RequestId  *string     `pulumi:"requestId"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy *StatefulPolicy `pulumi:"statefulPolicy"`
-	// [Output Only] The status of this managed instance group.
-	Status *InstanceGroupManagerStatus `pulumi:"status"`
 	// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
 	TargetPools []string `pulumi:"targetPools"`
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
@@ -262,8 +246,7 @@ type instanceGroupManagerArgs struct {
 	//
 	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
-	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
-	Zone string `pulumi:"zone"`
+	Zone     string                        `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a InstanceGroupManager resource.
@@ -272,40 +255,24 @@ type InstanceGroupManagerArgs struct {
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyArrayInput
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 	BaseInstanceName pulumi.StringPtrInput
-	// [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
-	CurrentActions InstanceGroupManagerActionsSummaryPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy DistributionPolicyPtrInput
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction *InstanceGroupManagerFailoverAction
-	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
-	Id pulumi.StringPtrInput
-	// [Output Only] The URL of the Instance Group resource.
-	InstanceGroup pulumi.StringPtrInput
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate pulumi.StringPtrInput
-	// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
-	Kind pulumi.StringPtrInput
 	// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringPtrInput
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortArrayInput
 	Project    pulumi.StringInput
-	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region    pulumi.StringPtrInput
-	RequestId pulumi.StringPtrInput
-	// [Output Only] The URL for this managed instance group. The server defines this URL.
-	SelfLink pulumi.StringPtrInput
+	RequestId  pulumi.StringPtrInput
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount pulumi.StringPtrInput
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyPtrInput
-	// [Output Only] The status of this managed instance group.
-	Status InstanceGroupManagerStatusPtrInput
 	// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
 	TargetPools pulumi.StringArrayInput
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
@@ -316,8 +283,7 @@ type InstanceGroupManagerArgs struct {
 	//
 	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionArrayInput
-	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
-	Zone pulumi.StringInput
+	Zone     pulumi.StringInput
 }
 
 func (InstanceGroupManagerArgs) ElementType() reflect.Type {

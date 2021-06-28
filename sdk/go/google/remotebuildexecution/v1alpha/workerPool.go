@@ -110,8 +110,6 @@ type workerPoolArgs struct {
 	// ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
 	PoolId  *string `pulumi:"poolId"`
 	Project string  `pulumi:"project"`
-	// State of the worker pool.
-	State *string `pulumi:"state"`
 	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
 	WorkerConfig *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig `pulumi:"workerConfig"`
 	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
@@ -132,8 +130,6 @@ type WorkerPoolArgs struct {
 	// ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
 	PoolId  pulumi.StringPtrInput
 	Project pulumi.StringInput
-	// State of the worker pool.
-	State *WorkerPoolStateEnum
 	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
 	WorkerConfig GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrInput
 	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.

@@ -20,53 +20,35 @@ class RegionInstanceGroupManagerArgs:
                  region: pulumi.Input[str],
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
-                 current_actions: Optional[pulumi.Input['InstanceGroupManagerActionsSummaryArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input['DistributionPolicyArgs']] = None,
                  failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 instance_group: Optional[pulumi.Input[str]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  stateful_policy: Optional[pulumi.Input['StatefulPolicyArgs']] = None,
-                 status: Optional[pulumi.Input['InstanceGroupManagerStatusArgs']] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  target_stopped_size: Optional[pulumi.Input[int]] = None,
                  target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None,
-                 zone: Optional[pulumi.Input[str]] = None):
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None):
         """
         The set of arguments for constructing a RegionInstanceGroupManager resource.
-        :param pulumi.Input[str] region: [Output Only] The URL of the region where the managed instance group resides (for regional resources).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
-        :param pulumi.Input['InstanceGroupManagerActionsSummaryArgs'] current_actions: [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['DistributionPolicyArgs'] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
-        :param pulumi.Input[str] id: [Output Only] A unique identifier for this resource type. The server generates this identifier.
-        :param pulumi.Input[str] instance_group: [Output Only] The URL of the Instance Group resource.
         :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: Instance lifecycle policy for this Instance Group Manager.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
-        :param pulumi.Input[str] kind: [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
-        :param pulumi.Input[str] self_link: [Output Only] The URL for this managed instance group. The server defines this URL.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         :param pulumi.Input['StatefulPolicyArgs'] stateful_policy: Stateful configuration for this Instanced Group Manager
-        :param pulumi.Input['InstanceGroupManagerStatusArgs'] status: [Output Only] The status of this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
         :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you:  
@@ -79,7 +61,6 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Specifies the instance templates used by this managed instance group to create instances.
                
                Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
-        :param pulumi.Input[str] zone: [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -87,42 +68,26 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if base_instance_name is not None:
             pulumi.set(__self__, "base_instance_name", base_instance_name)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
-        if current_actions is not None:
-            pulumi.set(__self__, "current_actions", current_actions)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if distribution_policy is not None:
             pulumi.set(__self__, "distribution_policy", distribution_policy)
         if failover_action is not None:
             pulumi.set(__self__, "failover_action", failover_action)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if instance_group is not None:
-            pulumi.set(__self__, "instance_group", instance_group)
         if instance_lifecycle_policy is not None:
             pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if instance_template is not None:
             pulumi.set(__self__, "instance_template", instance_template)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
             pulumi.set(__self__, "named_ports", named_ports)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if self_link_with_id is not None:
-            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if stateful_policy is not None:
             pulumi.set(__self__, "stateful_policy", stateful_policy)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if target_pools is not None:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
@@ -135,8 +100,6 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "update_policy", update_policy)
         if versions is not None:
             pulumi.set(__self__, "versions", versions)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -150,9 +113,6 @@ class RegionInstanceGroupManagerArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -182,30 +142,6 @@ class RegionInstanceGroupManagerArgs:
     @base_instance_name.setter
     def base_instance_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "base_instance_name", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
-
-    @property
-    @pulumi.getter(name="currentActions")
-    def current_actions(self) -> Optional[pulumi.Input['InstanceGroupManagerActionsSummaryArgs']]:
-        """
-        [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
-        """
-        return pulumi.get(self, "current_actions")
-
-    @current_actions.setter
-    def current_actions(self, value: Optional[pulumi.Input['InstanceGroupManagerActionsSummaryArgs']]):
-        pulumi.set(self, "current_actions", value)
 
     @property
     @pulumi.getter
@@ -244,30 +180,6 @@ class RegionInstanceGroupManagerArgs:
         pulumi.set(self, "failover_action", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A unique identifier for this resource type. The server generates this identifier.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="instanceGroup")
-    def instance_group(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The URL of the Instance Group resource.
-        """
-        return pulumi.get(self, "instance_group")
-
-    @instance_group.setter
-    def instance_group(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_group", value)
-
-    @property
     @pulumi.getter(name="instanceLifecyclePolicy")
     def instance_lifecycle_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']]:
         """
@@ -290,18 +202,6 @@ class RegionInstanceGroupManagerArgs:
     @instance_template.setter
     def instance_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_template", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -337,30 +237,6 @@ class RegionInstanceGroupManagerArgs:
         pulumi.set(self, "request_id", value)
 
     @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The URL for this managed instance group. The server defines this URL.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="selfLinkWithId")
-    def self_link_with_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Server-defined URL for this resource with the resource id.
-        """
-        return pulumi.get(self, "self_link_with_id")
-
-    @self_link_with_id.setter
-    def self_link_with_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link_with_id", value)
-
-    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
@@ -383,18 +259,6 @@ class RegionInstanceGroupManagerArgs:
     @stateful_policy.setter
     def stateful_policy(self, value: Optional[pulumi.Input['StatefulPolicyArgs']]):
         pulumi.set(self, "stateful_policy", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['InstanceGroupManagerStatusArgs']]:
-        """
-        [Output Only] The status of this managed instance group.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['InstanceGroupManagerStatusArgs']]):
-        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter(name="targetPools")
@@ -474,18 +338,6 @@ class RegionInstanceGroupManagerArgs:
     def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
-    @property
-    @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
-        """
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zone", value)
-
 
 class RegionInstanceGroupManager(pulumi.CustomResource):
     @overload
@@ -494,33 +346,24 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
-                 current_actions: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerActionsSummaryArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
                  failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 instance_group: Optional[pulumi.Input[str]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  stateful_policy: Optional[pulumi.Input[pulumi.InputType['StatefulPolicyArgs']]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  target_stopped_size: Optional[pulumi.Input[int]] = None,
                  target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
@@ -531,24 +374,15 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerActionsSummaryArgs']] current_actions: [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[pulumi.InputType['DistributionPolicyArgs']] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
-        :param pulumi.Input[str] id: [Output Only] A unique identifier for this resource type. The server generates this identifier.
-        :param pulumi.Input[str] instance_group: [Output Only] The URL of the Instance Group resource.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: Instance lifecycle policy for this Instance Group Manager.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
-        :param pulumi.Input[str] kind: [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
-        :param pulumi.Input[str] region: [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-        :param pulumi.Input[str] self_link: [Output Only] The URL for this managed instance group. The server defines this URL.
-        :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         :param pulumi.Input[pulumi.InputType['StatefulPolicyArgs']] stateful_policy: Stateful configuration for this Instanced Group Manager
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']] status: [Output Only] The status of this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
         :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you:  
@@ -561,7 +395,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Specifies the instance templates used by this managed instance group to create instances.
                
                Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
-        :param pulumi.Input[str] zone: [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
         """
         ...
     @overload
@@ -591,33 +424,24 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
-                 current_actions: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerActionsSummaryArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
                  failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 instance_group: Optional[pulumi.Input[str]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  stateful_policy: Optional[pulumi.Input[pulumi.InputType['StatefulPolicyArgs']]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  target_stopped_size: Optional[pulumi.Input[int]] = None,
                  target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -632,16 +456,11 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
             __props__.__dict__["auto_healing_policies"] = auto_healing_policies
             __props__.__dict__["base_instance_name"] = base_instance_name
-            __props__.__dict__["creation_timestamp"] = creation_timestamp
-            __props__.__dict__["current_actions"] = current_actions
             __props__.__dict__["description"] = description
             __props__.__dict__["distribution_policy"] = distribution_policy
             __props__.__dict__["failover_action"] = failover_action
-            __props__.__dict__["id"] = id
-            __props__.__dict__["instance_group"] = instance_group
             __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["instance_template"] = instance_template
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
             if project is None and not opts.urn:
@@ -651,19 +470,23 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["stateful_policy"] = stateful_policy
-            __props__.__dict__["status"] = status
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["target_size"] = target_size
             __props__.__dict__["target_stopped_size"] = target_stopped_size
             __props__.__dict__["target_suspended_size"] = target_suspended_size
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["versions"] = versions
-            __props__.__dict__["zone"] = zone
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["current_actions"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["instance_group"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["self_link_with_id"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["zone"] = None
         super(RegionInstanceGroupManager, __self__).__init__(
             'google-native:compute/alpha:RegionInstanceGroupManager',
             resource_name,
@@ -735,7 +558,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
+        The creation timestamp for this managed instance group in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -743,7 +566,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="currentActions")
     def current_actions(self) -> pulumi.Output['outputs.InstanceGroupManagerActionsSummaryResponse']:
         """
-        [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+        The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
         """
         return pulumi.get(self, "current_actions")
 
@@ -785,7 +608,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="instanceGroup")
     def instance_group(self) -> pulumi.Output[str]:
         """
-        [Output Only] The URL of the Instance Group resource.
+        The URL of the Instance Group resource.
         """
         return pulumi.get(self, "instance_group")
 
@@ -809,7 +632,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
+        The resource type, which is always compute#instanceGroupManager for managed instance groups.
         """
         return pulumi.get(self, "kind")
 
@@ -833,7 +656,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        [Output Only] The URL of the region where the managed instance group resides (for regional resources).
+        The URL of the region where the managed instance group resides (for regional resources).
         """
         return pulumi.get(self, "region")
 
@@ -841,7 +664,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        [Output Only] The URL for this managed instance group. The server defines this URL.
+        The URL for this managed instance group. The server defines this URL.
         """
         return pulumi.get(self, "self_link")
 
@@ -849,7 +672,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> pulumi.Output[str]:
         """
-        [Output Only] Server-defined URL for this resource with the resource id.
+        Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
@@ -873,7 +696,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output['outputs.InstanceGroupManagerStatusResponse']:
         """
-        [Output Only] The status of this managed instance group.
+        The status of this managed instance group.
         """
         return pulumi.get(self, "status")
 
@@ -935,7 +758,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
+        The URL of a zone where the managed instance group is located (for zonal resources).
         """
         return pulumi.get(self, "zone")
 

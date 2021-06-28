@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string AttachmentTarget;
         /// <summary>
-        /// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+        /// Deprecated, please use short name instead. The display name of the firewall policy of the association.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// [Output Only] The firewall policy ID of the association.
+        /// The firewall policy ID of the association.
         /// </summary>
         public readonly string FirewallPolicyId;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output Only] The short name of the firewall policy of the association.
+        /// The short name of the firewall policy of the association.
         /// </summary>
         public readonly string ShortName;
 

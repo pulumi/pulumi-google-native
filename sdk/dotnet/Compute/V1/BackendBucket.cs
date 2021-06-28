@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<Outputs.BackendBucketCdnPolicyResponse> CdnPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
+        /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -126,12 +126,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("cdnPolicy")]
         public Input<Inputs.BackendBucketCdnPolicyArgs>? CdnPolicy { get; set; }
 
-        /// <summary>
-        /// [Output Only] Creation timestamp in RFC3339 text format.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
         [Input("customResponseHeaders")]
         private InputList<string>? _customResponseHeaders;
 
@@ -157,12 +151,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<bool>? EnableCdn { get; set; }
 
         /// <summary>
-        /// [Output Only] Unique identifier for the resource; defined by the server.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// Type of the resource.
         /// </summary>
         [Input("kind")]
@@ -179,12 +167,6 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// [Output Only] Server-defined URL for the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         public BackendBucketArgs()
         {

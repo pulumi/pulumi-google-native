@@ -76,7 +76,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] Creation timestamp in RFC3339 text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -92,7 +92,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter(name="endTimestamp")
     def end_timestamp(self) -> str:
         """
-        [Output Only] Commitment end time in RFC3339 text format.
+        Commitment end time in RFC3339 text format.
         """
         return pulumi.get(self, "end_timestamp")
 
@@ -100,7 +100,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] Type of the resource. Always compute#commitment for commitments.
+        Type of the resource. Always compute#commitment for commitments.
         """
         return pulumi.get(self, "kind")
 
@@ -132,7 +132,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] URL of the region where this commitment may be used.
+        URL of the region where this commitment may be used.
         """
         return pulumi.get(self, "region")
 
@@ -156,7 +156,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] Server-defined URL for the resource.
+        Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -164,7 +164,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter(name="startTimestamp")
     def start_timestamp(self) -> str:
         """
-        [Output Only] Commitment start time in RFC3339 text format.
+        Commitment start time in RFC3339 text format.
         """
         return pulumi.get(self, "start_timestamp")
 
@@ -172,7 +172,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+        Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
         """
         return pulumi.get(self, "status")
 
@@ -180,7 +180,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter(name="statusMessage")
     def status_message(self) -> str:
         """
-        [Output Only] An optional, human-readable explanation of the status.
+        An optional, human-readable explanation of the status.
         """
         return pulumi.get(self, "status_message")
 

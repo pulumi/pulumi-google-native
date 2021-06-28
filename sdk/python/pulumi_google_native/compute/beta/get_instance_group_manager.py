@@ -108,7 +108,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
+        The creation timestamp for this managed instance group in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -116,7 +116,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="currentActions")
     def current_actions(self) -> 'outputs.InstanceGroupManagerActionsSummaryResponse':
         """
-        [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+        The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
         """
         return pulumi.get(self, "current_actions")
 
@@ -158,7 +158,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="instanceGroup")
     def instance_group(self) -> str:
         """
-        [Output Only] The URL of the Instance Group resource.
+        The URL of the Instance Group resource.
         """
         return pulumi.get(self, "instance_group")
 
@@ -174,7 +174,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
+        The resource type, which is always compute#instanceGroupManager for managed instance groups.
         """
         return pulumi.get(self, "kind")
 
@@ -198,7 +198,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        [Output Only] The URL of the region where the managed instance group resides (for regional resources).
+        The URL of the region where the managed instance group resides (for regional resources).
         """
         return pulumi.get(self, "region")
 
@@ -206,7 +206,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output Only] The URL for this managed instance group. The server defines this URL.
+        The URL for this managed instance group. The server defines this URL.
         """
         return pulumi.get(self, "self_link")
 
@@ -230,7 +230,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter
     def status(self) -> 'outputs.InstanceGroupManagerStatusResponse':
         """
-        [Output Only] The status of this managed instance group.
+        The status of this managed instance group.
         """
         return pulumi.get(self, "status")
 
@@ -272,7 +272,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
+        The URL of a zone where the managed instance group is located (for zonal resources).
         """
         return pulumi.get(self, "zone")
 

@@ -51,7 +51,7 @@ type LookupRegionBackendServiceResult struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsistentHash ConsistentHashLoadBalancerSettingsResponse `pulumi:"consistentHash"`
-	// [Output Only] Creation timestamp in RFC3339 text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
@@ -71,7 +71,7 @@ type LookupRegionBackendServiceResult struct {
 	HealthChecks []string `pulumi:"healthChecks"`
 	// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
 	Iap BackendServiceIAPResponse `pulumi:"iap"`
-	// [Output Only] Type of resource. Always compute#backendService for backend services.
+	// Type of resource. Always compute#backendService for backend services.
 	Kind string `pulumi:"kind"`
 	// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
@@ -119,15 +119,15 @@ type LookupRegionBackendServiceResult struct {
 	//
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol string `pulumi:"protocol"`
-	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	// URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
-	// [Output Only] The resource URL for the security policy associated with this backend service.
+	// The resource URL for the security policy associated with this backend service.
 	SecurityPolicy string `pulumi:"securityPolicy"`
 	// This field specifies the security policy that applies to this backend service. This field is applicable to either:
 	// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
 	// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings SecuritySettingsResponse `pulumi:"securitySettings"`
-	// [Output Only] Server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE.
 	//

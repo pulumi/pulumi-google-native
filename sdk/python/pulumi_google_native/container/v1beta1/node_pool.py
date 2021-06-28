@@ -23,16 +23,12 @@ class NodePoolArgs:
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
-                 instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
                  max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['NodePoolStatus']] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -41,16 +37,12 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input['NodeConfigArgs'] config: The node configuration of the pool.
         :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
         :param pulumi.Input['MaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-        :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
-        :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
-        :param pulumi.Input['NodePoolStatus'] status: [Output only] The status of the nodes in this pool instance.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -65,8 +57,6 @@ class NodePoolArgs:
             pulumi.set(__self__, "config", config)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
-        if instance_group_urls is not None:
-            pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if management is not None:
@@ -79,12 +69,6 @@ class NodePoolArgs:
             pulumi.set(__self__, "network_config", network_config)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
-        if pod_ipv4_cidr_size is not None:
-            pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
-        if self_link is not None:
-            pulumi.set(__self__, "self_link", self_link)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -166,18 +150,6 @@ class NodePoolArgs:
         pulumi.set(self, "initial_node_count", value)
 
     @property
-    @pulumi.getter(name="instanceGroupUrls")
-    def instance_group_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-        """
-        return pulumi.get(self, "instance_group_urls")
-
-    @instance_group_urls.setter
-    def instance_group_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "instance_group_urls", value)
-
-    @property
     @pulumi.getter
     def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -250,42 +222,6 @@ class NodePoolArgs:
         pulumi.set(self, "parent", value)
 
     @property
-    @pulumi.getter(name="podIpv4CidrSize")
-    def pod_ipv4_cidr_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output only] The pod CIDR block size per node in this node pool.
-        """
-        return pulumi.get(self, "pod_ipv4_cidr_size")
-
-    @pod_ipv4_cidr_size.setter
-    def pod_ipv4_cidr_size(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "pod_ipv4_cidr_size", value)
-
-    @property
-    @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Server-defined URL for the resource.
-        """
-        return pulumi.get(self, "self_link")
-
-    @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['NodePoolStatus']]:
-        """
-        [Output only] The status of the nodes in this pool instance.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['NodePoolStatus']]):
-        pulumi.set(self, "status", value)
-
-    @property
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional[pulumi.Input['UpgradeSettingsArgs']]:
         """
@@ -320,7 +256,6 @@ class NodePool(pulumi.CustomResource):
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
-                 instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
@@ -328,10 +263,7 @@ class NodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['NodePoolStatus']] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -344,16 +276,12 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] config: The node configuration of the pool.
         :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
         :param pulumi.Input[pulumi.InputType['NodeManagementArgs']] management: NodeManagement configuration for this NodePool.
         :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-        :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
-        :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
-        :param pulumi.Input['NodePoolStatus'] status: [Output only] The status of the nodes in this pool instance.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -386,7 +314,6 @@ class NodePool(pulumi.CustomResource):
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
-                 instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
@@ -394,10 +321,7 @@ class NodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['NodePoolStatus']] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -419,7 +343,6 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["config"] = config
             __props__.__dict__["initial_node_count"] = initial_node_count
-            __props__.__dict__["instance_group_urls"] = instance_group_urls
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -429,14 +352,15 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["parent"] = parent
-            __props__.__dict__["pod_ipv4_cidr_size"] = pod_ipv4_cidr_size
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["self_link"] = self_link
-            __props__.__dict__["status"] = status
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
+            __props__.__dict__["instance_group_urls"] = None
+            __props__.__dict__["pod_ipv4_cidr_size"] = None
+            __props__.__dict__["self_link"] = None
+            __props__.__dict__["status"] = None
         super(NodePool, __self__).__init__(
             'google-native:container/v1beta1:NodePool',
             resource_name,

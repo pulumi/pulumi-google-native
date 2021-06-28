@@ -36,37 +36,37 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
-     * [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
      */
-    public readonly commitment!: pulumi.Output<string>;
+    public /*out*/ readonly commitment!: pulumi.Output<string>;
     /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
-    public readonly creationTimestamp!: pulumi.Output<string>;
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output Only] Type of the resource. Always compute#reservations for reservations.
+     * Type of the resource. Always compute#reservations for reservations.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [Output Only] Reserved for future use.
+     * Reserved for future use.
      */
-    public readonly satisfiesPzs!: pulumi.Output<boolean>;
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
+     * Server-defined fully-qualified URL for this resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
+     * Server-defined URL for this resource with the resource id.
      */
-    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
      * Share-settings for shared-reservation
      */
@@ -80,9 +80,9 @@ export class Reservation extends pulumi.CustomResource {
      */
     public readonly specificReservationRequired!: pulumi.Output<boolean>;
     /**
-     * [Output Only] The status of the reservation.
+     * The status of the reservation.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
      */
@@ -105,22 +105,21 @@ export class Reservation extends pulumi.CustomResource {
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            inputs["commitment"] = args ? args.commitment : undefined;
-            inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["shareSettings"] = args ? args.shareSettings : undefined;
             inputs["specificReservation"] = args ? args.specificReservation : undefined;
             inputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
-            inputs["status"] = args ? args.status : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["commitment"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         } else {
             inputs["commitment"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -148,43 +147,15 @@ export class Reservation extends pulumi.CustomResource {
  */
 export interface ReservationArgs {
     /**
-     * [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-     */
-    commitment?: pulumi.Input<string>;
-    /**
-     * [Output Only] Creation timestamp in RFC3339 text format.
-     */
-    creationTimestamp?: pulumi.Input<string>;
-    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output Only] Type of the resource. Always compute#reservations for reservations.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    /**
-     * [Output Only] Reserved for future use.
-     */
-    satisfiesPzs?: pulumi.Input<boolean>;
-    /**
-     * [Output Only] Server-defined fully-qualified URL for this resource.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output Only] Server-defined URL for this resource with the resource id.
-     */
-    selfLinkWithId?: pulumi.Input<string>;
     /**
      * Share-settings for shared-reservation
      */
@@ -197,10 +168,6 @@ export interface ReservationArgs {
      * Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
      */
     specificReservationRequired?: pulumi.Input<boolean>;
-    /**
-     * [Output Only] The status of the reservation.
-     */
-    status?: pulumi.Input<enums.compute.alpha.ReservationStatus>;
     /**
      * Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
      */

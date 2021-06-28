@@ -39,24 +39,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         [Input("masterIpv4CidrBlock")]
         public Input<string>? MasterIpv4CidrBlock { get; set; }
 
-        /// <summary>
-        /// The peering name in the customer VPC used by this cluster.
-        /// </summary>
-        [Input("peeringName")]
-        public Input<string>? PeeringName { get; set; }
-
-        /// <summary>
-        /// The internal IP address of this cluster's master endpoint.
-        /// </summary>
-        [Input("privateEndpoint")]
-        public Input<string>? PrivateEndpoint { get; set; }
-
-        /// <summary>
-        /// The external IP address of this cluster's master endpoint.
-        /// </summary>
-        [Input("publicEndpoint")]
-        public Input<string>? PublicEndpoint { get; set; }
-
         public PrivateClusterConfigArgs()
         {
         }

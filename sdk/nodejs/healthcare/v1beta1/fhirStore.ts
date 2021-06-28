@@ -58,7 +58,7 @@ export class FhirStore extends pulumi.CustomResource {
     /**
      * Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
@@ -104,12 +104,12 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             inputs["validationConfig"] = args ? args.validationConfig : undefined;
             inputs["version"] = args ? args.version : undefined;
+            inputs["name"] = undefined /*out*/;
         } else {
             inputs["defaultSearchHandlingStrict"] = undefined /*out*/;
             inputs["disableReferentialIntegrity"] = undefined /*out*/;
@@ -156,10 +156,6 @@ export interface FhirStoreArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location: pulumi.Input<string>;
-    /**
-     * Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
-     */
-    name?: pulumi.Input<string>;
     /**
      * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
