@@ -16,8 +16,8 @@ __all__ = [
     'EncryptionConfigArgs',
     'ExecutionTemplateArgs',
     'ExprArgs',
-    'LocalDiskArgs',
     'LocalDiskInitializeParamsArgs',
+    'LocalDiskArgs',
     'RuntimeAcceleratorConfigArgs',
     'RuntimeAccessConfigArgs',
     'RuntimeShieldedInstanceConfigArgs',
@@ -25,8 +25,8 @@ __all__ = [
     'SchedulerAcceleratorConfigArgs',
     'ShieldedInstanceConfigArgs',
     'UpgradeHistoryEntryArgs',
-    'VirtualMachineArgs',
     'VirtualMachineConfigArgs',
+    'VirtualMachineArgs',
     'VmImageArgs',
 ]
 
@@ -196,7 +196,7 @@ class ExecutionTemplateArgs:
                  accelerator_config: Optional[pulumi.Input['SchedulerAcceleratorConfigArgs']] = None,
                  container_image_uri: Optional[pulumi.Input[str]] = None,
                  input_notebook_file: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  master_type: Optional[pulumi.Input[str]] = None,
                  output_notebook_folder: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[str]] = None,
@@ -208,7 +208,7 @@ class ExecutionTemplateArgs:
         :param pulumi.Input['SchedulerAcceleratorConfigArgs'] accelerator_config: Configuration (count and accelerator type) for hardware running notebook execution.
         :param pulumi.Input[str] container_image_uri: Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
         :param pulumi.Input[str] input_notebook_file: Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
         :param pulumi.Input[str] master_type: Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
         :param pulumi.Input[str] output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
         :param pulumi.Input[str] parameters: Parameters used within the 'input_notebook_file' notebook.
@@ -275,14 +275,14 @@ class ExecutionTemplateArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -431,6 +431,94 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class LocalDiskInitializeParamsArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_name: Optional[pulumi.Input[str]] = None,
+                 disk_size_gb: Optional[pulumi.Input[str]] = None,
+                 disk_type: Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None):
+        """
+        [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        :param pulumi.Input[str] description: Optional. Provide this property when creating the disk.
+        :param pulumi.Input[str] disk_name: Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
+        :param pulumi.Input[str] disk_size_gb: Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
+        :param pulumi.Input['LocalDiskInitializeParamsDiskType'] disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disk_name is not None:
+            pulumi.set(__self__, "disk_name", disk_name)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Provide this property when creating the disk.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @disk_name.setter
+    def disk_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_name", value)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']]:
+        """
+        Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
+        """
+        Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
+        pulumi.set(self, "labels", value)
+
+
+@pulumi.input_type
 class LocalDiskArgs:
     def __init__(__self__, *,
                  initialize_params: Optional[pulumi.Input['LocalDiskInitializeParamsArgs']] = None,
@@ -516,94 +604,6 @@ class LocalDiskArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class LocalDiskInitializeParamsArgs:
-    def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 disk_name: Optional[pulumi.Input[str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 disk_type: Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
-        :param pulumi.Input[str] description: Optional. Provide this property when creating the disk.
-        :param pulumi.Input[str] disk_name: Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
-        :param pulumi.Input[str] disk_size_gb: Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
-        :param pulumi.Input['LocalDiskInitializeParamsDiskType'] disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if disk_name is not None:
-            pulumi.set(__self__, "disk_name", disk_name)
-        if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
-        if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Provide this property when creating the disk.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="diskName")
-    def disk_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
-        """
-        return pulumi.get(self, "disk_name")
-
-    @disk_name.setter
-    def disk_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_name", value)
-
-    @property
-    @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
-        """
-        return pulumi.get(self, "disk_size_gb")
-
-    @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_size_gb", value)
-
-    @property
-    @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']]:
-        """
-        Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-        """
-        return pulumi.get(self, "disk_type")
-
-    @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']]):
-        pulumi.set(self, "disk_type", value)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
 
 
 @pulumi.input_type
@@ -1127,30 +1127,6 @@ class UpgradeHistoryEntryArgs:
 
 
 @pulumi.input_type
-class VirtualMachineArgs:
-    def __init__(__self__, *,
-                 virtual_machine_config: Optional[pulumi.Input['VirtualMachineConfigArgs']] = None):
-        """
-        Runtime using Virtual Machine for computing.
-        :param pulumi.Input['VirtualMachineConfigArgs'] virtual_machine_config: Virtual Machine configuration settings.
-        """
-        if virtual_machine_config is not None:
-            pulumi.set(__self__, "virtual_machine_config", virtual_machine_config)
-
-    @property
-    @pulumi.getter(name="virtualMachineConfig")
-    def virtual_machine_config(self) -> Optional[pulumi.Input['VirtualMachineConfigArgs']]:
-        """
-        Virtual Machine configuration settings.
-        """
-        return pulumi.get(self, "virtual_machine_config")
-
-    @virtual_machine_config.setter
-    def virtual_machine_config(self, value: Optional[pulumi.Input['VirtualMachineConfigArgs']]):
-        pulumi.set(self, "virtual_machine_config", value)
-
-
-@pulumi.input_type
 class VirtualMachineConfigArgs:
     def __init__(__self__, *,
                  accelerator_config: Optional[pulumi.Input['RuntimeAcceleratorConfigArgs']] = None,
@@ -1158,9 +1134,9 @@ class VirtualMachineConfigArgs:
                  data_disk: Optional[pulumi.Input['LocalDiskArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  internal_ip_only: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['VirtualMachineConfigNicType']] = None,
                  shielded_instance_config: Optional[pulumi.Input['RuntimeShieldedInstanceConfigArgs']] = None,
@@ -1173,9 +1149,9 @@ class VirtualMachineConfigArgs:
         :param pulumi.Input['LocalDiskArgs'] data_disk: Required. Data disk option configuration settings.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. Encryption settings for virtual machine data disk.
         :param pulumi.Input[bool] internal_ip_only: Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] machine_type: Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        :param pulumi.Input[Mapping[str, str]] metadata: Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
         :param pulumi.Input['VirtualMachineConfigNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input['RuntimeShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded VM Instance configuration settings.
@@ -1271,14 +1247,14 @@ class VirtualMachineConfigArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -1295,14 +1271,14 @@ class VirtualMachineConfigArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -1364,6 +1340,30 @@ class VirtualMachineConfigArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class VirtualMachineArgs:
+    def __init__(__self__, *,
+                 virtual_machine_config: Optional[pulumi.Input['VirtualMachineConfigArgs']] = None):
+        """
+        Runtime using Virtual Machine for computing.
+        :param pulumi.Input['VirtualMachineConfigArgs'] virtual_machine_config: Virtual Machine configuration settings.
+        """
+        if virtual_machine_config is not None:
+            pulumi.set(__self__, "virtual_machine_config", virtual_machine_config)
+
+    @property
+    @pulumi.getter(name="virtualMachineConfig")
+    def virtual_machine_config(self) -> Optional[pulumi.Input['VirtualMachineConfigArgs']]:
+        """
+        Virtual Machine configuration settings.
+        """
+        return pulumi.get(self, "virtual_machine_config")
+
+    @virtual_machine_config.setter
+    def virtual_machine_config(self, value: Optional[pulumi.Input['VirtualMachineConfigArgs']]):
+        pulumi.set(self, "virtual_machine_config", value)
 
 
 @pulumi.input_type

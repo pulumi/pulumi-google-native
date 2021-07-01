@@ -242,7 +242,7 @@ export interface InterconnectArgs {
     /**
      * Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * Type of link requested, which can take one of the following values: 
      * - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 

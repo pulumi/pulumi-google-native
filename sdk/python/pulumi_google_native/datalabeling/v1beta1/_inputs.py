@@ -249,7 +249,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs:
 @pulumi.input_type
 class GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs:
     def __init__(__self__, *,
-                 bigquery_import_keys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bigquery_import_keys: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  bounding_poly_config: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs']] = None,
                  evaluation_config: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1EvaluationConfigArgs']] = None,
                  evaluation_job_alert_config: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs']] = None,
@@ -261,7 +261,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs:
                  text_classification_config: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs']] = None):
         """
         Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] bigquery_import_keys: Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+        :param pulumi.Input[Mapping[str, str]] bigquery_import_keys: Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs'] bounding_poly_config: Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1EvaluationConfigArgs'] evaluation_config: Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs'] evaluation_job_alert_config: Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
@@ -295,14 +295,14 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs:
 
     @property
     @pulumi.getter(name="bigqueryImportKeys")
-    def bigquery_import_keys(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def bigquery_import_keys(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
         """
         return pulumi.get(self, "bigquery_import_keys")
 
     @bigquery_import_keys.setter
-    def bigquery_import_keys(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def bigquery_import_keys(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "bigquery_import_keys", value)
 
     @property

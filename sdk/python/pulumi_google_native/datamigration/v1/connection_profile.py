@@ -21,7 +21,7 @@ class ConnectionProfileArgs:
                  project: pulumi.Input[str],
                  cloudsql: Optional[pulumi.Input['CloudSqlConnectionProfileArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  mysql: Optional[pulumi.Input['MySqlConnectionProfileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input['PostgreSqlConnectionProfileArgs']] = None,
@@ -32,7 +32,7 @@ class ConnectionProfileArgs:
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input['CloudSqlConnectionProfileArgs'] cloudsql: A CloudSQL database connection profile.
         :param pulumi.Input[str] display_name: The connection profile display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        :param pulumi.Input[Mapping[str, str]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input['MySqlConnectionProfileArgs'] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
         :param pulumi.Input['PostgreSqlConnectionProfileArgs'] postgresql: A PostgreSQL database connection profile.
@@ -114,14 +114,14 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -202,7 +202,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -219,7 +219,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']] cloudsql: A CloudSQL database connection profile.
         :param pulumi.Input[str] display_name: The connection profile display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        :param pulumi.Input[Mapping[str, str]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
         :param pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']] postgresql: A PostgreSQL database connection profile.
@@ -253,7 +253,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,

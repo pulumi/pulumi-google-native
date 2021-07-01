@@ -65,41 +65,9 @@ func GetChannelPartnerLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ChannelPartnerLink resources.
 type channelPartnerLinkState struct {
-	// Cloud Identity info of the channel partner (IR).
-	ChannelPartnerCloudIdentityInfo *GoogleCloudChannelV1CloudIdentityInfoResponse `pulumi:"channelPartnerCloudIdentityInfo"`
-	// Timestamp of when the channel partner link is created.
-	CreateTime *string `pulumi:"createTime"`
-	// URI of the web page where partner accepts the link invitation.
-	InviteLinkUri *string `pulumi:"inviteLinkUri"`
-	// Required. State of the channel partner link.
-	LinkState *string `pulumi:"linkState"`
-	// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
-	Name *string `pulumi:"name"`
-	// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
-	PublicId *string `pulumi:"publicId"`
-	// Required. Cloud Identity ID of the linked reseller.
-	ResellerCloudIdentityId *string `pulumi:"resellerCloudIdentityId"`
-	// Timestamp of when the channel partner link is updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ChannelPartnerLinkState struct {
-	// Cloud Identity info of the channel partner (IR).
-	ChannelPartnerCloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponsePtrInput
-	// Timestamp of when the channel partner link is created.
-	CreateTime pulumi.StringPtrInput
-	// URI of the web page where partner accepts the link invitation.
-	InviteLinkUri pulumi.StringPtrInput
-	// Required. State of the channel partner link.
-	LinkState pulumi.StringPtrInput
-	// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
-	Name pulumi.StringPtrInput
-	// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
-	PublicId pulumi.StringPtrInput
-	// Required. Cloud Identity ID of the linked reseller.
-	ResellerCloudIdentityId pulumi.StringPtrInput
-	// Timestamp of when the channel partner link is updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ChannelPartnerLinkState) ElementType() reflect.Type {

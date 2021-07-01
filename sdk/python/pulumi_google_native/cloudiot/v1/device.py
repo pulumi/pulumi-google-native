@@ -25,7 +25,7 @@ class DeviceArgs:
                  gateway_config: Optional[pulumi.Input['GatewayConfigArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Device resource.
@@ -35,7 +35,7 @@ class DeviceArgs:
         :param pulumi.Input['GatewayConfigArgs'] gateway_config: Gateway-related configuration and state.
         :param pulumi.Input[str] id: The user-defined device identifier. The device ID must be unique within a device registry.
         :param pulumi.Input['DeviceLogLevel'] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
+        :param pulumi.Input[Mapping[str, str]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
         """
         pulumi.set(__self__, "location", location)
@@ -159,14 +159,14 @@ class DeviceArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -194,7 +194,7 @@ class Device(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  registry_id: Optional[pulumi.Input[str]] = None,
@@ -210,7 +210,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
         :param pulumi.Input[str] id: The user-defined device identifier. The device ID must be unique within a device registry.
         :param pulumi.Input['DeviceLogLevel'] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
+        :param pulumi.Input[Mapping[str, str]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
         """
         ...
@@ -244,7 +244,7 @@ class Device(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  registry_id: Optional[pulumi.Input[str]] = None,

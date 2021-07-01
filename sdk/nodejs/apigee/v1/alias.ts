@@ -112,7 +112,7 @@ export interface AliasArgs {
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
-    extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    extensions?: pulumi.Input<pulumi.Input<{[key: string]: string}>[]>;
     format: pulumi.Input<string>;
     ignoreExpiryValidation?: pulumi.Input<string>;
     ignoreNewlineValidation?: pulumi.Input<string>;

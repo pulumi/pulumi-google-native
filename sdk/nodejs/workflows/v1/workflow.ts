@@ -138,7 +138,7 @@ export interface WorkflowArgs {
     /**
      * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     location: pulumi.Input<string>;
     /**
      * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}

@@ -14,7 +14,7 @@ __all__ = ['NotificationArgs', 'Notification']
 class NotificationArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -27,7 +27,7 @@ class NotificationArgs:
                  user_project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Notification resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
+        :param pulumi.Input[Mapping[str, str]] custom_attributes: An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for this subscription notification.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: If present, only send notifications about listed event types. If empty, sent notifications for all event types.
         :param pulumi.Input[str] id: The ID of the notification.
@@ -72,14 +72,14 @@ class NotificationArgs:
 
     @property
     @pulumi.getter
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @property
@@ -203,7 +203,7 @@ class Notification(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -220,7 +220,7 @@ class Notification(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
+        :param pulumi.Input[Mapping[str, str]] custom_attributes: An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for this subscription notification.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: If present, only send notifications about listed event types. If empty, sent notifications for all event types.
         :param pulumi.Input[str] id: The ID of the notification.
@@ -255,7 +255,7 @@ class Notification(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,

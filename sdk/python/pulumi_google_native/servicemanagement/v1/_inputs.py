@@ -15,55 +15,55 @@ __all__ = [
     'AuditLogConfigArgs',
     'AuthProviderArgs',
     'AuthRequirementArgs',
-    'AuthenticationArgs',
     'AuthenticationRuleArgs',
-    'BackendArgs',
+    'AuthenticationArgs',
     'BackendRuleArgs',
-    'BillingArgs',
+    'BackendArgs',
     'BillingDestinationArgs',
+    'BillingArgs',
     'BindingArgs',
-    'ContextArgs',
     'ContextRuleArgs',
+    'ContextArgs',
     'ControlArgs',
-    'CustomErrorArgs',
     'CustomErrorRuleArgs',
+    'CustomErrorArgs',
     'CustomHttpPatternArgs',
     'DeleteServiceStrategyArgs',
-    'DocumentationArgs',
     'DocumentationRuleArgs',
+    'DocumentationArgs',
     'EndpointArgs',
-    'EnumArgs',
     'EnumValueArgs',
+    'EnumArgs',
     'ExprArgs',
     'FieldArgs',
-    'HttpArgs',
     'HttpRuleArgs',
+    'HttpArgs',
     'JwtLocationArgs',
     'LabelDescriptorArgs',
     'LogDescriptorArgs',
-    'LoggingArgs',
     'LoggingDestinationArgs',
+    'LoggingArgs',
     'MethodArgs',
-    'MetricDescriptorArgs',
     'MetricDescriptorMetadataArgs',
+    'MetricDescriptorArgs',
     'MetricRuleArgs',
     'MixinArgs',
     'MonitoredResourceDescriptorArgs',
-    'MonitoringArgs',
     'MonitoringDestinationArgs',
+    'MonitoringArgs',
     'OAuthRequirementsArgs',
     'OptionArgs',
     'PageArgs',
-    'QuotaArgs',
     'QuotaLimitArgs',
+    'QuotaArgs',
     'SourceContextArgs',
-    'SystemParameterArgs',
     'SystemParameterRuleArgs',
     'SystemParametersArgs',
+    'SystemParameterArgs',
     'TrafficPercentStrategyArgs',
     'TypeArgs',
-    'UsageArgs',
     'UsageRuleArgs',
+    'UsageArgs',
 ]
 
 @pulumi.input_type
@@ -411,46 +411,6 @@ class AuthRequirementArgs:
 
 
 @pulumi.input_type
-class AuthenticationArgs:
-    def __init__(__self__, *,
-                 providers: Optional[pulumi.Input[Sequence[pulumi.Input['AuthProviderArgs']]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthenticationRuleArgs']]]] = None):
-        """
-        `Authentication` defines the authentication configuration for API methods provided by an API service. Example: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read
-        :param pulumi.Input[Sequence[pulumi.Input['AuthProviderArgs']]] providers: Defines a set of authentication providers that a service supports.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthenticationRuleArgs']]] rules: A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-        """
-        if providers is not None:
-            pulumi.set(__self__, "providers", providers)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
-
-    @property
-    @pulumi.getter
-    def providers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthProviderArgs']]]]:
-        """
-        Defines a set of authentication providers that a service supports.
-        """
-        return pulumi.get(self, "providers")
-
-    @providers.setter
-    def providers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthProviderArgs']]]]):
-        pulumi.set(self, "providers", value)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthenticationRuleArgs']]]]:
-        """
-        A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthenticationRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
-
-
-@pulumi.input_type
 class AuthenticationRuleArgs:
     def __init__(__self__, *,
                  allow_without_credential: Optional[pulumi.Input[bool]] = None,
@@ -523,26 +483,42 @@ class AuthenticationRuleArgs:
 
 
 @pulumi.input_type
-class BackendArgs:
+class AuthenticationArgs:
     def __init__(__self__, *,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['BackendRuleArgs']]]] = None):
+                 providers: Optional[pulumi.Input[Sequence[pulumi.Input['AuthProviderArgs']]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthenticationRuleArgs']]]] = None):
         """
-        `Backend` defines the backend configuration for a service.
-        :param pulumi.Input[Sequence[pulumi.Input['BackendRuleArgs']]] rules: A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+        `Authentication` defines the authentication configuration for API methods provided by an API service. Example: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read
+        :param pulumi.Input[Sequence[pulumi.Input['AuthProviderArgs']]] providers: Defines a set of authentication providers that a service supports.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthenticationRuleArgs']]] rules: A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
         """
+        if providers is not None:
+            pulumi.set(__self__, "providers", providers)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendRuleArgs']]]]:
+    def providers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthProviderArgs']]]]:
         """
-        A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+        Defines a set of authentication providers that a service supports.
+        """
+        return pulumi.get(self, "providers")
+
+    @providers.setter
+    def providers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthProviderArgs']]]]):
+        pulumi.set(self, "providers", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthenticationRuleArgs']]]]:
+        """
+        A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthenticationRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
@@ -695,27 +671,27 @@ class BackendRuleArgs:
 
 
 @pulumi.input_type
-class BillingArgs:
+class BackendArgs:
     def __init__(__self__, *,
-                 consumer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['BillingDestinationArgs']]]] = None):
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['BackendRuleArgs']]]] = None):
         """
-        Billing related configuration of the service. The following example shows how to configure monitored resources and metrics for billing, `consumer_destinations` is the only supported destination and the monitored resources need at least one label key `cloud.googleapis.com/location` to indicate the location of the billing usage, using different monitored resources between monitoring and billing is recommended so they can be evolved independently: monitored_resources: - type: library.googleapis.com/billing_branch labels: - key: cloud.googleapis.com/location description: | Predefined label to support billing location restriction. - key: city description: | Custom label to define the city where the library branch is located in. - key: name description: Custom label to define the name of the library branch. metrics: - name: library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 unit: "1" billing: consumer_destinations: - monitored_resource: library.googleapis.com/billing_branch metrics: - library.googleapis.com/book/borrowed_count
-        :param pulumi.Input[Sequence[pulumi.Input['BillingDestinationArgs']]] consumer_destinations: Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
+        `Backend` defines the backend configuration for a service.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendRuleArgs']]] rules: A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
         """
-        if consumer_destinations is not None:
-            pulumi.set(__self__, "consumer_destinations", consumer_destinations)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
 
     @property
-    @pulumi.getter(name="consumerDestinations")
-    def consumer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BillingDestinationArgs']]]]:
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendRuleArgs']]]]:
         """
-        Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
+        A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
         """
-        return pulumi.get(self, "consumer_destinations")
+        return pulumi.get(self, "rules")
 
-    @consumer_destinations.setter
-    def consumer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BillingDestinationArgs']]]]):
-        pulumi.set(self, "consumer_destinations", value)
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
@@ -756,6 +732,30 @@ class BillingDestinationArgs:
     @monitored_resource.setter
     def monitored_resource(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "monitored_resource", value)
+
+
+@pulumi.input_type
+class BillingArgs:
+    def __init__(__self__, *,
+                 consumer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['BillingDestinationArgs']]]] = None):
+        """
+        Billing related configuration of the service. The following example shows how to configure monitored resources and metrics for billing, `consumer_destinations` is the only supported destination and the monitored resources need at least one label key `cloud.googleapis.com/location` to indicate the location of the billing usage, using different monitored resources between monitoring and billing is recommended so they can be evolved independently: monitored_resources: - type: library.googleapis.com/billing_branch labels: - key: cloud.googleapis.com/location description: | Predefined label to support billing location restriction. - key: city description: | Custom label to define the city where the library branch is located in. - key: name description: Custom label to define the name of the library branch. metrics: - name: library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 unit: "1" billing: consumer_destinations: - monitored_resource: library.googleapis.com/billing_branch metrics: - library.googleapis.com/book/borrowed_count
+        :param pulumi.Input[Sequence[pulumi.Input['BillingDestinationArgs']]] consumer_destinations: Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
+        """
+        if consumer_destinations is not None:
+            pulumi.set(__self__, "consumer_destinations", consumer_destinations)
+
+    @property
+    @pulumi.getter(name="consumerDestinations")
+    def consumer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BillingDestinationArgs']]]]:
+        """
+        Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
+        """
+        return pulumi.get(self, "consumer_destinations")
+
+    @consumer_destinations.setter
+    def consumer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BillingDestinationArgs']]]]):
+        pulumi.set(self, "consumer_destinations", value)
 
 
 @pulumi.input_type
@@ -812,30 +812,6 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
-
-
-@pulumi.input_type
-class ContextArgs:
-    def __init__(__self__, *,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ContextRuleArgs']]]] = None):
-        """
-        `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example: context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: - google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify extension ID instead of fully qualified extension name here.
-        :param pulumi.Input[Sequence[pulumi.Input['ContextRuleArgs']]] rules: A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-        """
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContextRuleArgs']]]]:
-        """
-        A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContextRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
@@ -927,6 +903,30 @@ class ContextRuleArgs:
 
 
 @pulumi.input_type
+class ContextArgs:
+    def __init__(__self__, *,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ContextRuleArgs']]]] = None):
+        """
+        `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example: context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: - google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify extension ID instead of fully qualified extension name here.
+        :param pulumi.Input[Sequence[pulumi.Input['ContextRuleArgs']]] rules: A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+        """
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContextRuleArgs']]]]:
+        """
+        A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContextRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
 class ControlArgs:
     def __init__(__self__, *,
                  environment: Optional[pulumi.Input[str]] = None):
@@ -948,46 +948,6 @@ class ControlArgs:
     @environment.setter
     def environment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "environment", value)
-
-
-@pulumi.input_type
-class CustomErrorArgs:
-    def __init__(__self__, *,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorRuleArgs']]]] = None,
-                 types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError
-        :param pulumi.Input[Sequence[pulumi.Input['CustomErrorRuleArgs']]] rules: The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
-        """
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
-        if types is not None:
-            pulumi.set(__self__, "types", types)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorRuleArgs']]]]:
-        """
-        The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
-
-    @property
-    @pulumi.getter
-    def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
-        """
-        return pulumi.get(self, "types")
-
-    @types.setter
-    def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "types", value)
 
 
 @pulumi.input_type
@@ -1028,6 +988,46 @@ class CustomErrorRuleArgs:
     @selector.setter
     def selector(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "selector", value)
+
+
+@pulumi.input_type
+class CustomErrorArgs:
+    def __init__(__self__, *,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorRuleArgs']]]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError
+        :param pulumi.Input[Sequence[pulumi.Input['CustomErrorRuleArgs']]] rules: The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
+        """
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorRuleArgs']]]]:
+        """
+        The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
+        """
+        return pulumi.get(self, "types")
+
+    @types.setter
+    def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "types", value)
 
 
 @pulumi.input_type
@@ -1077,6 +1077,62 @@ class DeleteServiceStrategyArgs:
         Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service.
         """
         pass
+
+
+@pulumi.input_type
+class DocumentationRuleArgs:
+    def __init__(__self__, *,
+                 deprecation_description: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 selector: Optional[pulumi.Input[str]] = None):
+        """
+        A documentation rule provides information about individual API elements.
+        :param pulumi.Input[str] deprecation_description: Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
+        :param pulumi.Input[str] description: Description of the selected API(s).
+        :param pulumi.Input[str] selector: The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+        """
+        if deprecation_description is not None:
+            pulumi.set(__self__, "deprecation_description", deprecation_description)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if selector is not None:
+            pulumi.set(__self__, "selector", selector)
+
+    @property
+    @pulumi.getter(name="deprecationDescription")
+    def deprecation_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
+        """
+        return pulumi.get(self, "deprecation_description")
+
+    @deprecation_description.setter
+    def deprecation_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deprecation_description", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the selected API(s).
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def selector(self) -> Optional[pulumi.Input[str]]:
+        """
+        The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+        """
+        return pulumi.get(self, "selector")
+
+    @selector.setter
+    def selector(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "selector", value)
 
 
 @pulumi.input_type
@@ -1184,62 +1240,6 @@ class DocumentationArgs:
 
 
 @pulumi.input_type
-class DocumentationRuleArgs:
-    def __init__(__self__, *,
-                 deprecation_description: Optional[pulumi.Input[str]] = None,
-                 description: Optional[pulumi.Input[str]] = None,
-                 selector: Optional[pulumi.Input[str]] = None):
-        """
-        A documentation rule provides information about individual API elements.
-        :param pulumi.Input[str] deprecation_description: Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
-        :param pulumi.Input[str] description: Description of the selected API(s).
-        :param pulumi.Input[str] selector: The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
-        """
-        if deprecation_description is not None:
-            pulumi.set(__self__, "deprecation_description", deprecation_description)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if selector is not None:
-            pulumi.set(__self__, "selector", selector)
-
-    @property
-    @pulumi.getter(name="deprecationDescription")
-    def deprecation_description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
-        """
-        return pulumi.get(self, "deprecation_description")
-
-    @deprecation_description.setter
-    def deprecation_description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "deprecation_description", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description of the selected API(s).
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[str]]:
-        """
-        The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
-        """
-        return pulumi.get(self, "selector")
-
-    @selector.setter
-    def selector(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "selector", value)
-
-
-@pulumi.input_type
 class EndpointArgs:
     def __init__(__self__, *,
                  allow_cors: Optional[pulumi.Input[bool]] = None,
@@ -1293,6 +1293,62 @@ class EndpointArgs:
     @target.setter
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
+
+
+@pulumi.input_type
+class EnumValueArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 number: Optional[pulumi.Input[int]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]] = None):
+        """
+        Enum value definition.
+        :param pulumi.Input[str] name: Enum value name.
+        :param pulumi.Input[int] number: Enum value number.
+        :param pulumi.Input[Sequence[pulumi.Input['OptionArgs']]] options: Protocol buffer options.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if number is not None:
+            pulumi.set(__self__, "number", number)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum value name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def number(self) -> Optional[pulumi.Input[int]]:
+        """
+        Enum value number.
+        """
+        return pulumi.get(self, "number")
+
+    @number.setter
+    def number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "number", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]]:
+        """
+        Protocol buffer options.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]]):
+        pulumi.set(self, "options", value)
 
 
 @pulumi.input_type
@@ -1381,62 +1437,6 @@ class EnumArgs:
     @syntax.setter
     def syntax(self, value: Optional[pulumi.Input['EnumSyntax']]):
         pulumi.set(self, "syntax", value)
-
-
-@pulumi.input_type
-class EnumValueArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 number: Optional[pulumi.Input[int]] = None,
-                 options: Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]] = None):
-        """
-        Enum value definition.
-        :param pulumi.Input[str] name: Enum value name.
-        :param pulumi.Input[int] number: Enum value number.
-        :param pulumi.Input[Sequence[pulumi.Input['OptionArgs']]] options: Protocol buffer options.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if number is not None:
-            pulumi.set(__self__, "number", number)
-        if options is not None:
-            pulumi.set(__self__, "options", options)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Enum value name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def number(self) -> Optional[pulumi.Input[int]]:
-        """
-        Enum value number.
-        """
-        return pulumi.get(self, "number")
-
-    @number.setter
-    def number(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "number", value)
-
-    @property
-    @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]]:
-        """
-        Protocol buffer options.
-        """
-        return pulumi.get(self, "options")
-
-    @options.setter
-    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]]):
-        pulumi.set(self, "options", value)
 
 
 @pulumi.input_type
@@ -1680,46 +1680,6 @@ class FieldArgs:
 
 
 @pulumi.input_type
-class HttpArgs:
-    def __init__(__self__, *,
-                 fully_decode_reserved_expansion: Optional[pulumi.Input[bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]]] = None):
-        """
-        Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
-        :param pulumi.Input[bool] fully_decode_reserved_expansion: When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
-        :param pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]] rules: A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-        """
-        if fully_decode_reserved_expansion is not None:
-            pulumi.set(__self__, "fully_decode_reserved_expansion", fully_decode_reserved_expansion)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
-
-    @property
-    @pulumi.getter(name="fullyDecodeReservedExpansion")
-    def fully_decode_reserved_expansion(self) -> Optional[pulumi.Input[bool]]:
-        """
-        When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
-        """
-        return pulumi.get(self, "fully_decode_reserved_expansion")
-
-    @fully_decode_reserved_expansion.setter
-    def fully_decode_reserved_expansion(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "fully_decode_reserved_expansion", value)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]]]:
-        """
-        A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
-
-
-@pulumi.input_type
 class HttpRuleArgs:
     def __init__(__self__, *,
                  additional_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]]] = None,
@@ -1885,6 +1845,46 @@ class HttpRuleArgs:
     @selector.setter
     def selector(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "selector", value)
+
+
+@pulumi.input_type
+class HttpArgs:
+    def __init__(__self__, *,
+                 fully_decode_reserved_expansion: Optional[pulumi.Input[bool]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]]] = None):
+        """
+        Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
+        :param pulumi.Input[bool] fully_decode_reserved_expansion: When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]] rules: A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+        """
+        if fully_decode_reserved_expansion is not None:
+            pulumi.set(__self__, "fully_decode_reserved_expansion", fully_decode_reserved_expansion)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter(name="fullyDecodeReservedExpansion")
+    def fully_decode_reserved_expansion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
+        """
+        return pulumi.get(self, "fully_decode_reserved_expansion")
+
+    @fully_decode_reserved_expansion.setter
+    def fully_decode_reserved_expansion(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fully_decode_reserved_expansion", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]]]:
+        """
+        A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
@@ -2072,46 +2072,6 @@ class LogDescriptorArgs:
 
 
 @pulumi.input_type
-class LoggingArgs:
-    def __init__(__self__, *,
-                 consumer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]] = None,
-                 producer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]] = None):
-        """
-        Logging configuration of the service. The following example shows how to configure logs to be sent to the producer and consumer projects. In the example, the `activity_history` log is sent to both the producer and consumer projects, whereas the `purchase_history` log is only sent to the producer project. monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history
-        :param pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]] consumer_destinations: Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
-        :param pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]] producer_destinations: Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
-        """
-        if consumer_destinations is not None:
-            pulumi.set(__self__, "consumer_destinations", consumer_destinations)
-        if producer_destinations is not None:
-            pulumi.set(__self__, "producer_destinations", producer_destinations)
-
-    @property
-    @pulumi.getter(name="consumerDestinations")
-    def consumer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]]:
-        """
-        Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
-        """
-        return pulumi.get(self, "consumer_destinations")
-
-    @consumer_destinations.setter
-    def consumer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]]):
-        pulumi.set(self, "consumer_destinations", value)
-
-    @property
-    @pulumi.getter(name="producerDestinations")
-    def producer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]]:
-        """
-        Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
-        """
-        return pulumi.get(self, "producer_destinations")
-
-    @producer_destinations.setter
-    def producer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]]):
-        pulumi.set(self, "producer_destinations", value)
-
-
-@pulumi.input_type
 class LoggingDestinationArgs:
     def __init__(__self__, *,
                  logs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2149,6 +2109,46 @@ class LoggingDestinationArgs:
     @monitored_resource.setter
     def monitored_resource(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "monitored_resource", value)
+
+
+@pulumi.input_type
+class LoggingArgs:
+    def __init__(__self__, *,
+                 consumer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]] = None,
+                 producer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]] = None):
+        """
+        Logging configuration of the service. The following example shows how to configure logs to be sent to the producer and consumer projects. In the example, the `activity_history` log is sent to both the producer and consumer projects, whereas the `purchase_history` log is only sent to the producer project. monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history
+        :param pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]] consumer_destinations: Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
+        :param pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]] producer_destinations: Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
+        """
+        if consumer_destinations is not None:
+            pulumi.set(__self__, "consumer_destinations", consumer_destinations)
+        if producer_destinations is not None:
+            pulumi.set(__self__, "producer_destinations", producer_destinations)
+
+    @property
+    @pulumi.getter(name="consumerDestinations")
+    def consumer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]]:
+        """
+        Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
+        """
+        return pulumi.get(self, "consumer_destinations")
+
+    @consumer_destinations.setter
+    def consumer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]]):
+        pulumi.set(self, "consumer_destinations", value)
+
+    @property
+    @pulumi.getter(name="producerDestinations")
+    def producer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]]:
+        """
+        Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
+        """
+        return pulumi.get(self, "producer_destinations")
+
+    @producer_destinations.setter
+    def producer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]]):
+        pulumi.set(self, "producer_destinations", value)
 
 
 @pulumi.input_type
@@ -2269,6 +2269,46 @@ class MethodArgs:
     @syntax.setter
     def syntax(self, value: Optional[pulumi.Input['MethodSyntax']]):
         pulumi.set(self, "syntax", value)
+
+
+@pulumi.input_type
+class MetricDescriptorMetadataArgs:
+    def __init__(__self__, *,
+                 ingest_delay: Optional[pulumi.Input[str]] = None,
+                 sample_period: Optional[pulumi.Input[str]] = None):
+        """
+        Additional annotations that can be used to guide the usage of a metric.
+        :param pulumi.Input[str] ingest_delay: The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+        :param pulumi.Input[str] sample_period: The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+        """
+        if ingest_delay is not None:
+            pulumi.set(__self__, "ingest_delay", ingest_delay)
+        if sample_period is not None:
+            pulumi.set(__self__, "sample_period", sample_period)
+
+    @property
+    @pulumi.getter(name="ingestDelay")
+    def ingest_delay(self) -> Optional[pulumi.Input[str]]:
+        """
+        The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+        """
+        return pulumi.get(self, "ingest_delay")
+
+    @ingest_delay.setter
+    def ingest_delay(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ingest_delay", value)
+
+    @property
+    @pulumi.getter(name="samplePeriod")
+    def sample_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+        """
+        return pulumi.get(self, "sample_period")
+
+    @sample_period.setter
+    def sample_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sample_period", value)
 
 
 @pulumi.input_type
@@ -2456,53 +2496,13 @@ class MetricDescriptorArgs:
 
 
 @pulumi.input_type
-class MetricDescriptorMetadataArgs:
-    def __init__(__self__, *,
-                 ingest_delay: Optional[pulumi.Input[str]] = None,
-                 sample_period: Optional[pulumi.Input[str]] = None):
-        """
-        Additional annotations that can be used to guide the usage of a metric.
-        :param pulumi.Input[str] ingest_delay: The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
-        :param pulumi.Input[str] sample_period: The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
-        """
-        if ingest_delay is not None:
-            pulumi.set(__self__, "ingest_delay", ingest_delay)
-        if sample_period is not None:
-            pulumi.set(__self__, "sample_period", sample_period)
-
-    @property
-    @pulumi.getter(name="ingestDelay")
-    def ingest_delay(self) -> Optional[pulumi.Input[str]]:
-        """
-        The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
-        """
-        return pulumi.get(self, "ingest_delay")
-
-    @ingest_delay.setter
-    def ingest_delay(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ingest_delay", value)
-
-    @property
-    @pulumi.getter(name="samplePeriod")
-    def sample_period(self) -> Optional[pulumi.Input[str]]:
-        """
-        The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
-        """
-        return pulumi.get(self, "sample_period")
-
-    @sample_period.setter
-    def sample_period(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sample_period", value)
-
-
-@pulumi.input_type
 class MetricRuleArgs:
     def __init__(__self__, *,
-                 metric_costs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metric_costs: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  selector: Optional[pulumi.Input[str]] = None):
         """
         Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metric_costs: Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
+        :param pulumi.Input[Mapping[str, str]] metric_costs: Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
         :param pulumi.Input[str] selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
         """
         if metric_costs is not None:
@@ -2512,14 +2512,14 @@ class MetricRuleArgs:
 
     @property
     @pulumi.getter(name="metricCosts")
-    def metric_costs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metric_costs(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
         """
         return pulumi.get(self, "metric_costs")
 
     @metric_costs.setter
-    def metric_costs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metric_costs(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metric_costs", value)
 
     @property
@@ -2680,46 +2680,6 @@ class MonitoredResourceDescriptorArgs:
 
 
 @pulumi.input_type
-class MonitoringArgs:
-    def __init__(__self__, *,
-                 consumer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]] = None,
-                 producer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]] = None):
-        """
-        Monitoring configuration of the service. The example below shows how to configure monitored resources and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name: library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." monitoring: producer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count - library.googleapis.com/book/num_overdue
-        :param pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]] consumer_destinations: Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]] producer_destinations: Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
-        """
-        if consumer_destinations is not None:
-            pulumi.set(__self__, "consumer_destinations", consumer_destinations)
-        if producer_destinations is not None:
-            pulumi.set(__self__, "producer_destinations", producer_destinations)
-
-    @property
-    @pulumi.getter(name="consumerDestinations")
-    def consumer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]]:
-        """
-        Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
-        """
-        return pulumi.get(self, "consumer_destinations")
-
-    @consumer_destinations.setter
-    def consumer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]]):
-        pulumi.set(self, "consumer_destinations", value)
-
-    @property
-    @pulumi.getter(name="producerDestinations")
-    def producer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]]:
-        """
-        Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
-        """
-        return pulumi.get(self, "producer_destinations")
-
-    @producer_destinations.setter
-    def producer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]]):
-        pulumi.set(self, "producer_destinations", value)
-
-
-@pulumi.input_type
 class MonitoringDestinationArgs:
     def __init__(__self__, *,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2760,6 +2720,46 @@ class MonitoringDestinationArgs:
 
 
 @pulumi.input_type
+class MonitoringArgs:
+    def __init__(__self__, *,
+                 consumer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]] = None,
+                 producer_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]] = None):
+        """
+        Monitoring configuration of the service. The example below shows how to configure monitored resources and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name: library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." monitoring: producer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count - library.googleapis.com/book/num_overdue
+        :param pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]] consumer_destinations: Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]] producer_destinations: Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+        """
+        if consumer_destinations is not None:
+            pulumi.set(__self__, "consumer_destinations", consumer_destinations)
+        if producer_destinations is not None:
+            pulumi.set(__self__, "producer_destinations", producer_destinations)
+
+    @property
+    @pulumi.getter(name="consumerDestinations")
+    def consumer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]]:
+        """
+        Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+        """
+        return pulumi.get(self, "consumer_destinations")
+
+    @consumer_destinations.setter
+    def consumer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]]):
+        pulumi.set(self, "consumer_destinations", value)
+
+    @property
+    @pulumi.getter(name="producerDestinations")
+    def producer_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]]:
+        """
+        Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+        """
+        return pulumi.get(self, "producer_destinations")
+
+    @producer_destinations.setter
+    def producer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringDestinationArgs']]]]):
+        pulumi.set(self, "producer_destinations", value)
+
+
+@pulumi.input_type
 class OAuthRequirementsArgs:
     def __init__(__self__, *,
                  canonical_scopes: Optional[pulumi.Input[str]] = None):
@@ -2787,11 +2787,11 @@ class OAuthRequirementsArgs:
 class OptionArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 value: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         A protocol buffer option, which can be attached to a message, field, enumeration, etc.
         :param pulumi.Input[str] name: The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
+        :param pulumi.Input[Mapping[str, str]] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2812,14 +2812,14 @@ class OptionArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def value(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def value(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "value", value)
 
 
@@ -2880,46 +2880,6 @@ class PageArgs:
 
 
 @pulumi.input_type
-class QuotaArgs:
-    def __init__(__self__, *,
-                 limits: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaLimitArgs']]]] = None,
-                 metric_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleArgs']]]] = None):
-        """
-        Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 # The metric rules bind all methods to the read_calls metric, # except for the UpdateBook and DeleteBook methods. These two methods # are mapped to the write_calls metric, with the UpdateBook method # consuming at twice rate as the DeleteBook method. metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64 
-        :param pulumi.Input[Sequence[pulumi.Input['QuotaLimitArgs']]] limits: List of `QuotaLimit` definitions for the service.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleArgs']]] metric_rules: List of `MetricRule` definitions, each one mapping a selected method to one or more metrics.
-        """
-        if limits is not None:
-            pulumi.set(__self__, "limits", limits)
-        if metric_rules is not None:
-            pulumi.set(__self__, "metric_rules", metric_rules)
-
-    @property
-    @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaLimitArgs']]]]:
-        """
-        List of `QuotaLimit` definitions for the service.
-        """
-        return pulumi.get(self, "limits")
-
-    @limits.setter
-    def limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaLimitArgs']]]]):
-        pulumi.set(self, "limits", value)
-
-    @property
-    @pulumi.getter(name="metricRules")
-    def metric_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleArgs']]]]:
-        """
-        List of `MetricRule` definitions, each one mapping a selected method to one or more metrics.
-        """
-        return pulumi.get(self, "metric_rules")
-
-    @metric_rules.setter
-    def metric_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleArgs']]]]):
-        pulumi.set(self, "metric_rules", value)
-
-
-@pulumi.input_type
 class QuotaLimitArgs:
     def __init__(__self__, *,
                  default_limit: Optional[pulumi.Input[str]] = None,
@@ -2931,7 +2891,7 @@ class QuotaLimitArgs:
                  metric: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  unit: Optional[pulumi.Input[str]] = None,
-                 values: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 values: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         `QuotaLimit` defines a specific limit that applies over a specified duration for a limit type. There can be at most one limit for a duration and limit type combination defined within a `QuotaGroup`.
         :param pulumi.Input[str] default_limit: Default number of tokens that can be consumed during the specified duration. This is the number of tokens assigned when a client application developer activates the service for his/her project. Specifying a value of 0 will block all requests. This can be used if you are provisioning quota to selected consumers and blocking others. Similarly, a value of -1 will indicate an unlimited quota. No other negative values are allowed. Used by group-based quotas only.
@@ -2943,7 +2903,7 @@ class QuotaLimitArgs:
         :param pulumi.Input[str] metric: The name of the metric this quota limit applies to. The quota limits with the same metric will be checked together during runtime. The metric must be defined within the service config.
         :param pulumi.Input[str] name: Name of the quota limit. The name must be provided, and it must be unique within the service. The name can only include alphanumeric characters as well as '-'. The maximum length of the limit name is 64 characters.
         :param pulumi.Input[str] unit: Specify the unit of the quota limit. It uses the same syntax as Metric.unit. The supported unit kinds are determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per minute per project. Note: the order of unit components is insignificant. The "1" at the beginning is required to follow the metric unit syntax.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] values: Tiered limit values. You must specify this as a key:value pair, with an integer value that is the maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.
+        :param pulumi.Input[Mapping[str, str]] values: Tiered limit values. You must specify this as a key:value pair, with an integer value that is the maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.
         """
         if default_limit is not None:
             pulumi.set(__self__, "default_limit", default_limit)
@@ -3076,15 +3036,55 @@ class QuotaLimitArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def values(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Tiered limit values. You must specify this as a key:value pair, with an integer value that is the maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def values(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class QuotaArgs:
+    def __init__(__self__, *,
+                 limits: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaLimitArgs']]]] = None,
+                 metric_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleArgs']]]] = None):
+        """
+        Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 # The metric rules bind all methods to the read_calls metric, # except for the UpdateBook and DeleteBook methods. These two methods # are mapped to the write_calls metric, with the UpdateBook method # consuming at twice rate as the DeleteBook method. metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64 
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaLimitArgs']]] limits: List of `QuotaLimit` definitions for the service.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRuleArgs']]] metric_rules: List of `MetricRule` definitions, each one mapping a selected method to one or more metrics.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if metric_rules is not None:
+            pulumi.set(__self__, "metric_rules", metric_rules)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaLimitArgs']]]]:
+        """
+        List of `QuotaLimit` definitions for the service.
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaLimitArgs']]]]):
+        pulumi.set(self, "limits", value)
+
+    @property
+    @pulumi.getter(name="metricRules")
+    def metric_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleArgs']]]]:
+        """
+        List of `MetricRule` definitions, each one mapping a selected method to one or more metrics.
+        """
+        return pulumi.get(self, "metric_rules")
+
+    @metric_rules.setter
+    def metric_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleArgs']]]]):
+        pulumi.set(self, "metric_rules", value)
 
 
 @pulumi.input_type
@@ -3109,62 +3109,6 @@ class SourceContextArgs:
     @file_name.setter
     def file_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_name", value)
-
-
-@pulumi.input_type
-class SystemParameterArgs:
-    def __init__(__self__, *,
-                 http_header: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 url_query_parameter: Optional[pulumi.Input[str]] = None):
-        """
-        Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent.
-        :param pulumi.Input[str] http_header: Define the HTTP header name to use for the parameter. It is case insensitive.
-        :param pulumi.Input[str] name: Define the name of the parameter, such as "api_key" . It is case sensitive.
-        :param pulumi.Input[str] url_query_parameter: Define the URL query parameter name to use for the parameter. It is case sensitive.
-        """
-        if http_header is not None:
-            pulumi.set(__self__, "http_header", http_header)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if url_query_parameter is not None:
-            pulumi.set(__self__, "url_query_parameter", url_query_parameter)
-
-    @property
-    @pulumi.getter(name="httpHeader")
-    def http_header(self) -> Optional[pulumi.Input[str]]:
-        """
-        Define the HTTP header name to use for the parameter. It is case insensitive.
-        """
-        return pulumi.get(self, "http_header")
-
-    @http_header.setter
-    def http_header(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "http_header", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Define the name of the parameter, such as "api_key" . It is case sensitive.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="urlQueryParameter")
-    def url_query_parameter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Define the URL query parameter name to use for the parameter. It is case sensitive.
-        """
-        return pulumi.get(self, "url_query_parameter")
-
-    @url_query_parameter.setter
-    def url_query_parameter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "url_query_parameter", value)
 
 
 @pulumi.input_type
@@ -3232,26 +3176,82 @@ class SystemParametersArgs:
 
 
 @pulumi.input_type
+class SystemParameterArgs:
+    def __init__(__self__, *,
+                 http_header: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 url_query_parameter: Optional[pulumi.Input[str]] = None):
+        """
+        Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent.
+        :param pulumi.Input[str] http_header: Define the HTTP header name to use for the parameter. It is case insensitive.
+        :param pulumi.Input[str] name: Define the name of the parameter, such as "api_key" . It is case sensitive.
+        :param pulumi.Input[str] url_query_parameter: Define the URL query parameter name to use for the parameter. It is case sensitive.
+        """
+        if http_header is not None:
+            pulumi.set(__self__, "http_header", http_header)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url_query_parameter is not None:
+            pulumi.set(__self__, "url_query_parameter", url_query_parameter)
+
+    @property
+    @pulumi.getter(name="httpHeader")
+    def http_header(self) -> Optional[pulumi.Input[str]]:
+        """
+        Define the HTTP header name to use for the parameter. It is case insensitive.
+        """
+        return pulumi.get(self, "http_header")
+
+    @http_header.setter
+    def http_header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_header", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Define the name of the parameter, such as "api_key" . It is case sensitive.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="urlQueryParameter")
+    def url_query_parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Define the URL query parameter name to use for the parameter. It is case sensitive.
+        """
+        return pulumi.get(self, "url_query_parameter")
+
+    @url_query_parameter.setter
+    def url_query_parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url_query_parameter", value)
+
+
+@pulumi.input_type
 class TrafficPercentStrategyArgs:
     def __init__(__self__, *,
-                 percentages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 percentages: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
+        :param pulumi.Input[Mapping[str, str]] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """
         if percentages is not None:
             pulumi.set(__self__, "percentages", percentages)
 
     @property
     @pulumi.getter
-    def percentages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def percentages(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """
         return pulumi.get(self, "percentages")
 
     @percentages.setter
-    def percentages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def percentages(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "percentages", value)
 
 
@@ -3360,62 +3360,6 @@ class TypeArgs:
 
 
 @pulumi.input_type
-class UsageArgs:
-    def __init__(__self__, *,
-                 producer_notification_channel: Optional[pulumi.Input[str]] = None,
-                 requirements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['UsageRuleArgs']]]] = None):
-        """
-        Configuration controlling usage of a service.
-        :param pulumi.Input[str] producer_notification_channel: The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] requirements: Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs.
-        :param pulumi.Input[Sequence[pulumi.Input['UsageRuleArgs']]] rules: A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-        """
-        if producer_notification_channel is not None:
-            pulumi.set(__self__, "producer_notification_channel", producer_notification_channel)
-        if requirements is not None:
-            pulumi.set(__self__, "requirements", requirements)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
-
-    @property
-    @pulumi.getter(name="producerNotificationChannel")
-    def producer_notification_channel(self) -> Optional[pulumi.Input[str]]:
-        """
-        The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
-        """
-        return pulumi.get(self, "producer_notification_channel")
-
-    @producer_notification_channel.setter
-    def producer_notification_channel(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "producer_notification_channel", value)
-
-    @property
-    @pulumi.getter
-    def requirements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs.
-        """
-        return pulumi.get(self, "requirements")
-
-    @requirements.setter
-    def requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "requirements", value)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UsageRuleArgs']]]]:
-        """
-        A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UsageRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
-
-
-@pulumi.input_type
 class UsageRuleArgs:
     def __init__(__self__, *,
                  allow_unregistered_calls: Optional[pulumi.Input[bool]] = None,
@@ -3469,5 +3413,61 @@ class UsageRuleArgs:
     @skip_service_control.setter
     def skip_service_control(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "skip_service_control", value)
+
+
+@pulumi.input_type
+class UsageArgs:
+    def __init__(__self__, *,
+                 producer_notification_channel: Optional[pulumi.Input[str]] = None,
+                 requirements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['UsageRuleArgs']]]] = None):
+        """
+        Configuration controlling usage of a service.
+        :param pulumi.Input[str] producer_notification_channel: The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] requirements: Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs.
+        :param pulumi.Input[Sequence[pulumi.Input['UsageRuleArgs']]] rules: A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+        """
+        if producer_notification_channel is not None:
+            pulumi.set(__self__, "producer_notification_channel", producer_notification_channel)
+        if requirements is not None:
+            pulumi.set(__self__, "requirements", requirements)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter(name="producerNotificationChannel")
+    def producer_notification_channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
+        """
+        return pulumi.get(self, "producer_notification_channel")
+
+    @producer_notification_channel.setter
+    def producer_notification_channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "producer_notification_channel", value)
+
+    @property
+    @pulumi.getter
+    def requirements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs.
+        """
+        return pulumi.get(self, "requirements")
+
+    @requirements.setter
+    def requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "requirements", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UsageRuleArgs']]]]:
+        """
+        A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UsageRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
 

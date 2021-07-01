@@ -241,7 +241,7 @@ export interface JobArgs {
     /**
      * User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
      */
@@ -297,7 +297,7 @@ export interface JobArgs {
     /**
      * The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
      */
-    transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    transformNameMapping?: pulumi.Input<{[key: string]: string}>;
     /**
      * The type of Cloud Dataflow job.
      */

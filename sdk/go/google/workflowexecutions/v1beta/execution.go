@@ -71,41 +71,9 @@ func GetExecution(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Execution resources.
 type executionState struct {
-	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-	Argument *string `pulumi:"argument"`
-	// Marks the end of execution, successful or not.
-	EndTime *string `pulumi:"endTime"`
-	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-	Error *ErrorResponse `pulumi:"error"`
-	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
-	Name *string `pulumi:"name"`
-	// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
-	Result *string `pulumi:"result"`
-	// Marks the beginning of execution.
-	StartTime *string `pulumi:"startTime"`
-	// Current state of the execution.
-	State *string `pulumi:"state"`
-	// Revision of the workflow this execution is using.
-	WorkflowRevisionId *string `pulumi:"workflowRevisionId"`
 }
 
 type ExecutionState struct {
-	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-	Argument pulumi.StringPtrInput
-	// Marks the end of execution, successful or not.
-	EndTime pulumi.StringPtrInput
-	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-	Error ErrorResponsePtrInput
-	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
-	Name pulumi.StringPtrInput
-	// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
-	Result pulumi.StringPtrInput
-	// Marks the beginning of execution.
-	StartTime pulumi.StringPtrInput
-	// Current state of the execution.
-	State pulumi.StringPtrInput
-	// Revision of the workflow this execution is using.
-	WorkflowRevisionId pulumi.StringPtrInput
 }
 
 func (ExecutionState) ElementType() reflect.Type {

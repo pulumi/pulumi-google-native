@@ -192,7 +192,7 @@ export interface TriggerArgs {
     /**
      * Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
      */
-    substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    substitutions?: pulumi.Input<{[key: string]: string}>;
     /**
      * Tags for annotation of a `BuildTrigger`
      */

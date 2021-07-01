@@ -24,7 +24,7 @@ class GameServerClusterArgs:
                  connection_info: Optional[pulumi.Input['GameServerClusterConnectionInfoArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GameServerCluster resource.
@@ -32,7 +32,7 @@ class GameServerClusterArgs:
         :param pulumi.Input['GameServerClusterConnectionInfoArgs'] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
         :param pulumi.Input[str] description: Human readable description of the cluster.
         :param pulumi.Input[str] etag: ETag of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server cluster. Each label is a key-value pair.
+        :param pulumi.Input[Mapping[str, str]] labels: The labels associated with this game server cluster. Each label is a key-value pair.
         :param pulumi.Input[str] name: Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         """
         pulumi.set(__self__, "game_server_cluster_id", game_server_cluster_id)
@@ -138,14 +138,14 @@ class GameServerClusterArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The labels associated with this game server cluster. Each label is a key-value pair.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -171,7 +171,7 @@ class GameServerCluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  game_server_cluster_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -186,7 +186,7 @@ class GameServerCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
         :param pulumi.Input[str] description: Human readable description of the cluster.
         :param pulumi.Input[str] etag: ETag of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server cluster. Each label is a key-value pair.
+        :param pulumi.Input[Mapping[str, str]] labels: The labels associated with this game server cluster. Each label is a key-value pair.
         :param pulumi.Input[str] name: Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         """
         ...
@@ -218,7 +218,7 @@ class GameServerCluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  game_server_cluster_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

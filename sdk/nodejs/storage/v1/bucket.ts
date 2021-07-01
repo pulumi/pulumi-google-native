@@ -275,7 +275,7 @@ export interface BucketArgs {
     /**
      * User-provided labels, in key/value pairs.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * The bucket's lifecycle configuration. See lifecycle management for more information.
      */

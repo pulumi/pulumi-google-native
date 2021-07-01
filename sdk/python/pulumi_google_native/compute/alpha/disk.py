@@ -23,7 +23,7 @@ class DiskArgs:
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]] = None,
                  interface: Optional[pulumi.Input['DiskInterface']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  license_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
@@ -58,7 +58,7 @@ class DiskArgs:
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
         :param pulumi.Input['DiskInterface'] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk. These can be later modified by the setLabels method.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels to apply to this disk. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of publicly visible licenses. Reserved for Google's use.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
@@ -253,14 +253,14 @@ class DiskArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels to apply to this disk. These can be later modified by the setLabels method.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -553,7 +553,7 @@ class Disk(pulumi.CustomResource):
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  interface: Optional[pulumi.Input['DiskInterface']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  license_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
@@ -594,7 +594,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
         :param pulumi.Input['DiskInterface'] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk. These can be later modified by the setLabels method.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels to apply to this disk. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of publicly visible licenses. Reserved for Google's use.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
@@ -675,7 +675,7 @@ class Disk(pulumi.CustomResource):
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  interface: Optional[pulumi.Input['DiskInterface']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  license_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,

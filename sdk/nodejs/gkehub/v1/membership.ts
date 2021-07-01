@@ -160,7 +160,7 @@ export interface MembershipArgs {
     /**
      * Optional. GCP labels for this membership.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     location: pulumi.Input<string>;
     membershipId: pulumi.Input<string>;
     project: pulumi.Input<string>;

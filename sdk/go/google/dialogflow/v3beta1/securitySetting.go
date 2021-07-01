@@ -66,37 +66,9 @@ func GetSecuritySetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecuritySetting resources.
 type securitySettingState struct {
-	// Required. The human-readable name of the security settings, unique within the location.
-	DisplayName *string `pulumi:"displayName"`
-	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
-	InspectTemplate *string `pulumi:"inspectTemplate"`
-	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
-	Name *string `pulumi:"name"`
-	// List of types of data to remove when retention settings triggers purge.
-	PurgeDataTypes []string `pulumi:"purgeDataTypes"`
-	// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
-	RedactionScope *string `pulumi:"redactionScope"`
-	// Strategy that defines how we do redaction.
-	RedactionStrategy *string `pulumi:"redactionStrategy"`
-	// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
-	RetentionWindowDays *int `pulumi:"retentionWindowDays"`
 }
 
 type SecuritySettingState struct {
-	// Required. The human-readable name of the security settings, unique within the location.
-	DisplayName pulumi.StringPtrInput
-	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
-	InspectTemplate pulumi.StringPtrInput
-	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
-	Name pulumi.StringPtrInput
-	// List of types of data to remove when retention settings triggers purge.
-	PurgeDataTypes pulumi.StringArrayInput
-	// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
-	RedactionScope pulumi.StringPtrInput
-	// Strategy that defines how we do redaction.
-	RedactionStrategy pulumi.StringPtrInput
-	// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
-	RetentionWindowDays pulumi.IntPtrInput
 }
 
 func (SecuritySettingState) ElementType() reflect.Type {

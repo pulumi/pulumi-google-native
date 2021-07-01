@@ -123,7 +123,7 @@ export interface ModelArgs {
     /**
      * Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
      */

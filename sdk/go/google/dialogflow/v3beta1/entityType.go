@@ -71,41 +71,9 @@ func GetEntityType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntityType resources.
 type entityTypeState struct {
-	// Indicates whether the entity type can be automatically expanded.
-	AutoExpansionMode *string `pulumi:"autoExpansionMode"`
-	// Required. The human-readable name of the entity type, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
-	// Enables fuzzy entity extraction during classification.
-	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
-	// The collection of entity entries associated with the entity type.
-	Entities []GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse `pulumi:"entities"`
-	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-	ExcludedPhrases []GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse `pulumi:"excludedPhrases"`
-	// Required. Indicates the kind of entity type.
-	Kind *string `pulumi:"kind"`
-	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
-	Name *string `pulumi:"name"`
-	// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
-	Redact *bool `pulumi:"redact"`
 }
 
 type EntityTypeState struct {
-	// Indicates whether the entity type can be automatically expanded.
-	AutoExpansionMode pulumi.StringPtrInput
-	// Required. The human-readable name of the entity type, unique within the agent.
-	DisplayName pulumi.StringPtrInput
-	// Enables fuzzy entity extraction during classification.
-	EnableFuzzyExtraction pulumi.BoolPtrInput
-	// The collection of entity entries associated with the entity type.
-	Entities GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseArrayInput
-	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-	ExcludedPhrases GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseArrayInput
-	// Required. Indicates the kind of entity type.
-	Kind pulumi.StringPtrInput
-	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
-	Name pulumi.StringPtrInput
-	// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
-	Redact pulumi.BoolPtrInput
 }
 
 func (EntityTypeState) ElementType() reflect.Type {

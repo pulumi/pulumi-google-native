@@ -68,41 +68,9 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
-	// If exists, the time at which the database creation started.
-	CreateTime *string `pulumi:"createTime"`
-	// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
-	EarliestVersionTime *string `pulumi:"earliestVersionTime"`
-	// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
-	EncryptionConfig *EncryptionConfigResponse `pulumi:"encryptionConfig"`
-	// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
-	EncryptionInfo []EncryptionInfoResponse `pulumi:"encryptionInfo"`
-	// Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
-	Name *string `pulumi:"name"`
-	// Applicable only for restored databases. Contains information about the restore source.
-	RestoreInfo *RestoreInfoResponse `pulumi:"restoreInfo"`
-	// The current database state.
-	State *string `pulumi:"state"`
-	// The period in which Cloud Spanner retains all versions of data for the database. This is the same as the value of version_retention_period database option set using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
-	VersionRetentionPeriod *string `pulumi:"versionRetentionPeriod"`
 }
 
 type DatabaseState struct {
-	// If exists, the time at which the database creation started.
-	CreateTime pulumi.StringPtrInput
-	// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
-	EarliestVersionTime pulumi.StringPtrInput
-	// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
-	EncryptionConfig EncryptionConfigResponsePtrInput
-	// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
-	EncryptionInfo EncryptionInfoResponseArrayInput
-	// Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
-	Name pulumi.StringPtrInput
-	// Applicable only for restored databases. Contains information about the restore source.
-	RestoreInfo RestoreInfoResponsePtrInput
-	// The current database state.
-	State pulumi.StringPtrInput
-	// The period in which Cloud Spanner retains all versions of data for the database. This is the same as the value of version_retention_period database option set using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
-	VersionRetentionPeriod pulumi.StringPtrInput
 }
 
 func (DatabaseState) ElementType() reflect.Type {

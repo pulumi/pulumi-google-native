@@ -22,7 +22,7 @@ class ConsentArtifactArgs:
                  consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input['ImageArgs']]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
                  guardian_signature: Optional[pulumi.Input['SignatureArgs']] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_signature: Optional[pulumi.Input['SignatureArgs']] = None,
@@ -32,7 +32,7 @@ class ConsentArtifactArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ImageArgs']]] consent_content_screenshots: Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
         :param pulumi.Input[str] consent_content_version: Optional. An string indicating the version of the consent information shown to the user.
         :param pulumi.Input['SignatureArgs'] guardian_signature: Optional. A signature from a guardian.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
+        :param pulumi.Input[Mapping[str, str]] metadata: Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
         :param pulumi.Input[str] name: Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
         :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         :param pulumi.Input['SignatureArgs'] user_signature: Optional. User's signature.
@@ -133,14 +133,14 @@ class ConsentArtifactArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -203,7 +203,7 @@ class ConsentArtifact(pulumi.CustomResource):
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  guardian_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -218,7 +218,7 @@ class ConsentArtifact(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]] consent_content_screenshots: Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
         :param pulumi.Input[str] consent_content_version: Optional. An string indicating the version of the consent information shown to the user.
         :param pulumi.Input[pulumi.InputType['SignatureArgs']] guardian_signature: Optional. A signature from a guardian.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
+        :param pulumi.Input[Mapping[str, str]] metadata: Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
         :param pulumi.Input[str] name: Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
         :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         :param pulumi.Input[pulumi.InputType['SignatureArgs']] user_signature: Optional. User's signature.
@@ -254,7 +254,7 @@ class ConsentArtifact(pulumi.CustomResource):
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  guardian_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,

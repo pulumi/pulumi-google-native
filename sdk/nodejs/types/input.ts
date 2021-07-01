@@ -1493,7 +1493,7 @@ export namespace appengine {
             /**
              * Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
              */
-            files?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            files?: pulumi.Input<{[key: string]: string}>;
             /**
              * The zip file for this deployment, if this is a zip deployment.
              */
@@ -1919,7 +1919,7 @@ export namespace appengine {
             /**
              * HTTP headers to use for all responses from these URLs.
              */
-            httpHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            httpHeaders?: pulumi.Input<{[key: string]: string}>;
             /**
              * MIME type used to serve all files served by this handler.Defaults to file-specific MIME types, which are derived from each file's filename extension.
              */
@@ -2321,7 +2321,7 @@ export namespace appengine {
             /**
              * Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
              */
-            files?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            files?: pulumi.Input<{[key: string]: string}>;
             /**
              * The zip file for this deployment, if this is a zip deployment.
              */
@@ -2747,7 +2747,7 @@ export namespace appengine {
             /**
              * HTTP headers to use for all responses from these URLs.
              */
-            httpHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            httpHeaders?: pulumi.Input<{[key: string]: string}>;
             /**
              * MIME type used to serve all files served by this handler.Defaults to file-specific MIME types, which are derived from each file's filename extension.
              */
@@ -3310,7 +3310,7 @@ export namespace bigquery {
             /**
              * [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         export interface EncryptionConfigurationArgs {
@@ -3600,7 +3600,7 @@ export namespace bigquery {
             /**
              * The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * [Pick one] Configures a load job.
              */
@@ -3837,7 +3837,7 @@ export namespace bigquery {
             /**
              * [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
              */
-            tableDefinitions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            tableDefinitions?: pulumi.Input<{[key: string]: string}>;
             /**
              * Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
              */
@@ -4269,7 +4269,7 @@ export namespace bigquery {
             /**
              * [Optional] The struct field values, in order of the struct type's declaration.
              */
-            structValues?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            structValues?: pulumi.Input<{[key: string]: string}>;
             /**
              * [Optional] The value of this value, if a simple scalar type.
              */
@@ -4936,7 +4936,7 @@ export namespace billingbudgets {
             /**
              * Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
              */
@@ -5105,7 +5105,7 @@ export namespace billingbudgets {
             /**
              * Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
              */
@@ -5564,7 +5564,7 @@ export namespace cloudbuild {
             /**
              * Substitutions data for `Build` resource.
              */
-            substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            substitutions?: pulumi.Input<{[key: string]: string}>;
             /**
              * Tags for annotation of a `Build`. These are not docker tags.
              */
@@ -5708,7 +5708,7 @@ export namespace cloudbuild {
             /**
              * Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
              */
-            envMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            envMap?: pulumi.Input<{[key: string]: string}>;
             /**
              * Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*
              */
@@ -5800,7 +5800,7 @@ export namespace cloudbuild {
             /**
              * Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
              */
-            substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            substitutions?: pulumi.Input<{[key: string]: string}>;
             /**
              * Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
              */
@@ -5818,7 +5818,7 @@ export namespace cloudbuild {
             /**
              * Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
              */
-            secretEnv?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            secretEnv?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -6138,7 +6138,7 @@ export namespace cloudchannel {
             /**
              * Represents an 'Any' proto value.
              */
-            protoValue?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            protoValue?: pulumi.Input<{[key: string]: string}>;
             /**
              * Represents a string value.
              */
@@ -7122,7 +7122,7 @@ export namespace cloudscheduler {
             /**
              * HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Scheduler will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. * `X-CloudScheduler`: This header will be set to true. If the job has an body, Cloud Scheduler sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explictly setting `Content-Type` to a particular media type when the job is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Scheduler. This value is output only. It cannot be changed. The headers below are output only. They cannot be set or overridden: * `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain job-specific information, are also be sent to the job handler.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
              */
@@ -7162,7 +7162,7 @@ export namespace cloudscheduler {
             /**
              * The user can specify HTTP request headers to send with the job's HTTP request. This map contains the header field names and values. Repeated headers are not supported, but a header value can contain commas. These headers represent a subset of the headers that will accompany the job's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: - Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be less than 80KB.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * Which HTTP method to use for the request.
              */
@@ -7216,7 +7216,7 @@ export namespace cloudscheduler {
             /**
              * Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
              */
-            attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            attributes?: pulumi.Input<{[key: string]: string}>;
             /**
              * The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
              */
@@ -7271,7 +7271,7 @@ export namespace cloudscheduler {
             /**
              * HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Scheduler will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. * `X-CloudScheduler`: This header will be set to true. If the job has an body, Cloud Scheduler sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explictly setting `Content-Type` to a particular media type when the job is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Scheduler. This value is output only. It cannot be changed. The headers below are output only. They cannot be set or overridden: * `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain job-specific information, are also be sent to the job handler.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
              */
@@ -7311,7 +7311,7 @@ export namespace cloudscheduler {
             /**
              * The user can specify HTTP request headers to send with the job's HTTP request. This map contains the header field names and values. Repeated headers are not supported, but a header value can contain commas. These headers represent a subset of the headers that will accompany the job's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: - Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be less than 80KB.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * Which HTTP method to use for the request.
              */
@@ -7365,7 +7365,7 @@ export namespace cloudscheduler {
             /**
              * Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
              */
-            attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            attributes?: pulumi.Input<{[key: string]: string}>;
             /**
              * The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
              */
@@ -7633,7 +7633,7 @@ export namespace cloudtasks {
             /**
              * HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Tasks will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. If the task has a body, Cloud Tasks sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explicitly setting `Content-Type` to a particular media type when the task is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It cannot be changed. The headers below cannot be set or overridden: * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing information about the task; see [request headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not visible when the task is returned in a Cloud Tasks response. Although there is no specific limit for the maximum number of headers or the size, there is a limit on the maximum size of the Task. For more information, see the CreateTask documentation.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
              */
@@ -7713,7 +7713,7 @@ export namespace cloudtasks {
             /**
              * HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * X-Google-*: Google use only. * X-AppEngine-*: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HTTP method to use for the request. The default is POST.
              */
@@ -7824,7 +7824,7 @@ export namespace cloudtasks {
             /**
              * HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Tasks will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. If the task has a payload, Cloud Tasks sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explicitly setting `Content-Type` to a particular media type when the task is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It cannot be changed. The headers below cannot be set or overridden: * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing information about the task; see [request headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not visible when the task is returned in a Cloud Tasks response. Although there is no specific limit for the maximum number of headers or the size, there is a limit on the maximum size of the Task. For more information, see the CreateTask documentation.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
              */
@@ -8003,7 +8003,7 @@ export namespace cloudtasks {
             /**
              * HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Tasks will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. If the task has a body, Cloud Tasks sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explicitly setting `Content-Type` to a particular media type when the task is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It cannot be changed. The headers below cannot be set or overridden: * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing information about the task; see [request headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not visible when the task is returned in a Cloud Tasks response. Although there is no specific limit for the maximum number of headers or the size, there is a limit on the maximum size of the Task. For more information, see the CreateTask documentation.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
              */
@@ -8083,7 +8083,7 @@ export namespace cloudtasks {
             /**
              * HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * X-Google-*: Google use only. * X-AppEngine-*: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HTTP method to use for the request. The default is POST.
              */
@@ -8401,11 +8401,11 @@ export namespace composer {
             /**
              * Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
              */
-            airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            airflowConfigOverrides?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
              */
-            envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            envVariables?: pulumi.Input<{[key: string]: string}>;
             /**
              * The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
              */
@@ -8413,7 +8413,7 @@ export namespace composer {
             /**
              * Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
              */
-            pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            pypiPackages?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
              */
@@ -8652,11 +8652,11 @@ export namespace composer {
             /**
              * Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
              */
-            airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            airflowConfigOverrides?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
              */
-            envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            envVariables?: pulumi.Input<{[key: string]: string}>;
             /**
              * The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
              */
@@ -8664,7 +8664,7 @@ export namespace composer {
             /**
              * Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
              */
-            pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            pypiPackages?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
              */
@@ -8964,7 +8964,7 @@ export namespace compute {
             /**
              * Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Indicates whether or not the disk can be read/write attached to more than one instance.
              */
@@ -9120,7 +9120,7 @@ export namespace compute {
             /**
              * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
              */
-            scalingSchedules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            scalingSchedules?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -10974,7 +10974,7 @@ export namespace compute {
             /**
              * Labels to apply to instances that are created from these properties.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * The machine type to use for instances that are created from these properties.
              */
@@ -11993,7 +11993,7 @@ export namespace compute {
             /**
              * Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).
              */
@@ -12058,7 +12058,7 @@ export namespace compute {
              *
              * The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
              */
-            locationRolloutPolicies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            locationRolloutPolicies?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -12935,15 +12935,15 @@ export namespace compute {
             /**
              * Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
              */
-            disks?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            disks?: pulumi.Input<{[key: string]: string}>;
             /**
              * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
              */
-            externalIPs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            externalIPs?: pulumi.Input<{[key: string]: string}>;
             /**
              * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
              */
-            internalIPs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            internalIPs?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -13468,7 +13468,7 @@ export namespace compute {
             /**
              * Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Indicates whether or not the disk can be read/write attached to more than one instance.
              */
@@ -13620,7 +13620,7 @@ export namespace compute {
             /**
              * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
              */
-            scalingSchedules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            scalingSchedules?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -15352,7 +15352,7 @@ export namespace compute {
             /**
              * Labels to apply to instances that are created from these properties.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * The machine type to use for instances that are created from these properties.
              */
@@ -16253,7 +16253,7 @@ export namespace compute {
             /**
              * Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).
              */
@@ -16941,7 +16941,7 @@ export namespace compute {
             /**
              * Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
              */
-            disks?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            disks?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -17373,7 +17373,7 @@ export namespace compute {
             /**
              * Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Specifies which action to take on instance update with this disk. Default is to use the existing disk.
              */
@@ -17520,7 +17520,7 @@ export namespace compute {
             /**
              * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
              */
-            scalingSchedules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            scalingSchedules?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -19150,7 +19150,7 @@ export namespace compute {
             /**
              * Labels to apply to instances that are created from these properties.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * The machine type to use for instances that are created from these properties.
              */
@@ -20042,7 +20042,7 @@ export namespace compute {
             /**
              * Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).
              */
@@ -20537,7 +20537,7 @@ export namespace compute {
             /**
              * Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
              */
-            disks?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            disks?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -21120,7 +21120,7 @@ export namespace container {
             /**
              * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
              */
-            sysctls?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            sysctls?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -21148,7 +21148,7 @@ export namespace container {
             /**
              * Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
              */
-            maintenanceExclusions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            maintenanceExclusions?: pulumi.Input<{[key: string]: string}>;
             /**
              * RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
              */
@@ -21270,7 +21270,7 @@ export namespace container {
             /**
              * The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Parameters that can be configured on Linux nodes.
              */
@@ -21286,7 +21286,7 @@ export namespace container {
             /**
              * The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-os-login" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
             /**
              * Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
              */
@@ -22139,7 +22139,7 @@ export namespace container {
             /**
              * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
              */
-            sysctls?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            sysctls?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -22167,7 +22167,7 @@ export namespace container {
             /**
              * Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
              */
-            maintenanceExclusions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            maintenanceExclusions?: pulumi.Input<{[key: string]: string}>;
             /**
              * RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
              */
@@ -22308,7 +22308,7 @@ export namespace container {
             /**
              * The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Parameters that can be configured on Linux nodes.
              */
@@ -22324,7 +22324,7 @@ export namespace container {
             /**
              * The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
             /**
              * Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
              */
@@ -22909,7 +22909,7 @@ export namespace containeranalysis {
             /**
              * Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
              */
-            buildOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            buildOptions?: pulumi.Input<{[key: string]: string}>;
             /**
              * Version string of the builder at the time this build was executed.
              */
@@ -23343,7 +23343,7 @@ export namespace containeranalysis {
             /**
              * Labels with user defined metadata.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -23526,7 +23526,7 @@ export namespace containeranalysis {
             /**
              * Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
              */
-            fileHashes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            fileHashes?: pulumi.Input<{[key: string]: string}>;
             /**
              * If provided, get source from this location in a Cloud Repo.
              */
@@ -23548,7 +23548,7 @@ export namespace containeranalysis {
             /**
              * A list of messages that carry the error details. There is a common set of message types for APIs to use.
              */
-            details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            details?: pulumi.Input<pulumi.Input<{[key: string]: string}>[]>;
             /**
              * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
              */
@@ -23834,7 +23834,7 @@ export namespace containeranalysis {
             /**
              * Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
              */
-            buildOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            buildOptions?: pulumi.Input<{[key: string]: string}>;
             /**
              * Version string of the builder at the time this build was executed.
              */
@@ -23911,7 +23911,7 @@ export namespace containeranalysis {
          * Defines an object for the byproducts field in in-toto links. The suggested fields are "stderr", "stdout", and "return-value".
          */
         export interface ByProductsArgs {
-            customValues?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            customValues?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -24165,7 +24165,7 @@ export namespace containeranalysis {
          * Defines an object for the environment field in in-toto links. The suggested fields are "variables", "filesystem", and "workdir".
          */
         export interface EnvironmentArgs {
-            customValues?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            customValues?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -24620,7 +24620,7 @@ export namespace containeranalysis {
             /**
              * Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
              */
-            fileHashes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            fileHashes?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -24642,7 +24642,7 @@ export namespace containeranalysis {
             /**
              * Labels with user defined metadata.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -24656,7 +24656,7 @@ export namespace containeranalysis {
             /**
              * A list of messages that carry the error details. There is a common set of message types for APIs to use.
              */
-            details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            details?: pulumi.Input<pulumi.Input<{[key: string]: string}>[]>;
             /**
              * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
              */
@@ -25097,11 +25097,11 @@ export namespace dataflow {
             /**
              * Experimental settings.
              */
-            internalExperiments?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            internalExperiments?: pulumi.Input<{[key: string]: string}>;
             /**
              * The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
              */
-            sdkPipelineOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            sdkPipelineOptions?: pulumi.Input<{[key: string]: string}>;
             /**
              * Identity to run virtual machines as. Defaults to the default account.
              */
@@ -25121,11 +25121,11 @@ export namespace dataflow {
             /**
              * A description of the process that generated the request.
              */
-            userAgent?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            userAgent?: pulumi.Input<{[key: string]: string}>;
             /**
              * A structure describing which components and their versions of the service are required in order to run the job.
              */
-            version?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            version?: pulumi.Input<{[key: string]: string}>;
             /**
              * The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
              */
@@ -25297,7 +25297,7 @@ export namespace dataflow {
             /**
              * Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
              */
-            additionalUserLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            additionalUserLabels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Whether to bypass the safety checks for the job's temporary directory. Use with caution.
              */
@@ -25447,7 +25447,7 @@ export namespace dataflow {
             /**
              * Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -25605,7 +25605,7 @@ export namespace dataflow {
             /**
              * Metadata to set on the Google Compute Engine VMs.
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
             /**
              * Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
              */
@@ -25629,7 +25629,7 @@ export namespace dataflow {
             /**
              * Extra arguments for this worker pool.
              */
-            poolArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            poolArgs?: pulumi.Input<{[key: string]: string}>;
             /**
              * Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
              */
@@ -26008,7 +26008,7 @@ export namespace datalabeling {
             /**
              * Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
              */
-            bigqueryImportKeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            bigqueryImportKeys?: pulumi.Input<{[key: string]: string}>;
             /**
              * Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
              */
@@ -26299,7 +26299,7 @@ export namespace datamigration {
             /**
              * The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
              */
-            databaseFlags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            databaseFlags?: pulumi.Input<{[key: string]: string}>;
             /**
              * The database engine type and version.
              */
@@ -26327,7 +26327,7 @@ export namespace datamigration {
             /**
              * The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
              */
-            userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            userLabels?: pulumi.Input<{[key: string]: string}>;
             /**
              * The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
              */
@@ -26612,7 +26612,7 @@ export namespace datamigration {
             /**
              * The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
              */
-            databaseFlags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            databaseFlags?: pulumi.Input<{[key: string]: string}>;
             /**
              * The database engine type and version.
              */
@@ -26640,7 +26640,7 @@ export namespace datamigration {
             /**
              * The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
              */
-            userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            userLabels?: pulumi.Input<{[key: string]: string}>;
             /**
              * The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
              */
@@ -26973,7 +26973,7 @@ export namespace dataproc {
             /**
              * Required. The cluster labels. Cluster must have all labels to match.
              */
-            clusterLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            clusterLabels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
              */
@@ -27065,7 +27065,7 @@ export namespace dataproc {
             /**
              * The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
              */
@@ -27153,7 +27153,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -27171,7 +27171,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HCFS URI of the script that contains Hive queries.
              */
@@ -27183,7 +27183,7 @@ export namespace dataproc {
             /**
              * Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
              */
-            scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            scriptVariables?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -27193,7 +27193,7 @@ export namespace dataproc {
             /**
              * Required. Map of user to service account.
              */
-            userServiceAccountMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            userServiceAccountMapping?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -27255,7 +27255,7 @@ export namespace dataproc {
             /**
              * Optional. Cluster labels to identify a cluster where the job will be submitted.
              */
-            clusterLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            clusterLabels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Required. The name of the cluster where the job will be submitted.
              */
@@ -27381,7 +27381,7 @@ export namespace dataproc {
             /**
              * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
              */
-            driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            driverLogLevels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -27399,7 +27399,7 @@ export namespace dataproc {
             /**
              * Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -27465,7 +27465,7 @@ export namespace dataproc {
             /**
              * Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. Job is a Pig job.
              */
@@ -27537,7 +27537,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HCFS URI of the script that contains the Pig queries.
              */
@@ -27549,7 +27549,7 @@ export namespace dataproc {
             /**
              * Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
              */
-            scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            scriptVariables?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -27575,7 +27575,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HCFS URI of the script that contains SQL queries.
              */
@@ -27617,7 +27617,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
              */
@@ -27709,7 +27709,7 @@ export namespace dataproc {
             /**
              * Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -27747,7 +27747,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -27777,7 +27777,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -27795,7 +27795,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HCFS URI of the script that contains SQL queries.
              */
@@ -27807,7 +27807,7 @@ export namespace dataproc {
             /**
              * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
              */
-            scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            scriptVariables?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -28014,7 +28014,7 @@ export namespace dataproc {
             /**
              * Required. The cluster labels. Cluster must have all labels to match.
              */
-            clusterLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            clusterLabels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
              */
@@ -28092,7 +28092,7 @@ export namespace dataproc {
             /**
              * The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
              */
@@ -28180,7 +28180,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -28198,7 +28198,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HCFS URI of the script that contains Hive queries.
              */
@@ -28210,7 +28210,7 @@ export namespace dataproc {
             /**
              * Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
              */
-            scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            scriptVariables?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -28272,7 +28272,7 @@ export namespace dataproc {
             /**
              * Optional. Cluster labels to identify a cluster where the job will be submitted.
              */
-            clusterLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            clusterLabels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Required. The name of the cluster where the job will be submitted.
              */
@@ -28398,7 +28398,7 @@ export namespace dataproc {
             /**
              * The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
              */
-            driverLogLevels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            driverLogLevels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -28416,7 +28416,7 @@ export namespace dataproc {
             /**
              * Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -28482,7 +28482,7 @@ export namespace dataproc {
             /**
              * Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. Job is a Pig job.
              */
@@ -28554,7 +28554,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HCFS URI of the script that contains the Pig queries.
              */
@@ -28566,7 +28566,7 @@ export namespace dataproc {
             /**
              * Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
              */
-            scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            scriptVariables?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -28592,7 +28592,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HCFS URI of the script that contains SQL queries.
              */
@@ -28634,7 +28634,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
              */
@@ -28722,7 +28722,7 @@ export namespace dataproc {
             /**
              * Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -28760,7 +28760,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -28790,7 +28790,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -28808,7 +28808,7 @@ export namespace dataproc {
             /**
              * Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
              */
-            properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            properties?: pulumi.Input<{[key: string]: string}>;
             /**
              * The HCFS URI of the script that contains SQL queries.
              */
@@ -28820,7 +28820,7 @@ export namespace dataproc {
             /**
              * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
              */
-            scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            scriptVariables?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -29712,7 +29712,7 @@ export namespace dialogflow {
             /**
              * Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
              */
-            parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            parameters?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -29780,7 +29780,7 @@ export namespace dialogflow {
             /**
              * Optional. The HTTP request headers to send together with fulfillment requests.
              */
-            requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            requestHeaders?: pulumi.Input<{[key: string]: string}>;
             /**
              * Required. The fulfillment URI for receiving POST requests. It must use https protocol.
              */
@@ -30068,7 +30068,7 @@ export namespace dialogflow {
             /**
              * A custom platform-specific response.
              */
-            payload?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            payload?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. The platform that this message is intended for.
              */
@@ -30670,7 +30670,7 @@ export namespace dialogflow {
             /**
              * Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
              */
-            synthesizeSpeechConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            synthesizeSpeechConfigs?: pulumi.Input<{[key: string]: string}>;
         }
 
     }
@@ -30701,7 +30701,7 @@ export namespace dialogflow {
             /**
              * Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
              */
-            parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            parameters?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -30769,7 +30769,7 @@ export namespace dialogflow {
             /**
              * The HTTP request headers to send together with fulfillment requests.
              */
-            requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            requestHeaders?: pulumi.Input<{[key: string]: string}>;
             /**
              * Required. The fulfillment URI for receiving POST requests. It must use https protocol.
              */
@@ -31043,7 +31043,7 @@ export namespace dialogflow {
             /**
              * A custom platform-specific response.
              */
-            payload?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            payload?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. The platform that this message is intended for.
              */
@@ -31869,7 +31869,7 @@ export namespace dialogflow {
             /**
              * Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
              */
-            synthesizeSpeechConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            synthesizeSpeechConfigs?: pulumi.Input<{[key: string]: string}>;
         }
 
     }
@@ -31910,7 +31910,7 @@ export namespace dialogflow {
             /**
              * Parameters that need to be injected into the conversation during intent detection.
              */
-            injectedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            injectedParameters?: pulumi.Input<{[key: string]: string}>;
             /**
              * Supports text input, event input, dtmf input in the test case.
              */
@@ -31932,11 +31932,11 @@ export namespace dialogflow {
             /**
              * Required. Input only. The diagnostic info output for the turn.
              */
-            diagnosticInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            diagnosticInfo?: pulumi.Input<{[key: string]: string}>;
             /**
              * The session parameters available to the bot at this point.
              */
-            sessionParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            sessionParameters?: pulumi.Input<{[key: string]: string}>;
             /**
              * Response error from the agent in the test result. If set, other output is empty.
              */
@@ -32314,7 +32314,7 @@ export namespace dialogflow {
             /**
              * The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
              */
@@ -32494,7 +32494,7 @@ export namespace dialogflow {
             /**
              * Returns a response containing a custom, platform-specific payload.
              */
-            payload?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            payload?: pulumi.Input<{[key: string]: string}>;
             /**
              * Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
              */
@@ -32512,7 +32512,7 @@ export namespace dialogflow {
             /**
              * Custom metadata. Dialogflow doesn't impose any structure on this.
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -32522,7 +32522,7 @@ export namespace dialogflow {
             /**
              * Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -32698,7 +32698,7 @@ export namespace dialogflow {
             /**
              * The HTTP request headers to send together with webhook requests.
              */
-            requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            requestHeaders?: pulumi.Input<{[key: string]: string}>;
             /**
              * Required. The webhook URI for receiving POST requests. It must use https protocol.
              */
@@ -32720,7 +32720,7 @@ export namespace dialogflow {
             /**
              * A list of messages that carry the error details. There is a common set of message types for APIs to use.
              */
-            details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            details?: pulumi.Input<pulumi.Input<{[key: string]: string}>[]>;
             /**
              * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
              */
@@ -32765,7 +32765,7 @@ export namespace dialogflow {
             /**
              * Parameters that need to be injected into the conversation during intent detection.
              */
-            injectedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            injectedParameters?: pulumi.Input<{[key: string]: string}>;
             /**
              * Supports text input, event input, dtmf input in the test case.
              */
@@ -32787,11 +32787,11 @@ export namespace dialogflow {
             /**
              * Required. Input only. The diagnostic info output for the turn.
              */
-            diagnosticInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            diagnosticInfo?: pulumi.Input<{[key: string]: string}>;
             /**
              * The session parameters available to the bot at this point.
              */
-            sessionParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            sessionParameters?: pulumi.Input<{[key: string]: string}>;
             /**
              * Response error from the agent in the test result. If set, other output is empty.
              */
@@ -33169,7 +33169,7 @@ export namespace dialogflow {
             /**
              * The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
              */
@@ -33349,7 +33349,7 @@ export namespace dialogflow {
             /**
              * Returns a response containing a custom, platform-specific payload.
              */
-            payload?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            payload?: pulumi.Input<{[key: string]: string}>;
             /**
              * Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
              */
@@ -33367,7 +33367,7 @@ export namespace dialogflow {
             /**
              * Custom metadata. Dialogflow doesn't impose any structure on this.
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -33377,7 +33377,7 @@ export namespace dialogflow {
             /**
              * Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -33553,7 +33553,7 @@ export namespace dialogflow {
             /**
              * The HTTP request headers to send together with webhook requests.
              */
-            requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            requestHeaders?: pulumi.Input<{[key: string]: string}>;
             /**
              * Required. The webhook URI for receiving POST requests. It must use https protocol.
              */
@@ -33575,7 +33575,7 @@ export namespace dialogflow {
             /**
              * A list of messages that carry the error details. There is a common set of message types for APIs to use.
              */
-            details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            details?: pulumi.Input<pulumi.Input<{[key: string]: string}>[]>;
             /**
              * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
              */
@@ -34238,7 +34238,7 @@ export namespace dlp {
             /**
              * To organize findings, these labels will be added to each finding. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given finding. Examples: * `"environment" : "production"` * `"pipeline" : "etl"`
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * These are labels that each inspection request must include within their 'finding_labels' map. Request may contain others, but any missing one of these will be rejected. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. No more than 10 keys can be required.
              */
@@ -36821,7 +36821,7 @@ export namespace gameservices {
             /**
              * Resource labels for this selector.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -37142,7 +37142,7 @@ export namespace gameservices {
             /**
              * Resource labels for this selector.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -38097,7 +38097,7 @@ export namespace healthcare {
             /**
              * Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
              */
-            messageSchemaConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            messageSchemaConfigs?: pulumi.Input<{[key: string]: string}>;
             /**
              * Each VersionSource is tested and only if they all match is the schema used for the message.
              */
@@ -38249,7 +38249,7 @@ export namespace healthcare {
             /**
              * Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. Timestamp of the signature.
              */
@@ -38522,7 +38522,7 @@ export namespace healthcare {
             /**
              * Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
              */
-            messageSchemaConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            messageSchemaConfigs?: pulumi.Input<{[key: string]: string}>;
             /**
              * Each VersionSource is tested and only if they all match is the schema used for the message.
              */
@@ -38702,7 +38702,7 @@ export namespace healthcare {
             /**
              * Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
              */
-            details?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            details?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -38716,7 +38716,7 @@ export namespace healthcare {
             /**
              * Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. Timestamp of the signature.
              */
@@ -39393,7 +39393,7 @@ export namespace memcache {
             /**
              * User defined set of parameters to use in the memcached process.
              */
-            params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            params?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -39431,7 +39431,7 @@ export namespace memcache {
             /**
              * User defined set of parameters to use in the memcached process.
              */
-            params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            params?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -39560,7 +39560,7 @@ export namespace metastore {
             /**
              * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
              */
-            configOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            configOverrides?: pulumi.Input<{[key: string]: string}>;
             /**
              * Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
              */
@@ -39733,7 +39733,7 @@ export namespace metastore {
             /**
              * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
              */
-            configOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            configOverrides?: pulumi.Input<{[key: string]: string}>;
             /**
              * Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
              */
@@ -40162,7 +40162,7 @@ export namespace ml {
             /**
              * The hyperparameters given to this trial.
              */
-            hyperparameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            hyperparameters?: pulumi.Input<{[key: string]: string}>;
             /**
              * True if the trial is stopped early.
              */
@@ -41336,7 +41336,7 @@ export namespace monitoring {
             /**
              * The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
              */
-            headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            headers?: pulumi.Input<{[key: string]: string}>;
             /**
              * Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
              */
@@ -41552,7 +41552,7 @@ export namespace monitoring {
             /**
              * Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
              */
@@ -41666,7 +41666,7 @@ export namespace monitoring {
             /**
              * A list of messages that carry the error details. There is a common set of message types for APIs to use.
              */
-            details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            details?: pulumi.Input<pulumi.Input<{[key: string]: string}>[]>;
             /**
              * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
              */
@@ -42131,7 +42131,7 @@ export namespace notebooks {
             /**
              * Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
              */
@@ -42229,7 +42229,7 @@ export namespace notebooks {
             /**
              * Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -42427,7 +42427,7 @@ export namespace notebooks {
             /**
              * Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
              */
@@ -42435,7 +42435,7 @@ export namespace notebooks {
             /**
              * Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
              */
-            metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metadata?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
              */
@@ -42757,7 +42757,7 @@ export namespace osconfig {
             /**
              * Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -43018,7 +43018,7 @@ export namespace osconfig {
             /**
              * Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -43262,7 +43262,7 @@ export namespace osconfig {
             /**
              * Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -43739,7 +43739,7 @@ export namespace policysimulator {
             /**
              * A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
              */
-            policyOverlay?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            policyOverlay?: pulumi.Input<{[key: string]: string}>;
         }
 
     }
@@ -43756,7 +43756,7 @@ export namespace policysimulator {
             /**
              * A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
              */
-            policyOverlay?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            policyOverlay?: pulumi.Input<{[key: string]: string}>;
         }
 
     }
@@ -44351,7 +44351,7 @@ export namespace pubsub {
             /**
              * Endpoint configuration attributes that can be used to control different aspects of the message delivery. The only currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the pushed message (i.e., its fields and metadata). If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The only supported values for the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version": "v1" } 
              */
-            attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            attributes?: pulumi.Input<{[key: string]: string}>;
             /**
              * If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
              */
@@ -44467,7 +44467,7 @@ export namespace pubsub {
             /**
              * Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
              */
-            attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            attributes?: pulumi.Input<{[key: string]: string}>;
             /**
              * If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
              */
@@ -44557,11 +44557,11 @@ export namespace recommendationengine {
             /**
              * Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
              */
-            categoricalFeatures?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            categoricalFeatures?: pulumi.Input<{[key: string]: string}>;
             /**
              * Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
              */
-            numericalFeatures?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            numericalFeatures?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -44597,7 +44597,7 @@ export namespace recommendationengine {
             /**
              * Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
              */
-            costs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            costs?: pulumi.Input<{[key: string]: string}>;
             /**
              * Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
              */
@@ -44764,7 +44764,7 @@ export namespace remotebuildexecution {
             /**
              * Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
              */
@@ -45362,7 +45362,7 @@ export namespace run {
             /**
              * (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
              */
-            annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            annotations?: pulumi.Input<{[key: string]: string}>;
             /**
              * (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
              */
@@ -45394,7 +45394,7 @@ export namespace run {
             /**
              * (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
              */
@@ -45514,11 +45514,11 @@ export namespace run {
             /**
              * (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
              */
-            limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            limits?: pulumi.Input<{[key: string]: string}>;
             /**
              * (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
              */
-            requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            requests?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -46314,7 +46314,7 @@ export namespace run {
             /**
              * Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
              */
-            annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            annotations?: pulumi.Input<{[key: string]: string}>;
             /**
              * Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
              */
@@ -46346,7 +46346,7 @@ export namespace run {
             /**
              * Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels?: pulumi.Input<{[key: string]: string}>;
             /**
              * Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
              */
@@ -46440,11 +46440,11 @@ export namespace run {
             /**
              * Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
              */
-            limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            limits?: pulumi.Input<{[key: string]: string}>;
             /**
              * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
              */
-            requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            requests?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -47973,7 +47973,7 @@ export namespace servicemanagement {
             /**
              * Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
              */
-            metricCosts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            metricCosts?: pulumi.Input<{[key: string]: string}>;
             /**
              * Selects the methods to which this rule applies. Refer to selector for syntax details.
              */
@@ -48073,7 +48073,7 @@ export namespace servicemanagement {
             /**
              * The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
              */
-            value?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            value?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -48151,7 +48151,7 @@ export namespace servicemanagement {
             /**
              * Tiered limit values. You must specify this as a key:value pair, with an integer value that is the maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.
              */
-            values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            values?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -48213,7 +48213,7 @@ export namespace servicemanagement {
             /**
              * Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
              */
-            percentages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            percentages?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**
@@ -48906,7 +48906,7 @@ export namespace sqladmin {
             /**
              * User-provided labels, represented as a dictionary where each label is a single key value pair.
              */
-            userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            userLabels?: pulumi.Input<{[key: string]: string}>;
         }
 
         /**

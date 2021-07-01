@@ -74,41 +74,9 @@ func GetBackup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Backup resources.
 type backupState struct {
-	// The encryption information for the backup.
-	EncryptionInfo *EncryptionInfoResponse `pulumi:"encryptionInfo"`
-	// `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
-	EndTime *string `pulumi:"endTime"`
-	// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
-	ExpireTime *string `pulumi:"expireTime"`
-	// A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
-	Name *string `pulumi:"name"`
-	// Size of the backup in bytes.
-	SizeBytes *string `pulumi:"sizeBytes"`
-	// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
-	SourceTable *string `pulumi:"sourceTable"`
-	// `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.
-	StartTime *string `pulumi:"startTime"`
-	// The current state of the backup.
-	State *string `pulumi:"state"`
 }
 
 type BackupState struct {
-	// The encryption information for the backup.
-	EncryptionInfo EncryptionInfoResponsePtrInput
-	// `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
-	EndTime pulumi.StringPtrInput
-	// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
-	ExpireTime pulumi.StringPtrInput
-	// A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
-	Name pulumi.StringPtrInput
-	// Size of the backup in bytes.
-	SizeBytes pulumi.StringPtrInput
-	// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
-	SourceTable pulumi.StringPtrInput
-	// `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.
-	StartTime pulumi.StringPtrInput
-	// The current state of the backup.
-	State pulumi.StringPtrInput
 }
 
 func (BackupState) ElementType() reflect.Type {

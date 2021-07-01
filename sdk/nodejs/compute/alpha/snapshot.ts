@@ -244,7 +244,7 @@ export interface SnapshotArgs {
     /**
      * Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
      */

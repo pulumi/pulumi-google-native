@@ -65,41 +65,9 @@ func GetHub(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Hub resources.
 type hubState struct {
-	// Time when the Hub was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Short description of the hub resource.
-	Description *string `pulumi:"description"`
-	// User-defined labels.
-	Labels map[string]string `pulumi:"labels"`
-	// Immutable. The name of a Hub resource.
-	Name *string `pulumi:"name"`
-	// A list of the URIs of all attached spokes
-	Spokes []string `pulumi:"spokes"`
-	// The current lifecycle state of this Hub.
-	State *string `pulumi:"state"`
-	// Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
-	UniqueId *string `pulumi:"uniqueId"`
-	// Time when the Hub was updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type HubState struct {
-	// Time when the Hub was created.
-	CreateTime pulumi.StringPtrInput
-	// Short description of the hub resource.
-	Description pulumi.StringPtrInput
-	// User-defined labels.
-	Labels pulumi.StringMapInput
-	// Immutable. The name of a Hub resource.
-	Name pulumi.StringPtrInput
-	// A list of the URIs of all attached spokes
-	Spokes pulumi.StringArrayInput
-	// The current lifecycle state of this Hub.
-	State pulumi.StringPtrInput
-	// Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
-	UniqueId pulumi.StringPtrInput
-	// Time when the Hub was updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (HubState) ElementType() reflect.Type {

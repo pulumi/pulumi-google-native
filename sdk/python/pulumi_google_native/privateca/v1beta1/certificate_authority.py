@@ -24,7 +24,7 @@ class CertificateAuthorityArgs:
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  issuing_options: Optional[pulumi.Input['IssuingOptionsArgs']] = None,
                  key_spec: Optional[pulumi.Input['KeyVersionSpecArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input['SubordinateConfigArgs']] = None,
@@ -37,7 +37,7 @@ class CertificateAuthorityArgs:
         :param pulumi.Input[str] gcs_bucket: Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
         :param pulumi.Input['IssuingOptionsArgs'] issuing_options: Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
         :param pulumi.Input['KeyVersionSpecArgs'] key_spec: Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] lifetime: Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         :param pulumi.Input['SubordinateConfigArgs'] subordinate_config: Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
         :param pulumi.Input['CertificateAuthorityTier'] tier: Required. Immutable. The Tier of this CertificateAuthority.
@@ -158,14 +158,14 @@ class CertificateAuthorityArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Labels with user-defined metadata.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -237,7 +237,7 @@ class CertificateAuthority(pulumi.CustomResource):
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  issuing_options: Optional[pulumi.Input[pulumi.InputType['IssuingOptionsArgs']]] = None,
                  key_spec: Optional[pulumi.Input[pulumi.InputType['KeyVersionSpecArgs']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -256,7 +256,7 @@ class CertificateAuthority(pulumi.CustomResource):
         :param pulumi.Input[str] gcs_bucket: Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
         :param pulumi.Input[pulumi.InputType['IssuingOptionsArgs']] issuing_options: Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
         :param pulumi.Input[pulumi.InputType['KeyVersionSpecArgs']] key_spec: Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] lifetime: Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         :param pulumi.Input[pulumi.InputType['SubordinateConfigArgs']] subordinate_config: Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
         :param pulumi.Input['CertificateAuthorityTier'] tier: Required. Immutable. The Tier of this CertificateAuthority.
@@ -292,7 +292,7 @@ class CertificateAuthority(pulumi.CustomResource):
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  issuing_options: Optional[pulumi.Input[pulumi.InputType['IssuingOptionsArgs']]] = None,
                  key_spec: Optional[pulumi.Input[pulumi.InputType['KeyVersionSpecArgs']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

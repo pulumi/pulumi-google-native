@@ -23,7 +23,7 @@ class NodeTemplateArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['LocalDiskArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  node_type_flexibility: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -33,7 +33,7 @@ class NodeTemplateArgs:
         :param pulumi.Input['NodeTemplateCpuOvercommitType'] cpu_overcommit_type: CPU overcommit.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
+        :param pulumi.Input[Mapping[str, str]] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
         :param pulumi.Input[str] node_type: The node type to use for nodes group that are created from this template.
         :param pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs'] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
                
@@ -141,14 +141,14 @@ class NodeTemplateArgs:
 
     @property
     @pulumi.getter(name="nodeAffinityLabels")
-    def node_affinity_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def node_affinity_labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels to use for node affinity, which will be used in instance scheduling.
         """
         return pulumi.get(self, "node_affinity_labels")
 
     @node_affinity_labels.setter
-    def node_affinity_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def node_affinity_labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "node_affinity_labels", value)
 
     @property
@@ -213,7 +213,7 @@ class NodeTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LocalDiskArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -229,7 +229,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input['NodeTemplateCpuOvercommitType'] cpu_overcommit_type: CPU overcommit.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
+        :param pulumi.Input[Mapping[str, str]] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
         :param pulumi.Input[str] node_type: The node type to use for nodes group that are created from this template.
         :param pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
                
@@ -269,7 +269,7 @@ class NodeTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LocalDiskArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,

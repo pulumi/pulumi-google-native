@@ -26,8 +26,8 @@ __all__ = [
     'Hl7SchemaConfigArgs',
     'Hl7TypesConfigArgs',
     'Hl7V2NotificationConfigArgs',
-    'ImageArgs',
     'ImageAnnotationArgs',
+    'ImageArgs',
     'NotificationConfigArgs',
     'ParserConfigArgs',
     'PatientIdArgs',
@@ -663,11 +663,11 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs:
 @pulumi.input_type
 class Hl7SchemaConfigArgs:
     def __init__(__self__, *,
-                 message_schema_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_schema_configs: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  version: Optional[pulumi.Input[Sequence[pulumi.Input['VersionSourceArgs']]]] = None):
         """
         Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
+        :param pulumi.Input[Mapping[str, str]] message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         :param pulumi.Input[Sequence[pulumi.Input['VersionSourceArgs']]] version: Each VersionSource is tested and only if they all match is the schema used for the message.
         """
         if message_schema_configs is not None:
@@ -677,14 +677,14 @@ class Hl7SchemaConfigArgs:
 
     @property
     @pulumi.getter(name="messageSchemaConfigs")
-    def message_schema_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def message_schema_configs(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         """
         return pulumi.get(self, "message_schema_configs")
 
     @message_schema_configs.setter
-    def message_schema_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def message_schema_configs(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "message_schema_configs", value)
 
     @property
@@ -781,46 +781,6 @@ class Hl7V2NotificationConfigArgs:
 
 
 @pulumi.input_type
-class ImageArgs:
-    def __init__(__self__, *,
-                 gcs_uri: Optional[pulumi.Input[str]] = None,
-                 raw_bytes: Optional[pulumi.Input[str]] = None):
-        """
-        Raw bytes representing consent artifact content.
-        :param pulumi.Input[str] gcs_uri: Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
-        :param pulumi.Input[str] raw_bytes: Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
-        """
-        if gcs_uri is not None:
-            pulumi.set(__self__, "gcs_uri", gcs_uri)
-        if raw_bytes is not None:
-            pulumi.set(__self__, "raw_bytes", raw_bytes)
-
-    @property
-    @pulumi.getter(name="gcsUri")
-    def gcs_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
-        """
-        return pulumi.get(self, "gcs_uri")
-
-    @gcs_uri.setter
-    def gcs_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "gcs_uri", value)
-
-    @property
-    @pulumi.getter(name="rawBytes")
-    def raw_bytes(self) -> Optional[pulumi.Input[str]]:
-        """
-        Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
-        """
-        return pulumi.get(self, "raw_bytes")
-
-    @raw_bytes.setter
-    def raw_bytes(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "raw_bytes", value)
-
-
-@pulumi.input_type
 class ImageAnnotationArgs:
     def __init__(__self__, *,
                  bounding_polys: Optional[pulumi.Input[Sequence[pulumi.Input['BoundingPolyArgs']]]] = None,
@@ -858,6 +818,46 @@ class ImageAnnotationArgs:
     @frame_index.setter
     def frame_index(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "frame_index", value)
+
+
+@pulumi.input_type
+class ImageArgs:
+    def __init__(__self__, *,
+                 gcs_uri: Optional[pulumi.Input[str]] = None,
+                 raw_bytes: Optional[pulumi.Input[str]] = None):
+        """
+        Raw bytes representing consent artifact content.
+        :param pulumi.Input[str] gcs_uri: Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
+        :param pulumi.Input[str] raw_bytes: Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
+        """
+        if gcs_uri is not None:
+            pulumi.set(__self__, "gcs_uri", gcs_uri)
+        if raw_bytes is not None:
+            pulumi.set(__self__, "raw_bytes", raw_bytes)
+
+    @property
+    @pulumi.getter(name="gcsUri")
+    def gcs_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
+        """
+        return pulumi.get(self, "gcs_uri")
+
+    @gcs_uri.setter
+    def gcs_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_uri", value)
+
+    @property
+    @pulumi.getter(name="rawBytes")
+    def raw_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
+        """
+        return pulumi.get(self, "raw_bytes")
+
+    @raw_bytes.setter
+    def raw_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "raw_bytes", value)
 
 
 @pulumi.input_type
@@ -1191,24 +1191,24 @@ class SchematizedDataArgs:
 @pulumi.input_type
 class SensitiveTextAnnotationArgs:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 details: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         A TextAnnotation specifies a text range that includes sensitive information.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
+        :param pulumi.Input[Mapping[str, str]] details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def details(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def details(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "details", value)
 
 
@@ -1216,13 +1216,13 @@ class SensitiveTextAnnotationArgs:
 class SignatureArgs:
     def __init__(__self__, *,
                  image: Optional[pulumi.Input['ImageArgs']] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  signature_time: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         User signature.
         :param pulumi.Input['ImageArgs'] image: Optional. An image of the user's signature.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
+        :param pulumi.Input[Mapping[str, str]] metadata: Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
         :param pulumi.Input[str] signature_time: Optional. Timestamp of the signature.
         :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         """
@@ -1249,14 +1249,14 @@ class SignatureArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metadata", value)
 
     @property

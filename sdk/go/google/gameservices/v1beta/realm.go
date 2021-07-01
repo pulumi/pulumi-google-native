@@ -69,37 +69,9 @@ func GetRealm(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Realm resources.
 type realmState struct {
-	// The creation time.
-	CreateTime *string `pulumi:"createTime"`
-	// Human readable description of the realm.
-	Description *string `pulumi:"description"`
-	// ETag of the resource.
-	Etag *string `pulumi:"etag"`
-	// The labels associated with this realm. Each label is a key-value pair.
-	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
-	Name *string `pulumi:"name"`
-	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
-	TimeZone *string `pulumi:"timeZone"`
-	// The last-modified time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type RealmState struct {
-	// The creation time.
-	CreateTime pulumi.StringPtrInput
-	// Human readable description of the realm.
-	Description pulumi.StringPtrInput
-	// ETag of the resource.
-	Etag pulumi.StringPtrInput
-	// The labels associated with this realm. Each label is a key-value pair.
-	Labels pulumi.StringMapInput
-	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
-	Name pulumi.StringPtrInput
-	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
-	TimeZone pulumi.StringPtrInput
-	// The last-modified time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (RealmState) ElementType() reflect.Type {

@@ -439,7 +439,7 @@ export interface InstanceArgs {
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
      * zones/us-central1-f/machineTypes/n1-standard-1

@@ -63,25 +63,9 @@ func GetSharedflow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Sharedflow resources.
 type sharedflowState struct {
-	// The id of the most recently created revision for this shared flow.
-	LatestRevisionId *string `pulumi:"latestRevisionId"`
-	// Metadata describing the shared flow.
-	MetaData *GoogleCloudApigeeV1EntityMetadataResponse `pulumi:"metaData"`
-	// The ID of the shared flow.
-	Name *string `pulumi:"name"`
-	// A list of revisions of this shared flow.
-	Revision []string `pulumi:"revision"`
 }
 
 type SharedflowState struct {
-	// The id of the most recently created revision for this shared flow.
-	LatestRevisionId pulumi.StringPtrInput
-	// Metadata describing the shared flow.
-	MetaData GoogleCloudApigeeV1EntityMetadataResponsePtrInput
-	// The ID of the shared flow.
-	Name pulumi.StringPtrInput
-	// A list of revisions of this shared flow.
-	Revision pulumi.StringArrayInput
 }
 
 func (SharedflowState) ElementType() reflect.Type {

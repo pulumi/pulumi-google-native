@@ -164,7 +164,7 @@ export interface GlobalNetworkEndpointGroupArgs {
     /**
      * Metadata defined as annotations on the network endpoint group.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: string}>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */

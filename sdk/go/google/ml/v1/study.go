@@ -65,29 +65,9 @@ func GetStudy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Study resources.
 type studyState struct {
-	// Time at which the study was created.
-	CreateTime *string `pulumi:"createTime"`
-	// A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
-	InactiveReason *string `pulumi:"inactiveReason"`
-	// The name of a study.
-	Name *string `pulumi:"name"`
-	// The detailed state of a study.
-	State *string `pulumi:"state"`
-	// Required. Configuration of the study.
-	StudyConfig *GoogleCloudMlV1__StudyConfigResponse `pulumi:"studyConfig"`
 }
 
 type StudyState struct {
-	// Time at which the study was created.
-	CreateTime pulumi.StringPtrInput
-	// A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
-	InactiveReason pulumi.StringPtrInput
-	// The name of a study.
-	Name pulumi.StringPtrInput
-	// The detailed state of a study.
-	State pulumi.StringPtrInput
-	// Required. Configuration of the study.
-	StudyConfig GoogleCloudMlV1__StudyConfigResponsePtrInput
 }
 
 func (StudyState) ElementType() reflect.Type {

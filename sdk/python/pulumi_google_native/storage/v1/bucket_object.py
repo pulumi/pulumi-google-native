@@ -38,7 +38,7 @@ class BucketObjectArgs:
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  md5_hash: Optional[pulumi.Input[str]] = None,
                  media_link: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input['ObjectOwnerArgs']] = None,
@@ -77,7 +77,7 @@ class BucketObjectArgs:
         :param pulumi.Input[str] kms_key_name: Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
         :param pulumi.Input[str] md5_hash: MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.
         :param pulumi.Input[str] media_link: Media download link.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
+        :param pulumi.Input[Mapping[str, str]] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] metageneration: The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
         :param pulumi.Input[str] name: The name of the object. Required if not specified by URL parameter.
         :param pulumi.Input['ObjectOwnerArgs'] owner: The owner of the object. This will always be the uploader of the object.
@@ -439,14 +439,14 @@ class BucketObjectArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         User-provided metadata, in key/value pairs.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -667,7 +667,7 @@ class BucketObject(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  md5_hash: Optional[pulumi.Input[str]] = None,
                  media_link: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['ObjectOwnerArgs']]] = None,
@@ -710,7 +710,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_name: Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
         :param pulumi.Input[str] md5_hash: MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.
         :param pulumi.Input[str] media_link: Media download link.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
+        :param pulumi.Input[Mapping[str, str]] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] metageneration: The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
         :param pulumi.Input[str] name: The name of the object. Required if not specified by URL parameter.
         :param pulumi.Input[pulumi.InputType['ObjectOwnerArgs']] owner: The owner of the object. This will always be the uploader of the object.
@@ -771,7 +771,7 @@ class BucketObject(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  md5_hash: Optional[pulumi.Input[str]] = None,
                  media_link: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['ObjectOwnerArgs']]] = None,

@@ -17,13 +17,13 @@ __all__ = [
     'ConfigMapEnvSourceArgs',
     'ConfigMapKeySelectorArgs',
     'ConfigMapVolumeSourceArgs',
-    'ContainerArgs',
     'ContainerPortArgs',
+    'ContainerArgs',
     'DomainMappingSpecArgs',
     'DomainMappingStatusArgs',
     'EnvFromSourceArgs',
-    'EnvVarArgs',
     'EnvVarSourceArgs',
+    'EnvVarArgs',
     'ExecActionArgs',
     'ExprArgs',
     'GoogleCloudRunV1ConditionArgs',
@@ -46,8 +46,8 @@ __all__ = [
     'ServiceStatusArgs',
     'TCPSocketActionArgs',
     'TrafficTargetArgs',
-    'VolumeArgs',
     'VolumeMountArgs',
+    'VolumeArgs',
 ]
 
 @pulumi.input_type
@@ -407,6 +407,62 @@ class ConfigMapVolumeSourceArgs:
 
 
 @pulumi.input_type
+class ContainerPortArgs:
+    def __init__(__self__, *,
+                 container_port: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None):
+        """
+        ContainerPort represents a network port in a single container.
+        :param pulumi.Input[int] container_port: (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        :param pulumi.Input[str] name: (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        :param pulumi.Input[str] protocol: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+        """
+        if container_port is not None:
+            pulumi.set(__self__, "container_port", container_port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        """
+        return pulumi.get(self, "container_port")
+
+    @container_port.setter
+    def container_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "container_port", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+
+@pulumi.input_type
 class ContainerArgs:
     def __init__(__self__, *,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -683,62 +739,6 @@ class ContainerArgs:
 
 
 @pulumi.input_type
-class ContainerPortArgs:
-    def __init__(__self__, *,
-                 container_port: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None):
-        """
-        ContainerPort represents a network port in a single container.
-        :param pulumi.Input[int] container_port: (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
-        :param pulumi.Input[str] name: (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-        :param pulumi.Input[str] protocol: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
-        """
-        if container_port is not None:
-            pulumi.set(__self__, "container_port", container_port)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-
-    @property
-    @pulumi.getter(name="containerPort")
-    def container_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
-        """
-        return pulumi.get(self, "container_port")
-
-    @container_port.setter
-    def container_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "container_port", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
-        """
-        return pulumi.get(self, "protocol")
-
-    @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "protocol", value)
-
-
-@pulumi.input_type
 class DomainMappingSpecArgs:
     def __init__(__self__, *,
                  certificate_mode: Optional[pulumi.Input['DomainMappingSpecCertificateMode']] = None,
@@ -939,6 +939,46 @@ class EnvFromSourceArgs:
 
 
 @pulumi.input_type
+class EnvVarSourceArgs:
+    def __init__(__self__, *,
+                 config_map_key_ref: Optional[pulumi.Input['ConfigMapKeySelectorArgs']] = None,
+                 secret_key_ref: Optional[pulumi.Input['SecretKeySelectorArgs']] = None):
+        """
+        Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+        :param pulumi.Input['ConfigMapKeySelectorArgs'] config_map_key_ref: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+        :param pulumi.Input['SecretKeySelectorArgs'] secret_key_ref: (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+        """
+        if config_map_key_ref is not None:
+            pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
+        if secret_key_ref is not None:
+            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="configMapKeyRef")
+    def config_map_key_ref(self) -> Optional[pulumi.Input['ConfigMapKeySelectorArgs']]:
+        """
+        (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+        """
+        return pulumi.get(self, "config_map_key_ref")
+
+    @config_map_key_ref.setter
+    def config_map_key_ref(self, value: Optional[pulumi.Input['ConfigMapKeySelectorArgs']]):
+        pulumi.set(self, "config_map_key_ref", value)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
+        """
+        (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+    @secret_key_ref.setter
+    def secret_key_ref(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
+        pulumi.set(self, "secret_key_ref", value)
+
+
+@pulumi.input_type
 class EnvVarArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
@@ -992,46 +1032,6 @@ class EnvVarArgs:
     @value_from.setter
     def value_from(self, value: Optional[pulumi.Input['EnvVarSourceArgs']]):
         pulumi.set(self, "value_from", value)
-
-
-@pulumi.input_type
-class EnvVarSourceArgs:
-    def __init__(__self__, *,
-                 config_map_key_ref: Optional[pulumi.Input['ConfigMapKeySelectorArgs']] = None,
-                 secret_key_ref: Optional[pulumi.Input['SecretKeySelectorArgs']] = None):
-        """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
-        :param pulumi.Input['ConfigMapKeySelectorArgs'] config_map_key_ref: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
-        :param pulumi.Input['SecretKeySelectorArgs'] secret_key_ref: (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
-        """
-        if config_map_key_ref is not None:
-            pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
-        if secret_key_ref is not None:
-            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
-
-    @property
-    @pulumi.getter(name="configMapKeyRef")
-    def config_map_key_ref(self) -> Optional[pulumi.Input['ConfigMapKeySelectorArgs']]:
-        """
-        (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
-        """
-        return pulumi.get(self, "config_map_key_ref")
-
-    @config_map_key_ref.setter
-    def config_map_key_ref(self, value: Optional[pulumi.Input['ConfigMapKeySelectorArgs']]):
-        pulumi.set(self, "config_map_key_ref", value)
-
-    @property
-    @pulumi.getter(name="secretKeyRef")
-    def secret_key_ref(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
-        """
-        (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
-        """
-        return pulumi.get(self, "secret_key_ref")
-
-    @secret_key_ref.setter
-    def secret_key_ref(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
-        pulumi.set(self, "secret_key_ref", value)
 
 
 @pulumi.input_type
@@ -1429,7 +1429,7 @@ class LocalObjectReferenceArgs:
 @pulumi.input_type
 class ObjectMetaArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  deletion_grace_period_seconds: Optional[pulumi.Input[int]] = None,
@@ -1437,7 +1437,7 @@ class ObjectMetaArgs:
                  finalizers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  generate_name: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  owner_references: Optional[pulumi.Input[Sequence[pulumi.Input['OwnerReferenceArgs']]]] = None,
@@ -1446,7 +1446,7 @@ class ObjectMetaArgs:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        :param pulumi.Input[Mapping[str, str]] annotations: (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
         :param pulumi.Input[str] cluster_name: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
         :param pulumi.Input[str] creation_timestamp: (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         :param pulumi.Input[int] deletion_grace_period_seconds: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
@@ -1454,7 +1454,7 @@ class ObjectMetaArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] finalizers: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
         :param pulumi.Input[str] generate_name: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
         :param pulumi.Input[int] generation: (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
+        :param pulumi.Input[Mapping[str, str]] labels: (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
         :param pulumi.Input[str] name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
         :param pulumi.Input[str] namespace: Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
         :param pulumi.Input[Sequence[pulumi.Input['OwnerReferenceArgs']]] owner_references: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
@@ -1495,14 +1495,14 @@ class ObjectMetaArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -1591,14 +1591,14 @@ class ObjectMetaArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -1973,12 +1973,12 @@ class ResourceRecordArgs:
 @pulumi.input_type
 class ResourceRequirementsArgs:
     def __init__(__self__, *,
-                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 limits: Optional[pulumi.Input[Mapping[str, str]]] = None,
+                 requests: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         ResourceRequirements describes the compute resource requirements.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] requests: (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, str]] limits: (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, str]] requests: (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
@@ -1987,26 +1987,26 @@ class ResourceRequirementsArgs:
 
     @property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def limits(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def limits(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "limits", value)
 
     @property
     @pulumi.getter
-    def requests(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def requests(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "requests")
 
     @requests.setter
-    def requests(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def requests(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "requests", value)
 
 
@@ -2647,62 +2647,6 @@ class TrafficTargetArgs:
 
 
 @pulumi.input_type
-class VolumeArgs:
-    def __init__(__self__, *,
-                 config_map: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
-        """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
-        :param pulumi.Input['ConfigMapVolumeSourceArgs'] config_map: Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-        :param pulumi.Input[str] name: Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
-        :param pulumi.Input['SecretVolumeSourceArgs'] secret: Cloud Run fully managed: supported Cloud Run for Anthos: supported
-        """
-        if config_map is not None:
-            pulumi.set(__self__, "config_map", config_map)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if secret is not None:
-            pulumi.set(__self__, "secret", secret)
-
-    @property
-    @pulumi.getter(name="configMap")
-    def config_map(self) -> Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]:
-        """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-        """
-        return pulumi.get(self, "config_map")
-
-    @config_map.setter
-    def config_map(self, value: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]):
-        pulumi.set(self, "config_map", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['SecretVolumeSourceArgs']]:
-        """
-        Cloud Run fully managed: supported Cloud Run for Anthos: supported
-        """
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: Optional[pulumi.Input['SecretVolumeSourceArgs']]):
-        pulumi.set(self, "secret", value)
-
-
-@pulumi.input_type
 class VolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: Optional[pulumi.Input[str]] = None,
@@ -2772,5 +2716,61 @@ class VolumeMountArgs:
     @sub_path.setter
     def sub_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sub_path", value)
+
+
+@pulumi.input_type
+class VolumeArgs:
+    def __init__(__self__, *,
+                 config_map: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
+        """
+        Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+        :param pulumi.Input['ConfigMapVolumeSourceArgs'] config_map: Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+        :param pulumi.Input[str] name: Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
+        :param pulumi.Input['SecretVolumeSourceArgs'] secret: Cloud Run fully managed: supported Cloud Run for Anthos: supported
+        """
+        if config_map is not None:
+            pulumi.set(__self__, "config_map", config_map)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter(name="configMap")
+    def config_map(self) -> Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]:
+        """
+        Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+        """
+        return pulumi.get(self, "config_map")
+
+    @config_map.setter
+    def config_map(self, value: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]):
+        pulumi.set(self, "config_map", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input['SecretVolumeSourceArgs']]:
+        """
+        Cloud Run fully managed: supported Cloud Run for Anthos: supported
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input['SecretVolumeSourceArgs']]):
+        pulumi.set(self, "secret", value)
 
 

@@ -85,75 +85,9 @@ func GetRegionHealthCheck(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionHealthCheck resources.
 type regionHealthCheckState struct {
-	// How often (in seconds) to send a health check. The default value is 5 seconds.
-	CheckIntervalSec *int `pulumi:"checkIntervalSec"`
-	// Creation timestamp in 3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description     *string                  `pulumi:"description"`
-	GrpcHealthCheck *GRPCHealthCheckResponse `pulumi:"grpcHealthCheck"`
-	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-	HealthyThreshold *int                      `pulumi:"healthyThreshold"`
-	Http2HealthCheck *HTTP2HealthCheckResponse `pulumi:"http2HealthCheck"`
-	HttpHealthCheck  *HTTPHealthCheckResponse  `pulumi:"httpHealthCheck"`
-	HttpsHealthCheck *HTTPSHealthCheckResponse `pulumi:"httpsHealthCheck"`
-	// Type of the resource.
-	Kind *string `pulumi:"kind"`
-	// Configure logging on this health check.
-	LogConfig *HealthCheckLogConfigResponse `pulumi:"logConfig"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
-	Name *string `pulumi:"name"`
-	// Region where the health check resides. Not applicable to global health checks.
-	Region *string `pulumi:"region"`
-	// Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string                 `pulumi:"selfLinkWithId"`
-	SslHealthCheck *SSLHealthCheckResponse `pulumi:"sslHealthCheck"`
-	TcpHealthCheck *TCPHealthCheckResponse `pulumi:"tcpHealthCheck"`
-	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
-	TimeoutSec *int `pulumi:"timeoutSec"`
-	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
-	Type           *string                 `pulumi:"type"`
-	UdpHealthCheck *UDPHealthCheckResponse `pulumi:"udpHealthCheck"`
-	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
 type RegionHealthCheckState struct {
-	// How often (in seconds) to send a health check. The default value is 5 seconds.
-	CheckIntervalSec pulumi.IntPtrInput
-	// Creation timestamp in 3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description     pulumi.StringPtrInput
-	GrpcHealthCheck GRPCHealthCheckResponsePtrInput
-	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-	HealthyThreshold pulumi.IntPtrInput
-	Http2HealthCheck HTTP2HealthCheckResponsePtrInput
-	HttpHealthCheck  HTTPHealthCheckResponsePtrInput
-	HttpsHealthCheck HTTPSHealthCheckResponsePtrInput
-	// Type of the resource.
-	Kind pulumi.StringPtrInput
-	// Configure logging on this health check.
-	LogConfig HealthCheckLogConfigResponsePtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
-	Name pulumi.StringPtrInput
-	// Region where the health check resides. Not applicable to global health checks.
-	Region pulumi.StringPtrInput
-	// Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
-	SslHealthCheck SSLHealthCheckResponsePtrInput
-	TcpHealthCheck TCPHealthCheckResponsePtrInput
-	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
-	TimeoutSec pulumi.IntPtrInput
-	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
-	Type           pulumi.StringPtrInput
-	UdpHealthCheck UDPHealthCheckResponsePtrInput
-	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-	UnhealthyThreshold pulumi.IntPtrInput
 }
 
 func (RegionHealthCheckState) ElementType() reflect.Type {

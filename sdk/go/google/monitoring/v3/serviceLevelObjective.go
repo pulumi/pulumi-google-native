@@ -67,33 +67,9 @@ func GetServiceLevelObjective(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceLevelObjective resources.
 type serviceLevelObjectiveState struct {
-	// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
-	CalendarPeriod *string `pulumi:"calendarPeriod"`
-	// Name used for UI elements listing this SLO.
-	DisplayName *string `pulumi:"displayName"`
-	// The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
-	Goal *float64 `pulumi:"goal"`
-	// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
-	Name *string `pulumi:"name"`
-	// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
-	RollingPeriod *string `pulumi:"rollingPeriod"`
-	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
-	ServiceLevelIndicator *ServiceLevelIndicatorResponse `pulumi:"serviceLevelIndicator"`
 }
 
 type ServiceLevelObjectiveState struct {
-	// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
-	CalendarPeriod pulumi.StringPtrInput
-	// Name used for UI elements listing this SLO.
-	DisplayName pulumi.StringPtrInput
-	// The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
-	Goal pulumi.Float64PtrInput
-	// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
-	Name pulumi.StringPtrInput
-	// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
-	RollingPeriod pulumi.StringPtrInput
-	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
-	ServiceLevelIndicator ServiceLevelIndicatorResponsePtrInput
 }
 
 func (ServiceLevelObjectiveState) ElementType() reflect.Type {

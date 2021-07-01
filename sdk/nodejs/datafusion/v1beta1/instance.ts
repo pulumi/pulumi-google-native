@@ -255,7 +255,7 @@ export interface InstanceArgs {
     /**
      * The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     location: pulumi.Input<string>;
     /**
      * Network configuration options. These are required when a private Data Fusion instance is to be created.
@@ -264,7 +264,7 @@ export interface InstanceArgs {
     /**
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: string}>;
     /**
      * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
      */

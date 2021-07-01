@@ -72,37 +72,9 @@ func GetPage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Page resources.
 type pageState struct {
-	// Required. The human-readable name of the page, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
-	// The fulfillment to call when the session is entering the page.
-	EntryFulfillment *GoogleCloudDialogflowCxV3FulfillmentResponse `pulumi:"entryFulfillment"`
-	// Handlers associated with the page to handle events such as webhook errors, no match or no input.
-	EventHandlers []GoogleCloudDialogflowCxV3EventHandlerResponse `pulumi:"eventHandlers"`
-	// The form associated with the page, used for collecting parameters relevant to the page.
-	Form *GoogleCloudDialogflowCxV3FormResponse `pulumi:"form"`
-	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
-	Name *string `pulumi:"name"`
-	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
-	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
-	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
-	TransitionRoutes []GoogleCloudDialogflowCxV3TransitionRouteResponse `pulumi:"transitionRoutes"`
 }
 
 type PageState struct {
-	// Required. The human-readable name of the page, unique within the agent.
-	DisplayName pulumi.StringPtrInput
-	// The fulfillment to call when the session is entering the page.
-	EntryFulfillment GoogleCloudDialogflowCxV3FulfillmentResponsePtrInput
-	// Handlers associated with the page to handle events such as webhook errors, no match or no input.
-	EventHandlers GoogleCloudDialogflowCxV3EventHandlerResponseArrayInput
-	// The form associated with the page, used for collecting parameters relevant to the page.
-	Form GoogleCloudDialogflowCxV3FormResponsePtrInput
-	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
-	Name pulumi.StringPtrInput
-	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
-	TransitionRouteGroups pulumi.StringArrayInput
-	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
-	TransitionRoutes GoogleCloudDialogflowCxV3TransitionRouteResponseArrayInput
 }
 
 func (PageState) ElementType() reflect.Type {

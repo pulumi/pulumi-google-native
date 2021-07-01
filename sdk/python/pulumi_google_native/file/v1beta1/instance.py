@@ -22,7 +22,7 @@ class InstanceArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None):
         """
@@ -30,7 +30,7 @@ class InstanceArgs:
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
@@ -115,14 +115,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Resource labels to represent user provided metadata.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -159,7 +159,7 @@ class Instance(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -173,7 +173,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
@@ -205,7 +205,7 @@ class Instance(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,

@@ -64,21 +64,9 @@ func GetResourcefile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Resourcefile resources.
 type resourcefileState struct {
-	// The HTTP Content-Type header value specifying the content type of the body.
-	ContentType *string `pulumi:"contentType"`
-	// The HTTP request/response body as raw binary.
-	Data *string `pulumi:"data"`
-	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions []map[string]string `pulumi:"extensions"`
 }
 
 type ResourcefileState struct {
-	// The HTTP Content-Type header value specifying the content type of the body.
-	ContentType pulumi.StringPtrInput
-	// The HTTP request/response body as raw binary.
-	Data pulumi.StringPtrInput
-	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions pulumi.StringMapArrayInput
 }
 
 func (ResourcefileState) ElementType() reflect.Type {

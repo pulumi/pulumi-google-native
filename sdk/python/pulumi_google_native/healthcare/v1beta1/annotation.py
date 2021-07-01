@@ -20,7 +20,7 @@ class AnnotationArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  annotation_source: Optional[pulumi.Input['AnnotationSourceArgs']] = None,
-                 custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_data: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  image_annotation: Optional[pulumi.Input['ImageAnnotationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_annotation: Optional[pulumi.Input['ResourceAnnotationArgs']] = None,
@@ -28,7 +28,7 @@ class AnnotationArgs:
         """
         The set of arguments for constructing a Annotation resource.
         :param pulumi.Input['AnnotationSourceArgs'] annotation_source: Details of the source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_data: Additional information for this annotation record, such as annotator and verifier information or study campaign.
+        :param pulumi.Input[Mapping[str, str]] custom_data: Additional information for this annotation record, such as annotator and verifier information or study campaign.
         :param pulumi.Input['ImageAnnotationArgs'] image_annotation: Annotations for images. For example, bounding polygons.
         :param pulumi.Input[str] name: Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         :param pulumi.Input['ResourceAnnotationArgs'] resource_annotation: Annotations for resource. For example, classification tags.
@@ -101,14 +101,14 @@ class AnnotationArgs:
 
     @property
     @pulumi.getter(name="customData")
-    def custom_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def custom_data(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Additional information for this annotation record, such as annotator and verifier information or study campaign.
         """
         return pulumi.get(self, "custom_data")
 
     @custom_data.setter
-    def custom_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def custom_data(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "custom_data", value)
 
     @property
@@ -167,7 +167,7 @@ class Annotation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotation_source: Optional[pulumi.Input[pulumi.InputType['AnnotationSourceArgs']]] = None,
                  annotation_store_id: Optional[pulumi.Input[str]] = None,
-                 custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_data: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  image_annotation: Optional[pulumi.Input[pulumi.InputType['ImageAnnotationArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -182,7 +182,7 @@ class Annotation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AnnotationSourceArgs']] annotation_source: Details of the source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_data: Additional information for this annotation record, such as annotator and verifier information or study campaign.
+        :param pulumi.Input[Mapping[str, str]] custom_data: Additional information for this annotation record, such as annotator and verifier information or study campaign.
         :param pulumi.Input[pulumi.InputType['ImageAnnotationArgs']] image_annotation: Annotations for images. For example, bounding polygons.
         :param pulumi.Input[str] name: Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         :param pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']] resource_annotation: Annotations for resource. For example, classification tags.
@@ -214,7 +214,7 @@ class Annotation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotation_source: Optional[pulumi.Input[pulumi.InputType['AnnotationSourceArgs']]] = None,
                  annotation_store_id: Optional[pulumi.Input[str]] = None,
-                 custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_data: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  image_annotation: Optional[pulumi.Input[pulumi.InputType['ImageAnnotationArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,

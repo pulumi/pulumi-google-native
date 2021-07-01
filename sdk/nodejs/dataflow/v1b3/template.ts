@@ -115,6 +115,6 @@ export interface TemplateArgs {
     /**
      * The runtime parameters to pass to the job.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: string}>;
     project: pulumi.Input<string>;
 }

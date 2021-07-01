@@ -71,53 +71,9 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Time the instance was created in milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Optional. Description of the instance.
-	Description *string `pulumi:"description"`
-	// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
-	DiskEncryptionKeyName *string `pulumi:"diskEncryptionKeyName"`
-	// Optional. Display name for the instance.
-	DisplayName *string `pulumi:"displayName"`
-	// Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
-	Host *string `pulumi:"host"`
-	// Time the instance was last modified in milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// Required. Compute Engine location where the instance resides.
-	Location *string `pulumi:"location"`
-	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name *string `pulumi:"name"`
-	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
-	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
-	// Port number of the exposed Apigee endpoint.
-	Port *string `pulumi:"port"`
-	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
-	State *string `pulumi:"state"`
 }
 
 type InstanceState struct {
-	// Time the instance was created in milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// Optional. Description of the instance.
-	Description pulumi.StringPtrInput
-	// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
-	DiskEncryptionKeyName pulumi.StringPtrInput
-	// Optional. Display name for the instance.
-	DisplayName pulumi.StringPtrInput
-	// Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
-	Host pulumi.StringPtrInput
-	// Time the instance was last modified in milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
-	// Required. Compute Engine location where the instance resides.
-	Location pulumi.StringPtrInput
-	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name pulumi.StringPtrInput
-	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
-	PeeringCidrRange pulumi.StringPtrInput
-	// Port number of the exposed Apigee endpoint.
-	Port pulumi.StringPtrInput
-	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
-	State pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {

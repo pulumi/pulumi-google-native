@@ -64,33 +64,9 @@ func GetSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subscription resources.
 type subscriptionState struct {
-	// Name of the API product for which the developer is purchasing a subscription.
-	Apiproduct *string `pulumi:"apiproduct"`
-	// Time when the API product subscription was created in milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Time when the API product subscription ends in milliseconds since epoch.
-	EndTime *string `pulumi:"endTime"`
-	// Time when the API product subscription was last modified in milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// Name of the API product subscription.
-	Name *string `pulumi:"name"`
-	// Time when the API product subscription starts in milliseconds since epoch.
-	StartTime *string `pulumi:"startTime"`
 }
 
 type SubscriptionState struct {
-	// Name of the API product for which the developer is purchasing a subscription.
-	Apiproduct pulumi.StringPtrInput
-	// Time when the API product subscription was created in milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// Time when the API product subscription ends in milliseconds since epoch.
-	EndTime pulumi.StringPtrInput
-	// Time when the API product subscription was last modified in milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
-	// Name of the API product subscription.
-	Name pulumi.StringPtrInput
-	// Time when the API product subscription starts in milliseconds since epoch.
-	StartTime pulumi.StringPtrInput
 }
 
 func (SubscriptionState) ElementType() reflect.Type {

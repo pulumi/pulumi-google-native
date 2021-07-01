@@ -23,7 +23,7 @@ class SubscriptionArgs:
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input['ExpirationPolicyArgs']] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input['PushConfigArgs']] = None,
@@ -38,7 +38,7 @@ class SubscriptionArgs:
         :param pulumi.Input[bool] enable_message_ordering: If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
         :param pulumi.Input['ExpirationPolicyArgs'] expiration_policy: A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
         :param pulumi.Input[str] filter: An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
+        :param pulumi.Input[Mapping[str, str]] labels: See Creating and managing labels.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
         :param pulumi.Input[str] name: Required. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input['PushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
@@ -167,14 +167,14 @@ class SubscriptionArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         See Creating and managing labels.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -261,7 +261,7 @@ class Subscription(pulumi.CustomResource):
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input[pulumi.InputType['ExpirationPolicyArgs']]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -282,7 +282,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_message_ordering: If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
         :param pulumi.Input[pulumi.InputType['ExpirationPolicyArgs']] expiration_policy: A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
         :param pulumi.Input[str] filter: An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
+        :param pulumi.Input[Mapping[str, str]] labels: See Creating and managing labels.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
         :param pulumi.Input[str] name: Required. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input[pulumi.InputType['PushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
@@ -320,7 +320,7 @@ class Subscription(pulumi.CustomResource):
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input[pulumi.InputType['ExpirationPolicyArgs']]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

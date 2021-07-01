@@ -16,8 +16,11 @@ class InstanceConnectMode(str, Enum):
     Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
     """
     CONNECT_MODE_UNSPECIFIED = "CONNECT_MODE_UNSPECIFIED"
+    """Not set."""
     DIRECT_PEERING = "DIRECT_PEERING"
+    """Connect via direct peering to the Memorystore for Redis hosted service."""
     PRIVATE_SERVICE_ACCESS = "PRIVATE_SERVICE_ACCESS"
+    """Connect your Memorystore for Redis instance using Private Service Access. Private services access provides an IP address range for multiple Google Cloud services, including Memorystore."""
 
 
 class InstanceTier(str, Enum):
@@ -25,8 +28,11 @@ class InstanceTier(str, Enum):
     Required. The service tier of the instance.
     """
     TIER_UNSPECIFIED = "TIER_UNSPECIFIED"
+    """Not set."""
     BASIC = "BASIC"
+    """BASIC tier: standalone instance"""
     STANDARD_HA = "STANDARD_HA"
+    """STANDARD_HA tier: highly available primary/replica instances"""
 
 
 class InstanceTransitEncryptionMode(str, Enum):
@@ -34,5 +40,8 @@ class InstanceTransitEncryptionMode(str, Enum):
     Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
     """
     TRANSIT_ENCRYPTION_MODE_UNSPECIFIED = "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
+    """Not set."""
     SERVER_AUTHENTICATION = "SERVER_AUTHENTICATION"
+    """Client to Server traffic encryption enabled with server authentication."""
     DISABLED = "DISABLED"
+    """TLS is disabled for the instance."""

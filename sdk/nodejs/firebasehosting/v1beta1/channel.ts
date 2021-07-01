@@ -134,7 +134,7 @@ export interface ChannelArgs {
     /**
      * Text labels used for extra metadata and/or filtering.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
      */

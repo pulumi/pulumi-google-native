@@ -485,7 +485,7 @@ export interface ClusterArgs {
     /**
      * The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
      */
-    resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    resourceLabels?: pulumi.Input<{[key: string]: string}>;
     /**
      * Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
      */

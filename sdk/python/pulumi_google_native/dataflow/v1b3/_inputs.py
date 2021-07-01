@@ -647,14 +647,14 @@ class EnvironmentArgs:
                  debug_options: Optional[pulumi.Input['DebugOptionsArgs']] = None,
                  experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  flex_resource_scheduling_goal: Optional[pulumi.Input['EnvironmentFlexResourceSchedulingGoal']] = None,
-                 internal_experiments: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 sdk_pipeline_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 internal_experiments: Optional[pulumi.Input[Mapping[str, str]]] = None,
+                 sdk_pipeline_options: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  service_kms_key_name: Optional[pulumi.Input[str]] = None,
                  service_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  temp_storage_prefix: Optional[pulumi.Input[str]] = None,
-                 user_agent: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 version: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 user_agent: Optional[pulumi.Input[Mapping[str, str]]] = None,
+                 version: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  worker_pools: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolArgs']]]] = None,
                  worker_region: Optional[pulumi.Input[str]] = None,
                  worker_zone: Optional[pulumi.Input[str]] = None):
@@ -665,14 +665,14 @@ class EnvironmentArgs:
         :param pulumi.Input['DebugOptionsArgs'] debug_options: Any debugging options to be supplied to the job.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] experiments: The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
         :param pulumi.Input['EnvironmentFlexResourceSchedulingGoal'] flex_resource_scheduling_goal: Which Flexible Resource Scheduling mode to run in.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] internal_experiments: Experimental settings.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sdk_pipeline_options: The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
+        :param pulumi.Input[Mapping[str, str]] internal_experiments: Experimental settings.
+        :param pulumi.Input[Mapping[str, str]] sdk_pipeline_options: The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
         :param pulumi.Input[str] service_account_email: Identity to run virtual machines as. Defaults to the default account.
         :param pulumi.Input[str] service_kms_key_name: If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
         :param pulumi.Input[str] temp_storage_prefix: The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_agent: A description of the process that generated the request.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version: A structure describing which components and their versions of the service are required in order to run the job.
+        :param pulumi.Input[Mapping[str, str]] user_agent: A description of the process that generated the request.
+        :param pulumi.Input[Mapping[str, str]] version: A structure describing which components and their versions of the service are required in order to run the job.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolArgs']]] worker_pools: The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
         :param pulumi.Input[str] worker_region: The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
         :param pulumi.Input[str] worker_zone: The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity.
@@ -772,26 +772,26 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter(name="internalExperiments")
-    def internal_experiments(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def internal_experiments(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Experimental settings.
         """
         return pulumi.get(self, "internal_experiments")
 
     @internal_experiments.setter
-    def internal_experiments(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def internal_experiments(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "internal_experiments", value)
 
     @property
     @pulumi.getter(name="sdkPipelineOptions")
-    def sdk_pipeline_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def sdk_pipeline_options(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
         """
         return pulumi.get(self, "sdk_pipeline_options")
 
     @sdk_pipeline_options.setter
-    def sdk_pipeline_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def sdk_pipeline_options(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "sdk_pipeline_options", value)
 
     @property
@@ -844,26 +844,26 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter(name="userAgent")
-    def user_agent(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def user_agent(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         A description of the process that generated the request.
         """
         return pulumi.get(self, "user_agent")
 
     @user_agent.setter
-    def user_agent(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def user_agent(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "user_agent", value)
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def version(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         A structure describing which components and their versions of the service are required in order to run the job.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def version(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "version", value)
 
     @property
@@ -1379,7 +1379,7 @@ class PubSubIODetailsArgs:
 class RuntimeEnvironmentArgs:
     def __init__(__self__, *,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 additional_user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 additional_user_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  bypass_temp_dir_validation: Optional[pulumi.Input[bool]] = None,
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input['RuntimeEnvironmentIpConfiguration']] = None,
@@ -1397,7 +1397,7 @@ class RuntimeEnvironmentArgs:
         """
         The environment values to set at runtime.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: Additional experiment flags for the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_user_labels: Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+        :param pulumi.Input[Mapping[str, str]] additional_user_labels: Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
         :param pulumi.Input[bool] bypass_temp_dir_validation: Whether to bypass the safety checks for the job's temporary directory. Use with caution.
         :param pulumi.Input[bool] enable_streaming_engine: Whether to enable Streaming Engine for the job.
         :param pulumi.Input['RuntimeEnvironmentIpConfiguration'] ip_configuration: Configuration for VM IPs.
@@ -1460,14 +1460,14 @@ class RuntimeEnvironmentArgs:
 
     @property
     @pulumi.getter(name="additionalUserLabels")
-    def additional_user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def additional_user_labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
         """
         return pulumi.get(self, "additional_user_labels")
 
     @additional_user_labels.setter
-    def additional_user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def additional_user_labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "additional_user_labels", value)
 
     @property
@@ -1884,12 +1884,12 @@ class StepArgs:
     def __init__(__self__, *,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce.
         :param pulumi.Input[str] kind: The kind of step in the Cloud Dataflow job.
         :param pulumi.Input[str] name: The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
+        :param pulumi.Input[Mapping[str, str]] properties: Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
         """
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
@@ -1924,14 +1924,14 @@ class StepArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
 
@@ -2363,13 +2363,13 @@ class WorkerPoolArgs:
                  ip_configuration: Optional[pulumi.Input['WorkerPoolIpConfiguration']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  num_threads_per_worker: Optional[pulumi.Input[int]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  packages: Optional[pulumi.Input[Sequence[pulumi.Input['PackageArgs']]]] = None,
-                 pool_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pool_args: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  sdk_harness_container_images: Optional[pulumi.Input[Sequence[pulumi.Input['SdkHarnessContainerImageArgs']]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  taskrunner_settings: Optional[pulumi.Input['TaskRunnerSettingsArgs']] = None,
@@ -2386,13 +2386,13 @@ class WorkerPoolArgs:
         :param pulumi.Input['WorkerPoolIpConfiguration'] ip_configuration: Configuration for VM IPs.
         :param pulumi.Input[str] kind: The kind of the worker pool; currently only `harness` and `shuffle` are supported.
         :param pulumi.Input[str] machine_type: Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service will attempt to choose a reasonable default.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata to set on the Google Compute Engine VMs.
+        :param pulumi.Input[Mapping[str, str]] metadata: Metadata to set on the Google Compute Engine VMs.
         :param pulumi.Input[str] network: Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
         :param pulumi.Input[int] num_threads_per_worker: The number of threads per worker harness. If empty or unspecified, the service will choose a number of threads (according to the number of cores on the selected machine type for batch, or 1 by convention for streaming).
         :param pulumi.Input[int] num_workers: Number of Google Compute Engine workers in this pool needed to execute the job. If zero or unspecified, the service will attempt to choose a reasonable default.
         :param pulumi.Input[str] on_host_maintenance: The action to take on host maintenance, as defined by the Google Compute Engine API.
         :param pulumi.Input[Sequence[pulumi.Input['PackageArgs']]] packages: Packages to be installed on workers.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pool_args: Extra arguments for this worker pool.
+        :param pulumi.Input[Mapping[str, str]] pool_args: Extra arguments for this worker pool.
         :param pulumi.Input[Sequence[pulumi.Input['SdkHarnessContainerImageArgs']]] sdk_harness_container_images: Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
         :param pulumi.Input[str] subnetwork: Subnetwork to which VMs will be assigned, if desired. Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input['TaskRunnerSettingsArgs'] taskrunner_settings: Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.
@@ -2552,14 +2552,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Metadata to set on the Google Compute Engine VMs.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -2624,14 +2624,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter(name="poolArgs")
-    def pool_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def pool_args(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Extra arguments for this worker pool.
         """
         return pulumi.get(self, "pool_args")
 
     @pool_args.setter
-    def pool_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def pool_args(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "pool_args", value)
 
     @property

@@ -137,7 +137,7 @@ export interface TriggerArgs {
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     location: pulumi.Input<string>;
     /**
      * Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.

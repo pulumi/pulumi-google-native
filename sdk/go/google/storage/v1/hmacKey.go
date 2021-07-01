@@ -70,45 +70,9 @@ func GetHmacKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HmacKey resources.
 type hmacKeyState struct {
-	// The ID of the HMAC Key.
-	AccessId *string `pulumi:"accessId"`
-	// HTTP 1.1 Entity tag for the HMAC key.
-	Etag *string `pulumi:"etag"`
-	// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
-	Kind *string `pulumi:"kind"`
-	// Project ID owning the service account to which the key authenticates.
-	Project *string `pulumi:"project"`
-	// The link to this resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// The email address of the key's associated service account.
-	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
-	State *string `pulumi:"state"`
-	// The creation time of the HMAC key in RFC 3339 format.
-	TimeCreated *string `pulumi:"timeCreated"`
-	// The last modification time of the HMAC key metadata in RFC 3339 format.
-	Updated *string `pulumi:"updated"`
 }
 
 type HmacKeyState struct {
-	// The ID of the HMAC Key.
-	AccessId pulumi.StringPtrInput
-	// HTTP 1.1 Entity tag for the HMAC key.
-	Etag pulumi.StringPtrInput
-	// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
-	Kind pulumi.StringPtrInput
-	// Project ID owning the service account to which the key authenticates.
-	Project pulumi.StringPtrInput
-	// The link to this resource.
-	SelfLink pulumi.StringPtrInput
-	// The email address of the key's associated service account.
-	ServiceAccountEmail pulumi.StringPtrInput
-	// The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
-	State pulumi.StringPtrInput
-	// The creation time of the HMAC key in RFC 3339 format.
-	TimeCreated pulumi.StringPtrInput
-	// The last modification time of the HMAC key metadata in RFC 3339 format.
-	Updated pulumi.StringPtrInput
 }
 
 func (HmacKeyState) ElementType() reflect.Type {

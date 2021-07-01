@@ -196,7 +196,7 @@ export interface DatasetArgs {
     /**
      * The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
      */

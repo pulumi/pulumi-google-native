@@ -16,12 +16,19 @@ class ManagedCertificateStatus(str, Enum):
     """
     UNSPECIFIED_STATUS = "UNSPECIFIED_STATUS"
     OK = "OK"
+    """Certificate was successfully obtained and inserted into the serving system."""
     PENDING = "PENDING"
+    """Certificate is under active attempts to acquire or renew."""
     FAILED_RETRYING_INTERNAL = "FAILED_RETRYING_INTERNAL"
+    """Most recent renewal failed due to a system failure and will be retried. System failure is likely transient, and subsequent renewal attempts may succeed. The last successfully provisioned certificate may still be serving."""
     FAILED_RETRYING_NOT_VISIBLE = "FAILED_RETRYING_NOT_VISIBLE"
+    """Most recent renewal failed due to an invalid DNS setup and will be retried. Renewal attempts will continue to fail until the certificate domain's DNS configuration is fixed. The last successfully provisioned certificate may still be serving."""
     FAILED_PERMANENTLY_NOT_VISIBLE = "FAILED_PERMANENTLY_NOT_VISIBLE"
+    """All renewal attempts have been exhausted. Most recent renewal failed due to an invalid DNS setup and will not be retried. The last successfully provisioned certificate may still be serving."""
     FAILED_RETRYING_CAA_FORBIDDEN = "FAILED_RETRYING_CAA_FORBIDDEN"
+    """Most recent renewal failed due to an explicit CAA record that does not include one of the in-use CAs (Google CA and Let's Encrypt). Renewals will continue to fail until the CAA is reconfigured. The last successfully provisioned certificate may still be serving."""
     FAILED_RETRYING_CAA_CHECKING = "FAILED_RETRYING_CAA_CHECKING"
+    """Most recent renewal failed due to a CAA retrieval failure. This means that the domain's DNS provider does not properly handle CAA records, failing requests for CAA records when no CAA records are defined. Renewals will continue to fail until the DNS provider is changed or a CAA record is added for the given domain. The last successfully provisioned certificate may still be serving."""
 
 
 class ResourceRecordType(str, Enum):
@@ -29,5 +36,8 @@ class ResourceRecordType(str, Enum):
     Resource record type. Example: AAAA.
     """
     A = "A"
+    """An A resource record. Data is an IPv4 address."""
     AAAA = "AAAA"
+    """An AAAA resource record. Data is an IPv6 address."""
     CNAME = "CNAME"
+    """A CNAME resource record. Data is a domain name to be aliased."""

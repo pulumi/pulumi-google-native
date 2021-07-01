@@ -14,4 +14,6 @@ class RepositoryFormat(str, Enum):
     The format of packages that are stored in the repository.
     """
     FORMAT_UNSPECIFIED = "FORMAT_UNSPECIFIED"
+    """Unspecified package format."""
     DOCKER = "DOCKER"
+    """Docker package format."""

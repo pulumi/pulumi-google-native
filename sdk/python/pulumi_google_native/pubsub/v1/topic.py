@@ -19,7 +19,7 @@ class TopicArgs:
                  project: pulumi.Input[str],
                  topic_id: pulumi.Input[str],
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  message_storage_policy: Optional[pulumi.Input['MessageStoragePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -27,7 +27,7 @@ class TopicArgs:
         """
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        :param pulumi.Input[Mapping[str, str]] labels: See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         :param pulumi.Input['MessageStoragePolicyArgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         :param pulumi.Input[str] name: Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
@@ -80,14 +80,14 @@ class TopicArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -145,7 +145,7 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -159,7 +159,7 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        :param pulumi.Input[Mapping[str, str]] labels: See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         :param pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         :param pulumi.Input[str] name: Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
@@ -190,7 +190,7 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

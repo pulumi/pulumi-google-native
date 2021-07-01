@@ -103,7 +103,7 @@ export interface TableArgs {
     /**
      * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
      */
-    columnFamilies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    columnFamilies?: pulumi.Input<{[key: string]: string}>;
     /**
      * Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
      */

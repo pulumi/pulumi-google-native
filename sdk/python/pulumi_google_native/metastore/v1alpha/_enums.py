@@ -19,9 +19,13 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
+    """Default case. Should never be this."""
     ADMIN_READ = "ADMIN_READ"
+    """Admin reads. Example: CloudIAM getIamPolicy"""
     DATA_WRITE = "DATA_WRITE"
+    """Data writes. Example: CloudSQL Users create"""
     DATA_READ = "DATA_READ"
+    """Data reads. Example: CloudSQL Users list"""
 
 
 class DatabaseDumpDatabaseType(str, Enum):
@@ -29,7 +33,9 @@ class DatabaseDumpDatabaseType(str, Enum):
     The type of the database.
     """
     DATABASE_TYPE_UNSPECIFIED = "DATABASE_TYPE_UNSPECIFIED"
+    """The type of the source database is unknown."""
     MYSQL = "MYSQL"
+    """The type of the source database is MySQL."""
 
 
 class DatabaseDumpType(str, Enum):
@@ -37,8 +43,11 @@ class DatabaseDumpType(str, Enum):
     Optional. The type of the database dump. If unspecified, defaults to MYSQL.
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """The type of the database dump is unknown."""
     MYSQL = "MYSQL"
+    """Database dump is a MySQL dump file."""
     AVRO = "AVRO"
+    """Database dump contains Avro files."""
 
 
 class MaintenanceWindowDayOfWeek(str, Enum):
@@ -46,13 +55,21 @@ class MaintenanceWindowDayOfWeek(str, Enum):
     The day of week, when the window starts.
     """
     DAY_OF_WEEK_UNSPECIFIED = "DAY_OF_WEEK_UNSPECIFIED"
+    """The day of the week is unspecified."""
     MONDAY = "MONDAY"
+    """Monday"""
     TUESDAY = "TUESDAY"
+    """Tuesday"""
     WEDNESDAY = "WEDNESDAY"
+    """Wednesday"""
     THURSDAY = "THURSDAY"
+    """Thursday"""
     FRIDAY = "FRIDAY"
+    """Friday"""
     SATURDAY = "SATURDAY"
+    """Saturday"""
     SUNDAY = "SUNDAY"
+    """Sunday"""
 
 
 class ServiceReleaseChannel(str, Enum):
@@ -60,8 +77,11 @@ class ServiceReleaseChannel(str, Enum):
     Immutable. The release channel of the service. If unspecified, defaults to STABLE.
     """
     RELEASE_CHANNEL_UNSPECIFIED = "RELEASE_CHANNEL_UNSPECIFIED"
+    """Release channel is not specified."""
     CANARY = "CANARY"
+    """The CANARY release channel contains the newest features, which may be unstable and subject to unresolved issues with no known workarounds. Services using the CANARY release channel are not subject to any SLAs."""
     STABLE = "STABLE"
+    """The STABLE release channel contains features that are considered stable and have been validated for production use."""
 
 
 class ServiceTier(str, Enum):
@@ -69,5 +89,8 @@ class ServiceTier(str, Enum):
     The tier of the service.
     """
     TIER_UNSPECIFIED = "TIER_UNSPECIFIED"
+    """The tier is not set."""
     DEVELOPER = "DEVELOPER"
+    """The developer tier provides limited scalability and no fault tolerance. Good for low-cost proof-of-concept."""
     ENTERPRISE = "ENTERPRISE"
+    """The enterprise tier provides multi-zone high availability, and sufficient scalability for enterprise-level Dataproc Metastore workloads."""

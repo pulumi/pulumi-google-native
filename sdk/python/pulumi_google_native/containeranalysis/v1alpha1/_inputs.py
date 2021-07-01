@@ -11,9 +11,9 @@ from ._enums import *
 
 __all__ = [
     'ArtifactArgs',
-    'AttestationArgs',
-    'AttestationAuthorityArgs',
     'AttestationAuthorityHintArgs',
+    'AttestationAuthorityArgs',
+    'AttestationArgs',
     'BasisArgs',
     'BindingArgs',
     'BuildDetailsArgs',
@@ -41,8 +41,8 @@ __all__ = [
     'InstallationArgs',
     'LayerArgs',
     'LocationArgs',
-    'PackageArgs',
     'PackageIssueArgs',
+    'PackageArgs',
     'PgpSignedAttestationArgs',
     'RelatedUrlArgs',
     'RepoSourceArgs',
@@ -116,23 +116,27 @@ class ArtifactArgs:
 
 
 @pulumi.input_type
-class AttestationArgs:
+class AttestationAuthorityHintArgs:
     def __init__(__self__, *,
-                 pgp_signed_attestation: Optional[pulumi.Input['PgpSignedAttestationArgs']] = None):
+                 human_readable_name: Optional[pulumi.Input[str]] = None):
         """
-        Occurrence that represents a single "attestation". The authenticity of an Attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the AttestationAuthority to which this Attestation is attached is primarily useful for look-up (how to find this Attestation if you already know the Authority and artifact to be verified) and intent (which authority was this attestation intended to sign for).
+        This submessage provides human-readable hints about the purpose of the AttestationAuthority. Because the name of a Note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should NOT be used to look up AttestationAuthorities in security sensitive contexts, such as when looking up Attestations to verify.
+        :param pulumi.Input[str] human_readable_name: The human readable name of this Attestation Authority, for example "qa".
         """
-        if pgp_signed_attestation is not None:
-            pulumi.set(__self__, "pgp_signed_attestation", pgp_signed_attestation)
+        if human_readable_name is not None:
+            pulumi.set(__self__, "human_readable_name", human_readable_name)
 
     @property
-    @pulumi.getter(name="pgpSignedAttestation")
-    def pgp_signed_attestation(self) -> Optional[pulumi.Input['PgpSignedAttestationArgs']]:
-        return pulumi.get(self, "pgp_signed_attestation")
+    @pulumi.getter(name="humanReadableName")
+    def human_readable_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The human readable name of this Attestation Authority, for example "qa".
+        """
+        return pulumi.get(self, "human_readable_name")
 
-    @pgp_signed_attestation.setter
-    def pgp_signed_attestation(self, value: Optional[pulumi.Input['PgpSignedAttestationArgs']]):
-        pulumi.set(self, "pgp_signed_attestation", value)
+    @human_readable_name.setter
+    def human_readable_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "human_readable_name", value)
 
 
 @pulumi.input_type
@@ -156,27 +160,23 @@ class AttestationAuthorityArgs:
 
 
 @pulumi.input_type
-class AttestationAuthorityHintArgs:
+class AttestationArgs:
     def __init__(__self__, *,
-                 human_readable_name: Optional[pulumi.Input[str]] = None):
+                 pgp_signed_attestation: Optional[pulumi.Input['PgpSignedAttestationArgs']] = None):
         """
-        This submessage provides human-readable hints about the purpose of the AttestationAuthority. Because the name of a Note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should NOT be used to look up AttestationAuthorities in security sensitive contexts, such as when looking up Attestations to verify.
-        :param pulumi.Input[str] human_readable_name: The human readable name of this Attestation Authority, for example "qa".
+        Occurrence that represents a single "attestation". The authenticity of an Attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the AttestationAuthority to which this Attestation is attached is primarily useful for look-up (how to find this Attestation if you already know the Authority and artifact to be verified) and intent (which authority was this attestation intended to sign for).
         """
-        if human_readable_name is not None:
-            pulumi.set(__self__, "human_readable_name", human_readable_name)
+        if pgp_signed_attestation is not None:
+            pulumi.set(__self__, "pgp_signed_attestation", pgp_signed_attestation)
 
     @property
-    @pulumi.getter(name="humanReadableName")
-    def human_readable_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The human readable name of this Attestation Authority, for example "qa".
-        """
-        return pulumi.get(self, "human_readable_name")
+    @pulumi.getter(name="pgpSignedAttestation")
+    def pgp_signed_attestation(self) -> Optional[pulumi.Input['PgpSignedAttestationArgs']]:
+        return pulumi.get(self, "pgp_signed_attestation")
 
-    @human_readable_name.setter
-    def human_readable_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "human_readable_name", value)
+    @pgp_signed_attestation.setter
+    def pgp_signed_attestation(self, value: Optional[pulumi.Input['PgpSignedAttestationArgs']]):
+        pulumi.set(self, "pgp_signed_attestation", value)
 
 
 @pulumi.input_type
@@ -318,7 +318,7 @@ class BuildDetailsArgs:
 @pulumi.input_type
 class BuildProvenanceArgs:
     def __init__(__self__, *,
-                 build_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 build_options: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  builder_version: Optional[pulumi.Input[str]] = None,
                  built_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['ArtifactArgs']]]] = None,
                  commands: Optional[pulumi.Input[Sequence[pulumi.Input['CommandArgs']]]] = None,
@@ -333,7 +333,7 @@ class BuildProvenanceArgs:
                  trigger_id: Optional[pulumi.Input[str]] = None):
         """
         Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_options: Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
+        :param pulumi.Input[Mapping[str, str]] build_options: Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
         :param pulumi.Input[str] builder_version: Version string of the builder at the time this build was executed.
         :param pulumi.Input[Sequence[pulumi.Input['ArtifactArgs']]] built_artifacts: Output of the build.
         :param pulumi.Input[Sequence[pulumi.Input['CommandArgs']]] commands: Commands requested by the build.
@@ -376,14 +376,14 @@ class BuildProvenanceArgs:
 
     @property
     @pulumi.getter(name="buildOptions")
-    def build_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def build_options(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
         """
         return pulumi.get(self, "build_options")
 
     @build_options.setter
-    def build_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def build_options(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "build_options", value)
 
     @property
@@ -1705,13 +1705,13 @@ class GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs:
                  cloud_repo: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextArgs']] = None,
                  gerrit: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs']] = None,
                  git: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
         :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextArgs'] cloud_repo: A SourceContext referring to a revision in a Google Cloud Source Repo.
         :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs'] gerrit: A SourceContext referring to a Gerrit project.
         :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs'] git: A SourceContext referring to any third party Git repo (e.g., GitHub).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user defined metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels with user defined metadata.
         """
         if cloud_repo is not None:
             pulumi.set(__self__, "cloud_repo", cloud_repo)
@@ -1760,14 +1760,14 @@ class GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels with user defined metadata.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -1932,46 +1932,6 @@ class LocationArgs:
 
 
 @pulumi.input_type
-class PackageArgs:
-    def __init__(__self__, *,
-                 distribution: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
-        """
-        This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
-        :param pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]] distribution: The various channels by which a package is distributed.
-        :param pulumi.Input[str] name: The name of the package.
-        """
-        if distribution is not None:
-            pulumi.set(__self__, "distribution", distribution)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def distribution(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]]:
-        """
-        The various channels by which a package is distributed.
-        """
-        return pulumi.get(self, "distribution")
-
-    @distribution.setter
-    def distribution(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]]):
-        pulumi.set(self, "distribution", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the package.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
 class PackageIssueArgs:
     def __init__(__self__, *,
                  affected_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None,
@@ -2021,6 +1981,46 @@ class PackageIssueArgs:
     @severity_name.setter
     def severity_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "severity_name", value)
+
+
+@pulumi.input_type
+class PackageArgs:
+    def __init__(__self__, *,
+                 distribution: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
+        :param pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]] distribution: The various channels by which a package is distributed.
+        :param pulumi.Input[str] name: The name of the package.
+        """
+        if distribution is not None:
+            pulumi.set(__self__, "distribution", distribution)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def distribution(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]]:
+        """
+        The various channels by which a package is distributed.
+        """
+        return pulumi.get(self, "distribution")
+
+    @distribution.setter
+    def distribution(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]]):
+        pulumi.set(self, "distribution", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the package.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -2269,7 +2269,7 @@ class SourceArgs:
                  additional_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs']]]] = None,
                  artifact_storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None,
                  context: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs']] = None,
-                 file_hashes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 file_hashes: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  repo_source: Optional[pulumi.Input['RepoSourceArgs']] = None,
                  storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None):
         """
@@ -2277,7 +2277,7 @@ class SourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs']]] additional_contexts: If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
         :param pulumi.Input['StorageSourceArgs'] artifact_storage_source: If provided, the input binary artifacts for the build came from this location.
         :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs'] context: If provided, the source code used for the build came from this location.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+        :param pulumi.Input[Mapping[str, str]] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         :param pulumi.Input['RepoSourceArgs'] repo_source: If provided, get source from this location in a Cloud Repo.
         :param pulumi.Input['StorageSourceArgs'] storage_source: If provided, get the source from this location in in Google Cloud Storage.
         """
@@ -2332,14 +2332,14 @@ class SourceArgs:
 
     @property
     @pulumi.getter(name="fileHashes")
-    def file_hashes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def file_hashes(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         """
         return pulumi.get(self, "file_hashes")
 
     @file_hashes.setter
-    def file_hashes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def file_hashes(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "file_hashes", value)
 
     @property
@@ -2371,12 +2371,12 @@ class SourceArgs:
 class StatusArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         if code is not None:
@@ -2400,14 +2400,14 @@ class StatusArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]]]):
         pulumi.set(self, "details", value)
 
     @property

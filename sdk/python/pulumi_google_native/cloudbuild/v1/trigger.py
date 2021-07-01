@@ -27,7 +27,7 @@ class TriggerArgs:
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input['PubsubConfigArgs']] = None,
-                 substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 substitutions: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_template: Optional[pulumi.Input['RepoSourceArgs']] = None):
         """
@@ -42,7 +42,7 @@ class TriggerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
         :param pulumi.Input[str] name: User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         :param pulumi.Input['PubsubConfigArgs'] pubsub_config: Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
+        :param pulumi.Input[Mapping[str, str]] substitutions: Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `BuildTrigger`
         :param pulumi.Input['RepoSourceArgs'] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
         """
@@ -205,14 +205,14 @@ class TriggerArgs:
 
     @property
     @pulumi.getter
-    def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def substitutions(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
         """
         return pulumi.get(self, "substitutions")
 
     @substitutions.setter
-    def substitutions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def substitutions(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "substitutions", value)
 
     @property
@@ -256,7 +256,7 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
-                 substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 substitutions: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_template: Optional[pulumi.Input[pulumi.InputType['RepoSourceArgs']]] = None,
                  __props__=None):
@@ -275,7 +275,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
         :param pulumi.Input[str] name: User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         :param pulumi.Input[pulumi.InputType['PubsubConfigArgs']] pubsub_config: Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
+        :param pulumi.Input[Mapping[str, str]] substitutions: Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `BuildTrigger`
         :param pulumi.Input[pulumi.InputType['RepoSourceArgs']] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
         """
@@ -314,7 +314,7 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
-                 substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 substitutions: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_template: Optional[pulumi.Input[pulumi.InputType['RepoSourceArgs']]] = None,
                  __props__=None):

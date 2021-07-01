@@ -25,7 +25,7 @@ class ManagedZoneArgs:
                  forwarding_config: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_server_set: Optional[pulumi.Input[str]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -42,7 +42,7 @@ class ManagedZoneArgs:
         :param pulumi.Input['ManagedZoneDnsSecConfigArgs'] dnssec_config: DNSSEC configuration.
         :param pulumi.Input['ManagedZoneForwardingConfigArgs'] forwarding_config: The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels.
+        :param pulumi.Input[Mapping[str, str]] labels: User labels.
         :param pulumi.Input[str] name: User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
         :param pulumi.Input[str] name_server_set: Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server (output only)
@@ -189,14 +189,14 @@ class ManagedZoneArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         User labels.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -309,7 +309,7 @@ class ManagedZone(pulumi.CustomResource):
                  forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_server_set: Optional[pulumi.Input[str]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -331,7 +331,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnsSecConfigArgs']] dnssec_config: DNSSEC configuration.
         :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels.
+        :param pulumi.Input[Mapping[str, str]] labels: User labels.
         :param pulumi.Input[str] name: User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
         :param pulumi.Input[str] name_server_set: Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server (output only)
@@ -373,7 +373,7 @@ class ManagedZone(pulumi.CustomResource):
                  forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_server_set: Optional[pulumi.Input[str]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

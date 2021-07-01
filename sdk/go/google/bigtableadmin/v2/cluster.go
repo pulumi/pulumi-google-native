@@ -67,33 +67,9 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
-	DefaultStorageType *string `pulumi:"defaultStorageType"`
-	// Immutable. The encryption configuration for CMEK-protected clusters.
-	EncryptionConfig *EncryptionConfigResponse `pulumi:"encryptionConfig"`
-	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
-	Location *string `pulumi:"location"`
-	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
-	Name *string `pulumi:"name"`
-	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
-	ServeNodes *int `pulumi:"serveNodes"`
-	// The current state of the cluster.
-	State *string `pulumi:"state"`
 }
 
 type ClusterState struct {
-	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
-	DefaultStorageType pulumi.StringPtrInput
-	// Immutable. The encryption configuration for CMEK-protected clusters.
-	EncryptionConfig EncryptionConfigResponsePtrInput
-	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
-	Location pulumi.StringPtrInput
-	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
-	Name pulumi.StringPtrInput
-	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
-	ServeNodes pulumi.IntPtrInput
-	// The current state of the cluster.
-	State pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {

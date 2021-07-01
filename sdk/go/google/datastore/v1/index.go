@@ -61,33 +61,9 @@ func GetIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Index resources.
 type indexState struct {
-	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-	Ancestor *string `pulumi:"ancestor"`
-	// The resource ID of the index.
-	IndexId *string `pulumi:"indexId"`
-	// Required. The entity kind to which this index applies.
-	Kind *string `pulumi:"kind"`
-	// Project ID.
-	Project *string `pulumi:"project"`
-	// Required. An ordered sequence of property names and their index attributes.
-	Properties []GoogleDatastoreAdminV1IndexedPropertyResponse `pulumi:"properties"`
-	// The state of the index.
-	State *string `pulumi:"state"`
 }
 
 type IndexState struct {
-	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-	Ancestor pulumi.StringPtrInput
-	// The resource ID of the index.
-	IndexId pulumi.StringPtrInput
-	// Required. The entity kind to which this index applies.
-	Kind pulumi.StringPtrInput
-	// Project ID.
-	Project pulumi.StringPtrInput
-	// Required. An ordered sequence of property names and their index attributes.
-	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput
-	// The state of the index.
-	State pulumi.StringPtrInput
 }
 
 func (IndexState) ElementType() reflect.Type {

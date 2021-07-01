@@ -63,45 +63,9 @@ func GetSearchApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SearchApplication resources.
 type searchApplicationState struct {
-	// Retrictions applied to the configurations. The maximum number of elements is 10.
-	DataSourceRestrictions []DataSourceRestrictionResponse `pulumi:"dataSourceRestrictions"`
-	// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
-	DefaultFacetOptions []FacetOptionsResponse `pulumi:"defaultFacetOptions"`
-	// The default options for sorting the search results
-	DefaultSortOptions *SortOptionsResponse `pulumi:"defaultSortOptions"`
-	// Display name of the Search Application. The maximum length is 300 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
-	EnableAuditLog *bool `pulumi:"enableAuditLog"`
-	// Name of the Search Application. Format: searchapplications/{application_id}.
-	Name *string `pulumi:"name"`
-	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
-	OperationIds []string `pulumi:"operationIds"`
-	// Configuration for ranking results.
-	ScoringConfig *ScoringConfigResponse `pulumi:"scoringConfig"`
-	// Configuration for a sources specified in data_source_restrictions.
-	SourceConfig []SourceConfigResponse `pulumi:"sourceConfig"`
 }
 
 type SearchApplicationState struct {
-	// Retrictions applied to the configurations. The maximum number of elements is 10.
-	DataSourceRestrictions DataSourceRestrictionResponseArrayInput
-	// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
-	DefaultFacetOptions FacetOptionsResponseArrayInput
-	// The default options for sorting the search results
-	DefaultSortOptions SortOptionsResponsePtrInput
-	// Display name of the Search Application. The maximum length is 300 characters.
-	DisplayName pulumi.StringPtrInput
-	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
-	EnableAuditLog pulumi.BoolPtrInput
-	// Name of the Search Application. Format: searchapplications/{application_id}.
-	Name pulumi.StringPtrInput
-	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
-	OperationIds pulumi.StringArrayInput
-	// Configuration for ranking results.
-	ScoringConfig ScoringConfigResponsePtrInput
-	// Configuration for a sources specified in data_source_restrictions.
-	SourceConfig SourceConfigResponseArrayInput
 }
 
 func (SearchApplicationState) ElementType() reflect.Type {

@@ -18,14 +18,14 @@ class ChannelArgs:
                  project: pulumi.Input[str],
                  site_id: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  retained_release_count: Optional[pulumi.Input[int]] = None,
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Channel resource.
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering.
+        :param pulumi.Input[Mapping[str, str]] labels: Text labels used for extra metadata and/or filtering.
         :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
@@ -85,14 +85,14 @@ class ChannelArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Text labels used for extra metadata and/or filtering.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -139,7 +139,7 @@ class Channel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  retained_release_count: Optional[pulumi.Input[int]] = None,
@@ -152,7 +152,7 @@ class Channel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering.
+        :param pulumi.Input[Mapping[str, str]] labels: Text labels used for extra metadata and/or filtering.
         :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
@@ -183,7 +183,7 @@ class Channel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  retained_release_count: Optional[pulumi.Input[int]] = None,

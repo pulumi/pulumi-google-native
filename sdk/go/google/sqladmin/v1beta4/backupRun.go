@@ -82,69 +82,9 @@ func GetBackupRun(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackupRun resources.
 type backupRunState struct {
-	// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
-	BackupKind *string `pulumi:"backupKind"`
-	// The description of this run, only applicable to on-demand backups.
-	Description *string `pulumi:"description"`
-	// Encryption configuration specific to a backup. Applies only to Second Generation instances.
-	DiskEncryptionConfiguration *DiskEncryptionConfigurationResponse `pulumi:"diskEncryptionConfiguration"`
-	// Encryption status specific to a backup. Applies only to Second Generation instances.
-	DiskEncryptionStatus *DiskEncryptionStatusResponse `pulumi:"diskEncryptionStatus"`
-	// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	EndTime *string `pulumi:"endTime"`
-	// The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	EnqueuedTime *string `pulumi:"enqueuedTime"`
-	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
-	Error *OperationErrorResponse `pulumi:"error"`
-	// Name of the database instance.
-	Instance *string `pulumi:"instance"`
-	// This is always *sql#backupRun*.
-	Kind *string `pulumi:"kind"`
-	// Location of the backups.
-	Location *string `pulumi:"location"`
-	// The URI of this resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	StartTime *string `pulumi:"startTime"`
-	// The status of this run.
-	Status *string `pulumi:"status"`
-	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
-	Type *string `pulumi:"type"`
-	// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	WindowStartTime *string `pulumi:"windowStartTime"`
 }
 
 type BackupRunState struct {
-	// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
-	BackupKind pulumi.StringPtrInput
-	// The description of this run, only applicable to on-demand backups.
-	Description pulumi.StringPtrInput
-	// Encryption configuration specific to a backup. Applies only to Second Generation instances.
-	DiskEncryptionConfiguration DiskEncryptionConfigurationResponsePtrInput
-	// Encryption status specific to a backup. Applies only to Second Generation instances.
-	DiskEncryptionStatus DiskEncryptionStatusResponsePtrInput
-	// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	EndTime pulumi.StringPtrInput
-	// The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	EnqueuedTime pulumi.StringPtrInput
-	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
-	Error OperationErrorResponsePtrInput
-	// Name of the database instance.
-	Instance pulumi.StringPtrInput
-	// This is always *sql#backupRun*.
-	Kind pulumi.StringPtrInput
-	// Location of the backups.
-	Location pulumi.StringPtrInput
-	// The URI of this resource.
-	SelfLink pulumi.StringPtrInput
-	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	StartTime pulumi.StringPtrInput
-	// The status of this run.
-	Status pulumi.StringPtrInput
-	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
-	Type pulumi.StringPtrInput
-	// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	WindowStartTime pulumi.StringPtrInput
 }
 
 func (BackupRunState) ElementType() reflect.Type {

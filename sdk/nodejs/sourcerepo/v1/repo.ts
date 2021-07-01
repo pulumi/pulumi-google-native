@@ -106,7 +106,7 @@ export interface RepoArgs {
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
      */
-    pubsubConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pubsubConfigs?: pulumi.Input<{[key: string]: string}>;
     /**
      * The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
      */

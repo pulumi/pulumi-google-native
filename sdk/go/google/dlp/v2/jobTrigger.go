@@ -72,49 +72,9 @@ func GetJobTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering JobTrigger resources.
 type jobTriggerState struct {
-	// The creation timestamp of a triggeredJob.
-	CreateTime *string `pulumi:"createTime"`
-	// User provided description (max 256 chars)
-	Description *string `pulumi:"description"`
-	// Display name (max 100 chars)
-	DisplayName *string `pulumi:"displayName"`
-	// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
-	Errors []GooglePrivacyDlpV2ErrorResponse `pulumi:"errors"`
-	// For inspect jobs, a snapshot of the configuration.
-	InspectJob *GooglePrivacyDlpV2InspectJobConfigResponse `pulumi:"inspectJob"`
-	// The timestamp of the last time this trigger executed.
-	LastRunTime *string `pulumi:"lastRunTime"`
-	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-	Name *string `pulumi:"name"`
-	// Required. A status for this trigger.
-	Status *string `pulumi:"status"`
-	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-	Triggers []GooglePrivacyDlpV2TriggerResponse `pulumi:"triggers"`
-	// The last update timestamp of a triggeredJob.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type JobTriggerState struct {
-	// The creation timestamp of a triggeredJob.
-	CreateTime pulumi.StringPtrInput
-	// User provided description (max 256 chars)
-	Description pulumi.StringPtrInput
-	// Display name (max 100 chars)
-	DisplayName pulumi.StringPtrInput
-	// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
-	Errors GooglePrivacyDlpV2ErrorResponseArrayInput
-	// For inspect jobs, a snapshot of the configuration.
-	InspectJob GooglePrivacyDlpV2InspectJobConfigResponsePtrInput
-	// The timestamp of the last time this trigger executed.
-	LastRunTime pulumi.StringPtrInput
-	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-	Name pulumi.StringPtrInput
-	// Required. A status for this trigger.
-	Status pulumi.StringPtrInput
-	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-	Triggers GooglePrivacyDlpV2TriggerResponseArrayInput
-	// The last update timestamp of a triggeredJob.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (JobTriggerState) ElementType() reflect.Type {

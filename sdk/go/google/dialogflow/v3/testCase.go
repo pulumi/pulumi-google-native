@@ -71,41 +71,9 @@ func GetTestCase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TestCase resources.
 type testCaseState struct {
-	// When the test was created.
-	CreationTime *string `pulumi:"creationTime"`
-	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// The latest test result.
-	LastTestResult *GoogleCloudDialogflowCxV3TestCaseResultResponse `pulumi:"lastTestResult"`
-	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
-	Name *string `pulumi:"name"`
-	// Additional freeform notes about the test case. Limit of 400 characters.
-	Notes *string `pulumi:"notes"`
-	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
-	Tags []string `pulumi:"tags"`
-	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
-	TestCaseConversationTurns []GoogleCloudDialogflowCxV3ConversationTurnResponse `pulumi:"testCaseConversationTurns"`
-	// Config for the test case.
-	TestConfig *GoogleCloudDialogflowCxV3TestConfigResponse `pulumi:"testConfig"`
 }
 
 type TestCaseState struct {
-	// When the test was created.
-	CreationTime pulumi.StringPtrInput
-	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-	DisplayName pulumi.StringPtrInput
-	// The latest test result.
-	LastTestResult GoogleCloudDialogflowCxV3TestCaseResultResponsePtrInput
-	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
-	Name pulumi.StringPtrInput
-	// Additional freeform notes about the test case. Limit of 400 characters.
-	Notes pulumi.StringPtrInput
-	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
-	Tags pulumi.StringArrayInput
-	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
-	TestCaseConversationTurns GoogleCloudDialogflowCxV3ConversationTurnResponseArrayInput
-	// Config for the test case.
-	TestConfig GoogleCloudDialogflowCxV3TestConfigResponsePtrInput
 }
 
 func (TestCaseState) ElementType() reflect.Type {

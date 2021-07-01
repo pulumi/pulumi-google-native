@@ -27,7 +27,7 @@ class TableArgs:
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  last_modified_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  materialized_view: Optional[pulumi.Input['MaterializedViewDefinitionArgs']] = None,
@@ -58,7 +58,7 @@ class TableArgs:
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for this table.
         :param pulumi.Input[str] id: [Output-only] An opaque ID uniquely identifying the table.
         :param pulumi.Input[str] kind: [Output-only] The type of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
+        :param pulumi.Input[Mapping[str, str]] labels: The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
         :param pulumi.Input[str] last_modified_time: [Output-only] The time when this table was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input['MaterializedViewDefinitionArgs'] materialized_view: [Optional] Materialized view definition.
@@ -279,14 +279,14 @@ class TableArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -522,7 +522,7 @@ class Table(pulumi.CustomResource):
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  last_modified_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  materialized_view: Optional[pulumi.Input[pulumi.InputType['MaterializedViewDefinitionArgs']]] = None,
@@ -558,7 +558,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for this table.
         :param pulumi.Input[str] id: [Output-only] An opaque ID uniquely identifying the table.
         :param pulumi.Input[str] kind: [Output-only] The type of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
+        :param pulumi.Input[Mapping[str, str]] labels: The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
         :param pulumi.Input[str] last_modified_time: [Output-only] The time when this table was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input[pulumi.InputType['MaterializedViewDefinitionArgs']] materialized_view: [Optional] Materialized view definition.
@@ -613,7 +613,7 @@ class Table(pulumi.CustomResource):
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  last_modified_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  materialized_view: Optional[pulumi.Input[pulumi.InputType['MaterializedViewDefinitionArgs']]] = None,

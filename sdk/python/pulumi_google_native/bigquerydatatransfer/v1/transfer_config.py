@@ -26,7 +26,7 @@ class TransferConfigArgs:
                  email_preferences: Optional[pulumi.Input['EmailPreferencesArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 params: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input['ScheduleOptionsArgs']] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
@@ -41,7 +41,7 @@ class TransferConfigArgs:
         :param pulumi.Input['EmailPreferencesArgs'] email_preferences: Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        :param pulumi.Input[Mapping[str, str]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
         :param pulumi.Input['ScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
         """
@@ -201,14 +201,14 @@ class TransferConfigArgs:
 
     @property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def params(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def params(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "params", value)
 
     @property
@@ -269,7 +269,7 @@ class TransferConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 params: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
@@ -289,7 +289,7 @@ class TransferConfig(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EmailPreferencesArgs']] email_preferences: Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        :param pulumi.Input[Mapping[str, str]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
         :param pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
         """
@@ -327,7 +327,7 @@ class TransferConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 params: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,

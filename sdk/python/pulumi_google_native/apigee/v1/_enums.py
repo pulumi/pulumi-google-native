@@ -25,11 +25,17 @@ class DataCollectorType(str, Enum):
     Immutable. The type of data this data collector will collect.
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """For future compatibility."""
     INTEGER = "INTEGER"
+    """For integer values."""
     FLOAT = "FLOAT"
+    """For float values."""
     STRING = "STRING"
+    """For string values."""
     BOOLEAN = "BOOLEAN"
+    """For boolean values."""
     DATETIME = "DATETIME"
+    """For datetime values."""
 
 
 class GoogleCloudApigeeV1TraceSamplingConfigSampler(str, Enum):
@@ -37,8 +43,11 @@ class GoogleCloudApigeeV1TraceSamplingConfigSampler(str, Enum):
     Sampler of distributed tracing. OFF is the default value.
     """
     SAMPLER_UNSPECIFIED = "SAMPLER_UNSPECIFIED"
+    """Sampler unspecified."""
     OFF = "OFF"
+    """OFF means distributed trace is disabled, or the sampling probability is 0."""
     PROBABILITY = "PROBABILITY"
+    """PROBABILITY means traces are captured on a probability that defined by sampling_rate. The sampling rate is limited to 0 to 0.5 when this is set."""
 
 
 class GoogleIamV1AuditLogConfigLogType(str, Enum):
@@ -46,9 +55,13 @@ class GoogleIamV1AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
+    """Default case. Should never be this."""
     ADMIN_READ = "ADMIN_READ"
+    """Admin reads. Example: CloudIAM getIamPolicy"""
     DATA_WRITE = "DATA_WRITE"
+    """Data writes. Example: CloudSQL Users create"""
     DATA_READ = "DATA_READ"
+    """Data reads. Example: CloudSQL Users list"""
 
 
 class InstancePeeringCidrRange(str, Enum):
@@ -56,12 +69,19 @@ class InstancePeeringCidrRange(str, Enum):
     Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
     """
     CIDR_RANGE_UNSPECIFIED = "CIDR_RANGE_UNSPECIFIED"
+    """Range not specified."""
     SLASH16 = "SLASH_16"
+    """`/16` CIDR range."""
     SLASH17 = "SLASH_17"
+    """`/17` CIDR range."""
     SLASH18 = "SLASH_18"
+    """`/18` CIDR range."""
     SLASH19 = "SLASH_19"
+    """`/19` CIDR range."""
     SLASH20 = "SLASH_20"
+    """`/20` CIDR range."""
     SLASH23 = "SLASH_23"
+    """`/23` CIDR range. Supported for evaluation only."""
 
 
 class OrganizationBillingType(str, Enum):
@@ -69,8 +89,11 @@ class OrganizationBillingType(str, Enum):
     Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
     """
     BILLING_TYPE_UNSPECIFIED = "BILLING_TYPE_UNSPECIFIED"
+    """Billing type not specified."""
     SUBSCRIPTION = "SUBSCRIPTION"
+    """A pre-paid subscription to Apigee."""
     EVALUATION = "EVALUATION"
+    """Free and limited access to Apigee for evaluation purposes only. only."""
 
 
 class OrganizationRuntimeType(str, Enum):
@@ -78,8 +101,11 @@ class OrganizationRuntimeType(str, Enum):
     Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
     """
     RUNTIME_TYPE_UNSPECIFIED = "RUNTIME_TYPE_UNSPECIFIED"
+    """Runtime type not specified."""
     CLOUD = "CLOUD"
+    """Google-managed Apigee runtime."""
     HYBRID = "HYBRID"
+    """User-managed Apigee hybrid runtime."""
 
 
 class OrganizationType(str, Enum):
@@ -87,9 +113,13 @@ class OrganizationType(str, Enum):
     Not used by Apigee.
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """Subscription type not specified."""
     TYPE_TRIAL = "TYPE_TRIAL"
+    """Subscription to Apigee is free, limited, and used for evaluation purposes only."""
     TYPE_PAID = "TYPE_PAID"
+    """Full subscription to Apigee has been purchased. See [Apigee pricing](https://cloud.google.com/apigee/pricing/)."""
     TYPE_INTERNAL = "TYPE_INTERNAL"
+    """For internal users only."""
 
 
 class RatePlanBillingPeriod(str, Enum):
@@ -97,8 +127,11 @@ class RatePlanBillingPeriod(str, Enum):
     Frequency at which the customer will be billed.
     """
     BILLING_PERIOD_UNSPECIFIED = "BILLING_PERIOD_UNSPECIFIED"
+    """Billing period not specified."""
     WEEKLY = "WEEKLY"
+    """Weekly billing period. **Note**: Not supported by Apigee at this time."""
     MONTHLY = "MONTHLY"
+    """Monthly billing period."""
 
 
 class RatePlanConsumptionPricingType(str, Enum):
@@ -106,10 +139,15 @@ class RatePlanConsumptionPricingType(str, Enum):
     Pricing model used for consumption-based charges.
     """
     CONSUMPTION_PRICING_TYPE_UNSPECIFIED = "CONSUMPTION_PRICING_TYPE_UNSPECIFIED"
+    """Pricing model not specified. This is the default."""
     FIXED_PER_UNIT = "FIXED_PER_UNIT"
+    """Fixed rate charged for each API call."""
     BANDED = "BANDED"
+    """Variable rate charged based on the total volume of API calls. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 150 x $1.5 = $225 * Total price for 250 calls: 250 x $1 = $250. **Note**: Not supported by Apigee at this time."""
     TIERED = "TIERED"
+    """Variable rate charged for each API call based on price tiers. Example: * 1-100 calls cost $2 per call * 101-200 calls cost $1.50 per call * 201-300 calls cost $1 per call * Total price for 50 calls: 50 x $2 = $100 * Total price for 150 calls: 100 x $2 + 50 x $1.5 = $275 * Total price for 250 calls: 100 x $2 + 100 x $1.5 + 50 x $1 = $400. **Note**: Not supported by Apigee at this time."""
     STAIRSTEP = "STAIRSTEP"
+    """Flat rate charged for a bundle of API calls whether or not the entire bundle is used. Example: * 1-100 calls cost $75 flat fee * 101-200 calls cost $100 flat free * 201-300 calls cost $150 flat fee * Total price for 1 call: $75 * Total price for 50 calls: $75 * Total price for 150 calls: $100 * Total price for 250 calls: $150. **Note**: Not supported by Apigee at this time."""
 
 
 class RatePlanPaymentFundingModel(str, Enum):
@@ -117,8 +155,11 @@ class RatePlanPaymentFundingModel(str, Enum):
     Flag that specifies the billing account type, prepaid or postpaid.
     """
     PAYMENT_FUNDING_MODEL_UNSPECIFIED = "PAYMENT_FUNDING_MODEL_UNSPECIFIED"
+    """Billing account type not specified."""
     PREPAID = "PREPAID"
+    """Prepaid billing account type. Developer pays in advance for the use of your API products. Funds are deducted from their prepaid account balance. **Note**: Not supported by Apigee at this time."""
     POSTPAID = "POSTPAID"
+    """Postpaid billing account type. Developer is billed through an invoice after using your API products."""
 
 
 class RatePlanRevenueShareType(str, Enum):
@@ -126,8 +167,11 @@ class RatePlanRevenueShareType(str, Enum):
     Method used to calculate the revenue that is shared with developers.
     """
     REVENUE_SHARE_TYPE_UNSPECIFIED = "REVENUE_SHARE_TYPE_UNSPECIFIED"
+    """Revenue share type is not specified."""
     FIXED = "FIXED"
+    """Fixed percentage of the total revenue will be shared. The percentage to be shared can be configured by the API provider."""
     VOLUME_BANDED = "VOLUME_BANDED"
+    """Amount of revenue shared depends on the number of API calls. The API call volume ranges and the revenue share percentage for each volume can be configured by the API provider. **Note**: Not supported by Apigee at this time."""
 
 
 class RatePlanState(str, Enum):
@@ -135,5 +179,8 @@ class RatePlanState(str, Enum):
     Current state of the rate plan (draft or published).
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """State of the rate plan is not specified."""
     DRAFT = "DRAFT"
+    """Rate plan is in draft mode and only visible to API providers."""
     PUBLISHED = "PUBLISHED"
+    """Rate plan is published and will become visible to developers for the configured duration (between `startTime` and `endTime`)."""

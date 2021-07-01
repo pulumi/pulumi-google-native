@@ -76,45 +76,9 @@ func GetTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Trigger resources.
 type triggerState struct {
-	// The creation time.
-	CreateTime *string `pulumi:"createTime"`
-	// Required. Destination specifies where the events should be sent to.
-	Destination *DestinationResponse `pulumi:"destination"`
-	// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
-	Etag *string `pulumi:"etag"`
-	// Optional. User labels attached to the triggers that can be used to group resources.
-	Labels map[string]string `pulumi:"labels"`
-	// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
-	MatchingCriteria []MatchingCriteriaResponse `pulumi:"matchingCriteria"`
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
-	Name *string `pulumi:"name"`
-	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
-	ServiceAccount *string `pulumi:"serviceAccount"`
-	// In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-	Transport *TransportResponse `pulumi:"transport"`
-	// The last-modified time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type TriggerState struct {
-	// The creation time.
-	CreateTime pulumi.StringPtrInput
-	// Required. Destination specifies where the events should be sent to.
-	Destination DestinationResponsePtrInput
-	// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
-	Etag pulumi.StringPtrInput
-	// Optional. User labels attached to the triggers that can be used to group resources.
-	Labels pulumi.StringMapInput
-	// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
-	MatchingCriteria MatchingCriteriaResponseArrayInput
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
-	Name pulumi.StringPtrInput
-	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
-	ServiceAccount pulumi.StringPtrInput
-	// In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-	Transport TransportResponsePtrInput
-	// The last-modified time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (TriggerState) ElementType() reflect.Type {

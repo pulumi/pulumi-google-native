@@ -20,7 +20,7 @@ class SpokeArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -33,7 +33,7 @@ class SpokeArgs:
         :param pulumi.Input[str] create_time: The time when the Spoke was created.
         :param pulumi.Input[str] description: Short description of the spoke resource
         :param pulumi.Input[str] hub: The resource URL of the hub resource that the spoke is attached to
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+        :param pulumi.Input[Mapping[str, str]] labels: User-defined labels.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] linked_interconnect_attachments: The URIs of linked interconnect attachment resources
         :param pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]] linked_router_appliance_instances: The URIs of linked Router appliance resources
         :param pulumi.Input[Sequence[pulumi.Input[str]]] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
@@ -121,14 +121,14 @@ class SpokeArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         User-defined labels.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -218,7 +218,7 @@ class Spoke(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterApplianceInstanceArgs']]]]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -237,7 +237,7 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time when the Spoke was created.
         :param pulumi.Input[str] description: Short description of the spoke resource
         :param pulumi.Input[str] hub: The resource URL of the hub resource that the spoke is attached to
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+        :param pulumi.Input[Mapping[str, str]] labels: User-defined labels.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] linked_interconnect_attachments: The URIs of linked interconnect attachment resources
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterApplianceInstanceArgs']]]] linked_router_appliance_instances: The URIs of linked Router appliance resources
         :param pulumi.Input[Sequence[pulumi.Input[str]]] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
@@ -271,7 +271,7 @@ class Spoke(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterApplianceInstanceArgs']]]]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

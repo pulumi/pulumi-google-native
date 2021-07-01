@@ -77,65 +77,9 @@ func GetDeveloper(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Developer resources.
 type developerState struct {
-	// Access type.
-	AccessType *string `pulumi:"accessType"`
-	// Developer app family.
-	AppFamily *string `pulumi:"appFamily"`
-	// List of apps associated with the developer.
-	Apps []string `pulumi:"apps"`
-	// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
-	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
-	// List of companies associated with the developer.
-	Companies []string `pulumi:"companies"`
-	// Time at which the developer was created in milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
-	DeveloperId *string `pulumi:"developerId"`
-	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
-	Email *string `pulumi:"email"`
-	// Required. First name of the developer.
-	FirstName *string `pulumi:"firstName"`
-	// Time at which the developer was last modified in milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// Required. Last name of the developer.
-	LastName *string `pulumi:"lastName"`
-	// Name of the Apigee organization in which the developer resides.
-	OrganizationName *string `pulumi:"organizationName"`
-	// Status of the developer. Valid values are `active` and `inactive`.
-	Status *string `pulumi:"status"`
-	// Required. User name of the developer. Not used by Apigee hybrid.
-	UserName *string `pulumi:"userName"`
 }
 
 type DeveloperState struct {
-	// Access type.
-	AccessType pulumi.StringPtrInput
-	// Developer app family.
-	AppFamily pulumi.StringPtrInput
-	// List of apps associated with the developer.
-	Apps pulumi.StringArrayInput
-	// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
-	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput
-	// List of companies associated with the developer.
-	Companies pulumi.StringArrayInput
-	// Time at which the developer was created in milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
-	DeveloperId pulumi.StringPtrInput
-	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
-	Email pulumi.StringPtrInput
-	// Required. First name of the developer.
-	FirstName pulumi.StringPtrInput
-	// Time at which the developer was last modified in milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
-	// Required. Last name of the developer.
-	LastName pulumi.StringPtrInput
-	// Name of the Apigee organization in which the developer resides.
-	OrganizationName pulumi.StringPtrInput
-	// Status of the developer. Valid values are `active` and `inactive`.
-	Status pulumi.StringPtrInput
-	// Required. User name of the developer. Not used by Apigee hybrid.
-	UserName pulumi.StringPtrInput
 }
 
 func (DeveloperState) ElementType() reflect.Type {

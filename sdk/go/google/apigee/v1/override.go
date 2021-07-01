@@ -58,21 +58,9 @@ func GetOverride(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Override resources.
 type overrideState struct {
-	// ID of the API proxy that will have its trace configuration overridden.
-	ApiProxy *string `pulumi:"apiProxy"`
-	// ID of the trace configuration override specified as a system-generated UUID.
-	Name *string `pulumi:"name"`
-	// Trace configuration to override.
-	SamplingConfig *GoogleCloudApigeeV1TraceSamplingConfigResponse `pulumi:"samplingConfig"`
 }
 
 type OverrideState struct {
-	// ID of the API proxy that will have its trace configuration overridden.
-	ApiProxy pulumi.StringPtrInput
-	// ID of the trace configuration override specified as a system-generated UUID.
-	Name pulumi.StringPtrInput
-	// Trace configuration to override.
-	SamplingConfig GoogleCloudApigeeV1TraceSamplingConfigResponsePtrInput
 }
 
 func (OverrideState) ElementType() reflect.Type {

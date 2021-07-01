@@ -59,17 +59,9 @@ func GetKeyRing(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyRing resources.
 type keyRingState struct {
-	// The time at which this KeyRing was created.
-	CreateTime *string `pulumi:"createTime"`
-	// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-	Name *string `pulumi:"name"`
 }
 
 type KeyRingState struct {
-	// The time at which this KeyRing was created.
-	CreateTime pulumi.StringPtrInput
-	// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-	Name pulumi.StringPtrInput
 }
 
 func (KeyRingState) ElementType() reflect.Type {

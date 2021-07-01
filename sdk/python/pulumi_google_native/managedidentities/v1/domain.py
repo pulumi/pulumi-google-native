@@ -18,7 +18,7 @@ class DomainArgs:
                  project: pulumi.Input[str],
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None):
@@ -26,7 +26,7 @@ class DomainArgs:
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[str] admin: Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels that can contain user-provided metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. Resource labels that can contain user-provided metadata.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] name: Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         :param pulumi.Input[str] reserved_ip_range: Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
@@ -90,14 +90,14 @@ class DomainArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Resource labels that can contain user-provided metadata.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -145,7 +145,7 @@ class Domain(pulumi.CustomResource):
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -158,7 +158,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin: Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels that can contain user-provided metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. Resource labels that can contain user-provided metadata.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] name: Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         :param pulumi.Input[str] reserved_ip_range: Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
@@ -190,7 +190,7 @@ class Domain(pulumi.CustomResource):
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

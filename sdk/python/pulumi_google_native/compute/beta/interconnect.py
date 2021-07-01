@@ -20,7 +20,7 @@ class InterconnectArgs:
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,7 +35,7 @@ class InterconnectArgs:
         :param pulumi.Input['InterconnectInterconnectType'] interconnect_type: Type of interconnect, which can take one of the following values: 
                - PARTNER: A partner-managed interconnection shared between customers though a partner. 
                - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: 
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
@@ -129,14 +129,14 @@ class InterconnectArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -220,7 +220,7 @@ class Interconnect(pulumi.CustomResource):
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -240,7 +240,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input['InterconnectInterconnectType'] interconnect_type: Type of interconnect, which can take one of the following values: 
                - PARTNER: A partner-managed interconnection shared between customers though a partner. 
                - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: 
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
@@ -277,7 +277,7 @@ class Interconnect(pulumi.CustomResource):
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

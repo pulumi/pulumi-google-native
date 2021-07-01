@@ -231,7 +231,7 @@ export interface FunctionArgs {
     /**
      * Build environment variables that shall be available during build time.
      */
-    buildEnvironmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    buildEnvironmentVariables?: pulumi.Input<{[key: string]: string}>;
     /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
      */
@@ -247,7 +247,7 @@ export interface FunctionArgs {
     /**
      * Environment variables that shall be available during function execution.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: string}>;
     /**
      * A source that fires events in response to a condition in another service.
      */
@@ -263,7 +263,7 @@ export interface FunctionArgs {
     /**
      * Labels associated with this Cloud Function.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     location: pulumi.Input<string>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.

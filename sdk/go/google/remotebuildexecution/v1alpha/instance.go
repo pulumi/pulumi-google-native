@@ -59,29 +59,9 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The policy to define whether or not RBE features can be used or how they can be used.
-	FeaturePolicy *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse `pulumi:"featurePolicy"`
-	// The location is a GCP region. Currently only `us-central1` is supported.
-	Location *string `pulumi:"location"`
-	// Whether stack driver logging is enabled for the instance.
-	LoggingEnabled *bool `pulumi:"loggingEnabled"`
-	// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
-	Name *string `pulumi:"name"`
-	// State of the instance.
-	State *string `pulumi:"state"`
 }
 
 type InstanceState struct {
-	// The policy to define whether or not RBE features can be used or how they can be used.
-	FeaturePolicy GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrInput
-	// The location is a GCP region. Currently only `us-central1` is supported.
-	Location pulumi.StringPtrInput
-	// Whether stack driver logging is enabled for the instance.
-	LoggingEnabled pulumi.BoolPtrInput
-	// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
-	Name pulumi.StringPtrInput
-	// State of the instance.
-	State pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {

@@ -21,8 +21,11 @@ class BuildOptionsLogStreamingOption(str, Enum):
     Option to define build log streaming behavior to Google Cloud Storage.
     """
     STREAM_DEFAULT = "STREAM_DEFAULT"
+    """Service may automatically determine build log streaming behavior."""
     STREAM_ON = "STREAM_ON"
+    """Build logs should be streamed to Google Cloud Storage."""
     STREAM_OFF = "STREAM_OFF"
+    """Build logs should not be streamed to Google Cloud Storage; they will be written when the build is completed."""
 
 
 class BuildOptionsLogging(str, Enum):
@@ -30,11 +33,17 @@ class BuildOptionsLogging(str, Enum):
     Option to specify the logging mode, which determines if and where build logs are stored.
     """
     LOGGING_UNSPECIFIED = "LOGGING_UNSPECIFIED"
+    """The service determines the logging mode. The default is `LEGACY`. Do not rely on the default logging behavior as it may change in the future."""
     LEGACY = "LEGACY"
+    """Cloud Logging and Cloud Storage logging are enabled."""
     GCS_ONLY = "GCS_ONLY"
+    """Only Cloud Storage logging is enabled."""
     STACKDRIVER_ONLY = "STACKDRIVER_ONLY"
+    """This option is the same as CLOUD_LOGGING_ONLY."""
     CLOUD_LOGGING_ONLY = "CLOUD_LOGGING_ONLY"
+    """Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen."""
     NONE = "NONE"
+    """Turn off all logging. No build logs will be captured."""
 
 
 class BuildOptionsMachineType(str, Enum):
@@ -42,10 +51,15 @@ class BuildOptionsMachineType(str, Enum):
     Compute Engine machine type on which to run the build.
     """
     UNSPECIFIED = "UNSPECIFIED"
+    """Standard machine type."""
     N1_HIGHCPU8 = "N1_HIGHCPU_8"
+    """Highcpu machine with 8 CPUs."""
     N1_HIGHCPU32 = "N1_HIGHCPU_32"
+    """Highcpu machine with 32 CPUs."""
     E2_HIGHCPU8 = "E2_HIGHCPU_8"
+    """Highcpu e2 machine with 8 CPUs."""
     E2_HIGHCPU32 = "E2_HIGHCPU_32"
+    """Highcpu e2 machine with 32 CPUs."""
 
 
 class BuildOptionsRequestedVerifyOption(str, Enum):
@@ -53,13 +67,18 @@ class BuildOptionsRequestedVerifyOption(str, Enum):
     Requested verifiability options.
     """
     NOT_VERIFIED = "NOT_VERIFIED"
+    """Not a verifiable build. (default)"""
     VERIFIED = "VERIFIED"
+    """Verified build."""
 
 
 class BuildOptionsSourceProvenanceHashItem(str, Enum):
     NONE = "NONE"
+    """No hash requested."""
     SHA256 = "SHA256"
+    """Use a sha256 hash."""
     MD5 = "MD5"
+    """Use a md5 hash."""
 
 
 class BuildOptionsSubstitutionOption(str, Enum):
@@ -67,7 +86,9 @@ class BuildOptionsSubstitutionOption(str, Enum):
     Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
     """
     MUST_MATCH = "MUST_MATCH"
+    """Fails the build if error in substitutions checks, like missing a substitution in the template or in the map."""
     ALLOW_LOOSE = "ALLOW_LOOSE"
+    """Do not fail the build if error in substitutions checks."""
 
 
 class PubsubConfigState(str, Enum):
@@ -75,10 +96,15 @@ class PubsubConfigState(str, Enum):
     Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """The subscription configuration has not been checked."""
     OK = "OK"
+    """The Pub/Sub subscription is properly configured."""
     SUBSCRIPTION_DELETED = "SUBSCRIPTION_DELETED"
+    """The subscription has been deleted."""
     TOPIC_DELETED = "TOPIC_DELETED"
+    """The topic has been deleted."""
     SUBSCRIPTION_MISCONFIGURED = "SUBSCRIPTION_MISCONFIGURED"
+    """Some of the subscription's field are misconfigured."""
 
 
 class PullRequestFilterCommentControl(str, Enum):
@@ -86,5 +112,8 @@ class PullRequestFilterCommentControl(str, Enum):
     Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
     """
     COMMENTS_DISABLED = "COMMENTS_DISABLED"
+    """Do not require comments on Pull Requests before builds are triggered."""
     COMMENTS_ENABLED = "COMMENTS_ENABLED"
+    """Enforce that repository owners or collaborators must comment on Pull Requests before builds are triggered."""
     COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY = "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
+    """Enforce that repository owners or collaborators must comment on external contributors' Pull Requests before builds are triggered."""

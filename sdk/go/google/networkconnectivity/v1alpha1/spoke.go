@@ -74,53 +74,9 @@ func GetSpoke(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Spoke resources.
 type spokeState struct {
-	// The time when the Spoke was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Short description of the spoke resource
-	Description *string `pulumi:"description"`
-	// The resource URL of the hub resource that the spoke is attached to
-	Hub *string `pulumi:"hub"`
-	// User-defined labels.
-	Labels map[string]string `pulumi:"labels"`
-	// The URIs of linked interconnect attachment resources
-	LinkedInterconnectAttachments []string `pulumi:"linkedInterconnectAttachments"`
-	// The URIs of linked Router appliance resources
-	LinkedRouterApplianceInstances []RouterApplianceInstanceResponse `pulumi:"linkedRouterApplianceInstances"`
-	// The URIs of linked VPN tunnel resources
-	LinkedVpnTunnels []string `pulumi:"linkedVpnTunnels"`
-	// Immutable. The name of a Spoke resource.
-	Name *string `pulumi:"name"`
-	// The current lifecycle state of this Hub.
-	State *string `pulumi:"state"`
-	// Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
-	UniqueId *string `pulumi:"uniqueId"`
-	// The time when the Spoke was updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type SpokeState struct {
-	// The time when the Spoke was created.
-	CreateTime pulumi.StringPtrInput
-	// Short description of the spoke resource
-	Description pulumi.StringPtrInput
-	// The resource URL of the hub resource that the spoke is attached to
-	Hub pulumi.StringPtrInput
-	// User-defined labels.
-	Labels pulumi.StringMapInput
-	// The URIs of linked interconnect attachment resources
-	LinkedInterconnectAttachments pulumi.StringArrayInput
-	// The URIs of linked Router appliance resources
-	LinkedRouterApplianceInstances RouterApplianceInstanceResponseArrayInput
-	// The URIs of linked VPN tunnel resources
-	LinkedVpnTunnels pulumi.StringArrayInput
-	// Immutable. The name of a Spoke resource.
-	Name pulumi.StringPtrInput
-	// The current lifecycle state of this Hub.
-	State pulumi.StringPtrInput
-	// Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
-	UniqueId pulumi.StringPtrInput
-	// The time when the Spoke was updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (SpokeState) ElementType() reflect.Type {

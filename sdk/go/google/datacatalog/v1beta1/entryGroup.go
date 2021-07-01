@@ -63,25 +63,9 @@ func GetEntryGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntryGroup resources.
 type entryGroupState struct {
-	// Timestamps about this EntryGroup. Default value is empty timestamps.
-	DataCatalogTimestamps *GoogleCloudDatacatalogV1beta1SystemTimestampsResponse `pulumi:"dataCatalogTimestamps"`
-	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
-	Description *string `pulumi:"description"`
-	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-	DisplayName *string `pulumi:"displayName"`
-	// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
-	Name *string `pulumi:"name"`
 }
 
 type EntryGroupState struct {
-	// Timestamps about this EntryGroup. Default value is empty timestamps.
-	DataCatalogTimestamps GoogleCloudDatacatalogV1beta1SystemTimestampsResponsePtrInput
-	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
-	Description pulumi.StringPtrInput
-	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-	DisplayName pulumi.StringPtrInput
-	// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
-	Name pulumi.StringPtrInput
 }
 
 func (EntryGroupState) ElementType() reflect.Type {

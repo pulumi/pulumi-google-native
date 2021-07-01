@@ -47,13 +47,9 @@ func GetTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Topic resources.
 type topicState struct {
-	// Name of the topic.
-	Name *string `pulumi:"name"`
 }
 
 type TopicState struct {
-	// Name of the topic.
-	Name pulumi.StringPtrInput
 }
 
 func (TopicState) ElementType() reflect.Type {

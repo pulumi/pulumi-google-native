@@ -65,41 +65,9 @@ func GetDataset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dataset resources.
 type datasetState struct {
-	// The names of any related resources that are blocking changes to the dataset.
-	BlockingResources []string `pulumi:"blockingResources"`
-	// Time the dataset is created.
-	CreateTime *string `pulumi:"createTime"`
-	// The number of data items in the dataset.
-	DataItemCount *string `pulumi:"dataItemCount"`
-	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
-	Description *string `pulumi:"description"`
-	// Required. The display name of the dataset. Maximum of 64 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
-	InputConfigs []GoogleCloudDatalabelingV1beta1InputConfigResponse `pulumi:"inputConfigs"`
-	// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
-	LastMigrateTime *string `pulumi:"lastMigrateTime"`
-	// Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
-	Name *string `pulumi:"name"`
 }
 
 type DatasetState struct {
-	// The names of any related resources that are blocking changes to the dataset.
-	BlockingResources pulumi.StringArrayInput
-	// Time the dataset is created.
-	CreateTime pulumi.StringPtrInput
-	// The number of data items in the dataset.
-	DataItemCount pulumi.StringPtrInput
-	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
-	Description pulumi.StringPtrInput
-	// Required. The display name of the dataset. Maximum of 64 characters.
-	DisplayName pulumi.StringPtrInput
-	// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
-	InputConfigs GoogleCloudDatalabelingV1beta1InputConfigResponseArrayInput
-	// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
-	LastMigrateTime pulumi.StringPtrInput
-	// Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
-	Name pulumi.StringPtrInput
 }
 
 func (DatasetState) ElementType() reflect.Type {

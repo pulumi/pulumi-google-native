@@ -67,21 +67,9 @@ func GetSessionEntityType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SessionEntityType resources.
 type sessionEntityTypeState struct {
-	// Required. The collection of entities associated with this session entity type.
-	Entities []GoogleCloudDialogflowV2beta1EntityTypeEntityResponse `pulumi:"entities"`
-	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
-	EntityOverrideMode *string `pulumi:"entityOverrideMode"`
-	// Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
-	Name *string `pulumi:"name"`
 }
 
 type SessionEntityTypeState struct {
-	// Required. The collection of entities associated with this session entity type.
-	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityResponseArrayInput
-	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
-	EntityOverrideMode pulumi.StringPtrInput
-	// Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
-	Name pulumi.StringPtrInput
 }
 
 func (SessionEntityTypeState) ElementType() reflect.Type {

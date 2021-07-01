@@ -105,7 +105,7 @@ export interface ApiArgs {
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
-    extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    extensions?: pulumi.Input<pulumi.Input<{[key: string]: string}>[]>;
     name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     validate?: pulumi.Input<string>;

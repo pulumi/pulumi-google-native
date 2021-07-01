@@ -69,37 +69,9 @@ func GetFlow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Flow resources.
 type flowState struct {
-	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the flow.
-	DisplayName *string `pulumi:"displayName"`
-	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
-	EventHandlers []GoogleCloudDialogflowCxV3EventHandlerResponse `pulumi:"eventHandlers"`
-	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
-	Name *string `pulumi:"name"`
-	// NLU related settings of the flow.
-	NluSettings *GoogleCloudDialogflowCxV3NluSettingsResponse `pulumi:"nluSettings"`
-	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
-	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
-	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
-	TransitionRoutes []GoogleCloudDialogflowCxV3TransitionRouteResponse `pulumi:"transitionRoutes"`
 }
 
 type FlowState struct {
-	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the flow.
-	DisplayName pulumi.StringPtrInput
-	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
-	EventHandlers GoogleCloudDialogflowCxV3EventHandlerResponseArrayInput
-	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
-	Name pulumi.StringPtrInput
-	// NLU related settings of the flow.
-	NluSettings GoogleCloudDialogflowCxV3NluSettingsResponsePtrInput
-	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
-	TransitionRouteGroups pulumi.StringArrayInput
-	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
-	TransitionRoutes GoogleCloudDialogflowCxV3TransitionRouteResponseArrayInput
 }
 
 func (FlowState) ElementType() reflect.Type {

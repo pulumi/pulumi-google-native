@@ -9,19 +9,19 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 
 __all__ = [
-    'BucketAccessControlArgs',
     'BucketAccessControlProjectTeamArgs',
+    'BucketAccessControlArgs',
     'BucketBillingArgs',
     'BucketCorsItemArgs',
     'BucketEncryptionArgs',
-    'BucketIamConfigurationArgs',
     'BucketIamConfigurationBucketPolicyOnlyArgs',
     'BucketIamConfigurationUniformBucketLevelAccessArgs',
+    'BucketIamConfigurationArgs',
     'BucketIamPolicyBindingsItemArgs',
-    'BucketLifecycleArgs',
-    'BucketLifecycleRuleItemArgs',
     'BucketLifecycleRuleItemActionArgs',
     'BucketLifecycleRuleItemConditionArgs',
+    'BucketLifecycleRuleItemArgs',
+    'BucketLifecycleArgs',
     'BucketLoggingArgs',
     'BucketOwnerArgs',
     'BucketRetentionPolicyArgs',
@@ -29,12 +29,52 @@ __all__ = [
     'BucketWebsiteArgs',
     'DefaultObjectAccessControlProjectTeamArgs',
     'ExprArgs',
-    'ObjectAccessControlArgs',
     'ObjectAccessControlProjectTeamArgs',
+    'ObjectAccessControlArgs',
     'ObjectCustomerEncryptionArgs',
     'ObjectIamPolicyBindingsItemArgs',
     'ObjectOwnerArgs',
 ]
+
+@pulumi.input_type
+class BucketAccessControlProjectTeamArgs:
+    def __init__(__self__, *,
+                 project_number: Optional[pulumi.Input[str]] = None,
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        The project team associated with the entity, if any.
+        :param pulumi.Input[str] project_number: The project number.
+        :param pulumi.Input[str] team: The team.
+        """
+        if project_number is not None:
+            pulumi.set(__self__, "project_number", project_number)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project number.
+        """
+        return pulumi.get(self, "project_number")
+
+    @project_number.setter
+    def project_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_number", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The team.
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
 
 @pulumi.input_type
 class BucketAccessControlArgs:
@@ -243,46 +283,6 @@ class BucketAccessControlArgs:
 
 
 @pulumi.input_type
-class BucketAccessControlProjectTeamArgs:
-    def __init__(__self__, *,
-                 project_number: Optional[pulumi.Input[str]] = None,
-                 team: Optional[pulumi.Input[str]] = None):
-        """
-        The project team associated with the entity, if any.
-        :param pulumi.Input[str] project_number: The project number.
-        :param pulumi.Input[str] team: The team.
-        """
-        if project_number is not None:
-            pulumi.set(__self__, "project_number", project_number)
-        if team is not None:
-            pulumi.set(__self__, "team", team)
-
-    @property
-    @pulumi.getter(name="projectNumber")
-    def project_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project number.
-        """
-        return pulumi.get(self, "project_number")
-
-    @project_number.setter
-    def project_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_number", value)
-
-    @property
-    @pulumi.getter
-    def team(self) -> Optional[pulumi.Input[str]]:
-        """
-        The team.
-        """
-        return pulumi.get(self, "team")
-
-    @team.setter
-    def team(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "team", value)
-
-
-@pulumi.input_type
 class BucketBillingArgs:
     def __init__(__self__, *,
                  requester_pays: Optional[pulumi.Input[bool]] = None):
@@ -402,62 +402,6 @@ class BucketEncryptionArgs:
 
 
 @pulumi.input_type
-class BucketIamConfigurationArgs:
-    def __init__(__self__, *,
-                 bucket_policy_only: Optional[pulumi.Input['BucketIamConfigurationBucketPolicyOnlyArgs']] = None,
-                 public_access_prevention: Optional[pulumi.Input[str]] = None,
-                 uniform_bucket_level_access: Optional[pulumi.Input['BucketIamConfigurationUniformBucketLevelAccessArgs']] = None):
-        """
-        The bucket's IAM configuration.
-        :param pulumi.Input['BucketIamConfigurationBucketPolicyOnlyArgs'] bucket_policy_only: The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
-        :param pulumi.Input[str] public_access_prevention: The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
-        :param pulumi.Input['BucketIamConfigurationUniformBucketLevelAccessArgs'] uniform_bucket_level_access: The bucket's uniform bucket-level access configuration.
-        """
-        if bucket_policy_only is not None:
-            pulumi.set(__self__, "bucket_policy_only", bucket_policy_only)
-        if public_access_prevention is not None:
-            pulumi.set(__self__, "public_access_prevention", public_access_prevention)
-        if uniform_bucket_level_access is not None:
-            pulumi.set(__self__, "uniform_bucket_level_access", uniform_bucket_level_access)
-
-    @property
-    @pulumi.getter(name="bucketPolicyOnly")
-    def bucket_policy_only(self) -> Optional[pulumi.Input['BucketIamConfigurationBucketPolicyOnlyArgs']]:
-        """
-        The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
-        """
-        return pulumi.get(self, "bucket_policy_only")
-
-    @bucket_policy_only.setter
-    def bucket_policy_only(self, value: Optional[pulumi.Input['BucketIamConfigurationBucketPolicyOnlyArgs']]):
-        pulumi.set(self, "bucket_policy_only", value)
-
-    @property
-    @pulumi.getter(name="publicAccessPrevention")
-    def public_access_prevention(self) -> Optional[pulumi.Input[str]]:
-        """
-        The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
-        """
-        return pulumi.get(self, "public_access_prevention")
-
-    @public_access_prevention.setter
-    def public_access_prevention(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "public_access_prevention", value)
-
-    @property
-    @pulumi.getter(name="uniformBucketLevelAccess")
-    def uniform_bucket_level_access(self) -> Optional[pulumi.Input['BucketIamConfigurationUniformBucketLevelAccessArgs']]:
-        """
-        The bucket's uniform bucket-level access configuration.
-        """
-        return pulumi.get(self, "uniform_bucket_level_access")
-
-    @uniform_bucket_level_access.setter
-    def uniform_bucket_level_access(self, value: Optional[pulumi.Input['BucketIamConfigurationUniformBucketLevelAccessArgs']]):
-        pulumi.set(self, "uniform_bucket_level_access", value)
-
-
-@pulumi.input_type
 class BucketIamConfigurationBucketPolicyOnlyArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -535,6 +479,62 @@ class BucketIamConfigurationUniformBucketLevelAccessArgs:
     @locked_time.setter
     def locked_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locked_time", value)
+
+
+@pulumi.input_type
+class BucketIamConfigurationArgs:
+    def __init__(__self__, *,
+                 bucket_policy_only: Optional[pulumi.Input['BucketIamConfigurationBucketPolicyOnlyArgs']] = None,
+                 public_access_prevention: Optional[pulumi.Input[str]] = None,
+                 uniform_bucket_level_access: Optional[pulumi.Input['BucketIamConfigurationUniformBucketLevelAccessArgs']] = None):
+        """
+        The bucket's IAM configuration.
+        :param pulumi.Input['BucketIamConfigurationBucketPolicyOnlyArgs'] bucket_policy_only: The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+        :param pulumi.Input[str] public_access_prevention: The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+        :param pulumi.Input['BucketIamConfigurationUniformBucketLevelAccessArgs'] uniform_bucket_level_access: The bucket's uniform bucket-level access configuration.
+        """
+        if bucket_policy_only is not None:
+            pulumi.set(__self__, "bucket_policy_only", bucket_policy_only)
+        if public_access_prevention is not None:
+            pulumi.set(__self__, "public_access_prevention", public_access_prevention)
+        if uniform_bucket_level_access is not None:
+            pulumi.set(__self__, "uniform_bucket_level_access", uniform_bucket_level_access)
+
+    @property
+    @pulumi.getter(name="bucketPolicyOnly")
+    def bucket_policy_only(self) -> Optional[pulumi.Input['BucketIamConfigurationBucketPolicyOnlyArgs']]:
+        """
+        The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+        """
+        return pulumi.get(self, "bucket_policy_only")
+
+    @bucket_policy_only.setter
+    def bucket_policy_only(self, value: Optional[pulumi.Input['BucketIamConfigurationBucketPolicyOnlyArgs']]):
+        pulumi.set(self, "bucket_policy_only", value)
+
+    @property
+    @pulumi.getter(name="publicAccessPrevention")
+    def public_access_prevention(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+        """
+        return pulumi.get(self, "public_access_prevention")
+
+    @public_access_prevention.setter
+    def public_access_prevention(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_access_prevention", value)
+
+    @property
+    @pulumi.getter(name="uniformBucketLevelAccess")
+    def uniform_bucket_level_access(self) -> Optional[pulumi.Input['BucketIamConfigurationUniformBucketLevelAccessArgs']]:
+        """
+        The bucket's uniform bucket-level access configuration.
+        """
+        return pulumi.get(self, "uniform_bucket_level_access")
+
+    @uniform_bucket_level_access.setter
+    def uniform_bucket_level_access(self, value: Optional[pulumi.Input['BucketIamConfigurationUniformBucketLevelAccessArgs']]):
+        pulumi.set(self, "uniform_bucket_level_access", value)
 
 
 @pulumi.input_type
@@ -628,69 +628,6 @@ class BucketIamPolicyBindingsItemArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
-
-
-@pulumi.input_type
-class BucketLifecycleArgs:
-    def __init__(__self__, *,
-                 rule: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleItemArgs']]]] = None):
-        """
-        The bucket's lifecycle configuration. See lifecycle management for more information.
-        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleItemArgs']]] rule: A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
-        """
-        if rule is not None:
-            pulumi.set(__self__, "rule", rule)
-
-    @property
-    @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleItemArgs']]]]:
-        """
-        A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
-        """
-        return pulumi.get(self, "rule")
-
-    @rule.setter
-    def rule(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleItemArgs']]]]):
-        pulumi.set(self, "rule", value)
-
-
-@pulumi.input_type
-class BucketLifecycleRuleItemArgs:
-    def __init__(__self__, *,
-                 action: Optional[pulumi.Input['BucketLifecycleRuleItemActionArgs']] = None,
-                 condition: Optional[pulumi.Input['BucketLifecycleRuleItemConditionArgs']] = None):
-        """
-        :param pulumi.Input['BucketLifecycleRuleItemActionArgs'] action: The action to take.
-        :param pulumi.Input['BucketLifecycleRuleItemConditionArgs'] condition: The condition(s) under which the action will be taken.
-        """
-        if action is not None:
-            pulumi.set(__self__, "action", action)
-        if condition is not None:
-            pulumi.set(__self__, "condition", condition)
-
-    @property
-    @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['BucketLifecycleRuleItemActionArgs']]:
-        """
-        The action to take.
-        """
-        return pulumi.get(self, "action")
-
-    @action.setter
-    def action(self, value: Optional[pulumi.Input['BucketLifecycleRuleItemActionArgs']]):
-        pulumi.set(self, "action", value)
-
-    @property
-    @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BucketLifecycleRuleItemConditionArgs']]:
-        """
-        The condition(s) under which the action will be taken.
-        """
-        return pulumi.get(self, "condition")
-
-    @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BucketLifecycleRuleItemConditionArgs']]):
-        pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
@@ -899,6 +836,69 @@ class BucketLifecycleRuleItemConditionArgs:
     @num_newer_versions.setter
     def num_newer_versions(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_newer_versions", value)
+
+
+@pulumi.input_type
+class BucketLifecycleRuleItemArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input['BucketLifecycleRuleItemActionArgs']] = None,
+                 condition: Optional[pulumi.Input['BucketLifecycleRuleItemConditionArgs']] = None):
+        """
+        :param pulumi.Input['BucketLifecycleRuleItemActionArgs'] action: The action to take.
+        :param pulumi.Input['BucketLifecycleRuleItemConditionArgs'] condition: The condition(s) under which the action will be taken.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input['BucketLifecycleRuleItemActionArgs']]:
+        """
+        The action to take.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input['BucketLifecycleRuleItemActionArgs']]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['BucketLifecycleRuleItemConditionArgs']]:
+        """
+        The condition(s) under which the action will be taken.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['BucketLifecycleRuleItemConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+
+@pulumi.input_type
+class BucketLifecycleArgs:
+    def __init__(__self__, *,
+                 rule: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleItemArgs']]]] = None):
+        """
+        The bucket's lifecycle configuration. See lifecycle management for more information.
+        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleItemArgs']]] rule: A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+        """
+        if rule is not None:
+            pulumi.set(__self__, "rule", rule)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleItemArgs']]]]:
+        """
+        A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleItemArgs']]]]):
+        pulumi.set(self, "rule", value)
 
 
 @pulumi.input_type
@@ -1214,6 +1214,46 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class ObjectAccessControlProjectTeamArgs:
+    def __init__(__self__, *,
+                 project_number: Optional[pulumi.Input[str]] = None,
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        The project team associated with the entity, if any.
+        :param pulumi.Input[str] project_number: The project number.
+        :param pulumi.Input[str] team: The team.
+        """
+        if project_number is not None:
+            pulumi.set(__self__, "project_number", project_number)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project number.
+        """
+        return pulumi.get(self, "project_number")
+
+    @project_number.setter
+    def project_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_number", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The team.
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+@pulumi.input_type
 class ObjectAccessControlArgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
@@ -1449,46 +1489,6 @@ class ObjectAccessControlArgs:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
-
-
-@pulumi.input_type
-class ObjectAccessControlProjectTeamArgs:
-    def __init__(__self__, *,
-                 project_number: Optional[pulumi.Input[str]] = None,
-                 team: Optional[pulumi.Input[str]] = None):
-        """
-        The project team associated with the entity, if any.
-        :param pulumi.Input[str] project_number: The project number.
-        :param pulumi.Input[str] team: The team.
-        """
-        if project_number is not None:
-            pulumi.set(__self__, "project_number", project_number)
-        if team is not None:
-            pulumi.set(__self__, "team", team)
-
-    @property
-    @pulumi.getter(name="projectNumber")
-    def project_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project number.
-        """
-        return pulumi.get(self, "project_number")
-
-    @project_number.setter
-    def project_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_number", value)
-
-    @property
-    @pulumi.getter
-    def team(self) -> Optional[pulumi.Input[str]]:
-        """
-        The team.
-        """
-        return pulumi.get(self, "team")
-
-    @team.setter
-    def team(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "team", value)
 
 
 @pulumi.input_type

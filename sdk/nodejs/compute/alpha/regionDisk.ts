@@ -392,7 +392,7 @@ export interface RegionDiskArgs {
     /**
      * Labels to apply to this disk. These can be later modified by the setLabels method.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * Integer license codes indicating which licenses are attached to this disk.
      */

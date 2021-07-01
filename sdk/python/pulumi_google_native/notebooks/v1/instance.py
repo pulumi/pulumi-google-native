@@ -30,9 +30,9 @@ class InstanceArgs:
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['InstanceNicType']] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
@@ -59,9 +59,9 @@ class InstanceArgs:
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
         :param pulumi.Input[str] machine_type: Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
+        :param pulumi.Input[Mapping[str, str]] metadata: Custom metadata to apply to this instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
         :param pulumi.Input['InstanceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
@@ -295,14 +295,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels to apply to this instance. These can be later modified by the setLabels method.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -319,14 +319,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Custom metadata to apply to this instance.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -503,10 +503,10 @@ class Instance(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['InstanceNicType']] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
@@ -538,9 +538,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
         :param pulumi.Input[str] machine_type: Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
+        :param pulumi.Input[Mapping[str, str]] metadata: Custom metadata to apply to this instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
         :param pulumi.Input['InstanceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
@@ -591,10 +591,10 @@ class Instance(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['InstanceNicType']] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,

@@ -151,7 +151,7 @@ export interface ConnectivityTestArgs {
     /**
      * Resource labels to represent user-provided metadata.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test}`
      */

@@ -181,7 +181,7 @@ export interface NodeTemplateArgs {
     /**
      * Labels to use for node affinity, which will be used in instance scheduling.
      */
-    nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeAffinityLabels?: pulumi.Input<{[key: string]: string}>;
     /**
      * The node type to use for nodes group that are created from this template.
      */

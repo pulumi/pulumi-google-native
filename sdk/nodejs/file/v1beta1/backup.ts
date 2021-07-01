@@ -145,7 +145,7 @@ export interface BackupArgs {
     /**
      * Resource labels to represent user provided metadata.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     location: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**

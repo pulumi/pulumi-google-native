@@ -77,53 +77,9 @@ func GetConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connector resources.
 type connectorState struct {
-	// List of projects using the connector.
-	ConnectedProjects []string `pulumi:"connectedProjects"`
-	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
-	IpCidrRange *string `pulumi:"ipCidrRange"`
-	// Machine type of VM Instance underlying connector. Default is e2-micro
-	MachineType *string `pulumi:"machineType"`
-	// Maximum value of instances in autoscaling group underlying the connector.
-	MaxInstances *int `pulumi:"maxInstances"`
-	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
-	MaxThroughput *int `pulumi:"maxThroughput"`
-	// Minimum value of instances in autoscaling group underlying the connector.
-	MinInstances *int `pulumi:"minInstances"`
-	// Minimum throughput of the connector in Mbps. Default and min is 200.
-	MinThroughput *int `pulumi:"minThroughput"`
-	// The resource name in the format `projects/*/locations/*/connectors/*`.
-	Name *string `pulumi:"name"`
-	// Name of a VPC network.
-	Network *string `pulumi:"network"`
-	// State of the VPC access connector.
-	State *string `pulumi:"state"`
-	// The subnet in which to house the VPC Access Connector.
-	Subnet *SubnetResponse `pulumi:"subnet"`
 }
 
 type ConnectorState struct {
-	// List of projects using the connector.
-	ConnectedProjects pulumi.StringArrayInput
-	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
-	IpCidrRange pulumi.StringPtrInput
-	// Machine type of VM Instance underlying connector. Default is e2-micro
-	MachineType pulumi.StringPtrInput
-	// Maximum value of instances in autoscaling group underlying the connector.
-	MaxInstances pulumi.IntPtrInput
-	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
-	MaxThroughput pulumi.IntPtrInput
-	// Minimum value of instances in autoscaling group underlying the connector.
-	MinInstances pulumi.IntPtrInput
-	// Minimum throughput of the connector in Mbps. Default and min is 200.
-	MinThroughput pulumi.IntPtrInput
-	// The resource name in the format `projects/*/locations/*/connectors/*`.
-	Name pulumi.StringPtrInput
-	// Name of a VPC network.
-	Network pulumi.StringPtrInput
-	// State of the VPC access connector.
-	State pulumi.StringPtrInput
-	// The subnet in which to house the VPC Access Connector.
-	Subnet SubnetResponsePtrInput
 }
 
 func (ConnectorState) ElementType() reflect.Type {

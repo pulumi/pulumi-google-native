@@ -69,37 +69,9 @@ func GetWorkerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerPool resources.
 type workerPoolState struct {
-	// Time at which the request to create the `WorkerPool` was received.
-	CreateTime *string `pulumi:"createTime"`
-	// Time at which the request to delete the `WorkerPool` was received.
-	DeleteTime *string `pulumi:"deleteTime"`
-	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
-	Name *string `pulumi:"name"`
-	// Network configuration for the `WorkerPool`.
-	NetworkConfig *NetworkConfigResponse `pulumi:"networkConfig"`
-	// `WorkerPool` state.
-	State *string `pulumi:"state"`
-	// Time at which the request to update the `WorkerPool` was received.
-	UpdateTime *string `pulumi:"updateTime"`
-	// Worker configuration for the `WorkerPool`.
-	WorkerConfig *WorkerConfigResponse `pulumi:"workerConfig"`
 }
 
 type WorkerPoolState struct {
-	// Time at which the request to create the `WorkerPool` was received.
-	CreateTime pulumi.StringPtrInput
-	// Time at which the request to delete the `WorkerPool` was received.
-	DeleteTime pulumi.StringPtrInput
-	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
-	Name pulumi.StringPtrInput
-	// Network configuration for the `WorkerPool`.
-	NetworkConfig NetworkConfigResponsePtrInput
-	// `WorkerPool` state.
-	State pulumi.StringPtrInput
-	// Time at which the request to update the `WorkerPool` was received.
-	UpdateTime pulumi.StringPtrInput
-	// Worker configuration for the `WorkerPool`.
-	WorkerConfig WorkerConfigResponsePtrInput
 }
 
 func (WorkerPoolState) ElementType() reflect.Type {

@@ -125,7 +125,7 @@ export interface HubArgs {
     /**
      * User-defined labels.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * Immutable. The name of a Hub resource.
      */

@@ -49,7 +49,7 @@ class ClusterArgs:
                  parent: Optional[pulumi.Input[str]] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
                  release_channel: Optional[pulumi.Input['ReleaseChannelArgs']] = None,
-                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ResourceUsageExportConfigArgs']] = None,
                  shielded_nodes: Optional[pulumi.Input['ShieldedNodesArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -88,7 +88,7 @@ class ClusterArgs:
         :param pulumi.Input[str] parent: The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input['ReleaseChannelArgs'] release_channel: Release channel configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
+        :param pulumi.Input[Mapping[str, str]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input['ResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
         :param pulumi.Input['ShieldedNodesArgs'] shielded_nodes: Shielded Nodes configuration.
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
@@ -564,14 +564,14 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="resourceLabels")
-    def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         """
         return pulumi.get(self, "resource_labels")
 
     @resource_labels.setter
-    def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "resource_labels", value)
 
     @property
@@ -673,7 +673,7 @@ class Cluster(pulumi.CustomResource):
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
-                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
                  shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -716,7 +716,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] parent: The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
         :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[pulumi.InputType['ReleaseChannelArgs']] release_channel: Release channel configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
+        :param pulumi.Input[Mapping[str, str]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
         :param pulumi.Input[pulumi.InputType['ShieldedNodesArgs']] shielded_nodes: Shielded Nodes configuration.
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
@@ -780,7 +780,7 @@ class Cluster(pulumi.CustomResource):
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
-                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
                  shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,

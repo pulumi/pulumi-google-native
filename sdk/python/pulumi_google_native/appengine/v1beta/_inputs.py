@@ -32,8 +32,8 @@ __all__ = [
     'LivenessCheckArgs',
     'ManagedCertificateArgs',
     'ManualScalingArgs',
-    'NetworkArgs',
     'NetworkUtilizationArgs',
+    'NetworkArgs',
     'ReadinessCheckArgs',
     'RequestUtilizationArgs',
     'ResourceRecordArgs',
@@ -695,14 +695,14 @@ class DeploymentArgs:
                  build: Optional[pulumi.Input['BuildInfoArgs']] = None,
                  cloud_build_options: Optional[pulumi.Input['CloudBuildOptionsArgs']] = None,
                  container: Optional[pulumi.Input['ContainerInfoArgs']] = None,
-                 files: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 files: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  zip: Optional[pulumi.Input['ZipInfoArgs']] = None):
         """
         Code and application artifacts used to deploy a version to App Engine.
         :param pulumi.Input['BuildInfoArgs'] build: Google Cloud Build build information. Only applicable for instances running in the App Engine flexible environment.
         :param pulumi.Input['CloudBuildOptionsArgs'] cloud_build_options: Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
         :param pulumi.Input['ContainerInfoArgs'] container: The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
+        :param pulumi.Input[Mapping[str, str]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
         :param pulumi.Input['ZipInfoArgs'] zip: The zip file for this deployment, if this is a zip deployment.
         """
         if build is not None:
@@ -754,14 +754,14 @@ class DeploymentArgs:
 
     @property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def files(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
         """
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def files(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "files", value)
 
     @property
@@ -1458,6 +1458,78 @@ class ManualScalingArgs:
 
 
 @pulumi.input_type
+class NetworkUtilizationArgs:
+    def __init__(__self__, *,
+                 target_received_bytes_per_second: Optional[pulumi.Input[int]] = None,
+                 target_received_packets_per_second: Optional[pulumi.Input[int]] = None,
+                 target_sent_bytes_per_second: Optional[pulumi.Input[int]] = None,
+                 target_sent_packets_per_second: Optional[pulumi.Input[int]] = None):
+        """
+        Target scaling by network usage. Only applicable in the App Engine flexible environment.
+        :param pulumi.Input[int] target_received_bytes_per_second: Target bytes received per second.
+        :param pulumi.Input[int] target_received_packets_per_second: Target packets received per second.
+        :param pulumi.Input[int] target_sent_bytes_per_second: Target bytes sent per second.
+        :param pulumi.Input[int] target_sent_packets_per_second: Target packets sent per second.
+        """
+        if target_received_bytes_per_second is not None:
+            pulumi.set(__self__, "target_received_bytes_per_second", target_received_bytes_per_second)
+        if target_received_packets_per_second is not None:
+            pulumi.set(__self__, "target_received_packets_per_second", target_received_packets_per_second)
+        if target_sent_bytes_per_second is not None:
+            pulumi.set(__self__, "target_sent_bytes_per_second", target_sent_bytes_per_second)
+        if target_sent_packets_per_second is not None:
+            pulumi.set(__self__, "target_sent_packets_per_second", target_sent_packets_per_second)
+
+    @property
+    @pulumi.getter(name="targetReceivedBytesPerSecond")
+    def target_received_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
+        """
+        Target bytes received per second.
+        """
+        return pulumi.get(self, "target_received_bytes_per_second")
+
+    @target_received_bytes_per_second.setter
+    def target_received_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_received_bytes_per_second", value)
+
+    @property
+    @pulumi.getter(name="targetReceivedPacketsPerSecond")
+    def target_received_packets_per_second(self) -> Optional[pulumi.Input[int]]:
+        """
+        Target packets received per second.
+        """
+        return pulumi.get(self, "target_received_packets_per_second")
+
+    @target_received_packets_per_second.setter
+    def target_received_packets_per_second(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_received_packets_per_second", value)
+
+    @property
+    @pulumi.getter(name="targetSentBytesPerSecond")
+    def target_sent_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
+        """
+        Target bytes sent per second.
+        """
+        return pulumi.get(self, "target_sent_bytes_per_second")
+
+    @target_sent_bytes_per_second.setter
+    def target_sent_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_sent_bytes_per_second", value)
+
+    @property
+    @pulumi.getter(name="targetSentPacketsPerSecond")
+    def target_sent_packets_per_second(self) -> Optional[pulumi.Input[int]]:
+        """
+        Target packets sent per second.
+        """
+        return pulumi.get(self, "target_sent_packets_per_second")
+
+    @target_sent_packets_per_second.setter
+    def target_sent_packets_per_second(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_sent_packets_per_second", value)
+
+
+@pulumi.input_type
 class NetworkArgs:
     def __init__(__self__, *,
                  forwarded_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1543,78 +1615,6 @@ class NetworkArgs:
     @subnetwork_name.setter
     def subnetwork_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_name", value)
-
-
-@pulumi.input_type
-class NetworkUtilizationArgs:
-    def __init__(__self__, *,
-                 target_received_bytes_per_second: Optional[pulumi.Input[int]] = None,
-                 target_received_packets_per_second: Optional[pulumi.Input[int]] = None,
-                 target_sent_bytes_per_second: Optional[pulumi.Input[int]] = None,
-                 target_sent_packets_per_second: Optional[pulumi.Input[int]] = None):
-        """
-        Target scaling by network usage. Only applicable in the App Engine flexible environment.
-        :param pulumi.Input[int] target_received_bytes_per_second: Target bytes received per second.
-        :param pulumi.Input[int] target_received_packets_per_second: Target packets received per second.
-        :param pulumi.Input[int] target_sent_bytes_per_second: Target bytes sent per second.
-        :param pulumi.Input[int] target_sent_packets_per_second: Target packets sent per second.
-        """
-        if target_received_bytes_per_second is not None:
-            pulumi.set(__self__, "target_received_bytes_per_second", target_received_bytes_per_second)
-        if target_received_packets_per_second is not None:
-            pulumi.set(__self__, "target_received_packets_per_second", target_received_packets_per_second)
-        if target_sent_bytes_per_second is not None:
-            pulumi.set(__self__, "target_sent_bytes_per_second", target_sent_bytes_per_second)
-        if target_sent_packets_per_second is not None:
-            pulumi.set(__self__, "target_sent_packets_per_second", target_sent_packets_per_second)
-
-    @property
-    @pulumi.getter(name="targetReceivedBytesPerSecond")
-    def target_received_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
-        """
-        Target bytes received per second.
-        """
-        return pulumi.get(self, "target_received_bytes_per_second")
-
-    @target_received_bytes_per_second.setter
-    def target_received_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_received_bytes_per_second", value)
-
-    @property
-    @pulumi.getter(name="targetReceivedPacketsPerSecond")
-    def target_received_packets_per_second(self) -> Optional[pulumi.Input[int]]:
-        """
-        Target packets received per second.
-        """
-        return pulumi.get(self, "target_received_packets_per_second")
-
-    @target_received_packets_per_second.setter
-    def target_received_packets_per_second(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_received_packets_per_second", value)
-
-    @property
-    @pulumi.getter(name="targetSentBytesPerSecond")
-    def target_sent_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
-        """
-        Target bytes sent per second.
-        """
-        return pulumi.get(self, "target_sent_bytes_per_second")
-
-    @target_sent_bytes_per_second.setter
-    def target_sent_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_sent_bytes_per_second", value)
-
-    @property
-    @pulumi.getter(name="targetSentPacketsPerSecond")
-    def target_sent_packets_per_second(self) -> Optional[pulumi.Input[int]]:
-        """
-        Target packets sent per second.
-        """
-        return pulumi.get(self, "target_sent_packets_per_second")
-
-    @target_sent_packets_per_second.setter
-    def target_sent_packets_per_second(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_sent_packets_per_second", value)
 
 
 @pulumi.input_type
@@ -2078,7 +2078,7 @@ class StaticFilesHandlerArgs:
     def __init__(__self__, *,
                  application_readable: Optional[pulumi.Input[bool]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
-                 http_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 http_headers: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  require_matching_file: Optional[pulumi.Input[bool]] = None,
@@ -2087,7 +2087,7 @@ class StaticFilesHandlerArgs:
         Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
         :param pulumi.Input[bool] application_readable: Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
         :param pulumi.Input[str] expiration: Time a static file served by this handler should be cached by web proxies and browsers.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] http_headers: HTTP headers to use for all responses from these URLs.
+        :param pulumi.Input[Mapping[str, str]] http_headers: HTTP headers to use for all responses from these URLs.
         :param pulumi.Input[str] mime_type: MIME type used to serve all files served by this handler.Defaults to file-specific MIME types, which are derived from each file's filename extension.
         :param pulumi.Input[str] path: Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
         :param pulumi.Input[bool] require_matching_file: Whether this handler should match the request if the file referenced by the handler does not exist.
@@ -2134,14 +2134,14 @@ class StaticFilesHandlerArgs:
 
     @property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def http_headers(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         HTTP headers to use for all responses from these URLs.
         """
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def http_headers(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "http_headers", value)
 
     @property

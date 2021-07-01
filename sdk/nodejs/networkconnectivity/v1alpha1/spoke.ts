@@ -151,7 +151,7 @@ export interface SpokeArgs {
     /**
      * User-defined labels.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * The URIs of linked interconnect attachment resources
      */

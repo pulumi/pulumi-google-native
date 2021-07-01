@@ -66,37 +66,9 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// Cloud SQL properties.
-	CloudSql *CloudSqlPropertiesResponse `pulumi:"cloudSql"`
-	// The creation timestamp of the connection.
-	CreationTime *string `pulumi:"creationTime"`
-	// User provided description.
-	Description *string `pulumi:"description"`
-	// User provided display name for the connection.
-	FriendlyName *string `pulumi:"friendlyName"`
-	// True, if credential is configured for this connection.
-	HasCredential *bool `pulumi:"hasCredential"`
-	// The last update timestamp of the connection.
-	LastModifiedTime *string `pulumi:"lastModifiedTime"`
-	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-	Name *string `pulumi:"name"`
 }
 
 type ConnectionState struct {
-	// Cloud SQL properties.
-	CloudSql CloudSqlPropertiesResponsePtrInput
-	// The creation timestamp of the connection.
-	CreationTime pulumi.StringPtrInput
-	// User provided description.
-	Description pulumi.StringPtrInput
-	// User provided display name for the connection.
-	FriendlyName pulumi.StringPtrInput
-	// True, if credential is configured for this connection.
-	HasCredential pulumi.BoolPtrInput
-	// The last update timestamp of the connection.
-	LastModifiedTime pulumi.StringPtrInput
-	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-	Name pulumi.StringPtrInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {

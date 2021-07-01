@@ -120,7 +120,7 @@ export interface AnnotationArgs {
     /**
      * Additional information for this annotation record, such as annotator and verifier information or study campaign.
      */
-    customData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customData?: pulumi.Input<{[key: string]: string}>;
     datasetId: pulumi.Input<string>;
     /**
      * Annotations for images. For example, bounding polygons.

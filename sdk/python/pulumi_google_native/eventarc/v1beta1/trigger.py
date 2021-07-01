@@ -20,14 +20,14 @@ class TriggerArgs:
                  trigger_id: pulumi.Input[str],
                  validate_only: pulumi.Input[str],
                  destination: Optional[pulumi.Input['DestinationArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  matching_criteria: Optional[pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Trigger resource.
         :param pulumi.Input['DestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]] matching_criteria: Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
@@ -97,14 +97,14 @@ class TriggerArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. User labels attached to the triggers that can be used to group resources.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -150,7 +150,7 @@ class Trigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  matching_criteria: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -165,7 +165,7 @@ class Trigger(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]] matching_criteria: Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
@@ -195,7 +195,7 @@ class Trigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  matching_criteria: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,

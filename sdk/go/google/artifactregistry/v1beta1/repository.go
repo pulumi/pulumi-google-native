@@ -66,37 +66,9 @@ func GetRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
-	// The time when the repository was created.
-	CreateTime *string `pulumi:"createTime"`
-	// The user-provided description of the repository.
-	Description *string `pulumi:"description"`
-	// The format of packages that are stored in the repository.
-	Format *string `pulumi:"format"`
-	// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
-	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
-	Labels map[string]string `pulumi:"labels"`
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-	Name *string `pulumi:"name"`
-	// The time when the repository was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type RepositoryState struct {
-	// The time when the repository was created.
-	CreateTime pulumi.StringPtrInput
-	// The user-provided description of the repository.
-	Description pulumi.StringPtrInput
-	// The format of packages that are stored in the repository.
-	Format pulumi.StringPtrInput
-	// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
-	KmsKeyName pulumi.StringPtrInput
-	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
-	Labels pulumi.StringMapInput
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-	Name pulumi.StringPtrInput
-	// The time when the repository was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (RepositoryState) ElementType() reflect.Type {

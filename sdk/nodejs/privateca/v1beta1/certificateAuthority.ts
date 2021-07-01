@@ -205,7 +205,7 @@ export interface CertificateAuthorityArgs {
     /**
      * Optional. Labels with user-defined metadata.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
      */

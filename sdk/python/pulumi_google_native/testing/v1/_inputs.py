@@ -11,25 +11,25 @@ from ._enums import *
 
 __all__ = [
     'AccountArgs',
-    'AndroidDeviceArgs',
     'AndroidDeviceListArgs',
+    'AndroidDeviceArgs',
     'AndroidInstrumentationTestArgs',
     'AndroidMatrixArgs',
     'AndroidRoboTestArgs',
     'AndroidTestLoopArgs',
     'ApkArgs',
     'AppBundleArgs',
-    'ClientInfoArgs',
     'ClientInfoDetailArgs',
+    'ClientInfoArgs',
     'DeviceFileArgs',
     'EnvironmentMatrixArgs',
     'EnvironmentVariableArgs',
     'FileReferenceArgs',
     'GoogleAutoArgs',
     'GoogleCloudStorageArgs',
-    'IosDeviceArgs',
     'IosDeviceFileArgs',
     'IosDeviceListArgs',
+    'IosDeviceArgs',
     'IosTestLoopArgs',
     'IosTestSetupArgs',
     'IosXcTestArgs',
@@ -72,6 +72,30 @@ class AccountArgs:
     @google_auto.setter
     def google_auto(self, value: Optional[pulumi.Input['GoogleAutoArgs']]):
         pulumi.set(self, "google_auto", value)
+
+
+@pulumi.input_type
+class AndroidDeviceListArgs:
+    def __init__(__self__, *,
+                 android_devices: Optional[pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]] = None):
+        """
+        A list of Android device configurations in which the test is to be executed.
+        :param pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]] android_devices: Required. A list of Android devices.
+        """
+        if android_devices is not None:
+            pulumi.set(__self__, "android_devices", android_devices)
+
+    @property
+    @pulumi.getter(name="androidDevices")
+    def android_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]]:
+        """
+        Required. A list of Android devices.
+        """
+        return pulumi.get(self, "android_devices")
+
+    @android_devices.setter
+    def android_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]]):
+        pulumi.set(self, "android_devices", value)
 
 
 @pulumi.input_type
@@ -144,30 +168,6 @@ class AndroidDeviceArgs:
     @orientation.setter
     def orientation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "orientation", value)
-
-
-@pulumi.input_type
-class AndroidDeviceListArgs:
-    def __init__(__self__, *,
-                 android_devices: Optional[pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]] = None):
-        """
-        A list of Android device configurations in which the test is to be executed.
-        :param pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]] android_devices: Required. A list of Android devices.
-        """
-        if android_devices is not None:
-            pulumi.set(__self__, "android_devices", android_devices)
-
-    @property
-    @pulumi.getter(name="androidDevices")
-    def android_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]]:
-        """
-        Required. A list of Android devices.
-        """
-        return pulumi.get(self, "android_devices")
-
-    @android_devices.setter
-    def android_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]]):
-        pulumi.set(self, "android_devices", value)
 
 
 @pulumi.input_type
@@ -699,46 +699,6 @@ class AppBundleArgs:
 
 
 @pulumi.input_type
-class ClientInfoArgs:
-    def __init__(__self__, *,
-                 client_info_details: Optional[pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
-        """
-        Information about the client which invoked the test.
-        :param pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]] client_info_details: The list of detailed information about client.
-        :param pulumi.Input[str] name: Required. Client name, such as gcloud.
-        """
-        if client_info_details is not None:
-            pulumi.set(__self__, "client_info_details", client_info_details)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="clientInfoDetails")
-    def client_info_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]]]:
-        """
-        The list of detailed information about client.
-        """
-        return pulumi.get(self, "client_info_details")
-
-    @client_info_details.setter
-    def client_info_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]]]):
-        pulumi.set(self, "client_info_details", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Client name, such as gcloud.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
 class ClientInfoDetailArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
@@ -776,6 +736,46 @@ class ClientInfoDetailArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ClientInfoArgs:
+    def __init__(__self__, *,
+                 client_info_details: Optional[pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Information about the client which invoked the test.
+        :param pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]] client_info_details: The list of detailed information about client.
+        :param pulumi.Input[str] name: Required. Client name, such as gcloud.
+        """
+        if client_info_details is not None:
+            pulumi.set(__self__, "client_info_details", client_info_details)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="clientInfoDetails")
+    def client_info_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]]]:
+        """
+        The list of detailed information about client.
+        """
+        return pulumi.get(self, "client_info_details")
+
+    @client_info_details.setter
+    def client_info_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]]]):
+        pulumi.set(self, "client_info_details", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Client name, such as gcloud.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -972,78 +972,6 @@ class GoogleCloudStorageArgs:
 
 
 @pulumi.input_type
-class IosDeviceArgs:
-    def __init__(__self__, *,
-                 ios_model_id: Optional[pulumi.Input[str]] = None,
-                 ios_version_id: Optional[pulumi.Input[str]] = None,
-                 locale: Optional[pulumi.Input[str]] = None,
-                 orientation: Optional[pulumi.Input[str]] = None):
-        """
-        A single iOS device.
-        :param pulumi.Input[str] ios_model_id: Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[str] ios_version_id: Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[str] locale: Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[str] orientation: Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-        """
-        if ios_model_id is not None:
-            pulumi.set(__self__, "ios_model_id", ios_model_id)
-        if ios_version_id is not None:
-            pulumi.set(__self__, "ios_version_id", ios_version_id)
-        if locale is not None:
-            pulumi.set(__self__, "locale", locale)
-        if orientation is not None:
-            pulumi.set(__self__, "orientation", orientation)
-
-    @property
-    @pulumi.getter(name="iosModelId")
-    def ios_model_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        """
-        return pulumi.get(self, "ios_model_id")
-
-    @ios_model_id.setter
-    def ios_model_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ios_model_id", value)
-
-    @property
-    @pulumi.getter(name="iosVersionId")
-    def ios_version_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        """
-        return pulumi.get(self, "ios_version_id")
-
-    @ios_version_id.setter
-    def ios_version_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ios_version_id", value)
-
-    @property
-    @pulumi.getter
-    def locale(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-        """
-        return pulumi.get(self, "locale")
-
-    @locale.setter
-    def locale(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "locale", value)
-
-    @property
-    @pulumi.getter
-    def orientation(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-        """
-        return pulumi.get(self, "orientation")
-
-    @orientation.setter
-    def orientation(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "orientation", value)
-
-
-@pulumi.input_type
 class IosDeviceFileArgs:
     def __init__(__self__, *,
                  bundle_id: Optional[pulumi.Input[str]] = None,
@@ -1121,6 +1049,78 @@ class IosDeviceListArgs:
     @ios_devices.setter
     def ios_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IosDeviceArgs']]]]):
         pulumi.set(self, "ios_devices", value)
+
+
+@pulumi.input_type
+class IosDeviceArgs:
+    def __init__(__self__, *,
+                 ios_model_id: Optional[pulumi.Input[str]] = None,
+                 ios_version_id: Optional[pulumi.Input[str]] = None,
+                 locale: Optional[pulumi.Input[str]] = None,
+                 orientation: Optional[pulumi.Input[str]] = None):
+        """
+        A single iOS device.
+        :param pulumi.Input[str] ios_model_id: Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] ios_version_id: Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] locale: Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] orientation: Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        """
+        if ios_model_id is not None:
+            pulumi.set(__self__, "ios_model_id", ios_model_id)
+        if ios_version_id is not None:
+            pulumi.set(__self__, "ios_version_id", ios_version_id)
+        if locale is not None:
+            pulumi.set(__self__, "locale", locale)
+        if orientation is not None:
+            pulumi.set(__self__, "orientation", orientation)
+
+    @property
+    @pulumi.getter(name="iosModelId")
+    def ios_model_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        """
+        return pulumi.get(self, "ios_model_id")
+
+    @ios_model_id.setter
+    def ios_model_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ios_model_id", value)
+
+    @property
+    @pulumi.getter(name="iosVersionId")
+    def ios_version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        """
+        return pulumi.get(self, "ios_version_id")
+
+    @ios_version_id.setter
+    def ios_version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ios_version_id", value)
+
+    @property
+    @pulumi.getter
+    def locale(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        """
+        return pulumi.get(self, "locale")
+
+    @locale.setter
+    def locale(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locale", value)
+
+    @property
+    @pulumi.getter
+    def orientation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        """
+        return pulumi.get(self, "orientation")
+
+    @orientation.setter
+    def orientation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "orientation", value)
 
 
 @pulumi.input_type

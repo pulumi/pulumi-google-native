@@ -78,61 +78,9 @@ func GetReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Reservation resources.
 type reservationState struct {
-	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-	Commitment *string `pulumi:"commitment"`
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description *string `pulumi:"description"`
-	// Type of the resource. Always compute#reservations for reservations.
-	Kind *string `pulumi:"kind"`
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// Reserved for future use.
-	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
-	// Server-defined fully-qualified URL for this resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// Share-settings for shared-reservation
-	ShareSettings *AllocationShareSettingsResponse `pulumi:"shareSettings"`
-	// Reservation for instances with specific machine shapes.
-	SpecificReservation *AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
-	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
-	SpecificReservationRequired *bool `pulumi:"specificReservationRequired"`
-	// The status of the reservation.
-	Status *string `pulumi:"status"`
-	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
-	Zone *string `pulumi:"zone"`
 }
 
 type ReservationState struct {
-	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
-	Commitment pulumi.StringPtrInput
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description pulumi.StringPtrInput
-	// Type of the resource. Always compute#reservations for reservations.
-	Kind pulumi.StringPtrInput
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// Reserved for future use.
-	SatisfiesPzs pulumi.BoolPtrInput
-	// Server-defined fully-qualified URL for this resource.
-	SelfLink pulumi.StringPtrInput
-	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
-	// Share-settings for shared-reservation
-	ShareSettings AllocationShareSettingsResponsePtrInput
-	// Reservation for instances with specific machine shapes.
-	SpecificReservation AllocationSpecificSKUReservationResponsePtrInput
-	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
-	SpecificReservationRequired pulumi.BoolPtrInput
-	// The status of the reservation.
-	Status pulumi.StringPtrInput
-	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
-	Zone pulumi.StringPtrInput
 }
 
 func (ReservationState) ElementType() reflect.Type {

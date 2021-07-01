@@ -80,59 +80,9 @@ func GetNodeGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeGroup resources.
 type nodeGroupState struct {
-	// Specifies how autoscaling should behave.
-	AutoscalingPolicy *NodeGroupAutoscalingPolicyResponse `pulumi:"autoscalingPolicy"`
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description *string `pulumi:"description"`
-	Fingerprint *string `pulumi:"fingerprint"`
-	// The type of the resource. Always compute#nodeGroup for node group.
-	Kind *string `pulumi:"kind"`
-	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
-	LocationHint *string `pulumi:"locationHint"`
-	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
-	MaintenancePolicy *string                             `pulumi:"maintenancePolicy"`
-	MaintenanceWindow *NodeGroupMaintenanceWindowResponse `pulumi:"maintenanceWindow"`
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// URL of the node template to create the node group from.
-	NodeTemplate *string `pulumi:"nodeTemplate"`
-	// Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// The total number of nodes in the node group.
-	Size   *int    `pulumi:"size"`
-	Status *string `pulumi:"status"`
-	// The name of the zone where the node group resides, such as us-central1-a.
-	Zone *string `pulumi:"zone"`
 }
 
 type NodeGroupState struct {
-	// Specifies how autoscaling should behave.
-	AutoscalingPolicy NodeGroupAutoscalingPolicyResponsePtrInput
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description pulumi.StringPtrInput
-	Fingerprint pulumi.StringPtrInput
-	// The type of the resource. Always compute#nodeGroup for node group.
-	Kind pulumi.StringPtrInput
-	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
-	LocationHint pulumi.StringPtrInput
-	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
-	MaintenancePolicy pulumi.StringPtrInput
-	MaintenanceWindow NodeGroupMaintenanceWindowResponsePtrInput
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// URL of the node template to create the node group from.
-	NodeTemplate pulumi.StringPtrInput
-	// Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// The total number of nodes in the node group.
-	Size   pulumi.IntPtrInput
-	Status pulumi.StringPtrInput
-	// The name of the zone where the node group resides, such as us-central1-a.
-	Zone pulumi.StringPtrInput
 }
 
 func (NodeGroupState) ElementType() reflect.Type {

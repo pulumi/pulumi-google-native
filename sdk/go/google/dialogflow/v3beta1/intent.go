@@ -71,41 +71,9 @@ func GetIntent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Intent resources.
 type intentState struct {
-	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
-	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the intent, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
-	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-	IsFallback *bool `pulumi:"isFallback"`
-	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
-	Labels map[string]string `pulumi:"labels"`
-	// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
-	Name *string `pulumi:"name"`
-	// The collection of parameters associated with the intent.
-	Parameters []GoogleCloudDialogflowCxV3beta1IntentParameterResponse `pulumi:"parameters"`
-	// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-	Priority *int `pulumi:"priority"`
-	// The collection of training phrases the agent is trained on to identify the intent.
-	TrainingPhrases []GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse `pulumi:"trainingPhrases"`
 }
 
 type IntentState struct {
-	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
-	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the intent, unique within the agent.
-	DisplayName pulumi.StringPtrInput
-	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-	IsFallback pulumi.BoolPtrInput
-	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
-	Labels pulumi.StringMapInput
-	// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
-	Name pulumi.StringPtrInput
-	// The collection of parameters associated with the intent.
-	Parameters GoogleCloudDialogflowCxV3beta1IntentParameterResponseArrayInput
-	// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-	Priority pulumi.IntPtrInput
-	// The collection of training phrases the agent is trained on to identify the intent.
-	TrainingPhrases GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponseArrayInput
 }
 
 func (IntentState) ElementType() reflect.Type {

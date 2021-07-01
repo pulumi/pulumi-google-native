@@ -61,21 +61,9 @@ func GetTagTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagTemplate resources.
 type tagTemplateState struct {
-	// The display name for this template. Defaults to an empty string.
-	DisplayName *string `pulumi:"displayName"`
-	// Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-	Fields map[string]string `pulumi:"fields"`
-	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
-	Name *string `pulumi:"name"`
 }
 
 type TagTemplateState struct {
-	// The display name for this template. Defaults to an empty string.
-	DisplayName pulumi.StringPtrInput
-	// Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-	Fields pulumi.StringMapInput
-	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
-	Name pulumi.StringPtrInput
 }
 
 func (TagTemplateState) ElementType() reflect.Type {

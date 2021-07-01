@@ -64,21 +64,9 @@ func GetAlias(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Alias resources.
 type aliasState struct {
-	// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
-	Alias *string `pulumi:"alias"`
-	// Chain of certificates under this alias.
-	CertsInfo *GoogleCloudApigeeV1CertificateResponse `pulumi:"certsInfo"`
-	// Type of alias.
-	Type *string `pulumi:"type"`
 }
 
 type AliasState struct {
-	// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
-	Alias pulumi.StringPtrInput
-	// Chain of certificates under this alias.
-	CertsInfo GoogleCloudApigeeV1CertificateResponsePtrInput
-	// Type of alias.
-	Type pulumi.StringPtrInput
 }
 
 func (AliasState) ElementType() reflect.Type {

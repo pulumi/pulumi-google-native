@@ -1315,7 +1315,7 @@ class SettingsArgs:
                  storage_auto_resize: Optional[pulumi.Input[bool]] = None,
                  storage_auto_resize_limit: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 user_labels: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         Database instance settings.
         :param pulumi.Input['SettingsActivationPolicy'] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
@@ -1339,7 +1339,7 @@ class SettingsArgs:
         :param pulumi.Input[bool] storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example *db-custom-1-3840* .
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-provided labels, represented as a dictionary where each label is a single key value pair.
+        :param pulumi.Input[Mapping[str, str]] user_labels: User-provided labels, represented as a dictionary where each label is a single key value pair.
         """
         if activation_policy is not None:
             pulumi.set(__self__, "activation_policy", activation_policy)
@@ -1640,14 +1640,14 @@ class SettingsArgs:
 
     @property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         User-provided labels, represented as a dictionary where each label is a single key value pair.
         """
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "user_labels", value)
 
 

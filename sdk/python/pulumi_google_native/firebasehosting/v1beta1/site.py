@@ -16,11 +16,11 @@ class SiteArgs:
                  project: pulumi.Input[str],
                  site_id: pulumi.Input[str],
                  app_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         The set of arguments for constructing a Site resource.
         :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-specified labels for the Hosting site.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. User-specified labels for the Hosting site.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "site_id", site_id)
@@ -61,14 +61,14 @@ class SiteArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. User-specified labels for the Hosting site.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -78,7 +78,7 @@ class Site(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -88,7 +88,7 @@ class Site(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-specified labels for the Hosting site.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. User-specified labels for the Hosting site.
         """
         ...
     @overload
@@ -115,7 +115,7 @@ class Site(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):

@@ -55,21 +55,9 @@ func GetDomainMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainMapping resources.
 type domainMappingState struct {
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-	Name *string `pulumi:"name"`
-	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
-	ResourceRecords []ResourceRecordResponse `pulumi:"resourceRecords"`
-	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-	SslSettings *SslSettingsResponse `pulumi:"sslSettings"`
 }
 
 type DomainMappingState struct {
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-	Name pulumi.StringPtrInput
-	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
-	ResourceRecords ResourceRecordResponseArrayInput
-	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-	SslSettings SslSettingsResponsePtrInput
 }
 
 func (DomainMappingState) ElementType() reflect.Type {

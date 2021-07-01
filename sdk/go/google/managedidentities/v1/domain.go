@@ -76,57 +76,9 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
-	Admin *string `pulumi:"admin"`
-	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
-	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
-	// The time the instance was created.
-	CreateTime *string `pulumi:"createTime"`
-	// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
-	Fqdn *string `pulumi:"fqdn"`
-	// Optional. Resource labels that can contain user-provided metadata.
-	Labels map[string]string `pulumi:"labels"`
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-	Locations []string `pulumi:"locations"`
-	// Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name *string `pulumi:"name"`
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-	ReservedIpRange *string `pulumi:"reservedIpRange"`
-	// The current state of this domain.
-	State *string `pulumi:"state"`
-	// Additional information about the current status of this domain, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
-	// The current trusts associated with the domain.
-	Trusts []TrustResponse `pulumi:"trusts"`
-	// The last update time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type DomainState struct {
-	// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
-	Admin pulumi.StringPtrInput
-	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
-	AuthorizedNetworks pulumi.StringArrayInput
-	// The time the instance was created.
-	CreateTime pulumi.StringPtrInput
-	// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
-	Fqdn pulumi.StringPtrInput
-	// Optional. Resource labels that can contain user-provided metadata.
-	Labels pulumi.StringMapInput
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-	Locations pulumi.StringArrayInput
-	// Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name pulumi.StringPtrInput
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-	ReservedIpRange pulumi.StringPtrInput
-	// The current state of this domain.
-	State pulumi.StringPtrInput
-	// Additional information about the current status of this domain, if available.
-	StatusMessage pulumi.StringPtrInput
-	// The current trusts associated with the domain.
-	Trusts TrustResponseArrayInput
-	// The last update time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (DomainState) ElementType() reflect.Type {

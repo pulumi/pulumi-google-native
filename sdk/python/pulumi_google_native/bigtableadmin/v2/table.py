@@ -18,14 +18,14 @@ class TableArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 column_families: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  granularity: Optional[pulumi.Input['TableGranularity']] = None,
                  initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input['SplitArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  table_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Table resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        :param pulumi.Input[Mapping[str, str]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
         :param pulumi.Input['TableGranularity'] granularity: Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
         :param pulumi.Input[Sequence[pulumi.Input['SplitArgs']]] initial_splits: The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
         :param pulumi.Input[str] name: The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
@@ -64,14 +64,14 @@ class TableArgs:
 
     @property
     @pulumi.getter(name="columnFamilies")
-    def column_families(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def column_families(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
         """
         return pulumi.get(self, "column_families")
 
     @column_families.setter
-    def column_families(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def column_families(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "column_families", value)
 
     @property
@@ -128,7 +128,7 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 column_families: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  granularity: Optional[pulumi.Input['TableGranularity']] = None,
                  initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitArgs']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -141,7 +141,7 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        :param pulumi.Input[Mapping[str, str]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
         :param pulumi.Input['TableGranularity'] granularity: Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitArgs']]]] initial_splits: The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
         :param pulumi.Input[str] name: The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
@@ -171,7 +171,7 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 column_families: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  granularity: Optional[pulumi.Input['TableGranularity']] = None,
                  initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitArgs']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,

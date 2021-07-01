@@ -19,7 +19,7 @@ class JobArgs:
                  project: pulumi.Input[str],
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  prediction_input: Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputArgs']] = None,
                  prediction_output: Optional[pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs']] = None,
                  training_input: Optional[pulumi.Input['GoogleCloudMlV1__TrainingInputArgs']] = None,
@@ -28,7 +28,7 @@ class JobArgs:
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
         :param pulumi.Input[str] job_id: Required. The user-specified id of the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
         :param pulumi.Input['GoogleCloudMlV1__PredictionInputArgs'] prediction_input: Input parameters to create a prediction job.
         :param pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs'] prediction_output: The current prediction job result.
         :param pulumi.Input['GoogleCloudMlV1__TrainingInputArgs'] training_input: Input parameters to create a training job.
@@ -85,14 +85,14 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -151,7 +151,7 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  prediction_input: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionInputArgs']]] = None,
                  prediction_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -165,7 +165,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
         :param pulumi.Input[str] job_id: Required. The user-specified id of the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionInputArgs']] prediction_input: Input parameters to create a prediction job.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']] prediction_output: The current prediction job result.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingInputArgs']] training_input: Input parameters to create a training job.
@@ -197,7 +197,7 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  prediction_input: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionInputArgs']]] = None,
                  prediction_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,

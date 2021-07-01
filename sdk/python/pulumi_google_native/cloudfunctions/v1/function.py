@@ -19,15 +19,15 @@ class FunctionArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
-                 build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 build_environment_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  event_trigger: Optional[pulumi.Input['EventTriggerArgs']] = None,
                  https_trigger: Optional[pulumi.Input['HttpsTriggerArgs']] = None,
                  ingress_settings: Optional[pulumi.Input['FunctionIngressSettings']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -43,15 +43,15 @@ class FunctionArgs:
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[int] available_memory_mb: The amount of memory in MB available for a function. Defaults to 256MB.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
+        :param pulumi.Input[Mapping[str, str]] build_environment_variables: Build environment variables that shall be available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
+        :param pulumi.Input[Mapping[str, str]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input['EventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service.
         :param pulumi.Input['HttpsTriggerArgs'] https_trigger: An HTTPS endpoint type of source that can be triggered via URL.
         :param pulumi.Input['FunctionIngressSettings'] ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels associated with this Cloud Function.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
@@ -144,14 +144,14 @@ class FunctionArgs:
 
     @property
     @pulumi.getter(name="buildEnvironmentVariables")
-    def build_environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def build_environment_variables(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Build environment variables that shall be available during build time.
         """
         return pulumi.get(self, "build_environment_variables")
 
     @build_environment_variables.setter
-    def build_environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def build_environment_variables(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "build_environment_variables", value)
 
     @property
@@ -192,14 +192,14 @@ class FunctionArgs:
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Environment variables that shall be available during function execution.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "environment_variables", value)
 
     @property
@@ -240,14 +240,14 @@ class FunctionArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels associated with this Cloud Function.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -401,15 +401,15 @@ class Function(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
-                 build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 build_environment_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
                  https_trigger: Optional[pulumi.Input[pulumi.InputType['HttpsTriggerArgs']]] = None,
                  ingress_settings: Optional[pulumi.Input['FunctionIngressSettings']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -431,15 +431,15 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] available_memory_mb: The amount of memory in MB available for a function. Defaults to 256MB.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
+        :param pulumi.Input[Mapping[str, str]] build_environment_variables: Build environment variables that shall be available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
+        :param pulumi.Input[Mapping[str, str]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input[pulumi.InputType['EventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service.
         :param pulumi.Input[pulumi.InputType['HttpsTriggerArgs']] https_trigger: An HTTPS endpoint type of source that can be triggered via URL.
         :param pulumi.Input['FunctionIngressSettings'] ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels associated with this Cloud Function.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
@@ -478,15 +478,15 @@ class Function(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
-                 build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 build_environment_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
                  https_trigger: Optional[pulumi.Input[pulumi.InputType['HttpsTriggerArgs']]] = None,
                  ingress_settings: Optional[pulumi.Input['FunctionIngressSettings']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,

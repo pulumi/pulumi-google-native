@@ -1143,7 +1143,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
                  all_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs']]]] = None,
                  built_in_algorithm_output: Optional[pulumi.Input['GoogleCloudMlV1__BuiltInAlgorithmOutputArgs']] = None,
                  final_metric: Optional[pulumi.Input['GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs']] = None,
-                 hyperparameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 hyperparameters: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  is_trial_stopped_early: Optional[pulumi.Input[bool]] = None,
                  trial_id: Optional[pulumi.Input[str]] = None):
         """
@@ -1151,7 +1151,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs']]] all_metrics: All recorded object metrics for this trial. This field is not currently populated.
         :param pulumi.Input['GoogleCloudMlV1__BuiltInAlgorithmOutputArgs'] built_in_algorithm_output: Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that have succeeded.
         :param pulumi.Input['GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs'] final_metric: The final objective metric seen for this trial.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] hyperparameters: The hyperparameters given to this trial.
+        :param pulumi.Input[Mapping[str, str]] hyperparameters: The hyperparameters given to this trial.
         :param pulumi.Input[bool] is_trial_stopped_early: True if the trial is stopped early.
         :param pulumi.Input[str] trial_id: The trial id for these results.
         """
@@ -1206,14 +1206,14 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
 
     @property
     @pulumi.getter
-    def hyperparameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def hyperparameters(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The hyperparameters given to this trial.
         """
         return pulumi.get(self, "hyperparameters")
 
     @hyperparameters.setter
-    def hyperparameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def hyperparameters(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "hyperparameters", value)
 
     @property

@@ -69,37 +69,9 @@ func GetApi(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Api resources.
 type apiState struct {
-	// Created time.
-	CreateTime *string `pulumi:"createTime"`
-	// Optional. Display name.
-	DisplayName *string `pulumi:"displayName"`
-	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels map[string]string `pulumi:"labels"`
-	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
-	ManagedService *string `pulumi:"managedService"`
-	// Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
-	Name *string `pulumi:"name"`
-	// State of the API.
-	State *string `pulumi:"state"`
-	// Updated time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ApiState struct {
-	// Created time.
-	CreateTime pulumi.StringPtrInput
-	// Optional. Display name.
-	DisplayName pulumi.StringPtrInput
-	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels pulumi.StringMapInput
-	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
-	ManagedService pulumi.StringPtrInput
-	// Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
-	Name pulumi.StringPtrInput
-	// State of the API.
-	State pulumi.StringPtrInput
-	// Updated time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ApiState) ElementType() reflect.Type {

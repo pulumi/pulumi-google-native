@@ -17,14 +17,14 @@ __all__ = [
     'GoogleCloudApigeeV1CustomReportMetricArgs',
     'GoogleCloudApigeeV1DatastoreConfigArgs',
     'GoogleCloudApigeeV1DateRangeArgs',
-    'GoogleCloudApigeeV1GraphQLOperationArgs',
     'GoogleCloudApigeeV1GraphQLOperationConfigArgs',
     'GoogleCloudApigeeV1GraphQLOperationGroupArgs',
+    'GoogleCloudApigeeV1GraphQLOperationArgs',
     'GoogleCloudApigeeV1IntegrationConfigArgs',
     'GoogleCloudApigeeV1MonetizationConfigArgs',
-    'GoogleCloudApigeeV1OperationArgs',
     'GoogleCloudApigeeV1OperationConfigArgs',
     'GoogleCloudApigeeV1OperationGroupArgs',
+    'GoogleCloudApigeeV1OperationArgs',
     'GoogleCloudApigeeV1PropertiesArgs',
     'GoogleCloudApigeeV1PropertyArgs',
     'GoogleCloudApigeeV1QueryMetricArgs',
@@ -32,8 +32,8 @@ __all__ = [
     'GoogleCloudApigeeV1RateRangeArgs',
     'GoogleCloudApigeeV1ReportPropertyArgs',
     'GoogleCloudApigeeV1RevenueShareRangeArgs',
-    'GoogleCloudApigeeV1TlsInfoArgs',
     'GoogleCloudApigeeV1TlsInfoCommonNameArgs',
+    'GoogleCloudApigeeV1TlsInfoArgs',
     'GoogleCloudApigeeV1TraceSamplingConfigArgs',
     'GoogleIamV1AuditConfigArgs',
     'GoogleIamV1AuditLogConfigArgs',
@@ -387,46 +387,6 @@ class GoogleCloudApigeeV1DateRangeArgs:
 
 
 @pulumi.input_type
-class GoogleCloudApigeeV1GraphQLOperationArgs:
-    def __init__(__self__, *,
-                 operation: Optional[pulumi.Input[str]] = None,
-                 operation_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
-        :param pulumi.Input[str] operation: GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_types: Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
-        """
-        if operation is not None:
-            pulumi.set(__self__, "operation", operation)
-        if operation_types is not None:
-            pulumi.set(__self__, "operation_types", operation_types)
-
-    @property
-    @pulumi.getter
-    def operation(self) -> Optional[pulumi.Input[str]]:
-        """
-        GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
-        """
-        return pulumi.get(self, "operation")
-
-    @operation.setter
-    def operation(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "operation", value)
-
-    @property
-    @pulumi.getter(name="operationTypes")
-    def operation_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
-        """
-        return pulumi.get(self, "operation_types")
-
-    @operation_types.setter
-    def operation_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "operation_types", value)
-
-
-@pulumi.input_type
 class GoogleCloudApigeeV1GraphQLOperationConfigArgs:
     def __init__(__self__, *,
                  api_source: Optional[pulumi.Input[str]] = None,
@@ -539,6 +499,46 @@ class GoogleCloudApigeeV1GraphQLOperationGroupArgs:
 
 
 @pulumi.input_type
+class GoogleCloudApigeeV1GraphQLOperationArgs:
+    def __init__(__self__, *,
+                 operation: Optional[pulumi.Input[str]] = None,
+                 operation_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+        :param pulumi.Input[str] operation: GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_types: Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        """
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if operation_types is not None:
+            pulumi.set(__self__, "operation_types", operation_types)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> Optional[pulumi.Input[str]]:
+        """
+        GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation", value)
+
+    @property
+    @pulumi.getter(name="operationTypes")
+    def operation_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        """
+        return pulumi.get(self, "operation_types")
+
+    @operation_types.setter
+    def operation_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "operation_types", value)
+
+
+@pulumi.input_type
 class GoogleCloudApigeeV1IntegrationConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
@@ -584,46 +584,6 @@ class GoogleCloudApigeeV1MonetizationConfigArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
-
-
-@pulumi.input_type
-class GoogleCloudApigeeV1OperationArgs:
-    def __init__(__self__, *,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 resource: Optional[pulumi.Input[str]] = None):
-        """
-        Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
-        :param pulumi.Input[str] resource: Required. resource represents REST resource path associated with the proxy/remote service.
-        """
-        if methods is not None:
-            pulumi.set(__self__, "methods", methods)
-        if resource is not None:
-            pulumi.set(__self__, "resource", resource)
-
-    @property
-    @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
-        """
-        return pulumi.get(self, "methods")
-
-    @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "methods", value)
-
-    @property
-    @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. resource represents REST resource path associated with the proxy/remote service.
-        """
-        return pulumi.get(self, "resource")
-
-    @resource.setter
-    def resource(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resource", value)
 
 
 @pulumi.input_type
@@ -736,6 +696,46 @@ class GoogleCloudApigeeV1OperationGroupArgs:
     @operation_configs.setter
     def operation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1OperationConfigArgs']]]]):
         pulumi.set(self, "operation_configs", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1OperationArgs:
+    def __init__(__self__, *,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource: Optional[pulumi.Input[str]] = None):
+        """
+        Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
+        :param pulumi.Input[str] resource: Required. resource represents REST resource path associated with the proxy/remote service.
+        """
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
+        """
+        return pulumi.get(self, "methods")
+
+    @methods.setter
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "methods", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. resource represents REST resource path associated with the proxy/remote service.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource", value)
 
 
 @pulumi.input_type
@@ -1098,6 +1098,45 @@ class GoogleCloudApigeeV1RevenueShareRangeArgs:
 
 
 @pulumi.input_type
+class GoogleCloudApigeeV1TlsInfoCommonNameArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input[str]] = None,
+                 wildcard_match: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] value: The TLS Common Name string of the certificate.
+        :param pulumi.Input[bool] wildcard_match: Indicates whether the cert should be matched against as a wildcard cert.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if wildcard_match is not None:
+            pulumi.set(__self__, "wildcard_match", wildcard_match)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TLS Common Name string of the certificate.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="wildcardMatch")
+    def wildcard_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the cert should be matched against as a wildcard cert.
+        """
+        return pulumi.get(self, "wildcard_match")
+
+    @wildcard_match.setter
+    def wildcard_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wildcard_match", value)
+
+
+@pulumi.input_type
 class GoogleCloudApigeeV1TlsInfoArgs:
     def __init__(__self__, *,
                  ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1247,45 +1286,6 @@ class GoogleCloudApigeeV1TlsInfoArgs:
     @trust_store.setter
     def trust_store(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "trust_store", value)
-
-
-@pulumi.input_type
-class GoogleCloudApigeeV1TlsInfoCommonNameArgs:
-    def __init__(__self__, *,
-                 value: Optional[pulumi.Input[str]] = None,
-                 wildcard_match: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] value: The TLS Common Name string of the certificate.
-        :param pulumi.Input[bool] wildcard_match: Indicates whether the cert should be matched against as a wildcard cert.
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-        if wildcard_match is not None:
-            pulumi.set(__self__, "wildcard_match", wildcard_match)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The TLS Common Name string of the certificate.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
-    @property
-    @pulumi.getter(name="wildcardMatch")
-    def wildcard_match(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the cert should be matched against as a wildcard cert.
-        """
-        return pulumi.get(self, "wildcard_match")
-
-    @wildcard_match.setter
-    def wildcard_match(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "wildcard_match", value)
 
 
 @pulumi.input_type

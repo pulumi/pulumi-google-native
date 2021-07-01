@@ -28,7 +28,7 @@ class InstanceArgs:
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['MetadataArgs']] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -61,7 +61,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
         :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
                zones/us-central1-f/machineTypes/n1-standard-1
                
@@ -295,14 +295,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels to apply to this instance. These can be later modified by the setLabels method.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -570,7 +570,7 @@ class Instance(pulumi.CustomResource):
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -609,7 +609,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
         :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
                zones/us-central1-f/machineTypes/n1-standard-1
                
@@ -673,7 +673,7 @@ class Instance(pulumi.CustomResource):
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,

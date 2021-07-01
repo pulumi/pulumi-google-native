@@ -317,11 +317,11 @@ export interface VersionArgs {
     /**
      * Metadata settings that are supplied to this version to enable beta runtime features.
      */
-    betaSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    betaSettings?: pulumi.Input<{[key: string]: string}>;
     /**
      * Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
      */
-    buildEnvVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    buildEnvVariables?: pulumi.Input<{[key: string]: string}>;
     /**
      * Time that this version was created.@OutputOnly
      */
@@ -357,7 +357,7 @@ export interface VersionArgs {
     /**
      * Environment variables available to the application.Only returned in GET requests if view=FULL is set.
      */
-    envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    envVariables?: pulumi.Input<{[key: string]: string}>;
     /**
      * Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
      */

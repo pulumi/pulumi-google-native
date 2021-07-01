@@ -56,8 +56,11 @@ class ManagedZoneDnsSecConfigState(str, Enum):
     Specifies whether DNSSEC is enabled, and what mode it is in.
     """
     OFF = "off"
+    """DNSSEC is disabled; the zone is not signed."""
     ON = "on"
+    """DNSSEC is enabled; the zone is signed and fully managed."""
     TRANSFER = "transfer"
+    """DNSSEC is enabled, but in a "transfer" mode."""
 
 
 class ManagedZoneForwardingConfigNameServerTargetForwardingPath(str, Enum):
@@ -65,7 +68,9 @@ class ManagedZoneForwardingConfigNameServerTargetForwardingPath(str, Enum):
     Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
     """
     DEFAULT = "default"
+    """Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses forward to the target through the VPC and non-RFC1918 addresses forward to the target through the internet"""
     PRIVATE = "private"
+    """Cloud DNS always forwards to this target through the VPC."""
 
 
 class ManagedZoneVisibility(str, Enum):
@@ -81,4 +86,6 @@ class PolicyAlternativeNameServerConfigTargetNameServerForwardingPath(str, Enum)
     Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
     """
     DEFAULT = "default"
+    """Cloud DNS makes forwarding decision based on IP address ranges; that is, RFC1918 addresses forward to the target through the VPC and non-RFC1918 addresses forward to the target through the internet"""
     PRIVATE = "private"
+    """Cloud DNS always forwards to this target through the VPC."""

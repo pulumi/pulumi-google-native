@@ -64,21 +64,9 @@ func GetTransitionRouteGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitionRouteGroup resources.
 type transitionRouteGroupState struct {
-	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
-	Name *string `pulumi:"name"`
-	// Transition routes associated with the TransitionRouteGroup.
-	TransitionRoutes []GoogleCloudDialogflowCxV3beta1TransitionRouteResponse `pulumi:"transitionRoutes"`
 }
 
 type TransitionRouteGroupState struct {
-	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
-	DisplayName pulumi.StringPtrInput
-	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
-	Name pulumi.StringPtrInput
-	// Transition routes associated with the TransitionRouteGroup.
-	TransitionRoutes GoogleCloudDialogflowCxV3beta1TransitionRouteResponseArrayInput
 }
 
 func (TransitionRouteGroupState) ElementType() reflect.Type {

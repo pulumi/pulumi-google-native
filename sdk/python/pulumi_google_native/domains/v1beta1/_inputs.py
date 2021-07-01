@@ -13,8 +13,8 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
-    'ContactArgs',
     'ContactSettingsArgs',
+    'ContactArgs',
     'CustomDnsArgs',
     'DnsSettingsArgs',
     'DsRecordArgs',
@@ -163,78 +163,6 @@ class BindingArgs:
 
 
 @pulumi.input_type
-class ContactArgs:
-    def __init__(__self__, *,
-                 email: Optional[pulumi.Input[str]] = None,
-                 fax_number: Optional[pulumi.Input[str]] = None,
-                 phone_number: Optional[pulumi.Input[str]] = None,
-                 postal_address: Optional[pulumi.Input['PostalAddressArgs']] = None):
-        """
-        Details required for a contact associated with a `Registration`.
-        :param pulumi.Input[str] email: Required. Email address of the contact.
-        :param pulumi.Input[str] fax_number: Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
-        :param pulumi.Input[str] phone_number: Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
-        :param pulumi.Input['PostalAddressArgs'] postal_address: Required. Postal address of the contact.
-        """
-        if email is not None:
-            pulumi.set(__self__, "email", email)
-        if fax_number is not None:
-            pulumi.set(__self__, "fax_number", fax_number)
-        if phone_number is not None:
-            pulumi.set(__self__, "phone_number", phone_number)
-        if postal_address is not None:
-            pulumi.set(__self__, "postal_address", postal_address)
-
-    @property
-    @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Email address of the contact.
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
-
-    @property
-    @pulumi.getter(name="faxNumber")
-    def fax_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
-        """
-        return pulumi.get(self, "fax_number")
-
-    @fax_number.setter
-    def fax_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fax_number", value)
-
-    @property
-    @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
-        """
-        return pulumi.get(self, "phone_number")
-
-    @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "phone_number", value)
-
-    @property
-    @pulumi.getter(name="postalAddress")
-    def postal_address(self) -> Optional[pulumi.Input['PostalAddressArgs']]:
-        """
-        Required. Postal address of the contact.
-        """
-        return pulumi.get(self, "postal_address")
-
-    @postal_address.setter
-    def postal_address(self, value: Optional[pulumi.Input['PostalAddressArgs']]):
-        pulumi.set(self, "postal_address", value)
-
-
-@pulumi.input_type
 class ContactSettingsArgs:
     def __init__(__self__, *,
                  admin_contact: Optional[pulumi.Input['ContactArgs']] = None,
@@ -304,6 +232,78 @@ class ContactSettingsArgs:
     @technical_contact.setter
     def technical_contact(self, value: Optional[pulumi.Input['ContactArgs']]):
         pulumi.set(self, "technical_contact", value)
+
+
+@pulumi.input_type
+class ContactArgs:
+    def __init__(__self__, *,
+                 email: Optional[pulumi.Input[str]] = None,
+                 fax_number: Optional[pulumi.Input[str]] = None,
+                 phone_number: Optional[pulumi.Input[str]] = None,
+                 postal_address: Optional[pulumi.Input['PostalAddressArgs']] = None):
+        """
+        Details required for a contact associated with a `Registration`.
+        :param pulumi.Input[str] email: Required. Email address of the contact.
+        :param pulumi.Input[str] fax_number: Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+        :param pulumi.Input[str] phone_number: Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        :param pulumi.Input['PostalAddressArgs'] postal_address: Required. Postal address of the contact.
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if fax_number is not None:
+            pulumi.set(__self__, "fax_number", fax_number)
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+        if postal_address is not None:
+            pulumi.set(__self__, "postal_address", postal_address)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Email address of the contact.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="faxNumber")
+    def fax_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+        """
+        return pulumi.get(self, "fax_number")
+
+    @fax_number.setter
+    def fax_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fax_number", value)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "phone_number", value)
+
+    @property
+    @pulumi.getter(name="postalAddress")
+    def postal_address(self) -> Optional[pulumi.Input['PostalAddressArgs']]:
+        """
+        Required. Postal address of the contact.
+        """
+        return pulumi.get(self, "postal_address")
+
+    @postal_address.setter
+    def postal_address(self, value: Optional[pulumi.Input['PostalAddressArgs']]):
+        pulumi.set(self, "postal_address", value)
 
 
 @pulumi.input_type

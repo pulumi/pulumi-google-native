@@ -95,7 +95,7 @@ export interface SnapshotArgs {
     /**
      * See Creating and managing labels.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     project: pulumi.Input<string>;
     snapshotId: pulumi.Input<string>;
     /**

@@ -8,6 +8,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"runtime/debug"
+	"strings"
+	"time"
+
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
@@ -25,12 +32,6 @@ import (
 	"google.golang.org/api/storage/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"log"
-	"net/http"
-	"os"
-	"runtime/debug"
-	"strings"
-	"time"
 )
 
 type googleCloudProvider struct {
@@ -359,7 +360,6 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	}, nil
 }
 
-
 func (p *googleCloudProvider) prepareAPIInputs(
 	inputs, state resource.PropertyMap,
 	properties map[string]resources.CloudAPIProperty) map[string]interface{} {
@@ -613,6 +613,11 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 // Construct creates a new component resource.
 func (p *googleCloudProvider) Construct(_ context.Context, _ *rpc.ConstructRequest) (*rpc.ConstructResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "Construct is not yet implemented")
+}
+
+// Call dynamically executes a method in the provider associated with a component resource.
+func (p *googleCloudProvider) Call(_ context.Context, _ *rpc.CallRequest) (*rpc.CallResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "Call is not yet implemented")
 }
 
 // GetPluginInfo returns generic information about this plugin, like its version.

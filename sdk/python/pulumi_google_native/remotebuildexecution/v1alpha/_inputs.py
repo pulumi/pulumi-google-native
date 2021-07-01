@@ -12,8 +12,8 @@ from ._enums import *
 __all__ = [
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs',
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs',
-    'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs',
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs',
+    'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs',
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs',
 ]
 
@@ -95,6 +95,46 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs:
     @min_size.setter
     def min_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_size", value)
+
+
+@pulumi.input_type
+class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs:
+    def __init__(__self__, *,
+                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 policy: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']] = None):
+        """
+        Defines whether a feature can be used or what values are accepted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: A list of acceptable values. Only effective when the policy is `RESTRICTED`.
+        :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy'] policy: The policy of the feature.
+        """
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of acceptable values. Only effective when the policy is `RESTRICTED`.
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @allowed_values.setter
+    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_values", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]:
+        """
+        The policy of the feature.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]):
+        pulumi.set(self, "policy", value)
 
 
 @pulumi.input_type
@@ -250,52 +290,12 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs:
 
 
 @pulumi.input_type
-class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs:
-    def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 policy: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']] = None):
-        """
-        Defines whether a feature can be used or what values are accepted.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: A list of acceptable values. Only effective when the policy is `RESTRICTED`.
-        :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy'] policy: The policy of the feature.
-        """
-        if allowed_values is not None:
-            pulumi.set(__self__, "allowed_values", allowed_values)
-        if policy is not None:
-            pulumi.set(__self__, "policy", policy)
-
-    @property
-    @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of acceptable values. Only effective when the policy is `RESTRICTED`.
-        """
-        return pulumi.get(self, "allowed_values")
-
-    @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "allowed_values", value)
-
-    @property
-    @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]:
-        """
-        The policy of the feature.
-        """
-        return pulumi.get(self, "policy")
-
-    @policy.setter
-    def policy(self, value: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]):
-        pulumi.set(self, "policy", value)
-
-
-@pulumi.input_type
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs:
     def __init__(__self__, *,
                  accelerator: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_concurrent_actions: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -308,7 +308,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs:
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs'] accelerator: The accelerator card attached to each VM.
         :param pulumi.Input[str] disk_size_gb: Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
         :param pulumi.Input[str] disk_type: Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
         :param pulumi.Input[str] machine_type: Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
         :param pulumi.Input[str] max_concurrent_actions: The maximum number of actions a worker can execute concurrently.
         :param pulumi.Input[str] min_cpu_platform: Minimum CPU platform to use when creating the worker. See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
@@ -378,14 +378,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property

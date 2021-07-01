@@ -24,7 +24,7 @@ class MembershipArgs:
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Membership resource.
@@ -33,7 +33,7 @@ class MembershipArgs:
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: Optional. Endpoint information to reach this member.
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
         :param pulumi.Input['MembershipInfrastructureType'] infrastructure_type: Optional. The infrastructure type this Membership is running on.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. GCP labels for this membership.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "membership_id", membership_id)
@@ -142,14 +142,14 @@ class MembershipArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. GCP labels for this membership.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -172,7 +172,7 @@ class Membership(pulumi.CustomResource):
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -188,7 +188,7 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: Optional. Endpoint information to reach this member.
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
         :param pulumi.Input['MembershipInfrastructureType'] infrastructure_type: Optional. The infrastructure type this Membership is running on.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. GCP labels for this membership.
         """
         ...
     @overload
@@ -219,7 +219,7 @@ class Membership(pulumi.CustomResource):
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

@@ -17,13 +17,13 @@ class BackupArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  source_file_share: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Backup resource.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
         """
@@ -80,14 +80,14 @@ class BackupArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Resource labels to represent user provided metadata.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -122,7 +122,7 @@ class Backup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_file_share: Optional[pulumi.Input[str]] = None,
@@ -134,7 +134,7 @@ class Backup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
         """
@@ -164,7 +164,7 @@ class Backup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_file_share: Optional[pulumi.Input[str]] = None,

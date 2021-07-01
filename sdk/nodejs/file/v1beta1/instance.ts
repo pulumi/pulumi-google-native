@@ -154,7 +154,7 @@ export interface InstanceArgs {
     /**
      * Resource labels to represent user provided metadata.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     location: pulumi.Input<string>;
     /**
      * VPC networks to which the instance is connected. For this version, only a single network is supported.

@@ -64,33 +64,9 @@ func GetDeidentifyTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeidentifyTemplate resources.
 type deidentifyTemplateState struct {
-	// The creation timestamp of an inspectTemplate.
-	CreateTime *string `pulumi:"createTime"`
-	// The core content of the template.
-	DeidentifyConfig *GooglePrivacyDlpV2DeidentifyConfigResponse `pulumi:"deidentifyConfig"`
-	// Short description (max 256 chars).
-	Description *string `pulumi:"description"`
-	// Display name (max 256 chars).
-	DisplayName *string `pulumi:"displayName"`
-	// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-	Name *string `pulumi:"name"`
-	// The last update timestamp of an inspectTemplate.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type DeidentifyTemplateState struct {
-	// The creation timestamp of an inspectTemplate.
-	CreateTime pulumi.StringPtrInput
-	// The core content of the template.
-	DeidentifyConfig GooglePrivacyDlpV2DeidentifyConfigResponsePtrInput
-	// Short description (max 256 chars).
-	Description pulumi.StringPtrInput
-	// Display name (max 256 chars).
-	DisplayName pulumi.StringPtrInput
-	// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-	Name pulumi.StringPtrInput
-	// The last update timestamp of an inspectTemplate.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (DeidentifyTemplateState) ElementType() reflect.Type {

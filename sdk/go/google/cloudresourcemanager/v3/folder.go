@@ -61,41 +61,9 @@ func GetFolder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Folder resources.
 type folderState struct {
-	// Timestamp when the folder was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Timestamp when the folder was requested to be deleted.
-	DeleteTime *string `pulumi:"deleteTime"`
-	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
-	DisplayName *string `pulumi:"displayName"`
-	// A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag *string `pulumi:"etag"`
-	// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
-	Name *string `pulumi:"name"`
-	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
-	Parent *string `pulumi:"parent"`
-	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
-	State *string `pulumi:"state"`
-	// Timestamp when the folder was last modified.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type FolderState struct {
-	// Timestamp when the folder was created.
-	CreateTime pulumi.StringPtrInput
-	// Timestamp when the folder was requested to be deleted.
-	DeleteTime pulumi.StringPtrInput
-	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
-	DisplayName pulumi.StringPtrInput
-	// A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag pulumi.StringPtrInput
-	// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
-	Name pulumi.StringPtrInput
-	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
-	Parent pulumi.StringPtrInput
-	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
-	State pulumi.StringPtrInput
-	// Timestamp when the folder was last modified.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (FolderState) ElementType() reflect.Type {

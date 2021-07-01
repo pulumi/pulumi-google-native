@@ -118,7 +118,7 @@ export interface NotificationArgs {
     /**
      * An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
      */
-    custom_attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    custom_attributes?: pulumi.Input<{[key: string]: string}>;
     /**
      * HTTP 1.1 Entity tag for this subscription notification.
      */

@@ -23,7 +23,7 @@ class MigrationJobArgs:
                  destination_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input['ReverseSshConnectivityArgs']] = None,
@@ -39,7 +39,7 @@ class MigrationJobArgs:
         :param pulumi.Input['DatabaseTypeArgs'] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        :param pulumi.Input[Mapping[str, str]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
         :param pulumi.Input['ReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: Required. The resource name (URI) of the source connection profile.
@@ -158,14 +158,14 @@ class MigrationJobArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -283,7 +283,7 @@ class MigrationJob(pulumi.CustomResource):
                  destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -306,7 +306,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        :param pulumi.Input[Mapping[str, str]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: Required. The resource name (URI) of the source connection profile.
@@ -344,7 +344,7 @@ class MigrationJob(pulumi.CustomResource):
                  destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

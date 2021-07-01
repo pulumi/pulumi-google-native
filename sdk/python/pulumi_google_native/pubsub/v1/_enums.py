@@ -15,8 +15,11 @@ class SchemaSettingsEncoding(str, Enum):
     The encoding of messages validated against `schema`.
     """
     ENCODING_UNSPECIFIED = "ENCODING_UNSPECIFIED"
+    """Unspecified"""
     JSON = "JSON"
+    """JSON encoding"""
     BINARY = "BINARY"
+    """Binary encoding, as defined by the schema type. For some schema types, binary encoding may not be available."""
 
 
 class SchemaType(str, Enum):
@@ -24,5 +27,8 @@ class SchemaType(str, Enum):
     The type of the schema definition.
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """Default value. This value is unused."""
     PROTOCOL_BUFFER = "PROTOCOL_BUFFER"
+    """A Protocol Buffer schema definition."""
     AVRO = "AVRO"
+    """An Avro schema definition."""

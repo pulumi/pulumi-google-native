@@ -70,45 +70,9 @@ func GetKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Key resources.
 type keyState struct {
-	// A timestamp identifying the time this key was originally created.
-	CreateTime *string `pulumi:"createTime"`
-	// A timestamp when this key was deleted. If the resource is not deleted, this must be empty.
-	DeleteTime *string `pulumi:"deleteTime"`
-	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag *string `pulumi:"etag"`
-	// An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
-	KeyString *string `pulumi:"keyString"`
-	// The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
-	Name *string `pulumi:"name"`
-	// Key restrictions.
-	Restrictions *V2RestrictionsResponse `pulumi:"restrictions"`
-	// Unique id in UUID4 format.
-	Uid *string `pulumi:"uid"`
-	// A timestamp identifying the time this key was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type KeyState struct {
-	// A timestamp identifying the time this key was originally created.
-	CreateTime pulumi.StringPtrInput
-	// A timestamp when this key was deleted. If the resource is not deleted, this must be empty.
-	DeleteTime pulumi.StringPtrInput
-	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
-	DisplayName pulumi.StringPtrInput
-	// A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag pulumi.StringPtrInput
-	// An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
-	KeyString pulumi.StringPtrInput
-	// The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
-	Name pulumi.StringPtrInput
-	// Key restrictions.
-	Restrictions V2RestrictionsResponsePtrInput
-	// Unique id in UUID4 format.
-	Uid pulumi.StringPtrInput
-	// A timestamp identifying the time this key was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (KeyState) ElementType() reflect.Type {

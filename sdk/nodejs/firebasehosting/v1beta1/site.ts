@@ -104,7 +104,7 @@ export interface SiteArgs {
     /**
      * Optional. User-specified labels for the Hosting site.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     project: pulumi.Input<string>;
     siteId: pulumi.Input<string>;
 }

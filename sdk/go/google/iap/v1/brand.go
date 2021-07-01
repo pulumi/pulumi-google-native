@@ -57,25 +57,9 @@ func GetBrand(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Brand resources.
 type brandState struct {
-	// Application name displayed on OAuth consent screen.
-	ApplicationTitle *string `pulumi:"applicationTitle"`
-	// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
-	Name *string `pulumi:"name"`
-	// Whether the brand is only intended for usage inside the G Suite organization only.
-	OrgInternalOnly *bool `pulumi:"orgInternalOnly"`
-	// Support email displayed on the OAuth consent screen.
-	SupportEmail *string `pulumi:"supportEmail"`
 }
 
 type BrandState struct {
-	// Application name displayed on OAuth consent screen.
-	ApplicationTitle pulumi.StringPtrInput
-	// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
-	Name pulumi.StringPtrInput
-	// Whether the brand is only intended for usage inside the G Suite organization only.
-	OrgInternalOnly pulumi.BoolPtrInput
-	// Support email displayed on the OAuth consent screen.
-	SupportEmail pulumi.StringPtrInput
 }
 
 func (BrandState) ElementType() reflect.Type {

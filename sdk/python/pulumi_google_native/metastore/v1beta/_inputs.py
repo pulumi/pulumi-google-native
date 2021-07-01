@@ -330,12 +330,12 @@ class ExprArgs:
 @pulumi.input_type
 class HiveMetastoreConfigArgs:
     def __init__(__self__, *,
-                 config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 config_overrides: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  kerberos_config: Optional[pulumi.Input['KerberosConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
+        :param pulumi.Input[Mapping[str, str]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
         :param pulumi.Input['KerberosConfigArgs'] kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         :param pulumi.Input[str] version: Immutable. The Hive metastore schema version.
         """
@@ -348,14 +348,14 @@ class HiveMetastoreConfigArgs:
 
     @property
     @pulumi.getter(name="configOverrides")
-    def config_overrides(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def config_overrides(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
         """
         return pulumi.get(self, "config_overrides")
 
     @config_overrides.setter
-    def config_overrides(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def config_overrides(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "config_overrides", value)
 
     @property

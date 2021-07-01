@@ -75,61 +75,9 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
-	AuditLogsEnabled *bool `pulumi:"auditLogsEnabled"`
-	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
-	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
-	// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
-	CreateTime *string `pulumi:"createTime"`
-	// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
-	Fqdn *string `pulumi:"fqdn"`
-	// Optional. Resource labels to represent user provided metadata
-	Labels map[string]string `pulumi:"labels"`
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-	Locations []string `pulumi:"locations"`
-	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
-	ManagedIdentitiesAdminName *string `pulumi:"managedIdentitiesAdminName"`
-	// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name *string `pulumi:"name"`
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-	ReservedIpRange *string `pulumi:"reservedIpRange"`
-	// The current state of this domain.
-	State *string `pulumi:"state"`
-	// Additional information about the current status of this domain, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
-	// The current trusts associated with the domain.
-	Trusts []TrustResponse `pulumi:"trusts"`
-	// Last update time. Synthetic field is populated automatically by CCFE.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type DomainState struct {
-	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
-	AuditLogsEnabled pulumi.BoolPtrInput
-	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
-	AuthorizedNetworks pulumi.StringArrayInput
-	// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
-	CreateTime pulumi.StringPtrInput
-	// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
-	Fqdn pulumi.StringPtrInput
-	// Optional. Resource labels to represent user provided metadata
-	Labels pulumi.StringMapInput
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-	Locations pulumi.StringArrayInput
-	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
-	ManagedIdentitiesAdminName pulumi.StringPtrInput
-	// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name pulumi.StringPtrInput
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-	ReservedIpRange pulumi.StringPtrInput
-	// The current state of this domain.
-	State pulumi.StringPtrInput
-	// Additional information about the current status of this domain, if available.
-	StatusMessage pulumi.StringPtrInput
-	// The current trusts associated with the domain.
-	Trusts TrustResponseArrayInput
-	// Last update time. Synthetic field is populated automatically by CCFE.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (DomainState) ElementType() reflect.Type {

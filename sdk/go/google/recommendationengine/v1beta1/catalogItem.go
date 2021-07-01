@@ -69,37 +69,9 @@ func GetCatalogItem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CatalogItem resources.
 type catalogItemState struct {
-	// Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
-	CategoryHierarchies []GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse `pulumi:"categoryHierarchies"`
-	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
-	Description *string `pulumi:"description"`
-	// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
-	ItemAttributes *GoogleCloudRecommendationengineV1beta1FeatureMapResponse `pulumi:"itemAttributes"`
-	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
-	ItemGroupId *string `pulumi:"itemGroupId"`
-	// Optional. Metadata specific to retail products.
-	ProductMetadata *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse `pulumi:"productMetadata"`
-	// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
-	Tags []string `pulumi:"tags"`
-	// Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
-	Title *string `pulumi:"title"`
 }
 
 type CatalogItemState struct {
-	// Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
-	CategoryHierarchies GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayInput
-	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
-	Description pulumi.StringPtrInput
-	// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
-	ItemAttributes GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrInput
-	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
-	ItemGroupId pulumi.StringPtrInput
-	// Optional. Metadata specific to retail products.
-	ProductMetadata GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrInput
-	// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
-	Tags pulumi.StringArrayInput
-	// Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
-	Title pulumi.StringPtrInput
 }
 
 func (CatalogItemState) ElementType() reflect.Type {

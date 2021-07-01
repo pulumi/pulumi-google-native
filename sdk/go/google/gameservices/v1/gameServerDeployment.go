@@ -67,33 +67,9 @@ func GetGameServerDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GameServerDeployment resources.
 type gameServerDeploymentState struct {
-	// The creation time.
-	CreateTime *string `pulumi:"createTime"`
-	// Human readable description of the game server delpoyment.
-	Description *string `pulumi:"description"`
-	// ETag of the resource.
-	Etag *string `pulumi:"etag"`
-	// The labels associated with this game server deployment. Each label is a key-value pair.
-	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
-	Name *string `pulumi:"name"`
-	// The last-modified time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type GameServerDeploymentState struct {
-	// The creation time.
-	CreateTime pulumi.StringPtrInput
-	// Human readable description of the game server delpoyment.
-	Description pulumi.StringPtrInput
-	// ETag of the resource.
-	Etag pulumi.StringPtrInput
-	// The labels associated with this game server deployment. Each label is a key-value pair.
-	Labels pulumi.StringMapInput
-	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
-	Name pulumi.StringPtrInput
-	// The last-modified time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (GameServerDeploymentState) ElementType() reflect.Type {

@@ -22,7 +22,7 @@ class GroupArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_group_metadata: Optional[pulumi.Input['DynamicGroupMetadataArgs']] = None,
                  group_key: Optional[pulumi.Input['EntityKeyArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  parent: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
@@ -31,7 +31,7 @@ class GroupArgs:
         :param pulumi.Input[str] display_name: The display name of the `Group`.
         :param pulumi.Input['DynamicGroupMetadataArgs'] dynamic_group_metadata: Optional. Dynamic group metadata like queries and status.
         :param pulumi.Input['EntityKeyArgs'] group_key: Required. Immutable. The `EntityKey` of the `Group`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+        :param pulumi.Input[Mapping[str, str]] labels: Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
         :param pulumi.Input[str] parent: Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
         """
         pulumi.set(__self__, "initial_group_config", initial_group_config)
@@ -121,14 +121,14 @@ class GroupArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -155,7 +155,7 @@ class Group(pulumi.CustomResource):
                  dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -168,7 +168,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the `Group`.
         :param pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']] dynamic_group_metadata: Optional. Dynamic group metadata like queries and status.
         :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] group_key: Required. Immutable. The `EntityKey` of the `Group`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+        :param pulumi.Input[Mapping[str, str]] labels: Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
         :param pulumi.Input[str] parent: Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
         """
         ...
@@ -201,7 +201,7 @@ class Group(pulumi.CustomResource):
                  dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

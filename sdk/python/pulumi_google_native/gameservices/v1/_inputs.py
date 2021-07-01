@@ -649,24 +649,24 @@ class GkeClusterReferenceArgs:
 @pulumi.input_type
 class LabelSelectorArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         The label selector, used to group labels on the resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels for this selector.
+        :param pulumi.Input[Mapping[str, str]] labels: Resource labels for this selector.
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Resource labels for this selector.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
 

@@ -73,57 +73,9 @@ func GetHttpsHealthCheck(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HttpsHealthCheck resources.
 type httpsHealthCheckState struct {
-	// How often (in seconds) to send a health check. The default value is 5 seconds.
-	CheckIntervalSec *int `pulumi:"checkIntervalSec"`
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description *string `pulumi:"description"`
-	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
-	Host *string `pulumi:"host"`
-	// Type of the resource.
-	Kind *string `pulumi:"kind"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// The TCP port number for the HTTPS health check request. The default value is 443.
-	Port *int `pulumi:"port"`
-	// The request path of the HTTPS health check request. The default value is "/".
-	RequestPath *string `pulumi:"requestPath"`
-	// Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have a greater value than checkIntervalSec.
-	TimeoutSec *int `pulumi:"timeoutSec"`
-	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
 type HttpsHealthCheckState struct {
-	// How often (in seconds) to send a health check. The default value is 5 seconds.
-	CheckIntervalSec pulumi.IntPtrInput
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description pulumi.StringPtrInput
-	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-	HealthyThreshold pulumi.IntPtrInput
-	// The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
-	Host pulumi.StringPtrInput
-	// Type of the resource.
-	Kind pulumi.StringPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// The TCP port number for the HTTPS health check request. The default value is 443.
-	Port pulumi.IntPtrInput
-	// The request path of the HTTPS health check request. The default value is "/".
-	RequestPath pulumi.StringPtrInput
-	// Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have a greater value than checkIntervalSec.
-	TimeoutSec pulumi.IntPtrInput
-	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-	UnhealthyThreshold pulumi.IntPtrInput
 }
 
 func (HttpsHealthCheckState) ElementType() reflect.Type {

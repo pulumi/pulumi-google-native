@@ -81,73 +81,9 @@ func GetOccurrence(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Occurrence resources.
 type occurrenceState struct {
-	// Describes an attestation of an artifact.
-	Attestation *AttestationResponse `pulumi:"attestation"`
-	// Build details for a verifiable build.
-	BuildDetails *BuildDetailsResponse `pulumi:"buildDetails"`
-	// The time this `Occurrence` was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Describes the deployment of an artifact on a runtime.
-	Deployment *DeploymentResponse `pulumi:"deployment"`
-	// Describes how this resource derives from the basis in the associated note.
-	DerivedImage *DerivedResponse `pulumi:"derivedImage"`
-	// Describes the initial scan status for this resource.
-	Discovered *DiscoveredResponse `pulumi:"discovered"`
-	// Describes the installation of a package on the linked resource.
-	Installation *InstallationResponse `pulumi:"installation"`
-	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-	Kind *string `pulumi:"kind"`
-	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
-	Name *string `pulumi:"name"`
-	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
-	NoteName *string `pulumi:"noteName"`
-	// A description of actions that can be taken to remedy the `Note`
-	Remediation *string `pulumi:"remediation"`
-	//  The resource for which the `Occurrence` applies.
-	Resource *ResourceResponse `pulumi:"resource"`
-	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
-	ResourceUrl *string `pulumi:"resourceUrl"`
-	// The time this `Occurrence` was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
-	// Describes an upgrade.
-	Upgrade *UpgradeOccurrenceResponse `pulumi:"upgrade"`
-	// Details of a security vulnerability note.
-	VulnerabilityDetails *VulnerabilityDetailsResponse `pulumi:"vulnerabilityDetails"`
 }
 
 type OccurrenceState struct {
-	// Describes an attestation of an artifact.
-	Attestation AttestationResponsePtrInput
-	// Build details for a verifiable build.
-	BuildDetails BuildDetailsResponsePtrInput
-	// The time this `Occurrence` was created.
-	CreateTime pulumi.StringPtrInput
-	// Describes the deployment of an artifact on a runtime.
-	Deployment DeploymentResponsePtrInput
-	// Describes how this resource derives from the basis in the associated note.
-	DerivedImage DerivedResponsePtrInput
-	// Describes the initial scan status for this resource.
-	Discovered DiscoveredResponsePtrInput
-	// Describes the installation of a package on the linked resource.
-	Installation InstallationResponsePtrInput
-	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-	Kind pulumi.StringPtrInput
-	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
-	Name pulumi.StringPtrInput
-	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
-	NoteName pulumi.StringPtrInput
-	// A description of actions that can be taken to remedy the `Note`
-	Remediation pulumi.StringPtrInput
-	//  The resource for which the `Occurrence` applies.
-	Resource ResourceResponsePtrInput
-	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
-	ResourceUrl pulumi.StringPtrInput
-	// The time this `Occurrence` was last updated.
-	UpdateTime pulumi.StringPtrInput
-	// Describes an upgrade.
-	Upgrade UpgradeOccurrenceResponsePtrInput
-	// Details of a security vulnerability note.
-	VulnerabilityDetails VulnerabilityDetailsResponsePtrInput
 }
 
 func (OccurrenceState) ElementType() reflect.Type {

@@ -16,9 +16,9 @@ __all__ = [
     'IapCredentialArgs',
     'IapTestServiceAccountInfoArgs',
     'ScanConfigErrorArgs',
-    'ScanRunArgs',
     'ScanRunErrorTraceArgs',
     'ScanRunWarningTraceArgs',
+    'ScanRunArgs',
     'ScheduleArgs',
 ]
 
@@ -263,6 +263,86 @@ class ScanConfigErrorArgs:
 
 
 @pulumi.input_type
+class ScanRunErrorTraceArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input['ScanRunErrorTraceCode']] = None,
+                 most_common_http_error_code: Optional[pulumi.Input[int]] = None,
+                 scan_config_error: Optional[pulumi.Input['ScanConfigErrorArgs']] = None):
+        """
+        Output only. Defines an error trace message for a ScanRun.
+        :param pulumi.Input['ScanRunErrorTraceCode'] code: Indicates the error reason code.
+        :param pulumi.Input[int] most_common_http_error_code: If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses.
+        :param pulumi.Input['ScanConfigErrorArgs'] scan_config_error: If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered during scan configuration validation that is performed before each scan run.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if most_common_http_error_code is not None:
+            pulumi.set(__self__, "most_common_http_error_code", most_common_http_error_code)
+        if scan_config_error is not None:
+            pulumi.set(__self__, "scan_config_error", scan_config_error)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input['ScanRunErrorTraceCode']]:
+        """
+        Indicates the error reason code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input['ScanRunErrorTraceCode']]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter(name="mostCommonHttpErrorCode")
+    def most_common_http_error_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses.
+        """
+        return pulumi.get(self, "most_common_http_error_code")
+
+    @most_common_http_error_code.setter
+    def most_common_http_error_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "most_common_http_error_code", value)
+
+    @property
+    @pulumi.getter(name="scanConfigError")
+    def scan_config_error(self) -> Optional[pulumi.Input['ScanConfigErrorArgs']]:
+        """
+        If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered during scan configuration validation that is performed before each scan run.
+        """
+        return pulumi.get(self, "scan_config_error")
+
+    @scan_config_error.setter
+    def scan_config_error(self, value: Optional[pulumi.Input['ScanConfigErrorArgs']]):
+        pulumi.set(self, "scan_config_error", value)
+
+
+@pulumi.input_type
+class ScanRunWarningTraceArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input['ScanRunWarningTraceCode']] = None):
+        """
+        Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective.
+        :param pulumi.Input['ScanRunWarningTraceCode'] code: Indicates the warning code.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input['ScanRunWarningTraceCode']]:
+        """
+        Indicates the warning code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input['ScanRunWarningTraceCode']]):
+        pulumi.set(self, "code", value)
+
+
+@pulumi.input_type
 class ScanRunArgs:
     def __init__(__self__, *,
                  end_time: Optional[pulumi.Input[str]] = None,
@@ -444,86 +524,6 @@ class ScanRunArgs:
     @warning_traces.setter
     def warning_traces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScanRunWarningTraceArgs']]]]):
         pulumi.set(self, "warning_traces", value)
-
-
-@pulumi.input_type
-class ScanRunErrorTraceArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input['ScanRunErrorTraceCode']] = None,
-                 most_common_http_error_code: Optional[pulumi.Input[int]] = None,
-                 scan_config_error: Optional[pulumi.Input['ScanConfigErrorArgs']] = None):
-        """
-        Output only. Defines an error trace message for a ScanRun.
-        :param pulumi.Input['ScanRunErrorTraceCode'] code: Indicates the error reason code.
-        :param pulumi.Input[int] most_common_http_error_code: If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses.
-        :param pulumi.Input['ScanConfigErrorArgs'] scan_config_error: If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered during scan configuration validation that is performed before each scan run.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if most_common_http_error_code is not None:
-            pulumi.set(__self__, "most_common_http_error_code", most_common_http_error_code)
-        if scan_config_error is not None:
-            pulumi.set(__self__, "scan_config_error", scan_config_error)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['ScanRunErrorTraceCode']]:
-        """
-        Indicates the error reason code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input['ScanRunErrorTraceCode']]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter(name="mostCommonHttpErrorCode")
-    def most_common_http_error_code(self) -> Optional[pulumi.Input[int]]:
-        """
-        If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses.
-        """
-        return pulumi.get(self, "most_common_http_error_code")
-
-    @most_common_http_error_code.setter
-    def most_common_http_error_code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "most_common_http_error_code", value)
-
-    @property
-    @pulumi.getter(name="scanConfigError")
-    def scan_config_error(self) -> Optional[pulumi.Input['ScanConfigErrorArgs']]:
-        """
-        If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered during scan configuration validation that is performed before each scan run.
-        """
-        return pulumi.get(self, "scan_config_error")
-
-    @scan_config_error.setter
-    def scan_config_error(self, value: Optional[pulumi.Input['ScanConfigErrorArgs']]):
-        pulumi.set(self, "scan_config_error", value)
-
-
-@pulumi.input_type
-class ScanRunWarningTraceArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input['ScanRunWarningTraceCode']] = None):
-        """
-        Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective.
-        :param pulumi.Input['ScanRunWarningTraceCode'] code: Indicates the warning code.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['ScanRunWarningTraceCode']]:
-        """
-        Indicates the warning code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input['ScanRunWarningTraceCode']]):
-        pulumi.set(self, "code", value)
 
 
 @pulumi.input_type

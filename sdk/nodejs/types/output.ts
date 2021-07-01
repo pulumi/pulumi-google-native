@@ -303,6 +303,7 @@ export namespace accesscontextmanager {
              */
             enableRestriction: boolean;
         }
+
     }
 
     export namespace v1beta {
@@ -465,6 +466,7 @@ export namespace accesscontextmanager {
              */
             enableRestriction: boolean;
         }
+
     }
 }
 
@@ -575,6 +577,7 @@ export namespace apigateway {
              */
             title: string;
         }
+
     }
 
     export namespace v1beta {
@@ -703,6 +706,7 @@ export namespace apigateway {
              */
             backendConfig: outputs.apigateway.v1beta.ApigatewayBackendConfigResponse;
         }
+
     }
 }
 
@@ -1346,6 +1350,7 @@ export namespace apigee {
              */
             units: string;
         }
+
     }
 }
 
@@ -1444,6 +1449,7 @@ export namespace apikeys {
              */
             allowedIps: string[];
         }
+
     }
 }
 
@@ -2228,6 +2234,7 @@ export namespace appengine {
              */
             isManagedCertificate: boolean;
         }
+
     }
 
     export namespace v1beta {
@@ -3036,6 +3043,7 @@ export namespace artifactregistry {
              */
             title: string;
         }
+
     }
 
     export namespace v1beta2 {
@@ -3078,6 +3086,7 @@ export namespace artifactregistry {
              */
             title: string;
         }
+
     }
 }
 
@@ -3124,6 +3133,7 @@ export namespace assuredworkloads {
              */
             resourceType: string;
         }
+
     }
 }
 
@@ -4859,6 +4869,7 @@ export namespace bigqueryconnection {
              */
             title: string;
         }
+
     }
 }
 
@@ -4891,6 +4902,7 @@ export namespace bigquerydatatransfer {
              */
             startTime: string;
         }
+
     }
 }
 
@@ -4913,6 +4925,7 @@ export namespace bigqueryreservation {
              */
             message: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -4933,6 +4946,7 @@ export namespace bigqueryreservation {
              */
             message: string;
         }
+
     }
 }
 
@@ -5107,6 +5121,7 @@ export namespace bigtableadmin {
              */
             message: string;
         }
+
     }
 }
 
@@ -5255,6 +5270,7 @@ export namespace billingbudgets {
              */
             units: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -5401,6 +5417,7 @@ export namespace billingbudgets {
              */
             units: string;
         }
+
     }
 }
 
@@ -5495,6 +5512,7 @@ export namespace binaryauthorization {
              */
             publicKeys: outputs.binaryauthorization.v1.AttestorPublicKeyResponse[];
         }
+
     }
 
     export namespace v1beta1 {
@@ -5587,6 +5605,7 @@ export namespace binaryauthorization {
              */
             publicKeys: outputs.binaryauthorization.v1beta1.AttestorPublicKeyResponse[];
         }
+
     }
 }
 
@@ -5633,6 +5652,7 @@ export namespace cloudasset {
              */
             topic: string;
         }
+
     }
 }
 
@@ -5705,6 +5725,7 @@ export namespace cloudbilling {
              */
             title: string;
         }
+
     }
 }
 
@@ -6327,6 +6348,7 @@ export namespace cloudbuild {
              */
             tag: string;
         }
+
     }
 
     export namespace v1alpha2 {
@@ -6353,6 +6375,7 @@ export namespace cloudbuild {
              */
             machineType: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -6383,6 +6406,7 @@ export namespace cloudbuild {
              */
             noExternalIp: boolean;
         }
+
     }
 }
 
@@ -6663,6 +6687,7 @@ export namespace cloudchannel {
              */
             sublocality: string;
         }
+
     }
 }
 
@@ -6801,6 +6826,7 @@ export namespace cloudfunctions {
              */
             url: string;
         }
+
     }
 }
 
@@ -6903,6 +6929,7 @@ export namespace cloudidentity {
              */
             name: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -7000,6 +7027,7 @@ export namespace cloudidentity {
              */
             name: string;
         }
+
     }
 }
 
@@ -7250,6 +7278,7 @@ export namespace cloudiot {
              */
             subject: string;
         }
+
     }
 }
 
@@ -7450,6 +7479,7 @@ export namespace cloudkms {
              */
             pem: string;
         }
+
     }
 }
 
@@ -7532,6 +7562,7 @@ export namespace cloudresourcemanager {
              */
             type: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -7612,6 +7643,7 @@ export namespace cloudresourcemanager {
              */
             type: string;
         }
+
     }
 
     export namespace v2 {
@@ -7682,6 +7714,7 @@ export namespace cloudresourcemanager {
              */
             title: string;
         }
+
     }
 
     export namespace v2beta1 {
@@ -7752,6 +7785,7 @@ export namespace cloudresourcemanager {
              */
             title: string;
         }
+
     }
 
     export namespace v3 {
@@ -7822,6 +7856,7 @@ export namespace cloudresourcemanager {
              */
             title: string;
         }
+
     }
 }
 
@@ -7994,6 +8029,7 @@ export namespace cloudscheduler {
              */
             message: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -8164,6 +8200,7 @@ export namespace cloudscheduler {
              */
             message: string;
         }
+
     }
 }
 
@@ -8374,6 +8411,7 @@ export namespace cloudsearch {
             stringValue: string;
             timestampValue: string;
         }
+
     }
 }
 
@@ -8618,6 +8656,7 @@ export namespace cloudtasks {
              */
             message: string;
         }
+
     }
 
     export namespace v2beta2 {
@@ -8874,6 +8913,7 @@ export namespace cloudtasks {
              */
             lastAttemptStatus: outputs.cloudtasks.v2beta2.AttemptStatusResponse;
         }
+
     }
 
     export namespace v2beta3 {
@@ -9166,6 +9206,7 @@ export namespace cloudtasks {
              */
             message: string;
         }
+
     }
 }
 
@@ -9180,6 +9221,7 @@ export namespace cloudtrace {
              */
             destination: string;
         }
+
     }
 }
 
@@ -9696,6 +9738,7 @@ export namespace composer {
              */
             allowedIpRanges: outputs.composer.v1beta1.AllowedIpRangeResponse[];
         }
+
     }
 }
 
@@ -15032,6 +15075,7 @@ export namespace compute {
              */
             weight: number;
         }
+
     }
 
     export namespace beta {
@@ -24768,6 +24812,7 @@ export namespace container {
              */
             mode: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -27926,6 +27971,7 @@ export namespace containeranalysis {
              */
             name: string;
         }
+
     }
 }
 
@@ -28112,6 +28158,7 @@ export namespace datacatalog {
              */
             viewQuery: string;
         }
+
     }
 }
 
@@ -29052,6 +29099,7 @@ export namespace datafusion {
              */
             versionNumber: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -29164,6 +29212,7 @@ export namespace datafusion {
              */
             versionNumber: string;
         }
+
     }
 }
 
@@ -29857,6 +29906,7 @@ export namespace datamigration {
              */
             vpc: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -32533,6 +32583,7 @@ export namespace datastore {
              */
             name: string;
         }
+
     }
 }
 
@@ -33080,6 +33131,7 @@ export namespace deploymentmanager {
              */
             undeclaredProperties: string;
         }
+
     }
 
     export namespace v2 {
@@ -33367,6 +33419,7 @@ export namespace deploymentmanager {
              */
             imports: outputs.deploymentmanager.v2.ImportFileResponse[];
         }
+
     }
 
     export namespace v2beta {
@@ -33864,6 +33917,7 @@ export namespace deploymentmanager {
              */
             undeclaredProperties: string;
         }
+
     }
 }
 
@@ -34900,6 +34954,7 @@ export namespace dialogflow {
              */
             message: string;
         }
+
     }
 
     export namespace v2beta1 {
@@ -37088,6 +37143,7 @@ export namespace dialogflow {
              */
             message: string;
         }
+
     }
 
     export namespace v3beta1 {
@@ -38018,6 +38074,7 @@ export namespace dialogflow {
              */
             message: string;
         }
+
     }
 }
 
@@ -40075,6 +40132,7 @@ export namespace dlp {
              */
             seconds: number;
         }
+
     }
 }
 
@@ -40740,6 +40798,7 @@ export namespace domains {
              */
             sublocality: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -41008,6 +41067,7 @@ export namespace domains {
              */
             sublocality: string;
         }
+
     }
 }
 
@@ -41146,6 +41206,7 @@ export namespace eventarc {
              */
             pubsub: outputs.eventarc.v1.PubsubResponse;
         }
+
     }
 
     export namespace v1beta1 {
@@ -41282,6 +41343,7 @@ export namespace eventarc {
              */
             pubsub: outputs.eventarc.v1beta1.PubsubResponse;
         }
+
     }
 }
 
@@ -41356,6 +41418,7 @@ export namespace file {
              */
             squashMode: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -41428,6 +41491,7 @@ export namespace file {
              */
             squashMode: string;
         }
+
     }
 }
 
@@ -41738,6 +41802,7 @@ export namespace firebasehosting {
              */
             versionBytes: string;
         }
+
     }
 }
 
@@ -41818,6 +41883,7 @@ export namespace firebaseml {
              */
             sizeBytes: string;
         }
+
     }
 }
 
@@ -41860,6 +41926,7 @@ export namespace firebaserules {
              */
             files: outputs.firebaserules.v1.FileResponse[];
         }
+
     }
 }
 
@@ -41882,6 +41949,7 @@ export namespace firestore {
              */
             order: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -41898,6 +41966,7 @@ export namespace firestore {
              */
             mode: string;
         }
+
     }
 
     export namespace v1beta2 {
@@ -41918,6 +41987,7 @@ export namespace firestore {
              */
             order: string;
         }
+
     }
 }
 
@@ -42672,6 +42742,7 @@ export namespace genomics {
              */
             zones: string[];
         }
+
     }
 }
 
@@ -42826,6 +42897,7 @@ export namespace gkehub {
              */
             code: string;
         }
+
     }
 
     export namespace v1alpha {
@@ -43036,6 +43108,7 @@ export namespace gkehub {
              */
             displayName: string;
         }
+
     }
 
     export namespace v1alpha2 {
@@ -43374,6 +43447,7 @@ export namespace gkehub {
              */
             configMembership: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -44500,6 +44574,7 @@ export namespace healthcare {
              */
             y: number;
         }
+
     }
 }
 
@@ -44596,6 +44671,7 @@ export namespace iam {
              */
             issuerUri: string;
         }
+
     }
 }
 
@@ -44640,6 +44716,7 @@ export namespace iap {
              */
             title: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -44682,6 +44759,7 @@ export namespace iap {
              */
             title: string;
         }
+
     }
 }
 
@@ -44908,6 +44986,7 @@ export namespace jobs {
              */
             htmlSanitization: string;
         }
+
     }
 
     export namespace v4 {
@@ -45132,6 +45211,7 @@ export namespace jobs {
              */
             htmlSanitization: string;
         }
+
     }
 }
 
@@ -45180,6 +45260,7 @@ export namespace logging {
              */
             updateTime: string;
         }
+
     }
 }
 
@@ -45274,6 +45355,7 @@ export namespace managedidentities {
              */
             updateTime: string;
         }
+
     }
 
     export namespace v1alpha1 {
@@ -45366,6 +45448,7 @@ export namespace managedidentities {
              */
             updateTime: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -45458,6 +45541,7 @@ export namespace managedidentities {
              */
             updateTime: string;
         }
+
     }
 }
 
@@ -45524,6 +45608,7 @@ export namespace memcache {
              */
             zone: string;
         }
+
     }
 
     export namespace v1beta2 {
@@ -45592,6 +45677,7 @@ export namespace memcache {
              */
             zone: string;
         }
+
     }
 }
 
@@ -45910,6 +45996,7 @@ export namespace metastore {
              */
             updateTime: string;
         }
+
     }
 
     export namespace v1beta {
@@ -46226,6 +46313,7 @@ export namespace metastore {
              */
             updateTime: string;
         }
+
     }
 }
 
@@ -48391,6 +48479,7 @@ export namespace networkconnectivity {
              */
             virtualMachine: string;
         }
+
     }
 }
 
@@ -49073,6 +49162,7 @@ export namespace networkmanagement {
              */
             uri: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -49823,6 +49913,7 @@ export namespace networkmanagement {
              */
             uri: string;
         }
+
     }
 }
 
@@ -50509,6 +50600,7 @@ export namespace orgpolicy {
              */
             title: string;
         }
+
     }
 }
 
@@ -51727,6 +51819,7 @@ export namespace policysimulator {
              */
             year: number;
         }
+
     }
 
     export namespace v1beta1 {
@@ -51791,6 +51884,7 @@ export namespace policysimulator {
              */
             year: number;
         }
+
     }
 }
 
@@ -52402,6 +52496,7 @@ export namespace privateca {
              */
             value: string;
         }
+
     }
 }
 
@@ -52540,6 +52635,7 @@ export namespace pubsub {
              */
             schema: string;
         }
+
     }
 
     export namespace v1beta1a {
@@ -52552,6 +52648,7 @@ export namespace pubsub {
              */
             pushEndpoint: string;
         }
+
     }
 
     export namespace v1beta2 {
@@ -52626,6 +52723,7 @@ export namespace pubsub {
              */
             pushEndpoint: string;
         }
+
     }
 }
 
@@ -52682,6 +52780,7 @@ export namespace pubsublite {
              */
             period: string;
         }
+
     }
 }
 
@@ -52794,6 +52893,7 @@ export namespace recommendationengine {
              */
             stockState: string;
         }
+
     }
 }
 
@@ -52824,6 +52924,7 @@ export namespace redis {
              */
             sha1Fingerprint: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -52852,6 +52953,7 @@ export namespace redis {
              */
             sha1Fingerprint: string;
         }
+
     }
 }
 
@@ -52990,6 +53092,7 @@ export namespace remotebuildexecution {
              */
             vmImage: string;
         }
+
     }
 }
 
@@ -53034,6 +53137,7 @@ export namespace retail {
              */
             price: number;
         }
+
     }
 
     export namespace v2alpha {
@@ -53076,6 +53180,7 @@ export namespace retail {
              */
             price: number;
         }
+
     }
 
     export namespace v2beta {
@@ -53118,6 +53223,7 @@ export namespace retail {
              */
             price: number;
         }
+
     }
 }
 
@@ -54915,6 +55021,7 @@ export namespace runtimeconfig {
              */
             message: string;
         }
+
     }
 }
 
@@ -55179,6 +55286,7 @@ export namespace secretmanager {
              */
             replicas: outputs.secretmanager.v1beta1.ReplicaResponse[];
         }
+
     }
 }
 
@@ -55261,6 +55369,7 @@ export namespace securitycenter {
              */
             filter: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -55331,6 +55440,7 @@ export namespace securitycenter {
              */
             title: string;
         }
+
     }
 }
 
@@ -55397,6 +55507,7 @@ export namespace servicedirectory {
              */
             title: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -55461,6 +55572,7 @@ export namespace servicedirectory {
              */
             title: string;
         }
+
     }
 }
 
@@ -56536,6 +56648,7 @@ export namespace servicemanagement {
              */
             skipServiceControl: boolean;
         }
+
     }
 }
 
@@ -56626,6 +56739,7 @@ export namespace sourcerepo {
              */
             webhookId: string;
         }
+
     }
 }
 
@@ -56752,6 +56866,7 @@ export namespace spanner {
              */
             message: string;
         }
+
     }
 }
 
@@ -57853,6 +57968,7 @@ export namespace storage {
              */
             entityId: string;
         }
+
     }
 }
 
@@ -58111,6 +58227,7 @@ export namespace storagetransfer {
              */
             transferOptions: outputs.storagetransfer.v1.TransferOptionsResponse;
         }
+
     }
 }
 
@@ -59561,6 +59678,7 @@ export namespace tpu {
              */
             workerId: string;
         }
+
     }
 
     export namespace v1alpha1 {
@@ -59613,6 +59731,7 @@ export namespace tpu {
              */
             workerId: string;
         }
+
     }
 }
 
@@ -60481,6 +60600,7 @@ export namespace translate {
              */
             languageCodes: string[];
         }
+
     }
 
     export namespace v3beta1 {
@@ -60527,6 +60647,7 @@ export namespace translate {
              */
             languageCodes: string[];
         }
+
     }
 }
 
@@ -60605,6 +60726,7 @@ export namespace vision {
              */
             y: number;
         }
+
     }
 }
 
@@ -60623,6 +60745,7 @@ export namespace vpcaccess {
              */
             project: string;
         }
+
     }
 }
 
@@ -60711,6 +60834,7 @@ export namespace websecurityscanner {
              */
             scheduleTime: string;
         }
+
     }
 
     export namespace v1alpha {
@@ -60815,6 +60939,7 @@ export namespace websecurityscanner {
              */
             scheduleTime: string;
         }
+
     }
 
     export namespace v1beta {
@@ -60993,6 +61118,7 @@ export namespace websecurityscanner {
              */
             scheduleTime: string;
         }
+
     }
 }
 
@@ -61061,6 +61187,7 @@ export namespace workflowexecutions {
              */
             elements: outputs.workflowexecutions.v1.StackTraceElementResponse[];
         }
+
     }
 
     export namespace v1beta {
@@ -61127,5 +61254,6 @@ export namespace workflowexecutions {
              */
             elements: outputs.workflowexecutions.v1beta.StackTraceElementResponse[];
         }
+
     }
 }

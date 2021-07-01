@@ -27,9 +27,9 @@ class InstanceArgs:
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -44,9 +44,9 @@ class InstanceArgs:
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
+        :param pulumi.Input[Mapping[str, str]] labels: The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         :param pulumi.Input['NetworkConfigArgs'] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
+        :param pulumi.Input[Mapping[str, str]] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
         :param pulumi.Input['InstanceType'] type: Required. Instance type.
         :param pulumi.Input[str] version: Current version of Data Fusion.
@@ -212,14 +212,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -236,14 +236,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Map of additional options used to configure the behavior of Data Fusion instance.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -309,10 +309,10 @@ class Instance(pulumi.CustomResource):
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,
@@ -332,9 +332,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
+        :param pulumi.Input[Mapping[str, str]] labels: The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
+        :param pulumi.Input[Mapping[str, str]] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
         :param pulumi.Input['InstanceType'] type: Required. Instance type.
         :param pulumi.Input[str] version: Current version of Data Fusion.
@@ -373,10 +373,10 @@ class Instance(pulumi.CustomResource):
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,

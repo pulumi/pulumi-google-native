@@ -70,33 +70,9 @@ func GetMetadataImport(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetadataImport resources.
 type metadataImportState struct {
-	// The time when the metadata import was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Immutable. A database dump from a pre-existing metastore's database.
-	DatabaseDump *DatabaseDumpResponse `pulumi:"databaseDump"`
-	// The description of the metadata import.
-	Description *string `pulumi:"description"`
-	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
-	Name *string `pulumi:"name"`
-	// The current state of the metadata import.
-	State *string `pulumi:"state"`
-	// The time when the metadata import was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type MetadataImportState struct {
-	// The time when the metadata import was created.
-	CreateTime pulumi.StringPtrInput
-	// Immutable. A database dump from a pre-existing metastore's database.
-	DatabaseDump DatabaseDumpResponsePtrInput
-	// The description of the metadata import.
-	Description pulumi.StringPtrInput
-	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
-	Name pulumi.StringPtrInput
-	// The current state of the metadata import.
-	State pulumi.StringPtrInput
-	// The time when the metadata import was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (MetadataImportState) ElementType() reflect.Type {

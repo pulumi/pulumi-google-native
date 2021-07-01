@@ -13,8 +13,8 @@ __all__ = [
     'AggregationArgs',
     'AxisArgs',
     'ChartOptionsArgs',
-    'ColumnArgs',
     'ColumnLayoutArgs',
+    'ColumnArgs',
     'DataSetArgs',
     'EmptyArgs',
     'GaugeViewArgs',
@@ -22,15 +22,15 @@ __all__ = [
     'MosaicLayoutArgs',
     'PickTimeSeriesFilterArgs',
     'RatioPartArgs',
-    'RowArgs',
     'RowLayoutArgs',
+    'RowArgs',
     'ScorecardArgs',
     'SparkChartViewArgs',
     'TextArgs',
     'ThresholdArgs',
     'TileArgs',
-    'TimeSeriesFilterArgs',
     'TimeSeriesFilterRatioArgs',
+    'TimeSeriesFilterArgs',
     'TimeSeriesQueryArgs',
     'WidgetArgs',
     'XyChartArgs',
@@ -173,6 +173,30 @@ class ChartOptionsArgs:
 
 
 @pulumi.input_type
+class ColumnLayoutArgs:
+    def __init__(__self__, *,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['ColumnArgs']]]] = None):
+        """
+        A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
+        :param pulumi.Input[Sequence[pulumi.Input['ColumnArgs']]] columns: The columns of content to display.
+        """
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ColumnArgs']]]]:
+        """
+        The columns of content to display.
+        """
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ColumnArgs']]]]):
+        pulumi.set(self, "columns", value)
+
+
+@pulumi.input_type
 class ColumnArgs:
     def __init__(__self__, *,
                  weight: Optional[pulumi.Input[str]] = None,
@@ -210,30 +234,6 @@ class ColumnArgs:
     @widgets.setter
     def widgets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetArgs']]]]):
         pulumi.set(self, "widgets", value)
-
-
-@pulumi.input_type
-class ColumnLayoutArgs:
-    def __init__(__self__, *,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['ColumnArgs']]]] = None):
-        """
-        A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
-        :param pulumi.Input[Sequence[pulumi.Input['ColumnArgs']]] columns: The columns of content to display.
-        """
-        if columns is not None:
-            pulumi.set(__self__, "columns", columns)
-
-    @property
-    @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ColumnArgs']]]]:
-        """
-        The columns of content to display.
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ColumnArgs']]]]):
-        pulumi.set(self, "columns", value)
 
 
 @pulumi.input_type
@@ -534,6 +534,30 @@ class RatioPartArgs:
 
 
 @pulumi.input_type
+class RowLayoutArgs:
+    def __init__(__self__, *,
+                 rows: Optional[pulumi.Input[Sequence[pulumi.Input['RowArgs']]]] = None):
+        """
+        A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row.
+        :param pulumi.Input[Sequence[pulumi.Input['RowArgs']]] rows: The rows of content to display.
+        """
+        if rows is not None:
+            pulumi.set(__self__, "rows", rows)
+
+    @property
+    @pulumi.getter
+    def rows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RowArgs']]]]:
+        """
+        The rows of content to display.
+        """
+        return pulumi.get(self, "rows")
+
+    @rows.setter
+    def rows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RowArgs']]]]):
+        pulumi.set(self, "rows", value)
+
+
+@pulumi.input_type
 class RowArgs:
     def __init__(__self__, *,
                  weight: Optional[pulumi.Input[str]] = None,
@@ -571,30 +595,6 @@ class RowArgs:
     @widgets.setter
     def widgets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetArgs']]]]):
         pulumi.set(self, "widgets", value)
-
-
-@pulumi.input_type
-class RowLayoutArgs:
-    def __init__(__self__, *,
-                 rows: Optional[pulumi.Input[Sequence[pulumi.Input['RowArgs']]]] = None):
-        """
-        A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row.
-        :param pulumi.Input[Sequence[pulumi.Input['RowArgs']]] rows: The rows of content to display.
-        """
-        if rows is not None:
-            pulumi.set(__self__, "rows", rows)
-
-    @property
-    @pulumi.getter
-    def rows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RowArgs']]]]:
-        """
-        The rows of content to display.
-        """
-        return pulumi.get(self, "rows")
-
-    @rows.setter
-    def rows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RowArgs']]]]):
-        pulumi.set(self, "rows", value)
 
 
 @pulumi.input_type
@@ -910,78 +910,6 @@ class TileArgs:
 
 
 @pulumi.input_type
-class TimeSeriesFilterArgs:
-    def __init__(__self__, *,
-                 aggregation: Optional[pulumi.Input['AggregationArgs']] = None,
-                 filter: Optional[pulumi.Input[str]] = None,
-                 pick_time_series_filter: Optional[pulumi.Input['PickTimeSeriesFilterArgs']] = None,
-                 secondary_aggregation: Optional[pulumi.Input['AggregationArgs']] = None):
-        """
-        A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
-        :param pulumi.Input['AggregationArgs'] aggregation: By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
-        :param pulumi.Input[str] filter: Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-        :param pulumi.Input['PickTimeSeriesFilterArgs'] pick_time_series_filter: Ranking based time series filter.
-        :param pulumi.Input['AggregationArgs'] secondary_aggregation: Apply a second aggregation after aggregation is applied.
-        """
-        if aggregation is not None:
-            pulumi.set(__self__, "aggregation", aggregation)
-        if filter is not None:
-            pulumi.set(__self__, "filter", filter)
-        if pick_time_series_filter is not None:
-            pulumi.set(__self__, "pick_time_series_filter", pick_time_series_filter)
-        if secondary_aggregation is not None:
-            pulumi.set(__self__, "secondary_aggregation", secondary_aggregation)
-
-    @property
-    @pulumi.getter
-    def aggregation(self) -> Optional[pulumi.Input['AggregationArgs']]:
-        """
-        By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
-        """
-        return pulumi.get(self, "aggregation")
-
-    @aggregation.setter
-    def aggregation(self, value: Optional[pulumi.Input['AggregationArgs']]):
-        pulumi.set(self, "aggregation", value)
-
-    @property
-    @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-        """
-        return pulumi.get(self, "filter")
-
-    @filter.setter
-    def filter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "filter", value)
-
-    @property
-    @pulumi.getter(name="pickTimeSeriesFilter")
-    def pick_time_series_filter(self) -> Optional[pulumi.Input['PickTimeSeriesFilterArgs']]:
-        """
-        Ranking based time series filter.
-        """
-        return pulumi.get(self, "pick_time_series_filter")
-
-    @pick_time_series_filter.setter
-    def pick_time_series_filter(self, value: Optional[pulumi.Input['PickTimeSeriesFilterArgs']]):
-        pulumi.set(self, "pick_time_series_filter", value)
-
-    @property
-    @pulumi.getter(name="secondaryAggregation")
-    def secondary_aggregation(self) -> Optional[pulumi.Input['AggregationArgs']]:
-        """
-        Apply a second aggregation after aggregation is applied.
-        """
-        return pulumi.get(self, "secondary_aggregation")
-
-    @secondary_aggregation.setter
-    def secondary_aggregation(self, value: Optional[pulumi.Input['AggregationArgs']]):
-        pulumi.set(self, "secondary_aggregation", value)
-
-
-@pulumi.input_type
 class TimeSeriesFilterRatioArgs:
     def __init__(__self__, *,
                  denominator: Optional[pulumi.Input['RatioPartArgs']] = None,
@@ -1045,6 +973,78 @@ class TimeSeriesFilterRatioArgs:
     def secondary_aggregation(self) -> Optional[pulumi.Input['AggregationArgs']]:
         """
         Apply a second aggregation after the ratio is computed.
+        """
+        return pulumi.get(self, "secondary_aggregation")
+
+    @secondary_aggregation.setter
+    def secondary_aggregation(self, value: Optional[pulumi.Input['AggregationArgs']]):
+        pulumi.set(self, "secondary_aggregation", value)
+
+
+@pulumi.input_type
+class TimeSeriesFilterArgs:
+    def __init__(__self__, *,
+                 aggregation: Optional[pulumi.Input['AggregationArgs']] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 pick_time_series_filter: Optional[pulumi.Input['PickTimeSeriesFilterArgs']] = None,
+                 secondary_aggregation: Optional[pulumi.Input['AggregationArgs']] = None):
+        """
+        A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
+        :param pulumi.Input['AggregationArgs'] aggregation: By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+        :param pulumi.Input[str] filter: Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        :param pulumi.Input['PickTimeSeriesFilterArgs'] pick_time_series_filter: Ranking based time series filter.
+        :param pulumi.Input['AggregationArgs'] secondary_aggregation: Apply a second aggregation after aggregation is applied.
+        """
+        if aggregation is not None:
+            pulumi.set(__self__, "aggregation", aggregation)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if pick_time_series_filter is not None:
+            pulumi.set(__self__, "pick_time_series_filter", pick_time_series_filter)
+        if secondary_aggregation is not None:
+            pulumi.set(__self__, "secondary_aggregation", secondary_aggregation)
+
+    @property
+    @pulumi.getter
+    def aggregation(self) -> Optional[pulumi.Input['AggregationArgs']]:
+        """
+        By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+        """
+        return pulumi.get(self, "aggregation")
+
+    @aggregation.setter
+    def aggregation(self, value: Optional[pulumi.Input['AggregationArgs']]):
+        pulumi.set(self, "aggregation", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="pickTimeSeriesFilter")
+    def pick_time_series_filter(self) -> Optional[pulumi.Input['PickTimeSeriesFilterArgs']]:
+        """
+        Ranking based time series filter.
+        """
+        return pulumi.get(self, "pick_time_series_filter")
+
+    @pick_time_series_filter.setter
+    def pick_time_series_filter(self, value: Optional[pulumi.Input['PickTimeSeriesFilterArgs']]):
+        pulumi.set(self, "pick_time_series_filter", value)
+
+    @property
+    @pulumi.getter(name="secondaryAggregation")
+    def secondary_aggregation(self) -> Optional[pulumi.Input['AggregationArgs']]:
+        """
+        Apply a second aggregation after aggregation is applied.
         """
         return pulumi.get(self, "secondary_aggregation")
 

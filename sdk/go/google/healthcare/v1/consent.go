@@ -78,49 +78,9 @@ func GetConsent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Consent resources.
 type consentState struct {
-	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-	ConsentArtifact *string `pulumi:"consentArtifact"`
-	// Timestamp in UTC of when this Consent is considered expired.
-	ExpireTime *string `pulumi:"expireTime"`
-	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
-	Metadata map[string]string `pulumi:"metadata"`
-	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
-	Name *string `pulumi:"name"`
-	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-	Policies []GoogleCloudHealthcareV1ConsentPolicyResponse `pulumi:"policies"`
-	// The timestamp that the revision was created.
-	RevisionCreateTime *string `pulumi:"revisionCreateTime"`
-	// The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
-	RevisionId *string `pulumi:"revisionId"`
-	// Required. Indicates the current state of this Consent.
-	State *string `pulumi:"state"`
-	// Input only. The time to live for this Consent from when it is created.
-	Ttl *string `pulumi:"ttl"`
-	// Required. User's UUID provided by the client.
-	UserId *string `pulumi:"userId"`
 }
 
 type ConsentState struct {
-	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-	ConsentArtifact pulumi.StringPtrInput
-	// Timestamp in UTC of when this Consent is considered expired.
-	ExpireTime pulumi.StringPtrInput
-	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
-	Metadata pulumi.StringMapInput
-	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
-	Name pulumi.StringPtrInput
-	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-	Policies GoogleCloudHealthcareV1ConsentPolicyResponseArrayInput
-	// The timestamp that the revision was created.
-	RevisionCreateTime pulumi.StringPtrInput
-	// The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
-	RevisionId pulumi.StringPtrInput
-	// Required. Indicates the current state of this Consent.
-	State pulumi.StringPtrInput
-	// Input only. The time to live for this Consent from when it is created.
-	Ttl pulumi.StringPtrInput
-	// Required. User's UUID provided by the client.
-	UserId pulumi.StringPtrInput
 }
 
 func (ConsentState) ElementType() reflect.Type {

@@ -20,7 +20,7 @@ class AddressArgs:
                  address_type: Optional[pulumi.Input['AddressAddressType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input['AddressIpVersion']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input['AddressNetworkTier']] = None,
@@ -34,7 +34,7 @@ class AddressArgs:
         :param pulumi.Input['AddressAddressType'] address_type: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input['AddressIpVersion'] ip_version: The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the VPC_PEERING purpose.
         :param pulumi.Input['AddressNetworkTier'] network_tier: This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
@@ -144,14 +144,14 @@ class AddressArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -252,7 +252,7 @@ class Address(pulumi.CustomResource):
                  address_type: Optional[pulumi.Input['AddressAddressType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input['AddressIpVersion']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input['AddressNetworkTier']] = None,
@@ -272,7 +272,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input['AddressAddressType'] address_type: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input['AddressIpVersion'] ip_version: The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the VPC_PEERING purpose.
         :param pulumi.Input['AddressNetworkTier'] network_tier: This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
@@ -315,7 +315,7 @@ class Address(pulumi.CustomResource):
                  address_type: Optional[pulumi.Input['AddressAddressType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input['AddressIpVersion']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input['AddressNetworkTier']] = None,

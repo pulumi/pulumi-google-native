@@ -22,18 +22,18 @@ __all__ = [
     'ExtendedKeyUsageOptionsArgs',
     'IssuanceModesArgs',
     'IssuingOptionsArgs',
-    'KeyUsageArgs',
     'KeyUsageOptionsArgs',
+    'KeyUsageArgs',
     'KeyVersionSpecArgs',
     'ObjectIdArgs',
     'PublicKeyArgs',
     'ReusableConfigValuesArgs',
     'ReusableConfigWrapperArgs',
-    'SubjectArgs',
     'SubjectAltNamesArgs',
     'SubjectConfigArgs',
-    'SubordinateConfigArgs',
+    'SubjectArgs',
     'SubordinateConfigChainArgs',
+    'SubordinateConfigArgs',
     'X509ExtensionArgs',
 ]
 
@@ -773,62 +773,6 @@ class IssuingOptionsArgs:
 
 
 @pulumi.input_type
-class KeyUsageArgs:
-    def __init__(__self__, *,
-                 base_key_usage: Optional[pulumi.Input['KeyUsageOptionsArgs']] = None,
-                 extended_key_usage: Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']] = None,
-                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]] = None):
-        """
-        A KeyUsage describes key usage values that may appear in an X.509 certificate.
-        :param pulumi.Input['KeyUsageOptionsArgs'] base_key_usage: Describes high-level ways in which a key may be used.
-        :param pulumi.Input['ExtendedKeyUsageOptionsArgs'] extended_key_usage: Detailed scenarios in which a key may be used.
-        :param pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-        """
-        if base_key_usage is not None:
-            pulumi.set(__self__, "base_key_usage", base_key_usage)
-        if extended_key_usage is not None:
-            pulumi.set(__self__, "extended_key_usage", extended_key_usage)
-        if unknown_extended_key_usages is not None:
-            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
-
-    @property
-    @pulumi.getter(name="baseKeyUsage")
-    def base_key_usage(self) -> Optional[pulumi.Input['KeyUsageOptionsArgs']]:
-        """
-        Describes high-level ways in which a key may be used.
-        """
-        return pulumi.get(self, "base_key_usage")
-
-    @base_key_usage.setter
-    def base_key_usage(self, value: Optional[pulumi.Input['KeyUsageOptionsArgs']]):
-        pulumi.set(self, "base_key_usage", value)
-
-    @property
-    @pulumi.getter(name="extendedKeyUsage")
-    def extended_key_usage(self) -> Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']]:
-        """
-        Detailed scenarios in which a key may be used.
-        """
-        return pulumi.get(self, "extended_key_usage")
-
-    @extended_key_usage.setter
-    def extended_key_usage(self, value: Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']]):
-        pulumi.set(self, "extended_key_usage", value)
-
-    @property
-    @pulumi.getter(name="unknownExtendedKeyUsages")
-    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]]:
-        """
-        Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-        """
-        return pulumi.get(self, "unknown_extended_key_usages")
-
-    @unknown_extended_key_usages.setter
-    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]]):
-        pulumi.set(self, "unknown_extended_key_usages", value)
-
-
-@pulumi.input_type
 class KeyUsageOptionsArgs:
     def __init__(__self__, *,
                  cert_sign: Optional[pulumi.Input[bool]] = None,
@@ -978,6 +922,62 @@ class KeyUsageOptionsArgs:
     @key_encipherment.setter
     def key_encipherment(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "key_encipherment", value)
+
+
+@pulumi.input_type
+class KeyUsageArgs:
+    def __init__(__self__, *,
+                 base_key_usage: Optional[pulumi.Input['KeyUsageOptionsArgs']] = None,
+                 extended_key_usage: Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']] = None,
+                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]] = None):
+        """
+        A KeyUsage describes key usage values that may appear in an X.509 certificate.
+        :param pulumi.Input['KeyUsageOptionsArgs'] base_key_usage: Describes high-level ways in which a key may be used.
+        :param pulumi.Input['ExtendedKeyUsageOptionsArgs'] extended_key_usage: Detailed scenarios in which a key may be used.
+        :param pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        """
+        if base_key_usage is not None:
+            pulumi.set(__self__, "base_key_usage", base_key_usage)
+        if extended_key_usage is not None:
+            pulumi.set(__self__, "extended_key_usage", extended_key_usage)
+        if unknown_extended_key_usages is not None:
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
+
+    @property
+    @pulumi.getter(name="baseKeyUsage")
+    def base_key_usage(self) -> Optional[pulumi.Input['KeyUsageOptionsArgs']]:
+        """
+        Describes high-level ways in which a key may be used.
+        """
+        return pulumi.get(self, "base_key_usage")
+
+    @base_key_usage.setter
+    def base_key_usage(self, value: Optional[pulumi.Input['KeyUsageOptionsArgs']]):
+        pulumi.set(self, "base_key_usage", value)
+
+    @property
+    @pulumi.getter(name="extendedKeyUsage")
+    def extended_key_usage(self) -> Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']]:
+        """
+        Detailed scenarios in which a key may be used.
+        """
+        return pulumi.get(self, "extended_key_usage")
+
+    @extended_key_usage.setter
+    def extended_key_usage(self, value: Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']]):
+        pulumi.set(self, "extended_key_usage", value)
+
+    @property
+    @pulumi.getter(name="unknownExtendedKeyUsages")
+    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]]:
+        """
+        Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        """
+        return pulumi.get(self, "unknown_extended_key_usages")
+
+    @unknown_extended_key_usages.setter
+    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]]):
+        pulumi.set(self, "unknown_extended_key_usages", value)
 
 
 @pulumi.input_type
@@ -1213,126 +1213,6 @@ class ReusableConfigWrapperArgs:
 
 
 @pulumi.input_type
-class SubjectArgs:
-    def __init__(__self__, *,
-                 country_code: Optional[pulumi.Input[str]] = None,
-                 locality: Optional[pulumi.Input[str]] = None,
-                 organization: Optional[pulumi.Input[str]] = None,
-                 organizational_unit: Optional[pulumi.Input[str]] = None,
-                 postal_code: Optional[pulumi.Input[str]] = None,
-                 province: Optional[pulumi.Input[str]] = None,
-                 street_address: Optional[pulumi.Input[str]] = None):
-        """
-        Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate.
-        :param pulumi.Input[str] country_code: The country code of the subject.
-        :param pulumi.Input[str] locality: The locality or city of the subject.
-        :param pulumi.Input[str] organization: The organization of the subject.
-        :param pulumi.Input[str] organizational_unit: The organizational_unit of the subject.
-        :param pulumi.Input[str] postal_code: The postal code of the subject.
-        :param pulumi.Input[str] province: The province, territory, or regional state of the subject.
-        :param pulumi.Input[str] street_address: The street address of the subject.
-        """
-        if country_code is not None:
-            pulumi.set(__self__, "country_code", country_code)
-        if locality is not None:
-            pulumi.set(__self__, "locality", locality)
-        if organization is not None:
-            pulumi.set(__self__, "organization", organization)
-        if organizational_unit is not None:
-            pulumi.set(__self__, "organizational_unit", organizational_unit)
-        if postal_code is not None:
-            pulumi.set(__self__, "postal_code", postal_code)
-        if province is not None:
-            pulumi.set(__self__, "province", province)
-        if street_address is not None:
-            pulumi.set(__self__, "street_address", street_address)
-
-    @property
-    @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        The country code of the subject.
-        """
-        return pulumi.get(self, "country_code")
-
-    @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "country_code", value)
-
-    @property
-    @pulumi.getter
-    def locality(self) -> Optional[pulumi.Input[str]]:
-        """
-        The locality or city of the subject.
-        """
-        return pulumi.get(self, "locality")
-
-    @locality.setter
-    def locality(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "locality", value)
-
-    @property
-    @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[str]]:
-        """
-        The organization of the subject.
-        """
-        return pulumi.get(self, "organization")
-
-    @organization.setter
-    def organization(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "organization", value)
-
-    @property
-    @pulumi.getter(name="organizationalUnit")
-    def organizational_unit(self) -> Optional[pulumi.Input[str]]:
-        """
-        The organizational_unit of the subject.
-        """
-        return pulumi.get(self, "organizational_unit")
-
-    @organizational_unit.setter
-    def organizational_unit(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "organizational_unit", value)
-
-    @property
-    @pulumi.getter(name="postalCode")
-    def postal_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        The postal code of the subject.
-        """
-        return pulumi.get(self, "postal_code")
-
-    @postal_code.setter
-    def postal_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "postal_code", value)
-
-    @property
-    @pulumi.getter
-    def province(self) -> Optional[pulumi.Input[str]]:
-        """
-        The province, territory, or regional state of the subject.
-        """
-        return pulumi.get(self, "province")
-
-    @province.setter
-    def province(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "province", value)
-
-    @property
-    @pulumi.getter(name="streetAddress")
-    def street_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The street address of the subject.
-        """
-        return pulumi.get(self, "street_address")
-
-    @street_address.setter
-    def street_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "street_address", value)
-
-
-@pulumi.input_type
 class SubjectAltNamesArgs:
     def __init__(__self__, *,
                  custom_sans: Optional[pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]]] = None,
@@ -1477,6 +1357,150 @@ class SubjectConfigArgs:
 
 
 @pulumi.input_type
+class SubjectArgs:
+    def __init__(__self__, *,
+                 country_code: Optional[pulumi.Input[str]] = None,
+                 locality: Optional[pulumi.Input[str]] = None,
+                 organization: Optional[pulumi.Input[str]] = None,
+                 organizational_unit: Optional[pulumi.Input[str]] = None,
+                 postal_code: Optional[pulumi.Input[str]] = None,
+                 province: Optional[pulumi.Input[str]] = None,
+                 street_address: Optional[pulumi.Input[str]] = None):
+        """
+        Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate.
+        :param pulumi.Input[str] country_code: The country code of the subject.
+        :param pulumi.Input[str] locality: The locality or city of the subject.
+        :param pulumi.Input[str] organization: The organization of the subject.
+        :param pulumi.Input[str] organizational_unit: The organizational_unit of the subject.
+        :param pulumi.Input[str] postal_code: The postal code of the subject.
+        :param pulumi.Input[str] province: The province, territory, or regional state of the subject.
+        :param pulumi.Input[str] street_address: The street address of the subject.
+        """
+        if country_code is not None:
+            pulumi.set(__self__, "country_code", country_code)
+        if locality is not None:
+            pulumi.set(__self__, "locality", locality)
+        if organization is not None:
+            pulumi.set(__self__, "organization", organization)
+        if organizational_unit is not None:
+            pulumi.set(__self__, "organizational_unit", organizational_unit)
+        if postal_code is not None:
+            pulumi.set(__self__, "postal_code", postal_code)
+        if province is not None:
+            pulumi.set(__self__, "province", province)
+        if street_address is not None:
+            pulumi.set(__self__, "street_address", street_address)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The country code of the subject.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "country_code", value)
+
+    @property
+    @pulumi.getter
+    def locality(self) -> Optional[pulumi.Input[str]]:
+        """
+        The locality or city of the subject.
+        """
+        return pulumi.get(self, "locality")
+
+    @locality.setter
+    def locality(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locality", value)
+
+    @property
+    @pulumi.getter
+    def organization(self) -> Optional[pulumi.Input[str]]:
+        """
+        The organization of the subject.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization", value)
+
+    @property
+    @pulumi.getter(name="organizationalUnit")
+    def organizational_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The organizational_unit of the subject.
+        """
+        return pulumi.get(self, "organizational_unit")
+
+    @organizational_unit.setter
+    def organizational_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organizational_unit", value)
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The postal code of the subject.
+        """
+        return pulumi.get(self, "postal_code")
+
+    @postal_code.setter
+    def postal_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "postal_code", value)
+
+    @property
+    @pulumi.getter
+    def province(self) -> Optional[pulumi.Input[str]]:
+        """
+        The province, territory, or regional state of the subject.
+        """
+        return pulumi.get(self, "province")
+
+    @province.setter
+    def province(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "province", value)
+
+    @property
+    @pulumi.getter(name="streetAddress")
+    def street_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The street address of the subject.
+        """
+        return pulumi.get(self, "street_address")
+
+    @street_address.setter
+    def street_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "street_address", value)
+
+
+@pulumi.input_type
+class SubordinateConfigChainArgs:
+    def __init__(__self__, *,
+                 pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
+        """
+        if pem_certificates is not None:
+            pulumi.set(__self__, "pem_certificates", pem_certificates)
+
+    @property
+    @pulumi.getter(name="pemCertificates")
+    def pem_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required. Expected to be in leaf-to-root order according to RFC 5246.
+        """
+        return pulumi.get(self, "pem_certificates")
+
+    @pem_certificates.setter
+    def pem_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pem_certificates", value)
+
+
+@pulumi.input_type
 class SubordinateConfigArgs:
     def __init__(__self__, *,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
@@ -1514,30 +1538,6 @@ class SubordinateConfigArgs:
     @pem_issuer_chain.setter
     def pem_issuer_chain(self, value: Optional[pulumi.Input['SubordinateConfigChainArgs']]):
         pulumi.set(self, "pem_issuer_chain", value)
-
-
-@pulumi.input_type
-class SubordinateConfigChainArgs:
-    def __init__(__self__, *,
-                 pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
-        """
-        if pem_certificates is not None:
-            pulumi.set(__self__, "pem_certificates", pem_certificates)
-
-    @property
-    @pulumi.getter(name="pemCertificates")
-    def pem_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. Expected to be in leaf-to-root order according to RFC 5246.
-        """
-        return pulumi.get(self, "pem_certificates")
-
-    @pem_certificates.setter
-    def pem_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "pem_certificates", value)
 
 
 @pulumi.input_type

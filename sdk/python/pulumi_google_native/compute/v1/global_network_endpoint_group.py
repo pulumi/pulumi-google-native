@@ -17,7 +17,7 @@ __all__ = ['GlobalNetworkEndpointGroupArgs', 'GlobalNetworkEndpointGroup']
 class GlobalNetworkEndpointGroupArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  app_engine: Optional[pulumi.Input['NetworkEndpointGroupAppEngineArgs']] = None,
                  cloud_function: Optional[pulumi.Input['NetworkEndpointGroupCloudFunctionArgs']] = None,
                  cloud_run: Optional[pulumi.Input['NetworkEndpointGroupCloudRunArgs']] = None,
@@ -30,7 +30,7 @@ class GlobalNetworkEndpointGroupArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GlobalNetworkEndpointGroup resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Metadata defined as annotations on the network endpoint group.
+        :param pulumi.Input[Mapping[str, str]] annotations: Metadata defined as annotations on the network endpoint group.
         :param pulumi.Input['NetworkEndpointGroupAppEngineArgs'] app_engine: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         :param pulumi.Input['NetworkEndpointGroupCloudFunctionArgs'] cloud_function: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         :param pulumi.Input['NetworkEndpointGroupCloudRunArgs'] cloud_run: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
@@ -76,14 +76,14 @@ class GlobalNetworkEndpointGroupArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Metadata defined as annotations on the network endpoint group.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -209,7 +209,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  app_engine: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']]] = None,
                  cloud_function: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']]] = None,
                  cloud_run: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']]] = None,
@@ -227,7 +227,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Metadata defined as annotations on the network endpoint group.
+        :param pulumi.Input[Mapping[str, str]] annotations: Metadata defined as annotations on the network endpoint group.
         :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']] app_engine: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']] cloud_function: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']] cloud_run: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
@@ -262,7 +262,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  app_engine: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']]] = None,
                  cloud_function: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']]] = None,
                  cloud_run: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']]] = None,

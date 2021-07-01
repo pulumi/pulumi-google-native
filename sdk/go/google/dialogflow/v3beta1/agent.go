@@ -74,53 +74,9 @@ func GetAgent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Agent resources.
 type agentState struct {
-	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
-	AvatarUri *string `pulumi:"avatarUri"`
-	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
-	DefaultLanguageCode *string `pulumi:"defaultLanguageCode"`
-	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the agent, unique within the location.
-	DisplayName *string `pulumi:"displayName"`
-	// Indicates if automatic spell correction is enabled in detect intent requests.
-	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
-	// Indicates if stackdriver logging is enabled for the agent.
-	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
-	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-	Name *string `pulumi:"name"`
-	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
-	SecuritySettings *string `pulumi:"securitySettings"`
-	// Speech recognition related settings.
-	SpeechToTextSettings *GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse `pulumi:"speechToTextSettings"`
-	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
-	StartFlow *string `pulumi:"startFlow"`
-	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-	TimeZone *string `pulumi:"timeZone"`
 }
 
 type AgentState struct {
-	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
-	AvatarUri pulumi.StringPtrInput
-	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
-	DefaultLanguageCode pulumi.StringPtrInput
-	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the agent, unique within the location.
-	DisplayName pulumi.StringPtrInput
-	// Indicates if automatic spell correction is enabled in detect intent requests.
-	EnableSpellCorrection pulumi.BoolPtrInput
-	// Indicates if stackdriver logging is enabled for the agent.
-	EnableStackdriverLogging pulumi.BoolPtrInput
-	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-	Name pulumi.StringPtrInput
-	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
-	SecuritySettings pulumi.StringPtrInput
-	// Speech recognition related settings.
-	SpeechToTextSettings GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponsePtrInput
-	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
-	StartFlow pulumi.StringPtrInput
-	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-	TimeZone pulumi.StringPtrInput
 }
 
 func (AgentState) ElementType() reflect.Type {

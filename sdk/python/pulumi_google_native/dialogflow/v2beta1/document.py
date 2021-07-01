@@ -24,7 +24,7 @@ class DocumentArgs:
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
                  import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
                  knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  raw_content: Optional[pulumi.Input[str]] = None):
@@ -35,7 +35,7 @@ class DocumentArgs:
         :param pulumi.Input[str] display_name: Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
         :param pulumi.Input[bool] enable_auto_reload: Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
         :param pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]] knowledge_types: Required. The knowledge type of document content.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
+        :param pulumi.Input[Mapping[str, str]] metadata: Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
         :param pulumi.Input[str] mime_type: Required. The MIME type of this document.
         :param pulumi.Input[str] name: Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
         :param pulumi.Input[str] raw_content: The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
@@ -162,14 +162,14 @@ class DocumentArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -222,7 +222,7 @@ class Document(pulumi.CustomResource):
                  knowledge_base_id: Optional[pulumi.Input[str]] = None,
                  knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -238,7 +238,7 @@ class Document(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
         :param pulumi.Input[bool] enable_auto_reload: Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
         :param pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]] knowledge_types: Required. The knowledge type of document content.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
+        :param pulumi.Input[Mapping[str, str]] metadata: Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
         :param pulumi.Input[str] mime_type: Required. The MIME type of this document.
         :param pulumi.Input[str] name: Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
         :param pulumi.Input[str] raw_content: The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
@@ -275,7 +275,7 @@ class Document(pulumi.CustomResource):
                  knowledge_base_id: Optional[pulumi.Input[str]] = None,
                  knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

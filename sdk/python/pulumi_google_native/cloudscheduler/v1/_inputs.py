@@ -24,14 +24,14 @@ class AppEngineHttpTargetArgs:
     def __init__(__self__, *,
                  app_engine_routing: Optional[pulumi.Input['AppEngineRoutingArgs']] = None,
                  body: Optional[pulumi.Input[str]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 headers: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  http_method: Optional[pulumi.Input['AppEngineHttpTargetHttpMethod']] = None,
                  relative_uri: Optional[pulumi.Input[str]] = None):
         """
         App Engine target. The job will be pushed to a job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. Error 503 is considered an App Engine system error instead of an application error. Requests returning error 503 will be retried regardless of retry configuration and not counted against retry counts. Any other response code, or a failure to receive a response before the deadline, constitutes a failed attempt.
         :param pulumi.Input['AppEngineRoutingArgs'] app_engine_routing: App Engine Routing setting for the job.
         :param pulumi.Input[str] body: Body. HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Scheduler will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. * `X-CloudScheduler`: This header will be set to true. If the job has an body, Cloud Scheduler sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explictly setting `Content-Type` to a particular media type when the job is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Scheduler. This value is output only. It cannot be changed. The headers below are output only. They cannot be set or overridden: * `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain job-specific information, are also be sent to the job handler.
+        :param pulumi.Input[Mapping[str, str]] headers: HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Scheduler will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. * `X-CloudScheduler`: This header will be set to true. If the job has an body, Cloud Scheduler sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explictly setting `Content-Type` to a particular media type when the job is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Scheduler. This value is output only. It cannot be changed. The headers below are output only. They cannot be set or overridden: * `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain job-specific information, are also be sent to the job handler.
         :param pulumi.Input['AppEngineHttpTargetHttpMethod'] http_method: The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
         :param pulumi.Input[str] relative_uri: The relative URI. The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path, query string arguments, and `#` fragments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
         """
@@ -72,14 +72,14 @@ class AppEngineHttpTargetArgs:
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def headers(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Scheduler will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. * `X-CloudScheduler`: This header will be set to true. If the job has an body, Cloud Scheduler sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explictly setting `Content-Type` to a particular media type when the job is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Scheduler. This value is output only. It cannot be changed. The headers below are output only. They cannot be set or overridden: * `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain job-specific information, are also be sent to the job handler.
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def headers(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "headers", value)
 
     @property
@@ -167,7 +167,7 @@ class AppEngineRoutingArgs:
 class HttpTargetArgs:
     def __init__(__self__, *,
                  body: Optional[pulumi.Input[str]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 headers: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  http_method: Optional[pulumi.Input['HttpTargetHttpMethod']] = None,
                  oauth_token: Optional[pulumi.Input['OAuthTokenArgs']] = None,
                  oidc_token: Optional[pulumi.Input['OidcTokenArgs']] = None,
@@ -175,7 +175,7 @@ class HttpTargetArgs:
         """
         Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered.
         :param pulumi.Input[str] body: HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The user can specify HTTP request headers to send with the job's HTTP request. This map contains the header field names and values. Repeated headers are not supported, but a header value can contain commas. These headers represent a subset of the headers that will accompany the job's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: - Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be less than 80KB.
+        :param pulumi.Input[Mapping[str, str]] headers: The user can specify HTTP request headers to send with the job's HTTP request. This map contains the header field names and values. Repeated headers are not supported, but a header value can contain commas. These headers represent a subset of the headers that will accompany the job's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: - Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be less than 80KB.
         :param pulumi.Input['HttpTargetHttpMethod'] http_method: Which HTTP method to use for the request.
         :param pulumi.Input['OAuthTokenArgs'] oauth_token: If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
         :param pulumi.Input['OidcTokenArgs'] oidc_token: If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
@@ -208,14 +208,14 @@ class HttpTargetArgs:
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def headers(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The user can specify HTTP request headers to send with the job's HTTP request. This map contains the header field names and values. Repeated headers are not supported, but a header value can contain commas. These headers represent a subset of the headers that will accompany the job's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: - Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be less than 80KB.
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def headers(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "headers", value)
 
     @property
@@ -350,12 +350,12 @@ class OidcTokenArgs:
 @pulumi.input_type
 class PubsubTargetArgs:
     def __init__(__self__, *,
-                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 attributes: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None):
         """
         Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
+        :param pulumi.Input[Mapping[str, str]] attributes: Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
         :param pulumi.Input[str] data: The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
         :param pulumi.Input[str] topic_name: Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
         """
@@ -368,14 +368,14 @@ class PubsubTargetArgs:
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def attributes(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
         """
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def attributes(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "attributes", value)
 
     @property

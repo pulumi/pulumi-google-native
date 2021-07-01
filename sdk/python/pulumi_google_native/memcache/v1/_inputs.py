@@ -57,24 +57,24 @@ class InstanceMessageArgs:
 @pulumi.input_type
 class MemcacheParametersArgs:
     def __init__(__self__, *,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 params: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: User defined set of parameters to use in the memcached process.
+        :param pulumi.Input[Mapping[str, str]] params: User defined set of parameters to use in the memcached process.
         """
         if params is not None:
             pulumi.set(__self__, "params", params)
 
     @property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def params(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         User defined set of parameters to use in the memcached process.
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def params(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "params", value)
 
 

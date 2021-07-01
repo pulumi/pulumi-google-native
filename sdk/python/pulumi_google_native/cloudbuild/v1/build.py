@@ -11,10 +11,10 @@ from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['BuildArgs', 'Build']
+__all__ = ['BuildInitArgs', 'Build']
 
 @pulumi.input_type
-class BuildArgs:
+class BuildInitArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
@@ -29,7 +29,7 @@ class BuildArgs:
                  service_account: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input['SourceArgs']] = None,
                  steps: Optional[pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]] = None,
-                 substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 substitutions: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
@@ -44,7 +44,7 @@ class BuildArgs:
         :param pulumi.Input[str] service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
         :param pulumi.Input['SourceArgs'] source: The location of the source files to build.
         :param pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]] steps: Required. The operations to be performed on the workspace.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for `Build` resource.
+        :param pulumi.Input[Mapping[str, str]] substitutions: Substitutions data for `Build` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
         """
@@ -227,14 +227,14 @@ class BuildArgs:
 
     @property
     @pulumi.getter
-    def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def substitutions(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Substitutions data for `Build` resource.
         """
         return pulumi.get(self, "substitutions")
 
     @substitutions.setter
-    def substitutions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def substitutions(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "substitutions", value)
 
     @property
@@ -280,7 +280,7 @@ class Build(pulumi.CustomResource):
                  service_account: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
                  steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildStepArgs']]]]] = None,
-                 substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 substitutions: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -299,7 +299,7 @@ class Build(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
         :param pulumi.Input[pulumi.InputType['SourceArgs']] source: The location of the source files to build.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildStepArgs']]]] steps: Required. The operations to be performed on the workspace.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for `Build` resource.
+        :param pulumi.Input[Mapping[str, str]] substitutions: Substitutions data for `Build` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
         """
@@ -307,18 +307,18 @@ class Build(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BuildArgs,
+                 args: BuildInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
 
         :param str resource_name: The name of the resource.
-        :param BuildArgs args: The arguments to use to populate this resource's properties.
+        :param BuildInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BuildArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BuildInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -340,7 +340,7 @@ class Build(pulumi.CustomResource):
                  service_account: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
                  steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildStepArgs']]]]] = None,
-                 substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 substitutions: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -353,7 +353,7 @@ class Build(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BuildArgs.__new__(BuildArgs)
+            __props__ = BuildInitArgs.__new__(BuildInitArgs)
 
             __props__.__dict__["artifacts"] = artifacts
             __props__.__dict__["available_secrets"] = available_secrets
@@ -408,7 +408,7 @@ class Build(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = BuildArgs.__new__(BuildArgs)
+        __props__ = BuildInitArgs.__new__(BuildInitArgs)
 
         __props__.__dict__["artifacts"] = None
         __props__.__dict__["available_secrets"] = None

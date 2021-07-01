@@ -26,7 +26,7 @@ class JobArgs:
                  environment: Optional[pulumi.Input['EnvironmentArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input['JobMetadataArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pipeline_description: Optional[pulumi.Input['PipelineDescriptionArgs']] = None,
                  replace_job_id: Optional[pulumi.Input[str]] = None,
@@ -38,7 +38,7 @@ class JobArgs:
                  steps: Optional[pulumi.Input[Sequence[pulumi.Input['StepArgs']]]] = None,
                  steps_location: Optional[pulumi.Input[str]] = None,
                  temp_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  type: Optional[pulumi.Input['JobType']] = None,
                  view: Optional[pulumi.Input[str]] = None):
         """
@@ -53,7 +53,7 @@ class JobArgs:
         :param pulumi.Input['EnvironmentArgs'] environment: The environment for the job.
         :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
         :param pulumi.Input['JobMetadataArgs'] job_metadata: This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
+        :param pulumi.Input[Mapping[str, str]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] name: The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
         :param pulumi.Input['PipelineDescriptionArgs'] pipeline_description: Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
         :param pulumi.Input[str] replace_job_id: If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
@@ -65,7 +65,7 @@ class JobArgs:
         :param pulumi.Input[Sequence[pulumi.Input['StepArgs']]] steps: Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
         :param pulumi.Input[str] steps_location: The Cloud Storage location where the steps are stored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] temp_files: A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
+        :param pulumi.Input[Mapping[str, str]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
         :param pulumi.Input['JobType'] type: The type of Cloud Dataflow job.
         """
         pulumi.set(__self__, "location", location)
@@ -239,14 +239,14 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -383,14 +383,14 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="transformNameMapping")
-    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
         """
         return pulumi.get(self, "transform_name_mapping")
 
     @transform_name_mapping.setter
-    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "transform_name_mapping", value)
 
     @property
@@ -428,7 +428,7 @@ class Job(pulumi.CustomResource):
                  environment: Optional[pulumi.Input[pulumi.InputType['EnvironmentArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input[pulumi.InputType['JobMetadataArgs']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pipeline_description: Optional[pulumi.Input[pulumi.InputType['PipelineDescriptionArgs']]] = None,
@@ -442,7 +442,7 @@ class Job(pulumi.CustomResource):
                  steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StepArgs']]]]] = None,
                  steps_location: Optional[pulumi.Input[str]] = None,
                  temp_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  type: Optional[pulumi.Input['JobType']] = None,
                  view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -459,7 +459,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EnvironmentArgs']] environment: The environment for the job.
         :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
         :param pulumi.Input[pulumi.InputType['JobMetadataArgs']] job_metadata: This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
+        :param pulumi.Input[Mapping[str, str]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
         :param pulumi.Input[str] name: The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
         :param pulumi.Input[pulumi.InputType['PipelineDescriptionArgs']] pipeline_description: Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
@@ -473,7 +473,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StepArgs']]]] steps: Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
         :param pulumi.Input[str] steps_location: The Cloud Storage location where the steps are stored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] temp_files: A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
+        :param pulumi.Input[Mapping[str, str]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
         :param pulumi.Input['JobType'] type: The type of Cloud Dataflow job.
         """
         ...
@@ -508,7 +508,7 @@ class Job(pulumi.CustomResource):
                  environment: Optional[pulumi.Input[pulumi.InputType['EnvironmentArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input[pulumi.InputType['JobMetadataArgs']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pipeline_description: Optional[pulumi.Input[pulumi.InputType['PipelineDescriptionArgs']]] = None,
@@ -522,7 +522,7 @@ class Job(pulumi.CustomResource):
                  steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StepArgs']]]]] = None,
                  steps_location: Optional[pulumi.Input[str]] = None,
                  temp_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  type: Optional[pulumi.Input['JobType']] = None,
                  view: Optional[pulumi.Input[str]] = None,
                  __props__=None):

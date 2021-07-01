@@ -21,14 +21,14 @@ class AliasArgs:
                  alias: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]]] = None,
                  ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Alias resource.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "format", format)
@@ -118,14 +118,14 @@ class AliasArgs:
 
     @property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]]]:
         """
         Application specific response metadata. Must be set in the first response for streaming APIs.
         """
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]]]):
         pulumi.set(self, "extensions", value)
 
     @property
@@ -156,7 +156,7 @@ class Alias(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None,
@@ -170,7 +170,7 @@ class Alias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
         ...
     @overload
@@ -200,7 +200,7 @@ class Alias(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, str]]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None,

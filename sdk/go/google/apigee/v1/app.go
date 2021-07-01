@@ -78,61 +78,9 @@ func GetApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering App resources.
 type appState struct {
-	// List of API products associated with the developer app.
-	ApiProducts []string `pulumi:"apiProducts"`
-	// Developer app family.
-	AppFamily *string `pulumi:"appFamily"`
-	// ID of the developer app.
-	AppId *string `pulumi:"appId"`
-	// List of attributes for the developer app.
-	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
-	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
-	CallbackUrl *string `pulumi:"callbackUrl"`
-	// Time the developer app was created in milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
-	Credentials []GoogleCloudApigeeV1CredentialResponse `pulumi:"credentials"`
-	// ID of the developer.
-	DeveloperId *string `pulumi:"developerId"`
-	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
-	KeyExpiresIn *string `pulumi:"keyExpiresIn"`
-	// Time the developer app was modified in milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// Name of the developer app.
-	Name *string `pulumi:"name"`
-	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
-	Scopes []string `pulumi:"scopes"`
-	// Status of the credential. Valid values include `approved` or `revoked`.
-	Status *string `pulumi:"status"`
 }
 
 type AppState struct {
-	// List of API products associated with the developer app.
-	ApiProducts pulumi.StringArrayInput
-	// Developer app family.
-	AppFamily pulumi.StringPtrInput
-	// ID of the developer app.
-	AppId pulumi.StringPtrInput
-	// List of attributes for the developer app.
-	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput
-	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
-	CallbackUrl pulumi.StringPtrInput
-	// Time the developer app was created in milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
-	Credentials GoogleCloudApigeeV1CredentialResponseArrayInput
-	// ID of the developer.
-	DeveloperId pulumi.StringPtrInput
-	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
-	KeyExpiresIn pulumi.StringPtrInput
-	// Time the developer app was modified in milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
-	// Name of the developer app.
-	Name pulumi.StringPtrInput
-	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
-	Scopes pulumi.StringArrayInput
-	// Status of the credential. Valid values include `approved` or `revoked`.
-	Status pulumi.StringPtrInput
 }
 
 func (AppState) ElementType() reflect.Type {

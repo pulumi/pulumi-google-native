@@ -76,57 +76,9 @@ func GetRegistration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Registration resources.
 type registrationState struct {
-	// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
-	ContactSettings *ContactSettingsResponse `pulumi:"contactSettings"`
-	// The creation timestamp of the `Registration` resource.
-	CreateTime *string `pulumi:"createTime"`
-	// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
-	DnsSettings *DnsSettingsResponse `pulumi:"dnsSettings"`
-	// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
-	DomainName *string `pulumi:"domainName"`
-	// The expiration timestamp of the `Registration`.
-	ExpireTime *string `pulumi:"expireTime"`
-	// The set of issues with the `Registration` that require attention.
-	Issues []string `pulumi:"issues"`
-	// Set of labels associated with the `Registration`.
-	Labels map[string]string `pulumi:"labels"`
-	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
-	ManagementSettings *ManagementSettingsResponse `pulumi:"managementSettings"`
-	// Name of the `Registration` resource, in the format `projects/*/locations/*/registrations/`.
-	Name *string `pulumi:"name"`
-	// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not yet been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
-	PendingContactSettings *ContactSettingsResponse `pulumi:"pendingContactSettings"`
-	// The state of the `Registration`
-	State *string `pulumi:"state"`
-	// Set of options for the `contact_settings.privacy` field that this `Registration` supports.
-	SupportedPrivacy []string `pulumi:"supportedPrivacy"`
 }
 
 type RegistrationState struct {
-	// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
-	ContactSettings ContactSettingsResponsePtrInput
-	// The creation timestamp of the `Registration` resource.
-	CreateTime pulumi.StringPtrInput
-	// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
-	DnsSettings DnsSettingsResponsePtrInput
-	// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
-	DomainName pulumi.StringPtrInput
-	// The expiration timestamp of the `Registration`.
-	ExpireTime pulumi.StringPtrInput
-	// The set of issues with the `Registration` that require attention.
-	Issues pulumi.StringArrayInput
-	// Set of labels associated with the `Registration`.
-	Labels pulumi.StringMapInput
-	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
-	ManagementSettings ManagementSettingsResponsePtrInput
-	// Name of the `Registration` resource, in the format `projects/*/locations/*/registrations/`.
-	Name pulumi.StringPtrInput
-	// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not yet been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
-	PendingContactSettings ContactSettingsResponsePtrInput
-	// The state of the `Registration`
-	State pulumi.StringPtrInput
-	// Set of options for the `contact_settings.privacy` field that this `Registration` supports.
-	SupportedPrivacy pulumi.StringArrayInput
 }
 
 func (RegistrationState) ElementType() reflect.Type {

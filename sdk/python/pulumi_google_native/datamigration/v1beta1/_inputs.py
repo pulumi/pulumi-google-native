@@ -193,14 +193,14 @@ class CloudSqlSettingsArgs:
                  auto_storage_increase: Optional[pulumi.Input[bool]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
                  data_disk_type: Optional[pulumi.Input['CloudSqlSettingsDataDiskType']] = None,
-                 database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 database_flags: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  database_version: Optional[pulumi.Input['CloudSqlSettingsDatabaseVersion']] = None,
                  ip_config: Optional[pulumi.Input['SqlIpConfigArgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  source_id: Optional[pulumi.Input[str]] = None,
                  storage_auto_resize_limit: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Settings for creating a Cloud SQL database instance.
@@ -208,14 +208,14 @@ class CloudSqlSettingsArgs:
         :param pulumi.Input[bool] auto_storage_increase: [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
         :param pulumi.Input[str] data_disk_size_gb: The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         :param pulumi.Input['CloudSqlSettingsDataDiskType'] data_disk_type: The type of storage: `PD_SSD` (default) or `PD_HDD`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[Mapping[str, str]] database_flags: The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input['CloudSqlSettingsDatabaseVersion'] database_version: The database engine type and version.
         :param pulumi.Input['SqlIpConfigArgs'] ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         :param pulumi.Input[str] root_password: Input only. Initial root password.
         :param pulumi.Input[str] source_id: The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
+        :param pulumi.Input[Mapping[str, str]] user_labels: The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
         :param pulumi.Input[str] zone: The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
         """
         if activation_policy is not None:
@@ -295,14 +295,14 @@ class CloudSqlSettingsArgs:
 
     @property
     @pulumi.getter(name="databaseFlags")
-    def database_flags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def database_flags(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "database_flags")
 
     @database_flags.setter
-    def database_flags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def database_flags(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "database_flags", value)
 
     @property
@@ -379,14 +379,14 @@ class CloudSqlSettingsArgs:
 
     @property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
         """
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "user_labels", value)
 
     @property

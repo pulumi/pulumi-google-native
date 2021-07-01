@@ -111,7 +111,7 @@ export interface TopicArgs {
     /**
      * See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
      */

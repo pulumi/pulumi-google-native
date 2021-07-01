@@ -68,41 +68,9 @@ func GetCapacityCommitment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CapacityCommitment resources.
 type capacityCommitmentState struct {
-	// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-	CommitmentEndTime *string `pulumi:"commitmentEndTime"`
-	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-	CommitmentStartTime *string `pulumi:"commitmentStartTime"`
-	// For FAILED commitment plan, provides the reason of failure.
-	FailureStatus *StatusResponse `pulumi:"failureStatus"`
-	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
-	Name *string `pulumi:"name"`
-	// Capacity commitment commitment plan.
-	Plan *string `pulumi:"plan"`
-	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
-	RenewalPlan *string `pulumi:"renewalPlan"`
-	// Number of slots in this commitment.
-	SlotCount *string `pulumi:"slotCount"`
-	// State of the commitment.
-	State *string `pulumi:"state"`
 }
 
 type CapacityCommitmentState struct {
-	// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-	CommitmentEndTime pulumi.StringPtrInput
-	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-	CommitmentStartTime pulumi.StringPtrInput
-	// For FAILED commitment plan, provides the reason of failure.
-	FailureStatus StatusResponsePtrInput
-	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
-	Name pulumi.StringPtrInput
-	// Capacity commitment commitment plan.
-	Plan pulumi.StringPtrInput
-	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
-	RenewalPlan pulumi.StringPtrInput
-	// Number of slots in this commitment.
-	SlotCount pulumi.StringPtrInput
-	// State of the commitment.
-	State pulumi.StringPtrInput
 }
 
 func (CapacityCommitmentState) ElementType() reflect.Type {

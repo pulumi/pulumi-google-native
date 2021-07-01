@@ -20,7 +20,7 @@ class ConnectivityTestArgs:
                  test_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['EndpointArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -29,7 +29,7 @@ class ConnectivityTestArgs:
         The set of arguments for constructing a ConnectivityTest resource.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         :param pulumi.Input['EndpointArgs'] destination: Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test}`
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
@@ -96,14 +96,14 @@ class ConnectivityTestArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -162,7 +162,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -177,7 +177,7 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         :param pulumi.Input[pulumi.InputType['EndpointArgs']] destination: Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[Mapping[str, str]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test}`
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
@@ -209,7 +209,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,

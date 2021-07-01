@@ -91,81 +91,9 @@ func GetCertificateAuthority(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CertificateAuthority resources.
 type certificateAuthorityState struct {
-	// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
-	AccessUrls *AccessUrlsResponse `pulumi:"accessUrls"`
-	// A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
-	CaCertificateDescriptions []CertificateDescriptionResponse `pulumi:"caCertificateDescriptions"`
-	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
-	CertificatePolicy *CertificateAuthorityPolicyResponse `pulumi:"certificatePolicy"`
-	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
-	Config *CertificateConfigResponse `pulumi:"config"`
-	// The time at which this CertificateAuthority was created.
-	CreateTime *string `pulumi:"createTime"`
-	// The time at which this CertificateAuthority will be deleted, if scheduled for deletion.
-	DeleteTime *string `pulumi:"deleteTime"`
-	// Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
-	GcsBucket *string `pulumi:"gcsBucket"`
-	// Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
-	IssuingOptions *IssuingOptionsResponse `pulumi:"issuingOptions"`
-	// Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
-	KeySpec *KeyVersionSpecResponse `pulumi:"keySpec"`
-	// Optional. Labels with user-defined metadata.
-	Labels map[string]string `pulumi:"labels"`
-	// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
-	Lifetime *string `pulumi:"lifetime"`
-	// The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
-	Name *string `pulumi:"name"`
-	// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
-	PemCaCertificates []string `pulumi:"pemCaCertificates"`
-	// The State for this CertificateAuthority.
-	State *string `pulumi:"state"`
-	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
-	SubordinateConfig *SubordinateConfigResponse `pulumi:"subordinateConfig"`
-	// Required. Immutable. The Tier of this CertificateAuthority.
-	Tier *string `pulumi:"tier"`
-	// Required. Immutable. The Type of this CertificateAuthority.
-	Type *string `pulumi:"type"`
-	// The time at which this CertificateAuthority was updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type CertificateAuthorityState struct {
-	// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
-	AccessUrls AccessUrlsResponsePtrInput
-	// A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
-	CaCertificateDescriptions CertificateDescriptionResponseArrayInput
-	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
-	CertificatePolicy CertificateAuthorityPolicyResponsePtrInput
-	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
-	Config CertificateConfigResponsePtrInput
-	// The time at which this CertificateAuthority was created.
-	CreateTime pulumi.StringPtrInput
-	// The time at which this CertificateAuthority will be deleted, if scheduled for deletion.
-	DeleteTime pulumi.StringPtrInput
-	// Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
-	GcsBucket pulumi.StringPtrInput
-	// Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
-	IssuingOptions IssuingOptionsResponsePtrInput
-	// Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
-	KeySpec KeyVersionSpecResponsePtrInput
-	// Optional. Labels with user-defined metadata.
-	Labels pulumi.StringMapInput
-	// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
-	Lifetime pulumi.StringPtrInput
-	// The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
-	Name pulumi.StringPtrInput
-	// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
-	PemCaCertificates pulumi.StringArrayInput
-	// The State for this CertificateAuthority.
-	State pulumi.StringPtrInput
-	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
-	SubordinateConfig SubordinateConfigResponsePtrInput
-	// Required. Immutable. The Tier of this CertificateAuthority.
-	Tier pulumi.StringPtrInput
-	// Required. Immutable. The Type of this CertificateAuthority.
-	Type pulumi.StringPtrInput
-	// The time at which this CertificateAuthority was updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (CertificateAuthorityState) ElementType() reflect.Type {

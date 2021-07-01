@@ -78,61 +78,9 @@ func GetRoutine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Routine resources.
 type routineState struct {
-	// Optional.
-	Arguments []ArgumentResponse `pulumi:"arguments"`
-	// The time when this routine was created, in milliseconds since the epoch.
-	CreationTime *string `pulumi:"creationTime"`
-	// Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
-	DefinitionBody *string `pulumi:"definitionBody"`
-	// Optional. [Experimental] The description of the routine if defined.
-	Description *string `pulumi:"description"`
-	// Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
-	DeterminismLevel *string `pulumi:"determinismLevel"`
-	// A hash of this resource.
-	Etag *string `pulumi:"etag"`
-	// Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
-	ImportedLibraries []string `pulumi:"importedLibraries"`
-	// Optional. Defaults to "SQL".
-	Language *string `pulumi:"language"`
-	// The time when this routine was last modified, in milliseconds since the epoch.
-	LastModifiedTime *string `pulumi:"lastModifiedTime"`
-	// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
-	ReturnTableType *StandardSqlTableTypeResponse `pulumi:"returnTableType"`
-	// Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
-	ReturnType *StandardSqlDataTypeResponse `pulumi:"returnType"`
-	// Required. Reference describing the ID of this routine.
-	RoutineReference *RoutineReferenceResponse `pulumi:"routineReference"`
-	// Required. The type of routine.
-	RoutineType *string `pulumi:"routineType"`
 }
 
 type RoutineState struct {
-	// Optional.
-	Arguments ArgumentResponseArrayInput
-	// The time when this routine was created, in milliseconds since the epoch.
-	CreationTime pulumi.StringPtrInput
-	// Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
-	DefinitionBody pulumi.StringPtrInput
-	// Optional. [Experimental] The description of the routine if defined.
-	Description pulumi.StringPtrInput
-	// Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
-	DeterminismLevel pulumi.StringPtrInput
-	// A hash of this resource.
-	Etag pulumi.StringPtrInput
-	// Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
-	ImportedLibraries pulumi.StringArrayInput
-	// Optional. Defaults to "SQL".
-	Language pulumi.StringPtrInput
-	// The time when this routine was last modified, in milliseconds since the epoch.
-	LastModifiedTime pulumi.StringPtrInput
-	// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
-	ReturnTableType StandardSqlTableTypeResponsePtrInput
-	// Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
-	ReturnType StandardSqlDataTypeResponsePtrInput
-	// Required. Reference describing the ID of this routine.
-	RoutineReference RoutineReferenceResponsePtrInput
-	// Required. The type of routine.
-	RoutineType pulumi.StringPtrInput
 }
 
 func (RoutineState) ElementType() reflect.Type {

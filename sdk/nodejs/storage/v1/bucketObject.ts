@@ -342,7 +342,7 @@ export interface BucketObjectArgs {
     /**
      * User-provided metadata, in key/value pairs.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: string}>;
     /**
      * The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
      */

@@ -142,7 +142,7 @@ export interface ConsentArtifactArgs {
     /**
      * Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: string}>;
     /**
      * Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
      */

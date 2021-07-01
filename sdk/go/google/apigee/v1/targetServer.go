@@ -64,33 +64,9 @@ func GetTargetServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TargetServer resources.
 type targetServerState struct {
-	// Optional. A human-readable description of this TargetServer.
-	Description *string `pulumi:"description"`
-	// Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
-	Host *string `pulumi:"host"`
-	// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// Required. The resource id of this target server. Values must match the regular expression
-	Name *string `pulumi:"name"`
-	// Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
-	Port *int `pulumi:"port"`
-	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
-	SSLInfo *GoogleCloudApigeeV1TlsInfoResponse `pulumi:"sSLInfo"`
 }
 
 type TargetServerState struct {
-	// Optional. A human-readable description of this TargetServer.
-	Description pulumi.StringPtrInput
-	// Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
-	Host pulumi.StringPtrInput
-	// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
-	IsEnabled pulumi.BoolPtrInput
-	// Required. The resource id of this target server. Values must match the regular expression
-	Name pulumi.StringPtrInput
-	// Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
-	Port pulumi.IntPtrInput
-	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
-	SSLInfo GoogleCloudApigeeV1TlsInfoResponsePtrInput
 }
 
 func (TargetServerState) ElementType() reflect.Type {

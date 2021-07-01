@@ -22,7 +22,7 @@ class InstanceArgs:
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
@@ -34,7 +34,7 @@ class InstanceArgs:
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]] instance_messages: List of messages that describe the current state of the Memcached instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        :param pulumi.Input[Mapping[str, str]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         :param pulumi.Input['NodeConfigArgs'] node_config: Required. Configuration for Memcached nodes.
@@ -131,14 +131,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -223,7 +223,7 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -241,7 +241,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]] instance_messages: List of messages that describe the current state of the Memcached instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        :param pulumi.Input[Mapping[str, str]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Required. Configuration for Memcached nodes.
@@ -277,7 +277,7 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,

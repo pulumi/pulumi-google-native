@@ -13,11 +13,11 @@ __all__ = [
     'ConfigMapEnvSourceArgs',
     'ConfigMapKeySelectorArgs',
     'ConfigMapVolumeSourceArgs',
-    'ContainerArgs',
     'ContainerPortArgs',
+    'ContainerArgs',
     'EnvFromSourceArgs',
-    'EnvVarArgs',
     'EnvVarSourceArgs',
+    'EnvVarArgs',
     'ExecActionArgs',
     'HTTPGetActionArgs',
     'HTTPHeaderArgs',
@@ -42,9 +42,9 @@ __all__ = [
     'SecretVolumeSourceArgs',
     'SecurityContextArgs',
     'TCPSocketActionArgs',
-    'VolumeArgs',
     'VolumeDeviceArgs',
     'VolumeMountArgs',
+    'VolumeArgs',
 ]
 
 @pulumi.input_type
@@ -285,6 +285,94 @@ class ConfigMapVolumeSourceArgs:
     @optional.setter
     def optional(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "optional", value)
+
+
+@pulumi.input_type
+class ContainerPortArgs:
+    def __init__(__self__, *,
+                 container_port: Optional[pulumi.Input[int]] = None,
+                 host_ip: Optional[pulumi.Input[str]] = None,
+                 host_port: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None):
+        """
+        ContainerPort represents a network port in a single container.
+        :param pulumi.Input[int] container_port: Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+        :param pulumi.Input[str] host_ip: What host IP to bind the external port to. +optional
+        :param pulumi.Input[int] host_port: Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
+        :param pulumi.Input[str] name: If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+        :param pulumi.Input[str] protocol: Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+        """
+        if container_port is not None:
+            pulumi.set(__self__, "container_port", container_port)
+        if host_ip is not None:
+            pulumi.set(__self__, "host_ip", host_ip)
+        if host_port is not None:
+            pulumi.set(__self__, "host_port", host_port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+        """
+        return pulumi.get(self, "container_port")
+
+    @container_port.setter
+    def container_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "container_port", value)
+
+    @property
+    @pulumi.getter(name="hostIP")
+    def host_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        What host IP to bind the external port to. +optional
+        """
+        return pulumi.get(self, "host_ip")
+
+    @host_ip.setter
+    def host_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_ip", value)
+
+    @property
+    @pulumi.getter(name="hostPort")
+    def host_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
+        """
+        return pulumi.get(self, "host_port")
+
+    @host_port.setter
+    def host_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "host_port", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
 
 
 @pulumi.input_type
@@ -632,94 +720,6 @@ class ContainerArgs:
 
 
 @pulumi.input_type
-class ContainerPortArgs:
-    def __init__(__self__, *,
-                 container_port: Optional[pulumi.Input[int]] = None,
-                 host_ip: Optional[pulumi.Input[str]] = None,
-                 host_port: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None):
-        """
-        ContainerPort represents a network port in a single container.
-        :param pulumi.Input[int] container_port: Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
-        :param pulumi.Input[str] host_ip: What host IP to bind the external port to. +optional
-        :param pulumi.Input[int] host_port: Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-        :param pulumi.Input[str] name: If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
-        :param pulumi.Input[str] protocol: Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
-        """
-        if container_port is not None:
-            pulumi.set(__self__, "container_port", container_port)
-        if host_ip is not None:
-            pulumi.set(__self__, "host_ip", host_ip)
-        if host_port is not None:
-            pulumi.set(__self__, "host_port", host_port)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-
-    @property
-    @pulumi.getter(name="containerPort")
-    def container_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
-        """
-        return pulumi.get(self, "container_port")
-
-    @container_port.setter
-    def container_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "container_port", value)
-
-    @property
-    @pulumi.getter(name="hostIP")
-    def host_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        What host IP to bind the external port to. +optional
-        """
-        return pulumi.get(self, "host_ip")
-
-    @host_ip.setter
-    def host_ip(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host_ip", value)
-
-    @property
-    @pulumi.getter(name="hostPort")
-    def host_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-        """
-        return pulumi.get(self, "host_port")
-
-    @host_port.setter
-    def host_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "host_port", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
-        """
-        return pulumi.get(self, "protocol")
-
-    @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "protocol", value)
-
-
-@pulumi.input_type
 class EnvFromSourceArgs:
     def __init__(__self__, *,
                  config_map_ref: Optional[pulumi.Input['ConfigMapEnvSourceArgs']] = None,
@@ -776,6 +776,46 @@ class EnvFromSourceArgs:
 
 
 @pulumi.input_type
+class EnvVarSourceArgs:
+    def __init__(__self__, *,
+                 config_map_key_ref: Optional[pulumi.Input['ConfigMapKeySelectorArgs']] = None,
+                 secret_key_ref: Optional[pulumi.Input['SecretKeySelectorArgs']] = None):
+        """
+        Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
+        :param pulumi.Input['ConfigMapKeySelectorArgs'] config_map_key_ref: Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+        :param pulumi.Input['SecretKeySelectorArgs'] secret_key_ref: Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+        """
+        if config_map_key_ref is not None:
+            pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
+        if secret_key_ref is not None:
+            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="configMapKeyRef")
+    def config_map_key_ref(self) -> Optional[pulumi.Input['ConfigMapKeySelectorArgs']]:
+        """
+        Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+        """
+        return pulumi.get(self, "config_map_key_ref")
+
+    @config_map_key_ref.setter
+    def config_map_key_ref(self, value: Optional[pulumi.Input['ConfigMapKeySelectorArgs']]):
+        pulumi.set(self, "config_map_key_ref", value)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
+        """
+        Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+    @secret_key_ref.setter
+    def secret_key_ref(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
+        pulumi.set(self, "secret_key_ref", value)
+
+
+@pulumi.input_type
 class EnvVarArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
@@ -829,46 +869,6 @@ class EnvVarArgs:
     @value_from.setter
     def value_from(self, value: Optional[pulumi.Input['EnvVarSourceArgs']]):
         pulumi.set(self, "value_from", value)
-
-
-@pulumi.input_type
-class EnvVarSourceArgs:
-    def __init__(__self__, *,
-                 config_map_key_ref: Optional[pulumi.Input['ConfigMapKeySelectorArgs']] = None,
-                 secret_key_ref: Optional[pulumi.Input['SecretKeySelectorArgs']] = None):
-        """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
-        :param pulumi.Input['ConfigMapKeySelectorArgs'] config_map_key_ref: Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
-        :param pulumi.Input['SecretKeySelectorArgs'] secret_key_ref: Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
-        """
-        if config_map_key_ref is not None:
-            pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
-        if secret_key_ref is not None:
-            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
-
-    @property
-    @pulumi.getter(name="configMapKeyRef")
-    def config_map_key_ref(self) -> Optional[pulumi.Input['ConfigMapKeySelectorArgs']]:
-        """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
-        """
-        return pulumi.get(self, "config_map_key_ref")
-
-    @config_map_key_ref.setter
-    def config_map_key_ref(self, value: Optional[pulumi.Input['ConfigMapKeySelectorArgs']]):
-        pulumi.set(self, "config_map_key_ref", value)
-
-    @property
-    @pulumi.getter(name="secretKeyRef")
-    def secret_key_ref(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
-        """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
-        """
-        return pulumi.get(self, "secret_key_ref")
-
-    @secret_key_ref.setter
-    def secret_key_ref(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
-        pulumi.set(self, "secret_key_ref", value)
 
 
 @pulumi.input_type
@@ -1866,7 +1866,7 @@ class LocalObjectReferenceArgs:
 @pulumi.input_type
 class ObjectMetaArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  deletion_grace_period_seconds: Optional[pulumi.Input[int]] = None,
@@ -1874,7 +1874,7 @@ class ObjectMetaArgs:
                  finalizers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  generate_name: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  owner_references: Optional[pulumi.Input[Sequence[pulumi.Input['OwnerReferenceArgs']]]] = None,
@@ -1883,7 +1883,7 @@ class ObjectMetaArgs:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+        :param pulumi.Input[Mapping[str, str]] annotations: Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
         :param pulumi.Input[str] cluster_name: Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
         :param pulumi.Input[str] creation_timestamp: CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
         :param pulumi.Input[int] deletion_grace_period_seconds: Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
@@ -1891,7 +1891,7 @@ class ObjectMetaArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] finalizers: Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
         :param pulumi.Input[str] generate_name: Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
         :param pulumi.Input[int] generation: A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+        :param pulumi.Input[Mapping[str, str]] labels: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
         :param pulumi.Input[str] name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
         :param pulumi.Input[str] namespace: Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
         :param pulumi.Input[Sequence[pulumi.Input['OwnerReferenceArgs']]] owner_references: List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
@@ -1932,14 +1932,14 @@ class ObjectMetaArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -2028,14 +2028,14 @@ class ObjectMetaArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -2322,12 +2322,12 @@ class ProbeArgs:
 @pulumi.input_type
 class ResourceRequirementsArgs:
     def __init__(__self__, *,
-                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 limits: Optional[pulumi.Input[Mapping[str, str]]] = None,
+                 requests: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         ResourceRequirements describes the compute resource requirements.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] requests: Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, str]] limits: Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, str]] requests: Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
@@ -2336,26 +2336,26 @@ class ResourceRequirementsArgs:
 
     @property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def limits(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def limits(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "limits", value)
 
     @property
     @pulumi.getter
-    def requests(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def requests(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "requests")
 
     @requests.setter
-    def requests(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def requests(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "requests", value)
 
 
@@ -2808,54 +2808,6 @@ class TCPSocketActionArgs:
 
 
 @pulumi.input_type
-class VolumeArgs:
-    def __init__(__self__, *,
-                 config_map: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
-        """
-        Volume represents a named volume in a container.
-        :param pulumi.Input[str] name: Volume's name.
-        """
-        if config_map is not None:
-            pulumi.set(__self__, "config_map", config_map)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if secret is not None:
-            pulumi.set(__self__, "secret", secret)
-
-    @property
-    @pulumi.getter(name="configMap")
-    def config_map(self) -> Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]:
-        return pulumi.get(self, "config_map")
-
-    @config_map.setter
-    def config_map(self, value: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]):
-        pulumi.set(self, "config_map", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Volume's name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['SecretVolumeSourceArgs']]:
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: Optional[pulumi.Input['SecretVolumeSourceArgs']]):
-        pulumi.set(self, "secret", value)
-
-
-@pulumi.input_type
 class VolumeDeviceArgs:
     def __init__(__self__, *,
                  device_path: Optional[pulumi.Input[str]] = None,
@@ -2981,5 +2933,53 @@ class VolumeMountArgs:
     @sub_path.setter
     def sub_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sub_path", value)
+
+
+@pulumi.input_type
+class VolumeArgs:
+    def __init__(__self__, *,
+                 config_map: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
+        """
+        Volume represents a named volume in a container.
+        :param pulumi.Input[str] name: Volume's name.
+        """
+        if config_map is not None:
+            pulumi.set(__self__, "config_map", config_map)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter(name="configMap")
+    def config_map(self) -> Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]:
+        return pulumi.get(self, "config_map")
+
+    @config_map.setter
+    def config_map(self, value: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]):
+        pulumi.set(self, "config_map", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input['SecretVolumeSourceArgs']]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input['SecretVolumeSourceArgs']]):
+        pulumi.set(self, "secret", value)
 
 

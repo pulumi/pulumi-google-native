@@ -66,37 +66,9 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
-	// Configuration parameters for this environment.
-	Config *EnvironmentConfigResponse `pulumi:"config"`
-	// The time at which this environment was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
-	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-	Name *string `pulumi:"name"`
-	// The current state of the environment.
-	State *string `pulumi:"state"`
-	// The time at which this environment was last modified.
-	UpdateTime *string `pulumi:"updateTime"`
-	// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-	Uuid *string `pulumi:"uuid"`
 }
 
 type EnvironmentState struct {
-	// Configuration parameters for this environment.
-	Config EnvironmentConfigResponsePtrInput
-	// The time at which this environment was created.
-	CreateTime pulumi.StringPtrInput
-	// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
-	Labels pulumi.StringMapInput
-	// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-	Name pulumi.StringPtrInput
-	// The current state of the environment.
-	State pulumi.StringPtrInput
-	// The time at which this environment was last modified.
-	UpdateTime pulumi.StringPtrInput
-	// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-	Uuid pulumi.StringPtrInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {

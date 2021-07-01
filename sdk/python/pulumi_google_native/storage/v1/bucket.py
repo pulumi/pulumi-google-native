@@ -26,7 +26,7 @@ class BucketArgs:
                  iam_configuration: Optional[pulumi.Input['BucketIamConfigurationArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  lifecycle: Optional[pulumi.Input['BucketLifecycleArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  location_type: Optional[pulumi.Input[str]] = None,
@@ -61,7 +61,7 @@ class BucketArgs:
         :param pulumi.Input['BucketIamConfigurationArgs'] iam_configuration: The bucket's IAM configuration.
         :param pulumi.Input[str] id: The ID of the bucket. For buckets, the id and name properties are the same.
         :param pulumi.Input[str] kind: The kind of item this is. For buckets, this is always storage#bucket.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided labels, in key/value pairs.
+        :param pulumi.Input[Mapping[str, str]] labels: User-provided labels, in key/value pairs.
         :param pulumi.Input['BucketLifecycleArgs'] lifecycle: The bucket's lifecycle configuration. See lifecycle management for more information.
         :param pulumi.Input[str] location: The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
         :param pulumi.Input[str] location_type: The type of the bucket location.
@@ -279,14 +279,14 @@ class BucketArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         User-provided labels, in key/value pairs.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -554,7 +554,7 @@ class Bucket(pulumi.CustomResource):
                  iam_configuration: Optional[pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  lifecycle: Optional[pulumi.Input[pulumi.InputType['BucketLifecycleArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  location_type: Optional[pulumi.Input[str]] = None,
@@ -594,7 +594,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']] iam_configuration: The bucket's IAM configuration.
         :param pulumi.Input[str] id: The ID of the bucket. For buckets, the id and name properties are the same.
         :param pulumi.Input[str] kind: The kind of item this is. For buckets, this is always storage#bucket.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided labels, in key/value pairs.
+        :param pulumi.Input[Mapping[str, str]] labels: User-provided labels, in key/value pairs.
         :param pulumi.Input[pulumi.InputType['BucketLifecycleArgs']] lifecycle: The bucket's lifecycle configuration. See lifecycle management for more information.
         :param pulumi.Input[str] location: The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
         :param pulumi.Input[str] location_type: The type of the bucket location.
@@ -647,7 +647,7 @@ class Bucket(pulumi.CustomResource):
                  iam_configuration: Optional[pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  lifecycle: Optional[pulumi.Input[pulumi.InputType['BucketLifecycleArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  location_type: Optional[pulumi.Input[str]] = None,

@@ -558,11 +558,11 @@ class ClusterConfigArgs:
 @pulumi.input_type
 class ClusterSelectorArgs:
     def __init__(__self__, *,
-                 cluster_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 cluster_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         A selector that chooses target cluster for jobs based on metadata.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cluster_labels: Required. The cluster labels. Cluster must have all labels to match.
+        :param pulumi.Input[Mapping[str, str]] cluster_labels: Required. The cluster labels. Cluster must have all labels to match.
         :param pulumi.Input[str] zone: Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
         """
         if cluster_labels is not None:
@@ -572,14 +572,14 @@ class ClusterSelectorArgs:
 
     @property
     @pulumi.getter(name="clusterLabels")
-    def cluster_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def cluster_labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Required. The cluster labels. Cluster must have all labels to match.
         """
         return pulumi.get(self, "cluster_labels")
 
     @cluster_labels.setter
-    def cluster_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def cluster_labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "cluster_labels", value)
 
     @property
@@ -800,7 +800,7 @@ class GceClusterConfigArgs:
     def __init__(__self__, *,
                  confidential_instance_config: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']] = None,
                  internal_ip_only: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  network_uri: Optional[pulumi.Input[str]] = None,
                  node_group_affinity: Optional[pulumi.Input['NodeGroupAffinityArgs']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['GceClusterConfigPrivateIpv6GoogleAccess']] = None,
@@ -815,7 +815,7 @@ class GceClusterConfigArgs:
         Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
         :param pulumi.Input['ConfidentialInstanceConfigArgs'] confidential_instance_config: Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
         :param pulumi.Input[bool] internal_ip_only: Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        :param pulumi.Input[Mapping[str, str]] metadata: The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network_uri: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
         :param pulumi.Input['NodeGroupAffinityArgs'] node_group_affinity: Optional. Node Group Affinity for sole-tenant clusters.
         :param pulumi.Input['GceClusterConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: Optional. The type of IPv6 access for a cluster.
@@ -880,14 +880,14 @@ class GceClusterConfigArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -1045,7 +1045,7 @@ class HadoopJobArgs:
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
                  main_class: Optional[pulumi.Input[str]] = None,
                  main_jar_file_uri: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
@@ -1055,7 +1055,7 @@ class HadoopJobArgs:
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
         :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
         :param pulumi.Input[str] main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+        :param pulumi.Input[Mapping[str, str]] properties: Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
         """
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
@@ -1160,14 +1160,14 @@ class HadoopJobArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
 
@@ -1176,18 +1176,18 @@ class HiveJobArgs:
     def __init__(__self__, *,
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
                  query_list: Optional[pulumi.Input['QueryListArgs']] = None,
-                 script_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 script_variables: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
         :param pulumi.Input[bool] continue_on_failure: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+        :param pulumi.Input[Mapping[str, str]] properties: Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains Hive queries.
         :param pulumi.Input['QueryListArgs'] query_list: A list of queries.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] script_variables: Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
+        :param pulumi.Input[Mapping[str, str]] script_variables: Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
         """
         if continue_on_failure is not None:
             pulumi.set(__self__, "continue_on_failure", continue_on_failure)
@@ -1228,14 +1228,14 @@ class HiveJobArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -1264,38 +1264,38 @@ class HiveJobArgs:
 
     @property
     @pulumi.getter(name="scriptVariables")
-    def script_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def script_variables(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
         """
         return pulumi.get(self, "script_variables")
 
     @script_variables.setter
-    def script_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def script_variables(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "script_variables", value)
 
 
 @pulumi.input_type
 class IdentityConfigArgs:
     def __init__(__self__, *,
-                 user_service_account_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 user_service_account_mapping: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         Identity related configuration, including service account based secure multi-tenancy user mappings.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_service_account_mapping: Required. Map of user to service account.
+        :param pulumi.Input[Mapping[str, str]] user_service_account_mapping: Required. Map of user to service account.
         """
         if user_service_account_mapping is not None:
             pulumi.set(__self__, "user_service_account_mapping", user_service_account_mapping)
 
     @property
     @pulumi.getter(name="userServiceAccountMapping")
-    def user_service_account_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def user_service_account_mapping(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Required. Map of user to service account.
         """
         return pulumi.get(self, "user_service_account_mapping")
 
     @user_service_account_mapping.setter
-    def user_service_account_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def user_service_account_mapping(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "user_service_account_mapping", value)
 
 
@@ -1478,11 +1478,11 @@ class InstanceGroupConfigArgs:
 @pulumi.input_type
 class JobPlacementArgs:
     def __init__(__self__, *,
-                 cluster_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 cluster_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None):
         """
         Dataproc job config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cluster_labels: Optional. Cluster labels to identify a cluster where the job will be submitted.
+        :param pulumi.Input[Mapping[str, str]] cluster_labels: Optional. Cluster labels to identify a cluster where the job will be submitted.
         :param pulumi.Input[str] cluster_name: Required. The name of the cluster where the job will be submitted.
         """
         if cluster_labels is not None:
@@ -1492,14 +1492,14 @@ class JobPlacementArgs:
 
     @property
     @pulumi.getter(name="clusterLabels")
-    def cluster_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def cluster_labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Cluster labels to identify a cluster where the job will be submitted.
         """
         return pulumi.get(self, "cluster_labels")
 
     @cluster_labels.setter
-    def cluster_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def cluster_labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "cluster_labels", value)
 
     @property
@@ -1902,24 +1902,24 @@ class LifecycleConfigArgs:
 @pulumi.input_type
 class LoggingConfigArgs:
     def __init__(__self__, *,
-                 driver_log_levels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 driver_log_levels: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         The runtime logging config of the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] driver_log_levels: The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+        :param pulumi.Input[Mapping[str, str]] driver_log_levels: The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
         """
         if driver_log_levels is not None:
             pulumi.set(__self__, "driver_log_levels", driver_log_levels)
 
     @property
     @pulumi.getter(name="driverLogLevels")
-    def driver_log_levels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def driver_log_levels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
         """
         return pulumi.get(self, "driver_log_levels")
 
     @driver_log_levels.setter
-    def driver_log_levels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def driver_log_levels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "driver_log_levels", value)
 
 
@@ -1928,12 +1928,12 @@ class ManagedClusterArgs:
     def __init__(__self__, *,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         Cluster that is managed by the workflow.
         :param pulumi.Input[str] cluster_name: Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
         :param pulumi.Input['ClusterConfigArgs'] config: Required. The cluster configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
         """
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
@@ -1968,14 +1968,14 @@ class ManagedClusterArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -2112,7 +2112,7 @@ class OrderedJobArgs:
     def __init__(__self__, *,
                  hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
                  hive_job: Optional[pulumi.Input['HiveJobArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  pig_job: Optional[pulumi.Input['PigJobArgs']] = None,
                  prerequisite_step_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  presto_job: Optional[pulumi.Input['PrestoJobArgs']] = None,
@@ -2126,7 +2126,7 @@ class OrderedJobArgs:
         A job executed by the workflow.
         :param pulumi.Input['HadoopJobArgs'] hadoop_job: Optional. Job is a Hadoop job.
         :param pulumi.Input['HiveJobArgs'] hive_job: Optional. Job is a Hive job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
+        :param pulumi.Input[Mapping[str, str]] labels: Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
         :param pulumi.Input['PigJobArgs'] pig_job: Optional. Job is a Pig job.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prerequisite_step_ids: Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
         :param pulumi.Input['PrestoJobArgs'] presto_job: Optional. Job is a Presto job.
@@ -2188,14 +2188,14 @@ class OrderedJobArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -2353,19 +2353,19 @@ class PigJobArgs:
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
                  query_list: Optional[pulumi.Input['QueryListArgs']] = None,
-                 script_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 script_variables: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
         :param pulumi.Input[bool] continue_on_failure: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+        :param pulumi.Input[Mapping[str, str]] properties: Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains the Pig queries.
         :param pulumi.Input['QueryListArgs'] query_list: A list of queries.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] script_variables: Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
+        :param pulumi.Input[Mapping[str, str]] script_variables: Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
         """
         if continue_on_failure is not None:
             pulumi.set(__self__, "continue_on_failure", continue_on_failure)
@@ -2420,14 +2420,14 @@ class PigJobArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -2456,14 +2456,14 @@ class PigJobArgs:
 
     @property
     @pulumi.getter(name="scriptVariables")
-    def script_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def script_variables(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
         """
         return pulumi.get(self, "script_variables")
 
     @script_variables.setter
-    def script_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def script_variables(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "script_variables", value)
 
 
@@ -2474,7 +2474,7 @@ class PrestoJobArgs:
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
                  query_list: Optional[pulumi.Input['QueryListArgs']] = None):
         """
@@ -2483,7 +2483,7 @@ class PrestoJobArgs:
         :param pulumi.Input[bool] continue_on_failure: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
         :param pulumi.Input[str] output_format: Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+        :param pulumi.Input[Mapping[str, str]] properties: Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains SQL queries.
         :param pulumi.Input['QueryListArgs'] query_list: A list of queries.
         """
@@ -2552,14 +2552,14 @@ class PrestoJobArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -2596,7 +2596,7 @@ class PySparkJobArgs:
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
                  main_python_file_uri: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  python_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
@@ -2606,7 +2606,7 @@ class PySparkJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
         :param pulumi.Input[str] main_python_file_uri: Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        :param pulumi.Input[Mapping[str, str]] properties: Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] python_file_uris: Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
         if archive_uris is not None:
@@ -2700,14 +2700,14 @@ class PySparkJobArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -2928,12 +2928,12 @@ class SoftwareConfigArgs:
     def __init__(__self__, *,
                  image_version: Optional[pulumi.Input[str]] = None,
                  optional_components: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareConfigOptionalComponentsItem']]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         Specifies the selection and config of software inside the cluster.
         :param pulumi.Input[str] image_version: Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
         :param pulumi.Input[Sequence[pulumi.Input['SoftwareConfigOptionalComponentsItem']]] optional_components: Optional. The set of components to activate on the cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        :param pulumi.Input[Mapping[str, str]] properties: Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         """
         if image_version is not None:
             pulumi.set(__self__, "image_version", image_version)
@@ -2968,14 +2968,14 @@ class SoftwareConfigArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
 
@@ -2989,7 +2989,7 @@ class SparkJobArgs:
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
                  main_class: Optional[pulumi.Input[str]] = None,
                  main_jar_file_uri: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -2999,7 +2999,7 @@ class SparkJobArgs:
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
         :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
         :param pulumi.Input[str] main_jar_file_uri: The HCFS URI of the jar file that contains the main class.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        :param pulumi.Input[Mapping[str, str]] properties: Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
@@ -3104,14 +3104,14 @@ class SparkJobArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
 
@@ -3123,7 +3123,7 @@ class SparkRJobArgs:
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
                  main_r_file_uri: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -3131,7 +3131,7 @@ class SparkRJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
         :param pulumi.Input[str] main_r_file_uri: Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        :param pulumi.Input[Mapping[str, str]] properties: Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
@@ -3208,14 +3208,14 @@ class SparkRJobArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
 
@@ -3224,18 +3224,18 @@ class SparkSqlJobArgs:
     def __init__(__self__, *,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
                  query_list: Optional[pulumi.Input['QueryListArgs']] = None,
-                 script_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 script_variables: Optional[pulumi.Input[Mapping[str, str]]] = None):
         """
         A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+        :param pulumi.Input[Mapping[str, str]] properties: Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains SQL queries.
         :param pulumi.Input['QueryListArgs'] query_list: A list of queries.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] script_variables: Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+        :param pulumi.Input[Mapping[str, str]] script_variables: Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
         """
         if jar_file_uris is not None:
             pulumi.set(__self__, "jar_file_uris", jar_file_uris)
@@ -3276,14 +3276,14 @@ class SparkSqlJobArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -3312,14 +3312,14 @@ class SparkSqlJobArgs:
 
     @property
     @pulumi.getter(name="scriptVariables")
-    def script_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def script_variables(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
         """
         return pulumi.get(self, "script_variables")
 
     @script_variables.setter
-    def script_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def script_variables(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "script_variables", value)
 
 

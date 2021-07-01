@@ -21,14 +21,14 @@ class ConfigArgs:
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FleetConfigArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Config resource.
         :param pulumi.Input[str] description: The description of the game server config.
         :param pulumi.Input[Sequence[pulumi.Input['FleetConfigArgs']]] fleet_configs: FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a key-value pair.
+        :param pulumi.Input[Mapping[str, str]] labels: The labels associated with this game server config. Each label is a key-value pair.
         :param pulumi.Input[str] name: The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigArgs']]] scaling_configs: The autoscaling settings.
         """
@@ -109,14 +109,14 @@ class ConfigArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         The labels associated with this game server config. Each label is a key-value pair.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -153,7 +153,7 @@ class Config(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetConfigArgs']]]]] = None,
                  game_server_deployment_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -166,7 +166,7 @@ class Config(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the game server config.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetConfigArgs']]]] fleet_configs: FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a key-value pair.
+        :param pulumi.Input[Mapping[str, str]] labels: The labels associated with this game server config. Each label is a key-value pair.
         :param pulumi.Input[str] name: The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigArgs']]]] scaling_configs: The autoscaling settings.
         """
@@ -198,7 +198,7 @@ class Config(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetConfigArgs']]]]] = None,
                  game_server_deployment_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

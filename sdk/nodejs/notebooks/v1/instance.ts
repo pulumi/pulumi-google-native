@@ -318,7 +318,7 @@ export interface InstanceArgs {
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: string}>;
     location: pulumi.Input<string>;
     /**
      * Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
@@ -327,7 +327,7 @@ export interface InstanceArgs {
     /**
      * Custom metadata to apply to this instance.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: string}>;
     /**
      * The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
      */

@@ -70,59 +70,9 @@ func GetApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering App resources.
 type appState struct {
-	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
-	AuthDomain *string `pulumi:"authDomain"`
-	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
-	CodeBucket *string `pulumi:"codeBucket"`
-	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-	DatabaseType *string `pulumi:"databaseType"`
-	// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
-	DefaultBucket *string `pulumi:"defaultBucket"`
-	// Cookie expiration policy for this application.
-	DefaultCookieExpiration *string `pulumi:"defaultCookieExpiration"`
-	// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
-	DefaultHostname *string `pulumi:"defaultHostname"`
-	// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
-	DispatchRules []UrlDispatchRuleResponse `pulumi:"dispatchRules"`
-	// The feature specific settings to be used in the application.
-	FeatureSettings *FeatureSettingsResponse `pulumi:"featureSettings"`
-	// The Google Container Registry domain used for storing managed build docker images for this application.
-	GcrDomain *string                     `pulumi:"gcrDomain"`
-	Iap       *IdentityAwareProxyResponse `pulumi:"iap"`
-	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-	Location *string `pulumi:"location"`
-	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
-	Name *string `pulumi:"name"`
-	// Serving status of this application.
-	ServingStatus *string `pulumi:"servingStatus"`
 }
 
 type AppState struct {
-	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
-	AuthDomain pulumi.StringPtrInput
-	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
-	CodeBucket pulumi.StringPtrInput
-	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-	DatabaseType pulumi.StringPtrInput
-	// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
-	DefaultBucket pulumi.StringPtrInput
-	// Cookie expiration policy for this application.
-	DefaultCookieExpiration pulumi.StringPtrInput
-	// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
-	DefaultHostname pulumi.StringPtrInput
-	// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
-	DispatchRules UrlDispatchRuleResponseArrayInput
-	// The feature specific settings to be used in the application.
-	FeatureSettings FeatureSettingsResponsePtrInput
-	// The Google Container Registry domain used for storing managed build docker images for this application.
-	GcrDomain pulumi.StringPtrInput
-	Iap       IdentityAwareProxyResponsePtrInput
-	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-	Location pulumi.StringPtrInput
-	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
-	Name pulumi.StringPtrInput
-	// Serving status of this application.
-	ServingStatus pulumi.StringPtrInput
 }
 
 func (AppState) ElementType() reflect.Type {

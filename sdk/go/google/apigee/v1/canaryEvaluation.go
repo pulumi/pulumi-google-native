@@ -70,45 +70,9 @@ func GetCanaryEvaluation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CanaryEvaluation resources.
 type canaryEvaluationState struct {
-	// Required. The stable version that is serving requests.
-	Control *string `pulumi:"control"`
-	// Create time of the canary evaluation.
-	CreateTime *string `pulumi:"createTime"`
-	// Required. End time for the evaluation's analysis.
-	EndTime *string `pulumi:"endTime"`
-	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse `pulumi:"metricLabels"`
-	// Name of the canary evalution.
-	Name *string `pulumi:"name"`
-	// Required. Start time for the canary evaluation's analysis.
-	StartTime *string `pulumi:"startTime"`
-	// The current state of the canary evaluation.
-	State *string `pulumi:"state"`
-	// Required. The newer version that is serving requests.
-	Treatment *string `pulumi:"treatment"`
-	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-	Verdict *string `pulumi:"verdict"`
 }
 
 type CanaryEvaluationState struct {
-	// Required. The stable version that is serving requests.
-	Control pulumi.StringPtrInput
-	// Create time of the canary evaluation.
-	CreateTime pulumi.StringPtrInput
-	// Required. End time for the evaluation's analysis.
-	EndTime pulumi.StringPtrInput
-	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrInput
-	// Name of the canary evalution.
-	Name pulumi.StringPtrInput
-	// Required. Start time for the canary evaluation's analysis.
-	StartTime pulumi.StringPtrInput
-	// The current state of the canary evaluation.
-	State pulumi.StringPtrInput
-	// Required. The newer version that is serving requests.
-	Treatment pulumi.StringPtrInput
-	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-	Verdict pulumi.StringPtrInput
 }
 
 func (CanaryEvaluationState) ElementType() reflect.Type {

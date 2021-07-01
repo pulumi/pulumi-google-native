@@ -25,7 +25,7 @@ class GlobalForwardingRuleArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input['GlobalForwardingRuleIpVersion']] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['GlobalForwardingRuleLoadBalancingScheme']] = None,
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['MetadataFilterArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -74,7 +74,7 @@ class GlobalForwardingRuleArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['GlobalForwardingRuleIpVersion'] ip_version: The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['GlobalForwardingRuleLoadBalancingScheme'] load_balancing_scheme: Specifies the forwarding rule type.
                
                 
@@ -318,14 +318,14 @@ class GlobalForwardingRuleArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -543,7 +543,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input['GlobalForwardingRuleIpVersion']] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['GlobalForwardingRuleLoadBalancingScheme']] = None,
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetadataFilterArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -597,7 +597,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['GlobalForwardingRuleIpVersion'] ip_version: The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        :param pulumi.Input[Mapping[str, str]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['GlobalForwardingRuleLoadBalancingScheme'] load_balancing_scheme: Specifies the forwarding rule type.
                
                 
@@ -695,7 +695,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input['GlobalForwardingRuleIpVersion']] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['GlobalForwardingRuleLoadBalancingScheme']] = None,
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetadataFilterArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,

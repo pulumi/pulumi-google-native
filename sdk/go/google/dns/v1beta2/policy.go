@@ -62,35 +62,9 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
-	AlternativeNameServerConfig *PolicyAlternativeNameServerConfigResponse `pulumi:"alternativeNameServerConfig"`
-	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
-	Description *string `pulumi:"description"`
-	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
-	EnableInboundForwarding *bool `pulumi:"enableInboundForwarding"`
-	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
-	EnableLogging *bool   `pulumi:"enableLogging"`
-	Kind          *string `pulumi:"kind"`
-	// User-assigned name for this policy.
-	Name *string `pulumi:"name"`
-	// List of network names specifying networks to which this policy is applied.
-	Networks []PolicyNetworkResponse `pulumi:"networks"`
 }
 
 type PolicyState struct {
-	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
-	AlternativeNameServerConfig PolicyAlternativeNameServerConfigResponsePtrInput
-	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
-	Description pulumi.StringPtrInput
-	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
-	EnableInboundForwarding pulumi.BoolPtrInput
-	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
-	EnableLogging pulumi.BoolPtrInput
-	Kind          pulumi.StringPtrInput
-	// User-assigned name for this policy.
-	Name pulumi.StringPtrInput
-	// List of network names specifying networks to which this policy is applied.
-	Networks PolicyNetworkResponseArrayInput
 }
 
 func (PolicyState) ElementType() reflect.Type {

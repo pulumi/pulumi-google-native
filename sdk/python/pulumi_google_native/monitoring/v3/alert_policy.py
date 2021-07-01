@@ -26,7 +26,7 @@ class AlertPolicyArgs:
                  mutation_record: Optional[pulumi.Input['MutationRecordArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  validity: Optional[pulumi.Input['StatusArgs']] = None):
         """
         The set of arguments for constructing a AlertPolicy resource.
@@ -39,7 +39,7 @@ class AlertPolicyArgs:
         :param pulumi.Input['MutationRecordArgs'] mutation_record: A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] name: Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        :param pulumi.Input[Mapping[str, str]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         :param pulumi.Input['StatusArgs'] validity: Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
         """
         pulumi.set(__self__, "project", project)
@@ -185,14 +185,14 @@ class AlertPolicyArgs:
 
     @property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "user_labels", value)
 
     @property
@@ -223,7 +223,7 @@ class AlertPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  __props__=None):
         """
@@ -240,7 +240,7 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MutationRecordArgs']] mutation_record: A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] name: Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        :param pulumi.Input[Mapping[str, str]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         :param pulumi.Input[pulumi.InputType['StatusArgs']] validity: Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
         """
         ...
@@ -277,7 +277,7 @@ class AlertPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  __props__=None):
         if opts is None:

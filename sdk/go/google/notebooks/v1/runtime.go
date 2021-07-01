@@ -73,45 +73,9 @@ func GetRuntime(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Runtime resources.
 type runtimeState struct {
-	// The config settings for accessing runtime.
-	AccessConfig *RuntimeAccessConfigResponse `pulumi:"accessConfig"`
-	// Runtime creation time.
-	CreateTime *string `pulumi:"createTime"`
-	// Runtime health_state.
-	HealthState *string `pulumi:"healthState"`
-	// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
-	Metrics *RuntimeMetricsResponse `pulumi:"metrics"`
-	// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
-	Name *string `pulumi:"name"`
-	// The config settings for software inside the runtime.
-	SoftwareConfig *RuntimeSoftwareConfigResponse `pulumi:"softwareConfig"`
-	// Runtime state.
-	State *string `pulumi:"state"`
-	// Runtime update time.
-	UpdateTime *string `pulumi:"updateTime"`
-	// Use a Compute Engine VM image to start the managed notebook instance.
-	VirtualMachine *VirtualMachineResponse `pulumi:"virtualMachine"`
 }
 
 type RuntimeState struct {
-	// The config settings for accessing runtime.
-	AccessConfig RuntimeAccessConfigResponsePtrInput
-	// Runtime creation time.
-	CreateTime pulumi.StringPtrInput
-	// Runtime health_state.
-	HealthState pulumi.StringPtrInput
-	// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
-	Metrics RuntimeMetricsResponsePtrInput
-	// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
-	Name pulumi.StringPtrInput
-	// The config settings for software inside the runtime.
-	SoftwareConfig RuntimeSoftwareConfigResponsePtrInput
-	// Runtime state.
-	State pulumi.StringPtrInput
-	// Runtime update time.
-	UpdateTime pulumi.StringPtrInput
-	// Use a Compute Engine VM image to start the managed notebook instance.
-	VirtualMachine VirtualMachineResponsePtrInput
 }
 
 func (RuntimeState) ElementType() reflect.Type {

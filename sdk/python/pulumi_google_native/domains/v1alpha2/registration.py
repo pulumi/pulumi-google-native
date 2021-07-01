@@ -23,7 +23,7 @@ class RegistrationArgs:
                  dns_settings: Optional[pulumi.Input['DnsSettingsArgs']] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  management_settings: Optional[pulumi.Input['ManagementSettingsArgs']] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  yearly_price: Optional[pulumi.Input['MoneyArgs']] = None):
@@ -34,7 +34,7 @@ class RegistrationArgs:
         :param pulumi.Input['DnsSettingsArgs'] dns_settings: Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
         :param pulumi.Input[str] domain_name: Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the `Registration`.
+        :param pulumi.Input[Mapping[str, str]] labels: Set of labels associated with the `Registration`.
         :param pulumi.Input['ManagementSettingsArgs'] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
         :param pulumi.Input[bool] validate_only: When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
         :param pulumi.Input['MoneyArgs'] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
@@ -140,14 +140,14 @@ class RegistrationArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Set of labels associated with the `Registration`.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -197,7 +197,7 @@ class Registration(pulumi.CustomResource):
                  dns_settings: Optional[pulumi.Input[pulumi.InputType['DnsSettingsArgs']]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -214,7 +214,7 @@ class Registration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DnsSettingsArgs']] dns_settings: Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
         :param pulumi.Input[str] domain_name: Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the `Registration`.
+        :param pulumi.Input[Mapping[str, str]] labels: Set of labels associated with the `Registration`.
         :param pulumi.Input[pulumi.InputType['ManagementSettingsArgs']] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
         :param pulumi.Input[bool] validate_only: When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
         :param pulumi.Input[pulumi.InputType['MoneyArgs']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
@@ -248,7 +248,7 @@ class Registration(pulumi.CustomResource):
                  dns_settings: Optional[pulumi.Input[pulumi.InputType['DnsSettingsArgs']]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,

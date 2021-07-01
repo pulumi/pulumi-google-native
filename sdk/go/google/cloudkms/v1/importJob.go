@@ -78,49 +78,9 @@ func GetImportJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ImportJob resources.
 type importJobState struct {
-	// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
-	Attestation *KeyOperationAttestationResponse `pulumi:"attestation"`
-	// The time at which this ImportJob was created.
-	CreateTime *string `pulumi:"createTime"`
-	// The time this ImportJob expired. Only present if state is EXPIRED.
-	ExpireEventTime *string `pulumi:"expireEventTime"`
-	// The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
-	ExpireTime *string `pulumi:"expireTime"`
-	// The time this ImportJob's key material was generated.
-	GenerateTime *string `pulumi:"generateTime"`
-	// Required. Immutable. The wrapping method to be used for incoming key material.
-	ImportMethod *string `pulumi:"importMethod"`
-	// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
-	Name *string `pulumi:"name"`
-	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
-	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
-	PublicKey *WrappingPublicKeyResponse `pulumi:"publicKey"`
-	// The current state of the ImportJob, indicating if it can be used.
-	State *string `pulumi:"state"`
 }
 
 type ImportJobState struct {
-	// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
-	Attestation KeyOperationAttestationResponsePtrInput
-	// The time at which this ImportJob was created.
-	CreateTime pulumi.StringPtrInput
-	// The time this ImportJob expired. Only present if state is EXPIRED.
-	ExpireEventTime pulumi.StringPtrInput
-	// The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
-	ExpireTime pulumi.StringPtrInput
-	// The time this ImportJob's key material was generated.
-	GenerateTime pulumi.StringPtrInput
-	// Required. Immutable. The wrapping method to be used for incoming key material.
-	ImportMethod pulumi.StringPtrInput
-	// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
-	Name pulumi.StringPtrInput
-	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
-	ProtectionLevel pulumi.StringPtrInput
-	// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
-	PublicKey WrappingPublicKeyResponsePtrInput
-	// The current state of the ImportJob, indicating if it can be used.
-	State pulumi.StringPtrInput
 }
 
 func (ImportJobState) ElementType() reflect.Type {

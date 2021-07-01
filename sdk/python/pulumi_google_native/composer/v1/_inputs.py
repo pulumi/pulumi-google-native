@@ -602,17 +602,17 @@ class PrivateEnvironmentConfigArgs:
 @pulumi.input_type
 class SoftwareConfigArgs:
     def __init__(__self__, *,
-                 airflow_config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 airflow_config_overrides: Optional[pulumi.Input[Mapping[str, str]]] = None,
+                 env_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  image_version: Optional[pulumi.Input[str]] = None,
-                 pypi_packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pypi_packages: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  python_version: Optional[pulumi.Input[str]] = None):
         """
         Specifies the selection and configuration of software inside the environment.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] airflow_config_overrides: Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
+        :param pulumi.Input[Mapping[str, str]] airflow_config_overrides: Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
+        :param pulumi.Input[Mapping[str, str]] env_variables: Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
         :param pulumi.Input[str] image_version: The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pypi_packages: Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
+        :param pulumi.Input[Mapping[str, str]] pypi_packages: Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
         :param pulumi.Input[str] python_version: Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
         """
         if airflow_config_overrides is not None:
@@ -628,26 +628,26 @@ class SoftwareConfigArgs:
 
     @property
     @pulumi.getter(name="airflowConfigOverrides")
-    def airflow_config_overrides(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def airflow_config_overrides(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
         """
         return pulumi.get(self, "airflow_config_overrides")
 
     @airflow_config_overrides.setter
-    def airflow_config_overrides(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def airflow_config_overrides(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "airflow_config_overrides", value)
 
     @property
     @pulumi.getter(name="envVariables")
-    def env_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def env_variables(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
         """
         return pulumi.get(self, "env_variables")
 
     @env_variables.setter
-    def env_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def env_variables(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "env_variables", value)
 
     @property
@@ -664,14 +664,14 @@ class SoftwareConfigArgs:
 
     @property
     @pulumi.getter(name="pypiPackages")
-    def pypi_packages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def pypi_packages(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
         """
         return pulumi.get(self, "pypi_packages")
 
     @pypi_packages.setter
-    def pypi_packages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def pypi_packages(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "pypi_packages", value)
 
     @property

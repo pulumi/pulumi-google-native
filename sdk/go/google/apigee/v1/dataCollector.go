@@ -59,29 +59,9 @@ func GetDataCollector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataCollector resources.
 type dataCollectorState struct {
-	// The time at which the data collector was created in milliseconds since the epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// A description of the data collector.
-	Description *string `pulumi:"description"`
-	// The time at which the Data Collector was last updated in milliseconds since the epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// ID of the data collector. Must begin with `dc_`.
-	Name *string `pulumi:"name"`
-	// Immutable. The type of data this data collector will collect.
-	Type *string `pulumi:"type"`
 }
 
 type DataCollectorState struct {
-	// The time at which the data collector was created in milliseconds since the epoch.
-	CreatedAt pulumi.StringPtrInput
-	// A description of the data collector.
-	Description pulumi.StringPtrInput
-	// The time at which the Data Collector was last updated in milliseconds since the epoch.
-	LastModifiedAt pulumi.StringPtrInput
-	// ID of the data collector. Must begin with `dc_`.
-	Name pulumi.StringPtrInput
-	// Immutable. The type of data this data collector will collect.
-	Type pulumi.StringPtrInput
 }
 
 func (DataCollectorState) ElementType() reflect.Type {

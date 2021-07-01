@@ -17,7 +17,7 @@ class HubArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  hub_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -25,7 +25,7 @@ class HubArgs:
         The set of arguments for constructing a Hub resource.
         :param pulumi.Input[str] create_time: Time when the Hub was created.
         :param pulumi.Input[str] description: Short description of the hub resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+        :param pulumi.Input[Mapping[str, str]] labels: User-defined labels.
         :param pulumi.Input[str] name: Immutable. The name of a Hub resource.
         :param pulumi.Input[str] update_time: Time when the Hub was updated.
         """
@@ -89,14 +89,14 @@ class HubArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         User-defined labels.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -141,7 +141,7 @@ class Hub(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  hub_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -154,7 +154,7 @@ class Hub(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time when the Hub was created.
         :param pulumi.Input[str] description: Short description of the hub resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+        :param pulumi.Input[Mapping[str, str]] labels: User-defined labels.
         :param pulumi.Input[str] name: Immutable. The name of a Hub resource.
         :param pulumi.Input[str] update_time: Time when the Hub was updated.
         """
@@ -185,7 +185,7 @@ class Hub(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  hub_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,

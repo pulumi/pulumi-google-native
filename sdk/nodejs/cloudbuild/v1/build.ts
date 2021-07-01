@@ -267,7 +267,7 @@ export interface BuildArgs {
     /**
      * Substitutions data for `Build` resource.
      */
-    substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    substitutions?: pulumi.Input<{[key: string]: string}>;
     /**
      * Tags for annotation of a `Build`. These are not docker tags.
      */

@@ -21,8 +21,8 @@ class VersionArgs:
                  api_config: Optional[pulumi.Input['ApiConfigHandlerArgs']] = None,
                  automatic_scaling: Optional[pulumi.Input['AutomaticScalingArgs']] = None,
                  basic_scaling: Optional[pulumi.Input['BasicScalingArgs']] = None,
-                 beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 build_env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 beta_settings: Optional[pulumi.Input[Mapping[str, str]]] = None,
+                 build_env_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
@@ -31,7 +31,7 @@ class VersionArgs:
                  endpoints_api_service: Optional[pulumi.Input['EndpointsApiServiceArgs']] = None,
                  entrypoint: Optional[pulumi.Input['EntrypointArgs']] = None,
                  env: Optional[pulumi.Input[str]] = None,
-                 env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 env_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['ErrorHandlerArgs']]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]]] = None,
                  health_check: Optional[pulumi.Input['HealthCheckArgs']] = None,
@@ -61,8 +61,8 @@ class VersionArgs:
         :param pulumi.Input['ApiConfigHandlerArgs'] api_config: Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['AutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
         :param pulumi.Input['BasicScalingArgs'] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_env_variables: Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[Mapping[str, str]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
+        :param pulumi.Input[Mapping[str, str]] build_env_variables: Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[str] create_time: Time that this version was created.@OutputOnly
         :param pulumi.Input[str] created_by: Email address of the user who created this version.@OutputOnly
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
@@ -71,7 +71,7 @@ class VersionArgs:
         :param pulumi.Input['EndpointsApiServiceArgs'] endpoints_api_service: Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
         :param pulumi.Input['EntrypointArgs'] entrypoint: The entrypoint for the application.
         :param pulumi.Input[str] env: App Engine execution environment for this version.Defaults to standard.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[Mapping[str, str]] env_variables: Environment variables available to the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input['ErrorHandlerArgs']]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['HealthCheckArgs'] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
@@ -232,26 +232,26 @@ class VersionArgs:
 
     @property
     @pulumi.getter(name="betaSettings")
-    def beta_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def beta_settings(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Metadata settings that are supplied to this version to enable beta runtime features.
         """
         return pulumi.get(self, "beta_settings")
 
     @beta_settings.setter
-    def beta_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def beta_settings(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "beta_settings", value)
 
     @property
     @pulumi.getter(name="buildEnvVariables")
-    def build_env_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def build_env_variables(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
         """
         return pulumi.get(self, "build_env_variables")
 
     @build_env_variables.setter
-    def build_env_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def build_env_variables(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "build_env_variables", value)
 
     @property
@@ -352,14 +352,14 @@ class VersionArgs:
 
     @property
     @pulumi.getter(name="envVariables")
-    def env_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def env_variables(self) -> Optional[pulumi.Input[Mapping[str, str]]]:
         """
         Environment variables available to the application.Only returned in GET requests if view=FULL is set.
         """
         return pulumi.get(self, "env_variables")
 
     @env_variables.setter
-    def env_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def env_variables(self, value: Optional[pulumi.Input[Mapping[str, str]]]):
         pulumi.set(self, "env_variables", value)
 
     @property
@@ -660,8 +660,8 @@ class Version(pulumi.CustomResource):
                  app_id: Optional[pulumi.Input[str]] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['AutomaticScalingArgs']]] = None,
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
-                 beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 build_env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 beta_settings: Optional[pulumi.Input[Mapping[str, str]]] = None,
+                 build_env_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
@@ -670,7 +670,7 @@ class Version(pulumi.CustomResource):
                  endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['EndpointsApiServiceArgs']]] = None,
                  entrypoint: Optional[pulumi.Input[pulumi.InputType['EntrypointArgs']]] = None,
                  env: Optional[pulumi.Input[str]] = None,
-                 env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 env_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
@@ -705,8 +705,8 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']] api_config: Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['AutomaticScalingArgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
         :param pulumi.Input[pulumi.InputType['BasicScalingArgs']] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_env_variables: Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[Mapping[str, str]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
+        :param pulumi.Input[Mapping[str, str]] build_env_variables: Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[str] create_time: Time that this version was created.@OutputOnly
         :param pulumi.Input[str] created_by: Email address of the user who created this version.@OutputOnly
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
@@ -715,7 +715,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EndpointsApiServiceArgs']] endpoints_api_service: Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
         :param pulumi.Input[pulumi.InputType['EntrypointArgs']] entrypoint: The entrypoint for the application.
         :param pulumi.Input[str] env: App Engine execution environment for this version.Defaults to standard.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[Mapping[str, str]] env_variables: Environment variables available to the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['HealthCheckArgs']] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
@@ -769,8 +769,8 @@ class Version(pulumi.CustomResource):
                  app_id: Optional[pulumi.Input[str]] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['AutomaticScalingArgs']]] = None,
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
-                 beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 build_env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 beta_settings: Optional[pulumi.Input[Mapping[str, str]]] = None,
+                 build_env_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
@@ -779,7 +779,7 @@ class Version(pulumi.CustomResource):
                  endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['EndpointsApiServiceArgs']]] = None,
                  entrypoint: Optional[pulumi.Input[pulumi.InputType['EntrypointArgs']]] = None,
                  env: Optional[pulumi.Input[str]] = None,
-                 env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 env_variables: Optional[pulumi.Input[Mapping[str, str]]] = None,
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
