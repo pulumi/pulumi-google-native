@@ -31,7 +31,7 @@ export interface GetAppResult {
      */
     readonly authDomain: string;
     /**
-     * Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+     * Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
      */
     readonly codeBucket: string;
     /**
@@ -39,7 +39,7 @@ export interface GetAppResult {
      */
     readonly databaseType: string;
     /**
-     * Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+     * Google Cloud Storage bucket that can be used by this application to store content.
      */
     readonly defaultBucket: string;
     /**
@@ -47,7 +47,7 @@ export interface GetAppResult {
      */
     readonly defaultCookieExpiration: string;
     /**
-     * Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+     * Hostname used to reach this application, as resolved by App Engine.
      */
     readonly defaultHostname: string;
     /**
@@ -68,7 +68,7 @@ export interface GetAppResult {
      */
     readonly location: string;
     /**
-     * Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+     * Full path to the Application resource in the API. Example: apps/myapp.
      */
     readonly name: string;
     /**

@@ -40,25 +40,25 @@ export class App extends pulumi.CustomResource {
      */
     public readonly authDomain!: pulumi.Output<string>;
     /**
-     * Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+     * Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
      */
-    public readonly codeBucket!: pulumi.Output<string>;
+    public /*out*/ readonly codeBucket!: pulumi.Output<string>;
     /**
      * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
      */
     public readonly databaseType!: pulumi.Output<string>;
     /**
-     * Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+     * Google Cloud Storage bucket that can be used by this application to store content.
      */
-    public readonly defaultBucket!: pulumi.Output<string>;
+    public /*out*/ readonly defaultBucket!: pulumi.Output<string>;
     /**
      * Cookie expiration policy for this application.
      */
     public readonly defaultCookieExpiration!: pulumi.Output<string>;
     /**
-     * Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+     * Hostname used to reach this application, as resolved by App Engine.
      */
-    public readonly defaultHostname!: pulumi.Output<string>;
+    public /*out*/ readonly defaultHostname!: pulumi.Output<string>;
     /**
      * HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
      */
@@ -77,9 +77,9 @@ export class App extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+     * Full path to the Application resource in the API. Example: apps/myapp.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Serving status of this application.
      */
@@ -97,19 +97,19 @@ export class App extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             inputs["authDomain"] = args ? args.authDomain : undefined;
-            inputs["codeBucket"] = args ? args.codeBucket : undefined;
             inputs["databaseType"] = args ? args.databaseType : undefined;
-            inputs["defaultBucket"] = args ? args.defaultBucket : undefined;
             inputs["defaultCookieExpiration"] = args ? args.defaultCookieExpiration : undefined;
-            inputs["defaultHostname"] = args ? args.defaultHostname : undefined;
             inputs["dispatchRules"] = args ? args.dispatchRules : undefined;
             inputs["featureSettings"] = args ? args.featureSettings : undefined;
             inputs["gcrDomain"] = args ? args.gcrDomain : undefined;
             inputs["iap"] = args ? args.iap : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
+            inputs["codeBucket"] = undefined /*out*/;
+            inputs["defaultBucket"] = undefined /*out*/;
+            inputs["defaultHostname"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
             inputs["authDomain"] = undefined /*out*/;
             inputs["codeBucket"] = undefined /*out*/;
@@ -141,25 +141,13 @@ export interface AppArgs {
      */
     authDomain?: pulumi.Input<string>;
     /**
-     * Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
-     */
-    codeBucket?: pulumi.Input<string>;
-    /**
      * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
      */
     databaseType?: pulumi.Input<enums.appengine.v1.AppDatabaseType>;
     /**
-     * Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
-     */
-    defaultBucket?: pulumi.Input<string>;
-    /**
      * Cookie expiration policy for this application.
      */
     defaultCookieExpiration?: pulumi.Input<string>;
-    /**
-     * Hostname used to reach this application, as resolved by App Engine.@OutputOnly
-     */
-    defaultHostname?: pulumi.Input<string>;
     /**
      * HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
      */
@@ -181,10 +169,6 @@ export interface AppArgs {
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
      */
     location?: pulumi.Input<string>;
-    /**
-     * Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
-     */
-    name?: pulumi.Input<string>;
     /**
      * Serving status of this application.
      */

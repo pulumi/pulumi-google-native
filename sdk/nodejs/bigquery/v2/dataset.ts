@@ -40,9 +40,9 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly access!: pulumi.Output<outputs.bigquery.v2.DatasetAccessItemResponse[]>;
     /**
-     * [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+     * The time when this dataset was created, in milliseconds since the epoch.
      */
-    public readonly creationTime!: pulumi.Output<string>;
+    public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
      * [Required] A reference that identifies the dataset.
      */
@@ -61,37 +61,37 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Output-only] A hash of the resource.
+     * A hash of the resource.
      */
-    public readonly etag!: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * [Optional] A descriptive name for the dataset.
      */
     public readonly friendlyName!: pulumi.Output<string>;
     /**
-     * [Output-only] The resource type.
+     * The resource type.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+     * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
      */
-    public readonly lastModifiedTime!: pulumi.Output<string>;
+    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
     /**
      * The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * [Output-only] Reserved for future use.
+     * Reserved for future use.
      */
-    public readonly satisfiesPZS!: pulumi.Output<boolean>;
+    public /*out*/ readonly satisfiesPZS!: pulumi.Output<boolean>;
     /**
-     * [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+     * A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -108,22 +108,21 @@ export class Dataset extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["access"] = args ? args.access : undefined;
-            inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["datasetReference"] = args ? args.datasetReference : undefined;
             inputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
             inputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
             inputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["lastModifiedTime"] = args ? args.lastModifiedTime : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["satisfiesPZS"] = args ? args.satisfiesPZS : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
+            inputs["creationTime"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["lastModifiedTime"] = undefined /*out*/;
+            inputs["satisfiesPZS"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["access"] = undefined /*out*/;
             inputs["creationTime"] = undefined /*out*/;
@@ -157,10 +156,6 @@ export interface DatasetArgs {
      */
     access?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.DatasetAccessItemArgs>[]>;
     /**
-     * [Output-only] The time when this dataset was created, in milliseconds since the epoch.
-     */
-    creationTime?: pulumi.Input<string>;
-    /**
      * [Required] A reference that identifies the dataset.
      */
     datasetReference?: pulumi.Input<inputs.bigquery.v2.DatasetReferenceArgs>;
@@ -178,40 +173,16 @@ export interface DatasetArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * [Output-only] A hash of the resource.
-     */
-    etag?: pulumi.Input<string>;
-    /**
      * [Optional] A descriptive name for the dataset.
      */
     friendlyName?: pulumi.Input<string>;
-    /**
-     * [Output-only] The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * [Output-only] The resource type.
-     */
-    kind?: pulumi.Input<string>;
     /**
      * The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
-     */
-    lastModifiedTime?: pulumi.Input<string>;
-    /**
      * The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
      */
     location?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output-only] Reserved for future use.
-     */
-    satisfiesPZS?: pulumi.Input<boolean>;
-    /**
-     * [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
-     */
-    selfLink?: pulumi.Input<string>;
 }

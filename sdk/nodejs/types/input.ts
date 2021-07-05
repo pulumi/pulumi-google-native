@@ -1636,10 +1636,6 @@ export namespace appengine {
              * OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
              */
             oauth2ClientSecret?: pulumi.Input<string>;
-            /**
-             * Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-             */
-            oauth2ClientSecretSha256?: pulumi.Input<string>;
         }
 
         /**
@@ -1688,20 +1684,6 @@ export namespace appengine {
              * Time before the check is considered failed.
              */
             timeout?: pulumi.Input<string>;
-        }
-
-        /**
-         * A certificate managed by App Engine.
-         */
-        export interface ManagedCertificateArgs {
-            /**
-             * Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-             */
-            lastRenewalTime?: pulumi.Input<string>;
-            /**
-             * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-             */
-            status?: pulumi.Input<enums.appengine.v1.ManagedCertificateStatus>;
         }
 
         /**
@@ -1811,24 +1793,6 @@ export namespace appengine {
         }
 
         /**
-         * A DNS resource record.
-         */
-        export interface ResourceRecordArgs {
-            /**
-             * Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-             */
-            rrdata?: pulumi.Input<string>;
-            /**
-             * Resource record type. Example: AAAA.
-             */
-            type?: pulumi.Input<enums.appengine.v1.ResourceRecordType>;
-        }
-
-        /**
          * Machine resources for a version.
          */
         export interface ResourcesArgs {
@@ -1872,10 +1836,6 @@ export namespace appengine {
              * ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
              */
             certificateId?: pulumi.Input<string>;
-            /**
-             * ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
-             */
-            pendingManagedCertificateId?: pulumi.Input<string>;
             /**
              * SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
              */
@@ -2054,38 +2014,6 @@ export namespace appengine {
         }
 
         /**
-         * A certificate managed by App Engine.
-         */
-        export interface ManagedCertificateArgs {
-            /**
-             * Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-             */
-            lastRenewalTime?: pulumi.Input<string>;
-            /**
-             * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-             */
-            status?: pulumi.Input<enums.appengine.v1alpha.ManagedCertificateStatus>;
-        }
-
-        /**
-         * A DNS resource record.
-         */
-        export interface ResourceRecordArgs {
-            /**
-             * Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-             */
-            rrdata?: pulumi.Input<string>;
-            /**
-             * Resource record type. Example: AAAA.
-             */
-            type?: pulumi.Input<enums.appengine.v1alpha.ResourceRecordType>;
-        }
-
-        /**
          * SSL configuration for a DomainMapping resource.
          */
         export interface SslSettingsArgs {
@@ -2093,10 +2021,6 @@ export namespace appengine {
              * ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
              */
             certificateId?: pulumi.Input<string>;
-            /**
-             * Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
-             */
-            isManagedCertificate?: pulumi.Input<boolean>;
         }
 
     }
@@ -2464,10 +2388,6 @@ export namespace appengine {
              * OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
              */
             oauth2ClientSecret?: pulumi.Input<string>;
-            /**
-             * Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-             */
-            oauth2ClientSecretSha256?: pulumi.Input<string>;
         }
 
         /**
@@ -2516,20 +2436,6 @@ export namespace appengine {
              * Time before the check is considered failed.
              */
             timeout?: pulumi.Input<string>;
-        }
-
-        /**
-         * A certificate managed by App Engine.
-         */
-        export interface ManagedCertificateArgs {
-            /**
-             * Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-             */
-            lastRenewalTime?: pulumi.Input<string>;
-            /**
-             * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-             */
-            status?: pulumi.Input<enums.appengine.v1beta.ManagedCertificateStatus>;
         }
 
         /**
@@ -2639,24 +2545,6 @@ export namespace appengine {
         }
 
         /**
-         * A DNS resource record.
-         */
-        export interface ResourceRecordArgs {
-            /**
-             * Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-             */
-            rrdata?: pulumi.Input<string>;
-            /**
-             * Resource record type. Example: AAAA.
-             */
-            type?: pulumi.Input<enums.appengine.v1beta.ResourceRecordType>;
-        }
-
-        /**
          * Machine resources for a version.
          */
         export interface ResourcesArgs {
@@ -2700,10 +2588,6 @@ export namespace appengine {
              * ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
              */
             certificateId?: pulumi.Input<string>;
-            /**
-             * ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
-             */
-            pendingManagedCertificateId?: pulumi.Input<string>;
             /**
              * SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
              */
@@ -3040,17 +2924,6 @@ export namespace bigquery {
             logType?: pulumi.Input<enums.bigquery.v2.AuditLogConfigLogType>;
         }
 
-        export interface BigQueryModelTrainingArgs {
-            /**
-             * [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
-             */
-            currentIteration?: pulumi.Input<number>;
-            /**
-             * [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
-             */
-            expectedTotalIterations?: pulumi.Input<string>;
-        }
-
         export interface BigtableColumnArgs {
             /**
              * [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
@@ -3320,159 +3193,6 @@ export namespace bigquery {
             kmsKeyName?: pulumi.Input<string>;
         }
 
-        export interface ErrorProtoArgs {
-            /**
-             * Debugging information. This property is internal to Google and should not be used.
-             */
-            debugInfo?: pulumi.Input<string>;
-            /**
-             * Specifies where the error occurred, if present.
-             */
-            location?: pulumi.Input<string>;
-            /**
-             * A human-readable description of the error.
-             */
-            message?: pulumi.Input<string>;
-            /**
-             * A short error code that summarizes the error.
-             */
-            reason?: pulumi.Input<string>;
-        }
-
-        export interface ExplainQueryStageArgs {
-            /**
-             * Number of parallel input segments completed.
-             */
-            completedParallelInputs?: pulumi.Input<string>;
-            /**
-             * Milliseconds the average shard spent on CPU-bound tasks.
-             */
-            computeMsAvg?: pulumi.Input<string>;
-            /**
-             * Milliseconds the slowest shard spent on CPU-bound tasks.
-             */
-            computeMsMax?: pulumi.Input<string>;
-            /**
-             * Relative amount of time the average shard spent on CPU-bound tasks.
-             */
-            computeRatioAvg?: pulumi.Input<number>;
-            /**
-             * Relative amount of time the slowest shard spent on CPU-bound tasks.
-             */
-            computeRatioMax?: pulumi.Input<number>;
-            /**
-             * Stage end time represented as milliseconds since epoch.
-             */
-            endMs?: pulumi.Input<string>;
-            /**
-             * Unique ID for stage within plan.
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * IDs for stages that are inputs to this stage.
-             */
-            inputStages?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Human-readable name for stage.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Number of parallel input segments to be processed.
-             */
-            parallelInputs?: pulumi.Input<string>;
-            /**
-             * Milliseconds the average shard spent reading input.
-             */
-            readMsAvg?: pulumi.Input<string>;
-            /**
-             * Milliseconds the slowest shard spent reading input.
-             */
-            readMsMax?: pulumi.Input<string>;
-            /**
-             * Relative amount of time the average shard spent reading input.
-             */
-            readRatioAvg?: pulumi.Input<number>;
-            /**
-             * Relative amount of time the slowest shard spent reading input.
-             */
-            readRatioMax?: pulumi.Input<number>;
-            /**
-             * Number of records read into the stage.
-             */
-            recordsRead?: pulumi.Input<string>;
-            /**
-             * Number of records written by the stage.
-             */
-            recordsWritten?: pulumi.Input<string>;
-            /**
-             * Total number of bytes written to shuffle.
-             */
-            shuffleOutputBytes?: pulumi.Input<string>;
-            /**
-             * Total number of bytes written to shuffle and spilled to disk.
-             */
-            shuffleOutputBytesSpilled?: pulumi.Input<string>;
-            /**
-             * Slot-milliseconds used by the stage.
-             */
-            slotMs?: pulumi.Input<string>;
-            /**
-             * Stage start time represented as milliseconds since epoch.
-             */
-            startMs?: pulumi.Input<string>;
-            /**
-             * Current status for the stage.
-             */
-            status?: pulumi.Input<string>;
-            /**
-             * List of operations within the stage in dependency order (approximately chronological).
-             */
-            steps?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.ExplainQueryStepArgs>[]>;
-            /**
-             * Milliseconds the average shard spent waiting to be scheduled.
-             */
-            waitMsAvg?: pulumi.Input<string>;
-            /**
-             * Milliseconds the slowest shard spent waiting to be scheduled.
-             */
-            waitMsMax?: pulumi.Input<string>;
-            /**
-             * Relative amount of time the average shard spent waiting to be scheduled.
-             */
-            waitRatioAvg?: pulumi.Input<number>;
-            /**
-             * Relative amount of time the slowest shard spent waiting to be scheduled.
-             */
-            waitRatioMax?: pulumi.Input<number>;
-            /**
-             * Milliseconds the average shard spent on writing output.
-             */
-            writeMsAvg?: pulumi.Input<string>;
-            /**
-             * Milliseconds the slowest shard spent on writing output.
-             */
-            writeMsMax?: pulumi.Input<string>;
-            /**
-             * Relative amount of time the average shard spent on writing output.
-             */
-            writeRatioAvg?: pulumi.Input<number>;
-            /**
-             * Relative amount of time the slowest shard spent on writing output.
-             */
-            writeRatioMax?: pulumi.Input<number>;
-        }
-
-        export interface ExplainQueryStepArgs {
-            /**
-             * Machine-readable operation type.
-             */
-            kind?: pulumi.Input<string>;
-            /**
-             * Human-readable stage descriptions.
-             */
-            substeps?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
         /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
          */
@@ -3593,10 +3313,6 @@ export namespace bigquery {
              * [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
              */
             jobTimeoutMs?: pulumi.Input<string>;
-            /**
-             * [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-             */
-            jobType?: pulumi.Input<string>;
             /**
              * The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
              */
@@ -3910,256 +3626,11 @@ export namespace bigquery {
             project?: pulumi.Input<string>;
         }
 
-        export interface JobStatisticsArgs {
-            /**
-             * [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
-             */
-            completionRatio?: pulumi.Input<number>;
-            /**
-             * [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
-             */
-            creationTime?: pulumi.Input<string>;
-            /**
-             * [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
-             */
-            endTime?: pulumi.Input<string>;
-            /**
-             * [Output-only] Statistics for an extract job.
-             */
-            extract?: pulumi.Input<inputs.bigquery.v2.JobStatistics4Args>;
-            /**
-             * [Output-only] Statistics for a load job.
-             */
-            load?: pulumi.Input<inputs.bigquery.v2.JobStatistics3Args>;
-            /**
-             * [Output-only] Number of child jobs executed.
-             */
-            numChildJobs?: pulumi.Input<string>;
-            /**
-             * [Output-only] If this is a child job, the id of the parent.
-             */
-            parentJobId?: pulumi.Input<string>;
-            /**
-             * [Output-only] Statistics for a query job.
-             */
-            query?: pulumi.Input<inputs.bigquery.v2.JobStatistics2Args>;
-            /**
-             * [Output-only] Quotas which delayed this job's start time.
-             */
-            quotaDeferments?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * [Output-only] Job resource usage breakdown by reservation.
-             */
-            reservationUsage?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.JobStatisticsReservationUsageItemArgs>[]>;
-            /**
-             * [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-             */
-            reservation_id?: pulumi.Input<string>;
-            /**
-             * [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
-             */
-            rowLevelSecurityStatistics?: pulumi.Input<inputs.bigquery.v2.RowLevelSecurityStatisticsArgs>;
-            /**
-             * [Output-only] Statistics for a child job of a script.
-             */
-            scriptStatistics?: pulumi.Input<inputs.bigquery.v2.ScriptStatisticsArgs>;
-            /**
-             * [Output-only] [Preview] Information of the session if this job is part of one.
-             */
-            sessionInfoTemplate?: pulumi.Input<inputs.bigquery.v2.SessionInfoArgs>;
-            /**
-             * [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-             */
-            startTime?: pulumi.Input<string>;
-            /**
-             * [Output-only] Slot-milliseconds for the job.
-             */
-            totalSlotMs?: pulumi.Input<string>;
-            /**
-             * [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-             */
-            transactionInfoTemplate?: pulumi.Input<inputs.bigquery.v2.TransactionInfoArgs>;
-        }
-
-        export interface JobStatistics2Args {
-            /**
-             * [Output-only] Billing tier for the job.
-             */
-            billingTier?: pulumi.Input<number>;
-            /**
-             * [Output-only] Whether the query result was fetched from the query cache.
-             */
-            cacheHit?: pulumi.Input<boolean>;
-            /**
-             * [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
-             */
-            ddlAffectedRowAccessPolicyCount?: pulumi.Input<string>;
-            /**
-             * The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-             */
-            ddlOperationPerformed?: pulumi.Input<string>;
-            /**
-             * [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
-             */
-            ddlTargetDataset?: pulumi.Input<inputs.bigquery.v2.DatasetReferenceArgs>;
-            /**
-             * The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-             */
-            ddlTargetRoutine?: pulumi.Input<inputs.bigquery.v2.RoutineReferenceArgs>;
-            /**
-             * [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
-             */
-            ddlTargetRowAccessPolicy?: pulumi.Input<inputs.bigquery.v2.RowAccessPolicyReferenceArgs>;
-            /**
-             * [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
-             */
-            ddlTargetTable?: pulumi.Input<inputs.bigquery.v2.TableReferenceArgs>;
-            /**
-             * [Output-only] The original estimate of bytes processed for the job.
-             */
-            estimatedBytesProcessed?: pulumi.Input<string>;
-            /**
-             * [Output-only, Beta] Information about create model query job progress.
-             */
-            modelTraining?: pulumi.Input<inputs.bigquery.v2.BigQueryModelTrainingArgs>;
-            /**
-             * [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
-             */
-            numDmlAffectedRows?: pulumi.Input<string>;
-            /**
-             * [Output-only] Describes execution plan for the query.
-             */
-            queryPlan?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.ExplainQueryStageArgs>[]>;
-            /**
-             * [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
-             */
-            referencedRoutines?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.RoutineReferenceArgs>[]>;
-            /**
-             * [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-             */
-            referencedTables?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.TableReferenceArgs>[]>;
-            /**
-             * [Output-only] Job resource usage breakdown by reservation.
-             */
-            reservationUsage?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.JobStatistics2ReservationUsageItemArgs>[]>;
-            /**
-             * [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
-             */
-            schema?: pulumi.Input<inputs.bigquery.v2.TableSchemaArgs>;
-            /**
-             * The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
-             */
-            statementType?: pulumi.Input<string>;
-            /**
-             * [Output-only] [Beta] Describes a timeline of job execution.
-             */
-            timeline?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.QueryTimelineSampleArgs>[]>;
-            /**
-             * [Output-only] Total bytes billed for the job.
-             */
-            totalBytesBilled?: pulumi.Input<string>;
-            /**
-             * [Output-only] Total bytes processed for the job.
-             */
-            totalBytesProcessed?: pulumi.Input<string>;
-            /**
-             * [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
-             */
-            totalBytesProcessedAccuracy?: pulumi.Input<string>;
-            /**
-             * [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
-             */
-            totalPartitionsProcessed?: pulumi.Input<string>;
-            /**
-             * [Output-only] Slot-milliseconds for the job.
-             */
-            totalSlotMs?: pulumi.Input<string>;
-            /**
-             * Standard SQL only: list of undeclared query parameters detected during a dry run validation.
-             */
-            undeclaredQueryParameters?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.QueryParameterArgs>[]>;
-        }
-
-        export interface JobStatistics2ReservationUsageItemArgs {
-            /**
-             * [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * [Output-only] Slot-milliseconds the job spent in the given reservation.
-             */
-            slotMs?: pulumi.Input<string>;
-        }
-
-        export interface JobStatistics3Args {
-            /**
-             * [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
-             */
-            badRecords?: pulumi.Input<string>;
-            /**
-             * [Output-only] Number of bytes of source data in a load job.
-             */
-            inputFileBytes?: pulumi.Input<string>;
-            /**
-             * [Output-only] Number of source files in a load job.
-             */
-            inputFiles?: pulumi.Input<string>;
-            /**
-             * [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
-             */
-            outputBytes?: pulumi.Input<string>;
-            /**
-             * [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
-             */
-            outputRows?: pulumi.Input<string>;
-        }
-
-        export interface JobStatistics4Args {
-            /**
-             * [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
-             */
-            destinationUriFileCounts?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
-             */
-            inputBytes?: pulumi.Input<string>;
-        }
-
-        export interface JobStatisticsReservationUsageItemArgs {
-            /**
-             * [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * [Output-only] Slot-milliseconds the job spent in the given reservation.
-             */
-            slotMs?: pulumi.Input<string>;
-        }
-
-        export interface JobStatusArgs {
-            /**
-             * [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-             */
-            errorResult?: pulumi.Input<inputs.bigquery.v2.ErrorProtoArgs>;
-            /**
-             * [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
-             */
-            errors?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.ErrorProtoArgs>[]>;
-            /**
-             * [Output-only] Running state of the job.
-             */
-            state?: pulumi.Input<string>;
-        }
-
         export interface MaterializedViewDefinitionArgs {
             /**
              * [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
              */
             enableRefresh?: pulumi.Input<boolean>;
-            /**
-             * [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
-             */
-            lastRefreshTime?: pulumi.Input<string>;
             /**
              * [Required] A query whose result is persisted.
              */
@@ -4276,29 +3747,6 @@ export namespace bigquery {
             value?: pulumi.Input<string>;
         }
 
-        export interface QueryTimelineSampleArgs {
-            /**
-             * Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
-             */
-            activeUnits?: pulumi.Input<string>;
-            /**
-             * Total parallel units of work completed by this query.
-             */
-            completedUnits?: pulumi.Input<string>;
-            /**
-             * Milliseconds elapsed since the start of query execution.
-             */
-            elapsedMs?: pulumi.Input<string>;
-            /**
-             * Total parallel units of work remaining for the active stages.
-             */
-            pendingUnits?: pulumi.Input<string>;
-            /**
-             * Cumulative slot-ms consumed by the query.
-             */
-            totalSlotMs?: pulumi.Input<string>;
-        }
-
         export interface RangePartitioningArgs {
             /**
              * [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
@@ -4341,88 +3789,6 @@ export namespace bigquery {
              * [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
              */
             routineId?: pulumi.Input<string>;
-        }
-
-        export interface RowAccessPolicyReferenceArgs {
-            /**
-             * [Required] The ID of the dataset containing this row access policy.
-             */
-            datasetId?: pulumi.Input<string>;
-            /**
-             * [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-             */
-            policyId?: pulumi.Input<string>;
-            /**
-             * [Required] The ID of the project containing this row access policy.
-             */
-            project?: pulumi.Input<string>;
-            /**
-             * [Required] The ID of the table containing this row access policy.
-             */
-            tableId?: pulumi.Input<string>;
-        }
-
-        export interface RowLevelSecurityStatisticsArgs {
-            /**
-             * [Output-only] [Preview] Whether any accessed data was protected by row access policies.
-             */
-            rowLevelSecurityApplied?: pulumi.Input<boolean>;
-        }
-
-        export interface ScriptStackFrameArgs {
-            /**
-             * [Output-only] One-based end column.
-             */
-            endColumn?: pulumi.Input<number>;
-            /**
-             * [Output-only] One-based end line.
-             */
-            endLine?: pulumi.Input<number>;
-            /**
-             * [Output-only] Name of the active procedure, empty if in a top-level script.
-             */
-            procedureId?: pulumi.Input<string>;
-            /**
-             * [Output-only] One-based start column.
-             */
-            startColumn?: pulumi.Input<number>;
-            /**
-             * [Output-only] One-based start line.
-             */
-            startLine?: pulumi.Input<number>;
-            /**
-             * [Output-only] Text of the current statement/expression.
-             */
-            text?: pulumi.Input<string>;
-        }
-
-        export interface ScriptStatisticsArgs {
-            /**
-             * [Output-only] Whether this child job was a statement or expression.
-             */
-            evaluationKind?: pulumi.Input<string>;
-            /**
-             * Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
-             */
-            stackFrames?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.ScriptStackFrameArgs>[]>;
-        }
-
-        export interface SessionInfoArgs {
-            /**
-             * [Output-only] // [Preview] Id of the session.
-             */
-            sessionId?: pulumi.Input<string>;
-        }
-
-        export interface SnapshotDefinitionArgs {
-            /**
-             * [Required] Reference describing the ID of the table that is snapshotted.
-             */
-            baseTableReference?: pulumi.Input<inputs.bigquery.v2.TableReferenceArgs>;
-            /**
-             * [Required] The time at which the base table was snapshot.
-             */
-            snapshotTime?: pulumi.Input<string>;
         }
 
         /**
@@ -4469,21 +3835,6 @@ export namespace bigquery {
              * The columns in this table type
              */
             columns?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.StandardSqlFieldArgs>[]>;
-        }
-
-        export interface StreamingbufferArgs {
-            /**
-             * [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
-             */
-            estimatedBytes?: pulumi.Input<string>;
-            /**
-             * [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
-             */
-            estimatedRows?: pulumi.Input<string>;
-            /**
-             * [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
-             */
-            oldestEntryTime?: pulumi.Input<string>;
         }
 
         export interface TableFieldSchemaArgs {
@@ -4579,13 +3930,6 @@ export namespace bigquery {
              * [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively. When the type is not specified, the default behavior is DAY.
              */
             type?: pulumi.Input<string>;
-        }
-
-        export interface TransactionInfoArgs {
-            /**
-             * [Output-only] // [Alpha] Id of the transaction.
-             */
-            transactionId?: pulumi.Input<string>;
         }
 
         /**

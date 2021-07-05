@@ -35,7 +35,7 @@ export interface GetJobResult {
      */
     readonly configuration: outputs.bigquery.v2.JobConfigurationResponse;
     /**
-     * [Output-only] A hash of this resource.
+     * A hash of this resource.
      */
     readonly etag: string;
     /**
@@ -43,23 +43,23 @@ export interface GetJobResult {
      */
     readonly jobReference: outputs.bigquery.v2.JobReferenceResponse;
     /**
-     * [Output-only] The type of the resource.
+     * The type of the resource.
      */
     readonly kind: string;
     /**
-     * [Output-only] A URL that can be used to access this resource again.
+     * A URL that can be used to access this resource again.
      */
     readonly selfLink: string;
     /**
-     * [Output-only] Information about the job, including starting time and ending time of the job.
+     * Information about the job, including starting time and ending time of the job.
      */
     readonly statistics: outputs.bigquery.v2.JobStatisticsResponse;
     /**
-     * [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
      */
     readonly status: outputs.bigquery.v2.JobStatusResponse;
     /**
-     * [Output-only] Email address of the user who ran the job.
+     * Email address of the user who ran the job.
      */
     readonly user_email: string;
 }

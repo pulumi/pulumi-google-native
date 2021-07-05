@@ -36,13 +36,13 @@ export class DomainMapping extends pulumi.CustomResource {
     }
 
     /**
-     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+     * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
      */
-    public readonly resourceRecords!: pulumi.Output<outputs.appengine.v1alpha.ResourceRecordResponse[]>;
+    public /*out*/ readonly resourceRecords!: pulumi.Output<outputs.appengine.v1alpha.ResourceRecordResponse[]>;
     /**
      * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
      */
@@ -64,11 +64,11 @@ export class DomainMapping extends pulumi.CustomResource {
             }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["noManagedCertificate"] = args ? args.noManagedCertificate : undefined;
             inputs["overrideStrategy"] = args ? args.overrideStrategy : undefined;
-            inputs["resourceRecords"] = args ? args.resourceRecords : undefined;
             inputs["sslSettings"] = args ? args.sslSettings : undefined;
+            inputs["name"] = undefined /*out*/;
+            inputs["resourceRecords"] = undefined /*out*/;
         } else {
             inputs["name"] = undefined /*out*/;
             inputs["resourceRecords"] = undefined /*out*/;
@@ -90,16 +90,8 @@ export interface DomainMappingArgs {
      * Relative name of the domain serving the application. Example: example.com.
      */
     id?: pulumi.Input<string>;
-    /**
-     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-     */
-    name?: pulumi.Input<string>;
     noManagedCertificate?: pulumi.Input<string>;
     overrideStrategy?: pulumi.Input<string>;
-    /**
-     * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
-     */
-    resourceRecords?: pulumi.Input<pulumi.Input<inputs.appengine.v1alpha.ResourceRecordArgs>[]>;
     /**
      * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
      */

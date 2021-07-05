@@ -56,13 +56,13 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly buildEnvVariables!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Time that this version was created.@OutputOnly
+     * Time that this version was created.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Email address of the user who created this version.@OutputOnly
+     * Email address of the user who created this version.
      */
-    public readonly createdBy!: pulumi.Output<string>;
+    public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
      * Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
      */
@@ -72,9 +72,9 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly deployment!: pulumi.Output<outputs.appengine.v1.DeploymentResponse>;
     /**
-     * Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+     * Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
      */
-    public readonly diskUsageBytes!: pulumi.Output<string>;
+    public /*out*/ readonly diskUsageBytes!: pulumi.Output<string>;
     /**
      * Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
      */
@@ -124,9 +124,9 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly manualScaling!: pulumi.Output<outputs.appengine.v1.ManualScalingResponse>;
     /**
-     * Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+     * Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Extra network settings. Only applicable in the App Engine flexible environment.
      */
@@ -172,9 +172,9 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly threadsafe!: pulumi.Output<boolean>;
     /**
-     * Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+     * Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
      */
-    public readonly versionUrl!: pulumi.Output<string>;
+    public /*out*/ readonly versionUrl!: pulumi.Output<string>;
     /**
      * Whether to deploy this version in a container on a virtual machine.
      */
@@ -207,11 +207,8 @@ export class Version extends pulumi.CustomResource {
             inputs["basicScaling"] = args ? args.basicScaling : undefined;
             inputs["betaSettings"] = args ? args.betaSettings : undefined;
             inputs["buildEnvVariables"] = args ? args.buildEnvVariables : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["createdBy"] = args ? args.createdBy : undefined;
             inputs["defaultExpiration"] = args ? args.defaultExpiration : undefined;
             inputs["deployment"] = args ? args.deployment : undefined;
-            inputs["diskUsageBytes"] = args ? args.diskUsageBytes : undefined;
             inputs["endpointsApiService"] = args ? args.endpointsApiService : undefined;
             inputs["entrypoint"] = args ? args.entrypoint : undefined;
             inputs["env"] = args ? args.env : undefined;
@@ -225,7 +222,6 @@ export class Version extends pulumi.CustomResource {
             inputs["libraries"] = args ? args.libraries : undefined;
             inputs["livenessCheck"] = args ? args.livenessCheck : undefined;
             inputs["manualScaling"] = args ? args.manualScaling : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["nobuildFilesRegex"] = args ? args.nobuildFilesRegex : undefined;
             inputs["readinessCheck"] = args ? args.readinessCheck : undefined;
@@ -238,9 +234,13 @@ export class Version extends pulumi.CustomResource {
             inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
             inputs["threadsafe"] = args ? args.threadsafe : undefined;
-            inputs["versionUrl"] = args ? args.versionUrl : undefined;
             inputs["vm"] = args ? args.vm : undefined;
             inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["createdBy"] = undefined /*out*/;
+            inputs["diskUsageBytes"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["versionUrl"] = undefined /*out*/;
         } else {
             inputs["apiConfig"] = undefined /*out*/;
             inputs["automaticScaling"] = undefined /*out*/;
@@ -313,14 +313,6 @@ export interface VersionArgs {
      */
     buildEnvVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Time that this version was created.@OutputOnly
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * Email address of the user who created this version.@OutputOnly
-     */
-    createdBy?: pulumi.Input<string>;
-    /**
      * Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
      */
     defaultExpiration?: pulumi.Input<string>;
@@ -328,10 +320,6 @@ export interface VersionArgs {
      * Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
      */
     deployment?: pulumi.Input<inputs.appengine.v1.DeploymentArgs>;
-    /**
-     * Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
-     */
-    diskUsageBytes?: pulumi.Input<string>;
     /**
      * Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
      */
@@ -385,10 +373,6 @@ export interface VersionArgs {
      */
     manualScaling?: pulumi.Input<inputs.appengine.v1.ManualScalingArgs>;
     /**
-     * Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
-     */
-    name?: pulumi.Input<string>;
-    /**
      * Extra network settings. Only applicable in the App Engine flexible environment.
      */
     network?: pulumi.Input<inputs.appengine.v1.NetworkArgs>;
@@ -433,10 +417,6 @@ export interface VersionArgs {
      * Whether multiple requests can be dispatched to this version at once.
      */
     threadsafe?: pulumi.Input<boolean>;
-    /**
-     * Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
-     */
-    versionUrl?: pulumi.Input<string>;
     /**
      * Whether to deploy this version in a container on a virtual machine.
      */

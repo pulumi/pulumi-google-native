@@ -40,33 +40,33 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly configuration!: pulumi.Output<outputs.bigquery.v2.JobConfigurationResponse>;
     /**
-     * [Output-only] A hash of this resource.
+     * A hash of this resource.
      */
-    public readonly etag!: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * [Optional] Reference describing the unique-per-user name of the job.
      */
     public readonly jobReference!: pulumi.Output<outputs.bigquery.v2.JobReferenceResponse>;
     /**
-     * [Output-only] The type of the resource.
+     * The type of the resource.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * [Output-only] A URL that can be used to access this resource again.
+     * A URL that can be used to access this resource again.
      */
-    public readonly selfLink!: pulumi.Output<string>;
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Output-only] Information about the job, including starting time and ending time of the job.
+     * Information about the job, including starting time and ending time of the job.
      */
-    public readonly statistics!: pulumi.Output<outputs.bigquery.v2.JobStatisticsResponse>;
+    public /*out*/ readonly statistics!: pulumi.Output<outputs.bigquery.v2.JobStatisticsResponse>;
     /**
-     * [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
      */
-    public readonly status!: pulumi.Output<outputs.bigquery.v2.JobStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.bigquery.v2.JobStatusResponse>;
     /**
-     * [Output-only] Email address of the user who ran the job.
+     * Email address of the user who ran the job.
      */
-    public readonly user_email!: pulumi.Output<string>;
+    public /*out*/ readonly user_email!: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -83,15 +83,14 @@ export class Job extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["configuration"] = args ? args.configuration : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["jobReference"] = args ? args.jobReference : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["statistics"] = args ? args.statistics : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["user_email"] = args ? args.user_email : undefined;
+            inputs["etag"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["statistics"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["user_email"] = undefined /*out*/;
         } else {
             inputs["configuration"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
@@ -118,36 +117,8 @@ export interface JobArgs {
      */
     configuration?: pulumi.Input<inputs.bigquery.v2.JobConfigurationArgs>;
     /**
-     * [Output-only] A hash of this resource.
-     */
-    etag?: pulumi.Input<string>;
-    /**
-     * [Output-only] Opaque ID field of the job
-     */
-    id?: pulumi.Input<string>;
-    /**
      * [Optional] Reference describing the unique-per-user name of the job.
      */
     jobReference?: pulumi.Input<inputs.bigquery.v2.JobReferenceArgs>;
-    /**
-     * [Output-only] The type of the resource.
-     */
-    kind?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    /**
-     * [Output-only] A URL that can be used to access this resource again.
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
-     * [Output-only] Information about the job, including starting time and ending time of the job.
-     */
-    statistics?: pulumi.Input<inputs.bigquery.v2.JobStatisticsArgs>;
-    /**
-     * [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
-     */
-    status?: pulumi.Input<inputs.bigquery.v2.JobStatusArgs>;
-    /**
-     * [Output-only] Email address of the user who ran the job.
-     */
-    user_email?: pulumi.Input<string>;
 }
