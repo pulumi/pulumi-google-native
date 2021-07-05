@@ -3201,7 +3201,7 @@ type LocalDiskResponse struct {
 	DeviceName string `pulumi:"deviceName"`
 	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []RuntimeGuestOsFeatureResponse `pulumi:"guestOsFeatures"`
-	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+	// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index int `pulumi:"index"`
 	// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsResponse `pulumi:"initializeParams"`
@@ -3209,7 +3209,7 @@ type LocalDiskResponse struct {
 	Interface string `pulumi:"interface"`
 	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind string `pulumi:"kind"`
-	// Any valid publicly visible licenses.
+	// [Output Only] Any valid publicly visible licenses.
 	Licenses []string `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
 	Mode string `pulumi:"mode"`
@@ -3240,7 +3240,7 @@ type LocalDiskResponseArgs struct {
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures RuntimeGuestOsFeatureResponseArrayInput `pulumi:"guestOsFeatures"`
-	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+	// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index pulumi.IntInput `pulumi:"index"`
 	// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsResponseInput `pulumi:"initializeParams"`
@@ -3248,7 +3248,7 @@ type LocalDiskResponseArgs struct {
 	Interface pulumi.StringInput `pulumi:"interface"`
 	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// Any valid publicly visible licenses.
+	// [Output Only] Any valid publicly visible licenses.
 	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -3356,7 +3356,7 @@ func (o LocalDiskResponseOutput) GuestOsFeatures() RuntimeGuestOsFeatureResponse
 	return o.ApplyT(func(v LocalDiskResponse) []RuntimeGuestOsFeatureResponse { return v.GuestOsFeatures }).(RuntimeGuestOsFeatureResponseArrayOutput)
 }
 
-// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 func (o LocalDiskResponseOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v LocalDiskResponse) int { return v.Index }).(pulumi.IntOutput)
 }
@@ -3376,7 +3376,7 @@ func (o LocalDiskResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalDiskResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Any valid publicly visible licenses.
+// [Output Only] Any valid publicly visible licenses.
 func (o LocalDiskResponseOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LocalDiskResponse) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
@@ -3454,7 +3454,7 @@ func (o LocalDiskResponsePtrOutput) GuestOsFeatures() RuntimeGuestOsFeatureRespo
 	}).(RuntimeGuestOsFeatureResponseArrayOutput)
 }
 
-// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 func (o LocalDiskResponsePtrOutput) Index() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) *int {
 		if v == nil {
@@ -3494,7 +3494,7 @@ func (o LocalDiskResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Any valid publicly visible licenses.
+// [Output Only] Any valid publicly visible licenses.
 func (o LocalDiskResponsePtrOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) []string {
 		if v == nil {

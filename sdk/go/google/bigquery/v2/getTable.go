@@ -27,13 +27,13 @@ type LookupTableArgs struct {
 type LookupTableResult struct {
 	// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
 	Clustering ClusteringResponse `pulumi:"clustering"`
-	// [Output-only] The time when this table was created, in milliseconds since the epoch.
+	// The time when this table was created, in milliseconds since the epoch.
 	CreationTime string `pulumi:"creationTime"`
 	// [Optional] A user-friendly description of this table.
 	Description string `pulumi:"description"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
 	EncryptionConfiguration EncryptionConfigurationResponse `pulumi:"encryptionConfiguration"`
-	// [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+	// A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
 	Etag string `pulumi:"etag"`
 	// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
 	ExpirationTime string `pulumi:"expirationTime"`
@@ -41,25 +41,25 @@ type LookupTableResult struct {
 	ExternalDataConfiguration ExternalDataConfigurationResponse `pulumi:"externalDataConfiguration"`
 	// [Optional] A descriptive name for this table.
 	FriendlyName string `pulumi:"friendlyName"`
-	// [Output-only] The type of the resource.
+	// The type of the resource.
 	Kind string `pulumi:"kind"`
 	// The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
 	Labels map[string]string `pulumi:"labels"`
-	// [Output-only] The time when this table was last modified, in milliseconds since the epoch.
+	// The time when this table was last modified, in milliseconds since the epoch.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
-	// [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
+	// The geographic location where the table resides. This value is inherited from the dataset.
 	Location string `pulumi:"location"`
 	// [Optional] Materialized view definition.
 	MaterializedView MaterializedViewDefinitionResponse `pulumi:"materializedView"`
 	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
 	Model ModelDefinitionResponse `pulumi:"model"`
-	// [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
+	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes string `pulumi:"numBytes"`
-	// [Output-only] The number of bytes in the table that are considered "long-term storage".
+	// The number of bytes in the table that are considered "long-term storage".
 	NumLongTermBytes string `pulumi:"numLongTermBytes"`
-	// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+	// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
 	NumPhysicalBytes string `pulumi:"numPhysicalBytes"`
-	// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
+	// The number of rows of data in this table, excluding any data in the streaming buffer.
 	NumRows string `pulumi:"numRows"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning RangePartitioningResponse `pulumi:"rangePartitioning"`
@@ -67,17 +67,17 @@ type LookupTableResult struct {
 	RequirePartitionFilter bool `pulumi:"requirePartitionFilter"`
 	// [Optional] Describes the schema of this table.
 	Schema TableSchemaResponse `pulumi:"schema"`
-	// [Output-only] A URL that can be used to access this resource again.
+	// A URL that can be used to access this resource again.
 	SelfLink string `pulumi:"selfLink"`
-	// [Output-only] Snapshot definition.
+	// Snapshot definition.
 	SnapshotDefinition SnapshotDefinitionResponse `pulumi:"snapshotDefinition"`
-	// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+	// Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 	StreamingBuffer StreamingbufferResponse `pulumi:"streamingBuffer"`
 	// [Required] Reference describing the ID of this table.
 	TableReference TableReferenceResponse `pulumi:"tableReference"`
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning TimePartitioningResponse `pulumi:"timePartitioning"`
-	// [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+	// Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
 	Type string `pulumi:"type"`
 	// [Optional] The view definition.
 	View ViewDefinitionResponse `pulumi:"view"`

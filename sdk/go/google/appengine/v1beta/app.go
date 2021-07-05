@@ -16,15 +16,15 @@ type App struct {
 
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain pulumi.StringOutput `pulumi:"authDomain"`
-	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
 	CodeBucket pulumi.StringOutput `pulumi:"codeBucket"`
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
 	DatabaseType pulumi.StringOutput `pulumi:"databaseType"`
-	// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+	// Google Cloud Storage bucket that can be used by this application to store content.
 	DefaultBucket pulumi.StringOutput `pulumi:"defaultBucket"`
 	// Cookie expiration policy for this application.
 	DefaultCookieExpiration pulumi.StringOutput `pulumi:"defaultCookieExpiration"`
-	// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+	// Hostname used to reach this application, as resolved by App Engine.
 	DefaultHostname pulumi.StringOutput `pulumi:"defaultHostname"`
 	// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
 	DispatchRules UrlDispatchRuleResponseArrayOutput `pulumi:"dispatchRules"`
@@ -35,7 +35,7 @@ type App struct {
 	Iap       IdentityAwareProxyResponseOutput `pulumi:"iap"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+	// Full path to the Application resource in the API. Example: apps/myapp.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Serving status of this application.
 	ServingStatus pulumi.StringOutput `pulumi:"servingStatus"`
@@ -72,15 +72,15 @@ func GetApp(ctx *pulumi.Context,
 type appState struct {
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain *string `pulumi:"authDomain"`
-	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
 	CodeBucket *string `pulumi:"codeBucket"`
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
 	DatabaseType *string `pulumi:"databaseType"`
-	// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+	// Google Cloud Storage bucket that can be used by this application to store content.
 	DefaultBucket *string `pulumi:"defaultBucket"`
 	// Cookie expiration policy for this application.
 	DefaultCookieExpiration *string `pulumi:"defaultCookieExpiration"`
-	// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+	// Hostname used to reach this application, as resolved by App Engine.
 	DefaultHostname *string `pulumi:"defaultHostname"`
 	// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
 	DispatchRules []UrlDispatchRuleResponse `pulumi:"dispatchRules"`
@@ -91,7 +91,7 @@ type appState struct {
 	Iap       *IdentityAwareProxyResponse `pulumi:"iap"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location *string `pulumi:"location"`
-	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+	// Full path to the Application resource in the API. Example: apps/myapp.
 	Name *string `pulumi:"name"`
 	// Serving status of this application.
 	ServingStatus *string `pulumi:"servingStatus"`
@@ -100,15 +100,15 @@ type appState struct {
 type AppState struct {
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain pulumi.StringPtrInput
-	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
 	CodeBucket pulumi.StringPtrInput
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
 	DatabaseType pulumi.StringPtrInput
-	// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+	// Google Cloud Storage bucket that can be used by this application to store content.
 	DefaultBucket pulumi.StringPtrInput
 	// Cookie expiration policy for this application.
 	DefaultCookieExpiration pulumi.StringPtrInput
-	// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+	// Hostname used to reach this application, as resolved by App Engine.
 	DefaultHostname pulumi.StringPtrInput
 	// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
 	DispatchRules UrlDispatchRuleResponseArrayInput
@@ -119,7 +119,7 @@ type AppState struct {
 	Iap       IdentityAwareProxyResponsePtrInput
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location pulumi.StringPtrInput
-	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+	// Full path to the Application resource in the API. Example: apps/myapp.
 	Name pulumi.StringPtrInput
 	// Serving status of this application.
 	ServingStatus pulumi.StringPtrInput
@@ -132,16 +132,10 @@ func (AppState) ElementType() reflect.Type {
 type appArgs struct {
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain *string `pulumi:"authDomain"`
-	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
-	CodeBucket *string `pulumi:"codeBucket"`
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
 	DatabaseType *string `pulumi:"databaseType"`
-	// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
-	DefaultBucket *string `pulumi:"defaultBucket"`
 	// Cookie expiration policy for this application.
 	DefaultCookieExpiration *string `pulumi:"defaultCookieExpiration"`
-	// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
-	DefaultHostname *string `pulumi:"defaultHostname"`
 	// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
 	DispatchRules []UrlDispatchRule `pulumi:"dispatchRules"`
 	// The feature specific settings to be used in the application.
@@ -153,8 +147,6 @@ type appArgs struct {
 	Id *string `pulumi:"id"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location *string `pulumi:"location"`
-	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
-	Name *string `pulumi:"name"`
 	// Serving status of this application.
 	ServingStatus *string `pulumi:"servingStatus"`
 }
@@ -163,16 +155,10 @@ type appArgs struct {
 type AppArgs struct {
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain pulumi.StringPtrInput
-	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
-	CodeBucket pulumi.StringPtrInput
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
 	DatabaseType *AppDatabaseType
-	// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
-	DefaultBucket pulumi.StringPtrInput
 	// Cookie expiration policy for this application.
 	DefaultCookieExpiration pulumi.StringPtrInput
-	// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
-	DefaultHostname pulumi.StringPtrInput
 	// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
 	DispatchRules UrlDispatchRuleArrayInput
 	// The feature specific settings to be used in the application.
@@ -184,8 +170,6 @@ type AppArgs struct {
 	Id pulumi.StringPtrInput
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location pulumi.StringPtrInput
-	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
-	Name pulumi.StringPtrInput
 	// Serving status of this application.
 	ServingStatus *AppServingStatus
 }

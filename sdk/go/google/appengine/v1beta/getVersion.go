@@ -37,15 +37,15 @@ type LookupVersionResult struct {
 	BetaSettings map[string]string `pulumi:"betaSettings"`
 	// Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
 	BuildEnvVariables map[string]string `pulumi:"buildEnvVariables"`
-	// Time that this version was created.@OutputOnly
+	// Time that this version was created.
 	CreateTime string `pulumi:"createTime"`
-	// Email address of the user who created this version.@OutputOnly
+	// Email address of the user who created this version.
 	CreatedBy string `pulumi:"createdBy"`
 	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
 	DefaultExpiration string `pulumi:"defaultExpiration"`
 	// Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
 	Deployment DeploymentResponse `pulumi:"deployment"`
-	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
 	DiskUsageBytes string `pulumi:"diskUsageBytes"`
 	// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
 	EndpointsApiService EndpointsApiServiceResponse `pulumi:"endpointsApiService"`
@@ -71,7 +71,7 @@ type LookupVersionResult struct {
 	LivenessCheck LivenessCheckResponse `pulumi:"livenessCheck"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling ManualScalingResponse `pulumi:"manualScaling"`
-	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
 	Name string `pulumi:"name"`
 	// Extra network settings. Only applicable in the App Engine flexible environment.
 	Network NetworkResponse `pulumi:"network"`
@@ -95,7 +95,7 @@ type LookupVersionResult struct {
 	ServingStatus string `pulumi:"servingStatus"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe bool `pulumi:"threadsafe"`
-	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
 	VersionUrl string `pulumi:"versionUrl"`
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm bool `pulumi:"vm"`

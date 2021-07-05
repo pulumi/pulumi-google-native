@@ -5295,8 +5295,6 @@ type IdentityAwareProxy struct {
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
 	Oauth2ClientSecret *string `pulumi:"oauth2ClientSecret"`
-	// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
 }
 
 // IdentityAwareProxyInput is an input type that accepts IdentityAwareProxyArgs and IdentityAwareProxyOutput values.
@@ -5318,8 +5316,6 @@ type IdentityAwareProxyArgs struct {
 	Oauth2ClientId pulumi.StringPtrInput `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
 	Oauth2ClientSecret pulumi.StringPtrInput `pulumi:"oauth2ClientSecret"`
-	// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
 }
 
 func (IdentityAwareProxyArgs) ElementType() reflect.Type {
@@ -5415,11 +5411,6 @@ func (o IdentityAwareProxyOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityAwareProxy) *string { return v.Oauth2ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-func (o IdentityAwareProxyOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IdentityAwareProxy) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
-}
-
 type IdentityAwareProxyPtrOutput struct{ *pulumi.OutputState }
 
 func (IdentityAwareProxyPtrOutput) ElementType() reflect.Type {
@@ -5468,16 +5459,6 @@ func (o IdentityAwareProxyPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-func (o IdentityAwareProxyPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IdentityAwareProxy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Oauth2ClientSecretSha256
-	}).(pulumi.StringPtrOutput)
-}
-
 // Identity-Aware Proxy
 type IdentityAwareProxyResponse struct {
 	// Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
@@ -5486,7 +5467,7 @@ type IdentityAwareProxyResponse struct {
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
 	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
-	// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+	// Hex-encoded SHA-256 hash of the client secret.
 	Oauth2ClientSecretSha256 string `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -5509,7 +5490,7 @@ type IdentityAwareProxyResponseArgs struct {
 	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
 	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
-	// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+	// Hex-encoded SHA-256 hash of the client secret.
 	Oauth2ClientSecretSha256 pulumi.StringInput `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -5606,7 +5587,7 @@ func (o IdentityAwareProxyResponseOutput) Oauth2ClientSecret() pulumi.StringOutp
 	return o.ApplyT(func(v IdentityAwareProxyResponse) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
 }
 
-// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+// Hex-encoded SHA-256 hash of the client secret.
 func (o IdentityAwareProxyResponseOutput) Oauth2ClientSecretSha256() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityAwareProxyResponse) string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringOutput)
 }
@@ -5659,7 +5640,7 @@ func (o IdentityAwareProxyResponsePtrOutput) Oauth2ClientSecret() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+// Hex-encoded SHA-256 hash of the client secret.
 func (o IdentityAwareProxyResponsePtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityAwareProxyResponse) *string {
 		if v == nil {
@@ -6384,163 +6365,10 @@ func (o LivenessCheckResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
 }
 
 // A certificate managed by App Engine.
-type ManagedCertificate struct {
-	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-	LastRenewalTime *string `pulumi:"lastRenewalTime"`
-	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-	Status *string `pulumi:"status"`
-}
-
-// ManagedCertificateInput is an input type that accepts ManagedCertificateArgs and ManagedCertificateOutput values.
-// You can construct a concrete instance of `ManagedCertificateInput` via:
-//
-//          ManagedCertificateArgs{...}
-type ManagedCertificateInput interface {
-	pulumi.Input
-
-	ToManagedCertificateOutput() ManagedCertificateOutput
-	ToManagedCertificateOutputWithContext(context.Context) ManagedCertificateOutput
-}
-
-// A certificate managed by App Engine.
-type ManagedCertificateArgs struct {
-	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-	LastRenewalTime pulumi.StringPtrInput `pulumi:"lastRenewalTime"`
-	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-	Status *ManagedCertificateStatus `pulumi:"status"`
-}
-
-func (ManagedCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedCertificate)(nil)).Elem()
-}
-
-func (i ManagedCertificateArgs) ToManagedCertificateOutput() ManagedCertificateOutput {
-	return i.ToManagedCertificateOutputWithContext(context.Background())
-}
-
-func (i ManagedCertificateArgs) ToManagedCertificateOutputWithContext(ctx context.Context) ManagedCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateOutput)
-}
-
-func (i ManagedCertificateArgs) ToManagedCertificatePtrOutput() ManagedCertificatePtrOutput {
-	return i.ToManagedCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i ManagedCertificateArgs) ToManagedCertificatePtrOutputWithContext(ctx context.Context) ManagedCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateOutput).ToManagedCertificatePtrOutputWithContext(ctx)
-}
-
-// ManagedCertificatePtrInput is an input type that accepts ManagedCertificateArgs, ManagedCertificatePtr and ManagedCertificatePtrOutput values.
-// You can construct a concrete instance of `ManagedCertificatePtrInput` via:
-//
-//          ManagedCertificateArgs{...}
-//
-//  or:
-//
-//          nil
-type ManagedCertificatePtrInput interface {
-	pulumi.Input
-
-	ToManagedCertificatePtrOutput() ManagedCertificatePtrOutput
-	ToManagedCertificatePtrOutputWithContext(context.Context) ManagedCertificatePtrOutput
-}
-
-type managedCertificatePtrType ManagedCertificateArgs
-
-func ManagedCertificatePtr(v *ManagedCertificateArgs) ManagedCertificatePtrInput {
-	return (*managedCertificatePtrType)(v)
-}
-
-func (*managedCertificatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedCertificate)(nil)).Elem()
-}
-
-func (i *managedCertificatePtrType) ToManagedCertificatePtrOutput() ManagedCertificatePtrOutput {
-	return i.ToManagedCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *managedCertificatePtrType) ToManagedCertificatePtrOutputWithContext(ctx context.Context) ManagedCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificatePtrOutput)
-}
-
-// A certificate managed by App Engine.
-type ManagedCertificateOutput struct{ *pulumi.OutputState }
-
-func (ManagedCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedCertificate)(nil)).Elem()
-}
-
-func (o ManagedCertificateOutput) ToManagedCertificateOutput() ManagedCertificateOutput {
-	return o
-}
-
-func (o ManagedCertificateOutput) ToManagedCertificateOutputWithContext(ctx context.Context) ManagedCertificateOutput {
-	return o
-}
-
-func (o ManagedCertificateOutput) ToManagedCertificatePtrOutput() ManagedCertificatePtrOutput {
-	return o.ToManagedCertificatePtrOutputWithContext(context.Background())
-}
-
-func (o ManagedCertificateOutput) ToManagedCertificatePtrOutputWithContext(ctx context.Context) ManagedCertificatePtrOutput {
-	return o.ApplyT(func(v ManagedCertificate) *ManagedCertificate {
-		return &v
-	}).(ManagedCertificatePtrOutput)
-}
-
-// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-func (o ManagedCertificateOutput) LastRenewalTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedCertificate) *string { return v.LastRenewalTime }).(pulumi.StringPtrOutput)
-}
-
-// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-func (o ManagedCertificateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedCertificate) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type ManagedCertificatePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedCertificatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedCertificate)(nil)).Elem()
-}
-
-func (o ManagedCertificatePtrOutput) ToManagedCertificatePtrOutput() ManagedCertificatePtrOutput {
-	return o
-}
-
-func (o ManagedCertificatePtrOutput) ToManagedCertificatePtrOutputWithContext(ctx context.Context) ManagedCertificatePtrOutput {
-	return o
-}
-
-func (o ManagedCertificatePtrOutput) Elem() ManagedCertificateOutput {
-	return o.ApplyT(func(v *ManagedCertificate) ManagedCertificate { return *v }).(ManagedCertificateOutput)
-}
-
-// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-func (o ManagedCertificatePtrOutput) LastRenewalTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastRenewalTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-func (o ManagedCertificatePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// A certificate managed by App Engine.
 type ManagedCertificateResponse struct {
-	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
 	LastRenewalTime string `pulumi:"lastRenewalTime"`
-	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
 	Status string `pulumi:"status"`
 }
 
@@ -6557,9 +6385,9 @@ type ManagedCertificateResponseInput interface {
 
 // A certificate managed by App Engine.
 type ManagedCertificateResponseArgs struct {
-	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
 	LastRenewalTime pulumi.StringInput `pulumi:"lastRenewalTime"`
-	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -6641,12 +6469,12 @@ func (o ManagedCertificateResponseOutput) ToManagedCertificateResponsePtrOutputW
 	}).(ManagedCertificateResponsePtrOutput)
 }
 
-// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
 func (o ManagedCertificateResponseOutput) LastRenewalTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedCertificateResponse) string { return v.LastRenewalTime }).(pulumi.StringOutput)
 }
 
-// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
 func (o ManagedCertificateResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedCertificateResponse) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -6669,7 +6497,7 @@ func (o ManagedCertificateResponsePtrOutput) Elem() ManagedCertificateResponseOu
 	return o.ApplyT(func(v *ManagedCertificateResponse) ManagedCertificateResponse { return *v }).(ManagedCertificateResponseOutput)
 }
 
-// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
 func (o ManagedCertificateResponsePtrOutput) LastRenewalTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCertificateResponse) *string {
 		if v == nil {
@@ -6679,7 +6507,7 @@ func (o ManagedCertificateResponsePtrOutput) LastRenewalTime() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
 func (o ManagedCertificateResponsePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCertificateResponse) *string {
 		if v == nil {
@@ -8562,124 +8390,6 @@ func (o RequestUtilizationResponsePtrOutput) TargetRequestCountPerSecond() pulum
 }
 
 // A DNS resource record.
-type ResourceRecord struct {
-	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-	Name *string `pulumi:"name"`
-	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-	Rrdata *string `pulumi:"rrdata"`
-	// Resource record type. Example: AAAA.
-	Type *string `pulumi:"type"`
-}
-
-// ResourceRecordInput is an input type that accepts ResourceRecordArgs and ResourceRecordOutput values.
-// You can construct a concrete instance of `ResourceRecordInput` via:
-//
-//          ResourceRecordArgs{...}
-type ResourceRecordInput interface {
-	pulumi.Input
-
-	ToResourceRecordOutput() ResourceRecordOutput
-	ToResourceRecordOutputWithContext(context.Context) ResourceRecordOutput
-}
-
-// A DNS resource record.
-type ResourceRecordArgs struct {
-	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
-	// Resource record type. Example: AAAA.
-	Type *ResourceRecordType `pulumi:"type"`
-}
-
-func (ResourceRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecord)(nil)).Elem()
-}
-
-func (i ResourceRecordArgs) ToResourceRecordOutput() ResourceRecordOutput {
-	return i.ToResourceRecordOutputWithContext(context.Background())
-}
-
-func (i ResourceRecordArgs) ToResourceRecordOutputWithContext(ctx context.Context) ResourceRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordOutput)
-}
-
-// ResourceRecordArrayInput is an input type that accepts ResourceRecordArray and ResourceRecordArrayOutput values.
-// You can construct a concrete instance of `ResourceRecordArrayInput` via:
-//
-//          ResourceRecordArray{ ResourceRecordArgs{...} }
-type ResourceRecordArrayInput interface {
-	pulumi.Input
-
-	ToResourceRecordArrayOutput() ResourceRecordArrayOutput
-	ToResourceRecordArrayOutputWithContext(context.Context) ResourceRecordArrayOutput
-}
-
-type ResourceRecordArray []ResourceRecordInput
-
-func (ResourceRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceRecord)(nil)).Elem()
-}
-
-func (i ResourceRecordArray) ToResourceRecordArrayOutput() ResourceRecordArrayOutput {
-	return i.ToResourceRecordArrayOutputWithContext(context.Background())
-}
-
-func (i ResourceRecordArray) ToResourceRecordArrayOutputWithContext(ctx context.Context) ResourceRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordArrayOutput)
-}
-
-// A DNS resource record.
-type ResourceRecordOutput struct{ *pulumi.OutputState }
-
-func (ResourceRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecord)(nil)).Elem()
-}
-
-func (o ResourceRecordOutput) ToResourceRecordOutput() ResourceRecordOutput {
-	return o
-}
-
-func (o ResourceRecordOutput) ToResourceRecordOutputWithContext(ctx context.Context) ResourceRecordOutput {
-	return o
-}
-
-// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-func (o ResourceRecordOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-func (o ResourceRecordOutput) Rrdata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecord) *string { return v.Rrdata }).(pulumi.StringPtrOutput)
-}
-
-// Resource record type. Example: AAAA.
-func (o ResourceRecordOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type ResourceRecordArrayOutput struct{ *pulumi.OutputState }
-
-func (ResourceRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceRecord)(nil)).Elem()
-}
-
-func (o ResourceRecordArrayOutput) ToResourceRecordArrayOutput() ResourceRecordArrayOutput {
-	return o
-}
-
-func (o ResourceRecordArrayOutput) ToResourceRecordArrayOutputWithContext(ctx context.Context) ResourceRecordArrayOutput {
-	return o
-}
-
-func (o ResourceRecordArrayOutput) Index(i pulumi.IntInput) ResourceRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecord {
-		return vs[0].([]ResourceRecord)[vs[1].(int)]
-	}).(ResourceRecordOutput)
-}
-
-// A DNS resource record.
 type ResourceRecordResponse struct {
 	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 	Name string `pulumi:"name"`
@@ -9410,8 +9120,6 @@ func (o ScriptHandlerResponseOutput) ScriptPath() pulumi.StringOutput {
 type SslSettings struct {
 	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
 	CertificateId *string `pulumi:"certificateId"`
-	// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
-	PendingManagedCertificateId *string `pulumi:"pendingManagedCertificateId"`
 	// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
 	SslManagementType *string `pulumi:"sslManagementType"`
 }
@@ -9431,8 +9139,6 @@ type SslSettingsInput interface {
 type SslSettingsArgs struct {
 	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
-	// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
-	PendingManagedCertificateId pulumi.StringPtrInput `pulumi:"pendingManagedCertificateId"`
 	// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
 	SslManagementType *SslSettingsSslManagementType `pulumi:"sslManagementType"`
 }
@@ -9520,11 +9226,6 @@ func (o SslSettingsOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
-// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
-func (o SslSettingsOutput) PendingManagedCertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslSettings) *string { return v.PendingManagedCertificateId }).(pulumi.StringPtrOutput)
-}
-
 // SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
 func (o SslSettingsOutput) SslManagementType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslSettings) *string { return v.SslManagementType }).(pulumi.StringPtrOutput)
@@ -9558,16 +9259,6 @@ func (o SslSettingsPtrOutput) CertificateId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
-func (o SslSettingsPtrOutput) PendingManagedCertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PendingManagedCertificateId
-	}).(pulumi.StringPtrOutput)
-}
-
 // SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
 func (o SslSettingsPtrOutput) SslManagementType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslSettings) *string {
@@ -9582,7 +9273,7 @@ func (o SslSettingsPtrOutput) SslManagementType() pulumi.StringPtrOutput {
 type SslSettingsResponse struct {
 	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
 	CertificateId string `pulumi:"certificateId"`
-	// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+	// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.
 	PendingManagedCertificateId string `pulumi:"pendingManagedCertificateId"`
 	// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
 	SslManagementType string `pulumi:"sslManagementType"`
@@ -9603,7 +9294,7 @@ type SslSettingsResponseInput interface {
 type SslSettingsResponseArgs struct {
 	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
 	CertificateId pulumi.StringInput `pulumi:"certificateId"`
-	// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+	// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.
 	PendingManagedCertificateId pulumi.StringInput `pulumi:"pendingManagedCertificateId"`
 	// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
 	SslManagementType pulumi.StringInput `pulumi:"sslManagementType"`
@@ -9692,7 +9383,7 @@ func (o SslSettingsResponseOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v SslSettingsResponse) string { return v.CertificateId }).(pulumi.StringOutput)
 }
 
-// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.
 func (o SslSettingsResponseOutput) PendingManagedCertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v SslSettingsResponse) string { return v.PendingManagedCertificateId }).(pulumi.StringOutput)
 }
@@ -9730,7 +9421,7 @@ func (o SslSettingsResponsePtrOutput) CertificateId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.
 func (o SslSettingsResponsePtrOutput) PendingManagedCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslSettingsResponse) *string {
 		if v == nil {
@@ -11933,8 +11624,6 @@ func init() {
 	pulumi.RegisterOutputType(LivenessCheckPtrOutput{})
 	pulumi.RegisterOutputType(LivenessCheckResponseOutput{})
 	pulumi.RegisterOutputType(LivenessCheckResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagedCertificateOutput{})
-	pulumi.RegisterOutputType(ManagedCertificatePtrOutput{})
 	pulumi.RegisterOutputType(ManagedCertificateResponseOutput{})
 	pulumi.RegisterOutputType(ManagedCertificateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManualScalingOutput{})
@@ -11957,8 +11646,6 @@ func init() {
 	pulumi.RegisterOutputType(RequestUtilizationPtrOutput{})
 	pulumi.RegisterOutputType(RequestUtilizationResponseOutput{})
 	pulumi.RegisterOutputType(RequestUtilizationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ResourceRecordOutput{})
-	pulumi.RegisterOutputType(ResourceRecordArrayOutput{})
 	pulumi.RegisterOutputType(ResourceRecordResponseOutput{})
 	pulumi.RegisterOutputType(ResourceRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourcesOutput{})

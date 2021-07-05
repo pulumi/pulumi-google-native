@@ -17,7 +17,7 @@ type Dataset struct {
 
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
 	Access DatasetAccessItemResponseArrayOutput `pulumi:"access"`
-	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               DatasetReferenceResponseOutput        `pulumi:"datasetReference"`
@@ -28,21 +28,21 @@ type Dataset struct {
 	DefaultTableExpirationMs pulumi.StringOutput `pulumi:"defaultTableExpirationMs"`
 	// [Optional] A user-friendly description of the dataset.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// [Output-only] A hash of the resource.
+	// A hash of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
-	// [Output-only] The resource type.
+	// The resource type.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+	// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// [Output-only] Reserved for future use.
+	// Reserved for future use.
 	SatisfiesPZS pulumi.BoolOutput `pulumi:"satisfiesPZS"`
-	// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
@@ -80,7 +80,7 @@ func GetDataset(ctx *pulumi.Context,
 type datasetState struct {
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
 	Access []DatasetAccessItemResponse `pulumi:"access"`
-	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime *string `pulumi:"creationTime"`
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               *DatasetReferenceResponse        `pulumi:"datasetReference"`
@@ -91,28 +91,28 @@ type datasetState struct {
 	DefaultTableExpirationMs *string `pulumi:"defaultTableExpirationMs"`
 	// [Optional] A user-friendly description of the dataset.
 	Description *string `pulumi:"description"`
-	// [Output-only] A hash of the resource.
+	// A hash of the resource.
 	Etag *string `pulumi:"etag"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName *string `pulumi:"friendlyName"`
-	// [Output-only] The resource type.
+	// The resource type.
 	Kind *string `pulumi:"kind"`
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
 	Labels map[string]string `pulumi:"labels"`
-	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+	// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location *string `pulumi:"location"`
-	// [Output-only] Reserved for future use.
+	// Reserved for future use.
 	SatisfiesPZS *bool `pulumi:"satisfiesPZS"`
-	// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink *string `pulumi:"selfLink"`
 }
 
 type DatasetState struct {
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
 	Access DatasetAccessItemResponseArrayInput
-	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringPtrInput
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               DatasetReferenceResponsePtrInput
@@ -123,21 +123,21 @@ type DatasetState struct {
 	DefaultTableExpirationMs pulumi.StringPtrInput
 	// [Optional] A user-friendly description of the dataset.
 	Description pulumi.StringPtrInput
-	// [Output-only] A hash of the resource.
+	// A hash of the resource.
 	Etag pulumi.StringPtrInput
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName pulumi.StringPtrInput
-	// [Output-only] The resource type.
+	// The resource type.
 	Kind pulumi.StringPtrInput
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
 	Labels pulumi.StringMapInput
-	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+	// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 	LastModifiedTime pulumi.StringPtrInput
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location pulumi.StringPtrInput
-	// [Output-only] Reserved for future use.
+	// Reserved for future use.
 	SatisfiesPZS pulumi.BoolPtrInput
-	// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink pulumi.StringPtrInput
 }
 
@@ -148,8 +148,6 @@ func (DatasetState) ElementType() reflect.Type {
 type datasetArgs struct {
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
 	Access []DatasetAccessItem `pulumi:"access"`
-	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
-	CreationTime *string `pulumi:"creationTime"`
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               *DatasetReference        `pulumi:"datasetReference"`
 	DefaultEncryptionConfiguration *EncryptionConfiguration `pulumi:"defaultEncryptionConfiguration"`
@@ -159,33 +157,19 @@ type datasetArgs struct {
 	DefaultTableExpirationMs *string `pulumi:"defaultTableExpirationMs"`
 	// [Optional] A user-friendly description of the dataset.
 	Description *string `pulumi:"description"`
-	// [Output-only] A hash of the resource.
-	Etag *string `pulumi:"etag"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName *string `pulumi:"friendlyName"`
-	// [Output-only] The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
-	Id *string `pulumi:"id"`
-	// [Output-only] The resource type.
-	Kind *string `pulumi:"kind"`
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
 	Labels map[string]string `pulumi:"labels"`
-	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
-	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location *string `pulumi:"location"`
 	Project  string  `pulumi:"project"`
-	// [Output-only] Reserved for future use.
-	SatisfiesPZS *bool `pulumi:"satisfiesPZS"`
-	// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
-	SelfLink *string `pulumi:"selfLink"`
 }
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
 	Access DatasetAccessItemArrayInput
-	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
-	CreationTime pulumi.StringPtrInput
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               DatasetReferencePtrInput
 	DefaultEncryptionConfiguration EncryptionConfigurationPtrInput
@@ -195,25 +179,13 @@ type DatasetArgs struct {
 	DefaultTableExpirationMs pulumi.StringPtrInput
 	// [Optional] A user-friendly description of the dataset.
 	Description pulumi.StringPtrInput
-	// [Output-only] A hash of the resource.
-	Etag pulumi.StringPtrInput
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName pulumi.StringPtrInput
-	// [Output-only] The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
-	Id pulumi.StringPtrInput
-	// [Output-only] The resource type.
-	Kind pulumi.StringPtrInput
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
 	Labels pulumi.StringMapInput
-	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
-	LastModifiedTime pulumi.StringPtrInput
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringInput
-	// [Output-only] Reserved for future use.
-	SatisfiesPZS pulumi.BoolPtrInput
-	// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
-	SelfLink pulumi.StringPtrInput
 }
 
 func (DatasetArgs) ElementType() reflect.Type {

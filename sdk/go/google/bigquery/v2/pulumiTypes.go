@@ -700,156 +700,6 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 	}).(AuditLogConfigResponseOutput)
 }
 
-type BigQueryModelTraining struct {
-	// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
-	CurrentIteration *int `pulumi:"currentIteration"`
-	// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
-	ExpectedTotalIterations *string `pulumi:"expectedTotalIterations"`
-}
-
-// BigQueryModelTrainingInput is an input type that accepts BigQueryModelTrainingArgs and BigQueryModelTrainingOutput values.
-// You can construct a concrete instance of `BigQueryModelTrainingInput` via:
-//
-//          BigQueryModelTrainingArgs{...}
-type BigQueryModelTrainingInput interface {
-	pulumi.Input
-
-	ToBigQueryModelTrainingOutput() BigQueryModelTrainingOutput
-	ToBigQueryModelTrainingOutputWithContext(context.Context) BigQueryModelTrainingOutput
-}
-
-type BigQueryModelTrainingArgs struct {
-	// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
-	CurrentIteration pulumi.IntPtrInput `pulumi:"currentIteration"`
-	// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
-	ExpectedTotalIterations pulumi.StringPtrInput `pulumi:"expectedTotalIterations"`
-}
-
-func (BigQueryModelTrainingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BigQueryModelTraining)(nil)).Elem()
-}
-
-func (i BigQueryModelTrainingArgs) ToBigQueryModelTrainingOutput() BigQueryModelTrainingOutput {
-	return i.ToBigQueryModelTrainingOutputWithContext(context.Background())
-}
-
-func (i BigQueryModelTrainingArgs) ToBigQueryModelTrainingOutputWithContext(ctx context.Context) BigQueryModelTrainingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryModelTrainingOutput)
-}
-
-func (i BigQueryModelTrainingArgs) ToBigQueryModelTrainingPtrOutput() BigQueryModelTrainingPtrOutput {
-	return i.ToBigQueryModelTrainingPtrOutputWithContext(context.Background())
-}
-
-func (i BigQueryModelTrainingArgs) ToBigQueryModelTrainingPtrOutputWithContext(ctx context.Context) BigQueryModelTrainingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryModelTrainingOutput).ToBigQueryModelTrainingPtrOutputWithContext(ctx)
-}
-
-// BigQueryModelTrainingPtrInput is an input type that accepts BigQueryModelTrainingArgs, BigQueryModelTrainingPtr and BigQueryModelTrainingPtrOutput values.
-// You can construct a concrete instance of `BigQueryModelTrainingPtrInput` via:
-//
-//          BigQueryModelTrainingArgs{...}
-//
-//  or:
-//
-//          nil
-type BigQueryModelTrainingPtrInput interface {
-	pulumi.Input
-
-	ToBigQueryModelTrainingPtrOutput() BigQueryModelTrainingPtrOutput
-	ToBigQueryModelTrainingPtrOutputWithContext(context.Context) BigQueryModelTrainingPtrOutput
-}
-
-type bigQueryModelTrainingPtrType BigQueryModelTrainingArgs
-
-func BigQueryModelTrainingPtr(v *BigQueryModelTrainingArgs) BigQueryModelTrainingPtrInput {
-	return (*bigQueryModelTrainingPtrType)(v)
-}
-
-func (*bigQueryModelTrainingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BigQueryModelTraining)(nil)).Elem()
-}
-
-func (i *bigQueryModelTrainingPtrType) ToBigQueryModelTrainingPtrOutput() BigQueryModelTrainingPtrOutput {
-	return i.ToBigQueryModelTrainingPtrOutputWithContext(context.Background())
-}
-
-func (i *bigQueryModelTrainingPtrType) ToBigQueryModelTrainingPtrOutputWithContext(ctx context.Context) BigQueryModelTrainingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryModelTrainingPtrOutput)
-}
-
-type BigQueryModelTrainingOutput struct{ *pulumi.OutputState }
-
-func (BigQueryModelTrainingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BigQueryModelTraining)(nil)).Elem()
-}
-
-func (o BigQueryModelTrainingOutput) ToBigQueryModelTrainingOutput() BigQueryModelTrainingOutput {
-	return o
-}
-
-func (o BigQueryModelTrainingOutput) ToBigQueryModelTrainingOutputWithContext(ctx context.Context) BigQueryModelTrainingOutput {
-	return o
-}
-
-func (o BigQueryModelTrainingOutput) ToBigQueryModelTrainingPtrOutput() BigQueryModelTrainingPtrOutput {
-	return o.ToBigQueryModelTrainingPtrOutputWithContext(context.Background())
-}
-
-func (o BigQueryModelTrainingOutput) ToBigQueryModelTrainingPtrOutputWithContext(ctx context.Context) BigQueryModelTrainingPtrOutput {
-	return o.ApplyT(func(v BigQueryModelTraining) *BigQueryModelTraining {
-		return &v
-	}).(BigQueryModelTrainingPtrOutput)
-}
-
-// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
-func (o BigQueryModelTrainingOutput) CurrentIteration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BigQueryModelTraining) *int { return v.CurrentIteration }).(pulumi.IntPtrOutput)
-}
-
-// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
-func (o BigQueryModelTrainingOutput) ExpectedTotalIterations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BigQueryModelTraining) *string { return v.ExpectedTotalIterations }).(pulumi.StringPtrOutput)
-}
-
-type BigQueryModelTrainingPtrOutput struct{ *pulumi.OutputState }
-
-func (BigQueryModelTrainingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BigQueryModelTraining)(nil)).Elem()
-}
-
-func (o BigQueryModelTrainingPtrOutput) ToBigQueryModelTrainingPtrOutput() BigQueryModelTrainingPtrOutput {
-	return o
-}
-
-func (o BigQueryModelTrainingPtrOutput) ToBigQueryModelTrainingPtrOutputWithContext(ctx context.Context) BigQueryModelTrainingPtrOutput {
-	return o
-}
-
-func (o BigQueryModelTrainingPtrOutput) Elem() BigQueryModelTrainingOutput {
-	return o.ApplyT(func(v *BigQueryModelTraining) BigQueryModelTraining { return *v }).(BigQueryModelTrainingOutput)
-}
-
-// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
-func (o BigQueryModelTrainingPtrOutput) CurrentIteration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BigQueryModelTraining) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CurrentIteration
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
-func (o BigQueryModelTrainingPtrOutput) ExpectedTotalIterations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BigQueryModelTraining) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExpectedTotalIterations
-	}).(pulumi.StringPtrOutput)
-}
-
 type BigQueryModelTrainingResponse struct {
 	// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
 	CurrentIteration int `pulumi:"currentIteration"`
@@ -5543,239 +5393,6 @@ func (o EncryptionConfigurationResponsePtrOutput) KmsKeyName() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-type ErrorProto struct {
-	// Debugging information. This property is internal to Google and should not be used.
-	DebugInfo *string `pulumi:"debugInfo"`
-	// Specifies where the error occurred, if present.
-	Location *string `pulumi:"location"`
-	// A human-readable description of the error.
-	Message *string `pulumi:"message"`
-	// A short error code that summarizes the error.
-	Reason *string `pulumi:"reason"`
-}
-
-// ErrorProtoInput is an input type that accepts ErrorProtoArgs and ErrorProtoOutput values.
-// You can construct a concrete instance of `ErrorProtoInput` via:
-//
-//          ErrorProtoArgs{...}
-type ErrorProtoInput interface {
-	pulumi.Input
-
-	ToErrorProtoOutput() ErrorProtoOutput
-	ToErrorProtoOutputWithContext(context.Context) ErrorProtoOutput
-}
-
-type ErrorProtoArgs struct {
-	// Debugging information. This property is internal to Google and should not be used.
-	DebugInfo pulumi.StringPtrInput `pulumi:"debugInfo"`
-	// Specifies where the error occurred, if present.
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// A human-readable description of the error.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-	// A short error code that summarizes the error.
-	Reason pulumi.StringPtrInput `pulumi:"reason"`
-}
-
-func (ErrorProtoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorProto)(nil)).Elem()
-}
-
-func (i ErrorProtoArgs) ToErrorProtoOutput() ErrorProtoOutput {
-	return i.ToErrorProtoOutputWithContext(context.Background())
-}
-
-func (i ErrorProtoArgs) ToErrorProtoOutputWithContext(ctx context.Context) ErrorProtoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorProtoOutput)
-}
-
-func (i ErrorProtoArgs) ToErrorProtoPtrOutput() ErrorProtoPtrOutput {
-	return i.ToErrorProtoPtrOutputWithContext(context.Background())
-}
-
-func (i ErrorProtoArgs) ToErrorProtoPtrOutputWithContext(ctx context.Context) ErrorProtoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorProtoOutput).ToErrorProtoPtrOutputWithContext(ctx)
-}
-
-// ErrorProtoPtrInput is an input type that accepts ErrorProtoArgs, ErrorProtoPtr and ErrorProtoPtrOutput values.
-// You can construct a concrete instance of `ErrorProtoPtrInput` via:
-//
-//          ErrorProtoArgs{...}
-//
-//  or:
-//
-//          nil
-type ErrorProtoPtrInput interface {
-	pulumi.Input
-
-	ToErrorProtoPtrOutput() ErrorProtoPtrOutput
-	ToErrorProtoPtrOutputWithContext(context.Context) ErrorProtoPtrOutput
-}
-
-type errorProtoPtrType ErrorProtoArgs
-
-func ErrorProtoPtr(v *ErrorProtoArgs) ErrorProtoPtrInput {
-	return (*errorProtoPtrType)(v)
-}
-
-func (*errorProtoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorProto)(nil)).Elem()
-}
-
-func (i *errorProtoPtrType) ToErrorProtoPtrOutput() ErrorProtoPtrOutput {
-	return i.ToErrorProtoPtrOutputWithContext(context.Background())
-}
-
-func (i *errorProtoPtrType) ToErrorProtoPtrOutputWithContext(ctx context.Context) ErrorProtoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorProtoPtrOutput)
-}
-
-// ErrorProtoArrayInput is an input type that accepts ErrorProtoArray and ErrorProtoArrayOutput values.
-// You can construct a concrete instance of `ErrorProtoArrayInput` via:
-//
-//          ErrorProtoArray{ ErrorProtoArgs{...} }
-type ErrorProtoArrayInput interface {
-	pulumi.Input
-
-	ToErrorProtoArrayOutput() ErrorProtoArrayOutput
-	ToErrorProtoArrayOutputWithContext(context.Context) ErrorProtoArrayOutput
-}
-
-type ErrorProtoArray []ErrorProtoInput
-
-func (ErrorProtoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ErrorProto)(nil)).Elem()
-}
-
-func (i ErrorProtoArray) ToErrorProtoArrayOutput() ErrorProtoArrayOutput {
-	return i.ToErrorProtoArrayOutputWithContext(context.Background())
-}
-
-func (i ErrorProtoArray) ToErrorProtoArrayOutputWithContext(ctx context.Context) ErrorProtoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorProtoArrayOutput)
-}
-
-type ErrorProtoOutput struct{ *pulumi.OutputState }
-
-func (ErrorProtoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorProto)(nil)).Elem()
-}
-
-func (o ErrorProtoOutput) ToErrorProtoOutput() ErrorProtoOutput {
-	return o
-}
-
-func (o ErrorProtoOutput) ToErrorProtoOutputWithContext(ctx context.Context) ErrorProtoOutput {
-	return o
-}
-
-func (o ErrorProtoOutput) ToErrorProtoPtrOutput() ErrorProtoPtrOutput {
-	return o.ToErrorProtoPtrOutputWithContext(context.Background())
-}
-
-func (o ErrorProtoOutput) ToErrorProtoPtrOutputWithContext(ctx context.Context) ErrorProtoPtrOutput {
-	return o.ApplyT(func(v ErrorProto) *ErrorProto {
-		return &v
-	}).(ErrorProtoPtrOutput)
-}
-
-// Debugging information. This property is internal to Google and should not be used.
-func (o ErrorProtoOutput) DebugInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorProto) *string { return v.DebugInfo }).(pulumi.StringPtrOutput)
-}
-
-// Specifies where the error occurred, if present.
-func (o ErrorProtoOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorProto) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// A human-readable description of the error.
-func (o ErrorProtoOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorProto) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// A short error code that summarizes the error.
-func (o ErrorProtoOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorProto) *string { return v.Reason }).(pulumi.StringPtrOutput)
-}
-
-type ErrorProtoPtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorProtoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorProto)(nil)).Elem()
-}
-
-func (o ErrorProtoPtrOutput) ToErrorProtoPtrOutput() ErrorProtoPtrOutput {
-	return o
-}
-
-func (o ErrorProtoPtrOutput) ToErrorProtoPtrOutputWithContext(ctx context.Context) ErrorProtoPtrOutput {
-	return o
-}
-
-func (o ErrorProtoPtrOutput) Elem() ErrorProtoOutput {
-	return o.ApplyT(func(v *ErrorProto) ErrorProto { return *v }).(ErrorProtoOutput)
-}
-
-// Debugging information. This property is internal to Google and should not be used.
-func (o ErrorProtoPtrOutput) DebugInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorProto) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DebugInfo
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies where the error occurred, if present.
-func (o ErrorProtoPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorProto) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// A human-readable description of the error.
-func (o ErrorProtoPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorProto) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// A short error code that summarizes the error.
-func (o ErrorProtoPtrOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorProto) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Reason
-	}).(pulumi.StringPtrOutput)
-}
-
-type ErrorProtoArrayOutput struct{ *pulumi.OutputState }
-
-func (ErrorProtoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ErrorProto)(nil)).Elem()
-}
-
-func (o ErrorProtoArrayOutput) ToErrorProtoArrayOutput() ErrorProtoArrayOutput {
-	return o
-}
-
-func (o ErrorProtoArrayOutput) ToErrorProtoArrayOutputWithContext(ctx context.Context) ErrorProtoArrayOutput {
-	return o
-}
-
-func (o ErrorProtoArrayOutput) Index(i pulumi.IntInput) ErrorProtoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorProto {
-		return vs[0].([]ErrorProto)[vs[1].(int)]
-	}).(ErrorProtoOutput)
-}
-
 type ErrorProtoResponse struct {
 	// Debugging information. This property is internal to Google and should not be used.
 	DebugInfo string `pulumi:"debugInfo"`
@@ -6007,364 +5624,6 @@ func (o ErrorProtoResponseArrayOutput) Index(i pulumi.IntInput) ErrorProtoRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorProtoResponse {
 		return vs[0].([]ErrorProtoResponse)[vs[1].(int)]
 	}).(ErrorProtoResponseOutput)
-}
-
-type ExplainQueryStage struct {
-	// Number of parallel input segments completed.
-	CompletedParallelInputs *string `pulumi:"completedParallelInputs"`
-	// Milliseconds the average shard spent on CPU-bound tasks.
-	ComputeMsAvg *string `pulumi:"computeMsAvg"`
-	// Milliseconds the slowest shard spent on CPU-bound tasks.
-	ComputeMsMax *string `pulumi:"computeMsMax"`
-	// Relative amount of time the average shard spent on CPU-bound tasks.
-	ComputeRatioAvg *float64 `pulumi:"computeRatioAvg"`
-	// Relative amount of time the slowest shard spent on CPU-bound tasks.
-	ComputeRatioMax *float64 `pulumi:"computeRatioMax"`
-	// Stage end time represented as milliseconds since epoch.
-	EndMs *string `pulumi:"endMs"`
-	// Unique ID for stage within plan.
-	Id *string `pulumi:"id"`
-	// IDs for stages that are inputs to this stage.
-	InputStages []string `pulumi:"inputStages"`
-	// Human-readable name for stage.
-	Name *string `pulumi:"name"`
-	// Number of parallel input segments to be processed.
-	ParallelInputs *string `pulumi:"parallelInputs"`
-	// Milliseconds the average shard spent reading input.
-	ReadMsAvg *string `pulumi:"readMsAvg"`
-	// Milliseconds the slowest shard spent reading input.
-	ReadMsMax *string `pulumi:"readMsMax"`
-	// Relative amount of time the average shard spent reading input.
-	ReadRatioAvg *float64 `pulumi:"readRatioAvg"`
-	// Relative amount of time the slowest shard spent reading input.
-	ReadRatioMax *float64 `pulumi:"readRatioMax"`
-	// Number of records read into the stage.
-	RecordsRead *string `pulumi:"recordsRead"`
-	// Number of records written by the stage.
-	RecordsWritten *string `pulumi:"recordsWritten"`
-	// Total number of bytes written to shuffle.
-	ShuffleOutputBytes *string `pulumi:"shuffleOutputBytes"`
-	// Total number of bytes written to shuffle and spilled to disk.
-	ShuffleOutputBytesSpilled *string `pulumi:"shuffleOutputBytesSpilled"`
-	// Slot-milliseconds used by the stage.
-	SlotMs *string `pulumi:"slotMs"`
-	// Stage start time represented as milliseconds since epoch.
-	StartMs *string `pulumi:"startMs"`
-	// Current status for the stage.
-	Status *string `pulumi:"status"`
-	// List of operations within the stage in dependency order (approximately chronological).
-	Steps []ExplainQueryStep `pulumi:"steps"`
-	// Milliseconds the average shard spent waiting to be scheduled.
-	WaitMsAvg *string `pulumi:"waitMsAvg"`
-	// Milliseconds the slowest shard spent waiting to be scheduled.
-	WaitMsMax *string `pulumi:"waitMsMax"`
-	// Relative amount of time the average shard spent waiting to be scheduled.
-	WaitRatioAvg *float64 `pulumi:"waitRatioAvg"`
-	// Relative amount of time the slowest shard spent waiting to be scheduled.
-	WaitRatioMax *float64 `pulumi:"waitRatioMax"`
-	// Milliseconds the average shard spent on writing output.
-	WriteMsAvg *string `pulumi:"writeMsAvg"`
-	// Milliseconds the slowest shard spent on writing output.
-	WriteMsMax *string `pulumi:"writeMsMax"`
-	// Relative amount of time the average shard spent on writing output.
-	WriteRatioAvg *float64 `pulumi:"writeRatioAvg"`
-	// Relative amount of time the slowest shard spent on writing output.
-	WriteRatioMax *float64 `pulumi:"writeRatioMax"`
-}
-
-// ExplainQueryStageInput is an input type that accepts ExplainQueryStageArgs and ExplainQueryStageOutput values.
-// You can construct a concrete instance of `ExplainQueryStageInput` via:
-//
-//          ExplainQueryStageArgs{...}
-type ExplainQueryStageInput interface {
-	pulumi.Input
-
-	ToExplainQueryStageOutput() ExplainQueryStageOutput
-	ToExplainQueryStageOutputWithContext(context.Context) ExplainQueryStageOutput
-}
-
-type ExplainQueryStageArgs struct {
-	// Number of parallel input segments completed.
-	CompletedParallelInputs pulumi.StringPtrInput `pulumi:"completedParallelInputs"`
-	// Milliseconds the average shard spent on CPU-bound tasks.
-	ComputeMsAvg pulumi.StringPtrInput `pulumi:"computeMsAvg"`
-	// Milliseconds the slowest shard spent on CPU-bound tasks.
-	ComputeMsMax pulumi.StringPtrInput `pulumi:"computeMsMax"`
-	// Relative amount of time the average shard spent on CPU-bound tasks.
-	ComputeRatioAvg pulumi.Float64PtrInput `pulumi:"computeRatioAvg"`
-	// Relative amount of time the slowest shard spent on CPU-bound tasks.
-	ComputeRatioMax pulumi.Float64PtrInput `pulumi:"computeRatioMax"`
-	// Stage end time represented as milliseconds since epoch.
-	EndMs pulumi.StringPtrInput `pulumi:"endMs"`
-	// Unique ID for stage within plan.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// IDs for stages that are inputs to this stage.
-	InputStages pulumi.StringArrayInput `pulumi:"inputStages"`
-	// Human-readable name for stage.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Number of parallel input segments to be processed.
-	ParallelInputs pulumi.StringPtrInput `pulumi:"parallelInputs"`
-	// Milliseconds the average shard spent reading input.
-	ReadMsAvg pulumi.StringPtrInput `pulumi:"readMsAvg"`
-	// Milliseconds the slowest shard spent reading input.
-	ReadMsMax pulumi.StringPtrInput `pulumi:"readMsMax"`
-	// Relative amount of time the average shard spent reading input.
-	ReadRatioAvg pulumi.Float64PtrInput `pulumi:"readRatioAvg"`
-	// Relative amount of time the slowest shard spent reading input.
-	ReadRatioMax pulumi.Float64PtrInput `pulumi:"readRatioMax"`
-	// Number of records read into the stage.
-	RecordsRead pulumi.StringPtrInput `pulumi:"recordsRead"`
-	// Number of records written by the stage.
-	RecordsWritten pulumi.StringPtrInput `pulumi:"recordsWritten"`
-	// Total number of bytes written to shuffle.
-	ShuffleOutputBytes pulumi.StringPtrInput `pulumi:"shuffleOutputBytes"`
-	// Total number of bytes written to shuffle and spilled to disk.
-	ShuffleOutputBytesSpilled pulumi.StringPtrInput `pulumi:"shuffleOutputBytesSpilled"`
-	// Slot-milliseconds used by the stage.
-	SlotMs pulumi.StringPtrInput `pulumi:"slotMs"`
-	// Stage start time represented as milliseconds since epoch.
-	StartMs pulumi.StringPtrInput `pulumi:"startMs"`
-	// Current status for the stage.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// List of operations within the stage in dependency order (approximately chronological).
-	Steps ExplainQueryStepArrayInput `pulumi:"steps"`
-	// Milliseconds the average shard spent waiting to be scheduled.
-	WaitMsAvg pulumi.StringPtrInput `pulumi:"waitMsAvg"`
-	// Milliseconds the slowest shard spent waiting to be scheduled.
-	WaitMsMax pulumi.StringPtrInput `pulumi:"waitMsMax"`
-	// Relative amount of time the average shard spent waiting to be scheduled.
-	WaitRatioAvg pulumi.Float64PtrInput `pulumi:"waitRatioAvg"`
-	// Relative amount of time the slowest shard spent waiting to be scheduled.
-	WaitRatioMax pulumi.Float64PtrInput `pulumi:"waitRatioMax"`
-	// Milliseconds the average shard spent on writing output.
-	WriteMsAvg pulumi.StringPtrInput `pulumi:"writeMsAvg"`
-	// Milliseconds the slowest shard spent on writing output.
-	WriteMsMax pulumi.StringPtrInput `pulumi:"writeMsMax"`
-	// Relative amount of time the average shard spent on writing output.
-	WriteRatioAvg pulumi.Float64PtrInput `pulumi:"writeRatioAvg"`
-	// Relative amount of time the slowest shard spent on writing output.
-	WriteRatioMax pulumi.Float64PtrInput `pulumi:"writeRatioMax"`
-}
-
-func (ExplainQueryStageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExplainQueryStage)(nil)).Elem()
-}
-
-func (i ExplainQueryStageArgs) ToExplainQueryStageOutput() ExplainQueryStageOutput {
-	return i.ToExplainQueryStageOutputWithContext(context.Background())
-}
-
-func (i ExplainQueryStageArgs) ToExplainQueryStageOutputWithContext(ctx context.Context) ExplainQueryStageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExplainQueryStageOutput)
-}
-
-// ExplainQueryStageArrayInput is an input type that accepts ExplainQueryStageArray and ExplainQueryStageArrayOutput values.
-// You can construct a concrete instance of `ExplainQueryStageArrayInput` via:
-//
-//          ExplainQueryStageArray{ ExplainQueryStageArgs{...} }
-type ExplainQueryStageArrayInput interface {
-	pulumi.Input
-
-	ToExplainQueryStageArrayOutput() ExplainQueryStageArrayOutput
-	ToExplainQueryStageArrayOutputWithContext(context.Context) ExplainQueryStageArrayOutput
-}
-
-type ExplainQueryStageArray []ExplainQueryStageInput
-
-func (ExplainQueryStageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExplainQueryStage)(nil)).Elem()
-}
-
-func (i ExplainQueryStageArray) ToExplainQueryStageArrayOutput() ExplainQueryStageArrayOutput {
-	return i.ToExplainQueryStageArrayOutputWithContext(context.Background())
-}
-
-func (i ExplainQueryStageArray) ToExplainQueryStageArrayOutputWithContext(ctx context.Context) ExplainQueryStageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExplainQueryStageArrayOutput)
-}
-
-type ExplainQueryStageOutput struct{ *pulumi.OutputState }
-
-func (ExplainQueryStageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExplainQueryStage)(nil)).Elem()
-}
-
-func (o ExplainQueryStageOutput) ToExplainQueryStageOutput() ExplainQueryStageOutput {
-	return o
-}
-
-func (o ExplainQueryStageOutput) ToExplainQueryStageOutputWithContext(ctx context.Context) ExplainQueryStageOutput {
-	return o
-}
-
-// Number of parallel input segments completed.
-func (o ExplainQueryStageOutput) CompletedParallelInputs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.CompletedParallelInputs }).(pulumi.StringPtrOutput)
-}
-
-// Milliseconds the average shard spent on CPU-bound tasks.
-func (o ExplainQueryStageOutput) ComputeMsAvg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.ComputeMsAvg }).(pulumi.StringPtrOutput)
-}
-
-// Milliseconds the slowest shard spent on CPU-bound tasks.
-func (o ExplainQueryStageOutput) ComputeMsMax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.ComputeMsMax }).(pulumi.StringPtrOutput)
-}
-
-// Relative amount of time the average shard spent on CPU-bound tasks.
-func (o ExplainQueryStageOutput) ComputeRatioAvg() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *float64 { return v.ComputeRatioAvg }).(pulumi.Float64PtrOutput)
-}
-
-// Relative amount of time the slowest shard spent on CPU-bound tasks.
-func (o ExplainQueryStageOutput) ComputeRatioMax() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *float64 { return v.ComputeRatioMax }).(pulumi.Float64PtrOutput)
-}
-
-// Stage end time represented as milliseconds since epoch.
-func (o ExplainQueryStageOutput) EndMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.EndMs }).(pulumi.StringPtrOutput)
-}
-
-// Unique ID for stage within plan.
-func (o ExplainQueryStageOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// IDs for stages that are inputs to this stage.
-func (o ExplainQueryStageOutput) InputStages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ExplainQueryStage) []string { return v.InputStages }).(pulumi.StringArrayOutput)
-}
-
-// Human-readable name for stage.
-func (o ExplainQueryStageOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Number of parallel input segments to be processed.
-func (o ExplainQueryStageOutput) ParallelInputs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.ParallelInputs }).(pulumi.StringPtrOutput)
-}
-
-// Milliseconds the average shard spent reading input.
-func (o ExplainQueryStageOutput) ReadMsAvg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.ReadMsAvg }).(pulumi.StringPtrOutput)
-}
-
-// Milliseconds the slowest shard spent reading input.
-func (o ExplainQueryStageOutput) ReadMsMax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.ReadMsMax }).(pulumi.StringPtrOutput)
-}
-
-// Relative amount of time the average shard spent reading input.
-func (o ExplainQueryStageOutput) ReadRatioAvg() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *float64 { return v.ReadRatioAvg }).(pulumi.Float64PtrOutput)
-}
-
-// Relative amount of time the slowest shard spent reading input.
-func (o ExplainQueryStageOutput) ReadRatioMax() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *float64 { return v.ReadRatioMax }).(pulumi.Float64PtrOutput)
-}
-
-// Number of records read into the stage.
-func (o ExplainQueryStageOutput) RecordsRead() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.RecordsRead }).(pulumi.StringPtrOutput)
-}
-
-// Number of records written by the stage.
-func (o ExplainQueryStageOutput) RecordsWritten() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.RecordsWritten }).(pulumi.StringPtrOutput)
-}
-
-// Total number of bytes written to shuffle.
-func (o ExplainQueryStageOutput) ShuffleOutputBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.ShuffleOutputBytes }).(pulumi.StringPtrOutput)
-}
-
-// Total number of bytes written to shuffle and spilled to disk.
-func (o ExplainQueryStageOutput) ShuffleOutputBytesSpilled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.ShuffleOutputBytesSpilled }).(pulumi.StringPtrOutput)
-}
-
-// Slot-milliseconds used by the stage.
-func (o ExplainQueryStageOutput) SlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.SlotMs }).(pulumi.StringPtrOutput)
-}
-
-// Stage start time represented as milliseconds since epoch.
-func (o ExplainQueryStageOutput) StartMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.StartMs }).(pulumi.StringPtrOutput)
-}
-
-// Current status for the stage.
-func (o ExplainQueryStageOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// List of operations within the stage in dependency order (approximately chronological).
-func (o ExplainQueryStageOutput) Steps() ExplainQueryStepArrayOutput {
-	return o.ApplyT(func(v ExplainQueryStage) []ExplainQueryStep { return v.Steps }).(ExplainQueryStepArrayOutput)
-}
-
-// Milliseconds the average shard spent waiting to be scheduled.
-func (o ExplainQueryStageOutput) WaitMsAvg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.WaitMsAvg }).(pulumi.StringPtrOutput)
-}
-
-// Milliseconds the slowest shard spent waiting to be scheduled.
-func (o ExplainQueryStageOutput) WaitMsMax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.WaitMsMax }).(pulumi.StringPtrOutput)
-}
-
-// Relative amount of time the average shard spent waiting to be scheduled.
-func (o ExplainQueryStageOutput) WaitRatioAvg() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *float64 { return v.WaitRatioAvg }).(pulumi.Float64PtrOutput)
-}
-
-// Relative amount of time the slowest shard spent waiting to be scheduled.
-func (o ExplainQueryStageOutput) WaitRatioMax() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *float64 { return v.WaitRatioMax }).(pulumi.Float64PtrOutput)
-}
-
-// Milliseconds the average shard spent on writing output.
-func (o ExplainQueryStageOutput) WriteMsAvg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.WriteMsAvg }).(pulumi.StringPtrOutput)
-}
-
-// Milliseconds the slowest shard spent on writing output.
-func (o ExplainQueryStageOutput) WriteMsMax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *string { return v.WriteMsMax }).(pulumi.StringPtrOutput)
-}
-
-// Relative amount of time the average shard spent on writing output.
-func (o ExplainQueryStageOutput) WriteRatioAvg() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *float64 { return v.WriteRatioAvg }).(pulumi.Float64PtrOutput)
-}
-
-// Relative amount of time the slowest shard spent on writing output.
-func (o ExplainQueryStageOutput) WriteRatioMax() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ExplainQueryStage) *float64 { return v.WriteRatioMax }).(pulumi.Float64PtrOutput)
-}
-
-type ExplainQueryStageArrayOutput struct{ *pulumi.OutputState }
-
-func (ExplainQueryStageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExplainQueryStage)(nil)).Elem()
-}
-
-func (o ExplainQueryStageArrayOutput) ToExplainQueryStageArrayOutput() ExplainQueryStageArrayOutput {
-	return o
-}
-
-func (o ExplainQueryStageArrayOutput) ToExplainQueryStageArrayOutputWithContext(ctx context.Context) ExplainQueryStageArrayOutput {
-	return o
-}
-
-func (o ExplainQueryStageArrayOutput) Index(i pulumi.IntInput) ExplainQueryStageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExplainQueryStage {
-		return vs[0].([]ExplainQueryStage)[vs[1].(int)]
-	}).(ExplainQueryStageOutput)
 }
 
 type ExplainQueryStageResponse struct {
@@ -6714,112 +5973,6 @@ func (o ExplainQueryStageResponseArrayOutput) Index(i pulumi.IntInput) ExplainQu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExplainQueryStageResponse {
 		return vs[0].([]ExplainQueryStageResponse)[vs[1].(int)]
 	}).(ExplainQueryStageResponseOutput)
-}
-
-type ExplainQueryStep struct {
-	// Machine-readable operation type.
-	Kind *string `pulumi:"kind"`
-	// Human-readable stage descriptions.
-	Substeps []string `pulumi:"substeps"`
-}
-
-// ExplainQueryStepInput is an input type that accepts ExplainQueryStepArgs and ExplainQueryStepOutput values.
-// You can construct a concrete instance of `ExplainQueryStepInput` via:
-//
-//          ExplainQueryStepArgs{...}
-type ExplainQueryStepInput interface {
-	pulumi.Input
-
-	ToExplainQueryStepOutput() ExplainQueryStepOutput
-	ToExplainQueryStepOutputWithContext(context.Context) ExplainQueryStepOutput
-}
-
-type ExplainQueryStepArgs struct {
-	// Machine-readable operation type.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// Human-readable stage descriptions.
-	Substeps pulumi.StringArrayInput `pulumi:"substeps"`
-}
-
-func (ExplainQueryStepArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExplainQueryStep)(nil)).Elem()
-}
-
-func (i ExplainQueryStepArgs) ToExplainQueryStepOutput() ExplainQueryStepOutput {
-	return i.ToExplainQueryStepOutputWithContext(context.Background())
-}
-
-func (i ExplainQueryStepArgs) ToExplainQueryStepOutputWithContext(ctx context.Context) ExplainQueryStepOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExplainQueryStepOutput)
-}
-
-// ExplainQueryStepArrayInput is an input type that accepts ExplainQueryStepArray and ExplainQueryStepArrayOutput values.
-// You can construct a concrete instance of `ExplainQueryStepArrayInput` via:
-//
-//          ExplainQueryStepArray{ ExplainQueryStepArgs{...} }
-type ExplainQueryStepArrayInput interface {
-	pulumi.Input
-
-	ToExplainQueryStepArrayOutput() ExplainQueryStepArrayOutput
-	ToExplainQueryStepArrayOutputWithContext(context.Context) ExplainQueryStepArrayOutput
-}
-
-type ExplainQueryStepArray []ExplainQueryStepInput
-
-func (ExplainQueryStepArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExplainQueryStep)(nil)).Elem()
-}
-
-func (i ExplainQueryStepArray) ToExplainQueryStepArrayOutput() ExplainQueryStepArrayOutput {
-	return i.ToExplainQueryStepArrayOutputWithContext(context.Background())
-}
-
-func (i ExplainQueryStepArray) ToExplainQueryStepArrayOutputWithContext(ctx context.Context) ExplainQueryStepArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExplainQueryStepArrayOutput)
-}
-
-type ExplainQueryStepOutput struct{ *pulumi.OutputState }
-
-func (ExplainQueryStepOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExplainQueryStep)(nil)).Elem()
-}
-
-func (o ExplainQueryStepOutput) ToExplainQueryStepOutput() ExplainQueryStepOutput {
-	return o
-}
-
-func (o ExplainQueryStepOutput) ToExplainQueryStepOutputWithContext(ctx context.Context) ExplainQueryStepOutput {
-	return o
-}
-
-// Machine-readable operation type.
-func (o ExplainQueryStepOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExplainQueryStep) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-// Human-readable stage descriptions.
-func (o ExplainQueryStepOutput) Substeps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ExplainQueryStep) []string { return v.Substeps }).(pulumi.StringArrayOutput)
-}
-
-type ExplainQueryStepArrayOutput struct{ *pulumi.OutputState }
-
-func (ExplainQueryStepArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExplainQueryStep)(nil)).Elem()
-}
-
-func (o ExplainQueryStepArrayOutput) ToExplainQueryStepArrayOutput() ExplainQueryStepArrayOutput {
-	return o
-}
-
-func (o ExplainQueryStepArrayOutput) ToExplainQueryStepArrayOutputWithContext(ctx context.Context) ExplainQueryStepArrayOutput {
-	return o
-}
-
-func (o ExplainQueryStepArrayOutput) Index(i pulumi.IntInput) ExplainQueryStepOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExplainQueryStep {
-		return vs[0].([]ExplainQueryStep)[vs[1].(int)]
-	}).(ExplainQueryStepOutput)
 }
 
 type ExplainQueryStepResponse struct {
@@ -8568,8 +7721,6 @@ type JobConfiguration struct {
 	Extract *JobConfigurationExtract `pulumi:"extract"`
 	// [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs *string `pulumi:"jobTimeoutMs"`
-	// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-	JobType *string `pulumi:"jobType"`
 	// The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
 	Labels map[string]string `pulumi:"labels"`
 	// [Pick one] Configures a load job.
@@ -8598,8 +7749,6 @@ type JobConfigurationArgs struct {
 	Extract JobConfigurationExtractPtrInput `pulumi:"extract"`
 	// [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs pulumi.StringPtrInput `pulumi:"jobTimeoutMs"`
-	// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-	JobType pulumi.StringPtrInput `pulumi:"jobType"`
 	// The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// [Pick one] Configures a load job.
@@ -8705,11 +7854,6 @@ func (o JobConfigurationOutput) JobTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobConfiguration) *string { return v.JobTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-func (o JobConfigurationOutput) JobType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobConfiguration) *string { return v.JobType }).(pulumi.StringPtrOutput)
-}
-
 // The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
 func (o JobConfigurationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobConfiguration) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -8780,16 +7924,6 @@ func (o JobConfigurationPtrOutput) JobTimeoutMs() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.JobTimeoutMs
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-func (o JobConfigurationPtrOutput) JobType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.JobType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11792,7 +10926,7 @@ type JobConfigurationResponse struct {
 	Extract JobConfigurationExtractResponse `pulumi:"extract"`
 	// [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs string `pulumi:"jobTimeoutMs"`
-	// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
+	// The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
 	JobType string `pulumi:"jobType"`
 	// The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
 	Labels map[string]string `pulumi:"labels"`
@@ -11822,7 +10956,7 @@ type JobConfigurationResponseArgs struct {
 	Extract JobConfigurationExtractResponseInput `pulumi:"extract"`
 	// [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs pulumi.StringInput `pulumi:"jobTimeoutMs"`
-	// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
+	// The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
 	JobType pulumi.StringInput `pulumi:"jobType"`
 	// The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -11929,7 +11063,7 @@ func (o JobConfigurationResponseOutput) JobTimeoutMs() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConfigurationResponse) string { return v.JobTimeoutMs }).(pulumi.StringOutput)
 }
 
-// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
+// The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
 func (o JobConfigurationResponseOutput) JobType() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConfigurationResponse) string { return v.JobType }).(pulumi.StringOutput)
 }
@@ -12007,7 +11141,7 @@ func (o JobConfigurationResponsePtrOutput) JobTimeoutMs() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
+// The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
 func (o JobConfigurationResponsePtrOutput) JobType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobConfigurationResponse) *string {
 		if v == nil {
@@ -12917,1119 +12051,10 @@ func (o JobReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type JobStatistics struct {
-	// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
-	CompletionRatio *float64 `pulumi:"completionRatio"`
-	// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
-	CreationTime *string `pulumi:"creationTime"`
-	// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
-	EndTime *string `pulumi:"endTime"`
-	// [Output-only] Statistics for an extract job.
-	Extract *JobStatistics4 `pulumi:"extract"`
-	// [Output-only] Statistics for a load job.
-	Load *JobStatistics3 `pulumi:"load"`
-	// [Output-only] Number of child jobs executed.
-	NumChildJobs *string `pulumi:"numChildJobs"`
-	// [Output-only] If this is a child job, the id of the parent.
-	ParentJobId *string `pulumi:"parentJobId"`
-	// [Output-only] Statistics for a query job.
-	Query *JobStatistics2 `pulumi:"query"`
-	// [Output-only] Quotas which delayed this job's start time.
-	QuotaDeferments []string `pulumi:"quotaDeferments"`
-	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage []JobStatisticsReservationUsageItem `pulumi:"reservationUsage"`
-	// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-	Reservation_id *string `pulumi:"reservation_id"`
-	// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
-	RowLevelSecurityStatistics *RowLevelSecurityStatistics `pulumi:"rowLevelSecurityStatistics"`
-	// [Output-only] Statistics for a child job of a script.
-	ScriptStatistics *ScriptStatistics `pulumi:"scriptStatistics"`
-	// [Output-only] [Preview] Information of the session if this job is part of one.
-	SessionInfoTemplate *SessionInfo `pulumi:"sessionInfoTemplate"`
-	// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-	StartTime *string `pulumi:"startTime"`
-	// [Output-only] Slot-milliseconds for the job.
-	TotalSlotMs *string `pulumi:"totalSlotMs"`
-	// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-	TransactionInfoTemplate *TransactionInfo `pulumi:"transactionInfoTemplate"`
-}
-
-// JobStatisticsInput is an input type that accepts JobStatisticsArgs and JobStatisticsOutput values.
-// You can construct a concrete instance of `JobStatisticsInput` via:
-//
-//          JobStatisticsArgs{...}
-type JobStatisticsInput interface {
-	pulumi.Input
-
-	ToJobStatisticsOutput() JobStatisticsOutput
-	ToJobStatisticsOutputWithContext(context.Context) JobStatisticsOutput
-}
-
-type JobStatisticsArgs struct {
-	// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
-	CompletionRatio pulumi.Float64PtrInput `pulumi:"completionRatio"`
-	// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
-	CreationTime pulumi.StringPtrInput `pulumi:"creationTime"`
-	// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// [Output-only] Statistics for an extract job.
-	Extract JobStatistics4PtrInput `pulumi:"extract"`
-	// [Output-only] Statistics for a load job.
-	Load JobStatistics3PtrInput `pulumi:"load"`
-	// [Output-only] Number of child jobs executed.
-	NumChildJobs pulumi.StringPtrInput `pulumi:"numChildJobs"`
-	// [Output-only] If this is a child job, the id of the parent.
-	ParentJobId pulumi.StringPtrInput `pulumi:"parentJobId"`
-	// [Output-only] Statistics for a query job.
-	Query JobStatistics2PtrInput `pulumi:"query"`
-	// [Output-only] Quotas which delayed this job's start time.
-	QuotaDeferments pulumi.StringArrayInput `pulumi:"quotaDeferments"`
-	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage JobStatisticsReservationUsageItemArrayInput `pulumi:"reservationUsage"`
-	// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-	Reservation_id pulumi.StringPtrInput `pulumi:"reservation_id"`
-	// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
-	RowLevelSecurityStatistics RowLevelSecurityStatisticsPtrInput `pulumi:"rowLevelSecurityStatistics"`
-	// [Output-only] Statistics for a child job of a script.
-	ScriptStatistics ScriptStatisticsPtrInput `pulumi:"scriptStatistics"`
-	// [Output-only] [Preview] Information of the session if this job is part of one.
-	SessionInfoTemplate SessionInfoPtrInput `pulumi:"sessionInfoTemplate"`
-	// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// [Output-only] Slot-milliseconds for the job.
-	TotalSlotMs pulumi.StringPtrInput `pulumi:"totalSlotMs"`
-	// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-	TransactionInfoTemplate TransactionInfoPtrInput `pulumi:"transactionInfoTemplate"`
-}
-
-func (JobStatisticsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics)(nil)).Elem()
-}
-
-func (i JobStatisticsArgs) ToJobStatisticsOutput() JobStatisticsOutput {
-	return i.ToJobStatisticsOutputWithContext(context.Background())
-}
-
-func (i JobStatisticsArgs) ToJobStatisticsOutputWithContext(ctx context.Context) JobStatisticsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsOutput)
-}
-
-func (i JobStatisticsArgs) ToJobStatisticsPtrOutput() JobStatisticsPtrOutput {
-	return i.ToJobStatisticsPtrOutputWithContext(context.Background())
-}
-
-func (i JobStatisticsArgs) ToJobStatisticsPtrOutputWithContext(ctx context.Context) JobStatisticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsOutput).ToJobStatisticsPtrOutputWithContext(ctx)
-}
-
-// JobStatisticsPtrInput is an input type that accepts JobStatisticsArgs, JobStatisticsPtr and JobStatisticsPtrOutput values.
-// You can construct a concrete instance of `JobStatisticsPtrInput` via:
-//
-//          JobStatisticsArgs{...}
-//
-//  or:
-//
-//          nil
-type JobStatisticsPtrInput interface {
-	pulumi.Input
-
-	ToJobStatisticsPtrOutput() JobStatisticsPtrOutput
-	ToJobStatisticsPtrOutputWithContext(context.Context) JobStatisticsPtrOutput
-}
-
-type jobStatisticsPtrType JobStatisticsArgs
-
-func JobStatisticsPtr(v *JobStatisticsArgs) JobStatisticsPtrInput {
-	return (*jobStatisticsPtrType)(v)
-}
-
-func (*jobStatisticsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics)(nil)).Elem()
-}
-
-func (i *jobStatisticsPtrType) ToJobStatisticsPtrOutput() JobStatisticsPtrOutput {
-	return i.ToJobStatisticsPtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatisticsPtrType) ToJobStatisticsPtrOutputWithContext(ctx context.Context) JobStatisticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsPtrOutput)
-}
-
-type JobStatisticsOutput struct{ *pulumi.OutputState }
-
-func (JobStatisticsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics)(nil)).Elem()
-}
-
-func (o JobStatisticsOutput) ToJobStatisticsOutput() JobStatisticsOutput {
-	return o
-}
-
-func (o JobStatisticsOutput) ToJobStatisticsOutputWithContext(ctx context.Context) JobStatisticsOutput {
-	return o
-}
-
-func (o JobStatisticsOutput) ToJobStatisticsPtrOutput() JobStatisticsPtrOutput {
-	return o.ToJobStatisticsPtrOutputWithContext(context.Background())
-}
-
-func (o JobStatisticsOutput) ToJobStatisticsPtrOutputWithContext(ctx context.Context) JobStatisticsPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *JobStatistics {
-		return &v
-	}).(JobStatisticsPtrOutput)
-}
-
-// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
-func (o JobStatisticsOutput) CompletionRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v JobStatistics) *float64 { return v.CompletionRatio }).(pulumi.Float64PtrOutput)
-}
-
-// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
-func (o JobStatisticsOutput) CreationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
-func (o JobStatisticsOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Statistics for an extract job.
-func (o JobStatisticsOutput) Extract() JobStatistics4PtrOutput {
-	return o.ApplyT(func(v JobStatistics) *JobStatistics4 { return v.Extract }).(JobStatistics4PtrOutput)
-}
-
-// [Output-only] Statistics for a load job.
-func (o JobStatisticsOutput) Load() JobStatistics3PtrOutput {
-	return o.ApplyT(func(v JobStatistics) *JobStatistics3 { return v.Load }).(JobStatistics3PtrOutput)
-}
-
-// [Output-only] Number of child jobs executed.
-func (o JobStatisticsOutput) NumChildJobs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *string { return v.NumChildJobs }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] If this is a child job, the id of the parent.
-func (o JobStatisticsOutput) ParentJobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *string { return v.ParentJobId }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Statistics for a query job.
-func (o JobStatisticsOutput) Query() JobStatistics2PtrOutput {
-	return o.ApplyT(func(v JobStatistics) *JobStatistics2 { return v.Query }).(JobStatistics2PtrOutput)
-}
-
-// [Output-only] Quotas which delayed this job's start time.
-func (o JobStatisticsOutput) QuotaDeferments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JobStatistics) []string { return v.QuotaDeferments }).(pulumi.StringArrayOutput)
-}
-
-// [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatisticsOutput) ReservationUsage() JobStatisticsReservationUsageItemArrayOutput {
-	return o.ApplyT(func(v JobStatistics) []JobStatisticsReservationUsageItem { return v.ReservationUsage }).(JobStatisticsReservationUsageItemArrayOutput)
-}
-
-// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-func (o JobStatisticsOutput) Reservation_id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *string { return v.Reservation_id }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
-func (o JobStatisticsOutput) RowLevelSecurityStatistics() RowLevelSecurityStatisticsPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *RowLevelSecurityStatistics { return v.RowLevelSecurityStatistics }).(RowLevelSecurityStatisticsPtrOutput)
-}
-
-// [Output-only] Statistics for a child job of a script.
-func (o JobStatisticsOutput) ScriptStatistics() ScriptStatisticsPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *ScriptStatistics { return v.ScriptStatistics }).(ScriptStatisticsPtrOutput)
-}
-
-// [Output-only] [Preview] Information of the session if this job is part of one.
-func (o JobStatisticsOutput) SessionInfoTemplate() SessionInfoPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *SessionInfo { return v.SessionInfoTemplate }).(SessionInfoPtrOutput)
-}
-
-// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-func (o JobStatisticsOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Slot-milliseconds for the job.
-func (o JobStatisticsOutput) TotalSlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *string { return v.TotalSlotMs }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-func (o JobStatisticsOutput) TransactionInfoTemplate() TransactionInfoPtrOutput {
-	return o.ApplyT(func(v JobStatistics) *TransactionInfo { return v.TransactionInfoTemplate }).(TransactionInfoPtrOutput)
-}
-
-type JobStatisticsPtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatisticsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics)(nil)).Elem()
-}
-
-func (o JobStatisticsPtrOutput) ToJobStatisticsPtrOutput() JobStatisticsPtrOutput {
-	return o
-}
-
-func (o JobStatisticsPtrOutput) ToJobStatisticsPtrOutputWithContext(ctx context.Context) JobStatisticsPtrOutput {
-	return o
-}
-
-func (o JobStatisticsPtrOutput) Elem() JobStatisticsOutput {
-	return o.ApplyT(func(v *JobStatistics) JobStatistics { return *v }).(JobStatisticsOutput)
-}
-
-// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
-func (o JobStatisticsPtrOutput) CompletionRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.CompletionRatio
-	}).(pulumi.Float64PtrOutput)
-}
-
-// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
-func (o JobStatisticsPtrOutput) CreationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreationTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
-func (o JobStatisticsPtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Statistics for an extract job.
-func (o JobStatisticsPtrOutput) Extract() JobStatistics4PtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *JobStatistics4 {
-		if v == nil {
-			return nil
-		}
-		return v.Extract
-	}).(JobStatistics4PtrOutput)
-}
-
-// [Output-only] Statistics for a load job.
-func (o JobStatisticsPtrOutput) Load() JobStatistics3PtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *JobStatistics3 {
-		if v == nil {
-			return nil
-		}
-		return v.Load
-	}).(JobStatistics3PtrOutput)
-}
-
-// [Output-only] Number of child jobs executed.
-func (o JobStatisticsPtrOutput) NumChildJobs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NumChildJobs
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] If this is a child job, the id of the parent.
-func (o JobStatisticsPtrOutput) ParentJobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ParentJobId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Statistics for a query job.
-func (o JobStatisticsPtrOutput) Query() JobStatistics2PtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *JobStatistics2 {
-		if v == nil {
-			return nil
-		}
-		return v.Query
-	}).(JobStatistics2PtrOutput)
-}
-
-// [Output-only] Quotas which delayed this job's start time.
-func (o JobStatisticsPtrOutput) QuotaDeferments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobStatistics) []string {
-		if v == nil {
-			return nil
-		}
-		return v.QuotaDeferments
-	}).(pulumi.StringArrayOutput)
-}
-
-// [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatisticsPtrOutput) ReservationUsage() JobStatisticsReservationUsageItemArrayOutput {
-	return o.ApplyT(func(v *JobStatistics) []JobStatisticsReservationUsageItem {
-		if v == nil {
-			return nil
-		}
-		return v.ReservationUsage
-	}).(JobStatisticsReservationUsageItemArrayOutput)
-}
-
-// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-func (o JobStatisticsPtrOutput) Reservation_id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Reservation_id
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
-func (o JobStatisticsPtrOutput) RowLevelSecurityStatistics() RowLevelSecurityStatisticsPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *RowLevelSecurityStatistics {
-		if v == nil {
-			return nil
-		}
-		return v.RowLevelSecurityStatistics
-	}).(RowLevelSecurityStatisticsPtrOutput)
-}
-
-// [Output-only] Statistics for a child job of a script.
-func (o JobStatisticsPtrOutput) ScriptStatistics() ScriptStatisticsPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *ScriptStatistics {
-		if v == nil {
-			return nil
-		}
-		return v.ScriptStatistics
-	}).(ScriptStatisticsPtrOutput)
-}
-
-// [Output-only] [Preview] Information of the session if this job is part of one.
-func (o JobStatisticsPtrOutput) SessionInfoTemplate() SessionInfoPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *SessionInfo {
-		if v == nil {
-			return nil
-		}
-		return v.SessionInfoTemplate
-	}).(SessionInfoPtrOutput)
-}
-
-// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-func (o JobStatisticsPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Slot-milliseconds for the job.
-func (o JobStatisticsPtrOutput) TotalSlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TotalSlotMs
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
-func (o JobStatisticsPtrOutput) TransactionInfoTemplate() TransactionInfoPtrOutput {
-	return o.ApplyT(func(v *JobStatistics) *TransactionInfo {
-		if v == nil {
-			return nil
-		}
-		return v.TransactionInfoTemplate
-	}).(TransactionInfoPtrOutput)
-}
-
-type JobStatistics2 struct {
-	// [Output-only] Billing tier for the job.
-	BillingTier *int `pulumi:"billingTier"`
-	// [Output-only] Whether the query result was fetched from the query cache.
-	CacheHit *bool `pulumi:"cacheHit"`
-	// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
-	DdlAffectedRowAccessPolicyCount *string `pulumi:"ddlAffectedRowAccessPolicyCount"`
-	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-	DdlOperationPerformed *string `pulumi:"ddlOperationPerformed"`
-	// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
-	DdlTargetDataset *DatasetReference `pulumi:"ddlTargetDataset"`
-	// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-	DdlTargetRoutine *RoutineReference `pulumi:"ddlTargetRoutine"`
-	// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
-	DdlTargetRowAccessPolicy *RowAccessPolicyReference `pulumi:"ddlTargetRowAccessPolicy"`
-	// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
-	DdlTargetTable *TableReference `pulumi:"ddlTargetTable"`
-	// [Output-only] The original estimate of bytes processed for the job.
-	EstimatedBytesProcessed *string `pulumi:"estimatedBytesProcessed"`
-	// [Output-only, Beta] Information about create model query job progress.
-	ModelTraining *BigQueryModelTraining `pulumi:"modelTraining"`
-	// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
-	NumDmlAffectedRows *string `pulumi:"numDmlAffectedRows"`
-	// [Output-only] Describes execution plan for the query.
-	QueryPlan []ExplainQueryStage `pulumi:"queryPlan"`
-	// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
-	ReferencedRoutines []RoutineReference `pulumi:"referencedRoutines"`
-	// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-	ReferencedTables []TableReference `pulumi:"referencedTables"`
-	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage []JobStatistics2ReservationUsageItem `pulumi:"reservationUsage"`
-	// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
-	Schema *TableSchema `pulumi:"schema"`
-	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
-	StatementType *string `pulumi:"statementType"`
-	// [Output-only] [Beta] Describes a timeline of job execution.
-	Timeline []QueryTimelineSample `pulumi:"timeline"`
-	// [Output-only] Total bytes billed for the job.
-	TotalBytesBilled *string `pulumi:"totalBytesBilled"`
-	// [Output-only] Total bytes processed for the job.
-	TotalBytesProcessed *string `pulumi:"totalBytesProcessed"`
-	// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
-	TotalBytesProcessedAccuracy *string `pulumi:"totalBytesProcessedAccuracy"`
-	// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
-	TotalPartitionsProcessed *string `pulumi:"totalPartitionsProcessed"`
-	// [Output-only] Slot-milliseconds for the job.
-	TotalSlotMs *string `pulumi:"totalSlotMs"`
-	// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
-	UndeclaredQueryParameters []QueryParameter `pulumi:"undeclaredQueryParameters"`
-}
-
-// JobStatistics2Input is an input type that accepts JobStatistics2Args and JobStatistics2Output values.
-// You can construct a concrete instance of `JobStatistics2Input` via:
-//
-//          JobStatistics2Args{...}
-type JobStatistics2Input interface {
-	pulumi.Input
-
-	ToJobStatistics2Output() JobStatistics2Output
-	ToJobStatistics2OutputWithContext(context.Context) JobStatistics2Output
-}
-
-type JobStatistics2Args struct {
-	// [Output-only] Billing tier for the job.
-	BillingTier pulumi.IntPtrInput `pulumi:"billingTier"`
-	// [Output-only] Whether the query result was fetched from the query cache.
-	CacheHit pulumi.BoolPtrInput `pulumi:"cacheHit"`
-	// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
-	DdlAffectedRowAccessPolicyCount pulumi.StringPtrInput `pulumi:"ddlAffectedRowAccessPolicyCount"`
-	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-	DdlOperationPerformed pulumi.StringPtrInput `pulumi:"ddlOperationPerformed"`
-	// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
-	DdlTargetDataset DatasetReferencePtrInput `pulumi:"ddlTargetDataset"`
-	// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-	DdlTargetRoutine RoutineReferencePtrInput `pulumi:"ddlTargetRoutine"`
-	// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
-	DdlTargetRowAccessPolicy RowAccessPolicyReferencePtrInput `pulumi:"ddlTargetRowAccessPolicy"`
-	// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
-	DdlTargetTable TableReferencePtrInput `pulumi:"ddlTargetTable"`
-	// [Output-only] The original estimate of bytes processed for the job.
-	EstimatedBytesProcessed pulumi.StringPtrInput `pulumi:"estimatedBytesProcessed"`
-	// [Output-only, Beta] Information about create model query job progress.
-	ModelTraining BigQueryModelTrainingPtrInput `pulumi:"modelTraining"`
-	// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
-	NumDmlAffectedRows pulumi.StringPtrInput `pulumi:"numDmlAffectedRows"`
-	// [Output-only] Describes execution plan for the query.
-	QueryPlan ExplainQueryStageArrayInput `pulumi:"queryPlan"`
-	// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
-	ReferencedRoutines RoutineReferenceArrayInput `pulumi:"referencedRoutines"`
-	// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-	ReferencedTables TableReferenceArrayInput `pulumi:"referencedTables"`
-	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage JobStatistics2ReservationUsageItemArrayInput `pulumi:"reservationUsage"`
-	// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
-	Schema TableSchemaPtrInput `pulumi:"schema"`
-	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
-	StatementType pulumi.StringPtrInput `pulumi:"statementType"`
-	// [Output-only] [Beta] Describes a timeline of job execution.
-	Timeline QueryTimelineSampleArrayInput `pulumi:"timeline"`
-	// [Output-only] Total bytes billed for the job.
-	TotalBytesBilled pulumi.StringPtrInput `pulumi:"totalBytesBilled"`
-	// [Output-only] Total bytes processed for the job.
-	TotalBytesProcessed pulumi.StringPtrInput `pulumi:"totalBytesProcessed"`
-	// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
-	TotalBytesProcessedAccuracy pulumi.StringPtrInput `pulumi:"totalBytesProcessedAccuracy"`
-	// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
-	TotalPartitionsProcessed pulumi.StringPtrInput `pulumi:"totalPartitionsProcessed"`
-	// [Output-only] Slot-milliseconds for the job.
-	TotalSlotMs pulumi.StringPtrInput `pulumi:"totalSlotMs"`
-	// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
-	UndeclaredQueryParameters QueryParameterArrayInput `pulumi:"undeclaredQueryParameters"`
-}
-
-func (JobStatistics2Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics2)(nil)).Elem()
-}
-
-func (i JobStatistics2Args) ToJobStatistics2Output() JobStatistics2Output {
-	return i.ToJobStatistics2OutputWithContext(context.Background())
-}
-
-func (i JobStatistics2Args) ToJobStatistics2OutputWithContext(ctx context.Context) JobStatistics2Output {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2Output)
-}
-
-func (i JobStatistics2Args) ToJobStatistics2PtrOutput() JobStatistics2PtrOutput {
-	return i.ToJobStatistics2PtrOutputWithContext(context.Background())
-}
-
-func (i JobStatistics2Args) ToJobStatistics2PtrOutputWithContext(ctx context.Context) JobStatistics2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2Output).ToJobStatistics2PtrOutputWithContext(ctx)
-}
-
-// JobStatistics2PtrInput is an input type that accepts JobStatistics2Args, JobStatistics2Ptr and JobStatistics2PtrOutput values.
-// You can construct a concrete instance of `JobStatistics2PtrInput` via:
-//
-//          JobStatistics2Args{...}
-//
-//  or:
-//
-//          nil
-type JobStatistics2PtrInput interface {
-	pulumi.Input
-
-	ToJobStatistics2PtrOutput() JobStatistics2PtrOutput
-	ToJobStatistics2PtrOutputWithContext(context.Context) JobStatistics2PtrOutput
-}
-
-type jobStatistics2PtrType JobStatistics2Args
-
-func JobStatistics2Ptr(v *JobStatistics2Args) JobStatistics2PtrInput {
-	return (*jobStatistics2PtrType)(v)
-}
-
-func (*jobStatistics2PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics2)(nil)).Elem()
-}
-
-func (i *jobStatistics2PtrType) ToJobStatistics2PtrOutput() JobStatistics2PtrOutput {
-	return i.ToJobStatistics2PtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatistics2PtrType) ToJobStatistics2PtrOutputWithContext(ctx context.Context) JobStatistics2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2PtrOutput)
-}
-
-type JobStatistics2Output struct{ *pulumi.OutputState }
-
-func (JobStatistics2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics2)(nil)).Elem()
-}
-
-func (o JobStatistics2Output) ToJobStatistics2Output() JobStatistics2Output {
-	return o
-}
-
-func (o JobStatistics2Output) ToJobStatistics2OutputWithContext(ctx context.Context) JobStatistics2Output {
-	return o
-}
-
-func (o JobStatistics2Output) ToJobStatistics2PtrOutput() JobStatistics2PtrOutput {
-	return o.ToJobStatistics2PtrOutputWithContext(context.Background())
-}
-
-func (o JobStatistics2Output) ToJobStatistics2PtrOutputWithContext(ctx context.Context) JobStatistics2PtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *JobStatistics2 {
-		return &v
-	}).(JobStatistics2PtrOutput)
-}
-
-// [Output-only] Billing tier for the job.
-func (o JobStatistics2Output) BillingTier() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *int { return v.BillingTier }).(pulumi.IntPtrOutput)
-}
-
-// [Output-only] Whether the query result was fetched from the query cache.
-func (o JobStatistics2Output) CacheHit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *bool { return v.CacheHit }).(pulumi.BoolPtrOutput)
-}
-
-// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
-func (o JobStatistics2Output) DdlAffectedRowAccessPolicyCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.DdlAffectedRowAccessPolicyCount }).(pulumi.StringPtrOutput)
-}
-
-// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-func (o JobStatistics2Output) DdlOperationPerformed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.DdlOperationPerformed }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
-func (o JobStatistics2Output) DdlTargetDataset() DatasetReferencePtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *DatasetReference { return v.DdlTargetDataset }).(DatasetReferencePtrOutput)
-}
-
-// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-func (o JobStatistics2Output) DdlTargetRoutine() RoutineReferencePtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *RoutineReference { return v.DdlTargetRoutine }).(RoutineReferencePtrOutput)
-}
-
-// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
-func (o JobStatistics2Output) DdlTargetRowAccessPolicy() RowAccessPolicyReferencePtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *RowAccessPolicyReference { return v.DdlTargetRowAccessPolicy }).(RowAccessPolicyReferencePtrOutput)
-}
-
-// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
-func (o JobStatistics2Output) DdlTargetTable() TableReferencePtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *TableReference { return v.DdlTargetTable }).(TableReferencePtrOutput)
-}
-
-// [Output-only] The original estimate of bytes processed for the job.
-func (o JobStatistics2Output) EstimatedBytesProcessed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.EstimatedBytesProcessed }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only, Beta] Information about create model query job progress.
-func (o JobStatistics2Output) ModelTraining() BigQueryModelTrainingPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *BigQueryModelTraining { return v.ModelTraining }).(BigQueryModelTrainingPtrOutput)
-}
-
-// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
-func (o JobStatistics2Output) NumDmlAffectedRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.NumDmlAffectedRows }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Describes execution plan for the query.
-func (o JobStatistics2Output) QueryPlan() ExplainQueryStageArrayOutput {
-	return o.ApplyT(func(v JobStatistics2) []ExplainQueryStage { return v.QueryPlan }).(ExplainQueryStageArrayOutput)
-}
-
-// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
-func (o JobStatistics2Output) ReferencedRoutines() RoutineReferenceArrayOutput {
-	return o.ApplyT(func(v JobStatistics2) []RoutineReference { return v.ReferencedRoutines }).(RoutineReferenceArrayOutput)
-}
-
-// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-func (o JobStatistics2Output) ReferencedTables() TableReferenceArrayOutput {
-	return o.ApplyT(func(v JobStatistics2) []TableReference { return v.ReferencedTables }).(TableReferenceArrayOutput)
-}
-
-// [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatistics2Output) ReservationUsage() JobStatistics2ReservationUsageItemArrayOutput {
-	return o.ApplyT(func(v JobStatistics2) []JobStatistics2ReservationUsageItem { return v.ReservationUsage }).(JobStatistics2ReservationUsageItemArrayOutput)
-}
-
-// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
-func (o JobStatistics2Output) Schema() TableSchemaPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *TableSchema { return v.Schema }).(TableSchemaPtrOutput)
-}
-
-// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
-func (o JobStatistics2Output) StatementType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.StatementType }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] [Beta] Describes a timeline of job execution.
-func (o JobStatistics2Output) Timeline() QueryTimelineSampleArrayOutput {
-	return o.ApplyT(func(v JobStatistics2) []QueryTimelineSample { return v.Timeline }).(QueryTimelineSampleArrayOutput)
-}
-
-// [Output-only] Total bytes billed for the job.
-func (o JobStatistics2Output) TotalBytesBilled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.TotalBytesBilled }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Total bytes processed for the job.
-func (o JobStatistics2Output) TotalBytesProcessed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.TotalBytesProcessed }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
-func (o JobStatistics2Output) TotalBytesProcessedAccuracy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.TotalBytesProcessedAccuracy }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
-func (o JobStatistics2Output) TotalPartitionsProcessed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.TotalPartitionsProcessed }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Slot-milliseconds for the job.
-func (o JobStatistics2Output) TotalSlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2) *string { return v.TotalSlotMs }).(pulumi.StringPtrOutput)
-}
-
-// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
-func (o JobStatistics2Output) UndeclaredQueryParameters() QueryParameterArrayOutput {
-	return o.ApplyT(func(v JobStatistics2) []QueryParameter { return v.UndeclaredQueryParameters }).(QueryParameterArrayOutput)
-}
-
-type JobStatistics2PtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatistics2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics2)(nil)).Elem()
-}
-
-func (o JobStatistics2PtrOutput) ToJobStatistics2PtrOutput() JobStatistics2PtrOutput {
-	return o
-}
-
-func (o JobStatistics2PtrOutput) ToJobStatistics2PtrOutputWithContext(ctx context.Context) JobStatistics2PtrOutput {
-	return o
-}
-
-func (o JobStatistics2PtrOutput) Elem() JobStatistics2Output {
-	return o.ApplyT(func(v *JobStatistics2) JobStatistics2 { return *v }).(JobStatistics2Output)
-}
-
-// [Output-only] Billing tier for the job.
-func (o JobStatistics2PtrOutput) BillingTier() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *int {
-		if v == nil {
-			return nil
-		}
-		return v.BillingTier
-	}).(pulumi.IntPtrOutput)
-}
-
-// [Output-only] Whether the query result was fetched from the query cache.
-func (o JobStatistics2PtrOutput) CacheHit() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CacheHit
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
-func (o JobStatistics2PtrOutput) DdlAffectedRowAccessPolicyCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DdlAffectedRowAccessPolicyCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-func (o JobStatistics2PtrOutput) DdlOperationPerformed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DdlOperationPerformed
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
-func (o JobStatistics2PtrOutput) DdlTargetDataset() DatasetReferencePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *DatasetReference {
-		if v == nil {
-			return nil
-		}
-		return v.DdlTargetDataset
-	}).(DatasetReferencePtrOutput)
-}
-
-// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-func (o JobStatistics2PtrOutput) DdlTargetRoutine() RoutineReferencePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *RoutineReference {
-		if v == nil {
-			return nil
-		}
-		return v.DdlTargetRoutine
-	}).(RoutineReferencePtrOutput)
-}
-
-// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
-func (o JobStatistics2PtrOutput) DdlTargetRowAccessPolicy() RowAccessPolicyReferencePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *RowAccessPolicyReference {
-		if v == nil {
-			return nil
-		}
-		return v.DdlTargetRowAccessPolicy
-	}).(RowAccessPolicyReferencePtrOutput)
-}
-
-// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
-func (o JobStatistics2PtrOutput) DdlTargetTable() TableReferencePtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *TableReference {
-		if v == nil {
-			return nil
-		}
-		return v.DdlTargetTable
-	}).(TableReferencePtrOutput)
-}
-
-// [Output-only] The original estimate of bytes processed for the job.
-func (o JobStatistics2PtrOutput) EstimatedBytesProcessed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EstimatedBytesProcessed
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only, Beta] Information about create model query job progress.
-func (o JobStatistics2PtrOutput) ModelTraining() BigQueryModelTrainingPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *BigQueryModelTraining {
-		if v == nil {
-			return nil
-		}
-		return v.ModelTraining
-	}).(BigQueryModelTrainingPtrOutput)
-}
-
-// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
-func (o JobStatistics2PtrOutput) NumDmlAffectedRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NumDmlAffectedRows
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Describes execution plan for the query.
-func (o JobStatistics2PtrOutput) QueryPlan() ExplainQueryStageArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2) []ExplainQueryStage {
-		if v == nil {
-			return nil
-		}
-		return v.QueryPlan
-	}).(ExplainQueryStageArrayOutput)
-}
-
-// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
-func (o JobStatistics2PtrOutput) ReferencedRoutines() RoutineReferenceArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2) []RoutineReference {
-		if v == nil {
-			return nil
-		}
-		return v.ReferencedRoutines
-	}).(RoutineReferenceArrayOutput)
-}
-
-// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-func (o JobStatistics2PtrOutput) ReferencedTables() TableReferenceArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2) []TableReference {
-		if v == nil {
-			return nil
-		}
-		return v.ReferencedTables
-	}).(TableReferenceArrayOutput)
-}
-
-// [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatistics2PtrOutput) ReservationUsage() JobStatistics2ReservationUsageItemArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2) []JobStatistics2ReservationUsageItem {
-		if v == nil {
-			return nil
-		}
-		return v.ReservationUsage
-	}).(JobStatistics2ReservationUsageItemArrayOutput)
-}
-
-// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
-func (o JobStatistics2PtrOutput) Schema() TableSchemaPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *TableSchema {
-		if v == nil {
-			return nil
-		}
-		return v.Schema
-	}).(TableSchemaPtrOutput)
-}
-
-// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
-func (o JobStatistics2PtrOutput) StatementType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StatementType
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] [Beta] Describes a timeline of job execution.
-func (o JobStatistics2PtrOutput) Timeline() QueryTimelineSampleArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2) []QueryTimelineSample {
-		if v == nil {
-			return nil
-		}
-		return v.Timeline
-	}).(QueryTimelineSampleArrayOutput)
-}
-
-// [Output-only] Total bytes billed for the job.
-func (o JobStatistics2PtrOutput) TotalBytesBilled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TotalBytesBilled
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Total bytes processed for the job.
-func (o JobStatistics2PtrOutput) TotalBytesProcessed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TotalBytesProcessed
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
-func (o JobStatistics2PtrOutput) TotalBytesProcessedAccuracy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TotalBytesProcessedAccuracy
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
-func (o JobStatistics2PtrOutput) TotalPartitionsProcessed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TotalPartitionsProcessed
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Slot-milliseconds for the job.
-func (o JobStatistics2PtrOutput) TotalSlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TotalSlotMs
-	}).(pulumi.StringPtrOutput)
-}
-
-// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
-func (o JobStatistics2PtrOutput) UndeclaredQueryParameters() QueryParameterArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2) []QueryParameter {
-		if v == nil {
-			return nil
-		}
-		return v.UndeclaredQueryParameters
-	}).(QueryParameterArrayOutput)
-}
-
-type JobStatistics2ReservationUsageItem struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-	Name *string `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
-	SlotMs *string `pulumi:"slotMs"`
-}
-
-// JobStatistics2ReservationUsageItemInput is an input type that accepts JobStatistics2ReservationUsageItemArgs and JobStatistics2ReservationUsageItemOutput values.
-// You can construct a concrete instance of `JobStatistics2ReservationUsageItemInput` via:
-//
-//          JobStatistics2ReservationUsageItemArgs{...}
-type JobStatistics2ReservationUsageItemInput interface {
-	pulumi.Input
-
-	ToJobStatistics2ReservationUsageItemOutput() JobStatistics2ReservationUsageItemOutput
-	ToJobStatistics2ReservationUsageItemOutputWithContext(context.Context) JobStatistics2ReservationUsageItemOutput
-}
-
-type JobStatistics2ReservationUsageItemArgs struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
-	SlotMs pulumi.StringPtrInput `pulumi:"slotMs"`
-}
-
-func (JobStatistics2ReservationUsageItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics2ReservationUsageItem)(nil)).Elem()
-}
-
-func (i JobStatistics2ReservationUsageItemArgs) ToJobStatistics2ReservationUsageItemOutput() JobStatistics2ReservationUsageItemOutput {
-	return i.ToJobStatistics2ReservationUsageItemOutputWithContext(context.Background())
-}
-
-func (i JobStatistics2ReservationUsageItemArgs) ToJobStatistics2ReservationUsageItemOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ReservationUsageItemOutput)
-}
-
-// JobStatistics2ReservationUsageItemArrayInput is an input type that accepts JobStatistics2ReservationUsageItemArray and JobStatistics2ReservationUsageItemArrayOutput values.
-// You can construct a concrete instance of `JobStatistics2ReservationUsageItemArrayInput` via:
-//
-//          JobStatistics2ReservationUsageItemArray{ JobStatistics2ReservationUsageItemArgs{...} }
-type JobStatistics2ReservationUsageItemArrayInput interface {
-	pulumi.Input
-
-	ToJobStatistics2ReservationUsageItemArrayOutput() JobStatistics2ReservationUsageItemArrayOutput
-	ToJobStatistics2ReservationUsageItemArrayOutputWithContext(context.Context) JobStatistics2ReservationUsageItemArrayOutput
-}
-
-type JobStatistics2ReservationUsageItemArray []JobStatistics2ReservationUsageItemInput
-
-func (JobStatistics2ReservationUsageItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStatistics2ReservationUsageItem)(nil)).Elem()
-}
-
-func (i JobStatistics2ReservationUsageItemArray) ToJobStatistics2ReservationUsageItemArrayOutput() JobStatistics2ReservationUsageItemArrayOutput {
-	return i.ToJobStatistics2ReservationUsageItemArrayOutputWithContext(context.Background())
-}
-
-func (i JobStatistics2ReservationUsageItemArray) ToJobStatistics2ReservationUsageItemArrayOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ReservationUsageItemArrayOutput)
-}
-
-type JobStatistics2ReservationUsageItemOutput struct{ *pulumi.OutputState }
-
-func (JobStatistics2ReservationUsageItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics2ReservationUsageItem)(nil)).Elem()
-}
-
-func (o JobStatistics2ReservationUsageItemOutput) ToJobStatistics2ReservationUsageItemOutput() JobStatistics2ReservationUsageItemOutput {
-	return o
-}
-
-func (o JobStatistics2ReservationUsageItemOutput) ToJobStatistics2ReservationUsageItemOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemOutput {
-	return o
-}
-
-// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-func (o JobStatistics2ReservationUsageItemOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2ReservationUsageItem) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Slot-milliseconds the job spent in the given reservation.
-func (o JobStatistics2ReservationUsageItemOutput) SlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics2ReservationUsageItem) *string { return v.SlotMs }).(pulumi.StringPtrOutput)
-}
-
-type JobStatistics2ReservationUsageItemArrayOutput struct{ *pulumi.OutputState }
-
-func (JobStatistics2ReservationUsageItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStatistics2ReservationUsageItem)(nil)).Elem()
-}
-
-func (o JobStatistics2ReservationUsageItemArrayOutput) ToJobStatistics2ReservationUsageItemArrayOutput() JobStatistics2ReservationUsageItemArrayOutput {
-	return o
-}
-
-func (o JobStatistics2ReservationUsageItemArrayOutput) ToJobStatistics2ReservationUsageItemArrayOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemArrayOutput {
-	return o
-}
-
-func (o JobStatistics2ReservationUsageItemArrayOutput) Index(i pulumi.IntInput) JobStatistics2ReservationUsageItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatistics2ReservationUsageItem {
-		return vs[0].([]JobStatistics2ReservationUsageItem)[vs[1].(int)]
-	}).(JobStatistics2ReservationUsageItemOutput)
-}
-
 type JobStatistics2ReservationUsageItemResponse struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	// Reservation name or "unreserved" for on-demand resources usage.
 	Name string `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	// Slot-milliseconds the job spent in the given reservation.
 	SlotMs string `pulumi:"slotMs"`
 }
 
@@ -14045,9 +12070,9 @@ type JobStatistics2ReservationUsageItemResponseInput interface {
 }
 
 type JobStatistics2ReservationUsageItemResponseArgs struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	// Reservation name or "unreserved" for on-demand resources usage.
 	Name pulumi.StringInput `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	// Slot-milliseconds the job spent in the given reservation.
 	SlotMs pulumi.StringInput `pulumi:"slotMs"`
 }
 
@@ -14102,12 +12127,12 @@ func (o JobStatistics2ReservationUsageItemResponseOutput) ToJobStatistics2Reserv
 	return o
 }
 
-// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+// Reservation name or "unreserved" for on-demand resources usage.
 func (o JobStatistics2ReservationUsageItemResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2ReservationUsageItemResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Output-only] Slot-milliseconds the job spent in the given reservation.
+// Slot-milliseconds the job spent in the given reservation.
 func (o JobStatistics2ReservationUsageItemResponseOutput) SlotMs() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2ReservationUsageItemResponse) string { return v.SlotMs }).(pulumi.StringOutput)
 }
@@ -14133,51 +12158,51 @@ func (o JobStatistics2ReservationUsageItemResponseArrayOutput) Index(i pulumi.In
 }
 
 type JobStatistics2Response struct {
-	// [Output-only] Billing tier for the job.
+	// Billing tier for the job.
 	BillingTier int `pulumi:"billingTier"`
-	// [Output-only] Whether the query result was fetched from the query cache.
+	// Whether the query result was fetched from the query cache.
 	CacheHit bool `pulumi:"cacheHit"`
-	// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+	// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 	DdlAffectedRowAccessPolicyCount string `pulumi:"ddlAffectedRowAccessPolicyCount"`
 	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 	DdlOperationPerformed string `pulumi:"ddlOperationPerformed"`
-	// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+	// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
 	DdlTargetDataset DatasetReferenceResponse `pulumi:"ddlTargetDataset"`
 	// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
 	DdlTargetRoutine RoutineReferenceResponse `pulumi:"ddlTargetRoutine"`
-	// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+	// [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
 	DdlTargetRowAccessPolicy RowAccessPolicyReferenceResponse `pulumi:"ddlTargetRowAccessPolicy"`
-	// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+	// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 	DdlTargetTable TableReferenceResponse `pulumi:"ddlTargetTable"`
-	// [Output-only] The original estimate of bytes processed for the job.
+	// The original estimate of bytes processed for the job.
 	EstimatedBytesProcessed string `pulumi:"estimatedBytesProcessed"`
 	// [Output-only, Beta] Information about create model query job progress.
 	ModelTraining BigQueryModelTrainingResponse `pulumi:"modelTraining"`
-	// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+	// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
 	NumDmlAffectedRows string `pulumi:"numDmlAffectedRows"`
-	// [Output-only] Describes execution plan for the query.
+	// Describes execution plan for the query.
 	QueryPlan []ExplainQueryStageResponse `pulumi:"queryPlan"`
-	// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+	// Referenced routines (persistent user-defined functions and stored procedures) for the job.
 	ReferencedRoutines []RoutineReferenceResponse `pulumi:"referencedRoutines"`
-	// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+	// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 	ReferencedTables []TableReferenceResponse `pulumi:"referencedTables"`
-	// [Output-only] Job resource usage breakdown by reservation.
+	// Job resource usage breakdown by reservation.
 	ReservationUsage []JobStatistics2ReservationUsageItemResponse `pulumi:"reservationUsage"`
-	// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+	// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 	Schema TableSchemaResponse `pulumi:"schema"`
 	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
 	StatementType string `pulumi:"statementType"`
-	// [Output-only] [Beta] Describes a timeline of job execution.
+	// [Beta] Describes a timeline of job execution.
 	Timeline []QueryTimelineSampleResponse `pulumi:"timeline"`
-	// [Output-only] Total bytes billed for the job.
+	// Total bytes billed for the job.
 	TotalBytesBilled string `pulumi:"totalBytesBilled"`
-	// [Output-only] Total bytes processed for the job.
+	// Total bytes processed for the job.
 	TotalBytesProcessed string `pulumi:"totalBytesProcessed"`
-	// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+	// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
 	TotalBytesProcessedAccuracy string `pulumi:"totalBytesProcessedAccuracy"`
-	// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
+	// Total number of partitions processed from all partitioned tables referenced in the job.
 	TotalPartitionsProcessed string `pulumi:"totalPartitionsProcessed"`
-	// [Output-only] Slot-milliseconds for the job.
+	// Slot-milliseconds for the job.
 	TotalSlotMs string `pulumi:"totalSlotMs"`
 	// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
 	UndeclaredQueryParameters []QueryParameterResponse `pulumi:"undeclaredQueryParameters"`
@@ -14195,51 +12220,51 @@ type JobStatistics2ResponseInput interface {
 }
 
 type JobStatistics2ResponseArgs struct {
-	// [Output-only] Billing tier for the job.
+	// Billing tier for the job.
 	BillingTier pulumi.IntInput `pulumi:"billingTier"`
-	// [Output-only] Whether the query result was fetched from the query cache.
+	// Whether the query result was fetched from the query cache.
 	CacheHit pulumi.BoolInput `pulumi:"cacheHit"`
-	// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+	// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 	DdlAffectedRowAccessPolicyCount pulumi.StringInput `pulumi:"ddlAffectedRowAccessPolicyCount"`
 	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 	DdlOperationPerformed pulumi.StringInput `pulumi:"ddlOperationPerformed"`
-	// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+	// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
 	DdlTargetDataset DatasetReferenceResponseInput `pulumi:"ddlTargetDataset"`
 	// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
 	DdlTargetRoutine RoutineReferenceResponseInput `pulumi:"ddlTargetRoutine"`
-	// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+	// [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
 	DdlTargetRowAccessPolicy RowAccessPolicyReferenceResponseInput `pulumi:"ddlTargetRowAccessPolicy"`
-	// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+	// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 	DdlTargetTable TableReferenceResponseInput `pulumi:"ddlTargetTable"`
-	// [Output-only] The original estimate of bytes processed for the job.
+	// The original estimate of bytes processed for the job.
 	EstimatedBytesProcessed pulumi.StringInput `pulumi:"estimatedBytesProcessed"`
 	// [Output-only, Beta] Information about create model query job progress.
 	ModelTraining BigQueryModelTrainingResponseInput `pulumi:"modelTraining"`
-	// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+	// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
 	NumDmlAffectedRows pulumi.StringInput `pulumi:"numDmlAffectedRows"`
-	// [Output-only] Describes execution plan for the query.
+	// Describes execution plan for the query.
 	QueryPlan ExplainQueryStageResponseArrayInput `pulumi:"queryPlan"`
-	// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+	// Referenced routines (persistent user-defined functions and stored procedures) for the job.
 	ReferencedRoutines RoutineReferenceResponseArrayInput `pulumi:"referencedRoutines"`
-	// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+	// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 	ReferencedTables TableReferenceResponseArrayInput `pulumi:"referencedTables"`
-	// [Output-only] Job resource usage breakdown by reservation.
+	// Job resource usage breakdown by reservation.
 	ReservationUsage JobStatistics2ReservationUsageItemResponseArrayInput `pulumi:"reservationUsage"`
-	// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+	// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 	Schema TableSchemaResponseInput `pulumi:"schema"`
 	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
 	StatementType pulumi.StringInput `pulumi:"statementType"`
-	// [Output-only] [Beta] Describes a timeline of job execution.
+	// [Beta] Describes a timeline of job execution.
 	Timeline QueryTimelineSampleResponseArrayInput `pulumi:"timeline"`
-	// [Output-only] Total bytes billed for the job.
+	// Total bytes billed for the job.
 	TotalBytesBilled pulumi.StringInput `pulumi:"totalBytesBilled"`
-	// [Output-only] Total bytes processed for the job.
+	// Total bytes processed for the job.
 	TotalBytesProcessed pulumi.StringInput `pulumi:"totalBytesProcessed"`
-	// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+	// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
 	TotalBytesProcessedAccuracy pulumi.StringInput `pulumi:"totalBytesProcessedAccuracy"`
-	// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
+	// Total number of partitions processed from all partitioned tables referenced in the job.
 	TotalPartitionsProcessed pulumi.StringInput `pulumi:"totalPartitionsProcessed"`
-	// [Output-only] Slot-milliseconds for the job.
+	// Slot-milliseconds for the job.
 	TotalSlotMs pulumi.StringInput `pulumi:"totalSlotMs"`
 	// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
 	UndeclaredQueryParameters QueryParameterResponseArrayInput `pulumi:"undeclaredQueryParameters"`
@@ -14322,17 +12347,17 @@ func (o JobStatistics2ResponseOutput) ToJobStatistics2ResponsePtrOutputWithConte
 	}).(JobStatistics2ResponsePtrOutput)
 }
 
-// [Output-only] Billing tier for the job.
+// Billing tier for the job.
 func (o JobStatistics2ResponseOutput) BillingTier() pulumi.IntOutput {
 	return o.ApplyT(func(v JobStatistics2Response) int { return v.BillingTier }).(pulumi.IntOutput)
 }
 
-// [Output-only] Whether the query result was fetched from the query cache.
+// Whether the query result was fetched from the query cache.
 func (o JobStatistics2ResponseOutput) CacheHit() pulumi.BoolOutput {
 	return o.ApplyT(func(v JobStatistics2Response) bool { return v.CacheHit }).(pulumi.BoolOutput)
 }
 
-// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 func (o JobStatistics2ResponseOutput) DdlAffectedRowAccessPolicyCount() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.DdlAffectedRowAccessPolicyCount }).(pulumi.StringOutput)
 }
@@ -14342,7 +12367,7 @@ func (o JobStatistics2ResponseOutput) DdlOperationPerformed() pulumi.StringOutpu
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.DdlOperationPerformed }).(pulumi.StringOutput)
 }
 
-// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
 func (o JobStatistics2ResponseOutput) DdlTargetDataset() DatasetReferenceResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) DatasetReferenceResponse { return v.DdlTargetDataset }).(DatasetReferenceResponseOutput)
 }
@@ -14352,17 +12377,17 @@ func (o JobStatistics2ResponseOutput) DdlTargetRoutine() RoutineReferenceRespons
 	return o.ApplyT(func(v JobStatistics2Response) RoutineReferenceResponse { return v.DdlTargetRoutine }).(RoutineReferenceResponseOutput)
 }
 
-// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+// [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
 func (o JobStatistics2ResponseOutput) DdlTargetRowAccessPolicy() RowAccessPolicyReferenceResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) RowAccessPolicyReferenceResponse { return v.DdlTargetRowAccessPolicy }).(RowAccessPolicyReferenceResponseOutput)
 }
 
-// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 func (o JobStatistics2ResponseOutput) DdlTargetTable() TableReferenceResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) TableReferenceResponse { return v.DdlTargetTable }).(TableReferenceResponseOutput)
 }
 
-// [Output-only] The original estimate of bytes processed for the job.
+// The original estimate of bytes processed for the job.
 func (o JobStatistics2ResponseOutput) EstimatedBytesProcessed() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.EstimatedBytesProcessed }).(pulumi.StringOutput)
 }
@@ -14372,32 +12397,32 @@ func (o JobStatistics2ResponseOutput) ModelTraining() BigQueryModelTrainingRespo
 	return o.ApplyT(func(v JobStatistics2Response) BigQueryModelTrainingResponse { return v.ModelTraining }).(BigQueryModelTrainingResponseOutput)
 }
 
-// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
 func (o JobStatistics2ResponseOutput) NumDmlAffectedRows() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.NumDmlAffectedRows }).(pulumi.StringOutput)
 }
 
-// [Output-only] Describes execution plan for the query.
+// Describes execution plan for the query.
 func (o JobStatistics2ResponseOutput) QueryPlan() ExplainQueryStageResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []ExplainQueryStageResponse { return v.QueryPlan }).(ExplainQueryStageResponseArrayOutput)
 }
 
-// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+// Referenced routines (persistent user-defined functions and stored procedures) for the job.
 func (o JobStatistics2ResponseOutput) ReferencedRoutines() RoutineReferenceResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []RoutineReferenceResponse { return v.ReferencedRoutines }).(RoutineReferenceResponseArrayOutput)
 }
 
-// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 func (o JobStatistics2ResponseOutput) ReferencedTables() TableReferenceResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []TableReferenceResponse { return v.ReferencedTables }).(TableReferenceResponseArrayOutput)
 }
 
-// [Output-only] Job resource usage breakdown by reservation.
+// Job resource usage breakdown by reservation.
 func (o JobStatistics2ResponseOutput) ReservationUsage() JobStatistics2ReservationUsageItemResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []JobStatistics2ReservationUsageItemResponse { return v.ReservationUsage }).(JobStatistics2ReservationUsageItemResponseArrayOutput)
 }
 
-// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 func (o JobStatistics2ResponseOutput) Schema() TableSchemaResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) TableSchemaResponse { return v.Schema }).(TableSchemaResponseOutput)
 }
@@ -14407,32 +12432,32 @@ func (o JobStatistics2ResponseOutput) StatementType() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.StatementType }).(pulumi.StringOutput)
 }
 
-// [Output-only] [Beta] Describes a timeline of job execution.
+// [Beta] Describes a timeline of job execution.
 func (o JobStatistics2ResponseOutput) Timeline() QueryTimelineSampleResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []QueryTimelineSampleResponse { return v.Timeline }).(QueryTimelineSampleResponseArrayOutput)
 }
 
-// [Output-only] Total bytes billed for the job.
+// Total bytes billed for the job.
 func (o JobStatistics2ResponseOutput) TotalBytesBilled() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalBytesBilled }).(pulumi.StringOutput)
 }
 
-// [Output-only] Total bytes processed for the job.
+// Total bytes processed for the job.
 func (o JobStatistics2ResponseOutput) TotalBytesProcessed() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalBytesProcessed }).(pulumi.StringOutput)
 }
 
-// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
 func (o JobStatistics2ResponseOutput) TotalBytesProcessedAccuracy() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalBytesProcessedAccuracy }).(pulumi.StringOutput)
 }
 
-// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
+// Total number of partitions processed from all partitioned tables referenced in the job.
 func (o JobStatistics2ResponseOutput) TotalPartitionsProcessed() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalPartitionsProcessed }).(pulumi.StringOutput)
 }
 
-// [Output-only] Slot-milliseconds for the job.
+// Slot-milliseconds for the job.
 func (o JobStatistics2ResponseOutput) TotalSlotMs() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalSlotMs }).(pulumi.StringOutput)
 }
@@ -14460,7 +12485,7 @@ func (o JobStatistics2ResponsePtrOutput) Elem() JobStatistics2ResponseOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) JobStatistics2Response { return *v }).(JobStatistics2ResponseOutput)
 }
 
-// [Output-only] Billing tier for the job.
+// Billing tier for the job.
 func (o JobStatistics2ResponsePtrOutput) BillingTier() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *int {
 		if v == nil {
@@ -14470,7 +12495,7 @@ func (o JobStatistics2ResponsePtrOutput) BillingTier() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// [Output-only] Whether the query result was fetched from the query cache.
+// Whether the query result was fetched from the query cache.
 func (o JobStatistics2ResponsePtrOutput) CacheHit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *bool {
 		if v == nil {
@@ -14480,7 +12505,7 @@ func (o JobStatistics2ResponsePtrOutput) CacheHit() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 func (o JobStatistics2ResponsePtrOutput) DdlAffectedRowAccessPolicyCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *string {
 		if v == nil {
@@ -14500,7 +12525,7 @@ func (o JobStatistics2ResponsePtrOutput) DdlOperationPerformed() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
 func (o JobStatistics2ResponsePtrOutput) DdlTargetDataset() DatasetReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *DatasetReferenceResponse {
 		if v == nil {
@@ -14520,7 +12545,7 @@ func (o JobStatistics2ResponsePtrOutput) DdlTargetRoutine() RoutineReferenceResp
 	}).(RoutineReferenceResponsePtrOutput)
 }
 
-// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+// [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
 func (o JobStatistics2ResponsePtrOutput) DdlTargetRowAccessPolicy() RowAccessPolicyReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *RowAccessPolicyReferenceResponse {
 		if v == nil {
@@ -14530,7 +12555,7 @@ func (o JobStatistics2ResponsePtrOutput) DdlTargetRowAccessPolicy() RowAccessPol
 	}).(RowAccessPolicyReferenceResponsePtrOutput)
 }
 
-// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 func (o JobStatistics2ResponsePtrOutput) DdlTargetTable() TableReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *TableReferenceResponse {
 		if v == nil {
@@ -14540,7 +12565,7 @@ func (o JobStatistics2ResponsePtrOutput) DdlTargetTable() TableReferenceResponse
 	}).(TableReferenceResponsePtrOutput)
 }
 
-// [Output-only] The original estimate of bytes processed for the job.
+// The original estimate of bytes processed for the job.
 func (o JobStatistics2ResponsePtrOutput) EstimatedBytesProcessed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *string {
 		if v == nil {
@@ -14560,7 +12585,7 @@ func (o JobStatistics2ResponsePtrOutput) ModelTraining() BigQueryModelTrainingRe
 	}).(BigQueryModelTrainingResponsePtrOutput)
 }
 
-// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
 func (o JobStatistics2ResponsePtrOutput) NumDmlAffectedRows() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *string {
 		if v == nil {
@@ -14570,7 +12595,7 @@ func (o JobStatistics2ResponsePtrOutput) NumDmlAffectedRows() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Describes execution plan for the query.
+// Describes execution plan for the query.
 func (o JobStatistics2ResponsePtrOutput) QueryPlan() ExplainQueryStageResponseArrayOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) []ExplainQueryStageResponse {
 		if v == nil {
@@ -14580,7 +12605,7 @@ func (o JobStatistics2ResponsePtrOutput) QueryPlan() ExplainQueryStageResponseAr
 	}).(ExplainQueryStageResponseArrayOutput)
 }
 
-// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+// Referenced routines (persistent user-defined functions and stored procedures) for the job.
 func (o JobStatistics2ResponsePtrOutput) ReferencedRoutines() RoutineReferenceResponseArrayOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) []RoutineReferenceResponse {
 		if v == nil {
@@ -14590,7 +12615,7 @@ func (o JobStatistics2ResponsePtrOutput) ReferencedRoutines() RoutineReferenceRe
 	}).(RoutineReferenceResponseArrayOutput)
 }
 
-// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 func (o JobStatistics2ResponsePtrOutput) ReferencedTables() TableReferenceResponseArrayOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) []TableReferenceResponse {
 		if v == nil {
@@ -14600,7 +12625,7 @@ func (o JobStatistics2ResponsePtrOutput) ReferencedTables() TableReferenceRespon
 	}).(TableReferenceResponseArrayOutput)
 }
 
-// [Output-only] Job resource usage breakdown by reservation.
+// Job resource usage breakdown by reservation.
 func (o JobStatistics2ResponsePtrOutput) ReservationUsage() JobStatistics2ReservationUsageItemResponseArrayOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) []JobStatistics2ReservationUsageItemResponse {
 		if v == nil {
@@ -14610,7 +12635,7 @@ func (o JobStatistics2ResponsePtrOutput) ReservationUsage() JobStatistics2Reserv
 	}).(JobStatistics2ReservationUsageItemResponseArrayOutput)
 }
 
-// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 func (o JobStatistics2ResponsePtrOutput) Schema() TableSchemaResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *TableSchemaResponse {
 		if v == nil {
@@ -14630,7 +12655,7 @@ func (o JobStatistics2ResponsePtrOutput) StatementType() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] [Beta] Describes a timeline of job execution.
+// [Beta] Describes a timeline of job execution.
 func (o JobStatistics2ResponsePtrOutput) Timeline() QueryTimelineSampleResponseArrayOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) []QueryTimelineSampleResponse {
 		if v == nil {
@@ -14640,7 +12665,7 @@ func (o JobStatistics2ResponsePtrOutput) Timeline() QueryTimelineSampleResponseA
 	}).(QueryTimelineSampleResponseArrayOutput)
 }
 
-// [Output-only] Total bytes billed for the job.
+// Total bytes billed for the job.
 func (o JobStatistics2ResponsePtrOutput) TotalBytesBilled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *string {
 		if v == nil {
@@ -14650,7 +12675,7 @@ func (o JobStatistics2ResponsePtrOutput) TotalBytesBilled() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Total bytes processed for the job.
+// Total bytes processed for the job.
 func (o JobStatistics2ResponsePtrOutput) TotalBytesProcessed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *string {
 		if v == nil {
@@ -14660,7 +12685,7 @@ func (o JobStatistics2ResponsePtrOutput) TotalBytesProcessed() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
 func (o JobStatistics2ResponsePtrOutput) TotalBytesProcessedAccuracy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *string {
 		if v == nil {
@@ -14670,7 +12695,7 @@ func (o JobStatistics2ResponsePtrOutput) TotalBytesProcessedAccuracy() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
+// Total number of partitions processed from all partitioned tables referenced in the job.
 func (o JobStatistics2ResponsePtrOutput) TotalPartitionsProcessed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *string {
 		if v == nil {
@@ -14680,7 +12705,7 @@ func (o JobStatistics2ResponsePtrOutput) TotalPartitionsProcessed() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Slot-milliseconds for the job.
+// Slot-milliseconds for the job.
 func (o JobStatistics2ResponsePtrOutput) TotalSlotMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics2Response) *string {
 		if v == nil {
@@ -14700,223 +12725,16 @@ func (o JobStatistics2ResponsePtrOutput) UndeclaredQueryParameters() QueryParame
 	}).(QueryParameterResponseArrayOutput)
 }
 
-type JobStatistics3 struct {
-	// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
-	BadRecords *string `pulumi:"badRecords"`
-	// [Output-only] Number of bytes of source data in a load job.
-	InputFileBytes *string `pulumi:"inputFileBytes"`
-	// [Output-only] Number of source files in a load job.
-	InputFiles *string `pulumi:"inputFiles"`
-	// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
-	OutputBytes *string `pulumi:"outputBytes"`
-	// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
-	OutputRows *string `pulumi:"outputRows"`
-}
-
-// JobStatistics3Input is an input type that accepts JobStatistics3Args and JobStatistics3Output values.
-// You can construct a concrete instance of `JobStatistics3Input` via:
-//
-//          JobStatistics3Args{...}
-type JobStatistics3Input interface {
-	pulumi.Input
-
-	ToJobStatistics3Output() JobStatistics3Output
-	ToJobStatistics3OutputWithContext(context.Context) JobStatistics3Output
-}
-
-type JobStatistics3Args struct {
-	// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
-	BadRecords pulumi.StringPtrInput `pulumi:"badRecords"`
-	// [Output-only] Number of bytes of source data in a load job.
-	InputFileBytes pulumi.StringPtrInput `pulumi:"inputFileBytes"`
-	// [Output-only] Number of source files in a load job.
-	InputFiles pulumi.StringPtrInput `pulumi:"inputFiles"`
-	// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
-	OutputBytes pulumi.StringPtrInput `pulumi:"outputBytes"`
-	// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
-	OutputRows pulumi.StringPtrInput `pulumi:"outputRows"`
-}
-
-func (JobStatistics3Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics3)(nil)).Elem()
-}
-
-func (i JobStatistics3Args) ToJobStatistics3Output() JobStatistics3Output {
-	return i.ToJobStatistics3OutputWithContext(context.Background())
-}
-
-func (i JobStatistics3Args) ToJobStatistics3OutputWithContext(ctx context.Context) JobStatistics3Output {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics3Output)
-}
-
-func (i JobStatistics3Args) ToJobStatistics3PtrOutput() JobStatistics3PtrOutput {
-	return i.ToJobStatistics3PtrOutputWithContext(context.Background())
-}
-
-func (i JobStatistics3Args) ToJobStatistics3PtrOutputWithContext(ctx context.Context) JobStatistics3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics3Output).ToJobStatistics3PtrOutputWithContext(ctx)
-}
-
-// JobStatistics3PtrInput is an input type that accepts JobStatistics3Args, JobStatistics3Ptr and JobStatistics3PtrOutput values.
-// You can construct a concrete instance of `JobStatistics3PtrInput` via:
-//
-//          JobStatistics3Args{...}
-//
-//  or:
-//
-//          nil
-type JobStatistics3PtrInput interface {
-	pulumi.Input
-
-	ToJobStatistics3PtrOutput() JobStatistics3PtrOutput
-	ToJobStatistics3PtrOutputWithContext(context.Context) JobStatistics3PtrOutput
-}
-
-type jobStatistics3PtrType JobStatistics3Args
-
-func JobStatistics3Ptr(v *JobStatistics3Args) JobStatistics3PtrInput {
-	return (*jobStatistics3PtrType)(v)
-}
-
-func (*jobStatistics3PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics3)(nil)).Elem()
-}
-
-func (i *jobStatistics3PtrType) ToJobStatistics3PtrOutput() JobStatistics3PtrOutput {
-	return i.ToJobStatistics3PtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatistics3PtrType) ToJobStatistics3PtrOutputWithContext(ctx context.Context) JobStatistics3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics3PtrOutput)
-}
-
-type JobStatistics3Output struct{ *pulumi.OutputState }
-
-func (JobStatistics3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics3)(nil)).Elem()
-}
-
-func (o JobStatistics3Output) ToJobStatistics3Output() JobStatistics3Output {
-	return o
-}
-
-func (o JobStatistics3Output) ToJobStatistics3OutputWithContext(ctx context.Context) JobStatistics3Output {
-	return o
-}
-
-func (o JobStatistics3Output) ToJobStatistics3PtrOutput() JobStatistics3PtrOutput {
-	return o.ToJobStatistics3PtrOutputWithContext(context.Background())
-}
-
-func (o JobStatistics3Output) ToJobStatistics3PtrOutputWithContext(ctx context.Context) JobStatistics3PtrOutput {
-	return o.ApplyT(func(v JobStatistics3) *JobStatistics3 {
-		return &v
-	}).(JobStatistics3PtrOutput)
-}
-
-// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
-func (o JobStatistics3Output) BadRecords() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics3) *string { return v.BadRecords }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Number of bytes of source data in a load job.
-func (o JobStatistics3Output) InputFileBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics3) *string { return v.InputFileBytes }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Number of source files in a load job.
-func (o JobStatistics3Output) InputFiles() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics3) *string { return v.InputFiles }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
-func (o JobStatistics3Output) OutputBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics3) *string { return v.OutputBytes }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
-func (o JobStatistics3Output) OutputRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics3) *string { return v.OutputRows }).(pulumi.StringPtrOutput)
-}
-
-type JobStatistics3PtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatistics3PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics3)(nil)).Elem()
-}
-
-func (o JobStatistics3PtrOutput) ToJobStatistics3PtrOutput() JobStatistics3PtrOutput {
-	return o
-}
-
-func (o JobStatistics3PtrOutput) ToJobStatistics3PtrOutputWithContext(ctx context.Context) JobStatistics3PtrOutput {
-	return o
-}
-
-func (o JobStatistics3PtrOutput) Elem() JobStatistics3Output {
-	return o.ApplyT(func(v *JobStatistics3) JobStatistics3 { return *v }).(JobStatistics3Output)
-}
-
-// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
-func (o JobStatistics3PtrOutput) BadRecords() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BadRecords
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Number of bytes of source data in a load job.
-func (o JobStatistics3PtrOutput) InputFileBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InputFileBytes
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Number of source files in a load job.
-func (o JobStatistics3PtrOutput) InputFiles() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InputFiles
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
-func (o JobStatistics3PtrOutput) OutputBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OutputBytes
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
-func (o JobStatistics3PtrOutput) OutputRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics3) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OutputRows
-	}).(pulumi.StringPtrOutput)
-}
-
 type JobStatistics3Response struct {
-	// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
+	// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
 	BadRecords string `pulumi:"badRecords"`
-	// [Output-only] Number of bytes of source data in a load job.
+	// Number of bytes of source data in a load job.
 	InputFileBytes string `pulumi:"inputFileBytes"`
-	// [Output-only] Number of source files in a load job.
+	// Number of source files in a load job.
 	InputFiles string `pulumi:"inputFiles"`
-	// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
+	// Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
 	OutputBytes string `pulumi:"outputBytes"`
-	// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
+	// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
 	OutputRows string `pulumi:"outputRows"`
 }
 
@@ -14932,15 +12750,15 @@ type JobStatistics3ResponseInput interface {
 }
 
 type JobStatistics3ResponseArgs struct {
-	// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
+	// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
 	BadRecords pulumi.StringInput `pulumi:"badRecords"`
-	// [Output-only] Number of bytes of source data in a load job.
+	// Number of bytes of source data in a load job.
 	InputFileBytes pulumi.StringInput `pulumi:"inputFileBytes"`
-	// [Output-only] Number of source files in a load job.
+	// Number of source files in a load job.
 	InputFiles pulumi.StringInput `pulumi:"inputFiles"`
-	// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
+	// Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
 	OutputBytes pulumi.StringInput `pulumi:"outputBytes"`
-	// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
+	// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
 	OutputRows pulumi.StringInput `pulumi:"outputRows"`
 }
 
@@ -15021,27 +12839,27 @@ func (o JobStatistics3ResponseOutput) ToJobStatistics3ResponsePtrOutputWithConte
 	}).(JobStatistics3ResponsePtrOutput)
 }
 
-// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
+// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
 func (o JobStatistics3ResponseOutput) BadRecords() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics3Response) string { return v.BadRecords }).(pulumi.StringOutput)
 }
 
-// [Output-only] Number of bytes of source data in a load job.
+// Number of bytes of source data in a load job.
 func (o JobStatistics3ResponseOutput) InputFileBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics3Response) string { return v.InputFileBytes }).(pulumi.StringOutput)
 }
 
-// [Output-only] Number of source files in a load job.
+// Number of source files in a load job.
 func (o JobStatistics3ResponseOutput) InputFiles() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics3Response) string { return v.InputFiles }).(pulumi.StringOutput)
 }
 
-// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
+// Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
 func (o JobStatistics3ResponseOutput) OutputBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics3Response) string { return v.OutputBytes }).(pulumi.StringOutput)
 }
 
-// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
+// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
 func (o JobStatistics3ResponseOutput) OutputRows() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics3Response) string { return v.OutputRows }).(pulumi.StringOutput)
 }
@@ -15064,7 +12882,7 @@ func (o JobStatistics3ResponsePtrOutput) Elem() JobStatistics3ResponseOutput {
 	return o.ApplyT(func(v *JobStatistics3Response) JobStatistics3Response { return *v }).(JobStatistics3ResponseOutput)
 }
 
-// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
+// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
 func (o JobStatistics3ResponsePtrOutput) BadRecords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics3Response) *string {
 		if v == nil {
@@ -15074,7 +12892,7 @@ func (o JobStatistics3ResponsePtrOutput) BadRecords() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Number of bytes of source data in a load job.
+// Number of bytes of source data in a load job.
 func (o JobStatistics3ResponsePtrOutput) InputFileBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics3Response) *string {
 		if v == nil {
@@ -15084,7 +12902,7 @@ func (o JobStatistics3ResponsePtrOutput) InputFileBytes() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Number of source files in a load job.
+// Number of source files in a load job.
 func (o JobStatistics3ResponsePtrOutput) InputFiles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics3Response) *string {
 		if v == nil {
@@ -15094,7 +12912,7 @@ func (o JobStatistics3ResponsePtrOutput) InputFiles() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
+// Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
 func (o JobStatistics3ResponsePtrOutput) OutputBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics3Response) *string {
 		if v == nil {
@@ -15104,7 +12922,7 @@ func (o JobStatistics3ResponsePtrOutput) OutputBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
+// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
 func (o JobStatistics3ResponsePtrOutput) OutputRows() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics3Response) *string {
 		if v == nil {
@@ -15114,160 +12932,10 @@ func (o JobStatistics3ResponsePtrOutput) OutputRows() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type JobStatistics4 struct {
-	// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
-	DestinationUriFileCounts []string `pulumi:"destinationUriFileCounts"`
-	// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
-	InputBytes *string `pulumi:"inputBytes"`
-}
-
-// JobStatistics4Input is an input type that accepts JobStatistics4Args and JobStatistics4Output values.
-// You can construct a concrete instance of `JobStatistics4Input` via:
-//
-//          JobStatistics4Args{...}
-type JobStatistics4Input interface {
-	pulumi.Input
-
-	ToJobStatistics4Output() JobStatistics4Output
-	ToJobStatistics4OutputWithContext(context.Context) JobStatistics4Output
-}
-
-type JobStatistics4Args struct {
-	// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
-	DestinationUriFileCounts pulumi.StringArrayInput `pulumi:"destinationUriFileCounts"`
-	// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
-	InputBytes pulumi.StringPtrInput `pulumi:"inputBytes"`
-}
-
-func (JobStatistics4Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics4)(nil)).Elem()
-}
-
-func (i JobStatistics4Args) ToJobStatistics4Output() JobStatistics4Output {
-	return i.ToJobStatistics4OutputWithContext(context.Background())
-}
-
-func (i JobStatistics4Args) ToJobStatistics4OutputWithContext(ctx context.Context) JobStatistics4Output {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics4Output)
-}
-
-func (i JobStatistics4Args) ToJobStatistics4PtrOutput() JobStatistics4PtrOutput {
-	return i.ToJobStatistics4PtrOutputWithContext(context.Background())
-}
-
-func (i JobStatistics4Args) ToJobStatistics4PtrOutputWithContext(ctx context.Context) JobStatistics4PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics4Output).ToJobStatistics4PtrOutputWithContext(ctx)
-}
-
-// JobStatistics4PtrInput is an input type that accepts JobStatistics4Args, JobStatistics4Ptr and JobStatistics4PtrOutput values.
-// You can construct a concrete instance of `JobStatistics4PtrInput` via:
-//
-//          JobStatistics4Args{...}
-//
-//  or:
-//
-//          nil
-type JobStatistics4PtrInput interface {
-	pulumi.Input
-
-	ToJobStatistics4PtrOutput() JobStatistics4PtrOutput
-	ToJobStatistics4PtrOutputWithContext(context.Context) JobStatistics4PtrOutput
-}
-
-type jobStatistics4PtrType JobStatistics4Args
-
-func JobStatistics4Ptr(v *JobStatistics4Args) JobStatistics4PtrInput {
-	return (*jobStatistics4PtrType)(v)
-}
-
-func (*jobStatistics4PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics4)(nil)).Elem()
-}
-
-func (i *jobStatistics4PtrType) ToJobStatistics4PtrOutput() JobStatistics4PtrOutput {
-	return i.ToJobStatistics4PtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatistics4PtrType) ToJobStatistics4PtrOutputWithContext(ctx context.Context) JobStatistics4PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics4PtrOutput)
-}
-
-type JobStatistics4Output struct{ *pulumi.OutputState }
-
-func (JobStatistics4Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatistics4)(nil)).Elem()
-}
-
-func (o JobStatistics4Output) ToJobStatistics4Output() JobStatistics4Output {
-	return o
-}
-
-func (o JobStatistics4Output) ToJobStatistics4OutputWithContext(ctx context.Context) JobStatistics4Output {
-	return o
-}
-
-func (o JobStatistics4Output) ToJobStatistics4PtrOutput() JobStatistics4PtrOutput {
-	return o.ToJobStatistics4PtrOutputWithContext(context.Background())
-}
-
-func (o JobStatistics4Output) ToJobStatistics4PtrOutputWithContext(ctx context.Context) JobStatistics4PtrOutput {
-	return o.ApplyT(func(v JobStatistics4) *JobStatistics4 {
-		return &v
-	}).(JobStatistics4PtrOutput)
-}
-
-// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
-func (o JobStatistics4Output) DestinationUriFileCounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JobStatistics4) []string { return v.DestinationUriFileCounts }).(pulumi.StringArrayOutput)
-}
-
-// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
-func (o JobStatistics4Output) InputBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatistics4) *string { return v.InputBytes }).(pulumi.StringPtrOutput)
-}
-
-type JobStatistics4PtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatistics4PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatistics4)(nil)).Elem()
-}
-
-func (o JobStatistics4PtrOutput) ToJobStatistics4PtrOutput() JobStatistics4PtrOutput {
-	return o
-}
-
-func (o JobStatistics4PtrOutput) ToJobStatistics4PtrOutputWithContext(ctx context.Context) JobStatistics4PtrOutput {
-	return o
-}
-
-func (o JobStatistics4PtrOutput) Elem() JobStatistics4Output {
-	return o.ApplyT(func(v *JobStatistics4) JobStatistics4 { return *v }).(JobStatistics4Output)
-}
-
-// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
-func (o JobStatistics4PtrOutput) DestinationUriFileCounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobStatistics4) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DestinationUriFileCounts
-	}).(pulumi.StringArrayOutput)
-}
-
-// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
-func (o JobStatistics4PtrOutput) InputBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatistics4) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InputBytes
-	}).(pulumi.StringPtrOutput)
-}
-
 type JobStatistics4Response struct {
-	// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
+	// Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
 	DestinationUriFileCounts []string `pulumi:"destinationUriFileCounts"`
-	// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
+	// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
 	InputBytes string `pulumi:"inputBytes"`
 }
 
@@ -15283,9 +12951,9 @@ type JobStatistics4ResponseInput interface {
 }
 
 type JobStatistics4ResponseArgs struct {
-	// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
+	// Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
 	DestinationUriFileCounts pulumi.StringArrayInput `pulumi:"destinationUriFileCounts"`
-	// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
+	// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
 	InputBytes pulumi.StringInput `pulumi:"inputBytes"`
 }
 
@@ -15366,12 +13034,12 @@ func (o JobStatistics4ResponseOutput) ToJobStatistics4ResponsePtrOutputWithConte
 	}).(JobStatistics4ResponsePtrOutput)
 }
 
-// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
+// Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
 func (o JobStatistics4ResponseOutput) DestinationUriFileCounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobStatistics4Response) []string { return v.DestinationUriFileCounts }).(pulumi.StringArrayOutput)
 }
 
-// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
+// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
 func (o JobStatistics4ResponseOutput) InputBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics4Response) string { return v.InputBytes }).(pulumi.StringOutput)
 }
@@ -15394,7 +13062,7 @@ func (o JobStatistics4ResponsePtrOutput) Elem() JobStatistics4ResponseOutput {
 	return o.ApplyT(func(v *JobStatistics4Response) JobStatistics4Response { return *v }).(JobStatistics4ResponseOutput)
 }
 
-// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
+// Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
 func (o JobStatistics4ResponsePtrOutput) DestinationUriFileCounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobStatistics4Response) []string {
 		if v == nil {
@@ -15404,7 +13072,7 @@ func (o JobStatistics4ResponsePtrOutput) DestinationUriFileCounts() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
+// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
 func (o JobStatistics4ResponsePtrOutput) InputBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatistics4Response) *string {
 		if v == nil {
@@ -15414,116 +13082,10 @@ func (o JobStatistics4ResponsePtrOutput) InputBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type JobStatisticsReservationUsageItem struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-	Name *string `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
-	SlotMs *string `pulumi:"slotMs"`
-}
-
-// JobStatisticsReservationUsageItemInput is an input type that accepts JobStatisticsReservationUsageItemArgs and JobStatisticsReservationUsageItemOutput values.
-// You can construct a concrete instance of `JobStatisticsReservationUsageItemInput` via:
-//
-//          JobStatisticsReservationUsageItemArgs{...}
-type JobStatisticsReservationUsageItemInput interface {
-	pulumi.Input
-
-	ToJobStatisticsReservationUsageItemOutput() JobStatisticsReservationUsageItemOutput
-	ToJobStatisticsReservationUsageItemOutputWithContext(context.Context) JobStatisticsReservationUsageItemOutput
-}
-
-type JobStatisticsReservationUsageItemArgs struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
-	SlotMs pulumi.StringPtrInput `pulumi:"slotMs"`
-}
-
-func (JobStatisticsReservationUsageItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatisticsReservationUsageItem)(nil)).Elem()
-}
-
-func (i JobStatisticsReservationUsageItemArgs) ToJobStatisticsReservationUsageItemOutput() JobStatisticsReservationUsageItemOutput {
-	return i.ToJobStatisticsReservationUsageItemOutputWithContext(context.Background())
-}
-
-func (i JobStatisticsReservationUsageItemArgs) ToJobStatisticsReservationUsageItemOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsReservationUsageItemOutput)
-}
-
-// JobStatisticsReservationUsageItemArrayInput is an input type that accepts JobStatisticsReservationUsageItemArray and JobStatisticsReservationUsageItemArrayOutput values.
-// You can construct a concrete instance of `JobStatisticsReservationUsageItemArrayInput` via:
-//
-//          JobStatisticsReservationUsageItemArray{ JobStatisticsReservationUsageItemArgs{...} }
-type JobStatisticsReservationUsageItemArrayInput interface {
-	pulumi.Input
-
-	ToJobStatisticsReservationUsageItemArrayOutput() JobStatisticsReservationUsageItemArrayOutput
-	ToJobStatisticsReservationUsageItemArrayOutputWithContext(context.Context) JobStatisticsReservationUsageItemArrayOutput
-}
-
-type JobStatisticsReservationUsageItemArray []JobStatisticsReservationUsageItemInput
-
-func (JobStatisticsReservationUsageItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStatisticsReservationUsageItem)(nil)).Elem()
-}
-
-func (i JobStatisticsReservationUsageItemArray) ToJobStatisticsReservationUsageItemArrayOutput() JobStatisticsReservationUsageItemArrayOutput {
-	return i.ToJobStatisticsReservationUsageItemArrayOutputWithContext(context.Background())
-}
-
-func (i JobStatisticsReservationUsageItemArray) ToJobStatisticsReservationUsageItemArrayOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsReservationUsageItemArrayOutput)
-}
-
-type JobStatisticsReservationUsageItemOutput struct{ *pulumi.OutputState }
-
-func (JobStatisticsReservationUsageItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatisticsReservationUsageItem)(nil)).Elem()
-}
-
-func (o JobStatisticsReservationUsageItemOutput) ToJobStatisticsReservationUsageItemOutput() JobStatisticsReservationUsageItemOutput {
-	return o
-}
-
-func (o JobStatisticsReservationUsageItemOutput) ToJobStatisticsReservationUsageItemOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemOutput {
-	return o
-}
-
-// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-func (o JobStatisticsReservationUsageItemOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatisticsReservationUsageItem) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Slot-milliseconds the job spent in the given reservation.
-func (o JobStatisticsReservationUsageItemOutput) SlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatisticsReservationUsageItem) *string { return v.SlotMs }).(pulumi.StringPtrOutput)
-}
-
-type JobStatisticsReservationUsageItemArrayOutput struct{ *pulumi.OutputState }
-
-func (JobStatisticsReservationUsageItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStatisticsReservationUsageItem)(nil)).Elem()
-}
-
-func (o JobStatisticsReservationUsageItemArrayOutput) ToJobStatisticsReservationUsageItemArrayOutput() JobStatisticsReservationUsageItemArrayOutput {
-	return o
-}
-
-func (o JobStatisticsReservationUsageItemArrayOutput) ToJobStatisticsReservationUsageItemArrayOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemArrayOutput {
-	return o
-}
-
-func (o JobStatisticsReservationUsageItemArrayOutput) Index(i pulumi.IntInput) JobStatisticsReservationUsageItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatisticsReservationUsageItem {
-		return vs[0].([]JobStatisticsReservationUsageItem)[vs[1].(int)]
-	}).(JobStatisticsReservationUsageItemOutput)
-}
-
 type JobStatisticsReservationUsageItemResponse struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	// Reservation name or "unreserved" for on-demand resources usage.
 	Name string `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	// Slot-milliseconds the job spent in the given reservation.
 	SlotMs string `pulumi:"slotMs"`
 }
 
@@ -15539,9 +13101,9 @@ type JobStatisticsReservationUsageItemResponseInput interface {
 }
 
 type JobStatisticsReservationUsageItemResponseArgs struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	// Reservation name or "unreserved" for on-demand resources usage.
 	Name pulumi.StringInput `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	// Slot-milliseconds the job spent in the given reservation.
 	SlotMs pulumi.StringInput `pulumi:"slotMs"`
 }
 
@@ -15596,12 +13158,12 @@ func (o JobStatisticsReservationUsageItemResponseOutput) ToJobStatisticsReservat
 	return o
 }
 
-// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+// Reservation name or "unreserved" for on-demand resources usage.
 func (o JobStatisticsReservationUsageItemResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsReservationUsageItemResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Output-only] Slot-milliseconds the job spent in the given reservation.
+// Slot-milliseconds the job spent in the given reservation.
 func (o JobStatisticsReservationUsageItemResponseOutput) SlotMs() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsReservationUsageItemResponse) string { return v.SlotMs }).(pulumi.StringOutput)
 }
@@ -15629,37 +13191,37 @@ func (o JobStatisticsReservationUsageItemResponseArrayOutput) Index(i pulumi.Int
 type JobStatisticsResponse struct {
 	// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
 	CompletionRatio float64 `pulumi:"completionRatio"`
-	// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
+	// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
 	CreationTime string `pulumi:"creationTime"`
-	// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
+	// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
 	EndTime string `pulumi:"endTime"`
-	// [Output-only] Statistics for an extract job.
+	// Statistics for an extract job.
 	Extract JobStatistics4Response `pulumi:"extract"`
-	// [Output-only] Statistics for a load job.
+	// Statistics for a load job.
 	Load JobStatistics3Response `pulumi:"load"`
-	// [Output-only] Number of child jobs executed.
+	// Number of child jobs executed.
 	NumChildJobs string `pulumi:"numChildJobs"`
-	// [Output-only] If this is a child job, the id of the parent.
+	// If this is a child job, the id of the parent.
 	ParentJobId string `pulumi:"parentJobId"`
-	// [Output-only] Statistics for a query job.
+	// Statistics for a query job.
 	Query JobStatistics2Response `pulumi:"query"`
-	// [Output-only] Quotas which delayed this job's start time.
+	// Quotas which delayed this job's start time.
 	QuotaDeferments []string `pulumi:"quotaDeferments"`
-	// [Output-only] Job resource usage breakdown by reservation.
+	// Job resource usage breakdown by reservation.
 	ReservationUsage []JobStatisticsReservationUsageItemResponse `pulumi:"reservationUsage"`
-	// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+	// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
 	Reservation_id string `pulumi:"reservation_id"`
-	// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
+	// [Preview] Statistics for row-level security. Present only for query and extract jobs.
 	RowLevelSecurityStatistics RowLevelSecurityStatisticsResponse `pulumi:"rowLevelSecurityStatistics"`
-	// [Output-only] Statistics for a child job of a script.
+	// Statistics for a child job of a script.
 	ScriptStatistics ScriptStatisticsResponse `pulumi:"scriptStatistics"`
-	// [Output-only] [Preview] Information of the session if this job is part of one.
+	// [Preview] Information of the session if this job is part of one.
 	SessionInfoTemplate SessionInfoResponse `pulumi:"sessionInfoTemplate"`
-	// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
+	// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
 	StartTime string `pulumi:"startTime"`
-	// [Output-only] Slot-milliseconds for the job.
+	// Slot-milliseconds for the job.
 	TotalSlotMs string `pulumi:"totalSlotMs"`
-	// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+	// [Alpha] Information of the multi-statement transaction if this job is part of one.
 	TransactionInfoTemplate TransactionInfoResponse `pulumi:"transactionInfoTemplate"`
 }
 
@@ -15677,37 +13239,37 @@ type JobStatisticsResponseInput interface {
 type JobStatisticsResponseArgs struct {
 	// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
 	CompletionRatio pulumi.Float64Input `pulumi:"completionRatio"`
-	// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
+	// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
+	// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// [Output-only] Statistics for an extract job.
+	// Statistics for an extract job.
 	Extract JobStatistics4ResponseInput `pulumi:"extract"`
-	// [Output-only] Statistics for a load job.
+	// Statistics for a load job.
 	Load JobStatistics3ResponseInput `pulumi:"load"`
-	// [Output-only] Number of child jobs executed.
+	// Number of child jobs executed.
 	NumChildJobs pulumi.StringInput `pulumi:"numChildJobs"`
-	// [Output-only] If this is a child job, the id of the parent.
+	// If this is a child job, the id of the parent.
 	ParentJobId pulumi.StringInput `pulumi:"parentJobId"`
-	// [Output-only] Statistics for a query job.
+	// Statistics for a query job.
 	Query JobStatistics2ResponseInput `pulumi:"query"`
-	// [Output-only] Quotas which delayed this job's start time.
+	// Quotas which delayed this job's start time.
 	QuotaDeferments pulumi.StringArrayInput `pulumi:"quotaDeferments"`
-	// [Output-only] Job resource usage breakdown by reservation.
+	// Job resource usage breakdown by reservation.
 	ReservationUsage JobStatisticsReservationUsageItemResponseArrayInput `pulumi:"reservationUsage"`
-	// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+	// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
 	Reservation_id pulumi.StringInput `pulumi:"reservation_id"`
-	// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
+	// [Preview] Statistics for row-level security. Present only for query and extract jobs.
 	RowLevelSecurityStatistics RowLevelSecurityStatisticsResponseInput `pulumi:"rowLevelSecurityStatistics"`
-	// [Output-only] Statistics for a child job of a script.
+	// Statistics for a child job of a script.
 	ScriptStatistics ScriptStatisticsResponseInput `pulumi:"scriptStatistics"`
-	// [Output-only] [Preview] Information of the session if this job is part of one.
+	// [Preview] Information of the session if this job is part of one.
 	SessionInfoTemplate SessionInfoResponseInput `pulumi:"sessionInfoTemplate"`
-	// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
+	// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// [Output-only] Slot-milliseconds for the job.
+	// Slot-milliseconds for the job.
 	TotalSlotMs pulumi.StringInput `pulumi:"totalSlotMs"`
-	// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+	// [Alpha] Information of the multi-statement transaction if this job is part of one.
 	TransactionInfoTemplate TransactionInfoResponseInput `pulumi:"transactionInfoTemplate"`
 }
 
@@ -15793,82 +13355,82 @@ func (o JobStatisticsResponseOutput) CompletionRatio() pulumi.Float64Output {
 	return o.ApplyT(func(v JobStatisticsResponse) float64 { return v.CompletionRatio }).(pulumi.Float64Output)
 }
 
-// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
+// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
 func (o JobStatisticsResponseOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
+// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
 func (o JobStatisticsResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// [Output-only] Statistics for an extract job.
+// Statistics for an extract job.
 func (o JobStatisticsResponseOutput) Extract() JobStatistics4ResponseOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) JobStatistics4Response { return v.Extract }).(JobStatistics4ResponseOutput)
 }
 
-// [Output-only] Statistics for a load job.
+// Statistics for a load job.
 func (o JobStatisticsResponseOutput) Load() JobStatistics3ResponseOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) JobStatistics3Response { return v.Load }).(JobStatistics3ResponseOutput)
 }
 
-// [Output-only] Number of child jobs executed.
+// Number of child jobs executed.
 func (o JobStatisticsResponseOutput) NumChildJobs() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) string { return v.NumChildJobs }).(pulumi.StringOutput)
 }
 
-// [Output-only] If this is a child job, the id of the parent.
+// If this is a child job, the id of the parent.
 func (o JobStatisticsResponseOutput) ParentJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) string { return v.ParentJobId }).(pulumi.StringOutput)
 }
 
-// [Output-only] Statistics for a query job.
+// Statistics for a query job.
 func (o JobStatisticsResponseOutput) Query() JobStatistics2ResponseOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) JobStatistics2Response { return v.Query }).(JobStatistics2ResponseOutput)
 }
 
-// [Output-only] Quotas which delayed this job's start time.
+// Quotas which delayed this job's start time.
 func (o JobStatisticsResponseOutput) QuotaDeferments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) []string { return v.QuotaDeferments }).(pulumi.StringArrayOutput)
 }
 
-// [Output-only] Job resource usage breakdown by reservation.
+// Job resource usage breakdown by reservation.
 func (o JobStatisticsResponseOutput) ReservationUsage() JobStatisticsReservationUsageItemResponseArrayOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) []JobStatisticsReservationUsageItemResponse { return v.ReservationUsage }).(JobStatisticsReservationUsageItemResponseArrayOutput)
 }
 
-// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
 func (o JobStatisticsResponseOutput) Reservation_id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) string { return v.Reservation_id }).(pulumi.StringOutput)
 }
 
-// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
+// [Preview] Statistics for row-level security. Present only for query and extract jobs.
 func (o JobStatisticsResponseOutput) RowLevelSecurityStatistics() RowLevelSecurityStatisticsResponseOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) RowLevelSecurityStatisticsResponse { return v.RowLevelSecurityStatistics }).(RowLevelSecurityStatisticsResponseOutput)
 }
 
-// [Output-only] Statistics for a child job of a script.
+// Statistics for a child job of a script.
 func (o JobStatisticsResponseOutput) ScriptStatistics() ScriptStatisticsResponseOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) ScriptStatisticsResponse { return v.ScriptStatistics }).(ScriptStatisticsResponseOutput)
 }
 
-// [Output-only] [Preview] Information of the session if this job is part of one.
+// [Preview] Information of the session if this job is part of one.
 func (o JobStatisticsResponseOutput) SessionInfoTemplate() SessionInfoResponseOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) SessionInfoResponse { return v.SessionInfoTemplate }).(SessionInfoResponseOutput)
 }
 
-// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
+// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
 func (o JobStatisticsResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// [Output-only] Slot-milliseconds for the job.
+// Slot-milliseconds for the job.
 func (o JobStatisticsResponseOutput) TotalSlotMs() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) string { return v.TotalSlotMs }).(pulumi.StringOutput)
 }
 
-// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+// [Alpha] Information of the multi-statement transaction if this job is part of one.
 func (o JobStatisticsResponseOutput) TransactionInfoTemplate() TransactionInfoResponseOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) TransactionInfoResponse { return v.TransactionInfoTemplate }).(TransactionInfoResponseOutput)
 }
@@ -15901,7 +13463,7 @@ func (o JobStatisticsResponsePtrOutput) CompletionRatio() pulumi.Float64PtrOutpu
 	}).(pulumi.Float64PtrOutput)
 }
 
-// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
+// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
 func (o JobStatisticsResponsePtrOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *string {
 		if v == nil {
@@ -15911,7 +13473,7 @@ func (o JobStatisticsResponsePtrOutput) CreationTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
+// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
 func (o JobStatisticsResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *string {
 		if v == nil {
@@ -15921,7 +13483,7 @@ func (o JobStatisticsResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Statistics for an extract job.
+// Statistics for an extract job.
 func (o JobStatisticsResponsePtrOutput) Extract() JobStatistics4ResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *JobStatistics4Response {
 		if v == nil {
@@ -15931,7 +13493,7 @@ func (o JobStatisticsResponsePtrOutput) Extract() JobStatistics4ResponsePtrOutpu
 	}).(JobStatistics4ResponsePtrOutput)
 }
 
-// [Output-only] Statistics for a load job.
+// Statistics for a load job.
 func (o JobStatisticsResponsePtrOutput) Load() JobStatistics3ResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *JobStatistics3Response {
 		if v == nil {
@@ -15941,7 +13503,7 @@ func (o JobStatisticsResponsePtrOutput) Load() JobStatistics3ResponsePtrOutput {
 	}).(JobStatistics3ResponsePtrOutput)
 }
 
-// [Output-only] Number of child jobs executed.
+// Number of child jobs executed.
 func (o JobStatisticsResponsePtrOutput) NumChildJobs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *string {
 		if v == nil {
@@ -15951,7 +13513,7 @@ func (o JobStatisticsResponsePtrOutput) NumChildJobs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] If this is a child job, the id of the parent.
+// If this is a child job, the id of the parent.
 func (o JobStatisticsResponsePtrOutput) ParentJobId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *string {
 		if v == nil {
@@ -15961,7 +13523,7 @@ func (o JobStatisticsResponsePtrOutput) ParentJobId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Statistics for a query job.
+// Statistics for a query job.
 func (o JobStatisticsResponsePtrOutput) Query() JobStatistics2ResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *JobStatistics2Response {
 		if v == nil {
@@ -15971,7 +13533,7 @@ func (o JobStatisticsResponsePtrOutput) Query() JobStatistics2ResponsePtrOutput 
 	}).(JobStatistics2ResponsePtrOutput)
 }
 
-// [Output-only] Quotas which delayed this job's start time.
+// Quotas which delayed this job's start time.
 func (o JobStatisticsResponsePtrOutput) QuotaDeferments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) []string {
 		if v == nil {
@@ -15981,7 +13543,7 @@ func (o JobStatisticsResponsePtrOutput) QuotaDeferments() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// [Output-only] Job resource usage breakdown by reservation.
+// Job resource usage breakdown by reservation.
 func (o JobStatisticsResponsePtrOutput) ReservationUsage() JobStatisticsReservationUsageItemResponseArrayOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) []JobStatisticsReservationUsageItemResponse {
 		if v == nil {
@@ -15991,7 +13553,7 @@ func (o JobStatisticsResponsePtrOutput) ReservationUsage() JobStatisticsReservat
 	}).(JobStatisticsReservationUsageItemResponseArrayOutput)
 }
 
-// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
 func (o JobStatisticsResponsePtrOutput) Reservation_id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *string {
 		if v == nil {
@@ -16001,7 +13563,7 @@ func (o JobStatisticsResponsePtrOutput) Reservation_id() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
+// [Preview] Statistics for row-level security. Present only for query and extract jobs.
 func (o JobStatisticsResponsePtrOutput) RowLevelSecurityStatistics() RowLevelSecurityStatisticsResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *RowLevelSecurityStatisticsResponse {
 		if v == nil {
@@ -16011,7 +13573,7 @@ func (o JobStatisticsResponsePtrOutput) RowLevelSecurityStatistics() RowLevelSec
 	}).(RowLevelSecurityStatisticsResponsePtrOutput)
 }
 
-// [Output-only] Statistics for a child job of a script.
+// Statistics for a child job of a script.
 func (o JobStatisticsResponsePtrOutput) ScriptStatistics() ScriptStatisticsResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *ScriptStatisticsResponse {
 		if v == nil {
@@ -16021,7 +13583,7 @@ func (o JobStatisticsResponsePtrOutput) ScriptStatistics() ScriptStatisticsRespo
 	}).(ScriptStatisticsResponsePtrOutput)
 }
 
-// [Output-only] [Preview] Information of the session if this job is part of one.
+// [Preview] Information of the session if this job is part of one.
 func (o JobStatisticsResponsePtrOutput) SessionInfoTemplate() SessionInfoResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *SessionInfoResponse {
 		if v == nil {
@@ -16031,7 +13593,7 @@ func (o JobStatisticsResponsePtrOutput) SessionInfoTemplate() SessionInfoRespons
 	}).(SessionInfoResponsePtrOutput)
 }
 
-// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
+// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
 func (o JobStatisticsResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *string {
 		if v == nil {
@@ -16041,7 +13603,7 @@ func (o JobStatisticsResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Slot-milliseconds for the job.
+// Slot-milliseconds for the job.
 func (o JobStatisticsResponsePtrOutput) TotalSlotMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *string {
 		if v == nil {
@@ -16051,7 +13613,7 @@ func (o JobStatisticsResponsePtrOutput) TotalSlotMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+// [Alpha] Information of the multi-statement transaction if this job is part of one.
 func (o JobStatisticsResponsePtrOutput) TransactionInfoTemplate() TransactionInfoResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) *TransactionInfoResponse {
 		if v == nil {
@@ -16061,181 +13623,12 @@ func (o JobStatisticsResponsePtrOutput) TransactionInfoTemplate() TransactionInf
 	}).(TransactionInfoResponsePtrOutput)
 }
 
-type JobStatus struct {
-	// [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-	ErrorResult *ErrorProto `pulumi:"errorResult"`
-	// [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
-	Errors []ErrorProto `pulumi:"errors"`
-	// [Output-only] Running state of the job.
-	State *string `pulumi:"state"`
-}
-
-// JobStatusInput is an input type that accepts JobStatusArgs and JobStatusOutput values.
-// You can construct a concrete instance of `JobStatusInput` via:
-//
-//          JobStatusArgs{...}
-type JobStatusInput interface {
-	pulumi.Input
-
-	ToJobStatusOutput() JobStatusOutput
-	ToJobStatusOutputWithContext(context.Context) JobStatusOutput
-}
-
-type JobStatusArgs struct {
-	// [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-	ErrorResult ErrorProtoPtrInput `pulumi:"errorResult"`
-	// [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
-	Errors ErrorProtoArrayInput `pulumi:"errors"`
-	// [Output-only] Running state of the job.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (JobStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatus)(nil)).Elem()
-}
-
-func (i JobStatusArgs) ToJobStatusOutput() JobStatusOutput {
-	return i.ToJobStatusOutputWithContext(context.Background())
-}
-
-func (i JobStatusArgs) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput)
-}
-
-func (i JobStatusArgs) ToJobStatusPtrOutput() JobStatusPtrOutput {
-	return i.ToJobStatusPtrOutputWithContext(context.Background())
-}
-
-func (i JobStatusArgs) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput).ToJobStatusPtrOutputWithContext(ctx)
-}
-
-// JobStatusPtrInput is an input type that accepts JobStatusArgs, JobStatusPtr and JobStatusPtrOutput values.
-// You can construct a concrete instance of `JobStatusPtrInput` via:
-//
-//          JobStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type JobStatusPtrInput interface {
-	pulumi.Input
-
-	ToJobStatusPtrOutput() JobStatusPtrOutput
-	ToJobStatusPtrOutputWithContext(context.Context) JobStatusPtrOutput
-}
-
-type jobStatusPtrType JobStatusArgs
-
-func JobStatusPtr(v *JobStatusArgs) JobStatusPtrInput {
-	return (*jobStatusPtrType)(v)
-}
-
-func (*jobStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatus)(nil)).Elem()
-}
-
-func (i *jobStatusPtrType) ToJobStatusPtrOutput() JobStatusPtrOutput {
-	return i.ToJobStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *jobStatusPtrType) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStatusPtrOutput)
-}
-
-type JobStatusOutput struct{ *pulumi.OutputState }
-
-func (JobStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStatus)(nil)).Elem()
-}
-
-func (o JobStatusOutput) ToJobStatusOutput() JobStatusOutput {
-	return o
-}
-
-func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
-	return o
-}
-
-func (o JobStatusOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
-	return o.ToJobStatusPtrOutputWithContext(context.Background())
-}
-
-func (o JobStatusOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
-	return o.ApplyT(func(v JobStatus) *JobStatus {
-		return &v
-	}).(JobStatusPtrOutput)
-}
-
-// [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-func (o JobStatusOutput) ErrorResult() ErrorProtoPtrOutput {
-	return o.ApplyT(func(v JobStatus) *ErrorProto { return v.ErrorResult }).(ErrorProtoPtrOutput)
-}
-
-// [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
-func (o JobStatusOutput) Errors() ErrorProtoArrayOutput {
-	return o.ApplyT(func(v JobStatus) []ErrorProto { return v.Errors }).(ErrorProtoArrayOutput)
-}
-
-// [Output-only] Running state of the job.
-func (o JobStatusOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStatus) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type JobStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (JobStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobStatus)(nil)).Elem()
-}
-
-func (o JobStatusPtrOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
-	return o
-}
-
-func (o JobStatusPtrOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
-	return o
-}
-
-func (o JobStatusPtrOutput) Elem() JobStatusOutput {
-	return o.ApplyT(func(v *JobStatus) JobStatus { return *v }).(JobStatusOutput)
-}
-
-// [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-func (o JobStatusPtrOutput) ErrorResult() ErrorProtoPtrOutput {
-	return o.ApplyT(func(v *JobStatus) *ErrorProto {
-		if v == nil {
-			return nil
-		}
-		return v.ErrorResult
-	}).(ErrorProtoPtrOutput)
-}
-
-// [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
-func (o JobStatusPtrOutput) Errors() ErrorProtoArrayOutput {
-	return o.ApplyT(func(v *JobStatus) []ErrorProto {
-		if v == nil {
-			return nil
-		}
-		return v.Errors
-	}).(ErrorProtoArrayOutput)
-}
-
-// [Output-only] Running state of the job.
-func (o JobStatusPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
 type JobStatusResponse struct {
-	// [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+	// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
 	ErrorResult ErrorProtoResponse `pulumi:"errorResult"`
-	// [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
+	// The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
 	Errors []ErrorProtoResponse `pulumi:"errors"`
-	// [Output-only] Running state of the job.
+	// Running state of the job.
 	State string `pulumi:"state"`
 }
 
@@ -16251,11 +13644,11 @@ type JobStatusResponseInput interface {
 }
 
 type JobStatusResponseArgs struct {
-	// [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+	// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
 	ErrorResult ErrorProtoResponseInput `pulumi:"errorResult"`
-	// [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
+	// The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
 	Errors ErrorProtoResponseArrayInput `pulumi:"errors"`
-	// [Output-only] Running state of the job.
+	// Running state of the job.
 	State pulumi.StringInput `pulumi:"state"`
 }
 
@@ -16336,17 +13729,17 @@ func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutputWithContext(ctx con
 	}).(JobStatusResponsePtrOutput)
 }
 
-// [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
 func (o JobStatusResponseOutput) ErrorResult() ErrorProtoResponseOutput {
 	return o.ApplyT(func(v JobStatusResponse) ErrorProtoResponse { return v.ErrorResult }).(ErrorProtoResponseOutput)
 }
 
-// [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
+// The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
 func (o JobStatusResponseOutput) Errors() ErrorProtoResponseArrayOutput {
 	return o.ApplyT(func(v JobStatusResponse) []ErrorProtoResponse { return v.Errors }).(ErrorProtoResponseArrayOutput)
 }
 
-// [Output-only] Running state of the job.
+// Running state of the job.
 func (o JobStatusResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
@@ -16369,7 +13762,7 @@ func (o JobStatusResponsePtrOutput) Elem() JobStatusResponseOutput {
 	return o.ApplyT(func(v *JobStatusResponse) JobStatusResponse { return *v }).(JobStatusResponseOutput)
 }
 
-// [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
 func (o JobStatusResponsePtrOutput) ErrorResult() ErrorProtoResponsePtrOutput {
 	return o.ApplyT(func(v *JobStatusResponse) *ErrorProtoResponse {
 		if v == nil {
@@ -16379,7 +13772,7 @@ func (o JobStatusResponsePtrOutput) ErrorResult() ErrorProtoResponsePtrOutput {
 	}).(ErrorProtoResponsePtrOutput)
 }
 
-// [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
+// The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
 func (o JobStatusResponsePtrOutput) Errors() ErrorProtoResponseArrayOutput {
 	return o.ApplyT(func(v *JobStatusResponse) []ErrorProtoResponse {
 		if v == nil {
@@ -16389,7 +13782,7 @@ func (o JobStatusResponsePtrOutput) Errors() ErrorProtoResponseArrayOutput {
 	}).(ErrorProtoResponseArrayOutput)
 }
 
-// [Output-only] Running state of the job.
+// Running state of the job.
 func (o JobStatusResponsePtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobStatusResponse) *string {
 		if v == nil {
@@ -16402,8 +13795,6 @@ func (o JobStatusResponsePtrOutput) State() pulumi.StringPtrOutput {
 type MaterializedViewDefinition struct {
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh *bool `pulumi:"enableRefresh"`
-	// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
-	LastRefreshTime *string `pulumi:"lastRefreshTime"`
 	// [Required] A query whose result is persisted.
 	Query *string `pulumi:"query"`
 	// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
@@ -16424,8 +13815,6 @@ type MaterializedViewDefinitionInput interface {
 type MaterializedViewDefinitionArgs struct {
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh pulumi.BoolPtrInput `pulumi:"enableRefresh"`
-	// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
-	LastRefreshTime pulumi.StringPtrInput `pulumi:"lastRefreshTime"`
 	// [Required] A query whose result is persisted.
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
@@ -16514,11 +13903,6 @@ func (o MaterializedViewDefinitionOutput) EnableRefresh() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MaterializedViewDefinition) *bool { return v.EnableRefresh }).(pulumi.BoolPtrOutput)
 }
 
-// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
-func (o MaterializedViewDefinitionOutput) LastRefreshTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaterializedViewDefinition) *string { return v.LastRefreshTime }).(pulumi.StringPtrOutput)
-}
-
 // [Required] A query whose result is persisted.
 func (o MaterializedViewDefinitionOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaterializedViewDefinition) *string { return v.Query }).(pulumi.StringPtrOutput)
@@ -16557,16 +13941,6 @@ func (o MaterializedViewDefinitionPtrOutput) EnableRefresh() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
-func (o MaterializedViewDefinitionPtrOutput) LastRefreshTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaterializedViewDefinition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastRefreshTime
-	}).(pulumi.StringPtrOutput)
-}
-
 // [Required] A query whose result is persisted.
 func (o MaterializedViewDefinitionPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaterializedViewDefinition) *string {
@@ -16590,7 +13964,7 @@ func (o MaterializedViewDefinitionPtrOutput) RefreshIntervalMs() pulumi.StringPt
 type MaterializedViewDefinitionResponse struct {
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh bool `pulumi:"enableRefresh"`
-	// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+	// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
 	LastRefreshTime string `pulumi:"lastRefreshTime"`
 	// [Required] A query whose result is persisted.
 	Query string `pulumi:"query"`
@@ -16612,7 +13986,7 @@ type MaterializedViewDefinitionResponseInput interface {
 type MaterializedViewDefinitionResponseArgs struct {
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh pulumi.BoolInput `pulumi:"enableRefresh"`
-	// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+	// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
 	LastRefreshTime pulumi.StringInput `pulumi:"lastRefreshTime"`
 	// [Required] A query whose result is persisted.
 	Query pulumi.StringInput `pulumi:"query"`
@@ -16702,7 +14076,7 @@ func (o MaterializedViewDefinitionResponseOutput) EnableRefresh() pulumi.BoolOut
 	return o.ApplyT(func(v MaterializedViewDefinitionResponse) bool { return v.EnableRefresh }).(pulumi.BoolOutput)
 }
 
-// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
 func (o MaterializedViewDefinitionResponseOutput) LastRefreshTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaterializedViewDefinitionResponse) string { return v.LastRefreshTime }).(pulumi.StringOutput)
 }
@@ -16745,7 +14119,7 @@ func (o MaterializedViewDefinitionResponsePtrOutput) EnableRefresh() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
 func (o MaterializedViewDefinitionResponsePtrOutput) LastRefreshTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaterializedViewDefinitionResponse) *string {
 		if v == nil {
@@ -19059,139 +16433,6 @@ func (o QueryParameterValueResponseArrayOutput) Index(i pulumi.IntInput) QueryPa
 	}).(QueryParameterValueResponseOutput)
 }
 
-type QueryTimelineSample struct {
-	// Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
-	ActiveUnits *string `pulumi:"activeUnits"`
-	// Total parallel units of work completed by this query.
-	CompletedUnits *string `pulumi:"completedUnits"`
-	// Milliseconds elapsed since the start of query execution.
-	ElapsedMs *string `pulumi:"elapsedMs"`
-	// Total parallel units of work remaining for the active stages.
-	PendingUnits *string `pulumi:"pendingUnits"`
-	// Cumulative slot-ms consumed by the query.
-	TotalSlotMs *string `pulumi:"totalSlotMs"`
-}
-
-// QueryTimelineSampleInput is an input type that accepts QueryTimelineSampleArgs and QueryTimelineSampleOutput values.
-// You can construct a concrete instance of `QueryTimelineSampleInput` via:
-//
-//          QueryTimelineSampleArgs{...}
-type QueryTimelineSampleInput interface {
-	pulumi.Input
-
-	ToQueryTimelineSampleOutput() QueryTimelineSampleOutput
-	ToQueryTimelineSampleOutputWithContext(context.Context) QueryTimelineSampleOutput
-}
-
-type QueryTimelineSampleArgs struct {
-	// Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
-	ActiveUnits pulumi.StringPtrInput `pulumi:"activeUnits"`
-	// Total parallel units of work completed by this query.
-	CompletedUnits pulumi.StringPtrInput `pulumi:"completedUnits"`
-	// Milliseconds elapsed since the start of query execution.
-	ElapsedMs pulumi.StringPtrInput `pulumi:"elapsedMs"`
-	// Total parallel units of work remaining for the active stages.
-	PendingUnits pulumi.StringPtrInput `pulumi:"pendingUnits"`
-	// Cumulative slot-ms consumed by the query.
-	TotalSlotMs pulumi.StringPtrInput `pulumi:"totalSlotMs"`
-}
-
-func (QueryTimelineSampleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryTimelineSample)(nil)).Elem()
-}
-
-func (i QueryTimelineSampleArgs) ToQueryTimelineSampleOutput() QueryTimelineSampleOutput {
-	return i.ToQueryTimelineSampleOutputWithContext(context.Background())
-}
-
-func (i QueryTimelineSampleArgs) ToQueryTimelineSampleOutputWithContext(ctx context.Context) QueryTimelineSampleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryTimelineSampleOutput)
-}
-
-// QueryTimelineSampleArrayInput is an input type that accepts QueryTimelineSampleArray and QueryTimelineSampleArrayOutput values.
-// You can construct a concrete instance of `QueryTimelineSampleArrayInput` via:
-//
-//          QueryTimelineSampleArray{ QueryTimelineSampleArgs{...} }
-type QueryTimelineSampleArrayInput interface {
-	pulumi.Input
-
-	ToQueryTimelineSampleArrayOutput() QueryTimelineSampleArrayOutput
-	ToQueryTimelineSampleArrayOutputWithContext(context.Context) QueryTimelineSampleArrayOutput
-}
-
-type QueryTimelineSampleArray []QueryTimelineSampleInput
-
-func (QueryTimelineSampleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QueryTimelineSample)(nil)).Elem()
-}
-
-func (i QueryTimelineSampleArray) ToQueryTimelineSampleArrayOutput() QueryTimelineSampleArrayOutput {
-	return i.ToQueryTimelineSampleArrayOutputWithContext(context.Background())
-}
-
-func (i QueryTimelineSampleArray) ToQueryTimelineSampleArrayOutputWithContext(ctx context.Context) QueryTimelineSampleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryTimelineSampleArrayOutput)
-}
-
-type QueryTimelineSampleOutput struct{ *pulumi.OutputState }
-
-func (QueryTimelineSampleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryTimelineSample)(nil)).Elem()
-}
-
-func (o QueryTimelineSampleOutput) ToQueryTimelineSampleOutput() QueryTimelineSampleOutput {
-	return o
-}
-
-func (o QueryTimelineSampleOutput) ToQueryTimelineSampleOutputWithContext(ctx context.Context) QueryTimelineSampleOutput {
-	return o
-}
-
-// Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
-func (o QueryTimelineSampleOutput) ActiveUnits() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueryTimelineSample) *string { return v.ActiveUnits }).(pulumi.StringPtrOutput)
-}
-
-// Total parallel units of work completed by this query.
-func (o QueryTimelineSampleOutput) CompletedUnits() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueryTimelineSample) *string { return v.CompletedUnits }).(pulumi.StringPtrOutput)
-}
-
-// Milliseconds elapsed since the start of query execution.
-func (o QueryTimelineSampleOutput) ElapsedMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueryTimelineSample) *string { return v.ElapsedMs }).(pulumi.StringPtrOutput)
-}
-
-// Total parallel units of work remaining for the active stages.
-func (o QueryTimelineSampleOutput) PendingUnits() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueryTimelineSample) *string { return v.PendingUnits }).(pulumi.StringPtrOutput)
-}
-
-// Cumulative slot-ms consumed by the query.
-func (o QueryTimelineSampleOutput) TotalSlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueryTimelineSample) *string { return v.TotalSlotMs }).(pulumi.StringPtrOutput)
-}
-
-type QueryTimelineSampleArrayOutput struct{ *pulumi.OutputState }
-
-func (QueryTimelineSampleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QueryTimelineSample)(nil)).Elem()
-}
-
-func (o QueryTimelineSampleArrayOutput) ToQueryTimelineSampleArrayOutput() QueryTimelineSampleArrayOutput {
-	return o
-}
-
-func (o QueryTimelineSampleArrayOutput) ToQueryTimelineSampleArrayOutputWithContext(ctx context.Context) QueryTimelineSampleArrayOutput {
-	return o
-}
-
-func (o QueryTimelineSampleArrayOutput) Index(i pulumi.IntInput) QueryTimelineSampleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueryTimelineSample {
-		return vs[0].([]QueryTimelineSample)[vs[1].(int)]
-	}).(QueryTimelineSampleOutput)
-}
-
 type QueryTimelineSampleResponse struct {
 	// Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
 	ActiveUnits string `pulumi:"activeUnits"`
@@ -20051,31 +17292,6 @@ func (i *routineReferencePtrType) ToRoutineReferencePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RoutineReferencePtrOutput)
 }
 
-// RoutineReferenceArrayInput is an input type that accepts RoutineReferenceArray and RoutineReferenceArrayOutput values.
-// You can construct a concrete instance of `RoutineReferenceArrayInput` via:
-//
-//          RoutineReferenceArray{ RoutineReferenceArgs{...} }
-type RoutineReferenceArrayInput interface {
-	pulumi.Input
-
-	ToRoutineReferenceArrayOutput() RoutineReferenceArrayOutput
-	ToRoutineReferenceArrayOutputWithContext(context.Context) RoutineReferenceArrayOutput
-}
-
-type RoutineReferenceArray []RoutineReferenceInput
-
-func (RoutineReferenceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutineReference)(nil)).Elem()
-}
-
-func (i RoutineReferenceArray) ToRoutineReferenceArrayOutput() RoutineReferenceArrayOutput {
-	return i.ToRoutineReferenceArrayOutputWithContext(context.Background())
-}
-
-func (i RoutineReferenceArray) ToRoutineReferenceArrayOutputWithContext(ctx context.Context) RoutineReferenceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutineReferenceArrayOutput)
-}
-
 type RoutineReferenceOutput struct{ *pulumi.OutputState }
 
 func (RoutineReferenceOutput) ElementType() reflect.Type {
@@ -20161,26 +17377,6 @@ func (o RoutineReferencePtrOutput) RoutineId() pulumi.StringPtrOutput {
 		}
 		return v.RoutineId
 	}).(pulumi.StringPtrOutput)
-}
-
-type RoutineReferenceArrayOutput struct{ *pulumi.OutputState }
-
-func (RoutineReferenceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutineReference)(nil)).Elem()
-}
-
-func (o RoutineReferenceArrayOutput) ToRoutineReferenceArrayOutput() RoutineReferenceArrayOutput {
-	return o
-}
-
-func (o RoutineReferenceArrayOutput) ToRoutineReferenceArrayOutputWithContext(ctx context.Context) RoutineReferenceArrayOutput {
-	return o
-}
-
-func (o RoutineReferenceArrayOutput) Index(i pulumi.IntInput) RoutineReferenceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutineReference {
-		return vs[0].([]RoutineReference)[vs[1].(int)]
-	}).(RoutineReferenceOutput)
 }
 
 type RoutineReferenceResponse struct {
@@ -20397,194 +17593,6 @@ func (o RoutineReferenceResponseArrayOutput) Index(i pulumi.IntInput) RoutineRef
 	}).(RoutineReferenceResponseOutput)
 }
 
-type RowAccessPolicyReference struct {
-	// [Required] The ID of the dataset containing this row access policy.
-	DatasetId *string `pulumi:"datasetId"`
-	// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-	PolicyId *string `pulumi:"policyId"`
-	// [Required] The ID of the project containing this row access policy.
-	Project *string `pulumi:"project"`
-	// [Required] The ID of the table containing this row access policy.
-	TableId *string `pulumi:"tableId"`
-}
-
-// RowAccessPolicyReferenceInput is an input type that accepts RowAccessPolicyReferenceArgs and RowAccessPolicyReferenceOutput values.
-// You can construct a concrete instance of `RowAccessPolicyReferenceInput` via:
-//
-//          RowAccessPolicyReferenceArgs{...}
-type RowAccessPolicyReferenceInput interface {
-	pulumi.Input
-
-	ToRowAccessPolicyReferenceOutput() RowAccessPolicyReferenceOutput
-	ToRowAccessPolicyReferenceOutputWithContext(context.Context) RowAccessPolicyReferenceOutput
-}
-
-type RowAccessPolicyReferenceArgs struct {
-	// [Required] The ID of the dataset containing this row access policy.
-	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
-	// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
-	// [Required] The ID of the project containing this row access policy.
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// [Required] The ID of the table containing this row access policy.
-	TableId pulumi.StringPtrInput `pulumi:"tableId"`
-}
-
-func (RowAccessPolicyReferenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RowAccessPolicyReference)(nil)).Elem()
-}
-
-func (i RowAccessPolicyReferenceArgs) ToRowAccessPolicyReferenceOutput() RowAccessPolicyReferenceOutput {
-	return i.ToRowAccessPolicyReferenceOutputWithContext(context.Background())
-}
-
-func (i RowAccessPolicyReferenceArgs) ToRowAccessPolicyReferenceOutputWithContext(ctx context.Context) RowAccessPolicyReferenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowAccessPolicyReferenceOutput)
-}
-
-func (i RowAccessPolicyReferenceArgs) ToRowAccessPolicyReferencePtrOutput() RowAccessPolicyReferencePtrOutput {
-	return i.ToRowAccessPolicyReferencePtrOutputWithContext(context.Background())
-}
-
-func (i RowAccessPolicyReferenceArgs) ToRowAccessPolicyReferencePtrOutputWithContext(ctx context.Context) RowAccessPolicyReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowAccessPolicyReferenceOutput).ToRowAccessPolicyReferencePtrOutputWithContext(ctx)
-}
-
-// RowAccessPolicyReferencePtrInput is an input type that accepts RowAccessPolicyReferenceArgs, RowAccessPolicyReferencePtr and RowAccessPolicyReferencePtrOutput values.
-// You can construct a concrete instance of `RowAccessPolicyReferencePtrInput` via:
-//
-//          RowAccessPolicyReferenceArgs{...}
-//
-//  or:
-//
-//          nil
-type RowAccessPolicyReferencePtrInput interface {
-	pulumi.Input
-
-	ToRowAccessPolicyReferencePtrOutput() RowAccessPolicyReferencePtrOutput
-	ToRowAccessPolicyReferencePtrOutputWithContext(context.Context) RowAccessPolicyReferencePtrOutput
-}
-
-type rowAccessPolicyReferencePtrType RowAccessPolicyReferenceArgs
-
-func RowAccessPolicyReferencePtr(v *RowAccessPolicyReferenceArgs) RowAccessPolicyReferencePtrInput {
-	return (*rowAccessPolicyReferencePtrType)(v)
-}
-
-func (*rowAccessPolicyReferencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RowAccessPolicyReference)(nil)).Elem()
-}
-
-func (i *rowAccessPolicyReferencePtrType) ToRowAccessPolicyReferencePtrOutput() RowAccessPolicyReferencePtrOutput {
-	return i.ToRowAccessPolicyReferencePtrOutputWithContext(context.Background())
-}
-
-func (i *rowAccessPolicyReferencePtrType) ToRowAccessPolicyReferencePtrOutputWithContext(ctx context.Context) RowAccessPolicyReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowAccessPolicyReferencePtrOutput)
-}
-
-type RowAccessPolicyReferenceOutput struct{ *pulumi.OutputState }
-
-func (RowAccessPolicyReferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RowAccessPolicyReference)(nil)).Elem()
-}
-
-func (o RowAccessPolicyReferenceOutput) ToRowAccessPolicyReferenceOutput() RowAccessPolicyReferenceOutput {
-	return o
-}
-
-func (o RowAccessPolicyReferenceOutput) ToRowAccessPolicyReferenceOutputWithContext(ctx context.Context) RowAccessPolicyReferenceOutput {
-	return o
-}
-
-func (o RowAccessPolicyReferenceOutput) ToRowAccessPolicyReferencePtrOutput() RowAccessPolicyReferencePtrOutput {
-	return o.ToRowAccessPolicyReferencePtrOutputWithContext(context.Background())
-}
-
-func (o RowAccessPolicyReferenceOutput) ToRowAccessPolicyReferencePtrOutputWithContext(ctx context.Context) RowAccessPolicyReferencePtrOutput {
-	return o.ApplyT(func(v RowAccessPolicyReference) *RowAccessPolicyReference {
-		return &v
-	}).(RowAccessPolicyReferencePtrOutput)
-}
-
-// [Required] The ID of the dataset containing this row access policy.
-func (o RowAccessPolicyReferenceOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RowAccessPolicyReference) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-func (o RowAccessPolicyReferenceOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RowAccessPolicyReference) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the project containing this row access policy.
-func (o RowAccessPolicyReferenceOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RowAccessPolicyReference) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the table containing this row access policy.
-func (o RowAccessPolicyReferenceOutput) TableId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RowAccessPolicyReference) *string { return v.TableId }).(pulumi.StringPtrOutput)
-}
-
-type RowAccessPolicyReferencePtrOutput struct{ *pulumi.OutputState }
-
-func (RowAccessPolicyReferencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RowAccessPolicyReference)(nil)).Elem()
-}
-
-func (o RowAccessPolicyReferencePtrOutput) ToRowAccessPolicyReferencePtrOutput() RowAccessPolicyReferencePtrOutput {
-	return o
-}
-
-func (o RowAccessPolicyReferencePtrOutput) ToRowAccessPolicyReferencePtrOutputWithContext(ctx context.Context) RowAccessPolicyReferencePtrOutput {
-	return o
-}
-
-func (o RowAccessPolicyReferencePtrOutput) Elem() RowAccessPolicyReferenceOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReference) RowAccessPolicyReference { return *v }).(RowAccessPolicyReferenceOutput)
-}
-
-// [Required] The ID of the dataset containing this row access policy.
-func (o RowAccessPolicyReferencePtrOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DatasetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-func (o RowAccessPolicyReferencePtrOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PolicyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the project containing this row access policy.
-func (o RowAccessPolicyReferencePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Required] The ID of the table containing this row access policy.
-func (o RowAccessPolicyReferencePtrOutput) TableId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RowAccessPolicyReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TableId
-	}).(pulumi.StringPtrOutput)
-}
-
 type RowAccessPolicyReferenceResponse struct {
 	// [Required] The ID of the dataset containing this row access policy.
 	DatasetId string `pulumi:"datasetId"`
@@ -20773,139 +17781,8 @@ func (o RowAccessPolicyReferenceResponsePtrOutput) TableId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-type RowLevelSecurityStatistics struct {
-	// [Output-only] [Preview] Whether any accessed data was protected by row access policies.
-	RowLevelSecurityApplied *bool `pulumi:"rowLevelSecurityApplied"`
-}
-
-// RowLevelSecurityStatisticsInput is an input type that accepts RowLevelSecurityStatisticsArgs and RowLevelSecurityStatisticsOutput values.
-// You can construct a concrete instance of `RowLevelSecurityStatisticsInput` via:
-//
-//          RowLevelSecurityStatisticsArgs{...}
-type RowLevelSecurityStatisticsInput interface {
-	pulumi.Input
-
-	ToRowLevelSecurityStatisticsOutput() RowLevelSecurityStatisticsOutput
-	ToRowLevelSecurityStatisticsOutputWithContext(context.Context) RowLevelSecurityStatisticsOutput
-}
-
-type RowLevelSecurityStatisticsArgs struct {
-	// [Output-only] [Preview] Whether any accessed data was protected by row access policies.
-	RowLevelSecurityApplied pulumi.BoolPtrInput `pulumi:"rowLevelSecurityApplied"`
-}
-
-func (RowLevelSecurityStatisticsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RowLevelSecurityStatistics)(nil)).Elem()
-}
-
-func (i RowLevelSecurityStatisticsArgs) ToRowLevelSecurityStatisticsOutput() RowLevelSecurityStatisticsOutput {
-	return i.ToRowLevelSecurityStatisticsOutputWithContext(context.Background())
-}
-
-func (i RowLevelSecurityStatisticsArgs) ToRowLevelSecurityStatisticsOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowLevelSecurityStatisticsOutput)
-}
-
-func (i RowLevelSecurityStatisticsArgs) ToRowLevelSecurityStatisticsPtrOutput() RowLevelSecurityStatisticsPtrOutput {
-	return i.ToRowLevelSecurityStatisticsPtrOutputWithContext(context.Background())
-}
-
-func (i RowLevelSecurityStatisticsArgs) ToRowLevelSecurityStatisticsPtrOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowLevelSecurityStatisticsOutput).ToRowLevelSecurityStatisticsPtrOutputWithContext(ctx)
-}
-
-// RowLevelSecurityStatisticsPtrInput is an input type that accepts RowLevelSecurityStatisticsArgs, RowLevelSecurityStatisticsPtr and RowLevelSecurityStatisticsPtrOutput values.
-// You can construct a concrete instance of `RowLevelSecurityStatisticsPtrInput` via:
-//
-//          RowLevelSecurityStatisticsArgs{...}
-//
-//  or:
-//
-//          nil
-type RowLevelSecurityStatisticsPtrInput interface {
-	pulumi.Input
-
-	ToRowLevelSecurityStatisticsPtrOutput() RowLevelSecurityStatisticsPtrOutput
-	ToRowLevelSecurityStatisticsPtrOutputWithContext(context.Context) RowLevelSecurityStatisticsPtrOutput
-}
-
-type rowLevelSecurityStatisticsPtrType RowLevelSecurityStatisticsArgs
-
-func RowLevelSecurityStatisticsPtr(v *RowLevelSecurityStatisticsArgs) RowLevelSecurityStatisticsPtrInput {
-	return (*rowLevelSecurityStatisticsPtrType)(v)
-}
-
-func (*rowLevelSecurityStatisticsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RowLevelSecurityStatistics)(nil)).Elem()
-}
-
-func (i *rowLevelSecurityStatisticsPtrType) ToRowLevelSecurityStatisticsPtrOutput() RowLevelSecurityStatisticsPtrOutput {
-	return i.ToRowLevelSecurityStatisticsPtrOutputWithContext(context.Background())
-}
-
-func (i *rowLevelSecurityStatisticsPtrType) ToRowLevelSecurityStatisticsPtrOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RowLevelSecurityStatisticsPtrOutput)
-}
-
-type RowLevelSecurityStatisticsOutput struct{ *pulumi.OutputState }
-
-func (RowLevelSecurityStatisticsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RowLevelSecurityStatistics)(nil)).Elem()
-}
-
-func (o RowLevelSecurityStatisticsOutput) ToRowLevelSecurityStatisticsOutput() RowLevelSecurityStatisticsOutput {
-	return o
-}
-
-func (o RowLevelSecurityStatisticsOutput) ToRowLevelSecurityStatisticsOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsOutput {
-	return o
-}
-
-func (o RowLevelSecurityStatisticsOutput) ToRowLevelSecurityStatisticsPtrOutput() RowLevelSecurityStatisticsPtrOutput {
-	return o.ToRowLevelSecurityStatisticsPtrOutputWithContext(context.Background())
-}
-
-func (o RowLevelSecurityStatisticsOutput) ToRowLevelSecurityStatisticsPtrOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsPtrOutput {
-	return o.ApplyT(func(v RowLevelSecurityStatistics) *RowLevelSecurityStatistics {
-		return &v
-	}).(RowLevelSecurityStatisticsPtrOutput)
-}
-
-// [Output-only] [Preview] Whether any accessed data was protected by row access policies.
-func (o RowLevelSecurityStatisticsOutput) RowLevelSecurityApplied() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RowLevelSecurityStatistics) *bool { return v.RowLevelSecurityApplied }).(pulumi.BoolPtrOutput)
-}
-
-type RowLevelSecurityStatisticsPtrOutput struct{ *pulumi.OutputState }
-
-func (RowLevelSecurityStatisticsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RowLevelSecurityStatistics)(nil)).Elem()
-}
-
-func (o RowLevelSecurityStatisticsPtrOutput) ToRowLevelSecurityStatisticsPtrOutput() RowLevelSecurityStatisticsPtrOutput {
-	return o
-}
-
-func (o RowLevelSecurityStatisticsPtrOutput) ToRowLevelSecurityStatisticsPtrOutputWithContext(ctx context.Context) RowLevelSecurityStatisticsPtrOutput {
-	return o
-}
-
-func (o RowLevelSecurityStatisticsPtrOutput) Elem() RowLevelSecurityStatisticsOutput {
-	return o.ApplyT(func(v *RowLevelSecurityStatistics) RowLevelSecurityStatistics { return *v }).(RowLevelSecurityStatisticsOutput)
-}
-
-// [Output-only] [Preview] Whether any accessed data was protected by row access policies.
-func (o RowLevelSecurityStatisticsPtrOutput) RowLevelSecurityApplied() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RowLevelSecurityStatistics) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RowLevelSecurityApplied
-	}).(pulumi.BoolPtrOutput)
-}
-
 type RowLevelSecurityStatisticsResponse struct {
-	// [Output-only] [Preview] Whether any accessed data was protected by row access policies.
+	// [Preview] Whether any accessed data was protected by row access policies.
 	RowLevelSecurityApplied bool `pulumi:"rowLevelSecurityApplied"`
 }
 
@@ -20921,7 +17798,7 @@ type RowLevelSecurityStatisticsResponseInput interface {
 }
 
 type RowLevelSecurityStatisticsResponseArgs struct {
-	// [Output-only] [Preview] Whether any accessed data was protected by row access policies.
+	// [Preview] Whether any accessed data was protected by row access policies.
 	RowLevelSecurityApplied pulumi.BoolInput `pulumi:"rowLevelSecurityApplied"`
 }
 
@@ -21002,7 +17879,7 @@ func (o RowLevelSecurityStatisticsResponseOutput) ToRowLevelSecurityStatisticsRe
 	}).(RowLevelSecurityStatisticsResponsePtrOutput)
 }
 
-// [Output-only] [Preview] Whether any accessed data was protected by row access policies.
+// [Preview] Whether any accessed data was protected by row access policies.
 func (o RowLevelSecurityStatisticsResponseOutput) RowLevelSecurityApplied() pulumi.BoolOutput {
 	return o.ApplyT(func(v RowLevelSecurityStatisticsResponse) bool { return v.RowLevelSecurityApplied }).(pulumi.BoolOutput)
 }
@@ -21025,7 +17902,7 @@ func (o RowLevelSecurityStatisticsResponsePtrOutput) Elem() RowLevelSecurityStat
 	return o.ApplyT(func(v *RowLevelSecurityStatisticsResponse) RowLevelSecurityStatisticsResponse { return *v }).(RowLevelSecurityStatisticsResponseOutput)
 }
 
-// [Output-only] [Preview] Whether any accessed data was protected by row access policies.
+// [Preview] Whether any accessed data was protected by row access policies.
 func (o RowLevelSecurityStatisticsResponsePtrOutput) RowLevelSecurityApplied() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RowLevelSecurityStatisticsResponse) *bool {
 		if v == nil {
@@ -21035,160 +17912,18 @@ func (o RowLevelSecurityStatisticsResponsePtrOutput) RowLevelSecurityApplied() p
 	}).(pulumi.BoolPtrOutput)
 }
 
-type ScriptStackFrame struct {
-	// [Output-only] One-based end column.
-	EndColumn *int `pulumi:"endColumn"`
-	// [Output-only] One-based end line.
-	EndLine *int `pulumi:"endLine"`
-	// [Output-only] Name of the active procedure, empty if in a top-level script.
-	ProcedureId *string `pulumi:"procedureId"`
-	// [Output-only] One-based start column.
-	StartColumn *int `pulumi:"startColumn"`
-	// [Output-only] One-based start line.
-	StartLine *int `pulumi:"startLine"`
-	// [Output-only] Text of the current statement/expression.
-	Text *string `pulumi:"text"`
-}
-
-// ScriptStackFrameInput is an input type that accepts ScriptStackFrameArgs and ScriptStackFrameOutput values.
-// You can construct a concrete instance of `ScriptStackFrameInput` via:
-//
-//          ScriptStackFrameArgs{...}
-type ScriptStackFrameInput interface {
-	pulumi.Input
-
-	ToScriptStackFrameOutput() ScriptStackFrameOutput
-	ToScriptStackFrameOutputWithContext(context.Context) ScriptStackFrameOutput
-}
-
-type ScriptStackFrameArgs struct {
-	// [Output-only] One-based end column.
-	EndColumn pulumi.IntPtrInput `pulumi:"endColumn"`
-	// [Output-only] One-based end line.
-	EndLine pulumi.IntPtrInput `pulumi:"endLine"`
-	// [Output-only] Name of the active procedure, empty if in a top-level script.
-	ProcedureId pulumi.StringPtrInput `pulumi:"procedureId"`
-	// [Output-only] One-based start column.
-	StartColumn pulumi.IntPtrInput `pulumi:"startColumn"`
-	// [Output-only] One-based start line.
-	StartLine pulumi.IntPtrInput `pulumi:"startLine"`
-	// [Output-only] Text of the current statement/expression.
-	Text pulumi.StringPtrInput `pulumi:"text"`
-}
-
-func (ScriptStackFrameArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptStackFrame)(nil)).Elem()
-}
-
-func (i ScriptStackFrameArgs) ToScriptStackFrameOutput() ScriptStackFrameOutput {
-	return i.ToScriptStackFrameOutputWithContext(context.Background())
-}
-
-func (i ScriptStackFrameArgs) ToScriptStackFrameOutputWithContext(ctx context.Context) ScriptStackFrameOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStackFrameOutput)
-}
-
-// ScriptStackFrameArrayInput is an input type that accepts ScriptStackFrameArray and ScriptStackFrameArrayOutput values.
-// You can construct a concrete instance of `ScriptStackFrameArrayInput` via:
-//
-//          ScriptStackFrameArray{ ScriptStackFrameArgs{...} }
-type ScriptStackFrameArrayInput interface {
-	pulumi.Input
-
-	ToScriptStackFrameArrayOutput() ScriptStackFrameArrayOutput
-	ToScriptStackFrameArrayOutputWithContext(context.Context) ScriptStackFrameArrayOutput
-}
-
-type ScriptStackFrameArray []ScriptStackFrameInput
-
-func (ScriptStackFrameArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptStackFrame)(nil)).Elem()
-}
-
-func (i ScriptStackFrameArray) ToScriptStackFrameArrayOutput() ScriptStackFrameArrayOutput {
-	return i.ToScriptStackFrameArrayOutputWithContext(context.Background())
-}
-
-func (i ScriptStackFrameArray) ToScriptStackFrameArrayOutputWithContext(ctx context.Context) ScriptStackFrameArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStackFrameArrayOutput)
-}
-
-type ScriptStackFrameOutput struct{ *pulumi.OutputState }
-
-func (ScriptStackFrameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptStackFrame)(nil)).Elem()
-}
-
-func (o ScriptStackFrameOutput) ToScriptStackFrameOutput() ScriptStackFrameOutput {
-	return o
-}
-
-func (o ScriptStackFrameOutput) ToScriptStackFrameOutputWithContext(ctx context.Context) ScriptStackFrameOutput {
-	return o
-}
-
-// [Output-only] One-based end column.
-func (o ScriptStackFrameOutput) EndColumn() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScriptStackFrame) *int { return v.EndColumn }).(pulumi.IntPtrOutput)
-}
-
-// [Output-only] One-based end line.
-func (o ScriptStackFrameOutput) EndLine() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScriptStackFrame) *int { return v.EndLine }).(pulumi.IntPtrOutput)
-}
-
-// [Output-only] Name of the active procedure, empty if in a top-level script.
-func (o ScriptStackFrameOutput) ProcedureId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptStackFrame) *string { return v.ProcedureId }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] One-based start column.
-func (o ScriptStackFrameOutput) StartColumn() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScriptStackFrame) *int { return v.StartColumn }).(pulumi.IntPtrOutput)
-}
-
-// [Output-only] One-based start line.
-func (o ScriptStackFrameOutput) StartLine() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScriptStackFrame) *int { return v.StartLine }).(pulumi.IntPtrOutput)
-}
-
-// [Output-only] Text of the current statement/expression.
-func (o ScriptStackFrameOutput) Text() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptStackFrame) *string { return v.Text }).(pulumi.StringPtrOutput)
-}
-
-type ScriptStackFrameArrayOutput struct{ *pulumi.OutputState }
-
-func (ScriptStackFrameArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptStackFrame)(nil)).Elem()
-}
-
-func (o ScriptStackFrameArrayOutput) ToScriptStackFrameArrayOutput() ScriptStackFrameArrayOutput {
-	return o
-}
-
-func (o ScriptStackFrameArrayOutput) ToScriptStackFrameArrayOutputWithContext(ctx context.Context) ScriptStackFrameArrayOutput {
-	return o
-}
-
-func (o ScriptStackFrameArrayOutput) Index(i pulumi.IntInput) ScriptStackFrameOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScriptStackFrame {
-		return vs[0].([]ScriptStackFrame)[vs[1].(int)]
-	}).(ScriptStackFrameOutput)
-}
-
 type ScriptStackFrameResponse struct {
-	// [Output-only] One-based end column.
+	// One-based end column.
 	EndColumn int `pulumi:"endColumn"`
-	// [Output-only] One-based end line.
+	// One-based end line.
 	EndLine int `pulumi:"endLine"`
-	// [Output-only] Name of the active procedure, empty if in a top-level script.
+	// Name of the active procedure, empty if in a top-level script.
 	ProcedureId string `pulumi:"procedureId"`
-	// [Output-only] One-based start column.
+	// One-based start column.
 	StartColumn int `pulumi:"startColumn"`
-	// [Output-only] One-based start line.
+	// One-based start line.
 	StartLine int `pulumi:"startLine"`
-	// [Output-only] Text of the current statement/expression.
+	// Text of the current statement/expression.
 	Text string `pulumi:"text"`
 }
 
@@ -21204,17 +17939,17 @@ type ScriptStackFrameResponseInput interface {
 }
 
 type ScriptStackFrameResponseArgs struct {
-	// [Output-only] One-based end column.
+	// One-based end column.
 	EndColumn pulumi.IntInput `pulumi:"endColumn"`
-	// [Output-only] One-based end line.
+	// One-based end line.
 	EndLine pulumi.IntInput `pulumi:"endLine"`
-	// [Output-only] Name of the active procedure, empty if in a top-level script.
+	// Name of the active procedure, empty if in a top-level script.
 	ProcedureId pulumi.StringInput `pulumi:"procedureId"`
-	// [Output-only] One-based start column.
+	// One-based start column.
 	StartColumn pulumi.IntInput `pulumi:"startColumn"`
-	// [Output-only] One-based start line.
+	// One-based start line.
 	StartLine pulumi.IntInput `pulumi:"startLine"`
-	// [Output-only] Text of the current statement/expression.
+	// Text of the current statement/expression.
 	Text pulumi.StringInput `pulumi:"text"`
 }
 
@@ -21269,32 +18004,32 @@ func (o ScriptStackFrameResponseOutput) ToScriptStackFrameResponseOutputWithCont
 	return o
 }
 
-// [Output-only] One-based end column.
+// One-based end column.
 func (o ScriptStackFrameResponseOutput) EndColumn() pulumi.IntOutput {
 	return o.ApplyT(func(v ScriptStackFrameResponse) int { return v.EndColumn }).(pulumi.IntOutput)
 }
 
-// [Output-only] One-based end line.
+// One-based end line.
 func (o ScriptStackFrameResponseOutput) EndLine() pulumi.IntOutput {
 	return o.ApplyT(func(v ScriptStackFrameResponse) int { return v.EndLine }).(pulumi.IntOutput)
 }
 
-// [Output-only] Name of the active procedure, empty if in a top-level script.
+// Name of the active procedure, empty if in a top-level script.
 func (o ScriptStackFrameResponseOutput) ProcedureId() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptStackFrameResponse) string { return v.ProcedureId }).(pulumi.StringOutput)
 }
 
-// [Output-only] One-based start column.
+// One-based start column.
 func (o ScriptStackFrameResponseOutput) StartColumn() pulumi.IntOutput {
 	return o.ApplyT(func(v ScriptStackFrameResponse) int { return v.StartColumn }).(pulumi.IntOutput)
 }
 
-// [Output-only] One-based start line.
+// One-based start line.
 func (o ScriptStackFrameResponseOutput) StartLine() pulumi.IntOutput {
 	return o.ApplyT(func(v ScriptStackFrameResponse) int { return v.StartLine }).(pulumi.IntOutput)
 }
 
-// [Output-only] Text of the current statement/expression.
+// Text of the current statement/expression.
 func (o ScriptStackFrameResponseOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptStackFrameResponse) string { return v.Text }).(pulumi.StringOutput)
 }
@@ -21319,158 +18054,8 @@ func (o ScriptStackFrameResponseArrayOutput) Index(i pulumi.IntInput) ScriptStac
 	}).(ScriptStackFrameResponseOutput)
 }
 
-type ScriptStatistics struct {
-	// [Output-only] Whether this child job was a statement or expression.
-	EvaluationKind *string `pulumi:"evaluationKind"`
-	// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
-	StackFrames []ScriptStackFrame `pulumi:"stackFrames"`
-}
-
-// ScriptStatisticsInput is an input type that accepts ScriptStatisticsArgs and ScriptStatisticsOutput values.
-// You can construct a concrete instance of `ScriptStatisticsInput` via:
-//
-//          ScriptStatisticsArgs{...}
-type ScriptStatisticsInput interface {
-	pulumi.Input
-
-	ToScriptStatisticsOutput() ScriptStatisticsOutput
-	ToScriptStatisticsOutputWithContext(context.Context) ScriptStatisticsOutput
-}
-
-type ScriptStatisticsArgs struct {
-	// [Output-only] Whether this child job was a statement or expression.
-	EvaluationKind pulumi.StringPtrInput `pulumi:"evaluationKind"`
-	// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
-	StackFrames ScriptStackFrameArrayInput `pulumi:"stackFrames"`
-}
-
-func (ScriptStatisticsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptStatistics)(nil)).Elem()
-}
-
-func (i ScriptStatisticsArgs) ToScriptStatisticsOutput() ScriptStatisticsOutput {
-	return i.ToScriptStatisticsOutputWithContext(context.Background())
-}
-
-func (i ScriptStatisticsArgs) ToScriptStatisticsOutputWithContext(ctx context.Context) ScriptStatisticsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStatisticsOutput)
-}
-
-func (i ScriptStatisticsArgs) ToScriptStatisticsPtrOutput() ScriptStatisticsPtrOutput {
-	return i.ToScriptStatisticsPtrOutputWithContext(context.Background())
-}
-
-func (i ScriptStatisticsArgs) ToScriptStatisticsPtrOutputWithContext(ctx context.Context) ScriptStatisticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStatisticsOutput).ToScriptStatisticsPtrOutputWithContext(ctx)
-}
-
-// ScriptStatisticsPtrInput is an input type that accepts ScriptStatisticsArgs, ScriptStatisticsPtr and ScriptStatisticsPtrOutput values.
-// You can construct a concrete instance of `ScriptStatisticsPtrInput` via:
-//
-//          ScriptStatisticsArgs{...}
-//
-//  or:
-//
-//          nil
-type ScriptStatisticsPtrInput interface {
-	pulumi.Input
-
-	ToScriptStatisticsPtrOutput() ScriptStatisticsPtrOutput
-	ToScriptStatisticsPtrOutputWithContext(context.Context) ScriptStatisticsPtrOutput
-}
-
-type scriptStatisticsPtrType ScriptStatisticsArgs
-
-func ScriptStatisticsPtr(v *ScriptStatisticsArgs) ScriptStatisticsPtrInput {
-	return (*scriptStatisticsPtrType)(v)
-}
-
-func (*scriptStatisticsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptStatistics)(nil)).Elem()
-}
-
-func (i *scriptStatisticsPtrType) ToScriptStatisticsPtrOutput() ScriptStatisticsPtrOutput {
-	return i.ToScriptStatisticsPtrOutputWithContext(context.Background())
-}
-
-func (i *scriptStatisticsPtrType) ToScriptStatisticsPtrOutputWithContext(ctx context.Context) ScriptStatisticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptStatisticsPtrOutput)
-}
-
-type ScriptStatisticsOutput struct{ *pulumi.OutputState }
-
-func (ScriptStatisticsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptStatistics)(nil)).Elem()
-}
-
-func (o ScriptStatisticsOutput) ToScriptStatisticsOutput() ScriptStatisticsOutput {
-	return o
-}
-
-func (o ScriptStatisticsOutput) ToScriptStatisticsOutputWithContext(ctx context.Context) ScriptStatisticsOutput {
-	return o
-}
-
-func (o ScriptStatisticsOutput) ToScriptStatisticsPtrOutput() ScriptStatisticsPtrOutput {
-	return o.ToScriptStatisticsPtrOutputWithContext(context.Background())
-}
-
-func (o ScriptStatisticsOutput) ToScriptStatisticsPtrOutputWithContext(ctx context.Context) ScriptStatisticsPtrOutput {
-	return o.ApplyT(func(v ScriptStatistics) *ScriptStatistics {
-		return &v
-	}).(ScriptStatisticsPtrOutput)
-}
-
-// [Output-only] Whether this child job was a statement or expression.
-func (o ScriptStatisticsOutput) EvaluationKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptStatistics) *string { return v.EvaluationKind }).(pulumi.StringPtrOutput)
-}
-
-// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
-func (o ScriptStatisticsOutput) StackFrames() ScriptStackFrameArrayOutput {
-	return o.ApplyT(func(v ScriptStatistics) []ScriptStackFrame { return v.StackFrames }).(ScriptStackFrameArrayOutput)
-}
-
-type ScriptStatisticsPtrOutput struct{ *pulumi.OutputState }
-
-func (ScriptStatisticsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptStatistics)(nil)).Elem()
-}
-
-func (o ScriptStatisticsPtrOutput) ToScriptStatisticsPtrOutput() ScriptStatisticsPtrOutput {
-	return o
-}
-
-func (o ScriptStatisticsPtrOutput) ToScriptStatisticsPtrOutputWithContext(ctx context.Context) ScriptStatisticsPtrOutput {
-	return o
-}
-
-func (o ScriptStatisticsPtrOutput) Elem() ScriptStatisticsOutput {
-	return o.ApplyT(func(v *ScriptStatistics) ScriptStatistics { return *v }).(ScriptStatisticsOutput)
-}
-
-// [Output-only] Whether this child job was a statement or expression.
-func (o ScriptStatisticsPtrOutput) EvaluationKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptStatistics) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EvaluationKind
-	}).(pulumi.StringPtrOutput)
-}
-
-// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
-func (o ScriptStatisticsPtrOutput) StackFrames() ScriptStackFrameArrayOutput {
-	return o.ApplyT(func(v *ScriptStatistics) []ScriptStackFrame {
-		if v == nil {
-			return nil
-		}
-		return v.StackFrames
-	}).(ScriptStackFrameArrayOutput)
-}
-
 type ScriptStatisticsResponse struct {
-	// [Output-only] Whether this child job was a statement or expression.
+	// Whether this child job was a statement or expression.
 	EvaluationKind string `pulumi:"evaluationKind"`
 	// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
 	StackFrames []ScriptStackFrameResponse `pulumi:"stackFrames"`
@@ -21488,7 +18073,7 @@ type ScriptStatisticsResponseInput interface {
 }
 
 type ScriptStatisticsResponseArgs struct {
-	// [Output-only] Whether this child job was a statement or expression.
+	// Whether this child job was a statement or expression.
 	EvaluationKind pulumi.StringInput `pulumi:"evaluationKind"`
 	// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
 	StackFrames ScriptStackFrameResponseArrayInput `pulumi:"stackFrames"`
@@ -21571,7 +18156,7 @@ func (o ScriptStatisticsResponseOutput) ToScriptStatisticsResponsePtrOutputWithC
 	}).(ScriptStatisticsResponsePtrOutput)
 }
 
-// [Output-only] Whether this child job was a statement or expression.
+// Whether this child job was a statement or expression.
 func (o ScriptStatisticsResponseOutput) EvaluationKind() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptStatisticsResponse) string { return v.EvaluationKind }).(pulumi.StringOutput)
 }
@@ -21599,7 +18184,7 @@ func (o ScriptStatisticsResponsePtrOutput) Elem() ScriptStatisticsResponseOutput
 	return o.ApplyT(func(v *ScriptStatisticsResponse) ScriptStatisticsResponse { return *v }).(ScriptStatisticsResponseOutput)
 }
 
-// [Output-only] Whether this child job was a statement or expression.
+// Whether this child job was a statement or expression.
 func (o ScriptStatisticsResponsePtrOutput) EvaluationKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScriptStatisticsResponse) *string {
 		if v == nil {
@@ -21619,139 +18204,8 @@ func (o ScriptStatisticsResponsePtrOutput) StackFrames() ScriptStackFrameRespons
 	}).(ScriptStackFrameResponseArrayOutput)
 }
 
-type SessionInfo struct {
-	// [Output-only] // [Preview] Id of the session.
-	SessionId *string `pulumi:"sessionId"`
-}
-
-// SessionInfoInput is an input type that accepts SessionInfoArgs and SessionInfoOutput values.
-// You can construct a concrete instance of `SessionInfoInput` via:
-//
-//          SessionInfoArgs{...}
-type SessionInfoInput interface {
-	pulumi.Input
-
-	ToSessionInfoOutput() SessionInfoOutput
-	ToSessionInfoOutputWithContext(context.Context) SessionInfoOutput
-}
-
-type SessionInfoArgs struct {
-	// [Output-only] // [Preview] Id of the session.
-	SessionId pulumi.StringPtrInput `pulumi:"sessionId"`
-}
-
-func (SessionInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SessionInfo)(nil)).Elem()
-}
-
-func (i SessionInfoArgs) ToSessionInfoOutput() SessionInfoOutput {
-	return i.ToSessionInfoOutputWithContext(context.Background())
-}
-
-func (i SessionInfoArgs) ToSessionInfoOutputWithContext(ctx context.Context) SessionInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SessionInfoOutput)
-}
-
-func (i SessionInfoArgs) ToSessionInfoPtrOutput() SessionInfoPtrOutput {
-	return i.ToSessionInfoPtrOutputWithContext(context.Background())
-}
-
-func (i SessionInfoArgs) ToSessionInfoPtrOutputWithContext(ctx context.Context) SessionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SessionInfoOutput).ToSessionInfoPtrOutputWithContext(ctx)
-}
-
-// SessionInfoPtrInput is an input type that accepts SessionInfoArgs, SessionInfoPtr and SessionInfoPtrOutput values.
-// You can construct a concrete instance of `SessionInfoPtrInput` via:
-//
-//          SessionInfoArgs{...}
-//
-//  or:
-//
-//          nil
-type SessionInfoPtrInput interface {
-	pulumi.Input
-
-	ToSessionInfoPtrOutput() SessionInfoPtrOutput
-	ToSessionInfoPtrOutputWithContext(context.Context) SessionInfoPtrOutput
-}
-
-type sessionInfoPtrType SessionInfoArgs
-
-func SessionInfoPtr(v *SessionInfoArgs) SessionInfoPtrInput {
-	return (*sessionInfoPtrType)(v)
-}
-
-func (*sessionInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SessionInfo)(nil)).Elem()
-}
-
-func (i *sessionInfoPtrType) ToSessionInfoPtrOutput() SessionInfoPtrOutput {
-	return i.ToSessionInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *sessionInfoPtrType) ToSessionInfoPtrOutputWithContext(ctx context.Context) SessionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SessionInfoPtrOutput)
-}
-
-type SessionInfoOutput struct{ *pulumi.OutputState }
-
-func (SessionInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SessionInfo)(nil)).Elem()
-}
-
-func (o SessionInfoOutput) ToSessionInfoOutput() SessionInfoOutput {
-	return o
-}
-
-func (o SessionInfoOutput) ToSessionInfoOutputWithContext(ctx context.Context) SessionInfoOutput {
-	return o
-}
-
-func (o SessionInfoOutput) ToSessionInfoPtrOutput() SessionInfoPtrOutput {
-	return o.ToSessionInfoPtrOutputWithContext(context.Background())
-}
-
-func (o SessionInfoOutput) ToSessionInfoPtrOutputWithContext(ctx context.Context) SessionInfoPtrOutput {
-	return o.ApplyT(func(v SessionInfo) *SessionInfo {
-		return &v
-	}).(SessionInfoPtrOutput)
-}
-
-// [Output-only] // [Preview] Id of the session.
-func (o SessionInfoOutput) SessionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SessionInfo) *string { return v.SessionId }).(pulumi.StringPtrOutput)
-}
-
-type SessionInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (SessionInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SessionInfo)(nil)).Elem()
-}
-
-func (o SessionInfoPtrOutput) ToSessionInfoPtrOutput() SessionInfoPtrOutput {
-	return o
-}
-
-func (o SessionInfoPtrOutput) ToSessionInfoPtrOutputWithContext(ctx context.Context) SessionInfoPtrOutput {
-	return o
-}
-
-func (o SessionInfoPtrOutput) Elem() SessionInfoOutput {
-	return o.ApplyT(func(v *SessionInfo) SessionInfo { return *v }).(SessionInfoOutput)
-}
-
-// [Output-only] // [Preview] Id of the session.
-func (o SessionInfoPtrOutput) SessionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SessionInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SessionId
-	}).(pulumi.StringPtrOutput)
-}
-
 type SessionInfoResponse struct {
-	// [Output-only] // [Preview] Id of the session.
+	// // [Preview] Id of the session.
 	SessionId string `pulumi:"sessionId"`
 }
 
@@ -21767,7 +18221,7 @@ type SessionInfoResponseInput interface {
 }
 
 type SessionInfoResponseArgs struct {
-	// [Output-only] // [Preview] Id of the session.
+	// // [Preview] Id of the session.
 	SessionId pulumi.StringInput `pulumi:"sessionId"`
 }
 
@@ -21848,7 +18302,7 @@ func (o SessionInfoResponseOutput) ToSessionInfoResponsePtrOutputWithContext(ctx
 	}).(SessionInfoResponsePtrOutput)
 }
 
-// [Output-only] // [Preview] Id of the session.
+// // [Preview] Id of the session.
 func (o SessionInfoResponseOutput) SessionId() pulumi.StringOutput {
 	return o.ApplyT(func(v SessionInfoResponse) string { return v.SessionId }).(pulumi.StringOutput)
 }
@@ -21871,163 +18325,13 @@ func (o SessionInfoResponsePtrOutput) Elem() SessionInfoResponseOutput {
 	return o.ApplyT(func(v *SessionInfoResponse) SessionInfoResponse { return *v }).(SessionInfoResponseOutput)
 }
 
-// [Output-only] // [Preview] Id of the session.
+// // [Preview] Id of the session.
 func (o SessionInfoResponsePtrOutput) SessionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SessionInfoResponse) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.SessionId
-	}).(pulumi.StringPtrOutput)
-}
-
-type SnapshotDefinition struct {
-	// [Required] Reference describing the ID of the table that is snapshotted.
-	BaseTableReference *TableReference `pulumi:"baseTableReference"`
-	// [Required] The time at which the base table was snapshot.
-	SnapshotTime *string `pulumi:"snapshotTime"`
-}
-
-// SnapshotDefinitionInput is an input type that accepts SnapshotDefinitionArgs and SnapshotDefinitionOutput values.
-// You can construct a concrete instance of `SnapshotDefinitionInput` via:
-//
-//          SnapshotDefinitionArgs{...}
-type SnapshotDefinitionInput interface {
-	pulumi.Input
-
-	ToSnapshotDefinitionOutput() SnapshotDefinitionOutput
-	ToSnapshotDefinitionOutputWithContext(context.Context) SnapshotDefinitionOutput
-}
-
-type SnapshotDefinitionArgs struct {
-	// [Required] Reference describing the ID of the table that is snapshotted.
-	BaseTableReference TableReferencePtrInput `pulumi:"baseTableReference"`
-	// [Required] The time at which the base table was snapshot.
-	SnapshotTime pulumi.StringPtrInput `pulumi:"snapshotTime"`
-}
-
-func (SnapshotDefinitionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotDefinition)(nil)).Elem()
-}
-
-func (i SnapshotDefinitionArgs) ToSnapshotDefinitionOutput() SnapshotDefinitionOutput {
-	return i.ToSnapshotDefinitionOutputWithContext(context.Background())
-}
-
-func (i SnapshotDefinitionArgs) ToSnapshotDefinitionOutputWithContext(ctx context.Context) SnapshotDefinitionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotDefinitionOutput)
-}
-
-func (i SnapshotDefinitionArgs) ToSnapshotDefinitionPtrOutput() SnapshotDefinitionPtrOutput {
-	return i.ToSnapshotDefinitionPtrOutputWithContext(context.Background())
-}
-
-func (i SnapshotDefinitionArgs) ToSnapshotDefinitionPtrOutputWithContext(ctx context.Context) SnapshotDefinitionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotDefinitionOutput).ToSnapshotDefinitionPtrOutputWithContext(ctx)
-}
-
-// SnapshotDefinitionPtrInput is an input type that accepts SnapshotDefinitionArgs, SnapshotDefinitionPtr and SnapshotDefinitionPtrOutput values.
-// You can construct a concrete instance of `SnapshotDefinitionPtrInput` via:
-//
-//          SnapshotDefinitionArgs{...}
-//
-//  or:
-//
-//          nil
-type SnapshotDefinitionPtrInput interface {
-	pulumi.Input
-
-	ToSnapshotDefinitionPtrOutput() SnapshotDefinitionPtrOutput
-	ToSnapshotDefinitionPtrOutputWithContext(context.Context) SnapshotDefinitionPtrOutput
-}
-
-type snapshotDefinitionPtrType SnapshotDefinitionArgs
-
-func SnapshotDefinitionPtr(v *SnapshotDefinitionArgs) SnapshotDefinitionPtrInput {
-	return (*snapshotDefinitionPtrType)(v)
-}
-
-func (*snapshotDefinitionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SnapshotDefinition)(nil)).Elem()
-}
-
-func (i *snapshotDefinitionPtrType) ToSnapshotDefinitionPtrOutput() SnapshotDefinitionPtrOutput {
-	return i.ToSnapshotDefinitionPtrOutputWithContext(context.Background())
-}
-
-func (i *snapshotDefinitionPtrType) ToSnapshotDefinitionPtrOutputWithContext(ctx context.Context) SnapshotDefinitionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotDefinitionPtrOutput)
-}
-
-type SnapshotDefinitionOutput struct{ *pulumi.OutputState }
-
-func (SnapshotDefinitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotDefinition)(nil)).Elem()
-}
-
-func (o SnapshotDefinitionOutput) ToSnapshotDefinitionOutput() SnapshotDefinitionOutput {
-	return o
-}
-
-func (o SnapshotDefinitionOutput) ToSnapshotDefinitionOutputWithContext(ctx context.Context) SnapshotDefinitionOutput {
-	return o
-}
-
-func (o SnapshotDefinitionOutput) ToSnapshotDefinitionPtrOutput() SnapshotDefinitionPtrOutput {
-	return o.ToSnapshotDefinitionPtrOutputWithContext(context.Background())
-}
-
-func (o SnapshotDefinitionOutput) ToSnapshotDefinitionPtrOutputWithContext(ctx context.Context) SnapshotDefinitionPtrOutput {
-	return o.ApplyT(func(v SnapshotDefinition) *SnapshotDefinition {
-		return &v
-	}).(SnapshotDefinitionPtrOutput)
-}
-
-// [Required] Reference describing the ID of the table that is snapshotted.
-func (o SnapshotDefinitionOutput) BaseTableReference() TableReferencePtrOutput {
-	return o.ApplyT(func(v SnapshotDefinition) *TableReference { return v.BaseTableReference }).(TableReferencePtrOutput)
-}
-
-// [Required] The time at which the base table was snapshot.
-func (o SnapshotDefinitionOutput) SnapshotTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SnapshotDefinition) *string { return v.SnapshotTime }).(pulumi.StringPtrOutput)
-}
-
-type SnapshotDefinitionPtrOutput struct{ *pulumi.OutputState }
-
-func (SnapshotDefinitionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SnapshotDefinition)(nil)).Elem()
-}
-
-func (o SnapshotDefinitionPtrOutput) ToSnapshotDefinitionPtrOutput() SnapshotDefinitionPtrOutput {
-	return o
-}
-
-func (o SnapshotDefinitionPtrOutput) ToSnapshotDefinitionPtrOutputWithContext(ctx context.Context) SnapshotDefinitionPtrOutput {
-	return o
-}
-
-func (o SnapshotDefinitionPtrOutput) Elem() SnapshotDefinitionOutput {
-	return o.ApplyT(func(v *SnapshotDefinition) SnapshotDefinition { return *v }).(SnapshotDefinitionOutput)
-}
-
-// [Required] Reference describing the ID of the table that is snapshotted.
-func (o SnapshotDefinitionPtrOutput) BaseTableReference() TableReferencePtrOutput {
-	return o.ApplyT(func(v *SnapshotDefinition) *TableReference {
-		if v == nil {
-			return nil
-		}
-		return v.BaseTableReference
-	}).(TableReferencePtrOutput)
-}
-
-// [Required] The time at which the base table was snapshot.
-func (o SnapshotDefinitionPtrOutput) SnapshotTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SnapshotDefinition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SnapshotTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23263,181 +19567,12 @@ func (o StandardSqlTableTypeResponsePtrOutput) Columns() StandardSqlFieldRespons
 	}).(StandardSqlFieldResponseArrayOutput)
 }
 
-type Streamingbuffer struct {
-	// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
-	EstimatedBytes *string `pulumi:"estimatedBytes"`
-	// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
-	EstimatedRows *string `pulumi:"estimatedRows"`
-	// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
-	OldestEntryTime *string `pulumi:"oldestEntryTime"`
-}
-
-// StreamingbufferInput is an input type that accepts StreamingbufferArgs and StreamingbufferOutput values.
-// You can construct a concrete instance of `StreamingbufferInput` via:
-//
-//          StreamingbufferArgs{...}
-type StreamingbufferInput interface {
-	pulumi.Input
-
-	ToStreamingbufferOutput() StreamingbufferOutput
-	ToStreamingbufferOutputWithContext(context.Context) StreamingbufferOutput
-}
-
-type StreamingbufferArgs struct {
-	// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
-	EstimatedBytes pulumi.StringPtrInput `pulumi:"estimatedBytes"`
-	// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
-	EstimatedRows pulumi.StringPtrInput `pulumi:"estimatedRows"`
-	// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
-	OldestEntryTime pulumi.StringPtrInput `pulumi:"oldestEntryTime"`
-}
-
-func (StreamingbufferArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Streamingbuffer)(nil)).Elem()
-}
-
-func (i StreamingbufferArgs) ToStreamingbufferOutput() StreamingbufferOutput {
-	return i.ToStreamingbufferOutputWithContext(context.Background())
-}
-
-func (i StreamingbufferArgs) ToStreamingbufferOutputWithContext(ctx context.Context) StreamingbufferOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingbufferOutput)
-}
-
-func (i StreamingbufferArgs) ToStreamingbufferPtrOutput() StreamingbufferPtrOutput {
-	return i.ToStreamingbufferPtrOutputWithContext(context.Background())
-}
-
-func (i StreamingbufferArgs) ToStreamingbufferPtrOutputWithContext(ctx context.Context) StreamingbufferPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingbufferOutput).ToStreamingbufferPtrOutputWithContext(ctx)
-}
-
-// StreamingbufferPtrInput is an input type that accepts StreamingbufferArgs, StreamingbufferPtr and StreamingbufferPtrOutput values.
-// You can construct a concrete instance of `StreamingbufferPtrInput` via:
-//
-//          StreamingbufferArgs{...}
-//
-//  or:
-//
-//          nil
-type StreamingbufferPtrInput interface {
-	pulumi.Input
-
-	ToStreamingbufferPtrOutput() StreamingbufferPtrOutput
-	ToStreamingbufferPtrOutputWithContext(context.Context) StreamingbufferPtrOutput
-}
-
-type streamingbufferPtrType StreamingbufferArgs
-
-func StreamingbufferPtr(v *StreamingbufferArgs) StreamingbufferPtrInput {
-	return (*streamingbufferPtrType)(v)
-}
-
-func (*streamingbufferPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Streamingbuffer)(nil)).Elem()
-}
-
-func (i *streamingbufferPtrType) ToStreamingbufferPtrOutput() StreamingbufferPtrOutput {
-	return i.ToStreamingbufferPtrOutputWithContext(context.Background())
-}
-
-func (i *streamingbufferPtrType) ToStreamingbufferPtrOutputWithContext(ctx context.Context) StreamingbufferPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingbufferPtrOutput)
-}
-
-type StreamingbufferOutput struct{ *pulumi.OutputState }
-
-func (StreamingbufferOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Streamingbuffer)(nil)).Elem()
-}
-
-func (o StreamingbufferOutput) ToStreamingbufferOutput() StreamingbufferOutput {
-	return o
-}
-
-func (o StreamingbufferOutput) ToStreamingbufferOutputWithContext(ctx context.Context) StreamingbufferOutput {
-	return o
-}
-
-func (o StreamingbufferOutput) ToStreamingbufferPtrOutput() StreamingbufferPtrOutput {
-	return o.ToStreamingbufferPtrOutputWithContext(context.Background())
-}
-
-func (o StreamingbufferOutput) ToStreamingbufferPtrOutputWithContext(ctx context.Context) StreamingbufferPtrOutput {
-	return o.ApplyT(func(v Streamingbuffer) *Streamingbuffer {
-		return &v
-	}).(StreamingbufferPtrOutput)
-}
-
-// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
-func (o StreamingbufferOutput) EstimatedBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Streamingbuffer) *string { return v.EstimatedBytes }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
-func (o StreamingbufferOutput) EstimatedRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Streamingbuffer) *string { return v.EstimatedRows }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
-func (o StreamingbufferOutput) OldestEntryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Streamingbuffer) *string { return v.OldestEntryTime }).(pulumi.StringPtrOutput)
-}
-
-type StreamingbufferPtrOutput struct{ *pulumi.OutputState }
-
-func (StreamingbufferPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Streamingbuffer)(nil)).Elem()
-}
-
-func (o StreamingbufferPtrOutput) ToStreamingbufferPtrOutput() StreamingbufferPtrOutput {
-	return o
-}
-
-func (o StreamingbufferPtrOutput) ToStreamingbufferPtrOutputWithContext(ctx context.Context) StreamingbufferPtrOutput {
-	return o
-}
-
-func (o StreamingbufferPtrOutput) Elem() StreamingbufferOutput {
-	return o.ApplyT(func(v *Streamingbuffer) Streamingbuffer { return *v }).(StreamingbufferOutput)
-}
-
-// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
-func (o StreamingbufferPtrOutput) EstimatedBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Streamingbuffer) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EstimatedBytes
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
-func (o StreamingbufferPtrOutput) EstimatedRows() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Streamingbuffer) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EstimatedRows
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
-func (o StreamingbufferPtrOutput) OldestEntryTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Streamingbuffer) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OldestEntryTime
-	}).(pulumi.StringPtrOutput)
-}
-
 type StreamingbufferResponse struct {
-	// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
+	// A lower-bound estimate of the number of bytes currently in the streaming buffer.
 	EstimatedBytes string `pulumi:"estimatedBytes"`
-	// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
+	// A lower-bound estimate of the number of rows currently in the streaming buffer.
 	EstimatedRows string `pulumi:"estimatedRows"`
-	// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+	// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
 	OldestEntryTime string `pulumi:"oldestEntryTime"`
 }
 
@@ -23453,11 +19588,11 @@ type StreamingbufferResponseInput interface {
 }
 
 type StreamingbufferResponseArgs struct {
-	// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
+	// A lower-bound estimate of the number of bytes currently in the streaming buffer.
 	EstimatedBytes pulumi.StringInput `pulumi:"estimatedBytes"`
-	// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
+	// A lower-bound estimate of the number of rows currently in the streaming buffer.
 	EstimatedRows pulumi.StringInput `pulumi:"estimatedRows"`
-	// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+	// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
 	OldestEntryTime pulumi.StringInput `pulumi:"oldestEntryTime"`
 }
 
@@ -23538,17 +19673,17 @@ func (o StreamingbufferResponseOutput) ToStreamingbufferResponsePtrOutputWithCon
 	}).(StreamingbufferResponsePtrOutput)
 }
 
-// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
+// A lower-bound estimate of the number of bytes currently in the streaming buffer.
 func (o StreamingbufferResponseOutput) EstimatedBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamingbufferResponse) string { return v.EstimatedBytes }).(pulumi.StringOutput)
 }
 
-// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
+// A lower-bound estimate of the number of rows currently in the streaming buffer.
 func (o StreamingbufferResponseOutput) EstimatedRows() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamingbufferResponse) string { return v.EstimatedRows }).(pulumi.StringOutput)
 }
 
-// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
 func (o StreamingbufferResponseOutput) OldestEntryTime() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamingbufferResponse) string { return v.OldestEntryTime }).(pulumi.StringOutput)
 }
@@ -23571,7 +19706,7 @@ func (o StreamingbufferResponsePtrOutput) Elem() StreamingbufferResponseOutput {
 	return o.ApplyT(func(v *StreamingbufferResponse) StreamingbufferResponse { return *v }).(StreamingbufferResponseOutput)
 }
 
-// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
+// A lower-bound estimate of the number of bytes currently in the streaming buffer.
 func (o StreamingbufferResponsePtrOutput) EstimatedBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamingbufferResponse) *string {
 		if v == nil {
@@ -23581,7 +19716,7 @@ func (o StreamingbufferResponsePtrOutput) EstimatedBytes() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
+// A lower-bound estimate of the number of rows currently in the streaming buffer.
 func (o StreamingbufferResponsePtrOutput) EstimatedRows() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamingbufferResponse) *string {
 		if v == nil {
@@ -23591,7 +19726,7 @@ func (o StreamingbufferResponsePtrOutput) EstimatedRows() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
 func (o StreamingbufferResponsePtrOutput) OldestEntryTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamingbufferResponse) *string {
 		if v == nil {
@@ -25381,139 +21516,8 @@ func (o TimePartitioningResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type TransactionInfo struct {
-	// [Output-only] // [Alpha] Id of the transaction.
-	TransactionId *string `pulumi:"transactionId"`
-}
-
-// TransactionInfoInput is an input type that accepts TransactionInfoArgs and TransactionInfoOutput values.
-// You can construct a concrete instance of `TransactionInfoInput` via:
-//
-//          TransactionInfoArgs{...}
-type TransactionInfoInput interface {
-	pulumi.Input
-
-	ToTransactionInfoOutput() TransactionInfoOutput
-	ToTransactionInfoOutputWithContext(context.Context) TransactionInfoOutput
-}
-
-type TransactionInfoArgs struct {
-	// [Output-only] // [Alpha] Id of the transaction.
-	TransactionId pulumi.StringPtrInput `pulumi:"transactionId"`
-}
-
-func (TransactionInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransactionInfo)(nil)).Elem()
-}
-
-func (i TransactionInfoArgs) ToTransactionInfoOutput() TransactionInfoOutput {
-	return i.ToTransactionInfoOutputWithContext(context.Background())
-}
-
-func (i TransactionInfoArgs) ToTransactionInfoOutputWithContext(ctx context.Context) TransactionInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransactionInfoOutput)
-}
-
-func (i TransactionInfoArgs) ToTransactionInfoPtrOutput() TransactionInfoPtrOutput {
-	return i.ToTransactionInfoPtrOutputWithContext(context.Background())
-}
-
-func (i TransactionInfoArgs) ToTransactionInfoPtrOutputWithContext(ctx context.Context) TransactionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransactionInfoOutput).ToTransactionInfoPtrOutputWithContext(ctx)
-}
-
-// TransactionInfoPtrInput is an input type that accepts TransactionInfoArgs, TransactionInfoPtr and TransactionInfoPtrOutput values.
-// You can construct a concrete instance of `TransactionInfoPtrInput` via:
-//
-//          TransactionInfoArgs{...}
-//
-//  or:
-//
-//          nil
-type TransactionInfoPtrInput interface {
-	pulumi.Input
-
-	ToTransactionInfoPtrOutput() TransactionInfoPtrOutput
-	ToTransactionInfoPtrOutputWithContext(context.Context) TransactionInfoPtrOutput
-}
-
-type transactionInfoPtrType TransactionInfoArgs
-
-func TransactionInfoPtr(v *TransactionInfoArgs) TransactionInfoPtrInput {
-	return (*transactionInfoPtrType)(v)
-}
-
-func (*transactionInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransactionInfo)(nil)).Elem()
-}
-
-func (i *transactionInfoPtrType) ToTransactionInfoPtrOutput() TransactionInfoPtrOutput {
-	return i.ToTransactionInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *transactionInfoPtrType) ToTransactionInfoPtrOutputWithContext(ctx context.Context) TransactionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransactionInfoPtrOutput)
-}
-
-type TransactionInfoOutput struct{ *pulumi.OutputState }
-
-func (TransactionInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransactionInfo)(nil)).Elem()
-}
-
-func (o TransactionInfoOutput) ToTransactionInfoOutput() TransactionInfoOutput {
-	return o
-}
-
-func (o TransactionInfoOutput) ToTransactionInfoOutputWithContext(ctx context.Context) TransactionInfoOutput {
-	return o
-}
-
-func (o TransactionInfoOutput) ToTransactionInfoPtrOutput() TransactionInfoPtrOutput {
-	return o.ToTransactionInfoPtrOutputWithContext(context.Background())
-}
-
-func (o TransactionInfoOutput) ToTransactionInfoPtrOutputWithContext(ctx context.Context) TransactionInfoPtrOutput {
-	return o.ApplyT(func(v TransactionInfo) *TransactionInfo {
-		return &v
-	}).(TransactionInfoPtrOutput)
-}
-
-// [Output-only] // [Alpha] Id of the transaction.
-func (o TransactionInfoOutput) TransactionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TransactionInfo) *string { return v.TransactionId }).(pulumi.StringPtrOutput)
-}
-
-type TransactionInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (TransactionInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransactionInfo)(nil)).Elem()
-}
-
-func (o TransactionInfoPtrOutput) ToTransactionInfoPtrOutput() TransactionInfoPtrOutput {
-	return o
-}
-
-func (o TransactionInfoPtrOutput) ToTransactionInfoPtrOutputWithContext(ctx context.Context) TransactionInfoPtrOutput {
-	return o
-}
-
-func (o TransactionInfoPtrOutput) Elem() TransactionInfoOutput {
-	return o.ApplyT(func(v *TransactionInfo) TransactionInfo { return *v }).(TransactionInfoOutput)
-}
-
-// [Output-only] // [Alpha] Id of the transaction.
-func (o TransactionInfoPtrOutput) TransactionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransactionInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TransactionId
-	}).(pulumi.StringPtrOutput)
-}
-
 type TransactionInfoResponse struct {
-	// [Output-only] // [Alpha] Id of the transaction.
+	// // [Alpha] Id of the transaction.
 	TransactionId string `pulumi:"transactionId"`
 }
 
@@ -25529,7 +21533,7 @@ type TransactionInfoResponseInput interface {
 }
 
 type TransactionInfoResponseArgs struct {
-	// [Output-only] // [Alpha] Id of the transaction.
+	// // [Alpha] Id of the transaction.
 	TransactionId pulumi.StringInput `pulumi:"transactionId"`
 }
 
@@ -25610,7 +21614,7 @@ func (o TransactionInfoResponseOutput) ToTransactionInfoResponsePtrOutputWithCon
 	}).(TransactionInfoResponsePtrOutput)
 }
 
-// [Output-only] // [Alpha] Id of the transaction.
+// // [Alpha] Id of the transaction.
 func (o TransactionInfoResponseOutput) TransactionId() pulumi.StringOutput {
 	return o.ApplyT(func(v TransactionInfoResponse) string { return v.TransactionId }).(pulumi.StringOutput)
 }
@@ -25633,7 +21637,7 @@ func (o TransactionInfoResponsePtrOutput) Elem() TransactionInfoResponseOutput {
 	return o.ApplyT(func(v *TransactionInfoResponse) TransactionInfoResponse { return *v }).(TransactionInfoResponseOutput)
 }
 
-// [Output-only] // [Alpha] Id of the transaction.
+// // [Alpha] Id of the transaction.
 func (o TransactionInfoResponsePtrOutput) TransactionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransactionInfoResponse) *string {
 		if v == nil {
@@ -26214,8 +22218,6 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(BigQueryModelTrainingOutput{})
-	pulumi.RegisterOutputType(BigQueryModelTrainingPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryModelTrainingResponseOutput{})
 	pulumi.RegisterOutputType(BigQueryModelTrainingResponsePtrOutput{})
 	pulumi.RegisterOutputType(BigtableColumnOutput{})
@@ -26280,18 +22282,11 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ErrorProtoOutput{})
-	pulumi.RegisterOutputType(ErrorProtoPtrOutput{})
-	pulumi.RegisterOutputType(ErrorProtoArrayOutput{})
 	pulumi.RegisterOutputType(ErrorProtoResponseOutput{})
 	pulumi.RegisterOutputType(ErrorProtoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorProtoResponseArrayOutput{})
-	pulumi.RegisterOutputType(ExplainQueryStageOutput{})
-	pulumi.RegisterOutputType(ExplainQueryStageArrayOutput{})
 	pulumi.RegisterOutputType(ExplainQueryStageResponseOutput{})
 	pulumi.RegisterOutputType(ExplainQueryStageResponseArrayOutput{})
-	pulumi.RegisterOutputType(ExplainQueryStepOutput{})
-	pulumi.RegisterOutputType(ExplainQueryStepArrayOutput{})
 	pulumi.RegisterOutputType(ExplainQueryStepResponseOutput{})
 	pulumi.RegisterOutputType(ExplainQueryStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
@@ -26333,32 +22328,18 @@ func init() {
 	pulumi.RegisterOutputType(JobReferencePtrOutput{})
 	pulumi.RegisterOutputType(JobReferenceResponseOutput{})
 	pulumi.RegisterOutputType(JobReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(JobStatisticsOutput{})
-	pulumi.RegisterOutputType(JobStatisticsPtrOutput{})
-	pulumi.RegisterOutputType(JobStatistics2Output{})
-	pulumi.RegisterOutputType(JobStatistics2PtrOutput{})
-	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemOutput{})
-	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemArrayOutput{})
 	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemResponseOutput{})
 	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatistics2ResponseOutput{})
 	pulumi.RegisterOutputType(JobStatistics2ResponsePtrOutput{})
-	pulumi.RegisterOutputType(JobStatistics3Output{})
-	pulumi.RegisterOutputType(JobStatistics3PtrOutput{})
 	pulumi.RegisterOutputType(JobStatistics3ResponseOutput{})
 	pulumi.RegisterOutputType(JobStatistics3ResponsePtrOutput{})
-	pulumi.RegisterOutputType(JobStatistics4Output{})
-	pulumi.RegisterOutputType(JobStatistics4PtrOutput{})
 	pulumi.RegisterOutputType(JobStatistics4ResponseOutput{})
 	pulumi.RegisterOutputType(JobStatistics4ResponsePtrOutput{})
-	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemOutput{})
-	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemArrayOutput{})
 	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemResponseOutput{})
 	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatisticsResponseOutput{})
 	pulumi.RegisterOutputType(JobStatisticsResponsePtrOutput{})
-	pulumi.RegisterOutputType(JobStatusOutput{})
-	pulumi.RegisterOutputType(JobStatusPtrOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
 	pulumi.RegisterOutputType(JobStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionOutput{})
@@ -26397,8 +22378,6 @@ func init() {
 	pulumi.RegisterOutputType(QueryParameterValueArrayOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueResponseOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueResponseArrayOutput{})
-	pulumi.RegisterOutputType(QueryTimelineSampleOutput{})
-	pulumi.RegisterOutputType(QueryTimelineSampleArrayOutput{})
 	pulumi.RegisterOutputType(QueryTimelineSampleResponseOutput{})
 	pulumi.RegisterOutputType(QueryTimelineSampleResponseArrayOutput{})
 	pulumi.RegisterOutputType(RangePartitioningOutput{})
@@ -26411,32 +22390,19 @@ func init() {
 	pulumi.RegisterOutputType(RangePartitioningResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceOutput{})
 	pulumi.RegisterOutputType(RoutineReferencePtrOutput{})
-	pulumi.RegisterOutputType(RoutineReferenceArrayOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceResponseOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceResponseArrayOutput{})
-	pulumi.RegisterOutputType(RowAccessPolicyReferenceOutput{})
-	pulumi.RegisterOutputType(RowAccessPolicyReferencePtrOutput{})
 	pulumi.RegisterOutputType(RowAccessPolicyReferenceResponseOutput{})
 	pulumi.RegisterOutputType(RowAccessPolicyReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(RowLevelSecurityStatisticsOutput{})
-	pulumi.RegisterOutputType(RowLevelSecurityStatisticsPtrOutput{})
 	pulumi.RegisterOutputType(RowLevelSecurityStatisticsResponseOutput{})
 	pulumi.RegisterOutputType(RowLevelSecurityStatisticsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ScriptStackFrameOutput{})
-	pulumi.RegisterOutputType(ScriptStackFrameArrayOutput{})
 	pulumi.RegisterOutputType(ScriptStackFrameResponseOutput{})
 	pulumi.RegisterOutputType(ScriptStackFrameResponseArrayOutput{})
-	pulumi.RegisterOutputType(ScriptStatisticsOutput{})
-	pulumi.RegisterOutputType(ScriptStatisticsPtrOutput{})
 	pulumi.RegisterOutputType(ScriptStatisticsResponseOutput{})
 	pulumi.RegisterOutputType(ScriptStatisticsResponsePtrOutput{})
-	pulumi.RegisterOutputType(SessionInfoOutput{})
-	pulumi.RegisterOutputType(SessionInfoPtrOutput{})
 	pulumi.RegisterOutputType(SessionInfoResponseOutput{})
 	pulumi.RegisterOutputType(SessionInfoResponsePtrOutput{})
-	pulumi.RegisterOutputType(SnapshotDefinitionOutput{})
-	pulumi.RegisterOutputType(SnapshotDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(SnapshotDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeOutput{})
@@ -26455,8 +22421,6 @@ func init() {
 	pulumi.RegisterOutputType(StandardSqlTableTypePtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlTableTypeResponseOutput{})
 	pulumi.RegisterOutputType(StandardSqlTableTypeResponsePtrOutput{})
-	pulumi.RegisterOutputType(StreamingbufferOutput{})
-	pulumi.RegisterOutputType(StreamingbufferPtrOutput{})
 	pulumi.RegisterOutputType(StreamingbufferResponseOutput{})
 	pulumi.RegisterOutputType(StreamingbufferResponsePtrOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaOutput{})
@@ -26483,8 +22447,6 @@ func init() {
 	pulumi.RegisterOutputType(TimePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(TimePartitioningResponseOutput{})
 	pulumi.RegisterOutputType(TimePartitioningResponsePtrOutput{})
-	pulumi.RegisterOutputType(TransactionInfoOutput{})
-	pulumi.RegisterOutputType(TransactionInfoPtrOutput{})
 	pulumi.RegisterOutputType(TransactionInfoResponseOutput{})
 	pulumi.RegisterOutputType(TransactionInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserDefinedFunctionResourceOutput{})
