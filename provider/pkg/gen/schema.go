@@ -927,13 +927,17 @@ func isDeprecated(description string) bool {
 func isReadOnly(description string) bool {
 	lowerDesc := strings.ToLower(description)
 	return strings.HasPrefix(lowerDesc, "[output only]") ||
-		strings.HasPrefix(lowerDesc, "output only.")
+		strings.HasPrefix(lowerDesc, "[output-only]") ||
+		strings.HasPrefix(lowerDesc, "output only.") ||
+		strings.HasSuffix(lowerDesc, "@outputonly")
 }
 
 // clearDescription removes annotations like "output only" from description text.
 func clearDescription(description string) string {
-	description = strings.TrimPrefix(description, "Output only. ")
 	description = strings.TrimPrefix(description, "[Output Only] ")
+	description = strings.TrimPrefix(description, "[Output-only] ")
+	description = strings.TrimPrefix(description, "Output only. ")
+	description = strings.TrimSuffix(description, "@OutputOnly")
 	return description
 }
 
