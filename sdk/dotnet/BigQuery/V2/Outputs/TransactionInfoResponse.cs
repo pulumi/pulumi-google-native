@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class TransactionInfoResponse
     {
         /// <summary>
-        /// [Output-only] // [Alpha] Id of the transaction.
+        /// // [Alpha] Id of the transaction.
         /// </summary>
         public readonly string TransactionId;
 

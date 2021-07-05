@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class ScriptStatisticsResponse
     {
         /// <summary>
-        /// [Output-only] Whether this child job was a statement or expression.
+        /// Whether this child job was a statement or expression.
         /// </summary>
         public readonly string EvaluationKind;
         /// <summary>

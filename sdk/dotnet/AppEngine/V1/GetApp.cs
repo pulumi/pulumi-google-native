@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly string AuthDomain;
         /// <summary>
-        /// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+        /// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
         /// </summary>
         public readonly string CodeBucket;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly string DatabaseType;
         /// <summary>
-        /// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+        /// Google Cloud Storage bucket that can be used by this application to store content.
         /// </summary>
         public readonly string DefaultBucket;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly string DefaultCookieExpiration;
         /// <summary>
-        /// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+        /// Hostname used to reach this application, as resolved by App Engine.
         /// </summary>
         public readonly string DefaultHostname;
         /// <summary>
@@ -75,7 +75,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+        /// Full path to the Application resource in the API. Example: apps/myapp.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -50,23 +50,23 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// </summary>
         public readonly Outputs.BasicPerfSampleSeriesResponse BasicPerfSampleSeries;
         /// <summary>
-        /// A tool results execution ID. @OutputOnly
+        /// A tool results execution ID. 
         /// </summary>
         public readonly string ExecutionId;
         /// <summary>
-        /// A tool results history ID. @OutputOnly
+        /// A tool results history ID. 
         /// </summary>
         public readonly string HistoryId;
         /// <summary>
-        /// The cloud project @OutputOnly
+        /// The cloud project 
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// A sample series id @OutputOnly
+        /// A sample series id 
         /// </summary>
         public readonly string SampleSeriesId;
         /// <summary>
-        /// A tool results step ID. @OutputOnly
+        /// A tool results step ID. 
         /// </summary>
         public readonly string StepId;
 

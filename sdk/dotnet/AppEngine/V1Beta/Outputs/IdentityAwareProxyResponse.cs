@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
         /// </summary>
         public readonly string Oauth2ClientSecret;
         /// <summary>
-        /// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+        /// Hex-encoded SHA-256 hash of the client secret.
         /// </summary>
         public readonly string Oauth2ClientSecretSha256;
 

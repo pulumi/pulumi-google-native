@@ -14,27 +14,27 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class ScriptStackFrameResponse
     {
         /// <summary>
-        /// [Output-only] One-based end column.
+        /// One-based end column.
         /// </summary>
         public readonly int EndColumn;
         /// <summary>
-        /// [Output-only] One-based end line.
+        /// One-based end line.
         /// </summary>
         public readonly int EndLine;
         /// <summary>
-        /// [Output-only] Name of the active procedure, empty if in a top-level script.
+        /// Name of the active procedure, empty if in a top-level script.
         /// </summary>
         public readonly string ProcedureId;
         /// <summary>
-        /// [Output-only] One-based start column.
+        /// One-based start column.
         /// </summary>
         public readonly int StartColumn;
         /// <summary>
-        /// [Output-only] One-based start line.
+        /// One-based start line.
         /// </summary>
         public readonly int StartLine;
         /// <summary>
-        /// [Output-only] Text of the current statement/expression.
+        /// Text of the current statement/expression.
         /// </summary>
         public readonly string Text;
 

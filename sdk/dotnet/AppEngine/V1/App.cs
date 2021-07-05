@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<string> AuthDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+        /// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
         /// </summary>
         [Output("codeBucket")]
         public Output<string> CodeBucket { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<string> DatabaseType { get; private set; } = null!;
 
         /// <summary>
-        /// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+        /// Google Cloud Storage bucket that can be used by this application to store content.
         /// </summary>
         [Output("defaultBucket")]
         public Output<string> DefaultBucket { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<string> DefaultCookieExpiration { get; private set; } = null!;
 
         /// <summary>
-        /// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+        /// Hostname used to reach this application, as resolved by App Engine.
         /// </summary>
         [Output("defaultHostname")]
         public Output<string> DefaultHostname { get; private set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+        /// Full path to the Application resource in the API. Example: apps/myapp.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -142,34 +142,16 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Input<string>? AuthDomain { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
-        /// </summary>
-        [Input("codeBucket")]
-        public Input<string>? CodeBucket { get; set; }
-
-        /// <summary>
         /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         /// </summary>
         [Input("databaseType")]
         public Input<Pulumi.GoogleNative.AppEngine.V1.AppDatabaseType>? DatabaseType { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
-        /// </summary>
-        [Input("defaultBucket")]
-        public Input<string>? DefaultBucket { get; set; }
-
-        /// <summary>
         /// Cookie expiration policy for this application.
         /// </summary>
         [Input("defaultCookieExpiration")]
         public Input<string>? DefaultCookieExpiration { get; set; }
-
-        /// <summary>
-        /// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
-        /// </summary>
-        [Input("defaultHostname")]
-        public Input<string>? DefaultHostname { get; set; }
 
         [Input("dispatchRules")]
         private InputList<Inputs.UrlDispatchRuleArgs>? _dispatchRules;
@@ -209,12 +191,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
-
-        /// <summary>
-        /// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Serving status of this application.

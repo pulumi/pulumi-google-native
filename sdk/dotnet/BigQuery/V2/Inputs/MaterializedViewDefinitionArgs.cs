@@ -19,12 +19,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<bool>? EnableRefresh { get; set; }
 
         /// <summary>
-        /// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
-        /// </summary>
-        [Input("lastRefreshTime")]
-        public Input<string>? LastRefreshTime { get; set; }
-
-        /// <summary>
         /// [Required] A query whose result is persisted.
         /// </summary>
         [Input("query")]

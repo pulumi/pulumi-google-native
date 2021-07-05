@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
     public sealed class ManagedCertificateResponse
     {
         /// <summary>
-        /// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+        /// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
         /// </summary>
         public readonly string LastRenewalTime;
         /// <summary>
-        /// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+        /// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
         /// </summary>
         public readonly string Status;
 

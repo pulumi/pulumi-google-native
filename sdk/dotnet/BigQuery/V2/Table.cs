@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.ClusteringResponse> Clustering { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The time when this table was created, in milliseconds since the epoch.
+        /// The time when this table was created, in milliseconds since the epoch.
         /// </summary>
         [Output("creationTime")]
         public Output<string> CreationTime { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.EncryptionConfigurationResponse> EncryptionConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+        /// A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> FriendlyName { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The type of the resource.
+        /// The type of the resource.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -76,13 +76,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The time when this table was last modified, in milliseconds since the epoch.
+        /// The time when this table was last modified, in milliseconds since the epoch.
         /// </summary>
         [Output("lastModifiedTime")]
         public Output<string> LastModifiedTime { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
+        /// The geographic location where the table resides. This value is inherited from the dataset.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -100,25 +100,25 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.ModelDefinitionResponse> Model { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
+        /// The size of this table in bytes, excluding any data in the streaming buffer.
         /// </summary>
         [Output("numBytes")]
         public Output<string> NumBytes { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The number of bytes in the table that are considered "long-term storage".
+        /// The number of bytes in the table that are considered "long-term storage".
         /// </summary>
         [Output("numLongTermBytes")]
         public Output<string> NumLongTermBytes { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+        /// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
         /// </summary>
         [Output("numPhysicalBytes")]
         public Output<string> NumPhysicalBytes { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
+        /// The number of rows of data in this table, excluding any data in the streaming buffer.
         /// </summary>
         [Output("numRows")]
         public Output<string> NumRows { get; private set; } = null!;
@@ -142,19 +142,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.TableSchemaResponse> Schema { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] A URL that can be used to access this resource again.
+        /// A URL that can be used to access this resource again.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] Snapshot definition.
+        /// Snapshot definition.
         /// </summary>
         [Output("snapshotDefinition")]
         public Output<Outputs.SnapshotDefinitionResponse> SnapshotDefinition { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+        /// Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
         /// </summary>
         [Output("streamingBuffer")]
         public Output<Outputs.StreamingbufferResponse> StreamingBuffer { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.TimePartitioningResponse> TimePartitioning { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+        /// Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -234,12 +234,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("clustering")]
         public Input<Inputs.ClusteringArgs>? Clustering { get; set; }
 
-        /// <summary>
-        /// [Output-only] The time when this table was created, in milliseconds since the epoch.
-        /// </summary>
-        [Input("creationTime")]
-        public Input<string>? CreationTime { get; set; }
-
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
@@ -254,12 +248,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("encryptionConfiguration")]
         public Input<Inputs.EncryptionConfigurationArgs>? EncryptionConfiguration { get; set; }
-
-        /// <summary>
-        /// [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
 
         /// <summary>
         /// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
@@ -279,18 +267,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
 
-        /// <summary>
-        /// [Output-only] An opaque ID uniquely identifying the table.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output-only] The type of the resource.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -304,18 +280,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
 
         /// <summary>
-        /// [Output-only] The time when this table was last modified, in milliseconds since the epoch.
-        /// </summary>
-        [Input("lastModifiedTime")]
-        public Input<string>? LastModifiedTime { get; set; }
-
-        /// <summary>
-        /// [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
-        /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
-
-        /// <summary>
         /// [Optional] Materialized view definition.
         /// </summary>
         [Input("materializedView")]
@@ -326,30 +290,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("model")]
         public Input<Inputs.ModelDefinitionArgs>? Model { get; set; }
-
-        /// <summary>
-        /// [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
-        /// </summary>
-        [Input("numBytes")]
-        public Input<string>? NumBytes { get; set; }
-
-        /// <summary>
-        /// [Output-only] The number of bytes in the table that are considered "long-term storage".
-        /// </summary>
-        [Input("numLongTermBytes")]
-        public Input<string>? NumLongTermBytes { get; set; }
-
-        /// <summary>
-        /// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
-        /// </summary>
-        [Input("numPhysicalBytes")]
-        public Input<string>? NumPhysicalBytes { get; set; }
-
-        /// <summary>
-        /// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
-        /// </summary>
-        [Input("numRows")]
-        public Input<string>? NumRows { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -373,24 +313,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Input<Inputs.TableSchemaArgs>? Schema { get; set; }
 
         /// <summary>
-        /// [Output-only] A URL that can be used to access this resource again.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output-only] Snapshot definition.
-        /// </summary>
-        [Input("snapshotDefinition")]
-        public Input<Inputs.SnapshotDefinitionArgs>? SnapshotDefinition { get; set; }
-
-        /// <summary>
-        /// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
-        /// </summary>
-        [Input("streamingBuffer")]
-        public Input<Inputs.StreamingbufferArgs>? StreamingBuffer { get; set; }
-
-        /// <summary>
         /// [Required] Reference describing the ID of this table.
         /// </summary>
         [Input("tableReference")]
@@ -401,12 +323,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("timePartitioning")]
         public Input<Inputs.TimePartitioningArgs>? TimePartitioning { get; set; }
-
-        /// <summary>
-        /// [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// [Optional] The view definition.

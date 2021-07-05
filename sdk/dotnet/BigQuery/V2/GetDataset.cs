@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly ImmutableArray<Outputs.DatasetAccessItemResponse> Access;
         /// <summary>
-        /// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+        /// The time when this dataset was created, in milliseconds since the epoch.
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Output-only] A hash of the resource.
+        /// A hash of the resource.
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string FriendlyName;
         /// <summary>
-        /// [Output-only] The resource type.
+        /// The resource type.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        /// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
         /// </summary>
         public readonly string LastModifiedTime;
         /// <summary>
@@ -86,11 +86,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// [Output-only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPZS;
         /// <summary>
-        /// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+        /// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         /// </summary>
         public readonly string SelfLink;
 

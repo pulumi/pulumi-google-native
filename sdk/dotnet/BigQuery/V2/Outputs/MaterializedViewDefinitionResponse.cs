@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly bool EnableRefresh;
         /// <summary>
-        /// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+        /// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
         /// </summary>
         public readonly string LastRefreshTime;
         /// <summary>

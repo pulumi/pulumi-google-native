@@ -22,31 +22,31 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public Output<Outputs.BasicPerfSampleSeriesResponse> BasicPerfSampleSeries { get; private set; } = null!;
 
         /// <summary>
-        /// A tool results execution ID. @OutputOnly
+        /// A tool results execution ID. 
         /// </summary>
         [Output("executionId")]
         public Output<string> ExecutionId { get; private set; } = null!;
 
         /// <summary>
-        /// A tool results history ID. @OutputOnly
+        /// A tool results history ID. 
         /// </summary>
         [Output("historyId")]
         public Output<string> HistoryId { get; private set; } = null!;
 
         /// <summary>
-        /// The cloud project @OutputOnly
+        /// The cloud project 
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// A sample series id @OutputOnly
+        /// A sample series id 
         /// </summary>
         [Output("sampleSeriesId")]
         public Output<string> SampleSeriesId { get; private set; } = null!;
 
         /// <summary>
-        /// A tool results step ID. @OutputOnly
+        /// A tool results step ID. 
         /// </summary>
         [Output("stepId")]
         public Output<string> StepId { get; private set; } = null!;
@@ -102,33 +102,15 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Input("basicPerfSampleSeries")]
         public Input<Inputs.BasicPerfSampleSeriesArgs>? BasicPerfSampleSeries { get; set; }
 
-        /// <summary>
-        /// A tool results execution ID. @OutputOnly
-        /// </summary>
         [Input("executionId", required: true)]
         public Input<string> ExecutionId { get; set; } = null!;
 
-        /// <summary>
-        /// A tool results history ID. @OutputOnly
-        /// </summary>
         [Input("historyId", required: true)]
         public Input<string> HistoryId { get; set; } = null!;
 
-        /// <summary>
-        /// The cloud project @OutputOnly
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// A sample series id @OutputOnly
-        /// </summary>
-        [Input("sampleSeriesId")]
-        public Input<string>? SampleSeriesId { get; set; }
-
-        /// <summary>
-        /// A tool results step ID. @OutputOnly
-        /// </summary>
         [Input("stepId", required: true)]
         public Input<string> StepId { get; set; } = null!;
 

@@ -33,12 +33,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         [Input("oauth2ClientSecret")]
         public Input<string>? Oauth2ClientSecret { get; set; }
 
-        /// <summary>
-        /// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-        /// </summary>
-        [Input("oauth2ClientSecretSha256")]
-        public Input<string>? Oauth2ClientSecretSha256 { get; set; }
-
         public IdentityAwareProxyArgs()
         {
         }

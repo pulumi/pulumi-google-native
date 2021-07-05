@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha.Outputs
         /// </summary>
         public readonly string CertificateId;
         /// <summary>
-        /// Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
+        /// Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.
         /// </summary>
         public readonly bool IsManagedCertificate;
 

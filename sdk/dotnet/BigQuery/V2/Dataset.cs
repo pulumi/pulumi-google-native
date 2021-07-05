@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<ImmutableArray<Outputs.DatasetAccessItemResponse>> Access { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+        /// The time when this dataset was created, in milliseconds since the epoch.
         /// </summary>
         [Output("creationTime")]
         public Output<string> CreationTime { get; private set; } = null!;
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] A hash of the resource.
+        /// A hash of the resource.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> FriendlyName { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The resource type.
+        /// The resource type.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        /// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
         /// </summary>
         [Output("lastModifiedTime")]
         public Output<string> LastModifiedTime { get; private set; } = null!;
@@ -91,13 +91,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] Reserved for future use.
+        /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPZS")]
         public Output<bool> SatisfiesPZS { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+        /// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -160,12 +160,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
 
         /// <summary>
-        /// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
-        /// </summary>
-        [Input("creationTime")]
-        public Input<string>? CreationTime { get; set; }
-
-        /// <summary>
         /// [Required] A reference that identifies the dataset.
         /// </summary>
         [Input("datasetReference")]
@@ -193,28 +187,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// [Output-only] A hash of the resource.
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
-
-        /// <summary>
         /// [Optional] A descriptive name for the dataset.
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
-
-        /// <summary>
-        /// [Output-only] The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// [Output-only] The resource type.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -229,12 +205,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
 
         /// <summary>
-        /// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
-        /// </summary>
-        [Input("lastModifiedTime")]
-        public Input<string>? LastModifiedTime { get; set; }
-
-        /// <summary>
         /// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
         /// </summary>
         [Input("location")]
@@ -242,18 +212,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// [Output-only] Reserved for future use.
-        /// </summary>
-        [Input("satisfiesPZS")]
-        public Input<bool>? SatisfiesPZS { get; set; }
-
-        /// <summary>
-        /// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
 
         public DatasetArgs()
         {

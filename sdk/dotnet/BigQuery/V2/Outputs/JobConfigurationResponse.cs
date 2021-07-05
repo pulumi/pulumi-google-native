@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string JobTimeoutMs;
         /// <summary>
-        /// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
+        /// The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
         /// </summary>
         public readonly string JobType;
         /// <summary>

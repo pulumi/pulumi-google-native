@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class SessionInfoResponse
     {
         /// <summary>
-        /// [Output-only] // [Preview] Id of the session.
+        /// // [Preview] Id of the session.
         /// </summary>
         public readonly string SessionId;
 
