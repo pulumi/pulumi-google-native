@@ -6,7 +6,6 @@ import * as google from "@pulumi/google-native";
 const project = "pulumi-development";
 const region = "us-central1";
 
-const clusterName = "gke-native";
 const cluster = new google.container.v1.Cluster("cluster", {
     project,
     location: region,
@@ -16,16 +15,14 @@ const cluster = new google.container.v1.Cluster("cluster", {
         password: "hDiqST+U7{t+BkQA+OD*",
         username: "admin",
     },
-    name: clusterName,
     network: `projects/${project}/global/networks/default`,
 });
 
-const nodePoolName = "extra-node-pool";
-const pool = new google.container.v1.NodePool(nodePoolName, {
+const pool = new google.container.v1.NodePool("extra-node-pool", {
     project,
     location: region,
     clusterId: cluster.name,
-    parent: `projects/${project}/locations/${region}/clusters/${clusterName}`,
+    parent: pulumi.interpolate`projects/${project}/locations/${region}/clusters/${cluster.name}`,
     config: {
         machineType: "n1-standard-1",
         oauthScopes: [
@@ -40,6 +37,5 @@ const pool = new google.container.v1.NodePool(nodePoolName, {
     management: {
         autoRepair: true,
     },
-    name: nodePoolName,
     version: "1.18.16-gke.500",
 });

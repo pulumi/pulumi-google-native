@@ -4,34 +4,21 @@ import * as gcp from "@pulumi/gcp";
 import * as gnative from "@pulumi/google-native";
 import * as storage from "@pulumi/google-native/storage/v1";
 import * as pulumi from "@pulumi/pulumi";
-import * as random from "@pulumi/random";
 import * as fs from "fs";
 import * as mime from "mime";
 
-const randomString = new random.RandomString("name", {
-    upper: false,
-    number: false,
-    special: false,
-    length: 5,
-});
-
 const config = new pulumi.Config("google-native");
 const project = config.require("project");
-const bucketName = pulumi.interpolate`pulumi-transfer-test-dst-${randomString.result}`;
-const transferJobName = "transfer-test";
 
 // Create a Google Cloud resource (Storage Bucket)
 const bucket = new storage.Bucket("my-bucket", {
-    name: bucketName,
     project: project,
 });
 
 // TODO: Add support for this in Native provider: https://github.com/pulumi/pulumi-google-native/issues/119
-const storageTransferServiceAccount = gcp.storage.getTransferProjectServieAccount(
-    {
-        project: project,
-    }
-)
+const storageTransferServiceAccount = gcp.storage.getTransferProjectServieAccount({
+    project: project,
+});
 
 const iam = new gcp.storage.BucketIAMMember("iam-dest", {
     bucket: bucket.name,
@@ -40,7 +27,6 @@ const iam = new gcp.storage.BucketIAMMember("iam-dest", {
 });
 
 const srcBucket = new gnative.storage.v1.Bucket("src-bucket", {
-    name: pulumi.interpolate`pulumi-transfer-test-src-${randomString.result}`,
     project: project
 });
 
@@ -62,38 +48,33 @@ crawlDirectory("bucket-content", (filepath: string) => {
     });
 });
 
-new gnative.storagetransfer.v1.TransferJob(
-    transferJobName,
-    {
-        name: pulumi.interpolate`transferJobs/transferjob-${randomString.result}`,
-        description: "s3-to-gcs-sync",
-        status: "ENABLED",
-        schedule: {
-            repeatInterval: "3600s", // every hour
-            scheduleStartDate: {
-                day: 1,
-                month: 5,
-                year: 2021,
-            },
-        },
-        project: project,
-        transferSpec: {
-            gcsDataSource: {
-                bucketName: srcBucket.name,
-            },
-            gcsDataSink: {
-                bucketName: bucket.name,
-            },
-            objectConditions: {
-                includePrefixes: ["/bucket-content"],
-            },
-            transferOptions: {
-                deleteObjectsFromSourceAfterTransfer: false,
-            },
+new gnative.storagetransfer.v1.TransferJob("transfer-test", {
+    description: "s3-to-gcs-sync",
+    status: "ENABLED",
+    schedule: {
+        repeatInterval: "3600s", // every hour
+        scheduleStartDate: {
+            day: 1,
+            month: 5,
+            year: 2021,
         },
     },
-    {dependsOn: contents.concat([iam, iamSrc])}
-);
+    project: project,
+    transferSpec: {
+        gcsDataSource: {
+            bucketName: srcBucket.name,
+        },
+        gcsDataSink: {
+            bucketName: bucket.name,
+        },
+        objectConditions: {
+            includePrefixes: ["/bucket-content"],
+        },
+        transferOptions: {
+            deleteObjectsFromSourceAfterTransfer: false,
+        },
+    },
+}, { dependsOn: contents.concat([iam, iamSrc]) });
 
 
 // crawlDirectory recursive crawls the provided directory, applying the provided function
@@ -114,4 +95,3 @@ function crawlDirectory(dir: string, f: (_: string) => void) {
 
 // Export the bucket self-link
 export const bucketSelfLink = bucket.selfLink;
-

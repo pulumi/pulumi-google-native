@@ -2,7 +2,6 @@
 
 using Pulumi;
 using Pulumi.GoogleNative.Storage.V1;
-using Pulumi.Random;
 
 class MyStack : Stack
 {
@@ -12,18 +11,9 @@ class MyStack : Stack
         var project = config.Require("project");
         var region = config.Require("region");
 
-        var randomString = new RandomString("name", new RandomStringArgs
-        {
-            Upper = false,
-            Number = false,
-            Special = false,
-            Length = 8,
-        });
-
         var bucket = new Bucket("my-bucket", new BucketArgs
         {
-            Name = randomString.Result,
-            Project = project,
+            Project = project
         });
 
         // Export the DNS name of the bucket
