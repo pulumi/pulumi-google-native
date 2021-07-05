@@ -49,7 +49,7 @@ class GetPerfSampleSeriesResult:
     @pulumi.getter(name="executionId")
     def execution_id(self) -> str:
         """
-        A tool results execution ID. @OutputOnly
+        A tool results execution ID. 
         """
         return pulumi.get(self, "execution_id")
 
@@ -57,7 +57,7 @@ class GetPerfSampleSeriesResult:
     @pulumi.getter(name="historyId")
     def history_id(self) -> str:
         """
-        A tool results history ID. @OutputOnly
+        A tool results history ID. 
         """
         return pulumi.get(self, "history_id")
 
@@ -65,7 +65,7 @@ class GetPerfSampleSeriesResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        The cloud project @OutputOnly
+        The cloud project 
         """
         return pulumi.get(self, "project")
 
@@ -73,7 +73,7 @@ class GetPerfSampleSeriesResult:
     @pulumi.getter(name="sampleSeriesId")
     def sample_series_id(self) -> str:
         """
-        A sample series id @OutputOnly
+        A sample series id 
         """
         return pulumi.get(self, "sample_series_id")
 
@@ -81,7 +81,7 @@ class GetPerfSampleSeriesResult:
     @pulumi.getter(name="stepId")
     def step_id(self) -> str:
         """
-        A tool results step ID. @OutputOnly
+        A tool results step ID. 
         """
         return pulumi.get(self, "step_id")
 

@@ -7,7 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
-from ._enums import *
 
 __all__ = [
     'CertificateRawDataResponse',
@@ -95,8 +94,8 @@ class ManagedCertificateResponse(dict):
                  status: str):
         """
         A certificate managed by App Engine.
-        :param str last_renewal_time: Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-        :param str status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+        :param str last_renewal_time: Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
+        :param str status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
         """
         pulumi.set(__self__, "last_renewal_time", last_renewal_time)
         pulumi.set(__self__, "status", status)
@@ -105,7 +104,7 @@ class ManagedCertificateResponse(dict):
     @pulumi.getter(name="lastRenewalTime")
     def last_renewal_time(self) -> str:
         """
-        Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+        Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
         """
         return pulumi.get(self, "last_renewal_time")
 
@@ -113,7 +112,7 @@ class ManagedCertificateResponse(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+        Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
         """
         return pulumi.get(self, "status")
 
@@ -192,7 +191,7 @@ class SslSettingsResponse(dict):
         """
         SSL configuration for a DomainMapping resource.
         :param str certificate_id: ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
-        :param bool is_managed_certificate: Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
+        :param bool is_managed_certificate: Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.
         """
         pulumi.set(__self__, "certificate_id", certificate_id)
         pulumi.set(__self__, "is_managed_certificate", is_managed_certificate)
@@ -209,7 +208,7 @@ class SslSettingsResponse(dict):
     @pulumi.getter(name="isManagedCertificate")
     def is_managed_certificate(self) -> bool:
         """
-        Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
+        Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.
         """
         return pulumi.get(self, "is_managed_certificate")
 

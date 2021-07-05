@@ -24,11 +24,8 @@ class VersionArgs:
                  basic_scaling: Optional[pulumi.Input['BasicScalingArgs']] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 created_by: Optional[pulumi.Input[str]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input['DeploymentArgs']] = None,
-                 disk_usage_bytes: Optional[pulumi.Input[str]] = None,
                  endpoints_api_service: Optional[pulumi.Input['EndpointsApiServiceArgs']] = None,
                  entrypoint: Optional[pulumi.Input['EntrypointArgs']] = None,
                  env: Optional[pulumi.Input[str]] = None,
@@ -42,7 +39,6 @@ class VersionArgs:
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['LibraryArgs']]]] = None,
                  liveness_check: Optional[pulumi.Input['LivenessCheckArgs']] = None,
                  manual_scaling: Optional[pulumi.Input['ManualScalingArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input['NetworkArgs']] = None,
                  nobuild_files_regex: Optional[pulumi.Input[str]] = None,
                  readiness_check: Optional[pulumi.Input['ReadinessCheckArgs']] = None,
@@ -54,7 +50,6 @@ class VersionArgs:
                  service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
-                 version_url: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input['VpcAccessConnectorArgs']] = None):
         """
@@ -65,11 +60,8 @@ class VersionArgs:
         :param pulumi.Input['BasicScalingArgs'] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_env_variables: Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[str] create_time: Time that this version was created.@OutputOnly
-        :param pulumi.Input[str] created_by: Email address of the user who created this version.@OutputOnly
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['DeploymentArgs'] deployment: Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[str] disk_usage_bytes: Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
         :param pulumi.Input['EndpointsApiServiceArgs'] endpoints_api_service: Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
         :param pulumi.Input['EntrypointArgs'] entrypoint: The entrypoint for the application.
         :param pulumi.Input[str] env: App Engine execution environment for this version.Defaults to standard.
@@ -83,7 +75,6 @@ class VersionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LibraryArgs']]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['LivenessCheckArgs'] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
         :param pulumi.Input['ManualScalingArgs'] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
-        :param pulumi.Input[str] name: Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
         :param pulumi.Input['NetworkArgs'] network: Extra network settings. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['ReadinessCheckArgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
@@ -95,7 +86,6 @@ class VersionArgs:
         :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input['VersionServingStatus'] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
-        :param pulumi.Input[str] version_url: Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
         :param pulumi.Input['VpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
         """
@@ -113,16 +103,10 @@ class VersionArgs:
             pulumi.set(__self__, "beta_settings", beta_settings)
         if build_env_variables is not None:
             pulumi.set(__self__, "build_env_variables", build_env_variables)
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
-        if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
         if default_expiration is not None:
             pulumi.set(__self__, "default_expiration", default_expiration)
         if deployment is not None:
             pulumi.set(__self__, "deployment", deployment)
-        if disk_usage_bytes is not None:
-            pulumi.set(__self__, "disk_usage_bytes", disk_usage_bytes)
         if endpoints_api_service is not None:
             pulumi.set(__self__, "endpoints_api_service", endpoints_api_service)
         if entrypoint is not None:
@@ -149,8 +133,6 @@ class VersionArgs:
             pulumi.set(__self__, "liveness_check", liveness_check)
         if manual_scaling is not None:
             pulumi.set(__self__, "manual_scaling", manual_scaling)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if nobuild_files_regex is not None:
@@ -173,8 +155,6 @@ class VersionArgs:
             pulumi.set(__self__, "serving_status", serving_status)
         if threadsafe is not None:
             pulumi.set(__self__, "threadsafe", threadsafe)
-        if version_url is not None:
-            pulumi.set(__self__, "version_url", version_url)
         if vm is not None:
             pulumi.set(__self__, "vm", vm)
         if vpc_access_connector is not None:
@@ -271,30 +251,6 @@ class VersionArgs:
         pulumi.set(self, "build_env_variables", value)
 
     @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Time that this version was created.@OutputOnly
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
-
-    @property
-    @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[str]]:
-        """
-        Email address of the user who created this version.@OutputOnly
-        """
-        return pulumi.get(self, "created_by")
-
-    @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "created_by", value)
-
-    @property
     @pulumi.getter(name="defaultExpiration")
     def default_expiration(self) -> Optional[pulumi.Input[str]]:
         """
@@ -317,18 +273,6 @@ class VersionArgs:
     @deployment.setter
     def deployment(self, value: Optional[pulumi.Input['DeploymentArgs']]):
         pulumi.set(self, "deployment", value)
-
-    @property
-    @pulumi.getter(name="diskUsageBytes")
-    def disk_usage_bytes(self) -> Optional[pulumi.Input[str]]:
-        """
-        Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
-        """
-        return pulumi.get(self, "disk_usage_bytes")
-
-    @disk_usage_bytes.setter
-    def disk_usage_bytes(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_usage_bytes", value)
 
     @property
     @pulumi.getter(name="endpointsApiService")
@@ -488,18 +432,6 @@ class VersionArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def network(self) -> Optional[pulumi.Input['NetworkArgs']]:
         """
         Extra network settings. Only applicable in the App Engine flexible environment.
@@ -631,18 +563,6 @@ class VersionArgs:
         pulumi.set(self, "threadsafe", value)
 
     @property
-    @pulumi.getter(name="versionUrl")
-    def version_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
-        """
-        return pulumi.get(self, "version_url")
-
-    @version_url.setter
-    def version_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "version_url", value)
-
-    @property
     @pulumi.getter
     def vm(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -679,11 +599,8 @@ class Version(pulumi.CustomResource):
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 created_by: Optional[pulumi.Input[str]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
-                 disk_usage_bytes: Optional[pulumi.Input[str]] = None,
                  endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['EndpointsApiServiceArgs']]] = None,
                  entrypoint: Optional[pulumi.Input[pulumi.InputType['EntrypointArgs']]] = None,
                  env: Optional[pulumi.Input[str]] = None,
@@ -697,7 +614,6 @@ class Version(pulumi.CustomResource):
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]]] = None,
                  liveness_check: Optional[pulumi.Input[pulumi.InputType['LivenessCheckArgs']]] = None,
                  manual_scaling: Optional[pulumi.Input[pulumi.InputType['ManualScalingArgs']]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['NetworkArgs']]] = None,
                  nobuild_files_regex: Optional[pulumi.Input[str]] = None,
                  readiness_check: Optional[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]] = None,
@@ -710,7 +626,6 @@ class Version(pulumi.CustomResource):
                  service_id: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
-                 version_url: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
                  __props__=None):
@@ -725,11 +640,8 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BasicScalingArgs']] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_env_variables: Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[str] create_time: Time that this version was created.@OutputOnly
-        :param pulumi.Input[str] created_by: Email address of the user who created this version.@OutputOnly
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['DeploymentArgs']] deployment: Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[str] disk_usage_bytes: Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
         :param pulumi.Input[pulumi.InputType['EndpointsApiServiceArgs']] endpoints_api_service: Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
         :param pulumi.Input[pulumi.InputType['EntrypointArgs']] entrypoint: The entrypoint for the application.
         :param pulumi.Input[str] env: App Engine execution environment for this version.Defaults to standard.
@@ -743,7 +655,6 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['LivenessCheckArgs']] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['ManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
-        :param pulumi.Input[str] name: Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
         :param pulumi.Input[pulumi.InputType['NetworkArgs']] network: Extra network settings. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['ReadinessCheckArgs']] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
@@ -755,7 +666,6 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input['VersionServingStatus'] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
-        :param pulumi.Input[str] version_url: Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
         :param pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
         """
@@ -790,11 +700,8 @@ class Version(pulumi.CustomResource):
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 created_by: Optional[pulumi.Input[str]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
-                 disk_usage_bytes: Optional[pulumi.Input[str]] = None,
                  endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['EndpointsApiServiceArgs']]] = None,
                  entrypoint: Optional[pulumi.Input[pulumi.InputType['EntrypointArgs']]] = None,
                  env: Optional[pulumi.Input[str]] = None,
@@ -808,7 +715,6 @@ class Version(pulumi.CustomResource):
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]]] = None,
                  liveness_check: Optional[pulumi.Input[pulumi.InputType['LivenessCheckArgs']]] = None,
                  manual_scaling: Optional[pulumi.Input[pulumi.InputType['ManualScalingArgs']]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['NetworkArgs']]] = None,
                  nobuild_files_regex: Optional[pulumi.Input[str]] = None,
                  readiness_check: Optional[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]] = None,
@@ -821,7 +727,6 @@ class Version(pulumi.CustomResource):
                  service_id: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
-                 version_url: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
                  __props__=None):
@@ -845,11 +750,8 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["basic_scaling"] = basic_scaling
             __props__.__dict__["beta_settings"] = beta_settings
             __props__.__dict__["build_env_variables"] = build_env_variables
-            __props__.__dict__["create_time"] = create_time
-            __props__.__dict__["created_by"] = created_by
             __props__.__dict__["default_expiration"] = default_expiration
             __props__.__dict__["deployment"] = deployment
-            __props__.__dict__["disk_usage_bytes"] = disk_usage_bytes
             __props__.__dict__["endpoints_api_service"] = endpoints_api_service
             __props__.__dict__["entrypoint"] = entrypoint
             __props__.__dict__["env"] = env
@@ -863,7 +765,6 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["libraries"] = libraries
             __props__.__dict__["liveness_check"] = liveness_check
             __props__.__dict__["manual_scaling"] = manual_scaling
-            __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["nobuild_files_regex"] = nobuild_files_regex
             __props__.__dict__["readiness_check"] = readiness_check
@@ -878,9 +779,13 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["serving_status"] = serving_status
             __props__.__dict__["threadsafe"] = threadsafe
-            __props__.__dict__["version_url"] = version_url
             __props__.__dict__["vm"] = vm
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["created_by"] = None
+            __props__.__dict__["disk_usage_bytes"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["version_url"] = None
         super(Version, __self__).__init__(
             'google-native:appengine/v1beta:Version',
             resource_name,
@@ -995,7 +900,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time that this version was created.@OutputOnly
+        Time that this version was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -1003,7 +908,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[str]:
         """
-        Email address of the user who created this version.@OutputOnly
+        Email address of the user who created this version.
         """
         return pulumi.get(self, "created_by")
 
@@ -1027,7 +932,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="diskUsageBytes")
     def disk_usage_bytes(self) -> pulumi.Output[str]:
         """
-        Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+        Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
         """
         return pulumi.get(self, "disk_usage_bytes")
 
@@ -1131,7 +1036,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+        Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
         """
         return pulumi.get(self, "name")
 
@@ -1227,7 +1132,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="versionUrl")
     def version_url(self) -> pulumi.Output[str]:
         """
-        Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+        Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
         """
         return pulumi.get(self, "version_url")
 

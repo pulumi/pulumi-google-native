@@ -115,7 +115,7 @@ class GetTableResult:
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
         """
-        [Output-only] The time when this table was created, in milliseconds since the epoch.
+        The time when this table was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
 
@@ -139,7 +139,7 @@ class GetTableResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+        A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
         """
         return pulumi.get(self, "etag")
 
@@ -171,7 +171,7 @@ class GetTableResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output-only] The type of the resource.
+        The type of the resource.
         """
         return pulumi.get(self, "kind")
 
@@ -187,7 +187,7 @@ class GetTableResult:
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> str:
         """
-        [Output-only] The time when this table was last modified, in milliseconds since the epoch.
+        The time when this table was last modified, in milliseconds since the epoch.
         """
         return pulumi.get(self, "last_modified_time")
 
@@ -195,7 +195,7 @@ class GetTableResult:
     @pulumi.getter
     def location(self) -> str:
         """
-        [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
+        The geographic location where the table resides. This value is inherited from the dataset.
         """
         return pulumi.get(self, "location")
 
@@ -219,7 +219,7 @@ class GetTableResult:
     @pulumi.getter(name="numBytes")
     def num_bytes(self) -> str:
         """
-        [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
+        The size of this table in bytes, excluding any data in the streaming buffer.
         """
         return pulumi.get(self, "num_bytes")
 
@@ -227,7 +227,7 @@ class GetTableResult:
     @pulumi.getter(name="numLongTermBytes")
     def num_long_term_bytes(self) -> str:
         """
-        [Output-only] The number of bytes in the table that are considered "long-term storage".
+        The number of bytes in the table that are considered "long-term storage".
         """
         return pulumi.get(self, "num_long_term_bytes")
 
@@ -235,7 +235,7 @@ class GetTableResult:
     @pulumi.getter(name="numPhysicalBytes")
     def num_physical_bytes(self) -> str:
         """
-        [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+        [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
         """
         return pulumi.get(self, "num_physical_bytes")
 
@@ -243,7 +243,7 @@ class GetTableResult:
     @pulumi.getter(name="numRows")
     def num_rows(self) -> str:
         """
-        [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
+        The number of rows of data in this table, excluding any data in the streaming buffer.
         """
         return pulumi.get(self, "num_rows")
 
@@ -275,7 +275,7 @@ class GetTableResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output-only] A URL that can be used to access this resource again.
+        A URL that can be used to access this resource again.
         """
         return pulumi.get(self, "self_link")
 
@@ -283,7 +283,7 @@ class GetTableResult:
     @pulumi.getter(name="snapshotDefinition")
     def snapshot_definition(self) -> 'outputs.SnapshotDefinitionResponse':
         """
-        [Output-only] Snapshot definition.
+        Snapshot definition.
         """
         return pulumi.get(self, "snapshot_definition")
 
@@ -291,7 +291,7 @@ class GetTableResult:
     @pulumi.getter(name="streamingBuffer")
     def streaming_buffer(self) -> 'outputs.StreamingbufferResponse':
         """
-        [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+        Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
         """
         return pulumi.get(self, "streaming_buffer")
 
@@ -315,7 +315,7 @@ class GetTableResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+        Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
         """
         return pulumi.get(self, "type")
 

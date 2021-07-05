@@ -1265,7 +1265,7 @@ class IdentityAwareProxyResponse(dict):
         :param bool enabled: Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
         :param str oauth2_client_id: OAuth2 client ID to use for the authentication flow.
         :param str oauth2_client_secret: OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
-        :param str oauth2_client_secret_sha256: Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+        :param str oauth2_client_secret_sha256: Hex-encoded SHA-256 hash of the client secret.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
@@ -1300,7 +1300,7 @@ class IdentityAwareProxyResponse(dict):
     @pulumi.getter(name="oauth2ClientSecretSha256")
     def oauth2_client_secret_sha256(self) -> str:
         """
-        Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+        Hex-encoded SHA-256 hash of the client secret.
         """
         return pulumi.get(self, "oauth2_client_secret_sha256")
 
@@ -1476,8 +1476,8 @@ class ManagedCertificateResponse(dict):
                  status: str):
         """
         A certificate managed by App Engine.
-        :param str last_renewal_time: Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-        :param str status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+        :param str last_renewal_time: Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
+        :param str status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
         """
         pulumi.set(__self__, "last_renewal_time", last_renewal_time)
         pulumi.set(__self__, "status", status)
@@ -1486,7 +1486,7 @@ class ManagedCertificateResponse(dict):
     @pulumi.getter(name="lastRenewalTime")
     def last_renewal_time(self) -> str:
         """
-        Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+        Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
         """
         return pulumi.get(self, "last_renewal_time")
 
@@ -1494,7 +1494,7 @@ class ManagedCertificateResponse(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+        Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
         """
         return pulumi.get(self, "status")
 
@@ -2054,7 +2054,7 @@ class SslSettingsResponse(dict):
         """
         SSL configuration for a DomainMapping resource.
         :param str certificate_id: ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
-        :param str pending_managed_certificate_id: ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+        :param str pending_managed_certificate_id: ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.
         :param str ssl_management_type: SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
         """
         pulumi.set(__self__, "certificate_id", certificate_id)
@@ -2073,7 +2073,7 @@ class SslSettingsResponse(dict):
     @pulumi.getter(name="pendingManagedCertificateId")
     def pending_managed_certificate_id(self) -> str:
         """
-        ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+        ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.
         """
         return pulumi.get(self, "pending_managed_certificate_id")
 

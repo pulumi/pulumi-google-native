@@ -76,7 +76,7 @@ class GetDatasetResult:
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
         """
-        [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+        The time when this dataset was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
 
@@ -121,7 +121,7 @@ class GetDatasetResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        [Output-only] A hash of the resource.
+        A hash of the resource.
         """
         return pulumi.get(self, "etag")
 
@@ -137,7 +137,7 @@ class GetDatasetResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output-only] The resource type.
+        The resource type.
         """
         return pulumi.get(self, "kind")
 
@@ -153,7 +153,7 @@ class GetDatasetResult:
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> str:
         """
-        [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
         """
         return pulumi.get(self, "last_modified_time")
 
@@ -169,7 +169,7 @@ class GetDatasetResult:
     @pulumi.getter(name="satisfiesPZS")
     def satisfies_pzs(self) -> bool:
         """
-        [Output-only] Reserved for future use.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -177,7 +177,7 @@ class GetDatasetResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+        A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         """
         return pulumi.get(self, "self_link")
 
