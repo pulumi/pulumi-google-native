@@ -4,7 +4,9 @@ package provider
 
 import (
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/stretchr/testify/assert"
+	"strings"
 	"testing"
 )
 
@@ -75,4 +77,33 @@ func TestEvalPropertyValue(t *testing.T) {
 
 	_, has = evalPropertyValue(values, "notastring")
 	assert.False(t, has)
+}
+
+func TestGetDefaultName_Generated(t *testing.T) {
+	urn := resource.URN("urn:pulumi:dev::test::test-provider:testModule:TestResource::myName")
+	olds := resource.NewPropertyMapFromMap(map[string]interface{}{})
+	news := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"project":  "p01",
+		"location": "west",
+		"ignoreMe": 1.2,
+	})
+	actual := getDefaultName(urn, "projects/{project}/locations/{location}/things/{name}", olds, news)
+	expectedPrefix := "projects/p01/locations/west/things/myName-"
+	assert.True(t, strings.HasPrefix(actual.StringValue(), expectedPrefix))
+	assert.Equal(t, len(expectedPrefix) + 7, len(actual.StringValue()))
+}
+
+func TestGetDefaultName_OldApplied(t *testing.T) {
+	urn := resource.URN("urn:pulumi:dev::test::test-provider:testModule:TestResource::myName")
+	fixedName := "projects/p01/locations/west/things/anotherName"
+	olds := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"name": fixedName,
+	})
+	news := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"project":  "p01",
+		"location": "west",
+		"ignoreMe": 1.2,
+	})
+	actual := getDefaultName(urn, "projects/{project}/locations/{location}/things/{name}", olds, news)
+	assert.Equal(t, fixedName, actual.StringValue())
 }

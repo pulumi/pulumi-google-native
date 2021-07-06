@@ -30,6 +30,9 @@ type CloudAPIResource struct {
 	// be defined if IdProperty is missing.
 	IdPath   string            `json:"idPath,omitempty"`
 	IdParams map[string]string `json:"idParams,omitempty"`
+	// AutoNamePattern contains a string pattern when a default name should be automatically generated if a user hasn't
+	// explicitly specified one. Example: projects/{project}/locations/{location}/functions/{name}.
+	AutoNamePattern string `json:"autoNamePattern,omitempty"`
 }
 
 // CloudAPIFunction is a function in Google Cloud REST API.

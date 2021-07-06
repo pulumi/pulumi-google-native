@@ -3,8 +3,12 @@
 package gen
 
 import (
+	"fmt"
 	"github.com/gedex/inflector"
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
+	"regexp"
 	"strings"
 )
 
@@ -36,6 +40,60 @@ func apiPropNameToSdkName(name string) string {
 	default:
 		return ToLowerCamel(name)
 	}
+}
+
+// nameRegexes is a list of regular expressions to match property formats in property descriptions.
+var nameRegexes = []*regexp.Regexp {
+	// Example: "The resource name in the format `foo/*`"
+	regexp.MustCompile(`(?:Format|format|form|forms|formatted|pattern|Example|example|e\.g\.|such|Structured)(?: (?:of|is|as|like|will be))?[^\w]+(\w+(?:/[\w\{\}\*-\[\]]*)+)`),
+	// Example: "Must be in `projects/{project}/locations/{location}/triggers/{trigger}` format"
+	regexp.MustCompile(`in[^\w]+(\w+(?:/[\w\{\}\*-\[\]]*)+)[^\w]+format`),
+}
+
+// namePropertyPattern extracts the pattern to build the name property for the given resource's property specs.
+// It uses the descriptions of a property called 'name' and parses it to find a pattern of an example usage.
+// Returns an error if no 'name' property or if its description failed to parse.
+func namePropertyPattern(inputProperties map[string]schema.PropertySpec) (string, error) {
+	nameProp, has := inputProperties["name"]
+	if !has {
+		return "", errors.New("no 'name' property")
+	}
+
+	if !strings.Contains(nameProp.Description, "/") {
+		return "{name}", nil
+	}
+
+	var match string
+	for _, nameRegex := range nameRegexes {
+		matches := nameRegex.FindStringSubmatch(nameProp.Description)
+		if len(matches) == 2 {
+			match = matches[1]
+			break
+		}
+	}
+
+	if match == "" {
+		return "", errors.New("name pattern not found in property description")
+	}
+
+	parts := strings.Split(match, "/")
+	if len(parts) == 0 || len(parts)%2 == 1 {
+		return "", errors.Errorf("pattern of %d parts in description is not supported", len(parts))
+	}
+
+	var res []string
+	for i := 0; i < len(parts)-2; i+=2 {
+		part := parts[i]
+		val := apiParamNameToSdkName(part + "Id")
+		if _, ok := inputProperties[val]; ok {
+			res = append(res, fmt.Sprintf("%s/{%s}", part, val))
+		} else {
+			return "", errors.Errorf("unknown property %q in description", val)
+		}
+	}
+	res = append(res, fmt.Sprintf("%s/{name}", parts[len(parts)-2]))
+
+	return strings.Join(res, "/"), nil
 }
 
 // ToLowerCamel converts a string to lowerCamelCase.

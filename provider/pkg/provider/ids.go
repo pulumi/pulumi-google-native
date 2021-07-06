@@ -6,6 +6,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"net/url"
 	"strings"
 )
@@ -106,4 +107,31 @@ func buildUrl(uriTemplate string, params []resources.CloudAPIResourceParam, inpu
 	}
 	uri.RawQuery = query.Encode()
 	return uri.String(), nil
+}
+
+// getDefaultName generates a random name for a resource based on its URN name, a given pattern,
+// and other properties.
+func getDefaultName(urn resource.URN, pattern string,
+	olds, news resource.PropertyMap) resource.PropertyValue {
+	if v, ok := olds[resource.PropertyKey("name")]; ok {
+		return v
+	}
+
+	name := urn.Name().String()
+
+	// Resource name is URN name + "-" + random suffix.
+	random, err := resource.NewUniqueHex(name+"-", 7, 0)
+	contract.AssertNoError(err)
+
+	result := strings.Replace(pattern, "{name}", random, 1)
+	for key, value := range news {
+		if !value.HasValue() || !value.IsString() {
+			continue
+		}
+
+		part := fmt.Sprintf("{%s}", string(key))
+		result = strings.Replace(result, part, value.StringValue(), 1)
+	}
+
+	return resource.NewStringProperty(result)
 }

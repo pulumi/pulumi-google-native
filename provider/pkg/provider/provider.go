@@ -187,9 +187,37 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	logging.V(9).Infof("%s executing", label)
 
 	// Deserialize RPC inputs.
-	newResInputs := req.GetNews()
+	olds, err := plugin.UnmarshalProperties(req.GetOlds(), plugin.MarshalOptions{
+		Label: fmt.Sprintf("%s.olds", label), SkipNulls: true,
+	})
+	if err != nil {
+		return nil, err
+	}
+	news, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
+		Label: fmt.Sprintf("%s.news", label), KeepUnknowns: true, SkipNulls: true,
+	})
+	if err != nil {
+		return nil, err
+	}
 
-	return &rpc.CheckResponse{Inputs: newResInputs}, nil
+	resourceKey := string(urn.Type())
+	res, ok := p.resourceMap.Resources[resourceKey]
+	if !ok {
+		return nil, errors.Errorf("resource %q not found", resourceKey)
+	}
+
+	key := resource.PropertyKey("name")
+	if res.AutoNamePattern != "" && !news.HasValue(key) {
+		news[key] = getDefaultName(urn, res.AutoNamePattern, olds, news)
+	}
+
+	resInputs, err := plugin.MarshalProperties(news, plugin.MarshalOptions{
+		Label: fmt.Sprintf("%s.resInputs", label), KeepUnknowns: true})
+	if err != nil {
+		return nil, err
+	}
+
+	return &rpc.CheckResponse{Inputs: resInputs}, nil
 }
 
 func (p *googleCloudProvider) GetSchema(_ context.Context, req *rpc.GetSchemaRequest) (*rpc.GetSchemaResponse, error) {
