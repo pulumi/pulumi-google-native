@@ -3,18 +3,19 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-New features:
+Enhancements:
 
 - Populate fingerprint properties automatically
   [#126](https://github.com/pulumi/pulumi-google-native/issues/126)
-
-Bug fixes:
 
 - Fix the representation of properties marked as `[Output only]`
   [#134](https://github.com/pulumi/pulumi-google-native/issues/134),
   [#135](https://github.com/pulumi/pulumi-google-native/issues/135)
 - Normalize property naming to lowerCamelCase
   [#146](https://github.com/pulumi/pulumi-google-native/pull/146)
+
+- Mark a property as required if description starts with `Required`
+  [#145](https://github.com/pulumi/pulumi-google-native/pull/145)
 
 ---
 
