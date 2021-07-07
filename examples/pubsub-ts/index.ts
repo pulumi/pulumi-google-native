@@ -18,12 +18,14 @@ const randomString = new random.RandomString("name", {
 const topic = new google.pubsub.v1.Topic("topic", {
     project,
     topicId: randomString.result,
+    name: randomString.result,
 });
 
 const sub = new google.pubsub.v1.Subscription("sub", {
     project,
     topic: topic.name,
     subscriptionId: randomString.result,
+    name: randomString.result,
 });
 
 const schema = new google.pubsub.v1.Schema("schema", {
