@@ -23,9 +23,9 @@ type LookupDomainMappingArgs struct {
 }
 
 type LookupDomainMappingResult struct {
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name string `pulumi:"name"`
-	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
 	ResourceRecords []ResourceRecordResponse `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings SslSettingsResponse `pulumi:"sslSettings"`

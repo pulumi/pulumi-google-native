@@ -3022,7 +3022,7 @@ class JobConfigurationResponse(dict):
         :param bool dry_run: [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
         :param 'JobConfigurationExtractResponse' extract: [Pick one] Configures an extract job.
         :param str job_timeout_ms: [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-        :param str job_type: [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
+        :param str job_type: The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
         :param Mapping[str, str] labels: The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
         :param 'JobConfigurationLoadResponse' load: [Pick one] Configures a load job.
         :param 'JobConfigurationQueryResponse' query: [Pick one] Configures a query job.
@@ -3072,7 +3072,7 @@ class JobConfigurationResponse(dict):
     @pulumi.getter(name="jobType")
     def job_type(self) -> str:
         """
-        [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
+        The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
         """
         return pulumi.get(self, "job_type")
 
@@ -3307,8 +3307,8 @@ class JobStatistics2ReservationUsageItemResponse(dict):
                  name: str,
                  slot_ms: str):
         """
-        :param str name: [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-        :param str slot_ms: [Output-only] Slot-milliseconds the job spent in the given reservation.
+        :param str name: Reservation name or "unreserved" for on-demand resources usage.
+        :param str slot_ms: Slot-milliseconds the job spent in the given reservation.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "slot_ms", slot_ms)
@@ -3317,7 +3317,7 @@ class JobStatistics2ReservationUsageItemResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+        Reservation name or "unreserved" for on-demand resources usage.
         """
         return pulumi.get(self, "name")
 
@@ -3325,7 +3325,7 @@ class JobStatistics2ReservationUsageItemResponse(dict):
     @pulumi.getter(name="slotMs")
     def slot_ms(self) -> str:
         """
-        [Output-only] Slot-milliseconds the job spent in the given reservation.
+        Slot-milliseconds the job spent in the given reservation.
         """
         return pulumi.get(self, "slot_ms")
 
@@ -3417,29 +3417,29 @@ class JobStatistics2Response(dict):
                  total_slot_ms: str,
                  undeclared_query_parameters: Sequence['outputs.QueryParameterResponse']):
         """
-        :param int billing_tier: [Output-only] Billing tier for the job.
-        :param bool cache_hit: [Output-only] Whether the query result was fetched from the query cache.
-        :param str ddl_affected_row_access_policy_count: [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+        :param int billing_tier: Billing tier for the job.
+        :param bool cache_hit: Whether the query result was fetched from the query cache.
+        :param str ddl_affected_row_access_policy_count: [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
         :param str ddl_operation_performed: The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-        :param 'DatasetReferenceResponse' ddl_target_dataset: [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+        :param 'DatasetReferenceResponse' ddl_target_dataset: The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
         :param 'RoutineReferenceResponse' ddl_target_routine: The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-        :param 'RowAccessPolicyReferenceResponse' ddl_target_row_access_policy: [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
-        :param 'TableReferenceResponse' ddl_target_table: [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
-        :param str estimated_bytes_processed: [Output-only] The original estimate of bytes processed for the job.
+        :param 'RowAccessPolicyReferenceResponse' ddl_target_row_access_policy: [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+        :param 'TableReferenceResponse' ddl_target_table: The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+        :param str estimated_bytes_processed: The original estimate of bytes processed for the job.
         :param 'BigQueryModelTrainingResponse' model_training: [Output-only, Beta] Information about create model query job progress.
-        :param str num_dml_affected_rows: [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
-        :param Sequence['ExplainQueryStageResponse'] query_plan: [Output-only] Describes execution plan for the query.
-        :param Sequence['RoutineReferenceResponse'] referenced_routines: [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
-        :param Sequence['TableReferenceResponse'] referenced_tables: [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-        :param Sequence['JobStatistics2ReservationUsageItemResponse'] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
-        :param 'TableSchemaResponse' schema: [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+        :param str num_dml_affected_rows: The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+        :param Sequence['ExplainQueryStageResponse'] query_plan: Describes execution plan for the query.
+        :param Sequence['RoutineReferenceResponse'] referenced_routines: Referenced routines (persistent user-defined functions and stored procedures) for the job.
+        :param Sequence['TableReferenceResponse'] referenced_tables: Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+        :param Sequence['JobStatistics2ReservationUsageItemResponse'] reservation_usage: Job resource usage breakdown by reservation.
+        :param 'TableSchemaResponse' schema: The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         :param str statement_type: The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
-        :param Sequence['QueryTimelineSampleResponse'] timeline: [Output-only] [Beta] Describes a timeline of job execution.
-        :param str total_bytes_billed: [Output-only] Total bytes billed for the job.
-        :param str total_bytes_processed: [Output-only] Total bytes processed for the job.
-        :param str total_bytes_processed_accuracy: [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
-        :param str total_partitions_processed: [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
-        :param str total_slot_ms: [Output-only] Slot-milliseconds for the job.
+        :param Sequence['QueryTimelineSampleResponse'] timeline: [Beta] Describes a timeline of job execution.
+        :param str total_bytes_billed: Total bytes billed for the job.
+        :param str total_bytes_processed: Total bytes processed for the job.
+        :param str total_bytes_processed_accuracy: For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+        :param str total_partitions_processed: Total number of partitions processed from all partitioned tables referenced in the job.
+        :param str total_slot_ms: Slot-milliseconds for the job.
         :param Sequence['QueryParameterResponse'] undeclared_query_parameters: Standard SQL only: list of undeclared query parameters detected during a dry run validation.
         """
         pulumi.set(__self__, "billing_tier", billing_tier)
@@ -3471,7 +3471,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="billingTier")
     def billing_tier(self) -> int:
         """
-        [Output-only] Billing tier for the job.
+        Billing tier for the job.
         """
         return pulumi.get(self, "billing_tier")
 
@@ -3479,7 +3479,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="cacheHit")
     def cache_hit(self) -> bool:
         """
-        [Output-only] Whether the query result was fetched from the query cache.
+        Whether the query result was fetched from the query cache.
         """
         return pulumi.get(self, "cache_hit")
 
@@ -3487,7 +3487,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlAffectedRowAccessPolicyCount")
     def ddl_affected_row_access_policy_count(self) -> str:
         """
-        [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+        [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
         """
         return pulumi.get(self, "ddl_affected_row_access_policy_count")
 
@@ -3503,7 +3503,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlTargetDataset")
     def ddl_target_dataset(self) -> 'outputs.DatasetReferenceResponse':
         """
-        [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+        The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
         """
         return pulumi.get(self, "ddl_target_dataset")
 
@@ -3519,7 +3519,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlTargetRowAccessPolicy")
     def ddl_target_row_access_policy(self) -> 'outputs.RowAccessPolicyReferenceResponse':
         """
-        [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+        [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
         """
         return pulumi.get(self, "ddl_target_row_access_policy")
 
@@ -3527,7 +3527,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlTargetTable")
     def ddl_target_table(self) -> 'outputs.TableReferenceResponse':
         """
-        [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+        The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
         """
         return pulumi.get(self, "ddl_target_table")
 
@@ -3535,7 +3535,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="estimatedBytesProcessed")
     def estimated_bytes_processed(self) -> str:
         """
-        [Output-only] The original estimate of bytes processed for the job.
+        The original estimate of bytes processed for the job.
         """
         return pulumi.get(self, "estimated_bytes_processed")
 
@@ -3551,7 +3551,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="numDmlAffectedRows")
     def num_dml_affected_rows(self) -> str:
         """
-        [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+        The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
         """
         return pulumi.get(self, "num_dml_affected_rows")
 
@@ -3559,7 +3559,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="queryPlan")
     def query_plan(self) -> Sequence['outputs.ExplainQueryStageResponse']:
         """
-        [Output-only] Describes execution plan for the query.
+        Describes execution plan for the query.
         """
         return pulumi.get(self, "query_plan")
 
@@ -3567,7 +3567,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="referencedRoutines")
     def referenced_routines(self) -> Sequence['outputs.RoutineReferenceResponse']:
         """
-        [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+        Referenced routines (persistent user-defined functions and stored procedures) for the job.
         """
         return pulumi.get(self, "referenced_routines")
 
@@ -3575,7 +3575,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="referencedTables")
     def referenced_tables(self) -> Sequence['outputs.TableReferenceResponse']:
         """
-        [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+        Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
         """
         return pulumi.get(self, "referenced_tables")
 
@@ -3583,7 +3583,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="reservationUsage")
     def reservation_usage(self) -> Sequence['outputs.JobStatistics2ReservationUsageItemResponse']:
         """
-        [Output-only] Job resource usage breakdown by reservation.
+        Job resource usage breakdown by reservation.
         """
         return pulumi.get(self, "reservation_usage")
 
@@ -3591,7 +3591,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter
     def schema(self) -> 'outputs.TableSchemaResponse':
         """
-        [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+        The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         """
         return pulumi.get(self, "schema")
 
@@ -3607,7 +3607,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter
     def timeline(self) -> Sequence['outputs.QueryTimelineSampleResponse']:
         """
-        [Output-only] [Beta] Describes a timeline of job execution.
+        [Beta] Describes a timeline of job execution.
         """
         return pulumi.get(self, "timeline")
 
@@ -3615,7 +3615,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalBytesBilled")
     def total_bytes_billed(self) -> str:
         """
-        [Output-only] Total bytes billed for the job.
+        Total bytes billed for the job.
         """
         return pulumi.get(self, "total_bytes_billed")
 
@@ -3623,7 +3623,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalBytesProcessed")
     def total_bytes_processed(self) -> str:
         """
-        [Output-only] Total bytes processed for the job.
+        Total bytes processed for the job.
         """
         return pulumi.get(self, "total_bytes_processed")
 
@@ -3631,7 +3631,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalBytesProcessedAccuracy")
     def total_bytes_processed_accuracy(self) -> str:
         """
-        [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+        For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
         """
         return pulumi.get(self, "total_bytes_processed_accuracy")
 
@@ -3639,7 +3639,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalPartitionsProcessed")
     def total_partitions_processed(self) -> str:
         """
-        [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
+        Total number of partitions processed from all partitioned tables referenced in the job.
         """
         return pulumi.get(self, "total_partitions_processed")
 
@@ -3647,7 +3647,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalSlotMs")
     def total_slot_ms(self) -> str:
         """
-        [Output-only] Slot-milliseconds for the job.
+        Slot-milliseconds for the job.
         """
         return pulumi.get(self, "total_slot_ms")
 
@@ -3694,11 +3694,11 @@ class JobStatistics3Response(dict):
                  output_bytes: str,
                  output_rows: str):
         """
-        :param str bad_records: [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
-        :param str input_file_bytes: [Output-only] Number of bytes of source data in a load job.
-        :param str input_files: [Output-only] Number of source files in a load job.
-        :param str output_bytes: [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
-        :param str output_rows: [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
+        :param str bad_records: The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
+        :param str input_file_bytes: Number of bytes of source data in a load job.
+        :param str input_files: Number of source files in a load job.
+        :param str output_bytes: Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
+        :param str output_rows: Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
         """
         pulumi.set(__self__, "bad_records", bad_records)
         pulumi.set(__self__, "input_file_bytes", input_file_bytes)
@@ -3710,7 +3710,7 @@ class JobStatistics3Response(dict):
     @pulumi.getter(name="badRecords")
     def bad_records(self) -> str:
         """
-        [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
+        The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
         """
         return pulumi.get(self, "bad_records")
 
@@ -3718,7 +3718,7 @@ class JobStatistics3Response(dict):
     @pulumi.getter(name="inputFileBytes")
     def input_file_bytes(self) -> str:
         """
-        [Output-only] Number of bytes of source data in a load job.
+        Number of bytes of source data in a load job.
         """
         return pulumi.get(self, "input_file_bytes")
 
@@ -3726,7 +3726,7 @@ class JobStatistics3Response(dict):
     @pulumi.getter(name="inputFiles")
     def input_files(self) -> str:
         """
-        [Output-only] Number of source files in a load job.
+        Number of source files in a load job.
         """
         return pulumi.get(self, "input_files")
 
@@ -3734,7 +3734,7 @@ class JobStatistics3Response(dict):
     @pulumi.getter(name="outputBytes")
     def output_bytes(self) -> str:
         """
-        [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
+        Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
         """
         return pulumi.get(self, "output_bytes")
 
@@ -3742,7 +3742,7 @@ class JobStatistics3Response(dict):
     @pulumi.getter(name="outputRows")
     def output_rows(self) -> str:
         """
-        [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
+        Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
         """
         return pulumi.get(self, "output_rows")
 
@@ -3772,8 +3772,8 @@ class JobStatistics4Response(dict):
                  destination_uri_file_counts: Sequence[str],
                  input_bytes: str):
         """
-        :param Sequence[str] destination_uri_file_counts: [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
-        :param str input_bytes: [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
+        :param Sequence[str] destination_uri_file_counts: Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
+        :param str input_bytes: Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
         """
         pulumi.set(__self__, "destination_uri_file_counts", destination_uri_file_counts)
         pulumi.set(__self__, "input_bytes", input_bytes)
@@ -3782,7 +3782,7 @@ class JobStatistics4Response(dict):
     @pulumi.getter(name="destinationUriFileCounts")
     def destination_uri_file_counts(self) -> Sequence[str]:
         """
-        [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
+        Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
         """
         return pulumi.get(self, "destination_uri_file_counts")
 
@@ -3790,7 +3790,7 @@ class JobStatistics4Response(dict):
     @pulumi.getter(name="inputBytes")
     def input_bytes(self) -> str:
         """
-        [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
+        Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
         """
         return pulumi.get(self, "input_bytes")
 
@@ -3818,8 +3818,8 @@ class JobStatisticsReservationUsageItemResponse(dict):
                  name: str,
                  slot_ms: str):
         """
-        :param str name: [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-        :param str slot_ms: [Output-only] Slot-milliseconds the job spent in the given reservation.
+        :param str name: Reservation name or "unreserved" for on-demand resources usage.
+        :param str slot_ms: Slot-milliseconds the job spent in the given reservation.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "slot_ms", slot_ms)
@@ -3828,7 +3828,7 @@ class JobStatisticsReservationUsageItemResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+        Reservation name or "unreserved" for on-demand resources usage.
         """
         return pulumi.get(self, "name")
 
@@ -3836,7 +3836,7 @@ class JobStatisticsReservationUsageItemResponse(dict):
     @pulumi.getter(name="slotMs")
     def slot_ms(self) -> str:
         """
-        [Output-only] Slot-milliseconds the job spent in the given reservation.
+        Slot-milliseconds the job spent in the given reservation.
         """
         return pulumi.get(self, "slot_ms")
 
@@ -3904,22 +3904,22 @@ class JobStatisticsResponse(dict):
                  transaction_info_template: 'outputs.TransactionInfoResponse'):
         """
         :param float completion_ratio: [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
-        :param str creation_time: [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
-        :param str end_time: [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
-        :param 'JobStatistics4Response' extract: [Output-only] Statistics for an extract job.
-        :param 'JobStatistics3Response' load: [Output-only] Statistics for a load job.
-        :param str num_child_jobs: [Output-only] Number of child jobs executed.
-        :param str parent_job_id: [Output-only] If this is a child job, the id of the parent.
-        :param 'JobStatistics2Response' query: [Output-only] Statistics for a query job.
-        :param Sequence[str] quota_deferments: [Output-only] Quotas which delayed this job's start time.
-        :param Sequence['JobStatisticsReservationUsageItemResponse'] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
-        :param str reservation_id: [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-        :param 'RowLevelSecurityStatisticsResponse' row_level_security_statistics: [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
-        :param 'ScriptStatisticsResponse' script_statistics: [Output-only] Statistics for a child job of a script.
-        :param 'SessionInfoResponse' session_info_template: [Output-only] [Preview] Information of the session if this job is part of one.
-        :param str start_time: [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-        :param str total_slot_ms: [Output-only] Slot-milliseconds for the job.
-        :param 'TransactionInfoResponse' transaction_info_template: [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+        :param str creation_time: Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
+        :param str end_time: End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
+        :param 'JobStatistics4Response' extract: Statistics for an extract job.
+        :param 'JobStatistics3Response' load: Statistics for a load job.
+        :param str num_child_jobs: Number of child jobs executed.
+        :param str parent_job_id: If this is a child job, the id of the parent.
+        :param 'JobStatistics2Response' query: Statistics for a query job.
+        :param Sequence[str] quota_deferments: Quotas which delayed this job's start time.
+        :param Sequence['JobStatisticsReservationUsageItemResponse'] reservation_usage: Job resource usage breakdown by reservation.
+        :param str reservation_id: Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+        :param 'RowLevelSecurityStatisticsResponse' row_level_security_statistics: [Preview] Statistics for row-level security. Present only for query and extract jobs.
+        :param 'ScriptStatisticsResponse' script_statistics: Statistics for a child job of a script.
+        :param 'SessionInfoResponse' session_info_template: [Preview] Information of the session if this job is part of one.
+        :param str start_time: Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
+        :param str total_slot_ms: Slot-milliseconds for the job.
+        :param 'TransactionInfoResponse' transaction_info_template: [Alpha] Information of the multi-statement transaction if this job is part of one.
         """
         pulumi.set(__self__, "completion_ratio", completion_ratio)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -3951,7 +3951,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
         """
-        [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
+        Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
         """
         return pulumi.get(self, "creation_time")
 
@@ -3959,7 +3959,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> str:
         """
-        [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
+        End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
         """
         return pulumi.get(self, "end_time")
 
@@ -3967,7 +3967,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter
     def extract(self) -> 'outputs.JobStatistics4Response':
         """
-        [Output-only] Statistics for an extract job.
+        Statistics for an extract job.
         """
         return pulumi.get(self, "extract")
 
@@ -3975,7 +3975,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter
     def load(self) -> 'outputs.JobStatistics3Response':
         """
-        [Output-only] Statistics for a load job.
+        Statistics for a load job.
         """
         return pulumi.get(self, "load")
 
@@ -3983,7 +3983,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="numChildJobs")
     def num_child_jobs(self) -> str:
         """
-        [Output-only] Number of child jobs executed.
+        Number of child jobs executed.
         """
         return pulumi.get(self, "num_child_jobs")
 
@@ -3991,7 +3991,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="parentJobId")
     def parent_job_id(self) -> str:
         """
-        [Output-only] If this is a child job, the id of the parent.
+        If this is a child job, the id of the parent.
         """
         return pulumi.get(self, "parent_job_id")
 
@@ -3999,7 +3999,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter
     def query(self) -> 'outputs.JobStatistics2Response':
         """
-        [Output-only] Statistics for a query job.
+        Statistics for a query job.
         """
         return pulumi.get(self, "query")
 
@@ -4007,7 +4007,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="quotaDeferments")
     def quota_deferments(self) -> Sequence[str]:
         """
-        [Output-only] Quotas which delayed this job's start time.
+        Quotas which delayed this job's start time.
         """
         return pulumi.get(self, "quota_deferments")
 
@@ -4015,7 +4015,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="reservationUsage")
     def reservation_usage(self) -> Sequence['outputs.JobStatisticsReservationUsageItemResponse']:
         """
-        [Output-only] Job resource usage breakdown by reservation.
+        Job resource usage breakdown by reservation.
         """
         return pulumi.get(self, "reservation_usage")
 
@@ -4023,7 +4023,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter
     def reservation_id(self) -> str:
         """
-        [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+        Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
         """
         return pulumi.get(self, "reservation_id")
 
@@ -4031,7 +4031,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="rowLevelSecurityStatistics")
     def row_level_security_statistics(self) -> 'outputs.RowLevelSecurityStatisticsResponse':
         """
-        [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
+        [Preview] Statistics for row-level security. Present only for query and extract jobs.
         """
         return pulumi.get(self, "row_level_security_statistics")
 
@@ -4039,7 +4039,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="scriptStatistics")
     def script_statistics(self) -> 'outputs.ScriptStatisticsResponse':
         """
-        [Output-only] Statistics for a child job of a script.
+        Statistics for a child job of a script.
         """
         return pulumi.get(self, "script_statistics")
 
@@ -4047,7 +4047,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="sessionInfoTemplate")
     def session_info_template(self) -> 'outputs.SessionInfoResponse':
         """
-        [Output-only] [Preview] Information of the session if this job is part of one.
+        [Preview] Information of the session if this job is part of one.
         """
         return pulumi.get(self, "session_info_template")
 
@@ -4055,7 +4055,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         """
-        [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
+        Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
         """
         return pulumi.get(self, "start_time")
 
@@ -4063,7 +4063,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="totalSlotMs")
     def total_slot_ms(self) -> str:
         """
-        [Output-only] Slot-milliseconds for the job.
+        Slot-milliseconds for the job.
         """
         return pulumi.get(self, "total_slot_ms")
 
@@ -4071,7 +4071,7 @@ class JobStatisticsResponse(dict):
     @pulumi.getter(name="transactionInfoTemplate")
     def transaction_info_template(self) -> 'outputs.TransactionInfoResponse':
         """
-        [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+        [Alpha] Information of the multi-statement transaction if this job is part of one.
         """
         return pulumi.get(self, "transaction_info_template")
 
@@ -4100,9 +4100,9 @@ class JobStatusResponse(dict):
                  errors: Sequence['outputs.ErrorProtoResponse'],
                  state: str):
         """
-        :param 'ErrorProtoResponse' error_result: [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-        :param Sequence['ErrorProtoResponse'] errors: [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
-        :param str state: [Output-only] Running state of the job.
+        :param 'ErrorProtoResponse' error_result: Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+        :param Sequence['ErrorProtoResponse'] errors: The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
+        :param str state: Running state of the job.
         """
         pulumi.set(__self__, "error_result", error_result)
         pulumi.set(__self__, "errors", errors)
@@ -4112,7 +4112,7 @@ class JobStatusResponse(dict):
     @pulumi.getter(name="errorResult")
     def error_result(self) -> 'outputs.ErrorProtoResponse':
         """
-        [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+        Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
         """
         return pulumi.get(self, "error_result")
 
@@ -4120,7 +4120,7 @@ class JobStatusResponse(dict):
     @pulumi.getter
     def errors(self) -> Sequence['outputs.ErrorProtoResponse']:
         """
-        [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
+        The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
         """
         return pulumi.get(self, "errors")
 
@@ -4128,7 +4128,7 @@ class JobStatusResponse(dict):
     @pulumi.getter
     def state(self) -> str:
         """
-        [Output-only] Running state of the job.
+        Running state of the job.
         """
         return pulumi.get(self, "state")
 
@@ -4163,7 +4163,7 @@ class MaterializedViewDefinitionResponse(dict):
                  refresh_interval_ms: str):
         """
         :param bool enable_refresh: [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
-        :param str last_refresh_time: [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+        :param str last_refresh_time: [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
         :param str query: [Required] A query whose result is persisted.
         :param str refresh_interval_ms: [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
         """
@@ -4184,7 +4184,7 @@ class MaterializedViewDefinitionResponse(dict):
     @pulumi.getter(name="lastRefreshTime")
     def last_refresh_time(self) -> str:
         """
-        [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+        [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
         """
         return pulumi.get(self, "last_refresh_time")
 
@@ -4941,7 +4941,7 @@ class RowLevelSecurityStatisticsResponse(dict):
     def __init__(__self__, *,
                  row_level_security_applied: bool):
         """
-        :param bool row_level_security_applied: [Output-only] [Preview] Whether any accessed data was protected by row access policies.
+        :param bool row_level_security_applied: [Preview] Whether any accessed data was protected by row access policies.
         """
         pulumi.set(__self__, "row_level_security_applied", row_level_security_applied)
 
@@ -4949,7 +4949,7 @@ class RowLevelSecurityStatisticsResponse(dict):
     @pulumi.getter(name="rowLevelSecurityApplied")
     def row_level_security_applied(self) -> bool:
         """
-        [Output-only] [Preview] Whether any accessed data was protected by row access policies.
+        [Preview] Whether any accessed data was protected by row access policies.
         """
         return pulumi.get(self, "row_level_security_applied")
 
@@ -4989,12 +4989,12 @@ class ScriptStackFrameResponse(dict):
                  start_line: int,
                  text: str):
         """
-        :param int end_column: [Output-only] One-based end column.
-        :param int end_line: [Output-only] One-based end line.
-        :param str procedure_id: [Output-only] Name of the active procedure, empty if in a top-level script.
-        :param int start_column: [Output-only] One-based start column.
-        :param int start_line: [Output-only] One-based start line.
-        :param str text: [Output-only] Text of the current statement/expression.
+        :param int end_column: One-based end column.
+        :param int end_line: One-based end line.
+        :param str procedure_id: Name of the active procedure, empty if in a top-level script.
+        :param int start_column: One-based start column.
+        :param int start_line: One-based start line.
+        :param str text: Text of the current statement/expression.
         """
         pulumi.set(__self__, "end_column", end_column)
         pulumi.set(__self__, "end_line", end_line)
@@ -5007,7 +5007,7 @@ class ScriptStackFrameResponse(dict):
     @pulumi.getter(name="endColumn")
     def end_column(self) -> int:
         """
-        [Output-only] One-based end column.
+        One-based end column.
         """
         return pulumi.get(self, "end_column")
 
@@ -5015,7 +5015,7 @@ class ScriptStackFrameResponse(dict):
     @pulumi.getter(name="endLine")
     def end_line(self) -> int:
         """
-        [Output-only] One-based end line.
+        One-based end line.
         """
         return pulumi.get(self, "end_line")
 
@@ -5023,7 +5023,7 @@ class ScriptStackFrameResponse(dict):
     @pulumi.getter(name="procedureId")
     def procedure_id(self) -> str:
         """
-        [Output-only] Name of the active procedure, empty if in a top-level script.
+        Name of the active procedure, empty if in a top-level script.
         """
         return pulumi.get(self, "procedure_id")
 
@@ -5031,7 +5031,7 @@ class ScriptStackFrameResponse(dict):
     @pulumi.getter(name="startColumn")
     def start_column(self) -> int:
         """
-        [Output-only] One-based start column.
+        One-based start column.
         """
         return pulumi.get(self, "start_column")
 
@@ -5039,7 +5039,7 @@ class ScriptStackFrameResponse(dict):
     @pulumi.getter(name="startLine")
     def start_line(self) -> int:
         """
-        [Output-only] One-based start line.
+        One-based start line.
         """
         return pulumi.get(self, "start_line")
 
@@ -5047,7 +5047,7 @@ class ScriptStackFrameResponse(dict):
     @pulumi.getter
     def text(self) -> str:
         """
-        [Output-only] Text of the current statement/expression.
+        Text of the current statement/expression.
         """
         return pulumi.get(self, "text")
 
@@ -5077,7 +5077,7 @@ class ScriptStatisticsResponse(dict):
                  evaluation_kind: str,
                  stack_frames: Sequence['outputs.ScriptStackFrameResponse']):
         """
-        :param str evaluation_kind: [Output-only] Whether this child job was a statement or expression.
+        :param str evaluation_kind: Whether this child job was a statement or expression.
         :param Sequence['ScriptStackFrameResponse'] stack_frames: Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
         """
         pulumi.set(__self__, "evaluation_kind", evaluation_kind)
@@ -5087,7 +5087,7 @@ class ScriptStatisticsResponse(dict):
     @pulumi.getter(name="evaluationKind")
     def evaluation_kind(self) -> str:
         """
-        [Output-only] Whether this child job was a statement or expression.
+        Whether this child job was a statement or expression.
         """
         return pulumi.get(self, "evaluation_kind")
 
@@ -5122,7 +5122,7 @@ class SessionInfoResponse(dict):
     def __init__(__self__, *,
                  session_id: str):
         """
-        :param str session_id: [Output-only] // [Preview] Id of the session.
+        :param str session_id: // [Preview] Id of the session.
         """
         pulumi.set(__self__, "session_id", session_id)
 
@@ -5130,7 +5130,7 @@ class SessionInfoResponse(dict):
     @pulumi.getter(name="sessionId")
     def session_id(self) -> str:
         """
-        [Output-only] // [Preview] Id of the session.
+        // [Preview] Id of the session.
         """
         return pulumi.get(self, "session_id")
 
@@ -5343,9 +5343,9 @@ class StreamingbufferResponse(dict):
                  estimated_rows: str,
                  oldest_entry_time: str):
         """
-        :param str estimated_bytes: [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
-        :param str estimated_rows: [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
-        :param str oldest_entry_time: [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+        :param str estimated_bytes: A lower-bound estimate of the number of bytes currently in the streaming buffer.
+        :param str estimated_rows: A lower-bound estimate of the number of rows currently in the streaming buffer.
+        :param str oldest_entry_time: Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
         """
         pulumi.set(__self__, "estimated_bytes", estimated_bytes)
         pulumi.set(__self__, "estimated_rows", estimated_rows)
@@ -5355,7 +5355,7 @@ class StreamingbufferResponse(dict):
     @pulumi.getter(name="estimatedBytes")
     def estimated_bytes(self) -> str:
         """
-        [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
+        A lower-bound estimate of the number of bytes currently in the streaming buffer.
         """
         return pulumi.get(self, "estimated_bytes")
 
@@ -5363,7 +5363,7 @@ class StreamingbufferResponse(dict):
     @pulumi.getter(name="estimatedRows")
     def estimated_rows(self) -> str:
         """
-        [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
+        A lower-bound estimate of the number of rows currently in the streaming buffer.
         """
         return pulumi.get(self, "estimated_rows")
 
@@ -5371,7 +5371,7 @@ class StreamingbufferResponse(dict):
     @pulumi.getter(name="oldestEntryTime")
     def oldest_entry_time(self) -> str:
         """
-        [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+        Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
         """
         return pulumi.get(self, "oldest_entry_time")
 
@@ -5713,7 +5713,7 @@ class TransactionInfoResponse(dict):
     def __init__(__self__, *,
                  transaction_id: str):
         """
-        :param str transaction_id: [Output-only] // [Alpha] Id of the transaction.
+        :param str transaction_id: // [Alpha] Id of the transaction.
         """
         pulumi.set(__self__, "transaction_id", transaction_id)
 
@@ -5721,7 +5721,7 @@ class TransactionInfoResponse(dict):
     @pulumi.getter(name="transactionId")
     def transaction_id(self) -> str:
         """
-        [Output-only] // [Alpha] Id of the transaction.
+        // [Alpha] Id of the transaction.
         """
         return pulumi.get(self, "transaction_id")
 

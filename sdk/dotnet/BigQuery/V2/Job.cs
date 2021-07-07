@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.JobConfigurationResponse> Configuration { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] A hash of this resource.
+        /// A hash of this resource.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -34,31 +34,31 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.JobReferenceResponse> JobReference { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The type of the resource.
+        /// The type of the resource.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] A URL that can be used to access this resource again.
+        /// A URL that can be used to access this resource again.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] Information about the job, including starting time and ending time of the job.
+        /// Information about the job, including starting time and ending time of the job.
         /// </summary>
         [Output("statistics")]
         public Output<Outputs.JobStatisticsResponse> Statistics { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        /// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
         /// </summary>
         [Output("status")]
         public Output<Outputs.JobStatusResponse> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only] Email address of the user who ran the job.
+        /// Email address of the user who ran the job.
         /// </summary>
         [Output("user_email")]
         public Output<string> User_email { get; private set; } = null!;
@@ -115,55 +115,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Input<Inputs.JobConfigurationArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// [Output-only] A hash of this resource.
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
-
-        /// <summary>
-        /// [Output-only] Opaque ID field of the job
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// [Optional] Reference describing the unique-per-user name of the job.
         /// </summary>
         [Input("jobReference")]
         public Input<Inputs.JobReferenceArgs>? JobReference { get; set; }
 
-        /// <summary>
-        /// [Output-only] The type of the resource.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// [Output-only] A URL that can be used to access this resource again.
-        /// </summary>
-        [Input("selfLink")]
-        public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// [Output-only] Information about the job, including starting time and ending time of the job.
-        /// </summary>
-        [Input("statistics")]
-        public Input<Inputs.JobStatisticsArgs>? Statistics { get; set; }
-
-        /// <summary>
-        /// [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
-        /// </summary>
-        [Input("status")]
-        public Input<Inputs.JobStatusArgs>? Status { get; set; }
-
-        /// <summary>
-        /// [Output-only] Email address of the user who ran the job.
-        /// </summary>
-        [Input("user_email")]
-        public Input<string>? User_email { get; set; }
 
         public JobArgs()
         {

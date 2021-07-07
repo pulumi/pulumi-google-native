@@ -33,7 +33,7 @@ export interface GetDatasetResult {
      */
     readonly access: outputs.bigquery.v2.DatasetAccessItemResponse[];
     /**
-     * [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+     * The time when this dataset was created, in milliseconds since the epoch.
      */
     readonly creationTime: string;
     /**
@@ -54,7 +54,7 @@ export interface GetDatasetResult {
      */
     readonly description: string;
     /**
-     * [Output-only] A hash of the resource.
+     * A hash of the resource.
      */
     readonly etag: string;
     /**
@@ -62,7 +62,7 @@ export interface GetDatasetResult {
      */
     readonly friendlyName: string;
     /**
-     * [Output-only] The resource type.
+     * The resource type.
      */
     readonly kind: string;
     /**
@@ -70,7 +70,7 @@ export interface GetDatasetResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+     * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
      */
     readonly lastModifiedTime: string;
     /**
@@ -78,11 +78,11 @@ export interface GetDatasetResult {
      */
     readonly location: string;
     /**
-     * [Output-only] Reserved for future use.
+     * Reserved for future use.
      */
     readonly satisfiesPZS: boolean;
     /**
-     * [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+     * A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
      */
     readonly selfLink: string;
 }

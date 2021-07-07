@@ -46,13 +46,13 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<ImmutableDictionary<string, string>> BuildEnvVariables { get; private set; } = null!;
 
         /// <summary>
-        /// Time that this version was created.@OutputOnly
+        /// Time that this version was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Email address of the user who created this version.@OutputOnly
+        /// Email address of the user who created this version.
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<Outputs.DeploymentResponse> Deployment { get; private set; } = null!;
 
         /// <summary>
-        /// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+        /// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
         /// </summary>
         [Output("diskUsageBytes")]
         public Output<string> DiskUsageBytes { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<Outputs.ManualScalingResponse> ManualScaling { get; private set; } = null!;
 
         /// <summary>
-        /// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+        /// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<bool> Threadsafe { get; private set; } = null!;
 
         /// <summary>
-        /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+        /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
         /// </summary>
         [Output("versionUrl")]
         public Output<string> VersionUrl { get; private set; } = null!;
@@ -328,18 +328,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         }
 
         /// <summary>
-        /// Time that this version was created.@OutputOnly
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Email address of the user who created this version.@OutputOnly
-        /// </summary>
-        [Input("createdBy")]
-        public Input<string>? CreatedBy { get; set; }
-
-        /// <summary>
         /// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
         /// </summary>
         [Input("defaultExpiration")]
@@ -350,12 +338,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         [Input("deployment")]
         public Input<Inputs.DeploymentArgs>? Deployment { get; set; }
-
-        /// <summary>
-        /// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
-        /// </summary>
-        [Input("diskUsageBytes")]
-        public Input<string>? DiskUsageBytes { get; set; }
 
         /// <summary>
         /// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
@@ -466,12 +448,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Input<Inputs.ManualScalingArgs>? ManualScaling { get; set; }
 
         /// <summary>
-        /// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// Extra network settings. Only applicable in the App Engine flexible environment.
         /// </summary>
         [Input("network")]
@@ -539,12 +515,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         [Input("threadsafe")]
         public Input<bool>? Threadsafe { get; set; }
-
-        /// <summary>
-        /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
-        /// </summary>
-        [Input("versionUrl")]
-        public Input<string>? VersionUrl { get; set; }
 
         /// <summary>
         /// Whether to deploy this version in a container on a virtual machine.

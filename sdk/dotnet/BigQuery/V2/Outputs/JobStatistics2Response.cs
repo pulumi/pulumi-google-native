@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class JobStatistics2Response
     {
         /// <summary>
-        /// [Output-only] Billing tier for the job.
+        /// Billing tier for the job.
         /// </summary>
         public readonly int BillingTier;
         /// <summary>
-        /// [Output-only] Whether the query result was fetched from the query cache.
+        /// Whether the query result was fetched from the query cache.
         /// </summary>
         public readonly bool CacheHit;
         /// <summary>
-        /// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+        /// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
         /// </summary>
         public readonly string DdlAffectedRowAccessPolicyCount;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string DdlOperationPerformed;
         /// <summary>
-        /// [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+        /// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
         /// </summary>
         public readonly Outputs.DatasetReferenceResponse DdlTargetDataset;
         /// <summary>
@@ -38,15 +38,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.RoutineReferenceResponse DdlTargetRoutine;
         /// <summary>
-        /// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+        /// [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
         /// </summary>
         public readonly Outputs.RowAccessPolicyReferenceResponse DdlTargetRowAccessPolicy;
         /// <summary>
-        /// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+        /// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
         /// </summary>
         public readonly Outputs.TableReferenceResponse DdlTargetTable;
         /// <summary>
-        /// [Output-only] The original estimate of bytes processed for the job.
+        /// The original estimate of bytes processed for the job.
         /// </summary>
         public readonly string EstimatedBytesProcessed;
         /// <summary>
@@ -54,27 +54,27 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.BigQueryModelTrainingResponse ModelTraining;
         /// <summary>
-        /// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+        /// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
         /// </summary>
         public readonly string NumDmlAffectedRows;
         /// <summary>
-        /// [Output-only] Describes execution plan for the query.
+        /// Describes execution plan for the query.
         /// </summary>
         public readonly ImmutableArray<Outputs.ExplainQueryStageResponse> QueryPlan;
         /// <summary>
-        /// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+        /// Referenced routines (persistent user-defined functions and stored procedures) for the job.
         /// </summary>
         public readonly ImmutableArray<Outputs.RoutineReferenceResponse> ReferencedRoutines;
         /// <summary>
-        /// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+        /// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
         /// </summary>
         public readonly ImmutableArray<Outputs.TableReferenceResponse> ReferencedTables;
         /// <summary>
-        /// [Output-only] Job resource usage breakdown by reservation.
+        /// Job resource usage breakdown by reservation.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobStatistics2ReservationUsageItemResponse> ReservationUsage;
         /// <summary>
-        /// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+        /// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         /// </summary>
         public readonly Outputs.TableSchemaResponse Schema;
         /// <summary>
@@ -82,27 +82,27 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string StatementType;
         /// <summary>
-        /// [Output-only] [Beta] Describes a timeline of job execution.
+        /// [Beta] Describes a timeline of job execution.
         /// </summary>
         public readonly ImmutableArray<Outputs.QueryTimelineSampleResponse> Timeline;
         /// <summary>
-        /// [Output-only] Total bytes billed for the job.
+        /// Total bytes billed for the job.
         /// </summary>
         public readonly string TotalBytesBilled;
         /// <summary>
-        /// [Output-only] Total bytes processed for the job.
+        /// Total bytes processed for the job.
         /// </summary>
         public readonly string TotalBytesProcessed;
         /// <summary>
-        /// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+        /// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
         /// </summary>
         public readonly string TotalBytesProcessedAccuracy;
         /// <summary>
-        /// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
+        /// Total number of partitions processed from all partitioned tables referenced in the job.
         /// </summary>
         public readonly string TotalPartitionsProcessed;
         /// <summary>
-        /// [Output-only] Slot-milliseconds for the job.
+        /// Slot-milliseconds for the job.
         /// </summary>
         public readonly string TotalSlotMs;
         /// <summary>

@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.JobConfigurationResponse Configuration;
         /// <summary>
-        /// [Output-only] A hash of this resource.
+        /// A hash of this resource.
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -52,23 +52,23 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.JobReferenceResponse JobReference;
         /// <summary>
-        /// [Output-only] The type of the resource.
+        /// The type of the resource.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// [Output-only] A URL that can be used to access this resource again.
+        /// A URL that can be used to access this resource again.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output-only] Information about the job, including starting time and ending time of the job.
+        /// Information about the job, including starting time and ending time of the job.
         /// </summary>
         public readonly Outputs.JobStatisticsResponse Statistics;
         /// <summary>
-        /// [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        /// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
         /// </summary>
         public readonly Outputs.JobStatusResponse Status;
         /// <summary>
-        /// [Output-only] Email address of the user who ran the job.
+        /// Email address of the user who ran the job.
         /// </summary>
         public readonly string User_email;
 

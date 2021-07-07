@@ -53,11 +53,11 @@ export interface GetVersionResult {
      */
     readonly buildEnvVariables: {[key: string]: string};
     /**
-     * Time that this version was created.@OutputOnly
+     * Time that this version was created.
      */
     readonly createTime: string;
     /**
-     * Email address of the user who created this version.@OutputOnly
+     * Email address of the user who created this version.
      */
     readonly createdBy: string;
     /**
@@ -69,7 +69,7 @@ export interface GetVersionResult {
      */
     readonly deployment: outputs.appengine.v1.DeploymentResponse;
     /**
-     * Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+     * Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
      */
     readonly diskUsageBytes: string;
     /**
@@ -121,7 +121,7 @@ export interface GetVersionResult {
      */
     readonly manualScaling: outputs.appengine.v1.ManualScalingResponse;
     /**
-     * Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+     * Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
      */
     readonly name: string;
     /**
@@ -169,7 +169,7 @@ export interface GetVersionResult {
      */
     readonly threadsafe: boolean;
     /**
-     * Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+     * Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
      */
     readonly versionUrl: string;
     /**

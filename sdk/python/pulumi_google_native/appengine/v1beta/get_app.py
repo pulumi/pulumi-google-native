@@ -70,7 +70,7 @@ class GetAppResult:
     @pulumi.getter(name="codeBucket")
     def code_bucket(self) -> str:
         """
-        Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+        Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
         """
         return pulumi.get(self, "code_bucket")
 
@@ -86,7 +86,7 @@ class GetAppResult:
     @pulumi.getter(name="defaultBucket")
     def default_bucket(self) -> str:
         """
-        Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+        Google Cloud Storage bucket that can be used by this application to store content.
         """
         return pulumi.get(self, "default_bucket")
 
@@ -102,7 +102,7 @@ class GetAppResult:
     @pulumi.getter(name="defaultHostname")
     def default_hostname(self) -> str:
         """
-        Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+        Hostname used to reach this application, as resolved by App Engine.
         """
         return pulumi.get(self, "default_hostname")
 
@@ -147,7 +147,7 @@ class GetAppResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+        Full path to the Application resource in the API. Example: apps/myapp.
         """
         return pulumi.get(self, "name")
 

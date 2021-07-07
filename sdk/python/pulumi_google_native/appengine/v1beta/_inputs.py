@@ -30,13 +30,11 @@ __all__ = [
     'IdentityAwareProxyArgs',
     'LibraryArgs',
     'LivenessCheckArgs',
-    'ManagedCertificateArgs',
     'ManualScalingArgs',
     'NetworkArgs',
     'NetworkUtilizationArgs',
     'ReadinessCheckArgs',
     'RequestUtilizationArgs',
-    'ResourceRecordArgs',
     'ResourcesArgs',
     'ScriptHandlerArgs',
     'SslSettingsArgs',
@@ -1166,14 +1164,12 @@ class IdentityAwareProxyArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  oauth2_client_id: Optional[pulumi.Input[str]] = None,
-                 oauth2_client_secret: Optional[pulumi.Input[str]] = None,
-                 oauth2_client_secret_sha256: Optional[pulumi.Input[str]] = None):
+                 oauth2_client_secret: Optional[pulumi.Input[str]] = None):
         """
         Identity-Aware Proxy
         :param pulumi.Input[bool] enabled: Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
         :param pulumi.Input[str] oauth2_client_id: OAuth2 client ID to use for the authentication flow.
         :param pulumi.Input[str] oauth2_client_secret: OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
-        :param pulumi.Input[str] oauth2_client_secret_sha256: Hex-encoded SHA-256 hash of the client secret.@OutputOnly
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -1181,8 +1177,6 @@ class IdentityAwareProxyArgs:
             pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
         if oauth2_client_secret is not None:
             pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
-        if oauth2_client_secret_sha256 is not None:
-            pulumi.set(__self__, "oauth2_client_secret_sha256", oauth2_client_secret_sha256)
 
     @property
     @pulumi.getter
@@ -1219,18 +1213,6 @@ class IdentityAwareProxyArgs:
     @oauth2_client_secret.setter
     def oauth2_client_secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oauth2_client_secret", value)
-
-    @property
-    @pulumi.getter(name="oauth2ClientSecretSha256")
-    def oauth2_client_secret_sha256(self) -> Optional[pulumi.Input[str]]:
-        """
-        Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-        """
-        return pulumi.get(self, "oauth2_client_secret_sha256")
-
-    @oauth2_client_secret_sha256.setter
-    def oauth2_client_secret_sha256(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "oauth2_client_secret_sha256", value)
 
 
 @pulumi.input_type
@@ -1391,46 +1373,6 @@ class LivenessCheckArgs:
     @timeout.setter
     def timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timeout", value)
-
-
-@pulumi.input_type
-class ManagedCertificateArgs:
-    def __init__(__self__, *,
-                 last_renewal_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['ManagedCertificateStatus']] = None):
-        """
-        A certificate managed by App Engine.
-        :param pulumi.Input[str] last_renewal_time: Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-        :param pulumi.Input['ManagedCertificateStatus'] status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-        """
-        if last_renewal_time is not None:
-            pulumi.set(__self__, "last_renewal_time", last_renewal_time)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="lastRenewalTime")
-    def last_renewal_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-        """
-        return pulumi.get(self, "last_renewal_time")
-
-    @last_renewal_time.setter
-    def last_renewal_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_renewal_time", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ManagedCertificateStatus']]:
-        """
-        Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['ManagedCertificateStatus']]):
-        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
@@ -1778,62 +1720,6 @@ class RequestUtilizationArgs:
 
 
 @pulumi.input_type
-class ResourceRecordArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 rrdata: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['ResourceRecordType']] = None):
-        """
-        A DNS resource record.
-        :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-        :param pulumi.Input[str] rrdata: Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-        :param pulumi.Input['ResourceRecordType'] type: Resource record type. Example: AAAA.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if rrdata is not None:
-            pulumi.set(__self__, "rrdata", rrdata)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def rrdata(self) -> Optional[pulumi.Input[str]]:
-        """
-        Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-        """
-        return pulumi.get(self, "rrdata")
-
-    @rrdata.setter
-    def rrdata(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "rrdata", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['ResourceRecordType']]:
-        """
-        Resource record type. Example: AAAA.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['ResourceRecordType']]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
 class ResourcesArgs:
     def __init__(__self__, *,
                  cpu: Optional[pulumi.Input[float]] = None,
@@ -1949,18 +1835,14 @@ class ScriptHandlerArgs:
 class SslSettingsArgs:
     def __init__(__self__, *,
                  certificate_id: Optional[pulumi.Input[str]] = None,
-                 pending_managed_certificate_id: Optional[pulumi.Input[str]] = None,
                  ssl_management_type: Optional[pulumi.Input['SslSettingsSslManagementType']] = None):
         """
         SSL configuration for a DomainMapping resource.
         :param pulumi.Input[str] certificate_id: ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
-        :param pulumi.Input[str] pending_managed_certificate_id: ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
         :param pulumi.Input['SslSettingsSslManagementType'] ssl_management_type: SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
         """
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
-        if pending_managed_certificate_id is not None:
-            pulumi.set(__self__, "pending_managed_certificate_id", pending_managed_certificate_id)
         if ssl_management_type is not None:
             pulumi.set(__self__, "ssl_management_type", ssl_management_type)
 
@@ -1975,18 +1857,6 @@ class SslSettingsArgs:
     @certificate_id.setter
     def certificate_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_id", value)
-
-    @property
-    @pulumi.getter(name="pendingManagedCertificateId")
-    def pending_managed_certificate_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
-        """
-        return pulumi.get(self, "pending_managed_certificate_id")
-
-    @pending_managed_certificate_id.setter
-    def pending_managed_certificate_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "pending_managed_certificate_id", value)
 
     @property
     @pulumi.getter(name="sslManagementType")

@@ -39,23 +39,23 @@ export interface GetPerfSampleSeriesResult {
      */
     readonly basicPerfSampleSeries: outputs.toolresults.v1beta3.BasicPerfSampleSeriesResponse;
     /**
-     * A tool results execution ID. @OutputOnly
+     * A tool results execution ID. 
      */
     readonly executionId: string;
     /**
-     * A tool results history ID. @OutputOnly
+     * A tool results history ID. 
      */
     readonly historyId: string;
     /**
-     * The cloud project @OutputOnly
+     * The cloud project 
      */
     readonly project: string;
     /**
-     * A sample series id @OutputOnly
+     * A sample series id 
      */
     readonly sampleSeriesId: string;
     /**
-     * A tool results step ID. @OutputOnly
+     * A tool results step ID. 
      */
     readonly stepId: string;
 }

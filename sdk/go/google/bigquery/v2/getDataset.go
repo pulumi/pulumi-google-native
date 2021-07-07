@@ -25,7 +25,7 @@ type LookupDatasetArgs struct {
 type LookupDatasetResult struct {
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
 	Access []DatasetAccessItemResponse `pulumi:"access"`
-	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime string `pulumi:"creationTime"`
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               DatasetReferenceResponse        `pulumi:"datasetReference"`
@@ -36,20 +36,20 @@ type LookupDatasetResult struct {
 	DefaultTableExpirationMs string `pulumi:"defaultTableExpirationMs"`
 	// [Optional] A user-friendly description of the dataset.
 	Description string `pulumi:"description"`
-	// [Output-only] A hash of the resource.
+	// A hash of the resource.
 	Etag string `pulumi:"etag"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName string `pulumi:"friendlyName"`
-	// [Output-only] The resource type.
+	// The resource type.
 	Kind string `pulumi:"kind"`
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
 	Labels map[string]string `pulumi:"labels"`
-	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+	// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location string `pulumi:"location"`
-	// [Output-only] Reserved for future use.
+	// Reserved for future use.
 	SatisfiesPZS bool `pulumi:"satisfiesPZS"`
-	// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink string `pulumi:"selfLink"`
 }

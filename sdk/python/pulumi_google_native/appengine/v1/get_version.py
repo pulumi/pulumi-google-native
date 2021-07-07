@@ -174,7 +174,7 @@ class GetVersionResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Time that this version was created.@OutputOnly
+        Time that this version was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -182,7 +182,7 @@ class GetVersionResult:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
         """
-        Email address of the user who created this version.@OutputOnly
+        Email address of the user who created this version.
         """
         return pulumi.get(self, "created_by")
 
@@ -206,7 +206,7 @@ class GetVersionResult:
     @pulumi.getter(name="diskUsageBytes")
     def disk_usage_bytes(self) -> str:
         """
-        Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+        Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
         """
         return pulumi.get(self, "disk_usage_bytes")
 
@@ -310,7 +310,7 @@ class GetVersionResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+        Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
         """
         return pulumi.get(self, "name")
 
@@ -406,7 +406,7 @@ class GetVersionResult:
     @pulumi.getter(name="versionUrl")
     def version_url(self) -> str:
         """
-        Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+        Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
         """
         return pulumi.get(self, "version_url")
 

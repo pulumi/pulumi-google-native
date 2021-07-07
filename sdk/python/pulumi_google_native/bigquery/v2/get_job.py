@@ -55,7 +55,7 @@ class GetJobResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        [Output-only] A hash of this resource.
+        A hash of this resource.
         """
         return pulumi.get(self, "etag")
 
@@ -71,7 +71,7 @@ class GetJobResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        [Output-only] The type of the resource.
+        The type of the resource.
         """
         return pulumi.get(self, "kind")
 
@@ -79,7 +79,7 @@ class GetJobResult:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        [Output-only] A URL that can be used to access this resource again.
+        A URL that can be used to access this resource again.
         """
         return pulumi.get(self, "self_link")
 
@@ -87,7 +87,7 @@ class GetJobResult:
     @pulumi.getter
     def statistics(self) -> 'outputs.JobStatisticsResponse':
         """
-        [Output-only] Information about the job, including starting time and ending time of the job.
+        Information about the job, including starting time and ending time of the job.
         """
         return pulumi.get(self, "statistics")
 
@@ -95,7 +95,7 @@ class GetJobResult:
     @pulumi.getter
     def status(self) -> 'outputs.JobStatusResponse':
         """
-        [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
         """
         return pulumi.get(self, "status")
 
@@ -103,7 +103,7 @@ class GetJobResult:
     @pulumi.getter
     def user_email(self) -> str:
         """
-        [Output-only] Email address of the user who ran the job.
+        Email address of the user who ran the job.
         """
         return pulumi.get(self, "user_email")
 

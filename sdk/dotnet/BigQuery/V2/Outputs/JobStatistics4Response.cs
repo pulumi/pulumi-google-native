@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class JobStatistics4Response
     {
         /// <summary>
-        /// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
+        /// Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
         /// </summary>
         public readonly ImmutableArray<string> DestinationUriFileCounts;
         /// <summary>
-        /// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
+        /// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
         /// </summary>
         public readonly string InputBytes;
 

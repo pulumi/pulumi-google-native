@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
     public partial class DomainMapping : Pulumi.CustomResource
     {
         /// <summary>
-        /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+        /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+        /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
         /// </summary>
         [Output("resourceRecords")]
         public Output<ImmutableArray<Outputs.ResourceRecordResponse>> ResourceRecords { get; private set; } = null!;
@@ -87,29 +87,11 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("noManagedCertificate")]
         public Input<string>? NoManagedCertificate { get; set; }
 
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
-
-        [Input("resourceRecords")]
-        private InputList<Inputs.ResourceRecordArgs>? _resourceRecords;
-
-        /// <summary>
-        /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
-        /// </summary>
-        public InputList<Inputs.ResourceRecordArgs> ResourceRecords
-        {
-            get => _resourceRecords ?? (_resourceRecords = new InputList<Inputs.ResourceRecordArgs>());
-            set => _resourceRecords = value;
-        }
 
         /// <summary>
         /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.

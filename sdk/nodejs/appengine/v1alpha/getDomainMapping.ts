@@ -29,11 +29,11 @@ export interface GetDomainMappingArgs {
 
 export interface GetDomainMappingResult {
     /**
-     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
      */
     readonly name: string;
     /**
-     * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+     * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
      */
     readonly resourceRecords: outputs.appengine.v1alpha.ResourceRecordResponse[];
     /**

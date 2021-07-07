@@ -7,12 +7,9 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
-from ._enums import *
 
 __all__ = [
     'CertificateRawDataArgs',
-    'ManagedCertificateArgs',
-    'ResourceRecordArgs',
     'SslSettingsArgs',
 ]
 
@@ -57,115 +54,15 @@ class CertificateRawDataArgs:
 
 
 @pulumi.input_type
-class ManagedCertificateArgs:
-    def __init__(__self__, *,
-                 last_renewal_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['ManagedCertificateStatus']] = None):
-        """
-        A certificate managed by App Engine.
-        :param pulumi.Input[str] last_renewal_time: Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-        :param pulumi.Input['ManagedCertificateStatus'] status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-        """
-        if last_renewal_time is not None:
-            pulumi.set(__self__, "last_renewal_time", last_renewal_time)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="lastRenewalTime")
-    def last_renewal_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-        """
-        return pulumi.get(self, "last_renewal_time")
-
-    @last_renewal_time.setter
-    def last_renewal_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_renewal_time", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ManagedCertificateStatus']]:
-        """
-        Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['ManagedCertificateStatus']]):
-        pulumi.set(self, "status", value)
-
-
-@pulumi.input_type
-class ResourceRecordArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 rrdata: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['ResourceRecordType']] = None):
-        """
-        A DNS resource record.
-        :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-        :param pulumi.Input[str] rrdata: Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-        :param pulumi.Input['ResourceRecordType'] type: Resource record type. Example: AAAA.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if rrdata is not None:
-            pulumi.set(__self__, "rrdata", rrdata)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def rrdata(self) -> Optional[pulumi.Input[str]]:
-        """
-        Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-        """
-        return pulumi.get(self, "rrdata")
-
-    @rrdata.setter
-    def rrdata(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "rrdata", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['ResourceRecordType']]:
-        """
-        Resource record type. Example: AAAA.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['ResourceRecordType']]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
 class SslSettingsArgs:
     def __init__(__self__, *,
-                 certificate_id: Optional[pulumi.Input[str]] = None,
-                 is_managed_certificate: Optional[pulumi.Input[bool]] = None):
+                 certificate_id: Optional[pulumi.Input[str]] = None):
         """
         SSL configuration for a DomainMapping resource.
         :param pulumi.Input[str] certificate_id: ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
-        :param pulumi.Input[bool] is_managed_certificate: Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
         """
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
-        if is_managed_certificate is not None:
-            pulumi.set(__self__, "is_managed_certificate", is_managed_certificate)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -178,17 +75,5 @@ class SslSettingsArgs:
     @certificate_id.setter
     def certificate_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_id", value)
-
-    @property
-    @pulumi.getter(name="isManagedCertificate")
-    def is_managed_certificate(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
-        """
-        return pulumi.get(self, "is_managed_certificate")
-
-    @is_managed_certificate.setter
-    def is_managed_certificate(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_managed_certificate", value)
 
 

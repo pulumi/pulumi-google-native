@@ -27,15 +27,15 @@ type Version struct {
 	BetaSettings pulumi.StringMapOutput `pulumi:"betaSettings"`
 	// Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
 	BuildEnvVariables pulumi.StringMapOutput `pulumi:"buildEnvVariables"`
-	// Time that this version was created.@OutputOnly
+	// Time that this version was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Email address of the user who created this version.@OutputOnly
+	// Email address of the user who created this version.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
 	DefaultExpiration pulumi.StringOutput `pulumi:"defaultExpiration"`
 	// Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
 	Deployment DeploymentResponseOutput `pulumi:"deployment"`
-	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
 	DiskUsageBytes pulumi.StringOutput `pulumi:"diskUsageBytes"`
 	// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
 	EndpointsApiService EndpointsApiServiceResponseOutput `pulumi:"endpointsApiService"`
@@ -61,7 +61,7 @@ type Version struct {
 	LivenessCheck LivenessCheckResponseOutput `pulumi:"livenessCheck"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling ManualScalingResponseOutput `pulumi:"manualScaling"`
-	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Extra network settings. Only applicable in the App Engine flexible environment.
 	Network NetworkResponseOutput `pulumi:"network"`
@@ -85,7 +85,7 @@ type Version struct {
 	ServingStatus pulumi.StringOutput `pulumi:"servingStatus"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolOutput `pulumi:"threadsafe"`
-	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
 	VersionUrl pulumi.StringOutput `pulumi:"versionUrl"`
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm pulumi.BoolOutput `pulumi:"vm"`
@@ -140,15 +140,15 @@ type versionState struct {
 	BetaSettings map[string]string `pulumi:"betaSettings"`
 	// Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
 	BuildEnvVariables map[string]string `pulumi:"buildEnvVariables"`
-	// Time that this version was created.@OutputOnly
+	// Time that this version was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Email address of the user who created this version.@OutputOnly
+	// Email address of the user who created this version.
 	CreatedBy *string `pulumi:"createdBy"`
 	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
 	DefaultExpiration *string `pulumi:"defaultExpiration"`
 	// Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
 	Deployment *DeploymentResponse `pulumi:"deployment"`
-	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
 	DiskUsageBytes *string `pulumi:"diskUsageBytes"`
 	// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
 	EndpointsApiService *EndpointsApiServiceResponse `pulumi:"endpointsApiService"`
@@ -174,7 +174,7 @@ type versionState struct {
 	LivenessCheck *LivenessCheckResponse `pulumi:"livenessCheck"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling *ManualScalingResponse `pulumi:"manualScaling"`
-	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
 	Name *string `pulumi:"name"`
 	// Extra network settings. Only applicable in the App Engine flexible environment.
 	Network *NetworkResponse `pulumi:"network"`
@@ -198,7 +198,7 @@ type versionState struct {
 	ServingStatus *string `pulumi:"servingStatus"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
-	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
 	VersionUrl *string `pulumi:"versionUrl"`
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm *bool `pulumi:"vm"`
@@ -219,15 +219,15 @@ type VersionState struct {
 	BetaSettings pulumi.StringMapInput
 	// Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
 	BuildEnvVariables pulumi.StringMapInput
-	// Time that this version was created.@OutputOnly
+	// Time that this version was created.
 	CreateTime pulumi.StringPtrInput
-	// Email address of the user who created this version.@OutputOnly
+	// Email address of the user who created this version.
 	CreatedBy pulumi.StringPtrInput
 	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
 	DefaultExpiration pulumi.StringPtrInput
 	// Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
 	Deployment DeploymentResponsePtrInput
-	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
 	DiskUsageBytes pulumi.StringPtrInput
 	// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
 	EndpointsApiService EndpointsApiServiceResponsePtrInput
@@ -253,7 +253,7 @@ type VersionState struct {
 	LivenessCheck LivenessCheckResponsePtrInput
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling ManualScalingResponsePtrInput
-	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
 	Name pulumi.StringPtrInput
 	// Extra network settings. Only applicable in the App Engine flexible environment.
 	Network NetworkResponsePtrInput
@@ -277,7 +277,7 @@ type VersionState struct {
 	ServingStatus pulumi.StringPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
-	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
 	VersionUrl pulumi.StringPtrInput
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm pulumi.BoolPtrInput
@@ -303,16 +303,10 @@ type versionArgs struct {
 	BetaSettings map[string]string `pulumi:"betaSettings"`
 	// Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
 	BuildEnvVariables map[string]string `pulumi:"buildEnvVariables"`
-	// Time that this version was created.@OutputOnly
-	CreateTime *string `pulumi:"createTime"`
-	// Email address of the user who created this version.@OutputOnly
-	CreatedBy *string `pulumi:"createdBy"`
 	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
 	DefaultExpiration *string `pulumi:"defaultExpiration"`
 	// Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
 	Deployment *Deployment `pulumi:"deployment"`
-	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
-	DiskUsageBytes *string `pulumi:"diskUsageBytes"`
 	// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
 	EndpointsApiService *EndpointsApiService `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.
@@ -339,8 +333,6 @@ type versionArgs struct {
 	LivenessCheck *LivenessCheck `pulumi:"livenessCheck"`
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling *ManualScaling `pulumi:"manualScaling"`
-	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
-	Name *string `pulumi:"name"`
 	// Extra network settings. Only applicable in the App Engine flexible environment.
 	Network *Network `pulumi:"network"`
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
@@ -364,8 +356,6 @@ type versionArgs struct {
 	ServingStatus *string `pulumi:"servingStatus"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
-	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
-	VersionUrl *string `pulumi:"versionUrl"`
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm *bool `pulumi:"vm"`
 	// Enables VPC connectivity for standard apps.
@@ -387,16 +377,10 @@ type VersionArgs struct {
 	BetaSettings pulumi.StringMapInput
 	// Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
 	BuildEnvVariables pulumi.StringMapInput
-	// Time that this version was created.@OutputOnly
-	CreateTime pulumi.StringPtrInput
-	// Email address of the user who created this version.@OutputOnly
-	CreatedBy pulumi.StringPtrInput
 	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
 	DefaultExpiration pulumi.StringPtrInput
 	// Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
 	Deployment DeploymentPtrInput
-	// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
-	DiskUsageBytes pulumi.StringPtrInput
 	// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
 	EndpointsApiService EndpointsApiServicePtrInput
 	// The entrypoint for the application.
@@ -423,8 +407,6 @@ type VersionArgs struct {
 	LivenessCheck LivenessCheckPtrInput
 	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
 	ManualScaling ManualScalingPtrInput
-	// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
-	Name pulumi.StringPtrInput
 	// Extra network settings. Only applicable in the App Engine flexible environment.
 	Network NetworkPtrInput
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
@@ -448,8 +430,6 @@ type VersionArgs struct {
 	ServingStatus *VersionServingStatus
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
-	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
-	VersionUrl pulumi.StringPtrInput
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm pulumi.BoolPtrInput
 	// Enables VPC connectivity for standard apps.

@@ -63,11 +63,11 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> BuildEnvVariables;
         /// <summary>
-        /// Time that this version was created.@OutputOnly
+        /// Time that this version was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Email address of the user who created this version.@OutputOnly
+        /// Email address of the user who created this version.
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly Outputs.DeploymentResponse Deployment;
         /// <summary>
-        /// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+        /// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
         /// </summary>
         public readonly string DiskUsageBytes;
         /// <summary>
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly Outputs.ManualScalingResponse ManualScaling;
         /// <summary>
-        /// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+        /// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -179,7 +179,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly bool Threadsafe;
         /// <summary>
-        /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+        /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
         /// </summary>
         public readonly string VersionUrl;
         /// <summary>

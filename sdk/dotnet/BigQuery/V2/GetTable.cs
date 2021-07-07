@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.ClusteringResponse Clustering;
         /// <summary>
-        /// [Output-only] The time when this table was created, in milliseconds since the epoch.
+        /// The time when this table was created, in milliseconds since the epoch.
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.EncryptionConfigurationResponse EncryptionConfiguration;
         /// <summary>
-        /// [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+        /// A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -75,7 +75,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string FriendlyName;
         /// <summary>
-        /// [Output-only] The type of the resource.
+        /// The type of the resource.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -83,11 +83,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// [Output-only] The time when this table was last modified, in milliseconds since the epoch.
+        /// The time when this table was last modified, in milliseconds since the epoch.
         /// </summary>
         public readonly string LastModifiedTime;
         /// <summary>
-        /// [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
+        /// The geographic location where the table resides. This value is inherited from the dataset.
         /// </summary>
         public readonly string Location;
         /// <summary>
@@ -99,19 +99,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.ModelDefinitionResponse Model;
         /// <summary>
-        /// [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
+        /// The size of this table in bytes, excluding any data in the streaming buffer.
         /// </summary>
         public readonly string NumBytes;
         /// <summary>
-        /// [Output-only] The number of bytes in the table that are considered "long-term storage".
+        /// The number of bytes in the table that are considered "long-term storage".
         /// </summary>
         public readonly string NumLongTermBytes;
         /// <summary>
-        /// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+        /// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
         /// </summary>
         public readonly string NumPhysicalBytes;
         /// <summary>
-        /// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
+        /// The number of rows of data in this table, excluding any data in the streaming buffer.
         /// </summary>
         public readonly string NumRows;
         /// <summary>
@@ -127,15 +127,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.TableSchemaResponse Schema;
         /// <summary>
-        /// [Output-only] A URL that can be used to access this resource again.
+        /// A URL that can be used to access this resource again.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// [Output-only] Snapshot definition.
+        /// Snapshot definition.
         /// </summary>
         public readonly Outputs.SnapshotDefinitionResponse SnapshotDefinition;
         /// <summary>
-        /// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+        /// Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
         /// </summary>
         public readonly Outputs.StreamingbufferResponse StreamingBuffer;
         /// <summary>
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.TimePartitioningResponse TimePartitioning;
         /// <summary>
-        /// [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+        /// Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
         /// </summary>
         public readonly string Type;
         /// <summary>

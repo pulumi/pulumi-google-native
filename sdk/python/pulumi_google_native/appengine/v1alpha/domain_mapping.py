@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
-from ._enums import *
 from ._inputs import *
 
 __all__ = ['DomainMappingArgs', 'DomainMapping']
@@ -18,29 +17,21 @@ class DomainMappingArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[str]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
-                 resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]]] = None,
                  ssl_settings: Optional[pulumi.Input['SslSettingsArgs']] = None):
         """
         The set of arguments for constructing a DomainMapping resource.
         :param pulumi.Input[str] id: Relative name of the domain serving the application. Example: example.com.
-        :param pulumi.Input[str] name: Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-        :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
         :param pulumi.Input['SslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         """
         pulumi.set(__self__, "app_id", app_id)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if no_managed_certificate is not None:
             pulumi.set(__self__, "no_managed_certificate", no_managed_certificate)
         if override_strategy is not None:
             pulumi.set(__self__, "override_strategy", override_strategy)
-        if resource_records is not None:
-            pulumi.set(__self__, "resource_records", resource_records)
         if ssl_settings is not None:
             pulumi.set(__self__, "ssl_settings", ssl_settings)
 
@@ -66,18 +57,6 @@ class DomainMappingArgs:
         pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="noManagedCertificate")
     def no_managed_certificate(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "no_managed_certificate")
@@ -94,18 +73,6 @@ class DomainMappingArgs:
     @override_strategy.setter
     def override_strategy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "override_strategy", value)
-
-    @property
-    @pulumi.getter(name="resourceRecords")
-    def resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]]]:
-        """
-        The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
-        """
-        return pulumi.get(self, "resource_records")
-
-    @resource_records.setter
-    def resource_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]]]):
-        pulumi.set(self, "resource_records", value)
 
     @property
     @pulumi.getter(name="sslSettings")
@@ -127,10 +94,8 @@ class DomainMapping(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[str]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
-                 resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordArgs']]]]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
                  __props__=None):
         """
@@ -139,8 +104,6 @@ class DomainMapping(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] id: Relative name of the domain serving the application. Example: example.com.
-        :param pulumi.Input[str] name: Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordArgs']]]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
         :param pulumi.Input[pulumi.InputType['SslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         """
         ...
@@ -169,10 +132,8 @@ class DomainMapping(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[str]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
-                 resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordArgs']]]]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -190,11 +151,11 @@ class DomainMapping(pulumi.CustomResource):
                 raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["id"] = id
-            __props__.__dict__["name"] = name
             __props__.__dict__["no_managed_certificate"] = no_managed_certificate
             __props__.__dict__["override_strategy"] = override_strategy
-            __props__.__dict__["resource_records"] = resource_records
             __props__.__dict__["ssl_settings"] = ssl_settings
+            __props__.__dict__["name"] = None
+            __props__.__dict__["resource_records"] = None
         super(DomainMapping, __self__).__init__(
             'google-native:appengine/v1alpha:DomainMapping',
             resource_name,
@@ -226,7 +187,7 @@ class DomainMapping(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+        Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
         """
         return pulumi.get(self, "name")
 
@@ -234,7 +195,7 @@ class DomainMapping(pulumi.CustomResource):
     @pulumi.getter(name="resourceRecords")
     def resource_records(self) -> pulumi.Output[Sequence['outputs.ResourceRecordResponse']]:
         """
-        The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+        The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
         """
         return pulumi.get(self, "resource_records")
 

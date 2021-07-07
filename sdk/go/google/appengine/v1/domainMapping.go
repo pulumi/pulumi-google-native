@@ -15,9 +15,9 @@ import (
 type DomainMapping struct {
 	pulumi.CustomResourceState
 
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
 	ResourceRecords ResourceRecordResponseArrayOutput `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings SslSettingsResponseOutput `pulumi:"sslSettings"`
@@ -55,18 +55,18 @@ func GetDomainMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainMapping resources.
 type domainMappingState struct {
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name *string `pulumi:"name"`
-	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
 	ResourceRecords []ResourceRecordResponse `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings *SslSettingsResponse `pulumi:"sslSettings"`
 }
 
 type DomainMappingState struct {
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name pulumi.StringPtrInput
-	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
 	ResourceRecords ResourceRecordResponseArrayInput
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings SslSettingsResponsePtrInput
@@ -79,12 +79,8 @@ func (DomainMappingState) ElementType() reflect.Type {
 type domainMappingArgs struct {
 	AppId string `pulumi:"appId"`
 	// Relative name of the domain serving the application. Example: example.com.
-	Id *string `pulumi:"id"`
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-	Name             *string `pulumi:"name"`
+	Id               *string `pulumi:"id"`
 	OverrideStrategy *string `pulumi:"overrideStrategy"`
-	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
-	ResourceRecords []ResourceRecord `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings *SslSettings `pulumi:"sslSettings"`
 }
@@ -93,12 +89,8 @@ type domainMappingArgs struct {
 type DomainMappingArgs struct {
 	AppId pulumi.StringInput
 	// Relative name of the domain serving the application. Example: example.com.
-	Id pulumi.StringPtrInput
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-	Name             pulumi.StringPtrInput
+	Id               pulumi.StringPtrInput
 	OverrideStrategy pulumi.StringPtrInput
-	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
-	ResourceRecords ResourceRecordArrayInput
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings SslSettingsPtrInput
 }

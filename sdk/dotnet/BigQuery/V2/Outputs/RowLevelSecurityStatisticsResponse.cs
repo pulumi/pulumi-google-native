@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class RowLevelSecurityStatisticsResponse
     {
         /// <summary>
-        /// [Output-only] [Preview] Whether any accessed data was protected by row access policies.
+        /// [Preview] Whether any accessed data was protected by row access policies.
         /// </summary>
         public readonly bool RowLevelSecurityApplied;
 

@@ -1918,7 +1918,6 @@
         "types/enums/apigee/v1/index.ts",
         "types/enums/appengine/index.ts",
         "types/enums/appengine/v1/index.ts",
-        "types/enums/appengine/v1alpha/index.ts",
         "types/enums/appengine/v1beta/index.ts",
         "types/enums/artifactregistry/index.ts",
         "types/enums/artifactregistry/v1beta1/index.ts",

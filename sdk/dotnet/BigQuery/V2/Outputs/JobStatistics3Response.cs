@@ -14,23 +14,23 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class JobStatistics3Response
     {
         /// <summary>
-        /// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
+        /// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
         /// </summary>
         public readonly string BadRecords;
         /// <summary>
-        /// [Output-only] Number of bytes of source data in a load job.
+        /// Number of bytes of source data in a load job.
         /// </summary>
         public readonly string InputFileBytes;
         /// <summary>
-        /// [Output-only] Number of source files in a load job.
+        /// Number of source files in a load job.
         /// </summary>
         public readonly string InputFiles;
         /// <summary>
-        /// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
+        /// Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
         /// </summary>
         public readonly string OutputBytes;
         /// <summary>
-        /// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
+        /// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
         /// </summary>
         public readonly string OutputRows;
 

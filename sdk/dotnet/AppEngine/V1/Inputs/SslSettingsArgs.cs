@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public Input<string>? CertificateId { get; set; }
 
         /// <summary>
-        /// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
-        /// </summary>
-        [Input("pendingManagedCertificateId")]
-        public Input<string>? PendingManagedCertificateId { get; set; }
-
-        /// <summary>
         /// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
         /// </summary>
         [Input("sslManagementType")]

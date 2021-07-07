@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class StreamingbufferResponse
     {
         /// <summary>
-        /// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
+        /// A lower-bound estimate of the number of bytes currently in the streaming buffer.
         /// </summary>
         public readonly string EstimatedBytes;
         /// <summary>
-        /// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
+        /// A lower-bound estimate of the number of rows currently in the streaming buffer.
         /// </summary>
         public readonly string EstimatedRows;
         /// <summary>
-        /// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+        /// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
         /// </summary>
         public readonly string OldestEntryTime;
 

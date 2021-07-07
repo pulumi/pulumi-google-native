@@ -28,14 +28,14 @@ type LookupPerfSampleSeriesArgs struct {
 type LookupPerfSampleSeriesResult struct {
 	// Basic series represented by a line chart
 	BasicPerfSampleSeries BasicPerfSampleSeriesResponse `pulumi:"basicPerfSampleSeries"`
-	// A tool results execution ID. @OutputOnly
+	// A tool results execution ID.
 	ExecutionId string `pulumi:"executionId"`
-	// A tool results history ID. @OutputOnly
+	// A tool results history ID.
 	HistoryId string `pulumi:"historyId"`
-	// The cloud project @OutputOnly
+	// The cloud project
 	Project string `pulumi:"project"`
-	// A sample series id @OutputOnly
+	// A sample series id
 	SampleSeriesId string `pulumi:"sampleSeriesId"`
-	// A tool results step ID. @OutputOnly
+	// A tool results step ID.
 	StepId string `pulumi:"stepId"`
 }

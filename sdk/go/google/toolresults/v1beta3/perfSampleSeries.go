@@ -17,15 +17,15 @@ type PerfSampleSeries struct {
 
 	// Basic series represented by a line chart
 	BasicPerfSampleSeries BasicPerfSampleSeriesResponseOutput `pulumi:"basicPerfSampleSeries"`
-	// A tool results execution ID. @OutputOnly
+	// A tool results execution ID.
 	ExecutionId pulumi.StringOutput `pulumi:"executionId"`
-	// A tool results history ID. @OutputOnly
+	// A tool results history ID.
 	HistoryId pulumi.StringOutput `pulumi:"historyId"`
-	// The cloud project @OutputOnly
+	// The cloud project
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A sample series id @OutputOnly
+	// A sample series id
 	SampleSeriesId pulumi.StringOutput `pulumi:"sampleSeriesId"`
-	// A tool results step ID. @OutputOnly
+	// A tool results step ID.
 	StepId pulumi.StringOutput `pulumi:"stepId"`
 }
 
@@ -72,30 +72,30 @@ func GetPerfSampleSeries(ctx *pulumi.Context,
 type perfSampleSeriesState struct {
 	// Basic series represented by a line chart
 	BasicPerfSampleSeries *BasicPerfSampleSeriesResponse `pulumi:"basicPerfSampleSeries"`
-	// A tool results execution ID. @OutputOnly
+	// A tool results execution ID.
 	ExecutionId *string `pulumi:"executionId"`
-	// A tool results history ID. @OutputOnly
+	// A tool results history ID.
 	HistoryId *string `pulumi:"historyId"`
-	// The cloud project @OutputOnly
+	// The cloud project
 	Project *string `pulumi:"project"`
-	// A sample series id @OutputOnly
+	// A sample series id
 	SampleSeriesId *string `pulumi:"sampleSeriesId"`
-	// A tool results step ID. @OutputOnly
+	// A tool results step ID.
 	StepId *string `pulumi:"stepId"`
 }
 
 type PerfSampleSeriesState struct {
 	// Basic series represented by a line chart
 	BasicPerfSampleSeries BasicPerfSampleSeriesResponsePtrInput
-	// A tool results execution ID. @OutputOnly
+	// A tool results execution ID.
 	ExecutionId pulumi.StringPtrInput
-	// A tool results history ID. @OutputOnly
+	// A tool results history ID.
 	HistoryId pulumi.StringPtrInput
-	// The cloud project @OutputOnly
+	// The cloud project
 	Project pulumi.StringPtrInput
-	// A sample series id @OutputOnly
+	// A sample series id
 	SampleSeriesId pulumi.StringPtrInput
-	// A tool results step ID. @OutputOnly
+	// A tool results step ID.
 	StepId pulumi.StringPtrInput
 }
 
@@ -106,32 +106,20 @@ func (PerfSampleSeriesState) ElementType() reflect.Type {
 type perfSampleSeriesArgs struct {
 	// Basic series represented by a line chart
 	BasicPerfSampleSeries *BasicPerfSampleSeries `pulumi:"basicPerfSampleSeries"`
-	// A tool results execution ID. @OutputOnly
-	ExecutionId string `pulumi:"executionId"`
-	// A tool results history ID. @OutputOnly
-	HistoryId string `pulumi:"historyId"`
-	// The cloud project @OutputOnly
-	Project string `pulumi:"project"`
-	// A sample series id @OutputOnly
-	SampleSeriesId *string `pulumi:"sampleSeriesId"`
-	// A tool results step ID. @OutputOnly
-	StepId string `pulumi:"stepId"`
+	ExecutionId           string                 `pulumi:"executionId"`
+	HistoryId             string                 `pulumi:"historyId"`
+	Project               string                 `pulumi:"project"`
+	StepId                string                 `pulumi:"stepId"`
 }
 
 // The set of arguments for constructing a PerfSampleSeries resource.
 type PerfSampleSeriesArgs struct {
 	// Basic series represented by a line chart
 	BasicPerfSampleSeries BasicPerfSampleSeriesPtrInput
-	// A tool results execution ID. @OutputOnly
-	ExecutionId pulumi.StringInput
-	// A tool results history ID. @OutputOnly
-	HistoryId pulumi.StringInput
-	// The cloud project @OutputOnly
-	Project pulumi.StringInput
-	// A sample series id @OutputOnly
-	SampleSeriesId pulumi.StringPtrInput
-	// A tool results step ID. @OutputOnly
-	StepId pulumi.StringInput
+	ExecutionId           pulumi.StringInput
+	HistoryId             pulumi.StringInput
+	Project               pulumi.StringInput
+	StepId                pulumi.StringInput
 }
 
 func (PerfSampleSeriesArgs) ElementType() reflect.Type {

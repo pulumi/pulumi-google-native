@@ -36,12 +36,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         [Input("jobTimeoutMs")]
         public Input<string>? JobTimeoutMs { get; set; }
 
-        /// <summary>
-        /// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-        /// </summary>
-        [Input("jobType")]
-        public Input<string>? JobType { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 

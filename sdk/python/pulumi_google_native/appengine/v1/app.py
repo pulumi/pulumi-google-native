@@ -17,47 +17,33 @@ __all__ = ['AppArgs', 'App']
 class AppArgs:
     def __init__(__self__, *,
                  auth_domain: Optional[pulumi.Input[str]] = None,
-                 code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input['AppDatabaseType']] = None,
-                 default_bucket: Optional[pulumi.Input[str]] = None,
                  default_cookie_expiration: Optional[pulumi.Input[str]] = None,
-                 default_hostname: Optional[pulumi.Input[str]] = None,
                  dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['UrlDispatchRuleArgs']]]] = None,
                  feature_settings: Optional[pulumi.Input['FeatureSettingsArgs']] = None,
                  gcr_domain: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input['IdentityAwareProxyArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['AppServingStatus']] = None):
         """
         The set of arguments for constructing a App resource.
         :param pulumi.Input[str] auth_domain: Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
-        :param pulumi.Input[str] code_bucket: Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
         :param pulumi.Input['AppDatabaseType'] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-        :param pulumi.Input[str] default_bucket: Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
         :param pulumi.Input[str] default_cookie_expiration: Cookie expiration policy for this application.
-        :param pulumi.Input[str] default_hostname: Hostname used to reach this application, as resolved by App Engine.@OutputOnly
         :param pulumi.Input[Sequence[pulumi.Input['UrlDispatchRuleArgs']]] dispatch_rules: HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
         :param pulumi.Input['FeatureSettingsArgs'] feature_settings: The feature specific settings to be used in the application.
         :param pulumi.Input[str] gcr_domain: The Google Container Registry domain used for storing managed build docker images for this application.
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
         :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-        :param pulumi.Input[str] name: Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
         :param pulumi.Input['AppServingStatus'] serving_status: Serving status of this application.
         """
         if auth_domain is not None:
             pulumi.set(__self__, "auth_domain", auth_domain)
-        if code_bucket is not None:
-            pulumi.set(__self__, "code_bucket", code_bucket)
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
-        if default_bucket is not None:
-            pulumi.set(__self__, "default_bucket", default_bucket)
         if default_cookie_expiration is not None:
             pulumi.set(__self__, "default_cookie_expiration", default_cookie_expiration)
-        if default_hostname is not None:
-            pulumi.set(__self__, "default_hostname", default_hostname)
         if dispatch_rules is not None:
             pulumi.set(__self__, "dispatch_rules", dispatch_rules)
         if feature_settings is not None:
@@ -70,8 +56,6 @@ class AppArgs:
             pulumi.set(__self__, "id", id)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if serving_status is not None:
             pulumi.set(__self__, "serving_status", serving_status)
 
@@ -88,18 +72,6 @@ class AppArgs:
         pulumi.set(self, "auth_domain", value)
 
     @property
-    @pulumi.getter(name="codeBucket")
-    def code_bucket(self) -> Optional[pulumi.Input[str]]:
-        """
-        Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
-        """
-        return pulumi.get(self, "code_bucket")
-
-    @code_bucket.setter
-    def code_bucket(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "code_bucket", value)
-
-    @property
     @pulumi.getter(name="databaseType")
     def database_type(self) -> Optional[pulumi.Input['AppDatabaseType']]:
         """
@@ -112,18 +84,6 @@ class AppArgs:
         pulumi.set(self, "database_type", value)
 
     @property
-    @pulumi.getter(name="defaultBucket")
-    def default_bucket(self) -> Optional[pulumi.Input[str]]:
-        """
-        Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
-        """
-        return pulumi.get(self, "default_bucket")
-
-    @default_bucket.setter
-    def default_bucket(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "default_bucket", value)
-
-    @property
     @pulumi.getter(name="defaultCookieExpiration")
     def default_cookie_expiration(self) -> Optional[pulumi.Input[str]]:
         """
@@ -134,18 +94,6 @@ class AppArgs:
     @default_cookie_expiration.setter
     def default_cookie_expiration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_cookie_expiration", value)
-
-    @property
-    @pulumi.getter(name="defaultHostname")
-    def default_hostname(self) -> Optional[pulumi.Input[str]]:
-        """
-        Hostname used to reach this application, as resolved by App Engine.@OutputOnly
-        """
-        return pulumi.get(self, "default_hostname")
-
-    @default_hostname.setter
-    def default_hostname(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "default_hostname", value)
 
     @property
     @pulumi.getter(name="dispatchRules")
@@ -217,18 +165,6 @@ class AppArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="servingStatus")
     def serving_status(self) -> Optional[pulumi.Input['AppServingStatus']]:
         """
@@ -247,18 +183,14 @@ class App(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
-                 code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input['AppDatabaseType']] = None,
-                 default_bucket: Optional[pulumi.Input[str]] = None,
                  default_cookie_expiration: Optional[pulumi.Input[str]] = None,
-                 default_hostname: Optional[pulumi.Input[str]] = None,
                  dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlDispatchRuleArgs']]]]] = None,
                  feature_settings: Optional[pulumi.Input[pulumi.InputType['FeatureSettingsArgs']]] = None,
                  gcr_domain: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['IdentityAwareProxyArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['AppServingStatus']] = None,
                  __props__=None):
         """
@@ -267,17 +199,13 @@ class App(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_domain: Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
-        :param pulumi.Input[str] code_bucket: Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
         :param pulumi.Input['AppDatabaseType'] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-        :param pulumi.Input[str] default_bucket: Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
         :param pulumi.Input[str] default_cookie_expiration: Cookie expiration policy for this application.
-        :param pulumi.Input[str] default_hostname: Hostname used to reach this application, as resolved by App Engine.@OutputOnly
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlDispatchRuleArgs']]]] dispatch_rules: HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
         :param pulumi.Input[pulumi.InputType['FeatureSettingsArgs']] feature_settings: The feature specific settings to be used in the application.
         :param pulumi.Input[str] gcr_domain: The Google Container Registry domain used for storing managed build docker images for this application.
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
         :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-        :param pulumi.Input[str] name: Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
         :param pulumi.Input['AppServingStatus'] serving_status: Serving status of this application.
         """
         ...
@@ -305,18 +233,14 @@ class App(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
-                 code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input['AppDatabaseType']] = None,
-                 default_bucket: Optional[pulumi.Input[str]] = None,
                  default_cookie_expiration: Optional[pulumi.Input[str]] = None,
-                 default_hostname: Optional[pulumi.Input[str]] = None,
                  dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlDispatchRuleArgs']]]]] = None,
                  feature_settings: Optional[pulumi.Input[pulumi.InputType['FeatureSettingsArgs']]] = None,
                  gcr_domain: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['IdentityAwareProxyArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['AppServingStatus']] = None,
                  __props__=None):
         if opts is None:
@@ -331,19 +255,19 @@ class App(pulumi.CustomResource):
             __props__ = AppArgs.__new__(AppArgs)
 
             __props__.__dict__["auth_domain"] = auth_domain
-            __props__.__dict__["code_bucket"] = code_bucket
             __props__.__dict__["database_type"] = database_type
-            __props__.__dict__["default_bucket"] = default_bucket
             __props__.__dict__["default_cookie_expiration"] = default_cookie_expiration
-            __props__.__dict__["default_hostname"] = default_hostname
             __props__.__dict__["dispatch_rules"] = dispatch_rules
             __props__.__dict__["feature_settings"] = feature_settings
             __props__.__dict__["gcr_domain"] = gcr_domain
             __props__.__dict__["iap"] = iap
             __props__.__dict__["id"] = id
             __props__.__dict__["location"] = location
-            __props__.__dict__["name"] = name
             __props__.__dict__["serving_status"] = serving_status
+            __props__.__dict__["code_bucket"] = None
+            __props__.__dict__["default_bucket"] = None
+            __props__.__dict__["default_hostname"] = None
+            __props__.__dict__["name"] = None
         super(App, __self__).__init__(
             'google-native:appengine/v1:App',
             resource_name,
@@ -393,7 +317,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter(name="codeBucket")
     def code_bucket(self) -> pulumi.Output[str]:
         """
-        Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+        Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
         """
         return pulumi.get(self, "code_bucket")
 
@@ -409,7 +333,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter(name="defaultBucket")
     def default_bucket(self) -> pulumi.Output[str]:
         """
-        Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+        Google Cloud Storage bucket that can be used by this application to store content.
         """
         return pulumi.get(self, "default_bucket")
 
@@ -425,7 +349,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter(name="defaultHostname")
     def default_hostname(self) -> pulumi.Output[str]:
         """
-        Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+        Hostname used to reach this application, as resolved by App Engine.
         """
         return pulumi.get(self, "default_hostname")
 
@@ -470,7 +394,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+        Full path to the Application resource in the API. Example: apps/myapp.
         """
         return pulumi.get(self, "name")
 

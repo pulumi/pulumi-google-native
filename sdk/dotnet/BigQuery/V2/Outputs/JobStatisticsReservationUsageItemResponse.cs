@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class JobStatisticsReservationUsageItemResponse
     {
         /// <summary>
-        /// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+        /// Reservation name or "unreserved" for on-demand resources usage.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Output-only] Slot-milliseconds the job spent in the given reservation.
+        /// Slot-milliseconds the job spent in the given reservation.
         /// </summary>
         public readonly string SlotMs;
 

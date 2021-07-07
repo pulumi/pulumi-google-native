@@ -18,67 +18,67 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly double CompletionRatio;
         /// <summary>
-        /// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
+        /// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
+        /// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// [Output-only] Statistics for an extract job.
+        /// Statistics for an extract job.
         /// </summary>
         public readonly Outputs.JobStatistics4Response Extract;
         /// <summary>
-        /// [Output-only] Statistics for a load job.
+        /// Statistics for a load job.
         /// </summary>
         public readonly Outputs.JobStatistics3Response Load;
         /// <summary>
-        /// [Output-only] Number of child jobs executed.
+        /// Number of child jobs executed.
         /// </summary>
         public readonly string NumChildJobs;
         /// <summary>
-        /// [Output-only] If this is a child job, the id of the parent.
+        /// If this is a child job, the id of the parent.
         /// </summary>
         public readonly string ParentJobId;
         /// <summary>
-        /// [Output-only] Statistics for a query job.
+        /// Statistics for a query job.
         /// </summary>
         public readonly Outputs.JobStatistics2Response Query;
         /// <summary>
-        /// [Output-only] Quotas which delayed this job's start time.
+        /// Quotas which delayed this job's start time.
         /// </summary>
         public readonly ImmutableArray<string> QuotaDeferments;
         /// <summary>
-        /// [Output-only] Job resource usage breakdown by reservation.
+        /// Job resource usage breakdown by reservation.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobStatisticsReservationUsageItemResponse> ReservationUsage;
         /// <summary>
-        /// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+        /// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
         /// </summary>
         public readonly string Reservation_id;
         /// <summary>
-        /// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
+        /// [Preview] Statistics for row-level security. Present only for query and extract jobs.
         /// </summary>
         public readonly Outputs.RowLevelSecurityStatisticsResponse RowLevelSecurityStatistics;
         /// <summary>
-        /// [Output-only] Statistics for a child job of a script.
+        /// Statistics for a child job of a script.
         /// </summary>
         public readonly Outputs.ScriptStatisticsResponse ScriptStatistics;
         /// <summary>
-        /// [Output-only] [Preview] Information of the session if this job is part of one.
+        /// [Preview] Information of the session if this job is part of one.
         /// </summary>
         public readonly Outputs.SessionInfoResponse SessionInfoTemplate;
         /// <summary>
-        /// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
+        /// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// [Output-only] Slot-milliseconds for the job.
+        /// Slot-milliseconds for the job.
         /// </summary>
         public readonly string TotalSlotMs;
         /// <summary>
-        /// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+        /// [Alpha] Information of the multi-statement transaction if this job is part of one.
         /// </summary>
         public readonly Outputs.TransactionInfoResponse TransactionInfoTemplate;
 

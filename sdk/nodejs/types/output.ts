@@ -1768,7 +1768,7 @@ export namespace appengine {
              */
             oauth2ClientSecret: string;
             /**
-             * Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+             * Hex-encoded SHA-256 hash of the client secret.
              */
             oauth2ClientSecretSha256: string;
         }
@@ -1826,11 +1826,11 @@ export namespace appengine {
          */
         export interface ManagedCertificateResponse {
             /**
-             * Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+             * Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
              */
             lastRenewalTime: string;
             /**
-             * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+             * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
              */
             status: string;
         }
@@ -2004,7 +2004,7 @@ export namespace appengine {
              */
             certificateId: string;
             /**
-             * ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+             * ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.
              */
             pendingManagedCertificateId: string;
             /**
@@ -2188,11 +2188,11 @@ export namespace appengine {
          */
         export interface ManagedCertificateResponse {
             /**
-             * Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+             * Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
              */
             lastRenewalTime: string;
             /**
-             * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+             * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
              */
             status: string;
         }
@@ -2224,7 +2224,7 @@ export namespace appengine {
              */
             certificateId: string;
             /**
-             * Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
+             * Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.
              */
             isManagedCertificate: boolean;
         }
@@ -2594,7 +2594,7 @@ export namespace appengine {
              */
             oauth2ClientSecret: string;
             /**
-             * Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+             * Hex-encoded SHA-256 hash of the client secret.
              */
             oauth2ClientSecretSha256: string;
         }
@@ -2652,11 +2652,11 @@ export namespace appengine {
          */
         export interface ManagedCertificateResponse {
             /**
-             * Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+             * Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
              */
             lastRenewalTime: string;
             /**
-             * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+             * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
              */
             status: string;
         }
@@ -2830,7 +2830,7 @@ export namespace appengine {
              */
             certificateId: string;
             /**
-             * ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+             * ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.
              */
             pendingManagedCertificateId: string;
             /**
@@ -3978,7 +3978,7 @@ export namespace bigquery {
              */
             jobTimeoutMs: string;
             /**
-             * [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
+             * The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
              */
             jobType: string;
             /**
@@ -4047,26 +4047,26 @@ export namespace bigquery {
 
         export interface JobStatistics2ReservationUsageItemResponse {
             /**
-             * [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+             * Reservation name or "unreserved" for on-demand resources usage.
              */
             name: string;
             /**
-             * [Output-only] Slot-milliseconds the job spent in the given reservation.
+             * Slot-milliseconds the job spent in the given reservation.
              */
             slotMs: string;
         }
 
         export interface JobStatistics2Response {
             /**
-             * [Output-only] Billing tier for the job.
+             * Billing tier for the job.
              */
             billingTier: number;
             /**
-             * [Output-only] Whether the query result was fetched from the query cache.
+             * Whether the query result was fetched from the query cache.
              */
             cacheHit: boolean;
             /**
-             * [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+             * [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
              */
             ddlAffectedRowAccessPolicyCount: string;
             /**
@@ -4074,7 +4074,7 @@ export namespace bigquery {
              */
             ddlOperationPerformed: string;
             /**
-             * [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+             * The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
              */
             ddlTargetDataset: outputs.bigquery.v2.DatasetReferenceResponse;
             /**
@@ -4082,15 +4082,15 @@ export namespace bigquery {
              */
             ddlTargetRoutine: outputs.bigquery.v2.RoutineReferenceResponse;
             /**
-             * [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+             * [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
              */
             ddlTargetRowAccessPolicy: outputs.bigquery.v2.RowAccessPolicyReferenceResponse;
             /**
-             * [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+             * The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
              */
             ddlTargetTable: outputs.bigquery.v2.TableReferenceResponse;
             /**
-             * [Output-only] The original estimate of bytes processed for the job.
+             * The original estimate of bytes processed for the job.
              */
             estimatedBytesProcessed: string;
             /**
@@ -4098,27 +4098,27 @@ export namespace bigquery {
              */
             modelTraining: outputs.bigquery.v2.BigQueryModelTrainingResponse;
             /**
-             * [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+             * The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
              */
             numDmlAffectedRows: string;
             /**
-             * [Output-only] Describes execution plan for the query.
+             * Describes execution plan for the query.
              */
             queryPlan: outputs.bigquery.v2.ExplainQueryStageResponse[];
             /**
-             * [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+             * Referenced routines (persistent user-defined functions and stored procedures) for the job.
              */
             referencedRoutines: outputs.bigquery.v2.RoutineReferenceResponse[];
             /**
-             * [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+             * Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
              */
             referencedTables: outputs.bigquery.v2.TableReferenceResponse[];
             /**
-             * [Output-only] Job resource usage breakdown by reservation.
+             * Job resource usage breakdown by reservation.
              */
             reservationUsage: outputs.bigquery.v2.JobStatistics2ReservationUsageItemResponse[];
             /**
-             * [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+             * The schema of the results. Present only for successful dry run of non-legacy SQL queries.
              */
             schema: outputs.bigquery.v2.TableSchemaResponse;
             /**
@@ -4126,27 +4126,27 @@ export namespace bigquery {
              */
             statementType: string;
             /**
-             * [Output-only] [Beta] Describes a timeline of job execution.
+             * [Beta] Describes a timeline of job execution.
              */
             timeline: outputs.bigquery.v2.QueryTimelineSampleResponse[];
             /**
-             * [Output-only] Total bytes billed for the job.
+             * Total bytes billed for the job.
              */
             totalBytesBilled: string;
             /**
-             * [Output-only] Total bytes processed for the job.
+             * Total bytes processed for the job.
              */
             totalBytesProcessed: string;
             /**
-             * [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+             * For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
              */
             totalBytesProcessedAccuracy: string;
             /**
-             * [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
+             * Total number of partitions processed from all partitioned tables referenced in the job.
              */
             totalPartitionsProcessed: string;
             /**
-             * [Output-only] Slot-milliseconds for the job.
+             * Slot-milliseconds for the job.
              */
             totalSlotMs: string;
             /**
@@ -4157,45 +4157,45 @@ export namespace bigquery {
 
         export interface JobStatistics3Response {
             /**
-             * [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
+             * The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
              */
             badRecords: string;
             /**
-             * [Output-only] Number of bytes of source data in a load job.
+             * Number of bytes of source data in a load job.
              */
             inputFileBytes: string;
             /**
-             * [Output-only] Number of source files in a load job.
+             * Number of source files in a load job.
              */
             inputFiles: string;
             /**
-             * [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
+             * Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
              */
             outputBytes: string;
             /**
-             * [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
+             * Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
              */
             outputRows: string;
         }
 
         export interface JobStatistics4Response {
             /**
-             * [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
+             * Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
              */
             destinationUriFileCounts: string[];
             /**
-             * [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
+             * Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
              */
             inputBytes: string;
         }
 
         export interface JobStatisticsReservationUsageItemResponse {
             /**
-             * [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+             * Reservation name or "unreserved" for on-demand resources usage.
              */
             name: string;
             /**
-             * [Output-only] Slot-milliseconds the job spent in the given reservation.
+             * Slot-milliseconds the job spent in the given reservation.
              */
             slotMs: string;
         }
@@ -4206,82 +4206,82 @@ export namespace bigquery {
              */
             completionRatio: number;
             /**
-             * [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
+             * Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
              */
             creationTime: string;
             /**
-             * [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
+             * End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
              */
             endTime: string;
             /**
-             * [Output-only] Statistics for an extract job.
+             * Statistics for an extract job.
              */
             extract: outputs.bigquery.v2.JobStatistics4Response;
             /**
-             * [Output-only] Statistics for a load job.
+             * Statistics for a load job.
              */
             load: outputs.bigquery.v2.JobStatistics3Response;
             /**
-             * [Output-only] Number of child jobs executed.
+             * Number of child jobs executed.
              */
             numChildJobs: string;
             /**
-             * [Output-only] If this is a child job, the id of the parent.
+             * If this is a child job, the id of the parent.
              */
             parentJobId: string;
             /**
-             * [Output-only] Statistics for a query job.
+             * Statistics for a query job.
              */
             query: outputs.bigquery.v2.JobStatistics2Response;
             /**
-             * [Output-only] Quotas which delayed this job's start time.
+             * Quotas which delayed this job's start time.
              */
             quotaDeferments: string[];
             /**
-             * [Output-only] Job resource usage breakdown by reservation.
+             * Job resource usage breakdown by reservation.
              */
             reservationUsage: outputs.bigquery.v2.JobStatisticsReservationUsageItemResponse[];
             /**
-             * [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+             * Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
              */
             reservation_id: string;
             /**
-             * [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
+             * [Preview] Statistics for row-level security. Present only for query and extract jobs.
              */
             rowLevelSecurityStatistics: outputs.bigquery.v2.RowLevelSecurityStatisticsResponse;
             /**
-             * [Output-only] Statistics for a child job of a script.
+             * Statistics for a child job of a script.
              */
             scriptStatistics: outputs.bigquery.v2.ScriptStatisticsResponse;
             /**
-             * [Output-only] [Preview] Information of the session if this job is part of one.
+             * [Preview] Information of the session if this job is part of one.
              */
             sessionInfoTemplate: outputs.bigquery.v2.SessionInfoResponse;
             /**
-             * [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
+             * Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
              */
             startTime: string;
             /**
-             * [Output-only] Slot-milliseconds for the job.
+             * Slot-milliseconds for the job.
              */
             totalSlotMs: string;
             /**
-             * [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+             * [Alpha] Information of the multi-statement transaction if this job is part of one.
              */
             transactionInfoTemplate: outputs.bigquery.v2.TransactionInfoResponse;
         }
 
         export interface JobStatusResponse {
             /**
-             * [Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+             * Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
              */
             errorResult: outputs.bigquery.v2.ErrorProtoResponse;
             /**
-             * [Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
+             * The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
              */
             errors: outputs.bigquery.v2.ErrorProtoResponse[];
             /**
-             * [Output-only] Running state of the job.
+             * Running state of the job.
              */
             state: string;
         }
@@ -4292,7 +4292,7 @@ export namespace bigquery {
              */
             enableRefresh: boolean;
             /**
-             * [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+             * [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
              */
             lastRefreshTime: string;
             /**
@@ -4499,41 +4499,41 @@ export namespace bigquery {
 
         export interface RowLevelSecurityStatisticsResponse {
             /**
-             * [Output-only] [Preview] Whether any accessed data was protected by row access policies.
+             * [Preview] Whether any accessed data was protected by row access policies.
              */
             rowLevelSecurityApplied: boolean;
         }
 
         export interface ScriptStackFrameResponse {
             /**
-             * [Output-only] One-based end column.
+             * One-based end column.
              */
             endColumn: number;
             /**
-             * [Output-only] One-based end line.
+             * One-based end line.
              */
             endLine: number;
             /**
-             * [Output-only] Name of the active procedure, empty if in a top-level script.
+             * Name of the active procedure, empty if in a top-level script.
              */
             procedureId: string;
             /**
-             * [Output-only] One-based start column.
+             * One-based start column.
              */
             startColumn: number;
             /**
-             * [Output-only] One-based start line.
+             * One-based start line.
              */
             startLine: number;
             /**
-             * [Output-only] Text of the current statement/expression.
+             * Text of the current statement/expression.
              */
             text: string;
         }
 
         export interface ScriptStatisticsResponse {
             /**
-             * [Output-only] Whether this child job was a statement or expression.
+             * Whether this child job was a statement or expression.
              */
             evaluationKind: string;
             /**
@@ -4544,7 +4544,7 @@ export namespace bigquery {
 
         export interface SessionInfoResponse {
             /**
-             * [Output-only] // [Preview] Id of the session.
+             * // [Preview] Id of the session.
              */
             sessionId: string;
         }
@@ -4608,15 +4608,15 @@ export namespace bigquery {
 
         export interface StreamingbufferResponse {
             /**
-             * [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
+             * A lower-bound estimate of the number of bytes currently in the streaming buffer.
              */
             estimatedBytes: string;
             /**
-             * [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
+             * A lower-bound estimate of the number of rows currently in the streaming buffer.
              */
             estimatedRows: string;
             /**
-             * [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+             * Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
              */
             oldestEntryTime: string;
         }
@@ -4718,7 +4718,7 @@ export namespace bigquery {
 
         export interface TransactionInfoResponse {
             /**
-             * [Output-only] // [Alpha] Id of the transaction.
+             * // [Alpha] Id of the transaction.
              */
             transactionId: string;
         }
@@ -50101,7 +50101,7 @@ export namespace notebooks {
              */
             guestOsFeatures: outputs.notebooks.v1.RuntimeGuestOsFeatureResponse[];
             /**
-             * A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+             * [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
              */
             index: number;
             /**
@@ -50117,7 +50117,7 @@ export namespace notebooks {
              */
             kind: string;
             /**
-             * Any valid publicly visible licenses.
+             * [Output Only] Any valid publicly visible licenses.
              */
             licenses: string[];
             /**

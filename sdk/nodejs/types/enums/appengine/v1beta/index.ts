@@ -187,59 +187,6 @@ export const IngressRuleAction = {
  */
 export type IngressRuleAction = (typeof IngressRuleAction)[keyof typeof IngressRuleAction];
 
-export const ManagedCertificateStatus = {
-    ManagementStatusUnspecified: "MANAGEMENT_STATUS_UNSPECIFIED",
-    /**
-     * Certificate was successfully obtained and inserted into the serving system.
-     */
-    Ok: "OK",
-    /**
-     * Certificate is under active attempts to acquire or renew.
-     */
-    Pending: "PENDING",
-    /**
-     * Most recent renewal failed due to an invalid DNS setup and will be retried. Renewal attempts will continue to fail until the certificate domain's DNS configuration is fixed. The last successfully provisioned certificate may still be serving.
-     */
-    FailedRetryingNotVisible: "FAILED_RETRYING_NOT_VISIBLE",
-    /**
-     * All renewal attempts have been exhausted, likely due to an invalid DNS setup.
-     */
-    FailedPermanent: "FAILED_PERMANENT",
-    /**
-     * Most recent renewal failed due to an explicit CAA record that does not include one of the in-use CAs (Google CA and Let's Encrypt). Renewals will continue to fail until the CAA is reconfigured. The last successfully provisioned certificate may still be serving.
-     */
-    FailedRetryingCaaForbidden: "FAILED_RETRYING_CAA_FORBIDDEN",
-    /**
-     * Most recent renewal failed due to a CAA retrieval failure. This means that the domain's DNS provider does not properly handle CAA records, failing requests for CAA records when no CAA records are defined. Renewals will continue to fail until the DNS provider is changed or a CAA record is added for the given domain. The last successfully provisioned certificate may still be serving.
-     */
-    FailedRetryingCaaChecking: "FAILED_RETRYING_CAA_CHECKING",
-} as const;
-
-/**
- * Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
- */
-export type ManagedCertificateStatus = (typeof ManagedCertificateStatus)[keyof typeof ManagedCertificateStatus];
-
-export const ResourceRecordType = {
-    /**
-     * An A resource record. Data is an IPv4 address.
-     */
-    A: "A",
-    /**
-     * An AAAA resource record. Data is an IPv6 address.
-     */
-    Aaaa: "AAAA",
-    /**
-     * A CNAME resource record. Data is a domain name to be aliased.
-     */
-    Cname: "CNAME",
-} as const;
-
-/**
- * Resource record type. Example: AAAA.
- */
-export type ResourceRecordType = (typeof ResourceRecordType)[keyof typeof ResourceRecordType];
-
 export const SslSettingsSslManagementType = {
     /**
      * SSL support for this domain is configured automatically. The mapped SSL certificate will be automatically renewed.

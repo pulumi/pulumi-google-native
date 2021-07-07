@@ -40,23 +40,23 @@ export class PerfSampleSeries extends pulumi.CustomResource {
      */
     public readonly basicPerfSampleSeries!: pulumi.Output<outputs.toolresults.v1beta3.BasicPerfSampleSeriesResponse>;
     /**
-     * A tool results execution ID. @OutputOnly
+     * A tool results execution ID. 
      */
     public readonly executionId!: pulumi.Output<string>;
     /**
-     * A tool results history ID. @OutputOnly
+     * A tool results history ID. 
      */
     public readonly historyId!: pulumi.Output<string>;
     /**
-     * The cloud project @OutputOnly
+     * The cloud project 
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * A sample series id @OutputOnly
+     * A sample series id 
      */
-    public readonly sampleSeriesId!: pulumi.Output<string>;
+    public /*out*/ readonly sampleSeriesId!: pulumi.Output<string>;
     /**
-     * A tool results step ID. @OutputOnly
+     * A tool results step ID. 
      */
     public readonly stepId!: pulumi.Output<string>;
 
@@ -87,8 +87,8 @@ export class PerfSampleSeries extends pulumi.CustomResource {
             inputs["executionId"] = args ? args.executionId : undefined;
             inputs["historyId"] = args ? args.historyId : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["sampleSeriesId"] = args ? args.sampleSeriesId : undefined;
             inputs["stepId"] = args ? args.stepId : undefined;
+            inputs["sampleSeriesId"] = undefined /*out*/;
         } else {
             inputs["basicPerfSampleSeries"] = undefined /*out*/;
             inputs["executionId"] = undefined /*out*/;
@@ -112,24 +112,8 @@ export interface PerfSampleSeriesArgs {
      * Basic series represented by a line chart
      */
     basicPerfSampleSeries?: pulumi.Input<inputs.toolresults.v1beta3.BasicPerfSampleSeriesArgs>;
-    /**
-     * A tool results execution ID. @OutputOnly
-     */
     executionId: pulumi.Input<string>;
-    /**
-     * A tool results history ID. @OutputOnly
-     */
     historyId: pulumi.Input<string>;
-    /**
-     * The cloud project @OutputOnly
-     */
     project: pulumi.Input<string>;
-    /**
-     * A sample series id @OutputOnly
-     */
-    sampleSeriesId?: pulumi.Input<string>;
-    /**
-     * A tool results step ID. @OutputOnly
-     */
     stepId: pulumi.Input<string>;
 }

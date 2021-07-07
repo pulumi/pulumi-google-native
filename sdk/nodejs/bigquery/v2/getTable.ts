@@ -37,7 +37,7 @@ export interface GetTableResult {
      */
     readonly clustering: outputs.bigquery.v2.ClusteringResponse;
     /**
-     * [Output-only] The time when this table was created, in milliseconds since the epoch.
+     * The time when this table was created, in milliseconds since the epoch.
      */
     readonly creationTime: string;
     /**
@@ -49,7 +49,7 @@ export interface GetTableResult {
      */
     readonly encryptionConfiguration: outputs.bigquery.v2.EncryptionConfigurationResponse;
     /**
-     * [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+     * A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
      */
     readonly etag: string;
     /**
@@ -65,7 +65,7 @@ export interface GetTableResult {
      */
     readonly friendlyName: string;
     /**
-     * [Output-only] The type of the resource.
+     * The type of the resource.
      */
     readonly kind: string;
     /**
@@ -73,11 +73,11 @@ export interface GetTableResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * [Output-only] The time when this table was last modified, in milliseconds since the epoch.
+     * The time when this table was last modified, in milliseconds since the epoch.
      */
     readonly lastModifiedTime: string;
     /**
-     * [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
+     * The geographic location where the table resides. This value is inherited from the dataset.
      */
     readonly location: string;
     /**
@@ -89,19 +89,19 @@ export interface GetTableResult {
      */
     readonly model: outputs.bigquery.v2.ModelDefinitionResponse;
     /**
-     * [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
+     * The size of this table in bytes, excluding any data in the streaming buffer.
      */
     readonly numBytes: string;
     /**
-     * [Output-only] The number of bytes in the table that are considered "long-term storage".
+     * The number of bytes in the table that are considered "long-term storage".
      */
     readonly numLongTermBytes: string;
     /**
-     * [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+     * [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
      */
     readonly numPhysicalBytes: string;
     /**
-     * [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
+     * The number of rows of data in this table, excluding any data in the streaming buffer.
      */
     readonly numRows: string;
     /**
@@ -117,15 +117,15 @@ export interface GetTableResult {
      */
     readonly schema: outputs.bigquery.v2.TableSchemaResponse;
     /**
-     * [Output-only] A URL that can be used to access this resource again.
+     * A URL that can be used to access this resource again.
      */
     readonly selfLink: string;
     /**
-     * [Output-only] Snapshot definition.
+     * Snapshot definition.
      */
     readonly snapshotDefinition: outputs.bigquery.v2.SnapshotDefinitionResponse;
     /**
-     * [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+     * Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
      */
     readonly streamingBuffer: outputs.bigquery.v2.StreamingbufferResponse;
     /**
@@ -137,7 +137,7 @@ export interface GetTableResult {
      */
     readonly timePartitioning: outputs.bigquery.v2.TimePartitioningResponse;
     /**
-     * [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+     * Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
      */
     readonly type: string;
     /**
