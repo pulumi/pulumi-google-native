@@ -154,6 +154,80 @@ func (c *googleHttpClient) sendRequestWithTimeout(method, rawurl string, body ma
 	return result, nil
 }
 
+// multipartBoundary is a random string used to separate parts of multi-part request bodies.
+const multipartBoundary = "boundary-fa78ad331d"
+
+func (c *googleHttpClient) sendUploadWithTimeout(method, rawurl string, metadata map[string]interface{}, binary []byte, timeout time.Duration) (map[string]interface{}, error) {
+	reqHeaders := make(http.Header)
+	reqHeaders.Set("User-Agent", c.userAgent)
+	reqHeaders.Set("Content-Type", fmt.Sprintf("multipart/related; boundary=%s", multipartBoundary))
+
+	if timeout == 0 {
+		timeout = time.Duration(1) * time.Hour
+	}
+
+	// See the docs on multipart uploads: https://cloud.google.com/storage/docs/uploading-objects
+	var buf bytes.Buffer
+	buf.WriteString(fmt.Sprintf("--%s\r\n", multipartBoundary))
+	buf.WriteString("Content-Type: application/json; charset=UTF-8\r\n\r\n")
+	err := json.NewEncoder(&buf).Encode(metadata)
+	if err != nil {
+		return nil, err
+	}
+	buf.WriteString(fmt.Sprintf("\r\n--%s\r\n", multipartBoundary))
+	contentType := "application/octet-stream"
+	if ct, has := metadata["contentType"].(string); has {
+		contentType = ct
+	}
+	buf.WriteString(fmt.Sprintf("Content-Type: %s\r\n\r\n", contentType))
+	buf.Write(binary)
+	buf.WriteString(fmt.Sprintf("\r\n--%s--\r\n", multipartBoundary))
+
+	u, err := addQueryParams(rawurl, map[string]string{"alt": "json", "uploadType": "multipart"})
+	if err != nil {
+		return nil, err
+	}
+	req, err := http.NewRequest(method, u, &buf)
+	if err != nil {
+		return nil, err
+	}
+	req.Header = reqHeaders
+
+	debugBody, _ := httputil.DumpRequest(req, true)
+	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJsonLines(debugBody))
+	res, err := c.http.Do(req)
+	if err != nil {
+		return nil, err
+	}
+
+	debugResp, _ := httputil.DumpResponse(res, true)
+	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
+
+	if err := googleapi.CheckResponse(res); err != nil {
+		googleapi.CloseBody(res)
+		return nil, err
+	}
+
+	if res == nil {
+		return nil, fmt.Errorf("unable to parse server response")
+	}
+
+	// The defer call must be made outside of the retryFunc otherwise it's closed too soon.
+	defer googleapi.CloseBody(res)
+
+	// 204 responses will have no body, so we're going to error with "EOF" if we
+	// try to parse it. Instead, we can just return nil.
+	if res.StatusCode == 204 {
+		return nil, nil
+	}
+	result := make(map[string]interface{})
+	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}
+
 var defaultClientScopes = []string{
 	"https://www.googleapis.com/auth/compute",
 	"https://www.googleapis.com/auth/cloud-platform",

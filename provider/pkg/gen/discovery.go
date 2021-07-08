@@ -88,7 +88,11 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 			if getMethod.HttpMethod != "GET" {
 				return errors.Errorf("get method %q is not supported: %s (%s)", getMethod.HttpMethod, typeName, docName)
 			}
-			if override, has := resourceNameByPathOverrides[createMethod.FlatPath]; has {
+			path := createMethod.FlatPath
+			if path == "" {
+				path = createMethod.Path
+			}
+			if override, has := resourceNameByPathOverrides[path]; has {
 				if override == "" {
 					return nil
 				}

@@ -424,8 +424,11 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
-	if resourceTok == "google-native:storage/v1:Object" {
-		resourceTok = "google-native:storage/v1:BucketObject"
+	// Detect resources that support media upload as mark them as such.
+	if dd.createMethod.MediaUpload != nil && dd.createMethod.MediaUpload.Protocols != nil &&
+		dd.createMethod.MediaUpload.Protocols.Simple != nil {
+		resourceMeta.CreatePath = resources.CombineUrl(g.rest.RootUrl, dd.createMethod.MediaUpload.Protocols.Simple.Path)
+		resourceMeta.AssetUpload = true
 		inputProperties["source"] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{
 				Ref: "pulumi.json#/Asset",

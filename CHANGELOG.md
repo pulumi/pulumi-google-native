@@ -7,6 +7,7 @@ Enhancements:
 
 - Populate fingerprint properties automatically
   [#126](https://github.com/pulumi/pulumi-google-native/issues/126)
+
 - Auto-naming. Resource names (as seen in Google Cloud) are now automatically
   generated unless they are specified in user's program. A dash plus a random
   suffix of length 7 are appended to the logical name of Pulumi resources.
@@ -18,11 +19,18 @@ Enhancements:
 - Fix the representation of properties marked as `[Output only]`
   [#134](https://github.com/pulumi/pulumi-google-native/issues/134),
   [#135](https://github.com/pulumi/pulumi-google-native/issues/135)
+
 - Normalize property naming to lowerCamelCase
   [#146](https://github.com/pulumi/pulumi-google-native/pull/146)
 
 - Mark a property as required if description starts with `Required`
   [#145](https://github.com/pulumi/pulumi-google-native/pull/145)
+
+- `storage/*.getObject` functions renamed to `storage/*.getBucketObject` to be
+  consistent with the resource name
+
+- Respect all metadata when creating `storage/*.BucketObject`
+  [#74](https://github.com/pulumi/pulumi-google-native/issues/74)
 
 ---
 

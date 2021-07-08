@@ -20,9 +20,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	rpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	"google.golang.org/api/googleapi"
-	"google.golang.org/api/option"
-	"google.golang.org/api/option/internaloption"
-	"google.golang.org/api/storage/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"log"
@@ -290,6 +287,13 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 		}
 	}
 
+	// Uploads are only supported for create methods, not updates.
+	if res.AssetUpload {
+		if _, ok := diff.Updates[resource.PropertyKey("source")]; ok {
+			replaces = append(replaces, "source")
+		}
+	}
+
 	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, Replaces: replaces, DeleteBeforeReplace: true}, nil
 }
 
@@ -314,23 +318,14 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	var resp map[string]interface{}
-	switch resourceKey {
-	case "google-native:storage/v1:BucketObject":
-		// This is a very sketchy implementation based on the Go SDK client that exposes media upload.
-		// TODO: We may be able to do that based purely on Discovery API.
-		// https://github.com/pulumi/pulumi-google-native/issues/74
-		opts := []option.ClientOption{option.WithScopes(defaultClientScopes...)}
-		opts = append(opts, internaloption.WithDefaultEndpoint(res.BaseUrl))
-		clientStorage, err := storage.NewService(ctx, option.WithHTTPClient(p.client.http))
-		if err != nil {
-			return nil, err
-		}
-		objectsService := storage.NewObjectsService(clientStorage)
-		bucket := inputs["bucket"].StringValue()
-		object := &storage.Object{Bucket: bucket}
-		insertCall := objectsService.Insert(bucket, object)
-		insertCall.Name(inputs["name"].StringValue())
+	uri, err := buildCreateUrl(res, inputs)
+	if err != nil {
+		return nil, err
+	}
+	body := p.prepareAPIInputs(inputs, nil, res.CreateProperties)
+
+	var op map[string]interface{}
+	if res.AssetUpload {
 		var content []byte
 		source := inputs["source"]
 		if source.IsAsset() {
@@ -341,33 +336,21 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if err != nil {
 			return nil, err
 		}
-		insertCall.Media(bytes.NewReader(content))
-		obj, err := insertCall.Do()
-		if err != nil {
-			return nil, err
-		}
 
-		resp = map[string]interface{}{
-			"mediaLink": obj.MediaLink,
-			"name":      obj.Name,
-			"selfLink":  obj.SelfLink,
-		}
-	default:
-		uri, err := buildCreateUrl(res, inputs)
+		op, err = p.client.sendUploadWithTimeout(res.CreateVerb, uri, body, content, 0)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
 		}
-
-		body := p.prepareAPIInputs(inputs, nil, res.CreateProperties)
-		op, err := p.client.sendRequestWithTimeout(res.CreateVerb, uri, body, 0)
+	} else {
+		op, err = p.client.sendRequestWithTimeout(res.CreateVerb, uri, body, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
+	}
 
-		resp, err = p.waitForResourceOpCompletion(res.BaseUrl, op)
-		if err != nil {
-			return nil, errors.Wrapf(err, "waiting for completion")
-		}
+	resp, err := p.waitForResourceOpCompletion(res.BaseUrl, op)
+	if err != nil {
+		return nil, errors.Wrapf(err, "waiting for completion")
 	}
 
 	// Store both outputs and inputs into the state.
