@@ -24,7 +24,7 @@ __all__ = [
     'ConnectionPropertyArgs',
     'CsvOptionsArgs',
     'DatasetAccessEntryArgs',
-    'DatasetAccessEntryTarget_typesItemArgs',
+    'DatasetAccessEntryTargetTypesItemArgs',
     'DatasetAccessItemArgs',
     'DatasetReferenceArgs',
     'DestinationTablePropertiesArgs',
@@ -957,7 +957,7 @@ class CsvOptionsArgs:
 class DatasetAccessEntryArgs:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
-                 target_types: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTarget_typesItemArgs']]]] = None):
+                 target_types: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItemArgs']]]] = None):
         """
         :param pulumi.Input['DatasetReferenceArgs'] dataset: [Required] The dataset this entry applies to.
         """
@@ -979,17 +979,17 @@ class DatasetAccessEntryArgs:
         pulumi.set(self, "dataset", value)
 
     @property
-    @pulumi.getter
-    def target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTarget_typesItemArgs']]]]:
+    @pulumi.getter(name="targetTypes")
+    def target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItemArgs']]]]:
         return pulumi.get(self, "target_types")
 
     @target_types.setter
-    def target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTarget_typesItemArgs']]]]):
+    def target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItemArgs']]]]):
         pulumi.set(self, "target_types", value)
 
 
 @pulumi.input_type
-class DatasetAccessEntryTarget_typesItemArgs:
+class DatasetAccessEntryTargetTypesItemArgs:
     def __init__(__self__, *,
                  target_type: Optional[pulumi.Input[str]] = None):
         """

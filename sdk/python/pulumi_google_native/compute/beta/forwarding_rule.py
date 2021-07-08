@@ -18,12 +18,12 @@ class ForwardingRuleArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 ip_address: Optional[pulumi.Input[str]] = None,
-                 ip_protocol: Optional[pulumi.Input['ForwardingRuleIPProtocol']] = None,
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_protocol: Optional[pulumi.Input['ForwardingRuleIpProtocol']] = None,
                  ip_version: Optional[pulumi.Input['ForwardingRuleIpVersion']] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -41,6 +41,12 @@ class ForwardingRuleArgs:
                  target: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ForwardingRule resource.
+        :param pulumi.Input[bool] all_ports: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
+               
+               When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule.
+        :param pulumi.Input[bool] allow_global_access: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
+        :param pulumi.Input[str] backend_service: Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] ip_address: IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
                
                If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
@@ -56,7 +62,7 @@ class ForwardingRuleArgs:
                Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
                
                For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
-        :param pulumi.Input['ForwardingRuleIPProtocol'] ip_protocol: The IP protocol to which this rule applies.
+        :param pulumi.Input['ForwardingRuleIpProtocol'] ip_protocol: The IP protocol to which this rule applies.
                
                For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
                
@@ -66,12 +72,6 @@ class ForwardingRuleArgs:
                - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
                - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
                - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-        :param pulumi.Input[bool] all_ports: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
-               
-               When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule.
-        :param pulumi.Input[bool] allow_global_access: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
-        :param pulumi.Input[str] backend_service: Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
-        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['ForwardingRuleIpVersion'] ip_version: The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -142,10 +142,6 @@ class ForwardingRuleArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
-        if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
         if all_ports is not None:
             pulumi.set(__self__, "all_ports", all_ports)
         if allow_global_access is not None:
@@ -154,6 +150,10 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "backend_service", backend_service)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
         if is_mirroring_collector is not None:
@@ -204,53 +204,6 @@ class ForwardingRuleArgs:
         pulumi.set(self, "region", value)
 
     @property
-    @pulumi.getter(name="IPAddress")
-    def ip_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
-
-        If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
-
-        * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
-        - projects/project_id/regions/region/addresses/address-name 
-        - regions/region/addresses/address-name 
-        - global/addresses/address-name 
-        - address-name  
-
-        The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-
-        Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
-
-        For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
-        """
-        return pulumi.get(self, "ip_address")
-
-    @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ip_address", value)
-
-    @property
-    @pulumi.getter(name="IPProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input['ForwardingRuleIPProtocol']]:
-        """
-        The IP protocol to which this rule applies.
-
-        For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
-
-        The valid IP protocols are different for different load balancing products:  
-        - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
-        - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
-        - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
-        - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
-        - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-        """
-        return pulumi.get(self, "ip_protocol")
-
-    @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input['ForwardingRuleIPProtocol']]):
-        pulumi.set(self, "ip_protocol", value)
-
-    @property
     @pulumi.getter(name="allPorts")
     def all_ports(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -299,6 +252,53 @@ class ForwardingRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
+
+        If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
+
+        * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
+        - projects/project_id/regions/region/addresses/address-name 
+        - regions/region/addresses/address-name 
+        - global/addresses/address-name 
+        - address-name  
+
+        The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+
+        Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
+
+        For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[pulumi.Input['ForwardingRuleIpProtocol']]:
+        """
+        The IP protocol to which this rule applies.
+
+        For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
+
+        The valid IP protocols are different for different load balancing products:  
+        - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
+        - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
+        - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
+        - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
+        - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: Optional[pulumi.Input['ForwardingRuleIpProtocol']]):
+        pulumi.set(self, "ip_protocol", value)
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -534,12 +534,12 @@ class ForwardingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_address: Optional[pulumi.Input[str]] = None,
-                 ip_protocol: Optional[pulumi.Input['ForwardingRuleIPProtocol']] = None,
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_protocol: Optional[pulumi.Input['ForwardingRuleIpProtocol']] = None,
                  ip_version: Optional[pulumi.Input['ForwardingRuleIpVersion']] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -563,6 +563,12 @@ class ForwardingRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] all_ports: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
+               
+               When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule.
+        :param pulumi.Input[bool] allow_global_access: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
+        :param pulumi.Input[str] backend_service: Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] ip_address: IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
                
                If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
@@ -578,7 +584,7 @@ class ForwardingRule(pulumi.CustomResource):
                Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
                
                For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
-        :param pulumi.Input['ForwardingRuleIPProtocol'] ip_protocol: The IP protocol to which this rule applies.
+        :param pulumi.Input['ForwardingRuleIpProtocol'] ip_protocol: The IP protocol to which this rule applies.
                
                For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
                
@@ -588,12 +594,6 @@ class ForwardingRule(pulumi.CustomResource):
                - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
                - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
                - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-        :param pulumi.Input[bool] all_ports: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
-               
-               When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule.
-        :param pulumi.Input[bool] allow_global_access: This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
-        :param pulumi.Input[str] backend_service: Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
-        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['ForwardingRuleIpVersion'] ip_version: The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -686,12 +686,12 @@ class ForwardingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_address: Optional[pulumi.Input[str]] = None,
-                 ip_protocol: Optional[pulumi.Input['ForwardingRuleIPProtocol']] = None,
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_protocol: Optional[pulumi.Input['ForwardingRuleIpProtocol']] = None,
                  ip_version: Optional[pulumi.Input['ForwardingRuleIpVersion']] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -721,12 +721,12 @@ class ForwardingRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ForwardingRuleArgs.__new__(ForwardingRuleArgs)
 
-            __props__.__dict__["ip_address"] = ip_address
-            __props__.__dict__["ip_protocol"] = ip_protocol
             __props__.__dict__["all_ports"] = all_ports
             __props__.__dict__["allow_global_access"] = allow_global_access
             __props__.__dict__["backend_service"] = backend_service
             __props__.__dict__["description"] = description
+            __props__.__dict__["ip_address"] = ip_address
+            __props__.__dict__["ip_protocol"] = ip_protocol
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["is_mirroring_collector"] = is_mirroring_collector
             __props__.__dict__["labels"] = labels
@@ -777,14 +777,14 @@ class ForwardingRule(pulumi.CustomResource):
 
         __props__ = ForwardingRuleArgs.__new__(ForwardingRuleArgs)
 
-        __props__.__dict__["ip_address"] = None
-        __props__.__dict__["ip_protocol"] = None
         __props__.__dict__["all_ports"] = None
         __props__.__dict__["allow_global_access"] = None
         __props__.__dict__["backend_service"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fingerprint"] = None
+        __props__.__dict__["ip_address"] = None
+        __props__.__dict__["ip_protocol"] = None
         __props__.__dict__["ip_version"] = None
         __props__.__dict__["is_mirroring_collector"] = None
         __props__.__dict__["kind"] = None
@@ -806,45 +806,6 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["subnetwork"] = None
         __props__.__dict__["target"] = None
         return ForwardingRule(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="IPAddress")
-    def ip_address(self) -> pulumi.Output[str]:
-        """
-        IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
-
-        If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
-
-        * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
-        - projects/project_id/regions/region/addresses/address-name 
-        - regions/region/addresses/address-name 
-        - global/addresses/address-name 
-        - address-name  
-
-        The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-
-        Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
-
-        For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
-        """
-        return pulumi.get(self, "ip_address")
-
-    @property
-    @pulumi.getter(name="IPProtocol")
-    def ip_protocol(self) -> pulumi.Output[str]:
-        """
-        The IP protocol to which this rule applies.
-
-        For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
-
-        The valid IP protocols are different for different load balancing products:  
-        - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
-        - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
-        - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
-        - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
-        - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-        """
-        return pulumi.get(self, "ip_protocol")
 
     @property
     @pulumi.getter(name="allPorts")
@@ -897,6 +858,45 @@ class ForwardingRule(pulumi.CustomResource):
         To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Output[str]:
+        """
+        IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
+
+        If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
+
+        * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
+        - projects/project_id/regions/region/addresses/address-name 
+        - regions/region/addresses/address-name 
+        - global/addresses/address-name 
+        - address-name  
+
+        The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+
+        Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
+
+        For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Output[str]:
+        """
+        The IP protocol to which this rule applies.
+
+        For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
+
+        The valid IP protocols are different for different load balancing products:  
+        - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
+        - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
+        - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
+        - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
+        - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
+        """
+        return pulumi.get(self, "ip_protocol")
 
     @property
     @pulumi.getter(name="ipVersion")

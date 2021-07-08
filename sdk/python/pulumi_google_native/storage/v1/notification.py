@@ -71,7 +71,7 @@ class NotificationArgs:
         pulumi.set(self, "bucket", value)
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
@@ -95,7 +95,7 @@ class NotificationArgs:
         pulumi.set(self, "etag", value)
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="eventTypes")
     def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         If present, only send notifications about listed event types. If empty, sent notifications for all event types.
@@ -131,7 +131,7 @@ class NotificationArgs:
         pulumi.set(self, "kind", value)
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="objectNamePrefix")
     def object_name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         If present, only apply this notification configuration to object names that begin with this prefix.
@@ -143,7 +143,7 @@ class NotificationArgs:
         pulumi.set(self, "object_name_prefix", value)
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="payloadFormat")
     def payload_format(self) -> Optional[pulumi.Input[str]]:
         """
         The desired content of the Payload.
@@ -325,7 +325,7 @@ class Notification(pulumi.CustomResource):
         return Notification(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> pulumi.Output[Mapping[str, str]]:
         """
         An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
@@ -341,7 +341,7 @@ class Notification(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="eventTypes")
     def event_types(self) -> pulumi.Output[Sequence[str]]:
         """
         If present, only send notifications about listed event types. If empty, sent notifications for all event types.
@@ -357,7 +357,7 @@ class Notification(pulumi.CustomResource):
         return pulumi.get(self, "kind")
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="objectNamePrefix")
     def object_name_prefix(self) -> pulumi.Output[str]:
         """
         If present, only apply this notification configuration to object names that begin with this prefix.
@@ -365,7 +365,7 @@ class Notification(pulumi.CustomResource):
         return pulumi.get(self, "object_name_prefix")
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="payloadFormat")
     def payload_format(self) -> pulumi.Output[str]:
         """
         The desired content of the Payload.

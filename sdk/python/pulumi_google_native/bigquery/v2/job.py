@@ -219,7 +219,7 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="userEmail")
     def user_email(self) -> pulumi.Output[str]:
         """
         Email address of the user who ran the job.
