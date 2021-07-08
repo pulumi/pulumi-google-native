@@ -12,18 +12,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
 
     public sealed class PacketMirroringFilterArgs : Pulumi.ResourceArgs
     {
-        [Input("IPProtocols")]
-        private InputList<string>? _IPProtocols;
-
-        /// <summary>
-        /// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-        /// </summary>
-        public InputList<string> IPProtocols
-        {
-            get => _IPProtocols ?? (_IPProtocols = new InputList<string>());
-            set => _IPProtocols = value;
-        }
-
         [Input("cidrRanges")]
         private InputList<string>? _cidrRanges;
 
@@ -41,6 +29,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// </summary>
         [Input("direction")]
         public Input<Pulumi.GoogleNative.Compute.V1.PacketMirroringFilterDirection>? Direction { get; set; }
+
+        [Input("ipProtocols")]
+        private InputList<string>? _ipProtocols;
+
+        /// <summary>
+        /// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        /// </summary>
+        public InputList<string> IpProtocols
+        {
+            get => _ipProtocols ?? (_ipProtocols = new InputList<string>());
+            set => _ipProtocols = value;
+        }
 
         public PacketMirroringFilterArgs()
         {

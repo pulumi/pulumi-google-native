@@ -20,7 +20,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// <summary>
         /// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
         /// </summary>
-        public readonly string Instance_id;
+        public readonly string InstanceId;
         /// <summary>
         /// Required. The location associated with the metrics.
         /// </summary>
@@ -30,12 +30,12 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         private GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse(
             string env,
 
-            string instance_id,
+            string instanceId,
 
             string location)
         {
             Env = env;
-            Instance_id = instance_id;
+            InstanceId = instanceId;
             Location = location;
         }
     }

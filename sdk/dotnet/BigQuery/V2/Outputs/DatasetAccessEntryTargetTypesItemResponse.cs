@@ -7,19 +7,21 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
+namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
-    public sealed class DatasetAccessEntryTarget_typesItemArgs : Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class DatasetAccessEntryTargetTypesItemResponse
     {
         /// <summary>
         /// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
         /// </summary>
-        [Input("targetType")]
-        public Input<string>? TargetType { get; set; }
+        public readonly string TargetType;
 
-        public DatasetAccessEntryTarget_typesItemArgs()
+        [OutputConstructor]
+        private DatasetAccessEntryTargetTypesItemResponse(string targetType)
         {
+            TargetType = targetType;
         }
     }
 }

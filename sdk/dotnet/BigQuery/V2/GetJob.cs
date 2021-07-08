@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// <summary>
         /// Email address of the user who ran the job.
         /// </summary>
-        public readonly string User_email;
+        public readonly string UserEmail;
 
         [OutputConstructor]
         private GetJobResult(
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             Outputs.JobStatusResponse status,
 
-            string user_email)
+            string userEmail)
         {
             Configuration = configuration;
             Etag = etag;
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             SelfLink = selfLink;
             Statistics = statistics;
             Status = status;
-            User_email = user_email;
+            UserEmail = userEmail;
         }
     }
 }

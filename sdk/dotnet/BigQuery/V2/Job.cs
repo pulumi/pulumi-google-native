@@ -60,8 +60,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// <summary>
         /// Email address of the user who ran the job.
         /// </summary>
-        [Output("user_email")]
-        public Output<string> User_email { get; private set; } = null!;
+        [Output("userEmail")]
+        public Output<string> UserEmail { get; private set; } = null!;
 
 
         /// <summary>

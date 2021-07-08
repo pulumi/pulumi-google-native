@@ -15,8 +15,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// <summary>
         /// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
         /// </summary>
-        [Input("IPProtocol")]
-        public Input<string>? IPProtocol { get; set; }
+        [Input("ipProtocol")]
+        public Input<string>? IpProtocol { get; set; }
 
         [Input("ports")]
         private InputList<string>? _ports;

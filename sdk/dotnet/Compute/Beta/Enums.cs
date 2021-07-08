@@ -1299,30 +1299,30 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
     /// </summary>
     [EnumType]
-    public readonly struct ForwardingRuleIPProtocol : IEquatable<ForwardingRuleIPProtocol>
+    public readonly struct ForwardingRuleIpProtocol : IEquatable<ForwardingRuleIpProtocol>
     {
         private readonly string _value;
 
-        private ForwardingRuleIPProtocol(string value)
+        private ForwardingRuleIpProtocol(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
-        public static ForwardingRuleIPProtocol Ah { get; } = new ForwardingRuleIPProtocol("AH");
-        public static ForwardingRuleIPProtocol Esp { get; } = new ForwardingRuleIPProtocol("ESP");
-        public static ForwardingRuleIPProtocol Icmp { get; } = new ForwardingRuleIPProtocol("ICMP");
-        public static ForwardingRuleIPProtocol Sctp { get; } = new ForwardingRuleIPProtocol("SCTP");
-        public static ForwardingRuleIPProtocol Tcp { get; } = new ForwardingRuleIPProtocol("TCP");
-        public static ForwardingRuleIPProtocol Udp { get; } = new ForwardingRuleIPProtocol("UDP");
+        public static ForwardingRuleIpProtocol Ah { get; } = new ForwardingRuleIpProtocol("AH");
+        public static ForwardingRuleIpProtocol Esp { get; } = new ForwardingRuleIpProtocol("ESP");
+        public static ForwardingRuleIpProtocol Icmp { get; } = new ForwardingRuleIpProtocol("ICMP");
+        public static ForwardingRuleIpProtocol Sctp { get; } = new ForwardingRuleIpProtocol("SCTP");
+        public static ForwardingRuleIpProtocol Tcp { get; } = new ForwardingRuleIpProtocol("TCP");
+        public static ForwardingRuleIpProtocol Udp { get; } = new ForwardingRuleIpProtocol("UDP");
 
-        public static bool operator ==(ForwardingRuleIPProtocol left, ForwardingRuleIPProtocol right) => left.Equals(right);
-        public static bool operator !=(ForwardingRuleIPProtocol left, ForwardingRuleIPProtocol right) => !left.Equals(right);
+        public static bool operator ==(ForwardingRuleIpProtocol left, ForwardingRuleIpProtocol right) => left.Equals(right);
+        public static bool operator !=(ForwardingRuleIpProtocol left, ForwardingRuleIpProtocol right) => !left.Equals(right);
 
-        public static explicit operator string(ForwardingRuleIPProtocol value) => value._value;
+        public static explicit operator string(ForwardingRuleIpProtocol value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ForwardingRuleIPProtocol other && Equals(other);
-        public bool Equals(ForwardingRuleIPProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is ForwardingRuleIpProtocol other && Equals(other);
+        public bool Equals(ForwardingRuleIpProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -1635,30 +1635,30 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
     /// </summary>
     [EnumType]
-    public readonly struct GlobalForwardingRuleIPProtocol : IEquatable<GlobalForwardingRuleIPProtocol>
+    public readonly struct GlobalForwardingRuleIpProtocol : IEquatable<GlobalForwardingRuleIpProtocol>
     {
         private readonly string _value;
 
-        private GlobalForwardingRuleIPProtocol(string value)
+        private GlobalForwardingRuleIpProtocol(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
-        public static GlobalForwardingRuleIPProtocol Ah { get; } = new GlobalForwardingRuleIPProtocol("AH");
-        public static GlobalForwardingRuleIPProtocol Esp { get; } = new GlobalForwardingRuleIPProtocol("ESP");
-        public static GlobalForwardingRuleIPProtocol Icmp { get; } = new GlobalForwardingRuleIPProtocol("ICMP");
-        public static GlobalForwardingRuleIPProtocol Sctp { get; } = new GlobalForwardingRuleIPProtocol("SCTP");
-        public static GlobalForwardingRuleIPProtocol Tcp { get; } = new GlobalForwardingRuleIPProtocol("TCP");
-        public static GlobalForwardingRuleIPProtocol Udp { get; } = new GlobalForwardingRuleIPProtocol("UDP");
+        public static GlobalForwardingRuleIpProtocol Ah { get; } = new GlobalForwardingRuleIpProtocol("AH");
+        public static GlobalForwardingRuleIpProtocol Esp { get; } = new GlobalForwardingRuleIpProtocol("ESP");
+        public static GlobalForwardingRuleIpProtocol Icmp { get; } = new GlobalForwardingRuleIpProtocol("ICMP");
+        public static GlobalForwardingRuleIpProtocol Sctp { get; } = new GlobalForwardingRuleIpProtocol("SCTP");
+        public static GlobalForwardingRuleIpProtocol Tcp { get; } = new GlobalForwardingRuleIpProtocol("TCP");
+        public static GlobalForwardingRuleIpProtocol Udp { get; } = new GlobalForwardingRuleIpProtocol("UDP");
 
-        public static bool operator ==(GlobalForwardingRuleIPProtocol left, GlobalForwardingRuleIPProtocol right) => left.Equals(right);
-        public static bool operator !=(GlobalForwardingRuleIPProtocol left, GlobalForwardingRuleIPProtocol right) => !left.Equals(right);
+        public static bool operator ==(GlobalForwardingRuleIpProtocol left, GlobalForwardingRuleIpProtocol right) => left.Equals(right);
+        public static bool operator !=(GlobalForwardingRuleIpProtocol left, GlobalForwardingRuleIpProtocol right) => !left.Equals(right);
 
-        public static explicit operator string(GlobalForwardingRuleIPProtocol value) => value._value;
+        public static explicit operator string(GlobalForwardingRuleIpProtocol value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is GlobalForwardingRuleIPProtocol other && Equals(other);
-        public bool Equals(GlobalForwardingRuleIPProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is GlobalForwardingRuleIpProtocol other && Equals(other);
+        public bool Equals(GlobalForwardingRuleIpProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

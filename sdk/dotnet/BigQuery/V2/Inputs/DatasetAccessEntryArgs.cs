@@ -18,12 +18,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         [Input("dataset")]
         public Input<Inputs.DatasetReferenceArgs>? Dataset { get; set; }
 
-        [Input("target_types")]
-        private InputList<Inputs.DatasetAccessEntryTarget_typesItemArgs>? _target_types;
-        public InputList<Inputs.DatasetAccessEntryTarget_typesItemArgs> Target_types
+        [Input("targetTypes")]
+        private InputList<Inputs.DatasetAccessEntryTargetTypesItemArgs>? _targetTypes;
+        public InputList<Inputs.DatasetAccessEntryTargetTypesItemArgs> TargetTypes
         {
-            get => _target_types ?? (_target_types = new InputList<Inputs.DatasetAccessEntryTarget_typesItemArgs>());
-            set => _target_types = value;
+            get => _targetTypes ?? (_targetTypes = new InputList<Inputs.DatasetAccessEntryTargetTypesItemArgs>());
+            set => _targetTypes = value;
         }
 
         public DatasetAccessEntryArgs()
