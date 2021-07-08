@@ -26,7 +26,7 @@ const computeFirewall = new google.compute.v1.Firewall("firewall", {
     name: pulumi.interpolate`${randomString.result}-fw`,
     project: project,
     allowed: [{
-        IPProtocol: "tcp",
+        ipProtocol: "tcp",
         ports: ["22", "80"],
     }],
 });
