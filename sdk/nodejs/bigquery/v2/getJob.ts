@@ -61,5 +61,5 @@ export interface GetJobResult {
     /**
      * Email address of the user who ran the job.
      */
-    readonly user_email: string;
+    readonly userEmail: string;
 }

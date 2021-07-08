@@ -37,7 +37,7 @@ export class Notification extends pulumi.CustomResource {
     /**
      * An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
      */
-    public readonly custom_attributes!: pulumi.Output<{[key: string]: string}>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string}>;
     /**
      * HTTP 1.1 Entity tag for this subscription notification.
      */
@@ -45,7 +45,7 @@ export class Notification extends pulumi.CustomResource {
     /**
      * If present, only send notifications about listed event types. If empty, sent notifications for all event types.
      */
-    public readonly event_types!: pulumi.Output<string[]>;
+    public readonly eventTypes!: pulumi.Output<string[]>;
     /**
      * The kind of item this is. For notifications, this is always storage#notification.
      */
@@ -53,11 +53,11 @@ export class Notification extends pulumi.CustomResource {
     /**
      * If present, only apply this notification configuration to object names that begin with this prefix.
      */
-    public readonly object_name_prefix!: pulumi.Output<string>;
+    public readonly objectNamePrefix!: pulumi.Output<string>;
     /**
      * The desired content of the Payload.
      */
-    public readonly payload_format!: pulumi.Output<string>;
+    public readonly payloadFormat!: pulumi.Output<string>;
     /**
      * The canonical URL of this notification.
      */
@@ -82,24 +82,24 @@ export class Notification extends pulumi.CustomResource {
                 throw new Error("Missing required property 'bucket'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["custom_attributes"] = args ? args.custom_attributes : undefined;
+            inputs["customAttributes"] = args ? args.customAttributes : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["event_types"] = args ? args.event_types : undefined;
+            inputs["eventTypes"] = args ? args.eventTypes : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
-            inputs["object_name_prefix"] = args ? args.object_name_prefix : undefined;
-            inputs["payload_format"] = args ? args.payload_format : undefined;
+            inputs["objectNamePrefix"] = args ? args.objectNamePrefix : undefined;
+            inputs["payloadFormat"] = args ? args.payloadFormat : undefined;
             inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["topic"] = args ? args.topic : undefined;
             inputs["userProject"] = args ? args.userProject : undefined;
         } else {
-            inputs["custom_attributes"] = undefined /*out*/;
+            inputs["customAttributes"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
-            inputs["event_types"] = undefined /*out*/;
+            inputs["eventTypes"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
-            inputs["object_name_prefix"] = undefined /*out*/;
-            inputs["payload_format"] = undefined /*out*/;
+            inputs["objectNamePrefix"] = undefined /*out*/;
+            inputs["payloadFormat"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["topic"] = undefined /*out*/;
         }
@@ -118,7 +118,7 @@ export interface NotificationArgs {
     /**
      * An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
      */
-    custom_attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * HTTP 1.1 Entity tag for this subscription notification.
      */
@@ -126,7 +126,7 @@ export interface NotificationArgs {
     /**
      * If present, only send notifications about listed event types. If empty, sent notifications for all event types.
      */
-    event_types?: pulumi.Input<pulumi.Input<string>[]>;
+    eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the notification.
      */
@@ -138,11 +138,11 @@ export interface NotificationArgs {
     /**
      * If present, only apply this notification configuration to object names that begin with this prefix.
      */
-    object_name_prefix?: pulumi.Input<string>;
+    objectNamePrefix?: pulumi.Input<string>;
     /**
      * The desired content of the Payload.
      */
-    payload_format?: pulumi.Input<string>;
+    payloadFormat?: pulumi.Input<string>;
     provisionalUserProject?: pulumi.Input<string>;
     /**
      * The canonical URL of this notification.

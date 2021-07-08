@@ -35,7 +35,7 @@ export interface GetNotificationResult {
     /**
      * An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
      */
-    readonly custom_attributes: {[key: string]: string};
+    readonly customAttributes: {[key: string]: string};
     /**
      * HTTP 1.1 Entity tag for this subscription notification.
      */
@@ -43,7 +43,7 @@ export interface GetNotificationResult {
     /**
      * If present, only send notifications about listed event types. If empty, sent notifications for all event types.
      */
-    readonly event_types: string[];
+    readonly eventTypes: string[];
     /**
      * The kind of item this is. For notifications, this is always storage#notification.
      */
@@ -51,11 +51,11 @@ export interface GetNotificationResult {
     /**
      * If present, only apply this notification configuration to object names that begin with this prefix.
      */
-    readonly object_name_prefix: string;
+    readonly objectNamePrefix: string;
     /**
      * The desired content of the Payload.
      */
-    readonly payload_format: string;
+    readonly payloadFormat: string;
     /**
      * The canonical URL of this notification.
      */

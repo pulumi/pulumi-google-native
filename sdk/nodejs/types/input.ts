@@ -765,7 +765,7 @@ export namespace apigee {
             /**
              * Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
              */
-            instance_id?: pulumi.Input<string>;
+            instanceId?: pulumi.Input<string>;
             /**
              * Required. The location associated with the metrics.
              */
@@ -3111,10 +3111,10 @@ export namespace bigquery {
              * [Required] The dataset this entry applies to.
              */
             dataset?: pulumi.Input<inputs.bigquery.v2.DatasetReferenceArgs>;
-            target_types?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.DatasetAccessEntryTarget_typesItemArgs>[]>;
+            targetTypes?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.DatasetAccessEntryTargetTypesItemArgs>[]>;
         }
 
-        export interface DatasetAccessEntryTarget_typesItemArgs {
+        export interface DatasetAccessEntryTargetTypesItemArgs {
             /**
              * [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
              */
@@ -9360,7 +9360,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol?: pulumi.Input<string>;
+            ipProtocol?: pulumi.Input<string>;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -9373,7 +9373,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol?: pulumi.Input<string>;
+            ipProtocol?: pulumi.Input<string>;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -10937,10 +10937,6 @@ export namespace compute {
 
         export interface PacketMirroringFilterArgs {
             /**
-             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-             */
-            IPProtocols?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
              * IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
              */
             cidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
@@ -10948,6 +10944,10 @@ export namespace compute {
              * Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
              */
             direction?: pulumi.Input<enums.compute.alpha.PacketMirroringFilterDirection>;
+            /**
+             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+             */
+            ipProtocols?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         export interface PacketMirroringForwardingRuleInfoArgs {
@@ -13807,7 +13807,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol?: pulumi.Input<string>;
+            ipProtocol?: pulumi.Input<string>;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -13820,7 +13820,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol?: pulumi.Input<string>;
+            ipProtocol?: pulumi.Input<string>;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -15217,10 +15217,6 @@ export namespace compute {
 
         export interface PacketMirroringFilterArgs {
             /**
-             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-             */
-            IPProtocols?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
              * IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
              */
             cidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
@@ -15228,6 +15224,10 @@ export namespace compute {
              * Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
              */
             direction?: pulumi.Input<enums.compute.beta.PacketMirroringFilterDirection>;
+            /**
+             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+             */
+            ipProtocols?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         export interface PacketMirroringForwardingRuleInfoArgs {
@@ -17646,7 +17646,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol?: pulumi.Input<string>;
+            ipProtocol?: pulumi.Input<string>;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -17659,7 +17659,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol?: pulumi.Input<string>;
+            ipProtocol?: pulumi.Input<string>;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -19006,10 +19006,6 @@ export namespace compute {
 
         export interface PacketMirroringFilterArgs {
             /**
-             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-             */
-            IPProtocols?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
              * IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
              */
             cidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
@@ -19017,6 +19013,10 @@ export namespace compute {
              * Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
              */
             direction?: pulumi.Input<enums.compute.v1.PacketMirroringFilterDirection>;
+            /**
+             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+             */
+            ipProtocols?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         export interface PacketMirroringForwardingRuleInfoArgs {

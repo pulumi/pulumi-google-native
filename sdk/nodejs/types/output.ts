@@ -801,7 +801,7 @@ export namespace apigee {
             /**
              * Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
              */
-            instance_id: string;
+            instanceId: string;
             /**
              * Required. The location associated with the metrics.
              */
@@ -3377,10 +3377,10 @@ export namespace bigquery {
              * [Required] The dataset this entry applies to.
              */
             dataset: outputs.bigquery.v2.DatasetReferenceResponse;
-            target_types: outputs.bigquery.v2.DatasetAccessEntryTarget_typesItemResponse[];
+            targetTypes: outputs.bigquery.v2.DatasetAccessEntryTargetTypesItemResponse[];
         }
 
-        export interface DatasetAccessEntryTarget_typesItemResponse {
+        export interface DatasetAccessEntryTargetTypesItemResponse {
             /**
              * [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
              */
@@ -4238,13 +4238,13 @@ export namespace bigquery {
              */
             quotaDeferments: string[];
             /**
+             * Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+             */
+            reservationId: string;
+            /**
              * Job resource usage breakdown by reservation.
              */
             reservationUsage: outputs.bigquery.v2.JobStatisticsReservationUsageItemResponse[];
-            /**
-             * Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-             */
-            reservation_id: string;
             /**
              * [Preview] Statistics for row-level security. Present only for query and extract jobs.
              */
@@ -11100,7 +11100,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol: string;
+            ipProtocol: string;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -11113,7 +11113,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol: string;
+            ipProtocol: string;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -12979,10 +12979,6 @@ export namespace compute {
 
         export interface PacketMirroringFilterResponse {
             /**
-             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-             */
-            IPProtocols: string[];
-            /**
              * IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
              */
             cidrRanges: string[];
@@ -12990,6 +12986,10 @@ export namespace compute {
              * Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
              */
             direction: string;
+            /**
+             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+             */
+            ipProtocols: string[];
         }
 
         export interface PacketMirroringForwardingRuleInfoResponse {
@@ -16324,7 +16324,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol: string;
+            ipProtocol: string;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -16337,7 +16337,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol: string;
+            ipProtocol: string;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -17998,10 +17998,6 @@ export namespace compute {
 
         export interface PacketMirroringFilterResponse {
             /**
-             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-             */
-            IPProtocols: string[];
-            /**
              * IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
              */
             cidrRanges: string[];
@@ -18009,6 +18005,10 @@ export namespace compute {
              * Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
              */
             direction: string;
+            /**
+             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+             */
+            ipProtocols: string[];
         }
 
         export interface PacketMirroringForwardingRuleInfoResponse {
@@ -20862,7 +20862,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol: string;
+            ipProtocol: string;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -20875,7 +20875,7 @@ export namespace compute {
             /**
              * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
              */
-            IPProtocol: string;
+            ipProtocol: string;
             /**
              * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
              *
@@ -22486,10 +22486,6 @@ export namespace compute {
 
         export interface PacketMirroringFilterResponse {
             /**
-             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-             */
-            IPProtocols: string[];
-            /**
              * IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
              */
             cidrRanges: string[];
@@ -22497,6 +22493,10 @@ export namespace compute {
              * Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
              */
             direction: string;
+            /**
+             * Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+             */
+            ipProtocols: string[];
         }
 
         export interface PacketMirroringForwardingRuleInfoResponse {
