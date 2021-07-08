@@ -200,7 +200,7 @@ func findApiParams(dd discoveryDocumentResource) codegen.StringSet {
 	params := findParams(path)
 	result := codegen.NewStringSet()
 	for _, param := range params {
-		result.Add(apiNameToSdkName(param))
+		result.Add(apiParamNameToSdkName(param))
 	}
 	return result
 }
