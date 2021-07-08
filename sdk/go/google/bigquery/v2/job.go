@@ -30,7 +30,7 @@ type Job struct {
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	Status JobStatusResponseOutput `pulumi:"status"`
 	// Email address of the user who ran the job.
-	User_email pulumi.StringOutput `pulumi:"user_email"`
+	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ type jobState struct {
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	Status *JobStatusResponse `pulumi:"status"`
 	// Email address of the user who ran the job.
-	User_email *string `pulumi:"user_email"`
+	UserEmail *string `pulumi:"userEmail"`
 }
 
 type JobState struct {
@@ -99,7 +99,7 @@ type JobState struct {
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	Status JobStatusResponsePtrInput
 	// Email address of the user who ran the job.
-	User_email pulumi.StringPtrInput
+	UserEmail pulumi.StringPtrInput
 }
 
 func (JobState) ElementType() reflect.Type {

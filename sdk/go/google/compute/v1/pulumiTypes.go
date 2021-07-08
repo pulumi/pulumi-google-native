@@ -16295,7 +16295,7 @@ func (o FileContentBufferResponseArrayOutput) Index(i pulumi.IntInput) FileConte
 
 type FirewallAllowedItem struct {
 	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-	IPProtocol *string `pulumi:"IPProtocol"`
+	IpProtocol *string `pulumi:"ipProtocol"`
 	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
 	//
 	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
@@ -16315,7 +16315,7 @@ type FirewallAllowedItemInput interface {
 
 type FirewallAllowedItemArgs struct {
 	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-	IPProtocol pulumi.StringPtrInput `pulumi:"IPProtocol"`
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
 	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
 	//
 	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
@@ -16374,8 +16374,8 @@ func (o FirewallAllowedItemOutput) ToFirewallAllowedItemOutputWithContext(ctx co
 }
 
 // The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-func (o FirewallAllowedItemOutput) IPProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallAllowedItem) *string { return v.IPProtocol }).(pulumi.StringPtrOutput)
+func (o FirewallAllowedItemOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallAllowedItem) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
 }
 
 // An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
@@ -16407,7 +16407,7 @@ func (o FirewallAllowedItemArrayOutput) Index(i pulumi.IntInput) FirewallAllowed
 
 type FirewallAllowedItemResponse struct {
 	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-	IPProtocol string `pulumi:"IPProtocol"`
+	IpProtocol string `pulumi:"ipProtocol"`
 	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
 	//
 	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
@@ -16427,7 +16427,7 @@ type FirewallAllowedItemResponseInput interface {
 
 type FirewallAllowedItemResponseArgs struct {
 	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-	IPProtocol pulumi.StringInput `pulumi:"IPProtocol"`
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
 	//
 	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
@@ -16486,8 +16486,8 @@ func (o FirewallAllowedItemResponseOutput) ToFirewallAllowedItemResponseOutputWi
 }
 
 // The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-func (o FirewallAllowedItemResponseOutput) IPProtocol() pulumi.StringOutput {
-	return o.ApplyT(func(v FirewallAllowedItemResponse) string { return v.IPProtocol }).(pulumi.StringOutput)
+func (o FirewallAllowedItemResponseOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallAllowedItemResponse) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
 // An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
@@ -16519,7 +16519,7 @@ func (o FirewallAllowedItemResponseArrayOutput) Index(i pulumi.IntInput) Firewal
 
 type FirewallDeniedItem struct {
 	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-	IPProtocol *string `pulumi:"IPProtocol"`
+	IpProtocol *string `pulumi:"ipProtocol"`
 	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
 	//
 	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
@@ -16539,7 +16539,7 @@ type FirewallDeniedItemInput interface {
 
 type FirewallDeniedItemArgs struct {
 	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-	IPProtocol pulumi.StringPtrInput `pulumi:"IPProtocol"`
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
 	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
 	//
 	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
@@ -16598,8 +16598,8 @@ func (o FirewallDeniedItemOutput) ToFirewallDeniedItemOutputWithContext(ctx cont
 }
 
 // The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-func (o FirewallDeniedItemOutput) IPProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FirewallDeniedItem) *string { return v.IPProtocol }).(pulumi.StringPtrOutput)
+func (o FirewallDeniedItemOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallDeniedItem) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
 }
 
 // An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
@@ -16631,7 +16631,7 @@ func (o FirewallDeniedItemArrayOutput) Index(i pulumi.IntInput) FirewallDeniedIt
 
 type FirewallDeniedItemResponse struct {
 	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-	IPProtocol string `pulumi:"IPProtocol"`
+	IpProtocol string `pulumi:"ipProtocol"`
 	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
 	//
 	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
@@ -16651,7 +16651,7 @@ type FirewallDeniedItemResponseInput interface {
 
 type FirewallDeniedItemResponseArgs struct {
 	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-	IPProtocol pulumi.StringInput `pulumi:"IPProtocol"`
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
 	//
 	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
@@ -16710,8 +16710,8 @@ func (o FirewallDeniedItemResponseOutput) ToFirewallDeniedItemResponseOutputWith
 }
 
 // The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
-func (o FirewallDeniedItemResponseOutput) IPProtocol() pulumi.StringOutput {
-	return o.ApplyT(func(v FirewallDeniedItemResponse) string { return v.IPProtocol }).(pulumi.StringOutput)
+func (o FirewallDeniedItemResponseOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallDeniedItemResponse) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
 // An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
@@ -37977,12 +37977,12 @@ func (o OutlierDetectionResponsePtrOutput) SuccessRateStdevFactor() pulumi.IntPt
 }
 
 type PacketMirroringFilter struct {
-	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-	IPProtocols []string `pulumi:"IPProtocols"`
 	// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
 	CidrRanges []string `pulumi:"cidrRanges"`
 	// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
 	Direction *string `pulumi:"direction"`
+	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	IpProtocols []string `pulumi:"ipProtocols"`
 }
 
 // PacketMirroringFilterInput is an input type that accepts PacketMirroringFilterArgs and PacketMirroringFilterOutput values.
@@ -37997,12 +37997,12 @@ type PacketMirroringFilterInput interface {
 }
 
 type PacketMirroringFilterArgs struct {
-	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-	IPProtocols pulumi.StringArrayInput `pulumi:"IPProtocols"`
 	// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
 	CidrRanges pulumi.StringArrayInput `pulumi:"cidrRanges"`
 	// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
 	Direction *PacketMirroringFilterDirection `pulumi:"direction"`
+	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
 }
 
 func (PacketMirroringFilterArgs) ElementType() reflect.Type {
@@ -38082,11 +38082,6 @@ func (o PacketMirroringFilterOutput) ToPacketMirroringFilterPtrOutputWithContext
 	}).(PacketMirroringFilterPtrOutput)
 }
 
-// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-func (o PacketMirroringFilterOutput) IPProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PacketMirroringFilter) []string { return v.IPProtocols }).(pulumi.StringArrayOutput)
-}
-
 // IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
 func (o PacketMirroringFilterOutput) CidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PacketMirroringFilter) []string { return v.CidrRanges }).(pulumi.StringArrayOutput)
@@ -38095,6 +38090,11 @@ func (o PacketMirroringFilterOutput) CidrRanges() pulumi.StringArrayOutput {
 // Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
 func (o PacketMirroringFilterOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PacketMirroringFilter) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+func (o PacketMirroringFilterOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PacketMirroringFilter) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
 }
 
 type PacketMirroringFilterPtrOutput struct{ *pulumi.OutputState }
@@ -38113,16 +38113,6 @@ func (o PacketMirroringFilterPtrOutput) ToPacketMirroringFilterPtrOutputWithCont
 
 func (o PacketMirroringFilterPtrOutput) Elem() PacketMirroringFilterOutput {
 	return o.ApplyT(func(v *PacketMirroringFilter) PacketMirroringFilter { return *v }).(PacketMirroringFilterOutput)
-}
-
-// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-func (o PacketMirroringFilterPtrOutput) IPProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PacketMirroringFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IPProtocols
-	}).(pulumi.StringArrayOutput)
 }
 
 // IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
@@ -38145,13 +38135,23 @@ func (o PacketMirroringFilterPtrOutput) Direction() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+func (o PacketMirroringFilterPtrOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PacketMirroringFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpProtocols
+	}).(pulumi.StringArrayOutput)
+}
+
 type PacketMirroringFilterResponse struct {
-	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-	IPProtocols []string `pulumi:"IPProtocols"`
 	// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
 	CidrRanges []string `pulumi:"cidrRanges"`
 	// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
 	Direction string `pulumi:"direction"`
+	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	IpProtocols []string `pulumi:"ipProtocols"`
 }
 
 // PacketMirroringFilterResponseInput is an input type that accepts PacketMirroringFilterResponseArgs and PacketMirroringFilterResponseOutput values.
@@ -38166,12 +38166,12 @@ type PacketMirroringFilterResponseInput interface {
 }
 
 type PacketMirroringFilterResponseArgs struct {
-	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-	IPProtocols pulumi.StringArrayInput `pulumi:"IPProtocols"`
 	// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
 	CidrRanges pulumi.StringArrayInput `pulumi:"cidrRanges"`
 	// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
 	Direction pulumi.StringInput `pulumi:"direction"`
+	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
 }
 
 func (PacketMirroringFilterResponseArgs) ElementType() reflect.Type {
@@ -38251,11 +38251,6 @@ func (o PacketMirroringFilterResponseOutput) ToPacketMirroringFilterResponsePtrO
 	}).(PacketMirroringFilterResponsePtrOutput)
 }
 
-// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-func (o PacketMirroringFilterResponseOutput) IPProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PacketMirroringFilterResponse) []string { return v.IPProtocols }).(pulumi.StringArrayOutput)
-}
-
 // IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
 func (o PacketMirroringFilterResponseOutput) CidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PacketMirroringFilterResponse) []string { return v.CidrRanges }).(pulumi.StringArrayOutput)
@@ -38264,6 +38259,11 @@ func (o PacketMirroringFilterResponseOutput) CidrRanges() pulumi.StringArrayOutp
 // Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
 func (o PacketMirroringFilterResponseOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v PacketMirroringFilterResponse) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+func (o PacketMirroringFilterResponseOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PacketMirroringFilterResponse) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
 }
 
 type PacketMirroringFilterResponsePtrOutput struct{ *pulumi.OutputState }
@@ -38284,16 +38284,6 @@ func (o PacketMirroringFilterResponsePtrOutput) Elem() PacketMirroringFilterResp
 	return o.ApplyT(func(v *PacketMirroringFilterResponse) PacketMirroringFilterResponse { return *v }).(PacketMirroringFilterResponseOutput)
 }
 
-// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-func (o PacketMirroringFilterResponsePtrOutput) IPProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PacketMirroringFilterResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IPProtocols
-	}).(pulumi.StringArrayOutput)
-}
-
 // IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
 func (o PacketMirroringFilterResponsePtrOutput) CidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PacketMirroringFilterResponse) []string {
@@ -38312,6 +38302,16 @@ func (o PacketMirroringFilterResponsePtrOutput) Direction() pulumi.StringPtrOutp
 		}
 		return &v.Direction
 	}).(pulumi.StringPtrOutput)
+}
+
+// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+func (o PacketMirroringFilterResponsePtrOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PacketMirroringFilterResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpProtocols
+	}).(pulumi.StringArrayOutput)
 }
 
 type PacketMirroringForwardingRuleInfo struct {

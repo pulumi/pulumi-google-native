@@ -26,17 +26,17 @@ type LookupNotificationArgs struct {
 
 type LookupNotificationResult struct {
 	// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
-	Custom_attributes map[string]string `pulumi:"custom_attributes"`
+	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// HTTP 1.1 Entity tag for this subscription notification.
 	Etag string `pulumi:"etag"`
 	// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
-	Event_types []string `pulumi:"event_types"`
+	EventTypes []string `pulumi:"eventTypes"`
 	// The kind of item this is. For notifications, this is always storage#notification.
 	Kind string `pulumi:"kind"`
 	// If present, only apply this notification configuration to object names that begin with this prefix.
-	Object_name_prefix string `pulumi:"object_name_prefix"`
+	ObjectNamePrefix string `pulumi:"objectNamePrefix"`
 	// The desired content of the Payload.
-	Payload_format string `pulumi:"payload_format"`
+	PayloadFormat string `pulumi:"payloadFormat"`
 	// The canonical URL of this notification.
 	SelfLink string `pulumi:"selfLink"`
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'

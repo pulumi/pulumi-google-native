@@ -1090,34 +1090,34 @@ func (e FirewallPolicyRuleDirection) ToStringPtrOutputWithContext(ctx context.Co
 // - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid.
 // - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid.
 // - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-type ForwardingRuleIPProtocol pulumi.String
+type ForwardingRuleIpProtocol pulumi.String
 
 const (
-	ForwardingRuleIPProtocolAh   = ForwardingRuleIPProtocol("AH")
-	ForwardingRuleIPProtocolEsp  = ForwardingRuleIPProtocol("ESP")
-	ForwardingRuleIPProtocolIcmp = ForwardingRuleIPProtocol("ICMP")
-	ForwardingRuleIPProtocolSctp = ForwardingRuleIPProtocol("SCTP")
-	ForwardingRuleIPProtocolTcp  = ForwardingRuleIPProtocol("TCP")
-	ForwardingRuleIPProtocolUdp  = ForwardingRuleIPProtocol("UDP")
+	ForwardingRuleIpProtocolAh   = ForwardingRuleIpProtocol("AH")
+	ForwardingRuleIpProtocolEsp  = ForwardingRuleIpProtocol("ESP")
+	ForwardingRuleIpProtocolIcmp = ForwardingRuleIpProtocol("ICMP")
+	ForwardingRuleIpProtocolSctp = ForwardingRuleIpProtocol("SCTP")
+	ForwardingRuleIpProtocolTcp  = ForwardingRuleIpProtocol("TCP")
+	ForwardingRuleIpProtocolUdp  = ForwardingRuleIpProtocol("UDP")
 )
 
-func (ForwardingRuleIPProtocol) ElementType() reflect.Type {
+func (ForwardingRuleIpProtocol) ElementType() reflect.Type {
 	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
 }
 
-func (e ForwardingRuleIPProtocol) ToStringOutput() pulumi.StringOutput {
+func (e ForwardingRuleIpProtocol) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ForwardingRuleIPProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e ForwardingRuleIpProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ForwardingRuleIPProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e ForwardingRuleIpProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e ForwardingRuleIPProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e ForwardingRuleIpProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
@@ -1397,34 +1397,34 @@ func (e GlobalAddressPurpose) ToStringPtrOutputWithContext(ctx context.Context) 
 // - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid.
 // - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid.
 // - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-type GlobalForwardingRuleIPProtocol pulumi.String
+type GlobalForwardingRuleIpProtocol pulumi.String
 
 const (
-	GlobalForwardingRuleIPProtocolAh   = GlobalForwardingRuleIPProtocol("AH")
-	GlobalForwardingRuleIPProtocolEsp  = GlobalForwardingRuleIPProtocol("ESP")
-	GlobalForwardingRuleIPProtocolIcmp = GlobalForwardingRuleIPProtocol("ICMP")
-	GlobalForwardingRuleIPProtocolSctp = GlobalForwardingRuleIPProtocol("SCTP")
-	GlobalForwardingRuleIPProtocolTcp  = GlobalForwardingRuleIPProtocol("TCP")
-	GlobalForwardingRuleIPProtocolUdp  = GlobalForwardingRuleIPProtocol("UDP")
+	GlobalForwardingRuleIpProtocolAh   = GlobalForwardingRuleIpProtocol("AH")
+	GlobalForwardingRuleIpProtocolEsp  = GlobalForwardingRuleIpProtocol("ESP")
+	GlobalForwardingRuleIpProtocolIcmp = GlobalForwardingRuleIpProtocol("ICMP")
+	GlobalForwardingRuleIpProtocolSctp = GlobalForwardingRuleIpProtocol("SCTP")
+	GlobalForwardingRuleIpProtocolTcp  = GlobalForwardingRuleIpProtocol("TCP")
+	GlobalForwardingRuleIpProtocolUdp  = GlobalForwardingRuleIpProtocol("UDP")
 )
 
-func (GlobalForwardingRuleIPProtocol) ElementType() reflect.Type {
+func (GlobalForwardingRuleIpProtocol) ElementType() reflect.Type {
 	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
 }
 
-func (e GlobalForwardingRuleIPProtocol) ToStringOutput() pulumi.StringOutput {
+func (e GlobalForwardingRuleIpProtocol) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e GlobalForwardingRuleIPProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e GlobalForwardingRuleIpProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e GlobalForwardingRuleIPProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e GlobalForwardingRuleIpProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e GlobalForwardingRuleIPProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e GlobalForwardingRuleIpProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
