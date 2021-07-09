@@ -123,9 +123,8 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 			// Skip them for now but emit a note.
 			fmt.Printf("List methods are not supported: %s (%s), skipping.\n", typeName, docName)
 		case (deleteMethod != nil || updateMethod != nil) && len(postMethods) > 0:
-			// It can be useful to look at this output and look for potential missing rest with unexpected
-			// HTTP POST method names.
-			fmt.Printf("No create method for resource: %s (%s), skipping.\n", typeName, docName)
+			// No create method. We should simply skip these resources
+			// as discussed in https://github.com/pulumi/pulumi-google-native/issues/84
 		}
 
 		var newParent string
