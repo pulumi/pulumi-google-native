@@ -16,35 +16,36 @@ __all__ = ['ConsentArgs', 'Consent']
 @pulumi.input_type
 class ConsentArgs:
     def __init__(__self__, *,
+                 consent_artifact: pulumi.Input[str],
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 consent_artifact: Optional[pulumi.Input[str]] = None,
+                 state: pulumi.Input['ConsentState'],
+                 user_id: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1ConsentPolicyArgs']]]] = None,
-                 state: Optional[pulumi.Input['ConsentState']] = None,
-                 ttl: Optional[pulumi.Input[str]] = None,
-                 user_id: Optional[pulumi.Input[str]] = None):
+                 ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Consent resource.
-        :param pulumi.Input[str] consent_artifact: Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        :param pulumi.Input[str] consent_artifact: The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        :param pulumi.Input['ConsentState'] state: Indicates the current state of this Consent.
+        :param pulumi.Input[str] user_id: User's UUID provided by the client.
         :param pulumi.Input[str] expire_time: Timestamp in UTC of when this Consent is considered expired.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
         :param pulumi.Input[str] name: Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1ConsentPolicyArgs']]] policies: Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-        :param pulumi.Input['ConsentState'] state: Required. Indicates the current state of this Consent.
         :param pulumi.Input[str] ttl: Input only. The time to live for this Consent from when it is created.
-        :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         """
+        pulumi.set(__self__, "consent_artifact", consent_artifact)
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if consent_artifact is not None:
-            pulumi.set(__self__, "consent_artifact", consent_artifact)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "user_id", user_id)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if metadata is not None:
@@ -53,12 +54,20 @@ class ConsentArgs:
             pulumi.set(__self__, "name", name)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
-        if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="consentArtifact")
+    def consent_artifact(self) -> pulumi.Input[str]:
+        """
+        The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        """
+        return pulumi.get(self, "consent_artifact")
+
+    @consent_artifact.setter
+    def consent_artifact(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consent_artifact", value)
 
     @property
     @pulumi.getter(name="consentStoreId")
@@ -97,16 +106,28 @@ class ConsentArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="consentArtifact")
-    def consent_artifact(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def state(self) -> pulumi.Input['ConsentState']:
         """
-        Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        Indicates the current state of this Consent.
         """
-        return pulumi.get(self, "consent_artifact")
+        return pulumi.get(self, "state")
 
-    @consent_artifact.setter
-    def consent_artifact(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "consent_artifact", value)
+    @state.setter
+    def state(self, value: pulumi.Input['ConsentState']):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[str]:
+        """
+        User's UUID provided by the client.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_id", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -158,18 +179,6 @@ class ConsentArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['ConsentState']]:
-        """
-        Required. Indicates the current state of this Consent.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['ConsentState']]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[str]]:
         """
         Input only. The time to live for this Consent from when it is created.
@@ -179,18 +188,6 @@ class ConsentArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ttl", value)
-
-    @property
-    @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. User's UUID provided by the client.
-        """
-        return pulumi.get(self, "user_id")
-
-    @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "user_id", value)
 
 
 class Consent(pulumi.CustomResource):
@@ -216,14 +213,14 @@ class Consent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] consent_artifact: Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        :param pulumi.Input[str] consent_artifact: The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         :param pulumi.Input[str] expire_time: Timestamp in UTC of when this Consent is considered expired.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
         :param pulumi.Input[str] name: Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1ConsentPolicyArgs']]]] policies: Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-        :param pulumi.Input['ConsentState'] state: Required. Indicates the current state of this Consent.
+        :param pulumi.Input['ConsentState'] state: Indicates the current state of this Consent.
         :param pulumi.Input[str] ttl: Input only. The time to live for this Consent from when it is created.
-        :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
+        :param pulumi.Input[str] user_id: User's UUID provided by the client.
         """
         ...
     @overload
@@ -273,6 +270,8 @@ class Consent(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConsentArgs.__new__(ConsentArgs)
 
+            if consent_artifact is None and not opts.urn:
+                raise TypeError("Missing required property 'consent_artifact'")
             __props__.__dict__["consent_artifact"] = consent_artifact
             if consent_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_store_id'")
@@ -290,8 +289,12 @@ class Consent(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if state is None and not opts.urn:
+                raise TypeError("Missing required property 'state'")
             __props__.__dict__["state"] = state
             __props__.__dict__["ttl"] = ttl
+            if user_id is None and not opts.urn:
+                raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["revision_create_time"] = None
             __props__.__dict__["revision_id"] = None
@@ -333,7 +336,7 @@ class Consent(pulumi.CustomResource):
     @pulumi.getter(name="consentArtifact")
     def consent_artifact(self) -> pulumi.Output[str]:
         """
-        Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         """
         return pulumi.get(self, "consent_artifact")
 
@@ -389,7 +392,7 @@ class Consent(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Required. Indicates the current state of this Consent.
+        Indicates the current state of this Consent.
         """
         return pulumi.get(self, "state")
 
@@ -405,7 +408,7 @@ class Consent(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        Required. User's UUID provided by the client.
+        User's UUID provided by the client.
         """
         return pulumi.get(self, "user_id")
 

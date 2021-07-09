@@ -57,7 +57,7 @@ class GetMembershipResult:
     @pulumi.getter(name="preferredMemberKey")
     def preferred_member_key(self) -> 'outputs.EntityKeyResponse':
         """
-        Required. Immutable. The `EntityKey` of the member.
+        Immutable. The `EntityKey` of the member.
         """
         return pulumi.get(self, "preferred_member_key")
 

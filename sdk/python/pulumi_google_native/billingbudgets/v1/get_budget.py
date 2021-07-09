@@ -44,7 +44,7 @@ class GetBudgetResult:
     @pulumi.getter
     def amount(self) -> 'outputs.GoogleCloudBillingBudgetsV1BudgetAmountResponse':
         """
-        Required. Budgeted amount.
+        Budgeted amount.
         """
         return pulumi.get(self, "amount")
 

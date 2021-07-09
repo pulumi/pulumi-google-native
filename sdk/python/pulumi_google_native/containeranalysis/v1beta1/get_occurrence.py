@@ -148,7 +148,7 @@ class GetOccurrenceResult:
     @pulumi.getter(name="noteName")
     def note_name(self) -> str:
         """
-        Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "note_name")
 
@@ -164,7 +164,7 @@ class GetOccurrenceResult:
     @pulumi.getter
     def resource(self) -> 'outputs.ResourceResponse':
         """
-        Required. Immutable. The resource for which the occurrence applies.
+        Immutable. The resource for which the occurrence applies.
         """
         return pulumi.get(self, "resource")
 

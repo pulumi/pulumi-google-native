@@ -37,7 +37,7 @@ class GetInstanceResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+        The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         """
         return pulumi.get(self, "display_name")
 
@@ -45,7 +45,7 @@ class GetInstanceResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -69,7 +69,7 @@ class GetInstanceResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. The type of the instance. Defaults to `PRODUCTION`.
+        The type of the instance. Defaults to `PRODUCTION`.
         """
         return pulumi.get(self, "type")
 

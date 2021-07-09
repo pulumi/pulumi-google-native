@@ -417,9 +417,9 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse(dict):
                  table: 'outputs.GooglePrivacyDlpV2BigQueryTableResponse'):
         """
         An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
-        :param Sequence['GooglePrivacyDlpV2QuasiIdFieldResponse'] quasi_ids: Required. Quasi-identifier columns.
-        :param 'GooglePrivacyDlpV2FieldIdResponse' relative_frequency: Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-        :param 'GooglePrivacyDlpV2BigQueryTableResponse' table: Required. Auxiliary table location.
+        :param Sequence['GooglePrivacyDlpV2QuasiIdFieldResponse'] quasi_ids: Quasi-identifier columns.
+        :param 'GooglePrivacyDlpV2FieldIdResponse' relative_frequency: The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        :param 'GooglePrivacyDlpV2BigQueryTableResponse' table: Auxiliary table location.
         """
         pulumi.set(__self__, "quasi_ids", quasi_ids)
         pulumi.set(__self__, "relative_frequency", relative_frequency)
@@ -429,7 +429,7 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse(dict):
     @pulumi.getter(name="quasiIds")
     def quasi_ids(self) -> Sequence['outputs.GooglePrivacyDlpV2QuasiIdFieldResponse']:
         """
-        Required. Quasi-identifier columns.
+        Quasi-identifier columns.
         """
         return pulumi.get(self, "quasi_ids")
 
@@ -437,7 +437,7 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse(dict):
     @pulumi.getter(name="relativeFrequency")
     def relative_frequency(self) -> 'outputs.GooglePrivacyDlpV2FieldIdResponse':
         """
-        Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
         """
         return pulumi.get(self, "relative_frequency")
 
@@ -445,7 +445,7 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse(dict):
     @pulumi.getter
     def table(self) -> 'outputs.GooglePrivacyDlpV2BigQueryTableResponse':
         """
-        Required. Auxiliary table location.
+        Auxiliary table location.
         """
         return pulumi.get(self, "table")
 
@@ -676,7 +676,7 @@ class GooglePrivacyDlpV2BucketResponse(dict):
         Bucket is represented as a range, along with replacement values.
         :param 'GooglePrivacyDlpV2ValueResponse' max: Upper bound of the range, exclusive; type must match min.
         :param 'GooglePrivacyDlpV2ValueResponse' min: Lower bound of the range, inclusive. Type should be the same as max if used.
-        :param 'GooglePrivacyDlpV2ValueResponse' replacement_value: Required. Replacement value for this bucket.
+        :param 'GooglePrivacyDlpV2ValueResponse' replacement_value: Replacement value for this bucket.
         """
         pulumi.set(__self__, "max", max)
         pulumi.set(__self__, "min", min)
@@ -702,7 +702,7 @@ class GooglePrivacyDlpV2BucketResponse(dict):
     @pulumi.getter(name="replacementValue")
     def replacement_value(self) -> 'outputs.GooglePrivacyDlpV2ValueResponse':
         """
-        Required. Replacement value for this bucket.
+        Replacement value for this bucket.
         """
         return pulumi.get(self, "replacement_value")
 
@@ -1231,8 +1231,8 @@ class GooglePrivacyDlpV2ConditionResponse(dict):
                  value: 'outputs.GooglePrivacyDlpV2ValueResponse'):
         """
         The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
-        :param 'GooglePrivacyDlpV2FieldIdResponse' field: Required. Field within the record this condition is evaluated against.
-        :param str operator: Required. Operator used to compare the field or infoType to the value.
+        :param 'GooglePrivacyDlpV2FieldIdResponse' field: Field within the record this condition is evaluated against.
+        :param str operator: Operator used to compare the field or infoType to the value.
         :param 'GooglePrivacyDlpV2ValueResponse' value: Value to compare against. [Mandatory, except for `EXISTS` tests.]
         """
         pulumi.set(__self__, "field", field)
@@ -1243,7 +1243,7 @@ class GooglePrivacyDlpV2ConditionResponse(dict):
     @pulumi.getter
     def field(self) -> 'outputs.GooglePrivacyDlpV2FieldIdResponse':
         """
-        Required. Field within the record this condition is evaluated against.
+        Field within the record this condition is evaluated against.
         """
         return pulumi.get(self, "field")
 
@@ -1251,7 +1251,7 @@ class GooglePrivacyDlpV2ConditionResponse(dict):
     @pulumi.getter
     def operator(self) -> str:
         """
-        Required. Operator used to compare the field or infoType to the value.
+        Operator used to compare the field or infoType to the value.
         """
         return pulumi.get(self, "operator")
 
@@ -1488,7 +1488,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse(dict):
         Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
         :param str common_alphabet: Common alphabets.
         :param 'GooglePrivacyDlpV2FieldIdResponse' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
-        :param 'GooglePrivacyDlpV2CryptoKeyResponse' crypto_key: Required. The key used by the encryption algorithm.
+        :param 'GooglePrivacyDlpV2CryptoKeyResponse' crypto_key: The key used by the encryption algorithm.
         :param str custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
         :param int radix: The native way to select the alphabet. Must be in the range [2, 95].
         :param 'GooglePrivacyDlpV2InfoTypeResponse' surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
@@ -1520,7 +1520,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse(dict):
     @pulumi.getter(name="cryptoKey")
     def crypto_key(self) -> 'outputs.GooglePrivacyDlpV2CryptoKeyResponse':
         """
-        Required. The key used by the encryption algorithm.
+        The key used by the encryption algorithm.
         """
         return pulumi.get(self, "crypto_key")
 
@@ -1758,8 +1758,8 @@ class GooglePrivacyDlpV2DateShiftConfigResponse(dict):
         Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
         :param 'GooglePrivacyDlpV2FieldIdResponse' context: Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
         :param 'GooglePrivacyDlpV2CryptoKeyResponse' crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
-        :param int lower_bound_days: Required. For example, -5 means shift date to at most 5 days back in the past.
-        :param int upper_bound_days: Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+        :param int lower_bound_days: For example, -5 means shift date to at most 5 days back in the past.
+        :param int upper_bound_days: Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
         """
         pulumi.set(__self__, "context", context)
         pulumi.set(__self__, "crypto_key", crypto_key)
@@ -1786,7 +1786,7 @@ class GooglePrivacyDlpV2DateShiftConfigResponse(dict):
     @pulumi.getter(name="lowerBoundDays")
     def lower_bound_days(self) -> int:
         """
-        Required. For example, -5 means shift date to at most 5 days back in the past.
+        For example, -5 means shift date to at most 5 days back in the past.
         """
         return pulumi.get(self, "lower_bound_days")
 
@@ -1794,7 +1794,7 @@ class GooglePrivacyDlpV2DateShiftConfigResponse(dict):
     @pulumi.getter(name="upperBoundDays")
     def upper_bound_days(self) -> int:
         """
-        Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+        Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
         """
         return pulumi.get(self, "upper_bound_days")
 
@@ -1897,7 +1897,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse(dict):
         """
         δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
         :param Sequence['GooglePrivacyDlpV2StatisticalTableResponse'] auxiliary_tables: Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
-        :param Sequence['GooglePrivacyDlpV2QuasiIdResponse'] quasi_ids: Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+        :param Sequence['GooglePrivacyDlpV2QuasiIdResponse'] quasi_ids: Fields considered to be quasi-identifiers. No two fields can have the same tag.
         :param str region_code: ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
         """
         pulumi.set(__self__, "auxiliary_tables", auxiliary_tables)
@@ -1916,7 +1916,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse(dict):
     @pulumi.getter(name="quasiIds")
     def quasi_ids(self) -> Sequence['outputs.GooglePrivacyDlpV2QuasiIdResponse']:
         """
-        Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+        Fields considered to be quasi-identifiers. No two fields can have the same tag.
         """
         return pulumi.get(self, "quasi_ids")
 
@@ -2474,7 +2474,7 @@ class GooglePrivacyDlpV2FieldTransformationResponse(dict):
         """
         The transformation to apply to the field.
         :param 'GooglePrivacyDlpV2RecordConditionResponse' condition: Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
-        :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] fields: Required. Input field(s) to apply the transformation to.
+        :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] fields: Input field(s) to apply the transformation to.
         :param 'GooglePrivacyDlpV2InfoTypeTransformationsResponse' info_type_transformations: Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
         :param 'GooglePrivacyDlpV2PrimitiveTransformationResponse' primitive_transformation: Apply the transformation to the entire field.
         """
@@ -2495,7 +2495,7 @@ class GooglePrivacyDlpV2FieldTransformationResponse(dict):
     @pulumi.getter
     def fields(self) -> Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse']:
         """
-        Required. Input field(s) to apply the transformation to.
+        Input field(s) to apply the transformation to.
         """
         return pulumi.get(self, "fields")
 
@@ -2663,9 +2663,9 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfigResponse(dict):
                  upper_bound: 'outputs.GooglePrivacyDlpV2ValueResponse'):
         """
         Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-        :param float bucket_size: Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
-        :param 'GooglePrivacyDlpV2ValueResponse' lower_bound: Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
-        :param 'GooglePrivacyDlpV2ValueResponse' upper_bound: Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+        :param float bucket_size: Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+        :param 'GooglePrivacyDlpV2ValueResponse' lower_bound: Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+        :param 'GooglePrivacyDlpV2ValueResponse' upper_bound: Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
         """
         pulumi.set(__self__, "bucket_size", bucket_size)
         pulumi.set(__self__, "lower_bound", lower_bound)
@@ -2675,7 +2675,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfigResponse(dict):
     @pulumi.getter(name="bucketSize")
     def bucket_size(self) -> float:
         """
-        Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+        Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
         """
         return pulumi.get(self, "bucket_size")
 
@@ -2683,7 +2683,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfigResponse(dict):
     @pulumi.getter(name="lowerBound")
     def lower_bound(self) -> 'outputs.GooglePrivacyDlpV2ValueResponse':
         """
-        Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+        Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
         """
         return pulumi.get(self, "lower_bound")
 
@@ -2691,7 +2691,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfigResponse(dict):
     @pulumi.getter(name="upperBound")
     def upper_bound(self) -> 'outputs.GooglePrivacyDlpV2ValueResponse':
         """
-        Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+        Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
         """
         return pulumi.get(self, "upper_bound")
 
@@ -3052,7 +3052,7 @@ class GooglePrivacyDlpV2InfoTypeTransformationResponse(dict):
         """
         A transformation to apply to text that is identified as a specific info_type.
         :param Sequence['GooglePrivacyDlpV2InfoTypeResponse'] info_types: InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
-        :param 'GooglePrivacyDlpV2PrimitiveTransformationResponse' primitive_transformation: Required. Primitive transformation to apply to the infoType.
+        :param 'GooglePrivacyDlpV2PrimitiveTransformationResponse' primitive_transformation: Primitive transformation to apply to the infoType.
         """
         pulumi.set(__self__, "info_types", info_types)
         pulumi.set(__self__, "primitive_transformation", primitive_transformation)
@@ -3069,7 +3069,7 @@ class GooglePrivacyDlpV2InfoTypeTransformationResponse(dict):
     @pulumi.getter(name="primitiveTransformation")
     def primitive_transformation(self) -> 'outputs.GooglePrivacyDlpV2PrimitiveTransformationResponse':
         """
-        Required. Primitive transformation to apply to the infoType.
+        Primitive transformation to apply to the infoType.
         """
         return pulumi.get(self, "primitive_transformation")
 
@@ -3083,7 +3083,7 @@ class GooglePrivacyDlpV2InfoTypeTransformationsResponse(dict):
                  transformations: Sequence['outputs.GooglePrivacyDlpV2InfoTypeTransformationResponse']):
         """
         A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
-        :param Sequence['GooglePrivacyDlpV2InfoTypeTransformationResponse'] transformations: Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+        :param Sequence['GooglePrivacyDlpV2InfoTypeTransformationResponse'] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
         """
         pulumi.set(__self__, "transformations", transformations)
 
@@ -3091,7 +3091,7 @@ class GooglePrivacyDlpV2InfoTypeTransformationsResponse(dict):
     @pulumi.getter
     def transformations(self) -> Sequence['outputs.GooglePrivacyDlpV2InfoTypeTransformationResponse']:
         """
-        Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+        Transformation for each infoType. Cannot specify more than one for a given infoType.
         """
         return pulumi.get(self, "transformations")
 
@@ -3831,7 +3831,7 @@ class GooglePrivacyDlpV2KMapEstimationConfigResponse(dict):
         """
         Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk" in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can be done using publicly available data (like the US Census), or using a custom statistical model (indicated as one or several BigQuery tables), or by extrapolating from the distribution of values in the input dataset.
         :param Sequence['GooglePrivacyDlpV2AuxiliaryTableResponse'] auxiliary_tables: Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
-        :param Sequence['GooglePrivacyDlpV2TaggedFieldResponse'] quasi_ids: Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+        :param Sequence['GooglePrivacyDlpV2TaggedFieldResponse'] quasi_ids: Fields considered to be quasi-identifiers. No two columns can have the same tag.
         :param str region_code: ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
         """
         pulumi.set(__self__, "auxiliary_tables", auxiliary_tables)
@@ -3850,7 +3850,7 @@ class GooglePrivacyDlpV2KMapEstimationConfigResponse(dict):
     @pulumi.getter(name="quasiIds")
     def quasi_ids(self) -> Sequence['outputs.GooglePrivacyDlpV2TaggedFieldResponse']:
         """
-        Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+        Fields considered to be quasi-identifiers. No two columns can have the same tag.
         """
         return pulumi.get(self, "quasi_ids")
 
@@ -4096,8 +4096,8 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse(dict):
                  wrapped_key: str):
         """
         Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
-        :param str crypto_key_name: Required. The resource name of the KMS CryptoKey to use for unwrapping.
-        :param str wrapped_key: Required. The wrapped data crypto key.
+        :param str crypto_key_name: The resource name of the KMS CryptoKey to use for unwrapping.
+        :param str wrapped_key: The wrapped data crypto key.
         """
         pulumi.set(__self__, "crypto_key_name", crypto_key_name)
         pulumi.set(__self__, "wrapped_key", wrapped_key)
@@ -4106,7 +4106,7 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse(dict):
     @pulumi.getter(name="cryptoKeyName")
     def crypto_key_name(self) -> str:
         """
-        Required. The resource name of the KMS CryptoKey to use for unwrapping.
+        The resource name of the KMS CryptoKey to use for unwrapping.
         """
         return pulumi.get(self, "crypto_key_name")
 
@@ -4114,7 +4114,7 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse(dict):
     @pulumi.getter(name="wrappedKey")
     def wrapped_key(self) -> str:
         """
-        Required. The wrapped data crypto key.
+        The wrapped data crypto key.
         """
         return pulumi.get(self, "wrapped_key")
 
@@ -5211,7 +5211,7 @@ class GooglePrivacyDlpV2QuasiIdResponse(dict):
         """
         A column with a semantic tag attached.
         :param str custom_tag: A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
-        :param 'GooglePrivacyDlpV2FieldIdResponse' field: Required. Identifies the column.
+        :param 'GooglePrivacyDlpV2FieldIdResponse' field: Identifies the column.
         :param 'GoogleProtobufEmptyResponse' inferred: If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
         :param 'GooglePrivacyDlpV2InfoTypeResponse' info_type: A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
         """
@@ -5232,7 +5232,7 @@ class GooglePrivacyDlpV2QuasiIdResponse(dict):
     @pulumi.getter
     def field(self) -> 'outputs.GooglePrivacyDlpV2FieldIdResponse':
         """
-        Required. Identifies the column.
+        Identifies the column.
         """
         return pulumi.get(self, "field")
 
@@ -5852,9 +5852,9 @@ class GooglePrivacyDlpV2StatisticalTableResponse(dict):
                  table: 'outputs.GooglePrivacyDlpV2BigQueryTableResponse'):
         """
         An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
-        :param Sequence['GooglePrivacyDlpV2QuasiIdentifierFieldResponse'] quasi_ids: Required. Quasi-identifier columns.
-        :param 'GooglePrivacyDlpV2FieldIdResponse' relative_frequency: Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-        :param 'GooglePrivacyDlpV2BigQueryTableResponse' table: Required. Auxiliary table location.
+        :param Sequence['GooglePrivacyDlpV2QuasiIdentifierFieldResponse'] quasi_ids: Quasi-identifier columns.
+        :param 'GooglePrivacyDlpV2FieldIdResponse' relative_frequency: The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        :param 'GooglePrivacyDlpV2BigQueryTableResponse' table: Auxiliary table location.
         """
         pulumi.set(__self__, "quasi_ids", quasi_ids)
         pulumi.set(__self__, "relative_frequency", relative_frequency)
@@ -5864,7 +5864,7 @@ class GooglePrivacyDlpV2StatisticalTableResponse(dict):
     @pulumi.getter(name="quasiIds")
     def quasi_ids(self) -> Sequence['outputs.GooglePrivacyDlpV2QuasiIdentifierFieldResponse']:
         """
-        Required. Quasi-identifier columns.
+        Quasi-identifier columns.
         """
         return pulumi.get(self, "quasi_ids")
 
@@ -5872,7 +5872,7 @@ class GooglePrivacyDlpV2StatisticalTableResponse(dict):
     @pulumi.getter(name="relativeFrequency")
     def relative_frequency(self) -> 'outputs.GooglePrivacyDlpV2FieldIdResponse':
         """
-        Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
         """
         return pulumi.get(self, "relative_frequency")
 
@@ -5880,7 +5880,7 @@ class GooglePrivacyDlpV2StatisticalTableResponse(dict):
     @pulumi.getter
     def table(self) -> 'outputs.GooglePrivacyDlpV2BigQueryTableResponse':
         """
-        Required. Auxiliary table location.
+        Auxiliary table location.
         """
         return pulumi.get(self, "table")
 
@@ -6312,7 +6312,7 @@ class GooglePrivacyDlpV2TaggedFieldResponse(dict):
         """
         A column with a semantic tag attached.
         :param str custom_tag: A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
-        :param 'GooglePrivacyDlpV2FieldIdResponse' field: Required. Identifies the column.
+        :param 'GooglePrivacyDlpV2FieldIdResponse' field: Identifies the column.
         :param 'GoogleProtobufEmptyResponse' inferred: If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
         :param 'GooglePrivacyDlpV2InfoTypeResponse' info_type: A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
         """
@@ -6333,7 +6333,7 @@ class GooglePrivacyDlpV2TaggedFieldResponse(dict):
     @pulumi.getter
     def field(self) -> 'outputs.GooglePrivacyDlpV2FieldIdResponse':
         """
-        Required. Identifies the column.
+        Identifies the column.
         """
         return pulumi.get(self, "field")
 
@@ -6544,7 +6544,7 @@ class GooglePrivacyDlpV2TransientCryptoKeyResponse(dict):
                  name: str):
         """
         Use this to have a random data crypto key generated. It will be discarded after the request finishes.
-        :param str name: Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+        :param str name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
         pulumi.set(__self__, "name", name)
 
@@ -6552,7 +6552,7 @@ class GooglePrivacyDlpV2TransientCryptoKeyResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
         return pulumi.get(self, "name")
 
@@ -6599,7 +6599,7 @@ class GooglePrivacyDlpV2UnwrappedCryptoKeyResponse(dict):
                  key: str):
         """
         Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
-        :param str key: Required. A 128/192/256 bit key.
+        :param str key: A 128/192/256 bit key.
         """
         pulumi.set(__self__, "key", key)
 
@@ -6607,7 +6607,7 @@ class GooglePrivacyDlpV2UnwrappedCryptoKeyResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Required. A 128/192/256 bit key.
+        A 128/192/256 bit key.
         """
         return pulumi.get(self, "key")
 

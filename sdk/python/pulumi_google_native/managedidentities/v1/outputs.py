@@ -173,11 +173,11 @@ class TrustResponse(dict):
         :param bool selective_authentication: Optional. The trust authentication type, which decides whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
         :param str state: The current state of the trust.
         :param str state_description: Additional information about the current state of the trust, if available.
-        :param Sequence[str] target_dns_ip_addresses: Required. The target DNS server IP addresses which can resolve the remote domain involved in the trust.
-        :param str target_domain_name: Required. The fully qualified target domain name which will be in trust with the current domain.
-        :param str trust_direction: Required. The trust direction, which decides if the current domain is trusted, trusting, or both.
-        :param str trust_handshake_secret: Required. The trust secret used for the handshake with the target domain. This will not be stored.
-        :param str trust_type: Required. The type of trust represented by the trust resource.
+        :param Sequence[str] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
+        :param str target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
+        :param str trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
+        :param str trust_handshake_secret: The trust secret used for the handshake with the target domain. This will not be stored.
+        :param str trust_type: The type of trust represented by the trust resource.
         :param str update_time: The last update time.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -236,7 +236,7 @@ class TrustResponse(dict):
     @pulumi.getter(name="targetDnsIpAddresses")
     def target_dns_ip_addresses(self) -> Sequence[str]:
         """
-        Required. The target DNS server IP addresses which can resolve the remote domain involved in the trust.
+        The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         """
         return pulumi.get(self, "target_dns_ip_addresses")
 
@@ -244,7 +244,7 @@ class TrustResponse(dict):
     @pulumi.getter(name="targetDomainName")
     def target_domain_name(self) -> str:
         """
-        Required. The fully qualified target domain name which will be in trust with the current domain.
+        The fully qualified target domain name which will be in trust with the current domain.
         """
         return pulumi.get(self, "target_domain_name")
 
@@ -252,7 +252,7 @@ class TrustResponse(dict):
     @pulumi.getter(name="trustDirection")
     def trust_direction(self) -> str:
         """
-        Required. The trust direction, which decides if the current domain is trusted, trusting, or both.
+        The trust direction, which decides if the current domain is trusted, trusting, or both.
         """
         return pulumi.get(self, "trust_direction")
 
@@ -260,7 +260,7 @@ class TrustResponse(dict):
     @pulumi.getter(name="trustHandshakeSecret")
     def trust_handshake_secret(self) -> str:
         """
-        Required. The trust secret used for the handshake with the target domain. This will not be stored.
+        The trust secret used for the handshake with the target domain. This will not be stored.
         """
         return pulumi.get(self, "trust_handshake_secret")
 
@@ -268,7 +268,7 @@ class TrustResponse(dict):
     @pulumi.getter(name="trustType")
     def trust_type(self) -> str:
         """
-        Required. The type of trust represented by the trust resource.
+        The type of trust represented by the trust resource.
         """
         return pulumi.get(self, "trust_type")
 

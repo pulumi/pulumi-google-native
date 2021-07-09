@@ -16,10 +16,10 @@ __all__ = ['PageArgs', 'Page']
 class PageArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
+                 display_name: pulumi.Input[str],
                  flow_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs']] = None,
@@ -29,7 +29,7 @@ class PageArgs:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]] = None):
         """
         The set of arguments for constructing a Page resource.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the page, unique within the agent.
+        :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
@@ -38,11 +38,10 @@ class PageArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         """
         pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "flow_id", flow_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if entry_fulfillment is not None:
             pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
@@ -66,6 +65,18 @@ class PageArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the page, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="flowId")
@@ -93,18 +104,6 @@ class PageArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the page, unique within the agent.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="entryFulfillment")
@@ -211,7 +210,7 @@ class Page(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the page, unique within the agent.
+        :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FormArgs']] form: The form associated with the page, used for collecting parameters relevant to the page.
@@ -270,6 +269,8 @@ class Page(pulumi.CustomResource):
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["entry_fulfillment"] = entry_fulfillment
             __props__.__dict__["event_handlers"] = event_handlers
@@ -322,7 +323,7 @@ class Page(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The human-readable name of the page, unique within the agent.
+        The human-readable name of the page, unique within the agent.
         """
         return pulumi.get(self, "display_name")
 

@@ -14,39 +14,93 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 clusters: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 display_name: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 parent: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 clusters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['InstanceType']] = None):
+                 type: pulumi.Input['InstanceType'],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] clusters: Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
-        :param pulumi.Input[str] display_name: Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
-        :param pulumi.Input[str] instance_id: Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] clusters: The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
+        :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+        :param pulumi.Input[str] instance_id: The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        :param pulumi.Input[str] parent: The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
+        :param pulumi.Input['InstanceType'] type: The type of the instance. Defaults to `PRODUCTION`.
         :param pulumi.Input[str] name: The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
-        :param pulumi.Input[str] parent: Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
-        :param pulumi.Input['InstanceType'] type: Required. The type of the instance. Defaults to `PRODUCTION`.
         """
+        pulumi.set(__self__, "clusters", clusters)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "project", project)
-        if clusters is not None:
-            pulumi.set(__self__, "clusters", clusters)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "type", type)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if parent is not None:
-            pulumi.set(__self__, "parent", parent)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def clusters(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
+        """
+        return pulumi.get(self, "clusters")
+
+    @clusters.setter
+    def clusters(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "clusters", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
 
     @property
     @pulumi.getter
@@ -59,51 +113,15 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def clusters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def type(self) -> pulumi.Input['InstanceType']:
         """
-        Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
+        The type of the instance. Defaults to `PRODUCTION`.
         """
-        return pulumi.get(self, "clusters")
+        return pulumi.get(self, "type")
 
-    @clusters.setter
-    def clusters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "clusters", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
-        """
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
+    @type.setter
+    def type(self, value: pulumi.Input['InstanceType']):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -116,30 +134,6 @@ class InstanceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
-        """
-        return pulumi.get(self, "parent")
-
-    @parent.setter
-    def parent(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "parent", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['InstanceType']]:
-        """
-        Required. The type of the instance. Defaults to `PRODUCTION`.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['InstanceType']]):
-        pulumi.set(self, "type", value)
 
 
 class Instance(pulumi.CustomResource):
@@ -161,13 +155,13 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] clusters: Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
-        :param pulumi.Input[str] display_name: Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
-        :param pulumi.Input[str] instance_id: Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] clusters: The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
+        :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+        :param pulumi.Input[str] instance_id: The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
         :param pulumi.Input[str] name: The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
-        :param pulumi.Input[str] parent: Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
-        :param pulumi.Input['InstanceType'] type: Required. The type of the instance. Defaults to `PRODUCTION`.
+        :param pulumi.Input[str] parent: The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
+        :param pulumi.Input['InstanceType'] type: The type of the instance. Defaults to `PRODUCTION`.
         """
         ...
     @overload
@@ -213,15 +207,27 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            if clusters is None and not opts.urn:
+                raise TypeError("Missing required property 'clusters'")
             __props__.__dict__["clusters"] = clusters
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            if labels is None and not opts.urn:
+                raise TypeError("Missing required property 'labels'")
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if type is None and not opts.urn:
+                raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["state"] = None
         super(Instance, __self__).__init__(
@@ -257,7 +263,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+        The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         """
         return pulumi.get(self, "display_name")
 
@@ -265,7 +271,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -289,7 +295,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Required. The type of the instance. Defaults to `PRODUCTION`.
+        The type of the instance. Defaults to `PRODUCTION`.
         """
         return pulumi.get(self, "type")
 

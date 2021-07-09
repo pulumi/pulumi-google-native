@@ -19,22 +19,22 @@ class ConsentArtifactArgs:
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 user_id: pulumi.Input[str],
                  consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input['ImageArgs']]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
                  guardian_signature: Optional[pulumi.Input['SignatureArgs']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 user_id: Optional[pulumi.Input[str]] = None,
                  user_signature: Optional[pulumi.Input['SignatureArgs']] = None,
                  witness_signature: Optional[pulumi.Input['SignatureArgs']] = None):
         """
         The set of arguments for constructing a ConsentArtifact resource.
+        :param pulumi.Input[str] user_id: User's UUID provided by the client.
         :param pulumi.Input[Sequence[pulumi.Input['ImageArgs']]] consent_content_screenshots: Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
         :param pulumi.Input[str] consent_content_version: Optional. An string indicating the version of the consent information shown to the user.
         :param pulumi.Input['SignatureArgs'] guardian_signature: Optional. A signature from a guardian.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
         :param pulumi.Input[str] name: Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-        :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         :param pulumi.Input['SignatureArgs'] user_signature: Optional. User's signature.
         :param pulumi.Input['SignatureArgs'] witness_signature: Optional. A signature from a witness.
         """
@@ -42,6 +42,7 @@ class ConsentArtifactArgs:
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "user_id", user_id)
         if consent_content_screenshots is not None:
             pulumi.set(__self__, "consent_content_screenshots", consent_content_screenshots)
         if consent_content_version is not None:
@@ -52,8 +53,6 @@ class ConsentArtifactArgs:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
         if user_signature is not None:
             pulumi.set(__self__, "user_signature", user_signature)
         if witness_signature is not None:
@@ -94,6 +93,18 @@ class ConsentArtifactArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[str]:
+        """
+        User's UUID provided by the client.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_id", value)
 
     @property
     @pulumi.getter(name="consentContentScreenshots")
@@ -156,18 +167,6 @@ class ConsentArtifactArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. User's UUID provided by the client.
-        """
-        return pulumi.get(self, "user_id")
-
-    @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "user_id", value)
-
-    @property
     @pulumi.getter(name="userSignature")
     def user_signature(self) -> Optional[pulumi.Input['SignatureArgs']]:
         """
@@ -220,7 +219,7 @@ class ConsentArtifact(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SignatureArgs']] guardian_signature: Optional. A signature from a guardian.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
         :param pulumi.Input[str] name: Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-        :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
+        :param pulumi.Input[str] user_id: User's UUID provided by the client.
         :param pulumi.Input[pulumi.InputType['SignatureArgs']] user_signature: Optional. User's signature.
         :param pulumi.Input[pulumi.InputType['SignatureArgs']] witness_signature: Optional. A signature from a witness.
         """
@@ -289,6 +288,8 @@ class ConsentArtifact(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if user_id is None and not opts.urn:
+                raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["user_signature"] = user_signature
             __props__.__dict__["witness_signature"] = witness_signature
@@ -368,7 +369,7 @@ class ConsentArtifact(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        Required. User's UUID provided by the client.
+        User's UUID provided by the client.
         """
         return pulumi.get(self, "user_id")
 

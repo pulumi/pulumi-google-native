@@ -81,40 +81,38 @@ class MemcacheParametersArgs:
 @pulumi.input_type
 class NodeConfigArgs:
     def __init__(__self__, *,
-                 cpu_count: Optional[pulumi.Input[int]] = None,
-                 memory_size_mb: Optional[pulumi.Input[int]] = None):
+                 cpu_count: pulumi.Input[int],
+                 memory_size_mb: pulumi.Input[int]):
         """
         Configuration for a Memcached Node.
-        :param pulumi.Input[int] cpu_count: Required. Number of cpus per Memcached node.
-        :param pulumi.Input[int] memory_size_mb: Required. Memory size in MiB for each Memcached node.
+        :param pulumi.Input[int] cpu_count: Number of cpus per Memcached node.
+        :param pulumi.Input[int] memory_size_mb: Memory size in MiB for each Memcached node.
         """
-        if cpu_count is not None:
-            pulumi.set(__self__, "cpu_count", cpu_count)
-        if memory_size_mb is not None:
-            pulumi.set(__self__, "memory_size_mb", memory_size_mb)
+        pulumi.set(__self__, "cpu_count", cpu_count)
+        pulumi.set(__self__, "memory_size_mb", memory_size_mb)
 
     @property
     @pulumi.getter(name="cpuCount")
-    def cpu_count(self) -> Optional[pulumi.Input[int]]:
+    def cpu_count(self) -> pulumi.Input[int]:
         """
-        Required. Number of cpus per Memcached node.
+        Number of cpus per Memcached node.
         """
         return pulumi.get(self, "cpu_count")
 
     @cpu_count.setter
-    def cpu_count(self, value: Optional[pulumi.Input[int]]):
+    def cpu_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "cpu_count", value)
 
     @property
     @pulumi.getter(name="memorySizeMb")
-    def memory_size_mb(self) -> Optional[pulumi.Input[int]]:
+    def memory_size_mb(self) -> pulumi.Input[int]:
         """
-        Required. Memory size in MiB for each Memcached node.
+        Memory size in MiB for each Memcached node.
         """
         return pulumi.get(self, "memory_size_mb")
 
     @memory_size_mb.setter
-    def memory_size_mb(self, value: Optional[pulumi.Input[int]]):
+    def memory_size_mb(self, value: pulumi.Input[int]):
         pulumi.set(self, "memory_size_mb", value)
 
 

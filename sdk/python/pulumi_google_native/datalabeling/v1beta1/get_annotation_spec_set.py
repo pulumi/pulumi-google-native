@@ -38,7 +38,7 @@ class GetAnnotationSpecSetResult:
     @pulumi.getter(name="annotationSpecs")
     def annotation_specs(self) -> Sequence['outputs.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse']:
         """
-        Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
         """
         return pulumi.get(self, "annotation_specs")
 
@@ -62,7 +62,7 @@ class GetAnnotationSpecSetResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+        The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         """
         return pulumi.get(self, "display_name")
 

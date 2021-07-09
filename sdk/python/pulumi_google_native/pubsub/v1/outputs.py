@@ -410,7 +410,7 @@ class SchemaSettingsResponse(dict):
         """
         Settings for validating messages published against a schema.
         :param str encoding: The encoding of messages validated against `schema`.
-        :param str schema: Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+        :param str schema: The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         """
         pulumi.set(__self__, "encoding", encoding)
         pulumi.set(__self__, "schema", schema)
@@ -427,7 +427,7 @@ class SchemaSettingsResponse(dict):
     @pulumi.getter
     def schema(self) -> str:
         """
-        Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+        The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         """
         return pulumi.get(self, "schema")
 

@@ -16,11 +16,11 @@ __all__ = ['IntentArgs', 'Intent']
 @pulumi.input_type
 class IntentArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
                  default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  end_interaction: Optional[pulumi.Input[bool]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -40,9 +40,9 @@ class IntentArgs:
                  webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None):
         """
         The set of arguments for constructing a Intent resource.
+        :param pulumi.Input[str] display_name: The name of this intent.
         :param pulumi.Input[str] action: Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
         :param pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]] default_response_platforms: Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
-        :param pulumi.Input[str] display_name: Required. The name of this intent.
         :param pulumi.Input[bool] end_interaction: Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
@@ -59,14 +59,13 @@ class IntentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs']]] training_phrases: Optional. The collection of examples that the agent is trained on.
         :param pulumi.Input['IntentWebhookState'] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if action is not None:
             pulumi.set(__self__, "action", action)
         if default_response_platforms is not None:
             pulumi.set(__self__, "default_response_platforms", default_response_platforms)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if end_interaction is not None:
             pulumi.set(__self__, "end_interaction", end_interaction)
         if events is not None:
@@ -101,6 +100,18 @@ class IntentArgs:
             pulumi.set(__self__, "training_phrases", training_phrases)
         if webhook_state is not None:
             pulumi.set(__self__, "webhook_state", webhook_state)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The name of this intent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -143,18 +154,6 @@ class IntentArgs:
     @default_response_platforms.setter
     def default_response_platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]]):
         pulumi.set(self, "default_response_platforms", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name of this intent.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="endInteraction")
@@ -390,7 +389,7 @@ class Intent(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
         :param pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]] default_response_platforms: Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
-        :param pulumi.Input[str] display_name: Required. The name of this intent.
+        :param pulumi.Input[str] display_name: The name of this intent.
         :param pulumi.Input[bool] end_interaction: Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
@@ -467,6 +466,8 @@ class Intent(pulumi.CustomResource):
 
             __props__.__dict__["action"] = action
             __props__.__dict__["default_response_platforms"] = default_response_platforms
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["end_interaction"] = end_interaction
             __props__.__dict__["events"] = events
@@ -557,7 +558,7 @@ class Intent(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The name of this intent.
+        The name of this intent.
         """
         return pulumi.get(self, "display_name")
 

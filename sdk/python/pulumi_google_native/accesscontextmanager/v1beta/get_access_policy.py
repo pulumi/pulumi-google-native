@@ -39,7 +39,7 @@ class GetAccessPolicyResult:
     @pulumi.getter
     def parent(self) -> str:
         """
-        Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         """
         return pulumi.get(self, "parent")
 
@@ -47,7 +47,7 @@ class GetAccessPolicyResult:
     @pulumi.getter
     def title(self) -> str:
         """
-        Required. Human readable title. Does not affect behavior.
+        Human readable title. Does not affect behavior.
         """
         return pulumi.get(self, "title")
 

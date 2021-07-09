@@ -471,28 +471,27 @@ class FieldArgs:
 @pulumi.input_type
 class GoogleCloudHealthcareV1beta1ConsentPolicyArgs:
     def __init__(__self__, *,
-                 authorization_rule: Optional[pulumi.Input['ExprArgs']] = None,
+                 authorization_rule: pulumi.Input['ExprArgs'],
                  resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]]] = None):
         """
         Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-        :param pulumi.Input['ExprArgs'] authorization_rule: Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+        :param pulumi.Input['ExprArgs'] authorization_rule: The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
         :param pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]] resource_attributes: The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
         """
-        if authorization_rule is not None:
-            pulumi.set(__self__, "authorization_rule", authorization_rule)
+        pulumi.set(__self__, "authorization_rule", authorization_rule)
         if resource_attributes is not None:
             pulumi.set(__self__, "resource_attributes", resource_attributes)
 
     @property
     @pulumi.getter(name="authorizationRule")
-    def authorization_rule(self) -> Optional[pulumi.Input['ExprArgs']]:
+    def authorization_rule(self) -> pulumi.Input['ExprArgs']:
         """
-        Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+        The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
         """
         return pulumi.get(self, "authorization_rule")
 
     @authorization_rule.setter
-    def authorization_rule(self, value: Optional[pulumi.Input['ExprArgs']]):
+    def authorization_rule(self, value: pulumi.Input['ExprArgs']):
         pulumi.set(self, "authorization_rule", value)
 
     @property
@@ -1215,25 +1214,36 @@ class SensitiveTextAnnotationArgs:
 @pulumi.input_type
 class SignatureArgs:
     def __init__(__self__, *,
+                 user_id: pulumi.Input[str],
                  image: Optional[pulumi.Input['ImageArgs']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 signature_time: Optional[pulumi.Input[str]] = None,
-                 user_id: Optional[pulumi.Input[str]] = None):
+                 signature_time: Optional[pulumi.Input[str]] = None):
         """
         User signature.
+        :param pulumi.Input[str] user_id: User's UUID provided by the client.
         :param pulumi.Input['ImageArgs'] image: Optional. An image of the user's signature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
         :param pulumi.Input[str] signature_time: Optional. Timestamp of the signature.
-        :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         """
+        pulumi.set(__self__, "user_id", user_id)
         if image is not None:
             pulumi.set(__self__, "image", image)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if signature_time is not None:
             pulumi.set(__self__, "signature_time", signature_time)
-        if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[str]:
+        """
+        User's UUID provided by the client.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_id", value)
 
     @property
     @pulumi.getter
@@ -1270,18 +1280,6 @@ class SignatureArgs:
     @signature_time.setter
     def signature_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "signature_time", value)
-
-    @property
-    @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. User's UUID provided by the client.
-        """
-        return pulumi.get(self, "user_id")
-
-    @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "user_id", value)
 
 
 @pulumi.input_type

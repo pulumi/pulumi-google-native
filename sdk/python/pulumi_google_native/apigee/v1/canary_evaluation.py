@@ -15,33 +15,52 @@ __all__ = ['CanaryEvaluationArgs', 'CanaryEvaluation']
 @pulumi.input_type
 class CanaryEvaluationArgs:
     def __init__(__self__, *,
+                 control: pulumi.Input[str],
+                 end_time: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
+                 metric_labels: pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs'],
                  organization_id: pulumi.Input[str],
-                 control: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 metric_labels: Optional[pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 treatment: Optional[pulumi.Input[str]] = None):
+                 start_time: pulumi.Input[str],
+                 treatment: pulumi.Input[str]):
         """
         The set of arguments for constructing a CanaryEvaluation resource.
-        :param pulumi.Input[str] control: Required. The stable version that is serving requests.
-        :param pulumi.Input[str] end_time: Required. End time for the evaluation's analysis.
-        :param pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs'] metric_labels: Required. Labels used to filter the metrics used for a canary evaluation.
-        :param pulumi.Input[str] start_time: Required. Start time for the canary evaluation's analysis.
-        :param pulumi.Input[str] treatment: Required. The newer version that is serving requests.
+        :param pulumi.Input[str] control: The stable version that is serving requests.
+        :param pulumi.Input[str] end_time: End time for the evaluation's analysis.
+        :param pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs'] metric_labels: Labels used to filter the metrics used for a canary evaluation.
+        :param pulumi.Input[str] start_time: Start time for the canary evaluation's analysis.
+        :param pulumi.Input[str] treatment: The newer version that is serving requests.
         """
+        pulumi.set(__self__, "control", control)
+        pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "metric_labels", metric_labels)
         pulumi.set(__self__, "organization_id", organization_id)
-        if control is not None:
-            pulumi.set(__self__, "control", control)
-        if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
-        if metric_labels is not None:
-            pulumi.set(__self__, "metric_labels", metric_labels)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-        if treatment is not None:
-            pulumi.set(__self__, "treatment", treatment)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "treatment", treatment)
+
+    @property
+    @pulumi.getter
+    def control(self) -> pulumi.Input[str]:
+        """
+        The stable version that is serving requests.
+        """
+        return pulumi.get(self, "control")
+
+    @control.setter
+    def control(self, value: pulumi.Input[str]):
+        pulumi.set(self, "control", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[str]:
+        """
+        End time for the evaluation's analysis.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end_time", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -53,6 +72,18 @@ class CanaryEvaluationArgs:
         pulumi.set(self, "instance_id", value)
 
     @property
+    @pulumi.getter(name="metricLabels")
+    def metric_labels(self) -> pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']:
+        """
+        Labels used to filter the metrics used for a canary evaluation.
+        """
+        return pulumi.get(self, "metric_labels")
+
+    @metric_labels.setter
+    def metric_labels(self, value: pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']):
+        pulumi.set(self, "metric_labels", value)
+
+    @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "organization_id")
@@ -62,63 +93,27 @@ class CanaryEvaluationArgs:
         pulumi.set(self, "organization_id", value)
 
     @property
-    @pulumi.getter
-    def control(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The stable version that is serving requests.
-        """
-        return pulumi.get(self, "control")
-
-    @control.setter
-    def control(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "control", value)
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. End time for the evaluation's analysis.
-        """
-        return pulumi.get(self, "end_time")
-
-    @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "end_time", value)
-
-    @property
-    @pulumi.getter(name="metricLabels")
-    def metric_labels(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]:
-        """
-        Required. Labels used to filter the metrics used for a canary evaluation.
-        """
-        return pulumi.get(self, "metric_labels")
-
-    @metric_labels.setter
-    def metric_labels(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]):
-        pulumi.set(self, "metric_labels", value)
-
-    @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
+    def start_time(self) -> pulumi.Input[str]:
         """
-        Required. Start time for the canary evaluation's analysis.
+        Start time for the canary evaluation's analysis.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
+    def start_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "start_time", value)
 
     @property
     @pulumi.getter
-    def treatment(self) -> Optional[pulumi.Input[str]]:
+    def treatment(self) -> pulumi.Input[str]:
         """
-        Required. The newer version that is serving requests.
+        The newer version that is serving requests.
         """
         return pulumi.get(self, "treatment")
 
     @treatment.setter
-    def treatment(self, value: Optional[pulumi.Input[str]]):
+    def treatment(self, value: pulumi.Input[str]):
         pulumi.set(self, "treatment", value)
 
 
@@ -140,11 +135,11 @@ class CanaryEvaluation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] control: Required. The stable version that is serving requests.
-        :param pulumi.Input[str] end_time: Required. End time for the evaluation's analysis.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']] metric_labels: Required. Labels used to filter the metrics used for a canary evaluation.
-        :param pulumi.Input[str] start_time: Required. Start time for the canary evaluation's analysis.
-        :param pulumi.Input[str] treatment: Required. The newer version that is serving requests.
+        :param pulumi.Input[str] control: The stable version that is serving requests.
+        :param pulumi.Input[str] end_time: End time for the evaluation's analysis.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']] metric_labels: Labels used to filter the metrics used for a canary evaluation.
+        :param pulumi.Input[str] start_time: Start time for the canary evaluation's analysis.
+        :param pulumi.Input[str] treatment: The newer version that is serving requests.
         """
         ...
     @overload
@@ -189,16 +184,26 @@ class CanaryEvaluation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CanaryEvaluationArgs.__new__(CanaryEvaluationArgs)
 
+            if control is None and not opts.urn:
+                raise TypeError("Missing required property 'control'")
             __props__.__dict__["control"] = control
+            if end_time is None and not opts.urn:
+                raise TypeError("Missing required property 'end_time'")
             __props__.__dict__["end_time"] = end_time
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            if metric_labels is None and not opts.urn:
+                raise TypeError("Missing required property 'metric_labels'")
             __props__.__dict__["metric_labels"] = metric_labels
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            if start_time is None and not opts.urn:
+                raise TypeError("Missing required property 'start_time'")
             __props__.__dict__["start_time"] = start_time
+            if treatment is None and not opts.urn:
+                raise TypeError("Missing required property 'treatment'")
             __props__.__dict__["treatment"] = treatment
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -241,7 +246,7 @@ class CanaryEvaluation(pulumi.CustomResource):
     @pulumi.getter
     def control(self) -> pulumi.Output[str]:
         """
-        Required. The stable version that is serving requests.
+        The stable version that is serving requests.
         """
         return pulumi.get(self, "control")
 
@@ -257,7 +262,7 @@ class CanaryEvaluation(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[str]:
         """
-        Required. End time for the evaluation's analysis.
+        End time for the evaluation's analysis.
         """
         return pulumi.get(self, "end_time")
 
@@ -265,7 +270,7 @@ class CanaryEvaluation(pulumi.CustomResource):
     @pulumi.getter(name="metricLabels")
     def metric_labels(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse']:
         """
-        Required. Labels used to filter the metrics used for a canary evaluation.
+        Labels used to filter the metrics used for a canary evaluation.
         """
         return pulumi.get(self, "metric_labels")
 
@@ -281,7 +286,7 @@ class CanaryEvaluation(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[str]:
         """
-        Required. Start time for the canary evaluation's analysis.
+        Start time for the canary evaluation's analysis.
         """
         return pulumi.get(self, "start_time")
 
@@ -297,7 +302,7 @@ class CanaryEvaluation(pulumi.CustomResource):
     @pulumi.getter
     def treatment(self) -> pulumi.Output[str]:
         """
-        Required. The newer version that is serving requests.
+        The newer version that is serving requests.
         """
         return pulumi.get(self, "treatment")
 

@@ -87,10 +87,10 @@ class AptRepositoryResponse(dict):
         """
         Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
         :param str archive_type: Type of archive files in this repository. The default behavior is DEB.
-        :param Sequence[str] components: Required. List of components for this repository. Must contain at least one item.
-        :param str distribution: Required. Distribution of this repository.
+        :param Sequence[str] components: List of components for this repository. Must contain at least one item.
+        :param str distribution: Distribution of this repository.
         :param str gpg_key: URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
-        :param str uri: Required. URI for this repository.
+        :param str uri: URI for this repository.
         """
         pulumi.set(__self__, "archive_type", archive_type)
         pulumi.set(__self__, "components", components)
@@ -110,7 +110,7 @@ class AptRepositoryResponse(dict):
     @pulumi.getter
     def components(self) -> Sequence[str]:
         """
-        Required. List of components for this repository. Must contain at least one item.
+        List of components for this repository. Must contain at least one item.
         """
         return pulumi.get(self, "components")
 
@@ -118,7 +118,7 @@ class AptRepositoryResponse(dict):
     @pulumi.getter
     def distribution(self) -> str:
         """
-        Required. Distribution of this repository.
+        Distribution of this repository.
         """
         return pulumi.get(self, "distribution")
 
@@ -134,7 +134,7 @@ class AptRepositoryResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        Required. URI for this repository.
+        URI for this repository.
         """
         return pulumi.get(self, "uri")
 
@@ -563,9 +563,9 @@ class GcsObjectResponse(dict):
                  object: str):
         """
         Google Cloud Storage object representation.
-        :param str bucket: Required. Bucket of the Google Cloud Storage object.
-        :param str generation_number: Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-        :param str object: Required. Name of the Google Cloud Storage object.
+        :param str bucket: Bucket of the Google Cloud Storage object.
+        :param str generation_number: Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        :param str object: Name of the Google Cloud Storage object.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "generation_number", generation_number)
@@ -575,7 +575,7 @@ class GcsObjectResponse(dict):
     @pulumi.getter
     def bucket(self) -> str:
         """
-        Required. Bucket of the Google Cloud Storage object.
+        Bucket of the Google Cloud Storage object.
         """
         return pulumi.get(self, "bucket")
 
@@ -583,7 +583,7 @@ class GcsObjectResponse(dict):
     @pulumi.getter(name="generationNumber")
     def generation_number(self) -> str:
         """
-        Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         """
         return pulumi.get(self, "generation_number")
 
@@ -591,7 +591,7 @@ class GcsObjectResponse(dict):
     @pulumi.getter
     def object(self) -> str:
         """
-        Required. Name of the Google Cloud Storage object.
+        Name of the Google Cloud Storage object.
         """
         return pulumi.get(self, "object")
 
@@ -606,8 +606,8 @@ class GooRepositoryResponse(dict):
                  url: str):
         """
         Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
-        :param str name: Required. The name of the repository.
-        :param str url: Required. The url of the repository.
+        :param str name: The name of the repository.
+        :param str url: The url of the repository.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "url", url)
@@ -616,7 +616,7 @@ class GooRepositoryResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The name of the repository.
+        The name of the repository.
         """
         return pulumi.get(self, "name")
 
@@ -624,7 +624,7 @@ class GooRepositoryResponse(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        Required. The url of the repository.
+        The url of the repository.
         """
         return pulumi.get(self, "url")
 
@@ -670,8 +670,8 @@ class MonthlyScheduleResponse(dict):
                  week_day_of_month: 'outputs.WeekDayOfMonthResponse'):
         """
         Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
-        :param int month_day: Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-        :param 'WeekDayOfMonthResponse' week_day_of_month: Required. Week day in a month.
+        :param int month_day: One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+        :param 'WeekDayOfMonthResponse' week_day_of_month: Week day in a month.
         """
         pulumi.set(__self__, "month_day", month_day)
         pulumi.set(__self__, "week_day_of_month", week_day_of_month)
@@ -680,7 +680,7 @@ class MonthlyScheduleResponse(dict):
     @pulumi.getter(name="monthDay")
     def month_day(self) -> int:
         """
-        Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+        One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
         """
         return pulumi.get(self, "month_day")
 
@@ -688,7 +688,7 @@ class MonthlyScheduleResponse(dict):
     @pulumi.getter(name="weekDayOfMonth")
     def week_day_of_month(self) -> 'outputs.WeekDayOfMonthResponse':
         """
-        Required. Week day in a month.
+        Week day in a month.
         """
         return pulumi.get(self, "week_day_of_month")
 
@@ -719,7 +719,7 @@ class OneTimeScheduleResponse(dict):
                  execute_time: str):
         """
         Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        :param str execute_time: Required. The desired patch job execution time.
+        :param str execute_time: The desired patch job execution time.
         """
         pulumi.set(__self__, "execute_time", execute_time)
 
@@ -727,7 +727,7 @@ class OneTimeScheduleResponse(dict):
     @pulumi.getter(name="executeTime")
     def execute_time(self) -> str:
         """
-        Required. The desired patch job execution time.
+        The desired patch job execution time.
         """
         return pulumi.get(self, "execute_time")
 
@@ -817,7 +817,7 @@ class PackageResponse(dict):
         Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
         :param str desired_state: The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
         :param str manager: Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
-        :param str name: Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+        :param str name: The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
         """
         pulumi.set(__self__, "desired_state", desired_state)
         pulumi.set(__self__, "manager", manager)
@@ -843,7 +843,7 @@ class PackageResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+        The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
         """
         return pulumi.get(self, "name")
 
@@ -1172,14 +1172,14 @@ class RecurringScheduleResponse(dict):
         """
         Sets the time for recurring patch deployments.
         :param str end_time: Optional. The end time at which a recurring patch deployment schedule is no longer active.
-        :param str frequency: Required. The frequency unit of this recurring schedule.
+        :param str frequency: The frequency unit of this recurring schedule.
         :param str last_execute_time: The time the last patch job ran successfully.
-        :param 'MonthlyScheduleResponse' monthly: Required. Schedule with monthly executions.
+        :param 'MonthlyScheduleResponse' monthly: Schedule with monthly executions.
         :param str next_execute_time: The time the next patch job is scheduled to run.
         :param str start_time: Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-        :param 'TimeOfDayResponse' time_of_day: Required. Time of the day to run a recurring deployment.
-        :param 'TimeZoneResponse' time_zone: Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-        :param 'WeeklyScheduleResponse' weekly: Required. Schedule with weekly executions.
+        :param 'TimeOfDayResponse' time_of_day: Time of the day to run a recurring deployment.
+        :param 'TimeZoneResponse' time_zone: Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        :param 'WeeklyScheduleResponse' weekly: Schedule with weekly executions.
         """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "frequency", frequency)
@@ -1203,7 +1203,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter
     def frequency(self) -> str:
         """
-        Required. The frequency unit of this recurring schedule.
+        The frequency unit of this recurring schedule.
         """
         return pulumi.get(self, "frequency")
 
@@ -1219,7 +1219,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter
     def monthly(self) -> 'outputs.MonthlyScheduleResponse':
         """
-        Required. Schedule with monthly executions.
+        Schedule with monthly executions.
         """
         return pulumi.get(self, "monthly")
 
@@ -1243,7 +1243,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter(name="timeOfDay")
     def time_of_day(self) -> 'outputs.TimeOfDayResponse':
         """
-        Required. Time of the day to run a recurring deployment.
+        Time of the day to run a recurring deployment.
         """
         return pulumi.get(self, "time_of_day")
 
@@ -1251,7 +1251,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> 'outputs.TimeZoneResponse':
         """
-        Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -1259,7 +1259,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter
     def weekly(self) -> 'outputs.WeeklyScheduleResponse':
         """
-        Required. Schedule with weekly executions.
+        Schedule with weekly executions.
         """
         return pulumi.get(self, "weekly")
 
@@ -1440,7 +1440,7 @@ class SoftwareRecipeResponse(dict):
         :param Sequence['SoftwareRecipeArtifactResponse'] artifacts: Resources available to be used in the steps in the recipe.
         :param str desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
         :param Sequence['SoftwareRecipeStepResponse'] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
-        :param str name: Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+        :param str name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
         :param Sequence['SoftwareRecipeStepResponse'] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
         :param str version: The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
         """
@@ -1479,7 +1479,7 @@ class SoftwareRecipeResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+        Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
         """
         return pulumi.get(self, "name")
 
@@ -1529,8 +1529,8 @@ class SoftwareRecipeStepCopyFileResponse(dict):
                  permissions: str):
         """
         Copies the artifact to the specified path on the instance.
-        :param str artifact_id: Required. The id of the relevant artifact in the recipe.
-        :param str destination: Required. The absolute path on the instance to put the file.
+        :param str artifact_id: The id of the relevant artifact in the recipe.
+        :param str destination: The absolute path on the instance to put the file.
         :param bool overwrite: Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
         :param str permissions: Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
         """
@@ -1543,7 +1543,7 @@ class SoftwareRecipeStepCopyFileResponse(dict):
     @pulumi.getter(name="artifactId")
     def artifact_id(self) -> str:
         """
-        Required. The id of the relevant artifact in the recipe.
+        The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
@@ -1551,7 +1551,7 @@ class SoftwareRecipeStepCopyFileResponse(dict):
     @pulumi.getter
     def destination(self) -> str:
         """
-        Required. The absolute path on the instance to put the file.
+        The absolute path on the instance to put the file.
         """
         return pulumi.get(self, "destination")
 
@@ -1676,9 +1676,9 @@ class SoftwareRecipeStepExtractArchiveResponse(dict):
                  type: str):
         """
         Extracts an archive of the type specified in the specified directory.
-        :param str artifact_id: Required. The id of the relevant artifact in the recipe.
+        :param str artifact_id: The id of the relevant artifact in the recipe.
         :param str destination: Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
-        :param str type: Required. The type of the archive to extract.
+        :param str type: The type of the archive to extract.
         """
         pulumi.set(__self__, "artifact_id", artifact_id)
         pulumi.set(__self__, "destination", destination)
@@ -1688,7 +1688,7 @@ class SoftwareRecipeStepExtractArchiveResponse(dict):
     @pulumi.getter(name="artifactId")
     def artifact_id(self) -> str:
         """
-        Required. The id of the relevant artifact in the recipe.
+        The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
@@ -1704,7 +1704,7 @@ class SoftwareRecipeStepExtractArchiveResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. The type of the archive to extract.
+        The type of the archive to extract.
         """
         return pulumi.get(self, "type")
 
@@ -1735,7 +1735,7 @@ class SoftwareRecipeStepInstallDpkgResponse(dict):
                  artifact_id: str):
         """
         Installs a deb via dpkg.
-        :param str artifact_id: Required. The id of the relevant artifact in the recipe.
+        :param str artifact_id: The id of the relevant artifact in the recipe.
         """
         pulumi.set(__self__, "artifact_id", artifact_id)
 
@@ -1743,7 +1743,7 @@ class SoftwareRecipeStepInstallDpkgResponse(dict):
     @pulumi.getter(name="artifactId")
     def artifact_id(self) -> str:
         """
-        Required. The id of the relevant artifact in the recipe.
+        The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
@@ -1779,7 +1779,7 @@ class SoftwareRecipeStepInstallMsiResponse(dict):
         """
         Installs an MSI file.
         :param Sequence[int] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-        :param str artifact_id: Required. The id of the relevant artifact in the recipe.
+        :param str artifact_id: The id of the relevant artifact in the recipe.
         :param Sequence[str] flags: The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
         """
         pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
@@ -1798,7 +1798,7 @@ class SoftwareRecipeStepInstallMsiResponse(dict):
     @pulumi.getter(name="artifactId")
     def artifact_id(self) -> str:
         """
-        Required. The id of the relevant artifact in the recipe.
+        The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
@@ -1837,7 +1837,7 @@ class SoftwareRecipeStepInstallRpmResponse(dict):
                  artifact_id: str):
         """
         Installs an rpm file via the rpm utility.
-        :param str artifact_id: Required. The id of the relevant artifact in the recipe.
+        :param str artifact_id: The id of the relevant artifact in the recipe.
         """
         pulumi.set(__self__, "artifact_id", artifact_id)
 
@@ -1845,7 +1845,7 @@ class SoftwareRecipeStepInstallRpmResponse(dict):
     @pulumi.getter(name="artifactId")
     def artifact_id(self) -> str:
         """
-        Required. The id of the relevant artifact in the recipe.
+        The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
@@ -1997,7 +1997,7 @@ class SoftwareRecipeStepRunScriptResponse(dict):
         Runs a script through an interpreter.
         :param Sequence[int] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-        :param str script: Required. The shell script to be executed.
+        :param str script: The shell script to be executed.
         """
         pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
         pulumi.set(__self__, "interpreter", interpreter)
@@ -2023,7 +2023,7 @@ class SoftwareRecipeStepRunScriptResponse(dict):
     @pulumi.getter
     def script(self) -> str:
         """
-        Required. The shell script to be executed.
+        The shell script to be executed.
         """
         return pulumi.get(self, "script")
 
@@ -2134,8 +2134,8 @@ class WeekDayOfMonthResponse(dict):
                  week_ordinal: int):
         """
         Represents one week day in a month. An example is "the 4th Sunday".
-        :param str day_of_week: Required. A day of the week.
-        :param int week_ordinal: Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        :param str day_of_week: A day of the week.
+        :param int week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "week_ordinal", week_ordinal)
@@ -2144,7 +2144,7 @@ class WeekDayOfMonthResponse(dict):
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> str:
         """
-        Required. A day of the week.
+        A day of the week.
         """
         return pulumi.get(self, "day_of_week")
 
@@ -2152,7 +2152,7 @@ class WeekDayOfMonthResponse(dict):
     @pulumi.getter(name="weekOrdinal")
     def week_ordinal(self) -> int:
         """
-        Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         return pulumi.get(self, "week_ordinal")
 
@@ -2183,7 +2183,7 @@ class WeeklyScheduleResponse(dict):
                  day_of_week: str):
         """
         Represents a weekly schedule.
-        :param str day_of_week: Required. Day of the week.
+        :param str day_of_week: Day of the week.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
 
@@ -2191,7 +2191,7 @@ class WeeklyScheduleResponse(dict):
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> str:
         """
-        Required. Day of the week.
+        Day of the week.
         """
         return pulumi.get(self, "day_of_week")
 
@@ -2289,7 +2289,7 @@ class YumRepositoryResponse(dict):
                  gpg_keys: Sequence[str]):
         """
         Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
-        :param str base_url: Required. The location of the repository directory.
+        :param str base_url: The location of the repository directory.
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
         """
@@ -2301,7 +2301,7 @@ class YumRepositoryResponse(dict):
     @pulumi.getter(name="baseUrl")
     def base_url(self) -> str:
         """
-        Required. The location of the repository directory.
+        The location of the repository directory.
         """
         return pulumi.get(self, "base_url")
 
@@ -2426,7 +2426,7 @@ class ZypperRepositoryResponse(dict):
                  gpg_keys: Sequence[str]):
         """
         Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
-        :param str base_url: Required. The location of the repository directory.
+        :param str base_url: The location of the repository directory.
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
         """
@@ -2438,7 +2438,7 @@ class ZypperRepositoryResponse(dict):
     @pulumi.getter(name="baseUrl")
     def base_url(self) -> str:
         """
-        Required. The location of the repository directory.
+        The location of the repository directory.
         """
         return pulumi.get(self, "base_url")
 

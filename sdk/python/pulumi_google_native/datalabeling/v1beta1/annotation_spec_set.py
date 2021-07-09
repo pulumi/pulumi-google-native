@@ -15,23 +15,45 @@ __all__ = ['AnnotationSpecSetArgs', 'AnnotationSpecSet']
 @pulumi.input_type
 class AnnotationSpecSetArgs:
     def __init__(__self__, *,
+                 annotation_specs: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]],
+                 display_name: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 annotation_specs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]] = None,
-                 description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AnnotationSpecSet resource.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]] annotation_specs: Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]] annotation_specs: The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        :param pulumi.Input[str] display_name: The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
-        :param pulumi.Input[str] display_name: Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         """
+        pulumi.set(__self__, "annotation_specs", annotation_specs)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "project", project)
-        if annotation_specs is not None:
-            pulumi.set(__self__, "annotation_specs", annotation_specs)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="annotationSpecs")
+    def annotation_specs(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]:
+        """
+        The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        """
+        return pulumi.get(self, "annotation_specs")
+
+    @annotation_specs.setter
+    def annotation_specs(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]):
+        pulumi.set(self, "annotation_specs", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -41,18 +63,6 @@ class AnnotationSpecSetArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="annotationSpecs")
-    def annotation_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]]:
-        """
-        Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
-        """
-        return pulumi.get(self, "annotation_specs")
-
-    @annotation_specs.setter
-    def annotation_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]]):
-        pulumi.set(self, "annotation_specs", value)
 
     @property
     @pulumi.getter
@@ -65,18 +75,6 @@ class AnnotationSpecSetArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
 
 class AnnotationSpecSet(pulumi.CustomResource):
@@ -94,9 +92,9 @@ class AnnotationSpecSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]] annotation_specs: Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]] annotation_specs: The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
         :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
-        :param pulumi.Input[str] display_name: Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+        :param pulumi.Input[str] display_name: The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         """
         ...
     @overload
@@ -138,8 +136,12 @@ class AnnotationSpecSet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AnnotationSpecSetArgs.__new__(AnnotationSpecSetArgs)
 
+            if annotation_specs is None and not opts.urn:
+                raise TypeError("Missing required property 'annotation_specs'")
             __props__.__dict__["annotation_specs"] = annotation_specs
             __props__.__dict__["description"] = description
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -179,7 +181,7 @@ class AnnotationSpecSet(pulumi.CustomResource):
     @pulumi.getter(name="annotationSpecs")
     def annotation_specs(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse']]:
         """
-        Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
         """
         return pulumi.get(self, "annotation_specs")
 
@@ -203,7 +205,7 @@ class AnnotationSpecSet(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+        The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         """
         return pulumi.get(self, "display_name")
 

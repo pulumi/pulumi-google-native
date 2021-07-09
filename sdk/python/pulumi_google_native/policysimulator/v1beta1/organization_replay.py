@@ -16,17 +16,28 @@ __all__ = ['OrganizationReplayArgs', 'OrganizationReplay']
 @pulumi.input_type
 class OrganizationReplayArgs:
     def __init__(__self__, *,
+                 config: pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs'],
                  location: pulumi.Input[str],
-                 organization_id: pulumi.Input[str],
-                 config: Optional[pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']] = None):
+                 organization_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a OrganizationReplay resource.
-        :param pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs'] config: Required. The configuration used for the `Replay`.
+        :param pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs'] config: The configuration used for the `Replay`.
         """
+        pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization_id", organization_id)
-        if config is not None:
-            pulumi.set(__self__, "config", config)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']:
+        """
+        The configuration used for the `Replay`.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
@@ -46,18 +57,6 @@ class OrganizationReplayArgs:
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
 
-    @property
-    @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']]:
-        """
-        Required. The configuration used for the `Replay`.
-        """
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: Optional[pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']]):
-        pulumi.set(self, "config", value)
-
 
 class OrganizationReplay(pulumi.CustomResource):
     @overload
@@ -73,7 +72,7 @@ class OrganizationReplay(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']] config: Required. The configuration used for the `Replay`.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']] config: The configuration used for the `Replay`.
         """
         ...
     @overload
@@ -114,6 +113,8 @@ class OrganizationReplay(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationReplayArgs.__new__(OrganizationReplayArgs)
 
+            if config is None and not opts.urn:
+                raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -156,7 +157,7 @@ class OrganizationReplay(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse']:
         """
-        Required. The configuration used for the `Replay`.
+        The configuration used for the `Replay`.
         """
         return pulumi.get(self, "config")
 

@@ -17,36 +17,37 @@ __all__ = ['RoutineArgs', 'Routine']
 class RoutineArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
+                 definition_body: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 routine_reference: pulumi.Input['RoutineReferenceArgs'],
+                 routine_type: pulumi.Input['RoutineRoutineType'],
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]] = None,
-                 definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  determinism_level: Optional[pulumi.Input['RoutineDeterminismLevel']] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input['RoutineLanguage']] = None,
                  return_table_type: Optional[pulumi.Input['StandardSqlTableTypeArgs']] = None,
-                 return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None,
-                 routine_reference: Optional[pulumi.Input['RoutineReferenceArgs']] = None,
-                 routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None):
+                 return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None):
         """
         The set of arguments for constructing a Routine resource.
+        :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        :param pulumi.Input['RoutineReferenceArgs'] routine_reference: Reference describing the ID of this routine.
+        :param pulumi.Input['RoutineRoutineType'] routine_type: The type of routine.
         :param pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]] arguments: Optional.
-        :param pulumi.Input[str] definition_body: Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
         :param pulumi.Input[str] description: Optional. [Experimental] The description of the routine if defined.
         :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
         :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
         :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
         :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
-        :param pulumi.Input['RoutineReferenceArgs'] routine_reference: Required. Reference describing the ID of this routine.
-        :param pulumi.Input['RoutineRoutineType'] routine_type: Required. The type of routine.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "definition_body", definition_body)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "routine_reference", routine_reference)
+        pulumi.set(__self__, "routine_type", routine_type)
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
-        if definition_body is not None:
-            pulumi.set(__self__, "definition_body", definition_body)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if determinism_level is not None:
@@ -59,10 +60,6 @@ class RoutineArgs:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
             pulumi.set(__self__, "return_type", return_type)
-        if routine_reference is not None:
-            pulumi.set(__self__, "routine_reference", routine_reference)
-        if routine_type is not None:
-            pulumi.set(__self__, "routine_type", routine_type)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -74,6 +71,18 @@ class RoutineArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
+    @pulumi.getter(name="definitionBody")
+    def definition_body(self) -> pulumi.Input[str]:
+        """
+        The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        """
+        return pulumi.get(self, "definition_body")
+
+    @definition_body.setter
+    def definition_body(self, value: pulumi.Input[str]):
+        pulumi.set(self, "definition_body", value)
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
@@ -81,6 +90,30 @@ class RoutineArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="routineReference")
+    def routine_reference(self) -> pulumi.Input['RoutineReferenceArgs']:
+        """
+        Reference describing the ID of this routine.
+        """
+        return pulumi.get(self, "routine_reference")
+
+    @routine_reference.setter
+    def routine_reference(self, value: pulumi.Input['RoutineReferenceArgs']):
+        pulumi.set(self, "routine_reference", value)
+
+    @property
+    @pulumi.getter(name="routineType")
+    def routine_type(self) -> pulumi.Input['RoutineRoutineType']:
+        """
+        The type of routine.
+        """
+        return pulumi.get(self, "routine_type")
+
+    @routine_type.setter
+    def routine_type(self, value: pulumi.Input['RoutineRoutineType']):
+        pulumi.set(self, "routine_type", value)
 
     @property
     @pulumi.getter
@@ -93,18 +126,6 @@ class RoutineArgs:
     @arguments.setter
     def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]]):
         pulumi.set(self, "arguments", value)
-
-    @property
-    @pulumi.getter(name="definitionBody")
-    def definition_body(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
-        """
-        return pulumi.get(self, "definition_body")
-
-    @definition_body.setter
-    def definition_body(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "definition_body", value)
 
     @property
     @pulumi.getter
@@ -178,30 +199,6 @@ class RoutineArgs:
     def return_type(self, value: Optional[pulumi.Input['StandardSqlDataTypeArgs']]):
         pulumi.set(self, "return_type", value)
 
-    @property
-    @pulumi.getter(name="routineReference")
-    def routine_reference(self) -> Optional[pulumi.Input['RoutineReferenceArgs']]:
-        """
-        Required. Reference describing the ID of this routine.
-        """
-        return pulumi.get(self, "routine_reference")
-
-    @routine_reference.setter
-    def routine_reference(self, value: Optional[pulumi.Input['RoutineReferenceArgs']]):
-        pulumi.set(self, "routine_reference", value)
-
-    @property
-    @pulumi.getter(name="routineType")
-    def routine_type(self) -> Optional[pulumi.Input['RoutineRoutineType']]:
-        """
-        Required. The type of routine.
-        """
-        return pulumi.get(self, "routine_type")
-
-    @routine_type.setter
-    def routine_type(self, value: Optional[pulumi.Input['RoutineRoutineType']]):
-        pulumi.set(self, "routine_type", value)
-
 
 class Routine(pulumi.CustomResource):
     @overload
@@ -227,15 +224,15 @@ class Routine(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArgumentArgs']]]] arguments: Optional.
-        :param pulumi.Input[str] definition_body: Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
         :param pulumi.Input[str] description: Optional. [Experimental] The description of the routine if defined.
         :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
         :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
         :param pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']] return_table_type: Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
         :param pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']] return_type: Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
-        :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Required. Reference describing the ID of this routine.
-        :param pulumi.Input['RoutineRoutineType'] routine_type: Required. The type of routine.
+        :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Reference describing the ID of this routine.
+        :param pulumi.Input['RoutineRoutineType'] routine_type: The type of routine.
         """
         ...
     @overload
@@ -289,6 +286,8 @@ class Routine(pulumi.CustomResource):
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
+            if definition_body is None and not opts.urn:
+                raise TypeError("Missing required property 'definition_body'")
             __props__.__dict__["definition_body"] = definition_body
             __props__.__dict__["description"] = description
             __props__.__dict__["determinism_level"] = determinism_level
@@ -299,7 +298,11 @@ class Routine(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["return_table_type"] = return_table_type
             __props__.__dict__["return_type"] = return_type
+            if routine_reference is None and not opts.urn:
+                raise TypeError("Missing required property 'routine_reference'")
             __props__.__dict__["routine_reference"] = routine_reference
+            if routine_type is None and not opts.urn:
+                raise TypeError("Missing required property 'routine_type'")
             __props__.__dict__["routine_type"] = routine_type
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None
@@ -361,7 +364,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="definitionBody")
     def definition_body(self) -> pulumi.Output[str]:
         """
-        Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
         """
         return pulumi.get(self, "definition_body")
 
@@ -433,7 +436,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="routineReference")
     def routine_reference(self) -> pulumi.Output['outputs.RoutineReferenceResponse']:
         """
-        Required. Reference describing the ID of this routine.
+        Reference describing the ID of this routine.
         """
         return pulumi.get(self, "routine_reference")
 
@@ -441,7 +444,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="routineType")
     def routine_type(self) -> pulumi.Output[str]:
         """
-        Required. The type of routine.
+        The type of routine.
         """
         return pulumi.get(self, "routine_type")
 

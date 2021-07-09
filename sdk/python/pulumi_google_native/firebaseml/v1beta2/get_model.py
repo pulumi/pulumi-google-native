@@ -69,7 +69,7 @@ class GetModelResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+        The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
         """
         return pulumi.get(self, "display_name")
 

@@ -56,7 +56,7 @@ class GetWorkloadResult:
     @pulumi.getter(name="billingAccount")
     def billing_account(self) -> str:
         """
-        Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         """
         return pulumi.get(self, "billing_account")
 
@@ -64,7 +64,7 @@ class GetWorkloadResult:
     @pulumi.getter(name="complianceRegime")
     def compliance_regime(self) -> str:
         """
-        Required. Immutable. Compliance Regime associated with this workload.
+        Immutable. Compliance Regime associated with this workload.
         """
         return pulumi.get(self, "compliance_regime")
 
@@ -80,7 +80,7 @@ class GetWorkloadResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         """
         return pulumi.get(self, "display_name")
 

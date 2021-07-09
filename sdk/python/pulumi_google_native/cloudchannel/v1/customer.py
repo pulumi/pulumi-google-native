@@ -17,37 +17,34 @@ class CustomerArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  channel_partner_link_id: pulumi.Input[str],
+                 domain: pulumi.Input[str],
+                 org_display_name: pulumi.Input[str],
+                 org_postal_address: pulumi.Input['GoogleTypePostalAddressArgs'],
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
-                 domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 org_display_name: Optional[pulumi.Input[str]] = None,
-                 org_postal_address: Optional[pulumi.Input['GoogleTypePostalAddressArgs']] = None,
                  primary_contact_info: Optional[pulumi.Input['GoogleCloudChannelV1ContactInfoArgs']] = None):
         """
         The set of arguments for constructing a Customer resource.
+        :param pulumi.Input[str] domain: Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        :param pulumi.Input[str] org_display_name: Name of the organization that the customer entity represents.
+        :param pulumi.Input['GoogleTypePostalAddressArgs'] org_postal_address: Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         :param pulumi.Input[str] alternate_email: Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
         :param pulumi.Input[str] channel_partner_id: Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
-        :param pulumi.Input[str] domain: Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
         :param pulumi.Input[str] language_code: Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        :param pulumi.Input[str] org_display_name: Required. Name of the organization that the customer entity represents.
-        :param pulumi.Input['GoogleTypePostalAddressArgs'] org_postal_address: Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         :param pulumi.Input['GoogleCloudChannelV1ContactInfoArgs'] primary_contact_info: Primary contact info.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "channel_partner_link_id", channel_partner_link_id)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "org_display_name", org_display_name)
+        pulumi.set(__self__, "org_postal_address", org_postal_address)
         if alternate_email is not None:
             pulumi.set(__self__, "alternate_email", alternate_email)
         if channel_partner_id is not None:
             pulumi.set(__self__, "channel_partner_id", channel_partner_id)
-        if domain is not None:
-            pulumi.set(__self__, "domain", domain)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
-        if org_display_name is not None:
-            pulumi.set(__self__, "org_display_name", org_display_name)
-        if org_postal_address is not None:
-            pulumi.set(__self__, "org_postal_address", org_postal_address)
         if primary_contact_info is not None:
             pulumi.set(__self__, "primary_contact_info", primary_contact_info)
 
@@ -68,6 +65,42 @@ class CustomerArgs:
     @channel_partner_link_id.setter
     def channel_partner_link_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "channel_partner_link_id", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="orgDisplayName")
+    def org_display_name(self) -> pulumi.Input[str]:
+        """
+        Name of the organization that the customer entity represents.
+        """
+        return pulumi.get(self, "org_display_name")
+
+    @org_display_name.setter
+    def org_display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "org_display_name", value)
+
+    @property
+    @pulumi.getter(name="orgPostalAddress")
+    def org_postal_address(self) -> pulumi.Input['GoogleTypePostalAddressArgs']:
+        """
+        Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        """
+        return pulumi.get(self, "org_postal_address")
+
+    @org_postal_address.setter
+    def org_postal_address(self, value: pulumi.Input['GoogleTypePostalAddressArgs']):
+        pulumi.set(self, "org_postal_address", value)
 
     @property
     @pulumi.getter(name="alternateEmail")
@@ -94,18 +127,6 @@ class CustomerArgs:
         pulumi.set(self, "channel_partner_id", value)
 
     @property
-    @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
-        """
-        return pulumi.get(self, "domain")
-
-    @domain.setter
-    def domain(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "domain", value)
-
-    @property
     @pulumi.getter(name="languageCode")
     def language_code(self) -> Optional[pulumi.Input[str]]:
         """
@@ -116,30 +137,6 @@ class CustomerArgs:
     @language_code.setter
     def language_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "language_code", value)
-
-    @property
-    @pulumi.getter(name="orgDisplayName")
-    def org_display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Name of the organization that the customer entity represents.
-        """
-        return pulumi.get(self, "org_display_name")
-
-    @org_display_name.setter
-    def org_display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "org_display_name", value)
-
-    @property
-    @pulumi.getter(name="orgPostalAddress")
-    def org_postal_address(self) -> Optional[pulumi.Input['GoogleTypePostalAddressArgs']]:
-        """
-        Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
-        """
-        return pulumi.get(self, "org_postal_address")
-
-    @org_postal_address.setter
-    def org_postal_address(self, value: Optional[pulumi.Input['GoogleTypePostalAddressArgs']]):
-        pulumi.set(self, "org_postal_address", value)
 
     @property
     @pulumi.getter(name="primaryContactInfo")
@@ -176,10 +173,10 @@ class Customer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternate_email: Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
         :param pulumi.Input[str] channel_partner_id: Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
-        :param pulumi.Input[str] domain: Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        :param pulumi.Input[str] domain: Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
         :param pulumi.Input[str] language_code: Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        :param pulumi.Input[str] org_display_name: Required. Name of the organization that the customer entity represents.
-        :param pulumi.Input[pulumi.InputType['GoogleTypePostalAddressArgs']] org_postal_address: Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        :param pulumi.Input[str] org_display_name: Name of the organization that the customer entity represents.
+        :param pulumi.Input[pulumi.InputType['GoogleTypePostalAddressArgs']] org_postal_address: Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ContactInfoArgs']] primary_contact_info: Primary contact info.
         """
         ...
@@ -235,9 +232,15 @@ class Customer(pulumi.CustomResource):
             if channel_partner_link_id is None and not opts.urn:
                 raise TypeError("Missing required property 'channel_partner_link_id'")
             __props__.__dict__["channel_partner_link_id"] = channel_partner_link_id
+            if domain is None and not opts.urn:
+                raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
             __props__.__dict__["language_code"] = language_code
+            if org_display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'org_display_name'")
             __props__.__dict__["org_display_name"] = org_display_name
+            if org_postal_address is None and not opts.urn:
+                raise TypeError("Missing required property 'org_postal_address'")
             __props__.__dict__["org_postal_address"] = org_postal_address
             __props__.__dict__["primary_contact_info"] = primary_contact_info
             __props__.__dict__["cloud_identity_id"] = None
@@ -325,7 +328,7 @@ class Customer(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
         """
         return pulumi.get(self, "domain")
 
@@ -349,7 +352,7 @@ class Customer(pulumi.CustomResource):
     @pulumi.getter(name="orgDisplayName")
     def org_display_name(self) -> pulumi.Output[str]:
         """
-        Required. Name of the organization that the customer entity represents.
+        Name of the organization that the customer entity represents.
         """
         return pulumi.get(self, "org_display_name")
 
@@ -357,7 +360,7 @@ class Customer(pulumi.CustomResource):
     @pulumi.getter(name="orgPostalAddress")
     def org_postal_address(self) -> pulumi.Output['outputs.GoogleTypePostalAddressResponse']:
         """
-        Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         """
         return pulumi.get(self, "org_postal_address")
 

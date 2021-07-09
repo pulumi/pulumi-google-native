@@ -18,6 +18,7 @@ class InstanceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 type: pulumi.Input['InstanceType'],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]] = None,
                  available_version: Optional[pulumi.Input[Sequence[pulumi.Input['VersionArgs']]]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
@@ -31,11 +32,11 @@ class InstanceArgs:
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
-                 type: Optional[pulumi.Input['InstanceType']] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input['InstanceType'] type: Instance type.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]] accelerators: List of accelerators enabled for this CDF instance.
         :param pulumi.Input[Sequence[pulumi.Input['VersionArgs']]] available_version: Available versions that the instance can be upgraded to using UpdateInstanceRequest.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
@@ -48,12 +49,12 @@ class InstanceArgs:
         :param pulumi.Input['NetworkConfigArgs'] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
-        :param pulumi.Input['InstanceType'] type: Required. Instance type.
         :param pulumi.Input[str] version: Current version of Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "type", type)
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
         if available_version is not None:
@@ -80,8 +81,6 @@ class InstanceArgs:
             pulumi.set(__self__, "options", options)
         if private_instance is not None:
             pulumi.set(__self__, "private_instance", private_instance)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if zone is not None:
@@ -104,6 +103,18 @@ class InstanceArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['InstanceType']:
+        """
+        Instance type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['InstanceType']):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -260,18 +271,6 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['InstanceType']]:
-        """
-        Required. Instance type.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['InstanceType']]):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         Current version of Data Fusion.
@@ -336,7 +335,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
-        :param pulumi.Input['InstanceType'] type: Required. Instance type.
+        :param pulumi.Input['InstanceType'] type: Instance type.
         :param pulumi.Input[str] version: Current version of Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
@@ -413,6 +412,8 @@ class Instance(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if type is None and not opts.urn:
+                raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["version"] = version
             __props__.__dict__["zone"] = zone
@@ -647,7 +648,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Required. Instance type.
+        Instance type.
         """
         return pulumi.get(self, "type")
 

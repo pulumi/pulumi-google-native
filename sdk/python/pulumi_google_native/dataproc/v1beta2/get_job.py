@@ -147,7 +147,7 @@ class GetJobResult:
     @pulumi.getter
     def placement(self) -> 'outputs.JobPlacementResponse':
         """
-        Required. Job information, including how, when, and where to run the job.
+        Job information, including how, when, and where to run the job.
         """
         return pulumi.get(self, "placement")
 

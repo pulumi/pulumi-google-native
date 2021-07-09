@@ -234,7 +234,7 @@ class GetInstanceResult:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         """
-        Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         """
         return pulumi.get(self, "machine_type")
 

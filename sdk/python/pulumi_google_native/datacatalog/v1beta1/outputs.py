@@ -264,11 +264,11 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse(dict):
                  type: str):
         """
         Representation of a column within a schema. Columns could be nested inside other columns.
-        :param str column: Required. Name of the column.
+        :param str column: Name of the column.
         :param str description: Optional. Description of the column. Default value is an empty string.
         :param str mode: Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`.
         :param Sequence['GoogleCloudDatacatalogV1beta1ColumnSchemaResponse'] subcolumns: Optional. Schema of sub-columns. A column can have zero or more sub-columns.
-        :param str type: Required. Type of the column.
+        :param str type: Type of the column.
         """
         pulumi.set(__self__, "column", column)
         pulumi.set(__self__, "description", description)
@@ -280,7 +280,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse(dict):
     @pulumi.getter
     def column(self) -> str:
         """
-        Required. Name of the column.
+        Name of the column.
         """
         return pulumi.get(self, "column")
 
@@ -312,7 +312,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. Type of the column.
+        Type of the column.
         """
         return pulumi.get(self, "type")
 
@@ -349,7 +349,7 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpecResponse(dict):
                  size_bytes: str):
         """
         Specifications of a single file in Cloud Storage.
-        :param str file_path: Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
+        :param str file_path: The full file path. Example: `gs://bucket_name/a/b.txt`.
         :param 'GoogleCloudDatacatalogV1beta1SystemTimestampsResponse' gcs_timestamps: Timestamps about the Cloud Storage file.
         :param str size_bytes: The size of the file, in bytes.
         """
@@ -361,7 +361,7 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpecResponse(dict):
     @pulumi.getter(name="filePath")
     def file_path(self) -> str:
         """
-        Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
+        The full file path. Example: `gs://bucket_name/a/b.txt`.
         """
         return pulumi.get(self, "file_path")
 
@@ -411,7 +411,7 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse(dict):
                  sample_gcs_file_specs: Sequence['outputs.GoogleCloudDatacatalogV1beta1GcsFileSpecResponse']):
         """
         Describes a Cloud Storage fileset entry.
-        :param Sequence[str] file_patterns: Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+        :param Sequence[str] file_patterns: Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
         :param Sequence['GoogleCloudDatacatalogV1beta1GcsFileSpecResponse'] sample_gcs_file_specs: Sample files contained in this fileset, not all files contained in this fileset are represented here.
         """
         pulumi.set(__self__, "file_patterns", file_patterns)
@@ -421,7 +421,7 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse(dict):
     @pulumi.getter(name="filePatterns")
     def file_patterns(self) -> Sequence[str]:
         """
-        Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+        Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
         """
         return pulumi.get(self, "file_patterns")
 
@@ -443,7 +443,7 @@ class GoogleCloudDatacatalogV1beta1SchemaResponse(dict):
                  columns: Sequence['outputs.GoogleCloudDatacatalogV1beta1ColumnSchemaResponse']):
         """
         Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
-        :param Sequence['GoogleCloudDatacatalogV1beta1ColumnSchemaResponse'] columns: Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+        :param Sequence['GoogleCloudDatacatalogV1beta1ColumnSchemaResponse'] columns: Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
         """
         pulumi.set(__self__, "columns", columns)
 
@@ -451,7 +451,7 @@ class GoogleCloudDatacatalogV1beta1SchemaResponse(dict):
     @pulumi.getter
     def columns(self) -> Sequence['outputs.GoogleCloudDatacatalogV1beta1ColumnSchemaResponse']:
         """
-        Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+        Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
         """
         return pulumi.get(self, "columns")
 

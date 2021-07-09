@@ -304,24 +304,23 @@ class ReplicationArgs:
 @pulumi.input_type
 class UserManagedArgs:
     def __init__(__self__, *,
-                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]] = None):
+                 replicas: pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]):
         """
         A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
-        :param pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]] replicas: Required. The list of Replicas for this Secret. Cannot be empty.
+        :param pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]] replicas: The list of Replicas for this Secret. Cannot be empty.
         """
-        if replicas is not None:
-            pulumi.set(__self__, "replicas", replicas)
+        pulumi.set(__self__, "replicas", replicas)
 
     @property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]]:
+    def replicas(self) -> pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]:
         """
-        Required. The list of Replicas for this Secret. Cannot be empty.
+        The list of Replicas for this Secret. Cannot be empty.
         """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]]):
+    def replicas(self, value: pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]):
         pulumi.set(self, "replicas", value)
 
 

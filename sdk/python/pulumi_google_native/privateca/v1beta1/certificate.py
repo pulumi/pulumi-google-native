@@ -17,22 +17,23 @@ __all__ = ['CertificateArgs', 'Certificate']
 class CertificateArgs:
     def __init__(__self__, *,
                  certificate_authority_id: pulumi.Input[str],
+                 lifetime: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 lifetime: Optional[pulumi.Input[str]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+        :param pulumi.Input[str] lifetime: Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
         :param pulumi.Input['CertificateConfigArgs'] config: Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
-        :param pulumi.Input[str] lifetime: Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         """
         pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
+        pulumi.set(__self__, "lifetime", lifetime)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if certificate_id is not None:
@@ -41,8 +42,6 @@ class CertificateArgs:
             pulumi.set(__self__, "config", config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if lifetime is not None:
-            pulumi.set(__self__, "lifetime", lifetime)
         if pem_csr is not None:
             pulumi.set(__self__, "pem_csr", pem_csr)
         if request_id is not None:
@@ -56,6 +55,18 @@ class CertificateArgs:
     @certificate_authority_id.setter
     def certificate_authority_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "certificate_authority_id", value)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> pulumi.Input[str]:
+        """
+        Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+        """
+        return pulumi.get(self, "lifetime")
+
+    @lifetime.setter
+    def lifetime(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lifetime", value)
 
     @property
     @pulumi.getter
@@ -109,18 +120,6 @@ class CertificateArgs:
         pulumi.set(self, "labels", value)
 
     @property
-    @pulumi.getter
-    def lifetime(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
-        """
-        return pulumi.get(self, "lifetime")
-
-    @lifetime.setter
-    def lifetime(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "lifetime", value)
-
-    @property
     @pulumi.getter(name="pemCsr")
     def pem_csr(self) -> Optional[pulumi.Input[str]]:
         """
@@ -164,7 +163,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
-        :param pulumi.Input[str] lifetime: Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+        :param pulumi.Input[str] lifetime: Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         """
         ...
@@ -218,6 +217,8 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["certificate_id"] = certificate_id
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
+            if lifetime is None and not opts.urn:
+                raise TypeError("Missing required property 'lifetime'")
             __props__.__dict__["lifetime"] = lifetime
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -305,7 +306,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def lifetime(self) -> pulumi.Output[str]:
         """
-        Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+        Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
         """
         return pulumi.get(self, "lifetime")
 

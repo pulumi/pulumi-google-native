@@ -13,40 +13,38 @@ __all__ = ['AccessPolicyArgs', 'AccessPolicy']
 @pulumi.input_type
 class AccessPolicyArgs:
     def __init__(__self__, *,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
+                 parent: pulumi.Input[str],
+                 title: pulumi.Input[str]):
         """
         The set of arguments for constructing a AccessPolicy resource.
-        :param pulumi.Input[str] parent: Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
-        :param pulumi.Input[str] title: Required. Human readable title. Does not affect behavior.
+        :param pulumi.Input[str] parent: The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
         """
-        if parent is not None:
-            pulumi.set(__self__, "parent", parent)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[str]]:
+    def parent(self) -> pulumi.Input[str]:
         """
-        Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[str]]):
+    def parent(self, value: pulumi.Input[str]):
         pulumi.set(self, "parent", value)
 
     @property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
+    def title(self) -> pulumi.Input[str]:
         """
-        Required. Human readable title. Does not affect behavior.
+        Human readable title. Does not affect behavior.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
+    def title(self, value: pulumi.Input[str]):
         pulumi.set(self, "title", value)
 
 
@@ -63,14 +61,14 @@ class AccessPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] parent: Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
-        :param pulumi.Input[str] title: Required. Human readable title. Does not affect behavior.
+        :param pulumi.Input[str] parent: The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[AccessPolicyArgs] = None,
+                 args: AccessPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
@@ -104,7 +102,11 @@ class AccessPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessPolicyArgs.__new__(AccessPolicyArgs)
 
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            if title is None and not opts.urn:
+                raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
             __props__.__dict__["name"] = None
         super(AccessPolicy, __self__).__init__(
@@ -146,7 +148,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[str]:
         """
-        Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         """
         return pulumi.get(self, "parent")
 
@@ -154,7 +156,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
         """
-        Required. Human readable title. Does not affect behavior.
+        Human readable title. Does not affect behavior.
         """
         return pulumi.get(self, "title")
 

@@ -63,7 +63,7 @@ class GetInstructionResult:
     @pulumi.getter(name="dataType")
     def data_type(self) -> str:
         """
-        Required. The data type of this instruction.
+        The data type of this instruction.
         """
         return pulumi.get(self, "data_type")
 
@@ -79,7 +79,7 @@ class GetInstructionResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The display name of the instruction. Maximum of 64 characters.
+        The display name of the instruction. Maximum of 64 characters.
         """
         return pulumi.get(self, "display_name")
 

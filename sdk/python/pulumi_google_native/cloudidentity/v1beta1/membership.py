@@ -16,20 +16,19 @@ __all__ = ['MembershipArgs', 'Membership']
 class MembershipArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[str],
+                 preferred_member_key: pulumi.Input['EntityKeyArgs'],
                  member_key: Optional[pulumi.Input['EntityKeyArgs']] = None,
-                 preferred_member_key: Optional[pulumi.Input['EntityKeyArgs']] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRoleArgs']]]] = None):
         """
         The set of arguments for constructing a Membership resource.
+        :param pulumi.Input['EntityKeyArgs'] preferred_member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         :param pulumi.Input['EntityKeyArgs'] member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-        :param pulumi.Input['EntityKeyArgs'] preferred_member_key: Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         :param pulumi.Input[Sequence[pulumi.Input['MembershipRoleArgs']]] roles: The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
         """
         pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "preferred_member_key", preferred_member_key)
         if member_key is not None:
             pulumi.set(__self__, "member_key", member_key)
-        if preferred_member_key is not None:
-            pulumi.set(__self__, "preferred_member_key", preferred_member_key)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
 
@@ -43,6 +42,18 @@ class MembershipArgs:
         pulumi.set(self, "group_id", value)
 
     @property
+    @pulumi.getter(name="preferredMemberKey")
+    def preferred_member_key(self) -> pulumi.Input['EntityKeyArgs']:
+        """
+        Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        """
+        return pulumi.get(self, "preferred_member_key")
+
+    @preferred_member_key.setter
+    def preferred_member_key(self, value: pulumi.Input['EntityKeyArgs']):
+        pulumi.set(self, "preferred_member_key", value)
+
+    @property
     @pulumi.getter(name="memberKey")
     def member_key(self) -> Optional[pulumi.Input['EntityKeyArgs']]:
         """
@@ -53,18 +64,6 @@ class MembershipArgs:
     @member_key.setter
     def member_key(self, value: Optional[pulumi.Input['EntityKeyArgs']]):
         pulumi.set(self, "member_key", value)
-
-    @property
-    @pulumi.getter(name="preferredMemberKey")
-    def preferred_member_key(self) -> Optional[pulumi.Input['EntityKeyArgs']]:
-        """
-        Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-        """
-        return pulumi.get(self, "preferred_member_key")
-
-    @preferred_member_key.setter
-    def preferred_member_key(self, value: Optional[pulumi.Input['EntityKeyArgs']]):
-        pulumi.set(self, "preferred_member_key", value)
 
     @property
     @pulumi.getter
@@ -95,7 +94,7 @@ class Membership(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-        :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] preferred_member_key: Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] preferred_member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]] roles: The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
         """
         ...
@@ -142,6 +141,8 @@ class Membership(pulumi.CustomResource):
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
             __props__.__dict__["member_key"] = member_key
+            if preferred_member_key is None and not opts.urn:
+                raise TypeError("Missing required property 'preferred_member_key'")
             __props__.__dict__["preferred_member_key"] = preferred_member_key
             __props__.__dict__["roles"] = roles
             __props__.__dict__["create_time"] = None
@@ -207,7 +208,7 @@ class Membership(pulumi.CustomResource):
     @pulumi.getter(name="preferredMemberKey")
     def preferred_member_key(self) -> pulumi.Output['outputs.EntityKeyResponse']:
         """
-        Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         """
         return pulumi.get(self, "preferred_member_key")
 

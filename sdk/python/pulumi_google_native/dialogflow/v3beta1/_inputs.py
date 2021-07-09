@@ -63,17 +63,28 @@ __all__ = [
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1AudioInputArgs:
     def __init__(__self__, *,
-                 audio: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs']] = None):
+                 config: pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs'],
+                 audio: Optional[pulumi.Input[str]] = None):
         """
         Represents the natural speech audio to be processed.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs'] config: Instructs the speech recognizer how to process the speech audio.
         :param pulumi.Input[str] audio: The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs'] config: Required. Instructs the speech recognizer how to process the speech audio.
         """
+        pulumi.set(__self__, "config", config)
         if audio is not None:
             pulumi.set(__self__, "audio", audio)
-        if config is not None:
-            pulumi.set(__self__, "config", config)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs']:
+        """
+        Instructs the speech recognizer how to process the speech audio.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs']):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
@@ -86,18 +97,6 @@ class GoogleCloudDialogflowCxV3beta1AudioInputArgs:
     @audio.setter
     def audio(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "audio", value)
-
-    @property
-    @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs']]:
-        """
-        Required. Instructs the speech recognizer how to process the speech audio.
-        """
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs']]):
-        pulumi.set(self, "config", value)
 
 
 @pulumi.input_type
@@ -199,25 +198,24 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs:
     def __init__(__self__, *,
+                 diagnostic_info: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  current_page: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1PageArgs']] = None,
-                 diagnostic_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  session_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input['GoogleRpcStatusArgs']] = None,
                  text_responses: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs']]]] = None,
                  triggered_intent: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentArgs']] = None):
         """
         The output from the virtual agent.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] diagnostic_info: Input only. The diagnostic info output for the turn.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1PageArgs'] current_page: The Page on which the utterance was spoken. Only name and displayName will be set.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] diagnostic_info: Required. Input only. The diagnostic info output for the turn.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_parameters: The session parameters available to the bot at this point.
         :param pulumi.Input['GoogleRpcStatusArgs'] status: Response error from the agent in the test result. If set, other output is empty.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs']]] text_responses: The text responses from the agent for the turn.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentArgs'] triggered_intent: The Intent that triggered the response. Only name and displayName will be set.
         """
+        pulumi.set(__self__, "diagnostic_info", diagnostic_info)
         if current_page is not None:
             pulumi.set(__self__, "current_page", current_page)
-        if diagnostic_info is not None:
-            pulumi.set(__self__, "diagnostic_info", diagnostic_info)
         if session_parameters is not None:
             pulumi.set(__self__, "session_parameters", session_parameters)
         if status is not None:
@@ -226,6 +224,18 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs:
             pulumi.set(__self__, "text_responses", text_responses)
         if triggered_intent is not None:
             pulumi.set(__self__, "triggered_intent", triggered_intent)
+
+    @property
+    @pulumi.getter(name="diagnosticInfo")
+    def diagnostic_info(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Input only. The diagnostic info output for the turn.
+        """
+        return pulumi.get(self, "diagnostic_info")
+
+    @diagnostic_info.setter
+    def diagnostic_info(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "diagnostic_info", value)
 
     @property
     @pulumi.getter(name="currentPage")
@@ -238,18 +248,6 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs:
     @current_page.setter
     def current_page(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1PageArgs']]):
         pulumi.set(self, "current_page", value)
-
-    @property
-    @pulumi.getter(name="diagnosticInfo")
-    def diagnostic_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Required. Input only. The diagnostic info output for the turn.
-        """
-        return pulumi.get(self, "diagnostic_info")
-
-    @diagnostic_info.setter
-    def diagnostic_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "diagnostic_info", value)
 
     @property
     @pulumi.getter(name="sessionParameters")
@@ -343,107 +341,102 @@ class GoogleCloudDialogflowCxV3beta1DtmfInputArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs:
     def __init__(__self__, *,
-                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 synonyms: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 value: pulumi.Input[str]):
         """
         An **entity entry** for an associated entity type.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] synonyms: Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
-        :param pulumi.Input[str] value: Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] synonyms: A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+        :param pulumi.Input[str] value: The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
         """
-        if synonyms is not None:
-            pulumi.set(__self__, "synonyms", synonyms)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "synonyms", synonyms)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def synonyms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def synonyms(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+        A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
         """
         return pulumi.get(self, "synonyms")
 
     @synonyms.setter
-    def synonyms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def synonyms(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "synonyms", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
+    def value(self) -> pulumi.Input[str]:
         """
-        Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+        The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
+    def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs:
     def __init__(__self__, *,
-                 value: Optional[pulumi.Input[str]] = None):
+                 value: pulumi.Input[str]):
         """
         An excluded entity phrase that should not be matched.
-        :param pulumi.Input[str] value: Required. The word or phrase to be excluded.
+        :param pulumi.Input[str] value: The word or phrase to be excluded.
         """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
+    def value(self) -> pulumi.Input[str]:
         """
-        Required. The word or phrase to be excluded.
+        The word or phrase to be excluded.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
+    def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs:
     def __init__(__self__, *,
-                 version: Optional[pulumi.Input[str]] = None):
+                 version: pulumi.Input[str]):
         """
         Configuration for the version.
-        :param pulumi.Input[str] version: Required. Format: projects//locations//agents//flows//versions/.
+        :param pulumi.Input[str] version: Format: projects//locations//agents//flows//versions/.
         """
-        if version is not None:
-            pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[str]]:
+    def version(self) -> pulumi.Input[str]:
         """
-        Required. Format: projects//locations//agents//flows//versions/.
+        Format: projects//locations//agents//flows//versions/.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[str]]):
+    def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1EventHandlerArgs:
     def __init__(__self__, *,
-                 event: Optional[pulumi.Input[str]] = None,
+                 event: pulumi.Input[str],
                  target_flow: Optional[pulumi.Input[str]] = None,
                  target_page: Optional[pulumi.Input[str]] = None,
                  trigger_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None):
         """
         An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
-        :param pulumi.Input[str] event: Required. The name of the event to handle.
+        :param pulumi.Input[str] event: The name of the event to handle.
         :param pulumi.Input[str] target_flow: The target flow to transition to. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[str] target_page: The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
         """
-        if event is not None:
-            pulumi.set(__self__, "event", event)
+        pulumi.set(__self__, "event", event)
         if target_flow is not None:
             pulumi.set(__self__, "target_flow", target_flow)
         if target_page is not None:
@@ -453,14 +446,14 @@ class GoogleCloudDialogflowCxV3beta1EventHandlerArgs:
 
     @property
     @pulumi.getter
-    def event(self) -> Optional[pulumi.Input[str]]:
+    def event(self) -> pulumi.Input[str]:
         """
-        Required. The name of the event to handle.
+        The name of the event to handle.
         """
         return pulumi.get(self, "event")
 
     @event.setter
-    def event(self, value: Optional[pulumi.Input[str]]):
+    def event(self, value: pulumi.Input[str]):
         pulumi.set(self, "event", value)
 
     @property
@@ -847,37 +840,70 @@ class GoogleCloudDialogflowCxV3beta1FormArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1FormParameterArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 entity_type: pulumi.Input[str],
+                 fill_behavior: pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs'],
                  default_value: Optional[Any] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 entity_type: Optional[pulumi.Input[str]] = None,
-                 fill_behavior: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs']] = None,
                  is_list: Optional[pulumi.Input[bool]] = None,
                  redact: Optional[pulumi.Input[bool]] = None,
                  required: Optional[pulumi.Input[bool]] = None):
         """
         Represents a form parameter.
+        :param pulumi.Input[str] display_name: The human-readable name of the parameter, unique within the form.
+        :param pulumi.Input[str] entity_type: The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs'] fill_behavior: Defines fill behavior for the parameter.
         :param Any default_value: The default value of an optional parameter. If the parameter is required, the default value will be ignored.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the parameter, unique within the form.
-        :param pulumi.Input[str] entity_type: Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs'] fill_behavior: Required. Defines fill behavior for the parameter.
         :param pulumi.Input[bool] is_list: Indicates whether the parameter represents a list of values.
         :param pulumi.Input[bool] redact: Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
         :param pulumi.Input[bool] required: Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them. Required parameters must be filled before form filling concludes.
         """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "fill_behavior", fill_behavior)
         if default_value is not None:
             pulumi.set(__self__, "default_value", default_value)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if entity_type is not None:
-            pulumi.set(__self__, "entity_type", entity_type)
-        if fill_behavior is not None:
-            pulumi.set(__self__, "fill_behavior", fill_behavior)
         if is_list is not None:
             pulumi.set(__self__, "is_list", is_list)
         if redact is not None:
             pulumi.set(__self__, "redact", redact)
         if required is not None:
             pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the parameter, unique within the form.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> pulumi.Input[str]:
+        """
+        The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @entity_type.setter
+    def entity_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity_type", value)
+
+    @property
+    @pulumi.getter(name="fillBehavior")
+    def fill_behavior(self) -> pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs']:
+        """
+        Defines fill behavior for the parameter.
+        """
+        return pulumi.get(self, "fill_behavior")
+
+    @fill_behavior.setter
+    def fill_behavior(self, value: pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs']):
+        pulumi.set(self, "fill_behavior", value)
 
     @property
     @pulumi.getter(name="defaultValue")
@@ -890,42 +916,6 @@ class GoogleCloudDialogflowCxV3beta1FormParameterArgs:
     @default_value.setter
     def default_value(self, value: Optional[Any]):
         pulumi.set(self, "default_value", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the parameter, unique within the form.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter(name="entityType")
-    def entity_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-        """
-        return pulumi.get(self, "entity_type")
-
-    @entity_type.setter
-    def entity_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "entity_type", value)
-
-    @property
-    @pulumi.getter(name="fillBehavior")
-    def fill_behavior(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs']]:
-        """
-        Required. Defines fill behavior for the parameter.
-        """
-        return pulumi.get(self, "fill_behavior")
-
-    @fill_behavior.setter
-    def fill_behavior(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs']]):
-        pulumi.set(self, "fill_behavior", value)
 
     @property
     @pulumi.getter(name="isList")
@@ -967,28 +957,27 @@ class GoogleCloudDialogflowCxV3beta1FormParameterArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs:
     def __init__(__self__, *,
-                 initial_prompt_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None,
+                 initial_prompt_fulfillment: pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'],
                  reprompt_event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] = None):
         """
         Configuration for how the filling of a parameter should be handled.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'] initial_prompt_fulfillment: Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'] initial_prompt_fulfillment: The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]] reprompt_event_handlers: The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys.invalid-parameter` handler can be defined to handle the case where the parameter values have been `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined) will be called to provide a prompt. If the event handler for the corresponding event can't be found on the parameter, `initial_prompt_fulfillment` will be re-prompted.
         """
-        if initial_prompt_fulfillment is not None:
-            pulumi.set(__self__, "initial_prompt_fulfillment", initial_prompt_fulfillment)
+        pulumi.set(__self__, "initial_prompt_fulfillment", initial_prompt_fulfillment)
         if reprompt_event_handlers is not None:
             pulumi.set(__self__, "reprompt_event_handlers", reprompt_event_handlers)
 
     @property
     @pulumi.getter(name="initialPromptFulfillment")
-    def initial_prompt_fulfillment(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']]:
+    def initial_prompt_fulfillment(self) -> pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']:
         """
-        Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+        The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
         """
         return pulumi.get(self, "initial_prompt_fulfillment")
 
     @initial_prompt_fulfillment.setter
-    def initial_prompt_fulfillment(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']]):
+    def initial_prompt_fulfillment(self, value: pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']):
         pulumi.set(self, "initial_prompt_fulfillment", value)
 
     @property
@@ -1239,7 +1228,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
     def __init__(__self__, *,
-                 audio_encoding: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding']] = None,
+                 audio_encoding: pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding'],
                  enable_word_info: Optional[pulumi.Input[bool]] = None,
                  model: Optional[pulumi.Input[str]] = None,
                  model_variant: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant']] = None,
@@ -1248,7 +1237,7 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
                  single_utterance: Optional[pulumi.Input[bool]] = None):
         """
         Instructs the speech recognizer on how to process the audio content.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding'] audio_encoding: Required. Audio encoding of the audio content to process.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding'] audio_encoding: Audio encoding of the audio content to process.
         :param pulumi.Input[bool] enable_word_info: Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
         :param pulumi.Input[str] model: Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant'] model_variant: Optional. Which variant of the Speech model to use.
@@ -1256,8 +1245,7 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
         :param pulumi.Input[int] sample_rate_hertz: Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
         :param pulumi.Input[bool] single_utterance: Optional. If `false` (default), recognition does not cease until the client closes the stream. If `true`, the recognizer will detect a single spoken utterance in input audio. Recognition ceases when it detects the audio's voice has stopped or paused. In this case, once a detected intent is received, the client should close the stream and start a new request with a new stream as needed. Note: This setting is relevant only for streaming methods.
         """
-        if audio_encoding is not None:
-            pulumi.set(__self__, "audio_encoding", audio_encoding)
+        pulumi.set(__self__, "audio_encoding", audio_encoding)
         if enable_word_info is not None:
             pulumi.set(__self__, "enable_word_info", enable_word_info)
         if model is not None:
@@ -1273,14 +1261,14 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
 
     @property
     @pulumi.getter(name="audioEncoding")
-    def audio_encoding(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding']]:
+    def audio_encoding(self) -> pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding']:
         """
-        Required. Audio encoding of the audio content to process.
+        Audio encoding of the audio content to process.
         """
         return pulumi.get(self, "audio_encoding")
 
     @audio_encoding.setter
-    def audio_encoding(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding']]):
+    def audio_encoding(self, value: pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding']):
         pulumi.set(self, "audio_encoding", value)
 
     @property
@@ -1359,8 +1347,8 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1IntentArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1369,8 +1357,8 @@ class GoogleCloudDialogflowCxV3beta1IntentArgs:
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArgs']]]] = None):
         """
         An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
+        :param pulumi.Input[str] display_name: The human-readable name of the intent, unique within the agent.
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the intent, unique within the agent.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
         :param pulumi.Input[str] name: The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
@@ -1378,10 +1366,9 @@ class GoogleCloudDialogflowCxV3beta1IntentArgs:
         :param pulumi.Input[int] priority: The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArgs']]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
         """
+        pulumi.set(__self__, "display_name", display_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if is_fallback is not None:
             pulumi.set(__self__, "is_fallback", is_fallback)
         if labels is not None:
@@ -1396,6 +1383,18 @@ class GoogleCloudDialogflowCxV3beta1IntentArgs:
             pulumi.set(__self__, "training_phrases", training_phrases)
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the intent, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1406,18 +1405,6 @@ class GoogleCloudDialogflowCxV3beta1IntentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the intent, unique within the agent.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="isFallback")
@@ -1495,45 +1482,42 @@ class GoogleCloudDialogflowCxV3beta1IntentArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1IntentInputArgs:
     def __init__(__self__, *,
-                 intent: Optional[pulumi.Input[str]] = None):
+                 intent: pulumi.Input[str]):
         """
         Represents the intent to trigger programmatically rather than as a result of natural language processing.
-        :param pulumi.Input[str] intent: Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+        :param pulumi.Input[str] intent: The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
         """
-        if intent is not None:
-            pulumi.set(__self__, "intent", intent)
+        pulumi.set(__self__, "intent", intent)
 
     @property
     @pulumi.getter
-    def intent(self) -> Optional[pulumi.Input[str]]:
+    def intent(self) -> pulumi.Input[str]:
         """
-        Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+        The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
         """
         return pulumi.get(self, "intent")
 
     @intent.setter
-    def intent(self, value: Optional[pulumi.Input[str]]):
+    def intent(self, value: pulumi.Input[str]):
         pulumi.set(self, "intent", value)
 
 
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1IntentParameterArgs:
     def __init__(__self__, *,
-                 entity_type: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
+                 entity_type: pulumi.Input[str],
+                 id: pulumi.Input[str],
                  is_list: Optional[pulumi.Input[bool]] = None,
                  redact: Optional[pulumi.Input[bool]] = None):
         """
         Represents an intent parameter.
-        :param pulumi.Input[str] entity_type: Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-        :param pulumi.Input[str] id: Required. The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        :param pulumi.Input[str] entity_type: The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+        :param pulumi.Input[str] id: The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
         :param pulumi.Input[bool] is_list: Indicates whether the parameter represents a list of values.
         :param pulumi.Input[bool] redact: Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
         """
-        if entity_type is not None:
-            pulumi.set(__self__, "entity_type", entity_type)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "id", id)
         if is_list is not None:
             pulumi.set(__self__, "is_list", is_list)
         if redact is not None:
@@ -1541,26 +1525,26 @@ class GoogleCloudDialogflowCxV3beta1IntentParameterArgs:
 
     @property
     @pulumi.getter(name="entityType")
-    def entity_type(self) -> Optional[pulumi.Input[str]]:
+    def entity_type(self) -> pulumi.Input[str]:
         """
-        Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+        The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
         """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
-    def entity_type(self, value: Optional[pulumi.Input[str]]):
+    def entity_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "entity_type", value)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
-        Required. The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
     @property
@@ -1591,28 +1575,27 @@ class GoogleCloudDialogflowCxV3beta1IntentParameterArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArgs:
     def __init__(__self__, *,
-                 parts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]]] = None,
+                 parts: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]],
                  repeat_count: Optional[pulumi.Input[int]] = None):
         """
         Represents an example that the agent is trained on to identify the intent.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]] parts: Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
         :param pulumi.Input[int] repeat_count: Indicates how many times this example was added to the intent.
         """
-        if parts is not None:
-            pulumi.set(__self__, "parts", parts)
+        pulumi.set(__self__, "parts", parts)
         if repeat_count is not None:
             pulumi.set(__self__, "repeat_count", repeat_count)
 
     @property
     @pulumi.getter
-    def parts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]]]:
+    def parts(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]]:
         """
-        Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+        The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
         """
         return pulumi.get(self, "parts")
 
     @parts.setter
-    def parts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]]]):
+    def parts(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]]):
         pulumi.set(self, "parts", value)
 
     @property
@@ -1631,17 +1614,28 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs:
     def __init__(__self__, *,
-                 parameter_id: Optional[pulumi.Input[str]] = None,
-                 text: Optional[pulumi.Input[str]] = None):
+                 text: pulumi.Input[str],
+                 parameter_id: Optional[pulumi.Input[str]] = None):
         """
         Represents a part of a training phrase.
+        :param pulumi.Input[str] text: The text for this part.
         :param pulumi.Input[str] parameter_id: The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
-        :param pulumi.Input[str] text: Required. The text for this part.
         """
+        pulumi.set(__self__, "text", text)
         if parameter_id is not None:
             pulumi.set(__self__, "parameter_id", parameter_id)
-        if text is not None:
-            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[str]:
+        """
+        The text for this part.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "text", value)
 
     @property
     @pulumi.getter(name="parameterId")
@@ -1654,18 +1648,6 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs:
     @parameter_id.setter
     def parameter_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_id", value)
-
-    @property
-    @pulumi.getter
-    def text(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The text for this part.
-        """
-        return pulumi.get(self, "text")
-
-    @text.setter
-    def text(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
@@ -1727,7 +1709,7 @@ class GoogleCloudDialogflowCxV3beta1NluSettingsArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1PageArgs:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[str]] = None,
+                 display_name: pulumi.Input[str],
                  entry_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs']] = None,
@@ -1736,7 +1718,7 @@ class GoogleCloudDialogflowCxV3beta1PageArgs:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]] = None):
         """
         A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the page, unique within the agent.
+        :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
@@ -1744,8 +1726,7 @@ class GoogleCloudDialogflowCxV3beta1PageArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         """
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "display_name", display_name)
         if entry_fulfillment is not None:
             pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
@@ -1761,14 +1742,14 @@ class GoogleCloudDialogflowCxV3beta1PageArgs:
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
+    def display_name(self) -> pulumi.Input[str]:
         """
-        Required. The human-readable name of the page, unique within the agent.
+        The human-readable name of the page, unique within the agent.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
+    def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
 
     @property
@@ -1847,21 +1828,22 @@ class GoogleCloudDialogflowCxV3beta1PageArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1QueryInputArgs:
     def __init__(__self__, *,
+                 language_code: pulumi.Input[str],
                  audio: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AudioInputArgs']] = None,
                  dtmf: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1DtmfInputArgs']] = None,
                  event: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventInputArgs']] = None,
                  intent: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentInputArgs']] = None,
-                 language_code: Optional[pulumi.Input[str]] = None,
                  text: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TextInputArgs']] = None):
         """
         Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 
+        :param pulumi.Input[str] language_code: The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AudioInputArgs'] audio: The natural language speech audio to be processed.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1DtmfInputArgs'] dtmf: The DTMF event to be handled.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1EventInputArgs'] event: The event to be triggered.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentInputArgs'] intent: The intent to be triggered.
-        :param pulumi.Input[str] language_code: Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1TextInputArgs'] text: The natural language text to be processed.
         """
+        pulumi.set(__self__, "language_code", language_code)
         if audio is not None:
             pulumi.set(__self__, "audio", audio)
         if dtmf is not None:
@@ -1870,10 +1852,20 @@ class GoogleCloudDialogflowCxV3beta1QueryInputArgs:
             pulumi.set(__self__, "event", event)
         if intent is not None:
             pulumi.set(__self__, "intent", intent)
-        if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
         if text is not None:
             pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Input[str]:
+        """
+        The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "language_code", value)
 
     @property
     @pulumi.getter
@@ -1922,18 +1914,6 @@ class GoogleCloudDialogflowCxV3beta1QueryInputArgs:
     @intent.setter
     def intent(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentInputArgs']]):
         pulumi.set(self, "intent", value)
-
-    @property
-    @pulumi.getter(name="languageCode")
-    def language_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
-        """
-        return pulumi.get(self, "language_code")
-
-    @language_code.setter
-    def language_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "language_code", value)
 
     @property
     @pulumi.getter
@@ -2143,48 +2123,46 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs:
     def __init__(__self__, *,
-                 audio_uri: Optional[pulumi.Input[str]] = None):
+                 audio_uri: pulumi.Input[str]):
         """
         Specifies an audio clip to be played by the client as part of the response.
-        :param pulumi.Input[str] audio_uri: Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param pulumi.Input[str] audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         """
-        if audio_uri is not None:
-            pulumi.set(__self__, "audio_uri", audio_uri)
+        pulumi.set(__self__, "audio_uri", audio_uri)
 
     @property
     @pulumi.getter(name="audioUri")
-    def audio_uri(self) -> Optional[pulumi.Input[str]]:
+    def audio_uri(self) -> pulumi.Input[str]:
         """
-        Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         """
         return pulumi.get(self, "audio_uri")
 
     @audio_uri.setter
-    def audio_uri(self, value: Optional[pulumi.Input[str]]):
+    def audio_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "audio_uri", value)
 
 
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs:
     def __init__(__self__, *,
-                 text: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 text: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         The text response message.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] text: Required. A collection of text responses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] text: A collection of text responses.
         """
-        if text is not None:
-            pulumi.set(__self__, "text", text)
+        pulumi.set(__self__, "text", text)
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def text(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. A collection of text responses.
+        A collection of text responses.
         """
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def text(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "text", value)
 
 
@@ -2343,24 +2321,23 @@ class GoogleCloudDialogflowCxV3beta1TestConfigArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1TextInputArgs:
     def __init__(__self__, *,
-                 text: Optional[pulumi.Input[str]] = None):
+                 text: pulumi.Input[str]):
         """
         Represents the natural language text to be processed.
-        :param pulumi.Input[str] text: Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+        :param pulumi.Input[str] text: The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
         """
-        if text is not None:
-            pulumi.set(__self__, "text", text)
+        pulumi.set(__self__, "text", text)
 
     @property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input[str]]:
+    def text(self) -> pulumi.Input[str]:
         """
-        Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+        The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
         """
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input[str]]):
+    def text(self, value: pulumi.Input[str]):
         pulumi.set(self, "text", value)
 
 
@@ -2575,25 +2552,36 @@ class GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs:
     def __init__(__self__, *,
+                 uri: pulumi.Input[str],
                  password: Optional[pulumi.Input[str]] = None,
                  request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 uri: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         Represents configuration for a generic web service.
+        :param pulumi.Input[str] uri: The webhook URI for receiving POST requests. It must use https protocol.
         :param pulumi.Input[str] password: The password for HTTP Basic authentication.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] request_headers: The HTTP request headers to send together with webhook requests.
-        :param pulumi.Input[str] uri: Required. The webhook URI for receiving POST requests. It must use https protocol.
         :param pulumi.Input[str] username: The user name for HTTP Basic authentication.
         """
+        pulumi.set(__self__, "uri", uri)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if request_headers is not None:
             pulumi.set(__self__, "request_headers", request_headers)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The webhook URI for receiving POST requests. It must use https protocol.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter
@@ -2618,18 +2606,6 @@ class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs:
     @request_headers.setter
     def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "request_headers", value)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The webhook URI for receiving POST requests. It must use https protocol.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter

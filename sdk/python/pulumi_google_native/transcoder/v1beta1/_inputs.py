@@ -76,24 +76,23 @@ class AdBreakArgs:
 @pulumi.input_type
 class Aes128EncryptionArgs:
     def __init__(__self__, *,
-                 key_uri: Optional[pulumi.Input[str]] = None):
+                 key_uri: pulumi.Input[str]):
         """
         Configuration for AES-128 encryption.
-        :param pulumi.Input[str] key_uri: Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        :param pulumi.Input[str] key_uri: URI of the key delivery service. This URI is inserted into the M3U8 header.
         """
-        if key_uri is not None:
-            pulumi.set(__self__, "key_uri", key_uri)
+        pulumi.set(__self__, "key_uri", key_uri)
 
     @property
     @pulumi.getter(name="keyUri")
-    def key_uri(self) -> Optional[pulumi.Input[str]]:
+    def key_uri(self) -> pulumi.Input[str]:
         """
-        Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        URI of the key delivery service. This URI is inserted into the M3U8 header.
         """
         return pulumi.get(self, "key_uri")
 
     @key_uri.setter
-    def key_uri(self, value: Optional[pulumi.Input[str]]):
+    def key_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_uri", value)
 
 
@@ -180,25 +179,36 @@ class AnimationEndArgs:
 @pulumi.input_type
 class AnimationFadeArgs:
     def __init__(__self__, *,
+                 fade_type: pulumi.Input['AnimationFadeFadeType'],
                  end_time_offset: Optional[pulumi.Input[str]] = None,
-                 fade_type: Optional[pulumi.Input['AnimationFadeFadeType']] = None,
                  start_time_offset: Optional[pulumi.Input[str]] = None,
                  xy: Optional[pulumi.Input['NormalizedCoordinateArgs']] = None):
         """
         Display overlay object with fade animation.
+        :param pulumi.Input['AnimationFadeFadeType'] fade_type: Type of fade animation: `FADE_IN` or `FADE_OUT`.
         :param pulumi.Input[str] end_time_offset: The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
-        :param pulumi.Input['AnimationFadeFadeType'] fade_type: Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
         :param pulumi.Input[str] start_time_offset: The time to start the fade animation, in seconds. Default: 0
         :param pulumi.Input['NormalizedCoordinateArgs'] xy: Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
         """
+        pulumi.set(__self__, "fade_type", fade_type)
         if end_time_offset is not None:
             pulumi.set(__self__, "end_time_offset", end_time_offset)
-        if fade_type is not None:
-            pulumi.set(__self__, "fade_type", fade_type)
         if start_time_offset is not None:
             pulumi.set(__self__, "start_time_offset", start_time_offset)
         if xy is not None:
             pulumi.set(__self__, "xy", xy)
+
+    @property
+    @pulumi.getter(name="fadeType")
+    def fade_type(self) -> pulumi.Input['AnimationFadeFadeType']:
+        """
+        Type of fade animation: `FADE_IN` or `FADE_OUT`.
+        """
+        return pulumi.get(self, "fade_type")
+
+    @fade_type.setter
+    def fade_type(self, value: pulumi.Input['AnimationFadeFadeType']):
+        pulumi.set(self, "fade_type", value)
 
     @property
     @pulumi.getter(name="endTimeOffset")
@@ -211,18 +221,6 @@ class AnimationFadeArgs:
     @end_time_offset.setter
     def end_time_offset(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "end_time_offset", value)
-
-    @property
-    @pulumi.getter(name="fadeType")
-    def fade_type(self) -> Optional[pulumi.Input['AnimationFadeFadeType']]:
-        """
-        Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
-        """
-        return pulumi.get(self, "fade_type")
-
-    @fade_type.setter
-    def fade_type(self, value: Optional[pulumi.Input['AnimationFadeFadeType']]):
-        pulumi.set(self, "fade_type", value)
 
     @property
     @pulumi.getter(name="startTimeOffset")
@@ -348,17 +346,28 @@ class AudioArgs:
 @pulumi.input_type
 class AudioAtomArgs:
     def __init__(__self__, *,
-                 channels: Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelArgs']]]] = None,
-                 key: Optional[pulumi.Input[str]] = None):
+                 key: pulumi.Input[str],
+                 channels: Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelArgs']]]] = None):
         """
         The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+        :param pulumi.Input[str] key: The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
         :param pulumi.Input[Sequence[pulumi.Input['AudioChannelArgs']]] channels: List of `Channel`s for this audio stream. for in-depth explanation.
-        :param pulumi.Input[str] key: Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
         """
+        pulumi.set(__self__, "key", key)
         if channels is not None:
             pulumi.set(__self__, "channels", channels)
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter
@@ -371,18 +380,6 @@ class AudioAtomArgs:
     @channels.setter
     def channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelArgs']]]]):
         pulumi.set(self, "channels", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
 
 
 @pulumi.input_type
@@ -412,37 +409,58 @@ class AudioChannelArgs:
 @pulumi.input_type
 class AudioChannelInputArgs:
     def __init__(__self__, *,
-                 channel: Optional[pulumi.Input[int]] = None,
-                 gain_db: Optional[pulumi.Input[float]] = None,
-                 key: Optional[pulumi.Input[str]] = None,
-                 track: Optional[pulumi.Input[int]] = None):
+                 channel: pulumi.Input[int],
+                 key: pulumi.Input[str],
+                 track: pulumi.Input[int],
+                 gain_db: Optional[pulumi.Input[float]] = None):
         """
         Identifies which input file, track, and channel should be used.
-        :param pulumi.Input[int] channel: Required. The zero-based index of the channel in the input file.
+        :param pulumi.Input[int] channel: The zero-based index of the channel in the input file.
+        :param pulumi.Input[str] key: The `Input.key` that identifies the input file.
+        :param pulumi.Input[int] track: The zero-based index of the track in the input file.
         :param pulumi.Input[float] gain_db: Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
-        :param pulumi.Input[str] key: Required. The `Input.key` that identifies the input file.
-        :param pulumi.Input[int] track: Required. The zero-based index of the track in the input file.
         """
-        if channel is not None:
-            pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "track", track)
         if gain_db is not None:
             pulumi.set(__self__, "gain_db", gain_db)
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if track is not None:
-            pulumi.set(__self__, "track", track)
 
     @property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input[int]]:
+    def channel(self) -> pulumi.Input[int]:
         """
-        Required. The zero-based index of the channel in the input file.
+        The zero-based index of the channel in the input file.
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input[int]]):
+    def channel(self, value: pulumi.Input[int]):
         pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The `Input.key` that identifies the input file.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def track(self) -> pulumi.Input[int]:
+        """
+        The zero-based index of the track in the input file.
+        """
+        return pulumi.get(self, "track")
+
+    @track.setter
+    def track(self, value: pulumi.Input[int]):
+        pulumi.set(self, "track", value)
 
     @property
     @pulumi.getter(name="gainDb")
@@ -456,35 +474,11 @@ class AudioChannelInputArgs:
     def gain_db(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "gain_db", value)
 
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The `Input.key` that identifies the input file.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def track(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. The zero-based index of the track in the input file.
-        """
-        return pulumi.get(self, "track")
-
-    @track.setter
-    def track(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "track", value)
-
 
 @pulumi.input_type
 class AudioStreamArgs:
     def __init__(__self__, *,
-                 bitrate_bps: Optional[pulumi.Input[int]] = None,
+                 bitrate_bps: pulumi.Input[int],
                  channel_count: Optional[pulumi.Input[int]] = None,
                  channel_layout: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  codec: Optional[pulumi.Input[str]] = None,
@@ -492,15 +486,14 @@ class AudioStreamArgs:
                  sample_rate_hertz: Optional[pulumi.Input[int]] = None):
         """
         Audio stream resource.
-        :param pulumi.Input[int] bitrate_bps: Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+        :param pulumi.Input[int] bitrate_bps: Audio bitrate in bits per second. Must be between 1 and 10,000,000.
         :param pulumi.Input[int] channel_count: Number of audio channels. Must be between 1 and 6. The default is 2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] channel_layout: A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - 'fl' - Front left channel - 'fr' - Front right channel - 'sl' - Side left channel - 'sr' - Side right channel - 'fc' - Front center channel - 'lfe' - Low frequency
         :param pulumi.Input[str] codec: The codec for this audio stream. The default is `"aac"`. Supported audio codecs: - 'aac' - 'aac-he' - 'aac-he-v2' - 'mp3' - 'ac3' - 'eac3'
         :param pulumi.Input[Sequence[pulumi.Input['AudioAtomArgs']]] mapping: The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
         :param pulumi.Input[int] sample_rate_hertz: The audio sample rate in Hertz. The default is 48000 Hertz.
         """
-        if bitrate_bps is not None:
-            pulumi.set(__self__, "bitrate_bps", bitrate_bps)
+        pulumi.set(__self__, "bitrate_bps", bitrate_bps)
         if channel_count is not None:
             pulumi.set(__self__, "channel_count", channel_count)
         if channel_layout is not None:
@@ -514,14 +507,14 @@ class AudioStreamArgs:
 
     @property
     @pulumi.getter(name="bitrateBps")
-    def bitrate_bps(self) -> Optional[pulumi.Input[int]]:
+    def bitrate_bps(self) -> pulumi.Input[int]:
         """
-        Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+        Audio bitrate in bits per second. Must be between 1 and 10,000,000.
         """
         return pulumi.get(self, "bitrate_bps")
 
     @bitrate_bps.setter
-    def bitrate_bps(self, value: Optional[pulumi.Input[int]]):
+    def bitrate_bps(self, value: pulumi.Input[int]):
         pulumi.set(self, "bitrate_bps", value)
 
     @property
@@ -940,29 +933,51 @@ class ElementaryStreamArgs:
 @pulumi.input_type
 class EncryptionArgs:
     def __init__(__self__, *,
+                 iv: pulumi.Input[str],
+                 key: pulumi.Input[str],
                  aes128: Optional[pulumi.Input['Aes128EncryptionArgs']] = None,
-                 iv: Optional[pulumi.Input[str]] = None,
-                 key: Optional[pulumi.Input[str]] = None,
                  mpeg_cenc: Optional[pulumi.Input['MpegCommonEncryptionArgs']] = None,
                  sample_aes: Optional[pulumi.Input['SampleAesEncryptionArgs']] = None):
         """
         Encryption settings.
+        :param pulumi.Input[str] iv: 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+        :param pulumi.Input[str] key: 128 bit encryption key represented as lowercase hexadecimal digits.
         :param pulumi.Input['Aes128EncryptionArgs'] aes128: Configuration for AES-128 encryption.
-        :param pulumi.Input[str] iv: Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
-        :param pulumi.Input[str] key: Required. 128 bit encryption key represented as lowercase hexadecimal digits.
         :param pulumi.Input['MpegCommonEncryptionArgs'] mpeg_cenc: Configuration for MPEG Common Encryption (MPEG-CENC).
         :param pulumi.Input['SampleAesEncryptionArgs'] sample_aes: Configuration for SAMPLE-AES encryption.
         """
+        pulumi.set(__self__, "iv", iv)
+        pulumi.set(__self__, "key", key)
         if aes128 is not None:
             pulumi.set(__self__, "aes128", aes128)
-        if iv is not None:
-            pulumi.set(__self__, "iv", iv)
-        if key is not None:
-            pulumi.set(__self__, "key", key)
         if mpeg_cenc is not None:
             pulumi.set(__self__, "mpeg_cenc", mpeg_cenc)
         if sample_aes is not None:
             pulumi.set(__self__, "sample_aes", sample_aes)
+
+    @property
+    @pulumi.getter
+    def iv(self) -> pulumi.Input[str]:
+        """
+        128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+        """
+        return pulumi.get(self, "iv")
+
+    @iv.setter
+    def iv(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iv", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        128 bit encryption key represented as lowercase hexadecimal digits.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter
@@ -975,30 +990,6 @@ class EncryptionArgs:
     @aes128.setter
     def aes128(self, value: Optional[pulumi.Input['Aes128EncryptionArgs']]):
         pulumi.set(self, "aes128", value)
-
-    @property
-    @pulumi.getter
-    def iv(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
-        """
-        return pulumi.get(self, "iv")
-
-    @iv.setter
-    def iv(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "iv", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. 128 bit encryption key represented as lowercase hexadecimal digits.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter(name="mpegCenc")
@@ -1028,21 +1019,32 @@ class EncryptionArgs:
 @pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
+                 uri: pulumi.Input[str],
                  alpha: Optional[pulumi.Input[float]] = None,
-                 resolution: Optional[pulumi.Input['NormalizedCoordinateArgs']] = None,
-                 uri: Optional[pulumi.Input[str]] = None):
+                 resolution: Optional[pulumi.Input['NormalizedCoordinateArgs']] = None):
         """
         Overlaid jpeg image.
+        :param pulumi.Input[str] uri: URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
         :param pulumi.Input[float] alpha: Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
         :param pulumi.Input['NormalizedCoordinateArgs'] resolution: Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
-        :param pulumi.Input[str] uri: Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
         """
+        pulumi.set(__self__, "uri", uri)
         if alpha is not None:
             pulumi.set(__self__, "alpha", alpha)
         if resolution is not None:
             pulumi.set(__self__, "resolution", resolution)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter
@@ -1067,18 +1069,6 @@ class ImageArgs:
     @resolution.setter
     def resolution(self, value: Optional[pulumi.Input['NormalizedCoordinateArgs']]):
         pulumi.set(self, "resolution", value)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uri", value)
 
 
 @pulumi.input_type
@@ -1308,21 +1298,43 @@ class JobConfigArgs:
 @pulumi.input_type
 class ManifestArgs:
     def __init__(__self__, *,
-                 file_name: Optional[pulumi.Input[str]] = None,
-                 mux_streams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input['ManifestType']] = None):
+                 mux_streams: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 type: pulumi.Input['ManifestType'],
+                 file_name: Optional[pulumi.Input[str]] = None):
         """
         Manifest configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mux_streams: List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+        :param pulumi.Input['ManifestType'] type: Type of the manifest, can be "HLS" or "DASH".
         :param pulumi.Input[str] file_name: The name of the generated file. The default is `"manifest"` with the extension suffix corresponding to the `Manifest.type`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mux_streams: Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
-        :param pulumi.Input['ManifestType'] type: Required. Type of the manifest, can be "HLS" or "DASH".
         """
+        pulumi.set(__self__, "mux_streams", mux_streams)
+        pulumi.set(__self__, "type", type)
         if file_name is not None:
             pulumi.set(__self__, "file_name", file_name)
-        if mux_streams is not None:
-            pulumi.set(__self__, "mux_streams", mux_streams)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="muxStreams")
+    def mux_streams(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+        """
+        return pulumi.get(self, "mux_streams")
+
+    @mux_streams.setter
+    def mux_streams(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "mux_streams", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['ManifestType']:
+        """
+        Type of the manifest, can be "HLS" or "DASH".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['ManifestType']):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="fileName")
@@ -1336,68 +1348,42 @@ class ManifestArgs:
     def file_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_name", value)
 
-    @property
-    @pulumi.getter(name="muxStreams")
-    def mux_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
-        """
-        return pulumi.get(self, "mux_streams")
-
-    @mux_streams.setter
-    def mux_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "mux_streams", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['ManifestType']]:
-        """
-        Required. Type of the manifest, can be "HLS" or "DASH".
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['ManifestType']]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class MpegCommonEncryptionArgs:
     def __init__(__self__, *,
-                 key_id: Optional[pulumi.Input[str]] = None,
-                 scheme: Optional[pulumi.Input[str]] = None):
+                 key_id: pulumi.Input[str],
+                 scheme: pulumi.Input[str]):
         """
         Configuration for MPEG Common Encryption (MPEG-CENC).
-        :param pulumi.Input[str] key_id: Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
-        :param pulumi.Input[str] scheme: Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+        :param pulumi.Input[str] key_id: 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+        :param pulumi.Input[str] scheme: Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
         """
-        if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
-        if scheme is not None:
-            pulumi.set(__self__, "scheme", scheme)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "scheme", scheme)
 
     @property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[str]]:
+    def key_id(self) -> pulumi.Input[str]:
         """
-        Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+        128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
         """
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[str]]):
+    def key_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_id", value)
 
     @property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[str]]:
+    def scheme(self) -> pulumi.Input[str]:
         """
-        Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+        Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
         """
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[str]]):
+    def scheme(self, value: pulumi.Input[str]):
         pulumi.set(self, "scheme", value)
 
 
@@ -1812,52 +1798,50 @@ class PubsubDestinationArgs:
 @pulumi.input_type
 class SampleAesEncryptionArgs:
     def __init__(__self__, *,
-                 key_uri: Optional[pulumi.Input[str]] = None):
+                 key_uri: pulumi.Input[str]):
         """
         Configuration for SAMPLE-AES encryption.
-        :param pulumi.Input[str] key_uri: Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        :param pulumi.Input[str] key_uri: URI of the key delivery service. This URI is inserted into the M3U8 header.
         """
-        if key_uri is not None:
-            pulumi.set(__self__, "key_uri", key_uri)
+        pulumi.set(__self__, "key_uri", key_uri)
 
     @property
     @pulumi.getter(name="keyUri")
-    def key_uri(self) -> Optional[pulumi.Input[str]]:
+    def key_uri(self) -> pulumi.Input[str]:
         """
-        Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        URI of the key delivery service. This URI is inserted into the M3U8 header.
         """
         return pulumi.get(self, "key_uri")
 
     @key_uri.setter
-    def key_uri(self, value: Optional[pulumi.Input[str]]):
+    def key_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_uri", value)
 
 
 @pulumi.input_type
 class SegmentSettingsArgs:
     def __init__(__self__, *,
-                 individual_segments: Optional[pulumi.Input[bool]] = None,
+                 individual_segments: pulumi.Input[bool],
                  segment_duration: Optional[pulumi.Input[str]] = None):
         """
         Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
-        :param pulumi.Input[bool] individual_segments: Required. Create an individual segment file. The default is `false`.
+        :param pulumi.Input[bool] individual_segments: Create an individual segment file. The default is `false`.
         :param pulumi.Input[str] segment_duration: Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
         """
-        if individual_segments is not None:
-            pulumi.set(__self__, "individual_segments", individual_segments)
+        pulumi.set(__self__, "individual_segments", individual_segments)
         if segment_duration is not None:
             pulumi.set(__self__, "segment_duration", segment_duration)
 
     @property
     @pulumi.getter(name="individualSegments")
-    def individual_segments(self) -> Optional[pulumi.Input[bool]]:
+    def individual_segments(self) -> pulumi.Input[bool]:
         """
-        Required. Create an individual segment file. The default is `false`.
+        Create an individual segment file. The default is `false`.
         """
         return pulumi.get(self, "individual_segments")
 
     @individual_segments.setter
-    def individual_segments(self, value: Optional[pulumi.Input[bool]]):
+    def individual_segments(self, value: pulumi.Input[bool]):
         pulumi.set(self, "individual_segments", value)
 
     @property
@@ -1876,37 +1860,38 @@ class SegmentSettingsArgs:
 @pulumi.input_type
 class SpriteSheetArgs:
     def __init__(__self__, *,
+                 file_prefix: pulumi.Input[str],
+                 sprite_height_pixels: pulumi.Input[int],
+                 sprite_width_pixels: pulumi.Input[int],
                  column_count: Optional[pulumi.Input[int]] = None,
                  end_time_offset: Optional[pulumi.Input[str]] = None,
-                 file_prefix: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  quality: Optional[pulumi.Input[int]] = None,
                  row_count: Optional[pulumi.Input[int]] = None,
-                 sprite_height_pixels: Optional[pulumi.Input[int]] = None,
-                 sprite_width_pixels: Optional[pulumi.Input[int]] = None,
                  start_time_offset: Optional[pulumi.Input[str]] = None,
                  total_count: Optional[pulumi.Input[int]] = None):
         """
         Sprite sheet configuration.
+        :param pulumi.Input[str] file_prefix: File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+        :param pulumi.Input[int] sprite_height_pixels: The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+        :param pulumi.Input[int] sprite_width_pixels: The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
         :param pulumi.Input[int] column_count: The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.
         :param pulumi.Input[str] end_time_offset: End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.
-        :param pulumi.Input[str] file_prefix: Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
         :param pulumi.Input[str] format: Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
         :param pulumi.Input[str] interval: Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
         :param pulumi.Input[int] quality: The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
         :param pulumi.Input[int] row_count: The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
-        :param pulumi.Input[int] sprite_height_pixels: Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
-        :param pulumi.Input[int] sprite_width_pixels: Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
         :param pulumi.Input[str] start_time_offset: Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
         :param pulumi.Input[int] total_count: Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.
         """
+        pulumi.set(__self__, "file_prefix", file_prefix)
+        pulumi.set(__self__, "sprite_height_pixels", sprite_height_pixels)
+        pulumi.set(__self__, "sprite_width_pixels", sprite_width_pixels)
         if column_count is not None:
             pulumi.set(__self__, "column_count", column_count)
         if end_time_offset is not None:
             pulumi.set(__self__, "end_time_offset", end_time_offset)
-        if file_prefix is not None:
-            pulumi.set(__self__, "file_prefix", file_prefix)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if interval is not None:
@@ -1915,14 +1900,46 @@ class SpriteSheetArgs:
             pulumi.set(__self__, "quality", quality)
         if row_count is not None:
             pulumi.set(__self__, "row_count", row_count)
-        if sprite_height_pixels is not None:
-            pulumi.set(__self__, "sprite_height_pixels", sprite_height_pixels)
-        if sprite_width_pixels is not None:
-            pulumi.set(__self__, "sprite_width_pixels", sprite_width_pixels)
         if start_time_offset is not None:
             pulumi.set(__self__, "start_time_offset", start_time_offset)
         if total_count is not None:
             pulumi.set(__self__, "total_count", total_count)
+
+    @property
+    @pulumi.getter(name="filePrefix")
+    def file_prefix(self) -> pulumi.Input[str]:
+        """
+        File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+        """
+        return pulumi.get(self, "file_prefix")
+
+    @file_prefix.setter
+    def file_prefix(self, value: pulumi.Input[str]):
+        pulumi.set(self, "file_prefix", value)
+
+    @property
+    @pulumi.getter(name="spriteHeightPixels")
+    def sprite_height_pixels(self) -> pulumi.Input[int]:
+        """
+        The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+        """
+        return pulumi.get(self, "sprite_height_pixels")
+
+    @sprite_height_pixels.setter
+    def sprite_height_pixels(self, value: pulumi.Input[int]):
+        pulumi.set(self, "sprite_height_pixels", value)
+
+    @property
+    @pulumi.getter(name="spriteWidthPixels")
+    def sprite_width_pixels(self) -> pulumi.Input[int]:
+        """
+        The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+        """
+        return pulumi.get(self, "sprite_width_pixels")
+
+    @sprite_width_pixels.setter
+    def sprite_width_pixels(self, value: pulumi.Input[int]):
+        pulumi.set(self, "sprite_width_pixels", value)
 
     @property
     @pulumi.getter(name="columnCount")
@@ -1947,18 +1964,6 @@ class SpriteSheetArgs:
     @end_time_offset.setter
     def end_time_offset(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "end_time_offset", value)
-
-    @property
-    @pulumi.getter(name="filePrefix")
-    def file_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
-        """
-        return pulumi.get(self, "file_prefix")
-
-    @file_prefix.setter
-    def file_prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "file_prefix", value)
 
     @property
     @pulumi.getter
@@ -2009,30 +2014,6 @@ class SpriteSheetArgs:
         pulumi.set(self, "row_count", value)
 
     @property
-    @pulumi.getter(name="spriteHeightPixels")
-    def sprite_height_pixels(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
-        """
-        return pulumi.get(self, "sprite_height_pixels")
-
-    @sprite_height_pixels.setter
-    def sprite_height_pixels(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "sprite_height_pixels", value)
-
-    @property
-    @pulumi.getter(name="spriteWidthPixels")
-    def sprite_width_pixels(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
-        """
-        return pulumi.get(self, "sprite_width_pixels")
-
-    @sprite_width_pixels.setter
-    def sprite_width_pixels(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "sprite_width_pixels", value)
-
-    @property
     @pulumi.getter(name="startTimeOffset")
     def start_time_offset(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2060,17 +2041,28 @@ class SpriteSheetArgs:
 @pulumi.input_type
 class TextAtomArgs:
     def __init__(__self__, *,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['TextInputArgs']]]] = None,
-                 key: Optional[pulumi.Input[str]] = None):
+                 key: pulumi.Input[str],
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['TextInputArgs']]]] = None):
         """
         The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+        :param pulumi.Input[str] key: The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
         :param pulumi.Input[Sequence[pulumi.Input['TextInputArgs']]] inputs: List of `Job.inputs` that should be embedded in this atom. Only one input is supported.
-        :param pulumi.Input[str] key: Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
         """
+        pulumi.set(__self__, "key", key)
         if inputs is not None:
             pulumi.set(__self__, "inputs", inputs)
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter
@@ -2084,77 +2076,74 @@ class TextAtomArgs:
     def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TextInputArgs']]]]):
         pulumi.set(self, "inputs", value)
 
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
-
 
 @pulumi.input_type
 class TextInputArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None,
-                 track: Optional[pulumi.Input[int]] = None):
+                 key: pulumi.Input[str],
+                 track: pulumi.Input[int]):
         """
         Identifies which input file and track should be used.
-        :param pulumi.Input[str] key: Required. The `Input.key` that identifies the input file.
-        :param pulumi.Input[int] track: Required. The zero-based index of the track in the input file.
+        :param pulumi.Input[str] key: The `Input.key` that identifies the input file.
+        :param pulumi.Input[int] track: The zero-based index of the track in the input file.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if track is not None:
-            pulumi.set(__self__, "track", track)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "track", track)
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
+    def key(self) -> pulumi.Input[str]:
         """
-        Required. The `Input.key` that identifies the input file.
+        The `Input.key` that identifies the input file.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
+    def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter
-    def track(self) -> Optional[pulumi.Input[int]]:
+    def track(self) -> pulumi.Input[int]:
         """
-        Required. The zero-based index of the track in the input file.
+        The zero-based index of the track in the input file.
         """
         return pulumi.get(self, "track")
 
     @track.setter
-    def track(self, value: Optional[pulumi.Input[int]]):
+    def track(self, value: pulumi.Input[int]):
         pulumi.set(self, "track", value)
 
 
 @pulumi.input_type
 class TextStreamArgs:
     def __init__(__self__, *,
+                 language_code: pulumi.Input[str],
                  codec: Optional[pulumi.Input[str]] = None,
-                 language_code: Optional[pulumi.Input[str]] = None,
                  mapping: Optional[pulumi.Input[Sequence[pulumi.Input['TextAtomArgs']]]] = None):
         """
         Encoding of a text stream. For example, closed captions or subtitles.
+        :param pulumi.Input[str] language_code: The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         :param pulumi.Input[str] codec: The codec for this text stream. The default is `"webvtt"`. Supported text codecs: - 'srt' - 'ttml' - 'cea608' - 'cea708' - 'webvtt'
-        :param pulumi.Input[str] language_code: Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         :param pulumi.Input[Sequence[pulumi.Input['TextAtomArgs']]] mapping: The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
         """
+        pulumi.set(__self__, "language_code", language_code)
         if codec is not None:
             pulumi.set(__self__, "codec", codec)
-        if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
         if mapping is not None:
             pulumi.set(__self__, "mapping", mapping)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Input[str]:
+        """
+        The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "language_code", value)
 
     @property
     @pulumi.getter
@@ -2167,18 +2156,6 @@ class TextStreamArgs:
     @codec.setter
     def codec(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "codec", value)
-
-    @property
-    @pulumi.getter(name="languageCode")
-    def language_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        """
-        return pulumi.get(self, "language_code")
-
-    @language_code.setter
-    def language_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "language_code", value)
 
     @property
     @pulumi.getter
@@ -2196,16 +2173,16 @@ class TextStreamArgs:
 @pulumi.input_type
 class VideoStreamArgs:
     def __init__(__self__, *,
+                 bitrate_bps: pulumi.Input[int],
+                 frame_rate: pulumi.Input[float],
                  allow_open_gop: Optional[pulumi.Input[bool]] = None,
                  aq_strength: Optional[pulumi.Input[float]] = None,
                  b_frame_count: Optional[pulumi.Input[int]] = None,
                  b_pyramid: Optional[pulumi.Input[bool]] = None,
-                 bitrate_bps: Optional[pulumi.Input[int]] = None,
                  codec: Optional[pulumi.Input[str]] = None,
                  crf_level: Optional[pulumi.Input[int]] = None,
                  enable_two_pass: Optional[pulumi.Input[bool]] = None,
                  entropy_coder: Optional[pulumi.Input[str]] = None,
-                 frame_rate: Optional[pulumi.Input[float]] = None,
                  gop_duration: Optional[pulumi.Input[str]] = None,
                  gop_frame_count: Optional[pulumi.Input[int]] = None,
                  height_pixels: Optional[pulumi.Input[int]] = None,
@@ -2219,16 +2196,16 @@ class VideoStreamArgs:
                  width_pixels: Optional[pulumi.Input[int]] = None):
         """
         Video stream resource.
+        :param pulumi.Input[int] bitrate_bps: The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
         :param pulumi.Input[bool] allow_open_gop: Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
         :param pulumi.Input[float] aq_strength: Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
         :param pulumi.Input[int] b_frame_count: The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
         :param pulumi.Input[bool] b_pyramid: Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
-        :param pulumi.Input[int] bitrate_bps: Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
         :param pulumi.Input[str] codec: Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
         :param pulumi.Input[int] crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
         :param pulumi.Input[bool] enable_two_pass: Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `"vbr"`. The default is `false`.
         :param pulumi.Input[str] entropy_coder: The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
-        :param pulumi.Input[float] frame_rate: Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
         :param pulumi.Input[str] gop_duration: Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         :param pulumi.Input[int] gop_frame_count: Select the GOP size based on the specified frame count. Must be greater than zero.
         :param pulumi.Input[int] height_pixels: The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
@@ -2241,6 +2218,8 @@ class VideoStreamArgs:
         :param pulumi.Input[int] vbv_size_bits: Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
         :param pulumi.Input[int] width_pixels: The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
         """
+        pulumi.set(__self__, "bitrate_bps", bitrate_bps)
+        pulumi.set(__self__, "frame_rate", frame_rate)
         if allow_open_gop is not None:
             pulumi.set(__self__, "allow_open_gop", allow_open_gop)
         if aq_strength is not None:
@@ -2249,8 +2228,6 @@ class VideoStreamArgs:
             pulumi.set(__self__, "b_frame_count", b_frame_count)
         if b_pyramid is not None:
             pulumi.set(__self__, "b_pyramid", b_pyramid)
-        if bitrate_bps is not None:
-            pulumi.set(__self__, "bitrate_bps", bitrate_bps)
         if codec is not None:
             pulumi.set(__self__, "codec", codec)
         if crf_level is not None:
@@ -2259,8 +2236,6 @@ class VideoStreamArgs:
             pulumi.set(__self__, "enable_two_pass", enable_two_pass)
         if entropy_coder is not None:
             pulumi.set(__self__, "entropy_coder", entropy_coder)
-        if frame_rate is not None:
-            pulumi.set(__self__, "frame_rate", frame_rate)
         if gop_duration is not None:
             pulumi.set(__self__, "gop_duration", gop_duration)
         if gop_frame_count is not None:
@@ -2283,6 +2258,30 @@ class VideoStreamArgs:
             pulumi.set(__self__, "vbv_size_bits", vbv_size_bits)
         if width_pixels is not None:
             pulumi.set(__self__, "width_pixels", width_pixels)
+
+    @property
+    @pulumi.getter(name="bitrateBps")
+    def bitrate_bps(self) -> pulumi.Input[int]:
+        """
+        The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        """
+        return pulumi.get(self, "bitrate_bps")
+
+    @bitrate_bps.setter
+    def bitrate_bps(self, value: pulumi.Input[int]):
+        pulumi.set(self, "bitrate_bps", value)
+
+    @property
+    @pulumi.getter(name="frameRate")
+    def frame_rate(self) -> pulumi.Input[float]:
+        """
+        The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        """
+        return pulumi.get(self, "frame_rate")
+
+    @frame_rate.setter
+    def frame_rate(self, value: pulumi.Input[float]):
+        pulumi.set(self, "frame_rate", value)
 
     @property
     @pulumi.getter(name="allowOpenGop")
@@ -2333,18 +2332,6 @@ class VideoStreamArgs:
         pulumi.set(self, "b_pyramid", value)
 
     @property
-    @pulumi.getter(name="bitrateBps")
-    def bitrate_bps(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
-        """
-        return pulumi.get(self, "bitrate_bps")
-
-    @bitrate_bps.setter
-    def bitrate_bps(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "bitrate_bps", value)
-
-    @property
     @pulumi.getter
     def codec(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2391,18 +2378,6 @@ class VideoStreamArgs:
     @entropy_coder.setter
     def entropy_coder(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "entropy_coder", value)
-
-    @property
-    @pulumi.getter(name="frameRate")
-    def frame_rate(self) -> Optional[pulumi.Input[float]]:
-        """
-        Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
-        """
-        return pulumi.get(self, "frame_rate")
-
-    @frame_rate.setter
-    def frame_rate(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "frame_rate", value)
 
     @property
     @pulumi.getter(name="gopDuration")

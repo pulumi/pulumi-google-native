@@ -18,6 +18,7 @@ class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 machine_type: pulumi.Input[str],
                  project: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[str]] = None,
@@ -31,7 +32,6 @@ class InstanceArgs:
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['InstanceNicType']] = None,
@@ -48,6 +48,7 @@ class InstanceArgs:
                  vm_image: Optional[pulumi.Input['VmImageArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] machine_type: The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
         :param pulumi.Input[str] boot_disk_size_gb: Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
         :param pulumi.Input['InstanceBootDiskType'] boot_disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
@@ -60,7 +61,6 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[str] machine_type: Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
         :param pulumi.Input['InstanceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -78,6 +78,7 @@ class InstanceArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "project", project)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -103,8 +104,6 @@ class InstanceArgs:
             pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if machine_type is not None:
-            pulumi.set(__self__, "machine_type", machine_type)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if network is not None:
@@ -151,6 +150,18 @@ class InstanceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[str]:
+        """
+        The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "machine_type", value)
 
     @property
     @pulumi.getter
@@ -304,18 +315,6 @@ class InstanceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
-        """
-        return pulumi.get(self, "machine_type")
-
-    @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "machine_type", value)
 
     @property
     @pulumi.getter
@@ -539,7 +538,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[str] machine_type: Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        :param pulumi.Input[str] machine_type: The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
         :param pulumi.Input['InstanceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -639,6 +638,8 @@ class Instance(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if machine_type is None and not opts.urn:
+                raise TypeError("Missing required property 'machine_type'")
             __props__.__dict__["machine_type"] = machine_type
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["network"] = network
@@ -836,7 +837,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Output[str]:
         """
-        Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         """
         return pulumi.get(self, "machine_type")
 

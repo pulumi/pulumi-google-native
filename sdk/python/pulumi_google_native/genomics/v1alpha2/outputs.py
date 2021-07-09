@@ -54,11 +54,11 @@ class DiskResponse(dict):
         """
         A Google Compute Engine disk resource specification.
         :param str mount_point: Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
-        :param str name: Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+        :param str name: The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
         :param bool read_only: Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
         :param int size_gb: The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.
         :param str source: The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
-        :param str type: Required. The type of the disk to create.
+        :param str type: The type of the disk to create.
         """
         pulumi.set(__self__, "mount_point", mount_point)
         pulumi.set(__self__, "name", name)
@@ -79,7 +79,7 @@ class DiskResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+        The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
         """
         return pulumi.get(self, "name")
 
@@ -111,7 +111,7 @@ class DiskResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. The type of the disk to create.
+        The type of the disk to create.
         """
         return pulumi.get(self, "type")
 
@@ -143,8 +143,8 @@ class DockerExecutorResponse(dict):
                  image_name: str):
         """
         The Docker execuctor specification.
-        :param str cmd: Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
-        :param str image_name: Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+        :param str cmd: The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+        :param str image_name: Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
         """
         pulumi.set(__self__, "cmd", cmd)
         pulumi.set(__self__, "image_name", image_name)
@@ -153,7 +153,7 @@ class DockerExecutorResponse(dict):
     @pulumi.getter
     def cmd(self) -> str:
         """
-        Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+        The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
         """
         return pulumi.get(self, "cmd")
 
@@ -161,7 +161,7 @@ class DockerExecutorResponse(dict):
     @pulumi.getter(name="imageName")
     def image_name(self) -> str:
         """
-        Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+        Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
         """
         return pulumi.get(self, "image_name")
 
@@ -176,8 +176,8 @@ class LocalCopyResponse(dict):
                  path: str):
         """
         LocalCopy defines how a remote file should be copied to and from the VM.
-        :param str disk: Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
-        :param str path: Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+        :param str disk: The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+        :param str path: The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
         """
         pulumi.set(__self__, "disk", disk)
         pulumi.set(__self__, "path", path)
@@ -186,7 +186,7 @@ class LocalCopyResponse(dict):
     @pulumi.getter
     def disk(self) -> str:
         """
-        Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+        The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
         """
         return pulumi.get(self, "disk")
 
@@ -194,7 +194,7 @@ class LocalCopyResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+        The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
         """
         return pulumi.get(self, "path")
 
@@ -233,7 +233,7 @@ class PipelineParameterResponse(dict):
         :param str default_value: The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then this must be a Google Cloud Storage path beginning with `gs://`.
         :param str description: Human-readable description.
         :param 'LocalCopyResponse' local_copy: If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
-        :param str name: Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+        :param str name: Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
         """
         pulumi.set(__self__, "default_value", default_value)
         pulumi.set(__self__, "description", description)
@@ -268,7 +268,7 @@ class PipelineParameterResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+        Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
         """
         return pulumi.get(self, "name")
 

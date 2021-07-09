@@ -40,23 +40,22 @@ __all__ = [
 @pulumi.input_type
 class AllowedConfigListArgs:
     def __init__(__self__, *,
-                 allowed_config_values: Optional[pulumi.Input[Sequence[pulumi.Input['ReusableConfigWrapperArgs']]]] = None):
+                 allowed_config_values: pulumi.Input[Sequence[pulumi.Input['ReusableConfigWrapperArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ReusableConfigWrapperArgs']]] allowed_config_values: Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+        :param pulumi.Input[Sequence[pulumi.Input['ReusableConfigWrapperArgs']]] allowed_config_values: All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
         """
-        if allowed_config_values is not None:
-            pulumi.set(__self__, "allowed_config_values", allowed_config_values)
+        pulumi.set(__self__, "allowed_config_values", allowed_config_values)
 
     @property
     @pulumi.getter(name="allowedConfigValues")
-    def allowed_config_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReusableConfigWrapperArgs']]]]:
+    def allowed_config_values(self) -> pulumi.Input[Sequence[pulumi.Input['ReusableConfigWrapperArgs']]]:
         """
-        Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+        All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
         """
         return pulumi.get(self, "allowed_config_values")
 
     @allowed_config_values.setter
-    def allowed_config_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReusableConfigWrapperArgs']]]]):
+    def allowed_config_values(self, value: pulumi.Input[Sequence[pulumi.Input['ReusableConfigWrapperArgs']]]):
         pulumi.set(self, "allowed_config_values", value)
 
 
@@ -463,21 +462,43 @@ class CertificateAuthorityPolicyArgs:
 @pulumi.input_type
 class CertificateConfigArgs:
     def __init__(__self__, *,
-                 public_key: Optional[pulumi.Input['PublicKeyArgs']] = None,
-                 reusable_config: Optional[pulumi.Input['ReusableConfigWrapperArgs']] = None,
-                 subject_config: Optional[pulumi.Input['SubjectConfigArgs']] = None):
+                 reusable_config: pulumi.Input['ReusableConfigWrapperArgs'],
+                 subject_config: pulumi.Input['SubjectConfigArgs'],
+                 public_key: Optional[pulumi.Input['PublicKeyArgs']] = None):
         """
         A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
+        :param pulumi.Input['ReusableConfigWrapperArgs'] reusable_config: Describes how some of the technical fields in a certificate should be populated.
+        :param pulumi.Input['SubjectConfigArgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
         :param pulumi.Input['PublicKeyArgs'] public_key: Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
-        :param pulumi.Input['ReusableConfigWrapperArgs'] reusable_config: Required. Describes how some of the technical fields in a certificate should be populated.
-        :param pulumi.Input['SubjectConfigArgs'] subject_config: Required. Specifies some of the values in a certificate that are related to the subject.
         """
+        pulumi.set(__self__, "reusable_config", reusable_config)
+        pulumi.set(__self__, "subject_config", subject_config)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
-        if reusable_config is not None:
-            pulumi.set(__self__, "reusable_config", reusable_config)
-        if subject_config is not None:
-            pulumi.set(__self__, "subject_config", subject_config)
+
+    @property
+    @pulumi.getter(name="reusableConfig")
+    def reusable_config(self) -> pulumi.Input['ReusableConfigWrapperArgs']:
+        """
+        Describes how some of the technical fields in a certificate should be populated.
+        """
+        return pulumi.get(self, "reusable_config")
+
+    @reusable_config.setter
+    def reusable_config(self, value: pulumi.Input['ReusableConfigWrapperArgs']):
+        pulumi.set(self, "reusable_config", value)
+
+    @property
+    @pulumi.getter(name="subjectConfig")
+    def subject_config(self) -> pulumi.Input['SubjectConfigArgs']:
+        """
+        Specifies some of the values in a certificate that are related to the subject.
+        """
+        return pulumi.get(self, "subject_config")
+
+    @subject_config.setter
+    def subject_config(self, value: pulumi.Input['SubjectConfigArgs']):
+        pulumi.set(self, "subject_config", value)
 
     @property
     @pulumi.getter(name="publicKey")
@@ -490,30 +511,6 @@ class CertificateConfigArgs:
     @public_key.setter
     def public_key(self, value: Optional[pulumi.Input['PublicKeyArgs']]):
         pulumi.set(self, "public_key", value)
-
-    @property
-    @pulumi.getter(name="reusableConfig")
-    def reusable_config(self) -> Optional[pulumi.Input['ReusableConfigWrapperArgs']]:
-        """
-        Required. Describes how some of the technical fields in a certificate should be populated.
-        """
-        return pulumi.get(self, "reusable_config")
-
-    @reusable_config.setter
-    def reusable_config(self, value: Optional[pulumi.Input['ReusableConfigWrapperArgs']]):
-        pulumi.set(self, "reusable_config", value)
-
-    @property
-    @pulumi.getter(name="subjectConfig")
-    def subject_config(self) -> Optional[pulumi.Input['SubjectConfigArgs']]:
-        """
-        Required. Specifies some of the values in a certificate that are related to the subject.
-        """
-        return pulumi.get(self, "subject_config")
-
-    @subject_config.setter
-    def subject_config(self, value: Optional[pulumi.Input['SubjectConfigArgs']]):
-        pulumi.set(self, "subject_config", value)
 
 
 @pulumi.input_type
@@ -695,80 +692,76 @@ class ExtendedKeyUsageOptionsArgs:
 @pulumi.input_type
 class IssuanceModesArgs:
     def __init__(__self__, *,
-                 allow_config_based_issuance: Optional[pulumi.Input[bool]] = None,
-                 allow_csr_based_issuance: Optional[pulumi.Input[bool]] = None):
+                 allow_config_based_issuance: pulumi.Input[bool],
+                 allow_csr_based_issuance: pulumi.Input[bool]):
         """
         IssuanceModes specifies the allowed ways in which Certificates may be requested from this CertificateAuthority.
-        :param pulumi.Input[bool] allow_config_based_issuance: Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
-        :param pulumi.Input[bool] allow_csr_based_issuance: Required. When true, allows callers to create Certificates by specifying a CSR.
+        :param pulumi.Input[bool] allow_config_based_issuance: When true, allows callers to create Certificates by specifying a CertificateConfig.
+        :param pulumi.Input[bool] allow_csr_based_issuance: When true, allows callers to create Certificates by specifying a CSR.
         """
-        if allow_config_based_issuance is not None:
-            pulumi.set(__self__, "allow_config_based_issuance", allow_config_based_issuance)
-        if allow_csr_based_issuance is not None:
-            pulumi.set(__self__, "allow_csr_based_issuance", allow_csr_based_issuance)
+        pulumi.set(__self__, "allow_config_based_issuance", allow_config_based_issuance)
+        pulumi.set(__self__, "allow_csr_based_issuance", allow_csr_based_issuance)
 
     @property
     @pulumi.getter(name="allowConfigBasedIssuance")
-    def allow_config_based_issuance(self) -> Optional[pulumi.Input[bool]]:
+    def allow_config_based_issuance(self) -> pulumi.Input[bool]:
         """
-        Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+        When true, allows callers to create Certificates by specifying a CertificateConfig.
         """
         return pulumi.get(self, "allow_config_based_issuance")
 
     @allow_config_based_issuance.setter
-    def allow_config_based_issuance(self, value: Optional[pulumi.Input[bool]]):
+    def allow_config_based_issuance(self, value: pulumi.Input[bool]):
         pulumi.set(self, "allow_config_based_issuance", value)
 
     @property
     @pulumi.getter(name="allowCsrBasedIssuance")
-    def allow_csr_based_issuance(self) -> Optional[pulumi.Input[bool]]:
+    def allow_csr_based_issuance(self) -> pulumi.Input[bool]:
         """
-        Required. When true, allows callers to create Certificates by specifying a CSR.
+        When true, allows callers to create Certificates by specifying a CSR.
         """
         return pulumi.get(self, "allow_csr_based_issuance")
 
     @allow_csr_based_issuance.setter
-    def allow_csr_based_issuance(self, value: Optional[pulumi.Input[bool]]):
+    def allow_csr_based_issuance(self, value: pulumi.Input[bool]):
         pulumi.set(self, "allow_csr_based_issuance", value)
 
 
 @pulumi.input_type
 class IssuingOptionsArgs:
     def __init__(__self__, *,
-                 include_ca_cert_url: Optional[pulumi.Input[bool]] = None,
-                 include_crl_access_url: Optional[pulumi.Input[bool]] = None):
+                 include_ca_cert_url: pulumi.Input[bool],
+                 include_crl_access_url: pulumi.Input[bool]):
         """
         Options that affect all certificates issued by a CertificateAuthority.
-        :param pulumi.Input[bool] include_ca_cert_url: Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
-        :param pulumi.Input[bool] include_crl_access_url: Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+        :param pulumi.Input[bool] include_ca_cert_url: When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+        :param pulumi.Input[bool] include_crl_access_url: When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
         """
-        if include_ca_cert_url is not None:
-            pulumi.set(__self__, "include_ca_cert_url", include_ca_cert_url)
-        if include_crl_access_url is not None:
-            pulumi.set(__self__, "include_crl_access_url", include_crl_access_url)
+        pulumi.set(__self__, "include_ca_cert_url", include_ca_cert_url)
+        pulumi.set(__self__, "include_crl_access_url", include_crl_access_url)
 
     @property
     @pulumi.getter(name="includeCaCertUrl")
-    def include_ca_cert_url(self) -> Optional[pulumi.Input[bool]]:
+    def include_ca_cert_url(self) -> pulumi.Input[bool]:
         """
-        Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+        When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
         """
         return pulumi.get(self, "include_ca_cert_url")
 
     @include_ca_cert_url.setter
-    def include_ca_cert_url(self, value: Optional[pulumi.Input[bool]]):
+    def include_ca_cert_url(self, value: pulumi.Input[bool]):
         pulumi.set(self, "include_ca_cert_url", value)
 
     @property
     @pulumi.getter(name="includeCrlAccessUrl")
-    def include_crl_access_url(self) -> Optional[pulumi.Input[bool]]:
+    def include_crl_access_url(self) -> pulumi.Input[bool]:
         """
-        Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+        When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
         """
         return pulumi.get(self, "include_crl_access_url")
 
     @include_crl_access_url.setter
-    def include_crl_access_url(self, value: Optional[pulumi.Input[bool]]):
+    def include_crl_access_url(self, value: pulumi.Input[bool]):
         pulumi.set(self, "include_crl_access_url", value)
 
 
@@ -983,92 +976,88 @@ class KeyUsageOptionsArgs:
 @pulumi.input_type
 class KeyVersionSpecArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input['KeyVersionSpecAlgorithm']] = None,
-                 cloud_kms_key_version: Optional[pulumi.Input[str]] = None):
+                 algorithm: pulumi.Input['KeyVersionSpecAlgorithm'],
+                 cloud_kms_key_version: pulumi.Input[str]):
         """
         A Cloud KMS key configuration that a CertificateAuthority will use.
-        :param pulumi.Input['KeyVersionSpecAlgorithm'] algorithm: Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-        :param pulumi.Input[str] cloud_kms_key_version: Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+        :param pulumi.Input['KeyVersionSpecAlgorithm'] algorithm: The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+        :param pulumi.Input[str] cloud_kms_key_version: The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
         """
-        if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
-        if cloud_kms_key_version is not None:
-            pulumi.set(__self__, "cloud_kms_key_version", cloud_kms_key_version)
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "cloud_kms_key_version", cloud_kms_key_version)
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input['KeyVersionSpecAlgorithm']]:
+    def algorithm(self) -> pulumi.Input['KeyVersionSpecAlgorithm']:
         """
-        Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+        The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input['KeyVersionSpecAlgorithm']]):
+    def algorithm(self, value: pulumi.Input['KeyVersionSpecAlgorithm']):
         pulumi.set(self, "algorithm", value)
 
     @property
     @pulumi.getter(name="cloudKmsKeyVersion")
-    def cloud_kms_key_version(self) -> Optional[pulumi.Input[str]]:
+    def cloud_kms_key_version(self) -> pulumi.Input[str]:
         """
-        Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+        The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
         """
         return pulumi.get(self, "cloud_kms_key_version")
 
     @cloud_kms_key_version.setter
-    def cloud_kms_key_version(self, value: Optional[pulumi.Input[str]]):
+    def cloud_kms_key_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "cloud_kms_key_version", value)
 
 
 @pulumi.input_type
 class ObjectIdArgs:
     def __init__(__self__, *,
-                 object_id_path: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+                 object_id_path: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_path: Required. The parts of an OID path. The most significant parts of the path come first.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_path: The parts of an OID path. The most significant parts of the path come first.
         """
-        if object_id_path is not None:
-            pulumi.set(__self__, "object_id_path", object_id_path)
+        pulumi.set(__self__, "object_id_path", object_id_path)
 
     @property
     @pulumi.getter(name="objectIdPath")
-    def object_id_path(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+    def object_id_path(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
         """
-        Required. The parts of an OID path. The most significant parts of the path come first.
+        The parts of an OID path. The most significant parts of the path come first.
         """
         return pulumi.get(self, "object_id_path")
 
     @object_id_path.setter
-    def object_id_path(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+    def object_id_path(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
         pulumi.set(self, "object_id_path", value)
 
 
 @pulumi.input_type
 class PublicKeyArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None,
+                 key: pulumi.Input[str],
                  type: Optional[pulumi.Input['PublicKeyType']] = None):
         """
         A PublicKey describes a public key.
-        :param pulumi.Input[str] key: Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+        :param pulumi.Input[str] key: A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
         :param pulumi.Input['PublicKeyType'] type: Optional. The type of public key. If specified, it must match the public key used for the`key` field.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
+    def key(self) -> pulumi.Input[str]:
         """
-        Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+        A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
+    def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
 
     @property
@@ -1175,40 +1164,38 @@ class ReusableConfigValuesArgs:
 @pulumi.input_type
 class ReusableConfigWrapperArgs:
     def __init__(__self__, *,
-                 reusable_config: Optional[pulumi.Input[str]] = None,
-                 reusable_config_values: Optional[pulumi.Input['ReusableConfigValuesArgs']] = None):
+                 reusable_config: pulumi.Input[str],
+                 reusable_config_values: pulumi.Input['ReusableConfigValuesArgs']):
         """
         A ReusableConfigWrapper describes values that may assist in creating an X.509 certificate, or a reference to a pre-defined set of values.
-        :param pulumi.Input[str] reusable_config: Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
-        :param pulumi.Input['ReusableConfigValuesArgs'] reusable_config_values: Required. A user-specified inline ReusableConfigValues.
+        :param pulumi.Input[str] reusable_config: A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+        :param pulumi.Input['ReusableConfigValuesArgs'] reusable_config_values: A user-specified inline ReusableConfigValues.
         """
-        if reusable_config is not None:
-            pulumi.set(__self__, "reusable_config", reusable_config)
-        if reusable_config_values is not None:
-            pulumi.set(__self__, "reusable_config_values", reusable_config_values)
+        pulumi.set(__self__, "reusable_config", reusable_config)
+        pulumi.set(__self__, "reusable_config_values", reusable_config_values)
 
     @property
     @pulumi.getter(name="reusableConfig")
-    def reusable_config(self) -> Optional[pulumi.Input[str]]:
+    def reusable_config(self) -> pulumi.Input[str]:
         """
-        Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+        A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
         """
         return pulumi.get(self, "reusable_config")
 
     @reusable_config.setter
-    def reusable_config(self, value: Optional[pulumi.Input[str]]):
+    def reusable_config(self, value: pulumi.Input[str]):
         pulumi.set(self, "reusable_config", value)
 
     @property
     @pulumi.getter(name="reusableConfigValues")
-    def reusable_config_values(self) -> Optional[pulumi.Input['ReusableConfigValuesArgs']]:
+    def reusable_config_values(self) -> pulumi.Input['ReusableConfigValuesArgs']:
         """
-        Required. A user-specified inline ReusableConfigValues.
+        A user-specified inline ReusableConfigValues.
         """
         return pulumi.get(self, "reusable_config_values")
 
     @reusable_config_values.setter
-    def reusable_config_values(self, value: Optional[pulumi.Input['ReusableConfigValuesArgs']]):
+    def reusable_config_values(self, value: pulumi.Input['ReusableConfigValuesArgs']):
         pulumi.set(self, "reusable_config_values", value)
 
 
@@ -1423,21 +1410,32 @@ class SubjectAltNamesArgs:
 @pulumi.input_type
 class SubjectConfigArgs:
     def __init__(__self__, *,
+                 subject: pulumi.Input['SubjectArgs'],
                  common_name: Optional[pulumi.Input[str]] = None,
-                 subject: Optional[pulumi.Input['SubjectArgs']] = None,
                  subject_alt_name: Optional[pulumi.Input['SubjectAltNamesArgs']] = None):
         """
         These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
+        :param pulumi.Input['SubjectArgs'] subject: Contains distinguished name fields such as the location and organization.
         :param pulumi.Input[str] common_name: Optional. The "common name" of the distinguished name.
-        :param pulumi.Input['SubjectArgs'] subject: Required. Contains distinguished name fields such as the location and organization.
         :param pulumi.Input['SubjectAltNamesArgs'] subject_alt_name: Optional. The subject alternative name fields.
         """
+        pulumi.set(__self__, "subject", subject)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
-        if subject is not None:
-            pulumi.set(__self__, "subject", subject)
         if subject_alt_name is not None:
             pulumi.set(__self__, "subject_alt_name", subject_alt_name)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input['SubjectArgs']:
+        """
+        Contains distinguished name fields such as the location and organization.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input['SubjectArgs']):
+        pulumi.set(self, "subject", value)
 
     @property
     @pulumi.getter(name="commonName")
@@ -1450,18 +1448,6 @@ class SubjectConfigArgs:
     @common_name.setter
     def common_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "common_name", value)
-
-    @property
-    @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input['SubjectArgs']]:
-        """
-        Required. Contains distinguished name fields such as the location and organization.
-        """
-        return pulumi.get(self, "subject")
-
-    @subject.setter
-    def subject(self, value: Optional[pulumi.Input['SubjectArgs']]):
-        pulumi.set(self, "subject", value)
 
     @property
     @pulumi.getter(name="subjectAltName")
@@ -1479,120 +1465,114 @@ class SubjectConfigArgs:
 @pulumi.input_type
 class SubordinateConfigArgs:
     def __init__(__self__, *,
-                 certificate_authority: Optional[pulumi.Input[str]] = None,
-                 pem_issuer_chain: Optional[pulumi.Input['SubordinateConfigChainArgs']] = None):
+                 certificate_authority: pulumi.Input[str],
+                 pem_issuer_chain: pulumi.Input['SubordinateConfigChainArgs']):
         """
         Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
-        :param pulumi.Input[str] certificate_authority: Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
-        :param pulumi.Input['SubordinateConfigChainArgs'] pem_issuer_chain: Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+        :param pulumi.Input[str] certificate_authority: This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+        :param pulumi.Input['SubordinateConfigChainArgs'] pem_issuer_chain: Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
         """
-        if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
-        if pem_issuer_chain is not None:
-            pulumi.set(__self__, "pem_issuer_chain", pem_issuer_chain)
+        pulumi.set(__self__, "certificate_authority", certificate_authority)
+        pulumi.set(__self__, "pem_issuer_chain", pem_issuer_chain)
 
     @property
     @pulumi.getter(name="certificateAuthority")
-    def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+    def certificate_authority(self) -> pulumi.Input[str]:
         """
-        Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+        This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
         """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
-    def certificate_authority(self, value: Optional[pulumi.Input[str]]):
+    def certificate_authority(self, value: pulumi.Input[str]):
         pulumi.set(self, "certificate_authority", value)
 
     @property
     @pulumi.getter(name="pemIssuerChain")
-    def pem_issuer_chain(self) -> Optional[pulumi.Input['SubordinateConfigChainArgs']]:
+    def pem_issuer_chain(self) -> pulumi.Input['SubordinateConfigChainArgs']:
         """
-        Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+        Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
         """
         return pulumi.get(self, "pem_issuer_chain")
 
     @pem_issuer_chain.setter
-    def pem_issuer_chain(self, value: Optional[pulumi.Input['SubordinateConfigChainArgs']]):
+    def pem_issuer_chain(self, value: pulumi.Input['SubordinateConfigChainArgs']):
         pulumi.set(self, "pem_issuer_chain", value)
 
 
 @pulumi.input_type
 class SubordinateConfigChainArgs:
     def __init__(__self__, *,
-                 pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 pem_certificates: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Expected to be in leaf-to-root order according to RFC 5246.
         """
-        if pem_certificates is not None:
-            pulumi.set(__self__, "pem_certificates", pem_certificates)
+        pulumi.set(__self__, "pem_certificates", pem_certificates)
 
     @property
     @pulumi.getter(name="pemCertificates")
-    def pem_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def pem_certificates(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. Expected to be in leaf-to-root order according to RFC 5246.
+        Expected to be in leaf-to-root order according to RFC 5246.
         """
         return pulumi.get(self, "pem_certificates")
 
     @pem_certificates.setter
-    def pem_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def pem_certificates(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "pem_certificates", value)
 
 
 @pulumi.input_type
 class X509ExtensionArgs:
     def __init__(__self__, *,
-                 critical: Optional[pulumi.Input[bool]] = None,
-                 object_id: Optional[pulumi.Input['ObjectIdArgs']] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 critical: pulumi.Input[bool],
+                 object_id: pulumi.Input['ObjectIdArgs'],
+                 value: pulumi.Input[str]):
         """
         An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-        :param pulumi.Input[bool] critical: Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-        :param pulumi.Input['ObjectIdArgs'] object_id: Required. The OID for this X.509 extension.
-        :param pulumi.Input[str] value: Required. The value of this X.509 extension.
+        :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        :param pulumi.Input['ObjectIdArgs'] object_id: The OID for this X.509 extension.
+        :param pulumi.Input[str] value: The value of this X.509 extension.
         """
-        if critical is not None:
-            pulumi.set(__self__, "critical", critical)
-        if object_id is not None:
-            pulumi.set(__self__, "object_id", object_id)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def critical(self) -> Optional[pulumi.Input[bool]]:
+    def critical(self) -> pulumi.Input[bool]:
         """
-        Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
         """
         return pulumi.get(self, "critical")
 
     @critical.setter
-    def critical(self, value: Optional[pulumi.Input[bool]]):
+    def critical(self, value: pulumi.Input[bool]):
         pulumi.set(self, "critical", value)
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input['ObjectIdArgs']]:
+    def object_id(self) -> pulumi.Input['ObjectIdArgs']:
         """
-        Required. The OID for this X.509 extension.
+        The OID for this X.509 extension.
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input['ObjectIdArgs']]):
+    def object_id(self, value: pulumi.Input['ObjectIdArgs']):
         pulumi.set(self, "object_id", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
+    def value(self) -> pulumi.Input[str]:
         """
-        Required. The value of this X.509 extension.
+        The value of this X.509 extension.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
+    def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
 

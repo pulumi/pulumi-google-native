@@ -5236,7 +5236,7 @@ class StandardSqlDataTypeResponse(dict):
         The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
         :param 'StandardSqlDataTypeResponse' array_element_type: The type of the array's elements, if type_kind = "ARRAY".
         :param 'StandardSqlStructTypeResponse' struct_type: The fields of this struct, in order, if type_kind = "STRUCT".
-        :param str type_kind: Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        :param str type_kind: The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
         """
         pulumi.set(__self__, "array_element_type", array_element_type)
         pulumi.set(__self__, "struct_type", struct_type)
@@ -5262,7 +5262,7 @@ class StandardSqlDataTypeResponse(dict):
     @pulumi.getter(name="typeKind")
     def type_kind(self) -> str:
         """
-        Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
         """
         return pulumi.get(self, "type_kind")
 

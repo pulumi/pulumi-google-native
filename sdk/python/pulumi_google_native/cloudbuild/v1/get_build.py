@@ -258,7 +258,7 @@ class GetBuildResult:
     @pulumi.getter
     def steps(self) -> Sequence['outputs.BuildStepResponse']:
         """
-        Required. The operations to be performed on the workspace.
+        The operations to be performed on the workspace.
         """
         return pulumi.get(self, "steps")
 

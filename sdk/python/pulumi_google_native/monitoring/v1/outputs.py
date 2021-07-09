@@ -263,7 +263,7 @@ class DataSetResponse(dict):
         :param str legend_template: A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
         :param str min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
         :param str plot_type: How this data should be plotted on the chart.
-        :param 'TimeSeriesQueryResponse' time_series_query: Required. Fields for querying time series data from the Stackdriver metrics API.
+        :param 'TimeSeriesQueryResponse' time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         """
         pulumi.set(__self__, "legend_template", legend_template)
         pulumi.set(__self__, "min_alignment_period", min_alignment_period)
@@ -298,7 +298,7 @@ class DataSetResponse(dict):
     @pulumi.getter(name="timeSeriesQuery")
     def time_series_query(self) -> 'outputs.TimeSeriesQueryResponse':
         """
-        Required. Fields for querying time series data from the Stackdriver metrics API.
+        Fields for querying time series data from the Stackdriver metrics API.
         """
         return pulumi.get(self, "time_series_query")
 
@@ -507,7 +507,7 @@ class RatioPartResponse(dict):
         """
         Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
         :param 'AggregationResponse' aggregation: By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
-        :param str filter: Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        :param str filter: The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         """
         pulumi.set(__self__, "aggregation", aggregation)
         pulumi.set(__self__, "filter", filter)
@@ -524,7 +524,7 @@ class RatioPartResponse(dict):
     @pulumi.getter
     def filter(self) -> str:
         """
-        Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         """
         return pulumi.get(self, "filter")
 
@@ -620,7 +620,7 @@ class ScorecardResponse(dict):
         :param 'GaugeViewResponse' gauge_view: Will cause the scorecard to show a gauge chart.
         :param 'SparkChartViewResponse' spark_chart_view: Will cause the scorecard to show a spark chart.
         :param Sequence['ThresholdResponse'] thresholds: The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
-        :param 'TimeSeriesQueryResponse' time_series_query: Required. Fields for querying time series data from the Stackdriver metrics API.
+        :param 'TimeSeriesQueryResponse' time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         """
         pulumi.set(__self__, "gauge_view", gauge_view)
         pulumi.set(__self__, "spark_chart_view", spark_chart_view)
@@ -655,7 +655,7 @@ class ScorecardResponse(dict):
     @pulumi.getter(name="timeSeriesQuery")
     def time_series_query(self) -> 'outputs.TimeSeriesQueryResponse':
         """
-        Required. Fields for querying time series data from the Stackdriver metrics API.
+        Fields for querying time series data from the Stackdriver metrics API.
         """
         return pulumi.get(self, "time_series_query")
 
@@ -690,7 +690,7 @@ class SparkChartViewResponse(dict):
         """
         A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
         :param str min_alignment_period: The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
-        :param str spark_chart_type: Required. The type of sparkchart to show in this chartView.
+        :param str spark_chart_type: The type of sparkchart to show in this chartView.
         """
         pulumi.set(__self__, "min_alignment_period", min_alignment_period)
         pulumi.set(__self__, "spark_chart_type", spark_chart_type)
@@ -707,7 +707,7 @@ class SparkChartViewResponse(dict):
     @pulumi.getter(name="sparkChartType")
     def spark_chart_type(self) -> str:
         """
-        Required. The type of sparkchart to show in this chartView.
+        The type of sparkchart to show in this chartView.
         """
         return pulumi.get(self, "spark_chart_type")
 
@@ -991,7 +991,7 @@ class TimeSeriesFilterResponse(dict):
         """
         A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
         :param 'AggregationResponse' aggregation: By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
-        :param str filter: Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        :param str filter: The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         :param 'PickTimeSeriesFilterResponse' pick_time_series_filter: Ranking based time series filter.
         :param 'AggregationResponse' secondary_aggregation: Apply a second aggregation after aggregation is applied.
         """
@@ -1012,7 +1012,7 @@ class TimeSeriesFilterResponse(dict):
     @pulumi.getter
     def filter(self) -> str:
         """
-        Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         """
         return pulumi.get(self, "filter")
 
@@ -1234,7 +1234,7 @@ class XyChartResponse(dict):
         """
         A chart that displays data on a 2D (X and Y axes) plane.
         :param 'ChartOptionsResponse' chart_options: Display options for the chart.
-        :param Sequence['DataSetResponse'] data_sets: Required. The data displayed in this chart.
+        :param Sequence['DataSetResponse'] data_sets: The data displayed in this chart.
         :param Sequence['ThresholdResponse'] thresholds: Threshold lines drawn horizontally across the chart.
         :param str timeshift_duration: The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
         :param 'AxisResponse' x_axis: The properties applied to the X axis.
@@ -1259,7 +1259,7 @@ class XyChartResponse(dict):
     @pulumi.getter(name="dataSets")
     def data_sets(self) -> Sequence['outputs.DataSetResponse']:
         """
-        Required. The data displayed in this chart.
+        The data displayed in this chart.
         """
         return pulumi.get(self, "data_sets")
 

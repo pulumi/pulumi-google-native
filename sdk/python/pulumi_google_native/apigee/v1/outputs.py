@@ -300,8 +300,8 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse(dict):
         """
         Labels that can be used to filter Apigee metrics.
         :param str env: The environment ID associated with the metrics.
-        :param str instance_id: Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
-        :param str location: Required. The location associated with the metrics.
+        :param str instance_id: The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+        :param str location: The location associated with the metrics.
         """
         pulumi.set(__self__, "env", env)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -319,7 +319,7 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+        The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
         """
         return pulumi.get(self, "instance_id")
 
@@ -327,7 +327,7 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        Required. The location associated with the metrics.
+        The location associated with the metrics.
         """
         return pulumi.get(self, "location")
 
@@ -720,7 +720,7 @@ class GoogleCloudApigeeV1DatastoreConfigResponse(dict):
         :param str bucket_name: Name of the Cloud Storage bucket. Required for `gcs` target_type.
         :param str dataset_name: BigQuery dataset name Required for `bigquery` target_type.
         :param str path: Path of Cloud Storage bucket Required for `gcs` target_type.
-        :param str project: Required. GCP project in which the datastore exists
+        :param str project: GCP project in which the datastore exists
         :param str table_prefix: Prefix of BigQuery table Required for `bigquery` target_type.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -757,7 +757,7 @@ class GoogleCloudApigeeV1DatastoreConfigResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        Required. GCP project in which the datastore exists
+        GCP project in which the datastore exists
         """
         return pulumi.get(self, "project")
 
@@ -864,9 +864,9 @@ class GoogleCloudApigeeV1GraphQLOperationConfigResponse(dict):
                  quota: 'outputs.GoogleCloudApigeeV1QuotaResponse'):
         """
         GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
-        :param str api_source: Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+        :param str api_source: API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
         :param Sequence['GoogleCloudApigeeV1AttributeResponse'] attributes: Custom attributes associated with the operation.
-        :param Sequence['GoogleCloudApigeeV1GraphQLOperationResponse'] operations: Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+        :param Sequence['GoogleCloudApigeeV1GraphQLOperationResponse'] operations: List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
         :param 'GoogleCloudApigeeV1QuotaResponse' quota: Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
         """
         pulumi.set(__self__, "api_source", api_source)
@@ -878,7 +878,7 @@ class GoogleCloudApigeeV1GraphQLOperationConfigResponse(dict):
     @pulumi.getter(name="apiSource")
     def api_source(self) -> str:
         """
-        Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+        API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
         """
         return pulumi.get(self, "api_source")
 
@@ -894,7 +894,7 @@ class GoogleCloudApigeeV1GraphQLOperationConfigResponse(dict):
     @pulumi.getter
     def operations(self) -> Sequence['outputs.GoogleCloudApigeeV1GraphQLOperationResponse']:
         """
-        Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+        List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
         """
         return pulumi.get(self, "operations")
 
@@ -937,7 +937,7 @@ class GoogleCloudApigeeV1GraphQLOperationGroupResponse(dict):
         """
         List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
         :param str operation_config_type: Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
-        :param Sequence['GoogleCloudApigeeV1GraphQLOperationConfigResponse'] operation_configs: Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        :param Sequence['GoogleCloudApigeeV1GraphQLOperationConfigResponse'] operation_configs: List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
         """
         pulumi.set(__self__, "operation_config_type", operation_config_type)
         pulumi.set(__self__, "operation_configs", operation_configs)
@@ -954,7 +954,7 @@ class GoogleCloudApigeeV1GraphQLOperationGroupResponse(dict):
     @pulumi.getter(name="operationConfigs")
     def operation_configs(self) -> Sequence['outputs.GoogleCloudApigeeV1GraphQLOperationConfigResponse']:
         """
-        Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
         """
         return pulumi.get(self, "operation_configs")
 
@@ -987,7 +987,7 @@ class GoogleCloudApigeeV1GraphQLOperationResponse(dict):
         """
         GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
         :param str operation: GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
-        :param Sequence[str] operation_types: Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        :param Sequence[str] operation_types: `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
         """
         pulumi.set(__self__, "operation", operation)
         pulumi.set(__self__, "operation_types", operation_types)
@@ -1004,7 +1004,7 @@ class GoogleCloudApigeeV1GraphQLOperationResponse(dict):
     @pulumi.getter(name="operationTypes")
     def operation_types(self) -> Sequence[str]:
         """
-        Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
         """
         return pulumi.get(self, "operation_types")
 
@@ -1082,7 +1082,7 @@ class GoogleCloudApigeeV1OperationConfigResponse(dict):
                  quota: 'outputs.GoogleCloudApigeeV1QuotaResponse'):
         """
         OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
-        :param str api_source: Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+        :param str api_source: API proxy or remote service name with which the resources, methods, and quota are associated.
         :param Sequence['GoogleCloudApigeeV1AttributeResponse'] attributes: Custom attributes associated with the operation.
         :param Sequence['GoogleCloudApigeeV1OperationResponse'] operations: List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
         :param 'GoogleCloudApigeeV1QuotaResponse' quota: Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
@@ -1096,7 +1096,7 @@ class GoogleCloudApigeeV1OperationConfigResponse(dict):
     @pulumi.getter(name="apiSource")
     def api_source(self) -> str:
         """
-        Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+        API proxy or remote service name with which the resources, methods, and quota are associated.
         """
         return pulumi.get(self, "api_source")
 
@@ -1155,7 +1155,7 @@ class GoogleCloudApigeeV1OperationGroupResponse(dict):
         """
         List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
         :param str operation_config_type: Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
-        :param Sequence['GoogleCloudApigeeV1OperationConfigResponse'] operation_configs: Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        :param Sequence['GoogleCloudApigeeV1OperationConfigResponse'] operation_configs: List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
         """
         pulumi.set(__self__, "operation_config_type", operation_config_type)
         pulumi.set(__self__, "operation_configs", operation_configs)
@@ -1172,7 +1172,7 @@ class GoogleCloudApigeeV1OperationGroupResponse(dict):
     @pulumi.getter(name="operationConfigs")
     def operation_configs(self) -> Sequence['outputs.GoogleCloudApigeeV1OperationConfigResponse']:
         """
-        Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
         """
         return pulumi.get(self, "operation_configs")
 
@@ -1188,7 +1188,7 @@ class GoogleCloudApigeeV1OperationResponse(dict):
         """
         Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
         :param Sequence[str] methods: methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
-        :param str resource: Required. resource represents REST resource path associated with the proxy/remote service.
+        :param str resource: resource represents REST resource path associated with the proxy/remote service.
         """
         pulumi.set(__self__, "methods", methods)
         pulumi.set(__self__, "resource", resource)
@@ -1205,7 +1205,7 @@ class GoogleCloudApigeeV1OperationResponse(dict):
     @pulumi.getter
     def resource(self) -> str:
         """
-        Required. resource represents REST resource path associated with the proxy/remote service.
+        resource represents REST resource path associated with the proxy/remote service.
         """
         return pulumi.get(self, "resource")
 
@@ -1389,8 +1389,8 @@ class GoogleCloudApigeeV1QuotaResponse(dict):
                  time_unit: str):
         """
         Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
-        :param str interval: Required. Time interval over which the number of request messages is calculated.
-        :param str limit: Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        :param str interval: Time interval over which the number of request messages is calculated.
+        :param str limit: Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
         :param str time_unit: Time unit defined for the `interval`. Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default value is `hour`; otherwise, the default is null.
         """
         pulumi.set(__self__, "interval", interval)
@@ -1401,7 +1401,7 @@ class GoogleCloudApigeeV1QuotaResponse(dict):
     @pulumi.getter
     def interval(self) -> str:
         """
-        Required. Time interval over which the number of request messages is calculated.
+        Time interval over which the number of request messages is calculated.
         """
         return pulumi.get(self, "interval")
 
@@ -1409,7 +1409,7 @@ class GoogleCloudApigeeV1QuotaResponse(dict):
     @pulumi.getter
     def limit(self) -> str:
         """
-        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
         """
         return pulumi.get(self, "limit")
 
@@ -1649,7 +1649,7 @@ class GoogleCloudApigeeV1TlsInfoResponse(dict):
         :param Sequence[str] ciphers: The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
         :param bool client_auth_enabled: Optional. Enables two-way TLS.
         :param 'GoogleCloudApigeeV1TlsInfoCommonNameResponse' common_name: The TLS Common Name of the certificate.
-        :param bool enabled: Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+        :param bool enabled: Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
         :param bool ignore_validation_errors: If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
         :param str key_alias: Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
         :param str key_store: Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
@@ -1694,7 +1694,7 @@ class GoogleCloudApigeeV1TlsInfoResponse(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+        Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
         """
         return pulumi.get(self, "enabled")
 

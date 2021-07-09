@@ -28,7 +28,7 @@ class GetTenantResult:
     @pulumi.getter(name="externalId")
     def external_id(self) -> str:
         """
-        Required. Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255.
+        Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255.
         """
         return pulumi.get(self, "external_id")
 

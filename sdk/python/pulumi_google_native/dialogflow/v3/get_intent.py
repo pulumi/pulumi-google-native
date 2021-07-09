@@ -55,7 +55,7 @@ class GetIntentResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The human-readable name of the intent, unique within the agent.
+        The human-readable name of the intent, unique within the agent.
         """
         return pulumi.get(self, "display_name")
 

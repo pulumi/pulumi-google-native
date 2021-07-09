@@ -20,33 +20,55 @@ __all__ = [
 @pulumi.input_type
 class DiskArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input['DiskType'],
                  mount_point: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  size_gb: Optional[pulumi.Input[int]] = None,
-                 source: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['DiskType']] = None):
+                 source: Optional[pulumi.Input[str]] = None):
         """
         A Google Compute Engine disk resource specification.
+        :param pulumi.Input[str] name: The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+        :param pulumi.Input['DiskType'] type: The type of the disk to create.
         :param pulumi.Input[str] mount_point: Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
-        :param pulumi.Input[str] name: Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
         :param pulumi.Input[bool] read_only: Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
         :param pulumi.Input[int] size_gb: The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.
         :param pulumi.Input[str] source: The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
-        :param pulumi.Input['DiskType'] type: Required. The type of the disk to create.
         """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
         if mount_point is not None:
             pulumi.set(__self__, "mount_point", mount_point)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
         if size_gb is not None:
             pulumi.set(__self__, "size_gb", size_gb)
         if source is not None:
             pulumi.set(__self__, "source", source)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['DiskType']:
+        """
+        The type of the disk to create.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['DiskType']):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="mountPoint")
@@ -59,18 +81,6 @@ class DiskArgs:
     @mount_point.setter
     def mount_point(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_point", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="readOnly")
@@ -108,121 +118,116 @@ class DiskArgs:
     def source(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source", value)
 
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['DiskType']]:
-        """
-        Required. The type of the disk to create.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['DiskType']]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class DockerExecutorArgs:
     def __init__(__self__, *,
-                 cmd: Optional[pulumi.Input[str]] = None,
-                 image_name: Optional[pulumi.Input[str]] = None):
+                 cmd: pulumi.Input[str],
+                 image_name: pulumi.Input[str]):
         """
         The Docker execuctor specification.
-        :param pulumi.Input[str] cmd: Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
-        :param pulumi.Input[str] image_name: Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+        :param pulumi.Input[str] cmd: The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+        :param pulumi.Input[str] image_name: Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
         """
-        if cmd is not None:
-            pulumi.set(__self__, "cmd", cmd)
-        if image_name is not None:
-            pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "cmd", cmd)
+        pulumi.set(__self__, "image_name", image_name)
 
     @property
     @pulumi.getter
-    def cmd(self) -> Optional[pulumi.Input[str]]:
+    def cmd(self) -> pulumi.Input[str]:
         """
-        Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+        The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
         """
         return pulumi.get(self, "cmd")
 
     @cmd.setter
-    def cmd(self, value: Optional[pulumi.Input[str]]):
+    def cmd(self, value: pulumi.Input[str]):
         pulumi.set(self, "cmd", value)
 
     @property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[str]]:
+    def image_name(self) -> pulumi.Input[str]:
         """
-        Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+        Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[str]]):
+    def image_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "image_name", value)
 
 
 @pulumi.input_type
 class LocalCopyArgs:
     def __init__(__self__, *,
-                 disk: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[str]] = None):
+                 disk: pulumi.Input[str],
+                 path: pulumi.Input[str]):
         """
         LocalCopy defines how a remote file should be copied to and from the VM.
-        :param pulumi.Input[str] disk: Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
-        :param pulumi.Input[str] path: Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+        :param pulumi.Input[str] disk: The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+        :param pulumi.Input[str] path: The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
         """
-        if disk is not None:
-            pulumi.set(__self__, "disk", disk)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[str]]:
+    def disk(self) -> pulumi.Input[str]:
         """
-        Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+        The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
         """
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[str]]):
+    def disk(self, value: pulumi.Input[str]):
         pulumi.set(self, "disk", value)
 
     @property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[str]]:
+    def path(self) -> pulumi.Input[str]:
         """
-        Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+        The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[str]]):
+    def path(self, value: pulumi.Input[str]):
         pulumi.set(self, "path", value)
 
 
 @pulumi.input_type
 class PipelineParameterArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  default_value: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 local_copy: Optional[pulumi.Input['LocalCopyArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 local_copy: Optional[pulumi.Input['LocalCopyArgs']] = None):
         """
         Parameters facilitate setting and delivering data into the pipeline's execution environment. They are defined at create time, with optional defaults, and can be overridden at run time. If `localCopy` is unset, then the parameter specifies a string that is passed as-is into the pipeline, as the value of the environment variable with the given name. A default value can be optionally specified at create time. The default can be overridden at run time using the inputs map. If no default is given, a value must be supplied at runtime. If `localCopy` is defined, then the parameter specifies a data source or sink, both in Google Cloud Storage and on the Docker container where the pipeline computation is run. The service account associated with the Pipeline (by default the project's Compute Engine service account) must have access to the Google Cloud Storage paths. At run time, the Google Cloud Storage paths can be overridden if a default was provided at create time, or must be set otherwise. The pipeline runner should add a key/value pair to either the inputs or outputs map. The indicated data copies will be carried out before/after pipeline execution, just as if the corresponding arguments were provided to `gsutil cp`. For example: Given the following `PipelineParameter`, specified in the `inputParameters` list: ``` {name: "input_file", localCopy: {path: "file.txt", disk: "pd1"}} ``` where `disk` is defined in the `PipelineResources` object as: ``` {name: "pd1", mountPoint: "/mnt/disk/"} ``` We create a disk named `pd1`, mount it on the host VM, and map `/mnt/pd1` to `/mnt/disk` in the docker container. At runtime, an entry for `input_file` would be required in the inputs map, such as: ``` inputs["input_file"] = "gs://my-bucket/bar.txt" ``` This would generate the following gsutil call: ``` gsutil cp gs://my-bucket/bar.txt /mnt/pd1/file.txt ``` The file `/mnt/pd1/file.txt` maps to `/mnt/disk/file.txt` in the Docker container. Acceptable paths are: Google Cloud storage pathLocal path file file glob directory For outputs, the direction of the copy is reversed: ``` gsutil cp /mnt/disk/file.txt gs://my-bucket/bar.txt ``` Acceptable paths are: Local pathGoogle Cloud Storage path file file file directory - directory must already exist glob directory - directory will be created if it doesn't exist One restriction due to docker limitations, is that for outputs that are found on the boot disk, the local path cannot be a glob and must be a file.
+        :param pulumi.Input[str] name: Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
         :param pulumi.Input[str] default_value: The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then this must be a Google Cloud Storage path beginning with `gs://`.
         :param pulumi.Input[str] description: Human-readable description.
         :param pulumi.Input['LocalCopyArgs'] local_copy: If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
-        :param pulumi.Input[str] name: Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
         """
+        pulumi.set(__self__, "name", name)
         if default_value is not None:
             pulumi.set(__self__, "default_value", default_value)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if local_copy is not None:
             pulumi.set(__self__, "local_copy", local_copy)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="defaultValue")
@@ -259,18 +264,6 @@ class PipelineParameterArgs:
     @local_copy.setter
     def local_copy(self, value: Optional[pulumi.Input['LocalCopyArgs']]):
         pulumi.set(self, "local_copy", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

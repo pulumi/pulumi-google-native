@@ -76,7 +76,7 @@ class GetEnvironmentResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         """
         return pulumi.get(self, "name")
 

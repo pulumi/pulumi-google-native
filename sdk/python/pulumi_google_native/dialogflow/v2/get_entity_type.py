@@ -49,7 +49,7 @@ class GetEntityTypeResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The name of the entity type.
+        The name of the entity type.
         """
         return pulumi.get(self, "display_name")
 
@@ -73,7 +73,7 @@ class GetEntityTypeResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        Required. Indicates the kind of entity type.
+        Indicates the kind of entity type.
         """
         return pulumi.get(self, "kind")
 

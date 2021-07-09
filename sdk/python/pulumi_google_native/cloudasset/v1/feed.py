@@ -16,25 +16,28 @@ __all__ = ['FeedArgs', 'Feed']
 @pulumi.input_type
 class FeedArgs:
     def __init__(__self__, *,
+                 feed_id: pulumi.Input[str],
+                 feed_output_config: pulumi.Input['FeedOutputConfigArgs'],
+                 name: pulumi.Input[str],
                  v1_id: pulumi.Input[str],
                  v1_id1: pulumi.Input[str],
                  asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  condition: Optional[pulumi.Input['ExprArgs']] = None,
-                 content_type: Optional[pulumi.Input['FeedContentType']] = None,
-                 feed_id: Optional[pulumi.Input[str]] = None,
-                 feed_output_config: Optional[pulumi.Input['FeedOutputConfigArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 content_type: Optional[pulumi.Input['FeedContentType']] = None):
         """
         The set of arguments for constructing a Feed resource.
+        :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
+        :param pulumi.Input['FeedOutputConfigArgs'] feed_output_config: Feed output configuration defining where the asset updates are published to.
+        :param pulumi.Input[str] name: The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` See [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for a list of all supported asset types.
         :param pulumi.Input['ExprArgs'] condition: A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
         :param pulumi.Input['FeedContentType'] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
-        :param pulumi.Input[str] feed_id: Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-        :param pulumi.Input['FeedOutputConfigArgs'] feed_output_config: Required. Feed output configuration defining where the asset updates are published to.
-        :param pulumi.Input[str] name: Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
         """
+        pulumi.set(__self__, "feed_id", feed_id)
+        pulumi.set(__self__, "feed_output_config", feed_output_config)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "v1_id", v1_id)
         pulumi.set(__self__, "v1_id1", v1_id1)
         if asset_names is not None:
@@ -45,12 +48,42 @@ class FeedArgs:
             pulumi.set(__self__, "condition", condition)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
-        if feed_id is not None:
-            pulumi.set(__self__, "feed_id", feed_id)
-        if feed_output_config is not None:
-            pulumi.set(__self__, "feed_output_config", feed_output_config)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="feedId")
+    def feed_id(self) -> pulumi.Input[str]:
+        """
+        This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
+        """
+        return pulumi.get(self, "feed_id")
+
+    @feed_id.setter
+    def feed_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "feed_id", value)
+
+    @property
+    @pulumi.getter(name="feedOutputConfig")
+    def feed_output_config(self) -> pulumi.Input['FeedOutputConfigArgs']:
+        """
+        Feed output configuration defining where the asset updates are published to.
+        """
+        return pulumi.get(self, "feed_output_config")
+
+    @feed_output_config.setter
+    def feed_output_config(self, value: pulumi.Input['FeedOutputConfigArgs']):
+        pulumi.set(self, "feed_output_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="v1Id")
@@ -118,42 +151,6 @@ class FeedArgs:
     def content_type(self, value: Optional[pulumi.Input['FeedContentType']]):
         pulumi.set(self, "content_type", value)
 
-    @property
-    @pulumi.getter(name="feedId")
-    def feed_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-        """
-        return pulumi.get(self, "feed_id")
-
-    @feed_id.setter
-    def feed_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "feed_id", value)
-
-    @property
-    @pulumi.getter(name="feedOutputConfig")
-    def feed_output_config(self) -> Optional[pulumi.Input['FeedOutputConfigArgs']]:
-        """
-        Required. Feed output configuration defining where the asset updates are published to.
-        """
-        return pulumi.get(self, "feed_output_config")
-
-    @feed_output_config.setter
-    def feed_output_config(self, value: Optional[pulumi.Input['FeedOutputConfigArgs']]):
-        pulumi.set(self, "feed_output_config", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
 
 class Feed(pulumi.CustomResource):
     @overload
@@ -179,9 +176,9 @@ class Feed(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` See [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for a list of all supported asset types.
         :param pulumi.Input[pulumi.InputType['ExprArgs']] condition: A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
         :param pulumi.Input['FeedContentType'] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
-        :param pulumi.Input[str] feed_id: Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-        :param pulumi.Input[pulumi.InputType['FeedOutputConfigArgs']] feed_output_config: Required. Feed output configuration defining where the asset updates are published to.
-        :param pulumi.Input[str] name: Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+        :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
+        :param pulumi.Input[pulumi.InputType['FeedOutputConfigArgs']] feed_output_config: Feed output configuration defining where the asset updates are published to.
+        :param pulumi.Input[str] name: The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
         """
         ...
     @overload
@@ -232,8 +229,14 @@ class Feed(pulumi.CustomResource):
             __props__.__dict__["asset_types"] = asset_types
             __props__.__dict__["condition"] = condition
             __props__.__dict__["content_type"] = content_type
+            if feed_id is None and not opts.urn:
+                raise TypeError("Missing required property 'feed_id'")
             __props__.__dict__["feed_id"] = feed_id
+            if feed_output_config is None and not opts.urn:
+                raise TypeError("Missing required property 'feed_output_config'")
             __props__.__dict__["feed_output_config"] = feed_output_config
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if v1_id is None and not opts.urn:
                 raise TypeError("Missing required property 'v1_id'")
@@ -307,7 +310,7 @@ class Feed(pulumi.CustomResource):
     @pulumi.getter(name="feedOutputConfig")
     def feed_output_config(self) -> pulumi.Output['outputs.FeedOutputConfigResponse']:
         """
-        Required. Feed output configuration defining where the asset updates are published to.
+        Feed output configuration defining where the asset updates are published to.
         """
         return pulumi.get(self, "feed_output_config")
 
@@ -315,7 +318,7 @@ class Feed(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+        The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
         """
         return pulumi.get(self, "name")
 

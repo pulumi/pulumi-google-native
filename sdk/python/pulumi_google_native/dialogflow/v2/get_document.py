@@ -58,7 +58,7 @@ class GetDocumentResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
         """
         return pulumi.get(self, "display_name")
 
@@ -74,7 +74,7 @@ class GetDocumentResult:
     @pulumi.getter(name="knowledgeTypes")
     def knowledge_types(self) -> Sequence[str]:
         """
-        Required. The knowledge type of document content.
+        The knowledge type of document content.
         """
         return pulumi.get(self, "knowledge_types")
 
@@ -98,7 +98,7 @@ class GetDocumentResult:
     @pulumi.getter(name="mimeType")
     def mime_type(self) -> str:
         """
-        Required. The MIME type of this document.
+        The MIME type of this document.
         """
         return pulumi.get(self, "mime_type")
 

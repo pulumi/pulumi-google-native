@@ -366,10 +366,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse(dict):
         """
         Defines the configuration to be used for creating workers in the worker pool.
         :param 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse' accelerator: The accelerator card attached to each VM.
-        :param str disk_size_gb: Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
-        :param str disk_type: Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+        :param str disk_size_gb: Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+        :param str disk_type: Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
         :param Mapping[str, str] labels: Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
-        :param str machine_type: Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+        :param str machine_type: Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
         :param str max_concurrent_actions: The maximum number of actions a worker can execute concurrently.
         :param str min_cpu_platform: Minimum CPU platform to use when creating the worker. See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
         :param str network_access: Determines the type of network access granted to workers. Possible values: - "public": Workers can connect to the public internet. - "private": Workers can only connect to Google APIs and services. - "restricted-private": Workers can only connect to Google APIs that are reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
@@ -401,7 +401,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse(dict):
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> str:
         """
-        Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+        Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -409,7 +409,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         """
-        Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+        Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
         """
         return pulumi.get(self, "disk_type")
 
@@ -425,7 +425,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         """
-        Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+        Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
         """
         return pulumi.get(self, "machine_type")
 

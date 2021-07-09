@@ -103,7 +103,7 @@ class GetInstanceResult:
     @pulumi.getter
     def location(self) -> str:
         """
-        Required. Compute Engine location where the instance resides.
+        Compute Engine location where the instance resides.
         """
         return pulumi.get(self, "location")
 
@@ -111,7 +111,7 @@ class GetInstanceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         """
         return pulumi.get(self, "name")
 

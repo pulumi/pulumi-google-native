@@ -74,7 +74,7 @@ class GetNodeResult:
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> str:
         """
-        Required. The type of hardware accelerators associated with this node.
+        The type of hardware accelerators associated with this node.
         """
         return pulumi.get(self, "accelerator_type")
 
@@ -194,7 +194,7 @@ class GetNodeResult:
     @pulumi.getter(name="tensorflowVersion")
     def tensorflow_version(self) -> str:
         """
-        Required. The version of Tensorflow running in the Node.
+        The version of Tensorflow running in the Node.
         """
         return pulumi.get(self, "tensorflow_version")
 

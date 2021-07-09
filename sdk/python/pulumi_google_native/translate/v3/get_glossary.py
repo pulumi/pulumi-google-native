@@ -60,7 +60,7 @@ class GetGlossaryResult:
     @pulumi.getter(name="inputConfig")
     def input_config(self) -> 'outputs.GlossaryInputConfigResponse':
         """
-        Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+        Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
         """
         return pulumi.get(self, "input_config")
 
@@ -84,7 +84,7 @@ class GetGlossaryResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+        The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         """
         return pulumi.get(self, "name")
 

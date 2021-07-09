@@ -15,11 +15,11 @@ __all__ = ['CompanyArgs', 'Company']
 @pulumi.input_type
 class CompanyArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 external_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  career_site_uri: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  eeo_text: Optional[pulumi.Input[str]] = None,
-                 external_id: Optional[pulumi.Input[str]] = None,
                  headquarters_address: Optional[pulumi.Input[str]] = None,
                  hiring_agency: Optional[pulumi.Input[bool]] = None,
                  image_uri: Optional[pulumi.Input[str]] = None,
@@ -29,10 +29,10 @@ class CompanyArgs:
                  website_uri: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Company resource.
+        :param pulumi.Input[str] display_name: The display name of the company, for example, "Google LLC".
+        :param pulumi.Input[str] external_id: Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
         :param pulumi.Input[str] career_site_uri: Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
-        :param pulumi.Input[str] display_name: Required. The display name of the company, for example, "Google LLC".
         :param pulumi.Input[str] eeo_text: Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
-        :param pulumi.Input[str] external_id: Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
         :param pulumi.Input[str] headquarters_address: Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
         :param pulumi.Input[bool] hiring_agency: Optional. Set to true if it is the hiring agency that post jobs for other employers. Defaults to false if not provided.
         :param pulumi.Input[str] image_uri: Optional. A URI that hosts the employer's company logo.
@@ -41,15 +41,13 @@ class CompanyArgs:
         :param pulumi.Input['CompanySize'] size: Optional. The employer's company size.
         :param pulumi.Input[str] website_uri: Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
         """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "external_id", external_id)
         pulumi.set(__self__, "project", project)
         if career_site_uri is not None:
             pulumi.set(__self__, "career_site_uri", career_site_uri)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if eeo_text is not None:
             pulumi.set(__self__, "eeo_text", eeo_text)
-        if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
         if headquarters_address is not None:
             pulumi.set(__self__, "headquarters_address", headquarters_address)
         if hiring_agency is not None:
@@ -64,6 +62,30 @@ class CompanyArgs:
             pulumi.set(__self__, "size", size)
         if website_uri is not None:
             pulumi.set(__self__, "website_uri", website_uri)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the company, for example, "Google LLC".
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> pulumi.Input[str]:
+        """
+        Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "external_id", value)
 
     @property
     @pulumi.getter
@@ -87,18 +109,6 @@ class CompanyArgs:
         pulumi.set(self, "career_site_uri", value)
 
     @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The display name of the company, for example, "Google LLC".
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
     @pulumi.getter(name="eeoText")
     def eeo_text(self) -> Optional[pulumi.Input[str]]:
         """
@@ -109,18 +119,6 @@ class CompanyArgs:
     @eeo_text.setter
     def eeo_text(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "eeo_text", value)
-
-    @property
-    @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
-        """
-        return pulumi.get(self, "external_id")
-
-    @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "external_id", value)
 
     @property
     @pulumi.getter(name="headquartersAddress")
@@ -231,9 +229,9 @@ class Company(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] career_site_uri: Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
-        :param pulumi.Input[str] display_name: Required. The display name of the company, for example, "Google LLC".
+        :param pulumi.Input[str] display_name: The display name of the company, for example, "Google LLC".
         :param pulumi.Input[str] eeo_text: Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
-        :param pulumi.Input[str] external_id: Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+        :param pulumi.Input[str] external_id: Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
         :param pulumi.Input[str] headquarters_address: Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
         :param pulumi.Input[bool] hiring_agency: Optional. Set to true if it is the hiring agency that post jobs for other employers. Defaults to false if not provided.
         :param pulumi.Input[str] image_uri: Optional. A URI that hosts the employer's company logo.
@@ -291,8 +289,12 @@ class Company(pulumi.CustomResource):
             __props__ = CompanyArgs.__new__(CompanyArgs)
 
             __props__.__dict__["career_site_uri"] = career_site_uri
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["eeo_text"] = eeo_text
+            if external_id is None and not opts.urn:
+                raise TypeError("Missing required property 'external_id'")
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["headquarters_address"] = headquarters_address
             __props__.__dict__["hiring_agency"] = hiring_agency
@@ -363,7 +365,7 @@ class Company(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The display name of the company, for example, "Google LLC".
+        The display name of the company, for example, "Google LLC".
         """
         return pulumi.get(self, "display_name")
 
@@ -379,7 +381,7 @@ class Company(pulumi.CustomResource):
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[str]:
         """
-        Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+        Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
         """
         return pulumi.get(self, "external_id")
 

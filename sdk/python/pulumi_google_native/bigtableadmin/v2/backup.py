@@ -16,27 +16,25 @@ class BackupArgs:
     def __init__(__self__, *,
                  backup_id: pulumi.Input[str],
                  cluster_id: pulumi.Input[str],
+                 expire_time: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 expire_time: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 source_table: Optional[pulumi.Input[str]] = None):
+                 source_table: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Backup resource.
-        :param pulumi.Input[str] expire_time: Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        :param pulumi.Input[str] expire_time: The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        :param pulumi.Input[str] source_table: Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         :param pulumi.Input[str] name: A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
-        :param pulumi.Input[str] source_table: Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project", project)
-        if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "source_table", source_table)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if source_table is not None:
-            pulumi.set(__self__, "source_table", source_table)
 
     @property
     @pulumi.getter(name="backupId")
@@ -57,6 +55,18 @@ class BackupArgs:
         pulumi.set(self, "cluster_id", value)
 
     @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Input[str]:
+        """
+        The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expire_time", value)
+
+    @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "instance_id")
@@ -75,16 +85,16 @@ class BackupArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="sourceTable")
+    def source_table(self) -> pulumi.Input[str]:
         """
-        Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         """
-        return pulumi.get(self, "expire_time")
+        return pulumi.get(self, "source_table")
 
-    @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expire_time", value)
+    @source_table.setter
+    def source_table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_table", value)
 
     @property
     @pulumi.getter
@@ -97,18 +107,6 @@ class BackupArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="sourceTable")
-    def source_table(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
-        """
-        return pulumi.get(self, "source_table")
-
-    @source_table.setter
-    def source_table(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source_table", value)
 
 
 class Backup(pulumi.CustomResource):
@@ -129,9 +127,9 @@ class Backup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] expire_time: Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        :param pulumi.Input[str] expire_time: The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
         :param pulumi.Input[str] name: A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
-        :param pulumi.Input[str] source_table: Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+        :param pulumi.Input[str] source_table: Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         """
         ...
     @overload
@@ -182,6 +180,8 @@ class Backup(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            if expire_time is None and not opts.urn:
+                raise TypeError("Missing required property 'expire_time'")
             __props__.__dict__["expire_time"] = expire_time
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
@@ -190,6 +190,8 @@ class Backup(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if source_table is None and not opts.urn:
+                raise TypeError("Missing required property 'source_table'")
             __props__.__dict__["source_table"] = source_table
             __props__.__dict__["encryption_info"] = None
             __props__.__dict__["end_time"] = None
@@ -248,7 +250,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[str]:
         """
-        Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
         """
         return pulumi.get(self, "expire_time")
 
@@ -272,7 +274,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter(name="sourceTable")
     def source_table(self) -> pulumi.Output[str]:
         """
-        Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+        Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         """
         return pulumi.get(self, "source_table")
 

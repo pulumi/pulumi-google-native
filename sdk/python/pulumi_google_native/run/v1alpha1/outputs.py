@@ -1169,7 +1169,7 @@ class InstanceStatusResponse(dict):
         Instance represents the status of an instance of a Job.
         :param str completion_time: Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
         :param int failed: Optional. The number of times this instance exited with code > 0; +optional
-        :param int index: Required. Index of the instance, unique per Job, and beginning at 0.
+        :param int index: Index of the instance, unique per Job, and beginning at 0.
         :param int last_exit_code: Optional. Last exit code seen for this instance. +optional
         :param int restarted: Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
         :param str start_time: Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
@@ -1203,7 +1203,7 @@ class InstanceStatusResponse(dict):
     @pulumi.getter
     def index(self) -> int:
         """
-        Required. Index of the instance, unique per Job, and beginning at 0.
+        Index of the instance, unique per Job, and beginning at 0.
         """
         return pulumi.get(self, "index")
 
@@ -1360,8 +1360,8 @@ class JobConditionResponse(dict):
         :param str message: Optional. Human readable message indicating details about the current status.
         :param str reason: Optional. One-word CamelCase reason for the condition's last transition.
         :param str severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
-        :param str status: Required. Status of the condition, one of True, False, Unknown.
-        :param str type: Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        :param str status: Status of the condition, one of True, False, Unknown.
+        :param str type: Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         """
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
@@ -1406,7 +1406,7 @@ class JobConditionResponse(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Required. Status of the condition, one of True, False, Unknown.
+        Status of the condition, one of True, False, Unknown.
         """
         return pulumi.get(self, "status")
 
@@ -1414,7 +1414,7 @@ class JobConditionResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         """
         return pulumi.get(self, "type")
 

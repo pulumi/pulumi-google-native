@@ -52,7 +52,7 @@ class GetFlowResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The human-readable name of the flow.
+        The human-readable name of the flow.
         """
         return pulumi.get(self, "display_name")
 

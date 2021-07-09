@@ -77,96 +77,91 @@ class AuthenticationArgs:
 @pulumi.input_type
 class CustomAccountArgs:
     def __init__(__self__, *,
-                 login_url: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 username: Optional[pulumi.Input[str]] = None):
+                 login_url: pulumi.Input[str],
+                 password: pulumi.Input[str],
+                 username: pulumi.Input[str]):
         """
         Describes authentication configuration that uses a custom account.
-        :param pulumi.Input[str] login_url: Required. The login form URL of the website.
-        :param pulumi.Input[str] password: Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-        :param pulumi.Input[str] username: Required. The user name of the custom account.
+        :param pulumi.Input[str] login_url: The login form URL of the website.
+        :param pulumi.Input[str] password: Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        :param pulumi.Input[str] username: The user name of the custom account.
         """
-        if login_url is not None:
-            pulumi.set(__self__, "login_url", login_url)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "login_url", login_url)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="loginUrl")
-    def login_url(self) -> Optional[pulumi.Input[str]]:
+    def login_url(self) -> pulumi.Input[str]:
         """
-        Required. The login form URL of the website.
+        The login form URL of the website.
         """
         return pulumi.get(self, "login_url")
 
     @login_url.setter
-    def login_url(self, value: Optional[pulumi.Input[str]]):
+    def login_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "login_url", value)
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[str]]:
+    def password(self) -> pulumi.Input[str]:
         """
-        Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[str]]):
+    def password(self, value: pulumi.Input[str]):
         pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[str]]:
+    def username(self) -> pulumi.Input[str]:
         """
-        Required. The user name of the custom account.
+        The user name of the custom account.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[str]]):
+    def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
 class GoogleAccountArgs:
     def __init__(__self__, *,
-                 password: Optional[pulumi.Input[str]] = None,
-                 username: Optional[pulumi.Input[str]] = None):
+                 password: pulumi.Input[str],
+                 username: pulumi.Input[str]):
         """
         Describes authentication configuration that uses a Google account.
-        :param pulumi.Input[str] password: Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-        :param pulumi.Input[str] username: Required. The user name of the Google account.
+        :param pulumi.Input[str] password: Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        :param pulumi.Input[str] username: The user name of the Google account.
         """
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[str]]:
+    def password(self) -> pulumi.Input[str]:
         """
-        Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[str]]):
+    def password(self, value: pulumi.Input[str]):
         pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[str]]:
+    def username(self) -> pulumi.Input[str]:
         """
-        Required. The user name of the Google account.
+        The user name of the Google account.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[str]]):
+    def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
 
@@ -197,52 +192,50 @@ class IapCredentialArgs:
 @pulumi.input_type
 class IapTestServiceAccountInfoArgs:
     def __init__(__self__, *,
-                 target_audience_client_id: Optional[pulumi.Input[str]] = None):
+                 target_audience_client_id: pulumi.Input[str]):
         """
         Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
-        :param pulumi.Input[str] target_audience_client_id: Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+        :param pulumi.Input[str] target_audience_client_id: Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
         """
-        if target_audience_client_id is not None:
-            pulumi.set(__self__, "target_audience_client_id", target_audience_client_id)
+        pulumi.set(__self__, "target_audience_client_id", target_audience_client_id)
 
     @property
     @pulumi.getter(name="targetAudienceClientId")
-    def target_audience_client_id(self) -> Optional[pulumi.Input[str]]:
+    def target_audience_client_id(self) -> pulumi.Input[str]:
         """
-        Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+        Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
         """
         return pulumi.get(self, "target_audience_client_id")
 
     @target_audience_client_id.setter
-    def target_audience_client_id(self, value: Optional[pulumi.Input[str]]):
+    def target_audience_client_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "target_audience_client_id", value)
 
 
 @pulumi.input_type
 class ScheduleArgs:
     def __init__(__self__, *,
-                 interval_duration_days: Optional[pulumi.Input[int]] = None,
+                 interval_duration_days: pulumi.Input[int],
                  schedule_time: Optional[pulumi.Input[str]] = None):
         """
         Scan schedule configuration.
-        :param pulumi.Input[int] interval_duration_days: Required. The duration of time between executions in days.
+        :param pulumi.Input[int] interval_duration_days: The duration of time between executions in days.
         :param pulumi.Input[str] schedule_time: A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
         """
-        if interval_duration_days is not None:
-            pulumi.set(__self__, "interval_duration_days", interval_duration_days)
+        pulumi.set(__self__, "interval_duration_days", interval_duration_days)
         if schedule_time is not None:
             pulumi.set(__self__, "schedule_time", schedule_time)
 
     @property
     @pulumi.getter(name="intervalDurationDays")
-    def interval_duration_days(self) -> Optional[pulumi.Input[int]]:
+    def interval_duration_days(self) -> pulumi.Input[int]:
         """
-        Required. The duration of time between executions in days.
+        The duration of time between executions in days.
         """
         return pulumi.get(self, "interval_duration_days")
 
     @interval_duration_days.setter
-    def interval_duration_days(self, value: Optional[pulumi.Input[int]]):
+    def interval_duration_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "interval_duration_days", value)
 
     @property

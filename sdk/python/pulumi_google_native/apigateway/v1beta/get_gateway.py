@@ -46,7 +46,7 @@ class GetGatewayResult:
     @pulumi.getter(name="apiConfig")
     def api_config(self) -> str:
         """
-        Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
         """
         return pulumi.get(self, "api_config")
 

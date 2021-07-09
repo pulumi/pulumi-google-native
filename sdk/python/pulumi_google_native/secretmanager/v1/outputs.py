@@ -235,7 +235,7 @@ class CustomerManagedEncryptionResponse(dict):
                  kms_key_name: str):
         """
         Configuration for encrypting secret payloads using customer-managed encryption keys (CMEK).
-        :param str kms_key_name: Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param str kms_key_name: The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -243,7 +243,7 @@ class CustomerManagedEncryptionResponse(dict):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> str:
         """
-        Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -464,7 +464,7 @@ class TopicResponse(dict):
                  name: str):
         """
         A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
-        :param str name: Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+        :param str name: The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
         """
         pulumi.set(__self__, "name", name)
 
@@ -472,7 +472,7 @@ class TopicResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+        The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
         """
         return pulumi.get(self, "name")
 
@@ -486,7 +486,7 @@ class UserManagedResponse(dict):
                  replicas: Sequence['outputs.ReplicaResponse']):
         """
         A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
-        :param Sequence['ReplicaResponse'] replicas: Required. The list of Replicas for this Secret. Cannot be empty.
+        :param Sequence['ReplicaResponse'] replicas: The list of Replicas for this Secret. Cannot be empty.
         """
         pulumi.set(__self__, "replicas", replicas)
 
@@ -494,7 +494,7 @@ class UserManagedResponse(dict):
     @pulumi.getter
     def replicas(self) -> Sequence['outputs.ReplicaResponse']:
         """
-        Required. The list of Replicas for this Secret. Cannot be empty.
+        The list of Replicas for this Secret. Cannot be empty.
         """
         return pulumi.get(self, "replicas")
 

@@ -14,33 +14,31 @@ __all__ = ['SecuritySettingArgs', 'SecuritySetting']
 @pulumi.input_type
 class SecuritySettingArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 display_name: Optional[pulumi.Input[str]] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]] = None,
                  redaction_scope: Optional[pulumi.Input['SecuritySettingRedactionScope']] = None,
                  redaction_strategy: Optional[pulumi.Input['SecuritySettingRedactionStrategy']] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a SecuritySetting resource.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the security settings, unique within the location.
+        :param pulumi.Input[str] display_name: The human-readable name of the security settings, unique within the location.
+        :param pulumi.Input[str] name: Resource name of the settings. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[str] inspect_template: DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
-        :param pulumi.Input[str] name: Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
         :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
         :param pulumi.Input['SecuritySettingRedactionStrategy'] redaction_strategy: Strategy that defines how we do redaction.
         :param pulumi.Input[int] retention_window_days: Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if inspect_template is not None:
             pulumi.set(__self__, "inspect_template", inspect_template)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if purge_data_types is not None:
             pulumi.set(__self__, "purge_data_types", purge_data_types)
         if redaction_scope is not None:
@@ -49,6 +47,18 @@ class SecuritySettingArgs:
             pulumi.set(__self__, "redaction_strategy", redaction_strategy)
         if retention_window_days is not None:
             pulumi.set(__self__, "retention_window_days", retention_window_days)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the security settings, unique within the location.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -61,24 +71,24 @@ class SecuritySettingArgs:
 
     @property
     @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the security settings, unique within the location.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="inspectTemplate")
@@ -91,18 +101,6 @@ class SecuritySettingArgs:
     @inspect_template.setter
     def inspect_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "inspect_template", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="purgeDataTypes")
@@ -173,9 +171,9 @@ class SecuritySetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the security settings, unique within the location.
+        :param pulumi.Input[str] display_name: The human-readable name of the security settings, unique within the location.
         :param pulumi.Input[str] inspect_template: DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
-        :param pulumi.Input[str] name: Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        :param pulumi.Input[str] name: Resource name of the settings. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
         :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
         :param pulumi.Input['SecuritySettingRedactionStrategy'] redaction_strategy: Strategy that defines how we do redaction.
@@ -226,11 +224,15 @@ class SecuritySetting(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecuritySettingArgs.__new__(SecuritySettingArgs)
 
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["inspect_template"] = inspect_template
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -274,7 +276,7 @@ class SecuritySetting(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The human-readable name of the security settings, unique within the location.
+        The human-readable name of the security settings, unique within the location.
         """
         return pulumi.get(self, "display_name")
 
@@ -290,7 +292,7 @@ class SecuritySetting(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        Resource name of the settings. Format: `projects//locations//securitySettings/`.
         """
         return pulumi.get(self, "name")
 

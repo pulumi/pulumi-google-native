@@ -15,24 +15,26 @@ __all__ = ['DomainArgs', 'Domain']
 class DomainArgs:
     def __init__(__self__, *,
                  domain_name: pulumi.Input[str],
+                 locations: pulumi.Input[Sequence[pulumi.Input[str]]],
                  project: pulumi.Input[str],
+                 reserved_ip_range: pulumi.Input[str],
                  admin: Optional[pulumi.Input[str]] = None,
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[str]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Domain resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
         :param pulumi.Input[str] admin: Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
         :param pulumi.Input[bool] audit_logs_enabled: Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels that can contain user-provided metadata.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-        :param pulumi.Input[str] reserved_ip_range: Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
         """
         pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "locations", locations)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if admin is not None:
             pulumi.set(__self__, "admin", admin)
         if audit_logs_enabled is not None:
@@ -41,10 +43,6 @@ class DomainArgs:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if locations is not None:
-            pulumi.set(__self__, "locations", locations)
-        if reserved_ip_range is not None:
-            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
 
     @property
     @pulumi.getter(name="domainName")
@@ -57,12 +55,36 @@ class DomainArgs:
 
     @property
     @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="reservedIpRange")
+    def reserved_ip_range(self) -> pulumi.Input[str]:
+        """
+        The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+        """
+        return pulumi.get(self, "reserved_ip_range")
+
+    @reserved_ip_range.setter
+    def reserved_ip_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "reserved_ip_range", value)
 
     @property
     @pulumi.getter
@@ -112,30 +134,6 @@ class DomainArgs:
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
-    @property
-    @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-        """
-        return pulumi.get(self, "locations")
-
-    @locations.setter
-    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "locations", value)
-
-    @property
-    @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-        """
-        return pulumi.get(self, "reserved_ip_range")
-
-    @reserved_ip_range.setter
-    def reserved_ip_range(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "reserved_ip_range", value)
-
 
 class Domain(pulumi.CustomResource):
     @overload
@@ -160,8 +158,8 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[bool] audit_logs_enabled: Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels that can contain user-provided metadata.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-        :param pulumi.Input[str] reserved_ip_range: Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
         """
         ...
     @overload
@@ -214,10 +212,14 @@ class Domain(pulumi.CustomResource):
                 raise TypeError("Missing required property 'domain_name'")
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["labels"] = labels
+            if locations is None and not opts.urn:
+                raise TypeError("Missing required property 'locations'")
             __props__.__dict__["locations"] = locations
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if reserved_ip_range is None and not opts.urn:
+                raise TypeError("Missing required property 'reserved_ip_range'")
             __props__.__dict__["reserved_ip_range"] = reserved_ip_range
             __props__.__dict__["create_time"] = None
             __props__.__dict__["fqdn"] = None
@@ -315,7 +317,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def locations(self) -> pulumi.Output[Sequence[str]]:
         """
-        Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         """
         return pulumi.get(self, "locations")
 
@@ -331,7 +333,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> pulumi.Output[str]:
         """
-        Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+        The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
         """
         return pulumi.get(self, "reserved_ip_range")
 

@@ -17,10 +17,10 @@ __all__ = ['FlowArgs', 'Flow']
 class FlowArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
+                 display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EventHandlerArgs']]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,8 +29,8 @@ class FlowArgs:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]] = None):
         """
         The set of arguments for constructing a Flow resource.
+        :param pulumi.Input[str] display_name: The human-readable name of the flow.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the flow.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EventHandlerArgs']]] event_handlers: A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
         :param pulumi.Input[str] name: The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input['GoogleCloudDialogflowCxV3NluSettingsArgs'] nlu_settings: NLU related settings of the flow.
@@ -38,12 +38,11 @@ class FlowArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TransitionRouteArgs']]] transition_routes: A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
         """
         pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if event_handlers is not None:
             pulumi.set(__self__, "event_handlers", event_handlers)
         if language_code is not None:
@@ -65,6 +64,18 @@ class FlowArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the flow.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -95,18 +106,6 @@ class FlowArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the flow.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="eventHandlers")
@@ -201,7 +200,7 @@ class Flow(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the flow.
+        :param pulumi.Input[str] display_name: The human-readable name of the flow.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EventHandlerArgs']]]] event_handlers: A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
         :param pulumi.Input[str] name: The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3NluSettingsArgs']] nlu_settings: NLU related settings of the flow.
@@ -259,6 +258,8 @@ class Flow(pulumi.CustomResource):
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["description"] = description
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["event_handlers"] = event_handlers
             __props__.__dict__["language_code"] = language_code
@@ -315,7 +316,7 @@ class Flow(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The human-readable name of the flow.
+        The human-readable name of the flow.
         """
         return pulumi.get(self, "display_name")
 

@@ -16,32 +16,30 @@ __all__ = ['UserDataMappingArgs', 'UserDataMapping']
 class UserDataMappingArgs:
     def __init__(__self__, *,
                  consent_store_id: pulumi.Input[str],
+                 data_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 data_id: Optional[pulumi.Input[str]] = None,
+                 user_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]]] = None,
-                 user_id: Optional[pulumi.Input[str]] = None):
+                 resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]]] = None):
         """
         The set of arguments for constructing a UserDataMapping resource.
-        :param pulumi.Input[str] data_id: Required. A unique identifier for the mapped resource.
+        :param pulumi.Input[str] data_id: A unique identifier for the mapped resource.
+        :param pulumi.Input[str] user_id: User's UUID provided by the client.
         :param pulumi.Input[str] name: Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
         :param pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]] resource_attributes: Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
-        :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         """
         pulumi.set(__self__, "consent_store_id", consent_store_id)
+        pulumi.set(__self__, "data_id", data_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if data_id is not None:
-            pulumi.set(__self__, "data_id", data_id)
+        pulumi.set(__self__, "user_id", user_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_attributes is not None:
             pulumi.set(__self__, "resource_attributes", resource_attributes)
-        if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="consentStoreId")
@@ -51,6 +49,18 @@ class UserDataMappingArgs:
     @consent_store_id.setter
     def consent_store_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "consent_store_id", value)
+
+    @property
+    @pulumi.getter(name="dataId")
+    def data_id(self) -> pulumi.Input[str]:
+        """
+        A unique identifier for the mapped resource.
+        """
+        return pulumi.get(self, "data_id")
+
+    @data_id.setter
+    def data_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_id", value)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -80,16 +90,16 @@ class UserDataMappingArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="dataId")
-    def data_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[str]:
         """
-        Required. A unique identifier for the mapped resource.
+        User's UUID provided by the client.
         """
-        return pulumi.get(self, "data_id")
+        return pulumi.get(self, "user_id")
 
-    @data_id.setter
-    def data_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "data_id", value)
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_id", value)
 
     @property
     @pulumi.getter
@@ -115,18 +125,6 @@ class UserDataMappingArgs:
     def resource_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]]]):
         pulumi.set(self, "resource_attributes", value)
 
-    @property
-    @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. User's UUID provided by the client.
-        """
-        return pulumi.get(self, "user_id")
-
-    @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "user_id", value)
-
 
 class UserDataMapping(pulumi.CustomResource):
     @overload
@@ -147,10 +145,10 @@ class UserDataMapping(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data_id: Required. A unique identifier for the mapped resource.
+        :param pulumi.Input[str] data_id: A unique identifier for the mapped resource.
         :param pulumi.Input[str] name: Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttributeArgs']]]] resource_attributes: Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
-        :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
+        :param pulumi.Input[str] user_id: User's UUID provided by the client.
         """
         ...
     @overload
@@ -199,6 +197,8 @@ class UserDataMapping(pulumi.CustomResource):
             if consent_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_store_id'")
             __props__.__dict__["consent_store_id"] = consent_store_id
+            if data_id is None and not opts.urn:
+                raise TypeError("Missing required property 'data_id'")
             __props__.__dict__["data_id"] = data_id
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
@@ -211,6 +211,8 @@ class UserDataMapping(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["resource_attributes"] = resource_attributes
+            if user_id is None and not opts.urn:
+                raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["archive_time"] = None
             __props__.__dict__["archived"] = None
@@ -264,7 +266,7 @@ class UserDataMapping(pulumi.CustomResource):
     @pulumi.getter(name="dataId")
     def data_id(self) -> pulumi.Output[str]:
         """
-        Required. A unique identifier for the mapped resource.
+        A unique identifier for the mapped resource.
         """
         return pulumi.get(self, "data_id")
 
@@ -288,7 +290,7 @@ class UserDataMapping(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        Required. User's UUID provided by the client.
+        User's UUID provided by the client.
         """
         return pulumi.get(self, "user_id")
 

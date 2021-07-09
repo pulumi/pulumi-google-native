@@ -14,18 +14,17 @@ __all__ = ['EnvgroupAttachmentArgs', 'EnvgroupAttachment']
 class EnvgroupAttachmentArgs:
     def __init__(__self__, *,
                  envgroup_id: pulumi.Input[str],
+                 environment: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EnvgroupAttachment resource.
-        :param pulumi.Input[str] environment: Required. ID of the attached environment.
+        :param pulumi.Input[str] environment: ID of the attached environment.
         :param pulumi.Input[str] name: ID of the environment group attachment.
         """
         pulumi.set(__self__, "envgroup_id", envgroup_id)
+        pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "organization_id", organization_id)
-        if environment is not None:
-            pulumi.set(__self__, "environment", environment)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -39,6 +38,18 @@ class EnvgroupAttachmentArgs:
         pulumi.set(self, "envgroup_id", value)
 
     @property
+    @pulumi.getter
+    def environment(self) -> pulumi.Input[str]:
+        """
+        ID of the attached environment.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment", value)
+
+    @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "organization_id")
@@ -46,18 +57,6 @@ class EnvgroupAttachmentArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. ID of the attached environment.
-        """
-        return pulumi.get(self, "environment")
-
-    @environment.setter
-    def environment(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter
@@ -87,7 +86,7 @@ class EnvgroupAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] environment: Required. ID of the attached environment.
+        :param pulumi.Input[str] environment: ID of the attached environment.
         :param pulumi.Input[str] name: ID of the environment group attachment.
         """
         ...
@@ -133,6 +132,8 @@ class EnvgroupAttachment(pulumi.CustomResource):
             if envgroup_id is None and not opts.urn:
                 raise TypeError("Missing required property 'envgroup_id'")
             __props__.__dict__["envgroup_id"] = envgroup_id
+            if environment is None and not opts.urn:
+                raise TypeError("Missing required property 'environment'")
             __props__.__dict__["environment"] = environment
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
@@ -178,7 +179,7 @@ class EnvgroupAttachment(pulumi.CustomResource):
     @pulumi.getter
     def environment(self) -> pulumi.Output[str]:
         """
-        Required. ID of the attached environment.
+        ID of the attached environment.
         """
         return pulumi.get(self, "environment")
 

@@ -177,7 +177,7 @@ class GetReportResult:
     @pulumi.getter
     def metrics(self) -> Sequence['outputs.GoogleCloudApigeeV1CustomReportMetricResponse']:
         """
-        Required. This contains the list of metrics
+        This contains the list of metrics
         """
         return pulumi.get(self, "metrics")
 
@@ -185,7 +185,7 @@ class GetReportResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+        Unique identifier for the report T his is a legacy field used to encode custom report unique id
         """
         return pulumi.get(self, "name")
 

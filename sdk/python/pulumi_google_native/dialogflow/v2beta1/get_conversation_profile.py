@@ -75,7 +75,7 @@ class GetConversationProfileResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. Human readable name for this profile. Max length 1024 bytes.
+        Human readable name for this profile. Max length 1024 bytes.
         """
         return pulumi.get(self, "display_name")
 

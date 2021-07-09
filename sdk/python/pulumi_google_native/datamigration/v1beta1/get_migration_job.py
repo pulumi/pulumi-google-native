@@ -88,7 +88,7 @@ class GetMigrationJobResult:
     @pulumi.getter
     def destination(self) -> str:
         """
-        Required. The resource name (URI) of the destination connection profile.
+        The resource name (URI) of the destination connection profile.
         """
         return pulumi.get(self, "destination")
 
@@ -176,7 +176,7 @@ class GetMigrationJobResult:
     @pulumi.getter
     def source(self) -> str:
         """
-        Required. The resource name (URI) of the source connection profile.
+        The resource name (URI) of the source connection profile.
         """
         return pulumi.get(self, "source")
 
@@ -208,7 +208,7 @@ class GetMigrationJobResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. The migration job type.
+        The migration job type.
         """
         return pulumi.get(self, "type")
 

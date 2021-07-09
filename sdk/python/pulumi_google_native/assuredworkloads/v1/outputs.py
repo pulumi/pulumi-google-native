@@ -44,8 +44,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse(dict):
                  rotation_period: str):
         """
         Settings specific to the Key Management Service.
-        :param str next_rotation_time: Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
-        :param str rotation_period: Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        :param str next_rotation_time: Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+        :param str rotation_period: Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
         """
         pulumi.set(__self__, "next_rotation_time", next_rotation_time)
         pulumi.set(__self__, "rotation_period", rotation_period)
@@ -54,7 +54,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse(dict):
     @pulumi.getter(name="nextRotationTime")
     def next_rotation_time(self) -> str:
         """
-        Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+        Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
         """
         return pulumi.get(self, "next_rotation_time")
 
@@ -62,7 +62,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse(dict):
     @pulumi.getter(name="rotationPeriod")
     def rotation_period(self) -> str:
         """
-        Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
         """
         return pulumi.get(self, "rotation_period")
 

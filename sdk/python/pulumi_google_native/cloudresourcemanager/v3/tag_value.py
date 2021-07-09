@@ -13,20 +13,21 @@ __all__ = ['TagValueArgs', 'TagValue']
 @pulumi.input_type
 class TagValueArgs:
     def __init__(__self__, *,
+                 short_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 short_name: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TagValue resource.
+        :param pulumi.Input[str] short_name: Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] description: Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
         :param pulumi.Input[str] etag: Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
         :param pulumi.Input[str] name: Immutable. Resource name for TagValue in the format `tagValues/456`.
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
-        :param pulumi.Input[str] short_name: Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         """
+        pulumi.set(__self__, "short_name", short_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -35,10 +36,20 @@ class TagValueArgs:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
-        if short_name is not None:
-            pulumi.set(__self__, "short_name", short_name)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
+
+    @property
+    @pulumi.getter(name="shortName")
+    def short_name(self) -> pulumi.Input[str]:
+        """
+        Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        """
+        return pulumi.get(self, "short_name")
+
+    @short_name.setter
+    def short_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "short_name", value)
 
     @property
     @pulumi.getter
@@ -89,18 +100,6 @@ class TagValueArgs:
         pulumi.set(self, "parent", value)
 
     @property
-    @pulumi.getter(name="shortName")
-    def short_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        """
-        return pulumi.get(self, "short_name")
-
-    @short_name.setter
-    def short_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "short_name", value)
-
-    @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "validate_only")
@@ -131,13 +130,13 @@ class TagValue(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
         :param pulumi.Input[str] name: Immutable. Resource name for TagValue in the format `tagValues/456`.
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
-        :param pulumi.Input[str] short_name: Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        :param pulumi.Input[str] short_name: Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[TagValueArgs] = None,
+                 args: TagValueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 300 TagValues can exist under a TagKey at any given time.
@@ -179,6 +178,8 @@ class TagValue(pulumi.CustomResource):
             __props__.__dict__["etag"] = etag
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
+            if short_name is None and not opts.urn:
+                raise TypeError("Missing required property 'short_name'")
             __props__.__dict__["short_name"] = short_name
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
@@ -268,7 +269,7 @@ class TagValue(pulumi.CustomResource):
     @pulumi.getter(name="shortName")
     def short_name(self) -> pulumi.Output[str]:
         """
-        Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         """
         return pulumi.get(self, "short_name")
 

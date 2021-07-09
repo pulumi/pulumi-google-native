@@ -243,56 +243,53 @@ class FixedOrPercentArgs:
 @pulumi.input_type
 class GcsObjectArgs:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[str]] = None,
-                 generation_number: Optional[pulumi.Input[str]] = None,
-                 object: Optional[pulumi.Input[str]] = None):
+                 bucket: pulumi.Input[str],
+                 generation_number: pulumi.Input[str],
+                 object: pulumi.Input[str]):
         """
         Cloud Storage object representation.
-        :param pulumi.Input[str] bucket: Required. Bucket of the Cloud Storage object.
-        :param pulumi.Input[str] generation_number: Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-        :param pulumi.Input[str] object: Required. Name of the Cloud Storage object.
+        :param pulumi.Input[str] bucket: Bucket of the Cloud Storage object.
+        :param pulumi.Input[str] generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        :param pulumi.Input[str] object: Name of the Cloud Storage object.
         """
-        if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
-        if generation_number is not None:
-            pulumi.set(__self__, "generation_number", generation_number)
-        if object is not None:
-            pulumi.set(__self__, "object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation_number", generation_number)
+        pulumi.set(__self__, "object", object)
 
     @property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[str]]:
+    def bucket(self) -> pulumi.Input[str]:
         """
-        Required. Bucket of the Cloud Storage object.
+        Bucket of the Cloud Storage object.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[str]]):
+    def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
 
     @property
     @pulumi.getter(name="generationNumber")
-    def generation_number(self) -> Optional[pulumi.Input[str]]:
+    def generation_number(self) -> pulumi.Input[str]:
         """
-        Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         """
         return pulumi.get(self, "generation_number")
 
     @generation_number.setter
-    def generation_number(self, value: Optional[pulumi.Input[str]]):
+    def generation_number(self, value: pulumi.Input[str]):
         pulumi.set(self, "generation_number", value)
 
     @property
     @pulumi.getter
-    def object(self) -> Optional[pulumi.Input[str]]:
+    def object(self) -> pulumi.Input[str]:
         """
-        Required. Name of the Cloud Storage object.
+        Name of the Cloud Storage object.
         """
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: Optional[pulumi.Input[str]]):
+    def object(self, value: pulumi.Input[str]):
         pulumi.set(self, "object", value)
 
 
@@ -308,64 +305,61 @@ class GooSettingsArgs:
 @pulumi.input_type
 class MonthlyScheduleArgs:
     def __init__(__self__, *,
-                 month_day: Optional[pulumi.Input[int]] = None,
-                 week_day_of_month: Optional[pulumi.Input['WeekDayOfMonthArgs']] = None):
+                 month_day: pulumi.Input[int],
+                 week_day_of_month: pulumi.Input['WeekDayOfMonthArgs']):
         """
         Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
-        :param pulumi.Input[int] month_day: Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-        :param pulumi.Input['WeekDayOfMonthArgs'] week_day_of_month: Required. Week day in a month.
+        :param pulumi.Input[int] month_day: One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+        :param pulumi.Input['WeekDayOfMonthArgs'] week_day_of_month: Week day in a month.
         """
-        if month_day is not None:
-            pulumi.set(__self__, "month_day", month_day)
-        if week_day_of_month is not None:
-            pulumi.set(__self__, "week_day_of_month", week_day_of_month)
+        pulumi.set(__self__, "month_day", month_day)
+        pulumi.set(__self__, "week_day_of_month", week_day_of_month)
 
     @property
     @pulumi.getter(name="monthDay")
-    def month_day(self) -> Optional[pulumi.Input[int]]:
+    def month_day(self) -> pulumi.Input[int]:
         """
-        Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+        One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
         """
         return pulumi.get(self, "month_day")
 
     @month_day.setter
-    def month_day(self, value: Optional[pulumi.Input[int]]):
+    def month_day(self, value: pulumi.Input[int]):
         pulumi.set(self, "month_day", value)
 
     @property
     @pulumi.getter(name="weekDayOfMonth")
-    def week_day_of_month(self) -> Optional[pulumi.Input['WeekDayOfMonthArgs']]:
+    def week_day_of_month(self) -> pulumi.Input['WeekDayOfMonthArgs']:
         """
-        Required. Week day in a month.
+        Week day in a month.
         """
         return pulumi.get(self, "week_day_of_month")
 
     @week_day_of_month.setter
-    def week_day_of_month(self, value: Optional[pulumi.Input['WeekDayOfMonthArgs']]):
+    def week_day_of_month(self, value: pulumi.Input['WeekDayOfMonthArgs']):
         pulumi.set(self, "week_day_of_month", value)
 
 
 @pulumi.input_type
 class OneTimeScheduleArgs:
     def __init__(__self__, *,
-                 execute_time: Optional[pulumi.Input[str]] = None):
+                 execute_time: pulumi.Input[str]):
         """
         Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        :param pulumi.Input[str] execute_time: Required. The desired patch job execution time.
+        :param pulumi.Input[str] execute_time: The desired patch job execution time.
         """
-        if execute_time is not None:
-            pulumi.set(__self__, "execute_time", execute_time)
+        pulumi.set(__self__, "execute_time", execute_time)
 
     @property
     @pulumi.getter(name="executeTime")
-    def execute_time(self) -> Optional[pulumi.Input[str]]:
+    def execute_time(self) -> pulumi.Input[str]:
         """
-        Required. The desired patch job execution time.
+        The desired patch job execution time.
         """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
-    def execute_time(self, value: Optional[pulumi.Input[str]]):
+    def execute_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "execute_time", value)
 
 
@@ -660,37 +654,92 @@ class PatchRolloutArgs:
 @pulumi.input_type
 class RecurringScheduleArgs:
     def __init__(__self__, *,
+                 frequency: pulumi.Input['RecurringScheduleFrequency'],
+                 monthly: pulumi.Input['MonthlyScheduleArgs'],
+                 time_of_day: pulumi.Input['TimeOfDayArgs'],
+                 time_zone: pulumi.Input['TimeZoneArgs'],
+                 weekly: pulumi.Input['WeeklyScheduleArgs'],
                  end_time: Optional[pulumi.Input[str]] = None,
-                 frequency: Optional[pulumi.Input['RecurringScheduleFrequency']] = None,
-                 monthly: Optional[pulumi.Input['MonthlyScheduleArgs']] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 time_of_day: Optional[pulumi.Input['TimeOfDayArgs']] = None,
-                 time_zone: Optional[pulumi.Input['TimeZoneArgs']] = None,
-                 weekly: Optional[pulumi.Input['WeeklyScheduleArgs']] = None):
+                 start_time: Optional[pulumi.Input[str]] = None):
         """
         Sets the time for recurring patch deployments.
+        :param pulumi.Input['RecurringScheduleFrequency'] frequency: The frequency unit of this recurring schedule.
+        :param pulumi.Input['MonthlyScheduleArgs'] monthly: Schedule with monthly executions.
+        :param pulumi.Input['TimeOfDayArgs'] time_of_day: Time of the day to run a recurring deployment.
+        :param pulumi.Input['TimeZoneArgs'] time_zone: Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        :param pulumi.Input['WeeklyScheduleArgs'] weekly: Schedule with weekly executions.
         :param pulumi.Input[str] end_time: Optional. The end time at which a recurring patch deployment schedule is no longer active.
-        :param pulumi.Input['RecurringScheduleFrequency'] frequency: Required. The frequency unit of this recurring schedule.
-        :param pulumi.Input['MonthlyScheduleArgs'] monthly: Required. Schedule with monthly executions.
         :param pulumi.Input[str] start_time: Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-        :param pulumi.Input['TimeOfDayArgs'] time_of_day: Required. Time of the day to run a recurring deployment.
-        :param pulumi.Input['TimeZoneArgs'] time_zone: Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-        :param pulumi.Input['WeeklyScheduleArgs'] weekly: Required. Schedule with weekly executions.
         """
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "monthly", monthly)
+        pulumi.set(__self__, "time_of_day", time_of_day)
+        pulumi.set(__self__, "time_zone", time_zone)
+        pulumi.set(__self__, "weekly", weekly)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
-        if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
-        if monthly is not None:
-            pulumi.set(__self__, "monthly", monthly)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-        if time_of_day is not None:
-            pulumi.set(__self__, "time_of_day", time_of_day)
-        if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
-        if weekly is not None:
-            pulumi.set(__self__, "weekly", weekly)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input['RecurringScheduleFrequency']:
+        """
+        The frequency unit of this recurring schedule.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input['RecurringScheduleFrequency']):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter
+    def monthly(self) -> pulumi.Input['MonthlyScheduleArgs']:
+        """
+        Schedule with monthly executions.
+        """
+        return pulumi.get(self, "monthly")
+
+    @monthly.setter
+    def monthly(self, value: pulumi.Input['MonthlyScheduleArgs']):
+        pulumi.set(self, "monthly", value)
+
+    @property
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> pulumi.Input['TimeOfDayArgs']:
+        """
+        Time of the day to run a recurring deployment.
+        """
+        return pulumi.get(self, "time_of_day")
+
+    @time_of_day.setter
+    def time_of_day(self, value: pulumi.Input['TimeOfDayArgs']):
+        pulumi.set(self, "time_of_day", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input['TimeZoneArgs']:
+        """
+        Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input['TimeZoneArgs']):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter
+    def weekly(self) -> pulumi.Input['WeeklyScheduleArgs']:
+        """
+        Schedule with weekly executions.
+        """
+        return pulumi.get(self, "weekly")
+
+    @weekly.setter
+    def weekly(self, value: pulumi.Input['WeeklyScheduleArgs']):
+        pulumi.set(self, "weekly", value)
 
     @property
     @pulumi.getter(name="endTime")
@@ -705,30 +754,6 @@ class RecurringScheduleArgs:
         pulumi.set(self, "end_time", value)
 
     @property
-    @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input['RecurringScheduleFrequency']]:
-        """
-        Required. The frequency unit of this recurring schedule.
-        """
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input['RecurringScheduleFrequency']]):
-        pulumi.set(self, "frequency", value)
-
-    @property
-    @pulumi.getter
-    def monthly(self) -> Optional[pulumi.Input['MonthlyScheduleArgs']]:
-        """
-        Required. Schedule with monthly executions.
-        """
-        return pulumi.get(self, "monthly")
-
-    @monthly.setter
-    def monthly(self, value: Optional[pulumi.Input['MonthlyScheduleArgs']]):
-        pulumi.set(self, "monthly", value)
-
-    @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -739,42 +764,6 @@ class RecurringScheduleArgs:
     @start_time.setter
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
-
-    @property
-    @pulumi.getter(name="timeOfDay")
-    def time_of_day(self) -> Optional[pulumi.Input['TimeOfDayArgs']]:
-        """
-        Required. Time of the day to run a recurring deployment.
-        """
-        return pulumi.get(self, "time_of_day")
-
-    @time_of_day.setter
-    def time_of_day(self, value: Optional[pulumi.Input['TimeOfDayArgs']]):
-        pulumi.set(self, "time_of_day", value)
-
-    @property
-    @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input['TimeZoneArgs']]:
-        """
-        Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-        """
-        return pulumi.get(self, "time_zone")
-
-    @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input['TimeZoneArgs']]):
-        pulumi.set(self, "time_zone", value)
-
-    @property
-    @pulumi.getter
-    def weekly(self) -> Optional[pulumi.Input['WeeklyScheduleArgs']]:
-        """
-        Required. Schedule with weekly executions.
-        """
-        return pulumi.get(self, "weekly")
-
-    @weekly.setter
-    def weekly(self, value: Optional[pulumi.Input['WeeklyScheduleArgs']]):
-        pulumi.set(self, "weekly", value)
 
 
 @pulumi.input_type
@@ -892,64 +881,61 @@ class TimeZoneArgs:
 @pulumi.input_type
 class WeekDayOfMonthArgs:
     def __init__(__self__, *,
-                 day_of_week: Optional[pulumi.Input['WeekDayOfMonthDayOfWeek']] = None,
-                 week_ordinal: Optional[pulumi.Input[int]] = None):
+                 day_of_week: pulumi.Input['WeekDayOfMonthDayOfWeek'],
+                 week_ordinal: pulumi.Input[int]):
         """
         Represents one week day in a month. An example is "the 4th Sunday".
-        :param pulumi.Input['WeekDayOfMonthDayOfWeek'] day_of_week: Required. A day of the week.
-        :param pulumi.Input[int] week_ordinal: Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        :param pulumi.Input['WeekDayOfMonthDayOfWeek'] day_of_week: A day of the week.
+        :param pulumi.Input[int] week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
-        if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
-        if week_ordinal is not None:
-            pulumi.set(__self__, "week_ordinal", week_ordinal)
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "week_ordinal", week_ordinal)
 
     @property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[pulumi.Input['WeekDayOfMonthDayOfWeek']]:
+    def day_of_week(self) -> pulumi.Input['WeekDayOfMonthDayOfWeek']:
         """
-        Required. A day of the week.
+        A day of the week.
         """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
-    def day_of_week(self, value: Optional[pulumi.Input['WeekDayOfMonthDayOfWeek']]):
+    def day_of_week(self, value: pulumi.Input['WeekDayOfMonthDayOfWeek']):
         pulumi.set(self, "day_of_week", value)
 
     @property
     @pulumi.getter(name="weekOrdinal")
-    def week_ordinal(self) -> Optional[pulumi.Input[int]]:
+    def week_ordinal(self) -> pulumi.Input[int]:
         """
-        Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         return pulumi.get(self, "week_ordinal")
 
     @week_ordinal.setter
-    def week_ordinal(self, value: Optional[pulumi.Input[int]]):
+    def week_ordinal(self, value: pulumi.Input[int]):
         pulumi.set(self, "week_ordinal", value)
 
 
 @pulumi.input_type
 class WeeklyScheduleArgs:
     def __init__(__self__, *,
-                 day_of_week: Optional[pulumi.Input['WeeklyScheduleDayOfWeek']] = None):
+                 day_of_week: pulumi.Input['WeeklyScheduleDayOfWeek']):
         """
         Represents a weekly schedule.
-        :param pulumi.Input['WeeklyScheduleDayOfWeek'] day_of_week: Required. Day of the week.
+        :param pulumi.Input['WeeklyScheduleDayOfWeek'] day_of_week: Day of the week.
         """
-        if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "day_of_week", day_of_week)
 
     @property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[pulumi.Input['WeeklyScheduleDayOfWeek']]:
+    def day_of_week(self) -> pulumi.Input['WeeklyScheduleDayOfWeek']:
         """
-        Required. Day of the week.
+        Day of the week.
         """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
-    def day_of_week(self, value: Optional[pulumi.Input['WeeklyScheduleDayOfWeek']]):
+    def day_of_week(self, value: pulumi.Input['WeeklyScheduleDayOfWeek']):
         pulumi.set(self, "day_of_week", value)
 
 

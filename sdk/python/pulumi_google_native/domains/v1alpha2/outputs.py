@@ -205,10 +205,10 @@ class ContactResponse(dict):
                  postal_address: 'outputs.PostalAddressResponse'):
         """
         Details required for a contact associated with a `Registration`.
-        :param str email: Required. Email address of the contact.
+        :param str email: Email address of the contact.
         :param str fax_number: Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
-        :param str phone_number: Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
-        :param 'PostalAddressResponse' postal_address: Required. Postal address of the contact.
+        :param str phone_number: Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        :param 'PostalAddressResponse' postal_address: Postal address of the contact.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "fax_number", fax_number)
@@ -219,7 +219,7 @@ class ContactResponse(dict):
     @pulumi.getter
     def email(self) -> str:
         """
-        Required. Email address of the contact.
+        Email address of the contact.
         """
         return pulumi.get(self, "email")
 
@@ -235,7 +235,7 @@ class ContactResponse(dict):
     @pulumi.getter(name="phoneNumber")
     def phone_number(self) -> str:
         """
-        Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
         """
         return pulumi.get(self, "phone_number")
 
@@ -243,7 +243,7 @@ class ContactResponse(dict):
     @pulumi.getter(name="postalAddress")
     def postal_address(self) -> 'outputs.PostalAddressResponse':
         """
-        Required. Postal address of the contact.
+        Postal address of the contact.
         """
         return pulumi.get(self, "postal_address")
 
@@ -281,10 +281,10 @@ class ContactSettingsResponse(dict):
                  technical_contact: 'outputs.ContactResponse'):
         """
         Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
-        :param 'ContactResponse' admin_contact: Required. The administrative contact for the `Registration`.
-        :param str privacy: Required. Privacy setting for the contacts associated with the `Registration`.
-        :param 'ContactResponse' registrant_contact: Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
-        :param 'ContactResponse' technical_contact: Required. The technical contact for the `Registration`.
+        :param 'ContactResponse' admin_contact: The administrative contact for the `Registration`.
+        :param str privacy: Privacy setting for the contacts associated with the `Registration`.
+        :param 'ContactResponse' registrant_contact: The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        :param 'ContactResponse' technical_contact: The technical contact for the `Registration`.
         """
         pulumi.set(__self__, "admin_contact", admin_contact)
         pulumi.set(__self__, "privacy", privacy)
@@ -295,7 +295,7 @@ class ContactSettingsResponse(dict):
     @pulumi.getter(name="adminContact")
     def admin_contact(self) -> 'outputs.ContactResponse':
         """
-        Required. The administrative contact for the `Registration`.
+        The administrative contact for the `Registration`.
         """
         return pulumi.get(self, "admin_contact")
 
@@ -303,7 +303,7 @@ class ContactSettingsResponse(dict):
     @pulumi.getter
     def privacy(self) -> str:
         """
-        Required. Privacy setting for the contacts associated with the `Registration`.
+        Privacy setting for the contacts associated with the `Registration`.
         """
         return pulumi.get(self, "privacy")
 
@@ -311,7 +311,7 @@ class ContactSettingsResponse(dict):
     @pulumi.getter(name="registrantContact")
     def registrant_contact(self) -> 'outputs.ContactResponse':
         """
-        Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
         """
         return pulumi.get(self, "registrant_contact")
 
@@ -319,7 +319,7 @@ class ContactSettingsResponse(dict):
     @pulumi.getter(name="technicalContact")
     def technical_contact(self) -> 'outputs.ContactResponse':
         """
-        Required. The technical contact for the `Registration`.
+        The technical contact for the `Registration`.
         """
         return pulumi.get(self, "technical_contact")
 
@@ -354,7 +354,7 @@ class CustomDnsResponse(dict):
         """
         Configuration for an arbitrary DNS provider.
         :param Sequence['DsRecordResponse'] ds_records: The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
-        :param Sequence[str] name_servers: Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+        :param Sequence[str] name_servers: A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
         """
         pulumi.set(__self__, "ds_records", ds_records)
         pulumi.set(__self__, "name_servers", name_servers)
@@ -371,7 +371,7 @@ class CustomDnsResponse(dict):
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Sequence[str]:
         """
-        Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+        A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
         """
         return pulumi.get(self, "name_servers")
 
@@ -602,7 +602,7 @@ class GlueRecordResponse(dict):
                  ipv6_addresses: Sequence[str]):
         """
         Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
-        :param str host_name: Required. Domain name of the host in Punycode format.
+        :param str host_name: Domain name of the host in Punycode format.
         :param Sequence[str] ipv4_addresses: List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
         :param Sequence[str] ipv6_addresses: List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
         """
@@ -614,7 +614,7 @@ class GlueRecordResponse(dict):
     @pulumi.getter(name="hostName")
     def host_name(self) -> str:
         """
-        Required. Domain name of the host in Punycode format.
+        Domain name of the host in Punycode format.
         """
         return pulumi.get(self, "host_name")
 
@@ -668,7 +668,7 @@ class GoogleDomainsDnsResponse(dict):
         """
         Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
         :param Sequence['DsRecordResponse'] ds_records: The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
-        :param str ds_state: Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+        :param str ds_state: The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         :param Sequence[str] name_servers: A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
         """
         pulumi.set(__self__, "ds_records", ds_records)
@@ -687,7 +687,7 @@ class GoogleDomainsDnsResponse(dict):
     @pulumi.getter(name="dsState")
     def ds_state(self) -> str:
         """
-        Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+        The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         """
         return pulumi.get(self, "ds_state")
 
@@ -805,7 +805,7 @@ class PostalAddressResponse(dict):
         :param str organization: Optional. The name of the organization at the address.
         :param str postal_code: Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param Sequence[str] recipients: Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
-        :param str region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        :param str region_code: CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
         :param int revision: The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
         :param str sorting_code: Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
         :param str sublocality: Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
@@ -882,7 +882,7 @@ class PostalAddressResponse(dict):
     @pulumi.getter(name="regionCode")
     def region_code(self) -> str:
         """
-        Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
         """
         return pulumi.get(self, "region_code")
 

@@ -28,84 +28,80 @@ __all__ = [
 @pulumi.input_type
 class AwsAccessKeyArgs:
     def __init__(__self__, *,
-                 access_key_id: Optional[pulumi.Input[str]] = None,
-                 secret_access_key: Optional[pulumi.Input[str]] = None):
+                 access_key_id: pulumi.Input[str],
+                 secret_access_key: pulumi.Input[str]):
         """
         AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param pulumi.Input[str] access_key_id: Required. AWS access key ID.
-        :param pulumi.Input[str] secret_access_key: Required. AWS secret access key. This field is not returned in RPC responses.
+        :param pulumi.Input[str] access_key_id: AWS access key ID.
+        :param pulumi.Input[str] secret_access_key: AWS secret access key. This field is not returned in RPC responses.
         """
-        if access_key_id is not None:
-            pulumi.set(__self__, "access_key_id", access_key_id)
-        if secret_access_key is not None:
-            pulumi.set(__self__, "secret_access_key", secret_access_key)
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
 
     @property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[str]]:
+    def access_key_id(self) -> pulumi.Input[str]:
         """
-        Required. AWS access key ID.
+        AWS access key ID.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[str]]):
+    def access_key_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "access_key_id", value)
 
     @property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+    def secret_access_key(self) -> pulumi.Input[str]:
         """
-        Required. AWS secret access key. This field is not returned in RPC responses.
+        AWS secret access key. This field is not returned in RPC responses.
         """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
-    def secret_access_key(self, value: Optional[pulumi.Input[str]]):
+    def secret_access_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_access_key", value)
 
 
 @pulumi.input_type
 class AwsS3DataArgs:
     def __init__(__self__, *,
-                 aws_access_key: Optional[pulumi.Input['AwsAccessKeyArgs']] = None,
-                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 aws_access_key: pulumi.Input['AwsAccessKeyArgs'],
+                 bucket_name: pulumi.Input[str],
                  path: Optional[pulumi.Input[str]] = None):
         """
         An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
-        :param pulumi.Input['AwsAccessKeyArgs'] aws_access_key: Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param pulumi.Input[str] bucket_name: Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+        :param pulumi.Input['AwsAccessKeyArgs'] aws_access_key: Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        :param pulumi.Input[str] bucket_name: S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
-        if aws_access_key is not None:
-            pulumi.set(__self__, "aws_access_key", aws_access_key)
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "aws_access_key", aws_access_key)
+        pulumi.set(__self__, "bucket_name", bucket_name)
         if path is not None:
             pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="awsAccessKey")
-    def aws_access_key(self) -> Optional[pulumi.Input['AwsAccessKeyArgs']]:
+    def aws_access_key(self) -> pulumi.Input['AwsAccessKeyArgs']:
         """
-        Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         """
         return pulumi.get(self, "aws_access_key")
 
     @aws_access_key.setter
-    def aws_access_key(self, value: Optional[pulumi.Input['AwsAccessKeyArgs']]):
+    def aws_access_key(self, value: pulumi.Input['AwsAccessKeyArgs']):
         pulumi.set(self, "aws_access_key", value)
 
     @property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[str]]:
+    def bucket_name(self) -> pulumi.Input[str]:
         """
-        Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+        S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+    def bucket_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket_name", value)
 
     @property
@@ -124,49 +120,58 @@ class AwsS3DataArgs:
 @pulumi.input_type
 class AzureBlobStorageDataArgs:
     def __init__(__self__, *,
-                 azure_credentials: Optional[pulumi.Input['AzureCredentialsArgs']] = None,
-                 container: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[str]] = None,
-                 storage_account: Optional[pulumi.Input[str]] = None):
+                 azure_credentials: pulumi.Input['AzureCredentialsArgs'],
+                 container: pulumi.Input[str],
+                 storage_account: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None):
         """
         An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
-        :param pulumi.Input['AzureCredentialsArgs'] azure_credentials: Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param pulumi.Input[str] container: Required. The container to transfer from the Azure Storage account.
+        :param pulumi.Input['AzureCredentialsArgs'] azure_credentials: Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        :param pulumi.Input[str] container: The container to transfer from the Azure Storage account.
+        :param pulumi.Input[str] storage_account: The name of the Azure Storage account.
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-        :param pulumi.Input[str] storage_account: Required. The name of the Azure Storage account.
         """
-        if azure_credentials is not None:
-            pulumi.set(__self__, "azure_credentials", azure_credentials)
-        if container is not None:
-            pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "azure_credentials", azure_credentials)
+        pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "storage_account", storage_account)
         if path is not None:
             pulumi.set(__self__, "path", path)
-        if storage_account is not None:
-            pulumi.set(__self__, "storage_account", storage_account)
 
     @property
     @pulumi.getter(name="azureCredentials")
-    def azure_credentials(self) -> Optional[pulumi.Input['AzureCredentialsArgs']]:
+    def azure_credentials(self) -> pulumi.Input['AzureCredentialsArgs']:
         """
-        Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         """
         return pulumi.get(self, "azure_credentials")
 
     @azure_credentials.setter
-    def azure_credentials(self, value: Optional[pulumi.Input['AzureCredentialsArgs']]):
+    def azure_credentials(self, value: pulumi.Input['AzureCredentialsArgs']):
         pulumi.set(self, "azure_credentials", value)
 
     @property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input[str]]:
+    def container(self) -> pulumi.Input[str]:
         """
-        Required. The container to transfer from the Azure Storage account.
+        The container to transfer from the Azure Storage account.
         """
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input[str]]):
+    def container(self, value: pulumi.Input[str]):
         pulumi.set(self, "container", value)
+
+    @property
+    @pulumi.getter(name="storageAccount")
+    def storage_account(self) -> pulumi.Input[str]:
+        """
+        The name of the Azure Storage account.
+        """
+        return pulumi.get(self, "storage_account")
+
+    @storage_account.setter
+    def storage_account(self, value: pulumi.Input[str]):
+        pulumi.set(self, "storage_account", value)
 
     @property
     @pulumi.getter
@@ -180,40 +185,27 @@ class AzureBlobStorageDataArgs:
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
-    @property
-    @pulumi.getter(name="storageAccount")
-    def storage_account(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name of the Azure Storage account.
-        """
-        return pulumi.get(self, "storage_account")
-
-    @storage_account.setter
-    def storage_account(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "storage_account", value)
-
 
 @pulumi.input_type
 class AzureCredentialsArgs:
     def __init__(__self__, *,
-                 sas_token: Optional[pulumi.Input[str]] = None):
+                 sas_token: pulumi.Input[str]):
         """
         Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param pulumi.Input[str] sas_token: Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+        :param pulumi.Input[str] sas_token: Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
         """
-        if sas_token is not None:
-            pulumi.set(__self__, "sas_token", sas_token)
+        pulumi.set(__self__, "sas_token", sas_token)
 
     @property
     @pulumi.getter(name="sasToken")
-    def sas_token(self) -> Optional[pulumi.Input[str]]:
+    def sas_token(self) -> pulumi.Input[str]:
         """
-        Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+        Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
         """
         return pulumi.get(self, "sas_token")
 
     @sas_token.setter
-    def sas_token(self, value: Optional[pulumi.Input[str]]):
+    def sas_token(self, value: pulumi.Input[str]):
         pulumi.set(self, "sas_token", value)
 
 
@@ -276,28 +268,27 @@ class DateArgs:
 @pulumi.input_type
 class GcsDataArgs:
     def __init__(__self__, *,
-                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 bucket_name: pulumi.Input[str],
                  path: Optional[pulumi.Input[str]] = None):
         """
         In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
-        :param pulumi.Input[str] bucket_name: Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+        :param pulumi.Input[str] bucket_name: Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
         """
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_name", bucket_name)
         if path is not None:
             pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[str]]:
+    def bucket_name(self) -> pulumi.Input[str]:
         """
-        Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+        Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
         """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+    def bucket_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket_name", value)
 
     @property
@@ -316,45 +307,66 @@ class GcsDataArgs:
 @pulumi.input_type
 class HttpDataArgs:
     def __init__(__self__, *,
-                 list_url: Optional[pulumi.Input[str]] = None):
+                 list_url: pulumi.Input[str]):
         """
         An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
-        :param pulumi.Input[str] list_url: Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        :param pulumi.Input[str] list_url: The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
         """
-        if list_url is not None:
-            pulumi.set(__self__, "list_url", list_url)
+        pulumi.set(__self__, "list_url", list_url)
 
     @property
     @pulumi.getter(name="listUrl")
-    def list_url(self) -> Optional[pulumi.Input[str]]:
+    def list_url(self) -> pulumi.Input[str]:
         """
-        Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
         """
         return pulumi.get(self, "list_url")
 
     @list_url.setter
-    def list_url(self, value: Optional[pulumi.Input[str]]):
+    def list_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "list_url", value)
 
 
 @pulumi.input_type
 class NotificationConfigArgs:
     def __init__(__self__, *,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationConfigEventTypesItem']]]] = None,
-                 payload_format: Optional[pulumi.Input['NotificationConfigPayloadFormat']] = None,
-                 pubsub_topic: Optional[pulumi.Input[str]] = None):
+                 payload_format: pulumi.Input['NotificationConfigPayloadFormat'],
+                 pubsub_topic: pulumi.Input[str],
+                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationConfigEventTypesItem']]]] = None):
         """
         Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+        :param pulumi.Input['NotificationConfigPayloadFormat'] payload_format: The desired format of the notification message payloads.
+        :param pulumi.Input[str] pubsub_topic: The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
         :param pulumi.Input[Sequence[pulumi.Input['NotificationConfigEventTypesItem']]] event_types: Event types for which a notification is desired. If empty, send notifications for all event types.
-        :param pulumi.Input['NotificationConfigPayloadFormat'] payload_format: Required. The desired format of the notification message payloads.
-        :param pulumi.Input[str] pubsub_topic: Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
         """
+        pulumi.set(__self__, "payload_format", payload_format)
+        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
         if event_types is not None:
             pulumi.set(__self__, "event_types", event_types)
-        if payload_format is not None:
-            pulumi.set(__self__, "payload_format", payload_format)
-        if pubsub_topic is not None:
-            pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+
+    @property
+    @pulumi.getter(name="payloadFormat")
+    def payload_format(self) -> pulumi.Input['NotificationConfigPayloadFormat']:
+        """
+        The desired format of the notification message payloads.
+        """
+        return pulumi.get(self, "payload_format")
+
+    @payload_format.setter
+    def payload_format(self, value: pulumi.Input['NotificationConfigPayloadFormat']):
+        pulumi.set(self, "payload_format", value)
+
+    @property
+    @pulumi.getter(name="pubsubTopic")
+    def pubsub_topic(self) -> pulumi.Input[str]:
+        """
+        The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+        """
+        return pulumi.get(self, "pubsub_topic")
+
+    @pubsub_topic.setter
+    def pubsub_topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pubsub_topic", value)
 
     @property
     @pulumi.getter(name="eventTypes")
@@ -367,30 +379,6 @@ class NotificationConfigArgs:
     @event_types.setter
     def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationConfigEventTypesItem']]]]):
         pulumi.set(self, "event_types", value)
-
-    @property
-    @pulumi.getter(name="payloadFormat")
-    def payload_format(self) -> Optional[pulumi.Input['NotificationConfigPayloadFormat']]:
-        """
-        Required. The desired format of the notification message payloads.
-        """
-        return pulumi.get(self, "payload_format")
-
-    @payload_format.setter
-    def payload_format(self, value: Optional[pulumi.Input['NotificationConfigPayloadFormat']]):
-        pulumi.set(self, "payload_format", value)
-
-    @property
-    @pulumi.getter(name="pubsubTopic")
-    def pubsub_topic(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
-        """
-        return pulumi.get(self, "pubsub_topic")
-
-    @pubsub_topic.setter
-    def pubsub_topic(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "pubsub_topic", value)
 
 
 @pulumi.input_type
@@ -500,29 +488,40 @@ class ObjectConditionsArgs:
 @pulumi.input_type
 class ScheduleArgs:
     def __init__(__self__, *,
+                 schedule_start_date: pulumi.Input['DateArgs'],
                  end_time_of_day: Optional[pulumi.Input['TimeOfDayArgs']] = None,
                  repeat_interval: Optional[pulumi.Input[str]] = None,
                  schedule_end_date: Optional[pulumi.Input['DateArgs']] = None,
-                 schedule_start_date: Optional[pulumi.Input['DateArgs']] = None,
                  start_time_of_day: Optional[pulumi.Input['TimeOfDayArgs']] = None):
         """
         Transfers can be scheduled to recur or to run just once.
+        :param pulumi.Input['DateArgs'] schedule_start_date: The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
         :param pulumi.Input['TimeOfDayArgs'] end_time_of_day: The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
         :param pulumi.Input[str] repeat_interval: Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
         :param pulumi.Input['DateArgs'] schedule_end_date: The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
-        :param pulumi.Input['DateArgs'] schedule_start_date: Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
         :param pulumi.Input['TimeOfDayArgs'] start_time_of_day: The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
         """
+        pulumi.set(__self__, "schedule_start_date", schedule_start_date)
         if end_time_of_day is not None:
             pulumi.set(__self__, "end_time_of_day", end_time_of_day)
         if repeat_interval is not None:
             pulumi.set(__self__, "repeat_interval", repeat_interval)
         if schedule_end_date is not None:
             pulumi.set(__self__, "schedule_end_date", schedule_end_date)
-        if schedule_start_date is not None:
-            pulumi.set(__self__, "schedule_start_date", schedule_start_date)
         if start_time_of_day is not None:
             pulumi.set(__self__, "start_time_of_day", start_time_of_day)
+
+    @property
+    @pulumi.getter(name="scheduleStartDate")
+    def schedule_start_date(self) -> pulumi.Input['DateArgs']:
+        """
+        The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+        """
+        return pulumi.get(self, "schedule_start_date")
+
+    @schedule_start_date.setter
+    def schedule_start_date(self, value: pulumi.Input['DateArgs']):
+        pulumi.set(self, "schedule_start_date", value)
 
     @property
     @pulumi.getter(name="endTimeOfDay")
@@ -559,18 +558,6 @@ class ScheduleArgs:
     @schedule_end_date.setter
     def schedule_end_date(self, value: Optional[pulumi.Input['DateArgs']]):
         pulumi.set(self, "schedule_end_date", value)
-
-    @property
-    @pulumi.getter(name="scheduleStartDate")
-    def schedule_start_date(self) -> Optional[pulumi.Input['DateArgs']]:
-        """
-        Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
-        """
-        return pulumi.get(self, "schedule_start_date")
-
-    @schedule_start_date.setter
-    def schedule_start_date(self, value: Optional[pulumi.Input['DateArgs']]):
-        pulumi.set(self, "schedule_start_date", value)
 
     @property
     @pulumi.getter(name="startTimeOfDay")

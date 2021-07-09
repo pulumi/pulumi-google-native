@@ -14,16 +14,15 @@ __all__ = ['NatAddressArgs', 'NatAddress']
 class NatAddressArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
-                 organization_id: pulumi.Input[str],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: pulumi.Input[str],
+                 organization_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a NatAddress resource.
-        :param pulumi.Input[str] name: Required. Resource ID of the NAT address.
+        :param pulumi.Input[str] name: Resource ID of the NAT address.
         """
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organization_id", organization_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -35,6 +34,18 @@ class NatAddressArgs:
         pulumi.set(self, "instance_id", value)
 
     @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Resource ID of the NAT address.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "organization_id")
@@ -42,18 +53,6 @@ class NatAddressArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Resource ID of the NAT address.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 
 class NatAddress(pulumi.CustomResource):
@@ -70,7 +69,7 @@ class NatAddress(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Required. Resource ID of the NAT address.
+        :param pulumi.Input[str] name: Resource ID of the NAT address.
         """
         ...
     @overload
@@ -114,6 +113,8 @@ class NatAddress(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
@@ -159,7 +160,7 @@ class NatAddress(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. Resource ID of the NAT address.
+        Resource ID of the NAT address.
         """
         return pulumi.get(self, "name")
 

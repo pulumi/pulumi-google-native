@@ -103,7 +103,7 @@ class GoogleCloudBillingBudgetsV1CustomPeriodResponse(dict):
         """
         All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
         :param 'GoogleTypeDateResponse' end_date: Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
-        :param 'GoogleTypeDateResponse' start_date: Required. The start date must be after January 1, 2017.
+        :param 'GoogleTypeDateResponse' start_date: The start date must be after January 1, 2017.
         """
         pulumi.set(__self__, "end_date", end_date)
         pulumi.set(__self__, "start_date", start_date)
@@ -120,7 +120,7 @@ class GoogleCloudBillingBudgetsV1CustomPeriodResponse(dict):
     @pulumi.getter(name="startDate")
     def start_date(self) -> 'outputs.GoogleTypeDateResponse':
         """
-        Required. The start date must be after January 1, 2017.
+        The start date must be after January 1, 2017.
         """
         return pulumi.get(self, "start_date")
 
@@ -367,7 +367,7 @@ class GoogleCloudBillingBudgetsV1ThresholdRuleResponse(dict):
         """
         ThresholdRule contains a definition of a threshold which triggers an alert (a notification of a threshold being crossed) to be sent when spend goes above the specified amount. Alerts are automatically e-mailed to users with the Billing Account Administrator role or the Billing Account User role. The thresholds here have no effect on notifications sent to anything configured under `Budget.all_updates_rule`.
         :param str spend_basis: Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
-        :param float threshold_percent: Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+        :param float threshold_percent: Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
         """
         pulumi.set(__self__, "spend_basis", spend_basis)
         pulumi.set(__self__, "threshold_percent", threshold_percent)
@@ -384,7 +384,7 @@ class GoogleCloudBillingBudgetsV1ThresholdRuleResponse(dict):
     @pulumi.getter(name="thresholdPercent")
     def threshold_percent(self) -> float:
         """
-        Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+        Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
         """
         return pulumi.get(self, "threshold_percent")
 

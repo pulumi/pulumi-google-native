@@ -16,9 +16,10 @@ __all__ = ['NodeArgs', 'Node']
 @pulumi.input_type
 class NodeArgs:
     def __init__(__self__, *,
+                 accelerator_type: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 accelerator_type: Optional[pulumi.Input[str]] = None,
+                 tensorflow_version: pulumi.Input[str],
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  health: Optional[pulumi.Input['NodeHealth']] = None,
@@ -26,24 +27,23 @@ class NodeArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input['SchedulingConfigArgs']] = None,
-                 tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Node resource.
-        :param pulumi.Input[str] accelerator_type: Required. The type of hardware accelerators associated with this node.
+        :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
+        :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
         :param pulumi.Input['NodeHealth'] health: The health status of the TPU node.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] network: The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
         :param pulumi.Input['SchedulingConfigArgs'] scheduling_config: The scheduling options for this node.
-        :param pulumi.Input[str] tensorflow_version: Required. The version of Tensorflow running in the Node.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
         """
+        pulumi.set(__self__, "accelerator_type", accelerator_type)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if accelerator_type is not None:
-            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        pulumi.set(__self__, "tensorflow_version", tensorflow_version)
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
         if description is not None:
@@ -58,10 +58,20 @@ class NodeArgs:
             pulumi.set(__self__, "node_id", node_id)
         if scheduling_config is not None:
             pulumi.set(__self__, "scheduling_config", scheduling_config)
-        if tensorflow_version is not None:
-            pulumi.set(__self__, "tensorflow_version", tensorflow_version)
         if use_service_networking is not None:
             pulumi.set(__self__, "use_service_networking", use_service_networking)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> pulumi.Input[str]:
+        """
+        The type of hardware accelerators associated with this node.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accelerator_type", value)
 
     @property
     @pulumi.getter
@@ -82,16 +92,16 @@ class NodeArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="tensorflowVersion")
+    def tensorflow_version(self) -> pulumi.Input[str]:
         """
-        Required. The type of hardware accelerators associated with this node.
+        The version of Tensorflow running in the Node.
         """
-        return pulumi.get(self, "accelerator_type")
+        return pulumi.get(self, "tensorflow_version")
 
-    @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "accelerator_type", value)
+    @tensorflow_version.setter
+    def tensorflow_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tensorflow_version", value)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -175,18 +185,6 @@ class NodeArgs:
         pulumi.set(self, "scheduling_config", value)
 
     @property
-    @pulumi.getter(name="tensorflowVersion")
-    def tensorflow_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The version of Tensorflow running in the Node.
-        """
-        return pulumi.get(self, "tensorflow_version")
-
-    @tensorflow_version.setter
-    def tensorflow_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tensorflow_version", value)
-
-    @property
     @pulumi.getter(name="useServiceNetworking")
     def use_service_networking(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -222,14 +220,14 @@ class Node(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] accelerator_type: Required. The type of hardware accelerators associated with this node.
+        :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
         :param pulumi.Input['NodeHealth'] health: The health status of the TPU node.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] network: The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
         :param pulumi.Input[pulumi.InputType['SchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
-        :param pulumi.Input[str] tensorflow_version: Required. The version of Tensorflow running in the Node.
+        :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
         """
         ...
@@ -280,6 +278,8 @@ class Node(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodeArgs.__new__(NodeArgs)
 
+            if accelerator_type is None and not opts.urn:
+                raise TypeError("Missing required property 'accelerator_type'")
             __props__.__dict__["accelerator_type"] = accelerator_type
             __props__.__dict__["cidr_block"] = cidr_block
             __props__.__dict__["description"] = description
@@ -294,6 +294,8 @@ class Node(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["scheduling_config"] = scheduling_config
+            if tensorflow_version is None and not opts.urn:
+                raise TypeError("Missing required property 'tensorflow_version'")
             __props__.__dict__["tensorflow_version"] = tensorflow_version
             __props__.__dict__["use_service_networking"] = use_service_networking
             __props__.__dict__["api_version"] = None
@@ -349,7 +351,7 @@ class Node(pulumi.CustomResource):
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> pulumi.Output[str]:
         """
-        Required. The type of hardware accelerators associated with this node.
+        The type of hardware accelerators associated with this node.
         """
         return pulumi.get(self, "accelerator_type")
 
@@ -469,7 +471,7 @@ class Node(pulumi.CustomResource):
     @pulumi.getter(name="tensorflowVersion")
     def tensorflow_version(self) -> pulumi.Output[str]:
         """
-        Required. The version of Tensorflow running in the Node.
+        The version of Tensorflow running in the Node.
         """
         return pulumi.get(self, "tensorflow_version")
 

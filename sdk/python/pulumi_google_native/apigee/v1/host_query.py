@@ -16,6 +16,7 @@ __all__ = ['HostQueryArgs', 'HostQuery']
 class HostQueryArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[str],
+                 time_range: Any,
                  csv_delimiter: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  envgroup_hostname: Optional[pulumi.Input[str]] = None,
@@ -25,10 +26,10 @@ class HostQueryArgs:
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1QueryMetricArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
-                 report_definition_id: Optional[pulumi.Input[str]] = None,
-                 time_range: Optional[Any] = None):
+                 report_definition_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HostQuery resource.
+        :param Any time_range: Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
         :param pulumi.Input[str] csv_delimiter: Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dimensions: A list of dimensions. https://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions
         :param pulumi.Input[str] envgroup_hostname: Hostname needs to be specified if query intends to run at host level. This field is only allowed when query is submitted by CreateHostAsyncQuery where analytics data will be grouped by organization and hostname.
@@ -39,9 +40,9 @@ class HostQueryArgs:
         :param pulumi.Input[str] name: Asynchronous Query Name.
         :param pulumi.Input[str] output_format: Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
         :param pulumi.Input[str] report_definition_id: Asynchronous Report ID.
-        :param Any time_range: Required. Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
         """
         pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "time_range", time_range)
         if csv_delimiter is not None:
             pulumi.set(__self__, "csv_delimiter", csv_delimiter)
         if dimensions is not None:
@@ -62,8 +63,6 @@ class HostQueryArgs:
             pulumi.set(__self__, "output_format", output_format)
         if report_definition_id is not None:
             pulumi.set(__self__, "report_definition_id", report_definition_id)
-        if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -73,6 +72,18 @@ class HostQueryArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Any:
+        """
+        Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
+        """
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: Any):
+        pulumi.set(self, "time_range", value)
 
     @property
     @pulumi.getter(name="csvDelimiter")
@@ -194,18 +205,6 @@ class HostQueryArgs:
     def report_definition_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "report_definition_id", value)
 
-    @property
-    @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[Any]:
-        """
-        Required. Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
-        """
-        return pulumi.get(self, "time_range")
-
-    @time_range.setter
-    def time_range(self, value: Optional[Any]):
-        pulumi.set(self, "time_range", value)
-
 
 class HostQuery(pulumi.CustomResource):
     @overload
@@ -240,7 +239,7 @@ class HostQuery(pulumi.CustomResource):
         :param pulumi.Input[str] name: Asynchronous Query Name.
         :param pulumi.Input[str] output_format: Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
         :param pulumi.Input[str] report_definition_id: Asynchronous Report ID.
-        :param Any time_range: Required. Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
+        :param Any time_range: Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
         """
         ...
     @overload
@@ -303,6 +302,8 @@ class HostQuery(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["output_format"] = output_format
             __props__.__dict__["report_definition_id"] = report_definition_id
+            if time_range is None and not opts.urn:
+                raise TypeError("Missing required property 'time_range'")
             __props__.__dict__["time_range"] = time_range
             __props__.__dict__["created"] = None
             __props__.__dict__["error"] = None

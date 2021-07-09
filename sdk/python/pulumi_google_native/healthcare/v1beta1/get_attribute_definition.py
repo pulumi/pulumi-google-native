@@ -40,7 +40,7 @@ class GetAttributeDefinitionResult:
     @pulumi.getter(name="allowedValues")
     def allowed_values(self) -> Sequence[str]:
         """
-        Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
         """
         return pulumi.get(self, "allowed_values")
 
@@ -48,7 +48,7 @@ class GetAttributeDefinitionResult:
     @pulumi.getter
     def category(self) -> str:
         """
-        Required. The category of the attribute. The value of this field cannot be changed after creation.
+        The category of the attribute. The value of this field cannot be changed after creation.
         """
         return pulumi.get(self, "category")
 

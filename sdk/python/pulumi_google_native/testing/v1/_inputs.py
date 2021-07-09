@@ -77,123 +77,119 @@ class AccountArgs:
 @pulumi.input_type
 class AndroidDeviceArgs:
     def __init__(__self__, *,
-                 android_model_id: Optional[pulumi.Input[str]] = None,
-                 android_version_id: Optional[pulumi.Input[str]] = None,
-                 locale: Optional[pulumi.Input[str]] = None,
-                 orientation: Optional[pulumi.Input[str]] = None):
+                 android_model_id: pulumi.Input[str],
+                 android_version_id: pulumi.Input[str],
+                 locale: pulumi.Input[str],
+                 orientation: pulumi.Input[str]):
         """
         A single Android device.
-        :param pulumi.Input[str] android_model_id: Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[str] android_version_id: Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[str] locale: Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[str] orientation: Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] android_model_id: The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] android_version_id: The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] locale: The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] orientation: How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         """
-        if android_model_id is not None:
-            pulumi.set(__self__, "android_model_id", android_model_id)
-        if android_version_id is not None:
-            pulumi.set(__self__, "android_version_id", android_version_id)
-        if locale is not None:
-            pulumi.set(__self__, "locale", locale)
-        if orientation is not None:
-            pulumi.set(__self__, "orientation", orientation)
+        pulumi.set(__self__, "android_model_id", android_model_id)
+        pulumi.set(__self__, "android_version_id", android_version_id)
+        pulumi.set(__self__, "locale", locale)
+        pulumi.set(__self__, "orientation", orientation)
 
     @property
     @pulumi.getter(name="androidModelId")
-    def android_model_id(self) -> Optional[pulumi.Input[str]]:
+    def android_model_id(self) -> pulumi.Input[str]:
         """
-        Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "android_model_id")
 
     @android_model_id.setter
-    def android_model_id(self, value: Optional[pulumi.Input[str]]):
+    def android_model_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "android_model_id", value)
 
     @property
     @pulumi.getter(name="androidVersionId")
-    def android_version_id(self) -> Optional[pulumi.Input[str]]:
+    def android_version_id(self) -> pulumi.Input[str]:
         """
-        Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "android_version_id")
 
     @android_version_id.setter
-    def android_version_id(self, value: Optional[pulumi.Input[str]]):
+    def android_version_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "android_version_id", value)
 
     @property
     @pulumi.getter
-    def locale(self) -> Optional[pulumi.Input[str]]:
+    def locale(self) -> pulumi.Input[str]:
         """
-        Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "locale")
 
     @locale.setter
-    def locale(self, value: Optional[pulumi.Input[str]]):
+    def locale(self, value: pulumi.Input[str]):
         pulumi.set(self, "locale", value)
 
     @property
     @pulumi.getter
-    def orientation(self) -> Optional[pulumi.Input[str]]:
+    def orientation(self) -> pulumi.Input[str]:
         """
-        Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "orientation")
 
     @orientation.setter
-    def orientation(self, value: Optional[pulumi.Input[str]]):
+    def orientation(self, value: pulumi.Input[str]):
         pulumi.set(self, "orientation", value)
 
 
 @pulumi.input_type
 class AndroidDeviceListArgs:
     def __init__(__self__, *,
-                 android_devices: Optional[pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]] = None):
+                 android_devices: pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]):
         """
         A list of Android device configurations in which the test is to be executed.
-        :param pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]] android_devices: Required. A list of Android devices.
+        :param pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]] android_devices: A list of Android devices.
         """
-        if android_devices is not None:
-            pulumi.set(__self__, "android_devices", android_devices)
+        pulumi.set(__self__, "android_devices", android_devices)
 
     @property
     @pulumi.getter(name="androidDevices")
-    def android_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]]:
+    def android_devices(self) -> pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]:
         """
-        Required. A list of Android devices.
+        A list of Android devices.
         """
         return pulumi.get(self, "android_devices")
 
     @android_devices.setter
-    def android_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]]):
+    def android_devices(self, value: pulumi.Input[Sequence[pulumi.Input['AndroidDeviceArgs']]]):
         pulumi.set(self, "android_devices", value)
 
 
 @pulumi.input_type
 class AndroidInstrumentationTestArgs:
     def __init__(__self__, *,
+                 test_apk: pulumi.Input['FileReferenceArgs'],
                  app_apk: Optional[pulumi.Input['FileReferenceArgs']] = None,
                  app_bundle: Optional[pulumi.Input['AppBundleArgs']] = None,
                  app_package_id: Optional[pulumi.Input[str]] = None,
                  orchestrator_option: Optional[pulumi.Input['AndroidInstrumentationTestOrchestratorOption']] = None,
                  sharding_option: Optional[pulumi.Input['ShardingOptionArgs']] = None,
-                 test_apk: Optional[pulumi.Input['FileReferenceArgs']] = None,
                  test_package_id: Optional[pulumi.Input[str]] = None,
                  test_runner_class: Optional[pulumi.Input[str]] = None,
                  test_targets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A test of an Android application that can control an Android component independently of its normal lifecycle. Android instrumentation tests run an application APK and test APK inside the same process on a virtual or physical AndroidDevice. They also specify a test runner class, such as com.google.GoogleTestRunner, which can vary on the specific instrumentation framework chosen. See for more information on types of Android tests.
+        :param pulumi.Input['FileReferenceArgs'] test_apk: The APK containing the test code to be executed.
         :param pulumi.Input['FileReferenceArgs'] app_apk: The APK for the application under test.
         :param pulumi.Input['AppBundleArgs'] app_bundle: A multi-apk app bundle for the application under test.
         :param pulumi.Input[str] app_package_id: The java package for the application under test. The default value is determined by examining the application's manifest.
         :param pulumi.Input['AndroidInstrumentationTestOrchestratorOption'] orchestrator_option: The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
         :param pulumi.Input['ShardingOptionArgs'] sharding_option: The option to run tests in multiple shards in parallel.
-        :param pulumi.Input['FileReferenceArgs'] test_apk: Required. The APK containing the test code to be executed.
         :param pulumi.Input[str] test_package_id: The java package for the test to be executed. The default value is determined by examining the application's manifest.
         :param pulumi.Input[str] test_runner_class: The InstrumentationTestRunner class. The default value is determined by examining the application's manifest.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] test_targets: Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
         """
+        pulumi.set(__self__, "test_apk", test_apk)
         if app_apk is not None:
             pulumi.set(__self__, "app_apk", app_apk)
         if app_bundle is not None:
@@ -204,14 +200,24 @@ class AndroidInstrumentationTestArgs:
             pulumi.set(__self__, "orchestrator_option", orchestrator_option)
         if sharding_option is not None:
             pulumi.set(__self__, "sharding_option", sharding_option)
-        if test_apk is not None:
-            pulumi.set(__self__, "test_apk", test_apk)
         if test_package_id is not None:
             pulumi.set(__self__, "test_package_id", test_package_id)
         if test_runner_class is not None:
             pulumi.set(__self__, "test_runner_class", test_runner_class)
         if test_targets is not None:
             pulumi.set(__self__, "test_targets", test_targets)
+
+    @property
+    @pulumi.getter(name="testApk")
+    def test_apk(self) -> pulumi.Input['FileReferenceArgs']:
+        """
+        The APK containing the test code to be executed.
+        """
+        return pulumi.get(self, "test_apk")
+
+    @test_apk.setter
+    def test_apk(self, value: pulumi.Input['FileReferenceArgs']):
+        pulumi.set(self, "test_apk", value)
 
     @property
     @pulumi.getter(name="appApk")
@@ -274,18 +280,6 @@ class AndroidInstrumentationTestArgs:
         pulumi.set(self, "sharding_option", value)
 
     @property
-    @pulumi.getter(name="testApk")
-    def test_apk(self) -> Optional[pulumi.Input['FileReferenceArgs']]:
-        """
-        Required. The APK containing the test code to be executed.
-        """
-        return pulumi.get(self, "test_apk")
-
-    @test_apk.setter
-    def test_apk(self, value: Optional[pulumi.Input['FileReferenceArgs']]):
-        pulumi.set(self, "test_apk", value)
-
-    @property
     @pulumi.getter(name="testPackageId")
     def test_package_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -325,72 +319,68 @@ class AndroidInstrumentationTestArgs:
 @pulumi.input_type
 class AndroidMatrixArgs:
     def __init__(__self__, *,
-                 android_model_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 android_version_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 orientations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 android_model_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 android_version_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 locales: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 orientations: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] android_model_ids: Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] android_version_ids: Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] locales: Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] orientations: Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] android_model_ids: The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] android_version_ids: The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locales: The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] orientations: The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
         """
-        if android_model_ids is not None:
-            pulumi.set(__self__, "android_model_ids", android_model_ids)
-        if android_version_ids is not None:
-            pulumi.set(__self__, "android_version_ids", android_version_ids)
-        if locales is not None:
-            pulumi.set(__self__, "locales", locales)
-        if orientations is not None:
-            pulumi.set(__self__, "orientations", orientations)
+        pulumi.set(__self__, "android_model_ids", android_model_ids)
+        pulumi.set(__self__, "android_version_ids", android_version_ids)
+        pulumi.set(__self__, "locales", locales)
+        pulumi.set(__self__, "orientations", orientations)
 
     @property
     @pulumi.getter(name="androidModelIds")
-    def android_model_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def android_model_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "android_model_ids")
 
     @android_model_ids.setter
-    def android_model_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def android_model_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "android_model_ids", value)
 
     @property
     @pulumi.getter(name="androidVersionIds")
-    def android_version_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def android_version_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "android_version_ids")
 
     @android_version_ids.setter
-    def android_version_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def android_version_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "android_version_ids", value)
 
     @property
     @pulumi.getter
-    def locales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def locales(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "locales")
 
     @locales.setter
-    def locales(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def locales(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "locales", value)
 
     @property
     @pulumi.getter
-    def orientations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def orientations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+        The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "orientations")
 
     @orientations.setter
-    def orientations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def orientations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "orientations", value)
 
 
@@ -701,17 +691,28 @@ class AppBundleArgs:
 @pulumi.input_type
 class ClientInfoArgs:
     def __init__(__self__, *,
-                 client_info_details: Optional[pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: pulumi.Input[str],
+                 client_info_details: Optional[pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]]] = None):
         """
         Information about the client which invoked the test.
+        :param pulumi.Input[str] name: Client name, such as gcloud.
         :param pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]] client_info_details: The list of detailed information about client.
-        :param pulumi.Input[str] name: Required. Client name, such as gcloud.
         """
+        pulumi.set(__self__, "name", name)
         if client_info_details is not None:
             pulumi.set(__self__, "client_info_details", client_info_details)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Client name, such as gcloud.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="clientInfoDetails")
@@ -725,56 +726,42 @@ class ClientInfoArgs:
     def client_info_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientInfoDetailArgs']]]]):
         pulumi.set(self, "client_info_details", value)
 
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Client name, such as gcloud.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
 
 @pulumi.input_type
 class ClientInfoDetailArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
         """
         Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
-        :param pulumi.Input[str] key: Required. The key of detailed client information.
-        :param pulumi.Input[str] value: Required. The value of detailed client information.
+        :param pulumi.Input[str] key: The key of detailed client information.
+        :param pulumi.Input[str] value: The value of detailed client information.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
+    def key(self) -> pulumi.Input[str]:
         """
-        Required. The key of detailed client information.
+        The key of detailed client information.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
+    def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
+    def value(self) -> pulumi.Input[str]:
         """
-        Required. The value of detailed client information.
+        The value of detailed client information.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
+    def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
 
@@ -950,96 +937,91 @@ class GoogleAutoArgs:
 @pulumi.input_type
 class GoogleCloudStorageArgs:
     def __init__(__self__, *,
-                 gcs_path: Optional[pulumi.Input[str]] = None):
+                 gcs_path: pulumi.Input[str]):
         """
         A storage location within Google cloud storage (GCS).
-        :param pulumi.Input[str] gcs_path: Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+        :param pulumi.Input[str] gcs_path: The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
         """
-        if gcs_path is not None:
-            pulumi.set(__self__, "gcs_path", gcs_path)
+        pulumi.set(__self__, "gcs_path", gcs_path)
 
     @property
     @pulumi.getter(name="gcsPath")
-    def gcs_path(self) -> Optional[pulumi.Input[str]]:
+    def gcs_path(self) -> pulumi.Input[str]:
         """
-        Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+        The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
         """
         return pulumi.get(self, "gcs_path")
 
     @gcs_path.setter
-    def gcs_path(self, value: Optional[pulumi.Input[str]]):
+    def gcs_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "gcs_path", value)
 
 
 @pulumi.input_type
 class IosDeviceArgs:
     def __init__(__self__, *,
-                 ios_model_id: Optional[pulumi.Input[str]] = None,
-                 ios_version_id: Optional[pulumi.Input[str]] = None,
-                 locale: Optional[pulumi.Input[str]] = None,
-                 orientation: Optional[pulumi.Input[str]] = None):
+                 ios_model_id: pulumi.Input[str],
+                 ios_version_id: pulumi.Input[str],
+                 locale: pulumi.Input[str],
+                 orientation: pulumi.Input[str]):
         """
         A single iOS device.
-        :param pulumi.Input[str] ios_model_id: Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[str] ios_version_id: Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[str] locale: Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param pulumi.Input[str] orientation: Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] ios_model_id: The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] ios_version_id: The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] locale: The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param pulumi.Input[str] orientation: How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         """
-        if ios_model_id is not None:
-            pulumi.set(__self__, "ios_model_id", ios_model_id)
-        if ios_version_id is not None:
-            pulumi.set(__self__, "ios_version_id", ios_version_id)
-        if locale is not None:
-            pulumi.set(__self__, "locale", locale)
-        if orientation is not None:
-            pulumi.set(__self__, "orientation", orientation)
+        pulumi.set(__self__, "ios_model_id", ios_model_id)
+        pulumi.set(__self__, "ios_version_id", ios_version_id)
+        pulumi.set(__self__, "locale", locale)
+        pulumi.set(__self__, "orientation", orientation)
 
     @property
     @pulumi.getter(name="iosModelId")
-    def ios_model_id(self) -> Optional[pulumi.Input[str]]:
+    def ios_model_id(self) -> pulumi.Input[str]:
         """
-        Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "ios_model_id")
 
     @ios_model_id.setter
-    def ios_model_id(self, value: Optional[pulumi.Input[str]]):
+    def ios_model_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "ios_model_id", value)
 
     @property
     @pulumi.getter(name="iosVersionId")
-    def ios_version_id(self) -> Optional[pulumi.Input[str]]:
+    def ios_version_id(self) -> pulumi.Input[str]:
         """
-        Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "ios_version_id")
 
     @ios_version_id.setter
-    def ios_version_id(self, value: Optional[pulumi.Input[str]]):
+    def ios_version_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "ios_version_id", value)
 
     @property
     @pulumi.getter
-    def locale(self) -> Optional[pulumi.Input[str]]:
+    def locale(self) -> pulumi.Input[str]:
         """
-        Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "locale")
 
     @locale.setter
-    def locale(self, value: Optional[pulumi.Input[str]]):
+    def locale(self, value: pulumi.Input[str]):
         pulumi.set(self, "locale", value)
 
     @property
     @pulumi.getter
-    def orientation(self) -> Optional[pulumi.Input[str]]:
+    def orientation(self) -> pulumi.Input[str]:
         """
-        Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "orientation")
 
     @orientation.setter
-    def orientation(self, value: Optional[pulumi.Input[str]]):
+    def orientation(self, value: pulumi.Input[str]):
         pulumi.set(self, "orientation", value)
 
 
@@ -1102,52 +1084,50 @@ class IosDeviceFileArgs:
 @pulumi.input_type
 class IosDeviceListArgs:
     def __init__(__self__, *,
-                 ios_devices: Optional[pulumi.Input[Sequence[pulumi.Input['IosDeviceArgs']]]] = None):
+                 ios_devices: pulumi.Input[Sequence[pulumi.Input['IosDeviceArgs']]]):
         """
         A list of iOS device configurations in which the test is to be executed.
-        :param pulumi.Input[Sequence[pulumi.Input['IosDeviceArgs']]] ios_devices: Required. A list of iOS devices.
+        :param pulumi.Input[Sequence[pulumi.Input['IosDeviceArgs']]] ios_devices: A list of iOS devices.
         """
-        if ios_devices is not None:
-            pulumi.set(__self__, "ios_devices", ios_devices)
+        pulumi.set(__self__, "ios_devices", ios_devices)
 
     @property
     @pulumi.getter(name="iosDevices")
-    def ios_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IosDeviceArgs']]]]:
+    def ios_devices(self) -> pulumi.Input[Sequence[pulumi.Input['IosDeviceArgs']]]:
         """
-        Required. A list of iOS devices.
+        A list of iOS devices.
         """
         return pulumi.get(self, "ios_devices")
 
     @ios_devices.setter
-    def ios_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IosDeviceArgs']]]]):
+    def ios_devices(self, value: pulumi.Input[Sequence[pulumi.Input['IosDeviceArgs']]]):
         pulumi.set(self, "ios_devices", value)
 
 
 @pulumi.input_type
 class IosTestLoopArgs:
     def __init__(__self__, *,
-                 app_ipa: Optional[pulumi.Input['FileReferenceArgs']] = None,
+                 app_ipa: pulumi.Input['FileReferenceArgs'],
                  scenarios: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
-        :param pulumi.Input['FileReferenceArgs'] app_ipa: Required. The .ipa of the application to test.
+        :param pulumi.Input['FileReferenceArgs'] app_ipa: The .ipa of the application to test.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] scenarios: The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
         """
-        if app_ipa is not None:
-            pulumi.set(__self__, "app_ipa", app_ipa)
+        pulumi.set(__self__, "app_ipa", app_ipa)
         if scenarios is not None:
             pulumi.set(__self__, "scenarios", scenarios)
 
     @property
     @pulumi.getter(name="appIpa")
-    def app_ipa(self) -> Optional[pulumi.Input['FileReferenceArgs']]:
+    def app_ipa(self) -> pulumi.Input['FileReferenceArgs']:
         """
-        Required. The .ipa of the application to test.
+        The .ipa of the application to test.
         """
         return pulumi.get(self, "app_ipa")
 
     @app_ipa.setter
-    def app_ipa(self, value: Optional[pulumi.Input['FileReferenceArgs']]):
+    def app_ipa(self, value: pulumi.Input['FileReferenceArgs']):
         pulumi.set(self, "app_ipa", value)
 
     @property
@@ -1238,25 +1218,36 @@ class IosTestSetupArgs:
 @pulumi.input_type
 class IosXcTestArgs:
     def __init__(__self__, *,
+                 tests_zip: pulumi.Input['FileReferenceArgs'],
                  test_special_entitlements: Optional[pulumi.Input[bool]] = None,
-                 tests_zip: Optional[pulumi.Input['FileReferenceArgs']] = None,
                  xcode_version: Optional[pulumi.Input[str]] = None,
                  xctestrun: Optional[pulumi.Input['FileReferenceArgs']] = None):
         """
         A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
+        :param pulumi.Input['FileReferenceArgs'] tests_zip: The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
         :param pulumi.Input[bool] test_special_entitlements: The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
-        :param pulumi.Input['FileReferenceArgs'] tests_zip: Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
         :param pulumi.Input[str] xcode_version: The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
         :param pulumi.Input['FileReferenceArgs'] xctestrun: An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.
         """
+        pulumi.set(__self__, "tests_zip", tests_zip)
         if test_special_entitlements is not None:
             pulumi.set(__self__, "test_special_entitlements", test_special_entitlements)
-        if tests_zip is not None:
-            pulumi.set(__self__, "tests_zip", tests_zip)
         if xcode_version is not None:
             pulumi.set(__self__, "xcode_version", xcode_version)
         if xctestrun is not None:
             pulumi.set(__self__, "xctestrun", xctestrun)
+
+    @property
+    @pulumi.getter(name="testsZip")
+    def tests_zip(self) -> pulumi.Input['FileReferenceArgs']:
+        """
+        The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+        """
+        return pulumi.get(self, "tests_zip")
+
+    @tests_zip.setter
+    def tests_zip(self, value: pulumi.Input['FileReferenceArgs']):
+        pulumi.set(self, "tests_zip", value)
 
     @property
     @pulumi.getter(name="testSpecialEntitlements")
@@ -1269,18 +1260,6 @@ class IosXcTestArgs:
     @test_special_entitlements.setter
     def test_special_entitlements(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "test_special_entitlements", value)
-
-    @property
-    @pulumi.getter(name="testsZip")
-    def tests_zip(self) -> Optional[pulumi.Input['FileReferenceArgs']]:
-        """
-        Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
-        """
-        return pulumi.get(self, "tests_zip")
-
-    @tests_zip.setter
-    def tests_zip(self, value: Optional[pulumi.Input['FileReferenceArgs']]):
-        pulumi.set(self, "tests_zip", value)
 
     @property
     @pulumi.getter(name="xcodeVersion")
@@ -1319,132 +1298,126 @@ class LauncherActivityIntentArgs:
 @pulumi.input_type
 class ManualShardingArgs:
     def __init__(__self__, *,
-                 test_targets_for_shard: Optional[pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]] = None):
+                 test_targets_for_shard: pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]):
         """
         Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
-        :param pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]] test_targets_for_shard: Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+        :param pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]] test_targets_for_shard: Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
         """
-        if test_targets_for_shard is not None:
-            pulumi.set(__self__, "test_targets_for_shard", test_targets_for_shard)
+        pulumi.set(__self__, "test_targets_for_shard", test_targets_for_shard)
 
     @property
     @pulumi.getter(name="testTargetsForShard")
-    def test_targets_for_shard(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]]:
+    def test_targets_for_shard(self) -> pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]:
         """
-        Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+        Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
         """
         return pulumi.get(self, "test_targets_for_shard")
 
     @test_targets_for_shard.setter
-    def test_targets_for_shard(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]]):
+    def test_targets_for_shard(self, value: pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]):
         pulumi.set(self, "test_targets_for_shard", value)
 
 
 @pulumi.input_type
 class ObbFileArgs:
     def __init__(__self__, *,
-                 obb: Optional[pulumi.Input['FileReferenceArgs']] = None,
-                 obb_file_name: Optional[pulumi.Input[str]] = None):
+                 obb: pulumi.Input['FileReferenceArgs'],
+                 obb_file_name: pulumi.Input[str]):
         """
         An opaque binary blob file to install on the device before the test starts.
-        :param pulumi.Input['FileReferenceArgs'] obb: Required. Opaque Binary Blob (OBB) file(s) to install on the device.
-        :param pulumi.Input[str] obb_file_name: Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        :param pulumi.Input['FileReferenceArgs'] obb: Opaque Binary Blob (OBB) file(s) to install on the device.
+        :param pulumi.Input[str] obb_file_name: OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
         """
-        if obb is not None:
-            pulumi.set(__self__, "obb", obb)
-        if obb_file_name is not None:
-            pulumi.set(__self__, "obb_file_name", obb_file_name)
+        pulumi.set(__self__, "obb", obb)
+        pulumi.set(__self__, "obb_file_name", obb_file_name)
 
     @property
     @pulumi.getter
-    def obb(self) -> Optional[pulumi.Input['FileReferenceArgs']]:
+    def obb(self) -> pulumi.Input['FileReferenceArgs']:
         """
-        Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+        Opaque Binary Blob (OBB) file(s) to install on the device.
         """
         return pulumi.get(self, "obb")
 
     @obb.setter
-    def obb(self, value: Optional[pulumi.Input['FileReferenceArgs']]):
+    def obb(self, value: pulumi.Input['FileReferenceArgs']):
         pulumi.set(self, "obb", value)
 
     @property
     @pulumi.getter(name="obbFileName")
-    def obb_file_name(self) -> Optional[pulumi.Input[str]]:
+    def obb_file_name(self) -> pulumi.Input[str]:
         """
-        Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
         """
         return pulumi.get(self, "obb_file_name")
 
     @obb_file_name.setter
-    def obb_file_name(self, value: Optional[pulumi.Input[str]]):
+    def obb_file_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "obb_file_name", value)
 
 
 @pulumi.input_type
 class RegularFileArgs:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input['FileReferenceArgs']] = None,
-                 device_path: Optional[pulumi.Input[str]] = None):
+                 content: pulumi.Input['FileReferenceArgs'],
+                 device_path: pulumi.Input[str]):
         """
         A file or directory to install on the device before the test starts.
-        :param pulumi.Input['FileReferenceArgs'] content: Required. The source file.
-        :param pulumi.Input[str] device_path: Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+        :param pulumi.Input['FileReferenceArgs'] content: The source file.
+        :param pulumi.Input[str] device_path: Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
         """
-        if content is not None:
-            pulumi.set(__self__, "content", content)
-        if device_path is not None:
-            pulumi.set(__self__, "device_path", device_path)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "device_path", device_path)
 
     @property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input['FileReferenceArgs']]:
+    def content(self) -> pulumi.Input['FileReferenceArgs']:
         """
-        Required. The source file.
+        The source file.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input['FileReferenceArgs']]):
+    def content(self, value: pulumi.Input['FileReferenceArgs']):
         pulumi.set(self, "content", value)
 
     @property
     @pulumi.getter(name="devicePath")
-    def device_path(self) -> Optional[pulumi.Input[str]]:
+    def device_path(self) -> pulumi.Input[str]:
         """
-        Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+        Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
         """
         return pulumi.get(self, "device_path")
 
     @device_path.setter
-    def device_path(self, value: Optional[pulumi.Input[str]]):
+    def device_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "device_path", value)
 
 
 @pulumi.input_type
 class ResultStorageArgs:
     def __init__(__self__, *,
-                 google_cloud_storage: Optional[pulumi.Input['GoogleCloudStorageArgs']] = None,
+                 google_cloud_storage: pulumi.Input['GoogleCloudStorageArgs'],
                  tool_results_history: Optional[pulumi.Input['ToolResultsHistoryArgs']] = None):
         """
         Locations where the results of running the test are stored.
         :param pulumi.Input['GoogleCloudStorageArgs'] google_cloud_storage: Required.
         :param pulumi.Input['ToolResultsHistoryArgs'] tool_results_history: The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
         """
-        if google_cloud_storage is not None:
-            pulumi.set(__self__, "google_cloud_storage", google_cloud_storage)
+        pulumi.set(__self__, "google_cloud_storage", google_cloud_storage)
         if tool_results_history is not None:
             pulumi.set(__self__, "tool_results_history", tool_results_history)
 
     @property
     @pulumi.getter(name="googleCloudStorage")
-    def google_cloud_storage(self) -> Optional[pulumi.Input['GoogleCloudStorageArgs']]:
+    def google_cloud_storage(self) -> pulumi.Input['GoogleCloudStorageArgs']:
         """
         Required.
         """
         return pulumi.get(self, "google_cloud_storage")
 
     @google_cloud_storage.setter
-    def google_cloud_storage(self, value: Optional[pulumi.Input['GoogleCloudStorageArgs']]):
+    def google_cloud_storage(self, value: pulumi.Input['GoogleCloudStorageArgs']):
         pulumi.set(self, "google_cloud_storage", value)
 
     @property
@@ -1463,33 +1436,43 @@ class ResultStorageArgs:
 @pulumi.input_type
 class RoboDirectiveArgs:
     def __init__(__self__, *,
-                 action_type: Optional[pulumi.Input['RoboDirectiveActionType']] = None,
-                 input_text: Optional[pulumi.Input[str]] = None,
-                 resource_name: Optional[pulumi.Input[str]] = None):
+                 action_type: pulumi.Input['RoboDirectiveActionType'],
+                 resource_name: pulumi.Input[str],
+                 input_text: Optional[pulumi.Input[str]] = None):
         """
         Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
-        :param pulumi.Input['RoboDirectiveActionType'] action_type: Required. The type of action that Robo should perform on the specified element.
+        :param pulumi.Input['RoboDirectiveActionType'] action_type: The type of action that Robo should perform on the specified element.
+        :param pulumi.Input[str] resource_name: The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
         :param pulumi.Input[str] input_text: The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
-        :param pulumi.Input[str] resource_name: Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
         """
-        if action_type is not None:
-            pulumi.set(__self__, "action_type", action_type)
+        pulumi.set(__self__, "action_type", action_type)
+        pulumi.set(__self__, "resource_name", resource_name)
         if input_text is not None:
             pulumi.set(__self__, "input_text", input_text)
-        if resource_name is not None:
-            pulumi.set(__self__, "resource_name", resource_name)
 
     @property
     @pulumi.getter(name="actionType")
-    def action_type(self) -> Optional[pulumi.Input['RoboDirectiveActionType']]:
+    def action_type(self) -> pulumi.Input['RoboDirectiveActionType']:
         """
-        Required. The type of action that Robo should perform on the specified element.
+        The type of action that Robo should perform on the specified element.
         """
         return pulumi.get(self, "action_type")
 
     @action_type.setter
-    def action_type(self, value: Optional[pulumi.Input['RoboDirectiveActionType']]):
+    def action_type(self, value: pulumi.Input['RoboDirectiveActionType']):
         pulumi.set(self, "action_type", value)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> pulumi.Input[str]:
+        """
+        The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+        """
+        return pulumi.get(self, "resource_name")
+
+    @resource_name.setter
+    def resource_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_name", value)
 
     @property
     @pulumi.getter(name="inputText")
@@ -1502,18 +1485,6 @@ class RoboDirectiveArgs:
     @input_text.setter
     def input_text(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "input_text", value)
-
-    @property
-    @pulumi.getter(name="resourceName")
-    def resource_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
-        """
-        return pulumi.get(self, "resource_name")
-
-    @resource_name.setter
-    def resource_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resource_name", value)
 
 
 @pulumi.input_type
@@ -2022,64 +1993,61 @@ class TestTargetsForShardArgs:
 @pulumi.input_type
 class ToolResultsHistoryArgs:
     def __init__(__self__, *,
-                 history_id: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 history_id: pulumi.Input[str],
+                 project: pulumi.Input[str]):
         """
         Represents a tool results history resource.
-        :param pulumi.Input[str] history_id: Required. A tool results history ID.
-        :param pulumi.Input[str] project: Required. The cloud project that owns the tool results history.
+        :param pulumi.Input[str] history_id: A tool results history ID.
+        :param pulumi.Input[str] project: The cloud project that owns the tool results history.
         """
-        if history_id is not None:
-            pulumi.set(__self__, "history_id", history_id)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "history_id", history_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="historyId")
-    def history_id(self) -> Optional[pulumi.Input[str]]:
+    def history_id(self) -> pulumi.Input[str]:
         """
-        Required. A tool results history ID.
+        A tool results history ID.
         """
         return pulumi.get(self, "history_id")
 
     @history_id.setter
-    def history_id(self, value: Optional[pulumi.Input[str]]):
+    def history_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "history_id", value)
 
     @property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
+    def project(self) -> pulumi.Input[str]:
         """
-        Required. The cloud project that owns the tool results history.
+        The cloud project that owns the tool results history.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
+    def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class UniformShardingArgs:
     def __init__(__self__, *,
-                 num_shards: Optional[pulumi.Input[int]] = None):
+                 num_shards: pulumi.Input[int]):
         """
         Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
-        :param pulumi.Input[int] num_shards: Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+        :param pulumi.Input[int] num_shards: Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
         """
-        if num_shards is not None:
-            pulumi.set(__self__, "num_shards", num_shards)
+        pulumi.set(__self__, "num_shards", num_shards)
 
     @property
     @pulumi.getter(name="numShards")
-    def num_shards(self) -> Optional[pulumi.Input[int]]:
+    def num_shards(self) -> pulumi.Input[int]:
         """
-        Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+        Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
         """
         return pulumi.get(self, "num_shards")
 
     @num_shards.setter
-    def num_shards(self, value: Optional[pulumi.Input[int]]):
+    def num_shards(self, value: pulumi.Input[int]):
         pulumi.set(self, "num_shards", value)
 
 

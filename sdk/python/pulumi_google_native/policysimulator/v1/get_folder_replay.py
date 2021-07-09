@@ -35,7 +35,7 @@ class GetFolderReplayResult:
     @pulumi.getter
     def config(self) -> 'outputs.GoogleCloudPolicysimulatorV1ReplayConfigResponse':
         """
-        Required. The configuration used for the `Replay`.
+        The configuration used for the `Replay`.
         """
         return pulumi.get(self, "config")
 

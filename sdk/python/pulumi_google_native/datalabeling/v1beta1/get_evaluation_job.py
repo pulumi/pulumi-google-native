@@ -53,7 +53,7 @@ class GetEvaluationJobResult:
     @pulumi.getter(name="annotationSpecSet")
     def annotation_spec_set(self) -> str:
         """
-        Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
         """
         return pulumi.get(self, "annotation_spec_set")
 
@@ -77,7 +77,7 @@ class GetEvaluationJobResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        Required. Description of the job. The description can be up to 25,000 characters long.
+        Description of the job. The description can be up to 25,000 characters long.
         """
         return pulumi.get(self, "description")
 
@@ -85,7 +85,7 @@ class GetEvaluationJobResult:
     @pulumi.getter(name="evaluationJobConfig")
     def evaluation_job_config(self) -> 'outputs.GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse':
         """
-        Required. Configuration details for the evaluation job.
+        Configuration details for the evaluation job.
         """
         return pulumi.get(self, "evaluation_job_config")
 
@@ -93,7 +93,7 @@ class GetEvaluationJobResult:
     @pulumi.getter(name="labelMissingGroundTruth")
     def label_missing_ground_truth(self) -> bool:
         """
-        Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+        Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
         """
         return pulumi.get(self, "label_missing_ground_truth")
 
@@ -101,7 +101,7 @@ class GetEvaluationJobResult:
     @pulumi.getter(name="modelVersion")
     def model_version(self) -> str:
         """
-        Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+        The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
         """
         return pulumi.get(self, "model_version")
 
@@ -117,7 +117,7 @@ class GetEvaluationJobResult:
     @pulumi.getter
     def schedule(self) -> str:
         """
-        Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+        Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
         """
         return pulumi.get(self, "schedule")
 

@@ -292,11 +292,11 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs:
 @pulumi.input_type
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs:
     def __init__(__self__, *,
+                 disk_size_gb: pulumi.Input[str],
+                 disk_type: pulumi.Input[str],
+                 machine_type: pulumi.Input[str],
                  accelerator: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs']] = None,
-                 disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 disk_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 machine_type: Optional[pulumi.Input[str]] = None,
                  max_concurrent_actions: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  network_access: Optional[pulumi.Input[str]] = None,
@@ -305,11 +305,11 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs:
                  vm_image: Optional[pulumi.Input[str]] = None):
         """
         Defines the configuration to be used for creating workers in the worker pool.
+        :param pulumi.Input[str] disk_size_gb: Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+        :param pulumi.Input[str] disk_type: Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+        :param pulumi.Input[str] machine_type: Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs'] accelerator: The accelerator card attached to each VM.
-        :param pulumi.Input[str] disk_size_gb: Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
-        :param pulumi.Input[str] disk_type: Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
-        :param pulumi.Input[str] machine_type: Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
         :param pulumi.Input[str] max_concurrent_actions: The maximum number of actions a worker can execute concurrently.
         :param pulumi.Input[str] min_cpu_platform: Minimum CPU platform to use when creating the worker. See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
         :param pulumi.Input[str] network_access: Determines the type of network access granted to workers. Possible values: - "public": Workers can connect to the public internet. - "private": Workers can only connect to Google APIs and services. - "restricted-private": Workers can only connect to Google APIs that are reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
@@ -317,16 +317,13 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs:
         :param pulumi.Input[str] sole_tenant_node_type: The node type name to be used for sole-tenant nodes.
         :param pulumi.Input[str] vm_image: The name of the image used by each VM.
         """
+        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "machine_type", machine_type)
         if accelerator is not None:
             pulumi.set(__self__, "accelerator", accelerator)
-        if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
-        if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if machine_type is not None:
-            pulumi.set(__self__, "machine_type", machine_type)
         if max_concurrent_actions is not None:
             pulumi.set(__self__, "max_concurrent_actions", max_concurrent_actions)
         if min_cpu_platform is not None:
@@ -341,6 +338,42 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs:
             pulumi.set(__self__, "vm_image", vm_image)
 
     @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> pulumi.Input[str]:
+        """
+        Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[str]:
+        """
+        Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[str]:
+        """
+        Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
     @pulumi.getter
     def accelerator(self) -> Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs']]:
         """
@@ -353,30 +386,6 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs:
         pulumi.set(self, "accelerator", value)
 
     @property
-    @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
-        """
-        return pulumi.get(self, "disk_size_gb")
-
-    @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_size_gb", value)
-
-    @property
-    @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
-        """
-        return pulumi.get(self, "disk_type")
-
-    @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "disk_type", value)
-
-    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -387,18 +396,6 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
-        """
-        return pulumi.get(self, "machine_type")
-
-    @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "machine_type", value)
 
     @property
     @pulumi.getter(name="maxConcurrentActions")

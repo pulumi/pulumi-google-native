@@ -18,25 +18,26 @@ class JobTriggerArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 status: pulumi.Input['JobTriggerStatus'],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['JobTriggerStatus']] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]] = None):
         """
         The set of arguments for constructing a JobTrigger resource.
+        :param pulumi.Input['JobTriggerStatus'] status: A status for this trigger.
         :param pulumi.Input[str] description: User provided description (max 256 chars)
         :param pulumi.Input[str] display_name: Display name (max 100 chars)
         :param pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs'] inspect_job: For inspect jobs, a snapshot of the configuration.
         :param pulumi.Input[str] name: Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-        :param pulumi.Input['JobTriggerStatus'] status: Required. A status for this trigger.
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "status", status)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -45,8 +46,6 @@ class JobTriggerArgs:
             pulumi.set(__self__, "inspect_job", inspect_job)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if trigger_id is not None:
             pulumi.set(__self__, "trigger_id", trigger_id)
         if triggers is not None:
@@ -69,6 +68,18 @@ class JobTriggerArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Input['JobTriggerStatus']:
+        """
+        A status for this trigger.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input['JobTriggerStatus']):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -119,18 +130,6 @@ class JobTriggerArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['JobTriggerStatus']]:
-        """
-        Required. A status for this trigger.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['JobTriggerStatus']]):
-        pulumi.set(self, "status", value)
-
-    @property
     @pulumi.getter(name="triggerId")
     def trigger_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -179,7 +178,7 @@ class JobTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Display name (max 100 chars)
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']] inspect_job: For inspect jobs, a snapshot of the configuration.
         :param pulumi.Input[str] name: Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-        :param pulumi.Input['JobTriggerStatus'] status: Required. A status for this trigger.
+        :param pulumi.Input['JobTriggerStatus'] status: A status for this trigger.
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
         """
@@ -238,6 +237,8 @@ class JobTrigger(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if status is None and not opts.urn:
+                raise TypeError("Missing required property 'status'")
             __props__.__dict__["status"] = status
             __props__.__dict__["trigger_id"] = trigger_id
             __props__.__dict__["triggers"] = triggers
@@ -339,7 +340,7 @@ class JobTrigger(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Required. A status for this trigger.
+        A status for this trigger.
         """
         return pulumi.get(self, "status")
 

@@ -70,7 +70,7 @@ class GetTestMatrixResult:
     @pulumi.getter(name="environmentMatrix")
     def environment_matrix(self) -> 'outputs.EnvironmentMatrixResponse':
         """
-        Required. The devices the tests are being executed on.
+        The devices the tests are being executed on.
         """
         return pulumi.get(self, "environment_matrix")
 
@@ -118,7 +118,7 @@ class GetTestMatrixResult:
     @pulumi.getter(name="resultStorage")
     def result_storage(self) -> 'outputs.ResultStorageResponse':
         """
-        Required. Where the results for the matrix are written.
+        Where the results for the matrix are written.
         """
         return pulumi.get(self, "result_storage")
 
@@ -150,7 +150,7 @@ class GetTestMatrixResult:
     @pulumi.getter(name="testSpecification")
     def test_specification(self) -> 'outputs.TestSpecificationResponse':
         """
-        Required. How to run the test.
+        How to run the test.
         """
         return pulumi.get(self, "test_specification")
 

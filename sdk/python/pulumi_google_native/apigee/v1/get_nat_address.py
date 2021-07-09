@@ -39,7 +39,7 @@ class GetNatAddressResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Resource ID of the NAT address.
+        Resource ID of the NAT address.
         """
         return pulumi.get(self, "name")
 

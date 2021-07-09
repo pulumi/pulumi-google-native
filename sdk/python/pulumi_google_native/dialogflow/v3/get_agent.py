@@ -80,7 +80,7 @@ class GetAgentResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The human-readable name of the agent, unique within the location.
+        The human-readable name of the agent, unique within the location.
         """
         return pulumi.get(self, "display_name")
 
@@ -136,7 +136,7 @@ class GetAgentResult:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> str:
         """
-        Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         """
         return pulumi.get(self, "time_zone")
 

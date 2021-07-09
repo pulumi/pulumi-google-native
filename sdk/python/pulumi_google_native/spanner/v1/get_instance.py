@@ -40,7 +40,7 @@ class GetInstanceResult:
     @pulumi.getter
     def config(self) -> str:
         """
-        Required. The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
+        The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         """
         return pulumi.get(self, "config")
 
@@ -48,7 +48,7 @@ class GetInstanceResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
+        The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         """
         return pulumi.get(self, "display_name")
 
@@ -64,7 +64,7 @@ class GetInstanceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
+        A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
         """
         return pulumi.get(self, "name")
 

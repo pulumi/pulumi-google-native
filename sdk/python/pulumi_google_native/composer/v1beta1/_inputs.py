@@ -355,56 +355,53 @@ class IPAllocationPolicyArgs:
 @pulumi.input_type
 class MaintenanceWindowArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 recurrence: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None):
+                 end_time: pulumi.Input[str],
+                 recurrence: pulumi.Input[str],
+                 start_time: pulumi.Input[str]):
         """
         The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
-        :param pulumi.Input[str] end_time: Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
-        :param pulumi.Input[str] recurrence: Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
-        :param pulumi.Input[str] start_time: Required. Start time of the first recurrence of the maintenance window.
+        :param pulumi.Input[str] end_time: Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+        :param pulumi.Input[str] recurrence: Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        :param pulumi.Input[str] start_time: Start time of the first recurrence of the maintenance window.
         """
-        if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
-        if recurrence is not None:
-            pulumi.set(__self__, "recurrence", recurrence)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[str]]:
+    def end_time(self) -> pulumi.Input[str]:
         """
-        Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+        Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[str]]):
+    def end_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "end_time", value)
 
     @property
     @pulumi.getter
-    def recurrence(self) -> Optional[pulumi.Input[str]]:
+    def recurrence(self) -> pulumi.Input[str]:
         """
-        Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
         """
         return pulumi.get(self, "recurrence")
 
     @recurrence.setter
-    def recurrence(self, value: Optional[pulumi.Input[str]]):
+    def recurrence(self, value: pulumi.Input[str]):
         pulumi.set(self, "recurrence", value)
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
+    def start_time(self) -> pulumi.Input[str]:
         """
-        Required. Start time of the first recurrence of the maintenance window.
+        Start time of the first recurrence of the maintenance window.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
+    def start_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "start_time", value)
 
 

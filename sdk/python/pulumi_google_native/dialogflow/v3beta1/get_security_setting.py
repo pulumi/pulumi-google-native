@@ -43,7 +43,7 @@ class GetSecuritySettingResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The human-readable name of the security settings, unique within the location.
+        The human-readable name of the security settings, unique within the location.
         """
         return pulumi.get(self, "display_name")
 
@@ -59,7 +59,7 @@ class GetSecuritySettingResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        Resource name of the settings. Format: `projects//locations//securitySettings/`.
         """
         return pulumi.get(self, "name")
 

@@ -101,7 +101,7 @@ class GetCertificateAuthorityResult:
     @pulumi.getter
     def config(self) -> 'outputs.CertificateConfigResponse':
         """
-        Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+        Immutable. The config used to create a self-signed X.509 certificate or CSR.
         """
         return pulumi.get(self, "config")
 
@@ -141,7 +141,7 @@ class GetCertificateAuthorityResult:
     @pulumi.getter(name="keySpec")
     def key_spec(self) -> 'outputs.KeyVersionSpecResponse':
         """
-        Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+        Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
         """
         return pulumi.get(self, "key_spec")
 
@@ -157,7 +157,7 @@ class GetCertificateAuthorityResult:
     @pulumi.getter
     def lifetime(self) -> str:
         """
-        Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         """
         return pulumi.get(self, "lifetime")
 
@@ -197,7 +197,7 @@ class GetCertificateAuthorityResult:
     @pulumi.getter
     def tier(self) -> str:
         """
-        Required. Immutable. The Tier of this CertificateAuthority.
+        Immutable. The Tier of this CertificateAuthority.
         """
         return pulumi.get(self, "tier")
 
@@ -205,7 +205,7 @@ class GetCertificateAuthorityResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. Immutable. The Type of this CertificateAuthority.
+        Immutable. The Type of this CertificateAuthority.
         """
         return pulumi.get(self, "type")
 

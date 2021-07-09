@@ -109,7 +109,7 @@ class GetJobTriggerResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        Required. A status for this trigger.
+        A status for this trigger.
         """
         return pulumi.get(self, "status")
 

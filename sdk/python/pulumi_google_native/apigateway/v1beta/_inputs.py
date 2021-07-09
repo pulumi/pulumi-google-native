@@ -360,24 +360,23 @@ class ApigatewayExprArgs:
 @pulumi.input_type
 class ApigatewayGatewayConfigArgs:
     def __init__(__self__, *,
-                 backend_config: Optional[pulumi.Input['ApigatewayBackendConfigArgs']] = None):
+                 backend_config: pulumi.Input['ApigatewayBackendConfigArgs']):
         """
         Configuration settings for Gateways.
-        :param pulumi.Input['ApigatewayBackendConfigArgs'] backend_config: Required. Backend settings that are applied to all backends of the Gateway.
+        :param pulumi.Input['ApigatewayBackendConfigArgs'] backend_config: Backend settings that are applied to all backends of the Gateway.
         """
-        if backend_config is not None:
-            pulumi.set(__self__, "backend_config", backend_config)
+        pulumi.set(__self__, "backend_config", backend_config)
 
     @property
     @pulumi.getter(name="backendConfig")
-    def backend_config(self) -> Optional[pulumi.Input['ApigatewayBackendConfigArgs']]:
+    def backend_config(self) -> pulumi.Input['ApigatewayBackendConfigArgs']:
         """
-        Required. Backend settings that are applied to all backends of the Gateway.
+        Backend settings that are applied to all backends of the Gateway.
         """
         return pulumi.get(self, "backend_config")
 
     @backend_config.setter
-    def backend_config(self, value: Optional[pulumi.Input['ApigatewayBackendConfigArgs']]):
+    def backend_config(self, value: pulumi.Input['ApigatewayBackendConfigArgs']):
         pulumi.set(self, "backend_config", value)
 
 

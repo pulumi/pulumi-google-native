@@ -941,8 +941,8 @@ class ScalingConfigResponse(dict):
                  selectors: Sequence['outputs.LabelSelectorResponse']):
         """
         Autoscaling config for an Agones fleet.
-        :param str fleet_autoscaler_spec: Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
-        :param str name: Required. The name of the Scaling Config
+        :param str fleet_autoscaler_spec: Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+        :param str name: The name of the Scaling Config
         :param Sequence['ScheduleResponse'] schedules: The schedules to which this Scaling Config applies.
         :param Sequence['LabelSelectorResponse'] selectors: Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
         """
@@ -955,7 +955,7 @@ class ScalingConfigResponse(dict):
     @pulumi.getter(name="fleetAutoscalerSpec")
     def fleet_autoscaler_spec(self) -> str:
         """
-        Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+        Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
         """
         return pulumi.get(self, "fleet_autoscaler_spec")
 
@@ -963,7 +963,7 @@ class ScalingConfigResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The name of the Scaling Config
+        The name of the Scaling Config
         """
         return pulumi.get(self, "name")
 

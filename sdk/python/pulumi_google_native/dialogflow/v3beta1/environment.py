@@ -16,30 +16,28 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
+                 display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 version_configs: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]],
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Environment resource.
+        :param pulumi.Input[str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         :param pulumi.Input[str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[str] name: The name of the environment. Format: `projects//locations//agents//environments/`.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]] version_configs: Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         """
         pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "version_configs", version_configs)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if version_configs is not None:
-            pulumi.set(__self__, "version_configs", version_configs)
 
     @property
     @pulumi.getter(name="agentId")
@@ -49,6 +47,18 @@ class EnvironmentArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -69,6 +79,18 @@ class EnvironmentArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="versionConfigs")
+    def version_configs(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]:
+        """
+        A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        """
+        return pulumi.get(self, "version_configs")
+
+    @version_configs.setter
+    def version_configs(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]):
+        pulumi.set(self, "version_configs", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -81,18 +103,6 @@ class EnvironmentArgs:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -103,18 +113,6 @@ class EnvironmentArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="versionConfigs")
-    def version_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]]:
-        """
-        Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
-        """
-        return pulumi.get(self, "version_configs")
-
-    @version_configs.setter
-    def version_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]]):
-        pulumi.set(self, "version_configs", value)
 
 
 class Environment(pulumi.CustomResource):
@@ -136,9 +134,9 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        :param pulumi.Input[str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[str] name: The name of the environment. Format: `projects//locations//agents//environments/`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]] version_configs: Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         """
         ...
     @overload
@@ -187,6 +185,8 @@ class Environment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["description"] = description
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -195,6 +195,8 @@ class Environment(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if version_configs is None and not opts.urn:
+                raise TypeError("Missing required property 'version_configs'")
             __props__.__dict__["version_configs"] = version_configs
             __props__.__dict__["update_time"] = None
         super(Environment, __self__).__init__(
@@ -238,7 +240,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -262,7 +264,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="versionConfigs")
     def version_configs(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse']]:
         """
-        Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         """
         return pulumi.get(self, "version_configs")
 

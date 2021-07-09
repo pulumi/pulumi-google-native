@@ -36,7 +36,7 @@ class GetKeystoreResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
         """
         return pulumi.get(self, "name")
 

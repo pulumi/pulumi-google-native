@@ -16,22 +16,23 @@ class RealmArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  realm_id: pulumi.Input[str],
+                 time_zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 time_zone: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Realm resource.
+        :param pulumi.Input[str] time_zone: Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
         :param pulumi.Input[str] description: Human readable description of the realm.
         :param pulumi.Input[str] etag: ETag of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this realm. Each label is a key-value pair.
         :param pulumi.Input[str] name: The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
-        :param pulumi.Input[str] time_zone: Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "realm_id", realm_id)
+        pulumi.set(__self__, "time_zone", time_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -40,8 +41,6 @@ class RealmArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -69,6 +68,18 @@ class RealmArgs:
     @realm_id.setter
     def realm_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "realm_id", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[str]:
+        """
+        Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_zone", value)
 
     @property
     @pulumi.getter
@@ -118,18 +129,6 @@ class RealmArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
-    @property
-    @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
-        """
-        return pulumi.get(self, "time_zone")
-
-    @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "time_zone", value)
-
 
 class Realm(pulumi.CustomResource):
     @overload
@@ -154,7 +153,7 @@ class Realm(pulumi.CustomResource):
         :param pulumi.Input[str] etag: ETag of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this realm. Each label is a key-value pair.
         :param pulumi.Input[str] name: The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
-        :param pulumi.Input[str] time_zone: Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+        :param pulumi.Input[str] time_zone: Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
         """
         ...
     @overload
@@ -213,6 +212,8 @@ class Realm(pulumi.CustomResource):
             if realm_id is None and not opts.urn:
                 raise TypeError("Missing required property 'realm_id'")
             __props__.__dict__["realm_id"] = realm_id
+            if time_zone is None and not opts.urn:
+                raise TypeError("Missing required property 'time_zone'")
             __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
@@ -291,7 +292,7 @@ class Realm(pulumi.CustomResource):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> pulumi.Output[str]:
         """
-        Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+        Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
         """
         return pulumi.get(self, "time_zone")
 

@@ -49,7 +49,7 @@ class GetTargetServerResult:
     @pulumi.getter
     def host(self) -> str:
         """
-        Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+        The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         """
         return pulumi.get(self, "host")
 
@@ -65,7 +65,7 @@ class GetTargetServerResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The resource id of this target server. Values must match the regular expression 
+        The resource id of this target server. Values must match the regular expression 
         """
         return pulumi.get(self, "name")
 
@@ -73,7 +73,7 @@ class GetTargetServerResult:
     @pulumi.getter
     def port(self) -> int:
         """
-        Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+        The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         """
         return pulumi.get(self, "port")
 

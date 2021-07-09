@@ -15,9 +15,9 @@ __all__ = ['DataSourceArgs', 'DataSource']
 @pulumi.input_type
 class DataSourceArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  disable_modifications: Optional[pulumi.Input[bool]] = None,
                  disable_serving: Optional[pulumi.Input[bool]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  indexing_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  items_visibility: Optional[pulumi.Input[Sequence[pulumi.Input['GSuitePrincipalArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -25,21 +25,20 @@ class DataSourceArgs:
                  short_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DataSource resource.
+        :param pulumi.Input[str] display_name: Display name of the datasource The maximum length is 300 characters.
         :param pulumi.Input[bool] disable_modifications: If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
         :param pulumi.Input[bool] disable_serving: Disable serving any search or assist results.
-        :param pulumi.Input[str] display_name: Required. Display name of the datasource The maximum length is 300 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] indexing_service_accounts: List of service accounts that have indexing access.
         :param pulumi.Input[Sequence[pulumi.Input['GSuitePrincipalArgs']]] items_visibility: This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
         :param pulumi.Input[str] name: Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_ids: IDs of the Long Running Operations (LROs) currently running for this schema.
         :param pulumi.Input[str] short_name: A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
         """
+        pulumi.set(__self__, "display_name", display_name)
         if disable_modifications is not None:
             pulumi.set(__self__, "disable_modifications", disable_modifications)
         if disable_serving is not None:
             pulumi.set(__self__, "disable_serving", disable_serving)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if indexing_service_accounts is not None:
             pulumi.set(__self__, "indexing_service_accounts", indexing_service_accounts)
         if items_visibility is not None:
@@ -50,6 +49,18 @@ class DataSourceArgs:
             pulumi.set(__self__, "operation_ids", operation_ids)
         if short_name is not None:
             pulumi.set(__self__, "short_name", short_name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Display name of the datasource The maximum length is 300 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="disableModifications")
@@ -74,18 +85,6 @@ class DataSourceArgs:
     @disable_serving.setter
     def disable_serving(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_serving", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Display name of the datasource The maximum length is 300 characters.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="indexingServiceAccounts")
@@ -169,7 +168,7 @@ class DataSource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_modifications: If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
         :param pulumi.Input[bool] disable_serving: Disable serving any search or assist results.
-        :param pulumi.Input[str] display_name: Required. Display name of the datasource The maximum length is 300 characters.
+        :param pulumi.Input[str] display_name: Display name of the datasource The maximum length is 300 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] indexing_service_accounts: List of service accounts that have indexing access.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GSuitePrincipalArgs']]]] items_visibility: This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
         :param pulumi.Input[str] name: Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
@@ -180,7 +179,7 @@ class DataSource(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[DataSourceArgs] = None,
+                 args: DataSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a datasource. **Note:** This API requires an admin account to execute.
@@ -222,6 +221,8 @@ class DataSource(pulumi.CustomResource):
 
             __props__.__dict__["disable_modifications"] = disable_modifications
             __props__.__dict__["disable_serving"] = disable_serving
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["indexing_service_accounts"] = indexing_service_accounts
             __props__.__dict__["items_visibility"] = items_visibility
@@ -280,7 +281,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. Display name of the datasource The maximum length is 300 characters.
+        Display name of the datasource The maximum length is 300 characters.
         """
         return pulumi.get(self, "display_name")
 

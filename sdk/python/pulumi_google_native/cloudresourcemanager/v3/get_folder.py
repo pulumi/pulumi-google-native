@@ -86,7 +86,7 @@ class GetFolderResult:
     @pulumi.getter
     def parent(self) -> str:
         """
-        Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+        The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
         """
         return pulumi.get(self, "parent")
 

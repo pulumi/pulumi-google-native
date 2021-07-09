@@ -16,11 +16,11 @@ __all__ = ['WorkloadArgs', 'Workload']
 @pulumi.input_type
 class WorkloadArgs:
     def __init__(__self__, *,
+                 billing_account: pulumi.Input[str],
+                 compliance_regime: pulumi.Input['WorkloadComplianceRegime'],
+                 display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 billing_account: Optional[pulumi.Input[str]] = None,
-                 compliance_regime: Optional[pulumi.Input['WorkloadComplianceRegime']] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  kms_settings: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] = None,
@@ -30,9 +30,9 @@ class WorkloadArgs:
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]] = None):
         """
         The set of arguments for constructing a Workload resource.
-        :param pulumi.Input[str] billing_account: Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-        :param pulumi.Input['WorkloadComplianceRegime'] compliance_regime: Required. Immutable. Compliance Regime associated with this workload.
-        :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        :param pulumi.Input[str] billing_account: Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        :param pulumi.Input['WorkloadComplianceRegime'] compliance_regime: Immutable. Compliance Regime associated with this workload.
+        :param pulumi.Input[str] display_name: The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
         :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
@@ -40,14 +40,11 @@ class WorkloadArgs:
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
+        pulumi.set(__self__, "billing_account", billing_account)
+        pulumi.set(__self__, "compliance_regime", compliance_regime)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization_id", organization_id)
-        if billing_account is not None:
-            pulumi.set(__self__, "billing_account", billing_account)
-        if compliance_regime is not None:
-            pulumi.set(__self__, "compliance_regime", compliance_regime)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if external_id is not None:
@@ -62,6 +59,42 @@ class WorkloadArgs:
             pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
         if resource_settings is not None:
             pulumi.set(__self__, "resource_settings", resource_settings)
+
+    @property
+    @pulumi.getter(name="billingAccount")
+    def billing_account(self) -> pulumi.Input[str]:
+        """
+        Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        """
+        return pulumi.get(self, "billing_account")
+
+    @billing_account.setter
+    def billing_account(self, value: pulumi.Input[str]):
+        pulumi.set(self, "billing_account", value)
+
+    @property
+    @pulumi.getter(name="complianceRegime")
+    def compliance_regime(self) -> pulumi.Input['WorkloadComplianceRegime']:
+        """
+        Immutable. Compliance Regime associated with this workload.
+        """
+        return pulumi.get(self, "compliance_regime")
+
+    @compliance_regime.setter
+    def compliance_regime(self, value: pulumi.Input['WorkloadComplianceRegime']):
+        pulumi.set(self, "compliance_regime", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -80,42 +113,6 @@ class WorkloadArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="billingAccount")
-    def billing_account(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-        """
-        return pulumi.get(self, "billing_account")
-
-    @billing_account.setter
-    def billing_account(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "billing_account", value)
-
-    @property
-    @pulumi.getter(name="complianceRegime")
-    def compliance_regime(self) -> Optional[pulumi.Input['WorkloadComplianceRegime']]:
-        """
-        Required. Immutable. Compliance Regime associated with this workload.
-        """
-        return pulumi.get(self, "compliance_regime")
-
-    @compliance_regime.setter
-    def compliance_regime(self, value: Optional[pulumi.Input['WorkloadComplianceRegime']]):
-        pulumi.set(self, "compliance_regime", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -222,9 +219,9 @@ class Workload(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] billing_account: Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-        :param pulumi.Input['WorkloadComplianceRegime'] compliance_regime: Required. Immutable. Compliance Regime associated with this workload.
-        :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        :param pulumi.Input[str] billing_account: Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        :param pulumi.Input['WorkloadComplianceRegime'] compliance_regime: Immutable. Compliance Regime associated with this workload.
+        :param pulumi.Input[str] display_name: The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
@@ -280,8 +277,14 @@ class Workload(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkloadArgs.__new__(WorkloadArgs)
 
+            if billing_account is None and not opts.urn:
+                raise TypeError("Missing required property 'billing_account'")
             __props__.__dict__["billing_account"] = billing_account
+            if compliance_regime is None and not opts.urn:
+                raise TypeError("Missing required property 'compliance_regime'")
             __props__.__dict__["compliance_regime"] = compliance_regime
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["etag"] = etag
             __props__.__dict__["external_id"] = external_id
@@ -337,7 +340,7 @@ class Workload(pulumi.CustomResource):
     @pulumi.getter(name="billingAccount")
     def billing_account(self) -> pulumi.Output[str]:
         """
-        Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         """
         return pulumi.get(self, "billing_account")
 
@@ -345,7 +348,7 @@ class Workload(pulumi.CustomResource):
     @pulumi.getter(name="complianceRegime")
     def compliance_regime(self) -> pulumi.Output[str]:
         """
-        Required. Immutable. Compliance Regime associated with this workload.
+        Immutable. Compliance Regime associated with this workload.
         """
         return pulumi.get(self, "compliance_regime")
 
@@ -361,7 +364,7 @@ class Workload(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         """
         return pulumi.get(self, "display_name")
 

@@ -14,26 +14,24 @@ __all__ = ['ReferenceArgs', 'Reference']
 class ReferenceArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
+                 refers: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 refers: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Reference resource.
+        :param pulumi.Input[str] name: The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        :param pulumi.Input[str] refers: The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
-        :param pulumi.Input[str] name: Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-        :param pulumi.Input[str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
         """
         pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "refers", refers)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if refers is not None:
-            pulumi.set(__self__, "refers", refers)
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
 
@@ -47,6 +45,18 @@ class ReferenceArgs:
         pulumi.set(self, "environment_id", value)
 
     @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "organization_id")
@@ -54,6 +64,18 @@ class ReferenceArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter
+    def refers(self) -> pulumi.Input[str]:
+        """
+        The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        """
+        return pulumi.get(self, "refers")
+
+    @refers.setter
+    def refers(self, value: pulumi.Input[str]):
+        pulumi.set(self, "refers", value)
 
     @property
     @pulumi.getter
@@ -66,30 +88,6 @@ class ReferenceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def refers(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
-        """
-        return pulumi.get(self, "refers")
-
-    @refers.setter
-    def refers(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "refers", value)
 
     @property
     @pulumi.getter(name="resourceType")
@@ -122,8 +120,8 @@ class Reference(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
-        :param pulumi.Input[str] name: Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-        :param pulumi.Input[str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        :param pulumi.Input[str] name: The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        :param pulumi.Input[str] refers: The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
         """
         ...
@@ -172,10 +170,14 @@ class Reference(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            if refers is None and not opts.urn:
+                raise TypeError("Missing required property 'refers'")
             __props__.__dict__["refers"] = refers
             __props__.__dict__["resource_type"] = resource_type
         super(Reference, __self__).__init__(
@@ -218,7 +220,7 @@ class Reference(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
         """
         return pulumi.get(self, "name")
 
@@ -226,7 +228,7 @@ class Reference(pulumi.CustomResource):
     @pulumi.getter
     def refers(self) -> pulumi.Output[str]:
         """
-        Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         """
         return pulumi.get(self, "refers")
 

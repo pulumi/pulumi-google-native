@@ -18,29 +18,28 @@ class EntitlementArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  customer_id: pulumi.Input[str],
+                 offer: pulumi.Input[str],
                  association_info: Optional[pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs']] = None,
                  commitment_settings: Optional[pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs']] = None,
-                 offer: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ParameterArgs']]]] = None,
                  purchase_order_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Entitlement resource.
+        :param pulumi.Input[str] offer: The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         :param pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs'] association_info: Association information to other entitlements.
         :param pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs'] commitment_settings: Commitment settings for a commitment-based Offer. Required for commitment based offers.
-        :param pulumi.Input[str] offer: Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ParameterArgs']]] parameters: Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
         :param pulumi.Input[str] purchase_order_id: Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
         :param pulumi.Input[str] request_id: Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "customer_id", customer_id)
+        pulumi.set(__self__, "offer", offer)
         if association_info is not None:
             pulumi.set(__self__, "association_info", association_info)
         if commitment_settings is not None:
             pulumi.set(__self__, "commitment_settings", commitment_settings)
-        if offer is not None:
-            pulumi.set(__self__, "offer", offer)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if purchase_order_id is not None:
@@ -67,6 +66,18 @@ class EntitlementArgs:
         pulumi.set(self, "customer_id", value)
 
     @property
+    @pulumi.getter
+    def offer(self) -> pulumi.Input[str]:
+        """
+        The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        """
+        return pulumi.get(self, "offer")
+
+    @offer.setter
+    def offer(self, value: pulumi.Input[str]):
+        pulumi.set(self, "offer", value)
+
+    @property
     @pulumi.getter(name="associationInfo")
     def association_info(self) -> Optional[pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs']]:
         """
@@ -89,18 +100,6 @@ class EntitlementArgs:
     @commitment_settings.setter
     def commitment_settings(self, value: Optional[pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs']]):
         pulumi.set(self, "commitment_settings", value)
-
-    @property
-    @pulumi.getter
-    def offer(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
-        """
-        return pulumi.get(self, "offer")
-
-    @offer.setter
-    def offer(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "offer", value)
 
     @property
     @pulumi.getter
@@ -160,7 +159,7 @@ class Entitlement(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']] association_info: Association information to other entitlements.
         :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']] commitment_settings: Commitment settings for a commitment-based Offer. Required for commitment based offers.
-        :param pulumi.Input[str] offer: Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        :param pulumi.Input[str] offer: The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]] parameters: Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
         :param pulumi.Input[str] purchase_order_id: Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
         :param pulumi.Input[str] request_id: Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
@@ -217,6 +216,8 @@ class Entitlement(pulumi.CustomResource):
             if customer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'customer_id'")
             __props__.__dict__["customer_id"] = customer_id
+            if offer is None and not opts.urn:
+                raise TypeError("Missing required property 'offer'")
             __props__.__dict__["offer"] = offer
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["purchase_order_id"] = purchase_order_id
@@ -300,7 +301,7 @@ class Entitlement(pulumi.CustomResource):
     @pulumi.getter
     def offer(self) -> pulumi.Output[str]:
         """
-        Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         """
         return pulumi.get(self, "offer")
 

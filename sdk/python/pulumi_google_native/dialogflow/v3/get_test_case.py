@@ -55,7 +55,7 @@ class GetTestCaseResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+        The human-readable name of the test case, unique within the agent. Limit of 200 characters.
         """
         return pulumi.get(self, "display_name")
 

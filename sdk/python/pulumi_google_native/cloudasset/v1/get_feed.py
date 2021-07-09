@@ -73,7 +73,7 @@ class GetFeedResult:
     @pulumi.getter(name="feedOutputConfig")
     def feed_output_config(self) -> 'outputs.FeedOutputConfigResponse':
         """
-        Required. Feed output configuration defining where the asset updates are published to.
+        Feed output configuration defining where the asset updates are published to.
         """
         return pulumi.get(self, "feed_output_config")
 
@@ -81,7 +81,7 @@ class GetFeedResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+        The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
         """
         return pulumi.get(self, "name")
 

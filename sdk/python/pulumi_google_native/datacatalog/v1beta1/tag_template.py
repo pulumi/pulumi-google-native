@@ -13,27 +13,38 @@ __all__ = ['TagTemplateArgs', 'TagTemplate']
 @pulumi.input_type
 class TagTemplateArgs:
     def __init__(__self__, *,
+                 fields: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  tag_template_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TagTemplate resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         :param pulumi.Input[str] display_name: The display name for this template. Defaults to an empty string.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         :param pulumi.Input[str] name: The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         """
+        pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "tag_template_id", tag_template_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if fields is not None:
-            pulumi.set(__self__, "fields", fields)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "fields", value)
 
     @property
     @pulumi.getter
@@ -76,18 +87,6 @@ class TagTemplateArgs:
 
     @property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-        """
-        return pulumi.get(self, "fields")
-
-    @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "fields", value)
-
-    @property
-    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
@@ -117,7 +116,7 @@ class TagTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name for this template. Defaults to an empty string.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         :param pulumi.Input[str] name: The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         """
         ...
@@ -163,6 +162,8 @@ class TagTemplate(pulumi.CustomResource):
             __props__ = TagTemplateArgs.__new__(TagTemplateArgs)
 
             __props__.__dict__["display_name"] = display_name
+            if fields is None and not opts.urn:
+                raise TypeError("Missing required property 'fields'")
             __props__.__dict__["fields"] = fields
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -213,7 +214,7 @@ class TagTemplate(pulumi.CustomResource):
     @pulumi.getter
     def fields(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
+        Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         """
         return pulumi.get(self, "fields")
 

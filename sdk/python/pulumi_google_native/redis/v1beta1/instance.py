@@ -17,40 +17,43 @@ class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 memory_size_gb: pulumi.Input[int],
+                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 tier: pulumi.Input['InstanceTier'],
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  connect_mode: Optional[pulumi.Input['InstanceConnectMode']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 memory_size_gb: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
-                 tier: Optional[pulumi.Input['InstanceTier']] = None,
                  transit_encryption_mode: Optional[pulumi.Input['InstanceTransitEncryptionMode']] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
+        :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
+        :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+        :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         :param pulumi.Input[str] alternative_location_id: Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
         :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
         :param pulumi.Input[str] authorized_network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input['InstanceConnectMode'] connect_mode: Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
-        :param pulumi.Input[int] memory_size_gb: Required. Redis memory size in GiB.
-        :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
         :param pulumi.Input[str] redis_version: Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
         :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
-        :param pulumi.Input['InstanceTier'] tier: Required. The service tier of the instance.
         :param pulumi.Input['InstanceTransitEncryptionMode'] transit_encryption_mode: Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "memory_size_gb", memory_size_gb)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "tier", tier)
         if alternative_location_id is not None:
             pulumi.set(__self__, "alternative_location_id", alternative_location_id)
         if auth_enabled is not None:
@@ -63,18 +66,12 @@ class InstanceArgs:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if memory_size_gb is not None:
-            pulumi.set(__self__, "memory_size_gb", memory_size_gb)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if redis_configs is not None:
             pulumi.set(__self__, "redis_configs", redis_configs)
         if redis_version is not None:
             pulumi.set(__self__, "redis_version", redis_version)
         if reserved_ip_range is not None:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
-        if tier is not None:
-            pulumi.set(__self__, "tier", tier)
         if transit_encryption_mode is not None:
             pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
 
@@ -100,6 +97,30 @@ class InstanceArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="memorySizeGb")
+    def memory_size_gb(self) -> pulumi.Input[int]:
+        """
+        Redis memory size in GiB.
+        """
+        return pulumi.get(self, "memory_size_gb")
+
+    @memory_size_gb.setter
+    def memory_size_gb(self, value: pulumi.Input[int]):
+        pulumi.set(self, "memory_size_gb", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
@@ -107,6 +128,18 @@ class InstanceArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def tier(self) -> pulumi.Input['InstanceTier']:
+        """
+        The service tier of the instance.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: pulumi.Input['InstanceTier']):
+        pulumi.set(self, "tier", value)
 
     @property
     @pulumi.getter(name="alternativeLocationId")
@@ -181,30 +214,6 @@ class InstanceArgs:
         pulumi.set(self, "labels", value)
 
     @property
-    @pulumi.getter(name="memorySizeGb")
-    def memory_size_gb(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. Redis memory size in GiB.
-        """
-        return pulumi.get(self, "memory_size_gb")
-
-    @memory_size_gb.setter
-    def memory_size_gb(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "memory_size_gb", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -239,18 +248,6 @@ class InstanceArgs:
     @reserved_ip_range.setter
     def reserved_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "reserved_ip_range", value)
-
-    @property
-    @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input['InstanceTier']]:
-        """
-        Required. The service tier of the instance.
-        """
-        return pulumi.get(self, "tier")
-
-    @tier.setter
-    def tier(self, value: Optional[pulumi.Input['InstanceTier']]):
-        pulumi.set(self, "tier", value)
 
     @property
     @pulumi.getter(name="transitEncryptionMode")
@@ -299,12 +296,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
         :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
-        :param pulumi.Input[int] memory_size_gb: Required. Redis memory size in GiB.
-        :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+        :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
+        :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
         :param pulumi.Input[str] redis_version: Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
         :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
-        :param pulumi.Input['InstanceTier'] tier: Required. The service tier of the instance.
+        :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         :param pulumi.Input['InstanceTransitEncryptionMode'] transit_encryption_mode: Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
         """
         ...
@@ -371,7 +368,11 @@ class Instance(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if memory_size_gb is None and not opts.urn:
+                raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -379,6 +380,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["redis_configs"] = redis_configs
             __props__.__dict__["redis_version"] = redis_version
             __props__.__dict__["reserved_ip_range"] = reserved_ip_range
+            if tier is None and not opts.urn:
+                raise TypeError("Missing required property 'tier'")
             __props__.__dict__["tier"] = tier
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
             __props__.__dict__["create_time"] = None
@@ -519,7 +522,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="memorySizeGb")
     def memory_size_gb(self) -> pulumi.Output[int]:
         """
-        Required. Redis memory size in GiB.
+        Redis memory size in GiB.
         """
         return pulumi.get(self, "memory_size_gb")
 
@@ -527,7 +530,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+        Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         """
         return pulumi.get(self, "name")
 
@@ -599,7 +602,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def tier(self) -> pulumi.Output[str]:
         """
-        Required. The service tier of the instance.
+        The service tier of the instance.
         """
         return pulumi.get(self, "tier")
 

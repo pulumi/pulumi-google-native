@@ -2578,33 +2578,55 @@ class MixinArgs:
 @pulumi.input_type
 class MonitoredResourceDescriptorArgs:
     def __init__(__self__, *,
+                 labels: pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]],
+                 type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]]] = None,
                  launch_stage: Optional[pulumi.Input['MonitoredResourceDescriptorLaunchStage']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API. 
+        :param pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]] labels: A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+        :param pulumi.Input[str] type: The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
         :param pulumi.Input[str] description: Optional. A detailed description of the monitored resource type that might be used in documentation.
         :param pulumi.Input[str] display_name: Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
-        :param pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]] labels: Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
         :param pulumi.Input['MonitoredResourceDescriptorLaunchStage'] launch_stage: Optional. The launch stage of the monitored resource definition.
         :param pulumi.Input[str] name: Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
-        :param pulumi.Input[str] type: Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
         """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
         if launch_stage is not None:
             pulumi.set(__self__, "launch_stage", launch_stage)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]]:
+        """
+        A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -2631,18 +2653,6 @@ class MonitoredResourceDescriptorArgs:
         pulumi.set(self, "display_name", value)
 
     @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]]]:
-        """
-        Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]]]):
-        pulumi.set(self, "labels", value)
-
-    @property
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> Optional[pulumi.Input['MonitoredResourceDescriptorLaunchStage']]:
         """
@@ -2665,18 +2675,6 @@ class MonitoredResourceDescriptorArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

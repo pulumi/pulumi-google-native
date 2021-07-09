@@ -23,8 +23,8 @@ class GoogleDatastoreAdminV1IndexedPropertyResponse(dict):
                  name: str):
         """
         A property of an index.
-        :param str direction: Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-        :param str name: Required. The property name to index.
+        :param str direction: The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+        :param str name: The property name to index.
         """
         pulumi.set(__self__, "direction", direction)
         pulumi.set(__self__, "name", name)
@@ -33,7 +33,7 @@ class GoogleDatastoreAdminV1IndexedPropertyResponse(dict):
     @pulumi.getter
     def direction(self) -> str:
         """
-        Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+        The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
         """
         return pulumi.get(self, "direction")
 
@@ -41,7 +41,7 @@ class GoogleDatastoreAdminV1IndexedPropertyResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The property name to index.
+        The property name to index.
         """
         return pulumi.get(self, "name")
 

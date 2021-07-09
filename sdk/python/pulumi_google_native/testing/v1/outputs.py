@@ -122,7 +122,7 @@ class AndroidDeviceListResponse(dict):
                  android_devices: Sequence['outputs.AndroidDeviceResponse']):
         """
         A list of Android device configurations in which the test is to be executed.
-        :param Sequence['AndroidDeviceResponse'] android_devices: Required. A list of Android devices.
+        :param Sequence['AndroidDeviceResponse'] android_devices: A list of Android devices.
         """
         pulumi.set(__self__, "android_devices", android_devices)
 
@@ -130,7 +130,7 @@ class AndroidDeviceListResponse(dict):
     @pulumi.getter(name="androidDevices")
     def android_devices(self) -> Sequence['outputs.AndroidDeviceResponse']:
         """
-        Required. A list of Android devices.
+        A list of Android devices.
         """
         return pulumi.get(self, "android_devices")
 
@@ -166,10 +166,10 @@ class AndroidDeviceResponse(dict):
                  orientation: str):
         """
         A single Android device.
-        :param str android_model_id: Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param str android_version_id: Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param str locale: Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param str orientation: Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param str android_model_id: The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param str android_version_id: The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param str locale: The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param str orientation: How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         pulumi.set(__self__, "android_model_id", android_model_id)
         pulumi.set(__self__, "android_version_id", android_version_id)
@@ -180,7 +180,7 @@ class AndroidDeviceResponse(dict):
     @pulumi.getter(name="androidModelId")
     def android_model_id(self) -> str:
         """
-        Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "android_model_id")
 
@@ -188,7 +188,7 @@ class AndroidDeviceResponse(dict):
     @pulumi.getter(name="androidVersionId")
     def android_version_id(self) -> str:
         """
-        Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "android_version_id")
 
@@ -196,7 +196,7 @@ class AndroidDeviceResponse(dict):
     @pulumi.getter
     def locale(self) -> str:
         """
-        Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "locale")
 
@@ -204,7 +204,7 @@ class AndroidDeviceResponse(dict):
     @pulumi.getter
     def orientation(self) -> str:
         """
-        Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "orientation")
 
@@ -264,7 +264,7 @@ class AndroidInstrumentationTestResponse(dict):
         :param str app_package_id: The java package for the application under test. The default value is determined by examining the application's manifest.
         :param str orchestrator_option: The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
         :param 'ShardingOptionResponse' sharding_option: The option to run tests in multiple shards in parallel.
-        :param 'FileReferenceResponse' test_apk: Required. The APK containing the test code to be executed.
+        :param 'FileReferenceResponse' test_apk: The APK containing the test code to be executed.
         :param str test_package_id: The java package for the test to be executed. The default value is determined by examining the application's manifest.
         :param str test_runner_class: The InstrumentationTestRunner class. The default value is determined by examining the application's manifest.
         :param Sequence[str] test_targets: Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
@@ -323,7 +323,7 @@ class AndroidInstrumentationTestResponse(dict):
     @pulumi.getter(name="testApk")
     def test_apk(self) -> 'outputs.FileReferenceResponse':
         """
-        Required. The APK containing the test code to be executed.
+        The APK containing the test code to be executed.
         """
         return pulumi.get(self, "test_apk")
 
@@ -383,10 +383,10 @@ class AndroidMatrixResponse(dict):
                  orientations: Sequence[str]):
         """
         A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
-        :param Sequence[str] android_model_ids: Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param Sequence[str] android_version_ids: Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param Sequence[str] locales: Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param Sequence[str] orientations: Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param Sequence[str] android_model_ids: The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param Sequence[str] android_version_ids: The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param Sequence[str] locales: The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param Sequence[str] orientations: The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         pulumi.set(__self__, "android_model_ids", android_model_ids)
         pulumi.set(__self__, "android_version_ids", android_version_ids)
@@ -397,7 +397,7 @@ class AndroidMatrixResponse(dict):
     @pulumi.getter(name="androidModelIds")
     def android_model_ids(self) -> Sequence[str]:
         """
-        Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "android_model_ids")
 
@@ -405,7 +405,7 @@ class AndroidMatrixResponse(dict):
     @pulumi.getter(name="androidVersionIds")
     def android_version_ids(self) -> Sequence[str]:
         """
-        Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "android_version_ids")
 
@@ -413,7 +413,7 @@ class AndroidMatrixResponse(dict):
     @pulumi.getter
     def locales(self) -> Sequence[str]:
         """
-        Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "locales")
 
@@ -421,7 +421,7 @@ class AndroidMatrixResponse(dict):
     @pulumi.getter
     def orientations(self) -> Sequence[str]:
         """
-        Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+        The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "orientations")
 
@@ -757,8 +757,8 @@ class ClientInfoDetailResponse(dict):
                  value: str):
         """
         Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
-        :param str key: Required. The key of detailed client information.
-        :param str value: Required. The value of detailed client information.
+        :param str key: The key of detailed client information.
+        :param str value: The value of detailed client information.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -767,7 +767,7 @@ class ClientInfoDetailResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Required. The key of detailed client information.
+        The key of detailed client information.
         """
         return pulumi.get(self, "key")
 
@@ -775,7 +775,7 @@ class ClientInfoDetailResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Required. The value of detailed client information.
+        The value of detailed client information.
         """
         return pulumi.get(self, "value")
 
@@ -808,7 +808,7 @@ class ClientInfoResponse(dict):
         """
         Information about the client which invoked the test.
         :param Sequence['ClientInfoDetailResponse'] client_info_details: The list of detailed information about client.
-        :param str name: Required. Client name, such as gcloud.
+        :param str name: Client name, such as gcloud.
         """
         pulumi.set(__self__, "client_info_details", client_info_details)
         pulumi.set(__self__, "name", name)
@@ -825,7 +825,7 @@ class ClientInfoResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Client name, such as gcloud.
+        Client name, such as gcloud.
         """
         return pulumi.get(self, "name")
 
@@ -1109,7 +1109,7 @@ class GoogleCloudStorageResponse(dict):
                  gcs_path: str):
         """
         A storage location within Google cloud storage (GCS).
-        :param str gcs_path: Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+        :param str gcs_path: The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
         """
         pulumi.set(__self__, "gcs_path", gcs_path)
 
@@ -1117,7 +1117,7 @@ class GoogleCloudStorageResponse(dict):
     @pulumi.getter(name="gcsPath")
     def gcs_path(self) -> str:
         """
-        Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+        The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
         """
         return pulumi.get(self, "gcs_path")
 
@@ -1211,7 +1211,7 @@ class IosDeviceListResponse(dict):
                  ios_devices: Sequence['outputs.IosDeviceResponse']):
         """
         A list of iOS device configurations in which the test is to be executed.
-        :param Sequence['IosDeviceResponse'] ios_devices: Required. A list of iOS devices.
+        :param Sequence['IosDeviceResponse'] ios_devices: A list of iOS devices.
         """
         pulumi.set(__self__, "ios_devices", ios_devices)
 
@@ -1219,7 +1219,7 @@ class IosDeviceListResponse(dict):
     @pulumi.getter(name="iosDevices")
     def ios_devices(self) -> Sequence['outputs.IosDeviceResponse']:
         """
-        Required. A list of iOS devices.
+        A list of iOS devices.
         """
         return pulumi.get(self, "ios_devices")
 
@@ -1255,10 +1255,10 @@ class IosDeviceResponse(dict):
                  orientation: str):
         """
         A single iOS device.
-        :param str ios_model_id: Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param str ios_version_id: Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param str locale: Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-        :param str orientation: Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param str ios_model_id: The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param str ios_version_id: The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param str locale: The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        :param str orientation: How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         pulumi.set(__self__, "ios_model_id", ios_model_id)
         pulumi.set(__self__, "ios_version_id", ios_version_id)
@@ -1269,7 +1269,7 @@ class IosDeviceResponse(dict):
     @pulumi.getter(name="iosModelId")
     def ios_model_id(self) -> str:
         """
-        Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "ios_model_id")
 
@@ -1277,7 +1277,7 @@ class IosDeviceResponse(dict):
     @pulumi.getter(name="iosVersionId")
     def ios_version_id(self) -> str:
         """
-        Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "ios_version_id")
 
@@ -1285,7 +1285,7 @@ class IosDeviceResponse(dict):
     @pulumi.getter
     def locale(self) -> str:
         """
-        Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "locale")
 
@@ -1293,7 +1293,7 @@ class IosDeviceResponse(dict):
     @pulumi.getter
     def orientation(self) -> str:
         """
-        Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         """
         return pulumi.get(self, "orientation")
 
@@ -1329,7 +1329,7 @@ class IosTestLoopResponse(dict):
         """
         A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
         :param str app_bundle_id: The bundle id for the application under test.
-        :param 'FileReferenceResponse' app_ipa: Required. The .ipa of the application to test.
+        :param 'FileReferenceResponse' app_ipa: The .ipa of the application to test.
         :param Sequence[int] scenarios: The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
         """
         pulumi.set(__self__, "app_bundle_id", app_bundle_id)
@@ -1348,7 +1348,7 @@ class IosTestLoopResponse(dict):
     @pulumi.getter(name="appIpa")
     def app_ipa(self) -> 'outputs.FileReferenceResponse':
         """
-        Required. The .ipa of the application to test.
+        The .ipa of the application to test.
         """
         return pulumi.get(self, "app_ipa")
 
@@ -1477,7 +1477,7 @@ class IosXcTestResponse(dict):
         A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
         :param str app_bundle_id: The bundle id for the application under test.
         :param bool test_special_entitlements: The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
-        :param 'FileReferenceResponse' tests_zip: Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+        :param 'FileReferenceResponse' tests_zip: The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
         :param str xcode_version: The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
         :param 'FileReferenceResponse' xctestrun: An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.
         """
@@ -1507,7 +1507,7 @@ class IosXcTestResponse(dict):
     @pulumi.getter(name="testsZip")
     def tests_zip(self) -> 'outputs.FileReferenceResponse':
         """
-        Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+        The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
         """
         return pulumi.get(self, "tests_zip")
 
@@ -1566,7 +1566,7 @@ class ManualShardingResponse(dict):
                  test_targets_for_shard: Sequence['outputs.TestTargetsForShardResponse']):
         """
         Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
-        :param Sequence['TestTargetsForShardResponse'] test_targets_for_shard: Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+        :param Sequence['TestTargetsForShardResponse'] test_targets_for_shard: Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
         """
         pulumi.set(__self__, "test_targets_for_shard", test_targets_for_shard)
 
@@ -1574,7 +1574,7 @@ class ManualShardingResponse(dict):
     @pulumi.getter(name="testTargetsForShard")
     def test_targets_for_shard(self) -> Sequence['outputs.TestTargetsForShardResponse']:
         """
-        Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+        Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
         """
         return pulumi.get(self, "test_targets_for_shard")
 
@@ -1606,8 +1606,8 @@ class ObbFileResponse(dict):
                  obb_file_name: str):
         """
         An opaque binary blob file to install on the device before the test starts.
-        :param 'FileReferenceResponse' obb: Required. Opaque Binary Blob (OBB) file(s) to install on the device.
-        :param str obb_file_name: Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        :param 'FileReferenceResponse' obb: Opaque Binary Blob (OBB) file(s) to install on the device.
+        :param str obb_file_name: OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
         """
         pulumi.set(__self__, "obb", obb)
         pulumi.set(__self__, "obb_file_name", obb_file_name)
@@ -1616,7 +1616,7 @@ class ObbFileResponse(dict):
     @pulumi.getter
     def obb(self) -> 'outputs.FileReferenceResponse':
         """
-        Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+        Opaque Binary Blob (OBB) file(s) to install on the device.
         """
         return pulumi.get(self, "obb")
 
@@ -1624,7 +1624,7 @@ class ObbFileResponse(dict):
     @pulumi.getter(name="obbFileName")
     def obb_file_name(self) -> str:
         """
-        Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
         """
         return pulumi.get(self, "obb_file_name")
 
@@ -1656,8 +1656,8 @@ class RegularFileResponse(dict):
                  device_path: str):
         """
         A file or directory to install on the device before the test starts.
-        :param 'FileReferenceResponse' content: Required. The source file.
-        :param str device_path: Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+        :param 'FileReferenceResponse' content: The source file.
+        :param str device_path: Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "device_path", device_path)
@@ -1666,7 +1666,7 @@ class RegularFileResponse(dict):
     @pulumi.getter
     def content(self) -> 'outputs.FileReferenceResponse':
         """
-        Required. The source file.
+        The source file.
         """
         return pulumi.get(self, "content")
 
@@ -1674,7 +1674,7 @@ class RegularFileResponse(dict):
     @pulumi.getter(name="devicePath")
     def device_path(self) -> str:
         """
-        Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+        Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
         """
         return pulumi.get(self, "device_path")
 
@@ -1789,9 +1789,9 @@ class RoboDirectiveResponse(dict):
                  resource_name: str):
         """
         Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
-        :param str action_type: Required. The type of action that Robo should perform on the specified element.
+        :param str action_type: The type of action that Robo should perform on the specified element.
         :param str input_text: The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
-        :param str resource_name: Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+        :param str resource_name: The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
         """
         pulumi.set(__self__, "action_type", action_type)
         pulumi.set(__self__, "input_text", input_text)
@@ -1801,7 +1801,7 @@ class RoboDirectiveResponse(dict):
     @pulumi.getter(name="actionType")
     def action_type(self) -> str:
         """
-        Required. The type of action that Robo should perform on the specified element.
+        The type of action that Robo should perform on the specified element.
         """
         return pulumi.get(self, "action_type")
 
@@ -1817,7 +1817,7 @@ class RoboDirectiveResponse(dict):
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
         """
-        Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+        The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
         """
         return pulumi.get(self, "resource_name")
 
@@ -2677,8 +2677,8 @@ class ToolResultsHistoryResponse(dict):
                  project: str):
         """
         Represents a tool results history resource.
-        :param str history_id: Required. A tool results history ID.
-        :param str project: Required. The cloud project that owns the tool results history.
+        :param str history_id: A tool results history ID.
+        :param str project: The cloud project that owns the tool results history.
         """
         pulumi.set(__self__, "history_id", history_id)
         pulumi.set(__self__, "project", project)
@@ -2687,7 +2687,7 @@ class ToolResultsHistoryResponse(dict):
     @pulumi.getter(name="historyId")
     def history_id(self) -> str:
         """
-        Required. A tool results history ID.
+        A tool results history ID.
         """
         return pulumi.get(self, "history_id")
 
@@ -2695,7 +2695,7 @@ class ToolResultsHistoryResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        Required. The cloud project that owns the tool results history.
+        The cloud project that owns the tool results history.
         """
         return pulumi.get(self, "project")
 
@@ -2802,7 +2802,7 @@ class UniformShardingResponse(dict):
                  num_shards: int):
         """
         Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
-        :param int num_shards: Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+        :param int num_shards: Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
         """
         pulumi.set(__self__, "num_shards", num_shards)
 
@@ -2810,7 +2810,7 @@ class UniformShardingResponse(dict):
     @pulumi.getter(name="numShards")
     def num_shards(self) -> int:
         """
-        Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+        Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
         """
         return pulumi.get(self, "num_shards")
 

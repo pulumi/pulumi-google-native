@@ -47,7 +47,7 @@ class GetClusterResult:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
         """
-        Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -63,7 +63,7 @@ class GetClusterResult:
     @pulumi.getter
     def config(self) -> 'outputs.ClusterConfigResponse':
         """
-        Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
         """
         return pulumi.get(self, "config")
 
@@ -87,7 +87,7 @@ class GetClusterResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Required. The Google Cloud Platform project ID that the cluster belongs to.
+        The Google Cloud Platform project ID that the cluster belongs to.
         """
         return pulumi.get(self, "project")
 

@@ -17,13 +17,13 @@ __all__ = ['ExperimentArgs', 'Experiment']
 class ExperimentArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
+                 display_name: pulumi.Input[str],
                  environment_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  definition: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  experiment_length: Optional[pulumi.Input[str]] = None,
                  last_update_time: Optional[pulumi.Input[str]] = None,
@@ -34,10 +34,10 @@ class ExperimentArgs:
                  variants_history: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]] = None):
         """
         The set of arguments for constructing a Experiment resource.
+        :param pulumi.Input[str] display_name: The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         :param pulumi.Input[str] create_time: Creation time of this experiment.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs'] definition: The definition of the experiment.
         :param pulumi.Input[str] description: The human-readable description of the experiment.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         :param pulumi.Input[str] end_time: End time of this experiment.
         :param pulumi.Input[str] experiment_length: Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         :param pulumi.Input[str] last_update_time: Last update time of this experiment.
@@ -48,6 +48,7 @@ class ExperimentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]] variants_history: The history of updates to the experiment variants.
         """
         pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -57,8 +58,6 @@ class ExperimentArgs:
             pulumi.set(__self__, "definition", definition)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
         if experiment_length is not None:
@@ -84,6 +83,18 @@ class ExperimentArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="environmentId")
@@ -147,18 +158,6 @@ class ExperimentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="endTime")
@@ -287,7 +286,7 @@ class Experiment(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Creation time of this experiment.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs']] definition: The definition of the experiment.
         :param pulumi.Input[str] description: The human-readable description of the experiment.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+        :param pulumi.Input[str] display_name: The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         :param pulumi.Input[str] end_time: End time of this experiment.
         :param pulumi.Input[str] experiment_length: Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         :param pulumi.Input[str] last_update_time: Last update time of this experiment.
@@ -355,6 +354,8 @@ class Experiment(pulumi.CustomResource):
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["definition"] = definition
             __props__.__dict__["description"] = description
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["end_time"] = end_time
             if environment_id is None and not opts.urn:
@@ -437,7 +438,7 @@ class Experiment(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+        The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         """
         return pulumi.get(self, "display_name")
 

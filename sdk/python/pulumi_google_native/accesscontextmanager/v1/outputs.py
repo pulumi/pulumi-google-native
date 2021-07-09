@@ -110,7 +110,7 @@ class BasicLevelResponse(dict):
         """
         `BasicLevel` is an `AccessLevel` using a set of recommended features.
         :param str combining_function: How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-        :param Sequence['ConditionResponse'] conditions: Required. A list of requirements for the `AccessLevel` to be granted.
+        :param Sequence['ConditionResponse'] conditions: A list of requirements for the `AccessLevel` to be granted.
         """
         pulumi.set(__self__, "combining_function", combining_function)
         pulumi.set(__self__, "conditions", conditions)
@@ -127,7 +127,7 @@ class BasicLevelResponse(dict):
     @pulumi.getter
     def conditions(self) -> Sequence['outputs.ConditionResponse']:
         """
-        Required. A list of requirements for the `AccessLevel` to be granted.
+        A list of requirements for the `AccessLevel` to be granted.
         """
         return pulumi.get(self, "conditions")
 
@@ -239,7 +239,7 @@ class CustomLevelResponse(dict):
                  expr: 'outputs.ExprResponse'):
         """
         `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec
-        :param 'ExprResponse' expr: Required. A Cloud CEL expression evaluating to a boolean.
+        :param 'ExprResponse' expr: A Cloud CEL expression evaluating to a boolean.
         """
         pulumi.set(__self__, "expr", expr)
 
@@ -247,7 +247,7 @@ class CustomLevelResponse(dict):
     @pulumi.getter
     def expr(self) -> 'outputs.ExprResponse':
         """
-        Required. A Cloud CEL expression evaluating to a boolean.
+        A Cloud CEL expression evaluating to a boolean.
         """
         return pulumi.get(self, "expr")
 
@@ -808,7 +808,7 @@ class OsConstraintResponse(dict):
         """
         A restriction on the OS type and version of devices making requests.
         :param str minimum_version: The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
-        :param str os_type: Required. The allowed OS type.
+        :param str os_type: The allowed OS type.
         :param bool require_verified_chrome_os: Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
         """
         pulumi.set(__self__, "minimum_version", minimum_version)
@@ -827,7 +827,7 @@ class OsConstraintResponse(dict):
     @pulumi.getter(name="osType")
     def os_type(self) -> str:
         """
-        Required. The allowed OS type.
+        The allowed OS type.
         """
         return pulumi.get(self, "os_type")
 

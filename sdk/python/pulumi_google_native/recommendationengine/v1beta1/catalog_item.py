@@ -17,36 +17,35 @@ __all__ = ['CatalogItemArgs', 'CatalogItem']
 class CatalogItemArgs:
     def __init__(__self__, *,
                  catalog_id: pulumi.Input[str],
+                 category_hierarchies: pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]],
+                 id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 category_hierarchies: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]] = None,
+                 title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  item_attributes: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapArgs']] = None,
                  item_group_id: Optional[pulumi.Input[str]] = None,
                  product_metadata: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CatalogItem resource.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]] category_hierarchies: Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]] category_hierarchies: Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+        :param pulumi.Input[str] id: Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+        :param pulumi.Input[str] title: Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         :param pulumi.Input[str] description: Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
-        :param pulumi.Input[str] id: Required. Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
         :param pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapArgs'] item_attributes: Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
         :param pulumi.Input[str] item_group_id: Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
         :param pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs'] product_metadata: Optional. Metadata specific to retail products.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
-        :param pulumi.Input[str] title: Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
+        pulumi.set(__self__, "category_hierarchies", category_hierarchies)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if category_hierarchies is not None:
-            pulumi.set(__self__, "category_hierarchies", category_hierarchies)
+        pulumi.set(__self__, "title", title)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if item_attributes is not None:
             pulumi.set(__self__, "item_attributes", item_attributes)
         if item_group_id is not None:
@@ -55,8 +54,6 @@ class CatalogItemArgs:
             pulumi.set(__self__, "product_metadata", product_metadata)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter(name="catalogId")
@@ -66,6 +63,30 @@ class CatalogItemArgs:
     @catalog_id.setter
     def catalog_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "catalog_id", value)
+
+    @property
+    @pulumi.getter(name="categoryHierarchies")
+    def category_hierarchies(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]:
+        """
+        Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+        """
+        return pulumi.get(self, "category_hierarchies")
+
+    @category_hierarchies.setter
+    def category_hierarchies(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]):
+        pulumi.set(self, "category_hierarchies", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -86,16 +107,16 @@ class CatalogItemArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="categoryHierarchies")
-    def category_hierarchies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]]:
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
         """
-        Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+        Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         """
-        return pulumi.get(self, "category_hierarchies")
+        return pulumi.get(self, "title")
 
-    @category_hierarchies.setter
-    def category_hierarchies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]]):
-        pulumi.set(self, "category_hierarchies", value)
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
 
     @property
     @pulumi.getter
@@ -108,18 +129,6 @@ class CatalogItemArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="itemAttributes")
@@ -169,18 +178,6 @@ class CatalogItemArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
-    @property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "title", value)
-
 
 class CatalogItem(pulumi.CustomResource):
     @overload
@@ -204,14 +201,14 @@ class CatalogItem(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]] category_hierarchies: Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]] category_hierarchies: Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
         :param pulumi.Input[str] description: Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
-        :param pulumi.Input[str] id: Required. Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+        :param pulumi.Input[str] id: Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1FeatureMapArgs']] item_attributes: Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
         :param pulumi.Input[str] item_group_id: Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
         :param pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs']] product_metadata: Optional. Metadata specific to retail products.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
-        :param pulumi.Input[str] title: Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+        :param pulumi.Input[str] title: Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         """
         ...
     @overload
@@ -263,8 +260,12 @@ class CatalogItem(pulumi.CustomResource):
             if catalog_id is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog_id'")
             __props__.__dict__["catalog_id"] = catalog_id
+            if category_hierarchies is None and not opts.urn:
+                raise TypeError("Missing required property 'category_hierarchies'")
             __props__.__dict__["category_hierarchies"] = category_hierarchies
             __props__.__dict__["description"] = description
+            if id is None and not opts.urn:
+                raise TypeError("Missing required property 'id'")
             __props__.__dict__["id"] = id
             __props__.__dict__["item_attributes"] = item_attributes
             __props__.__dict__["item_group_id"] = item_group_id
@@ -276,6 +277,8 @@ class CatalogItem(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
+            if title is None and not opts.urn:
+                raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
         super(CatalogItem, __self__).__init__(
             'google-native:recommendationengine/v1beta1:CatalogItem',
@@ -312,7 +315,7 @@ class CatalogItem(pulumi.CustomResource):
     @pulumi.getter(name="categoryHierarchies")
     def category_hierarchies(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse']]:
         """
-        Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+        Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
         """
         return pulumi.get(self, "category_hierarchies")
 
@@ -360,7 +363,7 @@ class CatalogItem(pulumi.CustomResource):
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
         """
-        Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+        Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         """
         return pulumi.get(self, "title")
 

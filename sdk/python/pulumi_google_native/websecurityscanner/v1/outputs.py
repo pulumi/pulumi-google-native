@@ -112,9 +112,9 @@ class CustomAccountResponse(dict):
                  username: str):
         """
         Describes authentication configuration that uses a custom account.
-        :param str login_url: Required. The login form URL of the website.
-        :param str password: Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-        :param str username: Required. The user name of the custom account.
+        :param str login_url: The login form URL of the website.
+        :param str password: Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        :param str username: The user name of the custom account.
         """
         pulumi.set(__self__, "login_url", login_url)
         pulumi.set(__self__, "password", password)
@@ -124,7 +124,7 @@ class CustomAccountResponse(dict):
     @pulumi.getter(name="loginUrl")
     def login_url(self) -> str:
         """
-        Required. The login form URL of the website.
+        The login form URL of the website.
         """
         return pulumi.get(self, "login_url")
 
@@ -132,7 +132,7 @@ class CustomAccountResponse(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
         """
         return pulumi.get(self, "password")
 
@@ -140,7 +140,7 @@ class CustomAccountResponse(dict):
     @pulumi.getter
     def username(self) -> str:
         """
-        Required. The user name of the custom account.
+        The user name of the custom account.
         """
         return pulumi.get(self, "username")
 
@@ -155,8 +155,8 @@ class GoogleAccountResponse(dict):
                  username: str):
         """
         Describes authentication configuration that uses a Google account.
-        :param str password: Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-        :param str username: Required. The user name of the Google account.
+        :param str password: Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        :param str username: The user name of the Google account.
         """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
@@ -165,7 +165,7 @@ class GoogleAccountResponse(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
         """
         return pulumi.get(self, "password")
 
@@ -173,7 +173,7 @@ class GoogleAccountResponse(dict):
     @pulumi.getter
     def username(self) -> str:
         """
-        Required. The user name of the Google account.
+        The user name of the Google account.
         """
         return pulumi.get(self, "username")
 
@@ -243,7 +243,7 @@ class IapTestServiceAccountInfoResponse(dict):
                  target_audience_client_id: str):
         """
         Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
-        :param str target_audience_client_id: Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+        :param str target_audience_client_id: Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
         """
         pulumi.set(__self__, "target_audience_client_id", target_audience_client_id)
 
@@ -251,7 +251,7 @@ class IapTestServiceAccountInfoResponse(dict):
     @pulumi.getter(name="targetAudienceClientId")
     def target_audience_client_id(self) -> str:
         """
-        Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+        Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
         """
         return pulumi.get(self, "target_audience_client_id")
 
@@ -285,7 +285,7 @@ class ScheduleResponse(dict):
                  schedule_time: str):
         """
         Scan schedule configuration.
-        :param int interval_duration_days: Required. The duration of time between executions in days.
+        :param int interval_duration_days: The duration of time between executions in days.
         :param str schedule_time: A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
         """
         pulumi.set(__self__, "interval_duration_days", interval_duration_days)
@@ -295,7 +295,7 @@ class ScheduleResponse(dict):
     @pulumi.getter(name="intervalDurationDays")
     def interval_duration_days(self) -> int:
         """
-        Required. The duration of time between executions in days.
+        The duration of time between executions in days.
         """
         return pulumi.get(self, "interval_duration_days")
 

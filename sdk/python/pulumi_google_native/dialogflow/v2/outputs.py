@@ -82,7 +82,7 @@ class GoogleCloudDialogflowV2AutomatedAgentConfigResponse(dict):
                  agent: str):
         """
         Defines the Automated Agent to connect to a conversation.
-        :param str agent: Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+        :param str agent: ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
         """
         pulumi.set(__self__, "agent", agent)
 
@@ -90,7 +90,7 @@ class GoogleCloudDialogflowV2AutomatedAgentConfigResponse(dict):
     @pulumi.getter
     def agent(self) -> str:
         """
-        Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+        ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
         """
         return pulumi.get(self, "agent")
 
@@ -124,7 +124,7 @@ class GoogleCloudDialogflowV2ContextResponse(dict):
         """
         Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
         :param int lifespan_count: Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
-        :param str name: Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+        :param str name: The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
         :param Mapping[str, str] parameters: Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
         """
         pulumi.set(__self__, "lifespan_count", lifespan_count)
@@ -143,7 +143,7 @@ class GoogleCloudDialogflowV2ContextResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+        The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
         """
         return pulumi.get(self, "name")
 
@@ -238,8 +238,8 @@ class GoogleCloudDialogflowV2EntityTypeEntityResponse(dict):
                  value: str):
         """
         An **entity entry** for an associated entity type.
-        :param Sequence[str] synonyms: Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
-        :param str value: Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+        :param Sequence[str] synonyms: A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+        :param str value: The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
         """
         pulumi.set(__self__, "synonyms", synonyms)
         pulumi.set(__self__, "value", value)
@@ -248,7 +248,7 @@ class GoogleCloudDialogflowV2EntityTypeEntityResponse(dict):
     @pulumi.getter
     def synonyms(self) -> Sequence[str]:
         """
-        Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+        A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
         """
         return pulumi.get(self, "synonyms")
 
@@ -256,7 +256,7 @@ class GoogleCloudDialogflowV2EntityTypeEntityResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+        The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
         """
         return pulumi.get(self, "value")
 
@@ -318,7 +318,7 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse(dict):
         :param bool is_cloud_function: Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
         :param str password: Optional. The password for HTTP Basic authentication.
         :param Mapping[str, str] request_headers: Optional. The HTTP request headers to send together with fulfillment requests.
-        :param str uri: Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+        :param str uri: The fulfillment URI for receiving POST requests. It must use https protocol.
         :param str username: Optional. The user name for HTTP Basic authentication.
         """
         pulumi.set(__self__, "is_cloud_function", is_cloud_function)
@@ -355,7 +355,7 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+        The fulfillment URI for receiving POST requests. It must use https protocol.
         """
         return pulumi.get(self, "uri")
 
@@ -404,7 +404,7 @@ class GoogleCloudDialogflowV2FulfillmentResponse(dict):
         :param bool enabled: Optional. Whether fulfillment is enabled.
         :param Sequence['GoogleCloudDialogflowV2FulfillmentFeatureResponse'] features: Optional. The field defines whether the fulfillment is enabled for certain features.
         :param 'GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse' generic_web_service: Configuration for a generic web service.
-        :param str name: Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+        :param str name: The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "enabled", enabled)
@@ -448,7 +448,7 @@ class GoogleCloudDialogflowV2FulfillmentResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+        The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
         """
         return pulumi.get(self, "name")
 
@@ -462,7 +462,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigRes
                  model: str):
         """
         Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
-        :param str model: Required. Conversation model resource name. Format: `projects//conversationModels/`.
+        :param str model: Conversation model resource name. Format: `projects//conversationModels/`.
         """
         pulumi.set(__self__, "model", model)
 
@@ -470,7 +470,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigRes
     @pulumi.getter
     def model(self) -> str:
         """
-        Required. Conversation model resource name. Format: `projects//conversationModels/`.
+        Conversation model resource name. Format: `projects//conversationModels/`.
         """
         return pulumi.get(self, "model")
 
@@ -822,7 +822,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
                  agent: str):
         """
         Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
-        :param str agent: Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+        :param str agent: The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
         """
         pulumi.set(__self__, "agent", agent)
 
@@ -830,7 +830,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
     @pulumi.getter
     def agent(self) -> str:
         """
-        Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+        The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
         """
         return pulumi.get(self, "agent")
 
@@ -844,7 +844,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocum
                  documents: Sequence[str]):
         """
         Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
-        :param Sequence[str] documents: Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+        :param Sequence[str] documents: Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
         """
         pulumi.set(__self__, "documents", documents)
 
@@ -852,7 +852,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocum
     @pulumi.getter
     def documents(self) -> Sequence[str]:
         """
-        Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+        Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
         """
         return pulumi.get(self, "documents")
 
@@ -883,7 +883,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
                  knowledge_bases: Sequence[str]):
         """
         Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
-        :param Sequence[str] knowledge_bases: Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+        :param Sequence[str] knowledge_bases: Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
         """
         pulumi.set(__self__, "knowledge_bases", knowledge_bases)
 
@@ -891,7 +891,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
     @pulumi.getter(name="knowledgeBases")
     def knowledge_bases(self) -> Sequence[str]:
         """
-        Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+        Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
         """
         return pulumi.get(self, "knowledge_bases")
 
@@ -1078,7 +1078,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse(dic
                  account_number: str):
         """
         Configuration specific to LivePerson (https://www.liveperson.com).
-        :param str account_number: Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+        :param str account_number: Account number of the LivePerson account to connect. This is the account number you input at the login page.
         """
         pulumi.set(__self__, "account_number", account_number)
 
@@ -1086,7 +1086,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse(dic
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> str:
         """
-        Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+        Account number of the LivePerson account to connect. This is the account number you input at the login page.
         """
         return pulumi.get(self, "account_number")
 
@@ -1178,10 +1178,10 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigRes
                  organization_id: str):
         """
         Configuration specific to Salesforce Live Agent.
-        :param str button_id: Required. Live Agent chat button ID.
-        :param str deployment_id: Required. Live Agent deployment ID.
-        :param str endpoint_domain: Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
-        :param str organization_id: Required. The organization ID of the Salesforce account.
+        :param str button_id: Live Agent chat button ID.
+        :param str deployment_id: Live Agent deployment ID.
+        :param str endpoint_domain: Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+        :param str organization_id: The organization ID of the Salesforce account.
         """
         pulumi.set(__self__, "button_id", button_id)
         pulumi.set(__self__, "deployment_id", deployment_id)
@@ -1192,7 +1192,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigRes
     @pulumi.getter(name="buttonId")
     def button_id(self) -> str:
         """
-        Required. Live Agent chat button ID.
+        Live Agent chat button ID.
         """
         return pulumi.get(self, "button_id")
 
@@ -1200,7 +1200,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigRes
     @pulumi.getter(name="deploymentId")
     def deployment_id(self) -> str:
         """
-        Required. Live Agent deployment ID.
+        Live Agent deployment ID.
         """
         return pulumi.get(self, "deployment_id")
 
@@ -1208,7 +1208,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigRes
     @pulumi.getter(name="endpointDomain")
     def endpoint_domain(self) -> str:
         """
-        Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+        Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
         """
         return pulumi.get(self, "endpoint_domain")
 
@@ -1216,7 +1216,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigRes
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> str:
         """
-        Required. The organization ID of the Salesforce account.
+        The organization ID of the Salesforce account.
         """
         return pulumi.get(self, "organization_id")
 
@@ -1282,7 +1282,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse(d
                  uri: str):
         """
         Opens the given URI.
-        :param str uri: Required. The HTTP or HTTPS scheme URI.
+        :param str uri: The HTTP or HTTPS scheme URI.
         """
         pulumi.set(__self__, "uri", uri)
 
@@ -1290,7 +1290,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse(d
     @pulumi.getter
     def uri(self) -> str:
         """
-        Required. The HTTP or HTTPS scheme URI.
+        The HTTP or HTTPS scheme URI.
         """
         return pulumi.get(self, "uri")
 
@@ -1322,8 +1322,8 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse(dict):
                  title: str):
         """
         The button object that appears at the bottom of a card.
-        :param 'GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse' open_uri_action: Required. Action to take when a user taps on the button.
-        :param str title: Required. The title of the button.
+        :param 'GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse' open_uri_action: Action to take when a user taps on the button.
+        :param str title: The title of the button.
         """
         pulumi.set(__self__, "open_uri_action", open_uri_action)
         pulumi.set(__self__, "title", title)
@@ -1332,7 +1332,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse(dict):
     @pulumi.getter(name="openUriAction")
     def open_uri_action(self) -> 'outputs.GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse':
         """
-        Required. Action to take when a user taps on the button.
+        Action to take when a user taps on the button.
         """
         return pulumi.get(self, "open_uri_action")
 
@@ -1340,7 +1340,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse(dict):
     @pulumi.getter
     def title(self) -> str:
         """
-        Required. The title of the button.
+        The title of the button.
         """
         return pulumi.get(self, "title")
 
@@ -1455,7 +1455,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
                  url_type_hint: str):
         """
         Actions on Google action to open a given url.
-        :param str url: Required. URL
+        :param str url: URL
         :param str url_type_hint: Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
         """
         pulumi.set(__self__, "url", url)
@@ -1465,7 +1465,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
     @pulumi.getter
     def url(self) -> str:
         """
-        Required. URL
+        URL
         """
         return pulumi.get(self, "url")
 
@@ -1511,8 +1511,8 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
         :param str description: Optional. Description of the carousel item. Maximum of four lines of text.
         :param str footer: Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of text.
         :param 'GoogleCloudDialogflowV2IntentMessageImageResponse' image: Optional. Hero image for the carousel item.
-        :param 'GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse' open_uri_action: Required. Action to present to the user.
-        :param str title: Required. Title of the carousel item. Maximum of two lines of text.
+        :param 'GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse' open_uri_action: Action to present to the user.
+        :param str title: Title of the carousel item. Maximum of two lines of text.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "footer", footer)
@@ -1548,7 +1548,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
     @pulumi.getter(name="openUriAction")
     def open_uri_action(self) -> 'outputs.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse':
         """
-        Required. Action to present to the user.
+        Action to present to the user.
         """
         return pulumi.get(self, "open_uri_action")
 
@@ -1556,7 +1556,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
     @pulumi.getter
     def title(self) -> str:
         """
-        Required. Title of the carousel item. Maximum of two lines of text.
+        Title of the carousel item. Maximum of two lines of text.
         """
         return pulumi.get(self, "title")
 
@@ -1589,7 +1589,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse(dict):
         """
         Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
         :param str image_display_options: Optional. Settings for displaying the image. Applies to every image in items.
-        :param Sequence['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse'] items: Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+        :param Sequence['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse'] items: List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
         """
         pulumi.set(__self__, "image_display_options", image_display_options)
         pulumi.set(__self__, "items", items)
@@ -1606,7 +1606,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse(dict):
     @pulumi.getter
     def items(self) -> Sequence['outputs.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse']:
         """
-        Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+        List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
         """
         return pulumi.get(self, "items")
 
@@ -1730,8 +1730,8 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse(dict):
         An item in the carousel.
         :param str description: Optional. The body text of the card.
         :param 'GoogleCloudDialogflowV2IntentMessageImageResponse' image: Optional. The image to display.
-        :param 'GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse' info: Required. Additional info about the option item.
-        :param str title: Required. Title of the carousel item.
+        :param 'GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse' info: Additional info about the option item.
+        :param str title: Title of the carousel item.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "image", image)
@@ -1758,7 +1758,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse(dict):
     @pulumi.getter
     def info(self) -> 'outputs.GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse':
         """
-        Required. Additional info about the option item.
+        Additional info about the option item.
         """
         return pulumi.get(self, "info")
 
@@ -1766,7 +1766,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse(dict):
     @pulumi.getter
     def title(self) -> str:
         """
-        Required. Title of the carousel item.
+        Title of the carousel item.
         """
         return pulumi.get(self, "title")
 
@@ -1780,7 +1780,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse(dict):
                  items: Sequence['outputs.GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse']):
         """
         The card for presenting a carousel of options to select from.
-        :param Sequence['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse'] items: Required. Carousel items.
+        :param Sequence['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse'] items: Carousel items.
         """
         pulumi.set(__self__, "items", items)
 
@@ -1788,7 +1788,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse(dict):
     @pulumi.getter
     def items(self) -> Sequence['outputs.GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse']:
         """
-        Required. Carousel items.
+        Carousel items.
         """
         return pulumi.get(self, "items")
 
@@ -1820,7 +1820,7 @@ class GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse(dict):
                  horizontal_alignment: str):
         """
         Column properties for TableCard.
-        :param str header: Required. Column heading.
+        :param str header: Column heading.
         :param str horizontal_alignment: Optional. Defines text alignment for all cells in this column.
         """
         pulumi.set(__self__, "header", header)
@@ -1830,7 +1830,7 @@ class GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse(dict):
     @pulumi.getter
     def header(self) -> str:
         """
-        Required. Column heading.
+        Column heading.
         """
         return pulumi.get(self, "header")
 
@@ -1922,8 +1922,8 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse(dict):
                  uri: str):
         """
         The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
-        :param str destination_name: Required. The name of the app or site this chip is linking to.
-        :param str uri: Required. The URI of the app or site to open when the user taps the suggestion chip.
+        :param str destination_name: The name of the app or site this chip is linking to.
+        :param str uri: The URI of the app or site to open when the user taps the suggestion chip.
         """
         pulumi.set(__self__, "destination_name", destination_name)
         pulumi.set(__self__, "uri", uri)
@@ -1932,7 +1932,7 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse(dict):
     @pulumi.getter(name="destinationName")
     def destination_name(self) -> str:
         """
-        Required. The name of the app or site this chip is linking to.
+        The name of the app or site this chip is linking to.
         """
         return pulumi.get(self, "destination_name")
 
@@ -1940,7 +1940,7 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        Required. The URI of the app or site to open when the user taps the suggestion chip.
+        The URI of the app or site to open when the user taps the suggestion chip.
         """
         return pulumi.get(self, "uri")
 
@@ -1959,8 +1959,8 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItemResponse(dict):
         An item in the list.
         :param str description: Optional. The main text describing the item.
         :param 'GoogleCloudDialogflowV2IntentMessageImageResponse' image: Optional. The image to display.
-        :param 'GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse' info: Required. Additional information about this option.
-        :param str title: Required. The title of the list item.
+        :param 'GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse' info: Additional information about this option.
+        :param str title: The title of the list item.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "image", image)
@@ -1987,7 +1987,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItemResponse(dict):
     @pulumi.getter
     def info(self) -> 'outputs.GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse':
         """
-        Required. Additional information about this option.
+        Additional information about this option.
         """
         return pulumi.get(self, "info")
 
@@ -1995,7 +1995,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItemResponse(dict):
     @pulumi.getter
     def title(self) -> str:
         """
-        Required. The title of the list item.
+        The title of the list item.
         """
         return pulumi.get(self, "title")
 
@@ -2011,7 +2011,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelectResponse(dict):
                  title: str):
         """
         The card for presenting a list of options to select from.
-        :param Sequence['GoogleCloudDialogflowV2IntentMessageListSelectItemResponse'] items: Required. List items.
+        :param Sequence['GoogleCloudDialogflowV2IntentMessageListSelectItemResponse'] items: List items.
         :param str subtitle: Optional. Subtitle of the list.
         :param str title: Optional. The overall title of the list.
         """
@@ -2023,7 +2023,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelectResponse(dict):
     @pulumi.getter
     def items(self) -> Sequence['outputs.GoogleCloudDialogflowV2IntentMessageListSelectItemResponse']:
         """
-        Required. List items.
+        List items.
         """
         return pulumi.get(self, "items")
 
@@ -2073,7 +2073,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponse(dict):
                  media_type: str):
         """
         The media content card for Actions on Google.
-        :param Sequence['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse'] media_objects: Required. List of media objects.
+        :param Sequence['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse'] media_objects: List of media objects.
         :param str media_type: Optional. What type of media is the content (ie "audio").
         """
         pulumi.set(__self__, "media_objects", media_objects)
@@ -2083,7 +2083,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponse(dict):
     @pulumi.getter(name="mediaObjects")
     def media_objects(self) -> Sequence['outputs.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse']:
         """
-        Required. List of media objects.
+        List of media objects.
         """
         return pulumi.get(self, "media_objects")
 
@@ -2128,11 +2128,11 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectRespons
                  name: str):
         """
         Response media object for media content card.
-        :param str content_url: Required. Url where the media is stored.
+        :param str content_url: Url where the media is stored.
         :param str description: Optional. Description of media card.
         :param 'GoogleCloudDialogflowV2IntentMessageImageResponse' icon: Optional. Icon to display above media content.
         :param 'GoogleCloudDialogflowV2IntentMessageImageResponse' large_image: Optional. Image to display above media content.
-        :param str name: Required. Name of media card.
+        :param str name: Name of media card.
         """
         pulumi.set(__self__, "content_url", content_url)
         pulumi.set(__self__, "description", description)
@@ -2144,7 +2144,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectRespons
     @pulumi.getter(name="contentUrl")
     def content_url(self) -> str:
         """
-        Required. Url where the media is stored.
+        Url where the media is stored.
         """
         return pulumi.get(self, "content_url")
 
@@ -2176,7 +2176,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectRespons
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Name of media card.
+        Name of media card.
         """
         return pulumi.get(self, "name")
 
@@ -2450,7 +2450,7 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse(dict):
                  synonyms: Sequence[str]):
         """
         Additional info about the select item for when it is triggered in a dialog.
-        :param str key: Required. A unique key that will be sent back to the agent if this response is given.
+        :param str key: A unique key that will be sent back to the agent if this response is given.
         :param Sequence[str] synonyms: Optional. A list of synonyms that can also be used to trigger this item in dialog.
         """
         pulumi.set(__self__, "key", key)
@@ -2460,7 +2460,7 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Required. A unique key that will be sent back to the agent if this response is given.
+        A unique key that will be sent back to the agent if this response is given.
         """
         return pulumi.get(self, "key")
 
@@ -2562,7 +2562,7 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse(dict):
                  simple_responses: Sequence['outputs.GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse']):
         """
         The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
-        :param Sequence['GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse'] simple_responses: Required. The list of simple responses.
+        :param Sequence['GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse'] simple_responses: The list of simple responses.
         """
         pulumi.set(__self__, "simple_responses", simple_responses)
 
@@ -2570,7 +2570,7 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse(dict):
     @pulumi.getter(name="simpleResponses")
     def simple_responses(self) -> Sequence['outputs.GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse']:
         """
-        Required. The list of simple responses.
+        The list of simple responses.
         """
         return pulumi.get(self, "simple_responses")
 
@@ -2584,7 +2584,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestionResponse(dict):
                  title: str):
         """
         The suggestion chip message that the user can tap to quickly post a reply to the conversation.
-        :param str title: Required. The text shown the in the suggestion chip.
+        :param str title: The text shown the in the suggestion chip.
         """
         pulumi.set(__self__, "title", title)
 
@@ -2592,7 +2592,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestionResponse(dict):
     @pulumi.getter
     def title(self) -> str:
         """
-        Required. The text shown the in the suggestion chip.
+        The text shown the in the suggestion chip.
         """
         return pulumi.get(self, "title")
 
@@ -2606,7 +2606,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestionsResponse(dict):
                  suggestions: Sequence['outputs.GoogleCloudDialogflowV2IntentMessageSuggestionResponse']):
         """
         The collection of suggestions.
-        :param Sequence['GoogleCloudDialogflowV2IntentMessageSuggestionResponse'] suggestions: Required. The list of suggested replies.
+        :param Sequence['GoogleCloudDialogflowV2IntentMessageSuggestionResponse'] suggestions: The list of suggested replies.
         """
         pulumi.set(__self__, "suggestions", suggestions)
 
@@ -2614,7 +2614,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestionsResponse(dict):
     @pulumi.getter
     def suggestions(self) -> Sequence['outputs.GoogleCloudDialogflowV2IntentMessageSuggestionResponse']:
         """
-        Required. The list of suggested replies.
+        The list of suggested replies.
         """
         return pulumi.get(self, "suggestions")
 
@@ -2628,7 +2628,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardCellResponse(dict):
                  text: str):
         """
         Cell of TableCardRow.
-        :param str text: Required. Text in this cell.
+        :param str text: Text in this cell.
         """
         pulumi.set(__self__, "text", text)
 
@@ -2636,7 +2636,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardCellResponse(dict):
     @pulumi.getter
     def text(self) -> str:
         """
-        Required. Text in this cell.
+        Text in this cell.
         """
         return pulumi.get(self, "text")
 
@@ -2677,7 +2677,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardResponse(dict):
         :param 'GoogleCloudDialogflowV2IntentMessageImageResponse' image: Optional. Image which should be displayed on the card.
         :param Sequence['GoogleCloudDialogflowV2IntentMessageTableCardRowResponse'] rows: Optional. Rows in this table of data.
         :param str subtitle: Optional. Subtitle to the title.
-        :param str title: Required. Title of the card.
+        :param str title: Title of the card.
         """
         pulumi.set(__self__, "buttons", buttons)
         pulumi.set(__self__, "column_properties", column_properties)
@@ -2730,7 +2730,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardResponse(dict):
     @pulumi.getter
     def title(self) -> str:
         """
-        Required. Title of the card.
+        Title of the card.
         """
         return pulumi.get(self, "title")
 
@@ -2847,7 +2847,7 @@ class GoogleCloudDialogflowV2IntentParameterResponse(dict):
         """
         Represents intent parameters.
         :param str default_value: Optional. The default value to use when the `value` yields an empty result. Default values can be extracted from contexts by using the following syntax: `#context_name.parameter_name`.
-        :param str display_name: Required. The name of the parameter.
+        :param str display_name: The name of the parameter.
         :param str entity_type_display_name: Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
         :param bool is_list: Optional. Indicates whether the parameter represents a list of values.
         :param bool mandatory: Optional. Indicates whether the parameter is required. That is, whether the intent cannot be completed without collecting the parameter value.
@@ -2876,7 +2876,7 @@ class GoogleCloudDialogflowV2IntentParameterResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The name of the parameter.
+        The name of the parameter.
         """
         return pulumi.get(self, "display_name")
 
@@ -2962,7 +2962,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse(dict):
         Represents a part of a training phrase.
         :param str alias: Optional. The parameter name for the value extracted from the annotated part of the example. This field is required for annotated parts of the training phrase.
         :param str entity_type: Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
-        :param str text: Required. The text for this part.
+        :param str text: The text for this part.
         :param bool user_defined: Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
         """
         pulumi.set(__self__, "alias", alias)
@@ -2990,7 +2990,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse(dict):
     @pulumi.getter
     def text(self) -> str:
         """
-        Required. The text for this part.
+        The text for this part.
         """
         return pulumi.get(self, "text")
 
@@ -3033,9 +3033,9 @@ class GoogleCloudDialogflowV2IntentTrainingPhraseResponse(dict):
         """
         Represents an example that the agent is trained on.
         :param str name: The unique identifier of this training phrase.
-        :param Sequence['GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse'] parts: Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+        :param Sequence['GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse'] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
         :param int times_added_count: Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
-        :param str type: Required. The type of the training phrase.
+        :param str type: The type of the training phrase.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "parts", parts)
@@ -3054,7 +3054,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhraseResponse(dict):
     @pulumi.getter
     def parts(self) -> Sequence['outputs.GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse']:
         """
-        Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+        The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
         """
         return pulumi.get(self, "parts")
 
@@ -3070,7 +3070,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhraseResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. The type of the training phrase.
+        The type of the training phrase.
         """
         return pulumi.get(self, "type")
 
@@ -3261,7 +3261,7 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsResponse(dict):
         """
         Instructs the speech synthesizer on how to generate the output audio content.
         :param bool enable_text_to_speech: Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
-        :param str output_audio_encoding: Required. Audio encoding of the synthesized audio content.
+        :param str output_audio_encoding: Audio encoding of the synthesized audio content.
         :param int sample_rate_hertz: Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
         :param Mapping[str, str] synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         """
@@ -3282,7 +3282,7 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsResponse(dict):
     @pulumi.getter(name="outputAudioEncoding")
     def output_audio_encoding(self) -> str:
         """
-        Required. Audio encoding of the synthesized audio content.
+        Audio encoding of the synthesized audio content.
         """
         return pulumi.get(self, "output_audio_encoding")
 

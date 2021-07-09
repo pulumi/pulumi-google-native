@@ -18,32 +18,35 @@ class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 node_config: pulumi.Input['NodeConfigArgs'],
+                 node_count: pulumi.Input[int],
                  project: pulumi.Input[str],
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
-                 node_count: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input['MemcacheParametersArgs']] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        :param pulumi.Input['NodeConfigArgs'] node_config: Configuration for Memcached nodes.
+        :param pulumi.Input[int] node_count: Number of nodes in the Memcached instance.
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
-        :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
-        :param pulumi.Input['NodeConfigArgs'] node_config: Required. Configuration for Memcached nodes.
-        :param pulumi.Input[int] node_count: Required. Number of nodes in the Memcached instance.
         :param pulumi.Input['MemcacheParametersArgs'] parameters: Optional: User defined parameters to apply to the memcached process on each node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_config", node_config)
+        pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "project", project)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
@@ -55,12 +58,6 @@ class InstanceArgs:
             pulumi.set(__self__, "labels", labels)
         if memcache_version is not None:
             pulumi.set(__self__, "memcache_version", memcache_version)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if node_config is not None:
-            pulumi.set(__self__, "node_config", node_config)
-        if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if zones is not None:
@@ -83,6 +80,42 @@ class InstanceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> pulumi.Input['NodeConfigArgs']:
+        """
+        Configuration for Memcached nodes.
+        """
+        return pulumi.get(self, "node_config")
+
+    @node_config.setter
+    def node_config(self, value: pulumi.Input['NodeConfigArgs']):
+        pulumi.set(self, "node_config", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Input[int]:
+        """
+        Number of nodes in the Memcached instance.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "node_count", value)
 
     @property
     @pulumi.getter
@@ -155,42 +188,6 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['NodeConfigArgs']]:
-        """
-        Required. Configuration for Memcached nodes.
-        """
-        return pulumi.get(self, "node_config")
-
-    @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['NodeConfigArgs']]):
-        pulumi.set(self, "node_config", value)
-
-    @property
-    @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. Number of nodes in the Memcached instance.
-        """
-        return pulumi.get(self, "node_count")
-
-    @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "node_count", value)
-
-    @property
-    @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input['MemcacheParametersArgs']]:
         """
         Optional: User defined parameters to apply to the memcached process on each node.
@@ -243,9 +240,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
-        :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
-        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Required. Configuration for Memcached nodes.
-        :param pulumi.Input[int] node_count: Required. Number of nodes in the Memcached instance.
+        :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Configuration for Memcached nodes.
+        :param pulumi.Input[int] node_count: Number of nodes in the Memcached instance.
         :param pulumi.Input[pulumi.InputType['MemcacheParametersArgs']] parameters: Optional: User defined parameters to apply to the memcached process on each node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
@@ -309,8 +306,14 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["memcache_version"] = memcache_version
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            if node_config is None and not opts.urn:
+                raise TypeError("Missing required property 'node_config'")
             __props__.__dict__["node_config"] = node_config
+            if node_count is None and not opts.urn:
+                raise TypeError("Missing required property 'node_count'")
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["parameters"] = parameters
             if project is None and not opts.urn:
@@ -439,7 +442,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         """
         return pulumi.get(self, "name")
 
@@ -447,7 +450,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> pulumi.Output['outputs.NodeConfigResponse']:
         """
-        Required. Configuration for Memcached nodes.
+        Configuration for Memcached nodes.
         """
         return pulumi.get(self, "node_config")
 
@@ -455,7 +458,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> pulumi.Output[int]:
         """
-        Required. Number of nodes in the Memcached instance.
+        Number of nodes in the Memcached instance.
         """
         return pulumi.get(self, "node_count")
 

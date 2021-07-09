@@ -1101,25 +1101,36 @@ class MeshIstioArgs:
 @pulumi.input_type
 class MetricAbsenceArgs:
     def __init__(__self__, *,
+                 filter: pulumi.Input[str],
                  aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input[str]] = None,
                  trigger: Optional[pulumi.Input['TriggerArgs']] = None):
         """
         A condition type that checks that monitored resources are reporting data. The configuration defines a metric and a set of monitored resources. The predicate is considered in violation when a time series for the specified metric of a monitored resource does not include any data in the specified duration.
+        :param pulumi.Input[str] filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         :param pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]] aggregations: Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
         :param pulumi.Input[str] duration: The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
-        :param pulumi.Input[str] filter: Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         :param pulumi.Input['TriggerArgs'] trigger: The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations.
         """
+        pulumi.set(__self__, "filter", filter)
         if aggregations is not None:
             pulumi.set(__self__, "aggregations", aggregations)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
-        if filter is not None:
-            pulumi.set(__self__, "filter", filter)
         if trigger is not None:
             pulumi.set(__self__, "trigger", trigger)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -1144,18 +1155,6 @@ class MetricAbsenceArgs:
     @duration.setter
     def duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "duration", value)
-
-    @property
-    @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
-        """
-        return pulumi.get(self, "filter")
-
-    @filter.setter
-    def filter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -1253,25 +1252,26 @@ class MetricRangeArgs:
 @pulumi.input_type
 class MetricThresholdArgs:
     def __init__(__self__, *,
+                 filter: pulumi.Input[str],
                  aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]]] = None,
                  comparison: Optional[pulumi.Input['MetricThresholdComparison']] = None,
                  denominator_aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]]] = None,
                  denominator_filter: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input[str]] = None,
                  threshold_value: Optional[pulumi.Input[float]] = None,
                  trigger: Optional[pulumi.Input['TriggerArgs']] = None):
         """
         A condition type that compares a collection of time series against a threshold.
+        :param pulumi.Input[str] filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         :param pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]] aggregations: Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
         :param pulumi.Input['MetricThresholdComparison'] comparison: The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
         :param pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]] denominator_aggregations: Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.
         :param pulumi.Input[str] denominator_filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
         :param pulumi.Input[str] duration: The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
-        :param pulumi.Input[str] filter: Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         :param pulumi.Input[float] threshold_value: A value against which to compare the time series.
         :param pulumi.Input['TriggerArgs'] trigger: The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
         """
+        pulumi.set(__self__, "filter", filter)
         if aggregations is not None:
             pulumi.set(__self__, "aggregations", aggregations)
         if comparison is not None:
@@ -1282,12 +1282,22 @@ class MetricThresholdArgs:
             pulumi.set(__self__, "denominator_filter", denominator_filter)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
-        if filter is not None:
-            pulumi.set(__self__, "filter", filter)
         if threshold_value is not None:
             pulumi.set(__self__, "threshold_value", threshold_value)
         if trigger is not None:
             pulumi.set(__self__, "trigger", trigger)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -1350,18 +1360,6 @@ class MetricThresholdArgs:
         pulumi.set(self, "duration", value)
 
     @property
-    @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
-        """
-        return pulumi.get(self, "filter")
-
-    @filter.setter
-    def filter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "filter", value)
-
-    @property
     @pulumi.getter(name="thresholdValue")
     def threshold_value(self) -> Optional[pulumi.Input[float]]:
         """
@@ -1389,40 +1387,38 @@ class MetricThresholdArgs:
 @pulumi.input_type
 class MonitoredResourceArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 type: pulumi.Input[str]):
         """
         An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "zone": { "type": "gce_instance", "labels": { "instance_id": "12345678901234", "zone": "us-central1-a" }} 
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
-        :param pulumi.Input[str] type: Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+        :param pulumi.Input[str] type: The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
         """
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
-        Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+        Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> pulumi.Input[str]:
         """
-        Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+        The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
 

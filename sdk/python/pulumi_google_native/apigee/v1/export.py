@@ -14,37 +14,58 @@ __all__ = ['ExportArgs', 'Export']
 @pulumi.input_type
 class ExportArgs:
     def __init__(__self__, *,
+                 datastore_name: pulumi.Input[str],
+                 date_range: pulumi.Input['GoogleCloudApigeeV1DateRangeArgs'],
                  environment_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  csv_delimiter: Optional[pulumi.Input[str]] = None,
-                 datastore_name: Optional[pulumi.Input[str]] = None,
-                 date_range: Optional[pulumi.Input['GoogleCloudApigeeV1DateRangeArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Export resource.
+        :param pulumi.Input[str] datastore_name: Name of the preconfigured datastore.
+        :param pulumi.Input['GoogleCloudApigeeV1DateRangeArgs'] date_range: Date range of the data to export.
+        :param pulumi.Input[str] name: Display name of the export job.
         :param pulumi.Input[str] csv_delimiter: Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
-        :param pulumi.Input[str] datastore_name: Required. Name of the preconfigured datastore.
-        :param pulumi.Input['GoogleCloudApigeeV1DateRangeArgs'] date_range: Required. Date range of the data to export.
         :param pulumi.Input[str] description: Optional. Description of the export job.
-        :param pulumi.Input[str] name: Required. Display name of the export job.
         :param pulumi.Input[str] output_format: Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
         """
+        pulumi.set(__self__, "datastore_name", datastore_name)
+        pulumi.set(__self__, "date_range", date_range)
         pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organization_id", organization_id)
         if csv_delimiter is not None:
             pulumi.set(__self__, "csv_delimiter", csv_delimiter)
-        if datastore_name is not None:
-            pulumi.set(__self__, "datastore_name", datastore_name)
-        if date_range is not None:
-            pulumi.set(__self__, "date_range", date_range)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if output_format is not None:
             pulumi.set(__self__, "output_format", output_format)
+
+    @property
+    @pulumi.getter(name="datastoreName")
+    def datastore_name(self) -> pulumi.Input[str]:
+        """
+        Name of the preconfigured datastore.
+        """
+        return pulumi.get(self, "datastore_name")
+
+    @datastore_name.setter
+    def datastore_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datastore_name", value)
+
+    @property
+    @pulumi.getter(name="dateRange")
+    def date_range(self) -> pulumi.Input['GoogleCloudApigeeV1DateRangeArgs']:
+        """
+        Date range of the data to export.
+        """
+        return pulumi.get(self, "date_range")
+
+    @date_range.setter
+    def date_range(self, value: pulumi.Input['GoogleCloudApigeeV1DateRangeArgs']):
+        pulumi.set(self, "date_range", value)
 
     @property
     @pulumi.getter(name="environmentId")
@@ -54,6 +75,18 @@ class ExportArgs:
     @environment_id.setter
     def environment_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "environment_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Display name of the export job.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -77,30 +110,6 @@ class ExportArgs:
         pulumi.set(self, "csv_delimiter", value)
 
     @property
-    @pulumi.getter(name="datastoreName")
-    def datastore_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Name of the preconfigured datastore.
-        """
-        return pulumi.get(self, "datastore_name")
-
-    @datastore_name.setter
-    def datastore_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "datastore_name", value)
-
-    @property
-    @pulumi.getter(name="dateRange")
-    def date_range(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1DateRangeArgs']]:
-        """
-        Required. Date range of the data to export.
-        """
-        return pulumi.get(self, "date_range")
-
-    @date_range.setter
-    def date_range(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1DateRangeArgs']]):
-        pulumi.set(self, "date_range", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -111,18 +120,6 @@ class ExportArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Display name of the export job.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="outputFormat")
@@ -157,10 +154,10 @@ class Export(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] csv_delimiter: Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
-        :param pulumi.Input[str] datastore_name: Required. Name of the preconfigured datastore.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']] date_range: Required. Date range of the data to export.
+        :param pulumi.Input[str] datastore_name: Name of the preconfigured datastore.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']] date_range: Date range of the data to export.
         :param pulumi.Input[str] description: Optional. Description of the export job.
-        :param pulumi.Input[str] name: Required. Display name of the export job.
+        :param pulumi.Input[str] name: Display name of the export job.
         :param pulumi.Input[str] output_format: Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
         """
         ...
@@ -208,12 +205,18 @@ class Export(pulumi.CustomResource):
             __props__ = ExportArgs.__new__(ExportArgs)
 
             __props__.__dict__["csv_delimiter"] = csv_delimiter
+            if datastore_name is None and not opts.urn:
+                raise TypeError("Missing required property 'datastore_name'")
             __props__.__dict__["datastore_name"] = datastore_name
+            if date_range is None and not opts.urn:
+                raise TypeError("Missing required property 'date_range'")
             __props__.__dict__["date_range"] = date_range
             __props__.__dict__["description"] = description
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

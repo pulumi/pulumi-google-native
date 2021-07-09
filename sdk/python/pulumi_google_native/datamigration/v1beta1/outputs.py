@@ -577,12 +577,12 @@ class MySqlConnectionProfileResponse(dict):
         """
         Specifies connection parameters required specifically for MySQL databases.
         :param str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
-        :param str host: Required. The IP or hostname of the source MySQL database.
-        :param str password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        :param str host: The IP or hostname of the source MySQL database.
+        :param str password: Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         :param bool password_set: Indicates If this connection profile password is stored.
-        :param int port: Required. The network port of the source MySQL database.
+        :param int port: The network port of the source MySQL database.
         :param 'SslConfigResponse' ssl: SSL configuration for the destination to connect to the source database.
-        :param str username: Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        :param str username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
         pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
         pulumi.set(__self__, "host", host)
@@ -604,7 +604,7 @@ class MySqlConnectionProfileResponse(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        Required. The IP or hostname of the source MySQL database.
+        The IP or hostname of the source MySQL database.
         """
         return pulumi.get(self, "host")
 
@@ -612,7 +612,7 @@ class MySqlConnectionProfileResponse(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         """
         return pulumi.get(self, "password")
 
@@ -628,7 +628,7 @@ class MySqlConnectionProfileResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        Required. The network port of the source MySQL database.
+        The network port of the source MySQL database.
         """
         return pulumi.get(self, "port")
 
@@ -644,7 +644,7 @@ class MySqlConnectionProfileResponse(dict):
     @pulumi.getter
     def username(self) -> str:
         """
-        Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
         return pulumi.get(self, "username")
 
@@ -681,8 +681,8 @@ class ReverseSshConnectivityResponse(dict):
         """
         The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1beta1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
         :param str vm: The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-        :param str vm_ip: Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-        :param int vm_port: Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+        :param str vm_ip: The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+        :param int vm_port: The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
         :param str vpc: The name of the VPC to peer with the Cloud SQL private network.
         """
         pulumi.set(__self__, "vm", vm)
@@ -702,7 +702,7 @@ class ReverseSshConnectivityResponse(dict):
     @pulumi.getter(name="vmIp")
     def vm_ip(self) -> str:
         """
-        Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+        The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
         """
         return pulumi.get(self, "vm_ip")
 
@@ -710,7 +710,7 @@ class ReverseSshConnectivityResponse(dict):
     @pulumi.getter(name="vmPort")
     def vm_port(self) -> int:
         """
-        Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+        The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
         """
         return pulumi.get(self, "vm_port")
 
@@ -906,7 +906,7 @@ class SslConfigResponse(dict):
                  type: str):
         """
         SSL configuration information.
-        :param str ca_certificate: Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+        :param str ca_certificate: Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
         :param str client_certificate: Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
         :param str client_key: Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory.
         :param str type: The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
@@ -920,7 +920,7 @@ class SslConfigResponse(dict):
     @pulumi.getter(name="caCertificate")
     def ca_certificate(self) -> str:
         """
-        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+        Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
         """
         return pulumi.get(self, "ca_certificate")
 

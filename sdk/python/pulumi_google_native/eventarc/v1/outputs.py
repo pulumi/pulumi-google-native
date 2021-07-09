@@ -180,8 +180,8 @@ class CloudRunResponse(dict):
         """
         Represents a Cloud Run destination.
         :param str path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
-        :param str region: Required. The region the Cloud Run service is deployed in.
-        :param str service: Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        :param str region: The region the Cloud Run service is deployed in.
+        :param str service: The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "region", region)
@@ -199,7 +199,7 @@ class CloudRunResponse(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Required. The region the Cloud Run service is deployed in.
+        The region the Cloud Run service is deployed in.
         """
         return pulumi.get(self, "region")
 
@@ -207,7 +207,7 @@ class CloudRunResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
         """
         return pulumi.get(self, "service")
 
@@ -261,8 +261,8 @@ class EventFilterResponse(dict):
                  value: str):
         """
         Filters events based on exact matches on the CloudEvents attributes.
-        :param str attribute: Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
-        :param str value: Required. The value for the attribute.
+        :param str attribute: The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+        :param str value: The value for the attribute.
         """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "value", value)
@@ -271,7 +271,7 @@ class EventFilterResponse(dict):
     @pulumi.getter
     def attribute(self) -> str:
         """
-        Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+        The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
         """
         return pulumi.get(self, "attribute")
 
@@ -279,7 +279,7 @@ class EventFilterResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Required. The value for the attribute.
+        The value for the attribute.
         """
         return pulumi.get(self, "value")
 

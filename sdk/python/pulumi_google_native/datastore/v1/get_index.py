@@ -41,7 +41,7 @@ class GetIndexResult:
     @pulumi.getter
     def ancestor(self) -> str:
         """
-        Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         """
         return pulumi.get(self, "ancestor")
 
@@ -57,7 +57,7 @@ class GetIndexResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        Required. The entity kind to which this index applies.
+        The entity kind to which this index applies.
         """
         return pulumi.get(self, "kind")
 
@@ -73,7 +73,7 @@ class GetIndexResult:
     @pulumi.getter
     def properties(self) -> Sequence['outputs.GoogleDatastoreAdminV1IndexedPropertyResponse']:
         """
-        Required. An ordered sequence of property names and their index attributes.
+        An ordered sequence of property names and their index attributes.
         """
         return pulumi.get(self, "properties")
 

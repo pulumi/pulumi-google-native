@@ -56,7 +56,7 @@ class GetAutoscalingPolicyResult:
     @pulumi.getter(name="workerConfig")
     def worker_config(self) -> 'outputs.InstanceGroupAutoscalingPolicyConfigResponse':
         """
-        Required. Describes how the autoscaler will operate for primary workers.
+        Describes how the autoscaler will operate for primary workers.
         """
         return pulumi.get(self, "worker_config")
 

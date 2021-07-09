@@ -79,7 +79,7 @@ class GetWorkerPoolResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+        Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         """
         return pulumi.get(self, "region")
 

@@ -70,7 +70,7 @@ class GetStudyResult:
     @pulumi.getter(name="studyConfig")
     def study_config(self) -> 'outputs.GoogleCloudMlV1__StudyConfigResponse':
         """
-        Required. Configuration of the study.
+        Configuration of the study.
         """
         return pulumi.get(self, "study_config")
 

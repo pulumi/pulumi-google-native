@@ -17,21 +17,32 @@ __all__ = [
 @pulumi.input_type
 class GoogleCloudRetailV2betaImageArgs:
     def __init__(__self__, *,
+                 uri: pulumi.Input[str],
                  height: Optional[pulumi.Input[int]] = None,
-                 uri: Optional[pulumi.Input[str]] = None,
                  width: Optional[pulumi.Input[int]] = None):
         """
         Product thumbnail/detail image.
+        :param pulumi.Input[str] uri: URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
         :param pulumi.Input[int] height: Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
-        :param pulumi.Input[str] uri: Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
         :param pulumi.Input[int] width: Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
         """
+        pulumi.set(__self__, "uri", uri)
         if height is not None:
             pulumi.set(__self__, "height", height)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
         if width is not None:
             pulumi.set(__self__, "width", width)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter
@@ -44,18 +55,6 @@ class GoogleCloudRetailV2betaImageArgs:
     @height.setter
     def height(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "height", value)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter

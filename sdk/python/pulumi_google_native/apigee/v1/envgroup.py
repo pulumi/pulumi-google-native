@@ -13,19 +13,30 @@ __all__ = ['EnvgroupArgs', 'Envgroup']
 @pulumi.input_type
 class EnvgroupArgs:
     def __init__(__self__, *,
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
                  organization_id: pulumi.Input[str],
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Envgroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Host names for this environment group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Host names for this environment group.
         :param pulumi.Input[str] name: ID of the environment group.
         """
+        pulumi.set(__self__, "hostnames", hostnames)
         pulumi.set(__self__, "organization_id", organization_id)
-        if hostnames is not None:
-            pulumi.set(__self__, "hostnames", hostnames)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Host names for this environment group.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "hostnames", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -35,18 +46,6 @@ class EnvgroupArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter
-    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. Host names for this environment group.
-        """
-        return pulumi.get(self, "hostnames")
-
-    @hostnames.setter
-    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "hostnames", value)
 
     @property
     @pulumi.getter
@@ -75,7 +74,7 @@ class Envgroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Host names for this environment group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Host names for this environment group.
         :param pulumi.Input[str] name: ID of the environment group.
         """
         ...
@@ -117,6 +116,8 @@ class Envgroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EnvgroupArgs.__new__(EnvgroupArgs)
 
+            if hostnames is None and not opts.urn:
+                raise TypeError("Missing required property 'hostnames'")
             __props__.__dict__["hostnames"] = hostnames
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
@@ -166,7 +167,7 @@ class Envgroup(pulumi.CustomResource):
     @pulumi.getter
     def hostnames(self) -> pulumi.Output[Sequence[str]]:
         """
-        Required. Host names for this environment group.
+        Host names for this environment group.
         """
         return pulumi.get(self, "hostnames")
 

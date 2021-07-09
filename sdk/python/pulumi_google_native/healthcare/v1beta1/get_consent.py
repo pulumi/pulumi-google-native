@@ -53,7 +53,7 @@ class GetConsentResult:
     @pulumi.getter(name="consentArtifact")
     def consent_artifact(self) -> str:
         """
-        Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         """
         return pulumi.get(self, "consent_artifact")
 
@@ -109,7 +109,7 @@ class GetConsentResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        Required. Indicates the current state of this Consent.
+        Indicates the current state of this Consent.
         """
         return pulumi.get(self, "state")
 
@@ -125,7 +125,7 @@ class GetConsentResult:
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
         """
-        Required. User's UUID provided by the client.
+        User's UUID provided by the client.
         """
         return pulumi.get(self, "user_id")
 

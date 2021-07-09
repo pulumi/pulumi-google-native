@@ -266,7 +266,7 @@ class GetInstanceResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. Instance type.
+        Instance type.
         """
         return pulumi.get(self, "type")
 

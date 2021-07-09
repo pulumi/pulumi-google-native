@@ -48,7 +48,7 @@ class GetReferenceImageResult:
     @pulumi.getter
     def uri(self) -> str:
         """
-        Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+        The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
         """
         return pulumi.get(self, "uri")
 

@@ -15,19 +15,18 @@ class SnapshotArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  snapshot_id: pulumi.Input[str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 subscription: Optional[pulumi.Input[str]] = None):
+                 subscription: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+        :param pulumi.Input[str] subscription: The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
-        :param pulumi.Input[str] subscription: Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "subscription", subscription)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if subscription is not None:
-            pulumi.set(__self__, "subscription", subscription)
 
     @property
     @pulumi.getter
@@ -49,6 +48,18 @@ class SnapshotArgs:
 
     @property
     @pulumi.getter
+    def subscription(self) -> pulumi.Input[str]:
+        """
+        The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
+        """
+        return pulumi.get(self, "subscription")
+
+    @subscription.setter
+    def subscription(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subscription", value)
+
+    @property
+    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         See Creating and managing labels.
@@ -58,18 +69,6 @@ class SnapshotArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def subscription(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
-        """
-        return pulumi.get(self, "subscription")
-
-    @subscription.setter
-    def subscription(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subscription", value)
 
 
 class Snapshot(pulumi.CustomResource):
@@ -88,7 +87,7 @@ class Snapshot(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
-        :param pulumi.Input[str] subscription: Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
+        :param pulumi.Input[str] subscription: The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
         """
         ...
     @overload
@@ -137,6 +136,8 @@ class Snapshot(pulumi.CustomResource):
             if snapshot_id is None and not opts.urn:
                 raise TypeError("Missing required property 'snapshot_id'")
             __props__.__dict__["snapshot_id"] = snapshot_id
+            if subscription is None and not opts.urn:
+                raise TypeError("Missing required property 'subscription'")
             __props__.__dict__["subscription"] = subscription
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None

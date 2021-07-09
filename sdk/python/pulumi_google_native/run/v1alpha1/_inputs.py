@@ -1186,29 +1186,28 @@ class InstanceSpecArgs:
 @pulumi.input_type
 class InstanceStatusArgs:
     def __init__(__self__, *,
+                 index: pulumi.Input[int],
                  completion_time: Optional[pulumi.Input[str]] = None,
                  failed: Optional[pulumi.Input[int]] = None,
-                 index: Optional[pulumi.Input[int]] = None,
                  last_exit_code: Optional[pulumi.Input[int]] = None,
                  restarted: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  succeeded: Optional[pulumi.Input[int]] = None):
         """
         Instance represents the status of an instance of a Job.
+        :param pulumi.Input[int] index: Index of the instance, unique per Job, and beginning at 0.
         :param pulumi.Input[str] completion_time: Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
         :param pulumi.Input[int] failed: Optional. The number of times this instance exited with code > 0; +optional
-        :param pulumi.Input[int] index: Required. Index of the instance, unique per Job, and beginning at 0.
         :param pulumi.Input[int] last_exit_code: Optional. Last exit code seen for this instance. +optional
         :param pulumi.Input[int] restarted: Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
         :param pulumi.Input[str] start_time: Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
         :param pulumi.Input[int] succeeded: Optional. The number of times this instance exited with code == 0. +optional
         """
+        pulumi.set(__self__, "index", index)
         if completion_time is not None:
             pulumi.set(__self__, "completion_time", completion_time)
         if failed is not None:
             pulumi.set(__self__, "failed", failed)
-        if index is not None:
-            pulumi.set(__self__, "index", index)
         if last_exit_code is not None:
             pulumi.set(__self__, "last_exit_code", last_exit_code)
         if restarted is not None:
@@ -1217,6 +1216,18 @@ class InstanceStatusArgs:
             pulumi.set(__self__, "start_time", start_time)
         if succeeded is not None:
             pulumi.set(__self__, "succeeded", succeeded)
+
+    @property
+    @pulumi.getter
+    def index(self) -> pulumi.Input[int]:
+        """
+        Index of the instance, unique per Job, and beginning at 0.
+        """
+        return pulumi.get(self, "index")
+
+    @index.setter
+    def index(self, value: pulumi.Input[int]):
+        pulumi.set(self, "index", value)
 
     @property
     @pulumi.getter(name="completionTime")
@@ -1241,18 +1252,6 @@ class InstanceStatusArgs:
     @failed.setter
     def failed(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "failed", value)
-
-    @property
-    @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. Index of the instance, unique per Job, and beginning at 0.
-        """
-        return pulumi.get(self, "index")
-
-    @index.setter
-    def index(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "index", value)
 
     @property
     @pulumi.getter(name="lastExitCode")
@@ -1386,21 +1385,23 @@ class IntOrStringArgs:
 @pulumi.input_type
 class JobConditionArgs:
     def __init__(__self__, *,
+                 status: pulumi.Input[str],
+                 type: pulumi.Input[str],
                  last_transition_time: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 severity: Optional[pulumi.Input[str]] = None):
         """
         JobCondition defines a readiness condition for a Revision.
+        :param pulumi.Input[str] status: Status of the condition, one of True, False, Unknown.
+        :param pulumi.Input[str] type: Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         :param pulumi.Input[str] last_transition_time: Optional. Last time the condition transitioned from one status to another.
         :param pulumi.Input[str] message: Optional. Human readable message indicating details about the current status.
         :param pulumi.Input[str] reason: Optional. One-word CamelCase reason for the condition's last transition.
         :param pulumi.Input[str] severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
-        :param pulumi.Input[str] status: Required. Status of the condition, one of True, False, Unknown.
-        :param pulumi.Input[str] type: Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         """
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
         if last_transition_time is not None:
             pulumi.set(__self__, "last_transition_time", last_transition_time)
         if message is not None:
@@ -1409,10 +1410,30 @@ class JobConditionArgs:
             pulumi.set(__self__, "reason", reason)
         if severity is not None:
             pulumi.set(__self__, "severity", severity)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[str]:
+        """
+        Status of the condition, one of True, False, Unknown.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[str]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="lastTransitionTime")
@@ -1461,30 +1482,6 @@ class JobConditionArgs:
     @severity.setter
     def severity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "severity", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Status of the condition, one of True, False, Unknown.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

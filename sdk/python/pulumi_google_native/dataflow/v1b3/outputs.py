@@ -1292,10 +1292,10 @@ class ParameterMetadataResponse(dict):
                  regexes: Sequence[str]):
         """
         Metadata for a specific parameter.
-        :param str help_text: Required. The help text to display for the parameter.
+        :param str help_text: The help text to display for the parameter.
         :param bool is_optional: Optional. Whether the parameter is optional. Defaults to false.
-        :param str label: Required. The label to display for the parameter.
-        :param str name: Required. The name of the parameter.
+        :param str label: The label to display for the parameter.
+        :param str name: The name of the parameter.
         :param str param_type: Optional. The type of the parameter. Used for selecting input picker.
         :param Sequence[str] regexes: Optional. Regexes that the parameter must match.
         """
@@ -1310,7 +1310,7 @@ class ParameterMetadataResponse(dict):
     @pulumi.getter(name="helpText")
     def help_text(self) -> str:
         """
-        Required. The help text to display for the parameter.
+        The help text to display for the parameter.
         """
         return pulumi.get(self, "help_text")
 
@@ -1326,7 +1326,7 @@ class ParameterMetadataResponse(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        Required. The label to display for the parameter.
+        The label to display for the parameter.
         """
         return pulumi.get(self, "label")
 
@@ -1334,7 +1334,7 @@ class ParameterMetadataResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The name of the parameter.
+        The name of the parameter.
         """
         return pulumi.get(self, "name")
 
@@ -1513,7 +1513,7 @@ class SDKInfoResponse(dict):
                  version: str):
         """
         SDK Information.
-        :param str language: Required. The SDK Language.
+        :param str language: The SDK Language.
         :param str version: Optional. The SDK version.
         """
         pulumi.set(__self__, "language", language)
@@ -1523,7 +1523,7 @@ class SDKInfoResponse(dict):
     @pulumi.getter
     def language(self) -> str:
         """
-        Required. The SDK Language.
+        The SDK Language.
         """
         return pulumi.get(self, "language")
 
@@ -2174,7 +2174,7 @@ class TemplateMetadataResponse(dict):
         """
         Metadata describing a template.
         :param str description: Optional. A description of the template.
-        :param str name: Required. The name of the template.
+        :param str name: The name of the template.
         :param Sequence['ParameterMetadataResponse'] parameters: The parameters for the template.
         """
         pulumi.set(__self__, "description", description)
@@ -2193,7 +2193,7 @@ class TemplateMetadataResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The name of the template.
+        The name of the template.
         """
         return pulumi.get(self, "name")
 

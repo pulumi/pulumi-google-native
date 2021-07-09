@@ -83,7 +83,7 @@ class GetExperimentResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+        The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         """
         return pulumi.get(self, "display_name")
 

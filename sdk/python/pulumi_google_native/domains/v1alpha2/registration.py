@@ -16,39 +16,38 @@ __all__ = ['RegistrationArgs', 'Registration']
 @pulumi.input_type
 class RegistrationArgs:
     def __init__(__self__, *,
+                 contact_settings: pulumi.Input['ContactSettingsArgs'],
+                 domain_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 yearly_price: pulumi.Input['MoneyArgs'],
                  contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]] = None,
-                 contact_settings: Optional[pulumi.Input['ContactSettingsArgs']] = None,
                  dns_settings: Optional[pulumi.Input['DnsSettingsArgs']] = None,
-                 domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  management_settings: Optional[pulumi.Input['ManagementSettingsArgs']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
-                 yearly_price: Optional[pulumi.Input['MoneyArgs']] = None):
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Registration resource.
+        :param pulumi.Input['ContactSettingsArgs'] contact_settings: Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+        :param pulumi.Input[str] domain_name: Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+        :param pulumi.Input['MoneyArgs'] yearly_price: Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]] contact_notices: The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
-        :param pulumi.Input['ContactSettingsArgs'] contact_settings: Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
         :param pulumi.Input['DnsSettingsArgs'] dns_settings: Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
-        :param pulumi.Input[str] domain_name: Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the `Registration`.
         :param pulumi.Input['ManagementSettingsArgs'] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
         :param pulumi.Input[bool] validate_only: When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
-        :param pulumi.Input['MoneyArgs'] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
         """
+        pulumi.set(__self__, "contact_settings", contact_settings)
+        pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "yearly_price", yearly_price)
         if contact_notices is not None:
             pulumi.set(__self__, "contact_notices", contact_notices)
-        if contact_settings is not None:
-            pulumi.set(__self__, "contact_settings", contact_settings)
         if dns_settings is not None:
             pulumi.set(__self__, "dns_settings", dns_settings)
-        if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
         if domain_notices is not None:
             pulumi.set(__self__, "domain_notices", domain_notices)
         if labels is not None:
@@ -57,8 +56,30 @@ class RegistrationArgs:
             pulumi.set(__self__, "management_settings", management_settings)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
-        if yearly_price is not None:
-            pulumi.set(__self__, "yearly_price", yearly_price)
+
+    @property
+    @pulumi.getter(name="contactSettings")
+    def contact_settings(self) -> pulumi.Input['ContactSettingsArgs']:
+        """
+        Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+        """
+        return pulumi.get(self, "contact_settings")
+
+    @contact_settings.setter
+    def contact_settings(self, value: pulumi.Input['ContactSettingsArgs']):
+        pulumi.set(self, "contact_settings", value)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Input[str]:
+        """
+        Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_name", value)
 
     @property
     @pulumi.getter
@@ -79,6 +100,18 @@ class RegistrationArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="yearlyPrice")
+    def yearly_price(self) -> pulumi.Input['MoneyArgs']:
+        """
+        Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
+        """
+        return pulumi.get(self, "yearly_price")
+
+    @yearly_price.setter
+    def yearly_price(self, value: pulumi.Input['MoneyArgs']):
+        pulumi.set(self, "yearly_price", value)
+
+    @property
     @pulumi.getter(name="contactNotices")
     def contact_notices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]]:
         """
@@ -91,18 +124,6 @@ class RegistrationArgs:
         pulumi.set(self, "contact_notices", value)
 
     @property
-    @pulumi.getter(name="contactSettings")
-    def contact_settings(self) -> Optional[pulumi.Input['ContactSettingsArgs']]:
-        """
-        Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
-        """
-        return pulumi.get(self, "contact_settings")
-
-    @contact_settings.setter
-    def contact_settings(self, value: Optional[pulumi.Input['ContactSettingsArgs']]):
-        pulumi.set(self, "contact_settings", value)
-
-    @property
     @pulumi.getter(name="dnsSettings")
     def dns_settings(self) -> Optional[pulumi.Input['DnsSettingsArgs']]:
         """
@@ -113,18 +134,6 @@ class RegistrationArgs:
     @dns_settings.setter
     def dns_settings(self, value: Optional[pulumi.Input['DnsSettingsArgs']]):
         pulumi.set(self, "dns_settings", value)
-
-    @property
-    @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
-        """
-        return pulumi.get(self, "domain_name")
-
-    @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "domain_name", value)
 
     @property
     @pulumi.getter(name="domainNotices")
@@ -174,18 +183,6 @@ class RegistrationArgs:
     def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
-    @property
-    @pulumi.getter(name="yearlyPrice")
-    def yearly_price(self) -> Optional[pulumi.Input['MoneyArgs']]:
-        """
-        Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
-        """
-        return pulumi.get(self, "yearly_price")
-
-    @yearly_price.setter
-    def yearly_price(self, value: Optional[pulumi.Input['MoneyArgs']]):
-        pulumi.set(self, "yearly_price", value)
-
 
 class Registration(pulumi.CustomResource):
     @overload
@@ -210,14 +207,14 @@ class Registration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]] contact_notices: The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
-        :param pulumi.Input[pulumi.InputType['ContactSettingsArgs']] contact_settings: Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+        :param pulumi.Input[pulumi.InputType['ContactSettingsArgs']] contact_settings: Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
         :param pulumi.Input[pulumi.InputType['DnsSettingsArgs']] dns_settings: Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
-        :param pulumi.Input[str] domain_name: Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+        :param pulumi.Input[str] domain_name: Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the `Registration`.
         :param pulumi.Input[pulumi.InputType['ManagementSettingsArgs']] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
         :param pulumi.Input[bool] validate_only: When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
-        :param pulumi.Input[pulumi.InputType['MoneyArgs']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
+        :param pulumi.Input[pulumi.InputType['MoneyArgs']] yearly_price: Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
         """
         ...
     @overload
@@ -267,8 +264,12 @@ class Registration(pulumi.CustomResource):
             __props__ = RegistrationArgs.__new__(RegistrationArgs)
 
             __props__.__dict__["contact_notices"] = contact_notices
+            if contact_settings is None and not opts.urn:
+                raise TypeError("Missing required property 'contact_settings'")
             __props__.__dict__["contact_settings"] = contact_settings
             __props__.__dict__["dns_settings"] = dns_settings
+            if domain_name is None and not opts.urn:
+                raise TypeError("Missing required property 'domain_name'")
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["domain_notices"] = domain_notices
             __props__.__dict__["labels"] = labels
@@ -280,6 +281,8 @@ class Registration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["validate_only"] = validate_only
+            if yearly_price is None and not opts.urn:
+                raise TypeError("Missing required property 'yearly_price'")
             __props__.__dict__["yearly_price"] = yearly_price
             __props__.__dict__["create_time"] = None
             __props__.__dict__["expire_time"] = None
@@ -328,7 +331,7 @@ class Registration(pulumi.CustomResource):
     @pulumi.getter(name="contactSettings")
     def contact_settings(self) -> pulumi.Output['outputs.ContactSettingsResponse']:
         """
-        Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+        Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
         """
         return pulumi.get(self, "contact_settings")
 
@@ -352,7 +355,7 @@ class Registration(pulumi.CustomResource):
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[str]:
         """
-        Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+        Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         """
         return pulumi.get(self, "domain_name")
 

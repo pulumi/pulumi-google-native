@@ -3555,21 +3555,32 @@ class RoutineReferenceArgs:
 @pulumi.input_type
 class StandardSqlDataTypeArgs:
     def __init__(__self__, *,
+                 type_kind: pulumi.Input['StandardSqlDataTypeTypeKind'],
                  array_element_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None,
-                 struct_type: Optional[pulumi.Input['StandardSqlStructTypeArgs']] = None,
-                 type_kind: Optional[pulumi.Input['StandardSqlDataTypeTypeKind']] = None):
+                 struct_type: Optional[pulumi.Input['StandardSqlStructTypeArgs']] = None):
         """
         The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+        :param pulumi.Input['StandardSqlDataTypeTypeKind'] type_kind: The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
         :param pulumi.Input['StandardSqlDataTypeArgs'] array_element_type: The type of the array's elements, if type_kind = "ARRAY".
         :param pulumi.Input['StandardSqlStructTypeArgs'] struct_type: The fields of this struct, in order, if type_kind = "STRUCT".
-        :param pulumi.Input['StandardSqlDataTypeTypeKind'] type_kind: Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
         """
+        pulumi.set(__self__, "type_kind", type_kind)
         if array_element_type is not None:
             pulumi.set(__self__, "array_element_type", array_element_type)
         if struct_type is not None:
             pulumi.set(__self__, "struct_type", struct_type)
-        if type_kind is not None:
-            pulumi.set(__self__, "type_kind", type_kind)
+
+    @property
+    @pulumi.getter(name="typeKind")
+    def type_kind(self) -> pulumi.Input['StandardSqlDataTypeTypeKind']:
+        """
+        The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        """
+        return pulumi.get(self, "type_kind")
+
+    @type_kind.setter
+    def type_kind(self, value: pulumi.Input['StandardSqlDataTypeTypeKind']):
+        pulumi.set(self, "type_kind", value)
 
     @property
     @pulumi.getter(name="arrayElementType")
@@ -3594,18 +3605,6 @@ class StandardSqlDataTypeArgs:
     @struct_type.setter
     def struct_type(self, value: Optional[pulumi.Input['StandardSqlStructTypeArgs']]):
         pulumi.set(self, "struct_type", value)
-
-    @property
-    @pulumi.getter(name="typeKind")
-    def type_kind(self) -> Optional[pulumi.Input['StandardSqlDataTypeTypeKind']]:
-        """
-        Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-        """
-        return pulumi.get(self, "type_kind")
-
-    @type_kind.setter
-    def type_kind(self, value: Optional[pulumi.Input['StandardSqlDataTypeTypeKind']]):
-        pulumi.set(self, "type_kind", value)
 
 
 @pulumi.input_type

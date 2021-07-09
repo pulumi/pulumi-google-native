@@ -393,7 +393,7 @@ class ApigatewayGatewayConfigResponse(dict):
                  backend_config: 'outputs.ApigatewayBackendConfigResponse'):
         """
         Configuration settings for Gateways.
-        :param 'ApigatewayBackendConfigResponse' backend_config: Required. Backend settings that are applied to all backends of the Gateway.
+        :param 'ApigatewayBackendConfigResponse' backend_config: Backend settings that are applied to all backends of the Gateway.
         """
         pulumi.set(__self__, "backend_config", backend_config)
 
@@ -401,7 +401,7 @@ class ApigatewayGatewayConfigResponse(dict):
     @pulumi.getter(name="backendConfig")
     def backend_config(self) -> 'outputs.ApigatewayBackendConfigResponse':
         """
-        Required. Backend settings that are applied to all backends of the Gateway.
+        Backend settings that are applied to all backends of the Gateway.
         """
         return pulumi.get(self, "backend_config")
 

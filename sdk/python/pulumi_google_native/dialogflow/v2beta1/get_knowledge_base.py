@@ -31,7 +31,7 @@ class GetKnowledgeBaseResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
         """
         return pulumi.get(self, "display_name")
 
