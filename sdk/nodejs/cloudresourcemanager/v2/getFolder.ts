@@ -43,7 +43,7 @@ export interface GetFolderResult {
      */
     readonly name: string;
     /**
-     * Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+     * The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
      */
     readonly parent: string;
 }

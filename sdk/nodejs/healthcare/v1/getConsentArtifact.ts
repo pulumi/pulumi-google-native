@@ -55,7 +55,7 @@ export interface GetConsentArtifactResult {
      */
     readonly name: string;
     /**
-     * Required. User's UUID provided by the client.
+     * User's UUID provided by the client.
      */
     readonly userId: string;
     /**

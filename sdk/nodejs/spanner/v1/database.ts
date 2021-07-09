@@ -52,7 +52,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly encryptionInfo!: pulumi.Output<outputs.spanner.v1.EncryptionInfoResponse[]>;
     /**
-     * Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
+     * The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -79,6 +79,9 @@ export class Database extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.createStatement === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'createStatement'");
+            }
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
@@ -119,9 +122,9 @@ export class Database extends pulumi.CustomResource {
  */
 export interface DatabaseArgs {
     /**
-     * Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
+     * A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
      */
-    createStatement?: pulumi.Input<string>;
+    createStatement: pulumi.Input<string>;
     /**
      * Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
      */

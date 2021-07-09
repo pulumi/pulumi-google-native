@@ -36,7 +36,7 @@ export class Budget extends pulumi.CustomResource {
     }
 
     /**
-     * Required. Budgeted amount.
+     * Budgeted amount.
      */
     public readonly amount!: pulumi.Output<outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmountResponse>;
     /**
@@ -75,6 +75,9 @@ export class Budget extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.amount === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'amount'");
+            }
             if ((!args || args.billingAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccountId'");
             }
@@ -107,9 +110,9 @@ export class Budget extends pulumi.CustomResource {
  */
 export interface BudgetArgs {
     /**
-     * Required. Budgeted amount.
+     * Budgeted amount.
      */
-    amount?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmountArgs>;
+    amount: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmountArgs>;
     billingAccountId: pulumi.Input<string>;
     /**
      * Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.

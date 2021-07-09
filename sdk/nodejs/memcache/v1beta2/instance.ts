@@ -72,15 +72,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly memcacheVersion!: pulumi.Output<string>;
     /**
-     * Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+     * Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. Configuration for Memcached nodes.
+     * Configuration for Memcached nodes.
      */
     public readonly nodeConfig!: pulumi.Output<outputs.memcache.v1beta2.NodeConfigResponse>;
     /**
-     * Required. Number of nodes in the Memcached instance.
+     * Number of nodes in the Memcached instance.
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
@@ -120,6 +120,15 @@ export class Instance extends pulumi.CustomResource {
             }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
+            if ((!args || args.nodeConfig === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'nodeConfig'");
+            }
+            if ((!args || args.nodeCount === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'nodeCount'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
@@ -197,17 +206,17 @@ export interface InstanceArgs {
      */
     memcacheVersion?: pulumi.Input<enums.memcache.v1beta2.InstanceMemcacheVersion>;
     /**
-     * Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+     * Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
-     * Required. Configuration for Memcached nodes.
+     * Configuration for Memcached nodes.
      */
-    nodeConfig?: pulumi.Input<inputs.memcache.v1beta2.NodeConfigArgs>;
+    nodeConfig: pulumi.Input<inputs.memcache.v1beta2.NodeConfigArgs>;
     /**
-     * Required. Number of nodes in the Memcached instance.
+     * Number of nodes in the Memcached instance.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount: pulumi.Input<number>;
     /**
      * Optional: User defined parameters to apply to the memcached process on each node.
      */

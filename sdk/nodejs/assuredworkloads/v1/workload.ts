@@ -36,11 +36,11 @@ export class Workload extends pulumi.CustomResource {
     }
 
     /**
-     * Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+     * Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
      */
     public readonly billingAccount!: pulumi.Output<string>;
     /**
-     * Required. Immutable. Compliance Regime associated with this workload.
+     * Immutable. Compliance Regime associated with this workload.
      */
     public readonly complianceRegime!: pulumi.Output<string>;
     /**
@@ -48,7 +48,7 @@ export class Workload extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+     * The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -91,6 +91,15 @@ export class Workload extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.billingAccount === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'billingAccount'");
+            }
+            if ((!args || args.complianceRegime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'complianceRegime'");
+            }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -136,17 +145,17 @@ export class Workload extends pulumi.CustomResource {
  */
 export interface WorkloadArgs {
     /**
-     * Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+     * Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
      */
-    billingAccount?: pulumi.Input<string>;
+    billingAccount: pulumi.Input<string>;
     /**
-     * Required. Immutable. Compliance Regime associated with this workload.
+     * Immutable. Compliance Regime associated with this workload.
      */
-    complianceRegime?: pulumi.Input<enums.assuredworkloads.v1.WorkloadComplianceRegime>;
+    complianceRegime: pulumi.Input<enums.assuredworkloads.v1.WorkloadComplianceRegime>;
     /**
-     * Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+     * The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
      */

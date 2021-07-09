@@ -39,7 +39,7 @@ export class NatAddress extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
-     * Required. Resource ID of the NAT address.
+     * Resource ID of the NAT address.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -60,6 +60,9 @@ export class NatAddress extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
@@ -87,8 +90,8 @@ export class NatAddress extends pulumi.CustomResource {
 export interface NatAddressArgs {
     instanceId: pulumi.Input<string>;
     /**
-     * Required. Resource ID of the NAT address.
+     * Resource ID of the NAT address.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
 }

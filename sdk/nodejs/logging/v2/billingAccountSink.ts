@@ -48,7 +48,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+     * The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
      */
     public readonly destination!: pulumi.Output<string>;
     /**
@@ -68,7 +68,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     public readonly includeChildren!: pulumi.Output<boolean>;
     /**
-     * Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -93,6 +93,12 @@ export class BillingAccountSink extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.billingAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccountId'");
+            }
+            if ((!args || args.destination === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'destination'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
@@ -141,9 +147,9 @@ export interface BillingAccountSinkArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+     * The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
      */
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
     /**
      * Optional. If set to True, then this sink is disabled and it does not export any log entries.
      */
@@ -161,8 +167,8 @@ export interface BillingAccountSinkArgs {
      */
     includeChildren?: pulumi.Input<boolean>;
     /**
-     * Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     uniqueWriterIdentity?: pulumi.Input<string>;
 }

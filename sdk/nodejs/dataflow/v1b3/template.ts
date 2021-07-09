@@ -63,6 +63,12 @@ export class Template extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.gcsPath === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'gcsPath'");
+            }
+            if ((!args || args.jobName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobName'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -101,13 +107,13 @@ export interface TemplateArgs {
      */
     environment?: pulumi.Input<inputs.dataflow.v1b3.RuntimeEnvironmentArgs>;
     /**
-     * Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+     * A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
      */
-    gcsPath?: pulumi.Input<string>;
+    gcsPath: pulumi.Input<string>;
     /**
-     * Required. The job name to use for the created job.
+     * The job name to use for the created job.
      */
-    jobName?: pulumi.Input<string>;
+    jobName: pulumi.Input<string>;
     /**
      * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
      */

@@ -31,7 +31,7 @@ export interface GetNodeArgs {
 
 export interface GetNodeResult {
     /**
-     * Required. The type of hardware accelerators associated with this node.
+     * The type of hardware accelerators associated with this node.
      */
     readonly acceleratorType: string;
     /**
@@ -91,7 +91,7 @@ export interface GetNodeResult {
      */
     readonly symptoms: outputs.tpu.v1alpha1.SymptomResponse[];
     /**
-     * Required. The version of Tensorflow running in the Node.
+     * The version of Tensorflow running in the Node.
      */
     readonly tensorflowVersion: string;
     /**

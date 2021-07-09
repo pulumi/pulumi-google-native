@@ -39,11 +39,11 @@ export class Reference extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+     * The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+     * The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
      */
     public readonly refers!: pulumi.Output<string>;
     /**
@@ -65,8 +65,14 @@ export class Reference extends pulumi.CustomResource {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
+            }
+            if ((!args || args.refers === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'refers'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
@@ -97,14 +103,14 @@ export interface ReferenceArgs {
     description?: pulumi.Input<string>;
     environmentId: pulumi.Input<string>;
     /**
-     * Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+     * The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
-     * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+     * The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
      */
-    refers?: pulumi.Input<string>;
+    refers: pulumi.Input<string>;
     /**
      * The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
      */

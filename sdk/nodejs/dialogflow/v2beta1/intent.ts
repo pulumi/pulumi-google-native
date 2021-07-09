@@ -44,7 +44,7 @@ export class Intent extends pulumi.CustomResource {
      */
     public readonly defaultResponsePlatforms!: pulumi.Output<string[]>;
     /**
-     * Required. The name of this intent.
+     * The name of this intent.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -127,6 +127,9 @@ export class Intent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -199,9 +202,9 @@ export interface IntentArgs {
      */
     defaultResponsePlatforms?: pulumi.Input<pulumi.Input<enums.dialogflow.v2beta1.IntentDefaultResponsePlatformsItem>[]>;
     /**
-     * Required. The name of this intent.
+     * The name of this intent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
      */

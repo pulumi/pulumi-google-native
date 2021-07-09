@@ -52,7 +52,7 @@ export class Certificate extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+     * Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
      */
     public readonly lifetime!: pulumi.Output<string>;
     /**
@@ -93,6 +93,9 @@ export class Certificate extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.certificateAuthorityId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthorityId'");
+            }
+            if ((!args || args.lifetime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'lifetime'");
             }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
@@ -151,9 +154,9 @@ export interface CertificateArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+     * Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
      */
-    lifetime?: pulumi.Input<string>;
+    lifetime: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).

@@ -48,7 +48,7 @@ export class Membership extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+     * Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
     public readonly preferredMemberKey!: pulumi.Output<outputs.cloudidentity.v1beta1.EntityKeyResponse>;
     /**
@@ -77,6 +77,9 @@ export class Membership extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
+            }
+            if ((!args || args.preferredMemberKey === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'preferredMemberKey'");
             }
             inputs["groupId"] = args ? args.groupId : undefined;
             inputs["memberKey"] = args ? args.memberKey : undefined;
@@ -112,9 +115,9 @@ export interface MembershipArgs {
      */
     memberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
     /**
-     * Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+     * Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
-    preferredMemberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
+    preferredMemberKey: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
     /**
      * The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
      */

@@ -51,7 +51,7 @@ export class Folder extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+     * The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
      */
     public readonly parent!: pulumi.Output<string>;
 
@@ -97,7 +97,7 @@ export interface FolderArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+     * The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
      */
     parent: pulumi.Input<string>;
 }

@@ -59,7 +59,7 @@ export class TagValue extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
-     * Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
     public readonly shortName!: pulumi.Output<string>;
     /**
@@ -74,10 +74,13 @@ export class TagValue extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: TagValueArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: TagValueArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.shortName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'shortName'");
+            }
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -125,8 +128,8 @@ export interface TagValueArgs {
      */
     parent?: pulumi.Input<string>;
     /**
-     * Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
-    shortName?: pulumi.Input<string>;
+    shortName: pulumi.Input<string>;
     validateOnly?: pulumi.Input<string>;
 }

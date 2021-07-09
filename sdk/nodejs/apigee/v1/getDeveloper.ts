@@ -59,11 +59,11 @@ export interface GetDeveloperResult {
      */
     readonly developerId: string;
     /**
-     * Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+     * Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
      */
     readonly email: string;
     /**
-     * Required. First name of the developer.
+     * First name of the developer.
      */
     readonly firstName: string;
     /**
@@ -71,7 +71,7 @@ export interface GetDeveloperResult {
      */
     readonly lastModifiedAt: string;
     /**
-     * Required. Last name of the developer.
+     * Last name of the developer.
      */
     readonly lastName: string;
     /**
@@ -83,7 +83,7 @@ export interface GetDeveloperResult {
      */
     readonly status: string;
     /**
-     * Required. User name of the developer. Not used by Apigee hybrid.
+     * User name of the developer. Not used by Apigee hybrid.
      */
     readonly userName: string;
 }

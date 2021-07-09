@@ -29,7 +29,7 @@ export interface GetAnnotationSpecSetArgs {
 
 export interface GetAnnotationSpecSetResult {
     /**
-     * Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+     * The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
      */
     readonly annotationSpecs: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse[];
     /**
@@ -41,7 +41,7 @@ export interface GetAnnotationSpecSetResult {
      */
     readonly description: string;
     /**
-     * Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+     * The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
      */
     readonly displayName: string;
     /**

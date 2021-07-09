@@ -48,7 +48,7 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
      */
     public /*out*/ readonly inviteLinkUri!: pulumi.Output<string>;
     /**
-     * Required. State of the channel partner link.
+     * State of the channel partner link.
      */
     public readonly linkState!: pulumi.Output<string>;
     /**
@@ -60,7 +60,7 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
      */
     public /*out*/ readonly publicId!: pulumi.Output<string>;
     /**
-     * Required. Cloud Identity ID of the linked reseller.
+     * Cloud Identity ID of the linked reseller.
      */
     public readonly resellerCloudIdentityId!: pulumi.Output<string>;
     /**
@@ -81,6 +81,12 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
+            }
+            if ((!args || args.linkState === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'linkState'");
+            }
+            if ((!args || args.resellerCloudIdentityId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resellerCloudIdentityId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["linkState"] = args ? args.linkState : undefined;
@@ -114,11 +120,11 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
 export interface ChannelPartnerLinkArgs {
     accountId: pulumi.Input<string>;
     /**
-     * Required. State of the channel partner link.
+     * State of the channel partner link.
      */
-    linkState?: pulumi.Input<enums.cloudchannel.v1.ChannelPartnerLinkLinkState>;
+    linkState: pulumi.Input<enums.cloudchannel.v1.ChannelPartnerLinkLinkState>;
     /**
-     * Required. Cloud Identity ID of the linked reseller.
+     * Cloud Identity ID of the linked reseller.
      */
-    resellerCloudIdentityId?: pulumi.Input<string>;
+    resellerCloudIdentityId: pulumi.Input<string>;
 }

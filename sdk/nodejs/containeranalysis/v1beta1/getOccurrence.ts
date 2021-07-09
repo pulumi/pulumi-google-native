@@ -69,7 +69,7 @@ export interface GetOccurrenceResult {
      */
     readonly name: string;
     /**
-     * Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+     * Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
      */
     readonly noteName: string;
     /**
@@ -77,7 +77,7 @@ export interface GetOccurrenceResult {
      */
     readonly remediation: string;
     /**
-     * Required. Immutable. The resource for which the occurrence applies.
+     * Immutable. The resource for which the occurrence applies.
      */
     readonly resource: outputs.containeranalysis.v1beta1.ResourceResponse;
     /**

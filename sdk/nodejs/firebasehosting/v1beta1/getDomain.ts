@@ -31,7 +31,7 @@ export interface GetDomainArgs {
 
 export interface GetDomainResult {
     /**
-     * Required. The domain name of the association.
+     * The domain name of the association.
      */
     readonly domainName: string;
     /**
@@ -43,7 +43,7 @@ export interface GetDomainResult {
      */
     readonly provisioning: outputs.firebasehosting.v1beta1.DomainProvisioningResponse;
     /**
-     * Required. The site name of the association.
+     * The site name of the association.
      */
     readonly site: string;
     /**

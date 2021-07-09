@@ -36,7 +36,7 @@ export class SecuritySetting extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The human-readable name of the security settings, unique within the location.
+     * The human-readable name of the security settings, unique within the location.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -44,7 +44,7 @@ export class SecuritySetting extends pulumi.CustomResource {
      */
     public readonly inspectTemplate!: pulumi.Output<string>;
     /**
-     * Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+     * Resource name of the settings. Format: `projects//locations//securitySettings/`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -75,8 +75,14 @@ export class SecuritySetting extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
@@ -111,18 +117,18 @@ export class SecuritySetting extends pulumi.CustomResource {
  */
 export interface SecuritySettingArgs {
     /**
-     * Required. The human-readable name of the security settings, unique within the location.
+     * The human-readable name of the security settings, unique within the location.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
      */
     inspectTemplate?: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**
-     * Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+     * Resource name of the settings. Format: `projects//locations//securitySettings/`.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * List of types of data to remove when retention settings triggers purge.

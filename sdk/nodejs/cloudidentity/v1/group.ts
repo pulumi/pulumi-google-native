@@ -52,11 +52,11 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly dynamicGroupMetadata!: pulumi.Output<outputs.cloudidentity.v1.DynamicGroupMetadataResponse>;
     /**
-     * Required. Immutable. The `EntityKey` of the `Group`.
+     * Immutable. The `EntityKey` of the `Group`.
      */
     public readonly groupKey!: pulumi.Output<outputs.cloudidentity.v1.EntityKeyResponse>;
     /**
-     * Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+     * One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -64,7 +64,7 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
+     * Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -79,10 +79,19 @@ export class Group extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: GroupArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.groupKey === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'groupKey'");
+            }
+            if ((!args || args.labels === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'labels'");
+            }
+            if ((!args || args.parent === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["dynamicGroupMetadata"] = args ? args.dynamicGroupMetadata : undefined;
@@ -128,16 +137,16 @@ export interface GroupArgs {
      */
     dynamicGroupMetadata?: pulumi.Input<inputs.cloudidentity.v1.DynamicGroupMetadataArgs>;
     /**
-     * Required. Immutable. The `EntityKey` of the `Group`.
+     * Immutable. The `EntityKey` of the `Group`.
      */
-    groupKey?: pulumi.Input<inputs.cloudidentity.v1.EntityKeyArgs>;
+    groupKey: pulumi.Input<inputs.cloudidentity.v1.EntityKeyArgs>;
     initialGroupConfig?: pulumi.Input<string>;
     /**
-     * Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+     * One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
+     * Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
      */
-    parent?: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
 }

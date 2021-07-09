@@ -37,7 +37,7 @@ export interface GetDataSourceResult {
      */
     readonly disableServing: boolean;
     /**
-     * Required. Display name of the datasource The maximum length is 300 characters.
+     * Display name of the datasource The maximum length is 300 characters.
      */
     readonly displayName: string;
     /**

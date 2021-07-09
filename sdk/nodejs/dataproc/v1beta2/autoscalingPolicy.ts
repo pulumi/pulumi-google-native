@@ -45,7 +45,7 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
      */
     public readonly secondaryWorkerConfig!: pulumi.Output<outputs.dataproc.v1beta2.InstanceGroupAutoscalingPolicyConfigResponse>;
     /**
-     * Required. Describes how the autoscaler will operate for primary workers.
+     * Describes how the autoscaler will operate for primary workers.
      */
     public readonly workerConfig!: pulumi.Output<outputs.dataproc.v1beta2.InstanceGroupAutoscalingPolicyConfigResponse>;
 
@@ -60,11 +60,17 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.id === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'id'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.workerConfig === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workerConfig'");
             }
             inputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -92,9 +98,9 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
 export interface AutoscalingPolicyArgs {
     basicAlgorithm?: pulumi.Input<inputs.dataproc.v1beta2.BasicAutoscalingAlgorithmArgs>;
     /**
-     * Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+     * The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
@@ -102,7 +108,7 @@ export interface AutoscalingPolicyArgs {
      */
     secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.v1beta2.InstanceGroupAutoscalingPolicyConfigArgs>;
     /**
-     * Required. Describes how the autoscaler will operate for primary workers.
+     * Describes how the autoscaler will operate for primary workers.
      */
-    workerConfig?: pulumi.Input<inputs.dataproc.v1beta2.InstanceGroupAutoscalingPolicyConfigArgs>;
+    workerConfig: pulumi.Input<inputs.dataproc.v1beta2.InstanceGroupAutoscalingPolicyConfigArgs>;
 }

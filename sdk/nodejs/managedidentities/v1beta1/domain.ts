@@ -60,7 +60,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+     * Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      */
     public readonly locations!: pulumi.Output<string[]>;
     /**
@@ -68,7 +68,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+     * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */
     public readonly reservedIpRange!: pulumi.Output<string>;
     /**
@@ -102,8 +102,14 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
+            if ((!args || args.locations === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locations'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.reservedIpRange === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'reservedIpRange'");
             }
             inputs["admin"] = args ? args.admin : undefined;
             inputs["auditLogsEnabled"] = args ? args.auditLogsEnabled : undefined;
@@ -164,12 +170,12 @@ export interface DomainArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+     * Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      */
-    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations: pulumi.Input<pulumi.Input<string>[]>;
     project: pulumi.Input<string>;
     /**
-     * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+     * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */
-    reservedIpRange?: pulumi.Input<string>;
+    reservedIpRange: pulumi.Input<string>;
 }

@@ -31,7 +31,7 @@ export interface GetClusterArgs {
 
 export interface GetClusterResult {
     /**
-     * Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+     * The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
      */
     readonly clusterName: string;
     /**
@@ -39,7 +39,7 @@ export interface GetClusterResult {
      */
     readonly clusterUuid: string;
     /**
-     * Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+     * The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
      */
     readonly config: outputs.dataproc.v1.ClusterConfigResponse;
     /**
@@ -51,7 +51,7 @@ export interface GetClusterResult {
      */
     readonly metrics: outputs.dataproc.v1.ClusterMetricsResponse;
     /**
-     * Required. The Google Cloud Platform project ID that the cluster belongs to.
+     * The Google Cloud Platform project ID that the cluster belongs to.
      */
     readonly project: string;
     /**

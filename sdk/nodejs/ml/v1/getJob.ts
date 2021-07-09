@@ -45,7 +45,7 @@ export interface GetJobResult {
      */
     readonly etag: string;
     /**
-     * Required. The user-specified id of the job.
+     * The user-specified id of the job.
      */
     readonly jobId: string;
     /**

@@ -37,7 +37,7 @@ export interface GetScanConfigResult {
      */
     readonly blacklistPatterns: string[];
     /**
-     * Required. The user provided display name of the ScanConfig.
+     * The user provided display name of the ScanConfig.
      */
     readonly displayName: string;
     /**
@@ -69,7 +69,7 @@ export interface GetScanConfigResult {
      */
     readonly schedule: outputs.websecurityscanner.v1.ScheduleResponse;
     /**
-     * Required. The starting URLs from which the scanner finds site pages.
+     * The starting URLs from which the scanner finds site pages.
      */
     readonly startingUrls: string[];
     /**

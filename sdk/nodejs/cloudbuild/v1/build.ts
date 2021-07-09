@@ -116,7 +116,7 @@ export class Build extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusDetail!: pulumi.Output<string>;
     /**
-     * Required. The operations to be performed on the workspace.
+     * The operations to be performed on the workspace.
      */
     public readonly steps!: pulumi.Output<outputs.cloudbuild.v1.BuildStepResponse[]>;
     /**
@@ -155,6 +155,9 @@ export class Build extends pulumi.CustomResource {
             }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
+            }
+            if ((!args || args.steps === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'steps'");
             }
             inputs["artifacts"] = args ? args.artifacts : undefined;
             inputs["availableSecrets"] = args ? args.availableSecrets : undefined;
@@ -261,9 +264,9 @@ export interface BuildArgs {
      */
     source?: pulumi.Input<inputs.cloudbuild.v1.SourceArgs>;
     /**
-     * Required. The operations to be performed on the workspace.
+     * The operations to be performed on the workspace.
      */
-    steps?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.BuildStepArgs>[]>;
+    steps: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.BuildStepArgs>[]>;
     /**
      * Substitutions data for `Build` resource.
      */

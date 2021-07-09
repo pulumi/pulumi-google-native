@@ -37,7 +37,7 @@ export interface GetPageArgs {
 
 export interface GetPageResult {
     /**
-     * Required. The human-readable name of the page, unique within the agent.
+     * The human-readable name of the page, unique within the agent.
      */
     readonly displayName: string;
     /**

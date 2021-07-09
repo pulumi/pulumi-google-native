@@ -68,7 +68,7 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly messageRetentionDuration!: pulumi.Output<string>;
     /**
-     * Required. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
+     * The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly retryPolicy!: pulumi.Output<outputs.pubsub.v1.RetryPolicyResponse>;
     /**
-     * Required. The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
+     * The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
      */
     public readonly topic!: pulumi.Output<string>;
 
@@ -99,11 +99,17 @@ export class Subscription extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             if ((!args || args.subscriptionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionId'");
+            }
+            if ((!args || args.topic === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'topic'");
             }
             inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             inputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
@@ -179,9 +185,9 @@ export interface SubscriptionArgs {
      */
     messageRetentionDuration?: pulumi.Input<string>;
     /**
-     * Required. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
+     * The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
@@ -197,7 +203,7 @@ export interface SubscriptionArgs {
     retryPolicy?: pulumi.Input<inputs.pubsub.v1.RetryPolicyArgs>;
     subscriptionId: pulumi.Input<string>;
     /**
-     * Required. The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
+     * The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
      */
-    topic?: pulumi.Input<string>;
+    topic: pulumi.Input<string>;
 }

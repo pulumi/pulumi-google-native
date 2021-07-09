@@ -29,7 +29,7 @@ export namespace accesscontextmanager {
              */
             combiningFunction: string;
             /**
-             * Required. A list of requirements for the `AccessLevel` to be granted.
+             * A list of requirements for the `AccessLevel` to be granted.
              */
             conditions: outputs.accesscontextmanager.v1.ConditionResponse[];
         }
@@ -69,7 +69,7 @@ export namespace accesscontextmanager {
          */
         export interface CustomLevelResponse {
             /**
-             * Required. A Cloud CEL expression evaluating to a boolean.
+             * A Cloud CEL expression evaluating to a boolean.
              */
             expr: outputs.accesscontextmanager.v1.ExprResponse;
         }
@@ -251,7 +251,7 @@ export namespace accesscontextmanager {
              */
             minimumVersion: string;
             /**
-             * Required. The allowed OS type.
+             * The allowed OS type.
              */
             osType: string;
             /**
@@ -315,7 +315,7 @@ export namespace accesscontextmanager {
              */
             combiningFunction: string;
             /**
-             * Required. A list of requirements for the `AccessLevel` to be granted.
+             * A list of requirements for the `AccessLevel` to be granted.
              */
             conditions: outputs.accesscontextmanager.v1beta.ConditionResponse[];
         }
@@ -355,7 +355,7 @@ export namespace accesscontextmanager {
          */
         export interface CustomLevelResponse {
             /**
-             * Required. A Cloud CEL expression evaluating to a boolean.
+             * A Cloud CEL expression evaluating to a boolean.
              */
             expr: outputs.accesscontextmanager.v1beta.ExprResponse;
         }
@@ -421,7 +421,7 @@ export namespace accesscontextmanager {
              */
             minimumVersion: string;
             /**
-             * Required. The allowed OS type.
+             * The allowed OS type.
              */
             osType: string;
             /**
@@ -699,7 +699,7 @@ export namespace apigateway {
          */
         export interface ApigatewayGatewayConfigResponse {
             /**
-             * Required. Backend settings that are applied to all backends of the Gateway.
+             * Backend settings that are applied to all backends of the Gateway.
              */
             backendConfig: outputs.apigateway.v1beta.ApigatewayBackendConfigResponse;
         }
@@ -799,11 +799,11 @@ export namespace apigee {
              */
             env: string;
             /**
-             * Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+             * The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
              */
             instanceId: string;
             /**
-             * Required. The location associated with the metrics.
+             * The location associated with the metrics.
              */
             location: string;
         }
@@ -931,7 +931,7 @@ export namespace apigee {
              */
             path: string;
             /**
-             * Required. GCP project in which the datastore exists
+             * GCP project in which the datastore exists
              */
             project: string;
             /**
@@ -963,7 +963,7 @@ export namespace apigee {
          */
         export interface GoogleCloudApigeeV1GraphQLOperationConfigResponse {
             /**
-             * Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+             * API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
              */
             apiSource: string;
             /**
@@ -971,7 +971,7 @@ export namespace apigee {
              */
             attributes: outputs.apigee.v1.GoogleCloudApigeeV1AttributeResponse[];
             /**
-             * Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+             * List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
              */
             operations: outputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationResponse[];
             /**
@@ -989,7 +989,7 @@ export namespace apigee {
              */
             operationConfigType: string;
             /**
-             * Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+             * List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
              */
             operationConfigs: outputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationConfigResponse[];
         }
@@ -1003,7 +1003,7 @@ export namespace apigee {
              */
             operation: string;
             /**
-             * Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+             * `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
              */
             operationTypes: string[];
         }
@@ -1033,7 +1033,7 @@ export namespace apigee {
          */
         export interface GoogleCloudApigeeV1OperationConfigResponse {
             /**
-             * Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+             * API proxy or remote service name with which the resources, methods, and quota are associated.
              */
             apiSource: string;
             /**
@@ -1059,7 +1059,7 @@ export namespace apigee {
              */
             operationConfigType: string;
             /**
-             * Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+             * List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
              */
             operationConfigs: outputs.apigee.v1.GoogleCloudApigeeV1OperationConfigResponse[];
         }
@@ -1073,7 +1073,7 @@ export namespace apigee {
              */
             methods: string[];
             /**
-             * Required. resource represents REST resource path associated with the proxy/remote service.
+             * resource represents REST resource path associated with the proxy/remote service.
              */
             resource: string;
         }
@@ -1134,11 +1134,11 @@ export namespace apigee {
          */
         export interface GoogleCloudApigeeV1QuotaResponse {
             /**
-             * Required. Time interval over which the number of request messages is calculated.
+             * Time interval over which the number of request messages is calculated.
              */
             interval: string;
             /**
-             * Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+             * Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
              */
             limit: string;
             /**
@@ -1222,7 +1222,7 @@ export namespace apigee {
              */
             commonName: outputs.apigee.v1.GoogleCloudApigeeV1TlsInfoCommonNameResponse;
             /**
-             * Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+             * Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
              */
             enabled: boolean;
             /**
@@ -3088,11 +3088,11 @@ export namespace assuredworkloads {
          */
         export interface GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse {
             /**
-             * Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+             * Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
              */
             nextRotationTime: string;
             /**
-             * Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+             * Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
              */
             rotationPeriod: string;
         }
@@ -4573,7 +4573,7 @@ export namespace bigquery {
              */
             structType: outputs.bigquery.v2.StandardSqlStructTypeResponse;
             /**
-             * Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+             * The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
              */
             typeKind: string;
         }
@@ -5135,7 +5135,7 @@ export namespace billingbudgets {
              */
             endDate: outputs.billingbudgets.v1.GoogleTypeDateResponse;
             /**
-             * Required. The start date must be after January 1, 2017.
+             * The start date must be after January 1, 2017.
              */
             startDate: outputs.billingbudgets.v1.GoogleTypeDateResponse;
         }
@@ -5215,7 +5215,7 @@ export namespace billingbudgets {
              */
             spendBasis: string;
             /**
-             * Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+             * Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
              */
             thresholdPercent: number;
         }
@@ -5303,7 +5303,7 @@ export namespace billingbudgets {
              */
             endDate: outputs.billingbudgets.v1beta1.GoogleTypeDateResponse;
             /**
-             * Required. The start date must be after January 1, 2017.
+             * The start date must be after January 1, 2017.
              */
             startDate: outputs.billingbudgets.v1beta1.GoogleTypeDateResponse;
         }
@@ -5361,7 +5361,7 @@ export namespace billingbudgets {
              */
             spendBasis: string;
             /**
-             * Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+             * Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
              */
             thresholdPercent: number;
         }
@@ -5487,7 +5487,7 @@ export namespace binaryauthorization {
              */
             delegationServiceAccountEmail: string;
             /**
-             * Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*&#47;notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+             * The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*&#47;notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
              */
             noteReference: string;
             /**
@@ -5579,7 +5579,7 @@ export namespace binaryauthorization {
              */
             delegationServiceAccountEmail: string;
             /**
-             * Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*&#47;notes/*` (or the legacy `providers/*&#47;notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+             * The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*&#47;notes/*` (or the legacy `providers/*&#47;notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
              */
             noteReference: string;
             /**
@@ -5881,7 +5881,7 @@ export namespace cloudbuild {
              */
             statusDetail: string;
             /**
-             * Required. The operations to be performed on the workspace.
+             * The operations to be performed on the workspace.
              */
             steps: outputs.cloudbuild.v1.BuildStepResponse[];
             /**
@@ -5923,7 +5923,7 @@ export namespace cloudbuild {
              */
             env: string[];
             /**
-             * Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+             * The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
              */
             name: string;
             /**
@@ -6335,7 +6335,7 @@ export namespace cloudbuild {
          */
         export interface NetworkConfigResponse {
             /**
-             * Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+             * Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
              */
             peeredNetwork: string;
         }
@@ -6361,7 +6361,7 @@ export namespace cloudbuild {
          */
         export interface NetworkConfigResponse {
             /**
-             * Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+             * Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
              */
             peeredNetwork: string;
         }
@@ -6647,7 +6647,7 @@ export namespace cloudchannel {
              */
             recipients: string[];
             /**
-             * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
              */
             regionCode: string;
             /**
@@ -6719,7 +6719,7 @@ export namespace cloudfunctions {
          */
         export interface EventTriggerResponse {
             /**
-             * Required. The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`. Event types match pattern `providers/*&#47;eventTypes/*.*`. The pattern contains: 1. namespace: For example, `cloud.storage` and `google.firebase.analytics`. 2. resource type: The type of resource on which event occurs. For example, the Google Cloud Storage API includes the type `object`. 3. action: The action that generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are lower case.
+             * The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`. Event types match pattern `providers/*&#47;eventTypes/*.*`. The pattern contains: 1. namespace: For example, `cloud.storage` and `google.firebase.analytics`. 2. resource type: The type of resource on which event occurs. For example, the Google Cloud Storage API includes the type `object`. 3. action: The action that generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are lower case.
              */
             eventType: string;
             /**
@@ -6727,7 +6727,7 @@ export namespace cloudfunctions {
              */
             failurePolicy: outputs.cloudfunctions.v1.FailurePolicyResponse;
             /**
-             * Required. The resource(s) from which to observe events, for example, `projects/_/buckets/myBucket`. Not all syntactically correct values are accepted by all services. For example: 1. The authorization model must support it. Google Cloud Functions only allows EventTriggers to be deployed that observe resources in the same project as the `CloudFunction`. 2. The resource type must match the pattern expected for an `event_type`. For example, an `EventTrigger` that has an `event_type` of "google.pubsub.topic.publish" should have a resource that matches Google Cloud Pub/Sub topics. Additionally, some services may support short names when creating an `EventTrigger`. These will always be returned in the normalized "long" format. See each *service's* documentation for supported formats.
+             * The resource(s) from which to observe events, for example, `projects/_/buckets/myBucket`. Not all syntactically correct values are accepted by all services. For example: 1. The authorization model must support it. Google Cloud Functions only allows EventTriggers to be deployed that observe resources in the same project as the `CloudFunction`. 2. The resource type must match the pattern expected for an `event_type`. For example, an `EventTrigger` that has an `event_type` of "google.pubsub.topic.publish" should have a resource that matches Google Cloud Pub/Sub topics. Additionally, some services may support short names when creating an `EventTrigger`. These will always be returned in the normalized "long" format. See each *service's* documentation for supported formats.
              */
             resource: string;
             /**
@@ -7382,7 +7382,7 @@ export namespace cloudkms {
          */
         export interface CryptoKeyVersionTemplateResponse {
             /**
-             * Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+             * Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
              */
             algorithm: string;
             /**
@@ -7900,7 +7900,7 @@ export namespace cloudscheduler {
              */
             oidcToken: outputs.cloudscheduler.v1.OidcTokenResponse;
             /**
-             * Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+             * The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
              */
             uri: string;
         }
@@ -7946,7 +7946,7 @@ export namespace cloudscheduler {
              */
             data: string;
             /**
-             * Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+             * The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
              */
             topicName: string;
         }
@@ -8070,7 +8070,7 @@ export namespace cloudscheduler {
              */
             oidcToken: outputs.cloudscheduler.v1beta1.OidcTokenResponse;
             /**
-             * Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+             * The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
              */
             uri: string;
         }
@@ -8116,7 +8116,7 @@ export namespace cloudscheduler {
              */
             data: string;
             /**
-             * Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+             * The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
              */
             topicName: string;
         }
@@ -8514,7 +8514,7 @@ export namespace cloudtasks {
              */
             oidcToken: outputs.cloudtasks.v2.OidcTokenResponse;
             /**
-             * Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+             * The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
              */
             url: string;
         }
@@ -9022,7 +9022,7 @@ export namespace cloudtasks {
              */
             oidcToken: outputs.cloudtasks.v2beta3.OidcTokenResponse;
             /**
-             * Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+             * The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
              */
             url: string;
         }
@@ -9548,15 +9548,15 @@ export namespace composer {
          */
         export interface MaintenanceWindowResponse {
             /**
-             * Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+             * Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
              */
             endTime: string;
             /**
-             * Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+             * Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
              */
             recurrence: string;
             /**
-             * Required. Start time of the first recurrence of the maintenance window.
+             * Start time of the first recurrence of the maintenance window.
              */
             startTime: string;
         }
@@ -26419,7 +26419,7 @@ export namespace containeranalysis {
          */
         export interface GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse {
             /**
-             * Required. Git commit hash.
+             * Git commit hash.
              */
             revisionId: string;
             /**
@@ -26925,11 +26925,11 @@ export namespace containeranalysis {
          */
         export interface BasisResponse {
             /**
-             * Required. Immutable. The fingerprint of the base image.
+             * Immutable. The fingerprint of the base image.
              */
             fingerprint: outputs.containeranalysis.v1beta1.FingerprintResponse;
             /**
-             * Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+             * Immutable. The resource_url for the resource representing the basis of associated occurrence images.
              */
             resourceUrl: string;
         }
@@ -27011,7 +27011,7 @@ export namespace containeranalysis {
          */
         export interface BuildResponse {
             /**
-             * Required. Immutable. Version of the builder which produced this build.
+             * Immutable. Version of the builder which produced this build.
              */
             builderVersion: string;
             /**
@@ -27037,7 +27037,7 @@ export namespace containeranalysis {
              */
             publicKey: string;
             /**
-             * Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+             * Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
              */
             signature: string;
         }
@@ -27107,7 +27107,7 @@ export namespace containeranalysis {
              */
             env: string[];
             /**
-             * Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+             * Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
              */
             name: string;
             /**
@@ -27121,7 +27121,7 @@ export namespace containeranalysis {
          */
         export interface DeployableResponse {
             /**
-             * Required. Resource URI for the artifact being deployed.
+             * Resource URI for the artifact being deployed.
              */
             resourceUri: string[];
         }
@@ -27139,7 +27139,7 @@ export namespace containeranalysis {
              */
             config: string;
             /**
-             * Required. Beginning of the lifetime of this deployment.
+             * Beginning of the lifetime of this deployment.
              */
             deployTime: string;
             /**
@@ -27173,7 +27173,7 @@ export namespace containeranalysis {
              */
             distance: number;
             /**
-             * Required. The fingerprint of the derived image.
+             * The fingerprint of the derived image.
              */
             fingerprint: outputs.containeranalysis.v1beta1.FingerprintResponse;
             /**
@@ -27187,7 +27187,7 @@ export namespace containeranalysis {
          */
         export interface DetailResponse {
             /**
-             * Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+             * The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
              */
             cpeUri: string;
             /**
@@ -27211,7 +27211,7 @@ export namespace containeranalysis {
              */
             minAffectedVersion: outputs.containeranalysis.v1beta1.VersionResponse;
             /**
-             * Required. The name of the package where the vulnerability was found.
+             * The name of the package where the vulnerability was found.
              */
             package: string;
             /**
@@ -27241,7 +27241,7 @@ export namespace containeranalysis {
          */
         export interface DetailsResponse {
             /**
-             * Required. Attestation for the resource.
+             * Attestation for the resource.
              */
             attestation: outputs.containeranalysis.v1beta1.AttestationResponse;
         }
@@ -27269,7 +27269,7 @@ export namespace containeranalysis {
          */
         export interface DiscoveryResponse {
             /**
-             * Required. Immutable. The kind of analysis that is handled by this discovery.
+             * Immutable. The kind of analysis that is handled by this discovery.
              */
             analysisKind: string;
         }
@@ -27283,7 +27283,7 @@ export namespace containeranalysis {
              */
             architecture: string;
             /**
-             * Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+             * The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
              */
             cpeUri: string;
             /**
@@ -27338,11 +27338,11 @@ export namespace containeranalysis {
          */
         export interface FingerprintResponse {
             /**
-             * Required. The layer ID of the final layer in the Docker image's v1 representation.
+             * The layer ID of the final layer in the Docker image's v1 representation.
              */
             v1Name: string;
             /**
-             * Required. The ordered list of v2 blobs that represent a given image.
+             * The ordered list of v2 blobs that represent a given image.
              */
             v2Blob: string[];
             /**
@@ -27410,7 +27410,7 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1BuildDetailsResponse {
             /**
-             * Required. The actual provenance for the build.
+             * The actual provenance for the build.
              */
             provenance: outputs.containeranalysis.v1beta1.BuildProvenanceResponse;
             /**
@@ -27424,7 +27424,7 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1DeploymentDetailsResponse {
             /**
-             * Required. Deployment history for the resource.
+             * Deployment history for the resource.
              */
             deployment: outputs.containeranalysis.v1beta1.DeploymentResponse;
         }
@@ -27434,7 +27434,7 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1DiscoveryDetailsResponse {
             /**
-             * Required. Analysis status for the discovered resource.
+             * Analysis status for the discovered resource.
              */
             discovered: outputs.containeranalysis.v1beta1.DiscoveredResponse;
         }
@@ -27444,7 +27444,7 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1ImageDetailsResponse {
             /**
-             * Required. Immutable. The child image derived from the base image.
+             * Immutable. The child image derived from the base image.
              */
             derivedImage: outputs.containeranalysis.v1beta1.DerivedResponse;
         }
@@ -27475,7 +27475,7 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1PackageDetailsResponse {
             /**
-             * Required. Where the package was installed.
+             * Where the package was installed.
              */
             installation: outputs.containeranalysis.v1beta1.InstallationResponse;
         }
@@ -27497,7 +27497,7 @@ export namespace containeranalysis {
              */
             longDescription: string;
             /**
-             * Required. The set of affected locations and their fixes (if available) within the associated resource.
+             * The set of affected locations and their fixes (if available) within the associated resource.
              */
             packageIssue: outputs.containeranalysis.v1beta1.PackageIssueResponse[];
             /**
@@ -27523,7 +27523,7 @@ export namespace containeranalysis {
          */
         export interface HintResponse {
             /**
-             * Required. The human readable name of this attestation authority, for example "qa".
+             * The human readable name of this attestation authority, for example "qa".
              */
             humanReadableName: string;
         }
@@ -27560,7 +27560,7 @@ export namespace containeranalysis {
          */
         export interface InstallationResponse {
             /**
-             * Required. All of the places within the filesystem versions of this package have been found.
+             * All of the places within the filesystem versions of this package have been found.
              */
             location: outputs.containeranalysis.v1beta1.LocationResponse[];
             /**
@@ -27589,7 +27589,7 @@ export namespace containeranalysis {
              */
             arguments: string;
             /**
-             * Required. The recovered Dockerfile directive used to construct this layer.
+             * The recovered Dockerfile directive used to construct this layer.
              */
             directive: string;
         }
@@ -27625,7 +27625,7 @@ export namespace containeranalysis {
          */
         export interface LocationResponse {
             /**
-             * Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+             * The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
              */
             cpeUri: string;
             /**
@@ -27643,7 +27643,7 @@ export namespace containeranalysis {
          */
         export interface PackageIssueResponse {
             /**
-             * Required. The location of the vulnerability.
+             * The location of the vulnerability.
              */
             affectedLocation: outputs.containeranalysis.v1beta1.VulnerabilityLocationResponse;
             /**
@@ -27661,7 +27661,7 @@ export namespace containeranalysis {
              */
             distribution: outputs.containeranalysis.v1beta1.DistributionResponse[];
             /**
-             * Required. Immutable. The name of the package.
+             * Immutable. The name of the package.
              */
             name: string;
         }
@@ -27679,7 +27679,7 @@ export namespace containeranalysis {
              */
             pgpKeyId: string;
             /**
-             * Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+             * The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
              */
             signature: string;
         }
@@ -27731,7 +27731,7 @@ export namespace containeranalysis {
          */
         export interface ResourceResponse {
             /**
-             * Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+             * The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
              */
             uri: string;
         }
@@ -27847,7 +27847,7 @@ export namespace containeranalysis {
              */
             inclusive: boolean;
             /**
-             * Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+             * Distinguishes between sentinel MIN/MAX versions and normal versions.
              */
             kind: string;
             /**
@@ -27865,15 +27865,15 @@ export namespace containeranalysis {
          */
         export interface VulnerabilityLocationResponse {
             /**
-             * Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+             * The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
              */
             cpeUri: string;
             /**
-             * Required. The package being described.
+             * The package being described.
              */
             package: string;
             /**
-             * Required. The version of the package being described.
+             * The version of the package being described.
              */
             version: outputs.containeranalysis.v1beta1.VersionResponse;
         }
@@ -27910,7 +27910,7 @@ export namespace containeranalysis {
 
         export interface WindowsDetailResponse {
             /**
-             * Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+             * The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
              */
             cpeUri: string;
             /**
@@ -27918,11 +27918,11 @@ export namespace containeranalysis {
              */
             description: string;
             /**
-             * Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+             * The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
              */
             fixingKbs: outputs.containeranalysis.v1beta1.KnowledgeBaseResponse[];
             /**
-             * Required. The name of the vulnerability.
+             * The name of the vulnerability.
              */
             name: string;
         }
@@ -28012,7 +28012,7 @@ export namespace datacatalog {
          */
         export interface GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {
             /**
-             * Required. Name of the column.
+             * Name of the column.
              */
             column: string;
             /**
@@ -28028,7 +28028,7 @@ export namespace datacatalog {
              */
             subcolumns: outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1ColumnSchemaResponse[];
             /**
-             * Required. Type of the column.
+             * Type of the column.
              */
             type: string;
         }
@@ -28038,7 +28038,7 @@ export namespace datacatalog {
          */
         export interface GoogleCloudDatacatalogV1beta1GcsFileSpecResponse {
             /**
-             * Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
+             * The full file path. Example: `gs://bucket_name/a/b.txt`.
              */
             filePath: string;
             /**
@@ -28056,7 +28056,7 @@ export namespace datacatalog {
          */
         export interface GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse {
             /**
-             * Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*&#47;b`: matches all files in `bucket_name` that match `a/*&#47;b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+             * Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*&#47;b`: matches all files in `bucket_name` that match `a/*&#47;b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
              */
             filePatterns: string[];
             /**
@@ -28070,7 +28070,7 @@ export namespace datacatalog {
          */
         export interface GoogleCloudDatacatalogV1beta1SchemaResponse {
             /**
-             * Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+             * Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
              */
             columns: outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1ColumnSchemaResponse[];
         }
@@ -28492,7 +28492,7 @@ export namespace dataflow {
          */
         export interface ParameterMetadataResponse {
             /**
-             * Required. The help text to display for the parameter.
+             * The help text to display for the parameter.
              */
             helpText: string;
             /**
@@ -28500,11 +28500,11 @@ export namespace dataflow {
              */
             isOptional: boolean;
             /**
-             * Required. The label to display for the parameter.
+             * The label to display for the parameter.
              */
             label: string;
             /**
-             * Required. The name of the parameter.
+             * The name of the parameter.
              */
             name: string;
             /**
@@ -28568,7 +28568,7 @@ export namespace dataflow {
          */
         export interface SDKInfoResponse {
             /**
-             * Required. The SDK Language.
+             * The SDK Language.
              */
             language: string;
             /**
@@ -28780,7 +28780,7 @@ export namespace dataflow {
              */
             description: string;
             /**
-             * Required. The name of the template.
+             * The name of the template.
              */
             name: string;
             /**
@@ -29178,7 +29178,7 @@ export namespace datalabeling {
              */
             description: string;
             /**
-             * Required. The display name of the AnnotationSpec. Maximum of 64 characters.
+             * The display name of the AnnotationSpec. Maximum of 64 characters.
              */
             displayName: string;
             /**
@@ -29203,7 +29203,7 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1BigQuerySourceResponse {
             /**
-             * Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+             * BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
              */
             inputUri: string;
         }
@@ -29223,7 +29223,7 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
             /**
-             * Required. Annotation spec set resource name.
+             * Annotation spec set resource name.
              */
             annotationSpecSet: string;
             /**
@@ -29257,11 +29257,11 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse {
             /**
-             * Required. An email address to send alerts to.
+             * An email address to send alerts to.
              */
             email: string;
             /**
-             * Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+             * A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
              */
             minAcceptableMeanAveragePrecision: number;
         }
@@ -29271,7 +29271,7 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse {
             /**
-             * Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+             * Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
              */
             bigqueryImportKeys: {[key: string]: string};
             /**
@@ -29279,7 +29279,7 @@ export namespace datalabeling {
              */
             boundingPolyConfig: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse;
             /**
-             * Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+             * Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
              */
             evaluationConfig: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationConfigResponse;
             /**
@@ -29287,11 +29287,11 @@ export namespace datalabeling {
              */
             evaluationJobAlertConfig: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse;
             /**
-             * Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+             * The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
              */
             exampleCount: number;
             /**
-             * Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+             * Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
              */
             exampleSamplePercentage: number;
             /**
@@ -29317,11 +29317,11 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1GcsSourceResponse {
             /**
-             * Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+             * The input URI of source file. This must be a Cloud Storage path (`gs://...`).
              */
             inputUri: string;
             /**
-             * Required. The format of the source file. Only "text/csv" is supported.
+             * The format of the source file. Only "text/csv" is supported.
              */
             mimeType: string;
         }
@@ -29335,7 +29335,7 @@ export namespace datalabeling {
              */
             annotatedDatasetDescription: string;
             /**
-             * Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+             * A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
              */
             annotatedDatasetDisplayName: string;
             /**
@@ -29343,7 +29343,7 @@ export namespace datalabeling {
              */
             contributorEmails: string[];
             /**
-             * Required. Instruction resource name.
+             * Instruction resource name.
              */
             instruction: string;
             /**
@@ -29377,7 +29377,7 @@ export namespace datalabeling {
              */
             allowMultiLabel: boolean;
             /**
-             * Required. Annotation spec set resource name.
+             * Annotation spec set resource name.
              */
             annotationSpecSet: string;
             /**
@@ -29403,7 +29403,7 @@ export namespace datalabeling {
              */
             classificationMetadata: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse;
             /**
-             * Required. Data type must be specifed when user tries to import data.
+             * Data type must be specifed when user tries to import data.
              */
             dataType: string;
             /**
@@ -29457,7 +29457,7 @@ export namespace datalabeling {
              */
             allowMultiLabel: boolean;
             /**
-             * Required. Annotation spec set resource name.
+             * Annotation spec set resource name.
              */
             annotationSpecSet: string;
             /**
@@ -29677,11 +29677,11 @@ export namespace datamigration {
              */
             cloudSqlId: string;
             /**
-             * Required. The IP or hostname of the source MySQL database.
+             * The IP or hostname of the source MySQL database.
              */
             host: string;
             /**
-             * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+             * Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
              */
             password: string;
             /**
@@ -29689,7 +29689,7 @@ export namespace datamigration {
              */
             passwordSet: boolean;
             /**
-             * Required. The network port of the source MySQL database.
+             * The network port of the source MySQL database.
              */
             port: number;
             /**
@@ -29697,7 +29697,7 @@ export namespace datamigration {
              */
             ssl: outputs.datamigration.v1.SslConfigResponse;
             /**
-             * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+             * The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
              */
             username: string;
         }
@@ -29711,11 +29711,11 @@ export namespace datamigration {
              */
             cloudSqlId: string;
             /**
-             * Required. The IP or hostname of the source PostgreSQL database.
+             * The IP or hostname of the source PostgreSQL database.
              */
             host: string;
             /**
-             * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+             * Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
              */
             password: string;
             /**
@@ -29723,7 +29723,7 @@ export namespace datamigration {
              */
             passwordSet: boolean;
             /**
-             * Required. The network port of the source PostgreSQL database.
+             * The network port of the source PostgreSQL database.
              */
             port: number;
             /**
@@ -29731,7 +29731,7 @@ export namespace datamigration {
              */
             ssl: outputs.datamigration.v1.SslConfigResponse;
             /**
-             * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+             * The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
              */
             username: string;
         }
@@ -29745,11 +29745,11 @@ export namespace datamigration {
              */
             vm: string;
             /**
-             * Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+             * The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
              */
             vmIp: string;
             /**
-             * Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+             * The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
              */
             vmPort: number;
             /**
@@ -29807,7 +29807,7 @@ export namespace datamigration {
          */
         export interface SslConfigResponse {
             /**
-             * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+             * Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
              */
             caCertificate: string;
             /**
@@ -30035,11 +30035,11 @@ export namespace datamigration {
              */
             cloudSqlId: string;
             /**
-             * Required. The IP or hostname of the source MySQL database.
+             * The IP or hostname of the source MySQL database.
              */
             host: string;
             /**
-             * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+             * Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
              */
             password: string;
             /**
@@ -30047,7 +30047,7 @@ export namespace datamigration {
              */
             passwordSet: boolean;
             /**
-             * Required. The network port of the source MySQL database.
+             * The network port of the source MySQL database.
              */
             port: number;
             /**
@@ -30055,7 +30055,7 @@ export namespace datamigration {
              */
             ssl: outputs.datamigration.v1beta1.SslConfigResponse;
             /**
-             * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+             * The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
              */
             username: string;
         }
@@ -30069,11 +30069,11 @@ export namespace datamigration {
              */
             vm: string;
             /**
-             * Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+             * The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
              */
             vmIp: string;
             /**
-             * Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+             * The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
              */
             vmPort: number;
             /**
@@ -30131,7 +30131,7 @@ export namespace datamigration {
          */
         export interface SslConfigResponse {
             /**
-             * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+             * Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
              */
             caCertificate: string;
             /**
@@ -30219,7 +30219,7 @@ export namespace dataproc {
              */
             cooldownPeriod: string;
             /**
-             * Required. YARN autoscaling configuration.
+             * YARN autoscaling configuration.
              */
             yarnConfig: outputs.dataproc.v1.BasicYarnAutoscalingConfigResponse;
         }
@@ -30229,11 +30229,11 @@ export namespace dataproc {
          */
         export interface BasicYarnAutoscalingConfigResponse {
             /**
-             * Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+             * Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
              */
             gracefulDecommissionTimeout: string;
             /**
-             * Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+             * Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
              */
             scaleDownFactor: number;
             /**
@@ -30241,7 +30241,7 @@ export namespace dataproc {
              */
             scaleDownMinWorkerFraction: number;
             /**
-             * Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+             * Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
              */
             scaleUpFactor: number;
             /**
@@ -30353,7 +30353,7 @@ export namespace dataproc {
          */
         export interface ClusterSelectorResponse {
             /**
-             * Required. The cluster labels. Cluster must have all labels to match.
+             * The cluster labels. Cluster must have all labels to match.
              */
             clusterLabels: {[key: string]: string};
             /**
@@ -30599,7 +30599,7 @@ export namespace dataproc {
          */
         export interface IdentityConfigResponse {
             /**
-             * Required. Map of user to service account.
+             * Map of user to service account.
              */
             userServiceAccountMapping: {[key: string]: string};
         }
@@ -30609,7 +30609,7 @@ export namespace dataproc {
          */
         export interface InstanceGroupAutoscalingPolicyConfigResponse {
             /**
-             * Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+             * Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
              */
             maxInstances: number;
             /**
@@ -30699,7 +30699,7 @@ export namespace dataproc {
              */
             clusterLabels: {[key: string]: string};
             /**
-             * Required. The name of the cluster where the job will be submitted.
+             * The name of the cluster where the job will be submitted.
              */
             clusterName: string;
             /**
@@ -30861,11 +30861,11 @@ export namespace dataproc {
          */
         export interface ManagedClusterResponse {
             /**
-             * Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+             * The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
              */
             clusterName: string;
             /**
-             * Required. The cluster configuration.
+             * The cluster configuration.
              */
             config: outputs.dataproc.v1.ClusterConfigResponse;
             /**
@@ -30893,7 +30893,7 @@ export namespace dataproc {
          */
         export interface MetastoreConfigResponse {
             /**
-             * Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+             * Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
              */
             dataprocMetastoreService: string;
         }
@@ -30917,7 +30917,7 @@ export namespace dataproc {
          */
         export interface NodeGroupAffinityResponse {
             /**
-             * Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+             * The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
              */
             nodeGroupUri: string;
         }
@@ -30927,7 +30927,7 @@ export namespace dataproc {
          */
         export interface NodeInitializationActionResponse {
             /**
-             * Required. Cloud Storage URI of executable file.
+             * Cloud Storage URI of executable file.
              */
             executableFile: string;
             /**
@@ -30985,7 +30985,7 @@ export namespace dataproc {
              */
             sparkSqlJob: outputs.dataproc.v1.SparkSqlJobResponse;
             /**
-             * Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+             * The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
              */
             stepId: string;
         }
@@ -31097,7 +31097,7 @@ export namespace dataproc {
              */
             loggingConfig: outputs.dataproc.v1.LoggingConfigResponse;
             /**
-             * Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+             * The HCFS URI of the main Python file to use as the driver. Must be a .py file.
              */
             mainPythonFileUri: string;
             /**
@@ -31115,7 +31115,7 @@ export namespace dataproc {
          */
         export interface QueryListResponse {
             /**
-             * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+             * The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
              */
             queries: string[];
         }
@@ -31125,7 +31125,7 @@ export namespace dataproc {
          */
         export interface RegexValidationResponse {
             /**
-             * Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+             * RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
              */
             regexes: string[];
         }
@@ -31257,7 +31257,7 @@ export namespace dataproc {
              */
             loggingConfig: outputs.dataproc.v1.LoggingConfigResponse;
             /**
-             * Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+             * The HCFS URI of the main R file to use as the driver. Must be a .R file.
              */
             mainRFileUri: string;
             /**
@@ -31305,11 +31305,11 @@ export namespace dataproc {
              */
             description: string;
             /**
-             * Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+             * Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
              */
             fields: string[];
             /**
-             * Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+             * Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
              */
             name: string;
             /**
@@ -31323,7 +31323,7 @@ export namespace dataproc {
          */
         export interface ValueValidationResponse {
             /**
-             * Required. List of allowed values for the parameter.
+             * List of allowed values for the parameter.
              */
             values: string[];
         }
@@ -31347,15 +31347,15 @@ export namespace dataproc {
          */
         export interface YarnApplicationResponse {
             /**
-             * Required. The application name.
+             * The application name.
              */
             name: string;
             /**
-             * Required. The numerical progress of the application, from 1 to 100.
+             * The numerical progress of the application, from 1 to 100.
              */
             progress: number;
             /**
-             * Required. The application state.
+             * The application state.
              */
             state: string;
             /**
@@ -31399,7 +31399,7 @@ export namespace dataproc {
              */
             cooldownPeriod: string;
             /**
-             * Required. YARN autoscaling configuration.
+             * YARN autoscaling configuration.
              */
             yarnConfig: outputs.dataproc.v1beta2.BasicYarnAutoscalingConfigResponse;
         }
@@ -31409,11 +31409,11 @@ export namespace dataproc {
          */
         export interface BasicYarnAutoscalingConfigResponse {
             /**
-             * Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+             * Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
              */
             gracefulDecommissionTimeout: string;
             /**
-             * Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
+             * Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
              */
             scaleDownFactor: number;
             /**
@@ -31421,7 +31421,7 @@ export namespace dataproc {
              */
             scaleDownMinWorkerFraction: number;
             /**
-             * Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
+             * Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
              */
             scaleUpFactor: number;
             /**
@@ -31533,7 +31533,7 @@ export namespace dataproc {
          */
         export interface ClusterSelectorResponse {
             /**
-             * Required. The cluster labels. Cluster must have all labels to match.
+             * The cluster labels. Cluster must have all labels to match.
              */
             clusterLabels: {[key: string]: string};
             /**
@@ -31855,7 +31855,7 @@ export namespace dataproc {
              */
             clusterLabels: {[key: string]: string};
             /**
-             * Required. The name of the cluster where the job will be submitted.
+             * The name of the cluster where the job will be submitted.
              */
             clusterName: string;
             /**
@@ -32017,11 +32017,11 @@ export namespace dataproc {
          */
         export interface ManagedClusterResponse {
             /**
-             * Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+             * The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
              */
             clusterName: string;
             /**
-             * Required. The cluster configuration.
+             * The cluster configuration.
              */
             config: outputs.dataproc.v1beta2.ClusterConfigResponse;
             /**
@@ -32049,7 +32049,7 @@ export namespace dataproc {
          */
         export interface MetastoreConfigResponse {
             /**
-             * Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+             * Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
              */
             dataprocMetastoreService: string;
         }
@@ -32073,7 +32073,7 @@ export namespace dataproc {
          */
         export interface NodeGroupAffinityResponse {
             /**
-             * Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+             * The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
              */
             nodeGroupUri: string;
         }
@@ -32083,7 +32083,7 @@ export namespace dataproc {
          */
         export interface NodeInitializationActionResponse {
             /**
-             * Required. Cloud Storage URI of executable file.
+             * Cloud Storage URI of executable file.
              */
             executableFile: string;
             /**
@@ -32141,7 +32141,7 @@ export namespace dataproc {
              */
             sparkSqlJob: outputs.dataproc.v1beta2.SparkSqlJobResponse;
             /**
-             * Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+             * The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
              */
             stepId: string;
         }
@@ -32253,7 +32253,7 @@ export namespace dataproc {
              */
             loggingConfig: outputs.dataproc.v1beta2.LoggingConfigResponse;
             /**
-             * Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+             * The HCFS URI of the main Python file to use as the driver. Must be a .py file.
              */
             mainPythonFileUri: string;
             /**
@@ -32271,7 +32271,7 @@ export namespace dataproc {
          */
         export interface QueryListResponse {
             /**
-             * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+             * The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
              */
             queries: string[];
         }
@@ -32281,7 +32281,7 @@ export namespace dataproc {
          */
         export interface RegexValidationResponse {
             /**
-             * Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+             * RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
              */
             regexes: string[];
         }
@@ -32409,7 +32409,7 @@ export namespace dataproc {
              */
             loggingConfig: outputs.dataproc.v1beta2.LoggingConfigResponse;
             /**
-             * Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+             * The HCFS URI of the main R file to use as the driver. Must be a .R file.
              */
             mainRFileUri: string;
             /**
@@ -32457,11 +32457,11 @@ export namespace dataproc {
              */
             description: string;
             /**
-             * Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+             * Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
              */
             fields: string[];
             /**
-             * Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+             * Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
              */
             name: string;
             /**
@@ -32475,7 +32475,7 @@ export namespace dataproc {
          */
         export interface ValueValidationResponse {
             /**
-             * Required. List of allowed values for the parameter.
+             * List of allowed values for the parameter.
              */
             values: string[];
         }
@@ -32525,11 +32525,11 @@ export namespace datastore {
          */
         export interface GoogleDatastoreAdminV1IndexedPropertyResponse {
             /**
-             * Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+             * The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
              */
             direction: string;
             /**
-             * Required. The property name to index.
+             * The property name to index.
              */
             name: string;
         }
@@ -33874,7 +33874,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2AutomatedAgentConfigResponse {
             /**
-             * Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+             * ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
              */
             agent: string;
         }
@@ -33888,7 +33888,7 @@ export namespace dialogflow {
              */
             lifespanCount: number;
             /**
-             * Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+             * The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
              */
             name: string;
             /**
@@ -33926,11 +33926,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2EntityTypeEntityResponse {
             /**
-             * Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+             * A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
              */
             synonyms: string[];
             /**
-             * Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+             * The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
              */
             value: string;
         }
@@ -33962,7 +33962,7 @@ export namespace dialogflow {
              */
             requestHeaders: {[key: string]: string};
             /**
-             * Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+             * The fulfillment URI for receiving POST requests. It must use https protocol.
              */
             uri: string;
             /**
@@ -33992,7 +33992,7 @@ export namespace dialogflow {
              */
             genericWebService: outputs.dialogflow.v2.GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse;
             /**
-             * Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+             * The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
              */
             name: string;
         }
@@ -34002,7 +34002,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse {
             /**
-             * Required. Conversation model resource name. Format: `projects//conversationModels/`.
+             * Conversation model resource name. Format: `projects//conversationModels/`.
              */
             model: string;
         }
@@ -34106,7 +34106,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse {
             /**
-             * Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+             * The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
              */
             agent: string;
         }
@@ -34116,7 +34116,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse {
             /**
-             * Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+             * Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
              */
             documents: string[];
         }
@@ -34126,7 +34126,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse {
             /**
-             * Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+             * Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
              */
             knowledgeBases: string[];
         }
@@ -34180,7 +34180,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
             /**
-             * Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+             * Account number of the LivePerson account to connect. This is the account number you input at the login page.
              */
             accountNumber: string;
         }
@@ -34204,19 +34204,19 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
             /**
-             * Required. Live Agent chat button ID.
+             * Live Agent chat button ID.
              */
             buttonId: string;
             /**
-             * Required. Live Agent deployment ID.
+             * Live Agent deployment ID.
              */
             deploymentId: string;
             /**
-             * Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+             * Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
              */
             endpointDomain: string;
             /**
-             * Required. The organization ID of the Salesforce account.
+             * The organization ID of the Salesforce account.
              */
             organizationId: string;
         }
@@ -34240,7 +34240,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse {
             /**
-             * Required. The HTTP or HTTPS scheme URI.
+             * The HTTP or HTTPS scheme URI.
              */
             uri: string;
         }
@@ -34250,11 +34250,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse {
             /**
-             * Required. Action to take when a user taps on the button.
+             * Action to take when a user taps on the button.
              */
             openUriAction: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse;
             /**
-             * Required. The title of the button.
+             * The title of the button.
              */
             title: string;
         }
@@ -34290,7 +34290,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse {
             /**
-             * Required. URL
+             * URL
              */
             url: string;
             /**
@@ -34316,11 +34316,11 @@ export namespace dialogflow {
              */
             image: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageImageResponse;
             /**
-             * Required. Action to present to the user.
+             * Action to present to the user.
              */
             openUriAction: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse;
             /**
-             * Required. Title of the carousel item. Maximum of two lines of text.
+             * Title of the carousel item. Maximum of two lines of text.
              */
             title: string;
         }
@@ -34334,7 +34334,7 @@ export namespace dialogflow {
              */
             imageDisplayOptions: string;
             /**
-             * Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+             * List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
              */
             items: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse[];
         }
@@ -34388,11 +34388,11 @@ export namespace dialogflow {
              */
             image: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageImageResponse;
             /**
-             * Required. Additional info about the option item.
+             * Additional info about the option item.
              */
             info: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse;
             /**
-             * Required. Title of the carousel item.
+             * Title of the carousel item.
              */
             title: string;
         }
@@ -34402,7 +34402,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse {
             /**
-             * Required. Carousel items.
+             * Carousel items.
              */
             items: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse[];
         }
@@ -34412,7 +34412,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse {
             /**
-             * Required. Column heading.
+             * Column heading.
              */
             header: string;
             /**
@@ -34440,11 +34440,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse {
             /**
-             * Required. The name of the app or site this chip is linking to.
+             * The name of the app or site this chip is linking to.
              */
             destinationName: string;
             /**
-             * Required. The URI of the app or site to open when the user taps the suggestion chip.
+             * The URI of the app or site to open when the user taps the suggestion chip.
              */
             uri: string;
         }
@@ -34462,11 +34462,11 @@ export namespace dialogflow {
              */
             image: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageImageResponse;
             /**
-             * Required. Additional information about this option.
+             * Additional information about this option.
              */
             info: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse;
             /**
-             * Required. The title of the list item.
+             * The title of the list item.
              */
             title: string;
         }
@@ -34476,7 +34476,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageListSelectResponse {
             /**
-             * Required. List items.
+             * List items.
              */
             items: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageListSelectItemResponse[];
             /**
@@ -34494,7 +34494,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageMediaContentResponse {
             /**
-             * Required. List of media objects.
+             * List of media objects.
              */
             mediaObjects: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse[];
             /**
@@ -34508,7 +34508,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse {
             /**
-             * Required. Url where the media is stored.
+             * Url where the media is stored.
              */
             contentUrl: string;
             /**
@@ -34524,7 +34524,7 @@ export namespace dialogflow {
              */
             largeImage: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageImageResponse;
             /**
-             * Required. Name of media card.
+             * Name of media card.
              */
             name: string;
         }
@@ -34614,7 +34614,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse {
             /**
-             * Required. A unique key that will be sent back to the agent if this response is given.
+             * A unique key that will be sent back to the agent if this response is given.
              */
             key: string;
             /**
@@ -34646,7 +34646,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse {
             /**
-             * Required. The list of simple responses.
+             * The list of simple responses.
              */
             simpleResponses: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse[];
         }
@@ -34656,7 +34656,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageSuggestionResponse {
             /**
-             * Required. The text shown the in the suggestion chip.
+             * The text shown the in the suggestion chip.
              */
             title: string;
         }
@@ -34666,7 +34666,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageSuggestionsResponse {
             /**
-             * Required. The list of suggested replies.
+             * The list of suggested replies.
              */
             suggestions: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSuggestionResponse[];
         }
@@ -34676,7 +34676,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageTableCardCellResponse {
             /**
-             * Required. Text in this cell.
+             * Text in this cell.
              */
             text: string;
         }
@@ -34706,7 +34706,7 @@ export namespace dialogflow {
              */
             subtitle: string;
             /**
-             * Required. Title of the card.
+             * Title of the card.
              */
             title: string;
         }
@@ -34744,7 +34744,7 @@ export namespace dialogflow {
              */
             defaultValue: string;
             /**
-             * Required. The name of the parameter.
+             * The name of the parameter.
              */
             displayName: string;
             /**
@@ -34786,7 +34786,7 @@ export namespace dialogflow {
              */
             entityType: string;
             /**
-             * Required. The text for this part.
+             * The text for this part.
              */
             text: string;
             /**
@@ -34804,7 +34804,7 @@ export namespace dialogflow {
              */
             name: string;
             /**
-             * Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+             * The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
              */
             parts: outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse[];
             /**
@@ -34812,7 +34812,7 @@ export namespace dialogflow {
              */
             timesAddedCount: number;
             /**
-             * Required. The type of the training phrase.
+             * The type of the training phrase.
              */
             type: string;
         }
@@ -34870,7 +34870,7 @@ export namespace dialogflow {
              */
             enableTextToSpeech: boolean;
             /**
-             * Required. Audio encoding of the synthesized audio content.
+             * Audio encoding of the synthesized audio content.
              */
             outputAudioEncoding: string;
             /**
@@ -34908,7 +34908,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse {
             /**
-             * Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
+             * ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
              */
             agent: string;
         }
@@ -34922,7 +34922,7 @@ export namespace dialogflow {
              */
             lifespanCount: number;
             /**
-             * Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+             * The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
              */
             name: string;
             /**
@@ -34960,11 +34960,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1EntityTypeEntityResponse {
             /**
-             * Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+             * A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
              */
             synonyms: string[];
             /**
-             * Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+             * The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
              */
             value: string;
         }
@@ -34996,7 +34996,7 @@ export namespace dialogflow {
              */
             requestHeaders: {[key: string]: string};
             /**
-             * Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+             * The fulfillment URI for receiving POST requests. It must use https protocol.
              */
             uri: string;
             /**
@@ -35026,7 +35026,7 @@ export namespace dialogflow {
              */
             genericWebService: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse;
             /**
-             * Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+             * The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
              */
             name: string;
         }
@@ -35036,7 +35036,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse {
             /**
-             * Required. Conversation model resource name. Format: `projects//conversationModels/`.
+             * Conversation model resource name. Format: `projects//conversationModels/`.
              */
             model: string;
         }
@@ -35140,7 +35140,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse {
             /**
-             * Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+             * The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
              */
             agent: string;
         }
@@ -35150,7 +35150,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse {
             /**
-             * Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
+             * Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
              */
             documents: string[];
         }
@@ -35160,7 +35160,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse {
             /**
-             * Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
+             * Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
              */
             knowledgeBases: string[];
         }
@@ -35214,7 +35214,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse {
             /**
-             * Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+             * Account number of the LivePerson account to connect. This is the account number you input at the login page.
              */
             accountNumber: string;
         }
@@ -35238,19 +35238,19 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
             /**
-             * Required. Live Agent chat button ID.
+             * Live Agent chat button ID.
              */
             buttonId: string;
             /**
-             * Required. Live Agent deployment ID.
+             * Live Agent deployment ID.
              */
             deploymentId: string;
             /**
-             * Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+             * Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
              */
             endpointDomain: string;
             /**
-             * Required. The organization ID of the Salesforce account.
+             * The organization ID of the Salesforce account.
              */
             organizationId: string;
         }
@@ -35274,7 +35274,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionResponse {
             /**
-             * Required. The HTTP or HTTPS scheme URI.
+             * The HTTP or HTTPS scheme URI.
              */
             uri: string;
         }
@@ -35284,11 +35284,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse {
             /**
-             * Required. Action to take when a user taps on the button.
+             * Action to take when a user taps on the button.
              */
             openUriAction: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionResponse;
             /**
-             * Required. The title of the button.
+             * The title of the button.
              */
             title: string;
         }
@@ -35324,7 +35324,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse {
             /**
-             * Required. URL
+             * URL
              */
             url: string;
             /**
@@ -35350,11 +35350,11 @@ export namespace dialogflow {
              */
             image: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageImageResponse;
             /**
-             * Required. Action to present to the user.
+             * Action to present to the user.
              */
             openUriAction: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse;
             /**
-             * Required. Title of the carousel item. Maximum of two lines of text.
+             * Title of the carousel item. Maximum of two lines of text.
              */
             title: string;
         }
@@ -35368,7 +35368,7 @@ export namespace dialogflow {
              */
             imageDisplayOptions: string;
             /**
-             * Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+             * List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
              */
             items: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse[];
         }
@@ -35422,11 +35422,11 @@ export namespace dialogflow {
              */
             image: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageImageResponse;
             /**
-             * Required. Additional info about the option item.
+             * Additional info about the option item.
              */
             info: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse;
             /**
-             * Required. Title of the carousel item.
+             * Title of the carousel item.
              */
             title: string;
         }
@@ -35436,7 +35436,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse {
             /**
-             * Required. Carousel items.
+             * Carousel items.
              */
             items: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemResponse[];
         }
@@ -35446,7 +35446,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse {
             /**
-             * Required. Column heading.
+             * Column heading.
              */
             header: string;
             /**
@@ -35474,11 +35474,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse {
             /**
-             * Required. The name of the app or site this chip is linking to.
+             * The name of the app or site this chip is linking to.
              */
             destinationName: string;
             /**
-             * Required. The URI of the app or site to open when the user taps the suggestion chip.
+             * The URI of the app or site to open when the user taps the suggestion chip.
              */
             uri: string;
         }
@@ -35496,11 +35496,11 @@ export namespace dialogflow {
              */
             image: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageImageResponse;
             /**
-             * Required. Additional information about this option.
+             * Additional information about this option.
              */
             info: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse;
             /**
-             * Required. The title of the list item.
+             * The title of the list item.
              */
             title: string;
         }
@@ -35510,7 +35510,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageListSelectResponse {
             /**
-             * Required. List items.
+             * List items.
              */
             items: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageListSelectItemResponse[];
             /**
@@ -35528,7 +35528,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse {
             /**
-             * Required. List of media objects.
+             * List of media objects.
              */
             mediaObjects: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectResponse[];
             /**
@@ -35542,7 +35542,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectResponse {
             /**
-             * Required. Url where the media is stored.
+             * Url where the media is stored.
              */
             contentUrl: string;
             /**
@@ -35558,7 +35558,7 @@ export namespace dialogflow {
              */
             largeImage: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageImageResponse;
             /**
-             * Required. Name of media card.
+             * Name of media card.
              */
             name: string;
         }
@@ -35582,7 +35582,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse {
             /**
-             * Required. Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
+             * Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
              */
             fileUri: string;
             /**
@@ -35622,11 +35622,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse {
             /**
-             * Required. The cards in the carousel. A carousel must have at least 2 cards and at most 10.
+             * The cards in the carousel. A carousel must have at least 2 cards and at most 10.
              */
             cardContents: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse[];
             /**
-             * Required. The width of the cards in the carousel.
+             * The width of the cards in the carousel.
              */
             cardWidth: string;
         }
@@ -35636,11 +35636,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse {
             /**
-             * Required. Card content.
+             * Card content.
              */
             cardContent: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse;
             /**
-             * Required. Orientation of the card.
+             * Orientation of the card.
              */
             cardOrientation: string;
             /**
@@ -35654,7 +35654,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse {
             /**
-             * Required. The phone number to fill in the default dialer app. This field should be in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly formatted phone number: +15556767888.
+             * The phone number to fill in the default dialer app. This field should be in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly formatted phone number: +15556767888.
              */
             phoneNumber: string;
         }
@@ -35664,7 +35664,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriResponse {
             /**
-             * Required. The uri to open on the user device
+             * The uri to open on the user device
              */
             uri: string;
         }
@@ -35738,7 +35738,7 @@ export namespace dialogflow {
              */
             rbmSuggestion: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse[];
             /**
-             * Required. Text sent and displayed to the user.
+             * Text sent and displayed to the user.
              */
             text: string;
         }
@@ -35838,7 +35838,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse {
             /**
-             * Required. A unique key that will be sent back to the agent if this response is given.
+             * A unique key that will be sent back to the agent if this response is given.
              */
             key: string;
             /**
@@ -35870,7 +35870,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse {
             /**
-             * Required. The list of simple responses.
+             * The list of simple responses.
              */
             simpleResponses: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse[];
         }
@@ -35880,7 +35880,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse {
             /**
-             * Required. The text shown the in the suggestion chip.
+             * The text shown the in the suggestion chip.
              */
             title: string;
         }
@@ -35890,7 +35890,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse {
             /**
-             * Required. The list of suggested replies.
+             * The list of suggested replies.
              */
             suggestions: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse[];
         }
@@ -35900,7 +35900,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse {
             /**
-             * Required. Text in this cell.
+             * Text in this cell.
              */
             text: string;
         }
@@ -35930,7 +35930,7 @@ export namespace dialogflow {
              */
             subtitle: string;
             /**
-             * Required. Title of the card.
+             * Title of the card.
              */
             title: string;
         }
@@ -35954,7 +35954,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse {
             /**
-             * Required. URI to a Google Cloud Storage object containing the audio to play, e.g., "gs://bucket/object". The object must contain a single channel (mono) of linear PCM audio (2 bytes / sample) at 8kHz. This object must be readable by the `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service account where is the number of the Telephony Gateway project (usually the same as the Dialogflow agent project). If the Google Cloud Storage bucket is in the Telephony Gateway project, this permission is added by default when enabling the Dialogflow V2 API. For audio from other sources, consider using the `TelephonySynthesizeSpeech` message with SSML.
+             * URI to a Google Cloud Storage object containing the audio to play, e.g., "gs://bucket/object". The object must contain a single channel (mono) of linear PCM audio (2 bytes / sample) at 8kHz. This object must be readable by the `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service account where is the number of the Telephony Gateway project (usually the same as the Dialogflow agent project). If the Google Cloud Storage bucket is in the Telephony Gateway project, this permission is added by default when enabling the Dialogflow V2 API. For audio from other sources, consider using the `TelephonySynthesizeSpeech` message with SSML.
              */
             audioUri: string;
         }
@@ -35978,7 +35978,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse {
             /**
-             * Required. The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
+             * The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
              */
             phoneNumber: string;
         }
@@ -36002,7 +36002,7 @@ export namespace dialogflow {
              */
             defaultValue: string;
             /**
-             * Required. The name of the parameter.
+             * The name of the parameter.
              */
             displayName: string;
             /**
@@ -36044,7 +36044,7 @@ export namespace dialogflow {
              */
             entityType: string;
             /**
-             * Required. The text for this part.
+             * The text for this part.
              */
             text: string;
             /**
@@ -36062,7 +36062,7 @@ export namespace dialogflow {
              */
             name: string;
             /**
-             * Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+             * The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
              */
             parts: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse[];
             /**
@@ -36070,7 +36070,7 @@ export namespace dialogflow {
              */
             timesAddedCount: number;
             /**
-             * Required. The type of the training phrase.
+             * The type of the training phrase.
              */
             type: string;
         }
@@ -36128,7 +36128,7 @@ export namespace dialogflow {
              */
             enableTextToSpeech: boolean;
             /**
-             * Required. Audio encoding of the synthesized audio content.
+             * Audio encoding of the synthesized audio content.
              */
             outputAudioEncoding: string;
             /**
@@ -36170,7 +36170,7 @@ export namespace dialogflow {
              */
             audio: string;
             /**
-             * Required. Instructs the speech recognizer how to process the speech audio.
+             * Instructs the speech recognizer how to process the speech audio.
              */
             config: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3InputAudioConfigResponse;
         }
@@ -36216,7 +36216,7 @@ export namespace dialogflow {
              */
             currentPage: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3PageResponse;
             /**
-             * Required. Input only. The diagnostic info output for the turn.
+             * Input only. The diagnostic info output for the turn.
              */
             diagnosticInfo: {[key: string]: string};
             /**
@@ -36260,11 +36260,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3EntityTypeEntityResponse {
             /**
-             * Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+             * A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
              */
             synonyms: string[];
             /**
-             * Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+             * The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
              */
             value: string;
         }
@@ -36274,7 +36274,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse {
             /**
-             * Required. The word or phrase to be excluded.
+             * The word or phrase to be excluded.
              */
             value: string;
         }
@@ -36284,7 +36284,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse {
             /**
-             * Required. Format: projects//locations//agents//flows//versions/.
+             * Format: projects//locations//agents//flows//versions/.
              */
             version: string;
         }
@@ -36294,7 +36294,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3EventHandlerResponse {
             /**
-             * Required. The name of the event to handle.
+             * The name of the event to handle.
              */
             event: string;
             /**
@@ -36424,7 +36424,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3FormParameterFillBehaviorResponse {
             /**
-             * Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+             * The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
              */
             initialPromptFulfillment: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3FulfillmentResponse;
             /**
@@ -36442,15 +36442,15 @@ export namespace dialogflow {
              */
             defaultValue: any;
             /**
-             * Required. The human-readable name of the parameter, unique within the form.
+             * The human-readable name of the parameter, unique within the form.
              */
             displayName: string;
             /**
-             * Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+             * The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
              */
             entityType: string;
             /**
-             * Required. Defines fill behavior for the parameter.
+             * Defines fill behavior for the parameter.
              */
             fillBehavior: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormParameterFillBehaviorResponse;
             /**
@@ -36560,7 +36560,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3InputAudioConfigResponse {
             /**
-             * Required. Audio encoding of the audio content to process.
+             * Audio encoding of the audio content to process.
              */
             audioEncoding: string;
             /**
@@ -36594,7 +36594,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3IntentInputResponse {
             /**
-             * Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+             * The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
              */
             intent: string;
         }
@@ -36604,7 +36604,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3IntentParameterResponse {
             /**
-             * Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+             * The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
              */
             entityType: string;
             /**
@@ -36626,7 +36626,7 @@ export namespace dialogflow {
              */
             description: string;
             /**
-             * Required. The human-readable name of the intent, unique within the agent.
+             * The human-readable name of the intent, unique within the agent.
              */
             displayName: string;
             /**
@@ -36664,7 +36664,7 @@ export namespace dialogflow {
              */
             parameterId: string;
             /**
-             * Required. The text for this part.
+             * The text for this part.
              */
             text: string;
         }
@@ -36674,7 +36674,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse {
             /**
-             * Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+             * The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
              */
             parts: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse[];
             /**
@@ -36706,7 +36706,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3PageResponse {
             /**
-             * Required. The human-readable name of the page, unique within the agent.
+             * The human-readable name of the page, unique within the agent.
              */
             displayName: string;
             /**
@@ -36756,7 +36756,7 @@ export namespace dialogflow {
              */
             intent: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3IntentInputResponse;
             /**
-             * Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+             * The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
              */
             languageCode: string;
             /**
@@ -36846,7 +36846,7 @@ export namespace dialogflow {
              */
             allowPlaybackInterruption: boolean;
             /**
-             * Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+             * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
              */
             audioUri: string;
         }
@@ -36898,7 +36898,7 @@ export namespace dialogflow {
              */
             allowPlaybackInterruption: boolean;
             /**
-             * Required. A collection of text responses.
+             * A collection of text responses.
              */
             text: string[];
         }
@@ -36972,7 +36972,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3TextInputResponse {
             /**
-             * Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+             * The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
              */
             text: string;
         }
@@ -37062,7 +37062,7 @@ export namespace dialogflow {
              */
             requestHeaders: {[key: string]: string};
             /**
-             * Required. The webhook URI for receiving POST requests. It must use https protocol.
+             * The webhook URI for receiving POST requests. It must use https protocol.
              */
             uri: string;
             /**
@@ -37100,7 +37100,7 @@ export namespace dialogflow {
              */
             audio: string;
             /**
-             * Required. Instructs the speech recognizer how to process the speech audio.
+             * Instructs the speech recognizer how to process the speech audio.
              */
             config: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse;
         }
@@ -37146,7 +37146,7 @@ export namespace dialogflow {
              */
             currentPage: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1PageResponse;
             /**
-             * Required. Input only. The diagnostic info output for the turn.
+             * Input only. The diagnostic info output for the turn.
              */
             diagnosticInfo: {[key: string]: string};
             /**
@@ -37190,11 +37190,11 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse {
             /**
-             * Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+             * A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
              */
             synonyms: string[];
             /**
-             * Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+             * The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
              */
             value: string;
         }
@@ -37204,7 +37204,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse {
             /**
-             * Required. The word or phrase to be excluded.
+             * The word or phrase to be excluded.
              */
             value: string;
         }
@@ -37214,7 +37214,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse {
             /**
-             * Required. Format: projects//locations//agents//flows//versions/.
+             * Format: projects//locations//agents//flows//versions/.
              */
             version: string;
         }
@@ -37224,7 +37224,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1EventHandlerResponse {
             /**
-             * Required. The name of the event to handle.
+             * The name of the event to handle.
              */
             event: string;
             /**
@@ -37354,7 +37354,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse {
             /**
-             * Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+             * The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
              */
             initialPromptFulfillment: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FulfillmentResponse;
             /**
@@ -37372,15 +37372,15 @@ export namespace dialogflow {
              */
             defaultValue: any;
             /**
-             * Required. The human-readable name of the parameter, unique within the form.
+             * The human-readable name of the parameter, unique within the form.
              */
             displayName: string;
             /**
-             * Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+             * The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
              */
             entityType: string;
             /**
-             * Required. Defines fill behavior for the parameter.
+             * Defines fill behavior for the parameter.
              */
             fillBehavior: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse;
             /**
@@ -37490,7 +37490,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse {
             /**
-             * Required. Audio encoding of the audio content to process.
+             * Audio encoding of the audio content to process.
              */
             audioEncoding: string;
             /**
@@ -37524,7 +37524,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1IntentInputResponse {
             /**
-             * Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+             * The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
              */
             intent: string;
         }
@@ -37534,7 +37534,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1IntentParameterResponse {
             /**
-             * Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+             * The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
              */
             entityType: string;
             /**
@@ -37556,7 +37556,7 @@ export namespace dialogflow {
              */
             description: string;
             /**
-             * Required. The human-readable name of the intent, unique within the agent.
+             * The human-readable name of the intent, unique within the agent.
              */
             displayName: string;
             /**
@@ -37594,7 +37594,7 @@ export namespace dialogflow {
              */
             parameterId: string;
             /**
-             * Required. The text for this part.
+             * The text for this part.
              */
             text: string;
         }
@@ -37604,7 +37604,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse {
             /**
-             * Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+             * The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
              */
             parts: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse[];
             /**
@@ -37636,7 +37636,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1PageResponse {
             /**
-             * Required. The human-readable name of the page, unique within the agent.
+             * The human-readable name of the page, unique within the agent.
              */
             displayName: string;
             /**
@@ -37686,7 +37686,7 @@ export namespace dialogflow {
              */
             intent: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1IntentInputResponse;
             /**
-             * Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+             * The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
              */
             languageCode: string;
             /**
@@ -37776,7 +37776,7 @@ export namespace dialogflow {
              */
             allowPlaybackInterruption: boolean;
             /**
-             * Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+             * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
              */
             audioUri: string;
         }
@@ -37828,7 +37828,7 @@ export namespace dialogflow {
              */
             allowPlaybackInterruption: boolean;
             /**
-             * Required. A collection of text responses.
+             * A collection of text responses.
              */
             text: string[];
         }
@@ -37902,7 +37902,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1TextInputResponse {
             /**
-             * Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+             * The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
              */
             text: string;
         }
@@ -37992,7 +37992,7 @@ export namespace dialogflow {
              */
             requestHeaders: {[key: string]: string};
             /**
-             * Required. The webhook URI for receiving POST requests. It must use https protocol.
+             * The webhook URI for receiving POST requests. It must use https protocol.
              */
             uri: string;
             /**
@@ -38100,15 +38100,15 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2AuxiliaryTableResponse {
             /**
-             * Required. Quasi-identifier columns.
+             * Quasi-identifier columns.
              */
             quasiIds: outputs.dlp.v2.GooglePrivacyDlpV2QuasiIdFieldResponse[];
             /**
-             * Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+             * The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
              */
             relativeFrequency: outputs.dlp.v2.GooglePrivacyDlpV2FieldIdResponse;
             /**
-             * Required. Auxiliary table location.
+             * Auxiliary table location.
              */
             table: outputs.dlp.v2.GooglePrivacyDlpV2BigQueryTableResponse;
         }
@@ -38185,7 +38185,7 @@ export namespace dlp {
              */
             min: outputs.dlp.v2.GooglePrivacyDlpV2ValueResponse;
             /**
-             * Required. Replacement value for this bucket.
+             * Replacement value for this bucket.
              */
             replacementValue: outputs.dlp.v2.GooglePrivacyDlpV2ValueResponse;
         }
@@ -38352,11 +38352,11 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2ConditionResponse {
             /**
-             * Required. Field within the record this condition is evaluated against.
+             * Field within the record this condition is evaluated against.
              */
             field: outputs.dlp.v2.GooglePrivacyDlpV2FieldIdResponse;
             /**
-             * Required. Operator used to compare the field or infoType to the value.
+             * Operator used to compare the field or infoType to the value.
              */
             operator: string;
             /**
@@ -38434,7 +38434,7 @@ export namespace dlp {
              */
             context: outputs.dlp.v2.GooglePrivacyDlpV2FieldIdResponse;
             /**
-             * Required. The key used by the encryption algorithm.
+             * The key used by the encryption algorithm.
              */
             cryptoKey: outputs.dlp.v2.GooglePrivacyDlpV2CryptoKeyResponse;
             /**
@@ -38516,11 +38516,11 @@ export namespace dlp {
              */
             cryptoKey: outputs.dlp.v2.GooglePrivacyDlpV2CryptoKeyResponse;
             /**
-             * Required. For example, -5 means shift date to at most 5 days back in the past.
+             * For example, -5 means shift date to at most 5 days back in the past.
              */
             lowerBoundDays: number;
             /**
-             * Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+             * Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
              */
             upperBoundDays: number;
         }
@@ -38552,7 +38552,7 @@ export namespace dlp {
              */
             auxiliaryTables: outputs.dlp.v2.GooglePrivacyDlpV2StatisticalTableResponse[];
             /**
-             * Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+             * Fields considered to be quasi-identifiers. No two fields can have the same tag.
              */
             quasiIds: outputs.dlp.v2.GooglePrivacyDlpV2QuasiIdResponse[];
             /**
@@ -38724,7 +38724,7 @@ export namespace dlp {
              */
             condition: outputs.dlp.v2.GooglePrivacyDlpV2RecordConditionResponse;
             /**
-             * Required. Input field(s) to apply the transformation to.
+             * Input field(s) to apply the transformation to.
              */
             fields: outputs.dlp.v2.GooglePrivacyDlpV2FieldIdResponse[];
             /**
@@ -38774,15 +38774,15 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2FixedSizeBucketingConfigResponse {
             /**
-             * Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+             * Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
              */
             bucketSize: number;
             /**
-             * Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+             * Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
              */
             lowerBound: outputs.dlp.v2.GooglePrivacyDlpV2ValueResponse;
             /**
-             * Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+             * Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
              */
             upperBound: outputs.dlp.v2.GooglePrivacyDlpV2ValueResponse;
         }
@@ -38892,7 +38892,7 @@ export namespace dlp {
              */
             infoTypes: outputs.dlp.v2.GooglePrivacyDlpV2InfoTypeResponse[];
             /**
-             * Required. Primitive transformation to apply to the infoType.
+             * Primitive transformation to apply to the infoType.
              */
             primitiveTransformation: outputs.dlp.v2.GooglePrivacyDlpV2PrimitiveTransformationResponse;
         }
@@ -38902,7 +38902,7 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2InfoTypeTransformationsResponse {
             /**
-             * Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+             * Transformation for each infoType. Cannot specify more than one for a given infoType.
              */
             transformations: outputs.dlp.v2.GooglePrivacyDlpV2InfoTypeTransformationResponse[];
         }
@@ -39118,7 +39118,7 @@ export namespace dlp {
              */
             auxiliaryTables: outputs.dlp.v2.GooglePrivacyDlpV2AuxiliaryTableResponse[];
             /**
-             * Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+             * Fields considered to be quasi-identifiers. No two columns can have the same tag.
              */
             quasiIds: outputs.dlp.v2.GooglePrivacyDlpV2TaggedFieldResponse[];
             /**
@@ -39192,11 +39192,11 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse {
             /**
-             * Required. The resource name of the KMS CryptoKey to use for unwrapping.
+             * The resource name of the KMS CryptoKey to use for unwrapping.
              */
             cryptoKeyName: string;
             /**
-             * Required. The wrapped data crypto key.
+             * The wrapped data crypto key.
              */
             wrappedKey: string;
         }
@@ -39528,7 +39528,7 @@ export namespace dlp {
              */
             customTag: string;
             /**
-             * Required. Identifies the column.
+             * Identifies the column.
              */
             field: outputs.dlp.v2.GooglePrivacyDlpV2FieldIdResponse;
             /**
@@ -39714,15 +39714,15 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2StatisticalTableResponse {
             /**
-             * Required. Quasi-identifier columns.
+             * Quasi-identifier columns.
              */
             quasiIds: outputs.dlp.v2.GooglePrivacyDlpV2QuasiIdentifierFieldResponse[];
             /**
-             * Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+             * The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
              */
             relativeFrequency: outputs.dlp.v2.GooglePrivacyDlpV2FieldIdResponse;
             /**
-             * Required. Auxiliary table location.
+             * Auxiliary table location.
              */
             table: outputs.dlp.v2.GooglePrivacyDlpV2BigQueryTableResponse;
         }
@@ -39851,7 +39851,7 @@ export namespace dlp {
              */
             customTag: string;
             /**
-             * Required. Identifies the column.
+             * Identifies the column.
              */
             field: outputs.dlp.v2.GooglePrivacyDlpV2FieldIdResponse;
             /**
@@ -39921,7 +39921,7 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2TransientCryptoKeyResponse {
             /**
-             * Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+             * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
              */
             name: string;
         }
@@ -39945,7 +39945,7 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2UnwrappedCryptoKeyResponse {
             /**
-             * Required. A 128/192/256 bit key.
+             * A 128/192/256 bit key.
              */
             key: string;
         }
@@ -40526,7 +40526,7 @@ export namespace domains {
          */
         export interface ContactResponse {
             /**
-             * Required. Email address of the contact.
+             * Email address of the contact.
              */
             email: string;
             /**
@@ -40534,11 +40534,11 @@ export namespace domains {
              */
             faxNumber: string;
             /**
-             * Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+             * Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
              */
             phoneNumber: string;
             /**
-             * Required. Postal address of the contact.
+             * Postal address of the contact.
              */
             postalAddress: outputs.domains.v1alpha2.PostalAddressResponse;
         }
@@ -40548,19 +40548,19 @@ export namespace domains {
          */
         export interface ContactSettingsResponse {
             /**
-             * Required. The administrative contact for the `Registration`.
+             * The administrative contact for the `Registration`.
              */
             adminContact: outputs.domains.v1alpha2.ContactResponse;
             /**
-             * Required. Privacy setting for the contacts associated with the `Registration`.
+             * Privacy setting for the contacts associated with the `Registration`.
              */
             privacy: string;
             /**
-             * Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+             * The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
              */
             registrantContact: outputs.domains.v1alpha2.ContactResponse;
             /**
-             * Required. The technical contact for the `Registration`.
+             * The technical contact for the `Registration`.
              */
             technicalContact: outputs.domains.v1alpha2.ContactResponse;
         }
@@ -40574,7 +40574,7 @@ export namespace domains {
              */
             dsRecords: outputs.domains.v1alpha2.DsRecordResponse[];
             /**
-             * Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+             * A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
              */
             nameServers: string[];
         }
@@ -40646,7 +40646,7 @@ export namespace domains {
          */
         export interface GlueRecordResponse {
             /**
-             * Required. Domain name of the host in Punycode format.
+             * Domain name of the host in Punycode format.
              */
             hostName: string;
             /**
@@ -40668,7 +40668,7 @@ export namespace domains {
              */
             dsRecords: outputs.domains.v1alpha2.DsRecordResponse[];
             /**
-             * Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+             * The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
              */
             dsState: string;
             /**
@@ -40724,7 +40724,7 @@ export namespace domains {
              */
             recipients: string[];
             /**
-             * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
              */
             regionCode: string;
             /**
@@ -40794,7 +40794,7 @@ export namespace domains {
          */
         export interface ContactResponse {
             /**
-             * Required. Email address of the contact.
+             * Email address of the contact.
              */
             email: string;
             /**
@@ -40802,11 +40802,11 @@ export namespace domains {
              */
             faxNumber: string;
             /**
-             * Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+             * Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
              */
             phoneNumber: string;
             /**
-             * Required. Postal address of the contact.
+             * Postal address of the contact.
              */
             postalAddress: outputs.domains.v1beta1.PostalAddressResponse;
         }
@@ -40816,19 +40816,19 @@ export namespace domains {
          */
         export interface ContactSettingsResponse {
             /**
-             * Required. The administrative contact for the `Registration`.
+             * The administrative contact for the `Registration`.
              */
             adminContact: outputs.domains.v1beta1.ContactResponse;
             /**
-             * Required. Privacy setting for the contacts associated with the `Registration`.
+             * Privacy setting for the contacts associated with the `Registration`.
              */
             privacy: string;
             /**
-             * Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+             * The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
              */
             registrantContact: outputs.domains.v1beta1.ContactResponse;
             /**
-             * Required. The technical contact for the `Registration`.
+             * The technical contact for the `Registration`.
              */
             technicalContact: outputs.domains.v1beta1.ContactResponse;
         }
@@ -40842,7 +40842,7 @@ export namespace domains {
              */
             dsRecords: outputs.domains.v1beta1.DsRecordResponse[];
             /**
-             * Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+             * A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
              */
             nameServers: string[];
         }
@@ -40914,7 +40914,7 @@ export namespace domains {
          */
         export interface GlueRecordResponse {
             /**
-             * Required. Domain name of the host in Punycode format.
+             * Domain name of the host in Punycode format.
              */
             hostName: string;
             /**
@@ -40936,7 +40936,7 @@ export namespace domains {
              */
             dsRecords: outputs.domains.v1beta1.DsRecordResponse[];
             /**
-             * Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+             * The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
              */
             dsState: string;
             /**
@@ -40992,7 +40992,7 @@ export namespace domains {
              */
             recipients: string[];
             /**
-             * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
              */
             regionCode: string;
             /**
@@ -41068,11 +41068,11 @@ export namespace eventarc {
              */
             path: string;
             /**
-             * Required. The region the Cloud Run service is deployed in.
+             * The region the Cloud Run service is deployed in.
              */
             region: string;
             /**
-             * Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+             * The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
              */
             service: string;
         }
@@ -41092,11 +41092,11 @@ export namespace eventarc {
          */
         export interface EventFilterResponse {
             /**
-             * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+             * The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
              */
             attribute: string;
             /**
-             * Required. The value for the attribute.
+             * The value for the attribute.
              */
             value: string;
         }
@@ -41204,11 +41204,11 @@ export namespace eventarc {
              */
             path: string;
             /**
-             * Required. The region the Cloud Run service is deployed in.
+             * The region the Cloud Run service is deployed in.
              */
             region: string;
             /**
-             * Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+             * The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
              */
             service: string;
         }
@@ -41250,11 +41250,11 @@ export namespace eventarc {
          */
         export interface MatchingCriteriaResponse {
             /**
-             * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+             * The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
              */
             attribute: string;
             /**
-             * Required. The value for the attribute.
+             * The value for the attribute.
              */
             value: string;
         }
@@ -41484,7 +41484,7 @@ export namespace firebasehosting {
              */
             region: string;
             /**
-             * Required. User-defined ID of the Cloud Run service.
+             * User-defined ID of the Cloud Run service.
              */
             serviceId: string;
         }
@@ -41532,11 +41532,11 @@ export namespace firebasehosting {
          */
         export interface DomainRedirectResponse {
             /**
-             * Required. The domain name to redirect to.
+             * The domain name to redirect to.
              */
             domainName: string;
             /**
-             * Required. The redirect status code.
+             * The redirect status code.
              */
             type: string;
         }
@@ -41550,7 +41550,7 @@ export namespace firebasehosting {
              */
             glob: string;
             /**
-             * Required. The additional headers to add to the response.
+             * The additional headers to add to the response.
              */
             headers: {[key: string]: string};
             /**
@@ -41564,7 +41564,7 @@ export namespace firebasehosting {
          */
         export interface I18nConfigResponse {
             /**
-             * Required. The user-supplied path where country and language specific content will be looked for within the public directory.
+             * The user-supplied path where country and language specific content will be looked for within the public directory.
              */
             root: string;
         }
@@ -41578,7 +41578,7 @@ export namespace firebasehosting {
              */
             glob: string;
             /**
-             * Required. The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+             * The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
              */
             location: string;
             /**
@@ -41586,7 +41586,7 @@ export namespace firebasehosting {
              */
             regex: string;
             /**
-             * Required. The status HTTP code to return in the response. It must be a valid 3xx status code.
+             * The status HTTP code to return in the response. It must be a valid 3xx status code.
              */
             statusCode: number;
         }
@@ -42188,11 +42188,11 @@ export namespace gameservices {
          */
         export interface ScalingConfigResponse {
             /**
-             * Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+             * Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
              */
             fleetAutoscalerSpec: string;
             /**
-             * Required. The name of the Scaling Config
+             * The name of the Scaling Config
              */
             name: string;
             /**
@@ -42508,11 +42508,11 @@ export namespace gameservices {
          */
         export interface ScalingConfigResponse {
             /**
-             * Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+             * Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
              */
             fleetAutoscalerSpec: string;
             /**
-             * Required. The name of the Scaling Config
+             * The name of the Scaling Config
              */
             name: string;
             /**
@@ -42560,7 +42560,7 @@ export namespace genomics {
              */
             mountPoint: string;
             /**
-             * Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+             * The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
              */
             name: string;
             /**
@@ -42576,7 +42576,7 @@ export namespace genomics {
              */
             source: string;
             /**
-             * Required. The type of the disk to create.
+             * The type of the disk to create.
              */
             type: string;
         }
@@ -42586,11 +42586,11 @@ export namespace genomics {
          */
         export interface DockerExecutorResponse {
             /**
-             * Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+             * The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
              */
             cmd: string;
             /**
-             * Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+             * Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
              */
             imageName: string;
         }
@@ -42600,11 +42600,11 @@ export namespace genomics {
          */
         export interface LocalCopyResponse {
             /**
-             * Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+             * The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
              */
             disk: string;
             /**
-             * Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+             * The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
              */
             path: string;
         }
@@ -42626,7 +42626,7 @@ export namespace genomics {
              */
             localCopy: outputs.genomics.v1alpha2.LocalCopyResponse;
             /**
-             * Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+             * Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
              */
             name: string;
         }
@@ -43606,7 +43606,7 @@ export namespace healthcare {
              */
             attributeDefinitionId: string;
             /**
-             * Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+             * The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
              */
             values: string[];
         }
@@ -43710,7 +43710,7 @@ export namespace healthcare {
          */
         export interface GoogleCloudHealthcareV1ConsentPolicyResponse {
             /**
-             * Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+             * The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
              */
             authorizationRule: outputs.healthcare.v1.ExprResponse;
             /**
@@ -43931,7 +43931,7 @@ export namespace healthcare {
              */
             signatureTime: string;
             /**
-             * Required. User's UUID provided by the client.
+             * User's UUID provided by the client.
              */
             userId: string;
         }
@@ -44131,7 +44131,7 @@ export namespace healthcare {
          */
         export interface GoogleCloudHealthcareV1beta1ConsentPolicyResponse {
             /**
-             * Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+             * The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
              */
             authorizationRule: outputs.healthcare.v1beta1.ExprResponse;
             /**
@@ -44422,7 +44422,7 @@ export namespace healthcare {
              */
             signatureTime: string;
             /**
-             * Required. User's UUID provided by the client.
+             * User's UUID provided by the client.
              */
             userId: string;
         }
@@ -44538,7 +44538,7 @@ export namespace iam {
          */
         export interface AwsResponse {
             /**
-             * Required. The AWS account ID.
+             * The AWS account ID.
              */
             accountId: string;
         }
@@ -44592,7 +44592,7 @@ export namespace iam {
              */
             allowedAudiences: string[];
             /**
-             * Required. The OIDC issuer URL.
+             * The OIDC issuer URL.
              */
             issuerUri: string;
         }
@@ -44878,7 +44878,7 @@ export namespace jobs {
              */
             recipients: string[];
             /**
-             * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
              */
             regionCode: string;
             /**
@@ -45102,7 +45102,7 @@ export namespace jobs {
              */
             recipients: string[];
             /**
-             * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
              */
             regionCode: string;
             /**
@@ -45168,11 +45168,11 @@ export namespace logging {
              */
             disabled: boolean;
             /**
-             * Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+             * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
              */
             filter: string;
             /**
-             * Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+             * A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
              */
             name: string;
             /**
@@ -45250,23 +45250,23 @@ export namespace managedidentities {
              */
             stateDescription: string;
             /**
-             * Required. The target DNS server IP addresses which can resolve the remote domain involved in the trust.
+             * The target DNS server IP addresses which can resolve the remote domain involved in the trust.
              */
             targetDnsIpAddresses: string[];
             /**
-             * Required. The fully qualified target domain name which will be in trust with the current domain.
+             * The fully qualified target domain name which will be in trust with the current domain.
              */
             targetDomainName: string;
             /**
-             * Required. The trust direction, which decides if the current domain is trusted, trusting, or both.
+             * The trust direction, which decides if the current domain is trusted, trusting, or both.
              */
             trustDirection: string;
             /**
-             * Required. The trust secret used for the handshake with the target domain. This will not be stored.
+             * The trust secret used for the handshake with the target domain. This will not be stored.
              */
             trustHandshakeSecret: string;
             /**
-             * Required. The type of trust represented by the trust resource.
+             * The type of trust represented by the trust resource.
              */
             trustType: string;
             /**
@@ -45489,11 +45489,11 @@ export namespace memcache {
          */
         export interface NodeConfigResponse {
             /**
-             * Required. Number of cpus per Memcached node.
+             * Number of cpus per Memcached node.
              */
             cpuCount: number;
             /**
-             * Required. Memory size in MiB for each Memcached node.
+             * Memory size in MiB for each Memcached node.
              */
             memorySizeMb: number;
         }
@@ -45553,11 +45553,11 @@ export namespace memcache {
          */
         export interface NodeConfigResponse {
             /**
-             * Required. Number of cpus per Memcached node.
+             * Number of cpus per Memcached node.
              */
             cpuCount: number;
             /**
-             * Required. Memory size in MiB for each Memcached node.
+             * Memory size in MiB for each Memcached node.
              */
             memorySizeMb: number;
         }
@@ -46267,11 +46267,11 @@ export namespace ml {
          */
         export interface GoogleCloudMlV1_Measurement_MetricResponse {
             /**
-             * Required. Metric name.
+             * Metric name.
              */
             metric: string;
             /**
-             * Required. The value for this metric.
+             * The value for this metric.
              */
             value: number;
         }
@@ -46347,11 +46347,11 @@ export namespace ml {
          */
         export interface GoogleCloudMlV1_StudyConfig_MetricSpecResponse {
             /**
-             * Required. The optimization goal of the metric.
+             * The optimization goal of the metric.
              */
             goal: string;
             /**
-             * Required. The name of the metric.
+             * The name of the metric.
              */
             metric: string;
         }
@@ -46381,7 +46381,7 @@ export namespace ml {
              */
             integerValueSpec: outputs.ml.v1.GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse;
             /**
-             * Required. The parameter name must be unique amongst all ParameterSpecs.
+             * The parameter name must be unique amongst all ParameterSpecs.
              */
             parameter: string;
             parentCategoricalValues: outputs.ml.v1.GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponse;
@@ -46392,7 +46392,7 @@ export namespace ml {
              */
             scaleType: string;
             /**
-             * Required. The type of the parameter.
+             * The type of the parameter.
              */
             type: string;
         }
@@ -46628,7 +46628,7 @@ export namespace ml {
              */
             enableTrialEarlyStopping: boolean;
             /**
-             * Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+             * The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
              */
             goal: string;
             /**
@@ -46648,7 +46648,7 @@ export namespace ml {
              */
             maxTrials: number;
             /**
-             * Required. The set of parameters to tune.
+             * The set of parameters to tune.
              */
             params: outputs.ml.v1.GoogleCloudMlV1__ParameterSpecResponse[];
             /**
@@ -46730,7 +46730,7 @@ export namespace ml {
              */
             minValue: number;
             /**
-             * Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+             * The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
              */
             parameterName: string;
             /**
@@ -46738,7 +46738,7 @@ export namespace ml {
              */
             scaleType: string;
             /**
-             * Required. The type of the parameter.
+             * The type of the parameter.
              */
             type: string;
         }
@@ -46752,11 +46752,11 @@ export namespace ml {
              */
             batchSize: string;
             /**
-             * Required. The format of the input data files.
+             * The format of the input data files.
              */
             dataFormat: string;
             /**
-             * Required. The Cloud Storage location of the input data files. May contain wildcards.
+             * The Cloud Storage location of the input data files. May contain wildcards.
              */
             inputPaths: string[];
             /**
@@ -46772,11 +46772,11 @@ export namespace ml {
              */
             outputDataFormat: string;
             /**
-             * Required. The output Google Cloud Storage location.
+             * The output Google Cloud Storage location.
              */
             outputPath: string;
             /**
-             * Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+             * The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
              */
             region: string;
             /**
@@ -46854,7 +46854,7 @@ export namespace ml {
          */
         export interface GoogleCloudMlV1__RequestLoggingConfigResponse {
             /**
-             * Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE 
+             * Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE 
              */
             bigqueryTableName: string;
             /**
@@ -46918,7 +46918,7 @@ export namespace ml {
              */
             metrics: outputs.ml.v1.GoogleCloudMlV1_StudyConfig_MetricSpecResponse[];
             /**
-             * Required. The set of parameters to tune.
+             * The set of parameters to tune.
              */
             parameters: outputs.ml.v1.GoogleCloudMlV1_StudyConfig_ParameterSpecResponse[];
         }
@@ -46968,7 +46968,7 @@ export namespace ml {
              */
             network: string;
             /**
-             * Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+             * The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
              */
             packageUris: string[];
             /**
@@ -46984,7 +46984,7 @@ export namespace ml {
              */
             parameterServerType: string;
             /**
-             * Required. The Python module name to run after installing the packages.
+             * The Python module name to run after installing the packages.
              */
             pythonModule: string;
             /**
@@ -46992,7 +46992,7 @@ export namespace ml {
              */
             pythonVersion: string;
             /**
-             * Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+             * The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
              */
             region: string;
             /**
@@ -47000,7 +47000,7 @@ export namespace ml {
              */
             runtimeVersion: string;
             /**
-             * Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+             * Specifies the machine types, the number of replicas for workers and parameter servers.
              */
             scaleTier: string;
             /**
@@ -47136,7 +47136,7 @@ export namespace ml {
              */
             manualScaling: outputs.ml.v1.GoogleCloudMlV1__ManualScalingResponse;
             /**
-             * Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+             * The name specified for the version when it was created. The version name must be unique within the model it is created in.
              */
             name: string;
             /**
@@ -47148,7 +47148,7 @@ export namespace ml {
              */
             predictionClass: string;
             /**
-             * Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+             * The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
              */
             pythonVersion: string;
             /**
@@ -47160,7 +47160,7 @@ export namespace ml {
              */
             routes: outputs.ml.v1.GoogleCloudMlV1__RouteMapResponse;
             /**
-             * Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+             * The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
              */
             runtimeVersion: string;
             /**
@@ -47342,7 +47342,7 @@ export namespace monitoring {
              */
             plotType: string;
             /**
-             * Required. Fields for querying time series data from the Stackdriver metrics API.
+             * Fields for querying time series data from the Stackdriver metrics API.
              */
             timeSeriesQuery: outputs.monitoring.v1.TimeSeriesQueryResponse;
         }
@@ -47422,7 +47422,7 @@ export namespace monitoring {
              */
             aggregation: outputs.monitoring.v1.AggregationResponse;
             /**
-             * Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+             * The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
              */
             filter: string;
         }
@@ -47468,7 +47468,7 @@ export namespace monitoring {
              */
             thresholds: outputs.monitoring.v1.ThresholdResponse[];
             /**
-             * Required. Fields for querying time series data from the Stackdriver metrics API.
+             * Fields for querying time series data from the Stackdriver metrics API.
              */
             timeSeriesQuery: outputs.monitoring.v1.TimeSeriesQueryResponse;
         }
@@ -47482,7 +47482,7 @@ export namespace monitoring {
              */
             minAlignmentPeriod: string;
             /**
-             * Required. The type of sparkchart to show in this chartView.
+             * The type of sparkchart to show in this chartView.
              */
             sparkChartType: string;
         }
@@ -47580,7 +47580,7 @@ export namespace monitoring {
              */
             aggregation: outputs.monitoring.v1.AggregationResponse;
             /**
-             * Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+             * The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
              */
             filter: string;
             /**
@@ -47650,7 +47650,7 @@ export namespace monitoring {
              */
             chartOptions: outputs.monitoring.v1.ChartOptionsResponse;
             /**
-             * Required. The data displayed in this chart.
+             * The data displayed in this chart.
              */
             dataSets: outputs.monitoring.v1.DataSetResponse[];
             /**
@@ -48024,7 +48024,7 @@ export namespace monitoring {
              */
             duration: string;
             /**
-             * Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+             * A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
              */
             filter: string;
             /**
@@ -48086,7 +48086,7 @@ export namespace monitoring {
              */
             duration: string;
             /**
-             * Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+             * A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
              */
             filter: string;
             /**
@@ -48104,11 +48104,11 @@ export namespace monitoring {
          */
         export interface MonitoredResourceResponse {
             /**
-             * Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+             * Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
              */
             labels: {[key: string]: string};
             /**
-             * Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+             * The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
              */
             type: string;
         }
@@ -49865,7 +49865,7 @@ export namespace notebooks {
          */
         export interface ContainerImageResponse {
             /**
-             * Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+             * The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
              */
             repository: string;
             /**
@@ -50013,7 +50013,7 @@ export namespace notebooks {
              */
             paramsYamlFile: string;
             /**
-             * Required. Scale tier of the hardware used for notebook execution.
+             * Scale tier of the hardware used for notebook execution.
              */
             scaleTier: string;
             /**
@@ -50101,7 +50101,7 @@ export namespace notebooks {
              */
             guestOsFeatures: outputs.notebooks.v1.RuntimeGuestOsFeatureResponse[];
             /**
-             * [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+             * A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
              */
             index: number;
             /**
@@ -50117,7 +50117,7 @@ export namespace notebooks {
              */
             kind: string;
             /**
-             * [Output Only] Any valid publicly visible licenses.
+             * Any valid publicly visible licenses.
              */
             licenses: string[];
             /**
@@ -50329,7 +50329,7 @@ export namespace notebooks {
              */
             containerImages: outputs.notebooks.v1.ContainerImageResponse[];
             /**
-             * Required. Data disk option configuration settings.
+             * Data disk option configuration settings.
              */
             dataDisk: outputs.notebooks.v1.LocalDiskResponse;
             /**
@@ -50349,7 +50349,7 @@ export namespace notebooks {
              */
             labels: {[key: string]: string};
             /**
-             * Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+             * The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
              */
             machineType: string;
             /**
@@ -50413,7 +50413,7 @@ export namespace notebooks {
              */
             imageName: string;
             /**
-             * Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+             * The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
              */
             project: string;
         }
@@ -50587,15 +50587,15 @@ export namespace osconfig {
          */
         export interface GcsObjectResponse {
             /**
-             * Required. Bucket of the Cloud Storage object.
+             * Bucket of the Cloud Storage object.
              */
             bucket: string;
             /**
-             * Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+             * Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
              */
             generationNumber: string;
             /**
-             * Required. Name of the Cloud Storage object.
+             * Name of the Cloud Storage object.
              */
             object: string;
         }
@@ -50611,11 +50611,11 @@ export namespace osconfig {
          */
         export interface MonthlyScheduleResponse {
             /**
-             * Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+             * One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
              */
             monthDay: number;
             /**
-             * Required. Week day in a month.
+             * Week day in a month.
              */
             weekDayOfMonth: outputs.osconfig.v1.WeekDayOfMonthResponse;
         }
@@ -50625,7 +50625,7 @@ export namespace osconfig {
          */
         export interface OneTimeScheduleResponse {
             /**
-             * Required. The desired patch job execution time.
+             * The desired patch job execution time.
              */
             executeTime: string;
         }
@@ -50727,7 +50727,7 @@ export namespace osconfig {
              */
             endTime: string;
             /**
-             * Required. The frequency unit of this recurring schedule.
+             * The frequency unit of this recurring schedule.
              */
             frequency: string;
             /**
@@ -50735,7 +50735,7 @@ export namespace osconfig {
              */
             lastExecuteTime: string;
             /**
-             * Required. Schedule with monthly executions.
+             * Schedule with monthly executions.
              */
             monthly: outputs.osconfig.v1.MonthlyScheduleResponse;
             /**
@@ -50747,15 +50747,15 @@ export namespace osconfig {
              */
             startTime: string;
             /**
-             * Required. Time of the day to run a recurring deployment.
+             * Time of the day to run a recurring deployment.
              */
             timeOfDay: outputs.osconfig.v1.TimeOfDayResponse;
             /**
-             * Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+             * Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
              */
             timeZone: outputs.osconfig.v1.TimeZoneResponse;
             /**
-             * Required. Schedule with weekly executions.
+             * Schedule with weekly executions.
              */
             weekly: outputs.osconfig.v1.WeeklyScheduleResponse;
         }
@@ -50797,11 +50797,11 @@ export namespace osconfig {
          */
         export interface WeekDayOfMonthResponse {
             /**
-             * Required. A day of the week.
+             * A day of the week.
              */
             dayOfWeek: string;
             /**
-             * Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+             * Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
              */
             weekOrdinal: number;
         }
@@ -50811,7 +50811,7 @@ export namespace osconfig {
          */
         export interface WeeklyScheduleResponse {
             /**
-             * Required. Day of the week.
+             * Day of the week.
              */
             dayOfWeek: string;
         }
@@ -50897,11 +50897,11 @@ export namespace osconfig {
              */
             archiveType: string;
             /**
-             * Required. List of components for this repository. Must contain at least one item.
+             * List of components for this repository. Must contain at least one item.
              */
             components: string[];
             /**
-             * Required. Distribution of this repository.
+             * Distribution of this repository.
              */
             distribution: string;
             /**
@@ -50909,7 +50909,7 @@ export namespace osconfig {
              */
             gpgKey: string;
             /**
-             * Required. URI for this repository.
+             * URI for this repository.
              */
             uri: string;
         }
@@ -51041,15 +51041,15 @@ export namespace osconfig {
          */
         export interface GcsObjectResponse {
             /**
-             * Required. Bucket of the Google Cloud Storage object.
+             * Bucket of the Google Cloud Storage object.
              */
             bucket: string;
             /**
-             * Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+             * Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
              */
             generationNumber: string;
             /**
-             * Required. Name of the Google Cloud Storage object.
+             * Name of the Google Cloud Storage object.
              */
             object: string;
         }
@@ -51059,11 +51059,11 @@ export namespace osconfig {
          */
         export interface GooRepositoryResponse {
             /**
-             * Required. The name of the repository.
+             * The name of the repository.
              */
             name: string;
             /**
-             * Required. The url of the repository.
+             * The url of the repository.
              */
             url: string;
         }
@@ -51079,11 +51079,11 @@ export namespace osconfig {
          */
         export interface MonthlyScheduleResponse {
             /**
-             * Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+             * One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
              */
             monthDay: number;
             /**
-             * Required. Week day in a month.
+             * Week day in a month.
              */
             weekDayOfMonth: outputs.osconfig.v1beta.WeekDayOfMonthResponse;
         }
@@ -51093,7 +51093,7 @@ export namespace osconfig {
          */
         export interface OneTimeScheduleResponse {
             /**
-             * Required. The desired patch job execution time.
+             * The desired patch job execution time.
              */
             executeTime: string;
         }
@@ -51133,7 +51133,7 @@ export namespace osconfig {
              */
             manager: string;
             /**
-             * Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+             * The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
              */
             name: string;
         }
@@ -51235,7 +51235,7 @@ export namespace osconfig {
              */
             endTime: string;
             /**
-             * Required. The frequency unit of this recurring schedule.
+             * The frequency unit of this recurring schedule.
              */
             frequency: string;
             /**
@@ -51243,7 +51243,7 @@ export namespace osconfig {
              */
             lastExecuteTime: string;
             /**
-             * Required. Schedule with monthly executions.
+             * Schedule with monthly executions.
              */
             monthly: outputs.osconfig.v1beta.MonthlyScheduleResponse;
             /**
@@ -51255,15 +51255,15 @@ export namespace osconfig {
              */
             startTime: string;
             /**
-             * Required. Time of the day to run a recurring deployment.
+             * Time of the day to run a recurring deployment.
              */
             timeOfDay: outputs.osconfig.v1beta.TimeOfDayResponse;
             /**
-             * Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+             * Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
              */
             timeZone: outputs.osconfig.v1beta.TimeZoneResponse;
             /**
-             * Required. Schedule with weekly executions.
+             * Schedule with weekly executions.
              */
             weekly: outputs.osconfig.v1beta.WeeklyScheduleResponse;
         }
@@ -51335,7 +51335,7 @@ export namespace osconfig {
              */
             installSteps: outputs.osconfig.v1beta.SoftwareRecipeStepResponse[];
             /**
-             * Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+             * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
              */
             name: string;
             /**
@@ -51353,11 +51353,11 @@ export namespace osconfig {
          */
         export interface SoftwareRecipeStepCopyFileResponse {
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
             artifactId: string;
             /**
-             * Required. The absolute path on the instance to put the file.
+             * The absolute path on the instance to put the file.
              */
             destination: string;
             /**
@@ -51397,7 +51397,7 @@ export namespace osconfig {
          */
         export interface SoftwareRecipeStepExtractArchiveResponse {
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
             artifactId: string;
             /**
@@ -51405,7 +51405,7 @@ export namespace osconfig {
              */
             destination: string;
             /**
-             * Required. The type of the archive to extract.
+             * The type of the archive to extract.
              */
             type: string;
         }
@@ -51415,7 +51415,7 @@ export namespace osconfig {
          */
         export interface SoftwareRecipeStepInstallDpkgResponse {
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
             artifactId: string;
         }
@@ -51429,7 +51429,7 @@ export namespace osconfig {
              */
             allowedExitCodes: number[];
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
             artifactId: string;
             /**
@@ -51443,7 +51443,7 @@ export namespace osconfig {
          */
         export interface SoftwareRecipeStepInstallRpmResponse {
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
             artifactId: string;
         }
@@ -51495,7 +51495,7 @@ export namespace osconfig {
              */
             interpreter: string;
             /**
-             * Required. The shell script to be executed.
+             * The shell script to be executed.
              */
             script: string;
         }
@@ -51537,11 +51537,11 @@ export namespace osconfig {
          */
         export interface WeekDayOfMonthResponse {
             /**
-             * Required. A day of the week.
+             * A day of the week.
              */
             dayOfWeek: string;
             /**
-             * Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+             * Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
              */
             weekOrdinal: number;
         }
@@ -51551,7 +51551,7 @@ export namespace osconfig {
          */
         export interface WeeklyScheduleResponse {
             /**
-             * Required. Day of the week.
+             * Day of the week.
              */
             dayOfWeek: string;
         }
@@ -51579,7 +51579,7 @@ export namespace osconfig {
          */
         export interface YumRepositoryResponse {
             /**
-             * Required. The location of the repository directory.
+             * The location of the repository directory.
              */
             baseUrl: string;
             /**
@@ -51619,7 +51619,7 @@ export namespace osconfig {
          */
         export interface ZypperRepositoryResponse {
             /**
-             * Required. The location of the repository directory.
+             * The location of the repository directory.
              */
             baseUrl: string;
             /**
@@ -51812,7 +51812,7 @@ export namespace privateca {
 
         export interface AllowedConfigListResponse {
             /**
-             * Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+             * All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
              */
             allowedConfigValues: outputs.privateca.v1beta1.ReusableConfigWrapperResponse[];
         }
@@ -51950,11 +51950,11 @@ export namespace privateca {
              */
             publicKey: outputs.privateca.v1beta1.PublicKeyResponse;
             /**
-             * Required. Describes how some of the technical fields in a certificate should be populated.
+             * Describes how some of the technical fields in a certificate should be populated.
              */
             reusableConfig: outputs.privateca.v1beta1.ReusableConfigWrapperResponse;
             /**
-             * Required. Specifies some of the values in a certificate that are related to the subject.
+             * Specifies some of the values in a certificate that are related to the subject.
              */
             subjectConfig: outputs.privateca.v1beta1.SubjectConfigResponse;
         }
@@ -52064,11 +52064,11 @@ export namespace privateca {
          */
         export interface IssuanceModesResponse {
             /**
-             * Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+             * When true, allows callers to create Certificates by specifying a CertificateConfig.
              */
             allowConfigBasedIssuance: boolean;
             /**
-             * Required. When true, allows callers to create Certificates by specifying a CSR.
+             * When true, allows callers to create Certificates by specifying a CSR.
              */
             allowCsrBasedIssuance: boolean;
         }
@@ -52078,11 +52078,11 @@ export namespace privateca {
          */
         export interface IssuingOptionsResponse {
             /**
-             * Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+             * When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
              */
             includeCaCertUrl: boolean;
             /**
-             * Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+             * When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
              */
             includeCrlAccessUrl: boolean;
         }
@@ -52162,11 +52162,11 @@ export namespace privateca {
          */
         export interface KeyVersionSpecResponse {
             /**
-             * Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+             * The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
              */
             algorithm: string;
             /**
-             * Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+             * The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
              */
             cloudKmsKeyVersion: string;
         }
@@ -52176,7 +52176,7 @@ export namespace privateca {
          */
         export interface ObjectIdResponse {
             /**
-             * Required. The parts of an OID path. The most significant parts of the path come first.
+             * The parts of an OID path. The most significant parts of the path come first.
              */
             objectIdPath: number[];
         }
@@ -52186,7 +52186,7 @@ export namespace privateca {
          */
         export interface PublicKeyResponse {
             /**
-             * Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+             * A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
              */
             key: string;
             /**
@@ -52226,11 +52226,11 @@ export namespace privateca {
          */
         export interface ReusableConfigWrapperResponse {
             /**
-             * Required. A resource path to a ReusableConfig in the format `projects/*&#47;locations/*&#47;reusableConfigs/*`.
+             * A resource path to a ReusableConfig in the format `projects/*&#47;locations/*&#47;reusableConfigs/*`.
              */
             reusableConfig: string;
             /**
-             * Required. A user-specified inline ReusableConfigValues.
+             * A user-specified inline ReusableConfigValues.
              */
             reusableConfigValues: outputs.privateca.v1beta1.ReusableConfigValuesResponse;
         }
@@ -52284,7 +52284,7 @@ export namespace privateca {
              */
             commonName: string;
             /**
-             * Required. Contains distinguished name fields such as the location and organization.
+             * Contains distinguished name fields such as the location and organization.
              */
             subject: outputs.privateca.v1beta1.SubjectResponse;
             /**
@@ -52366,7 +52366,7 @@ export namespace privateca {
          */
         export interface SubordinateConfigChainResponse {
             /**
-             * Required. Expected to be in leaf-to-root order according to RFC 5246.
+             * Expected to be in leaf-to-root order according to RFC 5246.
              */
             pemCertificates: string[];
         }
@@ -52376,11 +52376,11 @@ export namespace privateca {
          */
         export interface SubordinateConfigResponse {
             /**
-             * Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*`.
+             * This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*`.
              */
             certificateAuthority: string;
             /**
-             * Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+             * Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
              */
             pemIssuerChain: outputs.privateca.v1beta1.SubordinateConfigChainResponse;
         }
@@ -52390,15 +52390,15 @@ export namespace privateca {
          */
         export interface X509ExtensionResponse {
             /**
-             * Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+             * Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
              */
             critical: boolean;
             /**
-             * Required. The OID for this X.509 extension.
+             * The OID for this X.509 extension.
              */
             objectId: outputs.privateca.v1beta1.ObjectIdResponse;
             /**
-             * Required. The value of this X.509 extension.
+             * The value of this X.509 extension.
              */
             value: string;
         }
@@ -52536,7 +52536,7 @@ export namespace pubsub {
              */
             encoding: string;
             /**
-             * Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+             * The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
              */
             schema: string;
         }
@@ -52692,7 +52692,7 @@ export namespace recommendationengine {
          */
         export interface GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse {
             /**
-             * Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+             * Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
              */
             categories: string[];
         }
@@ -52720,7 +52720,7 @@ export namespace recommendationengine {
              */
             height: number;
             /**
-             * Required. URL of the image with a length limit of 5 KiB.
+             * URL of the image with a length limit of 5 KiB.
              */
             uri: string;
             /**
@@ -52748,11 +52748,11 @@ export namespace recommendationengine {
          */
         export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse {
             /**
-             * Required. The maximum product price.
+             * The maximum product price.
              */
             max: number;
             /**
-             * Required. The minimum product price.
+             * The minimum product price.
              */
             min: number;
         }
@@ -52950,11 +52950,11 @@ export namespace remotebuildexecution {
              */
             accelerator: outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse;
             /**
-             * Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+             * Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
              */
             diskSizeGb: string;
             /**
-             * Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+             * Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
              */
             diskType: string;
             /**
@@ -52962,7 +52962,7 @@ export namespace remotebuildexecution {
              */
             labels: {[key: string]: string};
             /**
-             * Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+             * Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
              */
             machineType: string;
             /**
@@ -53004,7 +53004,7 @@ export namespace retail {
              */
             height: number;
             /**
-             * Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+             * URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
              */
             uri: string;
             /**
@@ -53046,7 +53046,7 @@ export namespace retail {
              */
             height: number;
             /**
-             * Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+             * URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
              */
             uri: string;
             /**
@@ -53088,7 +53088,7 @@ export namespace retail {
              */
             height: number;
             /**
-             * Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+             * URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
              */
             uri: string;
             /**
@@ -54309,7 +54309,7 @@ export namespace run {
              */
             failed: number;
             /**
-             * Required. Index of the instance, unique per Job, and beginning at 0.
+             * Index of the instance, unique per Job, and beginning at 0.
              */
             index: number;
             /**
@@ -54379,11 +54379,11 @@ export namespace run {
              */
             severity: string;
             /**
-             * Required. Status of the condition, one of True, False, Unknown.
+             * Status of the condition, one of True, False, Unknown.
              */
             status: string;
             /**
-             * Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+             * Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
              */
             type: string;
         }
@@ -54981,7 +54981,7 @@ export namespace secretmanager {
          */
         export interface CustomerManagedEncryptionResponse {
             /**
-             * Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+             * The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
              */
             kmsKeyName: string;
         }
@@ -55055,7 +55055,7 @@ export namespace secretmanager {
          */
         export interface TopicResponse {
             /**
-             * Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*&#47;topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+             * The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*&#47;topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
              */
             name: string;
         }
@@ -55065,7 +55065,7 @@ export namespace secretmanager {
          */
         export interface UserManagedResponse {
             /**
-             * Required. The list of Replicas for this Secret. Cannot be empty.
+             * The list of Replicas for this Secret. Cannot be empty.
              */
             replicas: outputs.secretmanager.v1.ReplicaResponse[];
         }
@@ -55175,7 +55175,7 @@ export namespace secretmanager {
          */
         export interface UserManagedResponse {
             /**
-             * Required. The list of Replicas for this Secret. Cannot be empty.
+             * The list of Replicas for this Secret. Cannot be empty.
              */
             replicas: outputs.secretmanager.v1beta1.ReplicaResponse[];
         }
@@ -56252,7 +56252,7 @@ export namespace servicemanagement {
              */
             displayName: string;
             /**
-             * Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+             * A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
              */
             labels: outputs.servicemanagement.v1.LabelDescriptorResponse[];
             /**
@@ -56264,7 +56264,7 @@ export namespace servicemanagement {
              */
             name: string;
             /**
-             * Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+             * The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
              */
             type: string;
         }
@@ -57863,11 +57863,11 @@ export namespace storagetransfer {
          */
         export interface AwsAccessKeyResponse {
             /**
-             * Required. AWS access key ID.
+             * AWS access key ID.
              */
             accessKeyId: string;
             /**
-             * Required. AWS secret access key. This field is not returned in RPC responses.
+             * AWS secret access key. This field is not returned in RPC responses.
              */
             secretAccessKey: string;
         }
@@ -57877,11 +57877,11 @@ export namespace storagetransfer {
          */
         export interface AwsS3DataResponse {
             /**
-             * Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+             * Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
              */
             awsAccessKey: outputs.storagetransfer.v1.AwsAccessKeyResponse;
             /**
-             * Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+             * S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
              */
             bucketName: string;
             /**
@@ -57895,11 +57895,11 @@ export namespace storagetransfer {
          */
         export interface AzureBlobStorageDataResponse {
             /**
-             * Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+             * Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
              */
             azureCredentials: outputs.storagetransfer.v1.AzureCredentialsResponse;
             /**
-             * Required. The container to transfer from the Azure Storage account.
+             * The container to transfer from the Azure Storage account.
              */
             container: string;
             /**
@@ -57907,7 +57907,7 @@ export namespace storagetransfer {
              */
             path: string;
             /**
-             * Required. The name of the Azure Storage account.
+             * The name of the Azure Storage account.
              */
             storageAccount: string;
         }
@@ -57917,7 +57917,7 @@ export namespace storagetransfer {
          */
         export interface AzureCredentialsResponse {
             /**
-             * Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+             * Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
              */
             sasToken: string;
         }
@@ -57945,7 +57945,7 @@ export namespace storagetransfer {
          */
         export interface GcsDataResponse {
             /**
-             * Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+             * Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
              */
             bucketName: string;
             /**
@@ -57959,7 +57959,7 @@ export namespace storagetransfer {
          */
         export interface HttpDataResponse {
             /**
-             * Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+             * The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
              */
             listUrl: string;
         }
@@ -57973,11 +57973,11 @@ export namespace storagetransfer {
              */
             eventTypes: string[];
             /**
-             * Required. The desired format of the notification message payloads.
+             * The desired format of the notification message payloads.
              */
             payloadFormat: string;
             /**
-             * Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+             * The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
              */
             pubsubTopic: string;
         }
@@ -58029,7 +58029,7 @@ export namespace storagetransfer {
              */
             scheduleEndDate: outputs.storagetransfer.v1.DateResponse;
             /**
-             * Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+             * The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
              */
             scheduleStartDate: outputs.storagetransfer.v1.DateResponse;
             /**
@@ -58131,7 +58131,7 @@ export namespace testing {
          */
         export interface AndroidDeviceListResponse {
             /**
-             * Required. A list of Android devices.
+             * A list of Android devices.
              */
             androidDevices: outputs.testing.v1.AndroidDeviceResponse[];
         }
@@ -58141,19 +58141,19 @@ export namespace testing {
          */
         export interface AndroidDeviceResponse {
             /**
-             * Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             androidModelId: string;
             /**
-             * Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             androidVersionId: string;
             /**
-             * Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             locale: string;
             /**
-             * Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+             * How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             orientation: string;
         }
@@ -58183,7 +58183,7 @@ export namespace testing {
              */
             shardingOption: outputs.testing.v1.ShardingOptionResponse;
             /**
-             * Required. The APK containing the test code to be executed.
+             * The APK containing the test code to be executed.
              */
             testApk: outputs.testing.v1.FileReferenceResponse;
             /**
@@ -58205,19 +58205,19 @@ export namespace testing {
          */
         export interface AndroidMatrixResponse {
             /**
-             * Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             androidModelIds: string[];
             /**
-             * Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             androidVersionIds: string[];
             /**
-             * Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             locales: string[];
             /**
-             * Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             orientations: string[];
         }
@@ -58319,11 +58319,11 @@ export namespace testing {
          */
         export interface ClientInfoDetailResponse {
             /**
-             * Required. The key of detailed client information.
+             * The key of detailed client information.
              */
             key: string;
             /**
-             * Required. The value of detailed client information.
+             * The value of detailed client information.
              */
             value: string;
         }
@@ -58337,7 +58337,7 @@ export namespace testing {
              */
             clientInfoDetails: outputs.testing.v1.ClientInfoDetailResponse[];
             /**
-             * Required. Client name, such as gcloud.
+             * Client name, such as gcloud.
              */
             name: string;
         }
@@ -58423,7 +58423,7 @@ export namespace testing {
          */
         export interface GoogleCloudStorageResponse {
             /**
-             * Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+             * The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
              */
             gcsPath: string;
         }
@@ -58451,7 +58451,7 @@ export namespace testing {
          */
         export interface IosDeviceListResponse {
             /**
-             * Required. A list of iOS devices.
+             * A list of iOS devices.
              */
             iosDevices: outputs.testing.v1.IosDeviceResponse[];
         }
@@ -58461,19 +58461,19 @@ export namespace testing {
          */
         export interface IosDeviceResponse {
             /**
-             * Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             iosModelId: string;
             /**
-             * Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             iosVersionId: string;
             /**
-             * Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             locale: string;
             /**
-             * Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+             * How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
              */
             orientation: string;
         }
@@ -58487,7 +58487,7 @@ export namespace testing {
              */
             appBundleId: string;
             /**
-             * Required. The .ipa of the application to test.
+             * The .ipa of the application to test.
              */
             appIpa: outputs.testing.v1.FileReferenceResponse;
             /**
@@ -58531,7 +58531,7 @@ export namespace testing {
              */
             testSpecialEntitlements: boolean;
             /**
-             * Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+             * The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
              */
             testsZip: outputs.testing.v1.FileReferenceResponse;
             /**
@@ -58555,7 +58555,7 @@ export namespace testing {
          */
         export interface ManualShardingResponse {
             /**
-             * Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+             * Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
              */
             testTargetsForShard: outputs.testing.v1.TestTargetsForShardResponse[];
         }
@@ -58565,11 +58565,11 @@ export namespace testing {
          */
         export interface ObbFileResponse {
             /**
-             * Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+             * Opaque Binary Blob (OBB) file(s) to install on the device.
              */
             obb: outputs.testing.v1.FileReferenceResponse;
             /**
-             * Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+             * OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
              */
             obbFileName: string;
         }
@@ -58579,11 +58579,11 @@ export namespace testing {
          */
         export interface RegularFileResponse {
             /**
-             * Required. The source file.
+             * The source file.
              */
             content: outputs.testing.v1.FileReferenceResponse;
             /**
-             * Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+             * Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
              */
             devicePath: string;
         }
@@ -58615,7 +58615,7 @@ export namespace testing {
          */
         export interface RoboDirectiveResponse {
             /**
-             * Required. The type of action that Robo should perform on the specified element.
+             * The type of action that Robo should perform on the specified element.
              */
             actionType: string;
             /**
@@ -58623,7 +58623,7 @@ export namespace testing {
              */
             inputText: string;
             /**
-             * Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+             * The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
              */
             resourceName: string;
         }
@@ -58876,11 +58876,11 @@ export namespace testing {
          */
         export interface ToolResultsHistoryResponse {
             /**
-             * Required. A tool results history ID.
+             * A tool results history ID.
              */
             historyId: string;
             /**
-             * Required. The cloud project that owns the tool results history.
+             * The cloud project that owns the tool results history.
              */
             project: string;
         }
@@ -58912,7 +58912,7 @@ export namespace testing {
          */
         export interface UniformShardingResponse {
             /**
-             * Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+             * Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
              */
             numShards: number;
         }
@@ -59633,7 +59633,7 @@ export namespace transcoder {
          */
         export interface Aes128EncryptionResponse {
             /**
-             * Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+             * URI of the key delivery service. This URI is inserted into the M3U8 header.
              */
             keyUri: string;
         }
@@ -59657,7 +59657,7 @@ export namespace transcoder {
              */
             endTimeOffset: string;
             /**
-             * Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+             * Type of fade animation: `FADE_IN` or `FADE_OUT`.
              */
             fadeType: string;
             /**
@@ -59711,7 +59711,7 @@ export namespace transcoder {
              */
             channels: outputs.transcoder.v1beta1.AudioChannelResponse[];
             /**
-             * Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+             * The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
              */
             key: string;
         }
@@ -59721,7 +59721,7 @@ export namespace transcoder {
          */
         export interface AudioChannelInputResponse {
             /**
-             * Required. The zero-based index of the channel in the input file.
+             * The zero-based index of the channel in the input file.
              */
             channel: number;
             /**
@@ -59729,11 +59729,11 @@ export namespace transcoder {
              */
             gainDb: number;
             /**
-             * Required. The `Input.key` that identifies the input file.
+             * The `Input.key` that identifies the input file.
              */
             key: string;
             /**
-             * Required. The zero-based index of the track in the input file.
+             * The zero-based index of the track in the input file.
              */
             track: number;
         }
@@ -59771,7 +59771,7 @@ export namespace transcoder {
          */
         export interface AudioStreamResponse {
             /**
-             * Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+             * Audio bitrate in bits per second. Must be between 1 and 10,000,000.
              */
             bitrateBps: number;
             /**
@@ -59917,11 +59917,11 @@ export namespace transcoder {
              */
             aes128: outputs.transcoder.v1beta1.Aes128EncryptionResponse;
             /**
-             * Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+             * 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
              */
             iv: string;
             /**
-             * Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+             * 128 bit encryption key represented as lowercase hexadecimal digits.
              */
             key: string;
             /**
@@ -59957,7 +59957,7 @@ export namespace transcoder {
              */
             resolution: outputs.transcoder.v1beta1.NormalizedCoordinateResponse;
             /**
-             * Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+             * URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
              */
             uri: string;
         }
@@ -60035,11 +60035,11 @@ export namespace transcoder {
              */
             fileName: string;
             /**
-             * Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+             * List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
              */
             muxStreams: string[];
             /**
-             * Required. Type of the manifest, can be "HLS" or "DASH".
+             * Type of the manifest, can be "HLS" or "DASH".
              */
             type: string;
         }
@@ -60049,11 +60049,11 @@ export namespace transcoder {
          */
         export interface MpegCommonEncryptionResponse {
             /**
-             * Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+             * 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
              */
             keyId: string;
             /**
-             * Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+             * Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
              */
             scheme: string;
         }
@@ -60229,7 +60229,7 @@ export namespace transcoder {
          */
         export interface SampleAesEncryptionResponse {
             /**
-             * Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+             * URI of the key delivery service. This URI is inserted into the M3U8 header.
              */
             keyUri: string;
         }
@@ -60239,7 +60239,7 @@ export namespace transcoder {
          */
         export interface SegmentSettingsResponse {
             /**
-             * Required. Create an individual segment file. The default is `false`.
+             * Create an individual segment file. The default is `false`.
              */
             individualSegments: boolean;
             /**
@@ -60261,7 +60261,7 @@ export namespace transcoder {
              */
             endTimeOffset: string;
             /**
-             * Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+             * File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
              */
             filePrefix: string;
             /**
@@ -60281,11 +60281,11 @@ export namespace transcoder {
              */
             rowCount: number;
             /**
-             * Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+             * The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
              */
             spriteHeightPixels: number;
             /**
-             * Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+             * The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
              */
             spriteWidthPixels: number;
             /**
@@ -60307,7 +60307,7 @@ export namespace transcoder {
              */
             inputs: outputs.transcoder.v1beta1.TextInputResponse[];
             /**
-             * Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+             * The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
              */
             key: string;
         }
@@ -60317,11 +60317,11 @@ export namespace transcoder {
          */
         export interface TextInputResponse {
             /**
-             * Required. The `Input.key` that identifies the input file.
+             * The `Input.key` that identifies the input file.
              */
             key: string;
             /**
-             * Required. The zero-based index of the track in the input file.
+             * The zero-based index of the track in the input file.
              */
             track: number;
         }
@@ -60335,7 +60335,7 @@ export namespace transcoder {
              */
             codec: string;
             /**
-             * Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+             * The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
              */
             languageCode: string;
             /**
@@ -60365,7 +60365,7 @@ export namespace transcoder {
              */
             bPyramid: boolean;
             /**
-             * Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+             * The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
              */
             bitrateBps: number;
             /**
@@ -60385,7 +60385,7 @@ export namespace transcoder {
              */
             entropyCoder: string;
             /**
-             * Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+             * The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
              */
             frameRate: number;
             /**
@@ -60443,7 +60443,7 @@ export namespace translate {
          */
         export interface GcsSourceResponse {
             /**
-             * Required. Source data URI. For example, `gs://my_bucket/my_object`.
+             * Source data URI. For example, `gs://my_bucket/my_object`.
              */
             inputUri: string;
         }
@@ -60453,7 +60453,7 @@ export namespace translate {
          */
         export interface GlossaryInputConfigResponse {
             /**
-             * Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+             * Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
              */
             gcsSource: outputs.translate.v3.GcsSourceResponse;
         }
@@ -60463,11 +60463,11 @@ export namespace translate {
          */
         export interface LanguageCodePairResponse {
             /**
-             * Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+             * The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
              */
             sourceLanguageCode: string;
             /**
-             * Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+             * The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
              */
             targetLanguageCode: string;
         }
@@ -60489,7 +60489,7 @@ export namespace translate {
          */
         export interface GcsSourceResponse {
             /**
-             * Required. Source data URI. For example, `gs://my_bucket/my_object`.
+             * Source data URI. For example, `gs://my_bucket/my_object`.
              */
             inputUri: string;
         }
@@ -60499,7 +60499,7 @@ export namespace translate {
          */
         export interface GlossaryInputConfigResponse {
             /**
-             * Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
+             * Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
              */
             gcsSource: outputs.translate.v3beta1.GcsSourceResponse;
         }
@@ -60509,11 +60509,11 @@ export namespace translate {
          */
         export interface LanguageCodePairResponse {
             /**
-             * Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+             * The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
              */
             sourceLanguageCode: string;
             /**
-             * Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+             * The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
              */
             targetLanguageCode: string;
         }
@@ -60651,15 +60651,15 @@ export namespace websecurityscanner {
          */
         export interface CustomAccountResponse {
             /**
-             * Required. The login form URL of the website.
+             * The login form URL of the website.
              */
             loginUrl: string;
             /**
-             * Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
             password: string;
             /**
-             * Required. The user name of the custom account.
+             * The user name of the custom account.
              */
             username: string;
         }
@@ -60669,11 +60669,11 @@ export namespace websecurityscanner {
          */
         export interface GoogleAccountResponse {
             /**
-             * Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
             password: string;
             /**
-             * Required. The user name of the Google account.
+             * The user name of the Google account.
              */
             username: string;
         }
@@ -60693,7 +60693,7 @@ export namespace websecurityscanner {
          */
         export interface IapTestServiceAccountInfoResponse {
             /**
-             * Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+             * Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
              */
             targetAudienceClientId: string;
         }
@@ -60703,7 +60703,7 @@ export namespace websecurityscanner {
          */
         export interface ScheduleResponse {
             /**
-             * Required. The duration of time between executions in days.
+             * The duration of time between executions in days.
              */
             intervalDurationDays: number;
             /**
@@ -60733,15 +60733,15 @@ export namespace websecurityscanner {
          */
         export interface CustomAccountResponse {
             /**
-             * Required. The login form URL of the website.
+             * The login form URL of the website.
              */
             loginUrl: string;
             /**
-             * Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
             password: string;
             /**
-             * Required. The user name of the custom account.
+             * The user name of the custom account.
              */
             username: string;
         }
@@ -60751,11 +60751,11 @@ export namespace websecurityscanner {
          */
         export interface GoogleAccountResponse {
             /**
-             * Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
             password: string;
             /**
-             * Required. The user name of the Google account.
+             * The user name of the Google account.
              */
             username: string;
         }
@@ -60807,7 +60807,7 @@ export namespace websecurityscanner {
          */
         export interface ScheduleResponse {
             /**
-             * Required. The duration of time between executions in days.
+             * The duration of time between executions in days.
              */
             intervalDurationDays: number;
             /**
@@ -60841,15 +60841,15 @@ export namespace websecurityscanner {
          */
         export interface CustomAccountResponse {
             /**
-             * Required. The login form URL of the website.
+             * The login form URL of the website.
              */
             loginUrl: string;
             /**
-             * Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
             password: string;
             /**
-             * Required. The user name of the custom account.
+             * The user name of the custom account.
              */
             username: string;
         }
@@ -60859,11 +60859,11 @@ export namespace websecurityscanner {
          */
         export interface GoogleAccountResponse {
             /**
-             * Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
             password: string;
             /**
-             * Required. The user name of the Google account.
+             * The user name of the Google account.
              */
             username: string;
         }
@@ -60883,7 +60883,7 @@ export namespace websecurityscanner {
          */
         export interface IapTestServiceAccountInfoResponse {
             /**
-             * Required. Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
+             * Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
              */
             targetAudienceClientId: string;
         }
@@ -60985,7 +60985,7 @@ export namespace websecurityscanner {
          */
         export interface ScheduleResponse {
             /**
-             * Required. The duration of time between executions in days.
+             * The duration of time between executions in days.
              */
             intervalDurationDays: number;
             /**

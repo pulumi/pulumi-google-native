@@ -51,7 +51,7 @@ export interface GetCustomerResult {
      */
     readonly createTime: string;
     /**
-     * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+     * Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
      */
     readonly domain: string;
     /**
@@ -63,11 +63,11 @@ export interface GetCustomerResult {
      */
     readonly name: string;
     /**
-     * Required. Name of the organization that the customer entity represents.
+     * Name of the organization that the customer entity represents.
      */
     readonly orgDisplayName: string;
     /**
-     * Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+     * Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
      */
     readonly orgPostalAddress: outputs.cloudchannel.v1.GoogleTypePostalAddressResponse;
     /**

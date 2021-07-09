@@ -40,7 +40,7 @@ export class Flow extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The human-readable name of the flow.
+     * The human-readable name of the flow.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -77,6 +77,9 @@ export class Flow extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
+            }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
             }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
@@ -121,9 +124,9 @@ export interface FlowArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The human-readable name of the flow.
+     * The human-readable name of the flow.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
      */

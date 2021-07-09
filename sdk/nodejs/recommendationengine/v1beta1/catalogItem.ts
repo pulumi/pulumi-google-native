@@ -36,7 +36,7 @@ export class CatalogItem extends pulumi.CustomResource {
     }
 
     /**
-     * Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+     * Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
      */
     public readonly categoryHierarchies!: pulumi.Output<outputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse[]>;
     /**
@@ -60,7 +60,7 @@ export class CatalogItem extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
-     * Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+     * Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
      */
     public readonly title!: pulumi.Output<string>;
 
@@ -78,11 +78,20 @@ export class CatalogItem extends pulumi.CustomResource {
             if ((!args || args.catalogId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'catalogId'");
             }
+            if ((!args || args.categoryHierarchies === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'categoryHierarchies'");
+            }
+            if ((!args || args.id === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'id'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.title === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'title'");
             }
             inputs["catalogId"] = args ? args.catalogId : undefined;
             inputs["categoryHierarchies"] = args ? args.categoryHierarchies : undefined;
@@ -117,17 +126,17 @@ export class CatalogItem extends pulumi.CustomResource {
 export interface CatalogItemArgs {
     catalogId: pulumi.Input<string>;
     /**
-     * Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+     * Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
      */
-    categoryHierarchies?: pulumi.Input<pulumi.Input<inputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs>[]>;
+    categoryHierarchies: pulumi.Input<pulumi.Input<inputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs>[]>;
     /**
      * Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+     * Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
     /**
      * Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
      */
@@ -147,7 +156,7 @@ export interface CatalogItemArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+     * Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
      */
-    title?: pulumi.Input<string>;
+    title: pulumi.Input<string>;
 }

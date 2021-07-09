@@ -36,7 +36,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+     * The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
      */
     public readonly clusterName!: pulumi.Output<string>;
     /**
@@ -44,7 +44,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly clusterUuid!: pulumi.Output<string>;
     /**
-     * Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+     * The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
      */
     public readonly config!: pulumi.Output<outputs.dataproc.v1.ClusterConfigResponse>;
     /**
@@ -56,7 +56,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly metrics!: pulumi.Output<outputs.dataproc.v1.ClusterMetricsResponse>;
     /**
-     * Required. The Google Cloud Platform project ID that the cluster belongs to.
+     * The Google Cloud Platform project ID that the cluster belongs to.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -79,6 +79,12 @@ export class Cluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.clusterName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clusterName'");
+            }
+            if ((!args || args.config === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'config'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -117,19 +123,19 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterArgs {
     /**
-     * Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+     * The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName: pulumi.Input<string>;
     /**
-     * Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+     * The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
      */
-    config?: pulumi.Input<inputs.dataproc.v1.ClusterConfigArgs>;
+    config: pulumi.Input<inputs.dataproc.v1.ClusterConfigArgs>;
     /**
      * Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. The Google Cloud Platform project ID that the cluster belongs to.
+     * The Google Cloud Platform project ID that the cluster belongs to.
      */
     project: pulumi.Input<string>;
     region: pulumi.Input<string>;

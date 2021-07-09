@@ -39,7 +39,7 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Required. ID of the attached environment.
+     * ID of the attached environment.
      */
     public readonly environment!: pulumi.Output<string>;
     /**
@@ -60,6 +60,9 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.envgroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'envgroupId'");
+            }
+            if ((!args || args.environment === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environment'");
             }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
@@ -87,9 +90,9 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
 export interface EnvgroupAttachmentArgs {
     envgroupId: pulumi.Input<string>;
     /**
-     * Required. ID of the attached environment.
+     * ID of the attached environment.
      */
-    environment?: pulumi.Input<string>;
+    environment: pulumi.Input<string>;
     /**
      * ID of the environment group attachment.
      */

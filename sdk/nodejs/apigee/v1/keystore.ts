@@ -39,7 +39,7 @@ export class Keystore extends pulumi.CustomResource {
      */
     public /*out*/ readonly aliases!: pulumi.Output<string[]>;
     /**
-     * Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+     * Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -56,6 +56,9 @@ export class Keystore extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
@@ -81,8 +84,8 @@ export class Keystore extends pulumi.CustomResource {
 export interface KeystoreArgs {
     environmentId: pulumi.Input<string>;
     /**
-     * Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+     * Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
 }

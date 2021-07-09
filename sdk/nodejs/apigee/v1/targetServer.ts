@@ -40,7 +40,7 @@ export class TargetServer extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+     * The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
      */
     public readonly host!: pulumi.Output<string>;
     /**
@@ -48,11 +48,11 @@ export class TargetServer extends pulumi.CustomResource {
      */
     public readonly isEnabled!: pulumi.Output<boolean>;
     /**
-     * Required. The resource id of this target server. Values must match the regular expression 
+     * The resource id of this target server. Values must match the regular expression 
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+     * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      */
     public readonly port!: pulumi.Output<number>;
     /**
@@ -74,8 +74,17 @@ export class TargetServer extends pulumi.CustomResource {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
+            if ((!args || args.host === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'host'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
+            }
+            if ((!args || args.port === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'port'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
@@ -110,22 +119,22 @@ export interface TargetServerArgs {
     description?: pulumi.Input<string>;
     environmentId: pulumi.Input<string>;
     /**
-     * Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+     * The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
      */
-    host?: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     /**
      * Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
      */
     isEnabled?: pulumi.Input<boolean>;
     /**
-     * Required. The resource id of this target server. Values must match the regular expression 
+     * The resource id of this target server. Values must match the regular expression 
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
-     * Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+     * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      */
-    port?: pulumi.Input<number>;
+    port: pulumi.Input<number>;
     /**
      * Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      */

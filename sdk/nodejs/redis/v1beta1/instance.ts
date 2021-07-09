@@ -76,11 +76,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Required. Redis memory size in GiB.
+     * Redis memory size in GiB.
      */
     public readonly memorySizeGb!: pulumi.Output<number>;
     /**
-     * Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+     * Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -116,7 +116,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusMessage!: pulumi.Output<string>;
     /**
-     * Required. The service tier of the instance.
+     * The service tier of the instance.
      */
     public readonly tier!: pulumi.Output<string>;
     /**
@@ -141,8 +141,17 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            if ((!args || args.memorySizeGb === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'memorySizeGb'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.tier === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'tier'");
             }
             inputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
             inputs["authEnabled"] = args ? args.authEnabled : undefined;
@@ -233,13 +242,13 @@ export interface InstanceArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Required. Redis memory size in GiB.
+     * Redis memory size in GiB.
      */
-    memorySizeGb?: pulumi.Input<number>;
+    memorySizeGb: pulumi.Input<number>;
     /**
-     * Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+     * Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
@@ -254,9 +263,9 @@ export interface InstanceArgs {
      */
     reservedIpRange?: pulumi.Input<string>;
     /**
-     * Required. The service tier of the instance.
+     * The service tier of the instance.
      */
-    tier?: pulumi.Input<enums.redis.v1beta1.InstanceTier>;
+    tier: pulumi.Input<enums.redis.v1beta1.InstanceTier>;
     /**
      * Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
      */

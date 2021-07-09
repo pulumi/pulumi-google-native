@@ -52,7 +52,7 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The display name of the dataset. Maximum of 64 characters.
+     * The display name of the dataset. Maximum of 64 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -79,6 +79,9 @@ export class Dataset extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -117,9 +120,9 @@ export interface DatasetArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The display name of the dataset. Maximum of 64 characters.
+     * The display name of the dataset. Maximum of 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
      */

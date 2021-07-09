@@ -63,7 +63,7 @@ export interface GetJobResult {
      */
     readonly pigJob: outputs.dataproc.v1beta2.PigJobResponse;
     /**
-     * Required. Job information, including how, when, and where to run the job.
+     * Job information, including how, when, and where to run the job.
      */
     readonly placement: outputs.dataproc.v1beta2.JobPlacementResponse;
     /**

@@ -40,7 +40,7 @@ export class TestMatrix extends pulumi.CustomResource {
      */
     public readonly clientInfo!: pulumi.Output<outputs.testing.v1.ClientInfoResponse>;
     /**
-     * Required. The devices the tests are being executed on.
+     * The devices the tests are being executed on.
      */
     public readonly environmentMatrix!: pulumi.Output<outputs.testing.v1.EnvironmentMatrixResponse>;
     /**
@@ -64,7 +64,7 @@ export class TestMatrix extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Required. Where the results for the matrix are written.
+     * Where the results for the matrix are written.
      */
     public readonly resultStorage!: pulumi.Output<outputs.testing.v1.ResultStorageResponse>;
     /**
@@ -80,7 +80,7 @@ export class TestMatrix extends pulumi.CustomResource {
      */
     public /*out*/ readonly testMatrixId!: pulumi.Output<string>;
     /**
-     * Required. How to run the test.
+     * How to run the test.
      */
     public readonly testSpecification!: pulumi.Output<outputs.testing.v1.TestSpecificationResponse>;
     /**
@@ -99,8 +99,17 @@ export class TestMatrix extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.environmentMatrix === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentMatrix'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.resultStorage === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resultStorage'");
+            }
+            if ((!args || args.testSpecification === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'testSpecification'");
             }
             inputs["clientInfo"] = args ? args.clientInfo : undefined;
             inputs["environmentMatrix"] = args ? args.environmentMatrix : undefined;
@@ -147,9 +156,9 @@ export interface TestMatrixArgs {
      */
     clientInfo?: pulumi.Input<inputs.testing.v1.ClientInfoArgs>;
     /**
-     * Required. The devices the tests are being executed on.
+     * The devices the tests are being executed on.
      */
-    environmentMatrix?: pulumi.Input<inputs.testing.v1.EnvironmentMatrixArgs>;
+    environmentMatrix: pulumi.Input<inputs.testing.v1.EnvironmentMatrixArgs>;
     /**
      * If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
      */
@@ -164,11 +173,11 @@ export interface TestMatrixArgs {
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
-     * Required. Where the results for the matrix are written.
+     * Where the results for the matrix are written.
      */
-    resultStorage?: pulumi.Input<inputs.testing.v1.ResultStorageArgs>;
+    resultStorage: pulumi.Input<inputs.testing.v1.ResultStorageArgs>;
     /**
-     * Required. How to run the test.
+     * How to run the test.
      */
-    testSpecification?: pulumi.Input<inputs.testing.v1.TestSpecificationArgs>;
+    testSpecification: pulumi.Input<inputs.testing.v1.TestSpecificationArgs>;
 }

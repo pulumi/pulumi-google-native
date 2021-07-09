@@ -43,7 +43,7 @@ export interface GetCertificateAuthorityResult {
      */
     readonly certificatePolicy: outputs.privateca.v1beta1.CertificateAuthorityPolicyResponse;
     /**
-     * Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+     * Immutable. The config used to create a self-signed X.509 certificate or CSR.
      */
     readonly config: outputs.privateca.v1beta1.CertificateConfigResponse;
     /**
@@ -63,7 +63,7 @@ export interface GetCertificateAuthorityResult {
      */
     readonly issuingOptions: outputs.privateca.v1beta1.IssuingOptionsResponse;
     /**
-     * Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+     * Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
      */
     readonly keySpec: outputs.privateca.v1beta1.KeyVersionSpecResponse;
     /**
@@ -71,7 +71,7 @@ export interface GetCertificateAuthorityResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+     * The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
      */
     readonly lifetime: string;
     /**
@@ -91,11 +91,11 @@ export interface GetCertificateAuthorityResult {
      */
     readonly subordinateConfig: outputs.privateca.v1beta1.SubordinateConfigResponse;
     /**
-     * Required. Immutable. The Tier of this CertificateAuthority.
+     * Immutable. The Tier of this CertificateAuthority.
      */
     readonly tier: string;
     /**
-     * Required. Immutable. The Type of this CertificateAuthority.
+     * Immutable. The Type of this CertificateAuthority.
      */
     readonly type: string;
     /**

@@ -115,7 +115,7 @@ export interface GetBuildResult {
      */
     readonly statusDetail: string;
     /**
-     * Required. The operations to be performed on the workspace.
+     * The operations to be performed on the workspace.
      */
     readonly steps: outputs.cloudbuild.v1.BuildStepResponse[];
     /**

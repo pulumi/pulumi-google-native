@@ -45,7 +45,7 @@ export interface GetWorkerPoolResult {
      */
     readonly networkConfig: outputs.cloudbuild.v1alpha2.NetworkConfigResponse;
     /**
-     * Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+     * Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
      */
     readonly region: string;
     /**

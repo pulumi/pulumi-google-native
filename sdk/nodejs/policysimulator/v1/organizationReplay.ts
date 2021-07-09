@@ -36,7 +36,7 @@ export class OrganizationReplay extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The configuration used for the `Replay`.
+     * The configuration used for the `Replay`.
      */
     public readonly config!: pulumi.Output<outputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfigResponse>;
     /**
@@ -63,6 +63,9 @@ export class OrganizationReplay extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.config === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'config'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -93,9 +96,9 @@ export class OrganizationReplay extends pulumi.CustomResource {
  */
 export interface OrganizationReplayArgs {
     /**
-     * Required. The configuration used for the `Replay`.
+     * The configuration used for the `Replay`.
      */
-    config?: pulumi.Input<inputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfigArgs>;
+    config: pulumi.Input<inputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfigArgs>;
     location: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
 }

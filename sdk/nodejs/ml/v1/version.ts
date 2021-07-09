@@ -104,7 +104,7 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly manualScaling!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__ManualScalingResponse>;
     /**
-     * Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+     * The name specified for the version when it was created. The version name must be unique within the model it is created in.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -116,7 +116,7 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly predictionClass!: pulumi.Output<string>;
     /**
-     * Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+     * The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
      */
     public readonly pythonVersion!: pulumi.Output<string>;
     /**
@@ -128,7 +128,7 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly routes!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__RouteMapResponse>;
     /**
-     * Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+     * The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
      */
     public readonly runtimeVersion!: pulumi.Output<string>;
     /**
@@ -154,8 +154,17 @@ export class Version extends pulumi.CustomResource {
             if ((!args || args.modelId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'modelId'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.pythonVersion === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'pythonVersion'");
+            }
+            if ((!args || args.runtimeVersion === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'runtimeVersion'");
             }
             inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
             inputs["autoScaling"] = args ? args.autoScaling : undefined;
@@ -270,9 +279,9 @@ export interface VersionArgs {
     manualScaling?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ManualScalingArgs>;
     modelId: pulumi.Input<string>;
     /**
-     * Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+     * The name specified for the version when it was created. The version name must be unique within the model it is created in.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
      */
@@ -283,9 +292,9 @@ export interface VersionArgs {
     predictionClass?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+     * The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
      */
-    pythonVersion?: pulumi.Input<string>;
+    pythonVersion: pulumi.Input<string>;
     /**
      * Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
      */
@@ -295,9 +304,9 @@ export interface VersionArgs {
      */
     routes?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__RouteMapArgs>;
     /**
-     * Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+     * The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
      */
-    runtimeVersion?: pulumi.Input<string>;
+    runtimeVersion: pulumi.Input<string>;
     /**
      * Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
      */

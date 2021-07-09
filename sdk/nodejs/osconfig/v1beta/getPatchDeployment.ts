@@ -41,7 +41,7 @@ export interface GetPatchDeploymentResult {
      */
     readonly duration: string;
     /**
-     * Required. VM instances to patch.
+     * VM instances to patch.
      */
     readonly instanceFilter: outputs.osconfig.v1beta.PatchInstanceFilterResponse;
     /**
@@ -53,7 +53,7 @@ export interface GetPatchDeploymentResult {
      */
     readonly name: string;
     /**
-     * Required. Schedule a one-time execution.
+     * Schedule a one-time execution.
      */
     readonly oneTimeSchedule: outputs.osconfig.v1beta.OneTimeScheduleResponse;
     /**
@@ -61,7 +61,7 @@ export interface GetPatchDeploymentResult {
      */
     readonly patchConfig: outputs.osconfig.v1beta.PatchConfigResponse;
     /**
-     * Required. Schedule recurring executions.
+     * Schedule recurring executions.
      */
     readonly recurringSchedule: outputs.osconfig.v1beta.RecurringScheduleResponse;
     /**

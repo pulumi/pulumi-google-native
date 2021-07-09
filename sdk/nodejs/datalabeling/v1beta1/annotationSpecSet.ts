@@ -36,7 +36,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+     * The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
      */
     public readonly annotationSpecs!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse[]>;
     /**
@@ -48,7 +48,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+     * The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -67,6 +67,12 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.annotationSpecs === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'annotationSpecs'");
+            }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -95,16 +101,16 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
  */
 export interface AnnotationSpecSetArgs {
     /**
-     * Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+     * The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
      */
-    annotationSpecs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs>[]>;
+    annotationSpecs: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs>[]>;
     /**
      * Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+     * The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     project: pulumi.Input<string>;
 }

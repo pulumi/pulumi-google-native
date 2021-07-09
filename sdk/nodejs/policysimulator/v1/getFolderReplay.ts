@@ -31,7 +31,7 @@ export interface GetFolderReplayArgs {
 
 export interface GetFolderReplayResult {
     /**
-     * Required. The configuration used for the `Replay`.
+     * The configuration used for the `Replay`.
      */
     readonly config: outputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfigResponse;
     /**

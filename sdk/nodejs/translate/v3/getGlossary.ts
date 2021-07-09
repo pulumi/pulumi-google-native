@@ -39,7 +39,7 @@ export interface GetGlossaryResult {
      */
     readonly entryCount: number;
     /**
-     * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+     * Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
      */
     readonly inputConfig: outputs.translate.v3.GlossaryInputConfigResponse;
     /**
@@ -51,7 +51,7 @@ export interface GetGlossaryResult {
      */
     readonly languagePair: outputs.translate.v3.LanguageCodePairResponse;
     /**
-     * Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+     * The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
      */
     readonly name: string;
     /**

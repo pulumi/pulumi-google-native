@@ -83,8 +83,17 @@ export class Export extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.datastoreName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datastoreName'");
+            }
+            if ((!args || args.dateRange === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'dateRange'");
+            }
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
@@ -130,22 +139,22 @@ export interface ExportArgs {
      */
     csvDelimiter?: pulumi.Input<string>;
     /**
-     * Required. Name of the preconfigured datastore.
+     * Name of the preconfigured datastore.
      */
-    datastoreName?: pulumi.Input<string>;
+    datastoreName: pulumi.Input<string>;
     /**
-     * Required. Date range of the data to export.
+     * Date range of the data to export.
      */
-    dateRange?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DateRangeArgs>;
+    dateRange: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DateRangeArgs>;
     /**
      * Optional. Description of the export job.
      */
     description?: pulumi.Input<string>;
     environmentId: pulumi.Input<string>;
     /**
-     * Required. Display name of the export job.
+     * Display name of the export job.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
      * Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.

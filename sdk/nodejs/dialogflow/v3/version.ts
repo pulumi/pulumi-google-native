@@ -44,7 +44,7 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The human-readable name of the version. Limit of 64 characters.
+     * The human-readable name of the version. Limit of 64 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -73,6 +73,9 @@ export class Version extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
+            }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
             }
             if ((!args || args.flowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flowId'");
@@ -118,9 +121,9 @@ export interface VersionArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The human-readable name of the version. Limit of 64 characters.
+     * The human-readable name of the version. Limit of 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     flowId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**

@@ -44,7 +44,7 @@ export class Datastore extends pulumi.CustomResource {
      */
     public readonly datastoreConfig!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfigResponse>;
     /**
-     * Required. Display name in UI
+     * Display name in UI
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -75,6 +75,9 @@ export class Datastore extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -111,9 +114,9 @@ export interface DatastoreArgs {
      */
     datastoreConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfigArgs>;
     /**
-     * Required. Display name in UI
+     * Display name in UI
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
      * Destination storage type. Supported types `gcs` or `bigquery`.

@@ -43,7 +43,7 @@ export interface GetAgentResult {
      */
     readonly description: string;
     /**
-     * Required. The human-readable name of the agent, unique within the location.
+     * The human-readable name of the agent, unique within the location.
      */
     readonly displayName: string;
     /**
@@ -71,7 +71,7 @@ export interface GetAgentResult {
      */
     readonly startFlow: string;
     /**
-     * Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+     * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
      */
     readonly timeZone: string;
 }

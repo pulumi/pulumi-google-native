@@ -35,7 +35,7 @@ export interface GetSchemaResult {
      */
     readonly definition: string;
     /**
-     * Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+     * Name of the schema. Format is `projects/{project}/schemas/{schema}`.
      */
     readonly name: string;
     /**

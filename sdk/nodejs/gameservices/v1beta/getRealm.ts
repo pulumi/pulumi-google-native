@@ -51,7 +51,7 @@ export interface GetRealmResult {
      */
     readonly name: string;
     /**
-     * Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+     * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
      */
     readonly timeZone: string;
     /**

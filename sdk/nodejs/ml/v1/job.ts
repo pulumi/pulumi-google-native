@@ -52,7 +52,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
-     * Required. The user-specified id of the job.
+     * The user-specified id of the job.
      */
     public readonly jobId!: pulumi.Output<string>;
     /**
@@ -95,6 +95,9 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.jobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobId'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -141,9 +144,9 @@ export interface JobArgs {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Required. The user-specified id of the job.
+     * The user-specified id of the job.
      */
-    jobId?: pulumi.Input<string>;
+    jobId: pulumi.Input<string>;
     /**
      * Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */

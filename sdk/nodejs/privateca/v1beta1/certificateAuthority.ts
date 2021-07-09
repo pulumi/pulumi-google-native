@@ -48,7 +48,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
      */
     public readonly certificatePolicy!: pulumi.Output<outputs.privateca.v1beta1.CertificateAuthorityPolicyResponse>;
     /**
-     * Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+     * Immutable. The config used to create a self-signed X.509 certificate or CSR.
      */
     public readonly config!: pulumi.Output<outputs.privateca.v1beta1.CertificateConfigResponse>;
     /**
@@ -68,7 +68,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
      */
     public readonly issuingOptions!: pulumi.Output<outputs.privateca.v1beta1.IssuingOptionsResponse>;
     /**
-     * Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+     * Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
      */
     public readonly keySpec!: pulumi.Output<outputs.privateca.v1beta1.KeyVersionSpecResponse>;
     /**
@@ -76,7 +76,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+     * The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
      */
     public readonly lifetime!: pulumi.Output<string>;
     /**
@@ -96,11 +96,11 @@ export class CertificateAuthority extends pulumi.CustomResource {
      */
     public readonly subordinateConfig!: pulumi.Output<outputs.privateca.v1beta1.SubordinateConfigResponse>;
     /**
-     * Required. Immutable. The Tier of this CertificateAuthority.
+     * Immutable. The Tier of this CertificateAuthority.
      */
     public readonly tier!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The Type of this CertificateAuthority.
+     * Immutable. The Type of this CertificateAuthority.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -122,11 +122,26 @@ export class CertificateAuthority extends pulumi.CustomResource {
             if ((!args || args.certificateAuthorityId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthorityId'");
             }
+            if ((!args || args.config === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'config'");
+            }
+            if ((!args || args.keySpec === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keySpec'");
+            }
+            if ((!args || args.lifetime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'lifetime'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.tier === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'tier'");
+            }
+            if ((!args || args.type === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'type'");
             }
             inputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
             inputs["certificatePolicy"] = args ? args.certificatePolicy : undefined;
@@ -187,9 +202,9 @@ export interface CertificateAuthorityArgs {
      */
     certificatePolicy?: pulumi.Input<inputs.privateca.v1beta1.CertificateAuthorityPolicyArgs>;
     /**
-     * Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+     * Immutable. The config used to create a self-signed X.509 certificate or CSR.
      */
-    config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfigArgs>;
+    config: pulumi.Input<inputs.privateca.v1beta1.CertificateConfigArgs>;
     /**
      * Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
      */
@@ -199,17 +214,17 @@ export interface CertificateAuthorityArgs {
      */
     issuingOptions?: pulumi.Input<inputs.privateca.v1beta1.IssuingOptionsArgs>;
     /**
-     * Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+     * Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
      */
-    keySpec?: pulumi.Input<inputs.privateca.v1beta1.KeyVersionSpecArgs>;
+    keySpec: pulumi.Input<inputs.privateca.v1beta1.KeyVersionSpecArgs>;
     /**
      * Optional. Labels with user-defined metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+     * The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
      */
-    lifetime?: pulumi.Input<string>;
+    lifetime: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
@@ -218,11 +233,11 @@ export interface CertificateAuthorityArgs {
      */
     subordinateConfig?: pulumi.Input<inputs.privateca.v1beta1.SubordinateConfigArgs>;
     /**
-     * Required. Immutable. The Tier of this CertificateAuthority.
+     * Immutable. The Tier of this CertificateAuthority.
      */
-    tier?: pulumi.Input<enums.privateca.v1beta1.CertificateAuthorityTier>;
+    tier: pulumi.Input<enums.privateca.v1beta1.CertificateAuthorityTier>;
     /**
-     * Required. Immutable. The Type of this CertificateAuthority.
+     * Immutable. The Type of this CertificateAuthority.
      */
-    type?: pulumi.Input<enums.privateca.v1beta1.CertificateAuthorityType>;
+    type: pulumi.Input<enums.privateca.v1beta1.CertificateAuthorityType>;
 }

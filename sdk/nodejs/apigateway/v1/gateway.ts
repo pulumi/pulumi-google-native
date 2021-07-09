@@ -35,7 +35,7 @@ export class Gateway extends pulumi.CustomResource {
     }
 
     /**
-     * Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
      */
     public readonly apiConfig!: pulumi.Output<string>;
     /**
@@ -78,6 +78,9 @@ export class Gateway extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.apiConfig === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiConfig'");
+            }
             if ((!args || args.gatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
@@ -120,9 +123,9 @@ export class Gateway extends pulumi.CustomResource {
  */
 export interface GatewayArgs {
     /**
-     * Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
      */
-    apiConfig?: pulumi.Input<string>;
+    apiConfig: pulumi.Input<string>;
     /**
      * Optional. Display name.
      */

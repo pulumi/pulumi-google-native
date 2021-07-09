@@ -41,7 +41,7 @@ export interface GetDocumentResult {
      */
     readonly contentUri: string;
     /**
-     * Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+     * The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
      */
     readonly displayName: string;
     /**
@@ -49,7 +49,7 @@ export interface GetDocumentResult {
      */
     readonly enableAutoReload: boolean;
     /**
-     * Required. The knowledge type of document content.
+     * The knowledge type of document content.
      */
     readonly knowledgeTypes: string[];
     /**
@@ -61,7 +61,7 @@ export interface GetDocumentResult {
      */
     readonly metadata: {[key: string]: string};
     /**
-     * Required. The MIME type of this document.
+     * The MIME type of this document.
      */
     readonly mimeType: string;
     /**

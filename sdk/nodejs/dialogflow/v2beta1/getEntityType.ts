@@ -37,7 +37,7 @@ export interface GetEntityTypeResult {
      */
     readonly autoExpansionMode: string;
     /**
-     * Required. The name of the entity type.
+     * The name of the entity type.
      */
     readonly displayName: string;
     /**
@@ -49,7 +49,7 @@ export interface GetEntityTypeResult {
      */
     readonly entities: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1EntityTypeEntityResponse[];
     /**
-     * Required. Indicates the kind of entity type.
+     * Indicates the kind of entity type.
      */
     readonly kind: string;
     /**

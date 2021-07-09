@@ -56,7 +56,7 @@ export class ImportJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly generateTime!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The wrapping method to be used for incoming key material.
+     * Immutable. The wrapping method to be used for incoming key material.
      */
     public readonly importMethod!: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class ImportJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+     * Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
      */
     public readonly protectionLevel!: pulumi.Output<string>;
     /**
@@ -90,6 +90,9 @@ export class ImportJob extends pulumi.CustomResource {
             if ((!args || args.importJobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'importJobId'");
             }
+            if ((!args || args.importMethod === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'importMethod'");
+            }
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
@@ -98,6 +101,9 @@ export class ImportJob extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.protectionLevel === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'protectionLevel'");
             }
             inputs["importJobId"] = args ? args.importJobId : undefined;
             inputs["importMethod"] = args ? args.importMethod : undefined;
@@ -138,14 +144,14 @@ export class ImportJob extends pulumi.CustomResource {
 export interface ImportJobArgs {
     importJobId: pulumi.Input<string>;
     /**
-     * Required. Immutable. The wrapping method to be used for incoming key material.
+     * Immutable. The wrapping method to be used for incoming key material.
      */
-    importMethod?: pulumi.Input<enums.cloudkms.v1.ImportJobImportMethod>;
+    importMethod: pulumi.Input<enums.cloudkms.v1.ImportJobImportMethod>;
     keyRingId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+     * Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
      */
-    protectionLevel?: pulumi.Input<enums.cloudkms.v1.ImportJobProtectionLevel>;
+    protectionLevel: pulumi.Input<enums.cloudkms.v1.ImportJobProtectionLevel>;
 }

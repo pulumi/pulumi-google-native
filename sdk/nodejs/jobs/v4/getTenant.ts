@@ -29,7 +29,7 @@ export interface GetTenantArgs {
 
 export interface GetTenantResult {
     /**
-     * Required. Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255.
+     * Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255.
      */
     readonly externalId: string;
     /**

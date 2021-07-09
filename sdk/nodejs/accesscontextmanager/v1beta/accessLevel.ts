@@ -48,7 +48,7 @@ export class AccessLevel extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
+     * Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -69,6 +69,9 @@ export class AccessLevel extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.accessPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessPolicyId'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             inputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
             inputs["basic"] = args ? args.basic : undefined;
@@ -108,9 +111,9 @@ export interface AccessLevelArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
+     * Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Human readable title. Must be unique within the Policy.
      */

@@ -36,7 +36,7 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The domain name of the association.
+     * The domain name of the association.
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
@@ -48,7 +48,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public /*out*/ readonly provisioning!: pulumi.Output<outputs.firebasehosting.v1beta1.DomainProvisioningResponse>;
     /**
-     * Required. The site name of the association.
+     * The site name of the association.
      */
     public readonly site!: pulumi.Output<string>;
     /**
@@ -71,8 +71,14 @@ export class Domain extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.domainName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainName'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.site === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'site'");
             }
             if ((!args || args.siteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
@@ -105,17 +111,17 @@ export class Domain extends pulumi.CustomResource {
  */
 export interface DomainArgs {
     /**
-     * Required. The domain name of the association.
+     * The domain name of the association.
      */
-    domainName?: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * If set, the domain should redirect with the provided parameters.
      */
     domainRedirect?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainRedirectArgs>;
     project: pulumi.Input<string>;
     /**
-     * Required. The site name of the association.
+     * The site name of the association.
      */
-    site?: pulumi.Input<string>;
+    site: pulumi.Input<string>;
     siteId: pulumi.Input<string>;
 }

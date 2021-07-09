@@ -44,7 +44,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     public readonly dagTimeout!: pulumi.Output<string>;
     /**
-     * Required. The Directed Acyclic Graph of Jobs to submit.
+     * The Directed Acyclic Graph of Jobs to submit.
      */
     public readonly jobs!: pulumi.Output<outputs.dataproc.v1beta2.OrderedJobResponse[]>;
     /**
@@ -60,7 +60,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<outputs.dataproc.v1beta2.TemplateParameterResponse[]>;
     /**
-     * Required. WorkflowTemplate scheduling information.
+     * WorkflowTemplate scheduling information.
      */
     public readonly placement!: pulumi.Output<outputs.dataproc.v1beta2.WorkflowTemplatePlacementResponse>;
     /**
@@ -83,8 +83,17 @@ export class WorkflowTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.id === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'id'");
+            }
+            if ((!args || args.jobs === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobs'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.placement === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'placement'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
@@ -128,13 +137,13 @@ export interface WorkflowTemplateArgs {
      */
     dagTimeout?: pulumi.Input<string>;
     /**
-     * Required. The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+     * The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
     /**
-     * Required. The Directed Acyclic Graph of Jobs to submit.
+     * The Directed Acyclic Graph of Jobs to submit.
      */
-    jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.OrderedJobArgs>[]>;
+    jobs: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.OrderedJobArgs>[]>;
     /**
      * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
      */
@@ -145,9 +154,9 @@ export interface WorkflowTemplateArgs {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.TemplateParameterArgs>[]>;
     /**
-     * Required. WorkflowTemplate scheduling information.
+     * WorkflowTemplate scheduling information.
      */
-    placement?: pulumi.Input<inputs.dataproc.v1beta2.WorkflowTemplatePlacementArgs>;
+    placement: pulumi.Input<inputs.dataproc.v1beta2.WorkflowTemplatePlacementArgs>;
     project: pulumi.Input<string>;
     /**
      * Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.

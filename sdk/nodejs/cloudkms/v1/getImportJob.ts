@@ -53,7 +53,7 @@ export interface GetImportJobResult {
      */
     readonly generateTime: string;
     /**
-     * Required. Immutable. The wrapping method to be used for incoming key material.
+     * Immutable. The wrapping method to be used for incoming key material.
      */
     readonly importMethod: string;
     /**
@@ -61,7 +61,7 @@ export interface GetImportJobResult {
      */
     readonly name: string;
     /**
-     * Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+     * Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
      */
     readonly protectionLevel: string;
     /**

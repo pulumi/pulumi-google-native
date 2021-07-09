@@ -29,7 +29,7 @@ export interface GetFolderContactArgs {
 
 export interface GetFolderContactResult {
     /**
-     * Required. The email address to send notifications to. This does not need to be a Google account.
+     * The email address to send notifications to. This does not need to be a Google account.
      */
     readonly email: string;
     /**

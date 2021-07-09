@@ -47,11 +47,11 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
-     * Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+     * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
      */
     public readonly filter!: pulumi.Output<string>;
     /**
-     * Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -72,6 +72,12 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.billingAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccountId'");
+            }
+            if ((!args || args.filter === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'filter'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -109,11 +115,11 @@ export interface BillingAccountExclusionArgs {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+     * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
      */
-    filter?: pulumi.Input<string>;
+    filter: pulumi.Input<string>;
     /**
-     * Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }

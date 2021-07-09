@@ -52,11 +52,11 @@ export class Feed extends pulumi.CustomResource {
      */
     public readonly contentType!: pulumi.Output<string>;
     /**
-     * Required. Feed output configuration defining where the asset updates are published to.
+     * Feed output configuration defining where the asset updates are published to.
      */
     public readonly feedOutputConfig!: pulumi.Output<outputs.cloudasset.v1.FeedOutputConfigResponse>;
     /**
-     * Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+     * The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -71,6 +71,15 @@ export class Feed extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.feedId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'feedId'");
+            }
+            if ((!args || args.feedOutputConfig === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'feedOutputConfig'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.v1Id === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v1Id'");
             }
@@ -122,17 +131,17 @@ export interface FeedArgs {
      */
     contentType?: pulumi.Input<enums.cloudasset.v1.FeedContentType>;
     /**
-     * Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
+     * This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
      */
-    feedId?: pulumi.Input<string>;
+    feedId: pulumi.Input<string>;
     /**
-     * Required. Feed output configuration defining where the asset updates are published to.
+     * Feed output configuration defining where the asset updates are published to.
      */
-    feedOutputConfig?: pulumi.Input<inputs.cloudasset.v1.FeedOutputConfigArgs>;
+    feedOutputConfig: pulumi.Input<inputs.cloudasset.v1.FeedOutputConfigArgs>;
     /**
-     * Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+     * The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     v1Id: pulumi.Input<string>;
     v1Id1: pulumi.Input<string>;
 }

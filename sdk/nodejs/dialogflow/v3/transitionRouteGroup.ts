@@ -36,7 +36,7 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+     * The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -61,6 +61,9 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
+            }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
             }
             if ((!args || args.flowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flowId'");
@@ -97,9 +100,9 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
 export interface TransitionRouteGroupArgs {
     agentId: pulumi.Input<string>;
     /**
-     * Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+     * The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     flowId: pulumi.Input<string>;
     languageCode?: pulumi.Input<string>;
     location: pulumi.Input<string>;

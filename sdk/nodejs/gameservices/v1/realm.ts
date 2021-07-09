@@ -55,7 +55,7 @@ export class Realm extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+     * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
      */
     public readonly timeZone!: pulumi.Output<string>;
     /**
@@ -82,6 +82,9 @@ export class Realm extends pulumi.CustomResource {
             }
             if ((!args || args.realmId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'realmId'");
+            }
+            if ((!args || args.timeZone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'timeZone'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
@@ -133,7 +136,7 @@ export interface RealmArgs {
     project: pulumi.Input<string>;
     realmId: pulumi.Input<string>;
     /**
-     * Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+     * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone: pulumi.Input<string>;
 }

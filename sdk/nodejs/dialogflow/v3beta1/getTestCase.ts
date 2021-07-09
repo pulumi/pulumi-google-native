@@ -37,7 +37,7 @@ export interface GetTestCaseResult {
      */
     readonly creationTime: string;
     /**
-     * Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+     * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      */
     readonly displayName: string;
     /**

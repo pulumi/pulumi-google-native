@@ -35,7 +35,7 @@ export interface GetEnvgroupAttachmentResult {
      */
     readonly createdAt: string;
     /**
-     * Required. ID of the attached environment.
+     * ID of the attached environment.
      */
     readonly environment: string;
     /**

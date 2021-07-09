@@ -43,7 +43,7 @@ export interface GetChannelPartnerLinkResult {
      */
     readonly inviteLinkUri: string;
     /**
-     * Required. State of the channel partner link.
+     * State of the channel partner link.
      */
     readonly linkState: string;
     /**
@@ -55,7 +55,7 @@ export interface GetChannelPartnerLinkResult {
      */
     readonly publicId: string;
     /**
-     * Required. Cloud Identity ID of the linked reseller.
+     * Cloud Identity ID of the linked reseller.
      */
     readonly resellerCloudIdentityId: string;
     /**

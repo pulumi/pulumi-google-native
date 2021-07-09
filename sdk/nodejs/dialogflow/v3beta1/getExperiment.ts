@@ -47,7 +47,7 @@ export interface GetExperimentResult {
      */
     readonly description: string;
     /**
-     * Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+     * The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
      */
     readonly displayName: string;
     /**

@@ -60,11 +60,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
     /**
-     * Required. Compute Engine location where the instance resides.
+     * Compute Engine location where the instance resides.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+     * Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -91,6 +91,12 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -145,13 +151,13 @@ export interface InstanceArgs {
     displayName?: pulumi.Input<string>;
     environments?: pulumi.Input<string>;
     /**
-     * Required. Compute Engine location where the instance resides.
+     * Compute Engine location where the instance resides.
      */
-    location?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
-     * Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+     * Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
      * Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.

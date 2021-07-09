@@ -45,7 +45,7 @@ export interface GetModelResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+     * The name specified for the model when it was created. The model name must be unique within the project it is created in.
      */
     readonly name: string;
     /**

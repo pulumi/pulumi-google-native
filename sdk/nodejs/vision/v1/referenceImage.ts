@@ -44,7 +44,7 @@ export class ReferenceImage extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+     * The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
      */
     public readonly uri!: pulumi.Output<string>;
 
@@ -67,6 +67,9 @@ export class ReferenceImage extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.uri === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'uri'");
             }
             inputs["boundingPolys"] = args ? args.boundingPolys : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -104,7 +107,7 @@ export interface ReferenceImageArgs {
     project: pulumi.Input<string>;
     referenceImageId?: pulumi.Input<string>;
     /**
-     * Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+     * The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
      */
-    uri?: pulumi.Input<string>;
+    uri: pulumi.Input<string>;
 }

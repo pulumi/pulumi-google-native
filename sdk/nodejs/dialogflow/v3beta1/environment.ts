@@ -40,7 +40,7 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+     * The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -52,7 +52,7 @@ export class Environment extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+     * A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */
     public readonly versionConfigs!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse[]>;
 
@@ -70,11 +70,17 @@ export class Environment extends pulumi.CustomResource {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.versionConfigs === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'versionConfigs'");
             }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -108,9 +114,9 @@ export interface EnvironmentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+     * The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**
      * The name of the environment. Format: `projects//locations//agents//environments/`.
@@ -118,7 +124,7 @@ export interface EnvironmentArgs {
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+     * A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */
-    versionConfigs?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>[]>;
+    versionConfigs: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>[]>;
 }

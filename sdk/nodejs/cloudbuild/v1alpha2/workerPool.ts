@@ -52,7 +52,7 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.cloudbuild.v1alpha2.NetworkConfigResponse>;
     /**
-     * Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+     * Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -81,6 +81,9 @@ export class WorkerPool extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.region === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'region'");
             }
             if ((!args || args.workerPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolId'");
@@ -122,9 +125,9 @@ export interface WorkerPoolArgs {
     networkConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.NetworkConfigArgs>;
     project: pulumi.Input<string>;
     /**
-     * Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+     * Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
      */
-    region?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * Worker configuration for the `WorkerPool`.
      */

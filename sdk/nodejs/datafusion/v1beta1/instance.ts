@@ -120,7 +120,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly tenantProjectId!: pulumi.Output<string>;
     /**
-     * Required. Instance type.
+     * Instance type.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -152,6 +152,9 @@ export class Instance extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.type === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'type'");
             }
             inputs["accelerators"] = args ? args.accelerators : undefined;
             inputs["availableVersion"] = args ? args.availableVersion : undefined;
@@ -271,9 +274,9 @@ export interface InstanceArgs {
     privateInstance?: pulumi.Input<boolean>;
     project: pulumi.Input<string>;
     /**
-     * Required. Instance type.
+     * Instance type.
      */
-    type?: pulumi.Input<enums.datafusion.v1beta1.InstanceType>;
+    type: pulumi.Input<enums.datafusion.v1beta1.InstanceType>;
     /**
      * Current version of Data Fusion.
      */

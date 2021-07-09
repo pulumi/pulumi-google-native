@@ -55,7 +55,7 @@ export class Folder extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+     * The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -74,10 +74,13 @@ export class Folder extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FolderArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: FolderArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -112,7 +115,7 @@ export interface FolderArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+     * The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
      */
-    parent?: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
 }

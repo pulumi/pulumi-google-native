@@ -73,6 +73,9 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            if ((!args || args.tableId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'tableId'");
+            }
             inputs["columnFamilies"] = args ? args.columnFamilies : undefined;
             inputs["granularity"] = args ? args.granularity : undefined;
             inputs["initialSplits"] = args ? args.initialSplits : undefined;
@@ -119,7 +122,7 @@ export interface TableArgs {
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
+     * The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
      */
-    tableId?: pulumi.Input<string>;
+    tableId: pulumi.Input<string>;
 }

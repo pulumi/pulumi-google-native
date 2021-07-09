@@ -37,7 +37,7 @@ export interface GetDatastoreResult {
      */
     readonly datastoreConfig: outputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfigResponse;
     /**
-     * Required. Display name in UI
+     * Display name in UI
      */
     readonly displayName: string;
     /**

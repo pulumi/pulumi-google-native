@@ -31,7 +31,7 @@ export interface GetRegistrationArgs {
 
 export interface GetRegistrationResult {
     /**
-     * Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+     * Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
      */
     readonly contactSettings: outputs.domains.v1alpha2.ContactSettingsResponse;
     /**
@@ -43,7 +43,7 @@ export interface GetRegistrationResult {
      */
     readonly dnsSettings: outputs.domains.v1alpha2.DnsSettingsResponse;
     /**
-     * Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+     * Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
      */
     readonly domainName: string;
     /**

@@ -59,7 +59,7 @@ export class TagKey extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
     public readonly shortName!: pulumi.Output<string>;
     /**
@@ -74,10 +74,13 @@ export class TagKey extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: TagKeyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: TagKeyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.shortName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'shortName'");
+            }
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -125,8 +128,8 @@ export interface TagKeyArgs {
      */
     parent?: pulumi.Input<string>;
     /**
-     * Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
-    shortName?: pulumi.Input<string>;
+    shortName: pulumi.Input<string>;
     validateOnly?: pulumi.Input<string>;
 }

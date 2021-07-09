@@ -56,7 +56,7 @@ export class Customer extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+     * Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
@@ -68,11 +68,11 @@ export class Customer extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Name of the organization that the customer entity represents.
+     * Name of the organization that the customer entity represents.
      */
     public readonly orgDisplayName!: pulumi.Output<string>;
     /**
-     * Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+     * Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
      */
     public readonly orgPostalAddress!: pulumi.Output<outputs.cloudchannel.v1.GoogleTypePostalAddressResponse>;
     /**
@@ -100,6 +100,15 @@ export class Customer extends pulumi.CustomResource {
             }
             if ((!args || args.channelPartnerLinkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'channelPartnerLinkId'");
+            }
+            if ((!args || args.domain === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domain'");
+            }
+            if ((!args || args.orgDisplayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'orgDisplayName'");
+            }
+            if ((!args || args.orgPostalAddress === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'orgPostalAddress'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["alternateEmail"] = args ? args.alternateEmail : undefined;
@@ -151,21 +160,21 @@ export interface CustomerArgs {
     channelPartnerId?: pulumi.Input<string>;
     channelPartnerLinkId: pulumi.Input<string>;
     /**
-     * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+     * Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
      */
-    domain?: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
     /**
      * Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
      */
     languageCode?: pulumi.Input<string>;
     /**
-     * Required. Name of the organization that the customer entity represents.
+     * Name of the organization that the customer entity represents.
      */
-    orgDisplayName?: pulumi.Input<string>;
+    orgDisplayName: pulumi.Input<string>;
     /**
-     * Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+     * Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
      */
-    orgPostalAddress?: pulumi.Input<inputs.cloudchannel.v1.GoogleTypePostalAddressArgs>;
+    orgPostalAddress: pulumi.Input<inputs.cloudchannel.v1.GoogleTypePostalAddressArgs>;
     /**
      * Primary contact info.
      */

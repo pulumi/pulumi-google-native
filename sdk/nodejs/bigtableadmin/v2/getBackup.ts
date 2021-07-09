@@ -41,7 +41,7 @@ export interface GetBackupResult {
      */
     readonly endTime: string;
     /**
-     * Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+     * The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
      */
     readonly expireTime: string;
     /**
@@ -53,7 +53,7 @@ export interface GetBackupResult {
      */
     readonly sizeBytes: string;
     /**
-     * Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+     * Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
      */
     readonly sourceTable: string;
     /**

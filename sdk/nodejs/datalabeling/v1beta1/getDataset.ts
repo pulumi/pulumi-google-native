@@ -45,7 +45,7 @@ export interface GetDatasetResult {
      */
     readonly description: string;
     /**
-     * Required. The display name of the dataset. Maximum of 64 characters.
+     * The display name of the dataset. Maximum of 64 characters.
      */
     readonly displayName: string;
     /**

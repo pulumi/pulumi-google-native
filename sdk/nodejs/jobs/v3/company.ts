@@ -44,7 +44,7 @@ export class Company extends pulumi.CustomResource {
      */
     public /*out*/ readonly derivedInfo!: pulumi.Output<outputs.jobs.v3.CompanyDerivedInfoResponse>;
     /**
-     * Required. The display name of the company, for example, "Google LLC".
+     * The display name of the company, for example, "Google LLC".
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -52,7 +52,7 @@ export class Company extends pulumi.CustomResource {
      */
     public readonly eeoText!: pulumi.Output<string>;
     /**
-     * Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+     * Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
      */
     public readonly externalId!: pulumi.Output<string>;
     /**
@@ -99,6 +99,12 @@ export class Company extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
+            if ((!args || args.externalId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'externalId'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -147,17 +153,17 @@ export interface CompanyArgs {
      */
     careerSiteUri?: pulumi.Input<string>;
     /**
-     * Required. The display name of the company, for example, "Google LLC".
+     * The display name of the company, for example, "Google LLC".
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
      */
     eeoText?: pulumi.Input<string>;
     /**
-     * Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+     * Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
      */
-    externalId?: pulumi.Input<string>;
+    externalId: pulumi.Input<string>;
     /**
      * Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
      */

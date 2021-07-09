@@ -47,7 +47,7 @@ export interface GetClusterResult {
      */
     readonly name: string;
     /**
-     * Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+     * The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
      */
     readonly serveNodes: number;
     /**

@@ -31,7 +31,7 @@ export interface GetConversationArgs {
 
 export interface GetConversationResult {
     /**
-     * Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+     * The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
      */
     readonly conversationProfile: string;
     /**

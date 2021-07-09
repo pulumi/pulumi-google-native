@@ -44,7 +44,7 @@ export class ScanConfig extends pulumi.CustomResource {
      */
     public readonly blacklistPatterns!: pulumi.Output<string[]>;
     /**
-     * Required. The user provided display name of the ScanConfig.
+     * The user provided display name of the ScanConfig.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -76,7 +76,7 @@ export class ScanConfig extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<outputs.websecurityscanner.v1.ScheduleResponse>;
     /**
-     * Required. The starting URLs from which the scanner finds site pages.
+     * The starting URLs from which the scanner finds site pages.
      */
     public readonly startingUrls!: pulumi.Output<string[]>;
     /**
@@ -99,8 +99,14 @@ export class ScanConfig extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.startingUrls === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'startingUrls'");
             }
             inputs["authentication"] = args ? args.authentication : undefined;
             inputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
@@ -151,9 +157,9 @@ export interface ScanConfigArgs {
      */
     blacklistPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Required. The user provided display name of the ScanConfig.
+     * The user provided display name of the ScanConfig.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Controls export of scan configurations and results to Security Command Center.
      */
@@ -184,9 +190,9 @@ export interface ScanConfigArgs {
      */
     schedule?: pulumi.Input<inputs.websecurityscanner.v1.ScheduleArgs>;
     /**
-     * Required. The starting URLs from which the scanner finds site pages.
+     * The starting URLs from which the scanner finds site pages.
      */
-    startingUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    startingUrls: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
      */
