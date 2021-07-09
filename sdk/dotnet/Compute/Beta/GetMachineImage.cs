@@ -53,13 +53,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Encrypts the machine image using a customer-supplied encryption key.
-        /// 
-        /// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.
-        /// 
-        /// Customer-supplied encryption keys do not protect access to metadata of the machine image.
-        /// 
-        /// If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
+        /// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse MachineImageEncryptionKey;
         /// <summary>
@@ -79,9 +73,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.SourceDiskEncryptionKeyResponse> SourceDiskEncryptionKeys;
         /// <summary>
-        /// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        /// - projects/project/zones/zone/instances/instance
+        /// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         /// </summary>
         public readonly string SourceInstance;
         /// <summary>

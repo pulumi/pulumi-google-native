@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
+        /// The image type to use for NAP created node.
+        /// </summary>
+        [Input("imageType")]
+        public Input<string>? ImageType { get; set; }
+
+        /// <summary>
         /// NodeManagement configuration for this NodePool.
         /// </summary>
         [Input("management")]

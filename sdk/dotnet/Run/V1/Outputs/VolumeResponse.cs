@@ -13,17 +13,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     [OutputType]
     public sealed class VolumeResponse
     {
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-        /// </summary>
         public readonly Outputs.ConfigMapVolumeSourceResponse ConfigMap;
         /// <summary>
-        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
+        /// Volume's name.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported
-        /// </summary>
         public readonly Outputs.SecretVolumeSourceResponse Secret;
 
         [OutputConstructor]

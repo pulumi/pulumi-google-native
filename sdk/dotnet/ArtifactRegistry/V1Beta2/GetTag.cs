@@ -46,11 +46,11 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
     public sealed class GetTagResult
     {
         /// <summary>
-        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         public readonly string Version;
 

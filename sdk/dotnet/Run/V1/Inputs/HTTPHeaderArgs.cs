@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+    /// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
     /// </summary>
     public sealed class HTTPHeaderArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+        /// The header field name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+        /// The header field value
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

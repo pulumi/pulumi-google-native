@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// A rule to be applied in a Policy.
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     public sealed class RuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("action")]
         public Input<Pulumi.GoogleNative.Compute.Beta.RuleAction>? Action { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<Inputs.ConditionArgs>? _conditions;
 
         /// <summary>
-        /// Additional restrictions that must be met. All conditions must pass for the rule to match.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public InputList<Inputs.ConditionArgs> Conditions
         {
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         }
 
         /// <summary>
-        /// Human-readable description of the rule.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<string>? _ins;
 
         /// <summary>
-        /// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public InputList<string> Ins
         {
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<Inputs.LogConfigArgs>? _logConfigs;
 
         /// <summary>
-        /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public InputList<Inputs.LogConfigArgs> LogConfigs
         {
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<string>? _notIns;
 
         /// <summary>
-        /// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public InputList<string> NotIns
         {
@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<string>? _permissions;
 
         /// <summary>
-        /// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public InputList<string> Permissions
         {

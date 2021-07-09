@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
         /// </summary>
         [Output("sourceFileShare")]

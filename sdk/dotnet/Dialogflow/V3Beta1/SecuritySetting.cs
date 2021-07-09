@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
         /// </summary>
         [Output("inspectTemplate")]
         public Output<string> InspectTemplate { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<ImmutableArray<string>> PurgeDataTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        /// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         /// </summary>
         [Output("redactionScope")]
         public Output<string> RedactionScope { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> RedactionStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        /// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         /// </summary>
         [Output("retentionWindowDays")]
         public Output<int> RetentionWindowDays { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
         /// </summary>
         [Input("inspectTemplate")]
         public Input<string>? InspectTemplate { get; set; }
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         }
 
         /// <summary>
-        /// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        /// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         /// </summary>
         [Input("redactionScope")]
         public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.SecuritySettingRedactionScope>? RedactionScope { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.SecuritySettingRedactionStrategy>? RedactionStrategy { get; set; }
 
         /// <summary>
-        /// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        /// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         /// </summary>
         [Input("retentionWindowDays")]
         public Input<int>? RetentionWindowDays { get; set; }

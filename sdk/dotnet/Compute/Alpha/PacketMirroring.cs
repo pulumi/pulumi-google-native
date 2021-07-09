@@ -34,9 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-        /// 
-        /// The default is TRUE.
+        /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
         /// </summary>
         [Output("enable")]
         public Output<string> Enable { get; private set; } = null!;
@@ -72,9 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.PacketMirroringNetworkInfoResponse> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-        /// 
-        /// Default value is 1000. Valid range is 0 through 65535.
+        /// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
@@ -155,9 +151,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-        /// 
-        /// The default is TRUE.
+        /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
         /// </summary>
         [Input("enable")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.PacketMirroringEnable>? Enable { get; set; }
@@ -187,9 +181,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.PacketMirroringNetworkInfoArgs>? Network { get; set; }
 
         /// <summary>
-        /// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-        /// 
-        /// Default value is 1000. Valid range is 0 through 65535.
+        /// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }

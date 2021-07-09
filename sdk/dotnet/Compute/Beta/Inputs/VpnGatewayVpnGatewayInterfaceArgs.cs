@@ -16,14 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class VpnGatewayVpnGatewayInterfaceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The numeric ID of this VPN gateway interface.
-        /// </summary>
-        [Input("id")]
-        public Input<int>? Id { get; set; }
-
-        /// <summary>
-        /// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
-        /// Not currently available in all Interconnect locations.
+        /// URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for IPsec-encrypted Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource. Not currently available publicly. 
         /// </summary>
         [Input("interconnectAttachment")]
         public Input<string>? InterconnectAttachment { get; set; }

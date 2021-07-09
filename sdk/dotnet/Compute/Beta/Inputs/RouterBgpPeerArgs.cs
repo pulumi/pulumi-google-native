@@ -22,9 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<Pulumi.GoogleNative.Compute.Beta.RouterBgpPeerAdvertisedGroupsItem>? _advertisedGroups;
 
         /// <summary>
-        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: 
-        /// - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. 
-        /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         /// </summary>
         public InputList<Pulumi.GoogleNative.Compute.Beta.RouterBgpPeerAdvertisedGroupsItem> AdvertisedGroups
         {
@@ -51,16 +49,13 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<int>? AdvertisedRoutePriority { get; set; }
 
         /// <summary>
-        /// BFD configuration for the BGP peering.
-        /// Not currently available publicly.
+        /// BFD configuration for the BGP peering. Not currently available publicly.
         /// </summary>
         [Input("bfd")]
         public Input<Inputs.RouterBgpPeerBfdArgs>? Bfd { get; set; }
 
         /// <summary>
-        /// The status of the BGP peer connection.
-        /// Not currently available publicly.
-        /// If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
+        /// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
         /// </summary>
         [Input("enable")]
         public Input<Pulumi.GoogleNative.Compute.Beta.RouterBgpPeerEnable>? Enable { get; set; }

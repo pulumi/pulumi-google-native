@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.BackendBucketCdnPolicyResponse CdnPolicy;
         /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// </summary>
+        public readonly string CompressionMode;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -87,6 +91,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.BackendBucketCdnPolicyResponse cdnPolicy,
 
+            string compressionMode,
+
             string creationTimestamp,
 
             ImmutableArray<string> customResponseHeaders,
@@ -107,6 +113,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         {
             BucketName = bucketName;
             CdnPolicy = cdnPolicy;
+            CompressionMode = compressionMode;
             CreationTimestamp = creationTimestamp;
             CustomResponseHeaders = customResponseHeaders;
             Description = description;

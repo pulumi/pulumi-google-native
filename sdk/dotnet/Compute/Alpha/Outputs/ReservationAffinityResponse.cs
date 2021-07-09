@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class ReservationAffinityResponse
     {
         /// <summary>
-        /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See  Consuming reserved instances for examples.
+        /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
         /// </summary>
         public readonly string ConsumeReservationType;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Corresponds to the label values of a reservation resource.
+        /// Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

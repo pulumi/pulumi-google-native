@@ -14,11 +14,16 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class ResourceStatusResponse
     {
         public readonly Outputs.ResourceStatusSchedulingResponse Scheduling;
+        public readonly Outputs.ResourceStatusUpcomingMaintenanceResponse UpcomingMaintenance;
 
         [OutputConstructor]
-        private ResourceStatusResponse(Outputs.ResourceStatusSchedulingResponse scheduling)
+        private ResourceStatusResponse(
+            Outputs.ResourceStatusSchedulingResponse scheduling,
+
+            Outputs.ResourceStatusUpcomingMaintenanceResponse upcomingMaintenance)
         {
             Scheduling = scheduling;
+            UpcomingMaintenance = upcomingMaintenance;
         }
     }
 }

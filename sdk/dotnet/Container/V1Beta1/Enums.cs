@@ -221,6 +221,88 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     }
 
     /// <summary>
+    /// cluster_dns indicates which in-cluster DNS provider should be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct DNSConfigClusterDns : IEquatable<DNSConfigClusterDns>
+    {
+        private readonly string _value;
+
+        private DNSConfigClusterDns(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value
+        /// </summary>
+        public static DNSConfigClusterDns ProviderUnspecified { get; } = new DNSConfigClusterDns("PROVIDER_UNSPECIFIED");
+        /// <summary>
+        /// Use GKE default DNS provider(kube-dns) for DNS resolution.
+        /// </summary>
+        public static DNSConfigClusterDns PlatformDefault { get; } = new DNSConfigClusterDns("PLATFORM_DEFAULT");
+        /// <summary>
+        /// Use CloudDNS for DNS resolution.
+        /// </summary>
+        public static DNSConfigClusterDns CloudDns { get; } = new DNSConfigClusterDns("CLOUD_DNS");
+
+        public static bool operator ==(DNSConfigClusterDns left, DNSConfigClusterDns right) => left.Equals(right);
+        public static bool operator !=(DNSConfigClusterDns left, DNSConfigClusterDns right) => !left.Equals(right);
+
+        public static explicit operator string(DNSConfigClusterDns value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DNSConfigClusterDns other && Equals(other);
+        public bool Equals(DNSConfigClusterDns other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// cluster_dns_scope indicates the scope of access to cluster DNS records.
+    /// </summary>
+    [EnumType]
+    public readonly struct DNSConfigClusterDnsScope : IEquatable<DNSConfigClusterDnsScope>
+    {
+        private readonly string _value;
+
+        private DNSConfigClusterDnsScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, will be inferred as cluster scope.
+        /// </summary>
+        public static DNSConfigClusterDnsScope DnsScopeUnspecified { get; } = new DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED");
+        /// <summary>
+        /// DNS records are accessible from within the cluster.
+        /// </summary>
+        public static DNSConfigClusterDnsScope ClusterScope { get; } = new DNSConfigClusterDnsScope("CLUSTER_SCOPE");
+        /// <summary>
+        /// DNS records are accessible from within the VPC.
+        /// </summary>
+        public static DNSConfigClusterDnsScope VpcScope { get; } = new DNSConfigClusterDnsScope("VPC_SCOPE");
+
+        public static bool operator ==(DNSConfigClusterDnsScope left, DNSConfigClusterDnsScope right) => left.Equals(right);
+        public static bool operator !=(DNSConfigClusterDnsScope left, DNSConfigClusterDnsScope right) => !left.Equals(right);
+
+        public static explicit operator string(DNSConfigClusterDnsScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DNSConfigClusterDnsScope other && Equals(other);
+        public bool Equals(DNSConfigClusterDnsScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Denotes the state of etcd encryption.
     /// </summary>
     [EnumType]
@@ -647,7 +729,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public static StatusConditionCanonicalCode ResourceExhausted { get; } = new StatusConditionCanonicalCode("RESOURCE_EXHAUSTED");
         /// <summary>
-        /// The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
+        /// The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level. For example, when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. For example, if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
         /// </summary>
         public static StatusConditionCanonicalCode FailedPrecondition { get; } = new StatusConditionCanonicalCode("FAILED_PRECONDITION");
         /// <summary>

@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+    /// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
     /// </summary>
     public sealed class LocalObjectReferenceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        /// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

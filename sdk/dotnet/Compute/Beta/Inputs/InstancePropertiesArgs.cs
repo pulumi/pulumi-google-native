@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Pulumi.GoogleNative.Compute.Beta.InstancePropertiesPostKeyRevocationActionType>? PostKeyRevocationActionType { get; set; }
 
         /// <summary>
-        /// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Compute.Beta.InstancePropertiesPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }

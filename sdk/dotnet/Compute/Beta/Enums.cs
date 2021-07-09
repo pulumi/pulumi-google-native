@@ -8,11 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
-    /// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD.
-    /// 
-    /// If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier.
-    /// 
-    /// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
+    /// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
     /// </summary>
     [EnumType]
     public readonly struct AccessConfigNetworkTier : IEquatable<AccessConfigNetworkTier>
@@ -24,7 +20,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// High quality, Google-grade network tier, support for all networking products.
+        /// </summary>
         public static AccessConfigNetworkTier Premium { get; } = new AccessConfigNetworkTier("PREMIUM");
+        /// <summary>
+        /// Public internet quality, only limited support for other networking products.
+        /// </summary>
         public static AccessConfigNetworkTier Standard { get; } = new AccessConfigNetworkTier("STANDARD");
 
         public static bool operator ==(AccessConfigNetworkTier left, AccessConfigNetworkTier right) => left.Equals(right);
@@ -55,6 +57,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        public static AccessConfigType DirectIpv6 { get; } = new AccessConfigType("DIRECT_IPV6");
         public static AccessConfigType OneToOneNat { get; } = new AccessConfigType("ONE_TO_ONE_NAT");
 
         public static bool operator ==(AccessConfigType left, AccessConfigType right) => left.Equals(right);
@@ -85,7 +88,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// A publicly visible external IP address.
+        /// </summary>
         public static AddressAddressType External { get; } = new AddressAddressType("EXTERNAL");
+        /// <summary>
+        /// A private network IP address, for use with an Instance or Internal Load Balancer forwarding rule.
+        /// </summary>
         public static AddressAddressType Internal { get; } = new AddressAddressType("INTERNAL");
         public static AddressAddressType UnspecifiedType { get; } = new AddressAddressType("UNSPECIFIED_TYPE");
 
@@ -137,9 +146,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
-    /// 
-    /// If this field is not specified, it is assumed to be PREMIUM.
+    /// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
     /// </summary>
     [EnumType]
     public readonly struct AddressNetworkTier : IEquatable<AddressNetworkTier>
@@ -151,7 +158,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// High quality, Google-grade network tier, support for all networking products.
+        /// </summary>
         public static AddressNetworkTier Premium { get; } = new AddressNetworkTier("PREMIUM");
+        /// <summary>
+        /// Public internet quality, only limited support for other networking products.
+        /// </summary>
         public static AddressNetworkTier Standard { get; } = new AddressNetworkTier("STANDARD");
 
         public static bool operator ==(AddressNetworkTier left, AddressNetworkTier right) => left.Equals(right);
@@ -170,12 +183,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The purpose of this resource, which can be one of the following values:  
-    /// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. 
-    /// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork 
-    /// - `VPC_PEERING` for addresses that are reserved for VPC peer networks. 
-    /// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. 
-    /// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
+    /// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
     /// </summary>
     [EnumType]
     public readonly struct AddressPurpose : IEquatable<AddressPurpose>
@@ -187,12 +195,33 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// DNS resolver address in the subnetwork.
+        /// </summary>
         public static AddressPurpose DnsResolver { get; } = new AddressPurpose("DNS_RESOLVER");
+        /// <summary>
+        /// VM internal/alias IP, Internal LB service IP, etc.
+        /// </summary>
         public static AddressPurpose GceEndpoint { get; } = new AddressPurpose("GCE_ENDPOINT");
+        /// <summary>
+        /// A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+        /// </summary>
         public static AddressPurpose IpsecInterconnect { get; } = new AddressPurpose("IPSEC_INTERCONNECT");
+        /// <summary>
+        /// External IP automatically reserved for Cloud NAT.
+        /// </summary>
         public static AddressPurpose NatAuto { get; } = new AddressPurpose("NAT_AUTO");
+        /// <summary>
+        /// A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
+        /// </summary>
         public static AddressPurpose PrivateServiceConnect { get; } = new AddressPurpose("PRIVATE_SERVICE_CONNECT");
+        /// <summary>
+        /// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
+        /// </summary>
         public static AddressPurpose SharedLoadbalancerVip { get; } = new AddressPurpose("SHARED_LOADBALANCER_VIP");
+        /// <summary>
+        /// IP range for peer networks.
+        /// </summary>
         public static AddressPurpose VpcPeering { get; } = new AddressPurpose("VPC_PEERING");
 
         public static bool operator ==(AddressPurpose left, AddressPurpose right) => left.Equals(right);
@@ -242,6 +271,39 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
+    /// For more information about maintenance intervals, see Setting maintenance intervals.
+    /// </summary>
+    [EnumType]
+    public readonly struct AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval : IEquatable<AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval>
+    {
+        private readonly string _value;
+
+        private AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+        /// </summary>
+        public static AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval Periodic { get; } = new AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval("PERIODIC");
+
+        public static bool operator ==(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval left, AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval right) => left.Equals(right);
+        public static bool operator !=(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval left, AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval right) => !left.Equals(right);
+
+        public static explicit operator string(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval other && Equals(other);
+        public bool Equals(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
     /// </summary>
     [EnumType]
@@ -254,8 +316,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Always recreate the disk.
+        /// </summary>
         public static AttachedDiskInitializeParamsOnUpdateAction RecreateDisk { get; } = new AttachedDiskInitializeParamsOnUpdateAction("RECREATE_DISK");
+        /// <summary>
+        /// Recreate the disk if source (image, snapshot) of this disk is different from source of existing disk.
+        /// </summary>
         public static AttachedDiskInitializeParamsOnUpdateAction RecreateDiskIfSourceChanged { get; } = new AttachedDiskInitializeParamsOnUpdateAction("RECREATE_DISK_IF_SOURCE_CHANGED");
+        /// <summary>
+        /// Use the existing disk, this is the default behaviour.
+        /// </summary>
         public static AttachedDiskInitializeParamsOnUpdateAction UseExistingDisk { get; } = new AttachedDiskInitializeParamsOnUpdateAction("USE_EXISTING_DISK");
 
         public static bool operator ==(AttachedDiskInitializeParamsOnUpdateAction left, AttachedDiskInitializeParamsOnUpdateAction right) => left.Equals(right);
@@ -317,7 +388,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Attaches this disk in read-only mode. Multiple virtual machines can use a disk in read-only mode at a time.
+        /// </summary>
         public static AttachedDiskMode ReadOnly { get; } = new AttachedDiskMode("READ_ONLY");
+        /// <summary>
+        /// *[Default]* Attaches this disk in read-write mode. Only one virtual machine at a time can be attached to a disk in read-write mode.
+        /// </summary>
         public static AttachedDiskMode ReadWrite { get; } = new AttachedDiskMode("READ_WRITE");
 
         public static bool operator ==(AttachedDiskMode left, AttachedDiskMode right) => left.Equals(right);
@@ -379,9 +456,21 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Admin reads. Example: CloudIAM getIamPolicy
+        /// </summary>
         public static AuditLogConfigLogType AdminRead { get; } = new AuditLogConfigLogType("ADMIN_READ");
+        /// <summary>
+        /// Data reads. Example: CloudSQL Users list
+        /// </summary>
         public static AuditLogConfigLogType DataRead { get; } = new AuditLogConfigLogType("DATA_READ");
+        /// <summary>
+        /// Data writes. Example: CloudSQL Users create
+        /// </summary>
         public static AuditLogConfigLogType DataWrite { get; } = new AuditLogConfigLogType("DATA_WRITE");
+        /// <summary>
+        /// Default case. Should never be this.
+        /// </summary>
         public static AuditLogConfigLogType LogTypeUnspecified { get; } = new AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED");
 
         public static bool operator ==(AuditLogConfigLogType left, AuditLogConfigLogType right) => left.Equals(right);
@@ -400,7 +489,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The type of the permission that was checked.
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     [EnumType]
     public readonly struct AuthorizationLoggingOptionsPermissionType : IEquatable<AuthorizationLoggingOptionsPermissionType>
@@ -412,10 +501,25 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static AuthorizationLoggingOptionsPermissionType AdminRead { get; } = new AuthorizationLoggingOptionsPermissionType("ADMIN_READ");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static AuthorizationLoggingOptionsPermissionType AdminWrite { get; } = new AuthorizationLoggingOptionsPermissionType("ADMIN_WRITE");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static AuthorizationLoggingOptionsPermissionType DataRead { get; } = new AuthorizationLoggingOptionsPermissionType("DATA_READ");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static AuthorizationLoggingOptionsPermissionType DataWrite { get; } = new AuthorizationLoggingOptionsPermissionType("DATA_WRITE");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static AuthorizationLoggingOptionsPermissionType PermissionTypeUnspecified { get; } = new AuthorizationLoggingOptionsPermissionType("PERMISSION_TYPE_UNSPECIFIED");
 
         public static bool operator ==(AuthorizationLoggingOptionsPermissionType left, AuthorizationLoggingOptionsPermissionType right) => left.Equals(right);
@@ -434,9 +538,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
-    /// 
-    /// * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+    /// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are: * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
     /// </summary>
     [EnumType]
     public readonly struct AutoscalingPolicyCpuUtilizationPredictiveMethod : IEquatable<AutoscalingPolicyCpuUtilizationPredictiveMethod>
@@ -448,7 +550,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics
+        /// </summary>
         public static AutoscalingPolicyCpuUtilizationPredictiveMethod None { get; } = new AutoscalingPolicyCpuUtilizationPredictiveMethod("NONE");
+        /// <summary>
+        /// Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        /// </summary>
         public static AutoscalingPolicyCpuUtilizationPredictiveMethod OptimizeAvailability { get; } = new AutoscalingPolicyCpuUtilizationPredictiveMethod("OPTIMIZE_AVAILABILITY");
         public static AutoscalingPolicyCpuUtilizationPredictiveMethod PredictiveMethodUnspecified { get; } = new AutoscalingPolicyCpuUtilizationPredictiveMethod("PREDICTIVE_METHOD_UNSPECIFIED");
 
@@ -480,8 +588,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Sets the utilization target value for a cumulative or delta metric, expressed as the rate of growth per minute.
+        /// </summary>
         public static AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType DeltaPerMinute { get; } = new AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType("DELTA_PER_MINUTE");
+        /// <summary>
+        /// Sets the utilization target value for a cumulative or delta metric, expressed as the rate of growth per second.
+        /// </summary>
         public static AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType DeltaPerSecond { get; } = new AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType("DELTA_PER_SECOND");
+        /// <summary>
+        /// Sets the utilization target value for a gauge metric. The autoscaler will collect the average utilization of the virtual machines from the last couple of minutes, and compare the value to the utilization target value to perform autoscaling.
+        /// </summary>
         public static AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType Gauge { get; } = new AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType("GAUGE");
 
         public static bool operator ==(AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType left, AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType right) => left.Equals(right);
@@ -512,9 +629,21 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Do not automatically scale the MIG in or out. The recommended_size field contains the size of MIG that would be set if the actuation mode was enabled.
+        /// </summary>
         public static AutoscalingPolicyMode Off { get; } = new AutoscalingPolicyMode("OFF");
+        /// <summary>
+        /// Automatically scale the MIG in and out according to the policy.
+        /// </summary>
         public static AutoscalingPolicyMode On { get; } = new AutoscalingPolicyMode("ON");
+        /// <summary>
+        /// Automatically create VMs according to the policy, but do not scale the MIG in.
+        /// </summary>
         public static AutoscalingPolicyMode OnlyScaleOut { get; } = new AutoscalingPolicyMode("ONLY_SCALE_OUT");
+        /// <summary>
+        /// Automatically create VMs according to the policy, but do not scale the MIG in.
+        /// </summary>
         public static AutoscalingPolicyMode OnlyUp { get; } = new AutoscalingPolicyMode("ONLY_UP");
 
         public static bool operator ==(AutoscalingPolicyMode left, AutoscalingPolicyMode right) => left.Equals(right);
@@ -533,7 +662,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see  Connection balancing mode.
+    /// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
     /// </summary>
     [EnumType]
     public readonly struct BackendBalancingMode : IEquatable<BackendBalancingMode>
@@ -545,8 +674,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Balance based on the number of simultaneous connections.
+        /// </summary>
         public static BackendBalancingMode Connection { get; } = new BackendBalancingMode("CONNECTION");
+        /// <summary>
+        /// Balance based on requests per second (RPS).
+        /// </summary>
         public static BackendBalancingMode Rate { get; } = new BackendBalancingMode("RATE");
+        /// <summary>
+        /// Balance based on the backend utilization.
+        /// </summary>
         public static BackendBalancingMode Utilization { get; } = new BackendBalancingMode("UTILIZATION");
 
         public static bool operator ==(BackendBalancingMode left, BackendBalancingMode right) => left.Equals(right);
@@ -565,13 +703,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the cache setting for all responses from this backend. The possible values are:
-    /// 
-    /// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
-    /// 
-    /// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
-    /// 
-    /// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+    /// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
     /// </summary>
     [EnumType]
     public readonly struct BackendBucketCdnPolicyCacheMode : IEquatable<BackendBucketCdnPolicyCacheMode>
@@ -583,9 +715,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+        /// </summary>
         public static BackendBucketCdnPolicyCacheMode CacheAllStatic { get; } = new BackendBucketCdnPolicyCacheMode("CACHE_ALL_STATIC");
+        /// <summary>
+        /// Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
+        /// </summary>
         public static BackendBucketCdnPolicyCacheMode ForceCacheAll { get; } = new BackendBucketCdnPolicyCacheMode("FORCE_CACHE_ALL");
         public static BackendBucketCdnPolicyCacheMode InvalidCacheMode { get; } = new BackendBucketCdnPolicyCacheMode("INVALID_CACHE_MODE");
+        /// <summary>
+        /// Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
+        /// </summary>
         public static BackendBucketCdnPolicyCacheMode UseOriginHeaders { get; } = new BackendBucketCdnPolicyCacheMode("USE_ORIGIN_HEADERS");
 
         public static bool operator ==(BackendBucketCdnPolicyCacheMode left, BackendBucketCdnPolicyCacheMode right) => left.Equals(right);
@@ -604,13 +745,44 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the cache setting for all responses from this backend. The possible values are:
-    /// 
-    /// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
-    /// 
-    /// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
-    /// 
-    /// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+    /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+    /// </summary>
+    [EnumType]
+    public readonly struct BackendBucketCompressionMode : IEquatable<BackendBucketCompressionMode>
+    {
+        private readonly string _value;
+
+        private BackendBucketCompressionMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+        /// </summary>
+        public static BackendBucketCompressionMode Automatic { get; } = new BackendBucketCompressionMode("AUTOMATIC");
+        /// <summary>
+        /// Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+        /// </summary>
+        public static BackendBucketCompressionMode Disabled { get; } = new BackendBucketCompressionMode("DISABLED");
+
+        public static bool operator ==(BackendBucketCompressionMode left, BackendBucketCompressionMode right) => left.Equals(right);
+        public static bool operator !=(BackendBucketCompressionMode left, BackendBucketCompressionMode right) => !left.Equals(right);
+
+        public static explicit operator string(BackendBucketCompressionMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BackendBucketCompressionMode other && Equals(other);
+        public bool Equals(BackendBucketCompressionMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceCdnPolicyCacheMode : IEquatable<BackendServiceCdnPolicyCacheMode>
@@ -622,9 +794,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
+        /// </summary>
         public static BackendServiceCdnPolicyCacheMode CacheAllStatic { get; } = new BackendServiceCdnPolicyCacheMode("CACHE_ALL_STATIC");
+        /// <summary>
+        /// Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
+        /// </summary>
         public static BackendServiceCdnPolicyCacheMode ForceCacheAll { get; } = new BackendServiceCdnPolicyCacheMode("FORCE_CACHE_ALL");
         public static BackendServiceCdnPolicyCacheMode InvalidCacheMode { get; } = new BackendServiceCdnPolicyCacheMode("INVALID_CACHE_MODE");
+        /// <summary>
+        /// Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
+        /// </summary>
         public static BackendServiceCdnPolicyCacheMode UseOriginHeaders { get; } = new BackendServiceCdnPolicyCacheMode("USE_ORIGIN_HEADERS");
 
         public static bool operator ==(BackendServiceCdnPolicyCacheMode left, BackendServiceCdnPolicyCacheMode right) => left.Equals(right);
@@ -643,13 +824,44 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL.
-    /// 
-    /// If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP.
-    /// 
-    /// If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy).
-    /// 
-    /// If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+    /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+    /// </summary>
+    [EnumType]
+    public readonly struct BackendServiceCompressionMode : IEquatable<BackendServiceCompressionMode>
+    {
+        private readonly string _value;
+
+        private BackendServiceCompressionMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+        /// </summary>
+        public static BackendServiceCompressionMode Automatic { get; } = new BackendServiceCompressionMode("AUTOMATIC");
+        /// <summary>
+        /// Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+        /// </summary>
+        public static BackendServiceCompressionMode Disabled { get; } = new BackendServiceCompressionMode("DISABLED");
+
+        public static bool operator ==(BackendServiceCompressionMode left, BackendServiceCompressionMode right) => left.Equals(right);
+        public static bool operator !=(BackendServiceCompressionMode left, BackendServiceCompressionMode right) => !left.Equals(right);
+
+        public static explicit operator string(BackendServiceCompressionMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BackendServiceCompressionMode other && Equals(other);
+        public bool Equals(BackendServiceCompressionMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends : IEquatable<BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends>
@@ -681,11 +893,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the key used for connection tracking. There are two options:
-    /// 
-    /// PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol.
-    /// 
-    /// PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+    /// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceConnectionTrackingPolicyTrackingMode : IEquatable<BackendServiceConnectionTrackingPolicyTrackingMode>
@@ -717,7 +925,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+    /// Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceLoadBalancingScheme : IEquatable<BackendServiceLoadBalancingScheme>
@@ -729,9 +937,21 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+        /// </summary>
         public static BackendServiceLoadBalancingScheme External { get; } = new BackendServiceLoadBalancingScheme("EXTERNAL");
+        /// <summary>
+        /// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+        /// </summary>
         public static BackendServiceLoadBalancingScheme Internal { get; } = new BackendServiceLoadBalancingScheme("INTERNAL");
+        /// <summary>
+        /// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+        /// </summary>
         public static BackendServiceLoadBalancingScheme InternalManaged { get; } = new BackendServiceLoadBalancingScheme("INTERNAL_MANAGED");
+        /// <summary>
+        /// Signifies that this will be used by Traffic Director.
+        /// </summary>
         public static BackendServiceLoadBalancingScheme InternalSelfManaged { get; } = new BackendServiceLoadBalancingScheme("INTERNAL_SELF_MANAGED");
         public static BackendServiceLoadBalancingScheme InvalidLoadBalancingScheme { get; } = new BackendServiceLoadBalancingScheme("INVALID_LOAD_BALANCING_SCHEME");
 
@@ -751,21 +971,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The load balancing algorithm used within the scope of the locality. The possible values are:  
-    /// - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
-    /// - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
-    /// - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
-    /// - RANDOM: The load balancer selects a random healthy host. 
-    /// - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. 
-    /// - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 
-    /// 
-    /// This field is applicable to either:  
-    /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-    /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-    /// 
-    /// If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-    /// 
-    /// Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+    /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceLocalityLbPolicy : IEquatable<BackendServiceLocalityLbPolicy>
@@ -778,11 +984,29 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         public static BackendServiceLocalityLbPolicy InvalidLbPolicy { get; } = new BackendServiceLocalityLbPolicy("INVALID_LB_POLICY");
+        /// <summary>
+        /// An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+        /// </summary>
         public static BackendServiceLocalityLbPolicy LeastRequest { get; } = new BackendServiceLocalityLbPolicy("LEAST_REQUEST");
+        /// <summary>
+        /// This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+        /// </summary>
         public static BackendServiceLocalityLbPolicy Maglev { get; } = new BackendServiceLocalityLbPolicy("MAGLEV");
+        /// <summary>
+        /// Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
+        /// </summary>
         public static BackendServiceLocalityLbPolicy OriginalDestination { get; } = new BackendServiceLocalityLbPolicy("ORIGINAL_DESTINATION");
+        /// <summary>
+        /// The load balancer selects a random healthy host.
+        /// </summary>
         public static BackendServiceLocalityLbPolicy Random { get; } = new BackendServiceLocalityLbPolicy("RANDOM");
+        /// <summary>
+        /// The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+        /// </summary>
         public static BackendServiceLocalityLbPolicy RingHash { get; } = new BackendServiceLocalityLbPolicy("RING_HASH");
+        /// <summary>
+        /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+        /// </summary>
         public static BackendServiceLocalityLbPolicy RoundRobin { get; } = new BackendServiceLocalityLbPolicy("ROUND_ROBIN");
 
         public static bool operator ==(BackendServiceLocalityLbPolicy left, BackendServiceLocalityLbPolicy right) => left.Equals(right);
@@ -801,11 +1025,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The protocol this BackendService uses to communicate with backends.
-    /// 
-    /// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-    /// 
-    /// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+    /// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceProtocol : IEquatable<BackendServiceProtocol>
@@ -817,13 +1037,32 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// gRPC (available for Traffic Director).
+        /// </summary>
         public static BackendServiceProtocol Grpc { get; } = new BackendServiceProtocol("GRPC");
         public static BackendServiceProtocol Http { get; } = new BackendServiceProtocol("HTTP");
+        /// <summary>
+        /// HTTP/2 with SSL.
+        /// </summary>
         public static BackendServiceProtocol Http2 { get; } = new BackendServiceProtocol("HTTP2");
         public static BackendServiceProtocol Https { get; } = new BackendServiceProtocol("HTTPS");
+        /// <summary>
+        /// TCP proxying with SSL.
+        /// </summary>
         public static BackendServiceProtocol Ssl { get; } = new BackendServiceProtocol("SSL");
+        /// <summary>
+        /// TCP proxying or TCP pass-through.
+        /// </summary>
         public static BackendServiceProtocol Tcp { get; } = new BackendServiceProtocol("TCP");
+        /// <summary>
+        /// UDP.
+        /// </summary>
         public static BackendServiceProtocol Udp { get; } = new BackendServiceProtocol("UDP");
+        /// <summary>
+        /// If a Backend Service has UNSPECIFIED as its protocol, it can be used with any L3/L4 Forwarding Rules.
+        /// </summary>
+        public static BackendServiceProtocol Unspecified { get; } = new BackendServiceProtocol("UNSPECIFIED");
 
         public static bool operator ==(BackendServiceProtocol left, BackendServiceProtocol right) => left.Equals(right);
         public static bool operator !=(BackendServiceProtocol left, BackendServiceProtocol right) => !left.Equals(right);
@@ -841,15 +1080,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Type of session affinity to use. The default is NONE.
-    /// 
-    /// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-    /// 
-    /// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-    /// 
-    /// When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-    /// 
-    /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+    /// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceSessionAffinity : IEquatable<BackendServiceSessionAffinity>
@@ -861,13 +1092,37 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// 2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy.
+        /// </summary>
         public static BackendServiceSessionAffinity ClientIp { get; } = new BackendServiceSessionAffinity("CLIENT_IP");
+        /// <summary>
+        /// 1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing.
+        /// </summary>
         public static BackendServiceSessionAffinity ClientIpNoDestination { get; } = new BackendServiceSessionAffinity("CLIENT_IP_NO_DESTINATION");
+        /// <summary>
+        /// 5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+        /// </summary>
         public static BackendServiceSessionAffinity ClientIpPortProto { get; } = new BackendServiceSessionAffinity("CLIENT_IP_PORT_PROTO");
+        /// <summary>
+        /// 3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+        /// </summary>
         public static BackendServiceSessionAffinity ClientIpProto { get; } = new BackendServiceSessionAffinity("CLIENT_IP_PROTO");
+        /// <summary>
+        /// Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing.
+        /// </summary>
         public static BackendServiceSessionAffinity GeneratedCookie { get; } = new BackendServiceSessionAffinity("GENERATED_COOKIE");
+        /// <summary>
+        /// The hash is based on a user specified header field.
+        /// </summary>
         public static BackendServiceSessionAffinity HeaderField { get; } = new BackendServiceSessionAffinity("HEADER_FIELD");
+        /// <summary>
+        /// The hash is based on a user provided cookie.
+        /// </summary>
         public static BackendServiceSessionAffinity HttpCookie { get; } = new BackendServiceSessionAffinity("HTTP_COOKIE");
+        /// <summary>
+        /// No session affinity. Connections from the same client IP may go to any instance in the pool.
+        /// </summary>
         public static BackendServiceSessionAffinity None { get; } = new BackendServiceSessionAffinity("NONE");
 
         public static bool operator ==(BackendServiceSessionAffinity left, BackendServiceSessionAffinity right) => left.Equals(right);
@@ -886,7 +1141,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Trusted attributes supplied by the IAM system.
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     [EnumType]
     public readonly struct ConditionIam : IEquatable<ConditionIam>
@@ -898,13 +1153,37 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionIam Approver { get; } = new ConditionIam("APPROVER");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionIam Attribution { get; } = new ConditionIam("ATTRIBUTION");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionIam Authority { get; } = new ConditionIam("AUTHORITY");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionIam CredentialsType { get; } = new ConditionIam("CREDENTIALS_TYPE");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionIam CredsAssertion { get; } = new ConditionIam("CREDS_ASSERTION");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionIam JustificationType { get; } = new ConditionIam("JUSTIFICATION_TYPE");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionIam NoAttr { get; } = new ConditionIam("NO_ATTR");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionIam SecurityRealm { get; } = new ConditionIam("SECURITY_REALM");
 
         public static bool operator ==(ConditionIam left, ConditionIam right) => left.Equals(right);
@@ -923,7 +1202,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// An operator to apply the subject with.
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     [EnumType]
     public readonly struct ConditionOp : IEquatable<ConditionOp>
@@ -935,11 +1214,29 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionOp Discharged { get; } = new ConditionOp("DISCHARGED");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionOp EqualsValue { get; } = new ConditionOp("EQUALS");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionOp In { get; } = new ConditionOp("IN");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionOp NotEquals { get; } = new ConditionOp("NOT_EQUALS");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionOp NotIn { get; } = new ConditionOp("NOT_IN");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionOp NoOp { get; } = new ConditionOp("NO_OP");
 
         public static bool operator ==(ConditionOp left, ConditionOp right) => left.Equals(right);
@@ -958,7 +1255,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     [EnumType]
     public readonly struct ConditionSys : IEquatable<ConditionSys>
@@ -970,10 +1267,25 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionSys Ip { get; } = new ConditionSys("IP");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionSys Name { get; } = new ConditionSys("NAME");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionSys NoAttr { get; } = new ConditionSys("NO_ATTR");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionSys Region { get; } = new ConditionSys("REGION");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static ConditionSys Service { get; } = new ConditionSys("SERVICE");
 
         public static bool operator ==(ConditionSys left, ConditionSys right) => left.Equals(right);
@@ -1025,12 +1337,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies whether to include the disk and what image to use. Possible values are:  
-    /// - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. 
-    /// - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. 
-    /// - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. 
-    /// - attach-read-only: to attach a read-only disk. Applicable to read-only disks. 
-    /// - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks.
+    /// Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks. 
     /// </summary>
     [EnumType]
     public readonly struct DiskInstantiationConfigInstantiateFrom : IEquatable<DiskInstantiationConfigInstantiateFrom>
@@ -1042,12 +1349,33 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Attach the existing disk in read-only mode. The request will fail if the disk was attached in read-write mode on the source instance. Applicable to: read-only disks.
+        /// </summary>
         public static DiskInstantiationConfigInstantiateFrom AttachReadOnly { get; } = new DiskInstantiationConfigInstantiateFrom("ATTACH_READ_ONLY");
+        /// <summary>
+        /// Create a blank disk. The disk will be created unformatted. Applicable to: additional read-write disks, local SSDs.
+        /// </summary>
         public static DiskInstantiationConfigInstantiateFrom Blank { get; } = new DiskInstantiationConfigInstantiateFrom("BLANK");
+        /// <summary>
+        /// Use the custom image specified in the custom_image field. Applicable to: boot disk, additional read-write disks.
+        /// </summary>
         public static DiskInstantiationConfigInstantiateFrom CustomImage { get; } = new DiskInstantiationConfigInstantiateFrom("CUSTOM_IMAGE");
+        /// <summary>
+        /// Use the default instantiation option for the corresponding type of disk. For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+        /// </summary>
         public static DiskInstantiationConfigInstantiateFrom Default { get; } = new DiskInstantiationConfigInstantiateFrom("DEFAULT");
+        /// <summary>
+        /// Do not include the disk in the instance template. Applicable to: additional read-write disks, local SSDs, read-only disks.
+        /// </summary>
         public static DiskInstantiationConfigInstantiateFrom DoNotInclude { get; } = new DiskInstantiationConfigInstantiateFrom("DO_NOT_INCLUDE");
+        /// <summary>
+        /// Use the same source image used for creation of the source instance's corresponding disk. The request will fail if the source VM's disk was created from a snapshot. Applicable to: boot disk, additional read-write disks.
+        /// </summary>
         public static DiskInstantiationConfigInstantiateFrom SourceImage { get; } = new DiskInstantiationConfigInstantiateFrom("SOURCE_IMAGE");
+        /// <summary>
+        /// Use the same source image family used for creation of the source instance's corresponding disk. The request will fail if the source image of the source disk does not belong to any image family. Applicable to: boot disk, additional read-write disks.
+        /// </summary>
         public static DiskInstantiationConfigInstantiateFrom SourceImageFamily { get; } = new DiskInstantiationConfigInstantiateFrom("SOURCE_IMAGE_FAMILY");
 
         public static bool operator ==(DiskInstantiationConfigInstantiateFrom left, DiskInstantiationConfigInstantiateFrom right) => left.Equals(right);
@@ -1110,8 +1438,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The group picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
+        /// </summary>
         public static DistributionPolicyTargetShape Any { get; } = new DistributionPolicyTargetShape("ANY");
+        /// <summary>
+        /// The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
+        /// </summary>
         public static DistributionPolicyTargetShape Balanced { get; } = new DistributionPolicyTargetShape("BALANCED");
+        /// <summary>
+        /// The group schedules VM instance creation and deletion to achieve and maintain an even number of managed instances across the selected zones. The distribution is even when the number of managed instances does not differ by more than 1 between any two zones. Recommended for highly available serving workloads.
+        /// </summary>
         public static DistributionPolicyTargetShape Even { get; } = new DistributionPolicyTargetShape("EVEN");
 
         public static bool operator ==(DistributionPolicyTargetShape left, DistributionPolicyTargetShape right) => left.Equals(right);
@@ -1142,8 +1479,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The external VPN gateway has four public IP addresses; at the time of writing this API, the AWS virtual private gateway is an example which has four public IP addresses for high availability connections; there should be two VPN connections in the AWS virtual private gateway , each AWS VPN connection has two public IP addresses; please make sure to put two public IP addresses from one AWS VPN connection into interfaces 0 and 1 of this external VPN gateway, and put the other two public IP addresses from another AWS VPN connection into interfaces 2 and 3 of this external VPN gateway. When displaying highly available configuration status for the VPN tunnels connected to FOUR_IPS_REDUNDANCY external VPN gateway, Google will always detect whether interfaces 0 and 1 are connected on one interface of HA Cloud VPN gateway, and detect whether interfaces 2 and 3 are connected to another interface of the HA Cloud VPN gateway.
+        /// </summary>
         public static ExternalVpnGatewayRedundancyType FourIpsRedundancy { get; } = new ExternalVpnGatewayRedundancyType("FOUR_IPS_REDUNDANCY");
+        /// <summary>
+        /// The external VPN gateway has only one public IP address which internally provide redundancy or failover.
+        /// </summary>
         public static ExternalVpnGatewayRedundancyType SingleIpInternallyRedundant { get; } = new ExternalVpnGatewayRedundancyType("SINGLE_IP_INTERNALLY_REDUNDANT");
+        /// <summary>
+        /// The external VPN gateway has two public IP addresses which are redundant with each other, the following two types of setup on your on-premises side would have this type of redundancy: (1) Two separate on-premises gateways, each with one public IP address, the two on-premises gateways are redundant with each other. (2) A single on-premise gateway with two public IP addresses that are redundant with eatch other.
+        /// </summary>
         public static ExternalVpnGatewayRedundancyType TwoIpsRedundancy { get; } = new ExternalVpnGatewayRedundancyType("TWO_IPS_REDUNDANCY");
 
         public static bool operator ==(ExternalVpnGatewayRedundancyType left, ExternalVpnGatewayRedundancyType right) => left.Equals(right);
@@ -1206,7 +1552,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Indicates that firewall should apply to outgoing traffic.
+        /// </summary>
         public static FirewallDirection Egress { get; } = new FirewallDirection("EGRESS");
+        /// <summary>
+        /// Indicates that firewall should apply to incoming traffic.
+        /// </summary>
         public static FirewallDirection Ingress { get; } = new FirewallDirection("INGRESS");
 
         public static bool operator ==(FirewallDirection left, FirewallDirection right) => left.Equals(right);
@@ -1287,16 +1639,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The IP protocol to which this rule applies.
-    /// 
-    /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
-    /// 
-    /// The valid IP protocols are different for different load balancing products:  
-    /// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
-    /// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
-    /// - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
-    /// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
-    /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
+    /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. 
     /// </summary>
     [EnumType]
     public readonly struct ForwardingRuleIpProtocol : IEquatable<ForwardingRuleIpProtocol>
@@ -1311,6 +1654,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public static ForwardingRuleIpProtocol Ah { get; } = new ForwardingRuleIpProtocol("AH");
         public static ForwardingRuleIpProtocol Esp { get; } = new ForwardingRuleIpProtocol("ESP");
         public static ForwardingRuleIpProtocol Icmp { get; } = new ForwardingRuleIpProtocol("ICMP");
+        public static ForwardingRuleIpProtocol L3Default { get; } = new ForwardingRuleIpProtocol("L3_DEFAULT");
         public static ForwardingRuleIpProtocol Sctp { get; } = new ForwardingRuleIpProtocol("SCTP");
         public static ForwardingRuleIpProtocol Tcp { get; } = new ForwardingRuleIpProtocol("TCP");
         public static ForwardingRuleIpProtocol Udp { get; } = new ForwardingRuleIpProtocol("UDP");
@@ -1363,22 +1707,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the forwarding rule type.
-    /// 
-    ///  
-    /// - EXTERNAL is used for:  
-    /// - Classic Cloud VPN gateways 
-    /// - Protocol forwarding to VMs from an external IP address 
-    /// - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing    
-    /// - INTERNAL is used for:  
-    /// - Protocol forwarding to VMs from an internal IP address 
-    /// - Internal TCP/UDP Load Balancing   
-    /// - INTERNAL_MANAGED is used for:  
-    /// - Internal HTTP(S) Load Balancing   
-    /// - INTERNAL_SELF_MANAGED is used for:  
-    /// - Traffic Director    
-    /// 
-    /// For more information about forwarding rules, refer to Forwarding rule concepts.
+    /// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
     /// </summary>
     [EnumType]
     public readonly struct ForwardingRuleLoadBalancingScheme : IEquatable<ForwardingRuleLoadBalancingScheme>
@@ -1412,11 +1741,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD.
-    /// 
-    /// For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM.
-    /// 
-    /// If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
+    /// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
     /// </summary>
     [EnumType]
     public readonly struct ForwardingRuleNetworkTier : IEquatable<ForwardingRuleNetworkTier>
@@ -1428,7 +1753,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// High quality, Google-grade network tier, support for all networking products.
+        /// </summary>
         public static ForwardingRuleNetworkTier Premium { get; } = new ForwardingRuleNetworkTier("PREMIUM");
+        /// <summary>
+        /// Public internet quality, only limited support for other networking products.
+        /// </summary>
         public static ForwardingRuleNetworkTier Standard { get; } = new ForwardingRuleNetworkTier("STANDARD");
 
         public static bool operator ==(ForwardingRuleNetworkTier left, ForwardingRuleNetworkTier right) => left.Equals(right);
@@ -1446,14 +1777,51 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct ForwardingRulePscConnectionStatus : IEquatable<ForwardingRulePscConnectionStatus>
+    {
+        private readonly string _value;
+
+        private ForwardingRulePscConnectionStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The connection has been accepted by the producer.
+        /// </summary>
+        public static ForwardingRulePscConnectionStatus Accepted { get; } = new ForwardingRulePscConnectionStatus("ACCEPTED");
+        /// <summary>
+        /// The connection has been closed by the producer and will not serve traffic going forward.
+        /// </summary>
+        public static ForwardingRulePscConnectionStatus Closed { get; } = new ForwardingRulePscConnectionStatus("CLOSED");
+        /// <summary>
+        /// The connection is pending acceptance by the producer.
+        /// </summary>
+        public static ForwardingRulePscConnectionStatus Pending { get; } = new ForwardingRulePscConnectionStatus("PENDING");
+        /// <summary>
+        /// The connection has been rejected by the producer.
+        /// </summary>
+        public static ForwardingRulePscConnectionStatus Rejected { get; } = new ForwardingRulePscConnectionStatus("REJECTED");
+        public static ForwardingRulePscConnectionStatus StatusUnspecified { get; } = new ForwardingRulePscConnectionStatus("STATUS_UNSPECIFIED");
+
+        public static bool operator ==(ForwardingRulePscConnectionStatus left, ForwardingRulePscConnectionStatus right) => left.Equals(right);
+        public static bool operator !=(ForwardingRulePscConnectionStatus left, ForwardingRulePscConnectionStatus right) => !left.Equals(right);
+
+        public static explicit operator string(ForwardingRulePscConnectionStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ForwardingRulePscConnectionStatus other && Equals(other);
+        public bool Equals(ForwardingRulePscConnectionStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values:
-    /// USE_FIXED_PORT: The port number in port is used for health checking.
-    /// USE_NAMED_PORT: The portName is used for health checking.
-    /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-    /// 
-    /// 
-    /// If not specified, gRPC health check follows behavior specified in port and portName fields.
+    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
     /// </summary>
     [EnumType]
     public readonly struct GRPCHealthCheckPortSpecification : IEquatable<GRPCHealthCheckPortSpecification>
@@ -1465,8 +1833,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The port number in port is used for health checking.
+        /// </summary>
         public static GRPCHealthCheckPortSpecification UseFixedPort { get; } = new GRPCHealthCheckPortSpecification("USE_FIXED_PORT");
+        /// <summary>
+        /// The portName is used for health checking.
+        /// </summary>
         public static GRPCHealthCheckPortSpecification UseNamedPort { get; } = new GRPCHealthCheckPortSpecification("USE_NAMED_PORT");
+        /// <summary>
+        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// </summary>
         public static GRPCHealthCheckPortSpecification UseServingPort { get; } = new GRPCHealthCheckPortSpecification("USE_SERVING_PORT");
 
         public static bool operator ==(GRPCHealthCheckPortSpecification left, GRPCHealthCheckPortSpecification right) => left.Equals(right);
@@ -1497,7 +1874,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// A publicly visible external IP address.
+        /// </summary>
         public static GlobalAddressAddressType External { get; } = new GlobalAddressAddressType("EXTERNAL");
+        /// <summary>
+        /// A private network IP address, for use with an Instance or Internal Load Balancer forwarding rule.
+        /// </summary>
         public static GlobalAddressAddressType Internal { get; } = new GlobalAddressAddressType("INTERNAL");
         public static GlobalAddressAddressType UnspecifiedType { get; } = new GlobalAddressAddressType("UNSPECIFIED_TYPE");
 
@@ -1549,9 +1932,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
-    /// 
-    /// If this field is not specified, it is assumed to be PREMIUM.
+    /// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
     /// </summary>
     [EnumType]
     public readonly struct GlobalAddressNetworkTier : IEquatable<GlobalAddressNetworkTier>
@@ -1563,7 +1944,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// High quality, Google-grade network tier, support for all networking products.
+        /// </summary>
         public static GlobalAddressNetworkTier Premium { get; } = new GlobalAddressNetworkTier("PREMIUM");
+        /// <summary>
+        /// Public internet quality, only limited support for other networking products.
+        /// </summary>
         public static GlobalAddressNetworkTier Standard { get; } = new GlobalAddressNetworkTier("STANDARD");
 
         public static bool operator ==(GlobalAddressNetworkTier left, GlobalAddressNetworkTier right) => left.Equals(right);
@@ -1582,12 +1969,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The purpose of this resource, which can be one of the following values:  
-    /// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. 
-    /// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork 
-    /// - `VPC_PEERING` for addresses that are reserved for VPC peer networks. 
-    /// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. 
-    /// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
+    /// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
     /// </summary>
     [EnumType]
     public readonly struct GlobalAddressPurpose : IEquatable<GlobalAddressPurpose>
@@ -1599,12 +1981,33 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// DNS resolver address in the subnetwork.
+        /// </summary>
         public static GlobalAddressPurpose DnsResolver { get; } = new GlobalAddressPurpose("DNS_RESOLVER");
+        /// <summary>
+        /// VM internal/alias IP, Internal LB service IP, etc.
+        /// </summary>
         public static GlobalAddressPurpose GceEndpoint { get; } = new GlobalAddressPurpose("GCE_ENDPOINT");
+        /// <summary>
+        /// A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+        /// </summary>
         public static GlobalAddressPurpose IpsecInterconnect { get; } = new GlobalAddressPurpose("IPSEC_INTERCONNECT");
+        /// <summary>
+        /// External IP automatically reserved for Cloud NAT.
+        /// </summary>
         public static GlobalAddressPurpose NatAuto { get; } = new GlobalAddressPurpose("NAT_AUTO");
+        /// <summary>
+        /// A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
+        /// </summary>
         public static GlobalAddressPurpose PrivateServiceConnect { get; } = new GlobalAddressPurpose("PRIVATE_SERVICE_CONNECT");
+        /// <summary>
+        /// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
+        /// </summary>
         public static GlobalAddressPurpose SharedLoadbalancerVip { get; } = new GlobalAddressPurpose("SHARED_LOADBALANCER_VIP");
+        /// <summary>
+        /// IP range for peer networks.
+        /// </summary>
         public static GlobalAddressPurpose VpcPeering { get; } = new GlobalAddressPurpose("VPC_PEERING");
 
         public static bool operator ==(GlobalAddressPurpose left, GlobalAddressPurpose right) => left.Equals(right);
@@ -1623,16 +2026,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The IP protocol to which this rule applies.
-    /// 
-    /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
-    /// 
-    /// The valid IP protocols are different for different load balancing products:  
-    /// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
-    /// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
-    /// - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
-    /// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
-    /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
+    /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. 
     /// </summary>
     [EnumType]
     public readonly struct GlobalForwardingRuleIpProtocol : IEquatable<GlobalForwardingRuleIpProtocol>
@@ -1647,6 +2041,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public static GlobalForwardingRuleIpProtocol Ah { get; } = new GlobalForwardingRuleIpProtocol("AH");
         public static GlobalForwardingRuleIpProtocol Esp { get; } = new GlobalForwardingRuleIpProtocol("ESP");
         public static GlobalForwardingRuleIpProtocol Icmp { get; } = new GlobalForwardingRuleIpProtocol("ICMP");
+        public static GlobalForwardingRuleIpProtocol L3Default { get; } = new GlobalForwardingRuleIpProtocol("L3_DEFAULT");
         public static GlobalForwardingRuleIpProtocol Sctp { get; } = new GlobalForwardingRuleIpProtocol("SCTP");
         public static GlobalForwardingRuleIpProtocol Tcp { get; } = new GlobalForwardingRuleIpProtocol("TCP");
         public static GlobalForwardingRuleIpProtocol Udp { get; } = new GlobalForwardingRuleIpProtocol("UDP");
@@ -1699,22 +2094,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the forwarding rule type.
-    /// 
-    ///  
-    /// - EXTERNAL is used for:  
-    /// - Classic Cloud VPN gateways 
-    /// - Protocol forwarding to VMs from an external IP address 
-    /// - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing    
-    /// - INTERNAL is used for:  
-    /// - Protocol forwarding to VMs from an internal IP address 
-    /// - Internal TCP/UDP Load Balancing   
-    /// - INTERNAL_MANAGED is used for:  
-    /// - Internal HTTP(S) Load Balancing   
-    /// - INTERNAL_SELF_MANAGED is used for:  
-    /// - Traffic Director    
-    /// 
-    /// For more information about forwarding rules, refer to Forwarding rule concepts.
+    /// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
     /// </summary>
     [EnumType]
     public readonly struct GlobalForwardingRuleLoadBalancingScheme : IEquatable<GlobalForwardingRuleLoadBalancingScheme>
@@ -1748,11 +2128,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD.
-    /// 
-    /// For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM.
-    /// 
-    /// If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
+    /// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
     /// </summary>
     [EnumType]
     public readonly struct GlobalForwardingRuleNetworkTier : IEquatable<GlobalForwardingRuleNetworkTier>
@@ -1764,7 +2140,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// High quality, Google-grade network tier, support for all networking products.
+        /// </summary>
         public static GlobalForwardingRuleNetworkTier Premium { get; } = new GlobalForwardingRuleNetworkTier("PREMIUM");
+        /// <summary>
+        /// Public internet quality, only limited support for other networking products.
+        /// </summary>
         public static GlobalForwardingRuleNetworkTier Standard { get; } = new GlobalForwardingRuleNetworkTier("STANDARD");
 
         public static bool operator ==(GlobalForwardingRuleNetworkTier left, GlobalForwardingRuleNetworkTier right) => left.Equals(right);
@@ -1775,6 +2157,49 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GlobalForwardingRuleNetworkTier other && Equals(other);
         public bool Equals(GlobalForwardingRuleNetworkTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct GlobalForwardingRulePscConnectionStatus : IEquatable<GlobalForwardingRulePscConnectionStatus>
+    {
+        private readonly string _value;
+
+        private GlobalForwardingRulePscConnectionStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The connection has been accepted by the producer.
+        /// </summary>
+        public static GlobalForwardingRulePscConnectionStatus Accepted { get; } = new GlobalForwardingRulePscConnectionStatus("ACCEPTED");
+        /// <summary>
+        /// The connection has been closed by the producer and will not serve traffic going forward.
+        /// </summary>
+        public static GlobalForwardingRulePscConnectionStatus Closed { get; } = new GlobalForwardingRulePscConnectionStatus("CLOSED");
+        /// <summary>
+        /// The connection is pending acceptance by the producer.
+        /// </summary>
+        public static GlobalForwardingRulePscConnectionStatus Pending { get; } = new GlobalForwardingRulePscConnectionStatus("PENDING");
+        /// <summary>
+        /// The connection has been rejected by the producer.
+        /// </summary>
+        public static GlobalForwardingRulePscConnectionStatus Rejected { get; } = new GlobalForwardingRulePscConnectionStatus("REJECTED");
+        public static GlobalForwardingRulePscConnectionStatus StatusUnspecified { get; } = new GlobalForwardingRulePscConnectionStatus("STATUS_UNSPECIFIED");
+
+        public static bool operator ==(GlobalForwardingRulePscConnectionStatus left, GlobalForwardingRulePscConnectionStatus right) => left.Equals(right);
+        public static bool operator !=(GlobalForwardingRulePscConnectionStatus left, GlobalForwardingRulePscConnectionStatus right) => !left.Equals(right);
+
+        public static explicit operator string(GlobalForwardingRulePscConnectionStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GlobalForwardingRulePscConnectionStatus other && Equals(other);
+        public bool Equals(GlobalForwardingRulePscConnectionStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -1795,11 +2220,29 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The network endpoint is represented by an IP address.
+        /// </summary>
         public static GlobalNetworkEndpointGroupNetworkEndpointType GceVmIp { get; } = new GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP");
+        /// <summary>
+        /// The network endpoint is represented by IP address and port pair.
+        /// </summary>
         public static GlobalNetworkEndpointGroupNetworkEndpointType GceVmIpPort { get; } = new GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT");
+        /// <summary>
+        /// The network endpoint is represented by fully qualified domain name and port.
+        /// </summary>
         public static GlobalNetworkEndpointGroupNetworkEndpointType InternetFqdnPort { get; } = new GlobalNetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT");
+        /// <summary>
+        /// The network endpoint is represented by an internet IP address and port.
+        /// </summary>
         public static GlobalNetworkEndpointGroupNetworkEndpointType InternetIpPort { get; } = new GlobalNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT");
+        /// <summary>
+        /// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
+        /// </summary>
         public static GlobalNetworkEndpointGroupNetworkEndpointType NonGcpPrivateIpPort { get; } = new GlobalNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT");
+        /// <summary>
+        /// The network endpoint is handled by specified serverless infrastructure.
+        /// </summary>
         public static GlobalNetworkEndpointGroupNetworkEndpointType Serverless { get; } = new GlobalNetworkEndpointGroupNetworkEndpointType("SERVERLESS");
 
         public static bool operator ==(GlobalNetworkEndpointGroupNetworkEndpointType left, GlobalNetworkEndpointGroupNetworkEndpointType right) => left.Equals(right);
@@ -1818,7 +2261,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The ID of a supported feature. Read  Enabling guest operating system features to see a list of available options.
+    /// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
     /// </summary>
     [EnumType]
     public readonly struct GuestOsFeatureType : IEquatable<GuestOsFeatureType>
@@ -1855,13 +2298,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values:
-    /// USE_FIXED_PORT: The port number in port is used for health checking.
-    /// USE_NAMED_PORT: The portName is used for health checking.
-    /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-    /// 
-    /// 
-    /// If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
     /// </summary>
     [EnumType]
     public readonly struct HTTP2HealthCheckPortSpecification : IEquatable<HTTP2HealthCheckPortSpecification>
@@ -1873,8 +2310,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The port number in port is used for health checking.
+        /// </summary>
         public static HTTP2HealthCheckPortSpecification UseFixedPort { get; } = new HTTP2HealthCheckPortSpecification("USE_FIXED_PORT");
+        /// <summary>
+        /// The portName is used for health checking.
+        /// </summary>
         public static HTTP2HealthCheckPortSpecification UseNamedPort { get; } = new HTTP2HealthCheckPortSpecification("USE_NAMED_PORT");
+        /// <summary>
+        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// </summary>
         public static HTTP2HealthCheckPortSpecification UseServingPort { get; } = new HTTP2HealthCheckPortSpecification("USE_SERVING_PORT");
 
         public static bool operator ==(HTTP2HealthCheckPortSpecification left, HTTP2HealthCheckPortSpecification right) => left.Equals(right);
@@ -1924,13 +2370,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values:
-    /// USE_FIXED_PORT: The port number in port is used for health checking.
-    /// USE_NAMED_PORT: The portName is used for health checking.
-    /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-    /// 
-    /// 
-    /// If not specified, HTTP health check follows behavior specified in port and portName fields.
+    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
     /// </summary>
     [EnumType]
     public readonly struct HTTPHealthCheckPortSpecification : IEquatable<HTTPHealthCheckPortSpecification>
@@ -1942,8 +2382,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The port number in port is used for health checking.
+        /// </summary>
         public static HTTPHealthCheckPortSpecification UseFixedPort { get; } = new HTTPHealthCheckPortSpecification("USE_FIXED_PORT");
+        /// <summary>
+        /// The portName is used for health checking.
+        /// </summary>
         public static HTTPHealthCheckPortSpecification UseNamedPort { get; } = new HTTPHealthCheckPortSpecification("USE_NAMED_PORT");
+        /// <summary>
+        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// </summary>
         public static HTTPHealthCheckPortSpecification UseServingPort { get; } = new HTTPHealthCheckPortSpecification("USE_SERVING_PORT");
 
         public static bool operator ==(HTTPHealthCheckPortSpecification left, HTTPHealthCheckPortSpecification right) => left.Equals(right);
@@ -1993,13 +2442,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values:
-    /// USE_FIXED_PORT: The port number in port is used for health checking.
-    /// USE_NAMED_PORT: The portName is used for health checking.
-    /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-    /// 
-    /// 
-    /// If not specified, HTTPS health check follows behavior specified in port and portName fields.
+    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
     /// </summary>
     [EnumType]
     public readonly struct HTTPSHealthCheckPortSpecification : IEquatable<HTTPSHealthCheckPortSpecification>
@@ -2011,8 +2454,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The port number in port is used for health checking.
+        /// </summary>
         public static HTTPSHealthCheckPortSpecification UseFixedPort { get; } = new HTTPSHealthCheckPortSpecification("USE_FIXED_PORT");
+        /// <summary>
+        /// The portName is used for health checking.
+        /// </summary>
         public static HTTPSHealthCheckPortSpecification UseNamedPort { get; } = new HTTPSHealthCheckPortSpecification("USE_NAMED_PORT");
+        /// <summary>
+        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// </summary>
         public static HTTPSHealthCheckPortSpecification UseServingPort { get; } = new HTTPSHealthCheckPortSpecification("USE_SERVING_PORT");
 
         public static bool operator ==(HTTPSHealthCheckPortSpecification left, HTTPSHealthCheckPortSpecification right) => left.Equals(right);
@@ -2098,13 +2550,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The HTTP Status code to use for this RedirectAction.
-    /// Supported values are:  
-    /// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. 
-    /// - FOUND, which corresponds to 302. 
-    /// - SEE_OTHER which corresponds to 303. 
-    /// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. 
-    /// - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+    /// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained. 
     /// </summary>
     [EnumType]
     public readonly struct HttpRedirectActionRedirectResponseCode : IEquatable<HttpRedirectActionRedirectResponseCode>
@@ -2116,10 +2562,25 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Http Status Code 302 - Found.
+        /// </summary>
         public static HttpRedirectActionRedirectResponseCode Found { get; } = new HttpRedirectActionRedirectResponseCode("FOUND");
+        /// <summary>
+        /// Http Status Code 301 - Moved Permanently.
+        /// </summary>
         public static HttpRedirectActionRedirectResponseCode MovedPermanentlyDefault { get; } = new HttpRedirectActionRedirectResponseCode("MOVED_PERMANENTLY_DEFAULT");
+        /// <summary>
+        /// Http Status Code 308 - Permanent Redirect maintaining HTTP method.
+        /// </summary>
         public static HttpRedirectActionRedirectResponseCode PermanentRedirect { get; } = new HttpRedirectActionRedirectResponseCode("PERMANENT_REDIRECT");
+        /// <summary>
+        /// Http Status Code 303 - See Other.
+        /// </summary>
         public static HttpRedirectActionRedirectResponseCode SeeOther { get; } = new HttpRedirectActionRedirectResponseCode("SEE_OTHER");
+        /// <summary>
+        /// Http Status Code 307 - Temporary Redirect maintaining HTTP method.
+        /// </summary>
         public static HttpRedirectActionRedirectResponseCode TemporaryRedirect { get; } = new HttpRedirectActionRedirectResponseCode("TEMPORARY_REDIRECT");
 
         public static bool operator ==(HttpRedirectActionRedirectResponseCode left, HttpRedirectActionRedirectResponseCode right) => left.Equals(right);
@@ -2229,9 +2690,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The  instance redistribution policy for regional managed instance groups. Valid values are:  
-    /// - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. 
-    /// - NONE: For non-autoscaled groups, proactive redistribution is disabled.
+    /// The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled. 
     /// </summary>
     [EnumType]
     public readonly struct InstanceGroupManagerUpdatePolicyInstanceRedistributionType : IEquatable<InstanceGroupManagerUpdatePolicyInstanceRedistributionType>
@@ -2243,7 +2702,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// No action is being proactively performed in order to bring this IGM to its target instance distribution.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyInstanceRedistributionType None { get; } = new InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE");
+        /// <summary>
+        /// This IGM will actively converge to its target instance distribution.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyInstanceRedistributionType Proactive { get; } = new InstanceGroupManagerUpdatePolicyInstanceRedistributionType("PROACTIVE");
 
         public static bool operator ==(InstanceGroupManagerUpdatePolicyInstanceRedistributionType left, InstanceGroupManagerUpdatePolicyInstanceRedistributionType right) => left.Equals(right);
@@ -2274,9 +2739,21 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Do not perform any action.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyMinimalAction None { get; } = new InstanceGroupManagerUpdatePolicyMinimalAction("NONE");
+        /// <summary>
+        /// Updates applied in runtime, instances will not be disrupted.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyMinimalAction Refresh { get; } = new InstanceGroupManagerUpdatePolicyMinimalAction("REFRESH");
+        /// <summary>
+        /// Old instances will be deleted. New instances will be created from the target template.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyMinimalAction Replace { get; } = new InstanceGroupManagerUpdatePolicyMinimalAction("REPLACE");
+        /// <summary>
+        /// Every instance will be restarted.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyMinimalAction Restart { get; } = new InstanceGroupManagerUpdatePolicyMinimalAction("RESTART");
 
         public static bool operator ==(InstanceGroupManagerUpdatePolicyMinimalAction left, InstanceGroupManagerUpdatePolicyMinimalAction right) => left.Equals(right);
@@ -2307,9 +2784,21 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Do not perform any action.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction None { get; } = new InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("NONE");
+        /// <summary>
+        /// Updates applied in runtime, instances will not be disrupted.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction Refresh { get; } = new InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("REFRESH");
+        /// <summary>
+        /// Old instances will be deleted. New instances will be created from the target template.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction Replace { get; } = new InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("REPLACE");
+        /// <summary>
+        /// Every instance will be restarted.
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction Restart { get; } = new InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("RESTART");
 
         public static bool operator ==(InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction left, InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction right) => left.Equals(right);
@@ -2340,7 +2829,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Instances will be recreated (with the same name)
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyReplacementMethod Recreate { get; } = new InstanceGroupManagerUpdatePolicyReplacementMethod("RECREATE");
+        /// <summary>
+        /// Default option: instances will be deleted and created (with a new name)
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyReplacementMethod Substitute { get; } = new InstanceGroupManagerUpdatePolicyReplacementMethod("SUBSTITUTE");
 
         public static bool operator ==(InstanceGroupManagerUpdatePolicyReplacementMethod left, InstanceGroupManagerUpdatePolicyReplacementMethod right) => left.Equals(right);
@@ -2371,7 +2866,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyType Opportunistic { get; } = new InstanceGroupManagerUpdatePolicyType("OPPORTUNISTIC");
+        /// <summary>
+        /// This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+        /// </summary>
         public static InstanceGroupManagerUpdatePolicyType Proactive { get; } = new InstanceGroupManagerUpdatePolicyType("PROACTIVE");
 
         public static bool operator ==(InstanceGroupManagerUpdatePolicyType left, InstanceGroupManagerUpdatePolicyType right) => left.Equals(right);
@@ -2402,8 +2903,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Indicates user chose no operation.
+        /// </summary>
         public static InstancePostKeyRevocationActionType Noop { get; } = new InstancePostKeyRevocationActionType("NOOP");
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
         public static InstancePostKeyRevocationActionType PostKeyRevocationActionTypeUnspecified { get; } = new InstancePostKeyRevocationActionType("POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Indicates user chose to opt for VM shutdown on key revocation.
+        /// </summary>
         public static InstancePostKeyRevocationActionType Shutdown { get; } = new InstancePostKeyRevocationActionType("SHUTDOWN");
 
         public static bool operator ==(InstancePostKeyRevocationActionType left, InstancePostKeyRevocationActionType right) => left.Equals(right);
@@ -2422,7 +2932,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+    /// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
     /// </summary>
     [EnumType]
     public readonly struct InstancePrivateIpv6GoogleAccess : IEquatable<InstancePrivateIpv6GoogleAccess>
@@ -2434,8 +2944,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Bidirectional private IPv6 access to/from Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+        /// </summary>
         public static InstancePrivateIpv6GoogleAccess EnableBidirectionalAccessToGoogle { get; } = new InstancePrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE");
+        /// <summary>
+        /// Outbound private IPv6 access from VMs in this subnet to Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+        /// </summary>
         public static InstancePrivateIpv6GoogleAccess EnableOutboundVmAccessToGoogle { get; } = new InstancePrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE");
+        /// <summary>
+        /// Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork.
+        /// </summary>
         public static InstancePrivateIpv6GoogleAccess InheritFromSubnetwork { get; } = new InstancePrivateIpv6GoogleAccess("INHERIT_FROM_SUBNETWORK");
 
         public static bool operator ==(InstancePrivateIpv6GoogleAccess left, InstancePrivateIpv6GoogleAccess right) => left.Equals(right);
@@ -2466,8 +2985,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Indicates user chose no operation.
+        /// </summary>
         public static InstancePropertiesPostKeyRevocationActionType Noop { get; } = new InstancePropertiesPostKeyRevocationActionType("NOOP");
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
         public static InstancePropertiesPostKeyRevocationActionType PostKeyRevocationActionTypeUnspecified { get; } = new InstancePropertiesPostKeyRevocationActionType("POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Indicates user chose to opt for VM shutdown on key revocation.
+        /// </summary>
         public static InstancePropertiesPostKeyRevocationActionType Shutdown { get; } = new InstancePropertiesPostKeyRevocationActionType("SHUTDOWN");
 
         public static bool operator ==(InstancePropertiesPostKeyRevocationActionType left, InstancePropertiesPostKeyRevocationActionType right) => left.Equals(right);
@@ -2486,7 +3014,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+    /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
     /// </summary>
     [EnumType]
     public readonly struct InstancePropertiesPrivateIpv6GoogleAccess : IEquatable<InstancePropertiesPrivateIpv6GoogleAccess>
@@ -2498,8 +3026,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Bidirectional private IPv6 access to/from Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+        /// </summary>
         public static InstancePropertiesPrivateIpv6GoogleAccess EnableBidirectionalAccessToGoogle { get; } = new InstancePropertiesPrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE");
+        /// <summary>
+        /// Outbound private IPv6 access from VMs in this subnet to Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
+        /// </summary>
         public static InstancePropertiesPrivateIpv6GoogleAccess EnableOutboundVmAccessToGoogle { get; } = new InstancePropertiesPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE");
+        /// <summary>
+        /// Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork.
+        /// </summary>
         public static InstancePropertiesPrivateIpv6GoogleAccess InheritFromSubnetwork { get; } = new InstancePropertiesPrivateIpv6GoogleAccess("INHERIT_FROM_SUBNETWORK");
 
         public static bool operator ==(InstancePropertiesPrivateIpv6GoogleAccess left, InstancePropertiesPrivateIpv6GoogleAccess right) => left.Equals(right);
@@ -2518,19 +3055,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: 
-    /// - BPS_50M: 50 Mbit/s 
-    /// - BPS_100M: 100 Mbit/s 
-    /// - BPS_200M: 200 Mbit/s 
-    /// - BPS_300M: 300 Mbit/s 
-    /// - BPS_400M: 400 Mbit/s 
-    /// - BPS_500M: 500 Mbit/s 
-    /// - BPS_1G: 1 Gbit/s 
-    /// - BPS_2G: 2 Gbit/s 
-    /// - BPS_5G: 5 Gbit/s 
-    /// - BPS_10G: 10 Gbit/s 
-    /// - BPS_20G: 20 Gbit/s 
-    /// - BPS_50G: 50 Gbit/s
+    /// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s 
     /// </summary>
     [EnumType]
     public readonly struct InterconnectAttachmentBandwidth : IEquatable<InterconnectAttachmentBandwidth>
@@ -2542,17 +3067,53 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// 100 Mbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps100m { get; } = new InterconnectAttachmentBandwidth("BPS_100M");
+        /// <summary>
+        /// 10 Gbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps10g { get; } = new InterconnectAttachmentBandwidth("BPS_10G");
+        /// <summary>
+        /// 1 Gbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps1g { get; } = new InterconnectAttachmentBandwidth("BPS_1G");
+        /// <summary>
+        /// 200 Mbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps200m { get; } = new InterconnectAttachmentBandwidth("BPS_200M");
+        /// <summary>
+        /// 20 Gbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps20g { get; } = new InterconnectAttachmentBandwidth("BPS_20G");
+        /// <summary>
+        /// 2 Gbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps2g { get; } = new InterconnectAttachmentBandwidth("BPS_2G");
+        /// <summary>
+        /// 300 Mbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps300m { get; } = new InterconnectAttachmentBandwidth("BPS_300M");
+        /// <summary>
+        /// 400 Mbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps400m { get; } = new InterconnectAttachmentBandwidth("BPS_400M");
+        /// <summary>
+        /// 500 Mbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps500m { get; } = new InterconnectAttachmentBandwidth("BPS_500M");
+        /// <summary>
+        /// 50 Gbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps50g { get; } = new InterconnectAttachmentBandwidth("BPS_50G");
+        /// <summary>
+        /// 50 Mbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps50m { get; } = new InterconnectAttachmentBandwidth("BPS_50M");
+        /// <summary>
+        /// 5 Gbit/s
+        /// </summary>
         public static InterconnectAttachmentBandwidth Bps5g { get; } = new InterconnectAttachmentBandwidth("BPS_5G");
 
         public static bool operator ==(InterconnectAttachmentBandwidth left, InterconnectAttachmentBandwidth right) => left.Equals(right);
@@ -2571,10 +3132,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: 
-    /// - AVAILABILITY_DOMAIN_ANY 
-    /// - AVAILABILITY_DOMAIN_1 
-    /// - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+    /// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
     /// </summary>
     [EnumType]
     public readonly struct InterconnectAttachmentEdgeAvailabilityDomain : IEquatable<InterconnectAttachmentEdgeAvailabilityDomain>
@@ -2606,10 +3164,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Indicates the user-supplied encryption option of this interconnect attachment: 
-    /// - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
-    /// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option. 
-    /// Not currently available in all Interconnect locations.
+    /// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
     /// </summary>
     [EnumType]
     public readonly struct InterconnectAttachmentEncryption : IEquatable<InterconnectAttachmentEncryption>
@@ -2621,7 +3176,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use IPsec-encrypted Cloud Interconnect, the interconnect attachment must be created with this option.
+        /// </summary>
         public static InterconnectAttachmentEncryption Ipsec { get; } = new InterconnectAttachmentEncryption("IPSEC");
+        /// <summary>
+        /// This is the default value, which means the Interconnect Attachment will carry unencrypted traffic. VMs will be able to send traffic to or receive traffic from such interconnect attachment.
+        /// </summary>
         public static InterconnectAttachmentEncryption None { get; } = new InterconnectAttachmentEncryption("NONE");
 
         public static bool operator ==(InterconnectAttachmentEncryption left, InterconnectAttachmentEncryption right) => left.Equals(right);
@@ -2640,10 +3201,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The type of interconnect attachment this is, which can take one of the following values: 
-    /// - DEDICATED: an attachment to a Dedicated Interconnect. 
-    /// - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
-    /// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
+    /// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
     /// </summary>
     [EnumType]
     public readonly struct InterconnectAttachmentType : IEquatable<InterconnectAttachmentType>
@@ -2655,8 +3213,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Attachment to a dedicated interconnect.
+        /// </summary>
         public static InterconnectAttachmentType Dedicated { get; } = new InterconnectAttachmentType("DEDICATED");
+        /// <summary>
+        /// Attachment to a partner interconnect, created by the customer.
+        /// </summary>
         public static InterconnectAttachmentType Partner { get; } = new InterconnectAttachmentType("PARTNER");
+        /// <summary>
+        /// Attachment to a partner interconnect, created by the partner.
+        /// </summary>
         public static InterconnectAttachmentType PartnerProvider { get; } = new InterconnectAttachmentType("PARTNER_PROVIDER");
 
         public static bool operator ==(InterconnectAttachmentType left, InterconnectAttachmentType right) => left.Equals(right);
@@ -2675,9 +3242,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Type of interconnect, which can take one of the following values: 
-    /// - PARTNER: A partner-managed interconnection shared between customers though a partner. 
-    /// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+    /// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
     /// </summary>
     [EnumType]
     public readonly struct InterconnectInterconnectType : IEquatable<InterconnectInterconnectType>
@@ -2689,8 +3254,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// A dedicated physical interconnection with the customer.
+        /// </summary>
         public static InterconnectInterconnectType Dedicated { get; } = new InterconnectInterconnectType("DEDICATED");
+        /// <summary>
+        /// [Deprecated] A private, physical interconnection with the customer.
+        /// </summary>
         public static InterconnectInterconnectType ItPrivate { get; } = new InterconnectInterconnectType("IT_PRIVATE");
+        /// <summary>
+        /// A partner-managed interconnection shared between customers via partner.
+        /// </summary>
         public static InterconnectInterconnectType Partner { get; } = new InterconnectInterconnectType("PARTNER");
 
         public static bool operator ==(InterconnectInterconnectType left, InterconnectInterconnectType right) => left.Equals(right);
@@ -2709,9 +3283,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Type of link requested, which can take one of the following values: 
-    /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
-    /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+    /// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
     /// </summary>
     [EnumType]
     public readonly struct InterconnectLinkType : IEquatable<InterconnectLinkType>
@@ -2723,7 +3295,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// 100G Ethernet, LR Optics.
+        /// </summary>
         public static InterconnectLinkType LinkTypeEthernet100gLr { get; } = new InterconnectLinkType("LINK_TYPE_ETHERNET_100G_LR");
+        /// <summary>
+        /// 10G Ethernet, LR Optics. [(rate_bps) = 10000000000];
+        /// </summary>
         public static InterconnectLinkType LinkTypeEthernet10gLr { get; } = new InterconnectLinkType("LINK_TYPE_ETHERNET_10G_LR");
 
         public static bool operator ==(InterconnectLinkType left, InterconnectLinkType right) => left.Equals(right);
@@ -2742,7 +3320,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The log_name to populate in the Cloud Audit Record.
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     [EnumType]
     public readonly struct LogConfigCloudAuditOptionsLogName : IEquatable<LogConfigCloudAuditOptionsLogName>
@@ -2754,8 +3332,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static LogConfigCloudAuditOptionsLogName AdminActivity { get; } = new LogConfigCloudAuditOptionsLogName("ADMIN_ACTIVITY");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static LogConfigCloudAuditOptionsLogName DataAccess { get; } = new LogConfigCloudAuditOptionsLogName("DATA_ACCESS");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static LogConfigCloudAuditOptionsLogName UnspecifiedLogName { get; } = new LogConfigCloudAuditOptionsLogName("UNSPECIFIED_LOG_NAME");
 
         public static bool operator ==(LogConfigCloudAuditOptionsLogName left, LogConfigCloudAuditOptionsLogName right) => left.Equals(right);
@@ -2773,6 +3360,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// This is deprecated and has no effect. Do not use.
+    /// </summary>
     [EnumType]
     public readonly struct LogConfigDataAccessOptionsLogMode : IEquatable<LogConfigDataAccessOptionsLogMode>
     {
@@ -2783,7 +3373,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static LogConfigDataAccessOptionsLogMode LogFailClosed { get; } = new LogConfigDataAccessOptionsLogMode("LOG_FAIL_CLOSED");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static LogConfigDataAccessOptionsLogMode LogModeUnspecified { get; } = new LogConfigDataAccessOptionsLogMode("LOG_MODE_UNSPECIFIED");
 
         public static bool operator ==(LogConfigDataAccessOptionsLogMode left, LogConfigDataAccessOptionsLogMode right) => left.Equals(right);
@@ -2802,10 +3398,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match.
-    /// Supported values are:  
-    /// - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. 
-    /// - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+    /// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
     /// </summary>
     [EnumType]
     public readonly struct MetadataFilterFilterMatchCriteria : IEquatable<MetadataFilterFilterMatchCriteria>
@@ -2817,8 +3410,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Specifies that all filterLabels must match for the metadataFilter to be considered a match.
+        /// </summary>
         public static MetadataFilterFilterMatchCriteria MatchAll { get; } = new MetadataFilterFilterMatchCriteria("MATCH_ALL");
+        /// <summary>
+        /// Specifies that any filterLabel must match for the metadataFilter to be considered a match.
+        /// </summary>
         public static MetadataFilterFilterMatchCriteria MatchAny { get; } = new MetadataFilterFilterMatchCriteria("MATCH_ANY");
+        /// <summary>
+        /// Indicates that the match criteria was not set. A metadataFilter must never be created with this value.
+        /// </summary>
         public static MetadataFilterFilterMatchCriteria NotSet { get; } = new MetadataFilterFilterMatchCriteria("NOT_SET");
 
         public static bool operator ==(MetadataFilterFilterMatchCriteria left, MetadataFilterFilterMatchCriteria right) => left.Equals(right);
@@ -2849,11 +3451,29 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The network endpoint is represented by an IP address.
+        /// </summary>
         public static NetworkEndpointGroupNetworkEndpointType GceVmIp { get; } = new NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP");
+        /// <summary>
+        /// The network endpoint is represented by IP address and port pair.
+        /// </summary>
         public static NetworkEndpointGroupNetworkEndpointType GceVmIpPort { get; } = new NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT");
+        /// <summary>
+        /// The network endpoint is represented by fully qualified domain name and port.
+        /// </summary>
         public static NetworkEndpointGroupNetworkEndpointType InternetFqdnPort { get; } = new NetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT");
+        /// <summary>
+        /// The network endpoint is represented by an internet IP address and port.
+        /// </summary>
         public static NetworkEndpointGroupNetworkEndpointType InternetIpPort { get; } = new NetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT");
+        /// <summary>
+        /// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
+        /// </summary>
         public static NetworkEndpointGroupNetworkEndpointType NonGcpPrivateIpPort { get; } = new NetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT");
+        /// <summary>
+        /// The network endpoint is handled by specified serverless infrastructure.
+        /// </summary>
         public static NetworkEndpointGroupNetworkEndpointType Serverless { get; } = new NetworkEndpointGroupNetworkEndpointType("SERVERLESS");
 
         public static bool operator ==(NetworkEndpointGroupNetworkEndpointType left, NetworkEndpointGroupNetworkEndpointType right) => left.Equals(right);
@@ -2884,8 +3504,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// GVNIC
+        /// </summary>
         public static NetworkInterfaceNicType Gvnic { get; } = new NetworkInterfaceNicType("GVNIC");
+        /// <summary>
+        /// No type specified.
+        /// </summary>
         public static NetworkInterfaceNicType UnspecifiedNicType { get; } = new NetworkInterfaceNicType("UNSPECIFIED_NIC_TYPE");
+        /// <summary>
+        /// VIRTIO
+        /// </summary>
         public static NetworkInterfaceNicType VirtioNet { get; } = new NetworkInterfaceNicType("VIRTIO_NET");
 
         public static bool operator ==(NetworkInterfaceNicType left, NetworkInterfaceNicType right) => left.Equals(right);
@@ -2896,6 +3525,44 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is NetworkInterfaceNicType other && Equals(other);
         public bool Equals(NetworkInterfaceNicType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkInterfaceStackType : IEquatable<NetworkInterfaceStackType>
+    {
+        private readonly string _value;
+
+        private NetworkInterfaceStackType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The network interface can have both IPv4 and IPv6 addresses.
+        /// </summary>
+        public static NetworkInterfaceStackType Ipv4Ipv6 { get; } = new NetworkInterfaceStackType("IPV4_IPV6");
+        /// <summary>
+        /// The network interface will be assigned IPv4 address.
+        /// </summary>
+        public static NetworkInterfaceStackType Ipv4Only { get; } = new NetworkInterfaceStackType("IPV4_ONLY");
+        public static NetworkInterfaceStackType UnspecifiedStackType { get; } = new NetworkInterfaceStackType("UNSPECIFIED_STACK_TYPE");
+
+        public static bool operator ==(NetworkInterfaceStackType left, NetworkInterfaceStackType right) => left.Equals(right);
+        public static bool operator !=(NetworkInterfaceStackType left, NetworkInterfaceStackType right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkInterfaceStackType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkInterfaceStackType other && Equals(other);
+        public bool Equals(NetworkInterfaceStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -2963,7 +3630,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see  Autoscaler modes.
+    /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes.
     /// </summary>
     [EnumType]
     public readonly struct NodeGroupAutoscalingPolicyMode : IEquatable<NodeGroupAutoscalingPolicyMode>
@@ -2976,8 +3643,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         public static NodeGroupAutoscalingPolicyMode ModeUnspecified { get; } = new NodeGroupAutoscalingPolicyMode("MODE_UNSPECIFIED");
+        /// <summary>
+        /// Autoscaling is disabled.
+        /// </summary>
         public static NodeGroupAutoscalingPolicyMode Off { get; } = new NodeGroupAutoscalingPolicyMode("OFF");
+        /// <summary>
+        /// Autocaling is fully enabled.
+        /// </summary>
         public static NodeGroupAutoscalingPolicyMode On { get; } = new NodeGroupAutoscalingPolicyMode("ON");
+        /// <summary>
+        /// Autoscaling will only scale out and will not remove nodes.
+        /// </summary>
         public static NodeGroupAutoscalingPolicyMode OnlyScaleOut { get; } = new NodeGroupAutoscalingPolicyMode("ONLY_SCALE_OUT");
 
         public static bool operator ==(NodeGroupAutoscalingPolicyMode left, NodeGroupAutoscalingPolicyMode right) => left.Equals(right);
@@ -2996,7 +3672,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+    /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
     /// </summary>
     [EnumType]
     public readonly struct NodeGroupMaintenancePolicy : IEquatable<NodeGroupMaintenancePolicy>
@@ -3008,9 +3684,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Allow the node and corresponding instances to retain default maintenance behavior.
+        /// </summary>
         public static NodeGroupMaintenancePolicy Default { get; } = new NodeGroupMaintenancePolicy("DEFAULT");
         public static NodeGroupMaintenancePolicy MaintenancePolicyUnspecified { get; } = new NodeGroupMaintenancePolicy("MAINTENANCE_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// When maintenance must be done on a node, the instances on that node will be moved to other nodes in the group. Instances with onHostMaintenance = MIGRATE will live migrate to their destinations while instances with onHostMaintenance = TERMINATE will terminate and then restart on their destination nodes if automaticRestart = true.
+        /// </summary>
         public static NodeGroupMaintenancePolicy MigrateWithinNodeGroup { get; } = new NodeGroupMaintenancePolicy("MIGRATE_WITHIN_NODE_GROUP");
+        /// <summary>
+        /// Instances in this group will restart on the same node when maintenance has completed. Instances must have onHostMaintenance = TERMINATE, and they will only restart if automaticRestart = true.
+        /// </summary>
         public static NodeGroupMaintenancePolicy RestartInPlace { get; } = new NodeGroupMaintenancePolicy("RESTART_IN_PLACE");
 
         public static bool operator ==(NodeGroupMaintenancePolicy left, NodeGroupMaintenancePolicy right) => left.Equals(right);
@@ -3104,6 +3789,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         public static OrganizationSecurityPolicyType CloudArmor { get; } = new OrganizationSecurityPolicyType("CLOUD_ARMOR");
+        public static OrganizationSecurityPolicyType CloudArmorEdge { get; } = new OrganizationSecurityPolicyType("CLOUD_ARMOR_EDGE");
         public static OrganizationSecurityPolicyType Firewall { get; } = new OrganizationSecurityPolicyType("FIREWALL");
 
         public static bool operator ==(OrganizationSecurityPolicyType left, OrganizationSecurityPolicyType right) => left.Equals(right);
@@ -3122,9 +3808,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-    /// 
-    /// The default is TRUE.
+    /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
     /// </summary>
     [EnumType]
     public readonly struct PacketMirroringEnable : IEquatable<PacketMirroringEnable>
@@ -3167,8 +3851,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Default, both directions are mirrored.
+        /// </summary>
         public static PacketMirroringFilterDirection Both { get; } = new PacketMirroringFilterDirection("BOTH");
+        /// <summary>
+        /// Only egress traffic is mirrored.
+        /// </summary>
         public static PacketMirroringFilterDirection Egress { get; } = new PacketMirroringFilterDirection("EGRESS");
+        /// <summary>
+        /// Only ingress traffic is mirrored.
+        /// </summary>
         public static PacketMirroringFilterDirection Ingress { get; } = new PacketMirroringFilterDirection("INGRESS");
 
         public static bool operator ==(PacketMirroringFilterDirection left, PacketMirroringFilterDirection right) => left.Equals(right);
@@ -3223,7 +3916,44 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+    /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionBackendServiceCompressionMode : IEquatable<RegionBackendServiceCompressionMode>
+    {
+        private readonly string _value;
+
+        private RegionBackendServiceCompressionMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+        /// </summary>
+        public static RegionBackendServiceCompressionMode Automatic { get; } = new RegionBackendServiceCompressionMode("AUTOMATIC");
+        /// <summary>
+        /// Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+        /// </summary>
+        public static RegionBackendServiceCompressionMode Disabled { get; } = new RegionBackendServiceCompressionMode("DISABLED");
+
+        public static bool operator ==(RegionBackendServiceCompressionMode left, RegionBackendServiceCompressionMode right) => left.Equals(right);
+        public static bool operator !=(RegionBackendServiceCompressionMode left, RegionBackendServiceCompressionMode right) => !left.Equals(right);
+
+        public static explicit operator string(RegionBackendServiceCompressionMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionBackendServiceCompressionMode other && Equals(other);
+        public bool Equals(RegionBackendServiceCompressionMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
     /// </summary>
     [EnumType]
     public readonly struct RegionBackendServiceLoadBalancingScheme : IEquatable<RegionBackendServiceLoadBalancingScheme>
@@ -3235,9 +3965,21 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+        /// </summary>
         public static RegionBackendServiceLoadBalancingScheme External { get; } = new RegionBackendServiceLoadBalancingScheme("EXTERNAL");
+        /// <summary>
+        /// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+        /// </summary>
         public static RegionBackendServiceLoadBalancingScheme Internal { get; } = new RegionBackendServiceLoadBalancingScheme("INTERNAL");
+        /// <summary>
+        /// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+        /// </summary>
         public static RegionBackendServiceLoadBalancingScheme InternalManaged { get; } = new RegionBackendServiceLoadBalancingScheme("INTERNAL_MANAGED");
+        /// <summary>
+        /// Signifies that this will be used by Traffic Director.
+        /// </summary>
         public static RegionBackendServiceLoadBalancingScheme InternalSelfManaged { get; } = new RegionBackendServiceLoadBalancingScheme("INTERNAL_SELF_MANAGED");
         public static RegionBackendServiceLoadBalancingScheme InvalidLoadBalancingScheme { get; } = new RegionBackendServiceLoadBalancingScheme("INVALID_LOAD_BALANCING_SCHEME");
 
@@ -3257,21 +3999,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The load balancing algorithm used within the scope of the locality. The possible values are:  
-    /// - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
-    /// - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
-    /// - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
-    /// - RANDOM: The load balancer selects a random healthy host. 
-    /// - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. 
-    /// - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 
-    /// 
-    /// This field is applicable to either:  
-    /// - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-    /// - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-    /// 
-    /// If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-    /// 
-    /// Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+    /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     /// </summary>
     [EnumType]
     public readonly struct RegionBackendServiceLocalityLbPolicy : IEquatable<RegionBackendServiceLocalityLbPolicy>
@@ -3284,11 +4012,29 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         public static RegionBackendServiceLocalityLbPolicy InvalidLbPolicy { get; } = new RegionBackendServiceLocalityLbPolicy("INVALID_LB_POLICY");
+        /// <summary>
+        /// An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+        /// </summary>
         public static RegionBackendServiceLocalityLbPolicy LeastRequest { get; } = new RegionBackendServiceLocalityLbPolicy("LEAST_REQUEST");
+        /// <summary>
+        /// This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+        /// </summary>
         public static RegionBackendServiceLocalityLbPolicy Maglev { get; } = new RegionBackendServiceLocalityLbPolicy("MAGLEV");
+        /// <summary>
+        /// Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
+        /// </summary>
         public static RegionBackendServiceLocalityLbPolicy OriginalDestination { get; } = new RegionBackendServiceLocalityLbPolicy("ORIGINAL_DESTINATION");
+        /// <summary>
+        /// The load balancer selects a random healthy host.
+        /// </summary>
         public static RegionBackendServiceLocalityLbPolicy Random { get; } = new RegionBackendServiceLocalityLbPolicy("RANDOM");
+        /// <summary>
+        /// The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+        /// </summary>
         public static RegionBackendServiceLocalityLbPolicy RingHash { get; } = new RegionBackendServiceLocalityLbPolicy("RING_HASH");
+        /// <summary>
+        /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+        /// </summary>
         public static RegionBackendServiceLocalityLbPolicy RoundRobin { get; } = new RegionBackendServiceLocalityLbPolicy("ROUND_ROBIN");
 
         public static bool operator ==(RegionBackendServiceLocalityLbPolicy left, RegionBackendServiceLocalityLbPolicy right) => left.Equals(right);
@@ -3307,11 +4053,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The protocol this BackendService uses to communicate with backends.
-    /// 
-    /// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-    /// 
-    /// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+    /// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
     /// </summary>
     [EnumType]
     public readonly struct RegionBackendServiceProtocol : IEquatable<RegionBackendServiceProtocol>
@@ -3323,13 +4065,32 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// gRPC (available for Traffic Director).
+        /// </summary>
         public static RegionBackendServiceProtocol Grpc { get; } = new RegionBackendServiceProtocol("GRPC");
         public static RegionBackendServiceProtocol Http { get; } = new RegionBackendServiceProtocol("HTTP");
+        /// <summary>
+        /// HTTP/2 with SSL.
+        /// </summary>
         public static RegionBackendServiceProtocol Http2 { get; } = new RegionBackendServiceProtocol("HTTP2");
         public static RegionBackendServiceProtocol Https { get; } = new RegionBackendServiceProtocol("HTTPS");
+        /// <summary>
+        /// TCP proxying with SSL.
+        /// </summary>
         public static RegionBackendServiceProtocol Ssl { get; } = new RegionBackendServiceProtocol("SSL");
+        /// <summary>
+        /// TCP proxying or TCP pass-through.
+        /// </summary>
         public static RegionBackendServiceProtocol Tcp { get; } = new RegionBackendServiceProtocol("TCP");
+        /// <summary>
+        /// UDP.
+        /// </summary>
         public static RegionBackendServiceProtocol Udp { get; } = new RegionBackendServiceProtocol("UDP");
+        /// <summary>
+        /// If a Backend Service has UNSPECIFIED as its protocol, it can be used with any L3/L4 Forwarding Rules.
+        /// </summary>
+        public static RegionBackendServiceProtocol Unspecified { get; } = new RegionBackendServiceProtocol("UNSPECIFIED");
 
         public static bool operator ==(RegionBackendServiceProtocol left, RegionBackendServiceProtocol right) => left.Equals(right);
         public static bool operator !=(RegionBackendServiceProtocol left, RegionBackendServiceProtocol right) => !left.Equals(right);
@@ -3347,15 +4108,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Type of session affinity to use. The default is NONE.
-    /// 
-    /// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-    /// 
-    /// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-    /// 
-    /// When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-    /// 
-    /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+    /// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
     /// </summary>
     [EnumType]
     public readonly struct RegionBackendServiceSessionAffinity : IEquatable<RegionBackendServiceSessionAffinity>
@@ -3367,13 +4120,37 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// 2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy.
+        /// </summary>
         public static RegionBackendServiceSessionAffinity ClientIp { get; } = new RegionBackendServiceSessionAffinity("CLIENT_IP");
+        /// <summary>
+        /// 1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing.
+        /// </summary>
         public static RegionBackendServiceSessionAffinity ClientIpNoDestination { get; } = new RegionBackendServiceSessionAffinity("CLIENT_IP_NO_DESTINATION");
+        /// <summary>
+        /// 5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+        /// </summary>
         public static RegionBackendServiceSessionAffinity ClientIpPortProto { get; } = new RegionBackendServiceSessionAffinity("CLIENT_IP_PORT_PROTO");
+        /// <summary>
+        /// 3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+        /// </summary>
         public static RegionBackendServiceSessionAffinity ClientIpProto { get; } = new RegionBackendServiceSessionAffinity("CLIENT_IP_PROTO");
+        /// <summary>
+        /// Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing.
+        /// </summary>
         public static RegionBackendServiceSessionAffinity GeneratedCookie { get; } = new RegionBackendServiceSessionAffinity("GENERATED_COOKIE");
+        /// <summary>
+        /// The hash is based on a user specified header field.
+        /// </summary>
         public static RegionBackendServiceSessionAffinity HeaderField { get; } = new RegionBackendServiceSessionAffinity("HEADER_FIELD");
+        /// <summary>
+        /// The hash is based on a user provided cookie.
+        /// </summary>
         public static RegionBackendServiceSessionAffinity HttpCookie { get; } = new RegionBackendServiceSessionAffinity("HTTP_COOKIE");
+        /// <summary>
+        /// No session affinity. Connections from the same client IP may go to any instance in the pool.
+        /// </summary>
         public static RegionBackendServiceSessionAffinity None { get; } = new RegionBackendServiceSessionAffinity("NONE");
 
         public static bool operator ==(RegionBackendServiceSessionAffinity left, RegionBackendServiceSessionAffinity right) => left.Equals(right);
@@ -3525,9 +4302,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
-    /// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
-    /// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+    /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
     /// </summary>
     [EnumType]
     public readonly struct RegionHealthCheckServiceHealthStatusAggregationPolicy : IEquatable<RegionHealthCheckServiceHealthStatusAggregationPolicy>
@@ -3539,7 +4314,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+        /// </summary>
         public static RegionHealthCheckServiceHealthStatusAggregationPolicy And { get; } = new RegionHealthCheckServiceHealthStatusAggregationPolicy("AND");
+        /// <summary>
+        /// An EndpointHealth message is returned for each backend in the health check service.
+        /// </summary>
         public static RegionHealthCheckServiceHealthStatusAggregationPolicy NoAggregation { get; } = new RegionHealthCheckServiceHealthStatusAggregationPolicy("NO_AGGREGATION");
 
         public static bool operator ==(RegionHealthCheckServiceHealthStatusAggregationPolicy left, RegionHealthCheckServiceHealthStatusAggregationPolicy right) => left.Equals(right);
@@ -3637,11 +4418,29 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The network endpoint is represented by an IP address.
+        /// </summary>
         public static RegionNetworkEndpointGroupNetworkEndpointType GceVmIp { get; } = new RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP");
+        /// <summary>
+        /// The network endpoint is represented by IP address and port pair.
+        /// </summary>
         public static RegionNetworkEndpointGroupNetworkEndpointType GceVmIpPort { get; } = new RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT");
+        /// <summary>
+        /// The network endpoint is represented by fully qualified domain name and port.
+        /// </summary>
         public static RegionNetworkEndpointGroupNetworkEndpointType InternetFqdnPort { get; } = new RegionNetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT");
+        /// <summary>
+        /// The network endpoint is represented by an internet IP address and port.
+        /// </summary>
         public static RegionNetworkEndpointGroupNetworkEndpointType InternetIpPort { get; } = new RegionNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT");
+        /// <summary>
+        /// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
+        /// </summary>
         public static RegionNetworkEndpointGroupNetworkEndpointType NonGcpPrivateIpPort { get; } = new RegionNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT");
+        /// <summary>
+        /// The network endpoint is handled by specified serverless infrastructure.
+        /// </summary>
         public static RegionNetworkEndpointGroupNetworkEndpointType Serverless { get; } = new RegionNetworkEndpointGroupNetworkEndpointType("SERVERLESS");
 
         public static bool operator ==(RegionNetworkEndpointGroupNetworkEndpointType left, RegionNetworkEndpointGroupNetworkEndpointType right) => left.Equals(right);
@@ -3672,7 +4471,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Google-managed SSLCertificate.
+        /// </summary>
         public static RegionSslCertificateType Managed { get; } = new RegionSslCertificateType("MANAGED");
+        /// <summary>
+        /// Certificate uploaded by user.
+        /// </summary>
         public static RegionSslCertificateType SelfManaged { get; } = new RegionSslCertificateType("SELF_MANAGED");
         public static RegionSslCertificateType TypeUnspecified { get; } = new RegionSslCertificateType("TYPE_UNSPECIFIED");
 
@@ -3692,11 +4497,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
-    /// - When quic-override is set to NONE, Google manages whether QUIC is used. 
-    /// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
-    /// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
-    /// - If the quic-override flag is not specified, NONE is implied.
+    /// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
     /// </summary>
     [EnumType]
     public readonly struct RegionTargetHttpsProxyQuicOverride : IEquatable<RegionTargetHttpsProxyQuicOverride>
@@ -3708,8 +4509,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The load balancer will not attempt to negotiate QUIC with clients.
+        /// </summary>
         public static RegionTargetHttpsProxyQuicOverride Disable { get; } = new RegionTargetHttpsProxyQuicOverride("DISABLE");
+        /// <summary>
+        /// The load balancer will attempt to negotiate QUIC with clients.
+        /// </summary>
         public static RegionTargetHttpsProxyQuicOverride Enable { get; } = new RegionTargetHttpsProxyQuicOverride("ENABLE");
+        /// <summary>
+        /// No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request.
+        /// </summary>
         public static RegionTargetHttpsProxyQuicOverride None { get; } = new RegionTargetHttpsProxyQuicOverride("NONE");
 
         public static bool operator ==(RegionTargetHttpsProxyQuicOverride left, RegionTargetHttpsProxyQuicOverride right) => left.Equals(right);
@@ -3728,7 +4538,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See  Consuming reserved instances for examples.
+    /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
     /// </summary>
     [EnumType]
     public readonly struct ReservationAffinityConsumeReservationType : IEquatable<ReservationAffinityConsumeReservationType>
@@ -3740,9 +4550,21 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Consume any allocation available.
+        /// </summary>
         public static ReservationAffinityConsumeReservationType AnyReservation { get; } = new ReservationAffinityConsumeReservationType("ANY_RESERVATION");
+        /// <summary>
+        /// Do not consume from any allocated capacity.
+        /// </summary>
         public static ReservationAffinityConsumeReservationType NoReservation { get; } = new ReservationAffinityConsumeReservationType("NO_RESERVATION");
+        /// <summary>
+        /// Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+        /// </summary>
         public static ReservationAffinityConsumeReservationType SpecificReservation { get; } = new ReservationAffinityConsumeReservationType("SPECIFIC_RESERVATION");
+        /// <summary>
+        /// Prefer to consume from a specific reservation, but still consume any reservation available if the specified reservation is not available or exhausted. Must specify key value fields for specifying the reservations.
+        /// </summary>
         public static ReservationAffinityConsumeReservationType SpecificThenAnyReservation { get; } = new ReservationAffinityConsumeReservationType("SPECIFIC_THEN_ANY_RESERVATION");
         public static ReservationAffinityConsumeReservationType Unspecified { get; } = new ReservationAffinityConsumeReservationType("UNSPECIFIED");
 
@@ -3936,6 +4758,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Advertise all available subnets (including peer VPC subnets).
+        /// </summary>
         public static RouterBgpAdvertisedGroupsItem AllSubnets { get; } = new RouterBgpAdvertisedGroupsItem("ALL_SUBNETS");
 
         public static bool operator ==(RouterBgpAdvertisedGroupsItem left, RouterBgpAdvertisedGroupsItem right) => left.Equals(right);
@@ -3994,6 +4819,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Advertise all available subnets (including peer VPC subnets).
+        /// </summary>
         public static RouterBgpPeerAdvertisedGroupsItem AllSubnets { get; } = new RouterBgpPeerAdvertisedGroupsItem("ALL_SUBNETS");
 
         public static bool operator ==(RouterBgpPeerAdvertisedGroupsItem left, RouterBgpPeerAdvertisedGroupsItem right) => left.Equals(right);
@@ -4012,9 +4840,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The BFD session initialization mode for this BGP peer.
-    /// Not currently available publicly.
-    /// If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+    /// The BFD session initialization mode for this BGP peer. Not currently available publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
     /// </summary>
     [EnumType]
     public readonly struct RouterBgpPeerBfdSessionInitializationMode : IEquatable<RouterBgpPeerBfdSessionInitializationMode>
@@ -4046,9 +4872,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The status of the BGP peer connection.
-    /// Not currently available publicly.
-    /// If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
+    /// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
     /// </summary>
     [EnumType]
     public readonly struct RouterBgpPeerEnable : IEquatable<RouterBgpPeerEnable>
@@ -4079,10 +4903,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values: 
-    /// - ERRORS_ONLY: Export logs only for connection failures. 
-    /// - TRANSLATIONS_ONLY: Export logs only for successful connections. 
-    /// - ALL: Export logs for all connections, successful and unsuccessful.
+    /// Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values: - ERRORS_ONLY: Export logs only for connection failures. - TRANSLATIONS_ONLY: Export logs only for successful connections. - ALL: Export logs for all connections, successful and unsuccessful. 
     /// </summary>
     [EnumType]
     public readonly struct RouterNatLogConfigFilter : IEquatable<RouterNatLogConfigFilter>
@@ -4094,8 +4915,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Export logs for all (successful and unsuccessful) connections.
+        /// </summary>
         public static RouterNatLogConfigFilter All { get; } = new RouterNatLogConfigFilter("ALL");
+        /// <summary>
+        /// Export logs for connection failures only.
+        /// </summary>
         public static RouterNatLogConfigFilter ErrorsOnly { get; } = new RouterNatLogConfigFilter("ERRORS_ONLY");
+        /// <summary>
+        /// Export logs for successful connections only.
+        /// </summary>
         public static RouterNatLogConfigFilter TranslationsOnly { get; } = new RouterNatLogConfigFilter("TRANSLATIONS_ONLY");
 
         public static bool operator ==(RouterNatLogConfigFilter left, RouterNatLogConfigFilter right) => left.Equals(right);
@@ -4114,9 +4944,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specify the NatIpAllocateOption, which can take one of the following values: 
-    /// - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. 
-    /// - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
+    /// Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. 
     /// </summary>
     [EnumType]
     public readonly struct RouterNatNatIpAllocateOption : IEquatable<RouterNatNatIpAllocateOption>
@@ -4128,7 +4956,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Nat IPs are allocated by GCP; customers can not specify any Nat IPs.
+        /// </summary>
         public static RouterNatNatIpAllocateOption AutoOnly { get; } = new RouterNatNatIpAllocateOption("AUTO_ONLY");
+        /// <summary>
+        /// Only use Nat IPs provided by customers. When specified Nat IPs are not enough then the Nat service fails for new VMs.
+        /// </summary>
         public static RouterNatNatIpAllocateOption ManualOnly { get; } = new RouterNatNatIpAllocateOption("MANUAL_ONLY");
 
         public static bool operator ==(RouterNatNatIpAllocateOption left, RouterNatNatIpAllocateOption right) => left.Equals(right);
@@ -4147,10 +4981,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specify the Nat option, which can take one of the following values: 
-    /// - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. 
-    /// - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. 
-    /// - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+    /// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
     /// </summary>
     [EnumType]
     public readonly struct RouterNatSourceSubnetworkIpRangesToNat : IEquatable<RouterNatSourceSubnetworkIpRangesToNat>
@@ -4162,8 +4993,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// All the IP ranges in every Subnetwork are allowed to Nat.
+        /// </summary>
         public static RouterNatSourceSubnetworkIpRangesToNat AllSubnetworksAllIpRanges { get; } = new RouterNatSourceSubnetworkIpRangesToNat("ALL_SUBNETWORKS_ALL_IP_RANGES");
+        /// <summary>
+        /// All the primary IP ranges in every Subnetwork are allowed to Nat.
+        /// </summary>
         public static RouterNatSourceSubnetworkIpRangesToNat AllSubnetworksAllPrimaryIpRanges { get; } = new RouterNatSourceSubnetworkIpRangesToNat("ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES");
+        /// <summary>
+        /// A list of Subnetworks are allowed to Nat (specified in the field subnetwork below)
+        /// </summary>
         public static RouterNatSourceSubnetworkIpRangesToNat ListOfSubnetworks { get; } = new RouterNatSourceSubnetworkIpRangesToNat("LIST_OF_SUBNETWORKS");
 
         public static bool operator ==(RouterNatSourceSubnetworkIpRangesToNat left, RouterNatSourceSubnetworkIpRangesToNat right) => left.Equals(right);
@@ -4191,8 +5031,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The primary and all the secondary ranges are allowed to Nat.
+        /// </summary>
         public static RouterNatSubnetworkToNatSourceIpRangesToNatItem AllIpRanges { get; } = new RouterNatSubnetworkToNatSourceIpRangesToNatItem("ALL_IP_RANGES");
+        /// <summary>
+        /// A list of secondary ranges are allowed to Nat.
+        /// </summary>
         public static RouterNatSubnetworkToNatSourceIpRangesToNatItem ListOfSecondaryIpRanges { get; } = new RouterNatSubnetworkToNatSourceIpRangesToNatItem("LIST_OF_SECONDARY_IP_RANGES");
+        /// <summary>
+        /// The primary range is allowed to Nat.
+        /// </summary>
         public static RouterNatSubnetworkToNatSourceIpRangesToNatItem PrimaryIpRange { get; } = new RouterNatSubnetworkToNatSourceIpRangesToNatItem("PRIMARY_IP_RANGE");
 
         public static bool operator ==(RouterNatSubnetworkToNatSourceIpRangesToNatItem left, RouterNatSubnetworkToNatSourceIpRangesToNatItem right) => left.Equals(right);
@@ -4211,7 +5060,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Required
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     [EnumType]
     public readonly struct RuleAction : IEquatable<RuleAction>
@@ -4223,11 +5072,29 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static RuleAction Allow { get; } = new RuleAction("ALLOW");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static RuleAction AllowWithLog { get; } = new RuleAction("ALLOW_WITH_LOG");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static RuleAction Deny { get; } = new RuleAction("DENY");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static RuleAction DenyWithLog { get; } = new RuleAction("DENY_WITH_LOG");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static RuleAction Log { get; } = new RuleAction("LOG");
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public static RuleAction NoAction { get; } = new RuleAction("NO_ACTION");
 
         public static bool operator ==(RuleAction left, RuleAction right) => left.Equals(right);
@@ -4246,13 +5113,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values:
-    /// USE_FIXED_PORT: The port number in port is used for health checking.
-    /// USE_NAMED_PORT: The portName is used for health checking.
-    /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-    /// 
-    /// 
-    /// If not specified, SSL health check follows behavior specified in port and portName fields.
+    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
     /// </summary>
     [EnumType]
     public readonly struct SSLHealthCheckPortSpecification : IEquatable<SSLHealthCheckPortSpecification>
@@ -4264,8 +5125,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The port number in port is used for health checking.
+        /// </summary>
         public static SSLHealthCheckPortSpecification UseFixedPort { get; } = new SSLHealthCheckPortSpecification("USE_FIXED_PORT");
+        /// <summary>
+        /// The portName is used for health checking.
+        /// </summary>
         public static SSLHealthCheckPortSpecification UseNamedPort { get; } = new SSLHealthCheckPortSpecification("USE_NAMED_PORT");
+        /// <summary>
+        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// </summary>
         public static SSLHealthCheckPortSpecification UseServingPort { get; } = new SSLHealthCheckPortSpecification("USE_SERVING_PORT");
 
         public static bool operator ==(SSLHealthCheckPortSpecification left, SSLHealthCheckPortSpecification right) => left.Equals(right);
@@ -4315,6 +5185,39 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
+    /// For more information about maintenance intervals, see Setting maintenance intervals.
+    /// </summary>
+    [EnumType]
+    public readonly struct SchedulingMaintenanceInterval : IEquatable<SchedulingMaintenanceInterval>
+    {
+        private readonly string _value;
+
+        private SchedulingMaintenanceInterval(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+        /// </summary>
+        public static SchedulingMaintenanceInterval Periodic { get; } = new SchedulingMaintenanceInterval("PERIODIC");
+
+        public static bool operator ==(SchedulingMaintenanceInterval left, SchedulingMaintenanceInterval right) => left.Equals(right);
+        public static bool operator !=(SchedulingMaintenanceInterval left, SchedulingMaintenanceInterval right) => !left.Equals(right);
+
+        public static explicit operator string(SchedulingMaintenanceInterval value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SchedulingMaintenanceInterval other && Equals(other);
+        public bool Equals(SchedulingMaintenanceInterval other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
     /// </summary>
     [EnumType]
@@ -4327,7 +5230,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Requires Compute Engine to seek for matched nodes.
+        /// </summary>
         public static SchedulingNodeAffinityOperator In { get; } = new SchedulingNodeAffinityOperator("IN");
+        /// <summary>
+        /// Requires Compute Engine to avoid certain nodes.
+        /// </summary>
         public static SchedulingNodeAffinityOperator NotIn { get; } = new SchedulingNodeAffinityOperator("NOT_IN");
         public static SchedulingNodeAffinityOperator OperatorUnspecified { get; } = new SchedulingNodeAffinityOperator("OPERATOR_UNSPECIFIED");
 
@@ -4359,7 +5268,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// *[Default]* Allows Compute Engine to automatically migrate instances out of the way of maintenance events.
+        /// </summary>
         public static SchedulingOnHostMaintenance Migrate { get; } = new SchedulingOnHostMaintenance("MIGRATE");
+        /// <summary>
+        /// Tells Compute Engine to terminate and (optionally) restart the instance away from the maintenance activity. If you would like your instance to be restarted, set the automaticRestart flag to true. Your instance may be restarted more than once, and it may be restarted outside the window of maintenance events.
+        /// </summary>
         public static SchedulingOnHostMaintenance Terminate { get; } = new SchedulingOnHostMaintenance("TERMINATE");
 
         public static bool operator ==(SchedulingOnHostMaintenance left, SchedulingOnHostMaintenance right) => left.Equals(right);
@@ -4401,6 +5316,62 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility other && Equals(other);
         public bool Equals(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct SecurityPolicyAdvancedOptionsConfigJsonParsing : IEquatable<SecurityPolicyAdvancedOptionsConfigJsonParsing>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyAdvancedOptionsConfigJsonParsing(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SecurityPolicyAdvancedOptionsConfigJsonParsing Disabled { get; } = new SecurityPolicyAdvancedOptionsConfigJsonParsing("DISABLED");
+        public static SecurityPolicyAdvancedOptionsConfigJsonParsing Standard { get; } = new SecurityPolicyAdvancedOptionsConfigJsonParsing("STANDARD");
+
+        public static bool operator ==(SecurityPolicyAdvancedOptionsConfigJsonParsing left, SecurityPolicyAdvancedOptionsConfigJsonParsing right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyAdvancedOptionsConfigJsonParsing left, SecurityPolicyAdvancedOptionsConfigJsonParsing right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyAdvancedOptionsConfigJsonParsing value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyAdvancedOptionsConfigJsonParsing other && Equals(other);
+        public bool Equals(SecurityPolicyAdvancedOptionsConfigJsonParsing other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct SecurityPolicyAdvancedOptionsConfigLogLevel : IEquatable<SecurityPolicyAdvancedOptionsConfigLogLevel>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyAdvancedOptionsConfigLogLevel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SecurityPolicyAdvancedOptionsConfigLogLevel Normal { get; } = new SecurityPolicyAdvancedOptionsConfigLogLevel("NORMAL");
+        public static SecurityPolicyAdvancedOptionsConfigLogLevel Verbose { get; } = new SecurityPolicyAdvancedOptionsConfigLogLevel("VERBOSE");
+
+        public static bool operator ==(SecurityPolicyAdvancedOptionsConfigLogLevel left, SecurityPolicyAdvancedOptionsConfigLogLevel right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyAdvancedOptionsConfigLogLevel left, SecurityPolicyAdvancedOptionsConfigLogLevel right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyAdvancedOptionsConfigLogLevel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyAdvancedOptionsConfigLogLevel other && Equals(other);
+        public bool Equals(SecurityPolicyAdvancedOptionsConfigLogLevel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4453,6 +5424,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         public static SecurityPolicyRuleMatcherVersionedExpr Firewall { get; } = new SecurityPolicyRuleMatcherVersionedExpr("FIREWALL");
+        /// <summary>
+        /// Matches the source IP address of a request to the IP ranges supplied in config.
+        /// </summary>
         public static SecurityPolicyRuleMatcherVersionedExpr SrcIpsV1 { get; } = new SecurityPolicyRuleMatcherVersionedExpr("SRC_IPS_V1");
 
         public static bool operator ==(SecurityPolicyRuleMatcherVersionedExpr left, SecurityPolicyRuleMatcherVersionedExpr right) => left.Equals(right);
@@ -4463,6 +5437,37 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SecurityPolicyRuleMatcherVersionedExpr other && Equals(other);
         public bool Equals(SecurityPolicyRuleMatcherVersionedExpr other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of the redirect action.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPolicyRuleRedirectOptionsType : IEquatable<SecurityPolicyRuleRedirectOptionsType>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyRuleRedirectOptionsType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SecurityPolicyRuleRedirectOptionsType External302 { get; } = new SecurityPolicyRuleRedirectOptionsType("EXTERNAL_302");
+        public static SecurityPolicyRuleRedirectOptionsType GoogleRecaptcha { get; } = new SecurityPolicyRuleRedirectOptionsType("GOOGLE_RECAPTCHA");
+
+        public static bool operator ==(SecurityPolicyRuleRedirectOptionsType left, SecurityPolicyRuleRedirectOptionsType right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyRuleRedirectOptionsType left, SecurityPolicyRuleRedirectOptionsType right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyRuleRedirectOptionsType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyRuleRedirectOptionsType other && Equals(other);
+        public bool Equals(SecurityPolicyRuleRedirectOptionsType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4484,6 +5489,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         public static SecurityPolicyType CloudArmor { get; } = new SecurityPolicyType("CLOUD_ARMOR");
+        public static SecurityPolicyType CloudArmorEdge { get; } = new SecurityPolicyType("CLOUD_ARMOR_EDGE");
         public static SecurityPolicyType Firewall { get; } = new SecurityPolicyType("FIREWALL");
 
         public static bool operator ==(SecurityPolicyType left, SecurityPolicyType right) => left.Equals(right);
@@ -4511,7 +5517,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Node may associate with any physical server over its lifetime.
+        /// </summary>
         public static ServerBindingType RestartNodeOnAnyServer { get; } = new ServerBindingType("RESTART_NODE_ON_ANY_SERVER");
+        /// <summary>
+        /// Node may associate with minimal physical servers over its lifetime.
+        /// </summary>
         public static ServerBindingType RestartNodeOnMinimalServers { get; } = new ServerBindingType("RESTART_NODE_ON_MINIMAL_SERVERS");
         public static ServerBindingType ServerBindingTypeUnspecified { get; } = new ServerBindingType("SERVER_BINDING_TYPE_UNSPECIFIED");
 
@@ -4544,6 +5556,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         public static ServiceAttachmentConnectionPreference AcceptAutomatic { get; } = new ServiceAttachmentConnectionPreference("ACCEPT_AUTOMATIC");
+        public static ServiceAttachmentConnectionPreference AcceptManual { get; } = new ServiceAttachmentConnectionPreference("ACCEPT_MANUAL");
         public static ServiceAttachmentConnectionPreference ConnectionPreferenceUnspecified { get; } = new ServiceAttachmentConnectionPreference("CONNECTION_PREFERENCE_UNSPECIFIED");
 
         public static bool operator ==(ServiceAttachmentConnectionPreference left, ServiceAttachmentConnectionPreference right) => left.Equals(right);
@@ -4574,7 +5587,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Google-managed SSLCertificate.
+        /// </summary>
         public static SslCertificateType Managed { get; } = new SslCertificateType("MANAGED");
+        /// <summary>
+        /// Certificate uploaded by user.
+        /// </summary>
         public static SslCertificateType SelfManaged { get; } = new SslCertificateType("SELF_MANAGED");
         public static SslCertificateType TypeUnspecified { get; } = new SslCertificateType("TYPE_UNSPECIFIED");
 
@@ -4606,8 +5625,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// TLS 1.0
+        /// </summary>
         public static SslPolicyMinTlsVersion Tls10 { get; } = new SslPolicyMinTlsVersion("TLS_1_0");
+        /// <summary>
+        /// TLS 1.1
+        /// </summary>
         public static SslPolicyMinTlsVersion Tls11 { get; } = new SslPolicyMinTlsVersion("TLS_1_1");
+        /// <summary>
+        /// TLS 1.2
+        /// </summary>
         public static SslPolicyMinTlsVersion Tls12 { get; } = new SslPolicyMinTlsVersion("TLS_1_2");
 
         public static bool operator ==(SslPolicyMinTlsVersion left, SslPolicyMinTlsVersion right) => left.Equals(right);
@@ -4638,9 +5666,21 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Compatible profile. Allows the broadset set of clients, even those which support only out-of-date SSL features to negotiate with the load balancer.
+        /// </summary>
         public static SslPolicyProfile Compatible { get; } = new SslPolicyProfile("COMPATIBLE");
+        /// <summary>
+        /// Custom profile. Allow only the set of allowed SSL features specified in the customFeatures field.
+        /// </summary>
         public static SslPolicyProfile Custom { get; } = new SslPolicyProfile("CUSTOM");
+        /// <summary>
+        /// Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the load balancer.
+        /// </summary>
         public static SslPolicyProfile Modern { get; } = new SslPolicyProfile("MODERN");
+        /// <summary>
+        /// Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+        /// </summary>
         public static SslPolicyProfile Restricted { get; } = new SslPolicyProfile("RESTRICTED");
 
         public static bool operator ==(SslPolicyProfile left, SslPolicyProfile right) => left.Equals(right);
@@ -4651,6 +5691,43 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SslPolicyProfile other && Equals(other);
         public bool Equals(SslPolicyProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+    /// </summary>
+    [EnumType]
+    public readonly struct SubnetworkIpv6AccessType : IEquatable<SubnetworkIpv6AccessType>
+    {
+        private readonly string _value;
+
+        private SubnetworkIpv6AccessType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// VMs in this subnet can have external IPv6.
+        /// </summary>
+        public static SubnetworkIpv6AccessType External { get; } = new SubnetworkIpv6AccessType("EXTERNAL");
+        /// <summary>
+        /// IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
+        /// </summary>
+        public static SubnetworkIpv6AccessType UnspecifiedIpv6AccessType { get; } = new SubnetworkIpv6AccessType("UNSPECIFIED_IPV6_ACCESS_TYPE");
+
+        public static bool operator ==(SubnetworkIpv6AccessType left, SubnetworkIpv6AccessType right) => left.Equals(right);
+        public static bool operator !=(SubnetworkIpv6AccessType left, SubnetworkIpv6AccessType right) => !left.Equals(right);
+
+        public static explicit operator string(SubnetworkIpv6AccessType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SubnetworkIpv6AccessType other && Equals(other);
+        public bool Equals(SubnetworkIpv6AccessType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4726,9 +5803,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-    /// 
-    /// This field can be both set at resource creation time and updated using patch.
+    /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
     /// </summary>
     [EnumType]
     public readonly struct SubnetworkPrivateIpv6GoogleAccess : IEquatable<SubnetworkPrivateIpv6GoogleAccess>
@@ -4740,8 +5815,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Disable private IPv6 access to/from Google services.
+        /// </summary>
         public static SubnetworkPrivateIpv6GoogleAccess DisableGoogleAccess { get; } = new SubnetworkPrivateIpv6GoogleAccess("DISABLE_GOOGLE_ACCESS");
+        /// <summary>
+        /// Bidirectional private IPv6 access to/from Google services.
+        /// </summary>
         public static SubnetworkPrivateIpv6GoogleAccess EnableBidirectionalAccessToGoogle { get; } = new SubnetworkPrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE");
+        /// <summary>
+        /// Outbound private IPv6 access from VMs in this subnet to Google services.
+        /// </summary>
         public static SubnetworkPrivateIpv6GoogleAccess EnableOutboundVmAccessToGoogle { get; } = new SubnetworkPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE");
 
         public static bool operator ==(SubnetworkPrivateIpv6GoogleAccess left, SubnetworkPrivateIpv6GoogleAccess right) => left.Equals(right);
@@ -4772,10 +5856,26 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Subnet reserved for Internal HTTP(S) Load Balancing.
+        /// </summary>
         public static SubnetworkPurpose InternalHttpsLoadBalancer { get; } = new SubnetworkPurpose("INTERNAL_HTTPS_LOAD_BALANCER");
+        /// <summary>
+        /// Regular user created or automatically created subnet.
+        /// </summary>
         public static SubnetworkPurpose Private { get; } = new SubnetworkPurpose("PRIVATE");
+        /// <summary>
+        /// Regular user created or automatically created subnet.
+        /// </summary>
         public static SubnetworkPurpose PrivateRfc1918 { get; } = new SubnetworkPurpose("PRIVATE_RFC_1918");
+        /// <summary>
+        /// Subnetworks created for Private Service Connect in the producer network.
+        /// </summary>
         public static SubnetworkPurpose PrivateServiceConnect { get; } = new SubnetworkPurpose("PRIVATE_SERVICE_CONNECT");
+        /// <summary>
+        /// Subnetwork used for Regional Internal/External HTTP(S) Load Balancing.
+        /// </summary>
+        public static SubnetworkPurpose RegionalManagedProxy { get; } = new SubnetworkPurpose("REGIONAL_MANAGED_PROXY");
 
         public static bool operator ==(SubnetworkPurpose left, SubnetworkPurpose right) => left.Equals(right);
         public static bool operator !=(SubnetworkPurpose left, SubnetworkPurpose right) => !left.Equals(right);
@@ -4805,7 +5905,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The ACTIVE subnet that is currently used.
+        /// </summary>
         public static SubnetworkRole Active { get; } = new SubnetworkRole("ACTIVE");
+        /// <summary>
+        /// The BACKUP subnet that could be promoted to ACTIVE.
+        /// </summary>
         public static SubnetworkRole Backup { get; } = new SubnetworkRole("BACKUP");
 
         public static bool operator ==(SubnetworkRole left, SubnetworkRole right) => left.Equals(right);
@@ -4823,6 +5929,44 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+    /// </summary>
+    [EnumType]
+    public readonly struct SubnetworkStackType : IEquatable<SubnetworkStackType>
+    {
+        private readonly string _value;
+
+        private SubnetworkStackType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// New VMs in this subnet can have both IPv4 and IPv6 addresses.
+        /// </summary>
+        public static SubnetworkStackType Ipv4Ipv6 { get; } = new SubnetworkStackType("IPV4_IPV6");
+        /// <summary>
+        /// New VMs in this subnet will only be assigned IPv4 addresses.
+        /// </summary>
+        public static SubnetworkStackType Ipv4Only { get; } = new SubnetworkStackType("IPV4_ONLY");
+        public static SubnetworkStackType UnspecifiedStackType { get; } = new SubnetworkStackType("UNSPECIFIED_STACK_TYPE");
+
+        public static bool operator ==(SubnetworkStackType left, SubnetworkStackType right) => left.Equals(right);
+        public static bool operator !=(SubnetworkStackType left, SubnetworkStackType right) => !left.Equals(right);
+
+        public static explicit operator string(SubnetworkStackType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SubnetworkStackType other && Equals(other);
+        public bool Equals(SubnetworkStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct SubsettingPolicy : IEquatable<SubsettingPolicy>
     {
@@ -4833,7 +5977,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Subsetting based on consistent hashing. For Traffic Director, the number of backends per backend group (the subset size) is adjusted based on the `subset_size` parameter. For Internal HTTP(S) load balancing, the number of backends per backend group (the subset size) is dynamically adjusted in two cases: - As the number of proxy instances participating in Internal HTTP(S) load balancing increases, the subset size decreases. - When the total number of backends in a network exceeds the capacity of a single proxy instance, subset sizes are reduced automatically for each service that has backend subsetting enabled.
+        /// </summary>
         public static SubsettingPolicy ConsistentHashSubsetting { get; } = new SubsettingPolicy("CONSISTENT_HASH_SUBSETTING");
+        /// <summary>
+        /// No Subsetting. Clients may open connections and send traffic to all backends of this backend service. This can lead to performance issues if there is substantial imbalance in the count of clients and backends.
+        /// </summary>
         public static SubsettingPolicy None { get; } = new SubsettingPolicy("NONE");
 
         public static bool operator ==(SubsettingPolicy left, SubsettingPolicy right) => left.Equals(right);
@@ -4852,13 +6002,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values:
-    /// USE_FIXED_PORT: The port number in port is used for health checking.
-    /// USE_NAMED_PORT: The portName is used for health checking.
-    /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-    /// 
-    /// 
-    /// If not specified, TCP health check follows behavior specified in port and portName fields.
+    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
     /// </summary>
     [EnumType]
     public readonly struct TCPHealthCheckPortSpecification : IEquatable<TCPHealthCheckPortSpecification>
@@ -4870,8 +6014,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The port number in port is used for health checking.
+        /// </summary>
         public static TCPHealthCheckPortSpecification UseFixedPort { get; } = new TCPHealthCheckPortSpecification("USE_FIXED_PORT");
+        /// <summary>
+        /// The portName is used for health checking.
+        /// </summary>
         public static TCPHealthCheckPortSpecification UseNamedPort { get; } = new TCPHealthCheckPortSpecification("USE_NAMED_PORT");
+        /// <summary>
+        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// </summary>
         public static TCPHealthCheckPortSpecification UseServingPort { get; } = new TCPHealthCheckPortSpecification("USE_SERVING_PORT");
 
         public static bool operator ==(TCPHealthCheckPortSpecification left, TCPHealthCheckPortSpecification right) => left.Equals(right);
@@ -4921,11 +6074,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
-    /// - When quic-override is set to NONE, Google manages whether QUIC is used. 
-    /// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
-    /// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
-    /// - If the quic-override flag is not specified, NONE is implied.
+    /// Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
     /// </summary>
     [EnumType]
     public readonly struct TargetHttpsProxyQuicOverride : IEquatable<TargetHttpsProxyQuicOverride>
@@ -4937,8 +6086,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The load balancer will not attempt to negotiate QUIC with clients.
+        /// </summary>
         public static TargetHttpsProxyQuicOverride Disable { get; } = new TargetHttpsProxyQuicOverride("DISABLE");
+        /// <summary>
+        /// The load balancer will attempt to negotiate QUIC with clients.
+        /// </summary>
         public static TargetHttpsProxyQuicOverride Enable { get; } = new TargetHttpsProxyQuicOverride("ENABLE");
+        /// <summary>
+        /// No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request.
+        /// </summary>
         public static TargetHttpsProxyQuicOverride None { get; } = new TargetHttpsProxyQuicOverride("NONE");
 
         public static bool operator ==(TargetHttpsProxyQuicOverride left, TargetHttpsProxyQuicOverride right) => left.Equals(right);
@@ -4969,6 +6127,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// No NAT performed.
+        /// </summary>
         public static TargetInstanceNatPolicy NoNat { get; } = new TargetInstanceNatPolicy("NO_NAT");
 
         public static bool operator ==(TargetInstanceNatPolicy left, TargetInstanceNatPolicy right) => left.Equals(right);
@@ -4987,10 +6148,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Session affinity option, must be one of the following values:
-    /// NONE: Connections from the same client IP may go to any instance in the pool.
-    /// CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.
-    /// CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
+    /// Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
     /// </summary>
     [EnumType]
     public readonly struct TargetPoolSessionAffinity : IEquatable<TargetPoolSessionAffinity>
@@ -5002,13 +6160,37 @@ namespace Pulumi.GoogleNative.Compute.Beta
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// 2-tuple hash on packet's source and destination IP addresses. Connections from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy.
+        /// </summary>
         public static TargetPoolSessionAffinity ClientIp { get; } = new TargetPoolSessionAffinity("CLIENT_IP");
+        /// <summary>
+        /// 1-tuple hash only on packet's source IP address. Connections from the same source IP address will be served by the same backend VM while that VM remains healthy. This option can only be used for Internal TCP/UDP Load Balancing.
+        /// </summary>
         public static TargetPoolSessionAffinity ClientIpNoDestination { get; } = new TargetPoolSessionAffinity("CLIENT_IP_NO_DESTINATION");
+        /// <summary>
+        /// 5-tuple hash on packet's source and destination IP addresses, IP protocol, and source and destination ports. Connections for the same IP protocol from the same source IP address and port to the same destination IP address and port will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+        /// </summary>
         public static TargetPoolSessionAffinity ClientIpPortProto { get; } = new TargetPoolSessionAffinity("CLIENT_IP_PORT_PROTO");
+        /// <summary>
+        /// 3-tuple hash on packet's source and destination IP addresses, and IP protocol. Connections for the same IP protocol from the same source IP address to the same destination IP address will be served by the same backend VM while that VM remains healthy. This option cannot be used for HTTP(S) load balancing.
+        /// </summary>
         public static TargetPoolSessionAffinity ClientIpProto { get; } = new TargetPoolSessionAffinity("CLIENT_IP_PROTO");
+        /// <summary>
+        /// Hash based on a cookie generated by the L7 loadbalancer. Only valid for HTTP(S) load balancing.
+        /// </summary>
         public static TargetPoolSessionAffinity GeneratedCookie { get; } = new TargetPoolSessionAffinity("GENERATED_COOKIE");
+        /// <summary>
+        /// The hash is based on a user specified header field.
+        /// </summary>
         public static TargetPoolSessionAffinity HeaderField { get; } = new TargetPoolSessionAffinity("HEADER_FIELD");
+        /// <summary>
+        /// The hash is based on a user provided cookie.
+        /// </summary>
         public static TargetPoolSessionAffinity HttpCookie { get; } = new TargetPoolSessionAffinity("HTTP_COOKIE");
+        /// <summary>
+        /// No session affinity. Connections from the same client IP may go to any instance in the pool.
+        /// </summary>
         public static TargetPoolSessionAffinity None { get; } = new TargetPoolSessionAffinity("NONE");
 
         public static bool operator ==(TargetPoolSessionAffinity left, TargetPoolSessionAffinity right) => left.Equals(right);

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.ConfigMapKeySelectorResponse ConfigMapKeyRef;
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+        /// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
         /// </summary>
         public readonly Outputs.SecretKeySelectorResponse SecretKeyRef;
 

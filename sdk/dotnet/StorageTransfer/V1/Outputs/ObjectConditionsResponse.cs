@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IncludePrefixes;
         /// <summary>
-        /// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+        /// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
         /// </summary>
         public readonly string LastModifiedBefore;
         /// <summary>

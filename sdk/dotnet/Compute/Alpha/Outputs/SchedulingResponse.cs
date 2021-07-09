@@ -14,15 +14,17 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class SchedulingResponse
     {
         /// <summary>
-        /// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted.
-        /// 
-        /// By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
+        /// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
         /// </summary>
         public readonly bool AutomaticRestart;
         /// <summary>
         /// Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
         /// </summary>
         public readonly int AvailabilityDomain;
+        /// <summary>
+        /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        /// </summary>
+        public readonly int HostErrorTimeoutSeconds;
         /// <summary>
         /// Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.
         /// </summary>
@@ -32,13 +34,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string LocationHint;
         /// <summary>
-        /// Specifies the number of hours after instance creation where the instance won't be scheduled for maintenance.
+        /// Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
         /// </summary>
         public readonly int MaintenanceFreezeDurationHours;
         /// <summary>
-        /// Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic" designates this VM as a Stable Fleet VM.
-        /// 
-        /// See go/stable-fleet-ug for more details.
+        /// For more information about maintenance intervals, see Setting maintenance intervals.
         /// </summary>
         public readonly string MaintenanceInterval;
         /// <summary>
@@ -57,12 +57,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         /// </summary>
         public readonly bool Preemptible;
+        /// <summary>
+        /// Specifies the provisioning model of the instance.
+        /// </summary>
+        public readonly string ProvisioningModel;
 
         [OutputConstructor]
         private SchedulingResponse(
             bool automaticRestart,
 
             int availabilityDomain,
+
+            int hostErrorTimeoutSeconds,
 
             bool latencyTolerant,
 
@@ -78,10 +84,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string onHostMaintenance,
 
-            bool preemptible)
+            bool preemptible,
+
+            string provisioningModel)
         {
             AutomaticRestart = automaticRestart;
             AvailabilityDomain = availabilityDomain;
+            HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             LatencyTolerant = latencyTolerant;
             LocationHint = locationHint;
             MaintenanceFreezeDurationHours = maintenanceFreezeDurationHours;
@@ -90,6 +99,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
             Preemptible = preemptible;
+            ProvisioningModel = provisioningModel;
         }
     }
 }

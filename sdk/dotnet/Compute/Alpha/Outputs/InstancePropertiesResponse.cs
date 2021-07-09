@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string PostKeyRevocationActionType;
         /// <summary>
-        /// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         public readonly string PrivateIpv6GoogleAccess;
         /// <summary>
@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Specifies the scheduling options for the instances that are created from these properties.
         /// </summary>
         public readonly Outputs.SchedulingResponse Scheduling;
+        /// <summary>
+        /// [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50.
+        /// </summary>
+        public readonly ImmutableArray<string> SecureTags;
         /// <summary>
         /// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
         /// </summary>
@@ -134,6 +138,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.SchedulingResponse scheduling,
 
+            ImmutableArray<string> secureTags,
+
             ImmutableArray<Outputs.ServiceAccountResponse> serviceAccounts,
 
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
@@ -160,6 +166,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             ReservationAffinity = reservationAffinity;
             ResourcePolicies = resourcePolicies;
             Scheduling = scheduling;
+            SecureTags = secureTags;
             ServiceAccounts = serviceAccounts;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             ShieldedVmConfig = shieldedVmConfig;

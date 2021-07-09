@@ -14,31 +14,31 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class RuleResponse
     {
         /// <summary>
-        /// Required
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Action;
         /// <summary>
-        /// Additional restrictions that must be met. All conditions must pass for the rule to match.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConditionResponse> Conditions;
         /// <summary>
-        /// Human-readable description of the rule.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly ImmutableArray<string> Ins;
         /// <summary>
-        /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly ImmutableArray<Outputs.LogConfigResponse> LogConfigs;
         /// <summary>
-        /// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly ImmutableArray<string> NotIns;
         /// <summary>
-        /// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly ImmutableArray<string> Permissions;
 

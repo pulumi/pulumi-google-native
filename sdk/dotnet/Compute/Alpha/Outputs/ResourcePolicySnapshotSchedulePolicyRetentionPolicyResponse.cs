@@ -17,9 +17,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Maximum age of the snapshot that is allowed to be kept.
         /// </summary>
         public readonly int MaxRetentionDays;
-        /// <summary>
-        /// TODO(b/165626794): Remove this field Specifies the behavior to apply to existing, scheduled snapshots snapshots if the policy is changed.
-        /// </summary>
         public readonly string OnPolicySwitch;
         /// <summary>
         /// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.

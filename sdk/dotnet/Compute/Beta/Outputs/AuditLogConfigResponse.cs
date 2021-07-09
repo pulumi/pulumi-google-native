@@ -14,9 +14,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class AuditLogConfigResponse
     {
         /// <summary>
-        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of [Binding.members][].
+        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
         /// </summary>
         public readonly ImmutableArray<string> ExemptedMembers;
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public readonly bool IgnoreChildExemptions;
         /// <summary>
         /// The log type that this config enables.

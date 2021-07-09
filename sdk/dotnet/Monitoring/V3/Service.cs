@@ -69,6 +69,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Output("telemetry")]
         public Output<Outputs.TelemetryResponse> Telemetry { get; private set; } = null!;
 
+        /// <summary>
+        /// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+        /// </summary>
+        [Output("userLabels")]
+        public Output<ImmutableDictionary<string, string>> UserLabels { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Service resource with the given unique name, arguments, and options.
@@ -170,6 +176,18 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         [Input("telemetry")]
         public Input<Inputs.TelemetryArgs>? Telemetry { get; set; }
+
+        [Input("userLabels")]
+        private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+        /// </summary>
+        public InputMap<string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new InputMap<string>());
+            set => _userLabels = value;
+        }
 
         [Input("v3Id", required: true)]
         public Input<string> V3Id { get; set; } = null!;

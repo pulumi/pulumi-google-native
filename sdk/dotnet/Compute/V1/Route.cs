@@ -52,23 +52,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         /// </summary>
         [Output("nextHopGateway")]
         public Output<string> NextHopGateway { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-        /// - 10.128.0.56 
-        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-        /// - regions/region/forwardingRules/forwardingRule
+        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         /// </summary>
         [Output("nextHopIlb")]
         public Output<string> NextHopIlb { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         /// </summary>
         [Output("nextHopInstance")]
         public Output<string> NextHopInstance { get; private set; } = null!;
@@ -191,23 +187,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         /// </summary>
         [Input("nextHopGateway")]
         public Input<string>? NextHopGateway { get; set; }
 
         /// <summary>
-        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-        /// - 10.128.0.56 
-        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-        /// - regions/region/forwardingRules/forwardingRule
+        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         /// </summary>
         [Input("nextHopIlb")]
         public Input<string>? NextHopIlb { get; set; }
 
         /// <summary>
-        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         /// </summary>
         [Input("nextHopInstance")]
         public Input<string>? NextHopInstance { get; set; }

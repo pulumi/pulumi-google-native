@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Inputs
     public sealed class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
         /// </summary>
         [Input("resourceId")]

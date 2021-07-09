@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public Input<Inputs.MetricAbsenceArgs>? ConditionAbsent { get; set; }
 
         /// <summary>
+        /// A condition that checks for log messages matching given constraints. If set, no other conditions can be present.
+        /// </summary>
+        [Input("conditionMatchedLog")]
+        public Input<Inputs.LogMatchArgs>? ConditionMatchedLog { get; set; }
+
+        /// <summary>
         /// A condition that uses the Monitoring Query Language to define alerts.
         /// </summary>
         [Input("conditionMonitoringQueryLanguage")]

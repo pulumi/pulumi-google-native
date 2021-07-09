@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.InstancePropertiesPostKeyRevocationActionType>? PostKeyRevocationActionType { get; set; }
 
         /// <summary>
-        /// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.InstancePropertiesPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
@@ -146,6 +146,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("scheduling")]
         public Input<Inputs.SchedulingArgs>? Scheduling { get; set; }
+
+        [Input("secureTags")]
+        private InputList<string>? _secureTags;
+
+        /// <summary>
+        /// [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50.
+        /// </summary>
+        public InputList<string> SecureTags
+        {
+            get => _secureTags ?? (_secureTags = new InputList<string>());
+            set => _secureTags = value;
+        }
 
         [Input("serviceAccounts")]
         private InputList<Inputs.ServiceAccountArgs>? _serviceAccounts;

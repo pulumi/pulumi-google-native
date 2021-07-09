@@ -71,6 +71,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public readonly Outputs.NotificationConfigResponse NotificationConfig;
         /// <summary>
+        /// Configuration for how FHIR resource can be searched.
+        /// </summary>
+        public readonly Outputs.SearchConfigResponse SearchConfig;
+        /// <summary>
         /// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
         /// </summary>
         public readonly ImmutableArray<Outputs.StreamConfigResponse> StreamConfigs;
@@ -99,6 +103,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
             Outputs.NotificationConfigResponse notificationConfig,
 
+            Outputs.SearchConfigResponse searchConfig,
+
             ImmutableArray<Outputs.StreamConfigResponse> streamConfigs,
 
             Outputs.ValidationConfigResponse validationConfig,
@@ -112,6 +118,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             Labels = labels;
             Name = name;
             NotificationConfig = notificationConfig;
+            SearchConfig = searchConfig;
             StreamConfigs = streamConfigs;
             ValidationConfig = validationConfig;
             Version = version;

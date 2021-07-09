@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Preview] Information of the session if this job is part of one.
         /// </summary>
-        public readonly Outputs.SessionInfoResponse SessionInfoTemplate;
+        public readonly Outputs.SessionInfoResponse SessionInfo;
         /// <summary>
         /// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Alpha] Information of the multi-statement transaction if this job is part of one.
         /// </summary>
-        public readonly Outputs.TransactionInfoResponse TransactionInfoTemplate;
+        public readonly Outputs.TransactionInfoResponse TransactionInfo;
 
         [OutputConstructor]
         private JobStatisticsResponse(
@@ -110,13 +110,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             Outputs.ScriptStatisticsResponse scriptStatistics,
 
-            Outputs.SessionInfoResponse sessionInfoTemplate,
+            Outputs.SessionInfoResponse sessionInfo,
 
             string startTime,
 
             string totalSlotMs,
 
-            Outputs.TransactionInfoResponse transactionInfoTemplate)
+            Outputs.TransactionInfoResponse transactionInfo)
         {
             CompletionRatio = completionRatio;
             CreationTime = creationTime;
@@ -131,10 +131,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             ReservationUsage = reservationUsage;
             RowLevelSecurityStatistics = rowLevelSecurityStatistics;
             ScriptStatistics = scriptStatistics;
-            SessionInfoTemplate = sessionInfoTemplate;
+            SessionInfo = sessionInfo;
             StartTime = startTime;
             TotalSlotMs = totalSlotMs;
-            TransactionInfoTemplate = transactionInfoTemplate;
+            TransactionInfo = transactionInfo;
         }
     }
 }

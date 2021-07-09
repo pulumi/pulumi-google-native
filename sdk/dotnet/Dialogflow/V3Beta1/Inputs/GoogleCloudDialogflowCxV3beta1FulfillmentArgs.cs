@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
             set => _messages = value;
         }
 
+        /// <summary>
+        /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        /// </summary>
+        [Input("returnPartialResponses")]
+        public Input<bool>? ReturnPartialResponses { get; set; }
+
         [Input("setParameterActions")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionArgs>? _setParameterActions;
 

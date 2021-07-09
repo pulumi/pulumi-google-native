@@ -14,17 +14,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class RouterBgpPeerBfdResponse
     {
         /// <summary>
-        /// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router.
-        /// Not currently available publicly.
-        /// If set, this value must be between 100 and 30000.
-        /// The default is 300.
+        /// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. Not currently available publicly. If set, this value must be between 100 and 30000. The default is 300.
         /// </summary>
         public readonly int MinReceiveInterval;
         /// <summary>
-        /// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router.
-        /// Not currently available publicly.
-        /// If set, this value must be between 100 and 30000.
-        /// The default is 300.
+        /// The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. Not currently available publicly. If set, this value must be between 100 and 30000. The default is 300.
         /// </summary>
         public readonly int MinTransmitInterval;
         /// <summary>
@@ -32,10 +26,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable.
-        /// Not currently available publicly.
-        /// If set, the value must be a value between 2 and 16.
-        /// The default is 3.
+        /// The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. Not currently available publicly. If set, the value must be a value between 2 and 16. The default is 3.
         /// </summary>
         public readonly int Multiplier;
         /// <summary>
@@ -43,9 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string PacketMode;
         /// <summary>
-        /// The BFD session initialization mode for this BGP peer.
-        /// Not currently available publicly.
-        /// If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+        /// The BFD session initialization mode for this BGP peer. Not currently available publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
         /// </summary>
         public readonly string SessionInitializationMode;
         /// <summary>

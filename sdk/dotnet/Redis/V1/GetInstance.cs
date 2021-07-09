@@ -80,6 +80,14 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         public readonly string Location;
         /// <summary>
+        /// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        /// </summary>
+        public readonly Outputs.MaintenancePolicyResponse MaintenancePolicy;
+        /// <summary>
+        /// Date and time of upcoming maintenance events which have been scheduled.
+        /// </summary>
+        public readonly Outputs.MaintenanceScheduleResponse MaintenanceSchedule;
+        /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
         public readonly int MemorySizeGb;
@@ -150,6 +158,10 @@ namespace Pulumi.GoogleNative.Redis.V1
 
             string location,
 
+            Outputs.MaintenancePolicyResponse maintenancePolicy,
+
+            Outputs.MaintenanceScheduleResponse maintenanceSchedule,
+
             int memorySizeGb,
 
             string name,
@@ -184,6 +196,8 @@ namespace Pulumi.GoogleNative.Redis.V1
             Host = host;
             Labels = labels;
             Location = location;
+            MaintenancePolicy = maintenancePolicy;
+            MaintenanceSchedule = maintenanceSchedule;
             MemorySizeGb = memorySizeGb;
             Name = name;
             PersistenceIamIdentity = persistenceIamIdentity;

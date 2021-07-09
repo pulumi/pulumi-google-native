@@ -37,13 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetNetworkResult
     {
         /// <summary>
-        /// Must be set to create a VPC network. If not set, a legacy network is created.
-        /// 
-        /// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-        /// 
-        /// An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-        /// 
-        /// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+        /// Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
         /// </summary>
         public readonly bool AutoCreateSubnetworks;
         /// <summary>

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly bool DeleteObjectsUniqueInSink;
         /// <summary>
-        /// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+        /// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
         /// </summary>
         public readonly bool OverwriteObjectsAlreadyExistingInSink;
 

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class AwsS3DataArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        /// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         /// </summary>
-        [Input("awsAccessKey", required: true)]
-        public Input<Inputs.AwsAccessKeyArgs> AwsAccessKey { get; set; } = null!;
+        [Input("awsAccessKey")]
+        public Input<Inputs.AwsAccessKeyArgs>? AwsAccessKey { get; set; }
 
         /// <summary>
         /// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
@@ -32,6 +32,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
 
         public AwsS3DataArgs()
         {

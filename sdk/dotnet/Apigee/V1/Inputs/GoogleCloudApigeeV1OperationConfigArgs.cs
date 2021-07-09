@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
 {
 
     /// <summary>
-    /// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+    /// Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
     /// </summary>
     public sealed class GoogleCloudApigeeV1OperationConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// API proxy or remote service name with which the resources, methods, and quota are associated.
+        /// Name of the API proxy or remote service with which the resources, methods, and quota are associated.
         /// </summary>
         [Input("apiSource", required: true)]
         public Input<string> ApiSource { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         private InputList<Inputs.GoogleCloudApigeeV1OperationArgs>? _operations;
 
         /// <summary>
-        /// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+        /// List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
         /// </summary>
         public InputList<Inputs.GoogleCloudApigeeV1OperationArgs> Operations
         {
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         }
 
         /// <summary>
-        /// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        /// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
         /// </summary>
         [Input("quota")]
         public Input<Inputs.GoogleCloudApigeeV1QuotaArgs>? Quota { get; set; }

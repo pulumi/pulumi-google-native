@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Inputs.DefaultSnatStatusArgs>? DefaultSnatStatus { get; set; }
 
         /// <summary>
+        /// DNSConfig contains clusterDNS config for this cluster.
+        /// </summary>
+        [Input("dnsConfig")]
+        public Input<Inputs.DNSConfigArgs>? DnsConfig { get; set; }
+
+        /// <summary>
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         [Input("enableIntraNodeVisibility")]
@@ -44,6 +50,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Container.V1Beta1.NetworkConfigPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
+
+        /// <summary>
+        /// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+        /// </summary>
+        [Input("serviceExternalIpsConfig")]
+        public Input<Inputs.ServiceExternalIPsConfigArgs>? ServiceExternalIpsConfig { get; set; }
 
         public NetworkConfigArgs()
         {

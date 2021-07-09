@@ -14,6 +14,14 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
     public sealed class EndpointResponse
     {
         /// <summary>
+        /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+        /// </summary>
+        public readonly string CloudSqlInstance;
+        /// <summary>
+        /// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+        /// </summary>
+        public readonly string GkeMasterCluster;
+        /// <summary>
         /// A Compute Engine instance URI.
         /// </summary>
         public readonly string Instance;
@@ -40,6 +48,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
         [OutputConstructor]
         private EndpointResponse(
+            string cloudSqlInstance,
+
+            string gkeMasterCluster,
+
             string instance,
 
             string ipAddress,
@@ -52,6 +64,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
             string project)
         {
+            CloudSqlInstance = cloudSqlInstance;
+            GkeMasterCluster = gkeMasterCluster;
             Instance = instance;
             IpAddress = ipAddress;
             Network = network;

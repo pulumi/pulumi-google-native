@@ -12,7 +12,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public static class GetKey
     {
         /// <summary>
-        /// Returns details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
+        /// Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("google-native:apigee/v1:getKey", args ?? new GetKeyArgs(), options.WithVersion());

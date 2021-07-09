@@ -63,6 +63,12 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         [Input("pythonVersion")]
         public Input<string>? PythonVersion { get; set; }
 
+        /// <summary>
+        /// Optional. The number of schedulers for Airflow.
+        /// </summary>
+        [Input("schedulerCount")]
+        public Input<int>? SchedulerCount { get; set; }
+
         public SoftwareConfigArgs()
         {
         }

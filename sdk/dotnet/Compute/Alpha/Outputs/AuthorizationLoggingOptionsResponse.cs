@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class AuthorizationLoggingOptionsResponse
     {
         /// <summary>
-        /// The type of the permission that was checked.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string PermissionType;
 

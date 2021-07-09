@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
     public sealed class WidgetResponse
     {
         /// <summary>
+        /// A chart of alert policy data.
+        /// </summary>
+        public readonly Outputs.AlertChartResponse AlertChart;
+        /// <summary>
         /// A blank space.
         /// </summary>
         public readonly Outputs.EmptyResponse Blank;
@@ -36,6 +40,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
         [OutputConstructor]
         private WidgetResponse(
+            Outputs.AlertChartResponse alertChart,
+
             Outputs.EmptyResponse blank,
 
             Outputs.ScorecardResponse scorecard,
@@ -46,6 +52,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.XyChartResponse xyChart)
         {
+            AlertChart = alertChart;
             Blank = blank;
             Scorecard = scorecard;
             Text = text;

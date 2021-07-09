@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// Write a Cloud Audit log
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     public sealed class LogConfigCloudAuditOptionsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Information used by the Cloud Audit Logging pipeline.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("authorizationLoggingOptions")]
         public Input<Inputs.AuthorizationLoggingOptionsArgs>? AuthorizationLoggingOptions { get; set; }
 
         /// <summary>
-        /// The log_name to populate in the Cloud Audit Record.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("logName")]
         public Input<Pulumi.GoogleNative.Compute.Beta.LogConfigCloudAuditOptionsLogName>? LogName { get; set; }

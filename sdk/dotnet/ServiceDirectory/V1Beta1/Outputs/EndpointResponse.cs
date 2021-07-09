@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
+        /// The timestamp when the endpoint was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system metadata managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
@@ -26,24 +30,41 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
+        /// </summary>
+        public readonly string Network;
+        /// <summary>
         /// Optional. Service Directory rejects values outside of `[0, 65535]`.
         /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The timestamp when the endpoint was last updated.
+        /// </summary>
+        public readonly string UpdateTime;
 
         [OutputConstructor]
         private EndpointResponse(
             string address,
 
+            string createTime,
+
             ImmutableDictionary<string, string> metadata,
 
             string name,
 
-            int port)
+            string network,
+
+            int port,
+
+            string updateTime)
         {
             Address = address;
+            CreateTime = createTime;
             Metadata = metadata;
             Name = name;
+            Network = network;
             Port = port;
+            UpdateTime = updateTime;
         }
     }
 }

@@ -75,6 +75,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Configuration for how to query telemetry on a Service.
         /// </summary>
         public readonly Outputs.TelemetryResponse Telemetry;
+        /// <summary>
+        /// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> UserLabels;
 
         [OutputConstructor]
         private GetServiceResult(
@@ -94,7 +98,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
             string name,
 
-            Outputs.TelemetryResponse telemetry)
+            Outputs.TelemetryResponse telemetry,
+
+            ImmutableDictionary<string, string> userLabels)
         {
             AppEngine = appEngine;
             CloudEndpoints = cloudEndpoints;
@@ -105,6 +111,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
             MeshIstio = meshIstio;
             Name = name;
             Telemetry = telemetry;
+            UserLabels = userLabels;
         }
     }
 }

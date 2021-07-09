@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
     /// <summary>
-    /// Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for {$api_version}.reservations ==)
+    /// Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read Reserving zonal resources.
     /// </summary>
     public sealed class ReservationArgs : Pulumi.ResourceArgs
     {
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Share-settings for shared-reservation
         /// </summary>
         [Input("shareSettings")]
-        public Input<Inputs.AllocationShareSettingsArgs>? ShareSettings { get; set; }
+        public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }
 
         /// <summary>
         /// Reservation for instances with specific machine shapes.

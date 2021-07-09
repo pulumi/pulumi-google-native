@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<bool>? EnableNestedVirtualization { get; set; }
 
         /// <summary>
+        /// The number of vNUMA nodes.
+        /// </summary>
+        [Input("numaNodeCount")]
+        public Input<int>? NumaNodeCount { get; set; }
+
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         [Input("threadsPerCore")]

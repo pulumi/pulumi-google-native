@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3
 {
     /// <summary>
-    /// Creates a flow in the specified agent.
+    /// Creates a flow in the specified agent. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3:Flow")]
     public partial class Flow : Pulumi.CustomResource

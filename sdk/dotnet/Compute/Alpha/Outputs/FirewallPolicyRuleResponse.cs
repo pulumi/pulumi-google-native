@@ -54,10 +54,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TargetResources;
         /// <summary>
-        /// A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
-        /// </summary>
-        public readonly ImmutableArray<string> TargetSecureLabels;
-        /// <summary>
         /// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> TargetSecureTags;
@@ -88,8 +84,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<string> targetResources,
 
-            ImmutableArray<string> targetSecureLabels,
-
             ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> targetSecureTags,
 
             ImmutableArray<string> targetServiceAccounts)
@@ -104,7 +98,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Priority = priority;
             RuleTupleCount = ruleTupleCount;
             TargetResources = targetResources;
-            TargetSecureLabels = targetSecureLabels;
             TargetSecureTags = targetSecureTags;
             TargetServiceAccounts = targetServiceAccounts;
         }

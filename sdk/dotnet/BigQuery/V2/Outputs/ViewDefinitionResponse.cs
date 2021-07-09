@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string Query;
         /// <summary>
+        /// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+        /// </summary>
+        public readonly bool UseExplicitColumnNames;
+        /// <summary>
         /// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
         /// </summary>
         public readonly bool UseLegacySql;
@@ -30,11 +34,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private ViewDefinitionResponse(
             string query,
 
+            bool useExplicitColumnNames,
+
             bool useLegacySql,
 
             ImmutableArray<Outputs.UserDefinedFunctionResourceResponse> userDefinedFunctionResources)
         {
             Query = query;
+            UseExplicitColumnNames = useExplicitColumnNames;
             UseLegacySql = useLegacySql;
             UserDefinedFunctionResources = userDefinedFunctionResources;
         }

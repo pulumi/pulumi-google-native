@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// Spec for Audit Logging Allowlisting.
+    /// **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
     /// </summary>
     public sealed class CloudAuditLoggingFeatureSpecArgs : Pulumi.ResourceArgs
     {

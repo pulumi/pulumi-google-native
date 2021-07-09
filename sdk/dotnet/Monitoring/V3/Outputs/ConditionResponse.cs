@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly Outputs.MetricAbsenceResponse ConditionAbsent;
         /// <summary>
+        /// A condition that checks for log messages matching given constraints. If set, no other conditions can be present.
+        /// </summary>
+        public readonly Outputs.LogMatchResponse ConditionMatchedLog;
+        /// <summary>
         /// A condition that uses the Monitoring Query Language to define alerts.
         /// </summary>
         public readonly Outputs.MonitoringQueryLanguageConditionResponse ConditionMonitoringQueryLanguage;
@@ -38,6 +42,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         private ConditionResponse(
             Outputs.MetricAbsenceResponse conditionAbsent,
 
+            Outputs.LogMatchResponse conditionMatchedLog,
+
             Outputs.MonitoringQueryLanguageConditionResponse conditionMonitoringQueryLanguage,
 
             Outputs.MetricThresholdResponse conditionThreshold,
@@ -47,6 +53,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
             string name)
         {
             ConditionAbsent = conditionAbsent;
+            ConditionMatchedLog = conditionMatchedLog;
             ConditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
             ConditionThreshold = conditionThreshold;
             DisplayName = displayName;

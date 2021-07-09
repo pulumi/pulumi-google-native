@@ -11,14 +11,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
     /// <summary>
-    /// Sets the scheduling options for an Instance. NextID: 20
+    /// Sets the scheduling options for an Instance. NextID: 21
     /// </summary>
     public sealed class SchedulingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted.
-        /// 
-        /// By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
+        /// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
         /// </summary>
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }

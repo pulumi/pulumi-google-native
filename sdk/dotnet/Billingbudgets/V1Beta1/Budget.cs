@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         /// </summary>
         [Output("thresholdRules")]
         public Output<ImmutableArray<Outputs.GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>> ThresholdRules { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         private InputList<Inputs.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs>? _thresholdRules;
 
         /// <summary>
-        /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         /// </summary>
         public InputList<Inputs.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs> ThresholdRules
         {

@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse
     {
         /// <summary>
+        /// Whether sentiment analysis is enabled.
+        /// </summary>
+        public readonly bool EnableSentimentAnalysis;
+        /// <summary>
         /// Parameters that need to be injected into the conversation during intent detection.
         /// </summary>
         public readonly ImmutableDictionary<string, string> InjectedParameters;
@@ -28,12 +32,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse(
+            bool enableSentimentAnalysis,
+
             ImmutableDictionary<string, string> injectedParameters,
 
             Outputs.GoogleCloudDialogflowCxV3beta1QueryInputResponse input,
 
             bool isWebhookEnabled)
         {
+            EnableSentimentAnalysis = enableSentimentAnalysis;
             InjectedParameters = injectedParameters;
             Input = input;
             IsWebhookEnabled = isWebhookEnabled;

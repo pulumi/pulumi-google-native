@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3
 {
     /// <summary>
-    /// Creates an TransitionRouteGroup in the specified flow.
+    /// Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3:TransitionRouteGroup")]
     public partial class TransitionRouteGroup : Pulumi.CustomResource

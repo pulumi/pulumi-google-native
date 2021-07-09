@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         public readonly Outputs.BuildTypeResponse BuildType;
         /// <summary>
+        /// A note describing a compliance check.
+        /// </summary>
+        public readonly Outputs.ComplianceNoteResponse Compliance;
+        /// <summary>
         /// The time this note was created. This field can be used as a filter in list requests.
         /// </summary>
         public readonly string CreateTime;
@@ -109,6 +113,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 
             Outputs.BuildTypeResponse buildType,
 
+            Outputs.ComplianceNoteResponse compliance,
+
             string createTime,
 
             Outputs.DeployableResponse deployable,
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
             AttestationAuthority = attestationAuthority;
             BaseImage = baseImage;
             BuildType = buildType;
+            Compliance = compliance;
             CreateTime = createTime;
             Deployable = deployable;
             Discovery = discovery;

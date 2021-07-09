@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     public sealed class VpcAccessConnectorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The egress setting for the connector, controlling what traffic is diverted through it.
+        /// </summary>
+        [Input("egressSetting")]
+        public Input<Pulumi.GoogleNative.AppEngine.V1Beta.VpcAccessConnectorEgressSetting>? EgressSetting { get; set; }
+
+        /// <summary>
         /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Input("name")]

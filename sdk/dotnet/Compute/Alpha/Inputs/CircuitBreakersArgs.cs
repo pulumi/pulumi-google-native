@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
     /// <summary>
-    /// Settings controlling the volume of connections to a backend service.
+    /// Settings controlling the volume of requests, connections and retries to this backend service.
     /// </summary>
     public sealed class CircuitBreakersArgs : Pulumi.ResourceArgs
     {
@@ -22,13 +22,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Inputs.DurationArgs>? ConnectTimeout { get; set; }
 
         /// <summary>
-        /// The maximum number of connections to the backend service. If not specified, there is no limit.
+        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("maxConnections")]
         public Input<int>? MaxConnections { get; set; }
 
         /// <summary>
-        /// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit.
+        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("maxPendingRequests")]
         public Input<int>? MaxPendingRequests { get; set; }
@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<int>? MaxRequests { get; set; }
 
         /// <summary>
-        /// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive.
+        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("maxRequestsPerConnection")]
         public Input<int>? MaxRequestsPerConnection { get; set; }
 
         /// <summary>
-        /// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1.
+        /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }

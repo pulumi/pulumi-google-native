@@ -61,19 +61,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         /// </summary>
         public readonly string NextHopGateway;
         /// <summary>
-        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-        /// - 10.128.0.56 
-        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-        /// - regions/region/forwardingRules/forwardingRule
+        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         /// </summary>
         public readonly string NextHopIlb;
         /// <summary>
-        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         /// </summary>
         public readonly string NextHopInstance;
         /// <summary>

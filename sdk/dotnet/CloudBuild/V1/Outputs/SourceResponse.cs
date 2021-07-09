@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly Outputs.StorageSourceResponse StorageSource;
         /// <summary>
-        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         /// </summary>
         public readonly Outputs.StorageSourceManifestResponse StorageSourceManifest;
 

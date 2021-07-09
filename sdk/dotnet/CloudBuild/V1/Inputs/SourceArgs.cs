@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public Input<Inputs.StorageSourceArgs>? StorageSource { get; set; }
 
         /// <summary>
-        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         /// </summary>
         [Input("storageSourceManifest")]
         public Input<Inputs.StorageSourceManifestArgs>? StorageSourceManifest { get; set; }

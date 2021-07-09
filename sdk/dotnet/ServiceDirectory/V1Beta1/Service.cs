@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>
+        /// The timestamp when the service was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
         /// </summary>
         [Output("endpoints")]
@@ -32,6 +38,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>

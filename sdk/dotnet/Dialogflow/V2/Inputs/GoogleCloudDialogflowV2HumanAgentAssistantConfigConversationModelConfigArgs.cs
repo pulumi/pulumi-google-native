@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         /// <summary>
         /// Conversation model resource name. Format: `projects//conversationModels/`.
         /// </summary>
-        [Input("model", required: true)]
-        public Input<string> Model { get; set; } = null!;
+        [Input("model")]
+        public Input<string>? Model { get; set; }
 
         public GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs()
         {

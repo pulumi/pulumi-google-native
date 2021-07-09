@@ -57,7 +57,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
     }
 
     /// <summary>
-    /// Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
+    /// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
     /// </summary>
     [EnumType]
     public readonly struct ProductType : IEquatable<ProductType>

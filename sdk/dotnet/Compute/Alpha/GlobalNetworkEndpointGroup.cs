@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         /// </summary>
         [Output("serverlessDeployment")]
         public Output<Outputs.NetworkEndpointGroupServerlessDeploymentResponse> ServerlessDeployment { get; private set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         /// </summary>
         [Input("serverlessDeployment")]
         public Input<Inputs.NetworkEndpointGroupServerlessDeploymentArgs>? ServerlessDeployment { get; set; }

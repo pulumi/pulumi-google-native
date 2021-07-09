@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         private InputList<string>? _experiments;
 
         /// <summary>
-        /// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+        /// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
         /// </summary>
         public InputList<string> Experiments
         {
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         private InputList<string>? _serviceOptions;
 
         /// <summary>
-        /// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+        /// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
         /// </summary>
         public InputList<string> ServiceOptions
         {

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public Output<string> CreationTime { get; private set; } = null!;
 
         /// <summary>
-        /// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+        /// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified above at most.
         /// </summary>
         [Output("ignoreIdleSlots")]
         public Output<bool> IgnoreIdleSlots { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     public sealed class ReservationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+        /// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified above at most.
         /// </summary>
         [Input("ignoreIdleSlots")]
         public Input<bool>? IgnoreIdleSlots { get; set; }

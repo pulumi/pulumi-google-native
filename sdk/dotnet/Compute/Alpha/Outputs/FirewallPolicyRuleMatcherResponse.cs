@@ -26,10 +26,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
         /// <summary>
-        /// List of firewall label values, which should be matched at the source of the traffic. Maximum number of source label values allowed is 256.
-        /// </summary>
-        public readonly ImmutableArray<string> SrcSecureLabels;
-        /// <summary>
         /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> SrcSecureTags;
@@ -42,14 +38,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<string> srcIpRanges,
 
-            ImmutableArray<string> srcSecureLabels,
-
             ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> srcSecureTags)
         {
             DestIpRanges = destIpRanges;
             Layer4Configs = layer4Configs;
             SrcIpRanges = srcIpRanges;
-            SrcSecureLabels = srcSecureLabels;
             SrcSecureTags = srcSecureTags;
         }
     }

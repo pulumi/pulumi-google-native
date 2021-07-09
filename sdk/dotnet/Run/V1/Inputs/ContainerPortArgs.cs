@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+        /// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

@@ -28,11 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? NatIP { get; set; }
 
         /// <summary>
-        /// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD.
-        /// 
-        /// If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier.
-        /// 
-        /// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
+        /// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
         /// </summary>
         [Input("networkTier")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.AccessConfigNetworkTier>? NetworkTier { get; set; }

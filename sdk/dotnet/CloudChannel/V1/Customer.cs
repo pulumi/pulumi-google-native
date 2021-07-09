@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     public partial class Customer : Pulumi.CustomResource
     {
         /// <summary>
-        /// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+        /// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
         /// </summary>
         [Output("alternateEmail")]
         public Output<string> AlternateEmail { get; private set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<string> ChannelPartnerId { get; private set; } = null!;
 
         /// <summary>
-        /// Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+        /// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
         /// </summary>
         [Output("cloudIdentityId")]
         public Output<string> CloudIdentityId { get; private set; } = null!;
@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<Outputs.GoogleCloudChannelV1CloudIdentityInfoResponse> CloudIdentityInfo { get; private set; } = null!;
 
         /// <summary>
-        /// The time at which the customer is created.
+        /// Time when the customer was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        /// The customer's primary domain. Must match the primary contact email's domain.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<string> OrgDisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        /// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
         /// </summary>
         [Output("orgPostalAddress")]
         public Output<Outputs.GoogleTypePostalAddressResponse> OrgPostalAddress { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<Outputs.GoogleCloudChannelV1ContactInfoResponse> PrimaryContactInfo { get; private set; } = null!;
 
         /// <summary>
-        /// The time at which the customer is updated.
+        /// Time when the customer was updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+        /// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
         /// </summary>
         [Input("alternateEmail")]
         public Input<string>? AlternateEmail { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Input<string> ChannelPartnerLinkId { get; set; } = null!;
 
         /// <summary>
-        /// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        /// The customer's primary domain. Must match the primary contact email's domain.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Input<string> OrgDisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        /// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
         /// </summary>
         [Input("orgPostalAddress", required: true)]
         public Input<Inputs.GoogleTypePostalAddressArgs> OrgPostalAddress { get; set; } = null!;

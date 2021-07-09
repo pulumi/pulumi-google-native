@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public Input<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsMachineType>? MachineType { get; set; }
 
         /// <summary>
+        /// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+        /// </summary>
+        [Input("pool")]
+        public Input<Inputs.PoolOptionArgs>? Pool { get; set; }
+
+        /// <summary>
         /// Requested verifiability options.
         /// </summary>
         [Input("requestedVerifyOption")]
@@ -106,7 +112,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         }
 
         /// <summary>
-        /// Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
+        /// This field deprecated; please use `pool.name` instead.
         /// </summary>
         [Input("workerPool")]
         public Input<string>? WorkerPool { get; set; }

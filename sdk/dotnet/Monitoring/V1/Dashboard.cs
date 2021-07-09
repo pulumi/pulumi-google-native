@@ -147,6 +147,9 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [Input("rowLayout")]
         public Input<Inputs.RowLayoutArgs>? RowLayout { get; set; }
 
+        [Input("validateOnly")]
+        public Input<string>? ValidateOnly { get; set; }
+
         public DashboardArgs()
         {
         }

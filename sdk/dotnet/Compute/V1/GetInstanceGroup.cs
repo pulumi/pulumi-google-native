@@ -12,9 +12,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     public static class GetInstanceGroup
     {
         /// <summary>
-        /// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request.
-        /// 
-        /// For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
+        /// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
         /// </summary>
         public static Task<GetInstanceGroupResult> InvokeAsync(GetInstanceGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("google-native:compute/v1:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithVersion());
@@ -62,11 +60,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Assigns a name to a port number. For example: {name: "http", port: 80}
-        /// 
-        /// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] 
-        /// 
-        /// Named ports apply to all instances in this instance group.
+        ///  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group. 
         /// </summary>
         public readonly ImmutableArray<Outputs.NamedPortResponse> NamedPorts;
         /// <summary>

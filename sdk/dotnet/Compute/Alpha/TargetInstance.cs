@@ -28,10 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: 
-        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        /// - projects/project/zones/zone/instances/instance 
-        /// - zones/zone/instances/instance
+        /// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -130,10 +127,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: 
-        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        /// - projects/project/zones/zone/instances/instance 
-        /// - zones/zone/instances/instance
+        /// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

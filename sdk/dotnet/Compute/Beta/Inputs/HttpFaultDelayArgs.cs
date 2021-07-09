@@ -22,8 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Inputs.DurationArgs>? FixedDelay { get; set; }
 
         /// <summary>
-        /// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
-        /// The value must be between 0.0 and 100.0 inclusive.
+        /// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
         /// </summary>
         [Input("percentage")]
         public Input<double>? Percentage { get; set; }

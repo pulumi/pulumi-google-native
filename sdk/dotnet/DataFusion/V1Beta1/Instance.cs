@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        /// </summary>
+        [Output("cryptoKeyConfig")]
+        public Output<Outputs.CryptoKeyConfigResponse> CryptoKeyConfig { get; private set; } = null!;
+
+        /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         /// </summary>
         [Output("dataprocServiceAccount")]
@@ -233,6 +239,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
             get => _availableVersion ?? (_availableVersion = new InputList<Inputs.VersionArgs>());
             set => _availableVersion = value;
         }
+
+        /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        /// </summary>
+        [Input("cryptoKeyConfig")]
+        public Input<Inputs.CryptoKeyConfigArgs>? CryptoKeyConfig { get; set; }
 
         /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.

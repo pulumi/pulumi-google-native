@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// Whether the instance should be assigned an IPv4 address or not.
+        /// Whether the instance is assigned a public IP address or not.
         /// </summary>
         [Input("enableIpv4")]
         public Input<bool>? EnableIpv4 { get; set; }

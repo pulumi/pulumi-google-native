@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string LocationHint;
         /// <summary>
-        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         /// </summary>
         public readonly string MaintenancePolicy;
         public readonly Outputs.NodeGroupMaintenanceWindowResponse MaintenanceWindow;
@@ -81,6 +81,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
+        /// <summary>
+        /// Share-settings for the node group
+        /// </summary>
+        public readonly Outputs.ShareSettingsResponse ShareSettings;
         /// <summary>
         /// The total number of nodes in the node group.
         /// </summary>
@@ -117,6 +121,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string selfLinkWithId,
 
+            Outputs.ShareSettingsResponse shareSettings,
+
             int size,
 
             string status,
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             NodeTemplate = nodeTemplate;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
+            ShareSettings = shareSettings;
             Size = size;
             Status = status;
             Zone = zone;

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     public sealed class GceClusterConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+        /// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.ConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }

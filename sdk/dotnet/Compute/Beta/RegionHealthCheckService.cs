@@ -34,15 +34,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks&lt;/code? must belong to the same region as zones of NEGs.
+        /// List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT or portSpecification=USE_FIXED_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks must belong to the same region as zones of NEGs.
         /// </summary>
         [Output("healthChecks")]
         public Output<ImmutableArray<string>> HealthChecks { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
-        /// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
-        /// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
         /// </summary>
         [Output("healthStatusAggregationPolicy")]
         public Output<string> HealthStatusAggregationPolicy { get; private set; } = null!;
@@ -138,7 +136,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         private InputList<string>? _healthChecks;
 
         /// <summary>
-        /// List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks&lt;/code? must belong to the same region as zones of NEGs.
+        /// List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT or portSpecification=USE_FIXED_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks must belong to the same region as zones of NEGs.
         /// </summary>
         public InputList<string> HealthChecks
         {
@@ -147,9 +145,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         /// <summary>
-        /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
-        /// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
-        /// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
         /// </summary>
         [Input("healthStatusAggregationPolicy")]
         public Input<Pulumi.GoogleNative.Compute.Beta.RegionHealthCheckServiceHealthStatusAggregationPolicy>? HealthStatusAggregationPolicy { get; set; }

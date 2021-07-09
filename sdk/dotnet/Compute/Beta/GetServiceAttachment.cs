@@ -48,9 +48,17 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string ConnectionPreference;
         /// <summary>
+        /// Projects that are allowed to connect to this service attachment.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServiceAttachmentConsumerProjectLimitResponse> ConsumerAcceptLists;
+        /// <summary>
         /// An array of forwarding rules for all the consumers connected to this service attachment.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceAttachmentConsumerForwardingRuleResponse> ConsumerForwardingRules;
+        /// <summary>
+        /// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+        /// </summary>
+        public readonly ImmutableArray<string> ConsumerRejectLists;
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -63,6 +71,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
         /// </summary>
         public readonly bool EnableProxyProtocol;
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+        /// </summary>
+        public readonly string Fingerprint;
         /// <summary>
         /// Type of the resource. Always compute#serviceAttachment for service attachments.
         /// </summary>
@@ -102,13 +114,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string connectionPreference,
 
+            ImmutableArray<Outputs.ServiceAttachmentConsumerProjectLimitResponse> consumerAcceptLists,
+
             ImmutableArray<Outputs.ServiceAttachmentConsumerForwardingRuleResponse> consumerForwardingRules,
+
+            ImmutableArray<string> consumerRejectLists,
 
             string creationTimestamp,
 
             string description,
 
             bool enableProxyProtocol,
+
+            string fingerprint,
 
             string kind,
 
@@ -128,10 +146,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         {
             ConnectedEndpoints = connectedEndpoints;
             ConnectionPreference = connectionPreference;
+            ConsumerAcceptLists = consumerAcceptLists;
             ConsumerForwardingRules = consumerForwardingRules;
+            ConsumerRejectLists = consumerRejectLists;
             CreationTimestamp = creationTimestamp;
             Description = description;
             EnableProxyProtocol = enableProxyProtocol;
+            Fingerprint = fingerprint;
             Kind = kind;
             Name = name;
             NatSubnets = natSubnets;

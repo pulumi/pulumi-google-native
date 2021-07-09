@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
 {
 
     /// <summary>
-    /// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+    /// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
     /// </summary>
     public sealed class ObjectConditionsArgs : Pulumi.ResourceArgs
     {
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         }
 
         /// <summary>
-        /// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+        /// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
         /// </summary>
         [Input("lastModifiedBefore")]
         public Input<string>? LastModifiedBefore { get; set; }

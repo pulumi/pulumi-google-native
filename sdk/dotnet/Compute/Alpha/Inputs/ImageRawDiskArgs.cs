@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.ImageRawDiskContainerType>? ContainerType { get; set; }
 
         /// <summary>
-        /// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+        /// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

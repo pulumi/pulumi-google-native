@@ -13,10 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class GRPCHealthCheckArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention:
-        /// - Empty service_name means the overall status of all services at the backend.
-        /// - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service.
-        /// The grpc_service_name can only be ASCII.
+        /// The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
         /// </summary>
         [Input("grpcServiceName")]
         public Input<string>? GrpcServiceName { get; set; }
@@ -34,13 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? PortName { get; set; }
 
         /// <summary>
-        /// Specifies how port is selected for health checking, can be one of following values:
-        /// USE_FIXED_PORT: The port number in port is used for health checking.
-        /// USE_NAMED_PORT: The portName is used for health checking.
-        /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
-        /// 
-        /// 
-        /// If not specified, gRPC health check follows behavior specified in port and portName fields.
+        /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
         /// </summary>
         [Input("portSpecification")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.GRPCHealthCheckPortSpecification>? PortSpecification { get; set; }

@@ -19,10 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Inputs.CustomerEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// URL of the disk attached to the source instance. This can be a full or valid partial URL. For example, the following are valid values:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-        /// - projects/project/zones/zone/disks/disk 
-        /// - zones/zone/disks/disk
+        /// URL of the disk attached to the source instance. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
         /// </summary>
         [Input("sourceDisk")]
         public Input<string>? SourceDisk { get; set; }

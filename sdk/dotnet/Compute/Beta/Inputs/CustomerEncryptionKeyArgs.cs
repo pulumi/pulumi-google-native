@@ -31,12 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? RawKey { get; set; }
 
         /// <summary>
-        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource.
-        /// 
-        /// The key must meet the following requirements before you can provide it to Compute Engine:  
-        /// - The key is wrapped using a RSA public key certificate provided by Google. 
-        /// - After being wrapped, the key must be encoded in RFC 4648 base64 encoding.  Gets the RSA public key certificate provided by Google at:
-        /// https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
         /// </summary>
         [Input("rsaEncryptedKey")]
         public Input<string>? RsaEncryptedKey { get; set; }

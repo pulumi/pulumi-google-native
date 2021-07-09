@@ -58,11 +58,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
         /// <summary>
-        /// PostKeyRevocationActionType of the instance.
-        /// </summary>
-        public readonly string PostKeyRevocationActionType;
-        /// <summary>
-        /// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         public readonly string PrivateIpv6GoogleAccess;
         /// <summary>
@@ -111,8 +107,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             ImmutableArray<Outputs.NetworkInterfaceResponse> networkInterfaces,
 
-            string postKeyRevocationActionType,
-
             string privateIpv6GoogleAccess,
 
             Outputs.ReservationAffinityResponse reservationAffinity,
@@ -138,7 +132,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;
             NetworkInterfaces = networkInterfaces;
-            PostKeyRevocationActionType = postKeyRevocationActionType;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ReservationAffinity = reservationAffinity;
             ResourcePolicies = resourcePolicies;

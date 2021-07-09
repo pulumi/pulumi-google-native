@@ -34,9 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.SecurityPolicyRuleDirection>? Direction { get; set; }
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
-        /// 
-        /// This field may only be specified when the versioned_expr is set to FIREWALL.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -72,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsArgs>? RateLimitOptions { get; set; }
 
         /// <summary>
+        /// Parameters defining the redirect action. Cannot be specified for any other actions.
+        /// </summary>
+        [Input("redirectOptions")]
+        public Input<Inputs.SecurityPolicyRuleRedirectOptionsArgs>? RedirectOptions { get; set; }
+
+        /// <summary>
         /// This must be specified for redirect actions. Cannot be specified for any other actions.
         /// </summary>
         [Input("redirectTarget")]
@@ -87,9 +91,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _targetResources;
 
         /// <summary>
-        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
-        /// 
-        /// This field may only be specified when versioned_expr is set to FIREWALL.
+        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
         /// </summary>
         public InputList<string> TargetResources
         {

@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+        /// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
         /// </summary>
         public readonly string ExperimentLength;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING-&gt;RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING-&gt;CANCELLED or RUNNING-&gt;CANCELLED.
+        /// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT-&gt;RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT-&gt;DONE or RUNNING-&gt;DONE.
         /// </summary>
         public readonly string State;
         /// <summary>

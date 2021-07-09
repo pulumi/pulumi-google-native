@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+    /// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
     /// </summary>
     public sealed class ConfigMapEnvSourceArgs : Pulumi.ResourceArgs
     {
@@ -22,13 +22,13 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<Inputs.LocalObjectReferenceArgs>? LocalObjectReference { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+        /// The ConfigMap to select from.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+        /// (Optional) Specify whether the ConfigMap must be defined
         /// </summary>
         [Input("optional")]
         public Input<bool>? Optional { get; set; }

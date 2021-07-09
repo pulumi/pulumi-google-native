@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> DestRange { get; private set; } = null!;
 
         /// <summary>
+        /// ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
+        /// </summary>
+        [Output("ilbRouteBehaviorOnUnhealthy")]
+        public Output<string> IlbRouteBehaviorOnUnhealthy { get; private set; } = null!;
+
+        /// <summary>
         /// Type of this resource. Always compute#routes for Route resources.
         /// </summary>
         [Output("kind")]
@@ -58,23 +64,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         /// </summary>
         [Output("nextHopGateway")]
         public Output<string> NextHopGateway { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-        /// - 10.128.0.56 
-        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-        /// - regions/region/forwardingRules/forwardingRule
+        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         /// </summary>
         [Output("nextHopIlb")]
         public Output<string> NextHopIlb { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         /// </summary>
         [Output("nextHopInstance")]
         public Output<string> NextHopInstance { get; private set; } = null!;
@@ -203,6 +205,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? DestRange { get; set; }
 
         /// <summary>
+        /// ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
+        /// </summary>
+        [Input("ilbRouteBehaviorOnUnhealthy")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.RouteIlbRouteBehaviorOnUnhealthy>? IlbRouteBehaviorOnUnhealthy { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         /// </summary>
         [Input("name")]
@@ -215,23 +223,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+        /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         /// </summary>
         [Input("nextHopGateway")]
         public Input<string>? NextHopGateway { get; set; }
 
         /// <summary>
-        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-        /// - 10.128.0.56 
-        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-        /// - regions/region/forwardingRules/forwardingRule
+        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         /// </summary>
         [Input("nextHopIlb")]
         public Input<string>? NextHopIlb { get; set; }
 
         /// <summary>
-        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         /// </summary>
         [Input("nextHopInstance")]
         public Input<string>? NextHopInstance { get; set; }

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
 {
 
     /// <summary>
-    /// Location of the source manifest in Google Cloud Storage. This feature is in Preview.
+    /// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
     /// </summary>
     public sealed class StorageSourceManifestArgs : Pulumi.ResourceArgs
     {

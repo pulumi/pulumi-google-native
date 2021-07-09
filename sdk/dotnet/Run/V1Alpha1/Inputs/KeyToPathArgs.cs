@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     public sealed class KeyToPathArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key to project.
+        /// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<int>? Mode { get; set; }
 
         /// <summary>
-        /// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
     /// <summary>
-    /// Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-custom-fields.
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     public sealed class LogConfigCounterOptionsCustomFieldArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name is the field name.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -11,30 +11,30 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// A condition to be met.
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     public sealed class ConditionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Trusted attributes supplied by the IAM system.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("iam")]
         public Input<Pulumi.GoogleNative.Compute.Beta.ConditionIam>? Iam { get; set; }
 
         /// <summary>
-        /// An operator to apply the subject with.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("op")]
         public Input<Pulumi.GoogleNative.Compute.Beta.ConditionOp>? Op { get; set; }
 
         /// <summary>
-        /// Trusted attributes discharged by the service.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("svc")]
         public Input<string>? Svc { get; set; }
 
         /// <summary>
-        /// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("sys")]
         public Input<Pulumi.GoogleNative.Compute.Beta.ConditionSys>? Sys { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// The objects of the condition.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public InputList<string> Values
         {

@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
+        /// Optional. Whether to enable web access for the training job.
+        /// </summary>
+        public readonly bool EnableWebAccess;
+        /// <summary>
         /// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
         /// </summary>
         public readonly Outputs.GoogleCloudMlV1__EncryptionConfigResponse EncryptionConfig;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         private GoogleCloudMlV1__TrainingInputResponse(
             ImmutableArray<string> args,
 
+            bool enableWebAccess,
+
             Outputs.GoogleCloudMlV1__EncryptionConfigResponse encryptionConfig,
 
             Outputs.GoogleCloudMlV1__ReplicaConfigResponse evaluatorConfig,
@@ -167,6 +173,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
             string workerType)
         {
             Args = args;
+            EnableWebAccess = enableWebAccess;
             EncryptionConfig = encryptionConfig;
             EvaluatorConfig = evaluatorConfig;
             EvaluatorCount = evaluatorCount;

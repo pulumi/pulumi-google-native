@@ -14,19 +14,19 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
     public sealed class GKEMasterInfoResponse
     {
         /// <summary>
-        /// URI of a Google Kubernetes Engine cluster network.
+        /// URI of a GKE cluster network.
         /// </summary>
         public readonly string ClusterNetworkUri;
         /// <summary>
-        /// URI of a Google Kubernetes Engine cluster.
+        /// URI of a GKE cluster.
         /// </summary>
         public readonly string ClusterUri;
         /// <summary>
-        /// External IP address of a Google Kubernetes Engine cluster master.
+        /// External IP address of a GKE cluster master.
         /// </summary>
         public readonly string ExternalIp;
         /// <summary>
-        /// Internal IP address of a Google Kubernetes Engine cluster master.
+        /// Internal IP address of a GKE cluster master.
         /// </summary>
         public readonly string InternalIp;
 

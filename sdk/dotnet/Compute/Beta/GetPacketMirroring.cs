@@ -52,9 +52,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-        /// 
-        /// The default is TRUE.
+        /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
         /// </summary>
         public readonly string Enable;
         /// <summary>
@@ -78,9 +76,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.PacketMirroringNetworkInfoResponse Network;
         /// <summary>
-        /// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-        /// 
-        /// Default value is 1000. Valid range is 0 through 65535.
+        /// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
         /// </summary>
         public readonly int Priority;
         /// <summary>
