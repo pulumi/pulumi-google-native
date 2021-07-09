@@ -163,7 +163,7 @@
           ]
         },
         "setAgent": {
-          "description": "Creates/updates the specified agent.",
+          "description": "Creates/updates the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
           "flatPath": "v2/projects/{projectsId}/agent",
           "httpMethod": "POST",
           "id": "dialogflow.projects.setAgent",
@@ -202,7 +202,7 @@
         "agent": {
           "methods": {
             "export": {
-              "description": "Exports the specified agent to a ZIP file. Operation ",
+              "description": "Exports the specified agent to a ZIP file.",
               "flatPath": "v2/projects/{projectsId}/agent:export",
               "httpMethod": "POST",
               "id": "dialogflow.projects.agent.export",
@@ -288,7 +288,7 @@
               ]
             },
             "import": {
-              "description": "Imports the specified agent from a ZIP file. Uploads new intents and entity types without deleting the existing ones. Intents and entity types with the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported draft agent will be trained automatically (unless disabled in agent settings). However, once the import is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. Operation An operation which tracks when importing is complete. It only tracks when the draft agent is updated not when it is done training.",
+              "description": "Imports the specified agent from a ZIP file. Uploads new intents and entity types without deleting the existing ones. Intents and entity types with the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported draft agent will be trained automatically (unless disabled in agent settings). However, once the import is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. An operation which tracks when importing is complete. It only tracks when the draft agent is updated not when it is done training. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
               "flatPath": "v2/projects/{projectsId}/agent:import",
               "httpMethod": "POST",
               "id": "dialogflow.projects.agent.import",
@@ -317,7 +317,7 @@
               ]
             },
             "restore": {
-              "description": "Restores the specified agent from a ZIP file. Replaces the current agent version with a new one. All the intents and entity types in the older version are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled in agent settings). However, once the restore is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. Operation An operation which tracks when restoring is complete. It only tracks when the draft agent is updated not when it is done training.",
+              "description": "Restores the specified agent from a ZIP file. Replaces the current agent version with a new one. All the intents and entity types in the older version are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled in agent settings). However, once the restore is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. An operation which tracks when restoring is complete. It only tracks when the draft agent is updated not when it is done training. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
               "flatPath": "v2/projects/{projectsId}/agent:restore",
               "httpMethod": "POST",
               "id": "dialogflow.projects.agent.restore",
@@ -383,7 +383,7 @@
               ]
             },
             "train": {
-              "description": "Trains the specified agent. Operation ",
+              "description": "Trains the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
               "flatPath": "v2/projects/{projectsId}/agent:train",
               "httpMethod": "POST",
               "id": "dialogflow.projects.agent.train",
@@ -451,7 +451,7 @@
             "entityTypes": {
               "methods": {
                 "batchDelete": {
-                  "description": "Deletes entity types in the specified agent. Operation ",
+                  "description": "Deletes entity types in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/entityTypes:batchDelete",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.agent.entityTypes.batchDelete",
@@ -480,7 +480,7 @@
                   ]
                 },
                 "batchUpdate": {
-                  "description": "Updates/Creates multiple entity types in the specified agent. Operation ",
+                  "description": "Updates/Creates multiple entity types in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/entityTypes:batchUpdate",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.agent.entityTypes.batchUpdate",
@@ -509,7 +509,7 @@
                   ]
                 },
                 "create": {
-                  "description": "Creates an entity type in the specified agent.",
+                  "description": "Creates an entity type in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/entityTypes",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.agent.entityTypes.create",
@@ -543,7 +543,7 @@
                   ]
                 },
                 "delete": {
-                  "description": "Deletes the specified entity type.",
+                  "description": "Deletes the specified entity type. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
                   "httpMethod": "DELETE",
                   "id": "dialogflow.projects.agent.entityTypes.delete",
@@ -642,7 +642,7 @@
                   ]
                 },
                 "patch": {
-                  "description": "Updates the specified entity type.",
+                  "description": "Updates the specified entity type. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
                   "httpMethod": "PATCH",
                   "id": "dialogflow.projects.agent.entityTypes.patch",
@@ -686,7 +686,7 @@
                 "entities": {
                   "methods": {
                     "batchCreate": {
-                      "description": "Creates multiple new entities in the specified entity type. Operation ",
+                      "description": "Creates multiple new entities in the specified entity type. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchCreate",
                       "httpMethod": "POST",
                       "id": "dialogflow.projects.agent.entityTypes.entities.batchCreate",
@@ -715,7 +715,7 @@
                       ]
                     },
                     "batchDelete": {
-                      "description": "Deletes entities in the specified entity type. Operation ",
+                      "description": "Deletes entities in the specified entity type. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchDelete",
                       "httpMethod": "POST",
                       "id": "dialogflow.projects.agent.entityTypes.entities.batchDelete",
@@ -744,7 +744,7 @@
                       ]
                     },
                     "batchUpdate": {
-                      "description": "Updates or creates multiple entities in the specified entity type. This method does not affect entities in the entity type that aren't explicitly specified in the request. Operation ",
+                      "description": "Updates or creates multiple entities in the specified entity type. This method does not affect entities in the entity type that aren't explicitly specified in the request. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchUpdate",
                       "httpMethod": "POST",
                       "id": "dialogflow.projects.agent.entityTypes.entities.batchUpdate",
@@ -822,7 +822,7 @@
                   ],
                   "parameters": {
                     "name": {
-                      "description": "Required. The name of the environment to delete. / Format: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+                      "description": "Required. The name of the environment to delete. / Format: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/agent/environments/[^/]+$",
                       "required": true,
@@ -848,7 +848,7 @@
                   ],
                   "parameters": {
                     "name": {
-                      "description": "Required. The name of the environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+                      "description": "Required. The name of the environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/agent/environments/[^/]+$",
                       "required": true,
@@ -885,7 +885,7 @@
                       "type": "string"
                     },
                     "parent": {
-                      "description": "Required. The name of the environment to retrieve history for. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+                      "description": "Required. The name of the environment to retrieve history for. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/agent/environments/[^/]+$",
                       "required": true,
@@ -902,7 +902,7 @@
                   ]
                 },
                 "list": {
-                  "description": "Returns the list of all non-draft environments of the specified agent.",
+                  "description": "Returns the list of all non-default environments of the specified agent.",
                   "flatPath": "v2/projects/{projectsId}/agent/environments",
                   "httpMethod": "GET",
                   "id": "dialogflow.projects.agent.environments.list",
@@ -939,7 +939,7 @@
                   ]
                 },
                 "patch": {
-                  "description": "Updates the specified agent environment. This method allows you to deploy new agent versions into the environment. When an environment is pointed to a new agent version by setting `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During that time, the environment keeps on serving the previous version of the agent. After the new agent version is done loading, the environment is set back to the `RUNNING` state. You can use \"-\" as Environment ID in environment name to update version in \"draft\" environment. WARNING: this will negate all recent changes to draft and can't be undone. You may want to save the draft to a version before calling this function.",
+                  "description": "Updates the specified agent environment. This method allows you to deploy new agent versions into the environment. When an environment is pointed to a new agent version by setting `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During that time, the environment continues serving the previous version of the agent. After the new agent version is done loading, the environment is set back to the `RUNNING` state. You can use \"-\" as Environment ID in environment name to update an agent version in the default environment. WARNING: this will negate all recent changes to the draft agent and can't be undone. You may want to save the draft agent to a version before calling this method.",
                   "flatPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}",
                   "httpMethod": "PATCH",
                   "id": "dialogflow.projects.agent.environments.patch",
@@ -948,12 +948,12 @@
                   ],
                   "parameters": {
                     "allowLoadToDraftAndDiscardChanges": {
-                      "description": "Optional. This field is used to prevent accidental overwrite of the draft environment, which is an operation that cannot be undone. To confirm that the caller desires this overwrite, this field must be explicitly set to true when updating the draft environment (environment ID = `-`).",
+                      "description": "Optional. This field is used to prevent accidental overwrite of the default environment, which is an operation that cannot be undone. To confirm that the caller desires this overwrite, this field must be explicitly set to true when updating the default environment (environment ID = `-`).",
                       "location": "query",
                       "type": "boolean"
                     },
                     "name": {
-                      "description": "Output only. The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+                      "description": "Output only. The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/agent/environments/[^/]+$",
                       "required": true,
@@ -1021,7 +1021,7 @@
                           "type": "string"
                         },
                         "parent": {
-                          "description": "Required. The agent to list all intents from. Format: `projects//agent`.",
+                          "description": "Required. The agent to list all intents from. Format: `projects//agent` or `projects//locations//agent`. Alternatively, you can specify the environment to list intents for. Format: `projects//agent/environments/` or `projects//locations//agent/environments/`. Note: training phrases of the intents will not be returned for non-draft environment.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/agent/environments/[^/]+$",
                           "required": true,
@@ -1423,7 +1423,7 @@
             "intents": {
               "methods": {
                 "batchDelete": {
-                  "description": "Deletes intents in the specified agent. Operation ",
+                  "description": "Deletes intents in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/intents:batchDelete",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.agent.intents.batchDelete",
@@ -1452,7 +1452,7 @@
                   ]
                 },
                 "batchUpdate": {
-                  "description": "Updates/Creates multiple intents in the specified agent. Operation ",
+                  "description": "Updates/Creates multiple intents in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/intents:batchUpdate",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.agent.intents.batchUpdate",
@@ -1481,7 +1481,7 @@
                   ]
                 },
                 "create": {
-                  "description": "Creates an intent in the specified agent.",
+                  "description": "Creates an intent in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/intents",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.agent.intents.create",
@@ -1528,7 +1528,7 @@
                   ]
                 },
                 "delete": {
-                  "description": "Deletes the specified intent and its direct or indirect followup intents.",
+                  "description": "Deletes the specified intent and its direct or indirect followup intents. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/intents/{intentsId}",
                   "httpMethod": "DELETE",
                   "id": "dialogflow.projects.agent.intents.delete",
@@ -1636,7 +1636,7 @@
                       "type": "string"
                     },
                     "parent": {
-                      "description": "Required. The agent to list all intents from. Format: `projects//agent`.",
+                      "description": "Required. The agent to list all intents from. Format: `projects//agent` or `projects//locations//agent`. Alternatively, you can specify the environment to list intents for. Format: `projects//agent/environments/` or `projects//locations//agent/environments/`. Note: training phrases of the intents will not be returned for non-draft environment.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/agent$",
                       "required": true,
@@ -1653,7 +1653,7 @@
                   ]
                 },
                 "patch": {
-                  "description": "Updates the specified intent.",
+                  "description": "Updates the specified intent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/agent/intents/{intentsId}",
                   "httpMethod": "PATCH",
                   "id": "dialogflow.projects.agent.intents.patch",
@@ -3641,7 +3641,7 @@
               ]
             },
             "setAgent": {
-              "description": "Creates/updates the specified agent.",
+              "description": "Creates/updates the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
               "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent",
               "httpMethod": "POST",
               "id": "dialogflow.projects.locations.setAgent",
@@ -3680,7 +3680,7 @@
             "agent": {
               "methods": {
                 "export": {
-                  "description": "Exports the specified agent to a ZIP file. Operation ",
+                  "description": "Exports the specified agent to a ZIP file.",
                   "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent:export",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.locations.agent.export",
@@ -3766,7 +3766,7 @@
                   ]
                 },
                 "import": {
-                  "description": "Imports the specified agent from a ZIP file. Uploads new intents and entity types without deleting the existing ones. Intents and entity types with the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported draft agent will be trained automatically (unless disabled in agent settings). However, once the import is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. Operation An operation which tracks when importing is complete. It only tracks when the draft agent is updated not when it is done training.",
+                  "description": "Imports the specified agent from a ZIP file. Uploads new intents and entity types without deleting the existing ones. Intents and entity types with the same name are replaced with the new versions from ImportAgentRequest. After the import, the imported draft agent will be trained automatically (unless disabled in agent settings). However, once the import is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. An operation which tracks when importing is complete. It only tracks when the draft agent is updated not when it is done training. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent:import",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.locations.agent.import",
@@ -3795,7 +3795,7 @@
                   ]
                 },
                 "restore": {
-                  "description": "Restores the specified agent from a ZIP file. Replaces the current agent version with a new one. All the intents and entity types in the older version are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled in agent settings). However, once the restore is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. Operation An operation which tracks when restoring is complete. It only tracks when the draft agent is updated not when it is done training.",
+                  "description": "Restores the specified agent from a ZIP file. Replaces the current agent version with a new one. All the intents and entity types in the older version are deleted. After the restore, the restored draft agent will be trained automatically (unless disabled in agent settings). However, once the restore is done, training may not be completed yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly. An operation which tracks when restoring is complete. It only tracks when the draft agent is updated not when it is done training. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent:restore",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.locations.agent.restore",
@@ -3861,7 +3861,7 @@
                   ]
                 },
                 "train": {
-                  "description": "Trains the specified agent. Operation ",
+                  "description": "Trains the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                   "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent:train",
                   "httpMethod": "POST",
                   "id": "dialogflow.projects.locations.agent.train",
@@ -3929,7 +3929,7 @@
                 "entityTypes": {
                   "methods": {
                     "batchDelete": {
-                      "description": "Deletes entity types in the specified agent. Operation ",
+                      "description": "Deletes entity types in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes:batchDelete",
                       "httpMethod": "POST",
                       "id": "dialogflow.projects.locations.agent.entityTypes.batchDelete",
@@ -3958,7 +3958,7 @@
                       ]
                     },
                     "batchUpdate": {
-                      "description": "Updates/Creates multiple entity types in the specified agent. Operation ",
+                      "description": "Updates/Creates multiple entity types in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes:batchUpdate",
                       "httpMethod": "POST",
                       "id": "dialogflow.projects.locations.agent.entityTypes.batchUpdate",
@@ -3987,7 +3987,7 @@
                       ]
                     },
                     "create": {
-                      "description": "Creates an entity type in the specified agent.",
+                      "description": "Creates an entity type in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes",
                       "httpMethod": "POST",
                       "id": "dialogflow.projects.locations.agent.entityTypes.create",
@@ -4021,7 +4021,7 @@
                       ]
                     },
                     "delete": {
-                      "description": "Deletes the specified entity type.",
+                      "description": "Deletes the specified entity type. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}",
                       "httpMethod": "DELETE",
                       "id": "dialogflow.projects.locations.agent.entityTypes.delete",
@@ -4120,7 +4120,7 @@
                       ]
                     },
                     "patch": {
-                      "description": "Updates the specified entity type.",
+                      "description": "Updates the specified entity type. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}",
                       "httpMethod": "PATCH",
                       "id": "dialogflow.projects.locations.agent.entityTypes.patch",
@@ -4164,7 +4164,7 @@
                     "entities": {
                       "methods": {
                         "batchCreate": {
-                          "description": "Creates multiple new entities in the specified entity type. Operation ",
+                          "description": "Creates multiple new entities in the specified entity type. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                           "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}/entities:batchCreate",
                           "httpMethod": "POST",
                           "id": "dialogflow.projects.locations.agent.entityTypes.entities.batchCreate",
@@ -4193,7 +4193,7 @@
                           ]
                         },
                         "batchDelete": {
-                          "description": "Deletes entities in the specified entity type. Operation ",
+                          "description": "Deletes entities in the specified entity type. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                           "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}/entities:batchDelete",
                           "httpMethod": "POST",
                           "id": "dialogflow.projects.locations.agent.entityTypes.entities.batchDelete",
@@ -4222,7 +4222,7 @@
                           ]
                         },
                         "batchUpdate": {
-                          "description": "Updates or creates multiple entities in the specified entity type. This method does not affect entities in the entity type that aren't explicitly specified in the request. Operation ",
+                          "description": "Updates or creates multiple entities in the specified entity type. This method does not affect entities in the entity type that aren't explicitly specified in the request. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                           "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}/entities:batchUpdate",
                           "httpMethod": "POST",
                           "id": "dialogflow.projects.locations.agent.entityTypes.entities.batchUpdate",
@@ -4300,7 +4300,7 @@
                       ],
                       "parameters": {
                         "name": {
-                          "description": "Required. The name of the environment to delete. / Format: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+                          "description": "Required. The name of the environment to delete. / Format: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+$",
                           "required": true,
@@ -4326,7 +4326,7 @@
                       ],
                       "parameters": {
                         "name": {
-                          "description": "Required. The name of the environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+                          "description": "Required. The name of the environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+$",
                           "required": true,
@@ -4363,7 +4363,7 @@
                           "type": "string"
                         },
                         "parent": {
-                          "description": "Required. The name of the environment to retrieve history for. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+                          "description": "Required. The name of the environment to retrieve history for. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+$",
                           "required": true,
@@ -4380,7 +4380,7 @@
                       ]
                     },
                     "list": {
-                      "description": "Returns the list of all non-draft environments of the specified agent.",
+                      "description": "Returns the list of all non-default environments of the specified agent.",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments",
                       "httpMethod": "GET",
                       "id": "dialogflow.projects.locations.agent.environments.list",
@@ -4417,7 +4417,7 @@
                       ]
                     },
                     "patch": {
-                      "description": "Updates the specified agent environment. This method allows you to deploy new agent versions into the environment. When an environment is pointed to a new agent version by setting `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During that time, the environment keeps on serving the previous version of the agent. After the new agent version is done loading, the environment is set back to the `RUNNING` state. You can use \"-\" as Environment ID in environment name to update version in \"draft\" environment. WARNING: this will negate all recent changes to draft and can't be undone. You may want to save the draft to a version before calling this function.",
+                      "description": "Updates the specified agent environment. This method allows you to deploy new agent versions into the environment. When an environment is pointed to a new agent version by setting `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During that time, the environment continues serving the previous version of the agent. After the new agent version is done loading, the environment is set back to the `RUNNING` state. You can use \"-\" as Environment ID in environment name to update an agent version in the default environment. WARNING: this will negate all recent changes to the draft agent and can't be undone. You may want to save the draft agent to a version before calling this method.",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}",
                       "httpMethod": "PATCH",
                       "id": "dialogflow.projects.locations.agent.environments.patch",
@@ -4426,12 +4426,12 @@
                       ],
                       "parameters": {
                         "allowLoadToDraftAndDiscardChanges": {
-                          "description": "Optional. This field is used to prevent accidental overwrite of the draft environment, which is an operation that cannot be undone. To confirm that the caller desires this overwrite, this field must be explicitly set to true when updating the draft environment (environment ID = `-`).",
+                          "description": "Optional. This field is used to prevent accidental overwrite of the default environment, which is an operation that cannot be undone. To confirm that the caller desires this overwrite, this field must be explicitly set to true when updating the default environment (environment ID = `-`).",
                           "location": "query",
                           "type": "boolean"
                         },
                         "name": {
-                          "description": "Output only. The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+                          "description": "Output only. The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+$",
                           "required": true,
@@ -4458,6 +4458,65 @@
                     }
                   },
                   "resources": {
+                    "intents": {
+                      "methods": {
+                        "list": {
+                          "description": "Returns the list of all intents in the specified agent.",
+                          "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/intents",
+                          "httpMethod": "GET",
+                          "id": "dialogflow.projects.locations.agent.environments.intents.list",
+                          "parameterOrder": [
+                            "parent"
+                          ],
+                          "parameters": {
+                            "intentView": {
+                              "description": "Optional. The resource view to apply to the returned intent.",
+                              "enum": [
+                                "INTENT_VIEW_UNSPECIFIED",
+                                "INTENT_VIEW_FULL"
+                              ],
+                              "enumDescriptions": [
+                                "Training phrases field is not populated in the response.",
+                                "All fields are populated."
+                              ],
+                              "location": "query",
+                              "type": "string"
+                            },
+                            "languageCode": {
+                              "description": "Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).",
+                              "location": "query",
+                              "type": "string"
+                            },
+                            "pageSize": {
+                              "description": "Optional. The maximum number of items to return in a single page. By default 100 and at most 1000.",
+                              "format": "int32",
+                              "location": "query",
+                              "type": "integer"
+                            },
+                            "pageToken": {
+                              "description": "Optional. The next_page_token value returned from a previous list request.",
+                              "location": "query",
+                              "type": "string"
+                            },
+                            "parent": {
+                              "description": "Required. The agent to list all intents from. Format: `projects//agent` or `projects//locations//agent`. Alternatively, you can specify the environment to list intents for. Format: `projects//agent/environments/` or `projects//locations//agent/environments/`. Note: training phrases of the intents will not be returned for non-draft environment.",
+                              "location": "path",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+$",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "path": "v2/{+parent}/intents",
+                          "response": {
+                            "$ref": "GoogleCloudDialogflowV2ListIntentsResponse"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform",
+                            "https://www.googleapis.com/auth/dialogflow"
+                          ]
+                        }
+                      }
+                    },
                     "users": {
                       "resources": {
                         "sessions": {
@@ -4842,7 +4901,7 @@
                 "intents": {
                   "methods": {
                     "batchDelete": {
-                      "description": "Deletes intents in the specified agent. Operation ",
+                      "description": "Deletes intents in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents:batchDelete",
                       "httpMethod": "POST",
                       "id": "dialogflow.projects.locations.agent.intents.batchDelete",
@@ -4871,7 +4930,7 @@
                       ]
                     },
                     "batchUpdate": {
-                      "description": "Updates/Creates multiple intents in the specified agent. Operation ",
+                      "description": "Updates/Creates multiple intents in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents:batchUpdate",
                       "httpMethod": "POST",
                       "id": "dialogflow.projects.locations.agent.intents.batchUpdate",
@@ -4900,7 +4959,7 @@
                       ]
                     },
                     "create": {
-                      "description": "Creates an intent in the specified agent.",
+                      "description": "Creates an intent in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents",
                       "httpMethod": "POST",
                       "id": "dialogflow.projects.locations.agent.intents.create",
@@ -4947,7 +5006,7 @@
                       ]
                     },
                     "delete": {
-                      "description": "Deletes the specified intent and its direct or indirect followup intents.",
+                      "description": "Deletes the specified intent and its direct or indirect followup intents. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents/{intentsId}",
                       "httpMethod": "DELETE",
                       "id": "dialogflow.projects.locations.agent.intents.delete",
@@ -5055,7 +5114,7 @@
                           "type": "string"
                         },
                         "parent": {
-                          "description": "Required. The agent to list all intents from. Format: `projects//agent`.",
+                          "description": "Required. The agent to list all intents from. Format: `projects//agent` or `projects//locations//agent`. Alternatively, you can specify the environment to list intents for. Format: `projects//agent/environments/` or `projects//locations//agent/environments/`. Note: training phrases of the intents will not be returned for non-draft environment.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/agent$",
                           "required": true,
@@ -5072,7 +5131,7 @@
                       ]
                     },
                     "patch": {
-                      "description": "Updates the specified intent.",
+                      "description": "Updates the specified intent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).",
                       "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents/{intentsId}",
                       "httpMethod": "PATCH",
                       "id": "dialogflow.projects.locations.agent.intents.patch",
@@ -6856,7 +6915,7 @@
       }
     }
   },
-  "revision": "20210417",
+  "revision": "20210706",
   "rootUrl": "https://dialogflow.googleapis.com/",
   "schemas": {
     "GoogleCloudDialogflowCxV3AudioInput": {
@@ -6903,6 +6962,43 @@
       },
       "type": "object"
     },
+    "GoogleCloudDialogflowCxV3ContinuousTestResult": {
+      "description": "Represents a result from running a test case in an agent environment.",
+      "id": "GoogleCloudDialogflowCxV3ContinuousTestResult",
+      "properties": {
+        "name": {
+          "description": "The resource name for the continuous test result. Format: `projects//locations//agents//environments//continuousTestResults/`.",
+          "type": "string"
+        },
+        "result": {
+          "description": "The result of this continuous test run, i.e. whether all the tests in this continuous test run pass or not.",
+          "enum": [
+            "AGGREGATED_TEST_RESULT_UNSPECIFIED",
+            "PASSED",
+            "FAILED"
+          ],
+          "enumDescriptions": [
+            "Not specified. Should never be used.",
+            "All the tests passed.",
+            "At least one test did not pass."
+          ],
+          "type": "string"
+        },
+        "runTime": {
+          "description": "Time when the continuous testing run starts.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "testCaseResults": {
+          "description": "A list of individual test case results names in this continuous test run.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDialogflowCxV3ConversationTurn": {
       "description": "One interaction between a human and virtual agent. The human provides some input and the virtual agent provides a response.",
       "id": "GoogleCloudDialogflowCxV3ConversationTurn",
@@ -6922,6 +7018,10 @@
       "description": "The input from the human user.",
       "id": "GoogleCloudDialogflowCxV3ConversationTurnUserInput",
       "properties": {
+        "enableSentimentAnalysis": {
+          "description": "Whether sentiment analysis is enabled.",
+          "type": "boolean"
+        },
         "injectedParameters": {
           "additionalProperties": {
             "description": "Properties of the object.",
@@ -7094,6 +7194,22 @@
       },
       "type": "object"
     },
+    "GoogleCloudDialogflowCxV3ExportFlowResponse": {
+      "description": "The response message for Flows.ExportFlow.",
+      "id": "GoogleCloudDialogflowCxV3ExportFlowResponse",
+      "properties": {
+        "flowContent": {
+          "description": "Uncompressed raw byte content for flow.",
+          "format": "byte",
+          "type": "string"
+        },
+        "flowUri": {
+          "description": "The URI to a file containing the exported flow. This field is populated only if `flow_uri` is specified in ExportFlowRequest.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDialogflowCxV3ExportTestCasesMetadata": {
       "description": "Metadata returned for the TestCases.ExportTestCases long running operation.",
       "id": "GoogleCloudDialogflowCxV3ExportTestCasesMetadata",
@@ -7200,6 +7316,10 @@
             "$ref": "GoogleCloudDialogflowCxV3ResponseMessage"
           },
           "type": "array"
+        },
+        "returnPartialResponses": {
+          "description": "Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.",
+          "type": "boolean"
         },
         "setParameterActions": {
           "description": "Set parameter values before executing the webhook.",
@@ -7330,6 +7450,17 @@
       },
       "type": "object"
     },
+    "GoogleCloudDialogflowCxV3ImportFlowResponse": {
+      "description": "The response message for Flows.ImportFlow.",
+      "id": "GoogleCloudDialogflowCxV3ImportFlowResponse",
+      "properties": {
+        "flow": {
+          "description": "The unique identifier of the new flow. Format: `projects//locations//agents//flows/`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDialogflowCxV3ImportTestCasesMetadata": {
       "description": "Metadata returned for the TestCases.ImportTestCases long running operation.",
       "id": "GoogleCloudDialogflowCxV3ImportTestCasesMetadata",
@@ -7449,7 +7580,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix \"sys.\" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.contextual The above labels do not require value. \"sys.head\" means the intent is a head intent. \"sys.contextual\" means the intent is a contextual intent.",
+          "description": "The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix \"sys-\" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. \"sys-head\" means the intent is a head intent. \"sys.contextual\" means the intent is a contextual intent.",
           "type": "object"
         },
         "name": {
@@ -7871,6 +8002,31 @@
             "type": "string"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDialogflowCxV3RunContinuousTestMetadata": {
+      "description": "Metadata returned for the Environments.RunContinuousTest long running operation.",
+      "id": "GoogleCloudDialogflowCxV3RunContinuousTestMetadata",
+      "properties": {
+        "errors": {
+          "description": "The test errors.",
+          "items": {
+            "$ref": "GoogleCloudDialogflowCxV3TestError"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDialogflowCxV3RunContinuousTestResponse": {
+      "description": "The response message for Environments.RunContinuousTest.",
+      "id": "GoogleCloudDialogflowCxV3RunContinuousTestResponse",
+      "properties": {
+        "continuousTestResult": {
+          "$ref": "GoogleCloudDialogflowCxV3ContinuousTestResult",
+          "description": "The result for a continuous test run."
         }
       },
       "type": "object"
@@ -8377,6 +8533,43 @@
       },
       "type": "object"
     },
+    "GoogleCloudDialogflowCxV3beta1ContinuousTestResult": {
+      "description": "Represents a result from running a test case in an agent environment.",
+      "id": "GoogleCloudDialogflowCxV3beta1ContinuousTestResult",
+      "properties": {
+        "name": {
+          "description": "The resource name for the continuous test result. Format: `projects//locations//agents//environments//continuousTestResults/`.",
+          "type": "string"
+        },
+        "result": {
+          "description": "The result of this continuous test run, i.e. whether all the tests in this continuous test run pass or not.",
+          "enum": [
+            "AGGREGATED_TEST_RESULT_UNSPECIFIED",
+            "PASSED",
+            "FAILED"
+          ],
+          "enumDescriptions": [
+            "Not specified. Should never be used.",
+            "All the tests passed.",
+            "At least one test did not pass."
+          ],
+          "type": "string"
+        },
+        "runTime": {
+          "description": "Time when the continuous testing run starts.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "testCaseResults": {
+          "description": "A list of individual test case results names in this continuous test run.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDialogflowCxV3beta1ConversationTurn": {
       "description": "One interaction between a human and virtual agent. The human provides some input and the virtual agent provides a response.",
       "id": "GoogleCloudDialogflowCxV3beta1ConversationTurn",
@@ -8396,6 +8589,10 @@
       "description": "The input from the human user.",
       "id": "GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput",
       "properties": {
+        "enableSentimentAnalysis": {
+          "description": "Whether sentiment analysis is enabled.",
+          "type": "boolean"
+        },
         "injectedParameters": {
           "additionalProperties": {
             "description": "Properties of the object.",
@@ -8568,6 +8765,22 @@
       },
       "type": "object"
     },
+    "GoogleCloudDialogflowCxV3beta1ExportFlowResponse": {
+      "description": "The response message for Flows.ExportFlow.",
+      "id": "GoogleCloudDialogflowCxV3beta1ExportFlowResponse",
+      "properties": {
+        "flowContent": {
+          "description": "Uncompressed raw byte content for flow.",
+          "format": "byte",
+          "type": "string"
+        },
+        "flowUri": {
+          "description": "The URI to a file containing the exported flow. This field is populated only if `flow_uri` is specified in ExportFlowRequest.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata": {
       "description": "Metadata returned for the TestCases.ExportTestCases long running operation.",
       "id": "GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata",
@@ -8674,6 +8887,10 @@
             "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessage"
           },
           "type": "array"
+        },
+        "returnPartialResponses": {
+          "description": "Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.",
+          "type": "boolean"
         },
         "setParameterActions": {
           "description": "Set parameter values before executing the webhook.",
@@ -8800,6 +9017,17 @@
             "$ref": "GoogleRpcStatus"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDialogflowCxV3beta1ImportFlowResponse": {
+      "description": "The response message for Flows.ImportFlow.",
+      "id": "GoogleCloudDialogflowCxV3beta1ImportFlowResponse",
+      "properties": {
+        "flow": {
+          "description": "The unique identifier of the new flow. Format: `projects//locations//agents//flows/`.",
+          "type": "string"
         }
       },
       "type": "object"
@@ -9349,6 +9577,31 @@
       },
       "type": "object"
     },
+    "GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata": {
+      "description": "Metadata returned for the Environments.RunContinuousTest long running operation.",
+      "id": "GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata",
+      "properties": {
+        "errors": {
+          "description": "The test errors.",
+          "items": {
+            "$ref": "GoogleCloudDialogflowCxV3beta1TestError"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse": {
+      "description": "The response message for Environments.RunContinuousTest.",
+      "id": "GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse",
+      "properties": {
+        "continuousTestResult": {
+          "$ref": "GoogleCloudDialogflowCxV3beta1ContinuousTestResult",
+          "description": "The result for a continuous test run."
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata": {
       "description": "Metadata returned for the TestCases.RunTestCase long running operation.",
       "id": "GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata",
@@ -9808,7 +10061,7 @@
       "type": "object"
     },
     "GoogleCloudDialogflowV2Agent": {
-      "description": "A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural language understanding module that understands the nuances of human language. Dialogflow translates end-user text or audio during a conversation to structured data that your apps and services can understand. You design and build a Dialogflow agent to handle the types of conversations required for your system. For more information about agents, see the [Agent guide](https://cloud.google.com/dialogflow/docs/agents-overview).",
+      "description": "A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural language understanding module that understands the nuances of human language. Dialogflow translates end-user text or audio during a conversation to structured data that your apps and services can understand. You design and build a Dialogflow agent to handle the types of conversations required for your system. For more information about agents, see the [Agent guide](https://cloud.google.com/dialogflow/docs/agents-overview). ",
       "id": "GoogleCloudDialogflowV2Agent",
       "properties": {
         "apiVersion": {
@@ -10171,6 +10424,24 @@
       "description": "Represents a response from an automated agent.",
       "id": "GoogleCloudDialogflowV2AutomatedAgentReply",
       "properties": {
+        "allowCancellation": {
+          "description": "Indicates whether the partial automated agent reply is interruptible when a later reply message arrives. e.g. if the agent specified some music as partial response, it can be cancelled.",
+          "type": "boolean"
+        },
+        "automatedAgentReplyType": {
+          "description": "AutomatedAgentReply type.",
+          "enum": [
+            "AUTOMATED_AGENT_REPLY_TYPE_UNSPECIFIED",
+            "PARTIAL",
+            "FINAL"
+          ],
+          "enumDescriptions": [
+            "Not specified. This should never happen.",
+            "Partial reply. e.g. Aggregated responses in a `Fulfillment` that enables `return_partial_response` can be returned as partial reply. WARNING: partial reply is not eligible for barge-in.",
+            "Final reply."
+          ],
+          "type": "string"
+        },
         "detectIntentResponse": {
           "$ref": "GoogleCloudDialogflowV2DetectIntentResponse",
           "description": "Response of the Dialogflow Sessions.DetectIntent call."
@@ -10804,7 +11075,7 @@
           "description": "Optional. The fulfillment settings to use for this environment."
         },
         "name": {
-          "description": "Output only. The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+          "description": "Output only. The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
           "readOnly": true,
           "type": "string"
         },
@@ -10856,7 +11127,7 @@
           "type": "string"
         },
         "parent": {
-          "description": "Output only. The name of the environment this history is for. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`",
+          "description": "Output only. The name of the environment this history is for. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.",
           "readOnly": true,
           "type": "string"
         }
@@ -11075,7 +11346,7 @@
       "id": "GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig",
       "properties": {
         "model": {
-          "description": "Required. Conversation model resource name. Format: `projects//conversationModels/`.",
+          "description": "Conversation model resource name. Format: `projects//conversationModels/`.",
           "type": "string"
         }
       },
@@ -12912,6 +13183,10 @@
         },
         "allRequiredParamsPresent": {
           "description": "This field is set to: - `false` if the matched intent has required parameters and not all of the required parameter values have been collected. - `true` if all required parameter values have been collected, or if the matched intent doesn't contain any required parameters.",
+          "type": "boolean"
+        },
+        "cancelsSlotFilling": {
+          "description": "Indicates whether the conversational query triggers a cancellation for slot filling.",
           "type": "boolean"
         },
         "diagnosticInfo": {
@@ -15277,6 +15552,10 @@
           "description": "This field is set to: - `false` if the matched intent has required parameters and not all of the required parameter values have been collected. - `true` if all required parameter values have been collected, or if the matched intent doesn't contain any required parameters.",
           "type": "boolean"
         },
+        "cancelsSlotFilling": {
+          "description": "Indicates whether the conversational query triggers a cancellation for slot filling.",
+          "type": "boolean"
+        },
         "diagnosticInfo": {
           "additionalProperties": {
             "description": "Properties of the object.",
@@ -15794,7 +16073,7 @@
       "type": "object"
     },
     "GoogleTypeLatLng": {
-      "description": "An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.",
+      "description": "An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.",
       "id": "GoogleTypeLatLng",
       "properties": {
         "latitude": {

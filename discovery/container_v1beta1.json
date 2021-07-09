@@ -2484,7 +2484,7 @@
       }
     }
   },
-  "revision": "20210413",
+  "revision": "20210628",
   "rootUrl": "https://container.googleapis.com/",
   "schemas": {
     "AcceleratorConfig": {
@@ -2610,6 +2610,10 @@
         },
         "diskType": {
           "description": "Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'",
+          "type": "string"
+        },
+        "imageType": {
+          "description": "The image type to use for NAP created node.",
           "type": "string"
         },
         "management": {
@@ -2938,6 +2942,10 @@
           "format": "int32",
           "type": "integer"
         },
+        "nodePoolDefaults": {
+          "$ref": "NodePoolDefaults",
+          "description": "Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object."
+        },
         "nodePools": {
           "description": "The node pools associated with this cluster. This field should not be set if \"node_config\" or \"initial_node_count\" are specified.",
           "items": {
@@ -3119,6 +3127,10 @@
           "$ref": "AddonsConfig",
           "description": "Configurations for the various addons available to run in the cluster."
         },
+        "desiredAuthenticatorGroupsConfig": {
+          "$ref": "AuthenticatorGroupsConfig",
+          "description": "AuthenticatorGroupsConfig specifies the config for the cluster security groups settings."
+        },
         "desiredAutopilot": {
           "$ref": "Autopilot",
           "description": "The desired Autopilot configuration for the cluster."
@@ -3156,6 +3168,10 @@
         "desiredDefaultSnatStatus": {
           "$ref": "DefaultSnatStatus",
           "description": "The desired status of whether to disable default sNAT for this cluster."
+        },
+        "desiredDnsConfig": {
+          "$ref": "DNSConfig",
+          "description": "DNSConfig contains clusterDNS config for this cluster."
         },
         "desiredImageType": {
           "description": "The desired image type for the node pool. NOTE: Set the \"desired_node_pool\" field as well.",
@@ -3243,6 +3259,10 @@
         "desiredResourceUsageExportConfig": {
           "$ref": "ResourceUsageExportConfig",
           "description": "The desired configuration for exporting resource usage."
+        },
+        "desiredServiceExternalIpsConfig": {
+          "$ref": "ServiceExternalIPsConfig",
+          "description": "ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field."
         },
         "desiredShieldedNodes": {
           "$ref": "ShieldedNodes",
@@ -3373,6 +3393,45 @@
       },
       "type": "object"
     },
+    "DNSConfig": {
+      "description": "DNSConfig contains the desired set of options for configuring clusterDNS.",
+      "id": "DNSConfig",
+      "properties": {
+        "clusterDns": {
+          "description": "cluster_dns indicates which in-cluster DNS provider should be used.",
+          "enum": [
+            "PROVIDER_UNSPECIFIED",
+            "PLATFORM_DEFAULT",
+            "CLOUD_DNS"
+          ],
+          "enumDescriptions": [
+            "Default value",
+            "Use GKE default DNS provider(kube-dns) for DNS resolution.",
+            "Use CloudDNS for DNS resolution."
+          ],
+          "type": "string"
+        },
+        "clusterDnsDomain": {
+          "description": "cluster_dns_domain is the suffix used for all cluster service records.",
+          "type": "string"
+        },
+        "clusterDnsScope": {
+          "description": "cluster_dns_scope indicates the scope of access to cluster DNS records.",
+          "enum": [
+            "DNS_SCOPE_UNSPECIFIED",
+            "CLUSTER_SCOPE",
+            "VPC_SCOPE"
+          ],
+          "enumDescriptions": [
+            "Default value, will be inferred as cluster scope.",
+            "DNS records are accessible from within the cluster.",
+            "DNS records are accessible from within the VPC."
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "DailyMaintenanceWindow": {
       "description": "Time window specified for daily maintenance operations.",
       "id": "DailyMaintenanceWindow",
@@ -3409,6 +3468,28 @@
             "Secrets in etcd are stored in plain text (at etcd level) - this is unrelated to Compute Engine level full disk encryption."
           ],
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Date": {
+      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
+      "id": "Date",
+      "properties": {
+        "day": {
+          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "month": {
+          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "year": {
+          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -4047,6 +4128,10 @@
           "$ref": "DefaultSnatStatus",
           "description": "Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic."
         },
+        "dnsConfig": {
+          "$ref": "DNSConfig",
+          "description": "DNSConfig contains clusterDNS config for this cluster."
+        },
         "enableIntraNodeVisibility": {
           "description": "Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.",
           "type": "boolean"
@@ -4074,6 +4159,10 @@
             "Enables priate IPv6 access to and from Google Services"
           ],
           "type": "string"
+        },
+        "serviceExternalIpsConfig": {
+          "$ref": "ServiceExternalIPsConfig",
+          "description": "ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not."
         },
         "subnetwork": {
           "description": "Output only. The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet",
@@ -4249,6 +4338,12 @@
       },
       "type": "object"
     },
+    "NodeConfigDefaults": {
+      "description": "Subset of NodeConfig message that has defaults.",
+      "id": "NodeConfigDefaults",
+      "properties": {},
+      "type": "object"
+    },
     "NodeKubeletConfig": {
       "description": "Node kubelet configs.",
       "id": "NodeKubeletConfig",
@@ -4321,7 +4416,7 @@
       "type": "object"
     },
     "NodePool": {
-      "description": "NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.",
+      "description": "NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.",
       "id": "NodePool",
       "properties": {
         "autoscaling": {
@@ -4441,6 +4536,17 @@
           "description": "Minimum number of nodes in the NodePool. Must be \u003e= 1 and \u003c= max_node_count.",
           "format": "int32",
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "NodePoolDefaults": {
+      "description": "Subset of Nodepool message that has defaults.",
+      "id": "NodePoolDefaults",
+      "properties": {
+        "nodeConfigDefaults": {
+          "$ref": "NodeConfigDefaults",
+          "description": "Subset of NodeConfig message that has defaults."
         }
       },
       "type": "object"
@@ -4985,6 +5091,24 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "windowsVersionMaps": {
+          "additionalProperties": {
+            "$ref": "WindowsVersions"
+          },
+          "description": "Maps of Kubernetes version and supported Windows server versions.",
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "ServiceExternalIPsConfig": {
+      "description": "Config to block services with externalIPs field.",
+      "id": "ServiceExternalIPsConfig",
+      "properties": {
+        "enabled": {
+          "description": "Whether Services with ExternalIPs field are allowed or not.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -5468,7 +5592,7 @@
             "The caller does not have permission to execute the specified operation. `PERMISSION_DENIED` must not be used for rejections caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for those errors). `PERMISSION_DENIED` must not be used if the caller can not be identified (use `UNAUTHENTICATED` instead for those errors). This error code does not imply the request is valid or the requested entity exists or satisfies other pre-conditions. HTTP Mapping: 403 Forbidden",
             "The request does not have valid authentication credentials for the operation. HTTP Mapping: 401 Unauthorized",
             "Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space. HTTP Mapping: 429 Too Many Requests",
-            "The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an \"rmdir\" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request",
+            "The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level. For example, when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. For example, if an \"rmdir\" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request",
             "The operation was aborted, typically due to a concurrency issue such as a sequencer check failure or transaction abort. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 409 Conflict",
             "The operation was attempted past the valid range. E.g., seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error indicates a problem that may be fixed if the system state changes. For example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to read at an offset that is not in the range [0,2^32-1], but it will generate `OUT_OF_RANGE` if asked to read from an offset past the current file size. There is a fair bit of overlap between `FAILED_PRECONDITION` and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific error) when it applies so that callers who are iterating through a space can easily look for an `OUT_OF_RANGE` error to detect when they are done. HTTP Mapping: 400 Bad Request",
             "The operation is not implemented or is not supported/enabled in this service. HTTP Mapping: 501 Not Implemented",
@@ -5486,7 +5610,8 @@
             "GKE_SERVICE_ACCOUNT_DELETED",
             "GCE_QUOTA_EXCEEDED",
             "SET_BY_OPERATOR",
-            "CLOUD_KMS_KEY_ERROR"
+            "CLOUD_KMS_KEY_ERROR",
+            "CA_EXPIRING"
           ],
           "enumDescriptions": [
             "UNKNOWN indicates a generic condition.",
@@ -5494,7 +5619,8 @@
             "GKE_SERVICE_ACCOUNT_DELETED indicates that the user deleted their robot service account.",
             "Google Compute Engine quota was exceeded.",
             "Cluster state was manually changed by an SRE due to a system logic error.",
-            "Unable to perform an encrypt operation against the CloudKMS key used for etcd level encryption. More codes TBA"
+            "Unable to perform an encrypt operation against the CloudKMS key used for etcd level encryption.",
+            "Cluster CA is expiring soon. More codes TBA"
           ],
           "type": "string"
         },
@@ -5674,7 +5800,7 @@
           "description": "The release channel of the version. If empty, it means a non-channel release."
         },
         "resource": {
-          "description": "Optional. Optional relative path to the resource. For example, the relative path of the node pool.",
+          "description": "Optional relative path to the resource. For example, the relative path of the node pool.",
           "type": "string"
         },
         "resourceType": {
@@ -5741,7 +5867,6 @@
       "type": "object"
     },
     "UpgradeSettings": {
-      "description": "These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.",
       "id": "UpgradeSettings",
       "properties": {
         "maxSurge": {
@@ -5827,6 +5952,39 @@
         "enabled": {
           "description": "Enables vertical pod autoscaling.",
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "WindowsVersion": {
+      "description": "Windows server version.",
+      "id": "WindowsVersion",
+      "properties": {
+        "imageType": {
+          "description": "Windows server image type",
+          "type": "string"
+        },
+        "osVersion": {
+          "description": "Windows server build number",
+          "type": "string"
+        },
+        "supportEndDate": {
+          "$ref": "Date",
+          "description": "Mainstream support end date"
+        }
+      },
+      "type": "object"
+    },
+    "WindowsVersions": {
+      "description": "Windows server versions.",
+      "id": "WindowsVersions",
+      "properties": {
+        "windowsVersions": {
+          "description": "List of Windows server versions.",
+          "items": {
+            "$ref": "WindowsVersion"
+          },
+          "type": "array"
         }
       },
       "type": "object"

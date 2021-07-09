@@ -306,7 +306,7 @@
       }
     }
   },
-  "revision": "20210415",
+  "revision": "20210701",
   "rootUrl": "https://cloudbuild.googleapis.com/",
   "schemas": {
     "ArtifactObjects": {
@@ -533,6 +533,14 @@
           "description": "Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.",
           "readOnly": true,
           "type": "object"
+        },
+        "warnings": {
+          "description": "Output only. Non-fatal problems encountered during the execution of the build.",
+          "items": {
+            "$ref": "Warning"
+          },
+          "readOnly": true,
+          "type": "array"
         }
       },
       "type": "object"
@@ -620,6 +628,10 @@
           ],
           "type": "string"
         },
+        "pool": {
+          "$ref": "PoolOption",
+          "description": "Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information."
+        },
         "requestedVerifyOption": {
           "description": "Requested verifiability options.",
           "enum": [
@@ -676,7 +688,7 @@
           "type": "array"
         },
         "workerPool": {
-          "description": "Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.",
+          "description": "This field deprecated; please use `pool.name` instead.",
           "type": "string"
         }
       },
@@ -806,6 +818,48 @@
       "description": "The request message for Operations.CancelOperation.",
       "id": "CancelOperationRequest",
       "properties": {},
+      "type": "object"
+    },
+    "CreateWorkerPoolOperationMetadata": {
+      "description": "Metadata for the `CreateWorkerPool` operation.",
+      "id": "CreateWorkerPoolOperationMetadata",
+      "properties": {
+        "completeTime": {
+          "description": "Time the operation was completed.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "Time the operation was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "workerPool": {
+          "description": "The resource name of the `WorkerPool` to create. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "DeleteWorkerPoolOperationMetadata": {
+      "description": "Metadata for the `DeleteWorkerPool` operation.",
+      "id": "DeleteWorkerPoolOperationMetadata",
+      "properties": {
+        "completeTime": {
+          "description": "Time the operation was completed.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "Time the operation was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "workerPool": {
+          "description": "The resource name of the `WorkerPool` being deleted. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`.",
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "Empty": {
@@ -1065,6 +1119,17 @@
       },
       "type": "object"
     },
+    "PoolOption": {
+      "description": "Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.",
+      "id": "PoolOption",
+      "properties": {
+        "name": {
+          "description": "The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "RepoSource": {
       "description": "Location of the source in a Google Cloud Source Repository.",
       "id": "RepoSource",
@@ -1263,7 +1328,7 @@
         },
         "storageSourceManifest": {
           "$ref": "StorageSourceManifest",
-          "description": "If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview."
+          "description": "If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher)."
         }
       },
       "type": "object"
@@ -1343,7 +1408,7 @@
       "type": "object"
     },
     "StorageSourceManifest": {
-      "description": "Location of the source manifest in Google Cloud Storage. This feature is in Preview.",
+      "description": "Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).",
       "id": "StorageSourceManifest",
       "properties": {
         "bucket": {
@@ -1379,6 +1444,27 @@
       },
       "type": "object"
     },
+    "UpdateWorkerPoolOperationMetadata": {
+      "description": "Metadata for the `UpdateWorkerPool` operation.",
+      "id": "UpdateWorkerPoolOperationMetadata",
+      "properties": {
+        "completeTime": {
+          "description": "Time the operation was completed.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "Time the operation was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "workerPool": {
+          "description": "The resource name of the `WorkerPool` being updated. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Volume": {
       "description": "Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.",
       "id": "Volume",
@@ -1389,6 +1475,33 @@
         },
         "path": {
           "description": "Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Warning": {
+      "description": "A non-fatal problem encountered during the execution of the build.",
+      "id": "Warning",
+      "properties": {
+        "priority": {
+          "description": "The priority for this warning.",
+          "enum": [
+            "PRIORITY_UNSPECIFIED",
+            "INFO",
+            "WARNING",
+            "ALERT"
+          ],
+          "enumDescriptions": [
+            "Should not be used.",
+            "e.g. deprecation warnings and alternative feature highlights.",
+            "e.g. automated detection of possible issues with the build.",
+            "e.g. alerts that a feature used in the build is pending removal"
+          ],
+          "type": "string"
+        },
+        "text": {
+          "description": "Explanation of the warning generated.",
           "type": "string"
         }
       },
