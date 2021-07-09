@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. URL
+        /// URL
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
 
         /// <summary>
         /// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.

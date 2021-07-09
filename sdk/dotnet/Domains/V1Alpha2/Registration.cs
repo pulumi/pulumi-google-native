@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
     public partial class Registration : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+        /// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
         /// </summary>
         [Output("contactSettings")]
         public Output<Outputs.ContactSettingsResponse> ContactSettings { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         public Output<Outputs.DnsSettingsResponse> DnsSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+        /// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
@@ -145,10 +145,10 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         }
 
         /// <summary>
-        /// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+        /// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
         /// </summary>
-        [Input("contactSettings")]
-        public Input<Inputs.ContactSettingsArgs>? ContactSettings { get; set; }
+        [Input("contactSettings", required: true)]
+        public Input<Inputs.ContactSettingsArgs> ContactSettings { get; set; } = null!;
 
         /// <summary>
         /// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
@@ -157,10 +157,10 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         public Input<Inputs.DnsSettingsArgs>? DnsSettings { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+        /// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         /// </summary>
-        [Input("domainName")]
-        public Input<string>? DomainName { get; set; }
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
 
         [Input("domainNotices")]
         private InputList<Pulumi.GoogleNative.Domains.V1Alpha2.RegistrationDomainNoticesItem>? _domainNotices;
@@ -205,10 +205,10 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         public Input<bool>? ValidateOnly { get; set; }
 
         /// <summary>
-        /// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
+        /// Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
         /// </summary>
-        [Input("yearlyPrice")]
-        public Input<Inputs.MoneyArgs>? YearlyPrice { get; set; }
+        [Input("yearlyPrice", required: true)]
+        public Input<Inputs.MoneyArgs> YearlyPrice { get; set; } = null!;
 
         public RegistrationArgs()
         {

@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Datastore.V1.Inputs
     public sealed class GoogleDatastoreAdminV1IndexedPropertyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+        /// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
         /// </summary>
-        [Input("direction")]
-        public Input<Pulumi.GoogleNative.Datastore.V1.GoogleDatastoreAdminV1IndexedPropertyDirection>? Direction { get; set; }
+        [Input("direction", required: true)]
+        public Input<Pulumi.GoogleNative.Datastore.V1.GoogleDatastoreAdminV1IndexedPropertyDirection> Direction { get; set; } = null!;
 
         /// <summary>
-        /// Required. The property name to index.
+        /// The property name to index.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public GoogleDatastoreAdminV1IndexedPropertyArgs()
         {

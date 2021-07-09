@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse
     {
         /// <summary>
-        /// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+        /// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
         /// </summary>
         public readonly ImmutableArray<string> KnowledgeBases;
 

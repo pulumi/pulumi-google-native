@@ -22,13 +22,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        /// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        /// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         /// </summary>
         [Output("refers")]
         public Output<string> Refers { get; private set; } = null!;
@@ -94,19 +94,19 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        /// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        /// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         /// </summary>
-        [Input("refers")]
-        public Input<string>? Refers { get; set; }
+        [Input("refers", required: true)]
+        public Input<string> Refers { get; set; } = null!;
 
         /// <summary>
         /// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.

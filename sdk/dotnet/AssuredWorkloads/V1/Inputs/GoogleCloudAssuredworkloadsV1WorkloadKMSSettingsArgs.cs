@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Inputs
     public sealed class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+        /// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
         /// </summary>
-        [Input("nextRotationTime")]
-        public Input<string>? NextRotationTime { get; set; }
+        [Input("nextRotationTime", required: true)]
+        public Input<string> NextRotationTime { get; set; } = null!;
 
         /// <summary>
-        /// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        /// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
         /// </summary>
-        [Input("rotationPeriod")]
-        public Input<string>? RotationPeriod { get; set; }
+        [Input("rotationPeriod", required: true)]
+        public Input<string> RotationPeriod { get; set; } = null!;
 
         public GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs()
         {

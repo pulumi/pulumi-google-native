@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         public readonly bool DisableServing;
         /// <summary>
-        /// Required. Display name of the datasource The maximum length is 300 characters.
+        /// Display name of the datasource The maximum length is 300 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

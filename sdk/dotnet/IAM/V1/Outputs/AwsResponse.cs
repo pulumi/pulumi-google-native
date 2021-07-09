@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.IAM.V1.Outputs
     public sealed class AwsResponse
     {
         /// <summary>
-        /// Required. The AWS account ID.
+        /// The AWS account ID.
         /// </summary>
         public readonly string AccountId;
 

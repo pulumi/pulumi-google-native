@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.TPU.V1
     public partial class Node : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The type of hardware accelerators associated with this node.
+        /// The type of hardware accelerators associated with this node.
         /// </summary>
         [Output("acceleratorType")]
         public Output<string> AcceleratorType { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.TPU.V1
         public Output<ImmutableArray<Outputs.SymptomResponse>> Symptoms { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The version of Tensorflow running in the Node.
+        /// The version of Tensorflow running in the Node.
         /// </summary>
         [Output("tensorflowVersion")]
         public Output<string> TensorflowVersion { get; private set; } = null!;
@@ -163,10 +163,10 @@ namespace Pulumi.GoogleNative.TPU.V1
     public sealed class NodeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The type of hardware accelerators associated with this node.
+        /// The type of hardware accelerators associated with this node.
         /// </summary>
-        [Input("acceleratorType")]
-        public Input<string>? AcceleratorType { get; set; }
+        [Input("acceleratorType", required: true)]
+        public Input<string> AcceleratorType { get; set; } = null!;
 
         /// <summary>
         /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
@@ -220,10 +220,10 @@ namespace Pulumi.GoogleNative.TPU.V1
         public Input<Inputs.SchedulingConfigArgs>? SchedulingConfig { get; set; }
 
         /// <summary>
-        /// Required. The version of Tensorflow running in the Node.
+        /// The version of Tensorflow running in the Node.
         /// </summary>
-        [Input("tensorflowVersion")]
-        public Input<string>? TensorflowVersion { get; set; }
+        [Input("tensorflowVersion", required: true)]
+        public Input<string> TensorflowVersion { get; set; } = null!;
 
         /// <summary>
         /// Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.

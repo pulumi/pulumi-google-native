@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+        /// The name specified for the model when it was created. The model name must be unique within the project it is created in.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -133,10 +133,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         }
 
         /// <summary>
-        /// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+        /// The name specified for the model when it was created. The model name must be unique within the project it is created in.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.

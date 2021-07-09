@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs : Pulumi.ResourceArgs
     {
-        [Input("mediaObjects")]
+        [Input("mediaObjects", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs>? _mediaObjects;
 
         /// <summary>
-        /// Required. List of media objects.
+        /// List of media objects.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs> MediaObjects
         {

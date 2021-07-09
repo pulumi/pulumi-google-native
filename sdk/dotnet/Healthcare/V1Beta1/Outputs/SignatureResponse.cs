@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
         /// </summary>
         public readonly string SignatureTime;
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
         public readonly string UserId;
 

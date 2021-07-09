@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly Outputs.ShardingOptionResponse ShardingOption;
         /// <summary>
-        /// Required. The APK containing the test code to be executed.
+        /// The APK containing the test code to be executed.
         /// </summary>
         public readonly Outputs.FileReferenceResponse TestApk;
         /// <summary>

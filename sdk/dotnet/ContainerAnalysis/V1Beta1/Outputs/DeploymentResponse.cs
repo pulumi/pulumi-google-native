@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly string Config;
         /// <summary>
-        /// Required. Beginning of the lifetime of this deployment.
+        /// Beginning of the lifetime of this deployment.
         /// </summary>
         public readonly string DeployTime;
         /// <summary>

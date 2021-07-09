@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
     public sealed class MpegCommonEncryptionResponse
     {
         /// <summary>
-        /// Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+        /// 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
         /// </summary>
         public readonly string KeyId;
         /// <summary>
-        /// Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+        /// Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
         /// </summary>
         public readonly string Scheme;
 

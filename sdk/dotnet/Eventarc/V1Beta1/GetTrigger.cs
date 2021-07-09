@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Required. Destination specifies where the events should be sent to.
+        /// Destination specifies where the events should be sent to.
         /// </summary>
         public readonly Outputs.DestinationResponse Destination;
         /// <summary>
@@ -56,11 +56,11 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         /// </summary>
         public readonly ImmutableArray<Outputs.MatchingCriteriaResponse> MatchingCriteria;
         /// <summary>
-        /// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        /// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         /// </summary>
         public readonly string Name;
         /// <summary>

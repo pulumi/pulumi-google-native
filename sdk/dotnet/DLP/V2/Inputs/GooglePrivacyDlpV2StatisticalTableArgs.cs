@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// </summary>
     public sealed class GooglePrivacyDlpV2StatisticalTableArgs : Pulumi.ResourceArgs
     {
-        [Input("quasiIds")]
+        [Input("quasiIds", required: true)]
         private InputList<Inputs.GooglePrivacyDlpV2QuasiIdentifierFieldArgs>? _quasiIds;
 
         /// <summary>
-        /// Required. Quasi-identifier columns.
+        /// Quasi-identifier columns.
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2QuasiIdentifierFieldArgs> QuasiIds
         {
@@ -28,16 +28,16 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         }
 
         /// <summary>
-        /// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        /// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
         /// </summary>
-        [Input("relativeFrequency")]
-        public Input<Inputs.GooglePrivacyDlpV2FieldIdArgs>? RelativeFrequency { get; set; }
+        [Input("relativeFrequency", required: true)]
+        public Input<Inputs.GooglePrivacyDlpV2FieldIdArgs> RelativeFrequency { get; set; } = null!;
 
         /// <summary>
-        /// Required. Auxiliary table location.
+        /// Auxiliary table location.
         /// </summary>
-        [Input("table")]
-        public Input<Inputs.GooglePrivacyDlpV2BigQueryTableArgs>? Table { get; set; }
+        [Input("table", required: true)]
+        public Input<Inputs.GooglePrivacyDlpV2BigQueryTableArgs> Table { get; set; } = null!;
 
         public GooglePrivacyDlpV2StatisticalTableArgs()
         {

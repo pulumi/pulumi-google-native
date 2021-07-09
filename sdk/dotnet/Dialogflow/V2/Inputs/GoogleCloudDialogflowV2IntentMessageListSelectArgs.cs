@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowV2IntentMessageListSelectArgs : Pulumi.ResourceArgs
     {
-        [Input("items")]
+        [Input("items", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2IntentMessageListSelectItemArgs>? _items;
 
         /// <summary>
-        /// Required. List items.
+        /// List items.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowV2IntentMessageListSelectItemArgs> Items
         {

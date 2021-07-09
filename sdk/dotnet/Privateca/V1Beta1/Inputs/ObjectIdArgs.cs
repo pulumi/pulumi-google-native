@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// </summary>
     public sealed class ObjectIdArgs : Pulumi.ResourceArgs
     {
-        [Input("objectIdPath")]
+        [Input("objectIdPath", required: true)]
         private InputList<int>? _objectIdPath;
 
         /// <summary>
-        /// Required. The parts of an OID path. The most significant parts of the path come first.
+        /// The parts of an OID path. The most significant parts of the path come first.
         /// </summary>
         public InputList<int> ObjectIdPath
         {

@@ -27,11 +27,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
             set => _auxiliaryTables = value;
         }
 
-        [Input("quasiIds")]
+        [Input("quasiIds", required: true)]
         private InputList<Inputs.GooglePrivacyDlpV2TaggedFieldArgs>? _quasiIds;
 
         /// <summary>
-        /// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+        /// Fields considered to be quasi-identifiers. No two columns can have the same tag.
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2TaggedFieldArgs> QuasiIds
         {

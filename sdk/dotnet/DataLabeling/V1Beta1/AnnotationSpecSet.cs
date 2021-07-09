@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     public partial class AnnotationSpecSet : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        /// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
         /// </summary>
         [Output("annotationSpecs")]
         public Output<ImmutableArray<Outputs.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>> AnnotationSpecs { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+        /// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -90,11 +90,11 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 
     public sealed class AnnotationSpecSetArgs : Pulumi.ResourceArgs
     {
-        [Input("annotationSpecs")]
+        [Input("annotationSpecs", required: true)]
         private InputList<Inputs.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs>? _annotationSpecs;
 
         /// <summary>
-        /// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        /// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
         /// </summary>
         public InputList<Inputs.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs> AnnotationSpecs
         {
@@ -109,10 +109,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+        /// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

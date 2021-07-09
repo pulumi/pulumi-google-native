@@ -16,22 +16,22 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
     public sealed class MaintenanceWindowArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+        /// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
         /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
+        [Input("endTime", required: true)]
+        public Input<string> EndTime { get; set; } = null!;
 
         /// <summary>
-        /// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        /// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
         /// </summary>
-        [Input("recurrence")]
-        public Input<string>? Recurrence { get; set; }
+        [Input("recurrence", required: true)]
+        public Input<string> Recurrence { get; set; } = null!;
 
         /// <summary>
-        /// Required. Start time of the first recurrence of the maintenance window.
+        /// Start time of the first recurrence of the maintenance window.
         /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
+        [Input("startTime", required: true)]
+        public Input<string> StartTime { get; set; } = null!;
 
         public MaintenanceWindowArgs()
         {

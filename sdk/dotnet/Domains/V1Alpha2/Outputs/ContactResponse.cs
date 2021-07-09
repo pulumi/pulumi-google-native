@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Outputs
     public sealed class ContactResponse
     {
         /// <summary>
-        /// Required. Email address of the contact.
+        /// Email address of the contact.
         /// </summary>
         public readonly string Email;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Outputs
         /// </summary>
         public readonly string FaxNumber;
         /// <summary>
-        /// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        /// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
         /// </summary>
         public readonly string PhoneNumber;
         /// <summary>
-        /// Required. Postal address of the contact.
+        /// Postal address of the contact.
         /// </summary>
         public readonly Outputs.PostalAddressResponse PostalAddress;
 

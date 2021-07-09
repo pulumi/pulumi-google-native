@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
     public sealed class CustomLevelResponse
     {
         /// <summary>
-        /// Required. A Cloud CEL expression evaluating to a boolean.
+        /// A Cloud CEL expression evaluating to a boolean.
         /// </summary>
         public readonly Outputs.ExprResponse Expr;
 

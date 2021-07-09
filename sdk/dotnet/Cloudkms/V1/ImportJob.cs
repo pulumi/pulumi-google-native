@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> GenerateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The wrapping method to be used for incoming key material.
+        /// Immutable. The wrapping method to be used for incoming key material.
         /// </summary>
         [Output("importMethod")]
         public Output<string> ImportMethod { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+        /// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         /// </summary>
         [Output("protectionLevel")]
         public Output<string> ProtectionLevel { get; private set; } = null!;
@@ -124,10 +124,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Input<string> ImportJobId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The wrapping method to be used for incoming key material.
+        /// Immutable. The wrapping method to be used for incoming key material.
         /// </summary>
-        [Input("importMethod")]
-        public Input<Pulumi.GoogleNative.Cloudkms.V1.ImportJobImportMethod>? ImportMethod { get; set; }
+        [Input("importMethod", required: true)]
+        public Input<Pulumi.GoogleNative.Cloudkms.V1.ImportJobImportMethod> ImportMethod { get; set; } = null!;
 
         [Input("keyRingId", required: true)]
         public Input<string> KeyRingId { get; set; } = null!;
@@ -139,10 +139,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+        /// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         /// </summary>
-        [Input("protectionLevel")]
-        public Input<Pulumi.GoogleNative.Cloudkms.V1.ImportJobProtectionLevel>? ProtectionLevel { get; set; }
+        [Input("protectionLevel", required: true)]
+        public Input<Pulumi.GoogleNative.Cloudkms.V1.ImportJobProtectionLevel> ProtectionLevel { get; set; } = null!;
 
         public ImportJobArgs()
         {

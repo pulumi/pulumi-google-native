@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
     public sealed class SslConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+        /// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
         /// </summary>
-        [Input("caCertificate")]
-        public Input<string>? CaCertificate { get; set; }
+        [Input("caCertificate", required: true)]
+        public Input<string> CaCertificate { get; set; } = null!;
 
         /// <summary>
         /// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.

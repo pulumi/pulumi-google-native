@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     public sealed class GoogleCloudApigeeV1QuotaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Time interval over which the number of request messages is calculated.
+        /// Time interval over which the number of request messages is calculated.
         /// </summary>
-        [Input("interval")]
-        public Input<string>? Interval { get; set; }
+        [Input("interval", required: true)]
+        public Input<string> Interval { get; set; } = null!;
 
         /// <summary>
-        /// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        /// Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
         /// </summary>
-        [Input("limit")]
-        public Input<string>? Limit { get; set; }
+        [Input("limit", required: true)]
+        public Input<string> Limit { get; set; } = null!;
 
         /// <summary>
         /// Time unit defined for the `interval`. Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default value is `hour`; otherwise, the default is null.

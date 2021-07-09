@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class BasisArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Immutable. The fingerprint of the base image.
+        /// Immutable. The fingerprint of the base image.
         /// </summary>
-        [Input("fingerprint")]
-        public Input<Inputs.FingerprintArgs>? Fingerprint { get; set; }
+        [Input("fingerprint", required: true)]
+        public Input<Inputs.FingerprintArgs> Fingerprint { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+        /// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
         /// </summary>
-        [Input("resourceUrl")]
-        public Input<string>? ResourceUrl { get; set; }
+        [Input("resourceUrl", required: true)]
+        public Input<string> ResourceUrl { get; set; } = null!;
 
         public BasisArgs()
         {

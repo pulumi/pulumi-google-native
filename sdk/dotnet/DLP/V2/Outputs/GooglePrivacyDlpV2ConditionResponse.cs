@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2ConditionResponse
     {
         /// <summary>
-        /// Required. Field within the record this condition is evaluated against.
+        /// Field within the record this condition is evaluated against.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2FieldIdResponse Field;
         /// <summary>
-        /// Required. Operator used to compare the field or infoType to the value.
+        /// Operator used to compare the field or infoType to the value.
         /// </summary>
         public readonly string Operator;
         /// <summary>

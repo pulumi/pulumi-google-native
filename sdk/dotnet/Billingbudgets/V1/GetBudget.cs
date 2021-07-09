@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
     public sealed class GetBudgetResult
     {
         /// <summary>
-        /// Required. Budgeted amount.
+        /// Budgeted amount.
         /// </summary>
         public readonly Outputs.GoogleCloudBillingBudgetsV1BudgetAmountResponse Amount;
         /// <summary>

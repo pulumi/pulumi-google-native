@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        /// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         /// </summary>
         public readonly Outputs.ReplicationResponse Replication;
 

@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     public sealed class KeyVersionSpecArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+        /// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
         /// </summary>
-        [Input("algorithm")]
-        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.KeyVersionSpecAlgorithm>? Algorithm { get; set; }
+        [Input("algorithm", required: true)]
+        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.KeyVersionSpecAlgorithm> Algorithm { get; set; } = null!;
 
         /// <summary>
-        /// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+        /// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
         /// </summary>
-        [Input("cloudKmsKeyVersion")]
-        public Input<string>? CloudKmsKeyVersion { get; set; }
+        [Input("cloudKmsKeyVersion", required: true)]
+        public Input<string> CloudKmsKeyVersion { get; set; } = null!;
 
         public KeyVersionSpecArgs()
         {

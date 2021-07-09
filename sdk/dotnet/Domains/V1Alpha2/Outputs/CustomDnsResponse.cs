@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DsRecordResponse> DsRecords;
         /// <summary>
-        /// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+        /// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
         /// </summary>
         public readonly ImmutableArray<string> NameServers;
 

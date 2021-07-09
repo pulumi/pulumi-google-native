@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
         }
 
         /// <summary>
-        /// Required. The OIDC issuer URL.
+        /// The OIDC issuer URL.
         /// </summary>
-        [Input("issuerUri")]
-        public Input<string>? IssuerUri { get; set; }
+        [Input("issuerUri", required: true)]
+        public Input<string> IssuerUri { get; set; } = null!;
 
         public OidcArgs()
         {

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class LocationResponse
     {
         /// <summary>
-        /// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        /// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         /// </summary>
         public readonly string CpeUri;
         /// <summary>

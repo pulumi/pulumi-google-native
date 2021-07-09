@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public Input<string>? Env { get; set; }
 
         /// <summary>
-        /// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+        /// The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
         /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The location associated with the metrics.
+        /// The location associated with the metrics.
         /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         public GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs()
         {

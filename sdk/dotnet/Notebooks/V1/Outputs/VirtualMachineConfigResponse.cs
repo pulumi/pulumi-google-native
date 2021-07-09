@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerImageResponse> ContainerImages;
         /// <summary>
-        /// Required. Data disk option configuration settings.
+        /// Data disk option configuration settings.
         /// </summary>
         public readonly Outputs.LocalDiskResponse DataDisk;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+        /// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         /// </summary>
         public readonly string MachineType;
         /// <summary>

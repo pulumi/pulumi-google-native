@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The human-readable name of the agent, unique within the location.
+        /// The human-readable name of the agent, unique within the location.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public readonly string StartFlow;
         /// <summary>
-        /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         /// </summary>
         public readonly string TimeZone;
 

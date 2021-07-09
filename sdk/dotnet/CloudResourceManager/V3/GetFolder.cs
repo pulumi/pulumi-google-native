@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+        /// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
         /// </summary>
         public readonly string Parent;
         /// <summary>

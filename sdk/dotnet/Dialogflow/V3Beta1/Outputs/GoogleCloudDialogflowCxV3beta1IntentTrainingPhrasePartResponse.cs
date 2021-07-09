@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly string ParameterId;
         /// <summary>
-        /// Required. The text for this part.
+        /// The text for this part.
         /// </summary>
         public readonly string Text;
 

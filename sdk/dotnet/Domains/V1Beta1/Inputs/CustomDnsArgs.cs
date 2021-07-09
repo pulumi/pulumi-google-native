@@ -27,11 +27,11 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
             set => _dsRecords = value;
         }
 
-        [Input("nameServers")]
+        [Input("nameServers", required: true)]
         private InputList<string>? _nameServers;
 
         /// <summary>
-        /// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+        /// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
         /// </summary>
         public InputList<string> NameServers
         {

@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        /// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         /// </summary>
         [Output("noteName")]
         public Output<string> NoteName { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<string> Remediation { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The resource for which the occurrence applies.
+        /// Immutable. The resource for which the occurrence applies.
         /// </summary>
         [Output("resource")]
         public Output<Outputs.ResourceResponse> Resource { get; private set; } = null!;
@@ -193,10 +193,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Input<Inputs.GrafeasV1beta1IntotoDetailsArgs>? Intoto { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        /// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         /// </summary>
-        [Input("noteName")]
-        public Input<string>? NoteName { get; set; }
+        [Input("noteName", required: true)]
+        public Input<string> NoteName { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -208,10 +208,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Input<string>? Remediation { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The resource for which the occurrence applies.
+        /// Immutable. The resource for which the occurrence applies.
         /// </summary>
-        [Input("resource")]
-        public Input<Inputs.ResourceArgs>? Resource { get; set; }
+        [Input("resource", required: true)]
+        public Input<Inputs.ResourceArgs> Resource { get; set; } = null!;
 
         /// <summary>
         /// Describes a security vulnerability.

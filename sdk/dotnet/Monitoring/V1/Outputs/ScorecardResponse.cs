@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ThresholdResponse> Thresholds;
         /// <summary>
-        /// Required. Fields for querying time series data from the Stackdriver metrics API.
+        /// Fields for querying time series data from the Stackdriver metrics API.
         /// </summary>
         public readonly Outputs.TimeSeriesQueryResponse TimeSeriesQuery;
 

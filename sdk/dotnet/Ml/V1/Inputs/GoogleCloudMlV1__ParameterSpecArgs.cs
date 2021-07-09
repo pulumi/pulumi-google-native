@@ -52,10 +52,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<double>? MinValue { get; set; }
 
         /// <summary>
-        /// Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+        /// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
         /// </summary>
-        [Input("parameterName")]
-        public Input<string>? ParameterName { get; set; }
+        [Input("parameterName", required: true)]
+        public Input<string> ParameterName { get; set; } = null!;
 
         /// <summary>
         /// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
@@ -64,10 +64,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__ParameterSpecScaleType>? ScaleType { get; set; }
 
         /// <summary>
-        /// Required. The type of the parameter.
+        /// The type of the parameter.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__ParameterSpecType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__ParameterSpecType> Type { get; set; } = null!;
 
         public GoogleCloudMlV1__ParameterSpecArgs()
         {

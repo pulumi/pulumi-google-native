@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class ObbFileArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+        /// Opaque Binary Blob (OBB) file(s) to install on the device.
         /// </summary>
-        [Input("obb")]
-        public Input<Inputs.FileReferenceArgs>? Obb { get; set; }
+        [Input("obb", required: true)]
+        public Input<Inputs.FileReferenceArgs> Obb { get; set; } = null!;
 
         /// <summary>
-        /// Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        /// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
         /// </summary>
-        [Input("obbFileName")]
-        public Input<string>? ObbFileName { get; set; }
+        [Input("obbFileName", required: true)]
+        public Input<string> ObbFileName { get; set; } = null!;
 
         public ObbFileArgs()
         {

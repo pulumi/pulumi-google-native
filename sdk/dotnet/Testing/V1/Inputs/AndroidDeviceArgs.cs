@@ -16,28 +16,28 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class AndroidDeviceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        /// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         /// </summary>
-        [Input("androidModelId")]
-        public Input<string>? AndroidModelId { get; set; }
+        [Input("androidModelId", required: true)]
+        public Input<string> AndroidModelId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        /// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         /// </summary>
-        [Input("androidVersionId")]
-        public Input<string>? AndroidVersionId { get; set; }
+        [Input("androidVersionId", required: true)]
+        public Input<string> AndroidVersionId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        /// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
         /// </summary>
-        [Input("locale")]
-        public Input<string>? Locale { get; set; }
+        [Input("locale", required: true)]
+        public Input<string> Locale { get; set; } = null!;
 
         /// <summary>
-        /// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        /// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         /// </summary>
-        [Input("orientation")]
-        public Input<string>? Orientation { get; set; }
+        [Input("orientation", required: true)]
+        public Input<string> Orientation { get; set; } = null!;
 
         public AndroidDeviceArgs()
         {

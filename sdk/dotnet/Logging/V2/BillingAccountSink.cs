@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        /// The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<bool> IncludeChildren { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        /// The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -142,10 +142,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        /// The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         /// </summary>
-        [Input("destination")]
-        public Input<string>? Destination { get; set; }
+        [Input("destination", required: true)]
+        public Input<string> Destination { get; set; } = null!;
 
         /// <summary>
         /// Optional. If set to True, then this sink is disabled and it does not export any log entries.
@@ -178,10 +178,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Input<bool>? IncludeChildren { get; set; }
 
         /// <summary>
-        /// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        /// The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("uniqueWriterIdentity")]
         public Input<string>? UniqueWriterIdentity { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse
     {
         /// <summary>
-        /// Required. Carousel items.
+        /// Carousel items.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse> Items;
 

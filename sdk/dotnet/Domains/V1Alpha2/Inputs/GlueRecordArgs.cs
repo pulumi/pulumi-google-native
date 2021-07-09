@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
     public sealed class GlueRecordArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Domain name of the host in Punycode format.
+        /// Domain name of the host in Punycode format.
         /// </summary>
-        [Input("hostName")]
-        public Input<string>? HostName { get; set; }
+        [Input("hostName", required: true)]
+        public Input<string> HostName { get; set; } = null!;
 
         [Input("ipv4Addresses")]
         private InputList<string>? _ipv4Addresses;

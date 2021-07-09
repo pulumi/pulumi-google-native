@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
     public partial class Workload : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        /// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         /// </summary>
         [Output("billingAccount")]
         public Output<string> BillingAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. Compliance Regime associated with this workload.
+        /// Immutable. Compliance Regime associated with this workload.
         /// </summary>
         [Output("complianceRegime")]
         public Output<string> ComplianceRegime { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        /// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -127,22 +127,22 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
     public sealed class WorkloadArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        /// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         /// </summary>
-        [Input("billingAccount")]
-        public Input<string>? BillingAccount { get; set; }
+        [Input("billingAccount", required: true)]
+        public Input<string> BillingAccount { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. Compliance Regime associated with this workload.
+        /// Immutable. Compliance Regime associated with this workload.
         /// </summary>
-        [Input("complianceRegime")]
-        public Input<Pulumi.GoogleNative.AssuredWorkloads.V1.WorkloadComplianceRegime>? ComplianceRegime { get; set; }
+        [Input("complianceRegime", required: true)]
+        public Input<Pulumi.GoogleNative.AssuredWorkloads.V1.WorkloadComplianceRegime> ComplianceRegime { get; set; } = null!;
 
         /// <summary>
-        /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        /// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update &amp; Delete operations.

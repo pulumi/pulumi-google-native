@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
         /// </summary>
         public readonly Outputs.LoggingConfigResponse LoggingConfig;
         /// <summary>
-        /// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+        /// The HCFS URI of the main R file to use as the driver. Must be a .R file.
         /// </summary>
         public readonly string MainRFileUri;
         /// <summary>

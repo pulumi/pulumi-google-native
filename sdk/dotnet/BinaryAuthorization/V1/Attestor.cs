@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+        /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -94,10 +94,10 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+        /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

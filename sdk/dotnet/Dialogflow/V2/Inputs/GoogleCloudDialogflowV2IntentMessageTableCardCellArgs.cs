@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     public sealed class GoogleCloudDialogflowV2IntentMessageTableCardCellArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Text in this cell.
+        /// Text in this cell.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        [Input("text", required: true)]
+        public Input<string> Text { get; set; } = null!;
 
         public GoogleCloudDialogflowV2IntentMessageTableCardCellArgs()
         {

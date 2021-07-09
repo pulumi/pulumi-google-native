@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
     public sealed class AndroidDeviceListResponse
     {
         /// <summary>
-        /// Required. A list of Android devices.
+        /// A list of Android devices.
         /// </summary>
         public readonly ImmutableArray<Outputs.AndroidDeviceResponse> AndroidDevices;
 

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AudioChannelResponse> Channels;
         /// <summary>
-        /// Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+        /// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
         /// </summary>
         public readonly string Key;
 

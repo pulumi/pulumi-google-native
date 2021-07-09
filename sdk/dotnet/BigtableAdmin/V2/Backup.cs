@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        /// The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> SizeBytes { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+        /// Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         /// </summary>
         [Output("sourceTable")]
         public Output<string> SourceTable { get; private set; } = null!;
@@ -115,10 +115,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        /// The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
         /// </summary>
-        [Input("expireTime")]
-        public Input<string>? ExpireTime { get; set; }
+        [Input("expireTime", required: true)]
+        public Input<string> ExpireTime { get; set; } = null!;
 
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -133,10 +133,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+        /// Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         /// </summary>
-        [Input("sourceTable")]
-        public Input<string>? SourceTable { get; set; }
+        [Input("sourceTable", required: true)]
+        public Input<string> SourceTable { get; set; } = null!;
 
         public BackupArgs()
         {

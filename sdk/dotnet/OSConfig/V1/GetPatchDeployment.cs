@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         /// </summary>
         public readonly string Duration;
         /// <summary>
-        /// Required. VM instances to patch.
+        /// VM instances to patch.
         /// </summary>
         public readonly Outputs.PatchInstanceFilterResponse InstanceFilter;
         /// <summary>
@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Schedule a one-time execution.
+        /// Schedule a one-time execution.
         /// </summary>
         public readonly Outputs.OneTimeScheduleResponse OneTimeSchedule;
         /// <summary>
@@ -69,7 +69,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         /// </summary>
         public readonly Outputs.PatchConfigResponse PatchConfig;
         /// <summary>
-        /// Required. Schedule recurring executions.
+        /// Schedule recurring executions.
         /// </summary>
         public readonly Outputs.RecurringScheduleResponse RecurringSchedule;
         /// <summary>

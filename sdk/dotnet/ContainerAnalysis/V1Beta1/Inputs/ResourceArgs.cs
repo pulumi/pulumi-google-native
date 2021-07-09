@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class ResourceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+        /// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        [Input("uri", required: true)]
+        public Input<string> Uri { get; set; } = null!;
 
         public ResourceArgs()
         {

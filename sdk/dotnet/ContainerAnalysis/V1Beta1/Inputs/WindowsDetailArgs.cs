@@ -13,10 +13,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class WindowsDetailArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+        /// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
         /// </summary>
-        [Input("cpeUri")]
-        public Input<string>? CpeUri { get; set; }
+        [Input("cpeUri", required: true)]
+        public Input<string> CpeUri { get; set; } = null!;
 
         /// <summary>
         /// The description of the vulnerability.
@@ -24,11 +24,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("fixingKbs")]
+        [Input("fixingKbs", required: true)]
         private InputList<Inputs.KnowledgeBaseArgs>? _fixingKbs;
 
         /// <summary>
-        /// Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+        /// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
         /// </summary>
         public InputList<Inputs.KnowledgeBaseArgs> FixingKbs
         {
@@ -37,10 +37,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// Required. The name of the vulnerability.
+        /// The name of the vulnerability.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public WindowsDetailArgs()
         {

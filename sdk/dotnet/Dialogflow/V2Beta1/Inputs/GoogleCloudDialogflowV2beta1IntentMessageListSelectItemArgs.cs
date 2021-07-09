@@ -28,16 +28,16 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public Input<Inputs.GoogleCloudDialogflowV2beta1IntentMessageImageArgs>? Image { get; set; }
 
         /// <summary>
-        /// Required. Additional information about this option.
+        /// Additional information about this option.
         /// </summary>
-        [Input("info")]
-        public Input<Inputs.GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs>? Info { get; set; }
+        [Input("info", required: true)]
+        public Input<Inputs.GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs> Info { get; set; } = null!;
 
         /// <summary>
-        /// Required. The title of the list item.
+        /// The title of the list item.
         /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs()
         {

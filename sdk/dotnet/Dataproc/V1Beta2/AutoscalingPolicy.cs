@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public Output<Outputs.InstanceGroupAutoscalingPolicyConfigResponse> SecondaryWorkerConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Describes how the autoscaler will operate for primary workers.
+        /// Describes how the autoscaler will operate for primary workers.
         /// </summary>
         [Output("workerConfig")]
         public Output<Outputs.InstanceGroupAutoscalingPolicyConfigResponse> WorkerConfig { get; private set; } = null!;
@@ -85,10 +85,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public Input<Inputs.BasicAutoscalingAlgorithmArgs>? BasicAlgorithm { get; set; }
 
         /// <summary>
-        /// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        /// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -103,10 +103,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public Input<Inputs.InstanceGroupAutoscalingPolicyConfigArgs>? SecondaryWorkerConfig { get; set; }
 
         /// <summary>
-        /// Required. Describes how the autoscaler will operate for primary workers.
+        /// Describes how the autoscaler will operate for primary workers.
         /// </summary>
-        [Input("workerConfig")]
-        public Input<Inputs.InstanceGroupAutoscalingPolicyConfigArgs>? WorkerConfig { get; set; }
+        [Input("workerConfig", required: true)]
+        public Input<Inputs.InstanceGroupAutoscalingPolicyConfigArgs> WorkerConfig { get; set; } = null!;
 
         public AutoscalingPolicyArgs()
         {

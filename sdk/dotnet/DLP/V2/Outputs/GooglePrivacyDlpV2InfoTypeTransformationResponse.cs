@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2InfoTypeResponse> InfoTypes;
         /// <summary>
-        /// Required. Primitive transformation to apply to the infoType.
+        /// Primitive transformation to apply to the infoType.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2PrimitiveTransformationResponse PrimitiveTransformation;
 

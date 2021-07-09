@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+        /// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
         /// </summary>
         [Output("timeZone")]
         public Output<string> TimeZone { get; private set; } = null!;
@@ -142,10 +142,10 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public Input<string> RealmId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+        /// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
         /// </summary>
-        [Input("timeZone")]
-        public Input<string>? TimeZone { get; set; }
+        [Input("timeZone", required: true)]
+        public Input<string> TimeZone { get; set; } = null!;
 
         public RealmArgs()
         {

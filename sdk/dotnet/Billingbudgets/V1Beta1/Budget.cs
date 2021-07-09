@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         public Output<Outputs.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse> AllUpdatesRule { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Budgeted amount.
+        /// Budgeted amount.
         /// </summary>
         [Output("amount")]
         public Output<Outputs.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse> Amount { get; private set; } = null!;
@@ -109,10 +109,10 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         public Input<Inputs.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs>? AllUpdatesRule { get; set; }
 
         /// <summary>
-        /// Required. Budgeted amount.
+        /// Budgeted amount.
         /// </summary>
-        [Input("amount")]
-        public Input<Inputs.GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs>? Amount { get; set; }
+        [Input("amount", required: true)]
+        public Input<Inputs.GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs> Amount { get; set; } = null!;
 
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;

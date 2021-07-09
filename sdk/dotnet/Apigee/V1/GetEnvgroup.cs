@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Required. Host names for this environment group.
+        /// Host names for this environment group.
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>

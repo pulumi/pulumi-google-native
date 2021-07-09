@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
     public sealed class WeekDayOfMonthResponse
     {
         /// <summary>
-        /// Required. A day of the week.
+        /// A day of the week.
         /// </summary>
         public readonly string DayOfWeek;
         /// <summary>
-        /// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        /// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         /// </summary>
         public readonly int WeekOrdinal;
 

@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     public sealed class GoogleCloudApigeeV1DateRangeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. End date (exclusive) of the data to export in the format `yyyy-mm-dd`. The date range ends at 00:00:00 UTC on the end date- which will not be in the output.
+        /// End date (exclusive) of the data to export in the format `yyyy-mm-dd`. The date range ends at 00:00:00 UTC on the end date- which will not be in the output.
         /// </summary>
-        [Input("end")]
-        public Input<string>? End { get; set; }
+        [Input("end", required: true)]
+        public Input<string> End { get; set; } = null!;
 
         /// <summary>
-        /// Required. Start date of the data to export in the format `yyyy-mm-dd`. The date range begins at 00:00:00 UTC on the start date.
+        /// Start date of the data to export in the format `yyyy-mm-dd`. The date range begins at 00:00:00 UTC on the start date.
         /// </summary>
-        [Input("start")]
-        public Input<string>? Start { get; set; }
+        [Input("start", required: true)]
+        public Input<string> Start { get; set; } = null!;
 
         public GoogleCloudApigeeV1DateRangeArgs()
         {

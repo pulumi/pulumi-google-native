@@ -38,11 +38,11 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         /// </summary>
         public readonly string Parent;
         /// <summary>
-        /// Required. Human readable title. Does not affect behavior.
+        /// Human readable title. Does not affect behavior.
         /// </summary>
         public readonly string Title;
 

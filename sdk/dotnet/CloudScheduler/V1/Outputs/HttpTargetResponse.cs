@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1.Outputs
         /// </summary>
         public readonly Outputs.OidcTokenResponse OidcToken;
         /// <summary>
-        /// Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+        /// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
         /// </summary>
         public readonly string Uri;
 

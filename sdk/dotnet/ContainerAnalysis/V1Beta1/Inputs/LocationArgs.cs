@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class LocationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        /// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         /// </summary>
-        [Input("cpeUri")]
-        public Input<string>? CpeUri { get; set; }
+        [Input("cpeUri", required: true)]
+        public Input<string> CpeUri { get; set; } = null!;
 
         /// <summary>
         /// The path from which we gathered that this package/version is installed.

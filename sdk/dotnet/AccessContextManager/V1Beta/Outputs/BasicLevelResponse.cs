@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta.Outputs
         /// </summary>
         public readonly string CombiningFunction;
         /// <summary>
-        /// Required. A list of requirements for the `AccessLevel` to be granted.
+        /// A list of requirements for the `AccessLevel` to be granted.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConditionResponse> Conditions;
 

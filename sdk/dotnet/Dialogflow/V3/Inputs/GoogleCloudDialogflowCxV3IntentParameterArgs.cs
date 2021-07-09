@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3IntentParameterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+        /// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
         /// </summary>
-        [Input("entityType")]
-        public Input<string>? EntityType { get; set; }
+        [Input("entityType", required: true)]
+        public Input<string> EntityType { get; set; } = null!;
 
         /// <summary>
-        /// Required. The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        /// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
         /// Indicates whether the parameter represents a list of values.

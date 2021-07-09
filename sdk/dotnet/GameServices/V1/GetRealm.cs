@@ -60,7 +60,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+        /// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
         /// </summary>
         public readonly string TimeZone;
         /// <summary>

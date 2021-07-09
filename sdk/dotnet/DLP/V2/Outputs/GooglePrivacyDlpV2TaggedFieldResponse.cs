@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly string CustomTag;
         /// <summary>
-        /// Required. Identifies the column.
+        /// Identifies the column.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2FieldIdResponse Field;
         /// <summary>

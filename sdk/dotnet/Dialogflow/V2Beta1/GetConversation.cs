@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     public sealed class GetConversationResult
     {
         /// <summary>
-        /// Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+        /// The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
         /// </summary>
         public readonly string ConversationProfile;
         /// <summary>

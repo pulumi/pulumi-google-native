@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
     public partial class GuestPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        /// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
         /// </summary>
         [Output("assignment")]
         public Output<Outputs.AssignmentResponse> Assignment { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+        /// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -115,10 +115,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
     public sealed class GuestPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        /// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
         /// </summary>
-        [Input("assignment")]
-        public Input<Inputs.AssignmentArgs>? Assignment { get; set; }
+        [Input("assignment", required: true)]
+        public Input<Inputs.AssignmentArgs> Assignment { get; set; } = null!;
 
         /// <summary>
         /// Description of the guest policy. Length of the description is limited to 1024 characters.
@@ -136,10 +136,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public Input<string> GuestPolicyId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+        /// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("packageRepositories")]
         private InputList<Inputs.PackageRepositoryArgs>? _packageRepositories;

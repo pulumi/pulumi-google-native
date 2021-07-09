@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
     public sealed class AwsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The AWS account ID.
+        /// The AWS account ID.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         public AwsArgs()
         {

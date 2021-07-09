@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class DiscoveryResponse
     {
         /// <summary>
-        /// Required. Immutable. The kind of analysis that is handled by this discovery.
+        /// Immutable. The kind of analysis that is handled by this discovery.
         /// </summary>
         public readonly string AnalysisKind;
 

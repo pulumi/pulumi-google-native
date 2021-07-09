@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// </summary>
         public readonly string ImageDisplayOptions;
         /// <summary>
-        /// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+        /// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse> Items;
 

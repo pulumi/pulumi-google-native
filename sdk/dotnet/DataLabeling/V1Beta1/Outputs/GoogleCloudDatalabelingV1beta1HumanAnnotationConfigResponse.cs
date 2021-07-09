@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
         /// </summary>
         public readonly string AnnotatedDatasetDescription;
         /// <summary>
-        /// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+        /// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
         /// </summary>
         public readonly string AnnotatedDatasetDisplayName;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ContributorEmails;
         /// <summary>
-        /// Required. Instruction resource name.
+        /// Instruction resource name.
         /// </summary>
         public readonly string Instruction;
         /// <summary>

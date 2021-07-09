@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs : Pulumi.ResourceArgs
     {
-        [Input("knowledgeBases")]
+        [Input("knowledgeBases", required: true)]
         private InputList<string>? _knowledgeBases;
 
         /// <summary>
-        /// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+        /// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
         /// </summary>
         public InputList<string> KnowledgeBases
         {

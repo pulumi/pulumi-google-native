@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
+        /// The display name of the AnnotationSpec. Maximum of 64 characters.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         public GoogleCloudDatalabelingV1beta1AnnotationSpecArgs()
         {

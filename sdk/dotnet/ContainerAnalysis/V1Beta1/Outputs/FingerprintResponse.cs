@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class FingerprintResponse
     {
         /// <summary>
-        /// Required. The layer ID of the final layer in the Docker image's v1 representation.
+        /// The layer ID of the final layer in the Docker image's v1 representation.
         /// </summary>
         public readonly string V1Name;
         /// <summary>
-        /// Required. The ordered list of v2 blobs that represent a given image.
+        /// The ordered list of v2 blobs that represent a given image.
         /// </summary>
         public readonly ImmutableArray<string> V2Blob;
         /// <summary>

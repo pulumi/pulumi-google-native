@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public Input<string>? ParameterId { get; set; }
 
         /// <summary>
-        /// Required. The text for this part.
+        /// The text for this part.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        [Input("text", required: true)]
+        public Input<string> Text { get; set; } = null!;
 
         public GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs()
         {

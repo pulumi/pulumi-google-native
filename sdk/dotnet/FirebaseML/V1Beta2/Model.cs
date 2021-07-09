@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+        /// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -121,10 +121,10 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
     public sealed class ModelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+        /// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
     public sealed class IosDeviceListResponse
     {
         /// <summary>
-        /// Required. A list of iOS devices.
+        /// A list of iOS devices.
         /// </summary>
         public readonly ImmutableArray<Outputs.IosDeviceResponse> IosDevices;
 

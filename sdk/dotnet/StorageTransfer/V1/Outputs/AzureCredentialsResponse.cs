@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
     public sealed class AzureCredentialsResponse
     {
         /// <summary>
-        /// Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+        /// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
         /// </summary>
         public readonly string SasToken;
 

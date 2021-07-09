@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
         /// </summary>
         public readonly string Glob;
         /// <summary>
-        /// Required. The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+        /// The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
         /// </summary>
         public readonly string Location;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
         /// </summary>
         public readonly string Regex;
         /// <summary>
-        /// Required. The status HTTP code to return in the response. It must be a valid 3xx status code.
+        /// The status HTTP code to return in the response. It must be a valid 3xx status code.
         /// </summary>
         public readonly int StatusCode;
 

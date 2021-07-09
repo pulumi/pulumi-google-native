@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     public sealed class GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Annotation spec set resource name.
+        /// Annotation spec set resource name.
         /// </summary>
-        [Input("annotationSpecSet")]
-        public Input<string>? AnnotationSpecSet { get; set; }
+        [Input("annotationSpecSet", required: true)]
+        public Input<string> AnnotationSpecSet { get; set; } = null!;
 
         /// <summary>
         /// Optional. Instruction message showed on contributors UI.

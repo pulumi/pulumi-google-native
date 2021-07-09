@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly bool AllowPlaybackInterruption;
         /// <summary>
-        /// Required. A collection of text responses.
+        /// A collection of text responses.
         /// </summary>
         public readonly ImmutableArray<string> Text;
 

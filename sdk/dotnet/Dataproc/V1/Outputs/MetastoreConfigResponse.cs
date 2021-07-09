@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class MetastoreConfigResponse
     {
         /// <summary>
-        /// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+        /// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
         /// </summary>
         public readonly string DataprocMetastoreService;
 

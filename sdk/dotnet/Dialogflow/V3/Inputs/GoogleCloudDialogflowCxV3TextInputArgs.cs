@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3TextInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+        /// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        [Input("text", required: true)]
+        public Input<string> Text { get; set; } = null!;
 
         public GoogleCloudDialogflowCxV3TextInputArgs()
         {

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly bool Inclusive;
         /// <summary>
-        /// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+        /// Distinguishes between sentinel MIN/MAX versions and normal versions.
         /// </summary>
         public readonly string Kind;
         /// <summary>

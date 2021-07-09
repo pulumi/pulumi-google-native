@@ -46,10 +46,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public Input<Inputs.ShardingOptionArgs>? ShardingOption { get; set; }
 
         /// <summary>
-        /// Required. The APK containing the test code to be executed.
+        /// The APK containing the test code to be executed.
         /// </summary>
-        [Input("testApk")]
-        public Input<Inputs.FileReferenceArgs>? TestApk { get; set; }
+        [Input("testApk", required: true)]
+        public Input<Inputs.FileReferenceArgs> TestApk { get; set; } = null!;
 
         /// <summary>
         /// The java package for the test to be executed. The default value is determined by examining the application's manifest.

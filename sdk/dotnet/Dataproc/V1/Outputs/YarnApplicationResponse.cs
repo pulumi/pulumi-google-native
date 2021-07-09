@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class YarnApplicationResponse
     {
         /// <summary>
-        /// Required. The application name.
+        /// The application name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The numerical progress of the application, from 1 to 100.
+        /// The numerical progress of the application, from 1 to 100.
         /// </summary>
         public readonly double Progress;
         /// <summary>
-        /// Required. The application state.
+        /// The application state.
         /// </summary>
         public readonly string State;
         /// <summary>

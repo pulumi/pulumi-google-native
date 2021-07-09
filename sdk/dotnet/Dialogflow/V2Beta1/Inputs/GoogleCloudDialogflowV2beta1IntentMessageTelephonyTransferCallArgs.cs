@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
+        /// The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
         /// </summary>
-        [Input("phoneNumber")]
-        public Input<string>? PhoneNumber { get; set; }
+        [Input("phoneNumber", required: true)]
+        public Input<string> PhoneNumber { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs()
         {

@@ -14,19 +14,19 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Outputs
     public sealed class ContactSettingsResponse
     {
         /// <summary>
-        /// Required. The administrative contact for the `Registration`.
+        /// The administrative contact for the `Registration`.
         /// </summary>
         public readonly Outputs.ContactResponse AdminContact;
         /// <summary>
-        /// Required. Privacy setting for the contacts associated with the `Registration`.
+        /// Privacy setting for the contacts associated with the `Registration`.
         /// </summary>
         public readonly string Privacy;
         /// <summary>
-        /// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
         /// </summary>
         public readonly Outputs.ContactResponse RegistrantContact;
         /// <summary>
-        /// Required. The technical contact for the `Registration`.
+        /// The technical contact for the `Registration`.
         /// </summary>
         public readonly Outputs.ContactResponse TechnicalContact;
 

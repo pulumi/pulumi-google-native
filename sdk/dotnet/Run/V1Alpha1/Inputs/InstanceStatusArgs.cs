@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<int>? Failed { get; set; }
 
         /// <summary>
-        /// Required. Index of the instance, unique per Job, and beginning at 0.
+        /// Index of the instance, unique per Job, and beginning at 0.
         /// </summary>
-        [Input("index")]
-        public Input<int>? Index { get; set; }
+        [Input("index", required: true)]
+        public Input<int> Index { get; set; } = null!;
 
         /// <summary>
         /// Optional. Last exit code seen for this instance. +optional

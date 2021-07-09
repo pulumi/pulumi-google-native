@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public Input<string>? CommonName { get; set; }
 
         /// <summary>
-        /// Required. Contains distinguished name fields such as the location and organization.
+        /// Contains distinguished name fields such as the location and organization.
         /// </summary>
-        [Input("subject")]
-        public Input<Inputs.SubjectArgs>? Subject { get; set; }
+        [Input("subject", required: true)]
+        public Input<Inputs.SubjectArgs> Subject { get; set; } = null!;
 
         /// <summary>
         /// Optional. The subject alternative name fields.

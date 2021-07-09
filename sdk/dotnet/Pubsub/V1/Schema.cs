@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Output<string> Definition { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+        /// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -85,10 +85,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Input<string>? Definition { get; set; }
 
         /// <summary>
-        /// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+        /// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

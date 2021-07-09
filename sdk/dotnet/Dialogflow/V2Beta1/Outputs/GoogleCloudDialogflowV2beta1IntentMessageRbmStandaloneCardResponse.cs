@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse
     {
         /// <summary>
-        /// Required. Card content.
+        /// Card content.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse CardContent;
         /// <summary>
-        /// Required. Orientation of the card.
+        /// Orientation of the card.
         /// </summary>
         public readonly string CardOrientation;
         /// <summary>

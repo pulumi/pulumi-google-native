@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Inputs
     public sealed class MatchingCriteriaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+        /// The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
         /// </summary>
-        [Input("attribute")]
-        public Input<string>? Attribute { get; set; }
+        [Input("attribute", required: true)]
+        public Input<string> Attribute { get; set; } = null!;
 
         /// <summary>
-        /// Required. The value for the attribute.
+        /// The value for the attribute.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public MatchingCriteriaArgs()
         {

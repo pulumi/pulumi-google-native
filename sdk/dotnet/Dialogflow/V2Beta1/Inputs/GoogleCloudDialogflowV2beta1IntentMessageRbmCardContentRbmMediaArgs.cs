@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
+        /// Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
         /// </summary>
-        [Input("fileUri")]
-        public Input<string>? FileUri { get; set; }
+        [Input("fileUri", required: true)]
+        public Input<string> FileUri { get; set; } = null!;
 
         /// <summary>
         /// Required for cards with vertical orientation. The height of the media within a rich card with a vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is ignored.

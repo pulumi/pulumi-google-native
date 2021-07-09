@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         public Output<Outputs.ClientInfoResponse> ClientInfo { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The devices the tests are being executed on.
+        /// The devices the tests are being executed on.
         /// </summary>
         [Output("environmentMatrix")]
         public Output<Outputs.EnvironmentMatrixResponse> EnvironmentMatrix { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Where the results for the matrix are written.
+        /// Where the results for the matrix are written.
         /// </summary>
         [Output("resultStorage")]
         public Output<Outputs.ResultStorageResponse> ResultStorage { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         public Output<string> TestMatrixId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. How to run the test.
+        /// How to run the test.
         /// </summary>
         [Output("testSpecification")]
         public Output<Outputs.TestSpecificationResponse> TestSpecification { get; private set; } = null!;
@@ -145,10 +145,10 @@ namespace Pulumi.GoogleNative.Testing.V1
         public Input<Inputs.ClientInfoArgs>? ClientInfo { get; set; }
 
         /// <summary>
-        /// Required. The devices the tests are being executed on.
+        /// The devices the tests are being executed on.
         /// </summary>
-        [Input("environmentMatrix")]
-        public Input<Inputs.EnvironmentMatrixArgs>? EnvironmentMatrix { get; set; }
+        [Input("environmentMatrix", required: true)]
+        public Input<Inputs.EnvironmentMatrixArgs> EnvironmentMatrix { get; set; } = null!;
 
         /// <summary>
         /// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
@@ -172,16 +172,16 @@ namespace Pulumi.GoogleNative.Testing.V1
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// Required. Where the results for the matrix are written.
+        /// Where the results for the matrix are written.
         /// </summary>
-        [Input("resultStorage")]
-        public Input<Inputs.ResultStorageArgs>? ResultStorage { get; set; }
+        [Input("resultStorage", required: true)]
+        public Input<Inputs.ResultStorageArgs> ResultStorage { get; set; } = null!;
 
         /// <summary>
-        /// Required. How to run the test.
+        /// How to run the test.
         /// </summary>
-        [Input("testSpecification")]
-        public Input<Inputs.TestSpecificationArgs>? TestSpecification { get; set; }
+        [Input("testSpecification", required: true)]
+        public Input<Inputs.TestSpecificationArgs> TestSpecification { get; set; } = null!;
 
         public TestMatrixArgs()
         {

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class DetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Attestation for the resource.
+        /// Attestation for the resource.
         /// </summary>
-        [Input("attestation")]
-        public Input<Inputs.AttestationArgs>? Attestation { get; set; }
+        [Input("attestation", required: true)]
+        public Input<Inputs.AttestationArgs> Attestation { get; set; } = null!;
 
         public DetailsArgs()
         {

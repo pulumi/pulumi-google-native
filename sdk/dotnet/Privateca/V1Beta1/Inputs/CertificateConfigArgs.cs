@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public Input<Inputs.PublicKeyArgs>? PublicKey { get; set; }
 
         /// <summary>
-        /// Required. Describes how some of the technical fields in a certificate should be populated.
+        /// Describes how some of the technical fields in a certificate should be populated.
         /// </summary>
-        [Input("reusableConfig")]
-        public Input<Inputs.ReusableConfigWrapperArgs>? ReusableConfig { get; set; }
+        [Input("reusableConfig", required: true)]
+        public Input<Inputs.ReusableConfigWrapperArgs> ReusableConfig { get; set; } = null!;
 
         /// <summary>
-        /// Required. Specifies some of the values in a certificate that are related to the subject.
+        /// Specifies some of the values in a certificate that are related to the subject.
         /// </summary>
-        [Input("subjectConfig")]
-        public Input<Inputs.SubjectConfigArgs>? SubjectConfig { get; set; }
+        [Input("subjectConfig", required: true)]
+        public Input<Inputs.SubjectConfigArgs> SubjectConfig { get; set; } = null!;
 
         public CertificateConfigArgs()
         {

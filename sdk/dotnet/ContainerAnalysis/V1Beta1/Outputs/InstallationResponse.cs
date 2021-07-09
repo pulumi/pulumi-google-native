@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class InstallationResponse
     {
         /// <summary>
-        /// Required. All of the places within the filesystem versions of this package have been found.
+        /// All of the places within the filesystem versions of this package have been found.
         /// </summary>
         public readonly ImmutableArray<Outputs.LocationResponse> Location;
         /// <summary>

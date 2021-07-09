@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
     public sealed class ContactArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Email address of the contact.
+        /// Email address of the contact.
         /// </summary>
-        [Input("email")]
-        public Input<string>? Email { get; set; }
+        [Input("email", required: true)]
+        public Input<string> Email { get; set; } = null!;
 
         /// <summary>
         /// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
@@ -28,16 +28,16 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
         public Input<string>? FaxNumber { get; set; }
 
         /// <summary>
-        /// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        /// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
         /// </summary>
-        [Input("phoneNumber")]
-        public Input<string>? PhoneNumber { get; set; }
+        [Input("phoneNumber", required: true)]
+        public Input<string> PhoneNumber { get; set; } = null!;
 
         /// <summary>
-        /// Required. Postal address of the contact.
+        /// Postal address of the contact.
         /// </summary>
-        [Input("postalAddress")]
-        public Input<Inputs.PostalAddressArgs>? PostalAddress { get; set; }
+        [Input("postalAddress", required: true)]
+        public Input<Inputs.PostalAddressArgs> PostalAddress { get; set; } = null!;
 
         public ContactArgs()
         {

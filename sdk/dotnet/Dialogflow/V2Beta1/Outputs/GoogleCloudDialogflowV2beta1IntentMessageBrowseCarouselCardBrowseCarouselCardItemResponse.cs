@@ -26,11 +26,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2beta1IntentMessageImageResponse Image;
         /// <summary>
-        /// Required. Action to present to the user.
+        /// Action to present to the user.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse OpenUriAction;
         /// <summary>
-        /// Required. Title of the carousel item. Maximum of two lines of text.
+        /// Title of the carousel item. Maximum of two lines of text.
         /// </summary>
         public readonly string Title;
 

@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
     public sealed class GoogleCloudMlV1_StudyConfig_MetricSpecResponse
     {
         /// <summary>
-        /// Required. The optimization goal of the metric.
+        /// The optimization goal of the metric.
         /// </summary>
         public readonly string Goal;
         /// <summary>
-        /// Required. The name of the metric.
+        /// The name of the metric.
         /// </summary>
         public readonly string Metric;
 

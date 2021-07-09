@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         public Input<Inputs.Aes128EncryptionArgs>? Aes128 { get; set; }
 
         /// <summary>
-        /// Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+        /// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
         /// </summary>
-        [Input("iv")]
-        public Input<string>? Iv { get; set; }
+        [Input("iv", required: true)]
+        public Input<string> Iv { get; set; } = null!;
 
         /// <summary>
-        /// Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+        /// 128 bit encryption key represented as lowercase hexadecimal digits.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
         /// Configuration for MPEG Common Encryption (MPEG-CENC).

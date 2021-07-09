@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Host names for this environment group.
+        /// Host names for this environment group.
         /// </summary>
         [Output("hostnames")]
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
@@ -90,11 +90,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class EnvgroupArgs : Pulumi.ResourceArgs
     {
-        [Input("hostnames")]
+        [Input("hostnames", required: true)]
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// Required. Host names for this environment group.
+        /// Host names for this environment group.
         /// </summary>
         public InputList<string> Hostnames
         {

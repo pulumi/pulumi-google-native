@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
         /// </summary>
         public readonly string AttributeDefinitionId;
         /// <summary>
-        /// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+        /// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

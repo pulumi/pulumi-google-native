@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Resource ID of the NAT address.
+        /// Resource ID of the NAT address.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -82,10 +82,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Resource ID of the NAT address.
+        /// Resource ID of the NAT address.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

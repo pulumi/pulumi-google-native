@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+        /// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -154,10 +154,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+        /// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// End time of this experiment.

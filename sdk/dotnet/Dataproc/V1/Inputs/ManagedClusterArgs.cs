@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     public sealed class ManagedClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+        /// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
         /// </summary>
-        [Input("clusterName")]
-        public Input<string>? ClusterName { get; set; }
+        [Input("clusterName", required: true)]
+        public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// Required. The cluster configuration.
+        /// The cluster configuration.
         /// </summary>
-        [Input("config")]
-        public Input<Inputs.ClusterConfigArgs>? Config { get; set; }
+        [Input("config", required: true)]
+        public Input<Inputs.ClusterConfigArgs> Config { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;

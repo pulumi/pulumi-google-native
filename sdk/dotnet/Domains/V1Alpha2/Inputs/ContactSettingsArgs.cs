@@ -16,28 +16,28 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
     public sealed class ContactSettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The administrative contact for the `Registration`.
+        /// The administrative contact for the `Registration`.
         /// </summary>
-        [Input("adminContact")]
-        public Input<Inputs.ContactArgs>? AdminContact { get; set; }
+        [Input("adminContact", required: true)]
+        public Input<Inputs.ContactArgs> AdminContact { get; set; } = null!;
 
         /// <summary>
-        /// Required. Privacy setting for the contacts associated with the `Registration`.
+        /// Privacy setting for the contacts associated with the `Registration`.
         /// </summary>
-        [Input("privacy")]
-        public Input<Pulumi.GoogleNative.Domains.V1Alpha2.ContactSettingsPrivacy>? Privacy { get; set; }
+        [Input("privacy", required: true)]
+        public Input<Pulumi.GoogleNative.Domains.V1Alpha2.ContactSettingsPrivacy> Privacy { get; set; } = null!;
 
         /// <summary>
-        /// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
         /// </summary>
-        [Input("registrantContact")]
-        public Input<Inputs.ContactArgs>? RegistrantContact { get; set; }
+        [Input("registrantContact", required: true)]
+        public Input<Inputs.ContactArgs> RegistrantContact { get; set; } = null!;
 
         /// <summary>
-        /// Required. The technical contact for the `Registration`.
+        /// The technical contact for the `Registration`.
         /// </summary>
-        [Input("technicalContact")]
-        public Input<Inputs.ContactArgs>? TechnicalContact { get; set; }
+        [Input("technicalContact", required: true)]
+        public Input<Inputs.ContactArgs> TechnicalContact { get; set; } = null!;
 
         public ContactSettingsArgs()
         {

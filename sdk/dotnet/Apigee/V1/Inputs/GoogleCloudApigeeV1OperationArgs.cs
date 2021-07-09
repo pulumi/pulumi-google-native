@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         }
 
         /// <summary>
-        /// Required. resource represents REST resource path associated with the proxy/remote service.
+        /// resource represents REST resource path associated with the proxy/remote service.
         /// </summary>
-        [Input("resource")]
-        public Input<string>? Resource { get; set; }
+        [Input("resource", required: true)]
+        public Input<string> Resource { get; set; } = null!;
 
         public GoogleCloudApigeeV1OperationArgs()
         {

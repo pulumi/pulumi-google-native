@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudMlV1_StudyConfig_MetricSpecResponse> Metrics;
         /// <summary>
-        /// Required. The set of parameters to tune.
+        /// The set of parameters to tune.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudMlV1_StudyConfig_ParameterSpecResponse> Parameters;
 

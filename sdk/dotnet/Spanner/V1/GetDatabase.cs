@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.EncryptionInfoResponse> EncryptionInfo;
         /// <summary>
-        /// Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
+        /// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
         /// </summary>
         public readonly string Name;
         /// <summary>

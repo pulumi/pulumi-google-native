@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class GrafeasV1beta1PackageDetailsResponse
     {
         /// <summary>
-        /// Required. Where the package was installed.
+        /// Where the package was installed.
         /// </summary>
         public readonly Outputs.InstallationResponse Installation;
 

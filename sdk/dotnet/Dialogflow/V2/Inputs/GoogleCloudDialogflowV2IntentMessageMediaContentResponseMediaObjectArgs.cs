@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     public sealed class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Url where the media is stored.
+        /// Url where the media is stored.
         /// </summary>
-        [Input("contentUrl")]
-        public Input<string>? ContentUrl { get; set; }
+        [Input("contentUrl", required: true)]
+        public Input<string> ContentUrl { get; set; } = null!;
 
         /// <summary>
         /// Optional. Description of media card.
@@ -40,10 +40,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public Input<Inputs.GoogleCloudDialogflowV2IntentMessageImageArgs>? LargeImage { get; set; }
 
         /// <summary>
-        /// Required. Name of media card.
+        /// Name of media card.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs()
         {

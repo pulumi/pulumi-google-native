@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.Outputs
     public sealed class CustomAccountResponse
     {
         /// <summary>
-        /// Required. The login form URL of the website.
+        /// The login form URL of the website.
         /// </summary>
         public readonly string LoginUrl;
         /// <summary>
-        /// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        /// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Required. The user name of the custom account.
+        /// The user name of the custom account.
         /// </summary>
         public readonly string Username;
 

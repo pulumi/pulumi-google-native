@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The maximum product price.
+        /// The maximum product price.
         /// </summary>
-        [Input("max")]
-        public Input<double>? Max { get; set; }
+        [Input("max", required: true)]
+        public Input<double> Max { get; set; } = null!;
 
         /// <summary>
-        /// Required. The minimum product price.
+        /// The minimum product price.
         /// </summary>
-        [Input("min")]
-        public Input<double>? Min { get; set; }
+        [Input("min", required: true)]
+        public Input<double> Min { get; set; } = null!;
 
         public GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs()
         {

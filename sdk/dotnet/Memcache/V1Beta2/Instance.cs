@@ -70,19 +70,19 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         public Output<string> MemcacheVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Configuration for Memcached nodes.
+        /// Configuration for Memcached nodes.
         /// </summary>
         [Output("nodeConfig")]
         public Output<Outputs.NodeConfigResponse> NodeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Number of nodes in the Memcached instance.
+        /// Number of nodes in the Memcached instance.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -211,22 +211,22 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         public Input<Pulumi.GoogleNative.Memcache.V1Beta2.InstanceMemcacheVersion>? MemcacheVersion { get; set; }
 
         /// <summary>
-        /// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Required. Configuration for Memcached nodes.
+        /// Configuration for Memcached nodes.
         /// </summary>
-        [Input("nodeConfig")]
-        public Input<Inputs.NodeConfigArgs>? NodeConfig { get; set; }
+        [Input("nodeConfig", required: true)]
+        public Input<Inputs.NodeConfigArgs> NodeConfig { get; set; } = null!;
 
         /// <summary>
-        /// Required. Number of nodes in the Memcached instance.
+        /// Number of nodes in the Memcached instance.
         /// </summary>
-        [Input("nodeCount")]
-        public Input<int>? NodeCount { get; set; }
+        [Input("nodeCount", required: true)]
+        public Input<int> NodeCount { get; set; } = null!;
 
         /// <summary>
         /// Optional: User defined parameters to apply to the memcached process on each node.

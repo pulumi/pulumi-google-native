@@ -51,7 +51,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+        /// User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

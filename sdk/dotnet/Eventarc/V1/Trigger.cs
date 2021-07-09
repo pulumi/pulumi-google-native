@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Destination specifies where the events should be sent to.
+        /// Destination specifies where the events should be sent to.
         /// </summary>
         [Output("destination")]
         public Output<Outputs.DestinationResponse> Destination { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+        /// null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         /// </summary>
         [Output("eventFilters")]
         public Output<ImmutableArray<Outputs.EventFilterResponse>> EventFilters { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        /// The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -121,16 +121,16 @@ namespace Pulumi.GoogleNative.Eventarc.V1
     public sealed class TriggerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Destination specifies where the events should be sent to.
+        /// Destination specifies where the events should be sent to.
         /// </summary>
-        [Input("destination")]
-        public Input<Inputs.DestinationArgs>? Destination { get; set; }
+        [Input("destination", required: true)]
+        public Input<Inputs.DestinationArgs> Destination { get; set; } = null!;
 
-        [Input("eventFilters")]
+        [Input("eventFilters", required: true)]
         private InputList<Inputs.EventFilterArgs>? _eventFilters;
 
         /// <summary>
-        /// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+        /// null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         /// </summary>
         public InputList<Inputs.EventFilterArgs> EventFilters
         {
@@ -154,10 +154,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        /// The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

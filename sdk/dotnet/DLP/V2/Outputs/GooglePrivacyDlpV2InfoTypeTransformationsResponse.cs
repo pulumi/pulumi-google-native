@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2InfoTypeTransformationsResponse
     {
         /// <summary>
-        /// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+        /// Transformation for each infoType. Cannot specify more than one for a given infoType.
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2InfoTypeTransformationResponse> Transformations;
 

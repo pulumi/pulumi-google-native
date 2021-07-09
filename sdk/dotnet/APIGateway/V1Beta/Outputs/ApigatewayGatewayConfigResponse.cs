@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta.Outputs
     public sealed class ApigatewayGatewayConfigResponse
     {
         /// <summary>
-        /// Required. Backend settings that are applied to all backends of the Gateway.
+        /// Backend settings that are applied to all backends of the Gateway.
         /// </summary>
         public readonly Outputs.ApigatewayBackendConfigResponse BackendConfig;
 

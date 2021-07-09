@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> LastModifiedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        /// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -115,10 +115,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        /// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

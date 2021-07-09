@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly double MinValue;
         /// <summary>
-        /// Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+        /// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
         /// </summary>
         public readonly string ParameterName;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly string ScaleType;
         /// <summary>
-        /// Required. The type of the parameter.
+        /// The type of the parameter.
         /// </summary>
         public readonly string Type;
 

@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Output<Outputs.GoogleCloudMlV1__ManualScalingResponse> ManualScaling { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        /// The name specified for the version when it was created. The version name must be unique within the model it is created in.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Output<string> PredictionClass { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        /// The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
         /// </summary>
         [Output("pythonVersion")]
         public Output<string> PythonVersion { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Output<Outputs.GoogleCloudMlV1__RouteMapResponse> Routes { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+        /// The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         /// </summary>
         [Output("runtimeVersion")]
         public Output<string> RuntimeVersion { get; private set; } = null!;
@@ -292,10 +292,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Input<string> ModelId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        /// The name specified for the version when it was created. The version name must be unique within the model it is created in.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("packageUris")]
         private InputList<string>? _packageUris;
@@ -319,10 +319,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        /// The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
         /// </summary>
-        [Input("pythonVersion")]
-        public Input<string>? PythonVersion { get; set; }
+        [Input("pythonVersion", required: true)]
+        public Input<string> PythonVersion { get; set; } = null!;
 
         /// <summary>
         /// Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
@@ -337,10 +337,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Input<Inputs.GoogleCloudMlV1__RouteMapArgs>? Routes { get; set; }
 
         /// <summary>
-        /// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+        /// The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         /// </summary>
-        [Input("runtimeVersion")]
-        public Input<string>? RuntimeVersion { get; set; }
+        [Input("runtimeVersion", required: true)]
+        public Input<string> RuntimeVersion { get; set; } = null!;
 
         /// <summary>
         /// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).

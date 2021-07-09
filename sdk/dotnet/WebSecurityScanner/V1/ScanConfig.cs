@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         public Output<ImmutableArray<string>> BlacklistPatterns { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The user provided display name of the ScanConfig.
+        /// The user provided display name of the ScanConfig.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         public Output<Outputs.ScheduleResponse> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The starting URLs from which the scanner finds site pages.
+        /// The starting URLs from which the scanner finds site pages.
         /// </summary>
         [Output("startingUrls")]
         public Output<ImmutableArray<string>> StartingUrls { get; private set; } = null!;
@@ -157,10 +157,10 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         }
 
         /// <summary>
-        /// Required. The user provided display name of the ScanConfig.
+        /// The user provided display name of the ScanConfig.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Controls export of scan configurations and results to Security Command Center.
@@ -207,11 +207,11 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         [Input("schedule")]
         public Input<Inputs.ScheduleArgs>? Schedule { get; set; }
 
-        [Input("startingUrls")]
+        [Input("startingUrls", required: true)]
         private InputList<string>? _startingUrls;
 
         /// <summary>
-        /// Required. The starting URLs from which the scanner finds site pages.
+        /// The starting URLs from which the scanner finds site pages.
         /// </summary>
         public InputList<string> StartingUrls
         {

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The phone number to fill in the default dialer app. This field should be in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly formatted phone number: +15556767888.
+        /// The phone number to fill in the default dialer app. This field should be in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly formatted phone number: +15556767888.
         /// </summary>
-        [Input("phoneNumber")]
-        public Input<string>? PhoneNumber { get; set; }
+        [Input("phoneNumber", required: true)]
+        public Input<string> PhoneNumber { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialArgs()
         {

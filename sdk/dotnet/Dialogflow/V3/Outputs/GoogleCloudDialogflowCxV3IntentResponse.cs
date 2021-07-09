@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The human-readable name of the intent, unique within the agent.
+        /// The human-readable name of the intent, unique within the agent.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

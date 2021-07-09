@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public Output<string> DagTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The Directed Acyclic Graph of Jobs to submit.
+        /// The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         [Output("jobs")]
         public Output<ImmutableArray<Outputs.OrderedJobResponse>> Jobs { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public Output<ImmutableArray<Outputs.TemplateParameterResponse>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// Required. WorkflowTemplate scheduling information.
+        /// WorkflowTemplate scheduling information.
         /// </summary>
         [Output("placement")]
         public Output<Outputs.WorkflowTemplatePlacementResponse> Placement { get; private set; } = null!;
@@ -121,16 +121,16 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public Input<string>? DagTimeout { get; set; }
 
         /// <summary>
-        /// Required. The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+        /// The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
-        [Input("jobs")]
+        [Input("jobs", required: true)]
         private InputList<Inputs.OrderedJobArgs>? _jobs;
 
         /// <summary>
-        /// Required. The Directed Acyclic Graph of Jobs to submit.
+        /// The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         public InputList<Inputs.OrderedJobArgs> Jobs
         {
@@ -166,10 +166,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         }
 
         /// <summary>
-        /// Required. WorkflowTemplate scheduling information.
+        /// WorkflowTemplate scheduling information.
         /// </summary>
-        [Input("placement")]
-        public Input<Inputs.WorkflowTemplatePlacementArgs>? Placement { get; set; }
+        [Input("placement", required: true)]
+        public Input<Inputs.WorkflowTemplatePlacementArgs> Placement { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

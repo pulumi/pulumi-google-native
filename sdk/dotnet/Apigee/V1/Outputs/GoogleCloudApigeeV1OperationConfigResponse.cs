@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
     public sealed class GoogleCloudApigeeV1OperationConfigResponse
     {
         /// <summary>
-        /// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+        /// API proxy or remote service name with which the resources, methods, and quota are associated.
         /// </summary>
         public readonly string ApiSource;
         /// <summary>

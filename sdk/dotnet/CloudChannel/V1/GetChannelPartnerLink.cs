@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly string InviteLinkUri;
         /// <summary>
-        /// Required. State of the channel partner link.
+        /// State of the channel partner link.
         /// </summary>
         public readonly string LinkState;
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly string PublicId;
         /// <summary>
-        /// Required. Cloud Identity ID of the linked reseller.
+        /// Cloud Identity ID of the linked reseller.
         /// </summary>
         public readonly string ResellerCloudIdentityId;
         /// <summary>

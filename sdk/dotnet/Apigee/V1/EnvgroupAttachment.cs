@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Required. ID of the attached environment.
+        /// ID of the attached environment.
         /// </summary>
         [Output("environment")]
         public Output<string> Environment { get; private set; } = null!;
@@ -82,10 +82,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string> EnvgroupId { get; set; } = null!;
 
         /// <summary>
-        /// Required. ID of the attached environment.
+        /// ID of the attached environment.
         /// </summary>
-        [Input("environment")]
-        public Input<string>? Environment { get; set; }
+        [Input("environment", required: true)]
+        public Input<string> Environment { get; set; } = null!;
 
         /// <summary>
         /// ID of the environment group attachment.

@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         [Input("condition")]
         public Input<Inputs.GooglePrivacyDlpV2RecordConditionArgs>? Condition { get; set; }
 
-        [Input("fields")]
+        [Input("fields", required: true)]
         private InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs>? _fields;
 
         /// <summary>
-        /// Required. Input field(s) to apply the transformation to.
+        /// Input field(s) to apply the transformation to.
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs> Fields
         {

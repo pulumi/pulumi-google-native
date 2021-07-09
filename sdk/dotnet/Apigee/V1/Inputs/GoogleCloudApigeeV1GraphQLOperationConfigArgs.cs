@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     public sealed class GoogleCloudApigeeV1GraphQLOperationConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+        /// API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
         /// </summary>
-        [Input("apiSource")]
-        public Input<string>? ApiSource { get; set; }
+        [Input("apiSource", required: true)]
+        public Input<string> ApiSource { get; set; } = null!;
 
         [Input("attributes")]
         private InputList<Inputs.GoogleCloudApigeeV1AttributeArgs>? _attributes;
@@ -33,11 +33,11 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
             set => _attributes = value;
         }
 
-        [Input("operations")]
+        [Input("operations", required: true)]
         private InputList<Inputs.GoogleCloudApigeeV1GraphQLOperationArgs>? _operations;
 
         /// <summary>
-        /// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+        /// List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
         /// </summary>
         public InputList<Inputs.GoogleCloudApigeeV1GraphQLOperationArgs> Operations
         {

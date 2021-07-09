@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
     public sealed class I18nConfigResponse
     {
         /// <summary>
-        /// Required. The user-supplied path where country and language specific content will be looked for within the public directory.
+        /// The user-supplied path where country and language specific content will be looked for within the public directory.
         /// </summary>
         public readonly string Root;
 

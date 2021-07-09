@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Inputs.AggregationArgs>? Aggregation { get; set; }
 
         /// <summary>
-        /// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        /// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         /// </summary>
-        [Input("filter")]
-        public Input<string>? Filter { get; set; }
+        [Input("filter", required: true)]
+        public Input<string> Filter { get; set; } = null!;
 
         public RatioPartArgs()
         {

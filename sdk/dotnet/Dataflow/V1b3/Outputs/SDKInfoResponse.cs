@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
     public sealed class SDKInfoResponse
     {
         /// <summary>
-        /// Required. The SDK Language.
+        /// The SDK Language.
         /// </summary>
         public readonly string Language;
         /// <summary>

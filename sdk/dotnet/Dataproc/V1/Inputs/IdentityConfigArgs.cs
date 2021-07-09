@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// </summary>
     public sealed class IdentityConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("userServiceAccountMapping")]
+        [Input("userServiceAccountMapping", required: true)]
         private InputMap<string>? _userServiceAccountMapping;
 
         /// <summary>
-        /// Required. Map of user to service account.
+        /// Map of user to service account.
         /// </summary>
         public InputMap<string> UserServiceAccountMapping
         {

@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> StatusDetail { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The operations to be performed on the workspace.
+        /// The operations to be performed on the workspace.
         /// </summary>
         [Output("steps")]
         public Output<ImmutableArray<Outputs.BuildStepResponse>> Steps { get; private set; } = null!;
@@ -285,11 +285,11 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("source")]
         public Input<Inputs.SourceArgs>? Source { get; set; }
 
-        [Input("steps")]
+        [Input("steps", required: true)]
         private InputList<Inputs.BuildStepArgs>? _steps;
 
         /// <summary>
-        /// Required. The operations to be performed on the workspace.
+        /// The operations to be performed on the workspace.
         /// </summary>
         public InputList<Inputs.BuildStepArgs> Steps
         {

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
     public sealed class AudioChannelInputResponse
     {
         /// <summary>
-        /// Required. The zero-based index of the channel in the input file.
+        /// The zero-based index of the channel in the input file.
         /// </summary>
         public readonly int Channel;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
         /// </summary>
         public readonly double GainDb;
         /// <summary>
-        /// Required. The `Input.key` that identifies the input file.
+        /// The `Input.key` that identifies the input file.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Required. The zero-based index of the track in the input file.
+        /// The zero-based index of the track in the input file.
         /// </summary>
         public readonly int Track;
 

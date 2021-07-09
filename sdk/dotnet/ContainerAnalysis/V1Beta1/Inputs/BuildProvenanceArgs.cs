@@ -76,10 +76,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// Required. Unique identifier of the build.
+        /// Unique identifier of the build.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
         /// URI where any logs for this provenance were written.

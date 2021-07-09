@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectResponse
     {
         /// <summary>
-        /// Required. Url where the media is stored.
+        /// Url where the media is stored.
         /// </summary>
         public readonly string ContentUrl;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2beta1IntentMessageImageResponse LargeImage;
         /// <summary>
-        /// Required. Name of media card.
+        /// Name of media card.
         /// </summary>
         public readonly string Name;
 

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class DetailResponse
     {
         /// <summary>
-        /// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+        /// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
         /// </summary>
         public readonly string CpeUri;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.VersionResponse MinAffectedVersion;
         /// <summary>
-        /// Required. The name of the package where the vulnerability was found.
+        /// The name of the package where the vulnerability was found.
         /// </summary>
         public readonly string Package;
         /// <summary>

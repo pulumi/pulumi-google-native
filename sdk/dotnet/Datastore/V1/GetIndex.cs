@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
     public sealed class GetIndexResult
     {
         /// <summary>
-        /// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        /// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         /// </summary>
         public readonly string Ancestor;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         /// </summary>
         public readonly string IndexId;
         /// <summary>
-        /// Required. The entity kind to which this index applies.
+        /// The entity kind to which this index applies.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Required. An ordered sequence of property names and their index attributes.
+        /// An ordered sequence of property names and their index attributes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleDatastoreAdminV1IndexedPropertyResponse> Properties;
         /// <summary>

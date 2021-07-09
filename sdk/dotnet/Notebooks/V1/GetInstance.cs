@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        /// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         /// </summary>
         public readonly string MachineType;
         /// <summary>

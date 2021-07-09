@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public Input<string>? CooldownPeriod { get; set; }
 
         /// <summary>
-        /// Required. YARN autoscaling configuration.
+        /// YARN autoscaling configuration.
         /// </summary>
-        [Input("yarnConfig")]
-        public Input<Inputs.BasicYarnAutoscalingConfigArgs>? YarnConfig { get; set; }
+        [Input("yarnConfig", required: true)]
+        public Input<Inputs.BasicYarnAutoscalingConfigArgs> YarnConfig { get; set; } = null!;
 
         public BasicAutoscalingAlgorithmArgs()
         {

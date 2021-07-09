@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     public sealed class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of the app or site this chip is linking to.
+        /// The name of the app or site this chip is linking to.
         /// </summary>
-        [Input("destinationName")]
-        public Input<string>? DestinationName { get; set; }
+        [Input("destinationName", required: true)]
+        public Input<string> DestinationName { get; set; } = null!;
 
         /// <summary>
-        /// Required. The URI of the app or site to open when the user taps the suggestion chip.
+        /// The URI of the app or site to open when the user taps the suggestion chip.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        [Input("uri", required: true)]
+        public Input<string> Uri { get; set; } = null!;
 
         public GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs()
         {

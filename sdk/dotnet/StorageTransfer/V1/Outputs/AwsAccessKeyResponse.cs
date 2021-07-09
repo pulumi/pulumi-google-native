@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
     public sealed class AwsAccessKeyResponse
     {
         /// <summary>
-        /// Required. AWS access key ID.
+        /// AWS access key ID.
         /// </summary>
         public readonly string AccessKeyId;
         /// <summary>
-        /// Required. AWS secret access key. This field is not returned in RPC responses.
+        /// AWS secret access key. This field is not returned in RPC responses.
         /// </summary>
         public readonly string SecretAccessKey;
 

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     public sealed class WeeklyScheduleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Day of the week.
+        /// Day of the week.
         /// </summary>
-        [Input("dayOfWeek")]
-        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.WeeklyScheduleDayOfWeek>? DayOfWeek { get; set; }
+        [Input("dayOfWeek", required: true)]
+        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.WeeklyScheduleDayOfWeek> DayOfWeek { get; set; } = null!;
 
         public WeeklyScheduleArgs()
         {

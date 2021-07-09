@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public readonly ImmutableArray<string> DefaultResponsePlatforms;
         /// <summary>
-        /// Required. The name of this intent.
+        /// The name of this intent.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

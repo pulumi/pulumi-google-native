@@ -37,11 +37,11 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public sealed class GetInstanceResult
     {
         /// <summary>
-        /// Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+        /// The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        /// Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Required. The type of the instance. Defaults to `PRODUCTION`.
+        /// The type of the instance. Defaults to `PRODUCTION`.
         /// </summary>
         public readonly string Type;
 

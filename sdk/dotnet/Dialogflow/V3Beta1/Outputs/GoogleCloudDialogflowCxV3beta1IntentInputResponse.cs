@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1IntentInputResponse
     {
         /// <summary>
-        /// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+        /// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
         /// </summary>
         public readonly string Intent;
 

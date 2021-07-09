@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        /// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -64,13 +64,13 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Name of the organization that the customer entity represents.
+        /// Name of the organization that the customer entity represents.
         /// </summary>
         [Output("orgDisplayName")]
         public Output<string> OrgDisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        /// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         /// </summary>
         [Output("orgPostalAddress")]
         public Output<Outputs.GoogleTypePostalAddressResponse> OrgPostalAddress { get; private set; } = null!;
@@ -151,10 +151,10 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Input<string> ChannelPartnerLinkId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        /// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
         /// </summary>
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
+        [Input("domain", required: true)]
+        public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
         /// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
@@ -163,16 +163,16 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
-        /// Required. Name of the organization that the customer entity represents.
+        /// Name of the organization that the customer entity represents.
         /// </summary>
-        [Input("orgDisplayName")]
-        public Input<string>? OrgDisplayName { get; set; }
+        [Input("orgDisplayName", required: true)]
+        public Input<string> OrgDisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        /// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         /// </summary>
-        [Input("orgPostalAddress")]
-        public Input<Inputs.GoogleTypePostalAddressArgs>? OrgPostalAddress { get; set; }
+        [Input("orgPostalAddress", required: true)]
+        public Input<Inputs.GoogleTypePostalAddressArgs> OrgPostalAddress { get; set; } = null!;
 
         /// <summary>
         /// Primary contact info.

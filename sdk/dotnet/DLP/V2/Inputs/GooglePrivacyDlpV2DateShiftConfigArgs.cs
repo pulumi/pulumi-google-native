@@ -28,16 +28,16 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2CryptoKeyArgs>? CryptoKey { get; set; }
 
         /// <summary>
-        /// Required. For example, -5 means shift date to at most 5 days back in the past.
+        /// For example, -5 means shift date to at most 5 days back in the past.
         /// </summary>
-        [Input("lowerBoundDays")]
-        public Input<int>? LowerBoundDays { get; set; }
+        [Input("lowerBoundDays", required: true)]
+        public Input<int> LowerBoundDays { get; set; } = null!;
 
         /// <summary>
-        /// Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+        /// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
         /// </summary>
-        [Input("upperBoundDays")]
-        public Input<int>? UpperBoundDays { get; set; }
+        [Input("upperBoundDays", required: true)]
+        public Input<int> UpperBoundDays { get; set; } = null!;
 
         public GooglePrivacyDlpV2DateShiftConfigArgs()
         {

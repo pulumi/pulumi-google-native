@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class FingerprintArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The layer ID of the final layer in the Docker image's v1 representation.
+        /// The layer ID of the final layer in the Docker image's v1 representation.
         /// </summary>
-        [Input("v1Name")]
-        public Input<string>? V1Name { get; set; }
+        [Input("v1Name", required: true)]
+        public Input<string> V1Name { get; set; } = null!;
 
-        [Input("v2Blob")]
+        [Input("v2Blob", required: true)]
         private InputList<string>? _v2Blob;
 
         /// <summary>
-        /// Required. The ordered list of v2 blobs that represent a given image.
+        /// The ordered list of v2 blobs that represent a given image.
         /// </summary>
         public InputList<string> V2Blob
         {

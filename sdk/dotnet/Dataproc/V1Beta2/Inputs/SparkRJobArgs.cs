@@ -58,10 +58,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public Input<Inputs.LoggingConfigArgs>? LoggingConfig { get; set; }
 
         /// <summary>
-        /// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+        /// The HCFS URI of the main R file to use as the driver. Must be a .R file.
         /// </summary>
-        [Input("mainRFileUri")]
-        public Input<string>? MainRFileUri { get; set; }
+        [Input("mainRFileUri", required: true)]
+        public Input<string> MainRFileUri { get; set; } = null!;
 
         [Input("properties")]
         private InputMap<string>? _properties;

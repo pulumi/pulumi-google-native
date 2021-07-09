@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Destination specifies where the events should be sent to.
+        /// Destination specifies where the events should be sent to.
         /// </summary>
         [Output("destination")]
         public Output<Outputs.DestinationResponse> Destination { get; private set; } = null!;
@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         /// </summary>
         [Output("matchingCriteria")]
         public Output<ImmutableArray<Outputs.MatchingCriteriaResponse>> MatchingCriteria { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        /// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -115,10 +115,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
     public sealed class TriggerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Destination specifies where the events should be sent to.
+        /// Destination specifies where the events should be sent to.
         /// </summary>
-        [Input("destination")]
-        public Input<Inputs.DestinationArgs>? Destination { get; set; }
+        [Input("destination", required: true)]
+        public Input<Inputs.DestinationArgs> Destination { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -135,11 +135,11 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("matchingCriteria")]
+        [Input("matchingCriteria", required: true)]
         private InputList<Inputs.MatchingCriteriaArgs>? _matchingCriteria;
 
         /// <summary>
-        /// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         /// </summary>
         public InputList<Inputs.MatchingCriteriaArgs> MatchingCriteria
         {
@@ -148,10 +148,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         }
 
         /// <summary>
-        /// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        /// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

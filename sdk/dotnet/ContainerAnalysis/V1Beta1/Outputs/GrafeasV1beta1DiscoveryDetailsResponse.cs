@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class GrafeasV1beta1DiscoveryDetailsResponse
     {
         /// <summary>
-        /// Required. Analysis status for the discovered resource.
+        /// Analysis status for the discovered resource.
         /// </summary>
         public readonly Outputs.DiscoveredResponse Discovered;
 

@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Required. Configuration of the study.
+        /// Configuration of the study.
         /// </summary>
         public readonly Outputs.GoogleCloudMlV1__StudyConfigResponse StudyConfig;
 

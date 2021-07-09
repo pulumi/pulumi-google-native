@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class HttpDataArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        /// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
         /// </summary>
-        [Input("listUrl")]
-        public Input<string>? ListUrl { get; set; }
+        [Input("listUrl", required: true)]
+        public Input<string> ListUrl { get; set; } = null!;
 
         public HttpDataArgs()
         {

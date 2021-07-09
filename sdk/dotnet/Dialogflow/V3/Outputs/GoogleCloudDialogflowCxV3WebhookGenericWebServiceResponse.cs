@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> RequestHeaders;
         /// <summary>
-        /// Required. The webhook URI for receiving POST requests. It must use https protocol.
+        /// The webhook URI for receiving POST requests. It must use https protocol.
         /// </summary>
         public readonly string Uri;
         /// <summary>

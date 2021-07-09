@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     public sealed class CustomLevelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. A Cloud CEL expression evaluating to a boolean.
+        /// A Cloud CEL expression evaluating to a boolean.
         /// </summary>
-        [Input("expr")]
-        public Input<Inputs.ExprArgs>? Expr { get; set; }
+        [Input("expr", required: true)]
+        public Input<Inputs.ExprArgs> Expr { get; set; } = null!;
 
         public CustomLevelArgs()
         {

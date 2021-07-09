@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public sealed class GetCanaryEvaluationResult
     {
         /// <summary>
-        /// Required. The stable version that is serving requests.
+        /// The stable version that is serving requests.
         /// </summary>
         public readonly string Control;
         /// <summary>
@@ -48,11 +48,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Required. End time for the evaluation's analysis.
+        /// End time for the evaluation's analysis.
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// Required. Labels used to filter the metrics used for a canary evaluation.
+        /// Labels used to filter the metrics used for a canary evaluation.
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse MetricLabels;
         /// <summary>
@@ -60,7 +60,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Start time for the canary evaluation's analysis.
+        /// Start time for the canary evaluation's analysis.
         /// </summary>
         public readonly string StartTime;
         /// <summary>
@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Required. The newer version that is serving requests.
+        /// The newer version that is serving requests.
         /// </summary>
         public readonly string Treatment;
         /// <summary>

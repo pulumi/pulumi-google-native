@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        /// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         /// </summary>
         public readonly string NoteName;
         /// <summary>
@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public readonly string Remediation;
         /// <summary>
-        /// Required. Immutable. The resource for which the occurrence applies.
+        /// Immutable. The resource for which the occurrence applies.
         /// </summary>
         public readonly Outputs.ResourceResponse Resource;
         /// <summary>

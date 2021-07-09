@@ -63,7 +63,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public readonly string GenerateTime;
         /// <summary>
-        /// Required. Immutable. The wrapping method to be used for incoming key material.
+        /// Immutable. The wrapping method to be used for incoming key material.
         /// </summary>
         public readonly string ImportMethod;
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+        /// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         /// </summary>
         public readonly string ProtectionLevel;
         /// <summary>

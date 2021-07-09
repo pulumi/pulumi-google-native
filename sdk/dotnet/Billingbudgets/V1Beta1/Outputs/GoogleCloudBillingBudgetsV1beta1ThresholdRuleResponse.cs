@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Outputs
         /// </summary>
         public readonly string SpendBasis;
         /// <summary>
-        /// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+        /// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
         /// </summary>
         public readonly double ThresholdPercent;
 

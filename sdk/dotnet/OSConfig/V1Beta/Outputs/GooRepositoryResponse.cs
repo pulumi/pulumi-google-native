@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
     public sealed class GooRepositoryResponse
     {
         /// <summary>
-        /// Required. The name of the repository.
+        /// The name of the repository.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The url of the repository.
+        /// The url of the repository.
         /// </summary>
         public readonly string Url;
 

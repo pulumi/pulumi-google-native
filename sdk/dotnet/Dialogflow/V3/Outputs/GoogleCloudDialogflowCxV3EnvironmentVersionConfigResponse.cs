@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
     public sealed class GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse
     {
         /// <summary>
-        /// Required. Format: projects//locations//agents//flows//versions/.
+        /// Format: projects//locations//agents//flows//versions/.
         /// </summary>
         public readonly string Version;
 

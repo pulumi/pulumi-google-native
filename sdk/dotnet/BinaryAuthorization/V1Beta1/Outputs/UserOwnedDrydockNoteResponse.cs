@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Outputs
         /// </summary>
         public readonly string DelegationServiceAccountEmail;
         /// <summary>
-        /// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+        /// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
         /// </summary>
         public readonly string NoteReference;
         /// <summary>

@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public Output<bool> DisableServing { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Display name of the datasource The maximum length is 300 characters.
+        /// Display name of the datasource The maximum length is 300 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DataSource(string name, DataSourceArgs? args = null, CustomResourceOptions? options = null)
+        public DataSource(string name, DataSourceArgs args, CustomResourceOptions? options = null)
             : base("google-native:cloudsearch/v1:DataSource", name, args ?? new DataSourceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -121,10 +121,10 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public Input<bool>? DisableServing { get; set; }
 
         /// <summary>
-        /// Required. Display name of the datasource The maximum length is 300 characters.
+        /// Display name of the datasource The maximum length is 300 characters.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         [Input("indexingServiceAccounts")]
         private InputList<string>? _indexingServiceAccounts;

@@ -40,11 +40,11 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
     public sealed class GetWorkloadResult
     {
         /// <summary>
-        /// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        /// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         /// </summary>
         public readonly string BillingAccount;
         /// <summary>
-        /// Required. Immutable. Compliance Regime associated with this workload.
+        /// Immutable. Compliance Regime associated with this workload.
         /// </summary>
         public readonly string ComplianceRegime;
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        /// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

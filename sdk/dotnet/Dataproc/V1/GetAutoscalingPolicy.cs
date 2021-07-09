@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly Outputs.InstanceGroupAutoscalingPolicyConfigResponse SecondaryWorkerConfig;
         /// <summary>
-        /// Required. Describes how the autoscaler will operate for primary workers.
+        /// Describes how the autoscaler will operate for primary workers.
         /// </summary>
         public readonly Outputs.InstanceGroupAutoscalingPolicyConfigResponse WorkerConfig;
 

@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse
     {
         /// <summary>
-        /// Required. The resource name of the KMS CryptoKey to use for unwrapping.
+        /// The resource name of the KMS CryptoKey to use for unwrapping.
         /// </summary>
         public readonly string CryptoKeyName;
         /// <summary>
-        /// Required. The wrapped data crypto key.
+        /// The wrapped data crypto key.
         /// </summary>
         public readonly string WrappedKey;
 

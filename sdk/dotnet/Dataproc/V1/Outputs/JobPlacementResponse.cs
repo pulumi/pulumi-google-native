@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> ClusterLabels;
         /// <summary>
-        /// Required. The name of the cluster where the job will be submitted.
+        /// The name of the cluster where the job will be submitted.
         /// </summary>
         public readonly string ClusterName;
         /// <summary>

@@ -18,15 +18,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly object DefaultValue;
         /// <summary>
-        /// Required. The human-readable name of the parameter, unique within the form.
+        /// The human-readable name of the parameter, unique within the form.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+        /// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
         /// </summary>
         public readonly string EntityType;
         /// <summary>
-        /// Required. Defines fill behavior for the parameter.
+        /// Defines fill behavior for the parameter.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse FillBehavior;
         /// <summary>

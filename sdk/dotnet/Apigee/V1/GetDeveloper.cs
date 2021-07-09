@@ -68,11 +68,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string DeveloperId;
         /// <summary>
-        /// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+        /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// Required. First name of the developer.
+        /// First name of the developer.
         /// </summary>
         public readonly string FirstName;
         /// <summary>
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string LastModifiedAt;
         /// <summary>
-        /// Required. Last name of the developer.
+        /// Last name of the developer.
         /// </summary>
         public readonly string LastName;
         /// <summary>
@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Required. User name of the developer. Not used by Apigee hybrid.
+        /// User name of the developer. Not used by Apigee hybrid.
         /// </summary>
         public readonly string UserName;
 

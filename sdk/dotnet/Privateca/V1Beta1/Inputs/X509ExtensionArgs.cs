@@ -16,22 +16,22 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     public sealed class X509ExtensionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        /// Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
         /// </summary>
-        [Input("critical")]
-        public Input<bool>? Critical { get; set; }
+        [Input("critical", required: true)]
+        public Input<bool> Critical { get; set; } = null!;
 
         /// <summary>
-        /// Required. The OID for this X.509 extension.
+        /// The OID for this X.509 extension.
         /// </summary>
-        [Input("objectId")]
-        public Input<Inputs.ObjectIdArgs>? ObjectId { get; set; }
+        [Input("objectId", required: true)]
+        public Input<Inputs.ObjectIdArgs> ObjectId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The value of this X.509 extension.
+        /// The value of this X.509 extension.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public X509ExtensionArgs()
         {

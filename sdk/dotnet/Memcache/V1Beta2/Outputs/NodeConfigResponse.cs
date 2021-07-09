@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2.Outputs
     public sealed class NodeConfigResponse
     {
         /// <summary>
-        /// Required. Number of cpus per Memcached node.
+        /// Number of cpus per Memcached node.
         /// </summary>
         public readonly int CpuCount;
         /// <summary>
-        /// Required. Memory size in MiB for each Memcached node.
+        /// Memory size in MiB for each Memcached node.
         /// </summary>
         public readonly int MemorySizeMb;
 

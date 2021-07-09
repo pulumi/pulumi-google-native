@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
     public sealed class GoogleCloudDialogflowCxV3TextInputResponse
     {
         /// <summary>
-        /// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+        /// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
         /// </summary>
         public readonly string Text;
 

@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<bool>? EnableTrialEarlyStopping { get; set; }
 
         /// <summary>
-        /// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+        /// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
         /// </summary>
-        [Input("goal")]
-        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__HyperparameterSpecGoal>? Goal { get; set; }
+        [Input("goal", required: true)]
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__HyperparameterSpecGoal> Goal { get; set; } = null!;
 
         /// <summary>
         /// Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
@@ -57,11 +57,11 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         [Input("maxTrials")]
         public Input<int>? MaxTrials { get; set; }
 
-        [Input("params")]
+        [Input("params", required: true)]
         private InputList<Inputs.GoogleCloudMlV1__ParameterSpecArgs>? _params;
 
         /// <summary>
-        /// Required. The set of parameters to tune.
+        /// The set of parameters to tune.
         /// </summary>
         public InputList<Inputs.GoogleCloudMlV1__ParameterSpecArgs> Params
         {

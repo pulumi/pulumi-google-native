@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Required. The resource name (URI) of the destination connection profile.
+        /// The resource name (URI) of the destination connection profile.
         /// </summary>
         public readonly string Destination;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// </summary>
         public readonly Outputs.ReverseSshConnectivityResponse ReverseSshConnectivity;
         /// <summary>
-        /// Required. The resource name (URI) of the source connection profile.
+        /// The resource name (URI) of the source connection profile.
         /// </summary>
         public readonly string Source;
         /// <summary>
@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// </summary>
         public readonly Outputs.StaticIpConnectivityResponse StaticIpConnectivity;
         /// <summary>
-        /// Required. The migration job type.
+        /// The migration job type.
         /// </summary>
         public readonly string Type;
         /// <summary>

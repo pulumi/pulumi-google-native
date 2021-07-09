@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("bigqueryImportKeys")]
+        [Input("bigqueryImportKeys", required: true)]
         private InputMap<string>? _bigqueryImportKeys;
 
         /// <summary>
-        /// Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+        /// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
         /// </summary>
         public InputMap<string> BigqueryImportKeys
         {
@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public Input<Inputs.GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs>? BoundingPolyConfig { get; set; }
 
         /// <summary>
-        /// Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+        /// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
         /// </summary>
-        [Input("evaluationConfig")]
-        public Input<Inputs.GoogleCloudDatalabelingV1beta1EvaluationConfigArgs>? EvaluationConfig { get; set; }
+        [Input("evaluationConfig", required: true)]
+        public Input<Inputs.GoogleCloudDatalabelingV1beta1EvaluationConfigArgs> EvaluationConfig { get; set; } = null!;
 
         /// <summary>
         /// Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
@@ -46,16 +46,16 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public Input<Inputs.GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs>? EvaluationJobAlertConfig { get; set; }
 
         /// <summary>
-        /// Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+        /// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
         /// </summary>
-        [Input("exampleCount")]
-        public Input<int>? ExampleCount { get; set; }
+        [Input("exampleCount", required: true)]
+        public Input<int> ExampleCount { get; set; } = null!;
 
         /// <summary>
-        /// Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+        /// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
         /// </summary>
-        [Input("exampleSamplePercentage")]
-        public Input<double>? ExampleSamplePercentage { get; set; }
+        [Input("exampleSamplePercentage", required: true)]
+        public Input<double> ExampleSamplePercentage { get; set; } = null!;
 
         /// <summary>
         /// Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.

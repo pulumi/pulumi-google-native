@@ -52,10 +52,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<Inputs.GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs>? IntegerValueSpec { get; set; }
 
         /// <summary>
-        /// Required. The parameter name must be unique amongst all ParameterSpecs.
+        /// The parameter name must be unique amongst all ParameterSpecs.
         /// </summary>
-        [Input("parameter")]
-        public Input<string>? Parameter { get; set; }
+        [Input("parameter", required: true)]
+        public Input<string> Parameter { get; set; } = null!;
 
         [Input("parentCategoricalValues")]
         public Input<Inputs.GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs>? ParentCategoricalValues { get; set; }
@@ -73,10 +73,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType>? ScaleType { get; set; }
 
         /// <summary>
-        /// Required. The type of the parameter.
+        /// The type of the parameter.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1_StudyConfig_ParameterSpecType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1_StudyConfig_ParameterSpecType> Type { get; set; } = null!;
 
         public GoogleCloudMlV1_StudyConfig_ParameterSpecArgs()
         {

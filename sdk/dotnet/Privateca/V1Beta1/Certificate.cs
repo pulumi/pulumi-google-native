@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+        /// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
         /// </summary>
         [Output("lifetime")]
         public Output<string> Lifetime { get; private set; } = null!;
@@ -151,10 +151,10 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         }
 
         /// <summary>
-        /// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+        /// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
         /// </summary>
-        [Input("lifetime")]
-        public Input<string>? Lifetime { get; set; }
+        [Input("lifetime", required: true)]
+        public Input<string> Lifetime { get; set; } = null!;
 
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

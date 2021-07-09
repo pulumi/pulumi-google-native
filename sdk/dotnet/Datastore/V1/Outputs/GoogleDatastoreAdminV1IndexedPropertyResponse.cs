@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Datastore.V1.Outputs
     public sealed class GoogleDatastoreAdminV1IndexedPropertyResponse
     {
         /// <summary>
-        /// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+        /// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
         /// </summary>
         public readonly string Direction;
         /// <summary>
-        /// Required. The property name to index.
+        /// The property name to index.
         /// </summary>
         public readonly string Name;
 

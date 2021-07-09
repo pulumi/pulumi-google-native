@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse
     {
         /// <summary>
-        /// Required. The HTTP or HTTPS scheme URI.
+        /// The HTTP or HTTPS scheme URI.
         /// </summary>
         public readonly string Uri;
 

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
     public sealed class HttpDataResponse
     {
         /// <summary>
-        /// Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        /// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
         /// </summary>
         public readonly string ListUrl;
 

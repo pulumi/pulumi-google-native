@@ -79,10 +79,10 @@ namespace Pulumi.GoogleNative.DLP.V2
     public sealed class StoredInfoTypeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Configuration of the storedInfoType to create.
+        /// Configuration of the storedInfoType to create.
         /// </summary>
-        [Input("config")]
-        public Input<Inputs.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>? Config { get; set; }
+        [Input("config", required: true)]
+        public Input<Inputs.GooglePrivacyDlpV2StoredInfoTypeConfigArgs> Config { get; set; } = null!;
 
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

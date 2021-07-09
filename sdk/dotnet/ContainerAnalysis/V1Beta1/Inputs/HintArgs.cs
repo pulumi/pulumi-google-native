@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class HintArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The human readable name of this attestation authority, for example "qa".
+        /// The human readable name of this attestation authority, for example "qa".
         /// </summary>
-        [Input("humanReadableName")]
-        public Input<string>? HumanReadableName { get; set; }
+        [Input("humanReadableName", required: true)]
+        public Input<string> HumanReadableName { get; set; } = null!;
 
         public HintArgs()
         {

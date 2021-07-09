@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public partial class CanaryEvaluation : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The stable version that is serving requests.
+        /// The stable version that is serving requests.
         /// </summary>
         [Output("control")]
         public Output<string> Control { get; private set; } = null!;
@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. End time for the evaluation's analysis.
+        /// End time for the evaluation's analysis.
         /// </summary>
         [Output("endTime")]
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Labels used to filter the metrics used for a canary evaluation.
+        /// Labels used to filter the metrics used for a canary evaluation.
         /// </summary>
         [Output("metricLabels")]
         public Output<Outputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse> MetricLabels { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Start time for the canary evaluation's analysis.
+        /// Start time for the canary evaluation's analysis.
         /// </summary>
         [Output("startTime")]
         public Output<string> StartTime { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The newer version that is serving requests.
+        /// The newer version that is serving requests.
         /// </summary>
         [Output("treatment")]
         public Output<string> Treatment { get; private set; } = null!;
@@ -115,40 +115,40 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public sealed class CanaryEvaluationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The stable version that is serving requests.
+        /// The stable version that is serving requests.
         /// </summary>
-        [Input("control")]
-        public Input<string>? Control { get; set; }
+        [Input("control", required: true)]
+        public Input<string> Control { get; set; } = null!;
 
         /// <summary>
-        /// Required. End time for the evaluation's analysis.
+        /// End time for the evaluation's analysis.
         /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
+        [Input("endTime", required: true)]
+        public Input<string> EndTime { get; set; } = null!;
 
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Labels used to filter the metrics used for a canary evaluation.
+        /// Labels used to filter the metrics used for a canary evaluation.
         /// </summary>
-        [Input("metricLabels")]
-        public Input<Inputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>? MetricLabels { get; set; }
+        [Input("metricLabels", required: true)]
+        public Input<Inputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs> MetricLabels { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Start time for the canary evaluation's analysis.
+        /// Start time for the canary evaluation's analysis.
         /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
+        [Input("startTime", required: true)]
+        public Input<string> StartTime { get; set; } = null!;
 
         /// <summary>
-        /// Required. The newer version that is serving requests.
+        /// The newer version that is serving requests.
         /// </summary>
-        [Input("treatment")]
-        public Input<string>? Treatment { get; set; }
+        [Input("treatment", required: true)]
+        public Input<string> Treatment { get; set; } = null!;
 
         public CanaryEvaluationArgs()
         {

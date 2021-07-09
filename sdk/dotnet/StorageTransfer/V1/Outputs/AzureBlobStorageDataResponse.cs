@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
     public sealed class AzureBlobStorageDataResponse
     {
         /// <summary>
-        /// Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        /// Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         /// </summary>
         public readonly Outputs.AzureCredentialsResponse AzureCredentials;
         /// <summary>
-        /// Required. The container to transfer from the Azure Storage account.
+        /// The container to transfer from the Azure Storage account.
         /// </summary>
         public readonly string Container;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// Required. The name of the Azure Storage account.
+        /// The name of the Azure Storage account.
         /// </summary>
         public readonly string StorageAccount;
 

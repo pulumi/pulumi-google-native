@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.PublicKeyResponse PublicKey;
         /// <summary>
-        /// Required. Describes how some of the technical fields in a certificate should be populated.
+        /// Describes how some of the technical fields in a certificate should be populated.
         /// </summary>
         public readonly Outputs.ReusableConfigWrapperResponse ReusableConfig;
         /// <summary>
-        /// Required. Specifies some of the values in a certificate that are related to the subject.
+        /// Specifies some of the values in a certificate that are related to the subject.
         /// </summary>
         public readonly Outputs.SubjectConfigResponse SubjectConfig;
 

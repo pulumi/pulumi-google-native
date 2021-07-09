@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudDatacatalogV1beta1SchemaArgs : Pulumi.ResourceArgs
     {
-        [Input("columns")]
+        [Input("columns", required: true)]
         private InputList<Inputs.GoogleCloudDatacatalogV1beta1ColumnSchemaArgs>? _columns;
 
         /// <summary>
-        /// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+        /// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
         /// </summary>
         public InputList<Inputs.GoogleCloudDatacatalogV1beta1ColumnSchemaArgs> Columns
         {

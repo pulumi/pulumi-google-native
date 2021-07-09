@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse
     {
         /// <summary>
-        /// Required. A unique key that will be sent back to the agent if this response is given.
+        /// A unique key that will be sent back to the agent if this response is given.
         /// </summary>
         public readonly string Key;
         /// <summary>

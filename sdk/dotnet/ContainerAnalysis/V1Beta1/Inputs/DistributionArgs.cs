@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.DistributionArchitecture>? Architecture { get; set; }
 
         /// <summary>
-        /// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         /// </summary>
-        [Input("cpeUri")]
-        public Input<string>? CpeUri { get; set; }
+        [Input("cpeUri", required: true)]
+        public Input<string> CpeUri { get; set; } = null!;
 
         /// <summary>
         /// The distribution channel-specific description of this package.

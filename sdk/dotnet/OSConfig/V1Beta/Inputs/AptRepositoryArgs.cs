@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         [Input("archiveType")]
         public Input<Pulumi.GoogleNative.OSConfig.V1Beta.AptRepositoryArchiveType>? ArchiveType { get; set; }
 
-        [Input("components")]
+        [Input("components", required: true)]
         private InputList<string>? _components;
 
         /// <summary>
-        /// Required. List of components for this repository. Must contain at least one item.
+        /// List of components for this repository. Must contain at least one item.
         /// </summary>
         public InputList<string> Components
         {
@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         }
 
         /// <summary>
-        /// Required. Distribution of this repository.
+        /// Distribution of this repository.
         /// </summary>
-        [Input("distribution")]
-        public Input<string>? Distribution { get; set; }
+        [Input("distribution", required: true)]
+        public Input<string> Distribution { get; set; } = null!;
 
         /// <summary>
         /// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
@@ -46,10 +46,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public Input<string>? GpgKey { get; set; }
 
         /// <summary>
-        /// Required. URI for this repository.
+        /// URI for this repository.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        [Input("uri", required: true)]
+        public Input<string> Uri { get; set; } = null!;
 
         public AptRepositoryArgs()
         {

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse
     {
         /// <summary>
-        /// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+        /// Account number of the LivePerson account to connect. This is the account number you input at the login page.
         /// </summary>
         public readonly string AccountNumber;
 

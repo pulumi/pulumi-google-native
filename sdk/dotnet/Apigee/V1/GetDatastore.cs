@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1DatastoreConfigResponse DatastoreConfig;
         /// <summary>
-        /// Required. Display name in UI
+        /// Display name in UI
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

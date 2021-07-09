@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+        /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         /// </summary>
         public readonly string Name;
         /// <summary>

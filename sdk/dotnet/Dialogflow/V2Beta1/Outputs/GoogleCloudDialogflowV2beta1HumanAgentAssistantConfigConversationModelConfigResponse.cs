@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse
     {
         /// <summary>
-        /// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+        /// Conversation model resource name. Format: `projects//conversationModels/`.
         /// </summary>
         public readonly string Model;
 

@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The display name of the dataset. Maximum of 64 characters.
+        /// The display name of the dataset. Maximum of 64 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -115,10 +115,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The display name of the dataset. Maximum of 64 characters.
+        /// The display name of the dataset. Maximum of 64 characters.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.

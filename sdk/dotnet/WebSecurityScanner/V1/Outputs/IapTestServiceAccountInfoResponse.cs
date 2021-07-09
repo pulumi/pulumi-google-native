@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Outputs
     public sealed class IapTestServiceAccountInfoResponse
     {
         /// <summary>
-        /// Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+        /// Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
         /// </summary>
         public readonly string TargetAudienceClientId;
 

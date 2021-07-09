@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
     public sealed class GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse
     {
         /// <summary>
-        /// Required. The word or phrase to be excluded.
+        /// The word or phrase to be excluded.
         /// </summary>
         public readonly string Value;
 

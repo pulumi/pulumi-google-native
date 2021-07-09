@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<Outputs.PigJobResponse> PigJob { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Job information, including how, when, and where to run the job.
+        /// Job information, including how, when, and where to run the job.
         /// </summary>
         [Output("placement")]
         public Output<Outputs.JobPlacementResponse> Placement { get; private set; } = null!;
@@ -205,10 +205,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Input<Inputs.PigJobArgs>? PigJob { get; set; }
 
         /// <summary>
-        /// Required. Job information, including how, when, and where to run the job.
+        /// Job information, including how, when, and where to run the job.
         /// </summary>
-        [Input("placement")]
-        public Input<Inputs.JobPlacementArgs>? Placement { get; set; }
+        [Input("placement", required: true)]
+        public Input<Inputs.JobPlacementArgs> Placement { get; set; } = null!;
 
         /// <summary>
         /// Optional. Job is a Presto job.

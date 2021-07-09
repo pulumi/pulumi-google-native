@@ -81,11 +81,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Limit;
         /// <summary>
-        /// Required. This contains the list of metrics
+        /// This contains the list of metrics
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudApigeeV1CustomReportMetricResponse> Metrics;
         /// <summary>
-        /// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+        /// Unique identifier for the report T his is a legacy field used to encode custom report unique id
         /// </summary>
         public readonly string Name;
         /// <summary>

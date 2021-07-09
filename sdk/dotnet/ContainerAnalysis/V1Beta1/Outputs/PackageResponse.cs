@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DistributionResponse> Distribution;
         /// <summary>
-        /// Required. Immutable. The name of the package.
+        /// Immutable. The name of the package.
         /// </summary>
         public readonly string Name;
 

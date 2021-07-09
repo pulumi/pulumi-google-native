@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public readonly string ContentUri;
         /// <summary>
-        /// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        /// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public readonly bool EnableAutoReload;
         /// <summary>
-        /// Required. The knowledge type of document content.
+        /// The knowledge type of document content.
         /// </summary>
         public readonly ImmutableArray<string> KnowledgeTypes;
         /// <summary>
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
-        /// Required. The MIME type of this document.
+        /// The MIME type of this document.
         /// </summary>
         public readonly string MimeType;
         /// <summary>

@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     public sealed class GetClusterResult
     {
         /// <summary>
-        /// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        /// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         public readonly string ClusterUuid;
         /// <summary>
-        /// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        /// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
         /// </summary>
         public readonly Outputs.ClusterConfigResponse Config;
         /// <summary>
@@ -60,7 +60,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         public readonly Outputs.ClusterMetricsResponse Metrics;
         /// <summary>
-        /// Required. The Google Cloud Platform project ID that the cluster belongs to.
+        /// The Google Cloud Platform project ID that the cluster belongs to.
         /// </summary>
         public readonly string Project;
         /// <summary>

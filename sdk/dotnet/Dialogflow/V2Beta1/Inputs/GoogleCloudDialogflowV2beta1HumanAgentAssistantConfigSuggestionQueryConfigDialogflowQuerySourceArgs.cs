@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+        /// The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
         /// </summary>
-        [Input("agent")]
-        public Input<string>? Agent { get; set; }
+        [Input("agent", required: true)]
+        public Input<string> Agent { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs()
         {

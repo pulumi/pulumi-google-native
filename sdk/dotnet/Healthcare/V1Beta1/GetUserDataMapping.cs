@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public readonly bool Archived;
         /// <summary>
-        /// Required. A unique identifier for the mapped resource.
+        /// A unique identifier for the mapped resource.
         /// </summary>
         public readonly string DataId;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public readonly ImmutableArray<Outputs.AttributeResponse> ResourceAttributes;
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
         public readonly string UserId;
 

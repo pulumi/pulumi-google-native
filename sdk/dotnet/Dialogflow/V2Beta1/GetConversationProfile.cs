@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Required. Human readable name for this profile. Max length 1024 bytes.
+        /// Human readable name for this profile. Max length 1024 bytes.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse
     {
         /// <summary>
-        /// Required. The text shown the in the suggestion chip.
+        /// The text shown the in the suggestion chip.
         /// </summary>
         public readonly string Title;
 

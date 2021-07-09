@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Translate.V3.Outputs
     public sealed class GcsSourceResponse
     {
         /// <summary>
-        /// Required. Source data URI. For example, `gs://my_bucket/my_object`.
+        /// Source data URI. For example, `gs://my_bucket/my_object`.
         /// </summary>
         public readonly string InputUri;
 

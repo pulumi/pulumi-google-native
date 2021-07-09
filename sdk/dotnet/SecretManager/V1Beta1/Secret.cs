@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        /// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         /// </summary>
         [Output("replication")]
         public Output<Outputs.ReplicationResponse> Replication { get; private set; } = null!;
@@ -100,10 +100,10 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        /// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         /// </summary>
-        [Input("replication")]
-        public Input<Inputs.ReplicationArgs>? Replication { get; set; }
+        [Input("replication", required: true)]
+        public Input<Inputs.ReplicationArgs> Replication { get; set; } = null!;
 
         [Input("secretId", required: true)]
         public Input<string> SecretId { get; set; } = null!;

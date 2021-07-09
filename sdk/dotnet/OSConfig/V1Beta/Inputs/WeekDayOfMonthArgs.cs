@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     public sealed class WeekDayOfMonthArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. A day of the week.
+        /// A day of the week.
         /// </summary>
-        [Input("dayOfWeek")]
-        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.WeekDayOfMonthDayOfWeek>? DayOfWeek { get; set; }
+        [Input("dayOfWeek", required: true)]
+        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.WeekDayOfMonthDayOfWeek> DayOfWeek { get; set; } = null!;
 
         /// <summary>
-        /// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        /// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         /// </summary>
-        [Input("weekOrdinal")]
-        public Input<int>? WeekOrdinal { get; set; }
+        [Input("weekOrdinal", required: true)]
+        public Input<int> WeekOrdinal { get; set; } = null!;
 
         public WeekDayOfMonthArgs()
         {

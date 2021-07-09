@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        /// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse> VersionConfigs;
 

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
     public sealed class AllowedConfigListResponse
     {
         /// <summary>
-        /// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+        /// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
         /// </summary>
         public readonly ImmutableArray<Outputs.ReusableConfigWrapperResponse> AllowedConfigValues;
 

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name (URI) of the destination connection profile.
+        /// The resource name (URI) of the destination connection profile.
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public Output<Outputs.ReverseSshConnectivityResponse> ReverseSshConnectivity { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name (URI) of the source connection profile.
+        /// The resource name (URI) of the source connection profile.
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public Output<Outputs.StaticIpConnectivityResponse> StaticIpConnectivity { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The migration job type.
+        /// The migration job type.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -175,10 +175,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
     public sealed class MigrationJobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The resource name (URI) of the destination connection profile.
+        /// The resource name (URI) of the destination connection profile.
         /// </summary>
-        [Input("destination")]
-        public Input<string>? Destination { get; set; }
+        [Input("destination", required: true)]
+        public Input<string> Destination { get; set; } = null!;
 
         /// <summary>
         /// The database engine type and provider of the destination.
@@ -235,10 +235,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public Input<Inputs.ReverseSshConnectivityArgs>? ReverseSshConnectivity { get; set; }
 
         /// <summary>
-        /// Required. The resource name (URI) of the source connection profile.
+        /// The resource name (URI) of the source connection profile.
         /// </summary>
-        [Input("source")]
-        public Input<string>? Source { get; set; }
+        [Input("source", required: true)]
+        public Input<string> Source { get; set; } = null!;
 
         /// <summary>
         /// The database engine type and provider of the source.
@@ -259,10 +259,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public Input<Inputs.StaticIpConnectivityArgs>? StaticIpConnectivity { get; set; }
 
         /// <summary>
-        /// Required. The migration job type.
+        /// The migration job type.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.MigrationJobType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.MigrationJobType> Type { get; set; } = null!;
 
         /// <summary>
         /// The details of the VPC network that the source database is located in.

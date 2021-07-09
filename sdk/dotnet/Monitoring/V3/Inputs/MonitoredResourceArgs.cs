@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// </summary>
     public sealed class MonitoredResourceArgs : Pulumi.ResourceArgs
     {
-        [Input("labels")]
+        [Input("labels", required: true)]
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+        /// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
         /// </summary>
         public InputMap<string> Labels
         {
@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         }
 
         /// <summary>
-        /// Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+        /// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public MonitoredResourceArgs()
         {

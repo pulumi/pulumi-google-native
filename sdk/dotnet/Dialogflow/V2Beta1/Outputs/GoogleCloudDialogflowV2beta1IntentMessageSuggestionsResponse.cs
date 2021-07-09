@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse
     {
         /// <summary>
-        /// Required. The list of suggested replies.
+        /// The list of suggested replies.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse> Suggestions;
 

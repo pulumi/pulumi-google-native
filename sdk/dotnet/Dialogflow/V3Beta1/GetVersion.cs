@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The human-readable name of the version. Limit of 64 characters.
+        /// The human-readable name of the version. Limit of 64 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

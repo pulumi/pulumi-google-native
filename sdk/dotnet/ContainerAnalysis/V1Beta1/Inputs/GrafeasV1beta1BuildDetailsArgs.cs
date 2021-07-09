@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class GrafeasV1beta1BuildDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The actual provenance for the build.
+        /// The actual provenance for the build.
         /// </summary>
-        [Input("provenance")]
-        public Input<Inputs.BuildProvenanceArgs>? Provenance { get; set; }
+        [Input("provenance", required: true)]
+        public Input<Inputs.BuildProvenanceArgs> Provenance { get; set; } = null!;
 
         /// <summary>
         /// Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.

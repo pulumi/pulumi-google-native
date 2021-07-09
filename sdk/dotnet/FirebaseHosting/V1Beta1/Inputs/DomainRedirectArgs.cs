@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Inputs
     public sealed class DomainRedirectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The domain name to redirect to.
+        /// The domain name to redirect to.
         /// </summary>
-        [Input("domainName")]
-        public Input<string>? DomainName { get; set; }
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Required. The redirect status code.
+        /// The redirect status code.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.FirebaseHosting.V1Beta1.DomainRedirectType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.FirebaseHosting.V1Beta1.DomainRedirectType> Type { get; set; } = null!;
 
         public DomainRedirectArgs()
         {

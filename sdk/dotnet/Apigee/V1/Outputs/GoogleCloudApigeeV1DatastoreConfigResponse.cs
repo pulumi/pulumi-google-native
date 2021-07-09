@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// Required. GCP project in which the datastore exists
+        /// GCP project in which the datastore exists
         /// </summary>
         public readonly string Project;
         /// <summary>

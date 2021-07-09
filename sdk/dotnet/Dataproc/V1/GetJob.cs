@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly Outputs.PigJobResponse PigJob;
         /// <summary>
-        /// Required. Job information, including how, when, and where to run the job.
+        /// Job information, including how, when, and where to run the job.
         /// </summary>
         public readonly Outputs.JobPlacementResponse Placement;
         /// <summary>

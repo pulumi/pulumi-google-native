@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
     public sealed class ToolResultsHistoryResponse
     {
         /// <summary>
-        /// Required. A tool results history ID.
+        /// A tool results history ID.
         /// </summary>
         public readonly string HistoryId;
         /// <summary>
-        /// Required. The cloud project that owns the tool results history.
+        /// The cloud project that owns the tool results history.
         /// </summary>
         public readonly string Project;
 

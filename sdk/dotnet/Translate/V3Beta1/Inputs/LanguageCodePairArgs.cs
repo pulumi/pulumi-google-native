@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1.Inputs
     public sealed class LanguageCodePairArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+        /// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
         /// </summary>
-        [Input("sourceLanguageCode")]
-        public Input<string>? SourceLanguageCode { get; set; }
+        [Input("sourceLanguageCode", required: true)]
+        public Input<string> SourceLanguageCode { get; set; } = null!;
 
         /// <summary>
-        /// Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+        /// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
         /// </summary>
-        [Input("targetLanguageCode")]
-        public Input<string>? TargetLanguageCode { get; set; }
+        [Input("targetLanguageCode", required: true)]
+        public Input<string> TargetLanguageCode { get; set; } = null!;
 
         public LanguageCodePairArgs()
         {

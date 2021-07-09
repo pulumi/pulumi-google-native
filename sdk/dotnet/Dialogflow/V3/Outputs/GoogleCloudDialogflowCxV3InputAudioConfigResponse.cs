@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
     public sealed class GoogleCloudDialogflowCxV3InputAudioConfigResponse
     {
         /// <summary>
-        /// Required. Audio encoding of the audio content to process.
+        /// Audio encoding of the audio content to process.
         /// </summary>
         public readonly string AudioEncoding;
         /// <summary>

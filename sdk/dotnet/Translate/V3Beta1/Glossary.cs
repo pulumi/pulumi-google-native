@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         public Output<int> EntryCount { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+        /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
         /// </summary>
         [Output("inputConfig")]
         public Output<Outputs.GlossaryInputConfigResponse> InputConfig { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         public Output<Outputs.LanguageCodePairResponse> LanguagePair { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+        /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -103,10 +103,10 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
     public sealed class GlossaryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+        /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
         /// </summary>
-        [Input("inputConfig")]
-        public Input<Inputs.GlossaryInputConfigArgs>? InputConfig { get; set; }
+        [Input("inputConfig", required: true)]
+        public Input<Inputs.GlossaryInputConfigArgs> InputConfig { get; set; } = null!;
 
         /// <summary>
         /// Used with equivalent term set glossaries.
@@ -124,10 +124,10 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+        /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

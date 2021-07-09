@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
     public sealed class AwsS3DataResponse
     {
         /// <summary>
-        /// Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        /// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         /// </summary>
         public readonly Outputs.AwsAccessKeyResponse AwsAccessKey;
         /// <summary>
-        /// Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+        /// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         /// </summary>
         public readonly string BucketName;
         /// <summary>

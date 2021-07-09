@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         [Input("chartOptions")]
         public Input<Inputs.ChartOptionsArgs>? ChartOptions { get; set; }
 
-        [Input("dataSets")]
+        [Input("dataSets", required: true)]
         private InputList<Inputs.DataSetArgs>? _dataSets;
 
         /// <summary>
-        /// Required. The data displayed in this chart.
+        /// The data displayed in this chart.
         /// </summary>
         public InputList<Inputs.DataSetArgs> DataSets
         {

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
         /// </summary>
         public readonly string MountPoint;
         /// <summary>
-        /// Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+        /// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
         /// </summary>
         public readonly string Source;
         /// <summary>
-        /// Required. The type of the disk to create.
+        /// The type of the disk to create.
         /// </summary>
         public readonly string Type;
 

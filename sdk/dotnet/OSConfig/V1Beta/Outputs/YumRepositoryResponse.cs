@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
     public sealed class YumRepositoryResponse
     {
         /// <summary>
-        /// Required. The location of the repository directory.
+        /// The location of the repository directory.
         /// </summary>
         public readonly string BaseUrl;
         /// <summary>

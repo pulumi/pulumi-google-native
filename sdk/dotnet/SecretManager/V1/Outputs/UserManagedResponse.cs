@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Outputs
     public sealed class UserManagedResponse
     {
         /// <summary>
-        /// Required. The list of Replicas for this Secret. Cannot be empty.
+        /// The list of Replicas for this Secret. Cannot be empty.
         /// </summary>
         public readonly ImmutableArray<Outputs.ReplicaResponse> Replicas;
 

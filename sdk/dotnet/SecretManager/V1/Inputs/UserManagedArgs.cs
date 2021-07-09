@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
     /// </summary>
     public sealed class UserManagedArgs : Pulumi.ResourceArgs
     {
-        [Input("replicas")]
+        [Input("replicas", required: true)]
         private InputList<Inputs.ReplicaArgs>? _replicas;
 
         /// <summary>
-        /// Required. The list of Replicas for this Secret. Cannot be empty.
+        /// The list of Replicas for this Secret. Cannot be empty.
         /// </summary>
         public InputList<Inputs.ReplicaArgs> Replicas
         {

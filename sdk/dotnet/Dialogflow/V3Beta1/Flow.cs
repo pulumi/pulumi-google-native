@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The human-readable name of the flow.
+        /// The human-readable name of the flow.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -112,10 +112,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The human-readable name of the flow.
+        /// The human-readable name of the flow.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         [Input("eventHandlers")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EventHandlerArgs>? _eventHandlers;

@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Outputs
     public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
     {
         /// <summary>
-        /// Required. The maximum product price.
+        /// The maximum product price.
         /// </summary>
         public readonly double Max;
         /// <summary>
-        /// Required. The minimum product price.
+        /// The minimum product price.
         /// </summary>
         public readonly double Min;
 

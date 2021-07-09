@@ -52,13 +52,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> LastModifiedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Compute Engine location where the instance resides.
+        /// Compute Engine location where the instance resides.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        /// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -148,16 +148,16 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? Environments { get; set; }
 
         /// <summary>
-        /// Required. Compute Engine location where the instance resides.
+        /// Compute Engine location where the instance resides.
         /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        /// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

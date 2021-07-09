@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         /// </summary>
         public readonly Outputs.NetworkConfigResponse NetworkConfig;
         /// <summary>
-        /// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+        /// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         /// </summary>
         public readonly string Region;
         /// <summary>

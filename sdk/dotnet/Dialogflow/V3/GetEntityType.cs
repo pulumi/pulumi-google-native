@@ -50,7 +50,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly string AutoExpansionMode;
         /// <summary>
-        /// Required. The human-readable name of the entity type, unique within the agent.
+        /// The human-readable name of the entity type, unique within the agent.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse> ExcludedPhrases;
         /// <summary>
-        /// Required. Indicates the kind of entity type.
+        /// Indicates the kind of entity type.
         /// </summary>
         public readonly string Kind;
         /// <summary>

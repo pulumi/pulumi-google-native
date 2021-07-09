@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         public readonly Outputs.ApplicationInfoResponse ApplicationInfo;
         /// <summary>
-        /// Required. The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
+        /// The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
         /// </summary>
         public readonly string Company;
         /// <summary>
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         public readonly Outputs.JobDerivedInfoResponse DerivedInfo;
         /// <summary>
-        /// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+        /// The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -144,7 +144,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         public readonly string Qualifications;
         /// <summary>
-        /// Required. The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
+        /// The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
         /// </summary>
         public readonly string RequisitionId;
         /// <summary>
@@ -152,7 +152,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         public readonly string Responsibilities;
         /// <summary>
-        /// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+        /// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         /// </summary>
         public readonly string Title;
 

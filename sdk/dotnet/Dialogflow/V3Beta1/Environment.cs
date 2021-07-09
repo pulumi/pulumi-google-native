@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        /// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         /// </summary>
         [Output("versionConfigs")]
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>> VersionConfigs { get; private set; } = null!;
@@ -100,10 +100,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        /// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -117,11 +117,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("versionConfigs")]
+        [Input("versionConfigs", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>? _versionConfigs;
 
         /// <summary>
-        /// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs> VersionConfigs
         {

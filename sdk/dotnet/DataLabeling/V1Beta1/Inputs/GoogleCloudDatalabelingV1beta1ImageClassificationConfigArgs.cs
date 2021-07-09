@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public Input<bool>? AllowMultiLabel { get; set; }
 
         /// <summary>
-        /// Required. Annotation spec set resource name.
+        /// Annotation spec set resource name.
         /// </summary>
-        [Input("annotationSpecSet")]
-        public Input<string>? AnnotationSpecSet { get; set; }
+        [Input("annotationSpecSet", required: true)]
+        public Input<string> AnnotationSpecSet { get; set; } = null!;
 
         /// <summary>
         /// Optional. The type of how to aggregate answers.

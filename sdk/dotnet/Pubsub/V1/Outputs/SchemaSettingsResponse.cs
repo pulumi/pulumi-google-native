@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         /// </summary>
         public readonly string Encoding;
         /// <summary>
-        /// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+        /// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         /// </summary>
         public readonly string Schema;
 

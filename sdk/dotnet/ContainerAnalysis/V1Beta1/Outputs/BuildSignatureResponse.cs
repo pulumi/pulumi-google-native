@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly string PublicKey;
         /// <summary>
-        /// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+        /// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
         /// </summary>
         public readonly string Signature;
 

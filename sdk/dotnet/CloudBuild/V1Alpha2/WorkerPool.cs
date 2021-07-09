@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         public Output<Outputs.NetworkConfigResponse> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+        /// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -118,10 +118,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+        /// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// Worker configuration for the `WorkerPool`.

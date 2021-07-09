@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
         public Input<string>? MountPoint { get; set; }
 
         /// <summary>
-        /// Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+        /// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
@@ -46,10 +46,10 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// Required. The type of the disk to create.
+        /// The type of the disk to create.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.Genomics.V1Alpha2.DiskType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.Genomics.V1Alpha2.DiskType> Type { get; set; } = null!;
 
         public DiskArgs()
         {

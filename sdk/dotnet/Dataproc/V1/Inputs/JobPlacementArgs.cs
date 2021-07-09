@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         }
 
         /// <summary>
-        /// Required. The name of the cluster where the job will be submitted.
+        /// The name of the cluster where the job will be submitted.
         /// </summary>
-        [Input("clusterName")]
-        public Input<string>? ClusterName { get; set; }
+        [Input("clusterName", required: true)]
+        public Input<string> ClusterName { get; set; } = null!;
 
         public JobPlacementArgs()
         {

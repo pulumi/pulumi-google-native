@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        /// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -100,10 +100,10 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        /// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.

@@ -16,19 +16,19 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     public partial class SessionEntityType : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The collection of entities associated with this session entity type.
+        /// The collection of entities associated with this session entity type.
         /// </summary>
         [Output("entities")]
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowV2EntityTypeEntityResponse>> Entities { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        /// Indicates whether the additional data should override or supplement the custom entity type definition.
         /// </summary>
         [Output("entityOverrideMode")]
         public Output<string> EntityOverrideMode { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
+        /// The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -78,11 +78,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
 
     public sealed class SessionEntityTypeArgs : Pulumi.ResourceArgs
     {
-        [Input("entities")]
+        [Input("entities", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2EntityTypeEntityArgs>? _entities;
 
         /// <summary>
-        /// Required. The collection of entities associated with this session entity type.
+        /// The collection of entities associated with this session entity type.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowV2EntityTypeEntityArgs> Entities
         {
@@ -91,10 +91,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         }
 
         /// <summary>
-        /// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        /// Indicates whether the additional data should override or supplement the custom entity type definition.
         /// </summary>
-        [Input("entityOverrideMode")]
-        public Input<Pulumi.GoogleNative.Dialogflow.V2.SessionEntityTypeEntityOverrideMode>? EntityOverrideMode { get; set; }
+        [Input("entityOverrideMode", required: true)]
+        public Input<Pulumi.GoogleNative.Dialogflow.V2.SessionEntityTypeEntityOverrideMode> EntityOverrideMode { get; set; } = null!;
 
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -103,10 +103,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
+        /// The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2RecordConditionResponse Condition;
         /// <summary>
-        /// Required. Input field(s) to apply the transformation to.
+        /// Input field(s) to apply the transformation to.
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2FieldIdResponse> Fields;
         /// <summary>

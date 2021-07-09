@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// </summary>
         public readonly string EntityType;
         /// <summary>
-        /// Required. The text for this part.
+        /// The text for this part.
         /// </summary>
         public readonly string Text;
         /// <summary>

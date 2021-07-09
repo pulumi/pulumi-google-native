@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
     public sealed class GetOrganizationContactResult
     {
         /// <summary>
-        /// Required. The email address to send notifications to. This does not need to be a Google account.
+        /// The email address to send notifications to. This does not need to be a Google account.
         /// </summary>
         public readonly string Email;
         /// <summary>

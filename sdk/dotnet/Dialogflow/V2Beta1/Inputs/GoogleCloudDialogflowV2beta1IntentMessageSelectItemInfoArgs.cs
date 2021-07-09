@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. A unique key that will be sent back to the agent if this response is given.
+        /// A unique key that will be sent back to the agent if this response is given.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         [Input("synonyms")]
         private InputList<string>? _synonyms;

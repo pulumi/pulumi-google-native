@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// Required. Resource ID of the NAT address.
+        /// Resource ID of the NAT address.
         /// </summary>
         public readonly string Name;
         /// <summary>

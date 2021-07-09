@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1.Inputs
         public Input<string>? Data { get; set; }
 
         /// <summary>
-        /// Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+        /// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
         /// </summary>
-        [Input("topicName")]
-        public Input<string>? TopicName { get; set; }
+        [Input("topicName", required: true)]
+        public Input<string> TopicName { get; set; } = null!;
 
         public PubsubTargetArgs()
         {

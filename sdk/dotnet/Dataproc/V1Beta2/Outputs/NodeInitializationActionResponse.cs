@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
     public sealed class NodeInitializationActionResponse
     {
         /// <summary>
-        /// Required. Cloud Storage URI of executable file.
+        /// Cloud Storage URI of executable file.
         /// </summary>
         public readonly string ExecutableFile;
         /// <summary>

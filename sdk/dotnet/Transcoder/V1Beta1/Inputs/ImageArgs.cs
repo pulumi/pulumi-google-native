@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         public Input<Inputs.NormalizedCoordinateArgs>? Resolution { get; set; }
 
         /// <summary>
-        /// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        /// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        [Input("uri", required: true)]
+        public Input<string> Uri { get; set; } = null!;
 
         public ImageArgs()
         {

@@ -39,11 +39,11 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
             set => _metrics = value;
         }
 
-        [Input("parameters")]
+        [Input("parameters", required: true)]
         private InputList<Inputs.GoogleCloudMlV1_StudyConfig_ParameterSpecArgs>? _parameters;
 
         /// <summary>
-        /// Required. The set of parameters to tune.
+        /// The set of parameters to tune.
         /// </summary>
         public InputList<Inputs.GoogleCloudMlV1_StudyConfig_ParameterSpecArgs> Parameters
         {

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
     public sealed class UniformShardingResponse
     {
         /// <summary>
-        /// Required. Total number of shards. When any physical devices are selected, the number must be &gt;= 1 and &lt;= 50. When no physical devices are selected, the number must be &gt;= 1 and &lt;= 500.
+        /// Total number of shards. When any physical devices are selected, the number must be &gt;= 1 and &lt;= 50. When no physical devices are selected, the number must be &gt;= 1 and &lt;= 500.
         /// </summary>
         public readonly int NumShards;
 

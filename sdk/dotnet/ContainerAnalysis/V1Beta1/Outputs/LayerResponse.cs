@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly string Arguments;
         /// <summary>
-        /// Required. The recovered Dockerfile directive used to construct this layer.
+        /// The recovered Dockerfile directive used to construct this layer.
         /// </summary>
         public readonly string Directive;
 

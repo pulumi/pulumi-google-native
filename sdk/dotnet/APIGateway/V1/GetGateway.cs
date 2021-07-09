@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1
     public sealed class GetGatewayResult
     {
         /// <summary>
-        /// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
         /// </summary>
         public readonly string ApiConfig;
         /// <summary>

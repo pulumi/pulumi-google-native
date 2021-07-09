@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
     public sealed class ObbFileResponse
     {
         /// <summary>
-        /// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+        /// Opaque Binary Blob (OBB) file(s) to install on the device.
         /// </summary>
         public readonly Outputs.FileReferenceResponse Obb;
         /// <summary>
-        /// Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        /// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
         /// </summary>
         public readonly string ObbFileName;
 

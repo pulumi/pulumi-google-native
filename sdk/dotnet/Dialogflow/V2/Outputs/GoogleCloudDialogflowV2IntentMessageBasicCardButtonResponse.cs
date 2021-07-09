@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse
     {
         /// <summary>
-        /// Required. Action to take when a user taps on the button.
+        /// Action to take when a user taps on the button.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse OpenUriAction;
         /// <summary>
-        /// Required. The title of the button.
+        /// The title of the button.
         /// </summary>
         public readonly string Title;
 

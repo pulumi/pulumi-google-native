@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowV2beta1EntityTypeEntityArgs : Pulumi.ResourceArgs
     {
-        [Input("synonyms")]
+        [Input("synonyms", required: true)]
         private InputList<string>? _synonyms;
 
         /// <summary>
-        /// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+        /// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
         /// </summary>
         public InputList<string> Synonyms
         {
@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         }
 
         /// <summary>
-        /// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+        /// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1EntityTypeEntityArgs()
         {

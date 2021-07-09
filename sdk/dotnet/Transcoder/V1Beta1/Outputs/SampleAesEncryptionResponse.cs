@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
     public sealed class SampleAesEncryptionResponse
     {
         /// <summary>
-        /// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        /// URI of the key delivery service. This URI is inserted into the M3U8 header.
         /// </summary>
         public readonly string KeyUri;
 

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        /// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         /// </summary>
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<string> ClusterUuid { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        /// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
         /// </summary>
         [Output("config")]
         public Output<Outputs.ClusterConfigResponse> Config { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<Outputs.ClusterMetricsResponse> Metrics { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The Google Cloud Platform project ID that the cluster belongs to.
+        /// The Google Cloud Platform project ID that the cluster belongs to.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -109,16 +109,16 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        /// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         /// </summary>
-        [Input("clusterName")]
-        public Input<string>? ClusterName { get; set; }
+        [Input("clusterName", required: true)]
+        public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        /// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
         /// </summary>
-        [Input("config")]
-        public Input<Inputs.ClusterConfigArgs>? Config { get; set; }
+        [Input("config", required: true)]
+        public Input<Inputs.ClusterConfigArgs> Config { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         }
 
         /// <summary>
-        /// Required. The Google Cloud Platform project ID that the cluster belongs to.
+        /// The Google Cloud Platform project ID that the cluster belongs to.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

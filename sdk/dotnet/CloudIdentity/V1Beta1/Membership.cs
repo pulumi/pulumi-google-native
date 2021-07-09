@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        /// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         /// </summary>
         [Output("preferredMemberKey")]
         public Output<Outputs.EntityKeyResponse> PreferredMemberKey { get; private set; } = null!;
@@ -112,10 +112,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public Input<Inputs.EntityKeyArgs>? MemberKey { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        /// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         /// </summary>
-        [Input("preferredMemberKey")]
-        public Input<Inputs.EntityKeyArgs>? PreferredMemberKey { get; set; }
+        [Input("preferredMemberKey", required: true)]
+        public Input<Inputs.EntityKeyArgs> PreferredMemberKey { get; set; } = null!;
 
         [Input("roles")]
         private InputList<Inputs.MembershipRoleArgs>? _roles;

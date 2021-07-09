@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
     public sealed class SoftwareRecipeStepCopyFileResponse
     {
         /// <summary>
-        /// Required. The id of the relevant artifact in the recipe.
+        /// The id of the relevant artifact in the recipe.
         /// </summary>
         public readonly string ArtifactId;
         /// <summary>
-        /// Required. The absolute path on the instance to put the file.
+        /// The absolute path on the instance to put the file.
         /// </summary>
         public readonly string Destination;
         /// <summary>

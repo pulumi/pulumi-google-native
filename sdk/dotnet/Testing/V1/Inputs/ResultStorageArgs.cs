@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         /// <summary>
         /// Required.
         /// </summary>
-        [Input("googleCloudStorage")]
-        public Input<Inputs.GoogleCloudStorageArgs>? GoogleCloudStorage { get; set; }
+        [Input("googleCloudStorage", required: true)]
+        public Input<Inputs.GoogleCloudStorageArgs> GoogleCloudStorage { get; set; } = null!;
 
         /// <summary>
         /// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.

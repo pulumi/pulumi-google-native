@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string LastModifiedAt;
         /// <summary>
-        /// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        /// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         /// </summary>
         public readonly string Name;
         /// <summary>

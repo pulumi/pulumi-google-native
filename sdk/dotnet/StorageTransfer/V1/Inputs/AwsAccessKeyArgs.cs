@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class AwsAccessKeyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. AWS access key ID.
+        /// AWS access key ID.
         /// </summary>
-        [Input("accessKeyId")]
-        public Input<string>? AccessKeyId { get; set; }
+        [Input("accessKeyId", required: true)]
+        public Input<string> AccessKeyId { get; set; } = null!;
 
         /// <summary>
-        /// Required. AWS secret access key. This field is not returned in RPC responses.
+        /// AWS secret access key. This field is not returned in RPC responses.
         /// </summary>
-        [Input("secretAccessKey")]
-        public Input<string>? SecretAccessKey { get; set; }
+        [Input("secretAccessKey", required: true)]
+        public Input<string> SecretAccessKey { get; set; } = null!;
 
         public AwsAccessKeyArgs()
         {

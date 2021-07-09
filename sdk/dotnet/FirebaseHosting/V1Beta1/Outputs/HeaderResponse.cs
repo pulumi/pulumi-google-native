@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
         /// </summary>
         public readonly string Glob;
         /// <summary>
-        /// Required. The additional headers to add to the response.
+        /// The additional headers to add to the response.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Headers;
         /// <summary>

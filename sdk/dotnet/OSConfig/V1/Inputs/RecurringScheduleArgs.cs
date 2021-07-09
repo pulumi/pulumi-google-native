@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// Required. The frequency unit of this recurring schedule.
+        /// The frequency unit of this recurring schedule.
         /// </summary>
-        [Input("frequency")]
-        public Input<Pulumi.GoogleNative.OSConfig.V1.RecurringScheduleFrequency>? Frequency { get; set; }
+        [Input("frequency", required: true)]
+        public Input<Pulumi.GoogleNative.OSConfig.V1.RecurringScheduleFrequency> Frequency { get; set; } = null!;
 
         /// <summary>
-        /// Required. Schedule with monthly executions.
+        /// Schedule with monthly executions.
         /// </summary>
-        [Input("monthly")]
-        public Input<Inputs.MonthlyScheduleArgs>? Monthly { get; set; }
+        [Input("monthly", required: true)]
+        public Input<Inputs.MonthlyScheduleArgs> Monthly { get; set; } = null!;
 
         /// <summary>
         /// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -40,22 +40,22 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// Required. Time of the day to run a recurring deployment.
+        /// Time of the day to run a recurring deployment.
         /// </summary>
-        [Input("timeOfDay")]
-        public Input<Inputs.TimeOfDayArgs>? TimeOfDay { get; set; }
+        [Input("timeOfDay", required: true)]
+        public Input<Inputs.TimeOfDayArgs> TimeOfDay { get; set; } = null!;
 
         /// <summary>
-        /// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
         /// </summary>
-        [Input("timeZone")]
-        public Input<Inputs.TimeZoneArgs>? TimeZone { get; set; }
+        [Input("timeZone", required: true)]
+        public Input<Inputs.TimeZoneArgs> TimeZone { get; set; } = null!;
 
         /// <summary>
-        /// Required. Schedule with weekly executions.
+        /// Schedule with weekly executions.
         /// </summary>
-        [Input("weekly")]
-        public Input<Inputs.WeeklyScheduleArgs>? Weekly { get; set; }
+        [Input("weekly", required: true)]
+        public Input<Inputs.WeeklyScheduleArgs> Weekly { get; set; } = null!;
 
         public RecurringScheduleArgs()
         {

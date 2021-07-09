@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         public Output<string> ContentType { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Feed output configuration defining where the asset updates are published to.
+        /// Feed output configuration defining where the asset updates are published to.
         /// </summary>
         [Output("feedOutputConfig")]
         public Output<Outputs.FeedOutputConfigResponse> FeedOutputConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+        /// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -133,22 +133,22 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         public Input<Pulumi.GoogleNative.CloudAsset.V1.FeedContentType>? ContentType { get; set; }
 
         /// <summary>
-        /// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
+        /// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
         /// </summary>
-        [Input("feedId")]
-        public Input<string>? FeedId { get; set; }
+        [Input("feedId", required: true)]
+        public Input<string> FeedId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Feed output configuration defining where the asset updates are published to.
+        /// Feed output configuration defining where the asset updates are published to.
         /// </summary>
-        [Input("feedOutputConfig")]
-        public Input<Inputs.FeedOutputConfigArgs>? FeedOutputConfig { get; set; }
+        [Input("feedOutputConfig", required: true)]
+        public Input<Inputs.FeedOutputConfigArgs> FeedOutputConfig { get; set; } = null!;
 
         /// <summary>
-        /// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+        /// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("v1Id", required: true)]
         public Input<string> V1Id { get; set; } = null!;

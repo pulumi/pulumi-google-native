@@ -22,22 +22,22 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public Input<string>? CloudSqlId { get; set; }
 
         /// <summary>
-        /// Required. The IP or hostname of the source MySQL database.
+        /// The IP or hostname of the source MySQL database.
         /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
+        [Input("host", required: true)]
+        public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        /// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
 
         /// <summary>
-        /// Required. The network port of the source MySQL database.
+        /// The network port of the source MySQL database.
         /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
+        [Input("port", required: true)]
+        public Input<int> Port { get; set; } = null!;
 
         /// <summary>
         /// SSL configuration for the destination to connect to the source database.
@@ -46,10 +46,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public Input<Inputs.SslConfigArgs>? Ssl { get; set; }
 
         /// <summary>
-        /// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
 
         public MySqlConnectionProfileArgs()
         {

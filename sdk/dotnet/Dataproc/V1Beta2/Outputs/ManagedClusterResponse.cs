@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
     public sealed class ManagedClusterResponse
     {
         /// <summary>
-        /// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+        /// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
-        /// Required. The cluster configuration.
+        /// The cluster configuration.
         /// </summary>
         public readonly Outputs.ClusterConfigResponse Config;
         /// <summary>

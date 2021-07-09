@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     public partial class AttributeDefinition : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        /// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
         /// </summary>
         [Output("allowedValues")]
         public Output<ImmutableArray<string>> AllowedValues { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The category of the attribute. The value of this field cannot be changed after creation.
+        /// The category of the attribute. The value of this field cannot be changed after creation.
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
@@ -96,11 +96,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class AttributeDefinitionArgs : Pulumi.ResourceArgs
     {
-        [Input("allowedValues")]
+        [Input("allowedValues", required: true)]
         private InputList<string>? _allowedValues;
 
         /// <summary>
-        /// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        /// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
         /// </summary>
         public InputList<string> AllowedValues
         {
@@ -112,10 +112,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string> AttributeDefinitionId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The category of the attribute. The value of this field cannot be changed after creation.
+        /// The category of the attribute. The value of this field cannot be changed after creation.
         /// </summary>
-        [Input("category")]
-        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.AttributeDefinitionCategory>? Category { get; set; }
+        [Input("category", required: true)]
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.AttributeDefinitionCategory> Category { get; set; } = null!;
 
         [Input("consentDefaultValues")]
         private InputList<string>? _consentDefaultValues;

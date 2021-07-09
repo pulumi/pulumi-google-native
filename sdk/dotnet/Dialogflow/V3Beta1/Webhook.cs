@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The human-readable name of the webhook, unique within the agent.
+        /// The human-readable name of the webhook, unique within the agent.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -100,10 +100,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Required. The human-readable name of the webhook, unique within the agent.
+        /// The human-readable name of the webhook, unique within the agent.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Configuration for a generic web service.

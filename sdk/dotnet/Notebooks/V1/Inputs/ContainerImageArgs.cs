@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     public sealed class ContainerImageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+        /// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
         /// </summary>
-        [Input("repository")]
-        public Input<string>? Repository { get; set; }
+        [Input("repository", required: true)]
+        public Input<string> Repository { get; set; } = null!;
 
         /// <summary>
         /// The tag of the container image. If not specified, this defaults to the latest tag.

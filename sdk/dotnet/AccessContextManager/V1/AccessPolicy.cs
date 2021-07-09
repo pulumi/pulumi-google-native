@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Human readable title. Does not affect behavior.
+        /// Human readable title. Does not affect behavior.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccessPolicy(string name, AccessPolicyArgs? args = null, CustomResourceOptions? options = null)
+        public AccessPolicy(string name, AccessPolicyArgs args, CustomResourceOptions? options = null)
             : base("google-native:accesscontextmanager/v1:AccessPolicy", name, args ?? new AccessPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -85,16 +85,16 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         /// </summary>
-        [Input("parent")]
-        public Input<string>? Parent { get; set; }
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Required. Human readable title. Does not affect behavior.
+        /// Human readable title. Does not affect behavior.
         /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
 
         public AccessPolicyArgs()
         {

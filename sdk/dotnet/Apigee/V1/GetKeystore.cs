@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly ImmutableArray<string> Aliases;
         /// <summary>
-        /// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
         /// </summary>
         public readonly string Name;
 

@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         public readonly string TenantProjectId;
         /// <summary>
-        /// Required. Instance type.
+        /// Instance type.
         /// </summary>
         public readonly string Type;
         /// <summary>

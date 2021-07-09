@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
     public partial class Replay : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The configuration used for the `Replay`.
+        /// The configuration used for the `Replay`.
         /// </summary>
         [Output("config")]
         public Output<Outputs.GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse> Config { get; private set; } = null!;
@@ -85,10 +85,10 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
     public sealed class ReplayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The configuration used for the `Replay`.
+        /// The configuration used for the `Replay`.
         /// </summary>
-        [Input("config")]
-        public Input<Inputs.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>? Config { get; set; }
+        [Input("config", required: true)]
+        public Input<Inputs.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs> Config { get; set; } = null!;
 
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

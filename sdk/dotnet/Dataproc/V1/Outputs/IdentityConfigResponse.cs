@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class IdentityConfigResponse
     {
         /// <summary>
-        /// Required. Map of user to service account.
+        /// Map of user to service account.
         /// </summary>
         public readonly ImmutableDictionary<string, string> UserServiceAccountMapping;
 

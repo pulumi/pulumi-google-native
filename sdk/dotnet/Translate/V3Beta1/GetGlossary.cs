@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         /// </summary>
         public readonly int EntryCount;
         /// <summary>
-        /// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+        /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
         /// </summary>
         public readonly Outputs.GlossaryInputConfigResponse InputConfig;
         /// <summary>
@@ -60,7 +60,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         /// </summary>
         public readonly Outputs.LanguageCodePairResponse LanguagePair;
         /// <summary>
-        /// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+        /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         /// </summary>
         public readonly string Name;
         /// <summary>

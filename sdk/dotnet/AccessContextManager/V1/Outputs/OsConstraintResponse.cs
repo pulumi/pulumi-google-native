@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
         /// </summary>
         public readonly string MinimumVersion;
         /// <summary>
-        /// Required. The allowed OS type.
+        /// The allowed OS type.
         /// </summary>
         public readonly string OsType;
         /// <summary>

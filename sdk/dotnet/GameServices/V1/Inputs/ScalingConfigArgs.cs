@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     public sealed class ScalingConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+        /// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
         /// </summary>
-        [Input("fleetAutoscalerSpec")]
-        public Input<string>? FleetAutoscalerSpec { get; set; }
+        [Input("fleetAutoscalerSpec", required: true)]
+        public Input<string> FleetAutoscalerSpec { get; set; } = null!;
 
         /// <summary>
-        /// Required. The name of the Scaling Config
+        /// The name of the Scaling Config
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("schedules")]
         private InputList<Inputs.ScheduleArgs>? _schedules;

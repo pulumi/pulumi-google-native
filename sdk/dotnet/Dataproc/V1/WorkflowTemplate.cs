@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<string> DagTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The Directed Acyclic Graph of Jobs to submit.
+        /// The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         [Output("jobs")]
         public Output<ImmutableArray<Outputs.OrderedJobResponse>> Jobs { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<ImmutableArray<Outputs.TemplateParameterResponse>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// Required. WorkflowTemplate scheduling information.
+        /// WorkflowTemplate scheduling information.
         /// </summary>
         [Output("placement")]
         public Output<Outputs.WorkflowTemplatePlacementResponse> Placement { get; private set; } = null!;
@@ -123,11 +123,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("jobs")]
+        [Input("jobs", required: true)]
         private InputList<Inputs.OrderedJobArgs>? _jobs;
 
         /// <summary>
-        /// Required. The Directed Acyclic Graph of Jobs to submit.
+        /// The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         public InputList<Inputs.OrderedJobArgs> Jobs
         {
@@ -163,10 +163,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         }
 
         /// <summary>
-        /// Required. WorkflowTemplate scheduling information.
+        /// WorkflowTemplate scheduling information.
         /// </summary>
-        [Input("placement")]
-        public Input<Inputs.WorkflowTemplatePlacementArgs>? Placement { get; set; }
+        [Input("placement", required: true)]
+        public Input<Inputs.WorkflowTemplatePlacementArgs> Placement { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

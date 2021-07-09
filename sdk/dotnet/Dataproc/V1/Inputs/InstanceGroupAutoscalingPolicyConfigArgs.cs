@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     public sealed class InstanceGroupAutoscalingPolicyConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+        /// Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
         /// </summary>
-        [Input("maxInstances")]
-        public Input<int>? MaxInstances { get; set; }
+        [Input("maxInstances", required: true)]
+        public Input<int> MaxInstances { get; set; } = null!;
 
         /// <summary>
         /// Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.

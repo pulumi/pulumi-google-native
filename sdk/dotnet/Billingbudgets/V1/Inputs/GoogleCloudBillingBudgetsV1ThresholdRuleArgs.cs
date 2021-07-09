@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Inputs
         public Input<Pulumi.GoogleNative.Billingbudgets.V1.GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis>? SpendBasis { get; set; }
 
         /// <summary>
-        /// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+        /// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
         /// </summary>
-        [Input("thresholdPercent")]
-        public Input<double>? ThresholdPercent { get; set; }
+        [Input("thresholdPercent", required: true)]
+        public Input<double> ThresholdPercent { get; set; } = null!;
 
         public GoogleCloudBillingBudgetsV1ThresholdRuleArgs()
         {

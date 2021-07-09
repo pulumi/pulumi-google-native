@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Human readable name for this profile. Max length 1024 bytes.
+        /// Human readable name for this profile. Max length 1024 bytes.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -139,10 +139,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Input<Inputs.GoogleCloudDialogflowV2AutomatedAgentConfigArgs>? AutomatedAgentConfig { get; set; }
 
         /// <summary>
-        /// Required. Human readable name for this profile. Max length 1024 bytes.
+        /// Human readable name for this profile. Max length 1024 bytes.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Configuration for agent assistance to use with this profile.

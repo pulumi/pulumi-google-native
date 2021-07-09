@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// </summary>
     public sealed class AndroidDeviceListArgs : Pulumi.ResourceArgs
     {
-        [Input("androidDevices")]
+        [Input("androidDevices", required: true)]
         private InputList<Inputs.AndroidDeviceArgs>? _androidDevices;
 
         /// <summary>
-        /// Required. A list of Android devices.
+        /// A list of Android devices.
         /// </summary>
         public InputList<Inputs.AndroidDeviceArgs> AndroidDevices
         {

@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// </summary>
     public sealed class DeployableArgs : Pulumi.ResourceArgs
     {
-        [Input("resourceUri")]
+        [Input("resourceUri", required: true)]
         private InputList<string>? _resourceUri;
 
         /// <summary>
-        /// Required. Resource URI for the artifact being deployed.
+        /// Resource URI for the artifact being deployed.
         /// </summary>
         public InputList<string> ResourceUri
         {

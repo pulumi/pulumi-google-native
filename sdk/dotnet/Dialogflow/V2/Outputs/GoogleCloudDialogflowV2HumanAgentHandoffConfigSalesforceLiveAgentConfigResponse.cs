@@ -14,19 +14,19 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse
     {
         /// <summary>
-        /// Required. Live Agent chat button ID.
+        /// Live Agent chat button ID.
         /// </summary>
         public readonly string ButtonId;
         /// <summary>
-        /// Required. Live Agent deployment ID.
+        /// Live Agent deployment ID.
         /// </summary>
         public readonly string DeploymentId;
         /// <summary>
-        /// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+        /// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
         /// </summary>
         public readonly string EndpointDomain;
         /// <summary>
-        /// Required. The organization ID of the Salesforce account.
+        /// The organization ID of the Salesforce account.
         /// </summary>
         public readonly string OrganizationId;
 

@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The user-specified id of the job.
+        /// The user-specified id of the job.
         /// </summary>
         [Output("jobId")]
         public Output<string> JobId { get; private set; } = null!;
@@ -139,10 +139,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Required. The user-specified id of the job.
+        /// The user-specified id of the job.
         /// </summary>
-        [Input("jobId")]
-        public Input<string>? JobId { get; set; }
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;

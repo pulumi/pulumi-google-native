@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     public sealed class OneTimeScheduleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The desired patch job execution time.
+        /// The desired patch job execution time.
         /// </summary>
-        [Input("executeTime")]
-        public Input<string>? ExecuteTime { get; set; }
+        [Input("executeTime", required: true)]
+        public Input<string> ExecuteTime { get; set; } = null!;
 
         public OneTimeScheduleArgs()
         {

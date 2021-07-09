@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     public partial class KnowledgeBase : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        /// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -79,10 +79,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     public sealed class KnowledgeBaseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        /// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.

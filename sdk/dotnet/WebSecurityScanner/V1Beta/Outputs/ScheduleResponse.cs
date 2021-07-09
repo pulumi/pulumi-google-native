@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Outputs
     public sealed class ScheduleResponse
     {
         /// <summary>
-        /// Required. The duration of time between executions in days.
+        /// The duration of time between executions in days.
         /// </summary>
         public readonly int IntervalDurationDays;
         /// <summary>

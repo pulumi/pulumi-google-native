@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// </summary>
     public sealed class ValueValidationArgs : Pulumi.ResourceArgs
     {
-        [Input("values")]
+        [Input("values", required: true)]
         private InputList<string>? _values;
 
         /// <summary>
-        /// Required. List of allowed values for the parameter.
+        /// List of allowed values for the parameter.
         /// </summary>
         public InputList<string> Values
         {

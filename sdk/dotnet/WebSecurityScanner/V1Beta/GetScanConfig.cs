@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         /// </summary>
         public readonly ImmutableArray<string> BlacklistPatterns;
         /// <summary>
-        /// Required. The user provided display name of the ScanConfig.
+        /// The user provided display name of the ScanConfig.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -81,7 +81,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         /// </summary>
         public readonly Outputs.ScheduleResponse Schedule;
         /// <summary>
-        /// Required. The starting URLs from which the scanner finds site pages.
+        /// The starting URLs from which the scanner finds site pages.
         /// </summary>
         public readonly ImmutableArray<string> StartingUrls;
         /// <summary>

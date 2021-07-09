@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
     public sealed class TextInputResponse
     {
         /// <summary>
-        /// Required. The `Input.key` that identifies the input file.
+        /// The `Input.key` that identifies the input file.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Required. The zero-based index of the track in the input file.
+        /// The zero-based index of the track in the input file.
         /// </summary>
         public readonly int Track;
 

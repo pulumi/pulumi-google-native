@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
     public partial class TraceSink : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
+        /// The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The export destination.
+        /// The export destination.
         /// </summary>
         [Output("outputConfig")]
         public Output<Outputs.OutputConfigResponse> OutputConfig { get; private set; } = null!;
@@ -79,16 +79,16 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
     public sealed class TraceSinkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
+        /// The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Required. The export destination.
+        /// The export destination.
         /// </summary>
-        [Input("outputConfig")]
-        public Input<Inputs.OutputConfigArgs>? OutputConfig { get; set; }
+        [Input("outputConfig", required: true)]
+        public Input<Inputs.OutputConfigArgs> OutputConfig { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

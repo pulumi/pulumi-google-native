@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
         /// </summary>
         public readonly string CommonName;
         /// <summary>
-        /// Required. Contains distinguished name fields such as the location and organization.
+        /// Contains distinguished name fields such as the location and organization.
         /// </summary>
         public readonly Outputs.SubjectResponse Subject;
         /// <summary>

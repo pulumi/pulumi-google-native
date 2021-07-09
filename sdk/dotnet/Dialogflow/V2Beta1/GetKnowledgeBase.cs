@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     public sealed class GetKnowledgeBaseResult
     {
         /// <summary>
-        /// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        /// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

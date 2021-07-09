@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+        /// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse> Parts;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// </summary>
         public readonly int TimesAddedCount;
         /// <summary>
-        /// Required. The type of the training phrase.
+        /// The type of the training phrase.
         /// </summary>
         public readonly string Type;
 

@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class ToolResultsHistoryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. A tool results history ID.
+        /// A tool results history ID.
         /// </summary>
-        [Input("historyId")]
-        public Input<string>? HistoryId { get; set; }
+        [Input("historyId", required: true)]
+        public Input<string> HistoryId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The cloud project that owns the tool results history.
+        /// The cloud project that owns the tool results history.
         /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public ToolResultsHistoryArgs()
         {

@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public Output<Outputs.CompanyDerivedInfoResponse> DerivedInfo { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The display name of the company, for example, "Google LLC".
+        /// The display name of the company, for example, "Google LLC".
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public Output<string> EeoText { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+        /// Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
         /// </summary>
         [Output("externalId")]
         public Output<string> ExternalId { get; private set; } = null!;
@@ -145,10 +145,10 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public Input<string>? CareerSiteUri { get; set; }
 
         /// <summary>
-        /// Required. The display name of the company, for example, "Google LLC".
+        /// The display name of the company, for example, "Google LLC".
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
@@ -157,10 +157,10 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public Input<string>? EeoText { get; set; }
 
         /// <summary>
-        /// Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+        /// Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
         /// </summary>
-        [Input("externalId")]
-        public Input<string>? ExternalId { get; set; }
+        [Input("externalId", required: true)]
+        public Input<string> ExternalId { get; set; } = null!;
 
         /// <summary>
         /// The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.

@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     public sealed class GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Action to take when a user taps on the button.
+        /// Action to take when a user taps on the button.
         /// </summary>
-        [Input("openUriAction")]
-        public Input<Inputs.GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs>? OpenUriAction { get; set; }
+        [Input("openUriAction", required: true)]
+        public Input<Inputs.GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs> OpenUriAction { get; set; } = null!;
 
         /// <summary>
-        /// Required. The title of the button.
+        /// The title of the button.
         /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
 
         public GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs()
         {

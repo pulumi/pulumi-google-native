@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         [Input("imageDisplayOptions")]
         public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions>? ImageDisplayOptions { get; set; }
 
-        [Input("items")]
+        [Input("items", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs>? _items;
 
         /// <summary>
-        /// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+        /// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs> Items
         {

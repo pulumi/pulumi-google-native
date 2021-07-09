@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     public sealed class GoogleCloudMlV1_Measurement_MetricArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Metric name.
+        /// Metric name.
         /// </summary>
-        [Input("metric")]
-        public Input<string>? Metric { get; set; }
+        [Input("metric", required: true)]
+        public Input<string> Metric { get; set; } = null!;
 
         /// <summary>
-        /// Required. The value for this metric.
+        /// The value for this metric.
         /// </summary>
-        [Input("value")]
-        public Input<double>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<double> Value { get; set; } = null!;
 
         public GoogleCloudMlV1_Measurement_MetricArgs()
         {

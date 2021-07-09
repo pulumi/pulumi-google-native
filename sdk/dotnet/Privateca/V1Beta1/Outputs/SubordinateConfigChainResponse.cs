@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
     public sealed class SubordinateConfigChainResponse
     {
         /// <summary>
-        /// Required. Expected to be in leaf-to-root order according to RFC 5246.
+        /// Expected to be in leaf-to-root order according to RFC 5246.
         /// </summary>
         public readonly ImmutableArray<string> PemCertificates;
 

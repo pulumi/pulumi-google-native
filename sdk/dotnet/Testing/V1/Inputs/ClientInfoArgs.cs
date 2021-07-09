@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         }
 
         /// <summary>
-        /// Required. Client name, such as gcloud.
+        /// Client name, such as gcloud.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public ClientInfoArgs()
         {

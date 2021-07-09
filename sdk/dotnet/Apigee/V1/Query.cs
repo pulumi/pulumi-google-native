@@ -217,10 +217,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? ReportDefinitionId { get; set; }
 
         /// <summary>
-        /// Required. Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
+        /// Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
         /// </summary>
-        [Input("timeRange")]
-        public Input<object>? TimeRange { get; set; }
+        [Input("timeRange", required: true)]
+        public Input<object> TimeRange { get; set; } = null!;
 
         public QueryArgs()
         {

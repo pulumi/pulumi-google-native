@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<string>? CustomTag { get; set; }
 
         /// <summary>
-        /// Required. Identifies the column.
+        /// Identifies the column.
         /// </summary>
-        [Input("field")]
-        public Input<Inputs.GooglePrivacyDlpV2FieldIdArgs>? Field { get; set; }
+        [Input("field", required: true)]
+        public Input<Inputs.GooglePrivacyDlpV2FieldIdArgs> Field { get; set; } = null!;
 
         /// <summary>
         /// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data

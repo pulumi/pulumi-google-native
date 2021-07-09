@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
+        /// The display name of the AnnotationSpec. Maximum of 64 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

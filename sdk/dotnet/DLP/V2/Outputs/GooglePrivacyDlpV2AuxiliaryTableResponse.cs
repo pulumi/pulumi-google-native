@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2AuxiliaryTableResponse
     {
         /// <summary>
-        /// Required. Quasi-identifier columns.
+        /// Quasi-identifier columns.
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2QuasiIdFieldResponse> QuasiIds;
         /// <summary>
-        /// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        /// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2FieldIdResponse RelativeFrequency;
         /// <summary>
-        /// Required. Auxiliary table location.
+        /// Auxiliary table location.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2BigQueryTableResponse Table;
 
